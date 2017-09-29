@@ -1,0 +1,108 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\RequirePackage{silence}\WarningFilter{fmtcount}{\ordinal already defined use \FCordinal instead}
+\documentclass[version=last, pagesize, twoside=semi, DIV=calc, bibliography=totoc, 12pt, a4paper, french, english]{scrartcl}
+\input{preamble/packages}
+\input{preamble/math_basics}
+\input{preamble/math_mine}
+\input{preamble/redac}
+\input{preamble/draw}
+\input{preamble/acronyms}
+
+\begin{document}
+\title{The title}
+\author{Olivier Cailloux}
+\makeatletter
+	\hypersetup{
+		pdfsubject={Epistemology},
+		pdfkeywords={Decision aiding, Decision making, Argumentation}
+	}
+\makeatother
+\maketitle
+
+\section{Overview}
+Looking for possibilities (weak acceptance). Those propositions that are in the reflexive preferences in a large sense: there is no strong enough reason to reject those propositions, though their contrary may hold as well.
+\begin{itemize}
+	\item All alternatives $\allalts$.
+	\item Topic $\alltopic$ = $\Set{\prop_\alt, \alt \in \allalts} ∪ \Set{\prop_{¬\alt}, \alt \in \allalts}$. Denoted simply $\alt$ and $¬\alt$. We define $¬\prop$, with $\prop = \prop_\alt$, as equal to $\prop_{¬\alt}$ and $¬\prop$, with $\prop = \prop_{¬\alt}$, as equal to $\prop_{\alt}$.
+	\item All possible arguments: $\allargs$, the set of all strings.
+	\item $\ar' \ibeatsed_\prop \ar$: strong rejection attack; $\ar'$ renders $\ar$ invalid (with $\ar$ supporting $\prop$, $\ar'$ claims that $¬\prop$ is a certainty, thus $\ar$ can’t be used even to say that $\prop$ is a possibility, thus $\ar'$ supports that $\prop$ is not weakly accepted). Thus we have only attacks between contradictory propositions. Suffices that the attack occurs at least once over the considered time frame and unstability factors (such as submitting $i$ to other counter-arguments). Here we do not condition on $\ar'$ surviving: $\ar'$ is declared incorrect, with no necessity of pursuing the debate and no hope of reinstatement. Example: $\ar'$ has already been taken into account and countered in $\ar$. (TODO exploit the fact that we probably only need the negation, $¬(\ar' \ibeatsed_\prop \ar)$, which is pretty clear as further attacks to $\ar'$ have no impact.)
+	\item Define $\ileadsto$, decisive support, as $\ar \ileadsto \prop$ iff $i$ declares that $\ar$ is a definitive argument in that weakly supports $\prop$: there are no $\ar'$ that changes her position (once she has heard about $\ar$), in the sense of weak acceptancy, thus, no $\ar'$ attacking $\ar$ in the sense of strong rejection attack.
+\end{itemize}
+
+\begin{definition}[Clear-cut]
+	Define a situation $(\alltopic, \allargs, \ileadsto)$. It is clear-cut iff $\forall \alt \in \allalts: \ileadstoinv(\{\prop_\alt, \prop_{¬\alt}\}) ≠ \emptyset$.
+\end{definition}
+
+We want to prove that, under suitable assumptions (justifiable unstability, and so on): situation is clear cut iff a model (with no cycles) exist.
+
+\section{Models}
+$D$ a DAG over $(s, p)$ pairs.
+
+Given $(\ar_2, \prop), (\ar_1, ¬\prop) \in D$, define $\ar_2 \wibeatse_{¬\prop} \ar_1$ iff $\forall \ar \suchthat (\ar, \prop) \in D: [¬(\ar_1 \ibeatsed_\prop \ar) ∨ ¬(\ar_1 \ibeatsed_\prop (\ar + \ar_2)) ∨ \ar_2 \text{ is itself attacked}]$.
+Can perhaps be queried directly by asking (in the context of some $\ar_1 \ibeatsed_\prop \ar$): “assume $\ar_2$ survives, then does $\ar_2$ counter $\ar_1$?” (In the sense that $\ar_2$ is sufficiently convincing that $\prop$ holds perhaps, to cancel the argument $\ar_1$ according to which $¬\prop$ surely holds.)
+
+Given $(\ar_3, ¬\prop), (\ar_2, \prop) \in D$, define $\ar_3 \ibeatse_\prop \ar_2$ iff $\forall (\ar_1, ¬\prop) \in D: [¬(\ar_2 \wibeatse^\text{dec}_{¬\prop} \ar_1) ∨ ¬(\ar_2 \wibeatse^\text{dec}_{¬\prop} (\ar_1 + \ar_3)) ∨ \ar_3 \text{ is itself attacked}]$.
+
+Define $¬(\ar_2 \wibeatse^\text{dec}_{¬\prop} \ar_1) = ¬(\ar_2 \wibeatse_{¬\prop} \ar_1)$. Then,
+$(\ar_3, ¬\prop) \ibeatse (\ar_2, \prop)$ iff $\forall (\ar_1, ¬\prop): [(\ar_1 \ibeatsed_\prop \ar_2) ∨ ((\ar_1 + \ar_3) \ibeatsed_\prop \ar_2) ∨ \ar_3 \text{ is itself attacked}]$.
+
+\subsection{Perhaps equivalent and better}
+Let $D$ be a DAG over $(\ar, \prop)$ pairs, such that $\forall \ar: (\ar, \prop) \notin D ∨ (\ar, ¬\prop) \notin D$, thus, a given argument is never used both with $\prop$ and with $¬\prop$.
+
+Define $\ibeats^D_\prop$ as follows.
+\begin{itemize}
+	\item $\ar_2 \ibeats^D_\prop \ar_1$ iff $(\ar_2 \ibeatsed_\prop \ar_1)$ when $(\ar_1, \prop), (\ar_2, ¬\prop) \in D$,
+	\item $\ar_2 \ibeats^D_\prop \ar_1$ iff $¬(\ar_1 \ibeatsed_\prop \ar_2)$ when $(\ar_2, \prop), (\ar_1, ¬\prop) \in D$, 
+	\item $\ar_2 \ibeats^D_\prop \ar_1$ not defined otherwise.
+\end{itemize}
+Thus, $\ar_2 \ibeats^D_{¬\prop} \ar_1$ iff $¬(\ar_1 \ibeatsed_{¬\prop} \ar_2)$ when $(\ar_1, \prop), (\ar_2, ¬\prop) \in D$.
+
+Given $(\ar_3, ¬\prop), (\ar_2, \prop) \in D$, define $\ar_3 \ibeatse_\prop \ar_2$ iff $\forall (\ar_1, ¬\prop) \in D: [¬(\ar_2 \ibeats^D_\prop \ar_1) ∨ ¬(\ar_2 \ibeats^D_\prop (\ar_1 + \ar_3)) ∨ \ar_3 \text{ is itself attacked}]$.
+
+Given $(\ar_3, \prop), (\ar_2, ¬\prop) \in D$, define $\ar_3 \wibeatse_{¬\prop} \ar_2$ iff $\forall (\ar_1, \prop) \in D: [¬(\ar_2 \ibeatsed_\prop \ar_1) ∨ ¬(\ar_2 \ibeatsed_\prop (\ar_1 + \ar_3)) ∨ \ar_3 \text{ is itself attacked}]$.
+
+\subsection{Newer try}
+$s' ntepd s$ (for not triangle exists p d) iff $¬(s' tepd s)$, iff it is sure that $s'$ has no impact on $s$, even assuming that $s'$ would in turn resist all counter-arguments to it.
+
+$s2 naenp s1$ iff it is sure that $s2$ has no sufficient impact on $s1$, even assuming that $s2$ survives, more precisely, iff for some $s$, where $¬(s1 ntepd s)$: $¬(s1 ntepd (s+s2))$.
+
+\section{Models - try}
+Additionally.
+\begin{itemize}
+	\item Propositions weakly self-supported $\topic \subseteq \alltopic$: weakly accepted if no arg is given. Examples: $m$ = “eat miam”; $¬b$ = “beurk is to exclude”; or, in a problem where there’s no particularly good aliments, both $a$ = “eat this” and $¬a$.
+%	\item $\ar' \nibeatse_\prop \ar$: existence of an absence of strong rejection attack.
+	\item $\ar' \wibeatse_\prop \ar$: weak attack; $\ar'$ renders $\ar$ invalid because too strong (with $\ar$ supporting $\prop$, $\ar'$ claims that $¬\prop$ is a possibility, thus $\ar$ can’t be used to say that $\prop$ is a certainty, thus $\ar'$ supports that $¬\prop$ is weakly accepted). Assuming $\ar'$ survives. This is a relation on the arguments that defend $\prop$ times the arguments that defend $¬\prop$, union the converse, union on all propositions. Thus we have only attacks between contradictory propositions.
+\end{itemize}
+
+When given $(\ar, \prop)$, $i$ may say: $\ar$ does not survive; or: assuming $\ar$ survives, then $\ar$ supports $\prop$, or, assuming $\ar$ survives, then $\ar$ does not support $\prop$ anyway.
+
+When given $\ar'$ against $\ar$, $i$ may say: $\ar'$ does not survive, or: assuming $\ar'$ survives, then $\ar'$ supports $¬\prop$, …
+
+We might use the following hyp. (We can dispense of it?) (TODO what does that mean?)
+\begin{definition}[Completeness of $\topic$]
+	At least one of $\alt$ and $¬\alt$ is in $\topic$, for each alternative.
+\end{definition}
+If none, we should assume the DM means that both are (which can be done if falsifying against observed choices).
+
+I think we need a primitive definition of $(s, p)$ attacked by $s1$.
+
+Then we can define: $s_{cc}$ attacks $s_c$ iff [$(p + s_{cc}, p)$ not attacked by $s_c$, or $s_{cc}$ not decisive].
+
+Except this is maybe not well defined in case of circularities! (But this should not be a problem as we will not need this definition in that case.)
+
+\begin{definition}
+	Given 
+\end{definition}
+
+\appendix
+\section{Certainties}
+Looking for certainties. Those propositions that are in the reflexive preferences in a demanding sense: there is a strong enough reason to prefer it than its contrary.
+\begin{itemize}
+	\item $\ar' \wibeatse \ar$: weak attack; $\ar'$ renders $\ar$ invalid (can’t be used to say that $t$ holds for sure) (assuming $\ar'$ survives)
+	\item Propositions strongly self-supported: strongly accepted if no arg is given. Examples: $m$ = “eat miam”; $¬b$ = “beurk is to exclude”. We might have neither $c$ nor $¬c$ in that set.
+\end{itemize}
+
+%\bibliography{mybib}
+
+\end{document}
+
