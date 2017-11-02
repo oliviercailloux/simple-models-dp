@@ -158,7 +158,6 @@ This model is compatible (meaning that it satisfies the general conditions) with
 This situation falsifies the model. $\ar_4 \ibeatse \ar_1$, $\ar_4$ not attacked.
 
 \section{Theorem}
-\subsection{Main}
 \begin{theorem}[Validity]
 	Given a decision situation and a model $\eta$, if all our conditions are satisfied, $\mleadsto(\clargs) \subseteq \iposs$.
 \end{theorem}
@@ -190,12 +189,6 @@ TODO do not mandate that $\ar_3 + \ar_1 \ileadsto \prop$, so that the model can 
 
 Third, consider an argument $\ar_1 \in \mleadstoinv(\alltopic)$. It has no decisive $\ibeatse$-attacker: as $\ar_1 \in \gdargs$, any $\ibeatse$-attack is a $\wibeatse$-attack [Covering], and $\ar_1$ has no decisive $\wibeatse$-attacker [Obs val]. Also, $\ar_1$ is defended: assume it is not, then by our second point in this proof some $\ar_2 \wibeatse \ar_1$, with $\ar_2$ not defended and with no decisive $\wibeatse$-attacker, and iterating and using finiteness of $\wibeatse$ leads to a contradiction. Hence, by our first point in this proof, $\ar_1$ is replaceable by some $\wibeatse$-decisive $\ar \in \gdargs$. As $\ar \in \gdargs$, any $\ibeatse$-attack is a $\wibeatse$-attack [Covering], thus $\ar$ is $\ibeatse$-decisive.
 \end{proof}
-
-\subsection{Bonus}
-A model $\eta' = (\mbeats', \mleadsto', +')$ particularizes a model $\eta = (\mbeats, \mleadsto, +)$ iff $\mbeats' = \mbeats, \mleadsto' \subseteq \mleadsto, +' = +$.
-\begin{theorem}[Instanciation]
-	Given a decision situation and a model $\eta$ and a model particularization $\eta'$, if $\eta$ satisfies the general conditions, then $\eta'$ satisfies the general conditions.
-\end{theorem}
 
 \appendix
 \section{Todo}
