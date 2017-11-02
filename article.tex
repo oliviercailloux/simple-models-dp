@@ -93,18 +93,6 @@ Define $\wibeatsst = ¬\nwibeatse$. Define $\nwibeatsst = ¬\wibeatse$.
 
 Hence, given $\ar_3 \in \clargs, \ar_2 \in \clargs, \ar_2 \notin \mleadstoinv(\alltopic)$: $\ar_3 \wibeatsst \ar_2$ iff $\forall \ar_1 \in \mbeats(\ar_2) ∩ \wibeatse(\ar_2): \ar_2 \nwibeatsst \ar_3 + \ar_1$.
 
-\subsection{Certainties}
-Assume we define $\ar_1 \wibeatse[¬\prop, \text{sure}] \ar_2$ ⇔ $\ar_2 \nwibeatse[\prop] \ar_1$. Then, indeed, given $\ar_1 \mleadsto \prop$, $\ar_2 \wibeatse[¬\prop, \text{sure}] \ar_1$ ⇔ $\ar_2 \ibeatse[¬\prop, \text{sure}] \ar_1$. But it gives the wrong conclusion. For $\ar_3 \mbeats \ar_2 \mbeats \ar_1 \mleadsto t: \ar_3 \wibeatse[\prop, \text{sure}] \ar_2$ iff $\ar_2 \nwibeatse[¬\prop] \ar_3$ iff $\exists \ar_1 \in \mbeats(\ar_3) \suchthat \ar_3 \wibeatse[¬\prop] \ar_1 ∧ \ar_3 \wibeatse[¬\prop] \ar_2 + \ar_1$.
-
-Given $\ar_1 \mleadsto \prop$, define $\ar_2 \wibeatse[\prop, \text{sure}] \ar_1$ iff $\ar_2 \ibeatse[\prop, \text{sure}] \ar_1$.
-
-Given $\ar_1 \mleadsto \prop$, define $\ar_2 \nwibeatse[\prop, \text{sure}] \ar_1$ iff $\ar_1 \ibeatse[¬\prop] \ar_2$.
-
-Given $\ar_3 \in \clargs, \ar_2 \in \clargs, \ar_2 \notin \mleadstoinv(\alltopic), \prop \in T$: $\ar_3 \wibeatse[\prop, \text{sure}] \ar_2$ iff $\exists \ar_1 \in \mbeats(\ar_2) \suchthat \ar_2 \wibeatse[\prop, \text{sure}] \ar_1 ∧ \ar_2 \nwibeatse[\prop, \text{sure}] \ar_3 + \ar_1$.
-
-Given $\ar_3 \in \clargs, \ar_2 \in \clargs, \ar_2 \notin \mleadstoinv(\alltopic), \prop \in T$: $\ar_3 \nwibeatse[\prop, \text{sure}] \ar_2$ iff $\exists \ar_1 \in \mbeats(\ar_2) \suchthat \ar_2 \wibeatse[\prop, \text{sure}] \ar_1 ∧ \ar_2 \wibeatse[\prop, \text{sure}] \ar_3 + \ar_1$.
-
-
 \section{Conditions}
 All these conditions assume that a decision situation $(\allalts, \allargs, \{\ibeatse[\prop]\})$ and a model $\eta = (\mbeats, \mleadsto, +)$ are given.
 
@@ -218,6 +206,17 @@ This model is compatible (meaning that it satisfies the general conditions) with
 	\item Both: $¬(\ar_2 \ibeatse \ar_1), \ar_1 \mleadsto \prop$, $¬(\ar_3 \ibeatse \ar_2), \ar_2 \mleadsto ¬\prop$
 \end{itemize}
 This situation falsifies the model. $\ar_4 \ibeatse \ar_1$, $\ar_4$ not attacked.
+
+\section{Model certainties}
+Assume we define $\ar_1 \wibeatse[¬\prop, \text{sure}] \ar_2$ ⇔ $\ar_2 \nwibeatse[\prop] \ar_1$. Then, indeed, given $\ar_1 \mleadsto \prop$, $\ar_2 \wibeatse[¬\prop, \text{sure}] \ar_1$ ⇔ $\ar_2 \ibeatse[¬\prop, \text{sure}] \ar_1$. But it gives the wrong conclusion. For $\ar_3 \mbeats \ar_2 \mbeats \ar_1 \mleadsto t: \ar_3 \wibeatse[\prop, \text{sure}] \ar_2$ iff $\ar_2 \nwibeatse[¬\prop] \ar_3$ iff $\exists \ar_1 \in \mbeats(\ar_3) \suchthat \ar_3 \wibeatse[¬\prop] \ar_1 ∧ \ar_3 \wibeatse[¬\prop] \ar_2 + \ar_1$.
+
+Given $\ar_1 \mleadsto \prop$, define $\ar_2 \wibeatse[\prop, \text{sure}] \ar_1$ iff $\ar_2 \ibeatse[\prop, \text{sure}] \ar_1$.
+
+Given $\ar_1 \mleadsto \prop$, define $\ar_2 \nwibeatse[\prop, \text{sure}] \ar_1$ iff $\ar_1 \ibeatse[¬\prop] \ar_2$.
+
+Given $\ar_3 \in \clargs, \ar_2 \in \clargs, \ar_2 \notin \mleadstoinv(\alltopic), \prop \in T$: $\ar_3 \wibeatse[\prop, \text{sure}] \ar_2$ iff $\exists \ar_1 \in \mbeats(\ar_2) \suchthat \ar_2 \wibeatse[\prop, \text{sure}] \ar_1 ∧ \ar_2 \nwibeatse[\prop, \text{sure}] \ar_3 + \ar_1$.
+
+Given $\ar_3 \in \clargs, \ar_2 \in \clargs, \ar_2 \notin \mleadstoinv(\alltopic), \prop \in T$: $\ar_3 \nwibeatse[\prop, \text{sure}] \ar_2$ iff $\exists \ar_1 \in \mbeats(\ar_2) \suchthat \ar_2 \wibeatse[\prop, \text{sure}] \ar_1 ∧ \ar_2 \wibeatse[\prop, \text{sure}] \ar_3 + \ar_1$.
 
 \section{Example about default arguments}
 s2 argues in favor of p against s1: s "le monde n’est pas fiable". s1 "le monde est fiable, bhl l’a dit". s2 "bhl est un clown, il s’est planté sur l’Irak". s3 "il avait raison sur l’Irak : l’Irak a des ADM". s4 "l’Irak n’a pas d’ADM, Bush l’a reconnu".
