@@ -146,19 +146,8 @@ Define $R$, the reinstates relation, as follows: $\ar_3 R \ar_1$ iff $\ar_3 \wib
 	Given a decision situation and a model $\eta$, if all our conditions are satisfied, $\mleadsto(\clargs) \subseteq \iposs$. Furthermore, if $¬\prop \in \mleadsto(\clargs) ∧ \prop \notin \mleadstoinv(\clargs)$, $¬\prop \in \isure$.
 \end{theorem}
 \begin{proof}
-Define $\wibeatse^\text{ext} \subseteq \allargs × \allargs$ as: $\ar' \wibeatse^\text{ext} \ar$ iff $\ar' \wibeatse \ar ∨ (\ar \in \mleadstoinv ∧ \ar' \ibeatse \ar)$.
-
 $\ar$ is defended iff its $\wibeatse$-attackers are $\wibeatse$-attacked by $\wibeatse$-decisive arguments.
-Sketch:
-\begin{enumerate}
-	\item $\ar_1$ defended implies $\ar_1$ replaceable by some $\wibeatse$-decisive $\ar$
-	\item $\ar_1$ has its $\wibeatse$-attackers $\wibeatse$-attacked by defended arguments implies $\ar_1$ defended
-	\item Hence, $\ar_1$ has its $\wibeatse$-attackers $\wibeatse$-attacked by defended arguments implies $\ar_1$ replaceable by $\wibeatse$-decisive
-	\item If $\ar_1$ is not defended, it is $\wibeatse$-attacked by no $\ar_2$ decisive [Obs valid], hence, $\ar_1$ is attacked by no $\ar_2$ defended (otherwise there would be a decisive attacker). TODO clarify how we take into account attacks from outside of $\wibeatse$ (simply $\ibeatse$) coming from arguments out of $\clargs$. 
-	\item If $\ar_1$ is not defended, it is attacked by some $\ar_2$ attacked by no $\ar_3$ decisive (otherwise, $\ar_1$ defended).
-	\item Hence, if $\ar_1$ is not defended, it is attacked by some $\ar_2$ not defended, itself attacked by no $\ar_3$ decisive. And we can hopefully recurse.
-	\item In short: $\ar_1$ not defended by dec, attacked by some $\ar_2$ not defended by dec, implies $\ar_2$ attacked by some $\ar_3$ not defended by decisive.
-\end{enumerate}
+
 First, we want to prove that $\ar_1$ defended implies $\ar_1$ replaceable by some $\wibeatse$-decisive $\ar$, and if $\ar_1 \in \gdargs$, then its replacer $\ar$ is in $\gdargs$ as well.
 
 By hypothesis, $\wibeatseinv(\ar_1) \subseteq \wibeatse(\argsdec)$. Thus, $\exists \args \subseteq \argsdec \suchthat \mbeatsinv(\ar_1) \subseteq \wibeatse(\args)$, $\args$ finite [Finite defense]. 
