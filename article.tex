@@ -72,7 +72,7 @@ $\mbeats(\ar_2)$: arguments that $\ar_2$ attacks, $\ar_1 \in \mbeats(\ar_2) ⇔ 
 
 Given a decision situation, define $\wibeatse \subseteq \mbeats$ as follows.
 
-Given $\ar_3 \mbeats \ar_2, \prop \in \alltopic$: $\ar_3 \wibeatse[\prop] \ar_2$ iff $[\exists \ar_1 \in \mbeats(\ar_2) \suchthat (\ar_2 \wibeatse[\prop] \ar_1 ∧ \ar_2 \nwibeatse[\prop] \ar_3 + \ar_1)] ∨ [\ar_2 \ileadsto \prop ∧ \ar_3 \ibeatse[\prop] \ar_2]$.
+Given $\ar_3 \mbeats \ar_2, \prop \in \alltopic$: $\ar_3 \wibeatse[\prop] \ar_2$ iff $[\exists \ar_1 \in \mbeats(\ar_2) \suchthat (\ar_2 \wibeatse[\prop] \ar_1 ∧ \ar_2 \nwibeatse[\prop] \ar_3 + \ar_1)] ∨ [\ar_2 \ileadsto \prop ∧ \ar_3 \ibeatse[\prop] \ar_2]$. \footnote{Or $\ar_2 \ileadsto \prop ∧ ¬\prop \notin \mleadsto(\allargs) ∧ \ar_3 \ibeatse[\prop, \text{sure}] \ar_2$.}
 
 Given $\ar_3 \mbeats \ar_2, \prop \in \alltopic$: $\ar_3 \nwibeatse[\prop] \ar_2$ iff $[\exists \ar_1 \in \mbeats(\ar_2) \suchthat (\ar_2 \wibeatse[\prop] \ar_1 ∧ \ar_2 \wibeatse[\prop] \ar_3 + \ar_1)] ∨ [\ar_2 \mleadsto \prop ∧ \ar_2 \ibeatse[¬\prop, \text{sure}] \ar_3]$.
 \footnote{Check: Given $\ar_4 \mbeats \ar_3, \ar_3 \notin \mleadstoinv(\alltopic)$, with $\ar_2 \in \mbeats(\ar_3)$ ⇒ ($\ar_2$ and $\ar_4 + \ar_2$ $\mbeats$-attack only root nodes and do not support any proposition): $\ar_4 \wibeatse[\prop] \ar_3$ iff
@@ -137,12 +137,13 @@ Define $R$, the reinstates relation, as follows: $\ar_3 R \ar_1$ iff $\ar_3 \wib
 \end{definition}
 
 \begin{definition}[Observable validity]
-	$\forall \ar_2 \mbeats \ar_1 \mleadsto \prop: ¬(\ar_2 \wibeatse[\prop] \ar_1) ∨ \exists \ar_3 \mbeats \ar_2 \suchthat \ar_3 \wibeatse[\prop] \ar_2$. Furthermore, if $¬(\clargs \mleadsto ¬\prop), \forall \ar_2 \mbeats \ar_1 \mleadsto \prop: ¬(\ar_2 \wibeatse[\prop, \text{sure}] \ar_1) ∨ \exists \ar_3 \mbeats \ar_2 \suchthat \ar_3 \wibeatse[\prop, \text{sure}] \ar_2$.
+	$\forall \ar_2 \mbeats \ar_1 \mleadsto \prop: ¬(\ar_2 \wibeatse[\prop] \ar_1) ∨ \exists \ar_3 \mbeats \ar_2 \suchthat \ar_3 \wibeatse[\prop] \ar_2$. Furthermore, if $¬(\clargs \mleadsto \prop), \forall \ar_1 \mleadsto ¬\prop, \ar \in \allargs: \ar_1 \ibeatse[\prop] \ar$.
+	\footnote{If the model claims $¬\prop \in \isure$, this requires clear-cut (for that prop), so we must mandate it (hopefully A3 or an equivalent such as Justifiable unstability fits). Thus we only need to prove $\prop \notin \iposs$, for which $\ar_1 \ibeatse[\prop] \ar$ suffices.}
 \end{definition}
 
 \section{Theorem}
 \begin{theorem}[Validity]
-	Given a decision situation and a model $\eta$, if all our conditions are satisfied, $\mleadsto(\clargs) \subseteq \iposs$.
+	Given a decision situation and a model $\eta$, if all our conditions are satisfied, $\mleadsto(\clargs) \subseteq \iposs$. Furthermore, if $¬\prop \in \mleadsto(\clargs) ∧ \prop \notin \mleadstoinv(\clargs)$, $¬\prop \in \isure$.
 \end{theorem}
 \begin{proof}
 Define $\wibeatse^\text{ext} \subseteq \allargs × \allargs$ as: $\ar' \wibeatse^\text{ext} \ar$ iff $\ar' \wibeatse \ar ∨ (\ar \in \mleadstoinv ∧ \ar' \ibeatse \ar)$.
