@@ -1,0 +1,5 @@
+= deliberated
+A paper about Deliberated Preferences
+
+This is a work in progress. Do not use, reproduce, etc.
+
