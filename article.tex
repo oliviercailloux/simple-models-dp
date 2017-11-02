@@ -27,80 +27,175 @@ Looking for possibilities (weak acceptance). Those propositions that are in the 
 	\item All possible arguments: $\allargs$, the set of all strings. It can be chosen differently, but must be non empty as it contains at least $\emptyset$, the empty argument.
 	\item $\ar' \nibeatsst[\prop] \ar$: absence, all the time, of strong rejection attack; $\ar'$ does not render $\ar$ invalid; it is sure that $\ar'$ has no impact on $\ar$, even assuming that $\ar'$ would in turn resist all counter-arguments to it. This is an hypothesized relation, unobservable, used to define the deliberated preferences of $i$ (it is clear we can’t observe it, thus, as we can’t observe the DP). With $\ar$ supporting $\prop$, $\ar'$ claims that $¬\prop$ is a certainty, thus $\ar'$ supports that $\prop$ is not weakly accepted, thus $\ar$, if rebutted, can’t be used even to say that $\prop$ is a possibility. Thus we have only attacks between contradictory propositions. Suffices that the attack occurs at least once over the considered time frame and unstability factors (such as submitting $i$ to other counter-arguments) to negate $\ar' \nibeatsst[\prop] \ar$. Here we do not condition on $\ar'$ surviving: $\ar'$ is declared incorrect, with no necessity of pursuing the debate and no hope of reinstatement. Example: $\ar'$ has already been taken into account and countered in $\ar$; or $\ar'$ does not talk about $\ar$ at all; or is not understood by $i$. Note that when $\ar' \nibeatsst[\prop] \ar$, further attacks to $\ar'$ have no chance to change that fact (assuming some properties over the way $i$ reason). The negation of this should read: $\ar'$ may attack $\ar$ in at least some cases. For example, $¬ (\ar' \nibeatsst[\prop] \ar)$ ($\ar'$ may attack $\ar$) in case $i$ suspects that $\ar'$ is invalid (because of some counter-argument $\ar_2$ to $\ar'$ that $i$ has in mind) but wants to leave the door open to reinstatement of $\ar'$.
 	\item Define $¬ (\ar' \nibeatsst[\prop] \ar)$ iff $\ar' \ibeatse[\prop] \ar$.
+	\item Define $\args^\prop$ as the decisive arguments in favor of $\prop$: $\ar \in \args^\prop ⇔ \nexists \ar' \ibeatse[\prop] \ar ⇔ \ar' \nibeatsst[\prop] \ar$.
 	\item Define $\ar \ibeatse[¬\prop, \text{sure}] \ar'$ iff $\ar$ may attack $\ar'$, where $\ar$ has a weak claim ($\prop$ is possible) and $\ar'$ has a strong claim ($¬\prop$ is sure). Similarly, $\ar \nibeatsst[¬\prop, \text{sure}] \ar'$ is a constant absence of attack.
-	\item Require (as an axiom) that $\ar' \ibeatse[\prop] \ar ∨ \ar \ibeatse[¬\prop, \text{sure}] \ar'$. Equivalently: $¬ (\ar \nibeatsst[¬\prop, \text{sure}] \ar' ∧ \ar' \nibeatsst[\prop] \ar)$; $¬(\ar' \ibeatsst[\prop] \ar ∧ \ar' \nibeatsst[\prop] \ar)$; $\ar' \ibeatsst[\prop] \ar ⇒ \ar' \ibeatse[\prop] \ar$.
+	\item Define $\args^{¬\prop, \text{sure}}$ as the decisive arguments in favor of $¬\prop, \text{sure}$: $\ar' \in \args^{¬\prop, \text{sure}} ⇔ \nexists \ar \ibeatse[¬\prop, \text{sure}] \ar' ⇔ \ar \nibeatsst[¬\prop, \text{sure}] \ar'$.
+	\item Require (axiom A1) that $\ar' \ibeatse[\prop] \ar ∨ \ar \ibeatse[¬\prop, \text{sure}] \ar'$. Equivalently: $¬ (\ar \nibeatsst[¬\prop, \text{sure}] \ar' ∧ \ar' \nibeatsst[\prop] \ar)$; $\ar \nibeatsst[¬\prop, \text{sure}] \ar' ⇒ \ar' \ibeatse[\prop] \ar$.
+	\item Axiom A2: $\ar \nibeatsst[¬\prop, \text{sure}] \ar' ⇒ \ar \nibeatsst[¬\prop] \ar'$. Equivalently: $\ar \ibeatse[¬\prop] \ar' ⇒ \ar \ibeatse[¬\prop, \text{sure}] \ar'$.
+	\footnote{A3: $[\exists \ar \suchthat (\ar' \ibeatse[\prop] \ar ∧ \ar \ibeatse[¬\prop, \text{sure}] \ar')] ⇒ \exists \ar_2 \suchthat \ar_2 \ibeatse[¬\prop] \ar'$. Equivalently: $\ar_2 \nibeatsst[¬\prop] \ar', \forall \ar_2$ implies that for all $\ar$, $(\ar' \nibeatsst[\prop] \ar ∨ \ar \nibeatsst[¬\prop, \text{sure}] \ar')$. A1, A2 and A3 are equivalent to: $\ar \nibeatsst[¬\prop, \text{sure}] \ar' ⇔ \ar \nibeatsst[¬\prop] \ar' ∧ \ar' \ibeatse[\prop] \ar$.}
+	\footnote{Having A1 and A2, can we have $\ar \nibeatsst[¬\prop] \ar' ∧ \ar' \ibeatse[\prop] \ar ∧ \ar \ibeatse[¬\prop, \text{sure}] \ar'$? Consider $(\ar', ¬\prop) \succeq (\ar, \prop) \sim (\ar', ¬\prop, \text{sure}) \succeq (\ar, \prop, \text{sure})$.}
 \end{itemize}
-It seems that knowledge of the poss rels is insufficient to know the sure rel: assume $¬(\ar' \ibeatse[\prop] \ar)$ and $\ar \ibeatse[¬\prop] \ar'$. Thus, 1. $\ar$ is sufficient for $\prop$ possible, $\ar'$ not sufficient for $¬\prop$ sure; and 2. $\ar$ may be sufficient for $\prop$ sure, $\ar'$ insuff for $\prop$. But is $\ar$ sufficient for $\prop$ sure? Thus, $\ar' \ibeatse[\prop, \text{sure}] \ar$? Equivalently: $\ar \nibeatse[¬\prop] \ar'$? To know this we need to know whether $¬\prop \in T_i$. Or can we use $¬(\ar' \ibeatse[\prop] \ar) ⇒ \ar' \nibeatse[\prop] \ar$?
+
+It seems that knowledge of the poss rels is insufficient to know the sure rel: assume $¬(\ar' \ibeatse[\prop] \ar)$ and $\ar \ibeatse[¬\prop] \ar'$. Thus, 1. $\ar$ is sufficient for $\prop$ possible, $\ar'$ not sufficient for $¬\prop$ sure; and 2. $\ar$ may be sufficient for $\prop$ sure, $\ar'$ insuff for $\prop$. But is $\ar$ sufficient for $\prop$ sure? Thus, $\ar' \ibeatse[\prop, \text{sure}] \ar$? Equivalently: $\ar \nibeatse[¬\prop] \ar'$? To know this we need to know whether $¬\prop \in \iposs$. Or can we use $¬(\ar' \ibeatse[\prop] \ar) ⇒ \ar' \nibeatse[\prop] \ar$?
 
 Previously:
 \begin{itemize}
 	\item $¬ (\ar' \ibeatsst[\prop] \ar) ⇔ \ar' \nibeatse[\prop] \ar ⇔ \ar \ibeatse[¬\prop, \text{sure}] \ar' ⇔ ¬ (\ar \nibeatsst[¬\prop, \text{sure}] \ar')$.
-	\item Require (as an axiom) that $\ar' \ibeatse[\prop] \ar ∨ \ar' \nibeatse[\prop] \ar$. This yields $¬ (\ar' \ibeatsst[\prop] \ar ∧ \ar' \nibeatsst[\prop] \ar)$.
 \end{itemize}
 
-Define $T_i \subseteq \alltopic$ as the set of propositions that are weakly accepted.
+Define $\iposs \subseteq \alltopic$ as the set of propositions that are weakly accepted.
 \begin{definition}[Weak acceptance]
-	Define a situation $(\allalts, \allargs, \set{\ibeatse[\prop]})$. A proposition $\prop \in \alltopic$ is weakly accepted, $\prop \in T_i$, iff $\exists \ar \in \allargs \suchthat \forall \ar' \in \allargs: \ar' \nibeatsst[\prop] \ar$.
+	Define a situation $(\allalts, \allargs, \set{\ibeatse[\prop]})$. A proposition $\prop \in \alltopic$ is weakly accepted, $\prop \in \iposs$, iff $\exists \ar \in \allargs \suchthat \forall \ar' \in \allargs: \ar' \nibeatsst[\prop] \ar$.
 \end{definition}
-It follows that $¬\prop \notin T_i$ iff $\forall \ar: \exists \ar' \suchthat \ar' \ibeatse[¬\prop] \ar$.
+It follows that $¬\prop \notin \iposs$ iff $\forall \ar: \exists \ar' \suchthat \ar' \ibeatse[¬\prop] \ar$. Equivalently, $¬\prop \notin \iposs ⇔ \ibeatse[¬\prop](\allargs) = \allargs$.
 
-\begin{definition}[Strong rejection]
-	Define a situation $(\allalts, \allargs, \set{\ibeatse[\prop]})$. A proposition $¬\prop \in \alltopic$ is strongly rejected iff $\forall \ar \in \allargs, \exists \ar' \in \allargs \suchthat \ar \nibeatsst[\prop, \text{sure}] \ar'$.
+\begin{definition}[Sure acceptance]
+	$¬\prop \in \isure$ iff $\exists \ar' \in \allargs \suchthat \forall \ar \in \allargs: \ar \nibeatsst[¬\prop, \text{sure}] \ar'$.\footnote{Instead of accepting $¬\prop$ for sure, it is tempting to define strong rejection of $t$ as follows. A proposition $\prop \in \alltopic$ is strongly rejected iff $\forall \ar_0 \in \allargs, \exists \ar' \in \allargs \suchthat \ar_0 \nibeatsst[¬\prop, \text{sure}] \ar'$. But this is too weak: we want $\ar'$ to be also decisive, thus $\ar \nibeatsst[¬\prop, \text{sure}] \ar', \forall \ar$. Hence the definition becomes $\exists \ar' \in \allargs \suchthat \ar \nibeatsst[¬\prop, \text{sure}] \ar'$.}
 \end{definition}
-Thus, strong rejection mandates $\ar'$ such that $\ar' \ibeatsst[¬\prop] \ar$.
+If $¬\prop \in \isure$, then $\prop \notin \iposs$: with $\ar' \in \args^{¬\prop, \text{sure}}$, given any $\ar$, $\ar' \ibeatse[\prop] \ar$ (because $\ar \nibeatsst[¬\prop, \text{sure}] \ar'$, see A1).
 
-If $¬\prop$ is strongly rejected, then it is not weakly accepted ($¬\prop \notin T_i$) as $\ar' \ibeatsst[¬\prop] \ar ⇒ \ar' \ibeatse[¬\prop] \ar$.
+If $¬\prop \in \isure$, then $¬\prop \in \iposs$: from $\ar \nibeatsst[¬\prop, \text{sure}] \ar'$ we obtain $\ar \nibeatsst[¬\prop] \ar'$ using A2.
 
 \begin{definition}[Clear-cut]
-	A situation is clear-cut iff $¬\prop \notin T_i ⇒ ¬\prop$ is strongly rejected.
+	A situation is clear-cut iff $\prop \notin \iposs ⇒ ¬\prop \in \isure$.
 \end{definition}
-
-First, we want that if situation is CC, 1) exists a valid model, 2) any valid model has the right $T_i$.
-A model is valid if: a) can correctly get reinstatement; b) i is justifiably unstable; c) finite arguments; d) model is convincing. 
-
-Second, we want that given a situation, if there exists a valid model, then the situation is CC.
-
-Third, perhaps we get as a bonus that there exists a valid model ⇔ the situation is CC3. CC1: ¬p not in wa ⇔ ¬p s rej. CC2: ¬p s rej ⇒ p w acc. CC3: ¬p s rej ⇒ p is sure.
+Here is an example of a non clear-cut situation. $\allargs = \{\emptyset\}, \alltopic = \{\prop\}, \emptyset \ibeatse[\prop] \emptyset, \emptyset \ibeatse[¬\prop, \text{sure}] \emptyset$.
 
 \section{Models}
-$\mbeats$ a (possibly infinite!) DAG over $(s, p)$ pairs, $+$ defined over arguments in $\mbeats$: $(\ar_1, \prop) + (\ar_3, \prop) = (\ar', \prop)$ for some $(\ar', \prop) \in \mbeats$. Define $D' \subseteq \clargs$ as a subset of arguments (those supporting propositions). Define $\clargs \subseteq \allargs$ as the set of arguments used in $\mbeats$. Assume it can be represented by $≥$, a weak order defined on the basis of $\mbeats$, defining at most $k$ equivalence classes, so that our recursive definitions make sense. (TODO make this correct and precise.)
+$\mbeats$ an acyclic binary relation over $\allargs$ (by which we mean that its transitive closure is irreflexive). $\mleadsto \subseteq \allargs × \alltopic$. Define $\clargs \subseteq \allargs$ as the set of arguments used in $\mbeats ∪ \mleadsto$. Let $+$ be defined over arguments used in the model: $\ar_3 + \ar_1 = \ar'$ for some $\ar' \in \clargs$, for any $\ar_3, \ar_1 \in \clargs$. 
 
-$\mbeats(\ar_2)$: arguments that $\ar_2$ attacks, $\ar_1 \in \mbeats(\ar_2) ⇔ \ar_2 \mbeats \ar_1$.
+Requirements. The maximum length of a path in $\mbeats$ is finite.
+$\ar_3 \mbeats \ar_2 \mbeats \ar_1 ⇒ \ar_2 \mbeats \ar_3 + \ar_1$.\footnote{Necessary for definition of $\ar_3 \wibeatse \ar_2$.}
 
-Given $\ar_1 \in D'$, define $\ar_2 \wibeatse \ar_1$ iff $\ar_2 \ibeatse \ar_1$.
+Notation. Let $\mleadstoinv(\alltopic) \subseteq \clargs$ denote the subset of arguments supporting propositions. 
+$\mbeats(\ar_2)$: arguments that $\ar_2$ attacks, $\ar_1 \in \mbeats(\ar_2) ⇔ \ar_2 \mbeats \ar_1$. We write $\args \mbeats \ar$ to mean that $\forall \ar' \in \args: \ar' \mbeats \ar$, and similarly for other binary relations.
 
-Given $\ar_1 \in D'$, define $\ar_2 \nwibeatse \ar_1$ iff $\ar_1 \ibeatse[\text{sure}] \ar_2$.
+Given a decision situation, define $\wibeatse \subseteq \mbeats$ as follows.
 
-Define $\ar_1 \wibeatse[\text{sure}] \ar_2$ ⇔ $\ar_2 \nwibeatse \ar_1$.
+Given $\ar_3 \mbeats \ar_2, \prop \in \alltopic$: $\ar_3 \wibeatse[\prop] \ar_2$ iff $[\exists \ar_1 \in \mbeats(\ar_2) \suchthat (\ar_2 \wibeatse[\prop] \ar_1 ∧ \ar_2 \nwibeatse[\prop] \ar_3 + \ar_1)] ∨ [\ar_2 \ileadsto \prop ∧ \ar_3 \ibeatse[\prop] \ar_2]$.
 
-$\ar_1$ root in $\mbeats$ $⇒$ $\ar_1 \in D'$. $\ar_1 \in D' ⇒ \ar_3 + \ar_1 \in D'$.
+Given $\ar_3 \mbeats \ar_2, \prop \in \alltopic$: $\ar_3 \nwibeatse[\prop] \ar_2$ iff $[\exists \ar_1 \in \mbeats(\ar_2) \suchthat (\ar_2 \wibeatse[\prop] \ar_1 ∧ \ar_2 \wibeatse[\prop] \ar_3 + \ar_1)] ∨ [\ar_2 \mleadsto \prop ∧ \ar_2 \ibeatse[¬\prop, \text{sure}] \ar_3]$.
+\footnote{Check: Given $\ar_4 \mbeats \ar_3, \ar_3 \notin \mleadstoinv(\alltopic)$, with $\ar_2 \in \mbeats(\ar_3)$ ⇒ ($\ar_2$ and $\ar_4 + \ar_2$ $\mbeats$-attack only root nodes and do not support any proposition): $\ar_4 \wibeatse[\prop] \ar_3$ iff
+\begin{itemize}
+	\item $\exists \ar_2 \in \mbeats(\ar_3) \suchthat [(\ar_3 \wibeatse[\prop] \ar_2) ∧ (\ar_3 \nwibeatse[\prop] \ar_4 + \ar_2)]$ iff 
+	\item $\exists \ar_2 \in \mbeats(\ar_3) \suchthat [(\exists \ar_1 \in \mbeats(\ar_2) \suchthat \ar_2 \wibeatse[\prop] \ar_1 ∧ \ar_2 \nwibeatse[\prop] \ar_3 + \ar_1) ∧ (\exists \ar_1 \in \mbeats(\ar_4 + \ar_2) \suchthat \ar_4 + \ar_2 \wibeatse[\prop] \ar_1 ∧ \ar_4 + \ar_2 \wibeatse[\prop] \ar_3 + \ar_1)]$ iff 
+	\item $\exists \ar_2 \in \mbeats(\ar_3) \suchthat [(\exists \ar_1 \in \mbeats(\ar_2) \suchthat \ar_1 \ileadsto t ∧ \ar_2 \ibeatse[\prop] \ar_1 ∧ \ar_3 + \ar_1 \ileadsto \prop ∧ \ar_3 + \ar_1 \ibeatse[¬\prop, \text{sure}] \ar_2) ∧ (\exists \ar_1 \in \mbeats(\ar_4 + \ar_2) \suchthat \ar_1 \mleadsto \prop ∧ \ar_4 + \ar_2 \ibeatse[\prop] \ar_1 ∧ \ar_3 + \ar_1 \ileadsto \prop ∧ \ar_4 + \ar_2 \ibeatse[\prop] \ar_3 + \ar_1)]$.
+\end{itemize}
+}
 
-Given $\ar_3 \in \clargs, \ar_2 \in \clargs, \ar_2 \notin D'$: $\ar_3 \wibeatse \ar_2$ iff $\exists \ar_1 \in \mbeats(\ar_2) \suchthat \ar_2 \wibeatse \ar_1 ∧ \ar_2 \nwibeatse \ar_3 + \ar_1$.
+TODO this is well-defined because associate to each $\ar \in \clargs$ $d(\ar)$, the distance to the farthest root (a root is an argument that $\mbeats$-attacks nobody). Then $\wibeatse$ is defined for all attacks from $d(.)=1$ nodes (because those nodes attack only $d(.)=0$ nodes), and thus is defined for all nodes $2$, I suppose, …
 
-Given $\ar_3 \in \clargs, \ar_2 \in \clargs, \ar_2 \notin D'$: $\ar_3 \nwibeatse \ar_2$ iff $\exists \ar_1 \in \mbeats(\ar_2) \suchthat \ar_2 \wibeatse \ar_1 ∧ \ar_2 \wibeatse \ar_3 + \ar_1$.
+Given $\ar_3 \in \clargs, \ar_2 \in \clargs$, with $\exists \ar_1 \in \mbeats(\ar_2) \suchthat \ar_2 \wibeatse[\prop] \ar_1$, we have: $\ar_3 \wibeatse[\prop] \ar_2 ∨ \ar_3 \nwibeatse[\prop] \ar_2$.
 
-Check: For $\ar_4, \ar_3, \ar_3 \notin D'$: $\ar_4 \wibeatse \ar_3$ iff $\exists \ar_2 \suchthat  \ar_3 \wibeatse \ar_2 ∧ \ar_3 \nwibeatse \ar_4 + \ar_2$. Thus, $\exists \ar_2 \suchthat  \ar_3 \wibeatse \ar_2 ∧ \exists \ar_1 \suchthat (\ar_4 + \ar_2) \wibeatse \ar_1 ∧ (\ar_4 + \ar_2) \wibeatse \ar_3 + \ar_1$.
+Define $\ar_2 \wibeatse \ar_1 ⇔ \exists \prop \in \alltopic \suchthat \ar_2 \wibeatse[\prop] \ar_1$.
 
-Given $\ar_3 \in \clargs, \ar_2 \in \clargs$, with $\exists \ar_1 \in \mbeats(\ar_2) \suchthat \ar_2 \wibeatse \ar_1$, we have: $\ar_3 \wibeatse \ar_2 ∨ \ar_3 \nwibeatse \ar_2$.
+Define $\wibeatsst = ¬\nwibeatse$. Define $\nwibeatsst = ¬\wibeatse$. 
 
-Define $\wibeatsst = ¬\nwibeatse$. Hence, $¬(\ar \wibeatse[\text{sure}] \ar') ⇔ \ar \nwibeatsst[\text{sure}] \ar' ⇔ ¬(\ar' \nwibeatse \ar) ⇔ \ar' \wibeatsst \ar$.
+Hence, given $\ar_3 \in \clargs, \ar_2 \in \clargs, \ar_2 \notin \mleadstoinv(\alltopic)$: $\ar_3 \wibeatsst \ar_2$ iff $\forall \ar_1 \in \mbeats(\ar_2) ∩ \wibeatse(\ar_2): \ar_2 \nwibeatsst \ar_3 + \ar_1$.
 
-Define $\nwibeatsst = ¬\wibeatse$. 
+\subsection{Certainties}
+Assume we define $\ar_1 \wibeatse[¬\prop, \text{sure}] \ar_2$ ⇔ $\ar_2 \nwibeatse[\prop] \ar_1$. Then, indeed, given $\ar_1 \mleadsto \prop$, $\ar_2 \wibeatse[¬\prop, \text{sure}] \ar_1$ ⇔ $\ar_2 \ibeatse[¬\prop, \text{sure}] \ar_1$. But it gives the wrong conclusion. For $\ar_3 \mbeats \ar_2 \mbeats \ar_1 \mleadsto t: \ar_3 \wibeatse[\prop, \text{sure}] \ar_2$ iff $\ar_2 \nwibeatse[¬\prop] \ar_3$ iff $\exists \ar_1 \in \mbeats(\ar_3) \suchthat \ar_3 \wibeatse[¬\prop] \ar_1 ∧ \ar_3 \wibeatse[¬\prop] \ar_2 + \ar_1$.
 
-Hence, given $\ar_3 \in \clargs, \ar_2 \in \clargs, \ar_2 \notin D'$: $\ar_3 \wibeatsst \ar_2$ iff $\forall \ar_1 \in \mbeats(\ar_2) ∩ \wibeatse(\ar_2): \ar_2 \nwibeatsst \ar_3 + \ar_1$.
+Given $\ar_1 \mleadsto \prop$, define $\ar_2 \wibeatse[\prop, \text{sure}] \ar_1$ iff $\ar_2 \ibeatse[\prop, \text{sure}] \ar_1$.
+
+Given $\ar_1 \mleadsto \prop$, define $\ar_2 \nwibeatse[\prop, \text{sure}] \ar_1$ iff $\ar_1 \ibeatse[¬\prop] \ar_2$.
+
+Given $\ar_3 \in \clargs, \ar_2 \in \clargs, \ar_2 \notin \mleadstoinv(\alltopic), \prop \in T$: $\ar_3 \wibeatse[\prop, \text{sure}] \ar_2$ iff $\exists \ar_1 \in \mbeats(\ar_2) \suchthat \ar_2 \wibeatse[\prop, \text{sure}] \ar_1 ∧ \ar_2 \nwibeatse[\prop, \text{sure}] \ar_3 + \ar_1$.
+
+Given $\ar_3 \in \clargs, \ar_2 \in \clargs, \ar_2 \notin \mleadstoinv(\alltopic), \prop \in T$: $\ar_3 \nwibeatse[\prop, \text{sure}] \ar_2$ iff $\exists \ar_1 \in \mbeats(\ar_2) \suchthat \ar_2 \wibeatse[\prop, \text{sure}] \ar_1 ∧ \ar_2 \wibeatse[\prop, \text{sure}] \ar_3 + \ar_1$.
+
 
 \section{Conditions}
-\begin{definition}[Reinstatement]
-	Given a model $\mu = (\mbeats, D')$ and a decision situation $(\allalts, \allargs, \ibeatse)$, given $\ar_1 \in D', \ar_2 \mbeats \ar_1, \ar_2 \wibeatse \ar_1, \ar_3 \wibeatse \ar_2, \mbeatsinv(\ar_3) = \emptyset$: $\mbeats(\ar_1) \subseteq \mbeats(\ar_1 + \ar_3) ∧ \mbeatsinv(\ar_1 + \ar_3) \subseteq \mbeatsinv(\ar_1) \setminus \mbeats(\ar_3)$.
-\end{definition}
+All these conditions assume that a decision situation $(\allalts, \allargs, \{\ibeatse[\prop]\})$ and a model $\eta = (\mbeats, \mleadsto, +)$ are given.
 
-\begin{definition}[Observable validity]
-	Given as above, the model is observably valid iff $\forall \ar_2 \mbeats \ar: ¬(\ar_2 \wibeatse \ar) ∨ \exists \ar_3 \mbeats \ar_2 \suchthat \ar_3 \wibeatse \ar_2$.
+Define $\argsdec = \clargs \setminus \text{im}(\wibeatse)$ the decisive arguments according to $\wibeatse$, or $\wibeatse$-decisive arguments for short: $\ar \in \argsdec ⇔ \wibeatseinv(\ar) = \emptyset$.
+
+\begin{definition}[Reinstatement]
+	Given $\ar_3 \wibeatse \ar_2 \wibeatse \ar_1, \ar_3 \in \argsdec$: $\mbeats(\ar_1) \subseteq \mbeats(\ar_3 + \ar_1)  ∧ \mbeatsinv(\ar_3 + \ar_1) \subseteq \mbeatsinv(\ar_1) \setminus \mbeats(\ar_3)$.
+	\footnote{TODO the condition must be $\wibeatseinv(\ar_3 + \ar_1) \subseteq \mbeatsinv(\ar_1) \setminus \mbeats(\ar_3)$ to allow $\ar_5 \mbeats \ar_4 \mbeats \ar_3 \mbeats \ar_2 \mbeats \ar_1$ and $\ar_5 \mbeats \ar_4 \mbeats \ar_3 + \ar_1$, considering that possibly $\ar_3$ is $\wibeatse$-decisive. This should not invalidate the conditions, but it does currently. But it’s not a problem: the model would actually not be built this way. In this scenario the argument $\ar_3 + \ar_1$ is useful only in case $\ar_3$ is decisive, thus $\ar_4 \mbeats \ar_3 + \ar_1$ must not be planned. Rather $\ar_5 + \ar_3$ decisive, then $(\ar_5 + \ar_3) + \ar_1$. Alternatively, also $\ar_4 \mbeats \ar_1$ and then no problem as well.}
+\footnote{The stronger condition mandating $\mbeatsinv(\ar_3 + \ar_1) \subseteq \wibeatseinv(\ar_1) \setminus \mbeats(\ar_3)$ would be more difficult to check: when some $\ar_2 \wibeatse \ar_3 + \ar_1$, we’d need to check not only that $\ar_2 \mbeats \ar_1$ but also $\ar_2 \wibeatse \ar_1$.}
 \end{definition}
 
 \begin{definition}[Justifiable unstability]
-	Given as above…
+	$\forall \ar_2 \mbeats \ar_1 \suchthat \ar_2 \wibeatse \ar_1, \ar_2 \nwibeatse \ar_1: \exists \ar_3 \mbeats \ar_2 \suchthat \ar_3 \wibeatse \ar_2$.
 \end{definition}
+
+\begin{definition}[Finite defense]
+	If $\wibeatseinv(\ar) \subseteq \wibeatse(\argsdec)$, then $\exists \args \subseteq \argsdec, \card{\args} ≤ j \suchthat \mbeatsinv(\ar) \subseteq \wibeatse(\args)$.
+\footnote{Define Finite defense-$\wibeatse$-$\wibeatse$-$\mbeats$-dec as: $\wibeatseinv(\ar) \subseteq \wibeatse(\clargs \setminus \text{im}(\mbeats)) ⇒ \wibeatseinv(\ar) \subseteq \wibeatse(\args)$. Finite defense-$\wibeatse$-$\wibeatse$-$\mbeats$-dec is insufficient to provide $T_\eta = \iposs$. Define $\ar' \mbeats^\text{fail} \ar$ iff $\ar' \mbeats \ar ∧ ¬(\ar' \wibeatse \ar)$. Consider $\ar_3 \wibeatse \ar_2 \wibeatse \ar_1$, $\ar_3' \wibeatse \ar_2' \wibeatse \ar_1$, and so on, and $\ar_4 \mbeats^\text{fail} \{\ar_3, \ar_3', …\}$. Then I really need infinitely many arguments to defend $\ar_1$ but Finite defense-$\wibeatse$-$\wibeatse$-$\mbeats$-dec is artificially satisfied because the antecedent fails to trigger.}
+\footnote{Define Finite defense-$\wibeatse$-$\wibeatse$-subsets as: $\wibeatseinv(\ar) \subseteq \wibeatse(\args) ⇒ \wibeatseinv(\ar) \subseteq \wibeatse(\args')$. Finite defense-$\wibeatse$-$\wibeatse$-subsets is insufficient to provide $T_\eta = \iposs$. This is because Reinstatement allows for new attacks in $\wibeatse$ (it only forbids new attacks in $\mbeats$), thus we can forever transform previously failing attacks to new attacks, hence always satisfying Finite defense (always finite cover of $\wibeatse$, but infinite cover of $\mbeats$) but still not converging. Consider $\ar_3 \wibeatse \ar_2 \wibeatse \ar_1, \ar_3' \wibeatse \ar_2' \mbeats^\text{fail} \ar_1$, and so on; and $\ar_3' \wibeatse \ar_2' \wibeatse \ar_3 + \ar_1, \ar_3'' \wibeatse \ar_2'' \mbeats^\text{fail} \ar_3 + \ar_1$, and so on.}
+\footnote{Define Finite defense-$\mbeats$-$\wibeatse$-startdec as: $\mbeatsinv(\ar) \subseteq \wibeatse(\argsdec) ⇒ \mbeatsinv(\ar) \subseteq \wibeatse(\args)$. Finite defense-$\mbeats$-$\wibeatse$-startdec is insufficient to provide $T_\eta = \iposs$. Consider $\ar_3 \wibeatse \ar_2 \wibeatse \ar_1, \ar_3' \wibeatse \ar_2' \wibeatse \ar_1$, and so on, and $\ar_5 \mbeats^\text{fail} \ar_4 \mbeats^\text{fail} \ar_1$. Then I really need infinitely many arguments to defend $\ar_1$ but Finite defense-$\mbeats$-$\wibeatse$-startdec is satisfied as there is no cover of the $\mbeats$ attacks to $\ar_1$.}
+\footnote{Define Finite defense-$\mbeats$-$\mbeats$-startdec as: $\mbeatsinv(\ar) \subseteq \mbeats(\argsdec) ⇒ \mbeatsinv(\ar) \subseteq \mbeats(\args)$. Finite defense-$\mbeats$-$\mbeats$-startdec is insufficient to provide $T_\eta = \iposs$. Consider $\ar_3 \wibeatse \ar_2 \wibeatse \ar_1$, $\ar_3' \wibeatse \ar_2' \wibeatse \ar_1$, and so on, and $\ar \mbeats^\text{fail} \{\ar_2, \ar_2', …\}$. Then I really need infinitely many arguments to defend $\ar_1$ but Finite defense-$\mbeats$-$\mbeats$-startdec is artificially satisfied because of $\ar$. Define Finite defense-$\mbeats$-$\mbeats$-subsets as: $\mbeatsinv(\ar) \subseteq \mbeats(\args) ⇒ \mbeatsinv(\ar) \subseteq \mbeats(\args')$ (for any $\args \subseteq \argsdec$). Finite defense-$\mbeats$-$\mbeats$-subsets is (rightly) non satisfied in this example.}
+\footnote{To satisfy Finite defense, in presence of the other conditions, suffice to limit the width of the model (TODO check). But it may be interesting to not limit it and declare that the model has specific replies to any counter-argument, but promises to use only a few rebuttals and that afterwards, the dm will stop using those kind of arguments (but we don’t know in advance which ones will be chosen).}
+\footnote{Define Finite defense-$\wibeatse$-$\wibeatse$-subsets as: $\wibeatseinv(\ar) \subseteq \wibeatse(\args) ⇒ \wibeatseinv(\ar) \subseteq \wibeatse(\args')$. Finite defense-$\mbeats$-$\wibeatse$-subsets $⇏$ Finite defense-$\wibeatse$-$\wibeatse$-subsets. Consider $\ar_2 \mbeats^\text{fail} \ar_1$ (to be continued…)}
+\end{definition}
+Thus, if the attackers of $\ar$ are attacked by decisive arguments, then $j$ defenders are enough to defend $\ar$.
+
+Define $R$, the reinstates relation, as follows: $\ar_3 R \ar_1$ iff $\ar_3 \wibeatse \ar_2 \wibeatse \ar_1$ (for some $\ar_2$), $\ar_3 \in \argsdec$. Define $\gdargs$ as the transitive closure of $\mleadstoinv(\alltopic)$ under $R$.
+\begin{definition}[Covering]
+	$\forall \ar \in \gdargs, \ar' \in \allargs: \ar' \ibeatse \ar ⇒ \ar' \mbeats \ar$. \footnote{Specify $\ibeatse$.}
+\end{definition}
+
+\begin{definition}[Observable validity]
+	$\forall \ar_2 \mbeats \ar_1 \mleadsto \prop: ¬(\ar_2 \wibeatse[\prop] \ar_1) ∨ \exists \ar_3 \mbeats \ar_2 \suchthat \ar_3 \wibeatse[\prop] \ar_2$. Furthermore, if $¬(\clargs \mleadsto ¬\prop), \forall \ar_2 \mbeats \ar_1 \mleadsto \prop: ¬(\ar_2 \wibeatse[\prop, \text{sure}] \ar_1) ∨ \exists \ar_3 \mbeats \ar_2 \suchthat \ar_3 \wibeatse[\prop, \text{sure}] \ar_2$.
+\end{definition}
+
+\section{Example}
+The general conditions are Reinstatement, Justifiable unstability, Finite defense and Covering.
+A general model is a model that claims it satisfies the general conditions.
+
+TODO give up general models. In this example, $\ar_1$ would need to be planned as attacking sometimes $\ar_2$. Better consider an instanciation mechanism. An instantiated model is particular, and can be tested (especially against another one).
+\begin{example}
+	$\ar_3 \mbeats \ar_2 \mbeats \ar_1 \mleadsto \prop$, $\ar_2 \mleadsto ¬\prop$; $\ar_3 + \ar_1 \mleadsto \prop$.
+\end{example}
+This model is compatible (meaning that it satisfies the general conditions) with the following decision situations. We describe $\ibeatse$ fully (no attack iff not mentioned).
+\begin{itemize}
+	\item Sure of $\prop$: $\ar_1 \mleadsto \prop$; $\ar_3 \ibeatse \ar_2$ (the rest is implied, for example $\forall \ar_4 \in \allargs: \ar_1 \ibeatse[¬\prop] \ar_4$ because of covering).
+	\item Sure of $\prop$ with reinstatement: $\ar_3 \ibeatse[\prop] \ar_2 \ibeatse[\prop] \ar_1 \mleadsto \prop$; $\ar_1 + \ar_3 \mleadsto \prop$; $\ar_3 \ibeatse[¬\prop] \ar_2$
+	\item Sure of $¬\prop$: $\ar_2 \mleadsto ¬\prop$; $\ar_2 \ibeatse \ar_1$
+	\item Both: $¬(\ar_2 \ibeatse \ar_1), \ar_1 \mleadsto \prop$, $¬(\ar_3 \ibeatse \ar_2), \ar_2 \mleadsto ¬\prop$
+\end{itemize}
+This situation falsifies the model. $\ar_4 \ibeatse \ar_1$, $\ar_4$ not attacked.
+
+\section{Theorem}
+\subsection{Main}
+\begin{theorem}[Validity]
+	Given a decision situation and a model $\eta$, if all our conditions are satisfied, $\mleadsto(\clargs) \subseteq \iposs$.
+\end{theorem}
+\begin{proof}
+Define $\wibeatse^\text{ext} \subseteq \allargs × \allargs$ as: $\ar' \wibeatse^\text{ext} \ar$ iff $\ar' \wibeatse \ar ∨ (\ar \in \mleadstoinv ∧ \ar' \ibeatse \ar)$.
+
+$\ar$ is defended iff its $\wibeatse$-attackers are $\wibeatse$-attacked by $\wibeatse$-decisive arguments.
+Sketch:
+\begin{enumerate}
+	\item $\ar_1$ defended implies $\ar_1$ replaceable by some $\wibeatse$-decisive $\ar$
+	\item $\ar_1$ has its $\wibeatse$-attackers $\wibeatse$-attacked by defended arguments implies $\ar_1$ defended
+	\item Hence, $\ar_1$ has its $\wibeatse$-attackers $\wibeatse$-attacked by defended arguments implies $\ar_1$ replaceable by $\wibeatse$-decisive
+	\item If $\ar_1$ is not defended, it is $\wibeatse$-attacked by no $\ar_2$ decisive [Obs valid], hence, $\ar_1$ is attacked by no $\ar_2$ defended (otherwise there would be a decisive attacker). TODO clarify how we take into account attacks from outside of $\wibeatse$ (simply $\ibeatse$) coming from arguments out of $\clargs$. 
+	\item If $\ar_1$ is not defended, it is attacked by some $\ar_2$ attacked by no $\ar_3$ decisive (otherwise, $\ar_1$ defended).
+	\item Hence, if $\ar_1$ is not defended, it is attacked by some $\ar_2$ not defended, itself attacked by no $\ar_3$ decisive. And we can hopefully recurse.
+	\item In short: $\ar_1$ not defended by dec, attacked by some $\ar_2$ not defended by dec, implies $\ar_2$ attacked by some $\ar_3$ not defended by decisive.
+\end{enumerate}
+First, we want to prove that $\ar_1$ defended implies $\ar_1$ replaceable by some $\wibeatse$-decisive $\ar$, and if $\ar_1 \in \gdargs$, then its replacer $\ar$ is in $\gdargs$ as well.
+
+By hypothesis, $\wibeatseinv(\ar_1) \subseteq \wibeatse(\argsdec)$. Thus, $\exists \args \subseteq \argsdec \suchthat \mbeatsinv(\ar_1) \subseteq \wibeatse(\args)$, $\args$ finite [Finite defense]. 
+
+Pick any $\ar_{3, 1} \in \args$ such that $\ar_{3, 1} \wibeatse \ar_2 \wibeatse \ar_1$ (if there’s none, $\ar_1 \in \argsdec$ and we’re done). $\ar_{3, 1} + \ar_1$ replaces $\ar_1$, and $\mbeatsinv(\ar_{3, 1} + \ar_1) \subseteq \mbeatsinv(\ar_1) \setminus \mbeats(\ar_{3, 1})$ [Reinstatement]. Hence, $\mbeatsinv(\ar_{3, 1} + \ar_1) \subseteq \wibeatse(\args) \setminus \mbeats(\ar_{3, 1})$. Iterate by picking any $\ar_{3, 2} \in \args$ such that $\ar_{3, 2} \wibeatse \ar_2 \wibeatse \ar_{3, 1} + \ar_1$ (if there’s none, $\ar_{3, 1} + \ar_1 \in \argsdec$ and we’re done) and obtaining $\ar_{3, 2} + (\ar_{3, 1} + \ar_1)$ replacing $\ar_{3, 1} + \ar_1$ (hence, replacing $\ar_1$) with $\mbeatsinv(\ar_{3, 2} + (\ar_{3, 1} + \ar_1)) \subseteq \mbeatsinv(\ar_{3, 1} + \ar_1) \setminus \mbeats(\ar_{3, 2})$. Hence, $\mbeatsinv(\ar_{3, 2} + (\ar_{3, 1} + \ar_1)) \subseteq \wibeatse(\args) \setminus \mbeats(\ar_{3, 1}) \setminus \mbeats(\ar_{3, 2})$. Iterating in such a way over the finite set $\args$ will finally yield an element that is $\wibeatse$-decisive. The last point, $\ar_1 \in \gdargs ⇒ \ar \in \gdargs$, follows from the definition of $\gdargs$.
+
+Second, we want to prove that if $\ar_1$ not defended and has no decisive $\wibeatse$-attackers (meaning that $\wibeatseinv(\ar_1) \subseteq \overline{\argsdec}$), then $\ar_1$ is $\wibeatse$-attacked by some $\ar_2$ that is not defended and has no decisive $\wibeatse$-attacker.
+
+Consider $\ar_1$ not defended and having no decisive $\wibeatse$-attackers. Because $\ar_1$ is not defended, by definition, it is $\wibeatse$-attacked by some $\ar_2$ that has no decisive $\wibeatse$-attacker. Because $\ar_1$ has no decisive attacker, $\ar_2$ is not decisive. If $\ar_2$ was defended, by the first part of this proof, it would be replaceable by a decisive argument, and $\ar_1$ would have a decisive attacker. Thus, $\ar_2$ is not defended.
+
+TODO do not mandate that $\ar_3 + \ar_1 \ileadsto \prop$, so that the model can afford not resisting to the counter-attacks to $\ar_3 + \ar_1$ (resistance to c-a to $\ar_1$ suffice). We obtain that some argument exists that support $\prop$, but not necessarily one that the model claims supports it. We need: Obs applies to restricted supports (one per prop decided by model); Covering applies to extended supports (restricted supports plus those obtained by reinstatement). Replacement-1 applies to all and requires attack at least as large; Replacement-2 applies to restricted supports and requires no new $\ibeatse$-attacks.
+
+Third, consider an argument $\ar_1 \in \mleadstoinv(\alltopic)$. It has no decisive $\ibeatse$-attacker: as $\ar_1 \in \gdargs$, any $\ibeatse$-attack is a $\wibeatse$-attack [Covering], and $\ar_1$ has no decisive $\wibeatse$-attacker [Obs val]. Also, $\ar_1$ is defended: assume it is not, then by our second point in this proof some $\ar_2 \wibeatse \ar_1$, with $\ar_2$ not defended and with no decisive $\wibeatse$-attacker, and iterating and using finiteness of $\wibeatse$ leads to a contradiction. Hence, by our first point in this proof, $\ar_1$ is replaceable by some $\wibeatse$-decisive $\ar \in \gdargs$. As $\ar \in \gdargs$, any $\ibeatse$-attack is a $\wibeatse$-attack [Covering], thus $\ar$ is $\ibeatse$-decisive.
+\end{proof}
+
+\subsection{Bonus}
+A model $\eta' = (\mbeats', \mleadsto', +')$ particularizes a model $\eta = (\mbeats, \mleadsto, +)$ iff $\mbeats' = \mbeats, \mleadsto' \subseteq \mleadsto, +' = +$.
+\begin{theorem}[Instanciation]
+	Given a decision situation and a model $\eta$ and a model particularization $\eta'$, if $\eta$ satisfies the general conditions, then $\eta'$ satisfies the general conditions.
+\end{theorem}
 
 \appendix
 \section{Todo}
@@ -124,7 +219,7 @@ Q1. Relationship with $\ar \ibeatse[\prop] \ar$?
 We want to exclude: $s$ supports $p$ perhaps, attacked by $s2$ (supporting $¬p$ sure), but then $s2$ is attacked by $s$. Exclude $\ar' \ibeatse[\prop] \ar$ and $\ar \ibeatse[¬\prop, \text{sure}] \ar'$. Require to assume that this situation implies another argument $\ar_3$ “attacking” $\ar'$, thus, such that $\ar_3 + \ar$ is no more attacked by $\ar_2$. 
 
 \section{To think}
-Propositions weakly self-supported $\topic \subseteq \alltopic$: weakly accepted if no arg is given. Examples: $m$ = “eat miam”; $¬b$ = “beurk is to exclude”; or, in a problem where there’s no particularly good aliments, both $a$ = “eat this” and $¬a$.
+Propositions weakly self-supported $T \subseteq \alltopic$: weakly accepted if no arg is given. Examples: $m$ = “eat miam”; $¬b$ = “beurk is to exclude”; or, in a problem where there’s no particularly good aliments, both $a$ = “eat this” and $¬a$.
 
 When given $(\ar, \prop)$, $i$ may say: $\ar$ does not survive; or: assuming $\ar$ survives, then $\ar$ supports $\prop$, or, assuming $\ar$ survives, then $\ar$ does not support $\prop$ anyway.
 
