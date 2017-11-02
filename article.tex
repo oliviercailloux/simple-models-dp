@@ -140,23 +140,6 @@ Define $R$, the reinstates relation, as follows: $\ar_3 R \ar_1$ iff $\ar_3 \wib
 	$\forall \ar_2 \mbeats \ar_1 \mleadsto \prop: ¬(\ar_2 \wibeatse[\prop] \ar_1) ∨ \exists \ar_3 \mbeats \ar_2 \suchthat \ar_3 \wibeatse[\prop] \ar_2$. Furthermore, if $¬(\clargs \mleadsto ¬\prop), \forall \ar_2 \mbeats \ar_1 \mleadsto \prop: ¬(\ar_2 \wibeatse[\prop, \text{sure}] \ar_1) ∨ \exists \ar_3 \mbeats \ar_2 \suchthat \ar_3 \wibeatse[\prop, \text{sure}] \ar_2$.
 \end{definition}
 
-\section{Example}
-The general conditions are Reinstatement, Justifiable unstability, Finite defense and Covering.
-A general model is a model that claims it satisfies the general conditions.
-
-TODO give up general models. In this example, $\ar_1$ would need to be planned as attacking sometimes $\ar_2$. Better consider an instanciation mechanism. An instantiated model is particular, and can be tested (especially against another one).
-\begin{example}
-	$\ar_3 \mbeats \ar_2 \mbeats \ar_1 \mleadsto \prop$, $\ar_2 \mleadsto ¬\prop$; $\ar_3 + \ar_1 \mleadsto \prop$.
-\end{example}
-This model is compatible (meaning that it satisfies the general conditions) with the following decision situations. We describe $\ibeatse$ fully (no attack iff not mentioned).
-\begin{itemize}
-	\item Sure of $\prop$: $\ar_1 \mleadsto \prop$; $\ar_3 \ibeatse \ar_2$ (the rest is implied, for example $\forall \ar_4 \in \allargs: \ar_1 \ibeatse[¬\prop] \ar_4$ because of covering).
-	\item Sure of $\prop$ with reinstatement: $\ar_3 \ibeatse[\prop] \ar_2 \ibeatse[\prop] \ar_1 \mleadsto \prop$; $\ar_1 + \ar_3 \mleadsto \prop$; $\ar_3 \ibeatse[¬\prop] \ar_2$
-	\item Sure of $¬\prop$: $\ar_2 \mleadsto ¬\prop$; $\ar_2 \ibeatse \ar_1$
-	\item Both: $¬(\ar_2 \ibeatse \ar_1), \ar_1 \mleadsto \prop$, $¬(\ar_3 \ibeatse \ar_2), \ar_2 \mleadsto ¬\prop$
-\end{itemize}
-This situation falsifies the model. $\ar_4 \ibeatse \ar_1$, $\ar_4$ not attacked.
-
 \section{Theorem}
 \begin{theorem}[Validity]
 	Given a decision situation and a model $\eta$, if all our conditions are satisfied, $\mleadsto(\clargs) \subseteq \iposs$.
@@ -235,7 +218,24 @@ Looking for certainties. Those propositions that are in the reflexive preference
 
 Assume we use rather: if $p$ is not sure, then $¬p$ is weakly accepted (by def). Then we have never problems of inconsistency! But we could be in a situation where $p$ is not accepted as sure but nobody can tell why because it is fundamentally unstable (sometimes $p$ being accepted, sometimes not).
 
-\section{Example}
+\section{Example about model instanciation}
+The general conditions are Reinstatement, Justifiable unstability, Finite defense and Covering.
+A general model is a model that claims it satisfies the general conditions.
+
+TODO give up general models. In this example, $\ar_1$ would need to be planned as attacking sometimes $\ar_2$. Better consider an instanciation mechanism. An instantiated model is particular, and can be tested (especially against another one).
+\begin{example}
+	$\ar_3 \mbeats \ar_2 \mbeats \ar_1 \mleadsto \prop$, $\ar_2 \mleadsto ¬\prop$; $\ar_3 + \ar_1 \mleadsto \prop$.
+\end{example}
+This model is compatible (meaning that it satisfies the general conditions) with the following decision situations. We describe $\ibeatse$ fully (no attack iff not mentioned).
+\begin{itemize}
+	\item Sure of $\prop$: $\ar_1 \mleadsto \prop$; $\ar_3 \ibeatse \ar_2$ (the rest is implied, for example $\forall \ar_4 \in \allargs: \ar_1 \ibeatse[¬\prop] \ar_4$ because of covering).
+	\item Sure of $\prop$ with reinstatement: $\ar_3 \ibeatse[\prop] \ar_2 \ibeatse[\prop] \ar_1 \mleadsto \prop$; $\ar_1 + \ar_3 \mleadsto \prop$; $\ar_3 \ibeatse[¬\prop] \ar_2$
+	\item Sure of $¬\prop$: $\ar_2 \mleadsto ¬\prop$; $\ar_2 \ibeatse \ar_1$
+	\item Both: $¬(\ar_2 \ibeatse \ar_1), \ar_1 \mleadsto \prop$, $¬(\ar_3 \ibeatse \ar_2), \ar_2 \mleadsto ¬\prop$
+\end{itemize}
+This situation falsifies the model. $\ar_4 \ibeatse \ar_1$, $\ar_4$ not attacked.
+
+\section{Example about default arguments}
 s2 argues in favor of p against s1: s "le monde n’est pas fiable". s1 "le monde est fiable, bhl l’a dit". s2 "bhl est un clown, il s’est planté sur l’Irak". s3 "il avait raison sur l’Irak : l’Irak a des ADM". s4 "l’Irak n’a pas d’ADM, Bush l’a reconnu".
 Does s4 attack s3?
 "bhl est un clown, il s’est planté sur l’irak" + "l’irak n’a pas d’ADM, Bush l’a reconnu" VS "il avait raison sur l’Irak : l’Irak a des ADM" !
