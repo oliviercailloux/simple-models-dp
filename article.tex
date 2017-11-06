@@ -7,10 +7,11 @@
 \input{preamble/redac}
 \input{preamble/draw}
 \input{preamble/acronyms}
+\addtokomafont{labelinglabel}{\sffamily\bfseries}
 
 \begin{document}
 \title{Simple models of deliberated preference}
-\author{Olivier Cailloux \and Yves Meinard}
+\author{Olivier Cailloux}
 \makeatletter
 	\hypersetup{
 		pdfsubject={Epistemology},
@@ -59,6 +60,19 @@ If $¬\prop \in \isure$, then $¬\prop \in \iposs$: from $\ar \nibeatsst[¬\prop
 	A situation is clear-cut iff $\prop \notin \iposs ⇒ ¬\prop \in \isure$.
 \end{definition}
 Here is an example of a non clear-cut situation. $\allargs = \{\emptyset\}, \alltopic = \{\prop\}, \emptyset \ibeatse[\prop] \emptyset, \emptyset \ibeatse[¬\prop, \text{sure}] \emptyset$.
+
+\subsection{Possible outcomes}
+We know $\prop \in \isure ⇒ ¬\prop \notin \iposs$ and $\prop \in \isure ⇒ \prop \in \iposs$.
+
+Here are the remaining possibilities, considering the four pairs $(\prop, \iposs)$, $(\prop, \isure)$, $(¬\prop, \iposs)$, $(¬\prop, \isure)$. (A pair $(\prop, T)$ not mentioned means $\prop \notin T$.)
+\begin{labeling}{Unstability with $¬\prop$ possible}
+	\item[All poss] $\prop \in \iposs$, $¬\prop \in \iposs$
+	\item[$\prop$ sure] $\prop \in \iposs$, $\prop \in \isure$
+	\item[$¬\prop$ sure] (symmetric)
+	\item[Unstability with $\prop$ possible] $\prop \in \iposs$ (oddity: $¬\prop \notin \iposs$ should imply $\prop \in \isure$)
+	\item[Unstability with $¬\prop$ possible] (symmetric)
+	\item[Strong unstability] (both oddities above)
+\end{labeling}
 
 \section{Models}
 A model is a triple $(\mbeats, \mleadsto, +)$ defined as follows and satisfying the constraints as indicated here.
