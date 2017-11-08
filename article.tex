@@ -211,22 +211,6 @@ The proof follows from (A2).
 
 Something like Axiom JU should be sufficient for CC. JU: If $(\ar, \ar')$ is $\prop$-unstable, then $\exists \ar_2 \in \allargs$ such that for $(\ar_1, \ar_0) = (\ar, \ar')$ or for $(\ar_1, \ar_0) = (\ar', \ar)$, $\ar_2$ attacks decisively $\ar_1$, where we mean by this that $\ar_2$ combined with $\ar_0$ is decisive. Means that if not CC, then not JU. Hence, infinite discussion happens, or irreducible unstability. Or, the memory buffer of $i$ is too short to hold adequate reinstated arguments, in which case our approach based on decisive arguments is not adequate.
 
-\subsection{Encoding (non-intuitive)}
-TODO…
-
-To encode this data efficiently, we can define two binary relations $\prop^+$ and $\prop^−$: $(\ar, \ar') \in \prop^+$ ⇔ $(\ar, \ar')$ always supports $\prop$ sure or always supports both ⇔ $(\ar, \ar') \ileadsto \prop ∨ (\ar, \ar') \ileadsto b$; and $(\ar, \ar') \in \prop^− ⇔ (\ar, \ar') \ileadsto ¬\prop ∨ (\ar, \ar') \ileadsto b$.
-
-This is indeed equivalent:
-\begin{itemize}
-	\item $(\ar, \ar') \ileadsto \prop ⇔ (\ar, \ar') \in \prop^+ ∧ (\ar, \ar') \notin \prop^−$
-	\item $(\ar, \ar') \ileadsto ¬\prop ⇔ (\ar, \ar') \notin \prop^+ ∧ (\ar, \ar') \in \prop^−$
-	\item $(\ar, \ar') \ileadsto b ⇔ (\ar, \ar') \in \prop^+ ∧ (\ar, \ar') \in \prop^−$
-	\item $(\ar, \ar') \ileadsto \emptyset ⇔ (\ar, \ar') \notin \prop^+ ∧ (\ar, \ar') \notin \prop^−$
-\end{itemize}
-
-Here is a case where $\prop$ is possible but not strongly possible: $\exists (\ar_1, \ar) \ileadsto \prop$, $\exists (\ar_2, \ar) \ileadsto b$, $\nexists (\ar', \ar) \ileadsto ¬\prop$, $\nexists (\ar', \ar) \ileadsto \emptyset$. However this case is odd as just after showing $\ar_2$ to $i$ we could ask again about $\ar_1$ … (TODO)
-
-Now do we have $\prop \in \isure ⇔ \exists \ar \suchthat \forall \ar': (\ar, \ar') \ileadsto \prop$?
 \section{Todo}
 \begin{itemize}
 	\item If $i$ does not consider $\ar$ as supporting $\prop$, it also works: if $\prop$ is not weakly acceptable by default, then any $\ar'$ is considered by $i$ as a better argument than $\ar$ in favor of certain $¬\prop$, and so on. In fact, whether $\emptyset \ibeatse[\prop] \emptyset$ determines whether $\prop$ is weakly supported by default.
