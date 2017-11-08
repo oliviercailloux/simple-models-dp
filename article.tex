@@ -160,11 +160,59 @@ Third, consider an argument $\ar_1 \in \mleadstoinv(\alltopic)$. It has no decis
 
 \appendix
 \section{Better definitions}
-Define $f_\prop$ from any unordered pair of arguments $(\ar, \ar')$ into $\{$ $\prop$ sure, $¬\prop$ sure, both possible, unstable$\}$. We present both arguments to $i$ and ask which proposition $i$ considers valid in her current state of mind, thus using both arguments and possibly other arguments she has in mind, where the first three are when $i$ always declares the same answer and the last one is used if $i$ sometimes wobble (because she has learnt new things in between two questioning, or just because of time passing, or for any known or unknown reason).
-
+Define $f_\prop$ from any unordered pair of arguments $(\ar, \ar')$ into $\powerset{\prop\text{-sure}, ¬\prop\text{-sure}, b)}$ (where $b$ means both possible). We present both arguments to $i$ and ask which proposition $i$ considers valid in her current state of mind, thus using both arguments and possibly other arguments she has in mind. The set designates all cumulated answers over time, thus allowing $i$ to be unstable (because she has learnt new things in between two questioning, or just because of time passing, or for any known or unknown reason). We assume $b$ is observable as well.
 We can also use $\emptyset$ as one or both of the arguments.
 
-We write $(\ar, \ar') \ileadsto \prop$ (respectively $¬\prop$, $b$, $\emptyset$) for $f_\prop(\ar, \ar') = \prop \text{ sure}$ (respectively $¬\prop$ sure, both possible, unstable).
+We define two binary relations $\prop^+$ (always supports $\propposs$) and $\prop^−$ (always supports $¬\propsure$) on $\allargs$. We define $(\ar, \ar') \in \prop^+ ⇔ (\ar, \ar') \ileadstopst \prop ⇔ \ar' \nibeatsst[\prop] \ar ⇔ \ileadsto(\ar, \ar') \subseteq \{\propsure, b\}$, and $(\ar, \ar') \in \prop^− ⇔ (\ar, \ar') \ileadstosst ¬\prop ⇔ \ar \nibeatsst[¬\propsure] \ar' ⇔ \ileadsto(\ar, \ar') = \{¬\propsure\}$.
+Hence, $(\ar, \ar') \notin \prop^+ ⇔ (\ar, \ar') \ileadstose ¬\prop ⇔ \ar' \ibeatse[\prop] \ar ⇔ ¬(\ar' \nibeatsst[\prop] \ar) ⇔ \ileadsto(\ar, \ar') \supseteq \{¬\propsure\}$, and $(\ar, \ar') \notin \prop^− ⇔ (\ar, \ar') \ileadstope \prop ⇔ \ar \ibeatse[¬\propsure] \ar' ⇔ ¬(\ar \nibeatsst[¬\propsure] \ar') ⇔ \ileadsto(\ar, \ar') ≠ \{¬\propsure\}$.
+
+When $\prop$ is fixed, or if it can be deduced from the output set, we write $(\ar, \ar') \ileadsto O$ or $\ileadsto(\ar, \ar') = O$ instead of $f_\prop(\ar, \ar') = O$.
+
+Actually we will use only the $\ileadstopst$ and $\ileadstosst$ ternary relations from now on, together with the property (A1) that $\ileadstopst \subseteq \ileadstope$
+\footnote{Equivalently: $\ileadstosst \subseteq \ileadstose$, $(\ar, \ar') \ileadstose ¬\prop ∨ (\ar, \ar') \ileadstope \prop$, $\ileadstopst \prop ⇒ ¬ (\ileadstosst ¬\prop)$, $\ileadstosst ¬\prop ⇒ ¬ (\ileadstopst \prop)$.} 
+and (A2) that $\ileadstosst \subseteq \ileadstopst$ 
+\footnote{Equivalently: $\ileadstose \subseteq \ileadstope$.}
+and the fact that the relations $\prop^+$ and $\prop^−$ are symmetric. 
+\footnote{Unclear where we use the fact that the relations $\prop^+$ and $\prop^−$ are symmetric.}
+
+We say $(\ar, \ar')$ is $\prop$-unstable iff $(\ar, \ar') \ileadstose \prop ∧ (\ar, \ar') \ileadstose ¬\prop$.
+
+$\ar$ is 
+\begin{itemize}
+	\item $\propsuredec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstosst \prop$
+	\item $\proppossdec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstopst \prop$
+\end{itemize}
+
+We can now define $\iposs, \isure \subseteq \alltopic$:
+\begin{itemize}
+	\item $\prop \in \iposs ⇔ \exists \ar \ \proppossdec$. 
+\footnote{\label{ft:notposs}$\prop \notin \iposs ⇔ \forall \ar, \exists \ar' \suchthat (\ar', \ar) \ileadstose ¬\prop$.}
+	\item $\prop \in \isure ⇔ \exists \ar \ \propsuredec$. 
+\footnote{\label{ft:notsure}$¬\prop \notin \isure ⇔ \forall \ar, \exists \ar' \suchthat (\ar', \ar) \ileadstope \prop$.}
+\end{itemize}
+
+We say that severe $\prop$-unstability happens iff $\forall \ar, [\exists \ar^+ \suchthat (\ar, \ar^+) \ileadstose \prop] ∧ [\exists \ar^− \suchthat (\ar, \ar^−) \ileadstose ¬\prop]$.
+\footnote{Severe $\prop$-unstability happens iff severe $¬\prop$-unstability happens.}
+
+\begin{theorem}
+	If $\prop \notin \iposs ∧ ¬\prop \notin \iposs$, severe $\prop$-unstability happens.
+\end{theorem}
+The proof follows from \cref{ft:notposs}.
+
+\begin{theorem}
+	$\prop \in \isure ⇒ ¬\prop \notin \iposs$.
+\end{theorem}
+This is because $\ar^+$ is $\propsuredec$, thus given any $\ar^−$, $(\ar^+, \ar^−) \ileadstosst \prop$ hence $(\ar^+, \ar^−) \ileadstose \prop$ (using A1).
+
+\begin{theorem}
+	$\prop \in \isure ⇒ \prop \in \iposs$.
+\end{theorem}
+The proof follows from (A2).
+
+Something like Axiom JU should be sufficient for CC. JU: If $(\ar, \ar')$ is $\prop$-unstable, then $\exists \ar_2 \in \allargs$ such that for $(\ar_1, \ar_0) = (\ar, \ar')$ or for $(\ar_1, \ar_0) = (\ar', \ar)$, $\ar_2$ attacks decisively $\ar_1$, where we mean by this that $\ar_2$ combined with $\ar_0$ is decisive. Means that if not CC, then not JU. Hence, infinite discussion happens, or irreducible unstability. Or, the memory buffer of $i$ is too short to hold adequate reinstated arguments, in which case our approach based on decisive arguments is not adequate.
+
+\subsection{Encoding (non-intuitive)}
+TODO…
 
 To encode this data efficiently, we can define two binary relations $\prop^+$ and $\prop^−$: $(\ar, \ar') \in \prop^+$ ⇔ $(\ar, \ar')$ always supports $\prop$ sure or always supports both ⇔ $(\ar, \ar') \ileadsto \prop ∨ (\ar, \ar') \ileadsto b$; and $(\ar, \ar') \in \prop^− ⇔ (\ar, \ar') \ileadsto ¬\prop ∨ (\ar, \ar') \ileadsto b$.
 
@@ -174,13 +222,6 @@ This is indeed equivalent:
 	\item $(\ar, \ar') \ileadsto ¬\prop ⇔ (\ar, \ar') \notin \prop^+ ∧ (\ar, \ar') \in \prop^−$
 	\item $(\ar, \ar') \ileadsto b ⇔ (\ar, \ar') \in \prop^+ ∧ (\ar, \ar') \in \prop^−$
 	\item $(\ar, \ar') \ileadsto \emptyset ⇔ (\ar, \ar') \notin \prop^+ ∧ (\ar, \ar') \notin \prop^−$
-\end{itemize}
-
-We can now define $\ipossp, \ipossm \subseteq \alltopic$:
-\begin{itemize}
-	\item $\prop \in \ipossp ⇔ \exists \ar \suchthat \forall \ar': [(\ar, \ar') \ileadsto \prop] ∨ [(\ar, \ar') \ileadsto b]$. 
-	\item $\prop \in \ipossm ⇔ \exists \ar \suchthat \forall \ar': [(\ar, \ar') \ileadsto ¬\prop] ∨ [(\ar, \ar') \ileadsto b]$. 
-	\item $\prop$ strongly possible ⇔ $[\exists \ar \suchthat \forall \ar': (\ar, \ar') \ileadsto \prop] ∨ [\exists \ar \suchthat \forall \ar': (\ar, \ar') \ileadsto b]$. 
 \end{itemize}
 
 Here is a case where $\prop$ is possible but not strongly possible: $\exists (\ar_1, \ar) \ileadsto \prop$, $\exists (\ar_2, \ar) \ileadsto b$, $\nexists (\ar', \ar) \ileadsto ¬\prop$, $\nexists (\ar', \ar) \ileadsto \emptyset$. However this case is odd as just after showing $\ar_2$ to $i$ we could ask again about $\ar_1$ … (TODO)
