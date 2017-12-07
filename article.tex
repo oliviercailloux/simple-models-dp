@@ -1,6 +1,6 @@
 \RequirePackage[l2tabu, orthodox]{nag}
-\RequirePackage{silence}\WarningFilter{fmtcount}{\ordinal already defined use \FCordinal instead}
-\documentclass[version=last, pagesize, twoside=semi, DIV=calc, bibliography=totoc, 12pt, a4paper, french, english]{scrartcl}
+\RequirePackage{silence}\WarningFilter{typearea}{Maybe no optimal type area settings}
+\documentclass[version=last, pagesize, twocolumn, twoside=off, bibliography=totoc, 12pt, a4paper, french, english]{scrartcl}
 \input{preamble/packages}
 \input{preamble/math_basics}
 \input{preamble/math_mine}
@@ -9,6 +9,9 @@
 \input{preamble/acronyms}
 \addtokomafont{labelinglabel}{\sffamily\bfseries}
 
+%printer margin: I take 0.5 inches = 1,27 cm to be safe. 21 cm - (2 × 1.27 cm) = 18.46 cm. 29.7 cm − 0.9 cm − (2 × 1.27 cm) = 26.26 cm
+\areaset{18.46cm}{26.26cm}
+\setlength{\footskip}{9mm}
 \begin{document}
 \title{Simple models of deliberated preference}
 \author{Olivier Cailloux}
@@ -33,72 +36,115 @@ Here is the definition of a decision situation.
 	\item All alternatives $\allalts$.
 	\item Topic $\alltopic$ = $\Set{\prop_\alt, \alt \in \allalts} ∪ \Set{\prop_{¬\alt}, \alt \in \allalts}$. Denoted simply $\alt$ and $¬\alt$. We define $¬\prop$, with $\prop = \prop_\alt$, as equal to $\prop_{¬\alt}$ and $¬\prop$, with $\prop = \prop_{¬\alt}$, as equal to $\prop_{\alt}$.
 	\item All possible arguments: $\allargs$. It contains at least $\emptyset$, the empty argument. It contains all the arguments and more. As an example, $\allargs$ could be the set of all strings (assuming all arguments can be transmitted textually).
-	\item $\ar' \nibeatsst[\prop] \ar$: read $\ar'$, supporting $¬\prop$ sure, never attacks $\ar$, supporting $\prop$. We show arguments $\ar$ and $\ar'$ to $i$ and ask whether $\prop$ is considered as a possibility by $i$ (meaning $i$ would consider picking $\alt$, if $\prop = \prop_\alt$) or rather $¬\prop$ is sure (meaning $i$ would not consider picking $\alt$ as a choice). $\ar' \nibeatsst[\prop] \ar$ denotes a stable preference for $\prop$, in the sense that $\ar'$ does not render $\ar$ invalid; it is sure that $\ar'$ has no impact on $\ar$, even assuming that $\ar'$ would in turn resist all counter-arguments to it. This is an hypothesized relation, unobservable, used to define the deliberated preferences of $i$. Suffices that the attack occurs at least once over the considered time frame and unstability factors (such as submitting $i$ to other counter-arguments) to negate $\ar' \nibeatsst[\prop] \ar$. We do not condition on $\ar'$ surviving: $\ar'$ is declared incorrect, with no necessity of pursuing the debate and no hope of reinstatement. Example: $\ar'$ has already been taken into account and countered in $\ar$; or $\ar'$ does not talk about $\prop$ at all; or is not understood by $i$. Note that when $\ar' \nibeatsst[\prop] \ar$, further attacks to $\ar'$ have no chance to change that fact (assuming some properties over the way $i$ reason). The negation of this should read: $\ar'$ may attack $\ar$ in at least some cases. For example, $¬ (\ar' \nibeatsst[\prop] \ar)$ ($\ar'$ may attack $\ar$) in case $i$ suspects that $\ar'$ is invalid (because of some counter-argument $\ar_2$ to $\ar'$ that $i$ has in mind) but wants to leave the door open to reinstatement of $\ar'$.
-	\item Define $\ar' \ibeatse[\prop] \ar$ iff $¬ (\ar' \nibeatsst[\prop] \ar)$. Note that $\ar$ or $\ar'$ (or both) may equal $\emptyset$, which is useful to query the attitude of $i$ towards an argument against her own knowledge or her default attitude when no argument is given.
-	\item Define $\ar \ibeatse[¬\prop, \text{sure}] \ar'$ iff $\ar$ may attack $\ar'$, where $\ar$ has a weak claim ($\prop$ is possible) and $\ar'$ has a strong claim ($¬\prop$ is sure). Similarly, $\ar \nibeatsst[¬\prop, \text{sure}] \ar'$ is a constant absence of attack.
-	\footnote{Previously: $¬ (\ar' \ibeatsst[\prop] \ar) ⇔ \ar' \nibeatse[\prop] \ar ⇔ \ar \ibeatse[¬\prop, \text{sure}] \ar' ⇔ ¬ (\ar \nibeatsst[¬\prop, \text{sure}] \ar')$.}
-	\item Require (axiom A1) that $\ar' \ibeatse[\prop] \ar ∨ \ar \ibeatse[¬\prop, \text{sure}] \ar'$. Equivalently: $¬ (\ar \nibeatsst[¬\prop, \text{sure}] \ar' ∧ \ar' \nibeatsst[\prop] \ar)$; $\ar \nibeatsst[¬\prop, \text{sure}] \ar' ⇒ \ar' \ibeatse[\prop] \ar$.
-	\item Axiom A2: $\ar \nibeatsst[¬\prop, \text{sure}] \ar' ⇒ \ar \nibeatsst[¬\prop] \ar'$. Equivalently: $\ar \ibeatse[¬\prop] \ar' ⇒ \ar \ibeatse[¬\prop, \text{sure}] \ar'$.
-	\footnote{A3: $[\exists \ar \suchthat (\ar' \ibeatse[\prop] \ar ∧ \ar \ibeatse[¬\prop, \text{sure}] \ar')] ⇒ \exists \ar_2 \suchthat \ar_2 \ibeatse[¬\prop] \ar'$. Equivalently: $\ar_2 \nibeatsst[¬\prop] \ar', \forall \ar_2$ implies that for all $\ar$, $(\ar' \nibeatsst[\prop] \ar ∨ \ar \nibeatsst[¬\prop, \text{sure}] \ar')$. A1, A2 and A3 are equivalent to: $\ar \nibeatsst[¬\prop, \text{sure}] \ar' ⇔ \ar \nibeatsst[¬\prop] \ar' ∧ \ar' \ibeatse[\prop] \ar$.}
-	\footnote{Having A1 and A2, can we have $\ar \nibeatsst[¬\prop] \ar' ∧ \ar' \ibeatse[\prop] \ar ∧ \ar \ibeatse[¬\prop, \text{sure}] \ar'$? Consider $(\ar', ¬\prop) \succeq (\ar, \prop) \sim (\ar', ¬\prop, \text{sure}) \succeq (\ar, \prop, \text{sure})$.}
 \end{itemize}
 
-Define $\iposs \subseteq \alltopic$ as the set of propositions that are weakly accepted.
-\begin{definition}[Weak acceptance]
-	Define a situation $(\allalts, \allargs, \set{\ibeatse[\prop]})$. A proposition $\prop \in \alltopic$ is weakly accepted, $\prop \in \iposs$, iff $\exists \ar \in \allargs \suchthat \forall \ar' \in \allargs: \ar' \nibeatsst[\prop] \ar$.
-\end{definition}
-It follows that $¬\prop \notin \iposs$ iff $\forall \ar: \exists \ar' \suchthat \ar' \ibeatse[¬\prop] \ar$. Equivalently, $¬\prop \notin \iposs ⇔ \ibeatse[¬\prop](\allargs) = \allargs$.
+Define $f_\prop$ from any unordered pair of arguments $(\ar, \ar')$ into $\powerset{\prop\text{-sure}, ¬\prop\text{-sure}, b)}$ (where $b$ means both possible). We present both arguments to $i$ and ask which proposition $i$ considers valid in her current state of mind, thus using both arguments and possibly other arguments she has in mind. The set designates all cumulated answers over time, thus allowing $i$ to be unstable (because she has learnt new things in between two questioning, or just because of time passing, or for any known or unknown reason). We assume $b$ is observable as well.
+We can also use $\emptyset$ as one or both of the arguments.
 
-\begin{definition}[Sure acceptance]
-	$¬\prop \in \isure$ iff $\exists \ar' \in \allargs \suchthat \forall \ar \in \allargs: \ar \nibeatsst[¬\prop, \text{sure}] \ar'$.\footnote{Instead of accepting $¬\prop$ for sure, it is tempting to define strong rejection of $t$ as follows. A proposition $\prop \in \alltopic$ is strongly rejected iff $\forall \ar_0 \in \allargs, \exists \ar' \in \allargs \suchthat \ar_0 \nibeatsst[¬\prop, \text{sure}] \ar'$. But this is too weak: we want $\ar'$ to be also decisive, thus $\ar \nibeatsst[¬\prop, \text{sure}] \ar', \forall \ar$. Hence the definition becomes $\exists \ar' \in \allargs \suchthat \ar \nibeatsst[¬\prop, \text{sure}] \ar'$.}
-\end{definition}
-If $¬\prop \in \isure$, then $\prop \notin \iposs$: with $\ar'$ decisive for $¬\prop, \text{sure}$, given any $\ar$, $\ar' \ibeatse[\prop] \ar$ (because $\ar \nibeatsst[¬\prop, \text{sure}] \ar'$, see A1).
+We define two binary relations $\prop^+$ (always supports $\propposs$) and $\prop^−$ (always supports $¬\propsure$) on $\allargs$. We define $(\ar, \ar') \in \prop^+ ⇔ (\ar, \ar') \ileadstopst \prop ⇔ \ar' \nibeatsst[\prop] \ar ⇔ \ileadsto(\ar, \ar') \subseteq \{\propsure, b\}$, and $(\ar, \ar') \in \prop^− ⇔ (\ar, \ar') \ileadstosst ¬\prop ⇔ \ar \nibeatsst[¬\propsure] \ar' ⇔ \ileadsto(\ar, \ar') = \{¬\propsure\}$.
+Hence, $(\ar, \ar') \notin \prop^+ ⇔ (\ar, \ar') \ileadstose ¬\prop ⇔ \ar' \ibeatse[\prop] \ar ⇔ ¬(\ar' \nibeatsst[\prop] \ar) ⇔ \ileadsto(\ar, \ar') \supseteq \{¬\propsure\}$, and $(\ar, \ar') \notin \prop^− ⇔ (\ar, \ar') \ileadstope \prop ⇔ \ar \ibeatse[¬\propsure] \ar' ⇔ ¬(\ar \nibeatsst[¬\propsure] \ar') ⇔ \ileadsto(\ar, \ar') ≠ \{¬\propsure\}$.
 
-If $¬\prop \in \isure$, then $¬\prop \in \iposs$: from $\ar \nibeatsst[¬\prop, \text{sure}] \ar'$ we obtain $\ar \nibeatsst[¬\prop] \ar'$ using A2.
+When $\prop$ is fixed, or if it can be deduced from the output set, we write $(\ar, \ar') \ileadsto O$ or $\ileadsto(\ar, \ar') = O$ instead of $f_\prop(\ar, \ar') = O$.
+
+Actually we will use only the $\ileadstopst$ and $\ileadstosst$ ternary relations from now on, together with the property (A1) that $\ileadstopst \subseteq \ileadstope$
+\footnote{Equivalently: $\ileadstosst \subseteq \ileadstose$, $(\ar, \ar') \ileadstose ¬\prop ∨ (\ar, \ar') \ileadstope \prop$, $\ileadstopst \prop ⇒ ¬ (\ileadstosst ¬\prop)$, $\ileadstosst ¬\prop ⇒ ¬ (\ileadstopst \prop)$.} 
+and (A2) that $\ileadstosst \subseteq \ileadstopst$ 
+\footnote{Equivalently: $\ileadstose \subseteq \ileadstope$.}
+and the fact that the relations $\prop^+$ and $\prop^−$ are symmetric. 
+\footnote{Unclear where we use the fact that the relations $\prop^+$ and $\prop^−$ are symmetric.}
+
+We say $(\ar, \ar')$ is $\prop$-unstable iff $(\ar, \ar') \ileadstose \prop ∧ (\ar, \ar') \ileadstose ¬\prop$.
+
+$\ar$ is 
+\begin{itemize}
+	\item $\propsuredec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstosst \prop$
+	\item $\proppossdec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstopst \prop$
+\end{itemize}
+
+We can now define $\iposs, \isure \subseteq \alltopic$:
+\begin{itemize}
+	\item $\prop \in \iposs ⇔ \exists \ar \ \proppossdec$. 
+\footnote{\label{ft:notposs}$\prop \notin \iposs ⇔ \forall \ar, \exists \ar' \suchthat (\ar', \ar) \ileadstose ¬\prop$.}
+	\item $\prop \in \isure ⇔ \exists \ar \ \propsuredec$. 
+\footnote{\label{ft:notsure}$¬\prop \notin \isure ⇔ \forall \ar, \exists \ar' \suchthat (\ar', \ar) \ileadstope \prop$.}
+\end{itemize}
+
+We say that severe $\prop$-unstability happens iff $\forall \ar, [\exists \ar^+ \suchthat (\ar, \ar^+) \ileadstose \prop] ∧ [\exists \ar^− \suchthat (\ar, \ar^−) \ileadstose ¬\prop]$.
+\footnote{Severe $\prop$-unstability happens iff severe $¬\prop$-unstability happens.}
+\footnote{Here is an example of severe $\prop$-unstability. $\forall (\ar, \ar'), (\ar, \ar') \ileadstose ¬\prop, (\ar, \ar') \ileadstose \prop$.}
+
+
+\begin{theorem}
+	If $\prop \notin \iposs ∧ ¬\prop \notin \iposs$, severe $\prop$-unstability happens.
+\end{theorem}
+The proof follows from \cref{ft:notposs}.
+
+\begin{theorem}
+	$\prop \in \isure ⇒ ¬\prop \notin \iposs$.
+\end{theorem}
+This is because $\ar^+$ is $\propsuredec$, thus given any $\ar^−$, $(\ar^+, \ar^−) \ileadstosst \prop$ hence $(\ar^+, \ar^−) \ileadstose \prop$ (using A1).
+
+\begin{theorem}
+	$\prop \in \isure ⇒ \prop \in \iposs$.
+\end{theorem}
+The proof follows from (A2).
 
 \begin{definition}[Clear-cut]
-	A situation is clear-cut iff $\prop \notin \iposs ⇒ ¬\prop \in \isure$.
+	A situation is $\prop$-clear-cut iff $\prop \notin \iposs ⇒ ¬\prop \in \isure$.
+\footnote{Here is an example of non $\prop$-clear-cut situation with no severe $\prop$-unstability. $\forall (\ar, \ar'), (\ar, \ar') \ileadstose ¬\prop, (\ar, \ar') \ileadstope \prop, (\ar, \ar') \ileadstopst ¬\prop$.}
+\footnote{Something like Axiom JU should be sufficient for CC. JU: If $(\ar, \ar')$ is $\prop$-unstable, then $\exists \ar_2 \in \allargs$ such that for $(\ar_1, \ar_0) = (\ar, \ar')$ or for $(\ar_1, \ar_0) = (\ar', \ar)$, $\ar_2$ attacks decisively $\ar_1$, where we mean by this that $\ar_2$ combined with $\ar_0$ is decisive. Means that if not CC, then not JU. Hence, infinite discussion happens, or irreducible unstability. Or, the memory buffer of $i$ is too short to hold adequate reinstated arguments, in which case our approach based on decisive arguments is not adequate.}
 \end{definition}
-Here is an example of a non clear-cut situation. $\allargs = \{\emptyset\}, \alltopic = \{\prop\}, \emptyset \ibeatse[\prop] \emptyset, \emptyset \ibeatse[¬\prop, \text{sure}] \emptyset$.
 
 \subsection{Possible outcomes}
 We know $\prop \in \isure ⇒ ¬\prop \notin \iposs$ and $\prop \in \isure ⇒ \prop \in \iposs$.
 
 Here are the remaining possibilities, considering the four pairs $(\prop, \iposs)$, $(\prop, \isure)$, $(¬\prop, \iposs)$, $(¬\prop, \isure)$. (A pair $(\prop, T)$ not mentioned means $\prop \notin T$.)
-\begin{labeling}{Unstability with $¬\prop$ possible}
+\begin{labeling}{Unstability, $¬\prop$ poss}
 	\item[All poss] $\prop \in \iposs$, $¬\prop \in \iposs$
 	\item[$\prop$ sure] $\prop \in \iposs$, $\prop \in \isure$
 	\item[$¬\prop$ sure] (symmetric)
-	\item[Unstability with $\prop$ possible] $\prop \in \iposs$ (oddity: $¬\prop \notin \iposs$ should imply $\prop \in \isure$)
-	\item[Unstability with $¬\prop$ possible] (symmetric)
+	\item[Unstability, $\prop$ poss] $\prop \in \iposs$ (oddity: $¬\prop \notin \iposs$ should imply $\prop \in \isure$)
+	\item[Unstability, $¬\prop$ poss] (symmetric)
 	\item[Strong unstability] (both oddities above)
 \end{labeling}
 
 \section{Models}
 A model is a triple $(\mbeats, \mleadsto, +)$ defined as follows and satisfying the constraints as indicated here.
 
-$\mbeats$ an acyclic binary relation over $\allargs$ (by which we mean that its transitive closure is irreflexive). $\mleadsto \subseteq \allargs × \alltopic$. Define $\clargs \subseteq \allargs$ as the set of arguments used in $\mbeats ∪ \mleadsto$. Let $+$ be defined over arguments used in the model: $\ar_3 + \ar_1 = \ar'$ for some $\ar' \in \clargs$, for any $\ar_3, \ar_1 \in \clargs$. 
+$\mbeats$ a binary relation over $\allargs$. $\mleadsto \subseteq \allargs × \alltopic$. Define $\clargs \subseteq \allargs$ as the set of arguments used in $\mbeats ∪ \mleadsto$. Let $+$ be defined over arguments used in the model: $\ar_3 + \ar_1 = \ar'$ for some $\ar' \in \clargs$, for any $\ar_3, \ar_1 \in \clargs$. 
 
-Requirements. The maximum length of a path in $\mbeats$ is finite.
+Requirements. The maximum length of a path in $\mbeats$ is finite (which implies that $\mbeats$ is acyclic).
 $\ar_3 \mbeats \ar_2 \mbeats \ar_1 ⇒ \ar_2 \mbeats \ar_3 + \ar_1$.\footnote{Necessary for definition of $\ar_3 \wibeatse \ar_2$.}
 
 Notation. Let $\mleadstoinv(\alltopic) \subseteq \clargs$ denote the subset of arguments supporting propositions. 
 $\mbeats(\ar_2)$: arguments that $\ar_2$ attacks, $\ar_1 \in \mbeats(\ar_2) ⇔ \ar_2 \mbeats \ar_1$. We write $\args \mbeats \ar$ to mean that $\forall \ar' \in \args: \ar' \mbeats \ar$, and similarly for other binary relations.
 
-Given a decision situation, define $\wibeatse \subseteq \mbeats$ as follows.
+Given a decision situation, define $\wibeatse[\prop], \nwibeatse[¬\prop] \subseteq \mbeats$ as follows.
 
-Given $\ar_3 \mbeats \ar_2, \prop \in \alltopic$: $\ar_3 \wibeatse[\prop] \ar_2$ iff $[\exists \ar_1 \in \mbeats(\ar_2) \suchthat (\ar_2 \wibeatse[\prop] \ar_1 ∧ \ar_2 \nwibeatse[\prop] \ar_3 + \ar_1)] ∨ [\ar_2 \ileadsto \prop ∧ \ar_3 \ibeatse[\prop] \ar_2]$. \footnote{Or $\ar_2 \ileadsto \prop ∧ ¬\prop \notin \mleadsto(\allargs) ∧ \ar_3 \ibeatse[\prop, \text{sure}] \ar_2$.}
+Given $\ar_3 \mbeats \ar_2, \prop \in \alltopic$: $\ar_3 \wibeatse[\prop] \ar_2$ iff $[\exists \ar_1 \in \mbeats(\ar_2) \suchthat (\ar_2 \wibeatse[\prop] \ar_1 ∧ \ar_2 \nwibeatse[\prop] \ar_3 + \ar_1)] ∨ [\ar_2 \ileadsto \prop ∧ (\ar_3, \ar_2) \ileadstose ¬\prop]$.
+\footnote{Or $\ar_2 \ileadsto \prop ∧ ¬\prop \notin \mleadsto(\allargs) ∧ (\ar_3, \ar_2) \ileadstope ¬\prop$.}
 
-Given $\ar_3 \mbeats \ar_2, \prop \in \alltopic$: $\ar_3 \nwibeatse[\prop] \ar_2$ iff $[\exists \ar_1 \in \mbeats(\ar_2) \suchthat (\ar_2 \wibeatse[\prop] \ar_1 ∧ \ar_2 \wibeatse[\prop] \ar_3 + \ar_1)] ∨ [\ar_2 \mleadsto \prop ∧ \ar_2 \ibeatse[¬\prop, \text{sure}] \ar_3]$.
-\footnote{Check: Given $\ar_4 \mbeats \ar_3, \ar_3 \notin \mleadstoinv(\alltopic)$, with $\ar_2 \in \mbeats(\ar_3)$ ⇒ ($\ar_2$ and $\ar_4 + \ar_2$ $\mbeats$-attack only root nodes and do not support any proposition): $\ar_4 \wibeatse[\prop] \ar_3$ iff
+Given $\ar_3 \mbeats \ar_2, \prop \in \alltopic$: $\ar_3 \nwibeatse[\prop] \ar_2$ iff $[\exists \ar_1 \in \mbeats(\ar_2) \suchthat (\ar_2 \wibeatse[\prop] \ar_1 ∧ \ar_2 \wibeatse[\prop] \ar_3 + \ar_1)] ∨ [\ar_2 \mleadsto \prop ∧ (\ar_3, \ar_2) \ileadstope \prop]$.
+
+This is well defined thanks to the following construction.
+Given a model. 
+\begin{itemize}
+	\item Define a root as an argument that $\mbeats$-attacks nobody. 
+	\item Associate to each $\ar \in \clargs$ its depth $d(\ar)$, the distance to the farthest root: $d(\ar) = 0$ iff $\ar$ is a root and $d(\ar) = k+1$ iff $\ar$ $\mbeats$-attacks some $\ar'$ of depth $k$ and $\mbeats$-attacks no $\ar'$ of depth superior to $k$ (thus $d(\ar) = 1$ iff $\ar$ attacks some and only root nodes; $d(\ar) = 2$ iff $\ar$ attacks some node of depth 1 and only nodes of depth 1 or 0; and so on). 
+	\item Observe that if $\ar_3 \mbeats \ar_2$ and $d(\ar_3) = k+1$, then $d(\ar_2) ≤ k$. 
+	\item Define $\wibeatse[\prop]_{(0)} = \nwibeatse[\prop]_{(0)} = \emptyset$. %as $\ar_3 \wibeatse[\prop]_{(1)} \ar_2$ iff $d(\ar_3) = 1 ∧ \ar_2 \ileadsto \prop ∧ (\ar_3, \ar_2) \ileadstose ¬\prop$. 
+%	\item Define $\nwibeatse[\prop]_{(1)}$ as $\ar_3 \nwibeatse[\prop]_{(1)} \ar_2$ iff $d(\ar_3) = 1 ∧ \ar_2 \mleadsto \prop ∧ (\ar_3, \ar_2) \ileadstope \prop$. 
+	\item Define $\wibeatse[\prop]_{(k+1)} \subseteq \mbeats$, $k ≥ 0$, as $\ar_3 \wibeatse[\prop]_{(k+1)} \ar_2$ iff, first, $d(\ar_3) = k+1$, and second, $[\exists \ar_1 \in \mbeats(\ar_2) \suchthat (\ar_2 \wibeatse[\prop]_{(d(\ar_2))} \ar_1 ∧ \ar_2 \nwibeatse[\prop]_{(d(\ar_2))} \ar_3 + \ar_1)] ∨ [\ar_2 \ileadsto \prop ∧ (\ar_3, \ar_2) \ileadstose ¬\prop]$. Proceed similarly for $\nwibeatse[\prop]_{(k+1)}$.
+	\item Define $\wibeatse[\prop] = \bigcup_{k ≥ 0} \wibeatse[\prop]_{(k)}$, and similarly for $\nwibeatse[\prop]$.
+\end{itemize}
+
+{Check: Given $\ar_4 \mbeats \ar_3, \ar_3 \notin \mleadstoinv(\alltopic)$, with $\ar_2 \in \mbeats(\ar_3)$ ⇒ ($\ar_2$ and $\ar_4 + \ar_2$ $\mbeats$-attack only root nodes and do not support any proposition): $\ar_4 \wibeatse[\prop] \ar_3$ iff
 \begin{itemize}
 	\item $\exists \ar_2 \in \mbeats(\ar_3) \suchthat [(\ar_3 \wibeatse[\prop] \ar_2) ∧ (\ar_3 \nwibeatse[\prop] \ar_4 + \ar_2)]$ iff 
 	\item $\exists \ar_2 \in \mbeats(\ar_3) \suchthat [(\exists \ar_1 \in \mbeats(\ar_2) \suchthat \ar_2 \wibeatse[\prop] \ar_1 ∧ \ar_2 \nwibeatse[\prop] \ar_3 + \ar_1) ∧ (\exists \ar_1 \in \mbeats(\ar_4 + \ar_2) \suchthat \ar_4 + \ar_2 \wibeatse[\prop] \ar_1 ∧ \ar_4 + \ar_2 \wibeatse[\prop] \ar_3 + \ar_1)]$ iff 
-	\item $\exists \ar_2 \in \mbeats(\ar_3) \suchthat [(\exists \ar_1 \in \mbeats(\ar_2) \suchthat \ar_1 \ileadsto t ∧ \ar_2 \ibeatse[\prop] \ar_1 ∧ \ar_3 + \ar_1 \ileadsto \prop ∧ \ar_3 + \ar_1 \ibeatse[¬\prop, \text{sure}] \ar_2) ∧ (\exists \ar_1 \in \mbeats(\ar_4 + \ar_2) \suchthat \ar_1 \mleadsto \prop ∧ \ar_4 + \ar_2 \ibeatse[\prop] \ar_1 ∧ \ar_3 + \ar_1 \ileadsto \prop ∧ \ar_4 + \ar_2 \ibeatse[\prop] \ar_3 + \ar_1)]$.
+	\item $\exists \ar_2 \in \mbeats(\ar_3) \suchthat [(\exists \ar_1 \in \mbeats(\ar_2) \suchthat \ar_1 \ileadsto t ∧ (\ar_2, \ar_1) \ileadstose ¬\prop ∧ \ar_3 + \ar_1 \ileadsto \prop ∧ (\ar_3 + \ar_1, \ar_2) \ileadstope \prop ∧ (\exists \ar_1 \in \mbeats(\ar_4 + \ar_2) \suchthat \ar_1 \mleadsto \prop ∧ (\ar_4 + \ar_2, \ar_1) \ileadstose ¬\prop ∧ \ar_3 + \ar_1 \ileadsto \prop ∧ (\ar_4 + \ar_2, \ar_3 + \ar_1) \ileadstose ¬\prop)]$.
 \end{itemize}
 }
-
-TODO this is well-defined because associate to each $\ar \in \clargs$ $d(\ar)$, the distance to the farthest root (a root is an argument that $\mbeats$-attacks nobody). Then $\wibeatse$ is defined for all attacks from $d(.)=1$ nodes (because those nodes attack only $d(.)=0$ nodes), and thus is defined for all nodes $2$, I suppose, …
 
 Given $\ar_3 \in \clargs, \ar_2 \in \clargs$, with $\exists \ar_1 \in \mbeats(\ar_2) \suchthat \ar_2 \wibeatse[\prop] \ar_1$, we have: $\ar_3 \wibeatse[\prop] \ar_2 ∨ \ar_3 \nwibeatse[\prop] \ar_2$.
 
@@ -159,58 +205,6 @@ Third, consider an argument $\ar_1 \in \mleadstoinv(\alltopic)$. It has no decis
 \end{proof}
 
 \appendix
-\section{Better definitions}
-Define $f_\prop$ from any unordered pair of arguments $(\ar, \ar')$ into $\powerset{\prop\text{-sure}, ¬\prop\text{-sure}, b)}$ (where $b$ means both possible). We present both arguments to $i$ and ask which proposition $i$ considers valid in her current state of mind, thus using both arguments and possibly other arguments she has in mind. The set designates all cumulated answers over time, thus allowing $i$ to be unstable (because she has learnt new things in between two questioning, or just because of time passing, or for any known or unknown reason). We assume $b$ is observable as well.
-We can also use $\emptyset$ as one or both of the arguments.
-
-We define two binary relations $\prop^+$ (always supports $\propposs$) and $\prop^−$ (always supports $¬\propsure$) on $\allargs$. We define $(\ar, \ar') \in \prop^+ ⇔ (\ar, \ar') \ileadstopst \prop ⇔ \ar' \nibeatsst[\prop] \ar ⇔ \ileadsto(\ar, \ar') \subseteq \{\propsure, b\}$, and $(\ar, \ar') \in \prop^− ⇔ (\ar, \ar') \ileadstosst ¬\prop ⇔ \ar \nibeatsst[¬\propsure] \ar' ⇔ \ileadsto(\ar, \ar') = \{¬\propsure\}$.
-Hence, $(\ar, \ar') \notin \prop^+ ⇔ (\ar, \ar') \ileadstose ¬\prop ⇔ \ar' \ibeatse[\prop] \ar ⇔ ¬(\ar' \nibeatsst[\prop] \ar) ⇔ \ileadsto(\ar, \ar') \supseteq \{¬\propsure\}$, and $(\ar, \ar') \notin \prop^− ⇔ (\ar, \ar') \ileadstope \prop ⇔ \ar \ibeatse[¬\propsure] \ar' ⇔ ¬(\ar \nibeatsst[¬\propsure] \ar') ⇔ \ileadsto(\ar, \ar') ≠ \{¬\propsure\}$.
-
-When $\prop$ is fixed, or if it can be deduced from the output set, we write $(\ar, \ar') \ileadsto O$ or $\ileadsto(\ar, \ar') = O$ instead of $f_\prop(\ar, \ar') = O$.
-
-Actually we will use only the $\ileadstopst$ and $\ileadstosst$ ternary relations from now on, together with the property (A1) that $\ileadstopst \subseteq \ileadstope$
-\footnote{Equivalently: $\ileadstosst \subseteq \ileadstose$, $(\ar, \ar') \ileadstose ¬\prop ∨ (\ar, \ar') \ileadstope \prop$, $\ileadstopst \prop ⇒ ¬ (\ileadstosst ¬\prop)$, $\ileadstosst ¬\prop ⇒ ¬ (\ileadstopst \prop)$.} 
-and (A2) that $\ileadstosst \subseteq \ileadstopst$ 
-\footnote{Equivalently: $\ileadstose \subseteq \ileadstope$.}
-and the fact that the relations $\prop^+$ and $\prop^−$ are symmetric. 
-\footnote{Unclear where we use the fact that the relations $\prop^+$ and $\prop^−$ are symmetric.}
-
-We say $(\ar, \ar')$ is $\prop$-unstable iff $(\ar, \ar') \ileadstose \prop ∧ (\ar, \ar') \ileadstose ¬\prop$.
-
-$\ar$ is 
-\begin{itemize}
-	\item $\propsuredec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstosst \prop$
-	\item $\proppossdec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstopst \prop$
-\end{itemize}
-
-We can now define $\iposs, \isure \subseteq \alltopic$:
-\begin{itemize}
-	\item $\prop \in \iposs ⇔ \exists \ar \ \proppossdec$. 
-\footnote{\label{ft:notposs}$\prop \notin \iposs ⇔ \forall \ar, \exists \ar' \suchthat (\ar', \ar) \ileadstose ¬\prop$.}
-	\item $\prop \in \isure ⇔ \exists \ar \ \propsuredec$. 
-\footnote{\label{ft:notsure}$¬\prop \notin \isure ⇔ \forall \ar, \exists \ar' \suchthat (\ar', \ar) \ileadstope \prop$.}
-\end{itemize}
-
-We say that severe $\prop$-unstability happens iff $\forall \ar, [\exists \ar^+ \suchthat (\ar, \ar^+) \ileadstose \prop] ∧ [\exists \ar^− \suchthat (\ar, \ar^−) \ileadstose ¬\prop]$.
-\footnote{Severe $\prop$-unstability happens iff severe $¬\prop$-unstability happens.}
-
-\begin{theorem}
-	If $\prop \notin \iposs ∧ ¬\prop \notin \iposs$, severe $\prop$-unstability happens.
-\end{theorem}
-The proof follows from \cref{ft:notposs}.
-
-\begin{theorem}
-	$\prop \in \isure ⇒ ¬\prop \notin \iposs$.
-\end{theorem}
-This is because $\ar^+$ is $\propsuredec$, thus given any $\ar^−$, $(\ar^+, \ar^−) \ileadstosst \prop$ hence $(\ar^+, \ar^−) \ileadstose \prop$ (using A1).
-
-\begin{theorem}
-	$\prop \in \isure ⇒ \prop \in \iposs$.
-\end{theorem}
-The proof follows from (A2).
-
-Something like Axiom JU should be sufficient for CC. JU: If $(\ar, \ar')$ is $\prop$-unstable, then $\exists \ar_2 \in \allargs$ such that for $(\ar_1, \ar_0) = (\ar, \ar')$ or for $(\ar_1, \ar_0) = (\ar', \ar)$, $\ar_2$ attacks decisively $\ar_1$, where we mean by this that $\ar_2$ combined with $\ar_0$ is decisive. Means that if not CC, then not JU. Hence, infinite discussion happens, or irreducible unstability. Or, the memory buffer of $i$ is too short to hold adequate reinstated arguments, in which case our approach based on decisive arguments is not adequate.
-
 \section{Todo}
 \begin{itemize}
 	\item If $i$ does not consider $\ar$ as supporting $\prop$, it also works: if $\prop$ is not weakly acceptable by default, then any $\ar'$ is considered by $i$ as a better argument than $\ar$ in favor of certain $¬\prop$, and so on. In fact, whether $\emptyset \ibeatse[\prop] \emptyset$ determines whether $\prop$ is weakly supported by default.
@@ -222,6 +216,19 @@ Questions:
 Q1. Relationship with $\ar \ibeatse[\prop] \ar$?
 
 We want to exclude: $s$ supports $p$ perhaps, attacked by $s2$ (supporting $¬p$ sure), but then $s2$ is attacked by $s$. Exclude $\ar' \ibeatse[\prop] \ar$ and $\ar \ibeatse[¬\prop, \text{sure}] \ar'$. Require to assume that this situation implies another argument $\ar_3$ “attacking” $\ar'$, thus, such that $\ar_3 + \ar$ is no more attacked by $\ar_2$. 
+
+\subsection{Attack rel}
+Given $\prop$, define a (symmetric) strong attack rel, $Q_\prop$, as $\ar Q_\prop \ar'$ iff $(\ar, \ar') \ileadstosst ¬\prop$.
+
+Define a (symmetric) weak attack rel, $R_\prop$, as $\ar R_\prop \ar'$ iff $(\ar, \ar') \ileadstopst ¬\prop$.
+
+Given $\prop$, we want to check the arguments that defend it. We want to build an asymmetric attack relation.
+$\ar_1 M \ar_0$, and not the converse, iff $\ar_1$ attacks $\ar_0$ and, would $\ar_1$ be attacked, $\ar_0$ reinstated would defend $\prop$.
+$\ar_1$ should be able to support a sub-claim $\prop'$, and then $\ar_2$ attack $\ar_1$ on that sub-claim precisely. $\ar_2$ decisive on this sub-claim and $\ar_0 + \ar_2$ decisive implies $\ar_1$ attacks $\ar_0$ and not conversely.
+
+Or simply. $\ar_1$ decisive for $¬\prop$ means $\ar_1$ attacks $\ar_0$ and not conversely.
+
+Then define $i$’s DJ in terms of argumentation semantics.
 
 \section{To think}
 Propositions weakly self-supported $T \subseteq \alltopic$: weakly accepted if no arg is given. Examples: $m$ = “eat miam”; $¬b$ = “beurk is to exclude”; or, in a problem where there’s no particularly good aliments, both $a$ = “eat this” and $¬a$.
