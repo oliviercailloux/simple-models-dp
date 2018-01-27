@@ -52,11 +52,11 @@ and (A2) that $\ileadstosst \subseteq \ileadstopst$
 \footnote{Equivalently: $\ileadstose \subseteq \ileadstope$.}, 
 the pair $(\ar, \ar')$ being understood as unordered (thus not different than $(\ar', \ar)$).
 
-$\ar$ is 
-\begin{itemize}
-	\item $\propsuredec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstosst \prop$
-	\item $\proppossdec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstopst \prop$
-\end{itemize}
+We also define $\Phi = \alltopic × \set{\text{possible}, \text{sure}}$, and $\forall \phi = (\prop, \text{possible}) \in \Phi: (\ar, \ar') \ileadstost \phi ⇔ (\ar, \ar') \ileadstopst \prop$ and $\forall \phi = (\prop, \text{sure}) \in \Phi: (\ar, \ar') \ileadstost \phi ⇔ (\ar, \ar') \ileadstosst \prop$. We define the negation operator $¬$ over $\Phi$ as: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. It follows that $¬¬\phi = \phi$. We write $(\ar, \ar') \nileadstost \phi$ for $¬[(\ar, \ar') \ileadstost \phi]$.
+\footnote{From (A1) and (A2) we can write, using this notation, $(\ar, \ar') \ileadstost \phi ⇒ (\ar, \ar') \nileadstost ¬\phi$.}
+
+$\ar$ is $\phi\text{-dec} ⇔ \forall \ar': (\ar', \ar) \ileadstost \prop$. We also say that $\ar$ is $\propsuredec$ or $\proppossdec$ when $\phi=(\prop, \text{sure})$ or $\phi=(\prop, \text{possible}$.
+\footnote{$\propsuredec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstosst \prop$, $\proppossdec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstopst \prop$.}
 
 We can now define $\iposs, \isure \subseteq \alltopic$:
 \begin{itemize}
