@@ -2,6 +2,8 @@
 \newcommand{\disjc}{\mathcal{D}}
 \newcommand{\alltopic}{T^*}
 \newcommand{\iposs}{T_i}
+\newcommand{\ipnsure}{\boldsymbol{T}^\textbf{¬sure}_i}%provably not sure
+\newcommand{\ipposs}{\boldsymbol{T}^\textbf{p}_i}%provably poss
 \newcommand{\ipossp}{T_i^+}
 \newcommand{\ipossm}{T_i^−}
 \newcommand{\isure}{T^\text{sure}_i}
@@ -98,23 +100,35 @@
 
 %MCDA+Arg
 \newcommand{\dm}{d}
-\newcommand{\ileadsto}{\mathbin{\rightcurvedarrow}}
-\newcommand{\ileadstopst}{\mathbin{\overset{\makebox[0pt]{\text{\tiny poss}}}{\rightcurvedarrow}_\forall}}
-\newcommand{\ileadstosst}{\mathbin{\overset{\makebox[0pt]{\text{\tiny sure}}}{\rightcurvedarrow}_\forall}}
-\newcommand{\ileadstope}{\mathbin{\overset{\makebox[0pt]{\text{\tiny poss}}}{\rightcurvedarrow}_\exists}}
-\newcommand{\ileadstose}{\mathbin{\overset{\makebox[0pt]{\text{\tiny sure}}}{\rightcurvedarrow}_\exists}}
-\newcommand{\nileadsto}{\mathbin{\not\rightcurvedarrow}}%\nrightarrow}
-\newcommand{\ileadstoinv}{\mathbin{\rightcurvedarrow^{-1}}}
-\newcommand{\ileadstor}[1]{\mathbin{\restr{\rightcurvedarrow}{#1}}}
-\newcommand{\mleadsto}[1][\eta]{\mathbin{\rightcurvedarrow_{#1}}}
-\newcommand{\mleadstoinv}{\mathbin{\rightcurvedarrow_\eta^{-1}}}
+%\rightsquigarrow
+\newcommand{\ileadsto}{\mathbin{\rightsquigarrow}}
+\newcommand{\ileadstopst}{\mathbin{\overset{\makebox[0pt]{\text{\tiny poss}}}{\rightsquigarrow}_\forall}}
+\newcommand{\ileadstosst}{\mathbin{\overset{\makebox[0pt]{\text{\tiny sure}}}{\rightsquigarrow}_\forall}}
+%new notation!
+\newcommand{\ileadstost}{\mathbin{\rightsquigarrow_\forall}}
+\newcommand{\ileadstope}{\mathbin{\overset{\makebox[0pt]{\text{\tiny poss}}}{\rightsquigarrow}_\exists}}
+\newcommand{\ileadstose}{\mathbin{\overset{\makebox[0pt]{\text{\tiny sure}}}{\rightsquigarrow}_\exists}}
+%new notation!
+\newcommand{\ileadstoe}{\mathbin{\rightsquigarrow_\exists}}
+\newcommand{\nileadsto}{\mathbin{\not\rightsquigarrow}}%\nrightarrow}
+\newcommand{\ileadstoinv}{\mathbin{\rightsquigarrow^{-1}}}
+\newcommand{\ileadstor}[1]{\mathbin{\restr{\rightsquigarrow}{#1}}}
+\newcommand{\mleadsto}[1][\eta]{\mathbin{\rightsquigarrow_{#1}}}
+\newcommand{\mleadstoinv}{\mathbin{\rightsquigarrow_\eta^{-1}}}
 \newcommand{\ibeats}{\mathbin{\vartriangleright}}
 \newcommand{\ibeatse}[1][]{\mathbin{\vartriangleright_\exists^{#1}}}
 \newcommand{\ibeatsed}{\mathbin{\vartriangleright^\text{d}_\exists}}
 \newcommand{\nibeatsad}{\mathbin{⋫^\text{d}_\forall}}
 \newcommand{\nibeatsed}{\mathbin{⋫^\text{d}_\exists}}
 \newcommand{\wibeatse}[1][]{\mathbin{≻_\exists^{#1}}}
-\newcommand{\wibeatseinv}[1][]{\mathbin{≻_\exists^{#1 -1}}}
+%\newcommand{\wibeatseinv}[1][]{\mathbin{≻_\exists^{#1 -1}}}
+\newcommand{\wibeatseinv}[1][]{%
+	\ifthenelse{\isempty{#1}}{
+		\mathbin{≻_\exists^{-1}}
+	}{
+		\mathbin{(≻_\exists^{#1})^{-1}}
+	}
+}
 \newcommand{\wibeatsst}[1][]{\mathbin{≻_\forall^{#1}}}
 \newcommand{\nwibeatse}[1][]{\mathbin{⊁_\exists^{#1}}}
 \newcommand{\nwibeatsst}[1][]{\mathbin{⊁_\forall^{#1}}}

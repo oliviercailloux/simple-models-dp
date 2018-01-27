@@ -46,7 +46,7 @@
 %accept overfull hbox up to...
 \hfuzz=2cm
 %reduces verbosity about the bad line breaks
-\hbadness 10000
+\hbadness 5000
 %reduces verbosity about the underful vboxes
 \vbadness=1300
 %sloppy sets tolerance to 9999
@@ -103,4 +103,28 @@
 
 %TODO
 % \newcommand{\textstyleElProm}[1]{{\rmfamily\textsc{#1}}} 
+
+\newunicodechar{ℝ}{\mathbb{R}}
+\newunicodechar{−}{\ifmmode{-}\else\textminus\fi}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{≻}{\succ}
+\newunicodechar{⊁}{\nsucc}
+\newunicodechar{▷}{\triangleright}
+\newunicodechar{⋫}{\ntriangleright}
+\newunicodechar{→}{\ifmmode\rightarrow\else\textrightarrow\fi}
+\newunicodechar{⇒}{\ensuremath{\Rightarrow}}
+\newunicodechar{⇏}{\ensuremath{\nRightarrow}}
+\newunicodechar{⇔}{\ensuremath{\Leftrightarrow}}
+\newunicodechar{∪}{\cup}
+\newunicodechar{∩}{\cap}
+\newunicodechar{∧}{\land}
+\newunicodechar{∨}{\lor}
+\newunicodechar{¬}{\ifmmode\lnot\else\textlnot\fi}
+\newunicodechar{…}{\ifmmode\ldots\else\textellipsis\fi}
+\newunicodechar{×}{\ifmmode\times\else\texttimes\fi}
+\newunicodechar{γ}{\ensuremath{\gamma}}
+\newunicodechar{□}{\Box}
+
 
