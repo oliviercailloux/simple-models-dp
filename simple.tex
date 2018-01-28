@@ -44,27 +44,25 @@ When $\prop$ is fixed, or if it can be deduced from the output set, we write $(\
 
 We define $(\ar, \ar') \ileadstopst \prop ⇔ \ileadsto(\ar, \ar') \subseteq \{\propsure, b\}$, $(\ar, \ar') \ileadstosst ¬\prop ⇔ \ileadsto(\ar, \ar') = \{¬\propsure\}$, $(\ar, \ar') \ileadstose ¬\prop ⇔ \ileadsto(\ar, \ar') \supseteq \{¬\propsure\} ⇔ ¬((\ar, \ar') \ileadstopst \prop)$, and $(\ar, \ar') \ileadstope \prop  ⇔ \ileadsto(\ar, \ar') ≠ \{¬\propsure\} ⇔ ¬((\ar, \ar') \ileadstosst ¬\prop)$.
 
-TODO do everything with only one relation. Define for each prop: $\prop^{s}$ and $\prop^p$, and define $¬(\prop^s) = (¬\prop)^p$, and we can do everything with $(\ar, \ar') \ileadsto \prop^p$ (defined as $\ileadstopst \prop$) and $(\ar, \ar') \ileadsto \prop^s$ (defined as $\ileadstosst \prop$).
-
 Actually we will use only the $\ileadstopst$ and $\ileadstosst$ ternary relations from now on (and their negations $\ileadstose$ and $\ileadstope$), together with the property (A1) that $\ileadstopst \subseteq \ileadstope$
 \footnote{Equivalently: $\ileadstosst \subseteq \ileadstose$, $(\ar, \ar') \ileadstose ¬\prop ∨ (\ar, \ar') \ileadstope \prop$, $\ileadstopst \prop ⇒ ¬ (\ileadstosst ¬\prop)$, $\ileadstosst ¬\prop ⇒ ¬ (\ileadstopst \prop)$.} 
 and (A2) that $\ileadstosst \subseteq \ileadstopst$
 \footnote{Equivalently: $\ileadstose \subseteq \ileadstope$.}, 
-the pair $(\ar, \ar')$ being understood as unordered (thus not different than $(\ar', \ar)$).
+the pair $(\ar, \ar')$ being understood as unordered (thus $(\ar, \ar') \ileadstosst \prop ⇔ (\ar', \ar) \ileadstosst \prop$, and similarly for $\ileadstopst$).
 
-We also define $\Phi = \alltopic × \set{\text{possible}, \text{sure}}$, and $\forall \phi = (\prop, \text{possible}) \in \Phi: (\ar, \ar') \ileadstost \phi ⇔ (\ar, \ar') \ileadstopst \prop$ and $\forall \phi = (\prop, \text{sure}) \in \Phi: (\ar, \ar') \ileadstost \phi ⇔ (\ar, \ar') \ileadstosst \prop$. We define the negation operator $¬$ over $\Phi$ as: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. It follows that $¬¬\phi = \phi$. We write $(\ar, \ar') \nileadstost \phi$ for $¬[(\ar, \ar') \ileadstost \phi]$.
-\footnote{From (A1) and (A2) we can write, using this notation, $(\ar, \ar') \ileadstost \phi ⇒ (\ar, \ar') \nileadstost ¬\phi$.}
+We also define $\Phi = \alltopic × \set{\text{possible}, \text{sure}}$, and $\forall \phi = (\prop, \text{possible}) \in \Phi: (\ar, \ar') \ileadstost \phi ⇔ (\ar, \ar') \ileadstopst \prop$ and $\forall \phi = (\prop, \text{sure}) \in \Phi: (\ar, \ar') \ileadstost \phi ⇔ (\ar, \ar') \ileadstosst \prop$. We define the negation operator $¬$ over $\Phi$ as: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. It follows that $¬¬\phi = \phi$. We write $(\ar, \ar') \nileadstost \phi$ for $¬[(\ar, \ar') \ileadstost \phi]$ and define $(\ar, \ar') \ileadstoe \phi$ as equivalent to $(\ar, \ar') \nileadstost ¬\phi$.
+\footnote{\label{ft:sttoe}From (A1) and (A2) we can write, using this notation, $(\ar, \ar') \ileadstost \phi ⇒ (\ar, \ar') \ileadstoe \phi$.}
 
-$\ar$ is $\phi\text{-dec} ⇔ \forall \ar': (\ar', \ar) \ileadstost \prop$. We also say that $\ar$ is $\propsuredec$ or $\proppossdec$ when $\phi=(\prop, \text{sure})$ or $\phi=(\prop, \text{possible}$.
-\footnote{$\propsuredec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstosst \prop$, $\proppossdec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstopst \prop$.}
+$\ar$ is $\phi\text{-dec} ⇔ \forall \ar': (\ar', \ar) \ileadstost \phi$. 
+\footnote{Equivalently: $\ar \ \phidec ⇔ \exists \ar \suchthat [\ileadstostinv(\phi)](\ar) = \allargs$.}
+\footnote{We also say that $\ar$ is $\propsuredec$ or $\proppossdec$ when $\phi=(\prop, \text{sure})$ or $\phi=(\prop, \text{possible})$.
+$\propsuredec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstosst \prop$, $\proppossdec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstopst \prop$.}
 
-We can now define $\iposs, \isure \subseteq \alltopic$:
-\begin{itemize}
-	\item $\prop \in \iposs ⇔ \exists \ar \ \proppossdec$. 
-\footnote{\label{ft:notposs}$\prop \notin \iposs ⇔ \forall \ar, \exists \ar' \suchthat (\ar', \ar) \ileadstose ¬\prop$.}
-	\item $\prop \in \isure ⇔ \exists \ar \ \propsuredec$. 
-\footnote{\label{ft:notsure}$¬\prop \notin \isure ⇔ \forall \ar, \exists \ar' \suchthat (\ar', \ar) \ileadstope \prop$.}
-\end{itemize}
+We can now define $\iPhi \subseteq \Phi$: $\phi \in \iPhi ⇔  \exists \ar \ \phi\text{-dec}$.
+\footnote{Equivalently: $\iPhi = \bigcup_{\ar \in \allargs} \bigcap{\ar' \in \allargs} \ileadstost(\ar', \ar)$.}
+\footnote{$\phi \in \iPhi ⇔ \exists \ar \suchthat \allargs × \{\ar\} \ileadstost \phi$.}
+\footnote{\label{ft:notposs}$\prop \in \iposs ⇔ \exists \ar \ \proppossdec$ and $\prop \notin \iposs ⇔ \forall \ar, \exists \ar' \suchthat (\ar', \ar) \ileadstose ¬\prop$.}
+\footnote{\label{ft:notsure}$\prop \in \isure ⇔ \exists \ar \ \propsuredec$ and $¬\prop \notin \isure ⇔ \forall \ar, \exists \ar' \suchthat (\ar', \ar) \ileadstope \prop$.}
 
 We say that a situation is $(\prop, ¬\prop)\text{-unstable}$ iff $\forall \ar, [\exists \ar^+ \suchthat (\ar, \ar^+) \ileadstose \prop] ∧ [\exists \ar^− \suchthat (\ar, \ar^−) \ileadstose ¬\prop]$.
 \footnote{Example of $(\prop, ¬\prop)\text{-unstable}$: $\forall (\ar, \ar'), (\ar, \ar') \ileadstose ¬\prop, (\ar, \ar') \ileadstose \prop$.}
@@ -75,17 +73,17 @@ We say that a situation is $(\prop, ¬\prop)\text{-unstable}$ iff $\forall \ar, 
 The proof follows from \cref{ft:notposs}.
 
 \begin{theorem}
-	$\prop \in \isure ⇒ ¬\prop \notin \iposs$.
+	$\phi \in \iPhi ⇒ ¬\phi \notin \iPhi$.
 \end{theorem}
-This is because some $\ar^+$ is $\propsuredec$, thus given any $\ar^−$, $(\ar^+, \ar^−) \ileadstosst \prop$ hence $(\ar^+, \ar^−) \ileadstose \prop$ (using A1).
+This is because some $\ar^+$ is $\phidec$, thus given any $\ar^−$, $(\ar^+, \ar^−) \ileadstost \phi$ hence $(\ar^+, \ar^−) \ileadstoe \phi$ (using \cref{ft:sttoe}).
 
 \begin{theorem}
-	$\prop \in \isure ⇒ \prop \in \iposs$.
+	$(\prop, \text{sure}) \in \iPhi ⇒ (\prop, \text{possible}) \in \iPhi$.
 \end{theorem}
 The proof follows from (A2).
 
 \begin{definition}[Clear-cut]
-	A situation is $\prop$-clear-cut iff $\prop \notin \iposs ⇒ ¬\prop \in \isure$. A situation is $(\prop, ¬\prop)$-clear-cut iff $\prop \notin \isure ∧ ¬\prop \notin \isure ⇒ \prop \in \iposs ∧ ¬\prop \in \iposs$.
+	A situation is $\prop$-clear-cut iff $(\prop, \text{sure}) \notin \iPhi ⇒ (¬\prop, \text{possible}) \in \iPhi$. A situation is $(\prop, ¬\prop)$-clear-cut iff $\prop \notin \isure ∧ ¬\prop \notin \isure ⇒ \prop \in \iposs ∧ ¬\prop \in \iposs$, equivalently, $\phi \notin \iPhi ⇔ ¬\phi \in \iPhi$.
 \footnote{$\prop\text{-CC} ∧ ¬\prop\text{-CC} ⇔ (¬\prop \in \isure ∨ \prop \in \iposs) ∧ (\prop \in \isure ∨ ¬\prop \in \iposs) ⇔ (¬\prop \in \isure ∧ \prop \in \isure) ∨ (¬\prop \in \isure) ∨ (\prop \in \isure) ∨ (\prop \in \iposs ∧ ¬\prop \in \iposs) ⇔ (\prop, ¬\prop)\text{-CC}$.}
 \footnote{$\overline{\prop\text{-CC}} ∧ \overline{¬\prop\text{-CC}} ⇔ (\prop, ¬\prop)$-unstability.}
 \footnote{Example of $\overline{¬\prop\text{-CC}} ∧ \prop \in \iposs$ (thus with $\prop\text{-CC}$ and no $(\prop, ¬\prop)$-unstability): $\forall (\ar, \ar'), (\ar, \ar') \ileadstose \prop, (\ar, \ar') \ileadstope ¬\prop, (\ar, \ar') \ileadstopst \prop$. In such a situation, it is unclear whether $\prop$ holds rather than $¬\prop$ or both $\prop$ and $¬\prop$.}
@@ -112,7 +110,7 @@ Requirements. The maximum length of a path in $\mbeats$ is finite (which implies
 $\ar_3 \mbeats \ar_2 \mbeats \ar_1 ⇒ \ar_2 \mbeats \ar_3 + \ar_1$.\footnote{Necessary for definition of $\ar_3 \wibeatse \ar_2$.}
 
 Notation. Let $\mleadstoinv(\alltopic) \subseteq \clargs$ denote the subset of arguments supporting propositions. 
-$\mbeats(\args)$: arguments that $\args$ attacks, $\ar_1 \in \mbeats(\args) ⇔ \exists \ar_2 \in \args \suchthat \ar_2 \mbeats \ar_1$; $\mbeatsinv(\ar)$: arguments attacking $\ar$, $\ar_2 \in \mbeatsinv(\ar) ⇔ \ar_2 \mbeats \ar$. 
+$\mbeats(\args)$: arguments that $\args$ attacks, $\ar_1 \in \mbeats(\args) ⇔ \exists \ar_2 \in \args \suchthat \ar_2 \mbeats \ar_1$; $\mbeatsinv(\ar)$: arguments attacking $\ar$, $\ar_2 \in \mbeatsinv(\ar) ⇔ \ar_2 \mbeats \ar$.  We write $\ar \mleadsto (\prop, \text{possible})$ for $\ar \mleadsto \prop$ and $\ar \mleadsto (\prop, \text{sure})$ for $\ar \mleadsto \prop ∧ (¬\prop \notin \mleadsto(\allargs))$.
 
 Given a decision situation, we define the relations $\wibeatse[\prop], \nwibeatse[¬\prop] \subseteq \mbeats$ in order to obtain the following result.
 
