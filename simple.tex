@@ -51,7 +51,7 @@ and (A2) that $\ileadstosst \subseteq \ileadstopst$
 \footnote{Equivalently: $\ileadstose \subseteq \ileadstope$.}, 
 the pair $(\ar, \ar')$ being understood as unordered (thus $(\ar, \ar') \ileadstosst \prop ⇔ (\ar', \ar) \ileadstosst \prop$, and similarly for $\ileadstopst$).
 
-We also define $\Phi = \alltopic × \set{\text{possible}, \text{sure}}$, and $\forall \phi = (\prop, \text{possible}) \in \Phi: (\ar, \ar') \ileadstost \phi ⇔ (\ar, \ar') \ileadstopst \prop$ and $\forall \phi = (\prop, \text{sure}) \in \Phi: (\ar, \ar') \ileadstost \phi ⇔ (\ar, \ar') \ileadstosst \prop$. We define the negation operator $¬$ over $\Phi$ as: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. It follows that $¬¬\phi = \phi$. We write $(\ar, \ar') \nileadstost \phi$ for $¬[(\ar, \ar') \ileadstost \phi]$ and define $(\ar, \ar') \ileadstoe \phi$ as equivalent to $(\ar, \ar') \nileadstost ¬\phi$.
+We also define $\Phi = \alltopic × \set{\text{possible}, \text{sure}}$, and $\forall \phi = (\prop, \text{possible}) \in \Phi: (\ar, \ar') \ileadstost \phi ⇔ (\ar, \ar') \ileadstopst \prop$ and $\forall \phi = (\prop, \text{sure}) \in \Phi: (\ar, \ar') \ileadstost \phi ⇔ (\ar, \ar') \ileadstosst \prop$. We define the negation operator $¬$ over $\Phi$ as: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. It follows that $¬¬\phi = \phi$. We write $(\ar, \ar') \nileadstost \phi$ for $¬[(\ar, \ar') \ileadstost \phi]$ and define $(\ar, \ar') \ileadstoe \phi$ as equivalent to $(\ar, \ar') \nileadstost ¬\phi$. We say $\phi$ is about $\prop$ iff $\phi \in \{\prop, ¬\prop\} × \{\text{possible}, \text{sure}\}$.
 \footnote{\label{ft:sttoe}From (A1) and (A2) we can write, using this notation, $(\ar, \ar') \ileadstost \phi ⇒ (\ar, \ar') \ileadstoe \phi$.}
 
 \begin{definition}[Decision situation]
@@ -60,58 +60,26 @@ We also define $\Phi = \alltopic × \set{\text{possible}, \text{sure}}$, and $\f
 
 $\ar$ is $\phi\text{-dec} ⇔ \forall \ar': (\ar', \ar) \ileadstost \phi$. 
 \footnote{Equivalently: $\ar \ \phidec ⇔ \exists \ar \suchthat [\ileadstostinv(\phi)](\ar) = \allargs$.}
-\footnote{We also say that $\ar$ is $\propsuredec$ or $\proppossdec$ when $\phi=(\prop, \text{sure})$ or $\phi=(\prop, \text{possible})$.
+\footnote{We also say that $\ar$ is $\propsuredec$, $\proppossdec$, or $¬\proppossdec$, when $\phi=(\prop, \text{sure})$, $\phi=(\prop, \text{possible})$, or $\phi=(¬\prop, \text{possible})$, respectively.
 $\propsuredec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstosst \prop$, $\proppossdec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstopst \prop$.}
 
 TODO.
-Mandate that some $\ar$ be “both-decisive” for having both decisive.
-Equivalently, (to be defined as a derivative) $t$ poss must require $t sure$ or both $(t, poss)$-dec and $(¬t, poss)$-dec. Stick to the model producing both arguments for $t$ poss and $¬t$ poss in that case (that’s useful for falsifying other theories that claim $t$ sure).
-
 When “both” is not observable, only the sets \{$\prop$-sure, both\} and \{$¬\prop$-sure, both\} can be observed, and there’s only $\phi=\prop$ and $¬\phi=¬\prop$. Accepting $\prop$ requires an arg that always leads to \{$\prop$-sure, both\}.
 
-The deliberated judgment of $i$ maps any pair $(\prop, ¬\prop)$ to one of four possibilities: $\prop$ is sure, $¬\prop$ is sure, both are possible, or undecided. $\prop$ is sure iff $\exists \ar \ (\prop, \text{sure})\text{-dec}$; both are possible iff $\exists \ar \ (\prop, \text{possible})\text{-dec}$ and $\exists \ar \ (¬\prop, \text{possible})\text{-dec}$; and undecided is when neither of the other three cases hold.
-To deal easily with $i$’s deliberated judgment, we define $\iPhi \subseteq \Phi$ to contain the propositions in $i$’s deliberated judgment, as follows. $(\prop, \text{sure}) \in \iPhi ⇔ \exists \ar \ (\prop, \text{sure}\text{-dec}$; $(\prop, \text{possible}) \in \iPhi ⇔  \exists \ar \ (\prop, \text{possible}\text{-dec} ∧ (\exists \ar \ (\prop, \text{sure}\text{-dec} ∨ \exists \ar \ (¬\prop, \text{possible}\text{-dec})$. NB footnotes (and all the rest) should be updated.
-\footnote{Equivalently: $\iPhi = \bigcup_{\ar \in \allargs} \bigcap_{\ar' \in \allargs} \ileadstost(\ar', \ar)$.}
-\footnote{$\phi \in \iPhi ⇔ \exists \ar \suchthat \allargs × \{\ar\} \ileadstost \phi$.}
-\footnote{\label{ft:notposs}$\prop \in \iposs ⇔ \exists \ar \ \proppossdec$ and $\prop \notin \iposs ⇔ \forall \ar, \exists \ar' \suchthat (\ar', \ar) \ileadstose ¬\prop$.}
-\footnote{\label{ft:notsure}$\prop \in \isure ⇔ \exists \ar \ \propsuredec$ and $¬\prop \notin \isure ⇔ \forall \ar, \exists \ar' \suchthat (\ar', \ar) \ileadstope \prop$.}
-
-We say that a situation is $(\prop, ¬\prop)\text{-unstable}$ iff $\forall \ar, [\exists \ar^+ \suchthat (\ar, \ar^+) \ileadstose \prop] ∧ [\exists \ar^− \suchthat (\ar, \ar^−) \ileadstose ¬\prop]$.
-\footnote{Example of $(\prop, ¬\prop)\text{-unstable}$: $\forall (\ar, \ar'), (\ar, \ar') \ileadstose ¬\prop, (\ar, \ar') \ileadstose \prop$.}
-
-\begin{theorem}
-	$\prop \notin \iposs ∧ ¬\prop \notin \iposs ⇔ (\prop, ¬\prop)\text{-unstable}$.
-\end{theorem}
-The proof follows from \cref{ft:notposs}.
-
-\begin{theorem}
-	$\phi \in \iPhi ⇒ ¬\phi \notin \iPhi$.
-\end{theorem}
-This is because some $\ar^+$ is $\phidec$, thus given any $\ar^−$, $(\ar^+, \ar^−) \ileadstost \phi$ hence $(\ar^+, \ar^−) \ileadstoe \phi$ (using \cref{ft:sttoe}).
-
-\begin{theorem}
-	$(\prop, \text{sure}) \in \iPhi ⇒ (\prop, \text{possible}) \in \iPhi$.
-\end{theorem}
-The proof follows from (A2).
-
-\begin{definition}[Clear-cut]
-	A situation is $\prop$-clear-cut iff $(\prop, \text{sure}) \notin \iPhi ⇒ (¬\prop, \text{possible}) \in \iPhi$. A situation is $(\prop, ¬\prop)$-clear-cut iff $\prop \notin \isure ∧ ¬\prop \notin \isure ⇒ \prop \in \iposs ∧ ¬\prop \in \iposs$, equivalently, $\phi \notin \iPhi ⇔ ¬\phi \in \iPhi$.
-\footnote{$\prop\text{-CC} ∧ ¬\prop\text{-CC} ⇔ (¬\prop \in \isure ∨ \prop \in \iposs) ∧ (\prop \in \isure ∨ ¬\prop \in \iposs) ⇔ (¬\prop \in \isure ∧ \prop \in \isure) ∨ (¬\prop \in \isure) ∨ (\prop \in \isure) ∨ (\prop \in \iposs ∧ ¬\prop \in \iposs) ⇔ (\prop, ¬\prop)\text{-CC}$.}
-\footnote{$\overline{\prop\text{-CC}} ∧ \overline{¬\prop\text{-CC}} ⇔ (\prop, ¬\prop)$-unstability.}
+The deliberated judgment of $i$ maps any pair $(\prop, ¬\prop)$ to one of four possibilities: $\prop$ is sure, $¬\prop$ is sure, both are possible, or undecided. $\prop$ is sure iff $\exists \ar \ \propsuredec$; both are possible iff $\exists \ar \ \proppossdec$ and $\exists \ar \ ¬\proppossdec$; and undecided is when none of the other three cases hold.
+For easier treatment, we summarize $i$’s deliberated judgment in a single set $\iPhi \subseteq \Phi$, as follows: $(\prop, \text{possible}) \in \iPhi ∧ (¬\prop, \text{possible}) \in \iPhi ∧ (\prop, \text{sure}) \notin \iPhi ∧ (¬\prop, \text{sure}) \notin \iPhi$ iff $(\prop, ¬\prop)$ maps to both possible; $(\prop, \text{possible}) \in \iPhi ∧ (\prop, \text{sure}) \in \iPhi ∧ (¬\prop, \text{possible}) \notin \iPhi ∧ (¬\prop, \text{sure}) \notin \iPhi$ iff $(\prop, ¬\prop)$ maps to $\prop$ is sure, $\phi \notin \iPhi$ for all $\phi$ about $\prop$ iff $(\prop, ¬\prop)$ maps to undecided.
+\footnote{Example of $(\prop, ¬\prop)\text{-undecided}$: $\forall (\ar, \ar'), (\ar, \ar') \ileadstose ¬\prop, (\ar, \ar') \ileadstose \prop$.}
 \footnote{Example of $\overline{¬\prop\text{-CC}} ∧ \prop \in \iposs$ (thus with $\prop\text{-CC}$ and no $(\prop, ¬\prop)$-unstability): $\forall (\ar, \ar'), (\ar, \ar') \ileadstose \prop, (\ar, \ar') \ileadstope ¬\prop, (\ar, \ar') \ileadstopst \prop$. In such a situation, it is unclear whether $\prop$ holds rather than $¬\prop$ or both $\prop$ and $¬\prop$.}
-\footnote{Hence (with possible meaning merely possible and not sure), for a given pair $(t, ¬t)$, either both are possible, or one is sure, or only $¬\prop$-CC and $¬t \in \iposs$ and $t \notin \iposs$, or only $\prop$-CC and $t \in \iposs$ and $¬t \notin \iposs$, or no CC and $(\prop, ¬\prop)$-unstable.}
 \footnote{Something like Axiom JU should be sufficient for CC. We say $(\ar, \ar')$ is $\prop$-unstable iff $(\ar, \ar') \ileadstose \prop ∧ (\ar, \ar') \ileadstose ¬\prop$. JU: If $(\ar, \ar')$ is $\prop$-unstable, then $\exists \ar_2 \in \allargs$ such that for $(\ar_1, \ar_0) = (\ar, \ar')$ or for $(\ar_1, \ar_0) = (\ar', \ar)$, $\ar_2$ attacks decisively $\ar_1$, where we mean by this that $\ar_2$ combined with $\ar_0$ is decisive. Means that if not CC, then not JU. Hence, infinite discussion happens, or irreducible unstability. Or, the memory buffer of $i$ is too short to hold adequate reinstated arguments, in which case our approach based on decisive arguments is not adequate.}
-\end{definition}
 
-$\prop$ is provably possible, $\prop \in \ipposs$, iff $\prop \in \iposs ∧ ¬\prop\text{-CC}$.
-\footnote{$\prop \in \ipposs ⇔ \prop \in \iposs ∧ (\prop, ¬\prop)\text{-CC}$ (because $\prop \in \iposs ⇒ \prop\text{-CC}$).}
-\footnote{
-\begin{itemize}
-	\item $\prop \in \ipposs ∧ ¬\prop \in \ipposs ⇔ \prop \in \iposs ∧ ¬\prop \in \iposs ⇔ \prop \in \iposs ∧ ¬\prop \in \iposs ∧ (\prop, ¬\prop)\text{-CC} ⇔ \prop \notin \isure ∧ ¬\prop \notin \isure ∧ (\prop, ¬\prop)\text{-CC}$
-	\item $\prop \in \ipposs ∧ ¬\prop \notin \ipposs ⇔ \prop \in \iposs ∧ (\prop, ¬\prop)\text{-CC} ∧ ¬\prop \notin \iposs ⇔ \prop \in \isure$
-	\item $\prop \notin \ipposs ∧ ¬\prop \notin \ipposs ⇔ \overline{\prop\text{-CC}} ∨ \overline{¬\prop\text{-CC}}$.
-\end{itemize}
-}
+Observe that (thanks to A2) $(\prop, \text{possible}) \in \iPhi$ iff $\exists \ar \ \proppossdec ∧ (\exists \ar \ \propsuredec ∨ \exists \ar \ ¬\proppossdec)$.
+
+\begin{proposition}
+	a) $\phi \in \iPhi ⇒ ¬\phi \notin \iPhi$. b) $(\prop, ¬\prop)$ maps to undecided $⇔ \phi \notin \iPhi ∧ ¬\phi \notin \iPhi$ for some $\phi$ about $\prop$. c) If $\phi \in \iPhi$ for some $\phi$ about $\prop$, then $\phi \in \iPhi ⇔ ¬\phi \notin \iPhi$ for all $\phi$ about $\prop$.
+\end{proposition}
+\begin{proof}
+	a) is because some $\ar^+$ is then $\phidec$, thus given any $\ar^−$, $(\ar^+, \ar^−) \ileadstost \phi$ hence $(\ar^+, \ar^−) \ileadstoe \phi$ (using \cref{ft:sttoe}).
+\end{proof}
 
 \section{Theories proposing decisive argument}
 In most situations, there are too many arguments to exhaustively test whether any $\ar$ is a decisive argument for any $\phi$. Furthermore, it is impossible to confirm definitely that $(\ar, \ar') \ileadstost \phi$, whenever $(\ar, \ar') \ileadstost \phi$. We rather propose to introduce theories, and expose them to falsification.
