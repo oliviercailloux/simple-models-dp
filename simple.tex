@@ -7,6 +7,7 @@
 \input{preamble/draw}
 \input{preamble/acronyms}
 \addtokomafont{labelinglabel}{\sffamily\bfseries}
+\renewcommand{\phi}{\varphi}
 
 \begin{document}
 \title{Simple models of deliberated preference}
@@ -53,12 +54,23 @@ the pair $(\ar, \ar')$ being understood as unordered (thus $(\ar, \ar') \ileadst
 We also define $\Phi = \alltopic × \set{\text{possible}, \text{sure}}$, and $\forall \phi = (\prop, \text{possible}) \in \Phi: (\ar, \ar') \ileadstost \phi ⇔ (\ar, \ar') \ileadstopst \prop$ and $\forall \phi = (\prop, \text{sure}) \in \Phi: (\ar, \ar') \ileadstost \phi ⇔ (\ar, \ar') \ileadstosst \prop$. We define the negation operator $¬$ over $\Phi$ as: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. It follows that $¬¬\phi = \phi$. We write $(\ar, \ar') \nileadstost \phi$ for $¬[(\ar, \ar') \ileadstost \phi]$ and define $(\ar, \ar') \ileadstoe \phi$ as equivalent to $(\ar, \ar') \nileadstost ¬\phi$.
 \footnote{\label{ft:sttoe}From (A1) and (A2) we can write, using this notation, $(\ar, \ar') \ileadstost \phi ⇒ (\ar, \ar') \ileadstoe \phi$.}
 
+\begin{definition}[Decision situation]
+	A decision situation is a topic $\Phi$, a set of arguments $\allargs$, an arbiter relation $\ileadstost \subseteq (\allargs × \allargs) × \Phi$.
+\end{definition}
+
 $\ar$ is $\phi\text{-dec} ⇔ \forall \ar': (\ar', \ar) \ileadstost \phi$. 
 \footnote{Equivalently: $\ar \ \phidec ⇔ \exists \ar \suchthat [\ileadstostinv(\phi)](\ar) = \allargs$.}
 \footnote{We also say that $\ar$ is $\propsuredec$ or $\proppossdec$ when $\phi=(\prop, \text{sure})$ or $\phi=(\prop, \text{possible})$.
 $\propsuredec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstosst \prop$, $\proppossdec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstopst \prop$.}
 
-We can now define $\iPhi \subseteq \Phi$: $\phi \in \iPhi ⇔  \exists \ar \ \phi\text{-dec}$.
+TODO.
+Mandate that some $\ar$ be “both-decisive” for having both decisive.
+Equivalently, (to be defined as a derivative) $t$ poss must require $t sure$ or both $(t, poss)$-dec and $(¬t, poss)$-dec. Stick to the model producing both arguments for $t$ poss and $¬t$ poss in that case (that’s useful for falsifying other theories that claim $t$ sure).
+
+When “both” is not observable, only the sets \{$\prop$-sure, both\} and \{$¬\prop$-sure, both\} can be observed, and there’s only $\phi=\prop$ and $¬\phi=¬\prop$. Accepting $\prop$ requires an arg that always leads to \{$\prop$-sure, both\}.
+
+The deliberated judgment of $i$ maps any pair $(\prop, ¬\prop)$ to one of four possibilities: $\prop$ is sure, $¬\prop$ is sure, both are possible, or undecided. $\prop$ is sure iff $\exists \ar \ (\prop, \text{sure})\text{-dec}$; both are possible iff $\exists \ar \ (\prop, \text{possible})\text{-dec}$ and $\exists \ar \ (¬\prop, \text{possible})\text{-dec}$; and undecided is when neither of the other three cases hold.
+To deal easily with $i$’s deliberated judgment, we define $\iPhi \subseteq \Phi$ to contain the propositions in $i$’s deliberated judgment, as follows. $(\prop, \text{sure}) \in \iPhi ⇔ \exists \ar \ (\prop, \text{sure}\text{-dec}$; $(\prop, \text{possible}) \in \iPhi ⇔  \exists \ar \ (\prop, \text{possible}\text{-dec} ∧ (\exists \ar \ (\prop, \text{sure}\text{-dec} ∨ \exists \ar \ (¬\prop, \text{possible}\text{-dec})$. NB footnotes (and all the rest) should be updated.
 \footnote{Equivalently: $\iPhi = \bigcup_{\ar \in \allargs} \bigcap_{\ar' \in \allargs} \ileadstost(\ar', \ar)$.}
 \footnote{$\phi \in \iPhi ⇔ \exists \ar \suchthat \allargs × \{\ar\} \ileadstost \phi$.}
 \footnote{\label{ft:notposs}$\prop \in \iposs ⇔ \exists \ar \ \proppossdec$ and $\prop \notin \iposs ⇔ \forall \ar, \exists \ar' \suchthat (\ar', \ar) \ileadstose ¬\prop$.}
@@ -101,22 +113,42 @@ $\prop$ is provably possible, $\prop \in \ipposs$, iff $\prop \in \iposs ∧ ¬\
 \end{itemize}
 }
 
+\section{Theories proposing decisive argument}
+In most situations, there are too many arguments to exhaustively test whether any $\ar$ is a decisive argument for any $\phi$. Furthermore, it is impossible to confirm definitely that $(\ar, \ar') \ileadstost \phi$, whenever $(\ar, \ar') \ileadstost \phi$. We rather propose to introduce theories, and expose them to falsification.
+
+A theory $T$ proposing decisive arguments describes a set $D_T$ of decision situations to which it applies, and proposes, for any situation $d = (\Phi, \allargs, \ileadstost) \in D_T$, a subset $\Phi_{d, T} \subseteq \Phi$ and a mapping $f_{d, T}: \Phi_{d, T} → \allargs$. The theory claims that it knows the deliberated judgment of $i$ (the individual described by $\ileadstost$ in $d$) about the propositions in $\Phi_{d, T}$, and claims that $f_{d, T}(\phi)$ is a decisive argument for $\phi$.
+
+A falsification instance of $T$ is a triplet $(d, \ar', \phi) \in D_T × \allargs × \Phi_{d, T}$ such that $(f_{d, T}(\phi), \ar') \ileadstoe ¬\phi$.
+A theory $T$ is said to be falsified iff such a triplet is found. 
+
+Note that if $(\prop, \text{sure}) \in \Phi_{d, T}$, then including $(\prop, \text{possible})$ in $\Phi_{d, T}$ does not augment the set of falsification instances, thus we suppose $(\prop, \text{sure}) \in \Phi_{d, T} ⇒ (\prop, \text{possible}) \in \Phi_{d, T}$ in what follows.
+
+As is usual in science, falsification procedures should not be considered as ways of definitely validating a theory, but rather as ways of confronting theories.
+We say that two theories $T, T'$ disagree on $\phi$ (or equivalently, on $¬\phi$) iff $\phi \in \Phi_{d, T}$ and $¬\phi \in \Phi_{d, T'}$ in some situation $d \in D_T ∪ D_{T'}$. We say that $T$ and $T'$ disagree iff they disagree on some $d \in D_T ∪ D_{T'}$ and $\phi \in \Phi$.
+To confront a theory $T$ to a disagreeing theory $T'$, suffice to test, for any $\phi$ such that $\phi \in \Phi_T, ¬\phi \in \Phi_{T'}$, whether $(f_T(\phi), f_{T'}(¬\phi)) \ileadstoe \phi$.
+Observe that such a test necessarily falsifies one of the theories. Observe also that this applies to a single theory $T$, that disagrees with itself, if $\Phi_{d, T}$ contains both $\phi$ and $¬\phi$ for some $d$ and some $\phi$.
+
+The following proposition shows that this notion of falsification is sufficient to test the claims of the theory.
+\begin{proposition}
+	A theory $T$ proposing decisive arguments has no falsification instances iff $\forall d \in D_T, \phi \in \Phi_{d, T}: f_{d, T}(\phi)$ is $\phidec$. Furthermore, if a theory $T$ proposing decisive arguments has no falsification instances, then $\Phi_{d, T} \subseteq \iPhi$, $\forall d \in D_T$.
+\end{proposition}
+
 \section{Models}
 A model is a triple $(\mbeats, \mleadsto, +)$ defined as follows and satisfying the following constraints.
 
 $\mbeats$ a binary relation over $\allargs$. $\mleadsto \subseteq \allargs × \alltopic$. Define $\clargs \subseteq \allargs$ as the set of arguments used in $\mbeats ∪ \mleadsto$. Let $+$ be defined over arguments used in the model: $\ar_3 + \ar_1 = \ar'$ for some $\ar' \in \clargs$, for any $\ar_3, \ar_1 \in \clargs$. 
 
 Requirements. The maximum length of a path in $\mbeats$ is finite (which implies that $\mbeats$ is acyclic).
-$\ar_3 \mbeats \ar_2 \mbeats \ar_1 ⇒ \ar_2 \mbeats \ar_3 + \ar_1$.\footnote{Necessary for definition of $\ar_3 \wibeatse \ar_2$.}
+$\ar_3 \mbeats \ar_2 \mbeats \ar_1 ⇒ \ar_2 \mbeats \ar_3 + \ar_1$.\footnote{Necessary for definition of $\ar_3 \wibeatse[\phi] \ar_2$. TODO remove this condition, define $\wibeatse[\phi]$ more largely and never valid when not in $\mbeats$.}
 
 Notation. Let $\mleadstoinv(\alltopic) \subseteq \clargs$ denote the subset of arguments supporting propositions. 
 $\mbeats(\args)$: arguments that $\args$ attacks, $\ar_1 \in \mbeats(\args) ⇔ \exists \ar_2 \in \args \suchthat \ar_2 \mbeats \ar_1$; $\mbeatsinv(\ar)$: arguments attacking $\ar$, $\ar_2 \in \mbeatsinv(\ar) ⇔ \ar_2 \mbeats \ar$.  We write $\ar \mleadsto (\prop, \text{possible})$ for $\ar \mleadsto \prop$ and $\ar \mleadsto (\prop, \text{sure})$ for $\ar \mleadsto \prop ∧ (¬\prop \notin \mleadsto(\allargs))$.
 
-Given a decision situation, we define the relations $\wibeatse[\phi], \nwibeatse[¬\phi] \subseteq \mbeats$ in order to obtain the following result.
+Given a decision situation, we define the relations $\wibeatse[\phi], \nwibeatse[\phi] \subseteq \allargs × \allargs$ in order to obtain the following result, and with $\wibeatse[\phi], \nwibeatse[\phi] \subseteq \mbeats$.
 
 Given $\ar_3 \mbeats \ar_2, \phi \in \Phi$: $\ar_3 \wibeatse[\phi] \ar_2$ iff $[\exists \ar_1 \in \mbeats(\ar_2) \suchthat (\ar_2 \wibeatse[\phi] \ar_1 ∧ \ar_2 \nwibeatse[\phi] \ar_3 + \ar_1)] ∨ [\ar_2 \mleadsto \phi ∧ (\ar_3, \ar_2) \ileadstoe ¬\phi]$.
 
-Given $\ar_3 \mbeats \ar_2, \phi \in \iPhi$: $\ar_3 \nwibeatse[\phi] \ar_2$ iff $[\exists \ar_1 \in \mbeats(\ar_2) \suchthat (\ar_2 \wibeatse[\phi] \ar_1 ∧ \ar_2 \wibeatse[\phi] \ar_3 + \ar_1)] ∨ [\ar_2 \mleadsto \phi ∧ (\ar_3, \ar_2) \ileadstoe \phi]$.
+Given $\ar_3 \mbeats \ar_2, \phi \in \Phi$: $\ar_3 \nwibeatse[\phi] \ar_2$ iff $[\exists \ar_1 \in \mbeats(\ar_2) \suchthat (\ar_2 \wibeatse[\phi] \ar_1 ∧ \ar_2 \wibeatse[\phi] \ar_3 + \ar_1)] ∨ [\ar_2 \mleadsto \phi ∧ (\ar_3, \ar_2) \ileadstoe \phi]$.
 
 This is done with the following construction.
 Given a model. 
@@ -128,14 +160,6 @@ Given a model.
 	\item Define $\wibeatse[\phi]_{(k+1)} \subseteq \mbeats$, $k ≥ 0$, as $\ar_3 \wibeatse[\phi]_{(k+1)} \ar_2$ iff $\ar_3 \mbeats \ar_2$, $d(\ar_3) = k+1$, and: $[\exists \ar_1 \in \mbeats(\ar_2) \suchthat (\ar_2 \wibeatse[\phi]_{(d(\ar_2))} \ar_1 ∧ \ar_2 \nwibeatse[\phi]_{(d(\ar_2))} \ar_3 + \ar_1)] ∨ [\ar_2 \mleadsto \phi ∧ (\ar_3, \ar_2) \ileadstoe ¬\phi]$. Proceed similarly for $\nwibeatse[\phi]_{(k+1)}$.
 	\item Define $\wibeatse[\phi] = \bigcup_{k ≥ 0} \wibeatse[\phi]_{(k)}$, and similarly for $\nwibeatse[\phi]$.
 \end{itemize}
-
-{Check: Given $\ar_4 \mbeats \ar_3, \ar_3 \notin \mleadstoinv(\alltopic)$, with $\ar_2 \in \mbeats(\ar_3)$ ⇒ ($\ar_2$ and $\ar_4 + \ar_2$ $\mbeats$-attack only root nodes and do not support any proposition): $\ar_4 \wibeatse[\phi] \ar_3$ iff
-\begin{itemize}
-	\item $\exists \ar_2 \in \mbeats(\ar_3) \suchthat [(\ar_3 \wibeatse[\phi] \ar_2) ∧ (\ar_3 \nwibeatse[\phi] \ar_4 + \ar_2)]$ iff 
-	\item $\exists \ar_2 \in \mbeats(\ar_3) \suchthat [(\exists \ar_1 \in \mbeats(\ar_2) \suchthat \ar_2 \wibeatse[\phi] \ar_1 ∧ \ar_2 \nwibeatse[\phi] \ar_3 + \ar_1) ∧ (\exists \ar_1 \in \mbeats(\ar_4 + \ar_2) \suchthat \ar_4 + \ar_2 \wibeatse[\phi] \ar_1 ∧ \ar_4 + \ar_2 \wibeatse[\phi] \ar_3 + \ar_1)]$ iff 
-	\item $\exists \ar_2 \in \mbeats(\ar_3) \suchthat [(\exists \ar_1 \in \mbeats(\ar_2) \suchthat \ar_1 \ileadsto t ∧ (\ar_2, \ar_1) \ileadstose ¬\phi ∧ \ar_3 + \ar_1 \ileadsto \phi ∧ (\ar_3 + \ar_1, \ar_2) \ileadstope \phi ∧ (\exists \ar_1 \in \mbeats(\ar_4 + \ar_2) \suchthat \ar_1 \mleadsto \phi ∧ (\ar_4 + \ar_2, \ar_1) \ileadstose ¬\phi ∧ \ar_3 + \ar_1 \ileadsto \phi ∧ (\ar_4 + \ar_2, \ar_3 + \ar_1) \ileadstose ¬\phi)]$.
-\end{itemize}
-}
 
 Given $\ar_3 \in \clargs, \ar_2 \in \clargs$, with $\exists \ar_1 \in \mbeats(\ar_2) \suchthat \ar_2 \wibeatse[\phi] \ar_1$, we have: $\ar_3 \wibeatse[\phi] \ar_2 ∨ \ar_3 \nwibeatse[\phi] \ar_2$.
 
@@ -172,7 +196,7 @@ Thus, if the attackers of $\ar$ are attacked by decisive arguments, then $j$ def
 
 Define $R^\phi$, the reinstates relation, as follows: $(\ar_3 + \ar_1) R^\phi \ar_1$ iff $\ar_3 \wibeatse[\phi] \ar_2 \wibeatse[\phi] \ar_1$ (for some $\ar_2, \phi$), $\ar_3 \in \argsdec^\phi$. Define $\gdargs^\phi$ as the transitive closure of $\mleadstoinv(\Phi)$ under $R^\phi$. Given $\phi, \ar \in \gdargs^\phi, \ar' \in \allargs$, define $\ar' \ibeatse[\phi] \ar ⇔ (\ar', \ar) \ileadstoe ¬\phi$.
 \begin{definition}[Covering]
-	$\forall \phi, \ar \in \gdargs^\phi, \ar' \in \allargs: \ar' \ibeatse[\phi] \ar ⇒ \ar' \mbeats \ar$. 
+	$\forall \phi, \ar \in \gdargs^\phi, \ar' \in \allargs: \ar' \ibeatse[\phi] \ar ⇒ \ar' \wibeatse[\phi] \ar$. 
 \end{definition}
 
 \begin{definition}[Observable validity]
