@@ -90,20 +90,11 @@ The relation $\ileadstoe$ is pronounced “sometimes leads to”.
 A proposition $\phi$ is about $\prop$ iff $\phi \in \{\prop, ¬\prop\} × \{\text{possible}, \text{sure}\}$. 
 \footnote{\label{ft:sttoe}From (A1) and (A2) we can write, using this notation, $(\ar, \ar') \ileadstost \phi ⇒ (\ar, \ar') \ileadstoe \phi$.}
 
-Define $f_\prop$ from any unordered pair of arguments $(\ar, \ar')$ into $\powerset{\prop\text{-sure}, ¬\prop\text{-sure}, b)}$ (where $b$ means both possible). We , thus allowing $i$ to be unstable (because she has learnt new things in between two questioning, or just because of time passing, or for any known or unknown reason). We assume $b$ is observable as well.
-
-When $\prop$ is fixed, or if it can be deduced from the output set, we write $(\ar, \ar') \ileadsto O$ or $\ileadsto(\ar, \ar') = O$ instead of $f_\prop(\ar, \ar') = O$.
-
-We define $(\ar, \ar') \ileadstopst \prop ⇔ \ileadsto(\ar, \ar') \subseteq \{\propsure, b\}$, $(\ar, \ar') \ileadstosst ¬\prop ⇔ \ileadsto(\ar, \ar') = \{¬\propsure\}$, $(\ar, \ar') \ileadstose ¬\prop ⇔ \ileadsto(\ar, \ar') \supseteq \{¬\propsure\} ⇔ ¬((\ar, \ar') \ileadstopst \prop)$, and $(\ar, \ar') \ileadstope \prop  ⇔ \ileadsto(\ar, \ar') ≠ \{¬\propsure\} ⇔ ¬((\ar, \ar') \ileadstosst ¬\prop)$.
-
 Actually we will use only the $\ileadstopst$ and $\ileadstosst$ ternary relations from now on (and their negations $\ileadstose$ and $\ileadstope$), together with the property (A1) that $\ileadstopst \subseteq \ileadstope$
 \footnote{Equivalently: $\ileadstosst \subseteq \ileadstose$, $(\ar, \ar') \ileadstose ¬\prop ∨ (\ar, \ar') \ileadstope \prop$, $\ileadstopst \prop ⇒ ¬ (\ileadstosst ¬\prop)$, $\ileadstosst ¬\prop ⇒ ¬ (\ileadstopst \prop)$.} 
 and (A2) that $\ileadstosst \subseteq \ileadstopst$
 \footnote{Equivalently: $\ileadstose \subseteq \ileadstope$.}, 
 the pair $(\ar, \ar')$ being understood as unordered (thus $(\ar, \ar') \ileadstosst \prop ⇔ (\ar', \ar) \ileadstosst \prop$, and similarly for $\ileadstopst$).
-
-We also define $\Phi = \alltopic × \set{\text{possible}, \text{sure}}$, and $\forall \phi = (\prop, \text{possible}) \in \Phi: (\ar, \ar') \ileadstost \phi ⇔ (\ar, \ar') \ileadstopst \prop$ and $\forall \phi = (\prop, \text{sure}) \in \Phi: (\ar, \ar') \ileadstost \phi ⇔ (\ar, \ar') \ileadstosst \prop$. We define the negation operator $¬$ over $\Phi$ as: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. It follows that $¬¬\phi = \phi$. We write $(\ar, \ar') \nileadstost \phi$ for $¬[(\ar, \ar') \ileadstost \phi]$ and define $(\ar, \ar') \ileadstoe \phi$ as equivalent to $(\ar, \ar') \nileadstost ¬\phi$. We say $\phi$ is about $\prop$ iff $\phi \in \{\prop, ¬\prop\} × \{\text{possible}, \text{sure}\}$.
-\footnote{\label{ft:sttoe}From (A1) and (A2) we can write, using this notation, $(\ar, \ar') \ileadstost \phi ⇒ (\ar, \ar') \ileadstoe \phi$.}
 
 When “both” is not observable, the same definitions hold, with $f_t(\ar, \ar') ≠ b$. It follows that $\ileadstopst = \ileadstosst$. We say in this case that $\ileadstost$ does not distinguish sure from possible. Thus, elements $\phi \in \Phi$ may be considered as simply equal to $\prop$ or $¬\prop$, as $(\prop, \text{sure})$ is treated exactly as $(\prop, \text{possible})$.
 
