@@ -90,13 +90,13 @@ The relation $\ileadstoe$ is pronounced “sometimes leads to”.
 A proposition $\phi$ is about $\prop$ iff $\phi \in \{\prop, ¬\prop\} × \{\text{possible}, \text{sure}\}$. 
 \footnote{\label{ft:sttoe}From (A1) and (A2) we can write, using this notation, $(\ar, \ar') \ileadstost \phi ⇒ (\ar, \ar') \ileadstoe \phi$.}
 
-Actually we will use only the $\ileadstopst$ and $\ileadstosst$ ternary relations from now on (and their negations $\ileadstose$ and $\ileadstope$), together with the property (A1) that $\ileadstopst \subseteq \ileadstope$
+As defined, $\ileadstost$ has the following properties. (A1) $\ileadstopst \subseteq \ileadstope$
 \footnote{Equivalently: $\ileadstosst \subseteq \ileadstose$, $(\ar, \ar') \ileadstose ¬\prop ∨ (\ar, \ar') \ileadstope \prop$, $\ileadstopst \prop ⇒ ¬ (\ileadstosst ¬\prop)$, $\ileadstosst ¬\prop ⇒ ¬ (\ileadstopst \prop)$.} 
 and (A2) that $\ileadstosst \subseteq \ileadstopst$
 \footnote{Equivalently: $\ileadstose \subseteq \ileadstope$.}, 
-the pair $(\ar, \ar')$ being understood as unordered (thus $(\ar, \ar') \ileadstosst \prop ⇔ (\ar', \ar) \ileadstosst \prop$, and similarly for $\ileadstopst$).
+and the pair $(\ar, \ar')$ is to be understood as unordered (thus $(\ar, \ar') \ileadstosst \prop ⇔ (\ar', \ar) \ileadstosst \prop$).
 
-When “both” is not observable, the same definitions hold, with $f_t(\ar, \ar') ≠ b$. It follows that $\ileadstopst = \ileadstosst$. We say in this case that $\ileadstost$ does not distinguish sure from possible. Thus, elements $\phi \in \Phi$ may be considered as simply equal to $\prop$ or $¬\prop$, as $(\prop, \text{sure})$ is treated exactly as $(\prop, \text{possible})$.
+Note that these properties follow from the way the querying protocol is presented above, but actually these are the only properties required, thus any querying protocol that satisfies those qualify. When “both” is not observable, the same definitions hold, with $f_t(\ar, \ar') ≠ b$. It follows that $\ileadstopst = \ileadstosst$. We say in this case that $\ileadstost$ does not distinguish sure from possible. Thus, elements $\phi \in \Phi$ may be considered as simply equal to $\prop$ or $¬\prop$, as $(\prop, \text{sure})$ is treated exactly as $(\prop, \text{possible})$.
 
 \begin{definition}[Decision situation]
 	A decision situation is a topic $\Phi$, a set of arguments $\allargs$, an arbiter relation $\ileadstost \subseteq (\allargs × \allargs) × \Phi$.
