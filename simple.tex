@@ -1,13 +1,23 @@
 \RequirePackage[l2tabu, orthodox]{nag}
-\documentclass[version=last, pagesize, twoside=off, bibliography=totoc, DIV=calc, fontsize=14pt, a4paper, french, english]{scrartcl}
+\documentclass[version=last, pagesize, twoside=off, bibliography=totoc, DIV=calc, fontsize=12pt, a4paper, french, english]{scrartcl}
 \input{preamble/packages}
 \input{preamble/math_basics}
 \input{preamble/math_mine}
 \input{preamble/redac}
-\input{preamble/draw}
-\input{preamble/acronyms}
+%\input{preamble/draw}
+%\input{preamble/acronyms}
 \addtokomafont{labelinglabel}{\sffamily\bfseries}
 \renewcommand{\phi}{\varphi}
+
+%I find these settings useful in draft mode. Should be removed for final versions.
+	%Which line breaks are chosen: accept worse lines, therefore reducing risk of overfull lines. Default = 200.
+		\tolerance=2000
+	%Accept overfull hbox up to...
+		\hfuzz=2cm
+	%Reduces verbosity about the bad line breaks.
+		\hbadness 5000
+	%Reduces verbosity about the underful vboxes.
+		\vbadness=1300
 
 \begin{document}
 %\title{Theories of deliberated preference}
@@ -75,7 +85,7 @@ Importantly, the notion of deliberated preferences does not require to constrain
 The set $\allargs$ may be infinite or very large: as we will see, thanks to our falsificationist approach, there is no need to be able to explore it entirely. The set of arguments contains at least the empty argument, denoted by $\zar$.
 
 \begin{example}
-	Consider a decision problem where a set of alternatives $\allalts$ is given, containing food products among which $i$ would like to form a deliberated preference (taking into account the effects of food on health, price, pleasure, morality issues related to the production process, and so on). The topic could be defined as $\alltopic$ = $\Set{\prop_\alt, ¬\prop_\alt, \forall \alt \in \allalts}$, where $\prop_\alt$ is the proposition according to which $\alt$ is one of the best alternatives among $\allalts$ (there is no strictly better alternatives among $\allalts$, from $i$’s point of view), and $¬\prop_\alt$ is the proposition according to which $\alt$ is not one of the best alternatives among $\allalts$ (some $\alt' \in \allalts$ is a strictly better alternative, from $i$’s point of view). 
+	Consider a decision problem where a set of alternatives $\allalts$ is given, containing food products among which $i$ would like to form a deliberated preference (taking into account the effects of food on health, price, pleasure, morality issues related to the production process, and so on). The topic could be defined as $\alltopic$ = $\set{\prop_\alt, ¬\prop_\alt, \forall \alt \in \allalts}$, where $\prop_\alt$ is the proposition according to which $\alt$ is one of the best alternatives among $\allalts$ (there is no strictly better alternatives among $\allalts$, from $i$’s point of view), and $¬\prop_\alt$ is the proposition according to which $\alt$ is not one of the best alternatives among $\allalts$ (some $\alt' \in \allalts$ is a strictly better alternative, from $i$’s point of view). 
 	The set $\allargs$ is defined as the set of all strings, because in this example it is considered acceptable to restrict arguments to those that can take a textual form.
 \end{example}
 
@@ -105,9 +115,9 @@ Observe that (A1) can equivalently be formulated as $\forall \prop \in \alltopic
 As vNM aptly summarize, “It is clear that every measurement – or rather every claim of measurability – must ultimately be based on some immediate sensation, which possibly cannot and certainly need not be analyzed any futher.” The fundamental element here is the reaction of $i$ to arguments, which will serve as the informational basis to define $\ileadstost$. Given a proposition $\prop$ and two arguments $\ar, \ar' \in \allargs$, a query consists in presenting both arguments to $i$ and observing which proposition $i$ considers valid in her current state of mind, thus using both arguments and possibly other arguments she has in mind: is it that $\prop$ holds, that $¬\prop$ holds, or that both are possible? The third possibility allows for the case where no argument appears more decisive than the other one. 
 
 It is also necessary to capture the evolution of the position of $i$ towards arguments over time: a repeated query using a given pair of arguments may yield different answers, for example because the repeated question has been interleaved with another query containing other arguments (which $i$ may still have in mind when answering the second repetition), or for any other known or unknown reason. The important information for us is the \emph{set} of answers that $i$ could give to a query involving two given arguments and a given topic, among the set $\{\prop, ¬\prop, \text{both}\}$. The set designates all possible answers over time and over different order of asking the queries.
-Hence, given $\prop \in \alltopic$, define a relation $\ileadsto^\prop \subseteq (\allargs × \allargs) × \powersetz{\{\prop, ¬\prop, \text{both}\}}$, where $\powersetz{B}$ designates the subsets of $B$ excluding the emptyset, with the semantics that $(\ar, \ar') \ileadsto^\prop C$, with $C \subseteq \Set{\prop, ¬\prop, \text{both}}$, iff $\forall c \in C$, it is observable at least once that $i$, when presented with $(\ar, \ar')$, considers $c$ valid in her current state of mind. The querying protocol is supposedly made so that for any $\prop \in \alltopic$, $\ileadsto^\prop = \ileadsto^{¬\prop}$.
+Hence, given $\prop \in \alltopic$, define a relation $\ileadsto^\prop \subseteq (\allargs × \allargs) × \powersetz{\{\prop, ¬\prop, \text{both}\}}$, where $\powersetz{B}$ designates the subsets of $B$ excluding the emptyset, with the semantics that $(\ar, \ar') \ileadsto^\prop C$, with $C \subseteq \set{\prop, ¬\prop, \text{both}}$, iff $\forall c \in C$, it is observable at least once that $i$, when presented with $(\ar, \ar')$, considers $c$ valid in her current state of mind. The querying protocol is supposedly made so that for any $\prop \in \alltopic$, $\ileadsto^\prop = \ileadsto^{¬\prop}$.
 
-This information is only indirectly observable: for example, if $(\ar, \ar') \ileadsto^\prop \{\prop\}$, a querier will never know more than $(\ar, \ar') \ileadsto^\prop C$ with $\prop \in C \subseteq \Set{\prop, ¬\prop, \text{both}}$. 
+This information is only indirectly observable: for example, if $(\ar, \ar') \ileadsto^\prop \{\prop\}$, a querier will never know more than $(\ar, \ar') \ileadsto^\prop C$ with $\prop \in C \subseteq \set{\prop, ¬\prop, \text{both}}$. 
 Also, it may be only possible to test one ordering of the queries (assuming that $i$ forgets over time might permit to test different orderings, but this assumption might be unrealistic). In some cases, it may even be only possible to test a single query with a given individual.
 This limitation of our observation will not be a problem for the results of this article. Intuitively, this bears on the fact that, first, theories apply to multiple individuals, and second, if a theory claims that $(\ar, \ar') \ileadsto^\prop \{\prop\}$, then either this claim is correct, or it is falsifiable, in the sense that there is a possibility of observing a contradiction to its claim.
 
@@ -124,7 +134,7 @@ One can also use $\zar$ as one or both of the arguments, in which case the proto
 %	Queries are separated by one week at least, which (as supposed in this example) is enough to ensure that no effect of pleasure for variability enter into play. 
 \end{example}
 
-Define $\ileadstost$ from $\ileadsto^\prop$ as follows, for any $\prop \in \alltopic$: $(\ar, \ar') \ileadstost (\prop, \text{possible}) ⇔ (\ar, \ar') \ileadsto^\prop C$ with $C \subseteq \Set{\prop, \text{both}}$; and $(\ar, \ar') \ileadstost (\prop, \text{sure}) ⇔ (\ar, \ar') \ileadsto^\prop \set{\prop}$. 
+Define $\ileadstost$ from $\ileadsto^\prop$ as follows, for any $\prop \in \alltopic$: $(\ar, \ar') \ileadstost (\prop, \text{possible}) ⇔ (\ar, \ar') \ileadsto^\prop C$ with $C \subseteq \set{\prop, \text{both}}$; and $(\ar, \ar') \ileadstost (\prop, \text{sure}) ⇔ (\ar, \ar') \ileadsto^\prop \set{\prop}$. 
 
 Note that (A1) and (A2) hold.
 
@@ -134,7 +144,7 @@ When “both” is not observable, $\ileadstost$ is defined as: $(\ar, \ar') \il
 The following important definition is required in order to define the deliberated preference of $i$. An argument $\ar$ is decisive for $\phi$, in short, $\phi\text{-dec}$ iff $\forall \ar' \in \allargs: (\ar', \ar) \ileadstost \phi$. 
 \footnote{Equivalently: $\ar \ \phidec ⇔ [\ileadstostinv(\phi)](\ar) = \allargs$, and $\exists \ar \ \phidec ⇔ [\ileadstostinv(\phi)]^{-1}(\allargs) ≠ \emptyset$.}
 I also say that $\ar$ is $\propsuredec$, $\proppossdec$, or $¬\proppossdec$, when $\phi=(\prop, \text{sure})$, $\phi=(\prop, \text{possible})$, or $\phi=(¬\prop, \text{possible})$, respectively.
-\footnote{$\propsuredec ⇔ \forall \ar': (\ar', \ar) \ileadstosst \prop ⇔ \forall \ar': ¬[(\ar', \ar) \ileadstope ¬\prop]$, $\proppossdec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstopst \prop$. Note that “both” ≠ “we donno”: in case “both”, we know how to prove that both are reasonable options, in the sense that neither is certain. We have excluded some possibilities (and some other model could disagree with the “both” conclusion).}
+\footnote{$\propsuredec ⇔ \forall \ar': (\ar', \ar) \ileadstosst \prop ⇔ \forall \ar': ¬[(\ar', \ar) \ileadstope ¬\prop]$, $\proppossdec ⇔ \forall \ar': (\ar', \ar) \ileadstopst \prop$. Note that “both” $≠$ “we donno”: in case “both”, we know how to prove that both are reasonable options, in the sense that neither is certain. We have excluded some possibilities (and some other model could disagree with the “both” conclusion).}
 
 \begin{proposition}
 	\label{thm:nocontrdec}
@@ -208,6 +218,7 @@ $T$ resists to such a falsification test if $i$ is convinced. According to \cref
 This example illustrates a difference between this proposal and the classical revealed approach: it could be that $T$ tells the truth even though its claim does not correspond to the revealed preference of some individuals, thus that, given no argument, some individuals would consider $a$ as dominated by another alternative in the set considered. It also illustrates a difference between this proposal and persuasion: the goal of $T$ is not merely to convince $i$ (possibly by using its lack of knowledge of any counter-argument to what $T$ says), but to resist any falsification attempt. Thus, $T$ should be confronted to arguments coming from as varied perspectives as possible, in order to give confidence that it tells the truth.
 
 \bibliography{simple}
+\end{document}
 
 \section{Models}
 A model is a triple $(\mbeats, \mleadsto, +)$ defined as follows and satisfying the following constraints.
@@ -371,7 +382,7 @@ This model is compatible (meaning that it satisfies the general conditions) with
 This situation falsifies the model. $\ar_4 \ibeatse \ar_1$, $\ar_4$ not attacked.
 
 \section{Model certainties}
-Assume we define $\ar_1 \wibeatse[¬\prop, \text{sure}] \ar_2$ ⇔ $\ar_2 \nwibeatse[\prop] \ar_1$. Then, indeed, given $\ar_1 \mleadsto \prop$, $\ar_2 \wibeatse[¬\prop, \text{sure}] \ar_1$ ⇔ $\ar_2 \ibeatse[¬\prop, \text{sure}] \ar_1$. But it gives the wrong conclusion. For $\ar_3 \mbeats \ar_2 \mbeats \ar_1 \mleadsto t: \ar_3 \wibeatse[\prop, \text{sure}] \ar_2$ iff $\ar_2 \nwibeatse[¬\prop] \ar_3$ iff $\exists \ar_1 \in \mbeats(\ar_3) \suchthat \ar_3 \wibeatse[¬\prop] \ar_1 ∧ \ar_3 \wibeatse[¬\prop] \ar_2 + \ar_1$.
+Assume we define $\ar_1 \wibeatse[¬\prop, \text{sure}] \ar_2 ⇔ \ar_2 \nwibeatse[\prop] \ar_1$. Then, indeed, given $\ar_1 \mleadsto \prop$, $\ar_2 \wibeatse[¬\prop, \text{sure}] \ar_1 ⇔ \ar_2 \ibeatse[¬\prop, \text{sure}] \ar_1$. But it gives the wrong conclusion. For $\ar_3 \mbeats \ar_2 \mbeats \ar_1 \mleadsto t: \ar_3 \wibeatse[\prop, \text{sure}] \ar_2$ iff $\ar_2 \nwibeatse[¬\prop] \ar_3$ iff $\exists \ar_1 \in \mbeats(\ar_3) \suchthat \ar_3 \wibeatse[¬\prop] \ar_1 ∧ \ar_3 \wibeatse[¬\prop] \ar_2 + \ar_1$.
 
 Given $\ar_1 \mleadsto \prop$, define $\ar_2 \wibeatse[\prop, \text{sure}] \ar_1$ iff $\ar_2 \ibeatse[\prop, \text{sure}] \ar_1$.
 
