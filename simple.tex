@@ -10,7 +10,8 @@
 \renewcommand{\phi}{\varphi}
 
 \begin{document}
-\title{Theories of deliberated preference}
+%\title{Theories of deliberated preference}
+\title{Testable normative theories}
 \author{Olivier Cailloux}
 \affil{Université Paris-Dauphine, PSL Research University, CNRS, LAMSADE, 75016 PARIS, FRANCE\\
 	\href{mailto:olivier.cailloux@dauphine.fr}{olivier.cailloux@dauphine.fr}
@@ -28,6 +29,8 @@
 \end{abstract}
 
 \section{Motivation}
+TODO The model should be: (m, s) leadsto (t, sure) where m can be for example: after having presented s0, s1, s2, present s3, and tell the individual to wait for one week.
+
 In decision theory and economy in general, preferences are generally considered as “intuitive”, as originating from an “immediate sensation”, following the terms used by \citet{von_neumann_theory_2004} (vNM) \citep{fishburn_retrospective_1989, cailloux_reasons_2017}. Though appropriate when studying the everyday behavior of individuals, this conception is insufficient to study the positions that individuals adopt towards difficult decision problems after careful thinking. In this article I define the concept of deliberated preferences to fill this gap: the deliberated preferences of an individual about a given decision problem represent the position of that individual towards that problem that is stable facing counter-arguments. 
 
 After having defined this concept formally, I define the notion of a theory pretending to capture the deliberated preferences of a set of individuals about some topic, I propose an empirical procedure to attempt to falsify such a theory, and I show that such a theory tells the truth whenever it is not falsifiable by that procedure.
@@ -44,6 +47,21 @@ Second, the concept of nudge \citep{thaler_nudge:_2009} has been tremendously po
 Third, analytical philosophy has presented very elaborated and diverging views about the concept of justice. \citet{rawls_theory_1999}, in particular, suggests that the appropriate conception of justice is one that individuals would arrive at in a state of reflexive equilibrium (a concept borrowed from \citet{goodman_fact_1983}). \citeauthor{rawls_theory_1999} and \citeauthor{goodman_fact_1983} insist that individuals must not only accept principles, when thinking about difficult notions such as justice, but also think about consequences of those principles: sometimes, principles that appear intuitively acceptable yield consequences that do not appear intuitively acceptable, in which case something must give. The state of reflexive equilibrium is a state where accepted principles yield acceptable consequences only. The concept of deliberated preferences may be considered as defining that state of reflexive equilibrium, or to be a path towards such a goal (an important difference is that it does not explicitly model the difference between principles and consequences). One way to go beyond philosophers disagreement about the right conception of justice, then, is to ask non-philosophers about what they think is right and so use these laymen as arbiters of the competition between views of justice. Similar empirical studies have started to be conducted recently \citep{gaertner_empirical_2012}. But those studies are conducted by asking individuals only which distribution of goods they consider intuitively right in various circumstances. Thus, they do not try to capture their well-considered judgments for justice, where different reasonings in favor of different conceptions of justice would be presented to the individuals together with the distributions. Hence, this does not test appropriately whether laymen would accept, after thinking carefully, the sophisticated conceptions of justice presented by a given philosopher or economist. A more appropriate way of testing the convincing power of elaborated claims about justice may be considered to require, here again, to present his conception of justice to the individual and submit it to counter-arguments (possibly coming from other sophisticated thinkers).
 
 The first and third contexts of usage come together when it is desired to test whether an individual accepts some axiom as representing an acceptable way of reasoning for him. One simple way is to explain axioms individually and ask the individual whether they appear acceptable. But this fails to make sure the individual understands and accepts the consequences of the union of the axioms accepted by such a procedure \citep{meinard_justification_2018}. (Note that probably nobody is able to mentally deduce all consequences of a union of non trivial axioms.) As an example, in a context of trying to determine the voting rule that best represents someone’s notion of justice, the tested individual could accept the axioms of universal domain, independence of irrelevant alternatives, and pareto dominance, without realizing that he has just accepted dictatorship \citep{arrow_social_1963}.
+
+\section{General normative theories}
+A general normative theory is a tuple $(\alltopic, \allargs, I, (\ileadsto, i \in I), \gargs, \gleadsto)$.
+
+TODO: theorist proposes theory $\gamma$. Contains set $\allargs$. The theory must exhibit a limited number of candidates $s_c$ when $s'$ sometimes trumps $s$ and $s'$ sometimes does not trump $s$ (valid for all $i$): that’s falsifiable, and then permits validation of $\eta$. Also, $\gamma$ must exhibit a replacer $s$ of $s_3, s_1$ against $s_2$, or a set of candidate replacers. The replacer (or candidates) may depend on $s_3$ and $s_1$, but not on $i$. This is falsifiable again. And $\gamma$ must fix bounds of width and breadth. And $\gamma$ must indicate how an $s \notin \args_\gamma$ is unnecessary, by exhibiting resistant [not trumped by any decisive argument in $\args_\gamma$] candidates from $\args_\gamma$ such that at least one trump $s$ or replace $s$.
+
+A counter-theory may propose $\args^\text{ext}$ with some arguments not in $\allargs$ (or, more generally, may propose to enlarge the conditions for considering that $s', s \ileadsto t$: if DM has eaten a pancake or has eaten no pancake, must be stable). Then they either can exhibit a plausible argument in $\args^\text{ext}$ not in $\allargs$ (and indeed $\allargs$ is rejected), or not, and then both theories are equivalent, better keep the simpler one.
+
+Thus, $\gamma$ takes positions only on those things true for all $i$.
+
+Then a theorist can propose a mapping $i$ to $\eta_i$. If $\gamma$ is valid, then it is easy to validate $\eta_i$.
+
+More generally, I need a set of possible situations, and an operation defined by the theory $\gamma$, that brings a situation to another situation, that is normatively better for taking a decision (or innocuous?). The operation is: adding an argument. This operation corresponds to forming the pair $(s', s)$: from a situation $s'$, we add the argument $s$ and bring $i$ in the situation $(s', s)$ where she has heard two arguments.
+
+Then the normative criterion is: $t$ in DJ of $i$ when $\exists s \suchthat \forall s': (s', s) \ileadstost^i t$ (the theory provides a part of this guarantee under falsification, claiming for all $i$, the model makes the rest under validation for this $i$).
 
 \section{Decision situation}
 The object of study in a given decision situation is the deliberated preferences of a given individual $i$. 
@@ -116,7 +134,7 @@ When “both” is not observable, $\ileadstost$ is defined as: $(\ar, \ar') \il
 The following important definition is required in order to define the deliberated preference of $i$. An argument $\ar$ is decisive for $\phi$, in short, $\phi\text{-dec}$ iff $\forall \ar' \in \allargs: (\ar', \ar) \ileadstost \phi$. 
 \footnote{Equivalently: $\ar \ \phidec ⇔ [\ileadstostinv(\phi)](\ar) = \allargs$, and $\exists \ar \ \phidec ⇔ [\ileadstostinv(\phi)]^{-1}(\allargs) ≠ \emptyset$.}
 I also say that $\ar$ is $\propsuredec$, $\proppossdec$, or $¬\proppossdec$, when $\phi=(\prop, \text{sure})$, $\phi=(\prop, \text{possible})$, or $\phi=(¬\prop, \text{possible})$, respectively.
-\footnote{$\propsuredec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstosst \prop$, $\proppossdec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstopst \prop$.}
+\footnote{$\propsuredec ⇔ \forall \ar': (\ar', \ar) \ileadstosst \prop ⇔ \forall \ar': ¬[(\ar', \ar) \ileadstope ¬\prop]$, $\proppossdec$ ⇔ $\forall \ar': (\ar', \ar) \ileadstopst \prop$. Note that “both” ≠ “we donno”: in case “both”, we know how to prove that both are reasonable options, in the sense that neither is certain. We have excluded some possibilities (and some other model could disagree with the “both” conclusion).}
 
 \begin{proposition}
 	\label{thm:nocontrdec}
@@ -139,6 +157,9 @@ The deliberated preference of $i$ maps each pair $(\prop, ¬\prop)$ to one among
 \footnote{Something like Axiom JU should be sufficient for CC. We say $(\ar, \ar')$ is $\prop$-unstable iff $(\ar, \ar') \ileadstose \prop ∧ (\ar, \ar') \ileadstose ¬\prop$. JU: If $(\ar, \ar')$ is $\prop$-unstable, then $\exists \ar_2 \in \allargs$ such that for $(\ar_1, \ar_0) = (\ar, \ar')$ or for $(\ar_1, \ar_0) = (\ar', \ar)$, $\ar_2$ attacks decisively $\ar_1$, where we mean by this that $\ar_2$ combined with $\ar_0$ is decisive. Means that if not CC, then not JU. Hence, infinite discussion happens, or irreducible unstability. Or, the memory buffer of $i$ is too short to hold adequate reinstated arguments, in which case our approach based on decisive arguments is not adequate.}
 
 It should be clear that the validity of the conclusions obtained from any theory of deliberated preference rests on the acceptance of this just given normative definition, namely, it is to be considered meaningful that the deliberated preference of $i$ be defined in such a way, given the query protocol used for defining $\ileadstost$ in a particular application.
+
+\commentOC{TODO}
+We want to leave “undecided” as an option: the model takes no position, does not know about $(t, ¬t)$. But we want to exclude $t$ possible and $¬t$ unknown. Thus $t$ possible should imply $¬t$ possible or $t$ sure. If this holds, we can simplify the status of the propositions: only determine whether $t$ is possible for all $t \in \alltopic$, and from there, we know everything. This result can be obtained with: assume $s$ decisive for $t$ poss and no $s$ is decisive for $¬t$ poss, then, for some $(s_1, s)$ leading to $t$ sure and $(s_2, s)$ leading to $\set{t, ¬t}$, it is possible to form $(s_2, s_1, s)$, and if this leads to $t$ sure, it should imply that $s + s_1$ is decisive for $t$ sure; and if this leads to $¬t$ possible, then this should imply that $s+s_2$ is decisive for $¬t$ possible.
 
 This information is summarized by defining a subset $\iPhi \subseteq \Phi$ of propositions that represent $i$’s deliberated preference, defined as follows.
 \begin{description}
@@ -187,7 +208,6 @@ $T$ resists to such a falsification test if $i$ is convinced. According to \cref
 This example illustrates a difference between this proposal and the classical revealed approach: it could be that $T$ tells the truth even though its claim does not correspond to the revealed preference of some individuals, thus that, given no argument, some individuals would consider $a$ as dominated by another alternative in the set considered. It also illustrates a difference between this proposal and persuasion: the goal of $T$ is not merely to convince $i$ (possibly by using its lack of knowledge of any counter-argument to what $T$ says), but to resist any falsification attempt. Thus, $T$ should be confronted to arguments coming from as varied perspectives as possible, in order to give confidence that it tells the truth.
 
 \bibliography{simple}
-\end{document}
 
 \section{Models}
 A model is a triple $(\mbeats, \mleadsto, +)$ defined as follows and satisfying the following constraints.
