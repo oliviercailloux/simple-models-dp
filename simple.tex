@@ -39,8 +39,6 @@
 \end{abstract}
 
 \section{Motivation}
-TODO The model should be: (m, s) leadsto (t, sure) where m can be for example: after having presented s0, s1, s2, present s3, and tell the individual to wait for one week.
-
 In decision theory and economy in general, preferences are generally considered as “intuitive”, as originating from an “immediate sensation”, following the terms used by \citet{von_neumann_theory_2004} (vNM) \citep{fishburn_retrospective_1989, cailloux_reasons_2017}. Though appropriate when studying the everyday behavior of individuals, this conception is insufficient to study the positions that individuals adopt towards difficult decision problems after careful thinking. In this article I define the concept of deliberated preferences to fill this gap: the deliberated preferences of an individual about a given decision problem represent the position of that individual towards that problem that is stable facing counter-arguments. 
 
 After having defined this concept formally, I define the notion of a theory pretending to capture the deliberated preferences of a set of individuals about some topic, I propose an empirical procedure to attempt to falsify such a theory, and I show that such a theory tells the truth whenever it is not falsifiable by that procedure.
@@ -58,8 +56,117 @@ Third, analytical philosophy has presented very elaborated and diverging views a
 
 The first and third contexts of usage come together when it is desired to test whether an individual accepts some axiom as representing an acceptable way of reasoning for him. One simple way is to explain axioms individually and ask the individual whether they appear acceptable. But this fails to make sure the individual understands and accepts the consequences of the union of the axioms accepted by such a procedure \citep{meinard_justification_2018}. (Note that probably nobody is able to mentally deduce all consequences of a union of non trivial axioms.) As an example, in a context of trying to determine the voting rule that best represents someone’s notion of justice, the tested individual could accept the axioms of universal domain, independence of irrelevant alternatives, and pareto dominance, without realizing that he has just accepted dictatorship \citep{arrow_social_1963}.
 
-\section{General normative theories}
-A general normative theory is a tuple $(\alltopic, \allargs, I, (\ileadsto, i \in I), \gargs, \gleadsto)$.
+\section{Normative theories}
+Sketch: define normative models, using questions, and making claims about DJ. A problem is that models specific to a narrow situation will not offer enough means for falsification. Then define a way of saying “we never need this argument”: either the model can prove phi without s0, or if it can’t, then phi does not hold, because I can play s1 against it. BUT what about a model for only one situation? Then we need to accept that $q$ can’t be falsified, and accept that it defines the individual (or just assume without proof that it does not).
+
+A normative theory is a tuple $(\allprops, ¬, \allargs, I, (\ileadstost[i])_{i \in I}, q, (\gleadsto[q(i)])_{q(i) \in q(I)}, \gbeats)$,
+with $\gargs \subseteq \allargs$, ${\ileadstost[i]} \subseteq (\allargs × \allargs) × \Phi$, ${\gleadsto[q(i)]} \subseteq \allargs × \Phi$, ${\gbeats} \subseteq \allargs × \allargs$,
+where $\Phi = \allprops × \set{\text{possible}, \text{sure}}$. 
+
+To lighten notations, $\ileadstost[i]$ will generally be denoted by $\ileadstost$, and $\gleadsto[q(i)]$ by $\gleadsto$, with the understanding that these symbols result of applying functions of, respectively, $i$ and $q(i)$. When the symbol $i$ is used in a formula without being bound, the binding $\forall i \in I$ is implied.
+
+As usual, $(\ar', \ar) \nileadstost \phi$ means $¬[(\ar', \ar) \ileadstost \phi]$.
+
+The symbol $¬$ is a negation operator on $\allprops$, such that $\forall \prop \in \allprops: ¬¬\prop = \prop$ (this article also uses this symbol to negate classical logic propositions and as a negation operator on $\Phi$, which should create no confusion). Define $¬$ on $\Phi$ as follows, $\forall \prop \in \allprops$: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. Observe that $¬¬\phi = \phi$.
+
+Abusing notation, given $\ar \in \allargs$ and $\phi \in \Phi$, I write $\ar \ileadstost \phi$ to mean $[\forall \ar' \in \allargs: (\ar', \ar) \ileadstost \phi]$.
+
+The set $\iphi \subseteq \Phi$ is the set of interest. 
+When $(\prop, \text{possible}) \in \iphi$, $\prop$ is considered as a possibility in the deliberated judgment of $i$ (it is not rejected), and when $(\prop, \text{sure}) \in \iPhi$, $\prop$ is considered as a certainty in the deliberated judgment of $i$. TODO we should have $(\prop, \text{sure}) \in \iPhi ⇒ (¬\prop, \text{possible}) \notin \iPhi$.
+Part of the content of $\Phi$ is known as a result of a correct normative and empirical analysis. 
+
+To ease intuition, let $(\ar', \ar) \ileadstoe \phi$ be equivalent to $(\ar', \ar) \nileadstost ¬\phi$, $\forall \ar', \ar, \phi$.
+
+Given $\phi \in {\gleadsto}(\allargs)$, an argument $\ar \in \allargs$ is \emph{in favor of $\phi$}, $\ar \in \gargs[\phi]$, iff $\ar \in [\gbeatsinv]^{2k}({\gleadstoinv}(\phi))$ for some $k \in \N$, where $R^\alpha$ denotes $\alpha$ times the composition of the relation $R$ with itself. (Throughout the article, $\N$ includes zero.) Define $\gargs = \cup_{\phi \in {\gleadstoinv}(\allargs)} \gargs[\phi]$. 
+
+Define ${\ibeatse} \subseteq \allargs × \gargs$ such that $\ar' \ibeatse \ar$ iff $\exists \phi \suchthat \ar \in \gargs[\phi] \text{ and } (\ar', \ar) \ileadstoe ¬\phi$. 
+Given $\phi \in {\gleadsto}(\allargs)$, define ${\ibeatse[\phi]} \subseteq \allargs × \gargs[\phi]$ such that $\ar' \ibeatse[\phi] \ar$ iff $(\ar', \ar) \ileadstoe ¬\phi$. 
+Define ${\ibeatsst} \subseteq \gargs × \allargs$ such that $\ar' \ibeatsst \ar$ iff $\forall \phi \suchthat \ar' \in \gargs[\phi]: (\ar', \ar) \ileadstost \phi$.
+\footnote{When both $\ar_1, \ar_2 \in \gargs$, the relationship is as follows. $\ar_2 \ibeatse \ar_1 ⇒ \ar_2 \nibeatsst \ar_1$, the converse failing only if $\ar_2$ has some claims that $\ar_1$ does not have (thus $\exists \phi \suchthat \ar_2 \in \gargs[\phi] \land \ar_1 \notin \gargs[\phi]$): $\ar_2 \nibeatsst \ar_1$ exactly when $\ar_2$ fails to argue decisively for some of its claims, and $\ar_2 \nibeatse \ar_1$ exactly when $\ar_1$ argues decisively for all of its claims.}
+
+A normative theory starts with an axiom stating its normative adequacy.
+\begin{axiom}[Normative adequacy of $\allargs$ and $\ileadstost$]
+	A general normative theory is \emph{normatively adequate} iff $\forall \phi \in \Phi$: 
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ 
+		\begin{cases}
+			\phi \in \iphi,\\
+			\lnot\phi \notin \iphi.
+		\end{cases}
+	\end{equation}
+\end{axiom}
+
+This notation is justified only if it is impossible that both $\phi \in \iphi$ and $\phi \notin \iphi$ be implied. \commentOC{TODO clarify.} The following conditions permit to obtain this result.
+
+\begin{condition}[Always implies sometimes]
+	\label{cl:ais}
+	${\ileadstost} \subseteq {\ileadstoe}$.
+\end{condition}
+
+\begin{condition}[Sure implies possible]
+	\label{cl:sip}
+	$\forall \ar', \ar \in \allargs, t \in \allprops: (\ar', \ar) \ileadstost (\prop, \text{sure}) ⇒ (\ar', \ar) \ileadstost (\prop, \text{possible})$.
+\end{condition}
+
+\begin{proposition}
+	$\forall \phi \in \Phi$: 
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ [\nexists \ar \in \allargs \suchthat \ar \ileadstost ¬\phi],
+	\end{equation}
+	and $\forall \prop \in \allprops$:
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \ileadstost (\prop, \text{sure})] ⇒ [\nexists \ar \in \allargs \suchthat \ar \ileadstost (¬\prop, \text{sure})].
+	\end{equation}
+\end{proposition}
+\begin{proof}
+	The first result obtains because $\ar \ileadstost \phi$ means that given any $\ar'$, $(\ar, \ar') \ileadstost \phi$, hence $(\ar, \ar') \ileadstoe \phi$ (using \cref{cl:ais}), or equivalently, $(\ar, \ar') \nileadstost ¬\phi$, thus no $\ar' \in \allargs$ satisfies $\ar' \ileadstost ¬\phi$. For the second one, a similar reasoning yields that $(\ar, \ar') \nileadstost (¬\prop, \text{possible})$, and using the contrapositive of \cref{cl:sip}, $(\ar, \ar') \nileadstost (¬\prop, \text{sure})$, thus no $\ar' \in \allargs$ satisfies $\ar' \ileadstost (¬\prop, \text{sure})$.
+\end{proof}
+
+\begin{definition}[Validity]
+	A theory is \emph{valid} iff ${\gleadsto}(\allargs) \subseteq \iphi$.
+\end{definition}
+
+The following condition mandates that if the arguments used by the theory are not decisive, it knows a reason.
+\begin{definition}[Answerability]
+	$\forall \phi \in \Phi, \ar_1 \in \allargs, \ar_2 \in \gargs[\phi] \cap {\gbeatsinv}(\ar_1): (\ar_2, \ar_1) \ileadstoe ¬\phi ⇒ [\exists \ar_3 \in {\gbeatsinv}(\ar_2) \suchthat (\ar_3, \ar_2) \ileadstoe \phi]$.
+\end{definition}
+
+\begin{definition}[Bounded width]
+	$\forall \ar \in \gargs: \card{\ibeatseinv(\ar)} ≤ b_w$.
+\end{definition}
+
+\begin{definition}[Bounded length]
+	$\forall n \in \N$, if $n > b_l$, there is no sequence of arguments $(\ar_k)_{0 ≤ k < n}$ such that $[\exists \phi \suchthat \forall (0 ≤ k < 2n): \ar_{2k} \in \gargs[\phi]]$ and $(\ar_{k + 1}, \ar_k) \ileadstoe \phi$ and $(\ar_{k + 1}, \ar_k) \ileadstoe ¬\phi$.
+\end{definition}
+
+\begin{definition}[Reinstatement]
+	A theory satisfies \emph{reinstatement} iff $\forall \ar_1, \ar_3 \in \gargs[\phi], \ar_2 \in \allargs: [\ar_1 \ileadstoe \phi, (\ar_2, \ar_1) \ileadstoe ¬\phi, (\ar_3, \ar_2) \ileadstost \phi] ⇒ (\ar_1 + \ar_3, \ar_2) \ileadstost \phi$.
+\end{definition}
+
+\begin{definition}[Operational validity]
+	A theory is \emph{operationally valid} iff $\forall \phi \in {\gleadsto}(\allargs), \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: (\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ [\ar_1 \gbeats \ar_0] \land [\exists \ar_2 \in {\gbeatsinv}(\ar_1) \suchthat (\ar_2, \ar_1) \ileadstoe \phi]$.
+\end{definition}
+
+\begin{theorem}
+	If a theory is answerable, satisfies reinstatement, has bounded width and length, and is operationally valid, it is valid.
+\end{theorem}
+\begin{proof}
+	Given $\phi \in {\gleadsto}(\allargs), \args_2, \args_0 \subseteq \gargs$, define $\args_2$ as \emph{$\phi$-defending} $\args_0$ iff $\forall \ar_1 \in \allargs: [\exists \ar_0 \in \args_0 \suchthat (\ar_1, \ar_0) \ileadstoe ¬\phi] ⇒ [\exists \ar_2 \in \args_2 \suchthat (\ar_2, \ar_1) \ileadstoe \phi]$. Define $\args_2$ as \emph{decisively $\phi$-defending} $\args_0$ iff $\forall \ar_1 \in \allargs: [\exists \ar_0 \in \args_0 \suchthat (\ar_1, \ar_0) \ileadstoe ¬\phi] ⇒ [\exists \ar_2 \in \args_2 \suchthat (\ar_2, \ar_1) \ileadstost \phi]$.
+
+	Fix $\phi \in {\gleadsto}(\allargs)$. For all $k \in \N$, define $\gargs[k] = [\gbeatsinv]^{2k}({\gleadstoinv}(\phi))$.
+	Note that $\ar \in \gargs[\phi] ⇔ \exists k \in \N \suchthat \ar \in \gargs[k]$.
+	
+	Lemma: $\gargs[k+2]$ $\phi$-defends $\gargs[k]$. To prove this, fix $\ar_1 \in \allargs, \ar_0 \in \gargs[k] \suchthat (\ar_1, \ar_0) \ileadstoe ¬\phi$. We need to exhibit $\ar_2 \in \gargs[k+2] \suchthat (\ar_2, \ar_1) \ileadstoe \phi$. Indeed, we know that $\ar_1 \ibeatse[\phi] \ar_0$, and we can use Operational validity as $\ar_0 \in \gargs[\phi]$, thus, $\ar_1 \gbeats \ar_0$ and $\exists \ar_2 \in {\gbeatsinv}(\ar_1) \suchthat (\ar_2, \ar_1) \ileadstoe \phi$.
+	
+	\commentOC{I suppose that, therefore, $\gargs$ $\phi$-defends itself!}
+	
+	Pick any even $b > b_l$. Lemma: $\gargs[b] = \emptyset$, and $\gargs[b]$ defends $\gargs[b-2]$, thus, $\gargs[b-2]$ has no attacker.
+	
+	Th: $\gargs[4]$ decisively defends $\gargs[2]$ (easy if $j = 4$).
+	Then: if $\gargs[4]$ decisively defends $\gargs[2]$, then anything $\gargs[2]$ defends, it decisively defends.
+\end{proof}
+
+Model: for a given $i$. Defends $\prop$. $\exists \ar_1 \in \args_\eta \suchthat \ar_1 \ileadstoe \prop$. Then, $\forall \ar_2 \in \gargs \suchthat (\ar_2, \ar_1) \ileadstoe ¬\prop: \exists \ar_3 \in \args_\eta \suchthat (\ar_3, \ar_2) \ileadstoe \prop.$
 
 TODO: theorist proposes theory $\gamma$. Contains set $\allargs$. The theory must exhibit a limited number of candidates $s_c$ when $s'$ sometimes trumps $s$ and $s'$ sometimes does not trump $s$ (valid for all $i$): that’s falsifiable, and then permits validation of $\eta$. Also, $\gamma$ must exhibit a replacer $s$ of $s_3, s_1$ against $s_2$, or a set of candidate replacers. The replacer (or candidates) may depend on $s_3$ and $s_1$, but not on $i$. This is falsifiable again. And $\gamma$ must fix bounds of width and breadth. And $\gamma$ must indicate how an $s \notin \args_\gamma$ is unnecessary, by exhibiting resistant [not trumped by any decisive argument in $\args_\gamma$] candidates from $\args_\gamma$ such that at least one trump $s$ or replace $s$.
 
@@ -71,7 +178,9 @@ Then a theorist can propose a mapping $i$ to $\eta_i$. If $\gamma$ is valid, the
 
 More generally, I need a set of possible situations, and an operation defined by the theory $\gamma$, that brings a situation to another situation, that is normatively better for taking a decision (or innocuous?). The operation is: adding an argument. This operation corresponds to forming the pair $(s', s)$: from a situation $s'$, we add the argument $s$ and bring $i$ in the situation $(s', s)$ where she has heard two arguments.
 
-Then the normative criterion is: $t$ in DJ of $i$ when $\exists s \suchthat \forall s': (s', s) \ileadstost^i t$ (the theory provides a part of this guarantee under falsification, claiming for all $i$, the model makes the rest under validation for this $i$).
+Then the normative criterion is: $t$ in DJ of $i$ when $\exists s \suchthat \forall s': (s', s) \ileadstost t$ (the theory provides a part of this guarantee under falsification, claiming for all $i$, the model makes the rest under validation for this $i$).
+
+\commentOC{Say that a theory supposedly draws on general principles, which justifies that it talks about multiple $\phi$, even though at this level, there is no connection between them.}
 
 \section{Decision situation}
 The object of study in a given decision situation is the deliberated preferences of a given individual $i$. 
@@ -100,12 +209,6 @@ The relation $\ileadstoe$ is pronounced “sometimes leads to”.
 A proposition $\phi$ is about $\prop$ iff $\phi \in \{\prop, ¬\prop\} × \{\text{possible}, \text{sure}\}$. 
 
 The pair $(\ar, \ar')$ is to be understood as unordered (thus $(\ar, \ar') \ileadstost \prop ⇔ (\ar', \ar) \ileadstost \prop$).
-
-The relation $\ileadstost$ must satisfy the two following properties, or axioms. (A1) $\ileadstost \subseteq \ileadstoe$
-\footnote{Equivalently: $\ileadstosst \subseteq \ileadstose$, $\ileadstopst \subseteq \ileadstope$, $(\ar, \ar') \ileadstose ¬\prop ∨ (\ar, \ar') \ileadstope \prop$, $\ileadstopst \prop ⇒ ¬ (\ileadstosst ¬\prop)$, $\ileadstosst ¬\prop ⇒ ¬ (\ileadstopst \prop)$.} 
-and (A2) $\forall \prop \in \alltopic: (\ar, \ar') \ileadstost (\prop, \text{sure}) ⇒ (\ar, \ar') \ileadstost (\prop, \text{possible})$
-\footnote{Equivalently: $\ileadstose \subseteq \ileadstope$.}. 
-Observe that (A1) can equivalently be formulated as $\forall \prop \in \alltopic: [(\ar, \ar') \ileadstost (\prop, \text{sure}) ⇒ (\ar, \ar') \ileadstoe (\prop, \text{sure})]$, or equivalently, $\forall \prop \in \alltopic: [(\ar, \ar') \ileadstost (\prop, \text{possible}) ⇒ (\ar, \ar') \ileadstoe (\prop, \text{possible})]$, and (A2) is equivalent to $\forall \prop \in \alltopic: [(\ar, \ar') \ileadstoe (\prop, \text{sure}) ⇒ (\ar, \ar') \ileadstoe (\prop, \text{possible})]$.
 
 \begin{definition}[Decision situation]
 	A decision situation is a topic $\alltopic$ closed under negation, a set of arguments $\allargs$, an “always leads to” relation $\ileadstost \subseteq (\allargs × \allargs) × \Phi$ satisfying (A1) and (A2) and using unordered pairs of arguments, $\Phi$ being the set of propositions $\alltopic × \set{\text{sure}, \text{possible}}$.
@@ -409,8 +512,4 @@ Define Finite defense-$\mbeats$-$\wibeatse$-startdec as: $\mbeatsinv(\ar) \subse
 Define Finite defense-$\mbeats$-$\mbeats$-startdec as: $\mbeatsinv(\ar) \subseteq \mbeats(\argsdec) ⇒ \mbeatsinv(\ar) \subseteq \mbeats(\args)$. Finite defense-$\mbeats$-$\mbeats$-startdec is insufficient to provide $T_\eta = \iposs$. Consider $\ar_3 \wibeatse \ar_2 \wibeatse \ar_1$, $\ar_3' \wibeatse \ar_2' \wibeatse \ar_1$, and so on, and $\ar \mbeats^\text{fail} \{\ar_2, \ar_2', …\}$. Then I really need infinitely many arguments to defend $\ar_1$ but Finite defense-$\mbeats$-$\mbeats$-startdec is artificially satisfied because of $\ar$. Define Finite defense-$\mbeats$-$\mbeats$-subsets as: $\mbeatsinv(\ar) \subseteq \mbeats(\args) ⇒ \mbeatsinv(\ar) \subseteq \mbeats(\args')$ (for any $\args \subseteq \argsdec$). Finite defense-$\mbeats$-$\mbeats$-subsets is (rightly) non satisfied in this example.
 
 Define Finite defense-$\wibeatse$-$\wibeatse$-subsets as: $\wibeatseinv(\ar) \subseteq \wibeatse(\args) ⇒ \wibeatseinv(\ar) \subseteq \wibeatse(\args')$. Finite defense-$\mbeats$-$\wibeatse$-subsets $⇏$ Finite defense-$\wibeatse$-$\wibeatse$-subsets. Consider $\ar_2 \mbeats^\text{fail} \ar_1$ (to be continued…)
-
-\bibliography{simple}
-
 \end{document}
-

@@ -2,7 +2,7 @@
 \NewDocumentCommand{\allalts}{}{\mathscr{A}}
 \NewDocumentCommand{\allcrits}{}{\mathscr{C}}
 \NewDocumentCommand{\alts}{}{A}
-\newcommand{\alt}{a}
+\NewDocumentCommand{\alt}{}{a}
 \NewDocumentCommand{\dm}{}{i}
 \NewDocumentCommand{\allF}{}{\mathscr{F}}
 \NewDocumentCommand{\allvoters}{}{\mathscr{N}}
@@ -19,13 +19,32 @@
 %Deliberated Judgment
 \NewDocumentCommand{\allargs}{}{S^*}
 \NewDocumentCommand{\args}{}{S}
+\NewDocumentCommand{\gargs}{O{}}{S^{#1}_γ}
 \NewDocumentCommand{\ar}{}{s}
 \NewDocumentCommand{\allprops}{}{T}
 \NewDocumentCommand{\prop}{}{t}
-%\NewDocumentCommand{\ileadsto}{}{⇝}
-\newcommand{\ileadsto}{\mathbin{\rightsquigarrow}}
-%\NewDocumentCommand{\ibeatse}{}{⊳_\exists}
-\newcommand{\ibeatse}[1][]{\mathbin{\vartriangleright_\exists^{#1}}}
+\NewDocumentCommand{\iphi}{}{\Phi_i}
+\NewDocumentCommand{\ileadsto}{}{⇝}
+\NewDocumentCommand{\ileadstos}{}{\overset{s}{⇝_i}}
+\NewDocumentCommand{\ileadstost}{O{}}{⇝^{#1}_\forall}
+\NewDocumentCommand{\nileadstost}{O{}}{\not⇝^{#1}_\forall}
+\NewDocumentCommand{\ileadstoe}{O{}}{⇝^{#1}_\exists}
+\NewDocumentCommand{\gleadsto}{O{}}{⇝^{#1}_γ}
+\NewDocumentCommand{\gleadstoinv}{}{⇝^{-1}_γ}
+%\newcommand{\gleadsto}[1][γ]{\mathbin{\rightsquigarrow_{#1}}}
+\NewDocumentCommand{\ibeatse}{O{}}{⊳^{#1}_\exists}
+\NewDocumentCommand{\gbeats}{}{⊳_γ}
+\NewDocumentCommand{\gbeatsinv}{o}{⊳^{-1}_γ}
+\NewDocumentCommand{\zar}{}{\mathbf{0}}%zero, or empty, argument
+\NewDocumentCommand \ibeatseinv { o }{%TODO improve
+	\IfValueTF{#1}{%
+		{⊳_\exists^{#1}}^{-1}%
+	}{%
+		⊳_\exists^{-1}%
+	}%
+}
+%\newcommand{\ibeatseinv}{\mathbin{\vartriangleright_\exists^{-1}}}
+%\newcommand{\ibeatse}[1][]{\mathbin{\vartriangleright_\exists^{#1}}}
 %\NewDocumentCommand{\nibeatse}{}{⋫_\exists}
 \newcommand{\nibeatse}[1][]{\mathbin{⋫_\exists^{#1}}}
 %\NewDocumentCommand{\ibeatsst}{}{⊳_\forall}
@@ -36,10 +55,8 @@
 \newcommand{\mleadsto}[1][\eta]{\mathbin{\rightsquigarrow_{#1}}}
 %\NewDocumentCommand{\mbeats}{O{\eta}}{⊳_{#1}}
 \newcommand{\mbeats}[1][\eta]{\mathbin{\vartriangleright_{#1}}}
-%\NewDocumentCommand{\ibeatseinv}{}{⊳_\exists^{-1}}
-\newcommand{\ibeatseinv}{\mathbin{\vartriangleright_\exists^{-1}}}
 
-%\newcommand{\allalts}{\mathcal{A}}
+\newcommand{\argsdec}{S_\textnormal{decisive}}
 \newcommand{\alltopic}{T^*}
 \newcommand{\iposs}{T_i}
 \newcommand{\ipnsure}{\boldsymbol{T}^\textbf{¬sure}_i}%provably not sure
@@ -54,33 +71,16 @@
 \newcommand{\propsuredec}{t\text{-sure-dec}}
 \newcommand{\proppossdec}{t\text{-poss-dec}}
 \newcommand{\clargs}{S_\eta}
-\newcommand{\gargs}{S_γ}
 \newcommand{\gdargs}{S_γ}
 \newcommand{\clar}{s_γ}
-\newcommand{\ext}{\mathcal{E}}
-\newcommand{\argsdec}{S_\textnormal{decisive}}
-\newcommand{\argsdef}{S_\textnormal{defended}}
-\newcommand{\argsnocldecatt}{S_\textnormal{no-cl-dec-att}}
-\newcommand{\argsnoclresatt}{S_\textnormal{no-cl-res-att}}
-\newcommand{\argsnocldefatt}{S_\textnormal{no-cl-def-att}}
-\newcommand{\argscldecatt}{S_\textnormal{cl-dec-att}}
-\newcommand{\argsclresatt}{S_\textnormal{cl-res-att}}
-\newcommand{\argscldefatt}{S_\textnormal{cl-def-att}}
-\newcommand{\argsqd}{S_\textnormal{quasi-decisive}}
-\newcommand{\argsed}{S_\textnormal{ess-decisive}}
-\newcommand{\zar}{\mathbf{0}}%zero, or empty, argument
 \newcommand{\ileadstopst}{\mathbin{\overset{\makebox[0pt]{\text{\tiny poss}}}{\rightsquigarrow}_\forall}}
 \newcommand{\ileadstosst}{\mathbin{\overset{\makebox[0pt]{\text{\tiny sure}}}{\rightsquigarrow}_\forall}}
-\newcommand{\ileadstost}{\mathbin{\rightsquigarrow_\forall}}
 \newcommand{\ileadstostinv}{\mathbin{\rightsquigarrow_\forall^{-1}}}
-\newcommand{\nileadstost}{\mathbin{\not\rightsquigarrow_\forall}}
 \newcommand{\ileadstope}{\mathbin{\overset{\makebox[0pt]{\text{\tiny poss}}}{\rightsquigarrow}_\exists}}
 \newcommand{\ileadstose}{\mathbin{\overset{\makebox[0pt]{\text{\tiny sure}}}{\rightsquigarrow}_\exists}}
-\newcommand{\ileadstoe}{\mathbin{\rightsquigarrow_\exists}}
 \newcommand{\nileadsto}{\mathbin{\not\rightsquigarrow}}%\nrightarrow}
 \newcommand{\ileadstoinv}{\mathbin{\rightsquigarrow^{-1}}}
 \newcommand{\ileadstor}[1]{\mathbin{\restr{\rightsquigarrow}{#1}}}
-\newcommand{\gleadsto}[1][γ]{\mathbin{\rightsquigarrow_{#1}}}
 \newcommand{\mleadstoinv}{\mathbin{\rightsquigarrow_\eta^{-1}}}
 \newcommand{\ibeats}{\mathbin{\vartriangleright}}
 \newcommand{\ibeatsed}{\mathbin{\vartriangleright^\text{d}_\exists}}
