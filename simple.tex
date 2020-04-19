@@ -80,7 +80,7 @@ To ease intuition, let $(\ar', \ar) \ileadstoe \phi$ be equivalent to $(\ar', \a
 Given $\phi \in {\gleadsto}(\allargs)$, an argument $\ar \in \allargs$ is \emph{in favor of $\phi$}, $\ar \in \gargs[\phi]$, iff $\ar \in [\gbeatsinv]^{2k}({\gleadstoinv}(\phi))$ for some $k \in \N$, where $R^\alpha$ denotes $\alpha$ times the composition of the relation $R$ with itself. (Throughout the article, $\N$ includes zero.) Define $\gargs = \cup_{\phi \in {\gleadstoinv}(\allargs)} \gargs[\phi]$. 
 
 Define ${\ibeatse} \subseteq \allargs × \gargs$ such that $\ar' \ibeatse \ar$ iff $\exists \phi \suchthat \ar \in \gargs[\phi] \text{ and } (\ar', \ar) \ileadstoe ¬\phi$. 
-Given $\phi \in {\gleadsto}(\allargs)$, define ${\ibeatse[\phi]} \subseteq \allargs × \gargs[\phi]$ such that $\ar' \ibeatse[\phi] \ar$ iff $(\ar', \ar) \ileadstoe ¬\phi$. 
+Given $\phi \in {\gleadsto}(\allargs)$, define ${\ibeatse[!\phi]} \subseteq \allargs × \gargs[\phi]$ such that $\ar' \ibeatse[!\phi] \ar$ iff $(\ar', \ar) \ileadstoe ¬\phi$. Define ${\ibeatse[\phi]} \subseteq \gargs[\phi] × \allargs$ such that $\ar' \ibeatse[\phi] \ar$ iff $(\ar', \ar) \ileadstoe \phi$. 
 Define ${\ibeatsst} \subseteq \gargs × \allargs$ such that $\ar' \ibeatsst \ar$ iff $\forall \phi \suchthat \ar' \in \gargs[\phi]: (\ar', \ar) \ileadstost \phi$.
 \footnote{When both $\ar_1, \ar_2 \in \gargs$, the relationship is as follows. $\ar_2 \ibeatse \ar_1 ⇒ \ar_2 \nibeatsst \ar_1$, the converse failing only if $\ar_2$ has some claims that $\ar_1$ does not have (thus $\exists \phi \suchthat \ar_2 \in \gargs[\phi] \land \ar_1 \notin \gargs[\phi]$): $\ar_2 \nibeatsst \ar_1$ exactly when $\ar_2$ fails to argue decisively for some of its claims, and $\ar_2 \nibeatse \ar_1$ exactly when $\ar_1$ argues decisively for all of its claims.}
 
@@ -136,7 +136,7 @@ The following condition mandates that if the arguments used by the theory are no
 \end{definition}
 
 \begin{definition}[Bounded length]
-	$\forall n \in \N$, if $n > b_l$, there is no sequence of arguments $(\ar_k)_{0 ≤ k < n}$ such that $[\exists \phi \suchthat \forall (0 ≤ k < 2n): \ar_{2k} \in \gargs[\phi]]$ and $(\ar_{k + 1}, \ar_k) \ileadstoe \phi$ and $(\ar_{k + 1}, \ar_k) \ileadstoe ¬\phi$.
+	$\forall n \in \N$, if $n > b_l$, there is no sequence of arguments $(\ar_k)_{0 ≤ k < n}$ such that $[\exists \phi \suchthat \forall (0 ≤ k < 2n): \ar_{2k} \in \gargs[\phi]]$ and $(\ar_{k + 1}, \ar_k) \ileadstoe \phi$ and $(\ar_{k + 1}, \ar_k) \ileadstoe ¬\phi$. \commentOC{This requires that $\ar_4$ have no attacker, not only in the sense that $\ar_4$ argues successfully against $\ar_3$, but in the (too strong) sense that $\ar_4$ argues successfully for $\phi$. It makes $\ar_4$ decisive, thus, requires that $\ar_4$ also argues against $\ar_1$, $\ar'_1, …$, and it makes the other arguments non useful. (Though may be useful for other dms, as we do not know in advance which one will be decisive.) I suppose I could simplify the presentation by making $\gargs[2]$ contain every good arguments and using only this one.}
 \end{definition}
 
 \begin{definition}[Reinstatement]
@@ -148,23 +148,33 @@ The following condition mandates that if the arguments used by the theory are no
 \end{definition}
 
 \begin{theorem}
-	If a theory is answerable, satisfies reinstatement, has bounded width and length, and is operationally valid, it is valid.
+	If a theory is answerable, satisfies reinstatement, has bounded width and length, and is operationally valid, it is valid. \commentOC{We don’t seem to need most of these conditions!}
 \end{theorem}
 \begin{proof}
 	Given $\phi \in {\gleadsto}(\allargs), \args_2, \args_0 \subseteq \gargs$, define $\args_2$ as \emph{$\phi$-defending} $\args_0$ iff $\forall \ar_1 \in \allargs: [\exists \ar_0 \in \args_0 \suchthat (\ar_1, \ar_0) \ileadstoe ¬\phi] ⇒ [\exists \ar_2 \in \args_2 \suchthat (\ar_2, \ar_1) \ileadstoe \phi]$. Define $\args_2$ as \emph{decisively $\phi$-defending} $\args_0$ iff $\forall \ar_1 \in \allargs: [\exists \ar_0 \in \args_0 \suchthat (\ar_1, \ar_0) \ileadstoe ¬\phi] ⇒ [\exists \ar_2 \in \args_2 \suchthat (\ar_2, \ar_1) \ileadstost \phi]$.
 
-	Fix $\phi \in {\gleadsto}(\allargs)$. For all $k \in \N$, define $\gargs[k] = [\gbeatsinv]^{2k}({\gleadstoinv}(\phi))$.
-	Note that $\ar \in \gargs[\phi] ⇔ \exists k \in \N \suchthat \ar \in \gargs[k]$.
+	Fix $\phi \in {\gleadsto}(\allargs)$. We have to show that $\exists \ar \in \allargs \suchthat \ar \ileadstost \phi$.
 	
-	Lemma: $\gargs[k+2]$ $\phi$-defends $\gargs[k]$. To prove this, fix $\ar_1 \in \allargs, \ar_0 \in \gargs[k] \suchthat (\ar_1, \ar_0) \ileadstoe ¬\phi$. We need to exhibit $\ar_2 \in \gargs[k+2] \suchthat (\ar_2, \ar_1) \ileadstoe \phi$. Indeed, we know that $\ar_1 \ibeatse[\phi] \ar_0$, and we can use Operational validity as $\ar_0 \in \gargs[\phi]$, thus, $\ar_1 \gbeats \ar_0$ and $\exists \ar_2 \in {\gbeatsinv}(\ar_1) \suchthat (\ar_2, \ar_1) \ileadstoe \phi$.
+	For all $k \in \N$, define $\gargs[2k] = [({\gbeatsinv} \cap {\ibeatseinv[\phi]}) \circ ({\gbeatsinv} \cap {\ibeatseinv[!\phi]})]^{k}({\gleadstoinv}(\phi))$.
+	Note that $[\exists k \in 2\N \suchthat \ar \in \gargs[k]] ⇒ \ar \in \gargs[\phi]$.
+	
+	Lemma: $\forall k \in 2\N: \gargs[k+2]$ $\phi$-defends $\gargs[k]$. To prove this, fix $\ar_1 \in \allargs, \ar_0 \in \gargs[k] \suchthat (\ar_1, \ar_0) \ileadstoe ¬\phi$. We need to exhibit $\ar_2 \in \gargs[k+2] \suchthat (\ar_2, \ar_1) \ileadstoe \phi$. Indeed, we know that $\ar_1 \ibeatse[!\phi] \ar_0$, and we can use Operational validity as $\ar_0 \in \gargs[\phi]$, thus, $\ar_1 \gbeats \ar_0$ and $\exists \ar_2 \in {\gbeatsinv}(\ar_1) \suchthat (\ar_2, \ar_1) \ileadstoe \phi$.
 	
 	\commentOC{I suppose that, therefore, $\gargs$ $\phi$-defends itself!}
 	
-	Pick any even $b > b_l$. Lemma: $\gargs[b] = \emptyset$, and $\gargs[b]$ defends $\gargs[b-2]$, thus, $\gargs[b-2]$ has no attacker.
+	Lemma: $\forall k \in 2\N$, if $\gargs[k+2] = \emptyset$, then $\forall s_0 \in \gargs[k]: s_0 \ileadstost \phi$.
+	From the previous lemma, $\gargs[k+2]$ $\phi$-defends $\gargs[k]$, and, considering the implication in the definition of $\phi$-defense and observing that its consequent is false, we can negate its antecedent, obtaining: $\forall \ar_1 \in \allargs, \ar_0 \in \gargs[k]: (\ar_1, \ar_0) \ileadstost \phi$. This proves the lemma.
+	\commentOC{Stuff at level $k$ should only take care of rebutting attackers at level $k-1$, and we would instead in this lemma obtain that they do take care of them successfully, enabling the use of reinstatement to get to the $k-2$ level. Still, it’s strange that Answerability is not needed.} 
 	
-	Th: $\gargs[4]$ decisively defends $\gargs[2]$ (easy if $j = 4$).
-	Then: if $\gargs[4]$ decisively defends $\gargs[2]$, then anything $\gargs[2]$ defends, it decisively defends.
+	Pick any even $b > b_l$. 
+	Thanks to Bounded length, $\gargs[b] = \emptyset$. 
+	Define $d = \max\set{k \in 2\N \suchthat k < b, \gargs[k] ≠ \emptyset}$ (which exists because $\gargs[0] ≠ \emptyset$). 
+	Thus, the last lemma can be applied with $k=d$ to obtain $\forall s_0 \in \gargs[d]: s_0 \ileadstost \phi$. Because $\gargs[d] ≠ \emptyset$, this concludes the proof.
 \end{proof}
+
+Change conditions. I should be able to prove the theorem using reinst + bounded width instead of bounded length. Reinst should serve to discard: $(\ar_2, \ar_1) \ileadstost \phi$, $(\ar'_2, \ar'_1) \ileadstost \phi$, $(\ar'_1, \ar_2) \ileadstoe ¬\phi$, $(\ar_1, \ar'_2) \ileadstoe ¬\phi$.
+
+Clarification. General theory says that $\ar_1$ is replaceable (suspects that it’s good for some people): $(\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ (\ar'_1, \ar_0) \ileadstoe ¬\phi$. (This will fail if some $i$ thinks $\ar'_1$ is bad arg because of $\ar_0$ but $\ar_1$ is bad because of $\ar_2$.) It may say that $\ar_1$ is bad. General theory prepares potentially good arg $\ar_0$ and claims that if $\ar_0 \ileadstoe \phi$, then $\ar_0 \ileadstost \phi$ (this is Answerability). So that the model only has to prove the weaker existential claim.
 
 Model: for a given $i$. Defends $\prop$. $\exists \ar_1 \in \args_\eta \suchthat \ar_1 \ileadstoe \prop$. Then, $\forall \ar_2 \in \gargs \suchthat (\ar_2, \ar_1) \ileadstoe ¬\prop: \exists \ar_3 \in \args_\eta \suchthat (\ar_3, \ar_2) \ileadstoe \prop.$
 
