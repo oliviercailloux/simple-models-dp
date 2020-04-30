@@ -20,7 +20,13 @@
 \NewDocumentCommand{\allargs}{}{S^*}
 \NewDocumentCommand{\args}{}{S}
 \NewDocumentCommand{\gargs}{O{}}{S^{#1}_γ}
-\NewDocumentCommand{\ar}{}{s}
+\NewDocumentCommand{\ar}{o}{%
+	\IfValueTF{#1}{%
+		s^{(#1)}%
+	}{%
+		s%
+	}%
+}
 \NewDocumentCommand{\allprops}{}{T}
 \NewDocumentCommand{\prop}{}{t}
 \NewDocumentCommand{\iphi}{}{\Phi_i}

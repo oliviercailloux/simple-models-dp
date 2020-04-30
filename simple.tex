@@ -135,20 +135,53 @@ This notation is justified only if it is impossible that both $\phi \in \iphi$ a
 $\ar_0 + \ar_2$ anticipates attacks from those attacking either, minus those attacked by any. (Actually any attacked may still attack the addition, but that’s because of some other not-yet-attacked, anticipated, attack.)
 
 Define $\mbeats[g] \subseteq \gargs × \allargs$ as $\ar_2 \mbeats[g] \ar_1$ iff $\exists \ar \in c(\ar_2) \suchthat \ar \mbeats \ar_1$.
-Define $\mbeats[a] \subseteq \allargs × \gargs$ as $\ar_1 \mbeats[a] \ar_0$ iff $\exists \ar \in c(\ar_0) \suchthat \ar_1 \mbeats \ar$ and $\nexists \ar \in c(\ar_0) \suchthat \ar \mbeats \ar_1]$. Define $\mbeats[*] \subseteq \allargs × \allargs$ as $\gbeatsstar = {\mbeats[g]} \cup {\mbeats[a]}$.
+Define $\mbeats[a] \subseteq \allargs × \gargs$ as $\ar_1 \mbeats[a] \ar_0$ iff $\exists \ar \in c(\ar_0) \suchthat \ar_1 \mbeats \ar$ and $\nexists \ar \in c(\ar_0) \suchthat \ar \mbeats \ar_1$. Define ${\gbeatsstar} \subseteq \allargs × \allargs$ as ${\gbeatsstar} = {\mbeats[g]} \cup {\mbeats[a]}$.
+
+\begin{remark}
+	I currently conceive these conditions in the following way. The model must anticipate in its initial arguments the counter-arguments that $i$ may have in mind. Thus, $\ar_1$ trumps $\ar_0$ is observed when $i$ has been given $\ar_1$. When the model answers with $\ar_2$, if $i$ is unconvinced (of $\ar_2 + \ar_0$ trumping $\ar_1$), the procedure stops (the model can’t argue that yes-but-maybe-$i$-has-$\ar_1'$-in-mind; in particular, it wouldn’t be feasible to interrogate $i$ if the arguments are given thanks to labeling in a supermarket). However, if $i$ is given $\ar_1'$, the model must be given a chance to play its counter-argument, and may not be falsified because $\ar_2 + \ar_0$ is not enough: once $i$ is given $\ar_1'$, it is no more claimed by the model that $\ar_2 + \ar_0$ suffices any longer.
+	
+	Relatedly, Operational validity is (almost) void when $\ar_1$ trumps $\ar_0$ and $\ar_0 \gbeats \ar_1$ (and has already observed to be successful, thus $\ar_0$ trumps $\ar_1$): in that case, suffices to play $\ar_2 = \ar_0$ and define $\ar_0 + \ar_0 = \ar_0$, so $\ar_2 + \ar_0$ trumps $\ar_1$.
+	
+	In summary: when $\ar_1$ trumps $\ar_0$, and the model has not already answered this argument using $\ar_0$ (thus $¬ \ar_0 \gbeats \ar_1$), Op. val. demands an answer. When $\ar_1$ trumps $\ar_0$, and the model has answered already using $\ar_0$, and we have checked that indeed $\ar_0$ trumps $\ar_1$, Answerability demands that the model can explain this instability by the fact that someone must have given another argument $\ar_1'$ to $i$ (and this is to be checked using means outside the formal model).
+\end{remark}
 
 The following condition mandates that if the arguments used by the theory are not decisive, it knows a reason.
 \begin{definition}[Answerability]
-	$\forall \phi \in \Phi, \ar_1 \in \allargs, \ar_2 \in \gargs[\phi] \cap {\gbeatsstarinv}(\ar_1): (\ar_2, \ar_1) \ileadstoe ¬\phi ⇒ [\exists \ar_3 \in {\gbeatsstarinv}(\ar_2) \suchthat (\ar_3, \ar_2) \ileadstoe \phi]$.
+	$\forall \phi \in {\gleadsto}(\allargs), \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: (\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ [\exists \ar_1' \in {\gbeatsstarinv}(\ar_0) \suchthat (\ar_1', \ar_0) \ileadstoe ¬\phi]$.
 \end{definition}
 
 \begin{definition}[Bounded length]
 	$\gargs$ must be finite.
 \end{definition}
 
-\begin{definition}[Operational validity]
-	A theory is \emph{operationally valid} iff $\forall \phi \in {\gleadsto}(\allargs), \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: (\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ [\ar_1 \gbeats \ar_0] \land [\exists \ar_2 \in {\gbeatsinv}(\ar_1) \suchthat (\ar_0 + \ar_2, \ar_1) \ileadstoe \phi]$.
+\begin{definition}[No self-attack]
+	$\gbeats$ must be irreflexive.
 \end{definition}
+
+\begin{definition}[Operational validity]
+	A theory is \emph{operationally valid} iff $\forall \phi \in {\gleadsto}(\allargs), \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: (\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ \exists \ar_2 \in {\gbeatsinv}(\ar_1) \suchthat (\ar_0 + \ar_2, \ar_1) \ileadstoe \phi$.
+\end{definition}
+
+\subsection{Theorem}
+\begin{theorem}
+	If a theory is answerable, has bounded length, does not self-attack, and is operationally valid, it is valid.
+\end{theorem}
+\begin{proof}
+	Lemma: given $\phi \in {\gleadsto}(\allargs)$ and $\ar[k] \in \gargs[\phi]$, if $\ar[k] \nileadstost \phi$, then: $\exists \ar[k + 1] \in \gargs[\phi] \suchthat \card{c(\ar[k + 1])} ≥ \card{c(\ar[k])} + 1$.
+	
+	Pick any $\phi \in {\gleadsto}(\allargs)$ and $\ar[k] \in \gargs[\phi]$ such that $\ar[k] \nileadstost \phi$. We know that $\exists \ar_1 \in \allargs \suchthat \ar_1 \ibeatse[!\phi] \ar[k]$. Therefore, by Answerability, $\exists \ar_1' \in \allargs \suchthat \ar_1' \gbeatsstar \ar[k] \land \ar_1' \ibeatse[!\phi] \ar[k]$, and, by Operational validity, $\exists \ar_2 \in \gargs[\phi] \suchthat \ar_2 \gbeats \ar'_1$ and $\ar[k] + \ar_2 \ibeatse[\phi] \ar'_1$. 
+	Define $\ar[k + 1] = \ar_2 + \ar[k]$. 
+	
+	\commentOC{Note that we do not have $\ar_1 \gbeats \ar[k]$.}
+	By No self-attack, $¬(\ar[k] \gbeatsstar \ar'_1)$. Thus, $\ar_2 \notin c(\ar[k])$ (because $\ar_2 \in c(\ar[k])$ and $\ar_2 \gbeats \ar'_1$ implies $\ar[k] \gbeatsstar \ar'_1$ by definition of $\gbeatsstar$).
+	Thus, $\card{c(\ar[k + 1])} ≥ \card{c(\ar[k])} + 1$.
+	
+	\commentOC{No use of of $\ar[k] + \ar_2 \ibeatse \ar_1$, and we use Op val only on planned attacks! The current protocol amounts to: each time the model is endangered, it has to produce one more arg. in support, and we check only at the end (after at worst finitely many steps, as $\gargs$ is bounded) if it has managed to convince. With the difference that the model is indicated which $\ar_1$ is endangering it, to guide selection of the ultimately decisive argument. Actually, if playing $\ar_2$ at some stage did not move $i$ and $\ar_1$ still attacks $\ar_0 + \ar_2$, we can say that the model missed answering that step, thus either we choose to give it a second chance (maybe it chose the wrong $\ar_2$ to counter the $\ar_1'$ it believed was relevant, or it needed both $\ar_2$ and $\ar_4$), or we give up in fear of losing our time. Actually, the protocol is that when applying Answerability, we are supposed to pick the $\ar_1'$ that $i$ just was given by another model, thus, if that’s still the same $\ar_1$ as the step before, the model has lost (it can’t map what it’s told to an argument it knows how to answer).}
+	This proves the lemma.
+	
+	To prove the theorem, given $\phi \in {\gleadsto}(\allargs)$, we need to exhibit an argument $\ar$ such that $\ar \ileadstost \phi$.
+	Define a finite sequence $(\ar[0], \ar[1], \ar[2], …)$, starting from $\ar[0] = {\gleadstoinv}(\phi)$, using the lemma, until the condition $\ar[k] \nileadstost \phi$ no longer holds. This condition must turn false after some finite number of steps, because $\card{c(\ar[k])}$ grows at each step, $c(\ar[k]) \subseteq \gargs$ by definition of $c(.)$, and using Bounded length. The last element of the sequence is the argument we look for.
+\end{proof}
 
 \subsection{Example model}
 \begin{itemize}
@@ -167,34 +200,7 @@ The following condition mandates that if the arguments used by the theory are no
 	\item $\ar_0 + \ar_2 + \ar_2' \mbeats \ar_1'$
 \end{itemize}
 
-\subsection{Theorem}
-\begin{theorem}
-	If a theory is answerable, has bounded length, and is operationally valid, it is valid.
-\end{theorem}
-\begin{proof}
-	TODO adapt to new definitions!
-	
-	Given $\phi \in {\gleadsto}(\allargs), \args_2, \args_0 \subseteq \gargs$, define $\args_2$ as \emph{$\phi$-defending} $\args_0$ iff $\forall \ar_1 \in \allargs: [\exists \ar_0 \in \args_0 \suchthat (\ar_1, \ar_0) \ileadstoe ¬\phi] ⇒ [\exists \ar_2 \in \args_2 \suchthat (\ar_2, \ar_1) \ileadstoe \phi]$. Define $\args_2$ as \emph{decisively $\phi$-defending} $\args_0$ iff $\forall \ar_1 \in \allargs: [\exists \ar_0 \in \args_0 \suchthat (\ar_1, \ar_0) \ileadstoe ¬\phi] ⇒ [\exists \ar_2 \in \args_2 \suchthat (\ar_2, \ar_1) \ileadstost \phi]$.
-
-	Fix $\phi \in {\gleadsto}(\allargs)$. We have to show that $\exists \ar \in \allargs \suchthat \ar \ileadstost \phi$.
-	
-	For all $k \in \N$, define $\gargs[2k] = [({\gbeatsinv} \cap {\ibeatseinv[\phi]}) \circ ({\gbeatsinv} \cap {\ibeatseinv[!\phi]})]^{k}({\gleadstoinv}(\phi))$.
-	Note that $[\exists k \in 2\N \suchthat \ar \in \gargs[k]] ⇒ \ar \in \gargs[\phi]$.
-	
-	Lemma: $\forall k \in 2\N: \gargs[k+2]$ $\phi$-defends $\gargs[k]$. To prove this, fix $\ar_1 \in \allargs, \ar_0 \in \gargs[k] \suchthat (\ar_1, \ar_0) \ileadstoe ¬\phi$. We need to exhibit $\ar_2 \in \gargs[k+2] \suchthat (\ar_2, \ar_1) \ileadstoe \phi$. Indeed, we know that $\ar_1 \ibeatse[!\phi] \ar_0$, and we can use Operational validity as $\ar_0 \in \gargs[\phi]$, thus, $\ar_1 \gbeats \ar_0$ and $\exists \ar_2 \in {\gbeatsinv}(\ar_1) \suchthat (\ar_2, \ar_1) \ileadstoe \phi$.
-	
-	\commentOC{I suppose that, therefore, $\gargs$ $\phi$-defends itself!}
-	
-	Lemma: $\forall k \in 2\N$, if $\gargs[k+2] = \emptyset$, then $\forall s_0 \in \gargs[k]: s_0 \ileadstost \phi$.
-	From the previous lemma, $\gargs[k+2]$ $\phi$-defends $\gargs[k]$, and, considering the implication in the definition of $\phi$-defense and observing that its consequent is false, we can negate its antecedent, obtaining: $\forall \ar_1 \in \allargs, \ar_0 \in \gargs[k]: (\ar_1, \ar_0) \ileadstost \phi$. This proves the lemma.
-	\commentOC{Stuff at level $k$ should only take care of rebutting attackers at level $k-1$, and we would instead in this lemma obtain that they do take care of them successfully, enabling the use of reinstatement to get to the $k-2$ level. Still, it’s strange that Answerability is not needed.} 
-	
-	Pick any even $b > b_l$. 
-	Thanks to Bounded length, $\gargs[b] = \emptyset$. 
-	Define $d = \max\set{k \in 2\N \suchthat k < b, \gargs[k] ≠ \emptyset}$ (which exists because $\gargs[0] ≠ \emptyset$). 
-	Thus, the last lemma can be applied with $k=d$ to obtain $\forall s_0 \in \gargs[d]: s_0 \ileadstost \phi$. Because $\gargs[d] ≠ \emptyset$, this concludes the proof.
-\end{proof}
-
+\subsection{The rest}
 Change conditions. I should be able to prove the theorem using reinst + bounded width instead of bounded length. Reinst should serve to discard: $(\ar_2, \ar_1) \ileadstost \phi$, $(\ar'_2, \ar'_1) \ileadstost \phi$, $(\ar'_1, \ar_2) \ileadstoe ¬\phi$, $(\ar_1, \ar'_2) \ileadstoe ¬\phi$.
 
 Clarification. General theory says that $\ar_1$ is replaceable (suspects that it’s good for some people): $(\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ (\ar'_1, \ar_0) \ileadstoe ¬\phi$. (This will fail if some $i$ thinks $\ar'_1$ is bad arg because of $\ar_0$ but $\ar_1$ is bad because of $\ar_2$.) It may say that $\ar_1$ is bad. General theory prepares potentially good arg $\ar_0$ and claims that if $\ar_0 \ileadstoe \phi$, then $\ar_0 \ileadstost \phi$ (this is Answerability). So that the model only has to prove the weaker existential claim.
