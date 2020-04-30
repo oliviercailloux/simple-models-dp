@@ -59,31 +59,36 @@ The first and third contexts of usage come together when it is desired to test w
 \section{Normative theories}
 Sketch: define normative models, using questions, and making claims about DJ. A problem is that models specific to a narrow situation will not offer enough means for falsification. Then define a way of saying “we never need this argument”: either the model can prove phi without s0, or if it can’t, then phi does not hold, because I can play s1 against it. BUT what about a model for only one situation? Then we need to accept that $q$ can’t be falsified, and accept that it defines the individual (or just assume without proof that it does not).
 
-A normative theory is a tuple $(\allprops, ¬, \allargs, I, (\ileadstost[i])_{i \in I}, q, (\gleadsto[q(i)])_{q(i) \in q(I)}, \gbeats)$,
-with $\gargs \subseteq \allargs$, ${\ileadstost[i]} \subseteq (\allargs × \allargs) × \Phi$, ${\gleadsto[q(i)]} \subseteq \allargs × \Phi$, ${\gbeats} \subseteq \allargs × \allargs$,
-where $\Phi = \allprops × \set{\text{possible}, \text{sure}}$. 
-
-To lighten notations, $\ileadstost[i]$ will generally be denoted by $\ileadstost$, and $\gleadsto[q(i)]$ by $\gleadsto$, with the understanding that these symbols result of applying functions of, respectively, $i$ and $q(i)$. When the symbol $i$, $\ileadstost$ or $\gleadsto$ is used in a formula without $i$ being bound, the binding $\forall i \in I$ is implied.
-
-As usual, $(\ar', \ar) \nileadstost \phi$ means $¬[(\ar', \ar) \ileadstost \phi]$.
+\subsection{Definition}
+A normative theory is a tuple $(\allprops, ¬, \allargs, I, (\ileadstost[i])_{i \in I}, q, (\gleadsto[q(i)])_{q(i) \in q(I)}, \gbeats, +)$,
+with ${\ileadstost[i]} \subseteq (\allargs × \allargs) × \Phi$, ${\gleadsto[q(i)]} \subseteq \allargs × \Phi$, ${\gbeats} \subseteq \allargs × \allargs$,
+where $\Phi = \allprops × \set{\text{possible}, \text{sure}}$, and $+$ a commutative associative internal binary operation on $\allargs$. The notation $\sum \args = \sum_{\ar \in \args} \ar$ thus designates a well-defined argument.  
 
 The symbol $¬$ is a negation operator on $\allprops$, such that $\forall \prop \in \allprops: ¬¬\prop = \prop$ (this article also uses this symbol to negate classical logic propositions and as a negation operator on $\Phi$, which should create no confusion). Define $¬$ on $\Phi$ as follows, $\forall \prop \in \allprops$: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. Observe that $¬¬\phi = \phi$.
 
+To lighten notations, $\ileadstost[i]$ will generally be denoted by $\ileadstost$, and $\gleadsto[q(i)]$ by $\gleadsto$, with the understanding that these symbols result of applying functions of, respectively, $i$ and $q(i)$. When the symbol $i$, $\ileadstost$ or $\gleadsto$ is used in a formula without $i$ being bound, the binding $\forall i \in I$ is implied.
+
+As usual with binary relations, $(\ar', \ar) \nileadstost \phi$ means $¬[(\ar', \ar) \ileadstost \phi]$.
 Abusing notation, given $\ar \in \allargs$ and $\phi \in \Phi$, I write $\ar \ileadstost \phi$ to mean $[\forall \ar' \in \allargs: (\ar', \ar) \ileadstost \phi]$.
 
 The set $\iphi \subseteq \Phi$ is the set of interest. 
-When $(\prop, \text{possible}) \in \iphi$, $\prop$ is considered as a possibility in the deliberated judgment of $i$ (it is not rejected), and when $(\prop, \text{sure}) \in \iPhi$, $\prop$ is considered as a certainty in the deliberated judgment of $i$. TODO we should have $(\prop, \text{sure}) \in \iPhi ⇒ (¬\prop, \text{possible}) \notin \iPhi$.
+When $(\prop, \text{possible}) \in \iphi$, $\prop$ is considered as a possibility in the deliberated judgment of $i$ (it is not rejected), and when $(\prop, \text{sure}) \in \iPhi$, $\prop$ is considered as a certainty in the deliberated judgment of $i$. 
 Part of the content of $\Phi$ is known as a result of a correct normative and empirical analysis. 
+
+Given $\ar_0 \in \gargs$, let $c(\ar_0) = \bigcup \set{\args \subseteq \gargs \suchthat \ar_0 = \sum \args} \subseteq \allargs$ denote the \emph{components} of $\ar_0$. 
+
+Given $\phi \in {\gleadsto}(\allargs)$, an argument $\ar \in \allargs$ is \emph{in favor of $\phi$}, $\ar \in \gargs[\phi, 0]$, iff $\ar \in [\gbeatsinv]^{2k}({\gleadstoinv}(\phi))$ for some $k \in \N$, where $R^\alpha$ denotes $\alpha$ times the composition of the relation $R$ with itself. (Throughout the article, $\N$ includes zero.) 
+Define $\gargs[\phi] = \set{\ar \suchthat c(\ar) \subseteq \gargs[\phi, 0]}$.
+Define $\gargs = \cup_{\phi \in {\gleadstoinv}(\allargs)} \gargs[\phi]$. 
+
+Given $\ar_2 \in \gargs, \ar_1 \in \allargs$, $\ar_2 \mbeats \ar_1$ has the semantic that $\gamma$ claims that $\ar_2$ trumps $\ar_1$ if necessary.
+Given $\ar_1 \in \allargs, \ar_0 \in \gargs$, $\ar_1 \mbeats \ar_0$ has the semantic that $\gamma$ claims that it knows how to resist an attack from $\ar_1$ coming in response to using $\ar_0$, if it does come.
 
 To ease intuition, let $(\ar', \ar) \ileadstoe \phi$ be equivalent to $(\ar', \ar) \nileadstost ¬\phi$, $\forall \ar', \ar, \phi$.
 
-Given $\phi \in {\gleadsto}(\allargs)$, an argument $\ar \in \allargs$ is \emph{in favor of $\phi$}, $\ar \in \gargs[\phi]$, iff $\ar \in [\gbeatsinv]^{2k}({\gleadstoinv}(\phi))$ for some $k \in \N$, where $R^\alpha$ denotes $\alpha$ times the composition of the relation $R$ with itself. (Throughout the article, $\N$ includes zero.) Define $\gargs = \cup_{\phi \in {\gleadstoinv}(\allargs)} \gargs[\phi]$. 
-
-Define ${\ibeatse} \subseteq \allargs × \gargs$ such that $\ar' \ibeatse \ar$ iff $\exists \phi \suchthat \ar \in \gargs[\phi] \text{ and } (\ar', \ar) \ileadstoe ¬\phi$. 
 Given $\phi \in {\gleadsto}(\allargs)$, define ${\ibeatse[!\phi]} \subseteq \allargs × \gargs[\phi]$ such that $\ar' \ibeatse[!\phi] \ar$ iff $(\ar', \ar) \ileadstoe ¬\phi$. Define ${\ibeatse[\phi]} \subseteq \gargs[\phi] × \allargs$ such that $\ar' \ibeatse[\phi] \ar$ iff $(\ar', \ar) \ileadstoe \phi$. 
-Define ${\ibeatsst} \subseteq \gargs × \allargs$ such that $\ar' \ibeatsst \ar$ iff $\forall \phi \suchthat \ar' \in \gargs[\phi]: (\ar', \ar) \ileadstost \phi$.
-\footnote{When both $\ar_1, \ar_2 \in \gargs$, the relationship is as follows. $\ar_2 \ibeatse \ar_1 ⇒ \ar_2 \nibeatsst \ar_1$, the converse failing only if $\ar_2$ has some claims that $\ar_1$ does not have (thus $\exists \phi \suchthat \ar_2 \in \gargs[\phi] \land \ar_1 \notin \gargs[\phi]$): $\ar_2 \nibeatsst \ar_1$ exactly when $\ar_2$ fails to argue decisively for some of its claims, and $\ar_2 \nibeatse \ar_1$ exactly when $\ar_1$ argues decisively for all of its claims.}
 
+\subsection{Classify propositions}
 A normative theory starts with an axiom stating its normative adequacy.
 \begin{axiom}[Normative adequacy of $\allargs$ and $\ileadstost$]
 	A general normative theory is \emph{normatively adequate} iff $\forall \phi \in \Phi$: 
@@ -122,35 +127,53 @@ This notation is justified only if it is impossible that both $\phi \in \iphi$ a
 	The first result obtains because $\ar \ileadstost \phi$ means that given any $\ar'$, $(\ar, \ar') \ileadstost \phi$, hence $(\ar, \ar') \ileadstoe \phi$ (using \cref{cl:ais}), or equivalently, $(\ar, \ar') \nileadstost ¬\phi$, thus no $\ar' \in \allargs$ satisfies $\ar' \ileadstost ¬\phi$. For the second one, a similar reasoning yields that $(\ar, \ar') \nileadstost (¬\prop, \text{possible})$, and using the contrapositive of \cref{cl:sip}, $(\ar, \ar') \nileadstost (¬\prop, \text{sure})$, thus no $\ar' \in \allargs$ satisfies $\ar' \ileadstost (¬\prop, \text{sure})$.
 \end{proof}
 
+\subsection{Validity and conditions}
 \begin{definition}[Validity]
 	A theory is \emph{valid} iff ${\gleadsto}(\allargs) \subseteq \iphi$.
 \end{definition}
 
+$\ar_0 + \ar_2$ anticipates attacks from those attacking either, minus those attacked by any. (Actually any attacked may still attack the addition, but that’s because of some other not-yet-attacked, anticipated, attack.)
+
+Define $\mbeats[g] \subseteq \gargs × \allargs$ as $\ar_2 \mbeats[g] \ar_1$ iff $\exists \ar \in c(\ar_2) \suchthat \ar \mbeats \ar_1$.
+Define $\mbeats[a] \subseteq \allargs × \gargs$ as $\ar_1 \mbeats[a] \ar_0$ iff $\exists \ar \in c(\ar_0) \suchthat \ar_1 \mbeats \ar$ and $\nexists \ar \in c(\ar_0) \suchthat \ar \mbeats \ar_1]$. Define $\mbeats[*] \subseteq \allargs × \allargs$ as $\gbeatsstar = {\mbeats[g]} \cup {\mbeats[a]}$.
+
 The following condition mandates that if the arguments used by the theory are not decisive, it knows a reason.
 \begin{definition}[Answerability]
-	$\forall \phi \in \Phi, \ar_1 \in \allargs, \ar_2 \in \gargs[\phi] \cap {\gbeatsinv}(\ar_1): (\ar_2, \ar_1) \ileadstoe ¬\phi ⇒ [\exists \ar_3 \in {\gbeatsinv}(\ar_2) \suchthat (\ar_3, \ar_2) \ileadstoe \phi]$.
-\end{definition}
-
-\begin{definition}[Bounded width]
-	$\forall \ar \in \gargs: \card{\ibeatseinv(\ar)} ≤ b_w$.
+	$\forall \phi \in \Phi, \ar_1 \in \allargs, \ar_2 \in \gargs[\phi] \cap {\gbeatsstarinv}(\ar_1): (\ar_2, \ar_1) \ileadstoe ¬\phi ⇒ [\exists \ar_3 \in {\gbeatsstarinv}(\ar_2) \suchthat (\ar_3, \ar_2) \ileadstoe \phi]$.
 \end{definition}
 
 \begin{definition}[Bounded length]
-	$\forall n \in \N$, if $n > b_l$, there is no sequence of arguments $(\ar_k)_{0 ≤ k < n}$ such that $[\exists \phi \suchthat \forall (0 ≤ k < 2n): \ar_{2k} \in \gargs[\phi]]$ and $(\ar_{k + 1}, \ar_k) \ileadstoe \phi$ and $(\ar_{k + 1}, \ar_k) \ileadstoe ¬\phi$. \commentOC{This requires that $\ar_4$ have no attacker, not only in the sense that $\ar_4$ argues successfully against $\ar_3$, but in the (too strong) sense that $\ar_4$ argues successfully for $\phi$. It makes $\ar_4$ decisive, thus, requires that $\ar_4$ also argues against $\ar_1$, $\ar'_1, …$, and it makes the other arguments non useful. (Though may be useful for other dms, as we do not know in advance which one will be decisive.) I suppose I could simplify the presentation by making $\gargs[2]$ contain every good arguments and using only this one.}
-\end{definition}
-
-\begin{definition}[Reinstatement]
-	A theory satisfies \emph{reinstatement} iff $\forall \ar_1, \ar_3 \in \gargs[\phi], \ar_2 \in \allargs: [\ar_1 \ileadstoe \phi, (\ar_2, \ar_1) \ileadstoe ¬\phi, (\ar_3, \ar_2) \ileadstoe \phi] ⇒ (\ar_1 + \ar_3, \ar_2) \ileadstoe \phi \land [\forall \ar_4 \ibeatse \ar_1 + \ar_3: \ar_4 \ibeatse \ar_1 \lor \ar_4 \ibeatse \ar_3]$.
+	$\gargs$ must be finite.
 \end{definition}
 
 \begin{definition}[Operational validity]
-	A theory is \emph{operationally valid} iff $\forall \phi \in {\gleadsto}(\allargs), \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: (\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ [\ar_1 \gbeats \ar_0] \land [\exists \ar_2 \in {\gbeatsinv}(\ar_1) \suchthat (\ar_2, \ar_1) \ileadstoe \phi]$.
+	A theory is \emph{operationally valid} iff $\forall \phi \in {\gleadsto}(\allargs), \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: (\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ [\ar_1 \gbeats \ar_0] \land [\exists \ar_2 \in {\gbeatsinv}(\ar_1) \suchthat (\ar_0 + \ar_2, \ar_1) \ileadstoe \phi]$.
 \end{definition}
 
+\subsection{Example model}
+\begin{itemize}
+	\item $\ar_0 = \text{“Veg bec of ethics and health”}$
+	\item $\ar_1 = \text{“Ethics is not defined”}$
+	\item $\ar_2 = \text{“It is since Aristotle at least”}$
+	\item $\ar_1' = \text{“Health isn’t important”}$
+	\item $\ar_2' = \text{“Ask my grandmother”}$
+	\item $\ar_1 \mbeats \ar_0$, $\ar_1' \mbeats \ar_0$
+	\item $\ar_2 \mbeats \ar_1$, $\ar_2' \mbeats \ar_1'$
+	\item $\ar_0 + \ar_2 \mbeats \ar_1$
+	\item $\ar_1' \mbeats \ar_0 + \ar_2$
+	\item $\ar_0 + \ar_2' \mbeats \ar_1'$
+	\item $\ar_1 \mbeats \ar_0 + \ar_2'$
+	\item $\ar_0 + \ar_2 + \ar_2' \mbeats \ar_1$
+	\item $\ar_0 + \ar_2 + \ar_2' \mbeats \ar_1'$
+\end{itemize}
+
+\subsection{Theorem}
 \begin{theorem}
-	If a theory is answerable, satisfies reinstatement, has bounded width and length, and is operationally valid, it is valid. \commentOC{We don’t seem to need most of these conditions!}
+	If a theory is answerable, has bounded length, and is operationally valid, it is valid.
 \end{theorem}
 \begin{proof}
+	TODO adapt to new definitions!
+	
 	Given $\phi \in {\gleadsto}(\allargs), \args_2, \args_0 \subseteq \gargs$, define $\args_2$ as \emph{$\phi$-defending} $\args_0$ iff $\forall \ar_1 \in \allargs: [\exists \ar_0 \in \args_0 \suchthat (\ar_1, \ar_0) \ileadstoe ¬\phi] ⇒ [\exists \ar_2 \in \args_2 \suchthat (\ar_2, \ar_1) \ileadstoe \phi]$. Define $\args_2$ as \emph{decisively $\phi$-defending} $\args_0$ iff $\forall \ar_1 \in \allargs: [\exists \ar_0 \in \args_0 \suchthat (\ar_1, \ar_0) \ileadstoe ¬\phi] ⇒ [\exists \ar_2 \in \args_2 \suchthat (\ar_2, \ar_1) \ileadstost \phi]$.
 
 	Fix $\phi \in {\gleadsto}(\allargs)$. We have to show that $\exists \ar \in \allargs \suchthat \ar \ileadstost \phi$.
