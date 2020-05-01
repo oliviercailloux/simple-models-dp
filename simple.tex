@@ -155,12 +155,20 @@ The following condition mandates that if the arguments used by the theory are no
 \end{definition}
 
 \begin{definition}[No self-attack]
-	$\gbeats$ must be irreflexive.
+	$\gbeatsstar$ must be asymmetric.
+\end{definition}
+
+\begin{definition}[No repetition]
+	$\nexists \ar_0 \in \gargs[\phi], \ar_1 \in \allargs, \ar_2 \in c(\ar_0) \suchthat \ar_2 \gbeats \ar_1 \gbeatsstar \ar_0$.
 \end{definition}
 
 \begin{definition}[Operational validity]
 	A theory is \emph{operationally valid} iff $\forall \phi \in {\gleadsto}(\allargs), \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: (\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ \exists \ar_2 \in {\gbeatsinv}(\ar_1) \suchthat (\ar_0 + \ar_2, \ar_1) \ileadstoe \phi$.
 \end{definition}
+
+\begin{remark}
+	When $\gbeatsstar$ is as defined above, asymmetry of $\gbeatsstar$ with the other conditions implies No repetition: by construction of $\gbeatsstar$, $\forall \ar_0 \in \gargs[\phi], \ar_1 \in \allargs, \ar_2 \in c(\ar_0) \suchthat \ar_2 \gbeats \ar_1: \ar_0 \gbeatsstar \ar_1$, thus, by asymmetry, $¬(\ar_1 \gbeatsstar \ar_0)$.
+\end{remark}
 
 \subsection{Theorem}
 \begin{theorem}
