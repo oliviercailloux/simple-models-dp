@@ -129,7 +129,7 @@ This notation is justified only if it is impossible that both $\phi \in \iphi$ a
 
 \subsection{Validity and conditions}
 \begin{definition}[Validity]
-	A theory is \emph{valid} iff ${\gleadsto}(\allargs) \subseteq \iphi$.
+	A theory is \emph{valid} iff $\forall \phi \in {\gleadsto}(\allargs): [\phi \in \iphi \land ¬\phi \notin \iphi]$.
 \end{definition}
 
 $\ar_0 + \ar_2$ anticipates attacks from those attacking either, minus those attacked by any. (Actually any attacked may still attack the addition, but that’s because of some other not-yet-attacked, anticipated, attack.)
@@ -159,7 +159,7 @@ The following condition mandates that if the arguments used by the theory are no
 \end{definition}
 
 \begin{definition}[Operational validity]
-	A theory is \emph{operationally valid} iff $\forall \phi \in {\gleadsto}(\allargs), \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: (\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ \exists \ar_2 \in {\gbeatsinv}(\ar_1)$.
+	$\forall \phi \in {\gleadsto}(\allargs), \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: [\ar_1 \gbeatsstar \ar_0 \land (\ar_1, \ar_0) \ileadstoe ¬\phi] ⇒ \exists \ar_2 \in {\gbeatsinv}(\ar_1)$.
 \end{definition}
 
 \subsection{Theorem}
@@ -176,13 +176,13 @@ The following condition mandates that if the arguments used by the theory are no
 	To prove the theorem, given $\phi \in {\gleadsto}(\allargs)$, we need to exhibit an argument $\ar$ such that $\ar \ileadstost \phi$.
 	Define a finite sequence $(\ar[0], \ar[1], \ar[2], …)$, starting from $\ar[0] = {\gleadstoinv}(\phi)$, using the lemma, until the condition $\ar[k] \nileadstost \phi$ no longer holds. This condition must turn false after some finite number of steps, because $\card{c(\ar[k])}$ grows at each step, $c(\ar[k]) \subseteq \gargs$ by definition of $c(.)$, and using Bounded length. The last element of the sequence is the argument we look for.
 \end{proof}
-	\commentOC{No use of of $\ar[k] + \ar_2 \ibeatse \ar_1$, and we use Op val only on planned attacks! The current protocol amounts to: each time the model is endangered, it has to produce one more arg. in support, and we check only at the end (after at worst finitely many steps, as $\gargs$ is bounded) if it has managed to convince. With the difference that the model is indicated which $\ar_1$ is endangering it, to guide selection of the ultimately decisive argument. Actually, if playing $\ar_2$ at some stage did not move $i$ and $\ar_1$ still attacks $\ar_0 + \ar_2$, we can say that the model missed answering that step, thus either we choose to give it a second chance (maybe it chose the wrong $\ar_2$ to counter the $\ar_1'$ it believed was relevant, or it needed both $\ar_2$ and $\ar_4$), or we give up in fear of losing our time. Actually, the protocol is that when applying Answerability, we are supposed to pick the $\ar_1'$ that $i$ just was given by another model, thus, if that’s still the same $\ar_1$ as the step before, the model has lost (it can’t map what it’s told to an argument it knows how to answer).}
+\commentOC{No use of of $\ar[k] + \ar_2 \ibeatse \ar_1$, and we use Op val only on planned attacks! The current protocol amounts to: each time the model is endangered, it has to produce one more arg. in support, and we check only at the end (after at worst finitely many steps, as $\gargs$ is bounded) if it has managed to convince. With the difference that the model is indicated which $\ar_1$ is endangering it, to guide selection of the ultimately decisive argument. Actually, if playing $\ar_2$ at some stage did not move $i$ and $\ar_1$ still attacks $\ar_0 + \ar_2$, we can say that the model missed answering that step, thus either we choose to give it a second chance (maybe it chose the wrong $\ar_2$ to counter the $\ar_1'$ it believed was relevant, or it needed both $\ar_2$ and $\ar_4$), or we give up in fear of losing our time. Actually, the protocol is that when applying Answerability, we are supposed to pick the $\ar_1'$ that $i$ just was given by another model, thus, if that’s still the same $\ar_1$ as the step before, the model has lost (it can’t map what it’s told to an argument it knows how to answer).}
 
 \subsection{Current question}
 Should I leave open the uplifting of $+$ for more generality? Is this really sufficiently general to encompass both interpretations of Answerability, and more? Or should I stick to the current, “single-try”, approach and interpretation?
 
 \subsection{Interpreting Answerability}
-At a given stage in operationalizing the protocol, define $f(\ar_0)$ as the arguments that are considered as having a chance to attack $\ar_0$ (without backtracking). Thus, this will not include $\ar_1$ if indeed $\ar_2$ is considered by $i$ as a satisfying answer to $\ar_1$. We can interpret Answerability in two ways. Strong answ: $\exists \ar_1 \in f(\ar_0) \suchthat \ar_1 \gbeats \ar_0$. Weak answ: $f(\ar_0) ≠ \emptyset ⇒ \exists \ar_1' \suchthat \ar_1' \gbeats \ar_0$.
+At a given stage in operationalizing the protocol, define $f(\ar_0)$ as the arguments that are considered as having a chance to attack $\ar_0$ (without backtracking). Thus, this will not include $\ar_1$ if indeed $\ar_2$ is considered by $i$ as a satisfying answer to $\ar_1$. We can interpret Answerability in the following ways. Strong answ: $\exists \ar_1 \in f(\ar_0) \suchthat \ar_1 \gbeats \ar_0$. Weak answ: $f(\ar_0) ≠ \emptyset ⇒ \exists \ar_1' \suchthat \ar_1' \gbeats \ar_0$. Or suppress Answ and replace Op. val. by Strong op. val.: $\forall \phi \in {\gleadsto}(\allargs), \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: (\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ \exists \ar_2 \in {\gbeatsinv}(\ar_1)$.
 
 A model can be allowed to try only once each answer. If $\ar_2 \gbeats \ar_1 \land \ar_1 \in f(\ar_0 + \ar_2)$, the model has lost.
 
