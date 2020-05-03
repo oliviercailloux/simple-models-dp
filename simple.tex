@@ -60,13 +60,16 @@ The first and third contexts of usage come together when it is desired to test w
 Sketch: define normative models, using questions, and making claims about DJ. A problem is that models specific to a narrow situation will not offer enough means for falsification. Then define a way of saying “we never need this argument”: either the model can prove phi without s0, or if it can’t, then phi does not hold, because I can play s1 against it. BUT what about a model for only one situation? Then we need to accept that $q$ can’t be falsified, and accept that it defines the individual (or just assume without proof that it does not).
 
 \subsection{Definition}
-A normative theory is a tuple $(\allprops, ¬, \allargs, I, (\ileadstost[i])_{i \in I}, q, (\gleadsto[q(i)])_{q(i) \in q(I)}, \gbeats, +)$,
-with ${\ileadstost[i]} \subseteq (\allargs × \allargs) × \Phi$, ${\gleadsto[q(i)]} \subseteq \allargs × \Phi$, ${\gbeats} \subseteq \allargs × \allargs$,
+A normative theory is a tuple $(\allprops, ¬, \allargs, I, (\ileadstoe[i])_{i \in I}, q, (\gleadsto[q(i)])_{q(i) \in q(I)}, \gbeats, +)$,
+with ${\ileadstoe[i]} \subseteq (\allargs × \allargs) × \Phi$, ${\gleadsto[q(i)]} \subseteq \allargs × \Phi$, ${\gbeats} \subseteq \allargs × \allargs$,
 where $\Phi = \allprops × \set{\text{possible}, \text{sure}}$, and $+$ a commutative associative internal binary operation on $\allargs$. Given $\args \subseteq \allargs$, the notation $\sum \args = \sum_{\ar \in \args} \ar$ thus designates a well-defined argument.  
 
 The symbol $¬$ is a negation operator on $\allprops$, such that $\forall \prop \in \allprops: ¬¬\prop = \prop$ (this article also uses this symbol to negate classical logic propositions and as a negation operator on $\Phi$, which should create no confusion). Define $¬$ on $\Phi$ as follows, $\forall \prop \in \allprops$: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. Observe that $¬¬\phi = \phi$.
 
-To lighten notations, $\ileadstost[i]$ will generally be denoted by $\ileadstost$, and $\gleadsto[q(i)]$ by $\gleadsto$, with the understanding that these symbols result of applying functions of, respectively, $i$ and $q(i)$. When the symbol $i$, $\ileadstost$ or $\gleadsto$ is used in a formula without $i$ being bound, the binding $\forall i \in I$ is implied.
+Given any $\ar', \ar, \prop$, let $(\ar', \ar) \ileadstost (\prop, \text{sure})$ be equivalent to $(\ar', \ar) \nileadstoe (¬\prop, \text{poss}) \land (\ar', \ar) \ileadstoe (\prop, \text{sure}) \land (\ar', \ar) \nileadstoe (¬\prop, \text{sure})$; and $(\ar', \ar) \ileadstost (\prop, \text{poss})$ be equivalent to $(\ar', \ar) \nileadstoe (¬\prop, \text{sure})$.
+\footnote{Assume $i$, given $\ar$ and $\ar'$, picks repeatedly (in various circumstances) nonempty subsets of $\set{\prop, ¬\prop}$. Define $(\ar', \ar) \ileadstoe (\prop, \text{sure})$ iff she sometimes chooses $\set{\prop}$ and $(\ar', \ar) \ileadstoe (\prop, \text{poss})$ iff she sometimes chooses $\set{\prop}$ or $\set{\prop, ¬\prop}$. Then, $(\ar', \ar) \ileadstost (\prop, \text{sure})$ iff she always chooses $\set{\prop}$ and $(\ar', \ar) \ileadstost (\prop, \text{poss})$ iff she always chooses either $\set{\prop}$ or $\set{\prop, ¬\prop}$.}
+
+To lighten notations, $\ileadstoe[i]$ will generally be denoted by $\ileadstoe$, and $\gleadsto[q(i)]$ by $\gleadsto$, with the understanding that these symbols result of applying functions of, respectively, $i$ and $q(i)$. When the symbol $i$, $\ileadstost$ or $\gleadsto$ is used in a formula without $i$ being bound, the binding $\forall i \in I$ is implied.
 
 As usual with binary relations, $(\ar', \ar) \nileadstost \phi$ means $¬[(\ar', \ar) \ileadstost \phi]$.
 Abusing notation, given $\ar \in \allargs$ and $\phi \in \Phi$, I write $\ar \ileadstost \phi$ to mean $[\forall \ar' \in \allargs: (\ar', \ar) \ileadstost \phi]$.
@@ -83,10 +86,6 @@ Define $\gargs = \cup_{\phi \in {\gleadstoinv}(\allargs)} \gargs[\phi]$.
 
 Given $\ar_2 \in \gargs, \ar_1 \in \allargs$, $\ar_2 \mbeats \ar_1$ has the semantic that $\gamma$ claims that $\ar_2$ trumps $\ar_1$ if necessary.
 Given $\ar_1 \in \allargs, \ar_0 \in \gargs$, $\ar_1 \mbeats \ar_0$ has the semantic that $\gamma$ claims that it knows how to resist an attack from $\ar_1$ coming in response to using $\ar_0$, if it does come.
-
-To ease intuition, let $(\ar', \ar) \ileadstoe \phi$ be equivalent to $(\ar', \ar) \nileadstost ¬\phi$, $\forall \ar', \ar, \phi$.
-
-Given $\phi \in {\gleadsto}(\allargs)$, define ${\ibeatse[!\phi]} \subseteq \allargs × \gargs[\phi]$ such that $\ar' \ibeatse[!\phi] \ar$ iff $(\ar', \ar) \ileadstoe ¬\phi$. Define ${\ibeatse[\phi]} \subseteq \gargs[\phi] × \allargs$ such that $\ar' \ibeatse[\phi] \ar$ iff $(\ar', \ar) \ileadstoe \phi$. 
 
 \subsection{Classify propositions}
 The notations $\iphi$ and $\iphibar$ designate subsets of $\Phi$, representing the propositions that $i$ accepts and rejects, respectively.
@@ -173,6 +172,8 @@ Define $\mbeats[a] \subseteq \allargs × \gargs$ as $\ar_1 \mbeats[a] \ar_0$ iff
 	In summary: when $\ar_1$ trumps $\ar_0$, and the model has not already answered this argument using $\ar_0$ (thus $¬ \ar_0 \gbeats \ar_1$), Op. val. demands an answer. When $\ar_1$ trumps $\ar_0$, and the model has answered already using $\ar_0$, and we have checked that indeed $\ar_0$ trumps $\ar_1$, Answerability demands that the model can explain this instability by the fact that someone must have given another argument $\ar_1'$ to $i$ (and this is to be checked using means outside the formal model).
 \end{remark}
 
+Given $\phi \in {\gleadsto}(\allargs)$, define ${\ibeatse[!\phi]} \subseteq \allargs × \gargs[\phi]$ such that, when $\phi = (\prop, \text{sure})$, $\ar' \ibeatse[!\phi] \ar$ iff $(\ar', \ar) \ileadstoe (¬\prop, \text{poss}) \lor (\ar', \ar) \ileadstoe (¬\prop, \text{sure})$, and when $\phi = (\prop, \text{poss})$, $\ar' \ibeatse[!\phi] \ar$ iff $(\ar', \ar) \ileadstoe ¬\phi$. Define ${\ibeatse[\phi]} \subseteq \gargs[\phi] × \allargs$ such that $\ar' \ibeatse[\phi] \ar$ iff $(\ar', \ar) \ileadstoe \phi$. 
+
 The following condition mandates that if the arguments used by the theory are not decisive, it knows a reason.
 \begin{definition}[Answerability]
 	$\forall \phi \in {\gleadsto}(\allargs), \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: (\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ [\exists \ar_1' \in {\gbeatsstarinv}(\ar_0)]$.
@@ -190,13 +191,27 @@ The following condition mandates that if the arguments used by the theory are no
 	$\forall \phi \in {\gleadsto}(\allargs), \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: [\ar_1 \gbeatsstar \ar_0 \land (\ar_1, \ar_0) \ileadstoe ¬\phi] ⇒ \exists \ar_2 \in {\gbeatsinv}(\ar_1)$.
 \end{definition}
 
+\begin{definition}[Claiming certainty requires claiming possibility]
+	$\forall (\prop, \text{sure}) \in {\gleadsto}(\allargs): (\prop, \text{poss}) \in {\gleadsto}(\allargs)$.
+\end{definition}
+
+\begin{definition}[Challenging possibility implies challenging certainty]
+	$\forall (\prop, \text{sure}) \in {\gleadsto}(\allargs), \ar_1 \in \allargs, \ar_0 \in \gargs[(\prop, \text{sure})]: (\ar_1, \ar_0) \ileadstoe (¬\prop, \text{sure}) ⇒ (\ar_1, \ar_0) \ileadstoe (¬\prop, \text{poss})$.
+\end{definition}
+
 \subsection{Theorem}
 \begin{theorem}
 	If a theory is answerable, has bounded length, does not repeat, and is operationally valid, it is valid.
 \end{theorem}
 \begin{proof}
 	Lemma: given $\phi \in {\gleadsto}(\allargs)$ and $\ar[k] \in \gargs[\phi]$, if $\ar[k] \nileadstost \phi$, then: $\exists \ar[k + 1] \in \gargs[\phi] \suchthat \card{c(\ar[k + 1])} ≥ \card{c(\ar[k])} + 1$.
-	To prove the lemma, let us pick any $\phi \in {\gleadsto}(\allargs)$ and $\ar[k] \in \gargs[\phi]$ such that $\ar[k] \nileadstost \phi$. We know that $\exists \ar_1 \in \allargs \suchthat \ar_1 \ibeatse[!\phi] \ar[k]$. Therefore, by Answerability, $\exists \ar_1' \in \allargs \suchthat \ar_1' \gbeatsstar \ar[k]$, and, by Operational validity, $\exists \ar_2 \in \gargs[\phi] \suchthat \ar_2 \gbeats \ar'_1$. 
+	To prove the lemma, let us pick any $\phi \in {\gleadsto}(\allargs)$ and $\ar[k] \in \gargs[\phi]$ such that $\ar[k] \nileadstost \phi$. 
+	We know that $\exists \ar_1 \in \allargs \suchthat (\ar_1, \ar[k]) \nileadstost \phi$. 
+	
+	We want to prove, first, that $(\ar_1, \ar[k]) \ileadstoe ¬\phi$. If $\phi = (\prop, \text{poss})$, that is clear from the definition of $\ileadstost$. If $\phi = (\prop, \text{sure})$, 
+	
+	\commentOC{With new definition of $\ileadstost$, when $\phi = (\prop, \text{sure})$, from $\ar \nileadstost \phi$ we only obtain that $\ar \ileadstoe ¬\phi \lor …$, thus, we still need to show that $\ileadstoe (\prop, \text{sure})$ and that $\nileadstoe (¬\prop, \text{sure})$.}
+	We know that $\exists \ar_1 \in \allargs \suchthat \ar_1 \ibeatse[!\phi] \ar[k]$. Therefore, by Answerability, $\exists \ar_1' \in \allargs \suchthat \ar_1' \gbeatsstar \ar[k]$, and, by Operational validity, $\exists \ar_2 \in \gargs[\phi] \suchthat \ar_2 \gbeats \ar'_1$. 
 	Define $\ar[k + 1] = \ar[k] + \ar_2$. 
 	By No repetition, $\ar_2 \notin c(\ar[k])$.
 	Thus, $\card{c(\ar[k + 1])} ≥ \card{c(\ar[k])} + 1$.
