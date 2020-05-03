@@ -89,19 +89,47 @@ To ease intuition, let $(\ar', \ar) \ileadstoe \phi$ be equivalent to $(\ar', \a
 Given $\phi \in {\gleadsto}(\allargs)$, define ${\ibeatse[!\phi]} \subseteq \allargs × \gargs[\phi]$ such that $\ar' \ibeatse[!\phi] \ar$ iff $(\ar', \ar) \ileadstoe ¬\phi$. Define ${\ibeatse[\phi]} \subseteq \gargs[\phi] × \allargs$ such that $\ar' \ibeatse[\phi] \ar$ iff $(\ar', \ar) \ileadstoe \phi$. 
 
 \subsection{Classify propositions}
-A normative theory starts with an axiom stating its normative adequacy.
-\begin{axiom}[Normative adequacy of $\allargs$ and $\ileadstost$]
-	A general normative theory is \emph{normatively adequate} iff $\forall \phi \in \Phi$: 
+The notations $\iphi$ and $\iphibar$ designate subsets of $\Phi$, representing the propositions that $i$ accepts and rejects, respectively.
+
+\begin{axiom}[Normative adequacy of $\allargs$ and $\ileadstost$ 1]
+	$\forall \phi \in \Phi$: 
 	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ 
-		\begin{cases}
-			\phi \in \iphi,\\
-			\lnot\phi \notin \iphi.
-		\end{cases}
+		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ \phi \in \iphi.
 	\end{equation}
 \end{axiom}
+\begin{axiom}[Normative adequacy of $\allargs$ and $\ileadstost$ 2]
+	$\forall \phi \in \Phi$: 
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ \lnot\phi \in \iphibar.
+	\end{equation}
+\end{axiom}
+\begin{axiom}[Coherent complement]
+	$\forall \phi \in \Phi: \phi \in \iphi ⇒ \phi \notin \iphibar$.
+\end{axiom}
 
-This notation is justified only if it is impossible that both $\phi \in \iphi$ and $\phi \notin \iphi$ be implied. \commentOC{TODO clarify.} The following conditions permit to obtain this result.
+\begin{definition}[Coherent protocol]
+	$\forall \phi \in \Phi: \ar \ileadstost \phi ⇒ \ar \nileadstost ¬\phi$.
+\end{definition}
+
+\begin{theorem}
+	Under axioms of Normative adequacy, Coherent complement ⇒ Coherent protocol.
+\end{theorem}
+\begin{proof}
+	Coherent complement is equivalent to $\forall \phi \in \phi: ¬(\phi \in \iphi \land \phi \in \iphibar)$.
+	Coherent protocol is equivalent to $\forall \phi \in \Phi: ¬(\ar \ileadstost \phi \land \ar \ileadstost ¬\phi)$, which implies (using Norm ad 1 and 2) $\forall \phi \in \Phi: ¬(\phi \in \iphi \land \phi \in \iphibar)$.
+\end{proof}
+
+\begin{theorem}
+	Under axioms of Normative adequacy, Coherent protocol ⇒ Coherent complement.
+\end{theorem}
+\begin{proof}
+	This is false under the current definitions: if $\ileadstost = \emptyset$, coherent protocol, but $\phi \in \iphi \land \phi \in \iphibar$ possible.
+\end{proof}
+
+\begin{axiom}[Coherent negation]
+	$\forall \phi \in \Phi: \phi \in \iphi ⇔ ¬\phi \in \iphibar$.
+\end{axiom}
+This notation (writing $\phi \in \iphibar$ as equivalent to $\phi \notin \iphi$) is justified only if it is impossible that both $\phi \in \iphi$ and $\phi \notin \iphi$ be implied (thus, if Coherent complement). \commentOC{TODO clarify.} The following conditions permit to obtain this result. \commentOC{Cond. 1 is stronger than necessary: we could have ¬cond. 1 and still Coh compl: $(\ar_2, \ar_1) \ileadstost \phi$ and $(\ar_2, \ar_1) \ileadstost ¬\phi$ without problems if $\ar_2$ and $\ar_1$ are not decisive. In fact, $(\ar_2, \ar_1) \ileadstoe ¬\phi$ should be defined as $(\ar_2, \ar_1) \nileadstost \phi) \lor (\ar_2, \ar_1) \ileadstost ¬\phi$, just in case a strange protocol allows both leading always to $\phi$ and $¬\phi$, and I think the rest goes through.}
 
 \begin{condition}[Always implies sometimes]
 	\label{cl:ais}
