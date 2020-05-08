@@ -105,6 +105,8 @@ The notations $\iPhi$ and $\iPhirej$ designate the subsets of $\Phi$ whose propo
 		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ \lnot\phi \in \iPhirej.
 	\end{equation}
 \end{axiom}
+
+I suppose I can’t prove this.
 \begin{property}[Coherent complement]
 	$\iPhi \cap \iPhirej = \emptyset$.
 \end{property}
@@ -144,6 +146,7 @@ This property in turn entails the following one.
 \begin{property}[Per-proposition determination]
 	$\forall \prop \in \allprops: [\set{\prop, ¬\prop} × \set{\text{sure}, \text{poss}} \subseteq \iPhidet] \lor [\set{\prop, ¬\prop} × \set{\text{sure}, \text{poss}} \subseteq \Phi \setminus \iPhidet]$.
 \end{property}
+\commentOC{There appears to be no reason to want per-proposition determination, even at the mere model level. I could have a model say that $\propposs$ should be accepted, but have nothing to say about whether $\propsure$ should as well, or $\notpropposs$ is okay as well.}
 
 Given a normative model, define $\mPhi \subseteq \Phi$ as the set of propositions whose status is determined by the Normative adequacy axioms: $\phi \in \mPhi ⇔ [\exists \ar \in \allargs \suchthat \ar \ileadstost \phi]$.
 
