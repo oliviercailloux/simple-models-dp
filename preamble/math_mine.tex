@@ -29,8 +29,10 @@
 }
 \NewDocumentCommand{\allprops}{}{T}
 \NewDocumentCommand{\prop}{}{t}
-\NewDocumentCommand{\iphi}{}{\Phi_i}
-\NewDocumentCommand{\iphibar}{}{\Phi'_i}
+\NewDocumentCommand{\iPhi}{}{\Phi^\text{acc}_i}
+\NewDocumentCommand{\iPhidet}{}{\Phi^\text{det}_i}
+\NewDocumentCommand{\mPhi}{}{\Phi_\gamma}
+\NewDocumentCommand{\iPhirej}{}{\Phi^\text{rej}_i}
 \NewDocumentCommand{\ileadsto}{}{⇝}
 \NewDocumentCommand{\ileadstos}{}{\overset{s}{⇝_i}}
 \NewDocumentCommand{\ileadstost}{O{}}{⇝^{#1}_\forall}
@@ -53,6 +55,11 @@
 		⊳_\exists^{-1}%
 	}%
 }
+\NewDocumentCommand{\propsure}{}{(t, \text{sure})}
+\NewDocumentCommand{\propposs}{}{(t, \text{poss})}
+\NewDocumentCommand{\notpropsure}{}{(¬t, \text{sure})}
+\NewDocumentCommand{\notpropposs}{}{(¬t, \text{poss})}
+
 %\newcommand{\ibeatseinv}{\mathbin{\vartriangleright_\exists^{-1}}}
 %\newcommand{\ibeatse}[1][]{\mathbin{\vartriangleright_\exists^{#1}}}
 %\NewDocumentCommand{\nibeatse}{}{⋫_\exists}
@@ -74,9 +81,6 @@
 \newcommand{\ipossp}{T_i^+}
 \newcommand{\ipossm}{T_i^−}
 \newcommand{\isure}{T^\text{sure}_i}
-\newcommand{\iPhi}{\Phi_i}
-\newcommand{\propsure}{t\text{-sure}}
-\newcommand{\propposs}{t\text{-poss}}
 \newcommand{\phidec}{\phi\text{-dec}}
 \newcommand{\propsuredec}{t\text{-sure-dec}}
 \newcommand{\proppossdec}{t\text{-poss-dec}}

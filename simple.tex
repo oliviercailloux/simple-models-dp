@@ -74,37 +74,94 @@ To lighten notations, $\ileadstoe[i]$ will generally be denoted by $\ileadstoe$,
 As usual with binary relations, $(\ar', \ar) \nileadstost \phi$ means $¬[(\ar', \ar) \ileadstost \phi]$.
 Abusing notation, given $\ar \in \allargs$ and $\phi \in \Phi$, I write $\ar \ileadstost \phi$ to mean $[\forall \ar' \in \allargs: (\ar', \ar) \ileadstost \phi]$.
 
-The set $\iphi \subseteq \Phi$ is the set of interest. 
-When $(\prop, \text{possible}) \in \iphi$, $\prop$ is considered as a possibility in the deliberated judgment of $i$ (it is not rejected), and when $(\prop, \text{sure}) \in \iPhi$, $\prop$ is considered as a certainty in the deliberated judgment of $i$. 
+The set $\iPhi \subseteq \Phi$ is the set of interest. 
+When $(\prop, \text{possible}) \in \iPhi$, $\prop$ is considered as a possibility in the deliberated judgment of $i$ (it is not rejected), and when $(\prop, \text{sure}) \in \iPhi$, $\prop$ is considered as a certainty in the deliberated judgment of $i$. 
 Part of the content of $\Phi$ is known as a result of a correct normative and empirical analysis. 
 
-Given $\ar_0 \in \gargs$, let $c(\ar_0) = \bigcup \set{\args \subseteq \gargs \suchthat \ar_0 = \sum \args} \subseteq \allargs$ denote the \emph{components} of $\ar_0$. 
+Given $\phi \in {\gleadsto}(\allargs)$, an argument $\ar \in \allargs$ is \emph{in favor of $\phi$}, $\ar \in \gargs[\phi, 1]$, iff $\ar \in [\gbeatsinv]^{2k}({\gleadstoinv}(\phi))$ for some $k \in \N$, where $R^\alpha$ denotes $\alpha$ times the composition of the relation $R$ with itself. (Throughout the article, $\N$ includes zero.) 
 
-Given $\phi \in {\gleadsto}(\allargs)$, an argument $\ar \in \allargs$ is \emph{in favor of $\phi$}, $\ar \in \gargs[\phi, 0]$, iff $\ar \in [\gbeatsinv]^{2k}({\gleadstoinv}(\phi))$ for some $k \in \N$, where $R^\alpha$ denotes $\alpha$ times the composition of the relation $R$ with itself. (Throughout the article, $\N$ includes zero.) 
-Define $\gargs[\phi] = \set{\ar \suchthat c(\ar) \subseteq \gargs[\phi, 0]}$.
-Define $\gargs = \cup_{\phi \in {\gleadstoinv}(\allargs)} \gargs[\phi]$. 
+Given $\phi \in {\gleadsto}(\allargs)$ and $1 ≤ k \in \N$, define $\gargs[\phi, k + 1] = \gargs[\phi, k] + \gargs[\phi, 1] = \set{\ar_k + \ar_1 \suchthat \ar_k \in \gargs[\phi, k], \ar_1  \in \gargs[\phi, 1]}$. 
+Define $\gargs[\phi] = \bigcup_{1 ≤ k \in \N} \gargs[\phi, k]$, and $\gargs = \cup_{\phi \in {\gleadstoinv}(\allargs)} \gargs[\phi]$. 
+
+Given $\phi \in \Phi$ and $\ar_0 \in \gargs[\phi]$, let $c^\phi(\ar_0) = \bigcup \set{\args \subseteq \gargs[\phi, 0] \suchthat \ar_0 = \sum \args} \subseteq \allargs$ denote the \emph{components} of $\ar_0$ in favor of $\phi$.
 
 Given $\ar_2 \in \gargs, \ar_1 \in \allargs$, $\ar_2 \mbeats \ar_1$ has the semantic that $\gamma$ claims that $\ar_2$ trumps $\ar_1$ if necessary.
 Given $\ar_1 \in \allargs, \ar_0 \in \gargs$, $\ar_1 \mbeats \ar_0$ has the semantic that $\gamma$ claims that it knows how to resist an attack from $\ar_1$ coming in response to using $\ar_0$, if it does come.
 
+Given $\phi \in {\gleadsto}(\allargs)$, define ${\ibeatse[!\phi]} \subseteq \allargs × \gargs[\phi]$ such that $\ar' \ibeatse[!\phi] \ar$ iff $(\ar', \ar) \ileadstoe ¬\phi$. Define ${\ibeatse[\phi]} \subseteq \gargs[\phi] × \allargs$ such that $\ar' \ibeatse[\phi] \ar$ iff $(\ar', \ar) \ileadstoe \phi$. 
+
 \subsection{Classify propositions}
-The notations $\iphi$ and $\iphibar$ designate subsets of $\Phi$, representing the propositions that $i$ accepts and rejects, respectively.
+The notations $\iPhi$ and $\iPhirej$ designate the subsets of $\Phi$ whose propositions $i$ deliberately accepts and rejects, respectively.
 
 \begin{axiom}[Normative adequacy of $\allargs$ and $\ileadstost$ 1]
 	$\forall \phi \in \Phi$: 
 	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ \phi \in \iphi.
+		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ \phi \in \iPhi.
 	\end{equation}
 \end{axiom}
 \begin{axiom}[Normative adequacy of $\allargs$ and $\ileadstost$ 2]
 	$\forall \phi \in \Phi$: 
 	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ \lnot\phi \in \iphibar.
+		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ \lnot\phi \in \iPhirej.
 	\end{equation}
 \end{axiom}
-\begin{axiom}[Coherent complement]
-	$\forall \phi \in \Phi: \phi \in \iphi ⇒ \phi \notin \iphibar$.
-\end{axiom}
+\begin{property}[Coherent complement]
+	$\iPhi \cap \iPhirej = \emptyset$.
+\end{property}
+
+The following definition may be useful for analytic clarification, but this property is not required as an axiom for the results in this article.
+\begin{property}[Exhaustivity]
+	$\forall \phi \in \Phi: \phi \notin \iPhi ⇒ \phi \in \iPhirej$.
+\end{property}
+Exhaustivity can be considered a strong demand, as it requires every proposition to be deliberately accepted or rejected. \commentOC{I’m not so sure: could consider that $t$ is merely possible when not determined.}
+
+Define the propositions whose status is determined as $\iPhidet = \iPhi \cup \iPhirej$.
+
+\begin{property}[Suppl]
+	$\forall \prop \in \allprops: \propsure \notin \iPhi ⇒ \propsure \in \iPhirej$.
+\end{property}
+\begin{property}[Negation coherence]
+	\label{prop:cohb}
+	$\forall \phi \in \Phi: \phi \in \iPhi ⇔ ¬\phi \in \iPhirej$, and $\forall \prop \in \allprops: \propsure \in \iPhi ⇒ (¬\prop, \text{sure}) \in \iPhirej$.
+\end{property}
+This property entails the following one.
+\begin{property}[Per-proposition coherence]
+	$\forall \prop \in \allprops$, exactly one of the following four propositions is true: 
+	\begin{itemize}
+		\item $\propsure \in \iPhi \land \propposs \in \iPhi \land (¬\prop, \text{sure}) \in \iPhirej \land (¬\prop, \text{poss}) \in \iPhirej$;
+		\item $\propsure \in \iPhirej \land \propposs \in \iPhi \land (¬\prop, \text{sure}) \in \iPhirej \land (¬\prop, \text{poss}) \in \iPhi$;
+		\item $\propsure \in \iPhirej \land \propposs \in \iPhirej \land (¬\prop, \text{sure}) \in \iPhi \land (¬\prop, \text{poss}) \in \iPhi$;
+		\item $\set{\prop, ¬\prop} × \set{\text{sure}, \text{poss}} \subseteq \Phi \setminus \iPhidet$;
+	\end{itemize}
+\end{property}
+\begin{proof}
+	If $\propsure \in \iPhi$, then $\notpropsure \in \iPhirej$, thus $\propposs \in \iPhi$ as $\notpropsure = ¬\propposs$ and $\phi \in \iPhi ⇔ ¬\phi \in \iPhirej$; and finally, $\notpropposs \in \iPhirej$ as $\notpropposs = ¬\propsure$ and $\phi \in \iPhi ⇔ ¬\phi \in \iPhirej$.
+	
+	If $\propsure \notin \iPhi$ and $\propposs \in \iPhi$, then?
+\end{proof}
+
+This property in turn entails the following one.
+\begin{property}[Per-proposition determination]
+	$\forall \prop \in \allprops: [\set{\prop, ¬\prop} × \set{\text{sure}, \text{poss}} \subseteq \iPhidet] \lor [\set{\prop, ¬\prop} × \set{\text{sure}, \text{poss}} \subseteq \Phi \setminus \iPhidet]$.
+\end{property}
+
+Given a normative model, define $\mPhi \subseteq \Phi$ as the set of propositions whose status is determined by the Normative adequacy axioms: $\phi \in \mPhi ⇔ [\exists \ar \in \allargs \suchthat \ar \ileadstost \phi]$.
+
+\Cref{prop:cohb} can’t be proven, but the following weaker versions can: $\forall \phi \in \Phi: \phi \in \mPhi ⇒ ¬\phi \in \iPhirej$ and $\forall \phi \in \Phi: \propsure \in \mPhi ⇒ ¬\propsure \in \iPhirej$.
+
+\begin{property}[Per-proposition weaker coherence bis]
+	$\forall \phi \in \Phi: \phi \in \mPhi ⇒ ¬\phi \notin \mPhi$.
+\end{property}
+
+A proposition $\phi$ has a determined status iff $\phi \in \mPhi \lor ¬\phi \in \mPhi$. (Not both?)
+
+\begin{property}[Coherent determination]
+	$\forall \prop \in \allprops: $ either all propositions among $\set{\propsure, \propposs, ¬\propsure, ¬\propposs}$ have a determined status, or none have.
+\end{property}
+
+… and it is coherent!
+
+the subset of $\Phi$ about which $\allargs$ and $\ileadstoe$ give access: 
 
 \begin{definition}[Coherent protocol]
 	$\forall \phi \in \Phi: \ar \ileadstost \phi ⇒ \ar \nileadstost ¬\phi$.
@@ -114,21 +171,29 @@ The notations $\iphi$ and $\iphibar$ designate subsets of $\Phi$, representing t
 	Under axioms of Normative adequacy, Coherent complement ⇒ Coherent protocol.
 \end{theorem}
 \begin{proof}
-	Coherent complement is equivalent to $\forall \phi \in \phi: ¬(\phi \in \iphi \land \phi \in \iphibar)$.
-	Coherent protocol is equivalent to $\forall \phi \in \Phi: ¬(\ar \ileadstost \phi \land \ar \ileadstost ¬\phi)$, which implies (using Norm ad 1 and 2) $\forall \phi \in \Phi: ¬(\phi \in \iphi \land \phi \in \iphibar)$.
+	Coherent complement is equivalent to $\forall \phi \in \phi: ¬(\phi \in \iPhi \land \phi \in \iPhirej)$.
+	Coherent protocol is equivalent to $\forall \phi \in \Phi: ¬(\ar \ileadstost \phi \land \ar \ileadstost ¬\phi)$, which implies (using Norm ad 1 and 2) $\forall \phi \in \Phi: ¬(\phi \in \iPhi \land \phi \in \iPhirej)$.
 \end{proof}
 
 \begin{theorem}
 	Under axioms of Normative adequacy, Coherent protocol ⇒ Coherent complement.
 \end{theorem}
 \begin{proof}
-	This is false under the current definitions: if $\ileadstost = \emptyset$, coherent protocol, but $\phi \in \iphi \land \phi \in \iphibar$ possible.
+	This is false under the current definitions: if $\ileadstost = \emptyset$, coherent protocol, but $\phi \in \iPhi \land \phi \in \iPhirej$ possible.
 \end{proof}
 
 \begin{axiom}[Coherent negation]
-	$\forall \phi \in \Phi: \phi \in \iphi ⇔ ¬\phi \in \iphibar$.
+	$\forall \phi \in \Phi: \phi \in \iPhi ⇔ ¬\phi \in \iPhirej$.
 \end{axiom}
-This notation (writing $\phi \in \iphibar$ as equivalent to $\phi \notin \iphi$) is justified only if it is impossible that both $\phi \in \iphi$ and $\phi \notin \iphi$ be implied (thus, if Coherent complement). \commentOC{TODO clarify.} The following conditions permit to obtain this result. \commentOC{Cond. 1 is stronger than necessary: we could have ¬cond. 1 and still Coh compl: $(\ar_2, \ar_1) \ileadstost \phi$ and $(\ar_2, \ar_1) \ileadstost ¬\phi$ without problems if $\ar_2$ and $\ar_1$ are not decisive. In fact, $(\ar_2, \ar_1) \ileadstoe ¬\phi$ should be defined as $(\ar_2, \ar_1) \nileadstost \phi) \lor (\ar_2, \ar_1) \ileadstost ¬\phi$, just in case a strange protocol allows both leading always to $\phi$ and $¬\phi$, and I think the rest goes through.}
+
+\begin{proposition}
+	$\forall \ar \in \allargs: \ar \ileadstost \propsure ⇒ \ar \ileadstost \propposs$.
+\end{proposition}
+\begin{proof}
+	By hypothesis, $\forall \ar_1 \in \allargs: (\ar_1, \ar) \ileadstost \propsure$, which implies, by definition of $\ileadstost$, that $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadstoe (¬\prop, \text{sure})$. Therefore, $\ar \ileadstost \propposs$.
+\end{proof}
+
+This notation (writing $\phi \in \iPhirej$ as equivalent to $\phi \notin \iPhi$) is justified only if it is impossible that both $\phi \in \iPhi$ and $\phi \notin \iPhi$ be implied (thus, if Coherent complement). \commentOC{TODO clarify.} The following conditions permit to obtain this result. \commentOC{Cond. 1 is stronger than necessary: we could have ¬cond. 1 and still Coh compl: $(\ar_2, \ar_1) \ileadstost \phi$ and $(\ar_2, \ar_1) \ileadstost ¬\phi$ without problems if $\ar_2$ and $\ar_1$ are not decisive. In fact, $(\ar_2, \ar_1) \ileadstoe ¬\phi$ should be defined as $(\ar_2, \ar_1) \nileadstost \phi) \lor (\ar_2, \ar_1) \ileadstost ¬\phi$, just in case a strange protocol allows both leading always to $\phi$ and $¬\phi$, and I think the rest goes through.}
 
 \begin{condition}[Always implies sometimes]
 	\label{cl:ais}
@@ -156,13 +221,13 @@ This notation (writing $\phi \in \iphibar$ as equivalent to $\phi \notin \iphi$)
 
 \subsection{Validity and conditions}
 \begin{definition}[Validity]
-	A theory is \emph{valid} iff $\forall \phi \in {\gleadsto}(\allargs): [\phi \in \iphi \land ¬\phi \notin \iphi]$.
+	A theory is \emph{valid} iff $\forall \phi \in {\gleadsto}(\allargs): [\phi \in \iPhi \land ¬\phi \notin \iPhi]$.
 \end{definition}
 
 $\ar_0 + \ar_2$ anticipates attacks from those attacking either, minus those attacked by any. (Actually any attacked may still attack the addition, but that’s because of some other not-yet-attacked, anticipated, attack.)
 
 Define $\mbeats[g] \subseteq \gargs × \allargs$ as $\ar_2 \mbeats[g] \ar_1$ iff $\exists \ar \in c(\ar_2) \suchthat \ar \mbeats \ar_1$.
-Define $\mbeats[a] \subseteq \allargs × \gargs$ as $\ar_1 \mbeats[a] \ar_0$ iff $\exists \ar \in c(\ar_0) \suchthat \ar_1 \mbeats \ar$ and $\nexists \ar \in c(\ar_0) \suchthat \ar \mbeats \ar_1$. Define ${\gbeatsstar} \subseteq \allargs × \allargs$ as ${\gbeatsstar} = {\mbeats[g]} \cup {\mbeats[a]}$.
+Define $\mbeats[a] \subseteq \allargs × \gargs$ as $\ar_1 \mbeats[a] \ar_0$ iff $\exists \ar \in c(\ar_0) \suchthat \ar_1 \mbeats \ar$ and $\nexists \ar \in c(\ar_0) \suchthat \ar \mbeats \ar_1$. Define ${\gbeatsstar} \subseteq \allargs × \allargs$ as ${\gbeatsstar} = {\mbeats[g]} \cup {\mbeats[a]}$. \commentOC{TODO $c^\phi$, not $c$. Use $c = \cup_{\phi} c^\phi$?}
 
 \begin{remark}
 	I currently conceive these conditions in the following way. The model must anticipate in its initial arguments the counter-arguments that $i$ may have in mind. Thus, $\ar_1$ trumps $\ar_0$ is observed when $i$ has been given $\ar_1$. When the model answers with $\ar_2$, if $i$ is unconvinced (of $\ar_2 + \ar_0$ trumping $\ar_1$), the procedure stops (the model can’t argue that yes-but-maybe-$i$-has-$\ar_1'$-in-mind; in particular, it wouldn’t be feasible to interrogate $i$ if the arguments are given thanks to labeling in a supermarket). However, if $i$ is given $\ar_1'$, the model must be given a chance to play its counter-argument, and may not be falsified because $\ar_2 + \ar_0$ is not enough: once $i$ is given $\ar_1'$, it is no more claimed by the model that $\ar_2 + \ar_0$ suffices any longer.
@@ -172,11 +237,9 @@ Define $\mbeats[a] \subseteq \allargs × \gargs$ as $\ar_1 \mbeats[a] \ar_0$ iff
 	In summary: when $\ar_1$ trumps $\ar_0$, and the model has not already answered this argument using $\ar_0$ (thus $¬ \ar_0 \gbeats \ar_1$), Op. val. demands an answer. When $\ar_1$ trumps $\ar_0$, and the model has answered already using $\ar_0$, and we have checked that indeed $\ar_0$ trumps $\ar_1$, Answerability demands that the model can explain this instability by the fact that someone must have given another argument $\ar_1'$ to $i$ (and this is to be checked using means outside the formal model).
 \end{remark}
 
-Given $\phi \in {\gleadsto}(\allargs)$, define ${\ibeatse[!\phi]} \subseteq \allargs × \gargs[\phi]$ such that, when $\phi = (\prop, \text{sure})$, $\ar' \ibeatse[!\phi] \ar$ iff $(\ar', \ar) \ileadstoe (¬\prop, \text{poss}) \lor (\ar', \ar) \ileadstoe (¬\prop, \text{sure})$, and when $\phi = (\prop, \text{poss})$, $\ar' \ibeatse[!\phi] \ar$ iff $(\ar', \ar) \ileadstoe ¬\phi$. Define ${\ibeatse[\phi]} \subseteq \gargs[\phi] × \allargs$ such that $\ar' \ibeatse[\phi] \ar$ iff $(\ar', \ar) \ileadstoe \phi$. 
-
 The following condition mandates that if the arguments used by the theory are not decisive, it knows a reason.
 \begin{definition}[Answerability]
-	$\forall \phi \in {\gleadsto}(\allargs), \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: (\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ [\exists \ar_1' \in {\gbeatsstarinv}(\ar_0)]$.
+	$\forall \phi \in {\gleadsto}(\allargs), \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: (\ar_1, \ar_0) \nileadstost \phi ⇒ [\exists \ar_1' \in {\gbeatsstarinv}(\ar_0)]$.
 \end{definition}
 
 \begin{definition}[Bounded length]
@@ -188,15 +251,22 @@ The following condition mandates that if the arguments used by the theory are no
 \end{definition}
 
 \begin{definition}[Operational validity]
-	$\forall \phi \in {\gleadsto}(\allargs), \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: [\ar_1 \gbeatsstar \ar_0 \land (\ar_1, \ar_0) \ileadstoe ¬\phi] ⇒ \exists \ar_2 \in {\gbeatsinv}(\ar_1)$.
+	$\forall \phi \in {\gleadsto}(\allargs), \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: [\ar_1 \gbeatsstar \ar_0 \land (\ar_1, \ar_0) \nileadstost \phi] ⇒ \exists \ar_2 \in {\gbeatsinv}(\ar_1)$.
 \end{definition}
 
-\begin{definition}[Claiming certainty requires claiming possibility]
-	$\forall (\prop, \text{sure}) \in {\gleadsto}(\allargs): (\prop, \text{poss}) \in {\gleadsto}(\allargs)$.
+\begin{definition}[Claiming certainty also claims possibility]
+	$\forall \ar_0 \in \allargs: \ar_0 \gleadsto (\prop, \text{sure}) ⇒ \ar_0 \gleadsto (\prop, \text{poss})$.
 \end{definition}
 
-\begin{definition}[Challenging possibility implies challenging certainty]
-	$\forall (\prop, \text{sure}) \in {\gleadsto}(\allargs), \ar_1 \in \allargs, \ar_0 \in \gargs[(\prop, \text{sure})]: (\ar_1, \ar_0) \ileadstoe (¬\prop, \text{sure}) ⇒ (\ar_1, \ar_0) \ileadstoe (¬\prop, \text{poss})$.
+\begin{proposition}[Arguments for certainty also argue for possibility]
+	From Claiming certainty also claims possibility follows that $\forall (\prop, \text{sure}) \in {\gleadsto}(\allargs): \ar_0 \in \gargs[(\prop, \text{sure})] ⇒ \ar_0 \in \gargs[(\prop, \text{poss})]$.
+\end{proposition}
+\begin{proof}
+	TODO
+\end{proof}
+
+\begin{definition}
+	$\forall \ar_0 \gleadsto (\prop, \text{sure}), \ar_1 \in \allargs: (\ar_1, \ar_0) \nileadstoe \phi ⇒ (\ar_1, \ar_0) \ileadstoe ¬\phi$.
 \end{definition}
 
 \subsection{Theorem}
