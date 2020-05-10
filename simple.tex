@@ -8,6 +8,7 @@
 %\input{preamble/acronyms}
 \addtokomafont{labelinglabel}{\sffamily\bfseries}
 \renewcommand{\phi}{\varphi}
+\DeclareMathAlphabet{\mathup}{OT1}{\familydefault}{m}{n}
 
 %I find these settings useful in draft mode. Should be removed for final versions.
 	%Which line breaks are chosen: accept worse lines, therefore reducing risk of overfull lines. Default = 200.
@@ -90,67 +91,189 @@ Given $\ar_1 \in \allargs, \ar_0 \in \gargs$, $\ar_1 \mbeats \ar_0$ has the sema
 
 Given $\phi \in {\gleadsto}(\allargs)$, define ${\ibeatse[!\phi]} \subseteq \allargs × \gargs[\phi]$ such that $\ar' \ibeatse[!\phi] \ar$ iff $(\ar', \ar) \ileadstoe ¬\phi$. Define ${\ibeatse[\phi]} \subseteq \gargs[\phi] × \allargs$ such that $\ar' \ibeatse[\phi] \ar$ iff $(\ar', \ar) \ileadstoe \phi$. 
 
-\subsection{Classify propositions}
-The notations $\iPhi$ and $\iPhirej$ designate the subsets of $\Phi$ whose propositions $i$ deliberately accepts and rejects, respectively.
+\subsection{Classify propositions (mix attempt)}
+Define $p \ileadstostw \phi$ iff $p \nileadstoe ¬\phi$.
+
+\begin{axiom}[Normative adequacy of $\allargs$ and $\ileadstoe$ mix 1]
+	$\forall \phi \in \Phi$: 
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \nileadstoe ¬\phi] ⇒ \phi \in \iPhi.
+	\end{equation}
+\end{axiom}
+\begin{axiom}[Normative adequacy of $\allargs$ and $\ileadstoe$ mix 2]
+	$\forall \phi \in \Phi$: 
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \nileadstoe ¬\phi] ⇒ ¬\phi \notin \iPhi.
+	\end{equation}
+\end{axiom}
+These two axioms imply that not $(\ar \nileadstoe ¬\phi \land \ar' \nileadstoe \phi)$ (a form of coherent complement); equivalently, not $(\ar \ileadstostw \propsure \land \ar' \ileadstostw \notpropposs)$.
+
+\commentOC{This is unsatisfactory because of a mix between normative and empirical assumptions; and because an axiom should be true, not empirically falsifiable. Also, if the protocol is such; then we should simply weaken the conclusion, not have to conclude that the axioms are false.}
+
+To avoid risk of empirical falsification, we can weaken the axioms. Also, the first axiom seems too strong.
+
+Recall that $\ar \ileadstoe \phi$ means $\exists \ar_1 \suchthat (\ar_1, \ar) \ileadstoe \phi$.
+
+\begin{axiom}[Normative adequacy 1, weaker]
+	$\forall \prop \in \allprops$: 
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \nileadstoe \notpropposs \land \ar \ileadstoe \propsure \land \ar \nileadstoe \notpropsure] ⇒ \propsure \in \iPhi;
+	\end{equation}
+	$\forall \prop \in \allprops$: 
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \nileadstoe \propsure] ⇒ \notpropposs \in \iPhi.
+	\end{equation}
+\end{axiom}
+\begin{axiom}[Normative adequacy 2, weaker]
+	$\forall \prop \in \allprops$: 
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \nileadstoe \notpropposs \land \ar \ileadstoe \propsure \land \ar \nileadstoe \notpropsure] ⇒ \notpropposs \notin \iPhi;
+	\end{equation}
+	$\forall \prop \in \allprops$: 
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \nileadstoe \propsure] ⇒ \propsure \notin \iPhi.
+	\end{equation}
+\end{axiom}
+
+This version is still too strong: never observing $\propsure$ should not suffice to reject $\propsure$. Rejecting $\propsure$ is not only about observing that no decisive argument leads to it: it is about positively proving that $\notpropposs$ (that is, with a decisive argument). That is, if nothing is decisive in $\allargs$, the axioms should say nothing rather than claiming that $\propsure$ is rejected. This makes the required axioms weaker, thus, is good. And we don’t lose much as, under indecisiveness, there is no short proof of rejection of $\propsure$. It is also simpler, as it rejects $\propsure$ exactly when it accepts $\notpropposs$ exactly when some short proof of it exists.
+
+Another problem is that this still asks the question whether these axioms could be empirically falsified. On the contrary, the axioms should obviously mandate nothing empirical. They should be weaker, and the resulting equivalent statement, looking like those above, should be obtained as a result.
+
+\subsection{Classify propositions, mandating positive observations}
+Define $(\ar_1, \ar) \ileadstostp \phi$ iff $(\ar_1, \ar) \nileadstoe ¬\phi \land (\ar_1, \ar) \ileadstoe \phi$. Define $\ar \ileadstostp \phi$ iff $\forall \ar_1 \in \allargs: (\ar_1, \ar) \ileadstostp \phi$.
+
+\begin{axiom}[Normative adequacy 1, positive]
+	$\forall \prop \in \allprops$: 
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \ileadstostp \propsure \land \ar \ileadstostp \propposs] ⇒ \propsure \in \iPhi;
+	\end{equation}
+	$\forall \prop \in \allprops$: 
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \ileadstostp \notpropposs] ⇒ \notpropposs \in \iPhi.
+	\end{equation}
+\end{axiom}
+\begin{axiom}[Normative adequacy 2, positive]
+	$\forall \prop \in \allprops$: 
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \ileadstostp \propsure \land \ar \ileadstostp \propposs] ⇒ \notpropposs \notin \iPhi;
+	\end{equation}
+	$\forall \prop \in \allprops$: 
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \ileadstostp \notpropposs] ⇒ \propsure \notin \iPhi.
+	\end{equation}
+\end{axiom}
+
+Problem: we should deal with accepting and rejecting possibilities only. Thus, proving $\propsure$ only serves to reject $\notpropposs$.
+
+\subsection{Classify propositions, only two implications}
+\begin{axiom}[Normative adequacy in two implications]
+	$\forall \prop \in \allprops$: 
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \ileadstostp \propposs] ⇒ \propposs \in \iPhi;
+	\end{equation}
+	$\forall \prop \in \allprops$: 
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \ileadstostp \propsure \land \ar \ileadstostp \propposs] ⇒ \propsure \in \iPhi.
+	\end{equation}
+\end{axiom}
+
+Given a model, define $\Box\Phi \subseteq \Phi$ as 
+$\propposs \in \Box\Phi$ iff $[\exists \ar \in \allargs \suchthat \ar \ileadstostp \propposs]$
+and 
+$\propsure \in \Box\Phi$ iff $[\exists \ar \in \allargs \suchthat \ar \ileadstostp \propsure \land \ar \ileadstostp \propposs]$.
+\begin{property}[Model completeness]
+	$\forall \phi \in \Phi: \phi \in \Box\Phi \lor ¬\phi \in \Box\Phi$.
+\end{property}
+\begin{property}[Deliberation completeness]
+	$\forall \phi \in \Phi: \phi \in \iPhi \lor ¬\phi \in \iPhi$.
+\end{property}
+\begin{proposition}
+	Under Normative adequacy, Model completeness implies Deliberation completeness.
+\end{proposition}
+Models as defined here do not mandate Model completeness, and in fact, even the weaker Deliberation completeness is not mandated. This is good for two reasons. First, Deliberation completeness can appear too strong. Second, it is dubious that, for non trivial decision problems, models can be found for which both Normative adequacy is normatively compelling and Model completeness holds.
+
+\subsection{Classify propositions, draft}
+The notations $\iacc$ and $\irej$ designate the subsets of $\Phi$ whose propositions $i$ deliberately accepts and rejects, respectively.
 
 \begin{axiom}[Normative adequacy of $\allargs$ and $\ileadstost$ 1]
 	$\forall \phi \in \Phi$: 
 	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ \phi \in \iPhi.
+		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ \phi \in \iacc.
 	\end{equation}
 \end{axiom}
 \begin{axiom}[Normative adequacy of $\allargs$ and $\ileadstost$ 2]
 	$\forall \phi \in \Phi$: 
 	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ \lnot\phi \in \iPhirej.
+		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ \lnot\phi \in \irej.
+	\end{equation}
+\end{axiom}
+
+\begin{axiom}[Normative adequacy of $\allargs$ and $\ileadstost$ 1 weaker]
+	$\forall \phi \in \Phi$: 
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \ileadstost \propsure] ⇒ \propsure \in \iacc.
+	\end{equation}
+\end{axiom}
+\begin{axiom}[Normative adequacy of $\allargs$ and $\ileadstost$ 2 weaker]
+	$\forall \phi \in \Phi$: 
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \ileadstost \propposs] ⇒ \notpropsure \in \irej.
 	\end{equation}
 \end{axiom}
 
 I suppose I can’t prove this.
 \begin{property}[Coherent complement]
-	$\iPhi \cap \iPhirej = \emptyset$.
+	$\iacc \cap \irej = \emptyset$.
+\end{property}
+
+Given a normative model, define $\mPhi \subseteq \Phi$ as the set of propositions whose status is determined by the Normative adequacy axioms: $\phi \in \mPhi ⇔ [\exists \ar \in \allargs \suchthat \ar \ileadstost \phi]$.
+
+I certainly want this (equivalent to coh co restricted to the props determined).
+\begin{property}[Desired? 1]
+	$\phi \in \mPhi ⇒ ¬\phi \notin \mPhi$.
+\end{property}
+\begin{property}[Desired? 2]
+	$\propsure \in \mPhi ⇒ \propposs \in \iacc$.
 \end{property}
 
 The following definition may be useful for analytic clarification, but this property is not required as an axiom for the results in this article.
 \begin{property}[Exhaustivity]
-	$\forall \phi \in \Phi: \phi \notin \iPhi ⇒ \phi \in \iPhirej$.
+	$\forall \phi \in \Phi: \phi \notin \iacc ⇒ \phi \in \irej$.
 \end{property}
 Exhaustivity can be considered a strong demand, as it requires every proposition to be deliberately accepted or rejected. \commentOC{I’m not so sure: could consider that $t$ is merely possible when not determined.}
 
-Define the propositions whose status is determined as $\iPhidet = \iPhi \cup \iPhirej$.
+Define the propositions whose status is determined as $\idet = \iacc \cup \irej$.
 
 \begin{property}[Suppl]
-	$\forall \prop \in \allprops: \propsure \notin \iPhi ⇒ \propsure \in \iPhirej$.
+	$\forall \prop \in \allprops: \propsure \notin \iacc ⇒ \propsure \in \irej$.
 \end{property}
 \begin{property}[Negation coherence]
 	\label{prop:cohb}
-	$\forall \phi \in \Phi: \phi \in \iPhi ⇔ ¬\phi \in \iPhirej$, and $\forall \prop \in \allprops: \propsure \in \iPhi ⇒ (¬\prop, \text{sure}) \in \iPhirej$.
+	$\forall \phi \in \Phi: \phi \in \iacc ⇔ ¬\phi \in \irej$, and $\forall \prop \in \allprops: \propsure \in \iacc ⇒ (¬\prop, \text{sure}) \in \irej$.
 \end{property}
 This property entails the following one.
 \begin{property}[Per-proposition coherence]
 	$\forall \prop \in \allprops$, exactly one of the following four propositions is true: 
 	\begin{itemize}
-		\item $\propsure \in \iPhi \land \propposs \in \iPhi \land (¬\prop, \text{sure}) \in \iPhirej \land (¬\prop, \text{poss}) \in \iPhirej$;
-		\item $\propsure \in \iPhirej \land \propposs \in \iPhi \land (¬\prop, \text{sure}) \in \iPhirej \land (¬\prop, \text{poss}) \in \iPhi$;
-		\item $\propsure \in \iPhirej \land \propposs \in \iPhirej \land (¬\prop, \text{sure}) \in \iPhi \land (¬\prop, \text{poss}) \in \iPhi$;
-		\item $\set{\prop, ¬\prop} × \set{\text{sure}, \text{poss}} \subseteq \Phi \setminus \iPhidet$;
+		\item $\propsure \in \iacc \land \propposs \in \iacc \land (¬\prop, \text{sure}) \in \irej \land (¬\prop, \text{poss}) \in \irej$;
+		\item $\propsure \in \irej \land \propposs \in \iacc \land (¬\prop, \text{sure}) \in \irej \land (¬\prop, \text{poss}) \in \iacc$;
+		\item $\propsure \in \irej \land \propposs \in \irej \land (¬\prop, \text{sure}) \in \iacc \land (¬\prop, \text{poss}) \in \iacc$;
+		\item $\set{\prop, ¬\prop} × \set{\text{sure}, \text{poss}} \subseteq \Phi \setminus \idet$;
 	\end{itemize}
 \end{property}
 \begin{proof}
-	If $\propsure \in \iPhi$, then $\notpropsure \in \iPhirej$, thus $\propposs \in \iPhi$ as $\notpropsure = ¬\propposs$ and $\phi \in \iPhi ⇔ ¬\phi \in \iPhirej$; and finally, $\notpropposs \in \iPhirej$ as $\notpropposs = ¬\propsure$ and $\phi \in \iPhi ⇔ ¬\phi \in \iPhirej$.
+	If $\propsure \in \iacc$, then $\notpropsure \in \irej$, thus $\propposs \in \iacc$ as $\notpropsure = ¬\propposs$ and $\phi \in \iacc ⇔ ¬\phi \in \irej$; and finally, $\notpropposs \in \irej$ as $\notpropposs = ¬\propsure$ and $\phi \in \iacc ⇔ ¬\phi \in \irej$.
 	
-	If $\propsure \notin \iPhi$ and $\propposs \in \iPhi$, then?
+	If $\propsure \notin \iacc$ and $\propposs \in \iacc$, then?
 \end{proof}
 
 This property in turn entails the following one.
 \begin{property}[Per-proposition determination]
-	$\forall \prop \in \allprops: [\set{\prop, ¬\prop} × \set{\text{sure}, \text{poss}} \subseteq \iPhidet] \lor [\set{\prop, ¬\prop} × \set{\text{sure}, \text{poss}} \subseteq \Phi \setminus \iPhidet]$.
+	$\forall \prop \in \allprops: [\set{\prop, ¬\prop} × \set{\text{sure}, \text{poss}} \subseteq \idet] \lor [\set{\prop, ¬\prop} × \set{\text{sure}, \text{poss}} \subseteq \Phi \setminus \idet]$.
 \end{property}
 \commentOC{There appears to be no reason to want per-proposition determination, even at the mere model level. I could have a model say that $\propposs$ should be accepted, but have nothing to say about whether $\propsure$ should as well, or $\notpropposs$ is okay as well.}
 
-Given a normative model, define $\mPhi \subseteq \Phi$ as the set of propositions whose status is determined by the Normative adequacy axioms: $\phi \in \mPhi ⇔ [\exists \ar \in \allargs \suchthat \ar \ileadstost \phi]$.
-
-\Cref{prop:cohb} can’t be proven, but the following weaker versions can: $\forall \phi \in \Phi: \phi \in \mPhi ⇒ ¬\phi \in \iPhirej$ and $\forall \phi \in \Phi: \propsure \in \mPhi ⇒ ¬\propsure \in \iPhirej$.
+\Cref{prop:cohb} can’t be proven, but the following weaker versions can: $\forall \phi \in \Phi: \phi \in \mPhi ⇒ ¬\phi \in \irej$ and $\forall \phi \in \Phi: \propsure \in \mPhi ⇒ ¬\propsure \in \irej$.
 
 \begin{property}[Per-proposition weaker coherence bis]
 	$\forall \phi \in \Phi: \phi \in \mPhi ⇒ ¬\phi \notin \mPhi$.
@@ -174,19 +297,19 @@ the subset of $\Phi$ about which $\allargs$ and $\ileadstoe$ give access:
 	Under axioms of Normative adequacy, Coherent complement ⇒ Coherent protocol.
 \end{theorem}
 \begin{proof}
-	Coherent complement is equivalent to $\forall \phi \in \phi: ¬(\phi \in \iPhi \land \phi \in \iPhirej)$.
-	Coherent protocol is equivalent to $\forall \phi \in \Phi: ¬(\ar \ileadstost \phi \land \ar \ileadstost ¬\phi)$, which implies (using Norm ad 1 and 2) $\forall \phi \in \Phi: ¬(\phi \in \iPhi \land \phi \in \iPhirej)$.
+	Coherent complement is equivalent to $\forall \phi \in \phi: ¬(\phi \in \iacc \land \phi \in \irej)$.
+	Coherent protocol is equivalent to $\forall \phi \in \Phi: ¬(\ar \ileadstost \phi \land \ar \ileadstost ¬\phi)$, which implies (using Norm ad 1 and 2) $\forall \phi \in \Phi: ¬(\phi \in \iacc \land \phi \in \irej)$.
 \end{proof}
 
 \begin{theorem}
 	Under axioms of Normative adequacy, Coherent protocol ⇒ Coherent complement.
 \end{theorem}
 \begin{proof}
-	This is false under the current definitions: if $\ileadstost = \emptyset$, coherent protocol, but $\phi \in \iPhi \land \phi \in \iPhirej$ possible.
+	This is false under the current definitions: if $\ileadstost = \emptyset$, coherent protocol, but $\phi \in \iacc \land \phi \in \irej$ possible.
 \end{proof}
 
 \begin{axiom}[Coherent negation]
-	$\forall \phi \in \Phi: \phi \in \iPhi ⇔ ¬\phi \in \iPhirej$.
+	$\forall \phi \in \Phi: \phi \in \iacc ⇔ ¬\phi \in \irej$.
 \end{axiom}
 
 \begin{proposition}
@@ -196,7 +319,7 @@ the subset of $\Phi$ about which $\allargs$ and $\ileadstoe$ give access:
 	By hypothesis, $\forall \ar_1 \in \allargs: (\ar_1, \ar) \ileadstost \propsure$, which implies, by definition of $\ileadstost$, that $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadstoe (¬\prop, \text{sure})$. Therefore, $\ar \ileadstost \propposs$.
 \end{proof}
 
-This notation (writing $\phi \in \iPhirej$ as equivalent to $\phi \notin \iPhi$) is justified only if it is impossible that both $\phi \in \iPhi$ and $\phi \notin \iPhi$ be implied (thus, if Coherent complement). \commentOC{TODO clarify.} The following conditions permit to obtain this result. \commentOC{Cond. 1 is stronger than necessary: we could have ¬cond. 1 and still Coh compl: $(\ar_2, \ar_1) \ileadstost \phi$ and $(\ar_2, \ar_1) \ileadstost ¬\phi$ without problems if $\ar_2$ and $\ar_1$ are not decisive. In fact, $(\ar_2, \ar_1) \ileadstoe ¬\phi$ should be defined as $(\ar_2, \ar_1) \nileadstost \phi) \lor (\ar_2, \ar_1) \ileadstost ¬\phi$, just in case a strange protocol allows both leading always to $\phi$ and $¬\phi$, and I think the rest goes through.}
+This notation (writing $\phi \in \irej$ as equivalent to $\phi \notin \iacc$) is justified only if it is impossible that both $\phi \in \iacc$ and $\phi \notin \iacc$ be implied (thus, if Coherent complement). \commentOC{TODO clarify.} The following conditions permit to obtain this result. \commentOC{Cond. 1 is stronger than necessary: we could have ¬cond. 1 and still Coh compl: $(\ar_2, \ar_1) \ileadstost \phi$ and $(\ar_2, \ar_1) \ileadstost ¬\phi$ without problems if $\ar_2$ and $\ar_1$ are not decisive. In fact, $(\ar_2, \ar_1) \ileadstoe ¬\phi$ should be defined as $(\ar_2, \ar_1) \nileadstost \phi) \lor (\ar_2, \ar_1) \ileadstost ¬\phi$, just in case a strange protocol allows both leading always to $\phi$ and $¬\phi$, and I think the rest goes through.}
 
 \begin{condition}[Always implies sometimes]
 	\label{cl:ais}

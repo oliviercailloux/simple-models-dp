@@ -29,16 +29,32 @@
 }
 \NewDocumentCommand{\allprops}{}{T}
 \NewDocumentCommand{\prop}{}{t}
-\NewDocumentCommand{\iPhi}{}{\Phi^\text{acc}_i}
-\NewDocumentCommand{\iPhidet}{}{\Phi^\text{det}_i}
-\NewDocumentCommand{\mPhi}{}{\Phi_\gamma}
-\NewDocumentCommand{\iPhirej}{}{\Phi^\text{rej}_i}
+\NewDocumentCommand{\propsure}{}{(t, \mathrm{sure})}
+\NewDocumentCommand{\propposs}{}{(t, \mathrm{poss})}
+\NewDocumentCommand{\notpropsure}{}{(¬t, \mathrm{sure})}
+\NewDocumentCommand{\notpropposs}{}{(¬t, \mathrm{poss})}
+\NewDocumentCommand{\zar}{}{\mathbf{0}}%zero, or empty, argument
+%i
+\NewDocumentCommand{\iPhi}{}{\Phi_i}
+\NewDocumentCommand{\iacc}{}{\Phi^\mathrm{acc}_i}
+\NewDocumentCommand{\idet}{}{\Phi^\mathrm{det}_i}
+\NewDocumentCommand{\irej}{}{\Phi^\mathrm{rej}_i}
 \NewDocumentCommand{\ileadsto}{}{⇝}
 \NewDocumentCommand{\ileadstos}{}{\overset{s}{⇝_i}}
 \NewDocumentCommand{\ileadstost}{O{}}{⇝^{#1}_\forall}
+\NewDocumentCommand{\ileadstostw}{O{}}{⇝^\mathrm{w}_\forall}
+\NewDocumentCommand{\ileadstostp}{O{}}{⇝^\mathrm{pos}_\forall}
 \NewDocumentCommand{\nileadstost}{O{}}{\not⇝^{#1}_\forall}
 \NewDocumentCommand{\ileadstoe}{O{}}{⇝^{#1}_\exists}
 \NewDocumentCommand{\nileadstoe}{O{}}{\not⇝^{#1}_\exists}
+\NewDocumentCommand \ibeatseinv { o }{%TODO improve
+	\IfValueTF{#1}{%
+		{⊳_\exists^{#1}}^{-1}%
+	}{%
+		⊳_\exists^{-1}%
+	}%
+}
+%model
 \NewDocumentCommand{\gleadsto}{O{}}{⇝^{#1}_γ}
 \NewDocumentCommand{\gleadstoinv}{}{⇝^{-1}_γ}
 %\newcommand{\gleadsto}[1][γ]{\mathbin{\rightsquigarrow_{#1}}}
@@ -47,18 +63,7 @@
 \NewDocumentCommand{\gbeatsstar}{}{⊳_*}
 \NewDocumentCommand{\gbeatsinv}{o}{⊳^{-1}_γ}
 \NewDocumentCommand{\gbeatsstarinv}{o}{⊳^{-1}_*}
-\NewDocumentCommand{\zar}{}{\mathbf{0}}%zero, or empty, argument
-\NewDocumentCommand \ibeatseinv { o }{%TODO improve
-	\IfValueTF{#1}{%
-		{⊳_\exists^{#1}}^{-1}%
-	}{%
-		⊳_\exists^{-1}%
-	}%
-}
-\NewDocumentCommand{\propsure}{}{(t, \text{sure})}
-\NewDocumentCommand{\propposs}{}{(t, \text{poss})}
-\NewDocumentCommand{\notpropsure}{}{(¬t, \text{sure})}
-\NewDocumentCommand{\notpropposs}{}{(¬t, \text{poss})}
+\NewDocumentCommand{\mPhi}{}{\Phi_\gamma}
 
 %\newcommand{\ibeatseinv}{\mathbin{\vartriangleright_\exists^{-1}}}
 %\newcommand{\ibeatse}[1][]{\mathbin{\vartriangleright_\exists^{#1}}}
@@ -121,8 +126,4 @@
 \newcommand{\nibeatsr}[1]{\mathbin{\restr{{⋫}}{#1}}}
 \newcommand{\ibeatsinv}{\mathbin{\vartriangleright^{-1}}}
 \newcommand{\mbeatsinv}{\mathbin{\vartriangleright_\eta^{-1}}}
-
-%Logic
-\NewDocumentCommand{\ltru}{}{\texttt{T}}
-\NewDocumentCommand{\lfal}{}{\texttt{F}}
 
