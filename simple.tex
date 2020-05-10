@@ -181,114 +181,58 @@ Given a model, define $\Box\Phi \subseteq \Phi$ as
 $\propposs \in \Box\Phi$ iff $[\exists \ar \in \allargs \suchthat \ar \ileadstostp \propposs]$
 and 
 $\propsure \in \Box\Phi$ iff $[\exists \ar \in \allargs \suchthat \ar \ileadstostp \propsure \land \ar \ileadstostp \propposs]$.
-\begin{property}[Model completeness]
+\begin{definition}[Model completeness]
 	$\forall \phi \in \Phi: \phi \in \Box\Phi \lor ¬\phi \in \Box\Phi$.
-\end{property}
-\begin{property}[Deliberation completeness]
+\end{definition}
+\begin{definition}[Deliberation completeness]
 	$\forall \phi \in \Phi: \phi \in \iPhi \lor ¬\phi \in \iPhi$.
-\end{property}
+\end{definition}
 \begin{proposition}
 	Under Normative adequacy, Model completeness implies Deliberation completeness.
 \end{proposition}
 Models as defined here do not mandate Model completeness, and in fact, even the weaker Deliberation completeness is not mandated. This is good for two reasons. First, Deliberation completeness can appear too strong. Second, it is dubious that, for non trivial decision problems, models can be found for which both Normative adequacy is normatively compelling and Model completeness holds.
 
-\subsection{Classify propositions, draft}
-The notations $\iacc$ and $\irej$ designate the subsets of $\Phi$ whose propositions $i$ deliberately accepts and rejects, respectively.
-
-\begin{axiom}[Normative adequacy of $\allargs$ and $\ileadstost$ 1]
-	$\forall \phi \in \Phi$: 
-	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ \phi \in \iacc.
-	\end{equation}
-\end{axiom}
-\begin{axiom}[Normative adequacy of $\allargs$ and $\ileadstost$ 2]
-	$\forall \phi \in \Phi$: 
-	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ \lnot\phi \in \irej.
-	\end{equation}
-\end{axiom}
-
-\begin{axiom}[Normative adequacy of $\allargs$ and $\ileadstost$ 1 weaker]
-	$\forall \phi \in \Phi$: 
-	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \ileadstost \propsure] ⇒ \propsure \in \iacc.
-	\end{equation}
-\end{axiom}
-\begin{axiom}[Normative adequacy of $\allargs$ and $\ileadstost$ 2 weaker]
-	$\forall \phi \in \Phi$: 
-	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \ileadstost \propposs] ⇒ \notpropsure \in \irej.
-	\end{equation}
-\end{axiom}
-
-I suppose I can’t prove this.
-\begin{property}[Coherent complement]
-	$\iacc \cap \irej = \emptyset$.
+\subsection{Negation coherence and analysis of normative adequacy}
+The propositions such that $\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi$ are those on which the model permits to take a position. For that subset of propositions (which can be empty): $\phi \in \Box\Phi \oplus ¬\phi \in \Box\Phi$, where $\oplus$ denotes the exclusive disjunction; equivalently: $\phi \in \Box\Phi ⇔ ¬\phi \notin \Box\Phi$.
+\begin{property}[Protocol coherence]
+	\label{prop:protcoh}
+	$[\exists \ar \in \allargs \suchthat \ar \ileadstost[pos] \phi] ⇒ [\nexists \ar \in \allargs \suchthat \ar \ileadstost[pos] ¬\phi]$.
 \end{property}
-
-Given a normative model, define $\mPhi \subseteq \Phi$ as the set of propositions whose status is determined by the Normative adequacy axioms: $\phi \in \mPhi ⇔ [\exists \ar \in \allargs \suchthat \ar \ileadstost \phi]$.
-
-I certainly want this (equivalent to coh co restricted to the props determined).
-\begin{property}[Desired? 1]
-	$\phi \in \mPhi ⇒ ¬\phi \notin \mPhi$.
+\begin{property}[Internal negation coherence]
+	\label{prop:intnegcoh}
+	$\forall \phi \suchthat [\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi]: \phi \in \Box\Phi \oplus ¬\phi \in \Box\Phi$.
 \end{property}
-\begin{property}[Desired? 2]
-	$\propsure \in \mPhi ⇒ \propposs \in \iacc$.
+\begin{property}[Restricted negation coherence]
+	\label{prop:restrnegcoh}
+	$\forall \phi \suchthat [\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi]: \phi \in \iPhi \lor ¬\phi \in \iPhi$.
 \end{property}
-
-The following definition may be useful for analytic clarification, but this property is not required as an axiom for the results in this article.
-\begin{property}[Exhaustivity]
-	$\forall \phi \in \Phi: \phi \notin \iacc ⇒ \phi \in \irej$.
-\end{property}
-Exhaustivity can be considered a strong demand, as it requires every proposition to be deliberately accepted or rejected. \commentOC{I’m not so sure: could consider that $t$ is merely possible when not determined.}
-
-Define the propositions whose status is determined as $\idet = \iacc \cup \irej$.
-
-\begin{property}[Suppl]
-	$\forall \prop \in \allprops: \propsure \notin \iacc ⇒ \propsure \in \irej$.
-\end{property}
-\begin{property}[Negation coherence]
-	\label{prop:cohb}
-	$\forall \phi \in \Phi: \phi \in \iacc ⇔ ¬\phi \in \irej$, and $\forall \prop \in \allprops: \propsure \in \iacc ⇒ (¬\prop, \text{sure}) \in \irej$.
-\end{property}
-This property entails the following one.
-\begin{property}[Per-proposition coherence]
-	$\forall \prop \in \allprops$, exactly one of the following four propositions is true: 
-	\begin{itemize}
-		\item $\propsure \in \iacc \land \propposs \in \iacc \land (¬\prop, \text{sure}) \in \irej \land (¬\prop, \text{poss}) \in \irej$;
-		\item $\propsure \in \irej \land \propposs \in \iacc \land (¬\prop, \text{sure}) \in \irej \land (¬\prop, \text{poss}) \in \iacc$;
-		\item $\propsure \in \irej \land \propposs \in \irej \land (¬\prop, \text{sure}) \in \iacc \land (¬\prop, \text{poss}) \in \iacc$;
-		\item $\set{\prop, ¬\prop} × \set{\text{sure}, \text{poss}} \subseteq \Phi \setminus \idet$;
-	\end{itemize}
-\end{property}
+\begin{proposition}[Restricted negation coherence satisfaction]
+	A normatively adequate model satisfies Internal negation coherence and Restricted negation coherence.
+\end{proposition}
 \begin{proof}
-	If $\propsure \in \iacc$, then $\notpropsure \in \irej$, thus $\propposs \in \iacc$ as $\notpropsure = ¬\propposs$ and $\phi \in \iacc ⇔ ¬\phi \in \irej$; and finally, $\notpropposs \in \irej$ as $\notpropposs = ¬\propsure$ and $\phi \in \iacc ⇔ ¬\phi \in \irej$.
+	First, observe that Protocol coherence is satisfied by definition of $\ileadstost[pos]$. Indeed, if for some $\ar \in \allargs$, $\ar \ileadstost[pos] \phi$, then $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadstoe ¬\phi$; thus, for any $\ar' \in \allargs$, $\ar' \ileadstost[pos] ¬\phi$ is false, because it requires that $\forall \ar_1 \in \allargs: (\ar_1, \ar') \ileadstoe ¬\phi$, and thus in particular, that $(\ar', \ar) \ileadstoe ¬\phi$ (using the fact that the pair to the left of $\ileadstoe$ is unordered).
 	
-	If $\propsure \notin \iacc$ and $\propposs \in \iacc$, then?
+	Consider $\phi \suchthat [\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi]$. Proving \cref{prop:intnegcoh} only requires to show that $\phi \in \Box\Phi ⇒ ¬\phi \notin \Box\Phi$. By definition, $\phi \in \Box\Phi$ implies that $\exists \ar \suchthat \ar \ileadstost[pos] \phi$, and the implication is thus proven by using \cref{prop:protcoh}: $\phi \in \Box\Phi ⇒ [\exists \ar \suchthat \ar \ileadstost[pos] \phi] ⇒ ¬[\exists \ar \suchthat \ar \ileadstost[pos] ¬\phi] ⇒ \phi \notin \Box\Phi$.
+	
+	Finally, \cref{prop:restrnegcoh} follows from \cref{prop:intnegcoh} thanks to normative adequacy.
 \end{proof}
 
-This property in turn entails the following one.
-\begin{property}[Per-proposition determination]
-	$\forall \prop \in \allprops: [\set{\prop, ¬\prop} × \set{\text{sure}, \text{poss}} \subseteq \idet] \lor [\set{\prop, ¬\prop} × \set{\text{sure}, \text{poss}} \subseteq \Phi \setminus \idet]$.
-\end{property}
-\commentOC{There appears to be no reason to want per-proposition determination, even at the mere model level. I could have a model say that $\propposs$ should be accepted, but have nothing to say about whether $\propsure$ should as well, or $\notpropposs$ is okay as well.}
+We want to adopt a normative axiom satisfying the following meta-axioms.
+\begin{definition}[Meta-axiom: negation coherence]
+	$\forall \phi \in \Phi: ¬(\phi \in \iPhi \land ¬\phi \in \iPhi)$.
+\end{definition}
+\begin{definition}[Meta-axiom: certainty implies possibility]
+	$\forall \phi \in \Phi: \propsure \in \iPhi ⇒ \propposs \in \iPhi$.
+\end{definition}
+Also, we want the normative axiom to be based on observation, and to allow for incompleteness. And the meta-axioms must hold for any possible observations (they are not empirical claims).
 
-\Cref{prop:cohb} can’t be proven, but the following weaker versions can: $\forall \phi \in \Phi: \phi \in \mPhi ⇒ ¬\phi \in \irej$ and $\forall \phi \in \Phi: \propsure \in \mPhi ⇒ ¬\propsure \in \irej$.
+From all this, hopefully, I can justify my normative axiom; by justifying its form $\ar \ileadstost[undef] \phi ⇒ \phi \in \iPhi$ in terms of a yet-undefined $\ileadstost[undef]$, then by proving that $\ileadstost[undef]$ must satisfy Protocol coherence and Certainty implies possibility.
 
-\begin{property}[Per-proposition weaker coherence bis]
-	$\forall \phi \in \Phi: \phi \in \mPhi ⇒ ¬\phi \notin \mPhi$.
-\end{property}
+\begin{definition}[Certainty implies possibility]
+	$\forall \ar \in \allargs: \ar \ileadstost[undef] \propsure ⇒ \ar \ileadstost[undef] \propposs$.
+\end{definition}
 
-A proposition $\phi$ has a determined status iff $\phi \in \mPhi \lor ¬\phi \in \mPhi$. (Not both?)
-
-\begin{property}[Coherent determination]
-	$\forall \prop \in \allprops: $ either all propositions among $\set{\propsure, \propposs, ¬\propsure, ¬\propposs}$ have a determined status, or none have.
-\end{property}
-
-… and it is coherent!
-
-the subset of $\Phi$ about which $\allargs$ and $\ileadstoe$ give access: 
-
+\subsection{draft}
 \begin{definition}[Coherent protocol]
 	$\forall \phi \in \Phi: \ar \ileadstost \phi ⇒ \ar \nileadstost ¬\phi$.
 \end{definition}
