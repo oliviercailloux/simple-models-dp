@@ -91,82 +91,8 @@ Given $\ar_1 \in \allargs, \ar_0 \in \gargs$, $\ar_1 \mbeats \ar_0$ has the sema
 
 Given $\phi \in {\gleadsto}(\allargs)$, define ${\ibeatse[!\phi]} \subseteq \allargs × \gargs[\phi]$ such that $\ar' \ibeatse[!\phi] \ar$ iff $(\ar', \ar) \ileadstoe ¬\phi$. Define ${\ibeatse[\phi]} \subseteq \gargs[\phi] × \allargs$ such that $\ar' \ibeatse[\phi] \ar$ iff $(\ar', \ar) \ileadstoe \phi$. 
 
-\subsection{Classify propositions (mix attempt)}
-Define $p \ileadstostw \phi$ iff $p \nileadstoe ¬\phi$.
-
-\begin{axiom}[Normative adequacy of $\allargs$ and $\ileadstoe$ mix 1]
-	$\forall \phi \in \Phi$: 
-	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \nileadstoe ¬\phi] ⇒ \phi \in \iPhi.
-	\end{equation}
-\end{axiom}
-\begin{axiom}[Normative adequacy of $\allargs$ and $\ileadstoe$ mix 2]
-	$\forall \phi \in \Phi$: 
-	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \nileadstoe ¬\phi] ⇒ ¬\phi \notin \iPhi.
-	\end{equation}
-\end{axiom}
-These two axioms imply that not $(\ar \nileadstoe ¬\phi \land \ar' \nileadstoe \phi)$ (a form of coherent complement); equivalently, not $(\ar \ileadstostw \propsure \land \ar' \ileadstostw \notpropposs)$.
-
-\commentOC{This is unsatisfactory because of a mix between normative and empirical assumptions; and because an axiom should be true, not empirically falsifiable. Also, if the protocol is such; then we should simply weaken the conclusion, not have to conclude that the axioms are false.}
-
-To avoid risk of empirical falsification, we can weaken the axioms. Also, the first axiom seems too strong.
-
-Recall that $\ar \ileadstoe \phi$ means $\exists \ar_1 \suchthat (\ar_1, \ar) \ileadstoe \phi$.
-
-\begin{axiom}[Normative adequacy 1, weaker]
-	$\forall \prop \in \allprops$: 
-	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \nileadstoe \notpropposs \land \ar \ileadstoe \propsure \land \ar \nileadstoe \notpropsure] ⇒ \propsure \in \iPhi;
-	\end{equation}
-	$\forall \prop \in \allprops$: 
-	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \nileadstoe \propsure] ⇒ \notpropposs \in \iPhi.
-	\end{equation}
-\end{axiom}
-\begin{axiom}[Normative adequacy 2, weaker]
-	$\forall \prop \in \allprops$: 
-	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \nileadstoe \notpropposs \land \ar \ileadstoe \propsure \land \ar \nileadstoe \notpropsure] ⇒ \notpropposs \notin \iPhi;
-	\end{equation}
-	$\forall \prop \in \allprops$: 
-	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \nileadstoe \propsure] ⇒ \propsure \notin \iPhi.
-	\end{equation}
-\end{axiom}
-
-This version is still too strong: never observing $\propsure$ should not suffice to reject $\propsure$. Rejecting $\propsure$ is not only about observing that no decisive argument leads to it: it is about positively proving that $\notpropposs$ (that is, with a decisive argument). That is, if nothing is decisive in $\allargs$, the axioms should say nothing rather than claiming that $\propsure$ is rejected. This makes the required axioms weaker, thus, is good. And we don’t lose much as, under indecisiveness, there is no short proof of rejection of $\propsure$. It is also simpler, as it rejects $\propsure$ exactly when it accepts $\notpropposs$ exactly when some short proof of it exists.
-
-Another problem is that this still asks the question whether these axioms could be empirically falsified. On the contrary, the axioms should obviously mandate nothing empirical. They should be weaker, and the resulting equivalent statement, looking like those above, should be obtained as a result.
-
-\subsection{Classify propositions, mandating positive observations}
-Define $(\ar_1, \ar) \ileadstostp \phi$ iff $(\ar_1, \ar) \nileadstoe ¬\phi \land (\ar_1, \ar) \ileadstoe \phi$. Define $\ar \ileadstostp \phi$ iff $\forall \ar_1 \in \allargs: (\ar_1, \ar) \ileadstostp \phi$.
-
-\begin{axiom}[Normative adequacy 1, positive]
-	$\forall \prop \in \allprops$: 
-	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \ileadstostp \propsure \land \ar \ileadstostp \propposs] ⇒ \propsure \in \iPhi;
-	\end{equation}
-	$\forall \prop \in \allprops$: 
-	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \ileadstostp \notpropposs] ⇒ \notpropposs \in \iPhi.
-	\end{equation}
-\end{axiom}
-\begin{axiom}[Normative adequacy 2, positive]
-	$\forall \prop \in \allprops$: 
-	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \ileadstostp \propsure \land \ar \ileadstostp \propposs] ⇒ \notpropposs \notin \iPhi;
-	\end{equation}
-	$\forall \prop \in \allprops$: 
-	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \ileadstostp \notpropposs] ⇒ \propsure \notin \iPhi.
-	\end{equation}
-\end{axiom}
-
-Problem: we should deal with accepting and rejecting possibilities only. Thus, proving $\propsure$ only serves to reject $\notpropposs$.
-
-\subsection{Classify propositions, only two implications}
-\begin{axiom}[Normative adequacy in two implications]
+\subsection{Classify propositions}
+\begin{axiom}[Normative adequacy]
 	$\forall \prop \in \allprops$: 
 	\begin{equation}
 		[\exists \ar \in \allargs \suchthat \ar \ileadstostp \propposs] ⇒ \propposs \in \iPhi;
@@ -190,7 +116,7 @@ $\propsure \in \Box\Phi$ iff $[\exists \ar \in \allargs \suchthat \ar \ileadstos
 \begin{proposition}
 	Under Normative adequacy, Model completeness implies Deliberation completeness.
 \end{proposition}
-Models as defined here do not mandate Model completeness, and in fact, even the weaker Deliberation completeness is not mandated. This is good for two reasons. First, Deliberation completeness can appear too strong. Second, it is dubious that, for non trivial decision problems, models can be found for which both Normative adequacy is normatively compelling and Model completeness holds.
+Models as defined here do not mandate Model completeness. This is good for two reasons. First, even the weaker Deliberation completeness can appear too strong. Second, it is dubious that, for non trivial decision problems, models can be found for which both Normative adequacy is normatively compelling and Model completeness holds.
 
 \subsection{Negation coherence and analysis of normative adequacy}
 The propositions such that $\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi$ are those on which the model permits to take a position. For that subset of propositions (which can be empty): $\phi \in \Box\Phi \oplus ¬\phi \in \Box\Phi$, where $\oplus$ denotes the exclusive disjunction; equivalently: $\phi \in \Box\Phi ⇔ ¬\phi \notin \Box\Phi$.
@@ -226,68 +152,16 @@ We want to adopt a normative axiom satisfying the following meta-axioms.
 \end{definition}
 Also, we want the normative axiom to be based on observation, and to allow for incompleteness. And the meta-axioms must hold for any possible observations (they are not empirical claims).
 
-From all this, hopefully, I can justify my normative axiom; by justifying its form $\ar \ileadstost[undef] \phi ⇒ \phi \in \iPhi$ in terms of a yet-undefined $\ileadstost[undef]$, then by proving that $\ileadstost[undef]$ must satisfy Protocol coherence and Certainty implies possibility.
+From all this, hopefully, I can justify my normative axiom; by justifying its form $\ar \ileadstost[undef] \phi ⇒ \phi \in \iPhi$ in terms of a yet-undefined $\ileadstost[undef]$, then by proving that $\ileadstost[undef]$ must satisfy Protocol coherence (applied to undef instead of the current one) and Certainty implies possibility.
 
 \begin{definition}[Certainty implies possibility]
 	$\forall \ar \in \allargs: \ar \ileadstost[undef] \propsure ⇒ \ar \ileadstost[undef] \propposs$.
 \end{definition}
-
-\subsection{draft}
-\begin{definition}[Coherent protocol]
-	$\forall \phi \in \Phi: \ar \ileadstost \phi ⇒ \ar \nileadstost ¬\phi$.
-\end{definition}
-
-\begin{theorem}
-	Under axioms of Normative adequacy, Coherent complement ⇒ Coherent protocol.
-\end{theorem}
-\begin{proof}
-	Coherent complement is equivalent to $\forall \phi \in \phi: ¬(\phi \in \iacc \land \phi \in \irej)$.
-	Coherent protocol is equivalent to $\forall \phi \in \Phi: ¬(\ar \ileadstost \phi \land \ar \ileadstost ¬\phi)$, which implies (using Norm ad 1 and 2) $\forall \phi \in \Phi: ¬(\phi \in \iacc \land \phi \in \irej)$.
-\end{proof}
-
-\begin{theorem}
-	Under axioms of Normative adequacy, Coherent protocol ⇒ Coherent complement.
-\end{theorem}
-\begin{proof}
-	This is false under the current definitions: if $\ileadstost = \emptyset$, coherent protocol, but $\phi \in \iacc \land \phi \in \irej$ possible.
-\end{proof}
-
-\begin{axiom}[Coherent negation]
-	$\forall \phi \in \Phi: \phi \in \iacc ⇔ ¬\phi \in \irej$.
-\end{axiom}
-
-\begin{proposition}
-	$\forall \ar \in \allargs: \ar \ileadstost \propsure ⇒ \ar \ileadstost \propposs$.
-\end{proposition}
-\begin{proof}
-	By hypothesis, $\forall \ar_1 \in \allargs: (\ar_1, \ar) \ileadstost \propsure$, which implies, by definition of $\ileadstost$, that $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadstoe (¬\prop, \text{sure})$. Therefore, $\ar \ileadstost \propposs$.
-\end{proof}
-
-This notation (writing $\phi \in \irej$ as equivalent to $\phi \notin \iacc$) is justified only if it is impossible that both $\phi \in \iacc$ and $\phi \notin \iacc$ be implied (thus, if Coherent complement). \commentOC{TODO clarify.} The following conditions permit to obtain this result. \commentOC{Cond. 1 is stronger than necessary: we could have ¬cond. 1 and still Coh compl: $(\ar_2, \ar_1) \ileadstost \phi$ and $(\ar_2, \ar_1) \ileadstost ¬\phi$ without problems if $\ar_2$ and $\ar_1$ are not decisive. In fact, $(\ar_2, \ar_1) \ileadstoe ¬\phi$ should be defined as $(\ar_2, \ar_1) \nileadstost \phi) \lor (\ar_2, \ar_1) \ileadstost ¬\phi$, just in case a strange protocol allows both leading always to $\phi$ and $¬\phi$, and I think the rest goes through.}
-
-\begin{condition}[Always implies sometimes]
+Defining $\ar \ileadstoe[undef] \phi$ iff $\ar \nileadstost[undef] ¬\phi$, the following should adequately replace Coherent protocol.
+\begin{definition}[Always implies sometimes]
 	\label{cl:ais}
-	${\ileadstost} \subseteq {\ileadstoe}$.
-\end{condition}
-
-\begin{condition}[Sure implies possible]
-	\label{cl:sip}
-	$\forall \ar', \ar \in \allargs, t \in \allprops: (\ar', \ar) \ileadstost (\prop, \text{sure}) ⇒ (\ar', \ar) \ileadstost (\prop, \text{possible})$.
-\end{condition}
-
-\begin{proposition}
-	$\forall \phi \in \Phi$: 
-	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ [\nexists \ar \in \allargs \suchthat \ar \ileadstost ¬\phi],
-	\end{equation}
-	and $\forall \prop \in \allprops$:
-	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \ileadstost (\prop, \text{sure})] ⇒ [\nexists \ar \in \allargs \suchthat \ar \ileadstost (¬\prop, \text{sure})].
-	\end{equation}
-\end{proposition}
-\begin{proof}
-	The first result obtains because $\ar \ileadstost \phi$ means that given any $\ar'$, $(\ar, \ar') \ileadstost \phi$, hence $(\ar, \ar') \ileadstoe \phi$ (using \cref{cl:ais}), or equivalently, $(\ar, \ar') \nileadstost ¬\phi$, thus no $\ar' \in \allargs$ satisfies $\ar' \ileadstost ¬\phi$. For the second one, a similar reasoning yields that $(\ar, \ar') \nileadstost (¬\prop, \text{possible})$, and using the contrapositive of \cref{cl:sip}, $(\ar, \ar') \nileadstost (¬\prop, \text{sure})$, thus no $\ar' \in \allargs$ satisfies $\ar' \ileadstost (¬\prop, \text{sure})$.
-\end{proof}
+	${\ileadstost[undef]} \subseteq {\ileadstoe[undef]}$.
+\end{definition}
 
 \subsection{Validity and conditions}
 \begin{definition}[Validity]
