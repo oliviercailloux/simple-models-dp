@@ -92,21 +92,60 @@ Given $\ar_1 \in \allargs, \ar_0 \in \gargs$, $\ar_1 \mbeats \ar_0$ has the sema
 Given $\phi \in {\gleadsto}(\allargs)$, define ${\ibeatse[!\phi]} \subseteq \allargs × \gargs[\phi]$ such that $\ar' \ibeatse[!\phi] \ar$ iff $(\ar', \ar) \ileadstoe ¬\phi$. Define ${\ibeatse[\phi]} \subseteq \gargs[\phi] × \allargs$ such that $\ar' \ibeatse[\phi] \ar$ iff $(\ar', \ar) \ileadstoe \phi$. 
 
 \subsection{Classify propositions}
+Define $(\ar_1, \ar) \ileadstostp \phi$ iff $(\ar_1, \ar) \nileadstoe ¬\phi \land (\ar_1, \ar) \ileadstoe \phi$. Define $\ar \ileadstostp \phi$ iff $\forall \ar_1 \in \allargs: (\ar_1, \ar) \ileadstostp \phi$.
+
+\begin{axiom}[No contradiction]
+	\label{ax:nocontr}
+	$\forall \phi \in \Phi: \phi \in \iPhi ⇒ ¬\phi \notin \iPhi$.
+\end{axiom}
 \begin{axiom}[Normative adequacy]
+	\label{ax:norm}
 	$\forall \prop \in \allprops$: 
 	\begin{equation}
 		[\exists \ar \in \allargs \suchthat \ar \ileadstostp \propposs] ⇒ \propposs \in \iPhi;
 	\end{equation}
-	$\forall \prop \in \allprops$: 
+	and
 	\begin{equation}
 		[\exists \ar \in \allargs \suchthat \ar \ileadstostp \propsure \land \ar \ileadstostp \propposs] ⇒ \propsure \in \iPhi.
 	\end{equation}
 \end{axiom}
 
+It is desirable to check that \cref{ax:nocontr,ax:norm} do not hide a requirement on the content of $\ileadstostp$, thus, that they are together satisfiable without constraining $\ileadstostp$. To define this more precisely, consider temporarily these axioms as properties of a set $\iPhi \subseteq \Phi$. I write $A^1(\iPhi)$ if “axiom” 1 (interpreted as a property of $\iPhi$) holds on $\iPhi$, and similarly for $A^2(\iPhi)$. The required check amounts to prove that $\exists \iPhi \subseteq \Phi \suchthat A^1(\iPhi) \land A^2(\iPhi)$. 
+
 Given a model, define $\Box\Phi \subseteq \Phi$ as 
 $\propposs \in \Box\Phi$ iff $[\exists \ar \in \allargs \suchthat \ar \ileadstostp \propposs]$
 and 
 $\propsure \in \Box\Phi$ iff $[\exists \ar \in \allargs \suchthat \ar \ileadstostp \propsure \land \ar \ileadstostp \propposs]$.
+
+The propositions such that $\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi$ are those on which the model permits to take a position. For that subset of propositions (which can be empty): $\phi \in \Box\Phi \oplus ¬\phi \in \Box\Phi$, where $\oplus$ denotes the exclusive disjunction; equivalently: $\phi \in \Box\Phi ⇔ ¬\phi \notin \Box\Phi$. This is proven below, and shows that \cref{ax:nocontr,ax:norm} are satisfiable together (suffices to define $\iPhi$ as the minimal set satisfying \cref{ax:norm}). Also proven below is that, for that same subset of propositions: $\phi \in \iPhi \oplus ¬\phi \in \iPhi$, which ensures an unambiguous interpretation of the content of $\iPhi$ for those propositions whose status is known thanks to the model.
+
+\begin{proposition}[Protocol coherence]
+	\label{prop:protcoh}
+	$[\exists \ar \in \allargs \suchthat \ar \ileadstost[pos] \phi] ⇒ [\nexists \ar \in \allargs \suchthat \ar \ileadstost[pos] ¬\phi]$.
+\end{proposition}
+\begin{proof}
+	Protocol coherence is satisfied by definition of $\ileadstost[pos]$. Indeed, if for some $\ar \in \allargs$, $\ar \ileadstost[pos] \phi$, then $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadstoe ¬\phi$; thus, for any $\ar' \in \allargs$, $\ar' \ileadstost[pos] ¬\phi$ is false, because it requires that $\forall \ar_1 \in \allargs: (\ar_1, \ar') \ileadstoe ¬\phi$, and thus in particular, that $(\ar', \ar) \ileadstoe ¬\phi$ (using the fact that the pair to the left of $\ileadstoe$ is unordered).
+\end{proof}
+
+\begin{proposition}[Internal negation coherence]
+	\label{th:intnegcoh}
+	$\forall \phi \suchthat [\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi]: \phi \in \Box\Phi \oplus ¬\phi \in \Box\Phi$.
+\end{proposition}
+\begin{proof}
+	Consider $\phi \suchthat [\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi]$. Proving \cref{th:intnegcoh} only requires to show that $\phi \in \Box\Phi ⇒ ¬\phi \notin \Box\Phi$. By definition, $\phi \in \Box\Phi$ implies that $\exists \ar \suchthat \ar \ileadstost[pos] \phi$, and the implication is thus proven by using \cref{prop:protcoh}: $\phi \in \Box\Phi ⇒ [\exists \ar \suchthat \ar \ileadstost[pos] \phi] ⇒ ¬[\exists \ar \suchthat \ar \ileadstost[pos] ¬\phi] ⇒ \phi \notin \Box\Phi$.
+\end{proof}
+\begin{definition}[Restricted negation coherence]
+	\label{def:restrnegcoh}
+	$\forall \phi \suchthat [\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi]: \phi \in \iPhi \oplus ¬\phi \in \iPhi$.
+\end{definition}
+\begin{proposition}[Restricted negation coherence satisfaction]
+	Under \cref{ax:nocontr,ax:norm}, all models satisfy Restricted negation coherence.
+\end{proposition}
+\begin{proof}
+	This follows from \cref{th:intnegcoh}.
+\end{proof}
+
+\subsection{Non-completeness}
 \begin{definition}[Model completeness]
 	$\forall \phi \in \Phi: \phi \in \Box\Phi \lor ¬\phi \in \Box\Phi$.
 \end{definition}
@@ -119,30 +158,6 @@ $\propsure \in \Box\Phi$ iff $[\exists \ar \in \allargs \suchthat \ar \ileadstos
 Models as defined here do not mandate Model completeness. This is good for two reasons. First, even the weaker Deliberation completeness can appear too strong. Second, it is dubious that, for non trivial decision problems, models can be found for which both Normative adequacy is normatively compelling and Model completeness holds.
 
 \subsection{Negation coherence and analysis of normative adequacy}
-The propositions such that $\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi$ are those on which the model permits to take a position. For that subset of propositions (which can be empty): $\phi \in \Box\Phi \oplus ¬\phi \in \Box\Phi$, where $\oplus$ denotes the exclusive disjunction; equivalently: $\phi \in \Box\Phi ⇔ ¬\phi \notin \Box\Phi$.
-\begin{property}[Protocol coherence]
-	\label{prop:protcoh}
-	$[\exists \ar \in \allargs \suchthat \ar \ileadstost[pos] \phi] ⇒ [\nexists \ar \in \allargs \suchthat \ar \ileadstost[pos] ¬\phi]$.
-\end{property}
-\begin{property}[Internal negation coherence]
-	\label{prop:intnegcoh}
-	$\forall \phi \suchthat [\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi]: \phi \in \Box\Phi \oplus ¬\phi \in \Box\Phi$.
-\end{property}
-\begin{property}[Restricted negation coherence]
-	\label{prop:restrnegcoh}
-	$\forall \phi \suchthat [\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi]: \phi \in \iPhi \lor ¬\phi \in \iPhi$.
-\end{property}
-\begin{proposition}[Restricted negation coherence satisfaction]
-	A normatively adequate model satisfies Internal negation coherence and Restricted negation coherence.
-\end{proposition}
-\begin{proof}
-	First, observe that Protocol coherence is satisfied by definition of $\ileadstost[pos]$. Indeed, if for some $\ar \in \allargs$, $\ar \ileadstost[pos] \phi$, then $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadstoe ¬\phi$; thus, for any $\ar' \in \allargs$, $\ar' \ileadstost[pos] ¬\phi$ is false, because it requires that $\forall \ar_1 \in \allargs: (\ar_1, \ar') \ileadstoe ¬\phi$, and thus in particular, that $(\ar', \ar) \ileadstoe ¬\phi$ (using the fact that the pair to the left of $\ileadstoe$ is unordered).
-	
-	Consider $\phi \suchthat [\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi]$. Proving \cref{prop:intnegcoh} only requires to show that $\phi \in \Box\Phi ⇒ ¬\phi \notin \Box\Phi$. By definition, $\phi \in \Box\Phi$ implies that $\exists \ar \suchthat \ar \ileadstost[pos] \phi$, and the implication is thus proven by using \cref{prop:protcoh}: $\phi \in \Box\Phi ⇒ [\exists \ar \suchthat \ar \ileadstost[pos] \phi] ⇒ ¬[\exists \ar \suchthat \ar \ileadstost[pos] ¬\phi] ⇒ \phi \notin \Box\Phi$.
-	
-	Finally, \cref{prop:restrnegcoh} follows from \cref{prop:intnegcoh} thanks to normative adequacy.
-\end{proof}
-
 We want to adopt a normative axiom satisfying the following meta-axioms.
 \begin{definition}[Meta-axiom: negation coherence]
 	$\forall \phi \in \Phi: ¬(\phi \in \iPhi \land ¬\phi \in \iPhi)$.
@@ -166,7 +181,7 @@ Defining $\ar \ileadstoe[undef] \phi$ iff $\ar \nileadstost[undef] ¬\phi$, the 
 \subsection{Validity and conditions}
 \begin{definition}[Validity]
 	A theory is \emph{valid} iff $\forall \phi \in {\gleadsto}(\allargs): [\phi \in \iPhi \land ¬\phi \notin \iPhi]$.
-\end{definition}
+\end{definition} 
 
 $\ar_0 + \ar_2$ anticipates attacks from those attacking either, minus those attacked by any. (Actually any attacked may still attack the addition, but that’s because of some other not-yet-attacked, anticipated, attack.)
 
