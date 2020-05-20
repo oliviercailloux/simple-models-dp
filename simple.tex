@@ -127,22 +127,22 @@ The propositions such that $\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi$ are thos
 	Protocol coherence is satisfied by definition of $\ileadstost[pos]$. Indeed, if for some $\ar \in \allargs$, $\ar \ileadstost[pos] \phi$, then $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadstoe ¬\phi$; thus, for any $\ar' \in \allargs$, $\ar' \ileadstost[pos] ¬\phi$ is false, because it requires that $\forall \ar_1 \in \allargs: (\ar_1, \ar') \ileadstoe ¬\phi$, and thus in particular, that $(\ar', \ar) \ileadstoe ¬\phi$ (using the fact that the pair to the left of $\ileadstoe$ is unordered).
 \end{proof}
 
-\begin{proposition}[Internal negation coherence]
-	\label{th:intnegcoh}
+\begin{proposition}[Internal interpretability]
+	\label{th:intinterpr}
 	$\forall \phi \suchthat [\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi]: \phi \in \Box\Phi \oplus ¬\phi \in \Box\Phi$.
 \end{proposition}
 \begin{proof}
-	Consider $\phi \suchthat [\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi]$. Proving \cref{th:intnegcoh} only requires to show that $\phi \in \Box\Phi ⇒ ¬\phi \notin \Box\Phi$. By definition, $\phi \in \Box\Phi$ implies that $\exists \ar \suchthat \ar \ileadstost[pos] \phi$, and the implication is thus proven by using \cref{prop:protcoh}: $\phi \in \Box\Phi ⇒ [\exists \ar \suchthat \ar \ileadstost[pos] \phi] ⇒ ¬[\exists \ar \suchthat \ar \ileadstost[pos] ¬\phi] ⇒ \phi \notin \Box\Phi$.
+	Consider $\phi \suchthat [\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi]$. Proving the claim only requires to show that $\phi \in \Box\Phi ⇒ ¬\phi \notin \Box\Phi$. By definition, $\phi \in \Box\Phi$ implies that $\exists \ar \suchthat \ar \ileadstost[pos] \phi$, and the implication is thus proven by using \cref{prop:protcoh}: $\phi \in \Box\Phi ⇒ [\exists \ar \suchthat \ar \ileadstost[pos] \phi] ⇒ ¬[\exists \ar \suchthat \ar \ileadstost[pos] ¬\phi] ⇒ \phi \notin \Box\Phi$.
 \end{proof}
-\begin{definition}[Restricted negation coherence]
-	\label{def:restrnegcoh}
+\begin{definition}[Restricted interpretability]
+	\label{def:restrinterpr}
 	$\forall \phi \suchthat [\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi]: \phi \in \iPhi \oplus ¬\phi \in \iPhi$.
 \end{definition}
-\begin{proposition}[Restricted negation coherence satisfaction]
-	Under \cref{ax:nocontr,ax:norm}, all models satisfy Restricted negation coherence.
+\begin{proposition}[Restricted interpretability satisfaction]
+	All models satisfying \cref{ax:nocontr,ax:norm} also satisfy Restricted interpretability.
 \end{proposition}
 \begin{proof}
-	This follows from \cref{th:intnegcoh}.
+	This follows from \cref{th:intinterpr}.
 \end{proof}
 
 \subsection{Non-completeness}
