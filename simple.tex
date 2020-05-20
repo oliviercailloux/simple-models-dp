@@ -157,27 +157,6 @@ The propositions such that $\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi$ are thos
 \end{proposition}
 Models as defined here do not mandate Model completeness. This is good for two reasons. First, even the weaker Deliberation completeness can appear too strong. Second, it is dubious that, for non trivial decision problems, models can be found for which both Normative adequacy is normatively compelling and Model completeness holds.
 
-\subsection{Negation coherence and analysis of normative adequacy}
-We want to adopt a normative axiom satisfying the following meta-axioms.
-\begin{definition}[Meta-axiom: negation coherence]
-	$\forall \phi \in \Phi: ¬(\phi \in \iPhi \land ¬\phi \in \iPhi)$.
-\end{definition}
-\begin{definition}[Meta-axiom: certainty implies possibility]
-	$\forall \phi \in \Phi: \propsure \in \iPhi ⇒ \propposs \in \iPhi$.
-\end{definition}
-Also, we want the normative axiom to be based on observation, and to allow for incompleteness. And the meta-axioms must hold for any possible observations (they are not empirical claims).
-
-From all this, hopefully, I can justify my normative axiom; by justifying its form $\ar \ileadstost[undef] \phi ⇒ \phi \in \iPhi$ in terms of a yet-undefined $\ileadstost[undef]$, then by proving that $\ileadstost[undef]$ must satisfy Protocol coherence (applied to undef instead of the current one) and Certainty implies possibility.
-
-\begin{definition}[Certainty implies possibility]
-	$\forall \ar \in \allargs: \ar \ileadstost[undef] \propsure ⇒ \ar \ileadstost[undef] \propposs$.
-\end{definition}
-Defining $\ar \ileadstoe[undef] \phi$ iff $\ar \nileadstost[undef] ¬\phi$, the following should adequately replace Coherent protocol.
-\begin{definition}[Always implies sometimes]
-	\label{cl:ais}
-	${\ileadstost[undef]} \subseteq {\ileadstoe[undef]}$.
-\end{definition}
-
 \subsection{Validity and conditions}
 \begin{definition}[Validity]
 	A theory is \emph{valid} iff $\forall \phi \in {\gleadsto}(\allargs): [\phi \in \iPhi \land ¬\phi \notin \iPhi]$.
