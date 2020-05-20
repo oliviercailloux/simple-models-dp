@@ -62,7 +62,7 @@ Sketch: define normative models, using questions, and making claims about DJ. A 
 
 \subsection{Definition}
 A normative theory is a tuple $(\allprops, ¬, \allargs, I, (\ileadstoe[i])_{i \in I}, q, (\gleadsto[q(i)])_{q(i) \in q(I)}, \gbeats, +)$,
-with $\zar \in \allargs, {\ileadstoe[i]} \subseteq (\allargs × \allargs) × \Phi$, ${\gleadsto[q(i)]} \subseteq \allargs × \Phi$, ${\gbeats} \subseteq \allargs × \allargs$,
+with ${\ileadstoe[i]} \subseteq (\allargs × \allargs) × \Phi$, ${\gleadsto[q(i)]} \subseteq \allargs × \Phi$, ${\gbeats} \subseteq \allargs × \allargs$,
 where $\Phi = \allprops × \set{\text{possible}, \text{sure}}$, and $+$ a commutative associative internal binary operation on $\allargs$. Given $\args \subseteq \allargs$, the notation $\sum \args = \sum_{\ar \in \args} \ar$ thus designates a well-defined argument.  
 
 The symbol $¬$ is a negation operator on $\allprops$, such that $\forall \prop \in \allprops: ¬¬\prop = \prop$ (this article also uses this symbol to negate classical logic propositions and as a negation operator on $\Phi$, which should create no confusion). Define $¬$ on $\Phi$ as follows, $\forall \prop \in \allprops$: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. Observe that $¬¬\phi = \phi$.
