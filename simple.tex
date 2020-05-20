@@ -75,21 +75,17 @@ To lighten notations, $\ileadstoe[i]$ will generally be denoted by $\ileadstoe$,
 As usual with binary relations, $(\ar', \ar) \nileadstost \phi$ means $¬[(\ar', \ar) \ileadstost \phi]$.
 Abusing notation, given $\ar \in \allargs$ and $\phi \in \Phi$, I write $\ar \ileadstost \phi$ to mean $[\forall \ar' \in \allargs: (\ar', \ar) \ileadstost \phi]$.
 
-The set $\iPhi \subseteq \Phi$ is the set of interest. 
-When $(\prop, \text{possible}) \in \iPhi$, $\prop$ is considered as a possibility in the deliberated judgment of $i$ (it is not rejected), and when $(\prop, \text{sure}) \in \iPhi$, $\prop$ is considered as a certainty in the deliberated judgment of $i$. 
-Part of the content of $\Phi$ is known as a result of a correct normative and empirical analysis. 
+Given $\phi \in {\gleadsto}(\allargs)$, define ${\ibeatse[!\phi]} \subseteq \allargs × \allargs$ such that $\ar' \ibeatse[!\phi] \ar$ iff $(\ar', \ar) \ileadstoe ¬\phi$. 
 
-Given $\phi \in {\gleadsto}(\allargs)$, an argument $\ar \in \allargs$ is \emph{in favor of $\phi$}, $\ar \in \gargs[\phi, 1]$, iff $\ar \in [\gbeatsinv]^{2k}({\gleadstoinv}(\phi))$ for some $k \in \N$, where $R^\alpha$ denotes $\alpha$ times the composition of the relation $R$ with itself. (Throughout the article, $\N$ includes zero.) 
+Given $\phi \in {\gleadsto}(\allargs)$, define $\gargs[\phi, 0] \subseteq \allargs$ as $\gargs[\phi, 0] = {\gleadstoinv}(\phi)$; and, for $k \in \N$, define $\gargs[\phi, k + 1] = \gargs[\phi, k] + [{\gbeatsinv} \circ {\ibeatseinv[!\phi]}](\gargs[\phi, k]) = \set{\ar_k + \ar \suchthat \ar_k \in \gargs[\phi, k], \ar  \in [{\gbeatsinv} \circ {\ibeatseinv[!\phi]}](\gargs[\phi, k])}$. (Throughout the article, $\N$ includes zero.) 
+Define $\gargs[\phi] = \bigcup_{k \in \N} \gargs[\phi, k]$, and $\gargs = \cup_{\phi \in {\gleadsto}(\allargs)} \gargs[\phi]$. 
 
-Given $\phi \in {\gleadsto}(\allargs)$ and $1 ≤ k \in \N$, define $\gargs[\phi, k + 1] = \gargs[\phi, k] + \gargs[\phi, 1] = \set{\ar_k + \ar_1 \suchthat \ar_k \in \gargs[\phi, k], \ar_1  \in \gargs[\phi, 1]}$. 
-Define $\gargs[\phi] = \bigcup_{1 ≤ k \in \N} \gargs[\phi, k]$, and $\gargs = \cup_{\phi \in {\gleadstoinv}(\allargs)} \gargs[\phi]$. 
-
-Given $\phi \in \Phi$ and $\ar_0 \in \gargs[\phi]$, let $c^\phi(\ar_0) = \bigcup \set{\args \subseteq \gargs[\phi, 0] \suchthat \ar_0 = \sum \args} \subseteq \allargs$ denote the \emph{components} of $\ar_0$ in favor of $\phi$.
+Given $\ar \in \gargs$, let $c(\ar) = \bigcup \set{\args \subseteq \gargs \suchthat \ar = \sum \args} \subseteq \allargs$ denote the \emph{components} of $\ar$.
 
 Given $\ar_2 \in \gargs, \ar_1 \in \allargs$, $\ar_2 \mbeats \ar_1$ has the semantic that $\gamma$ claims that $\ar_2$ trumps $\ar_1$ if necessary.
 Given $\ar_1 \in \allargs, \ar_0 \in \gargs$, $\ar_1 \mbeats \ar_0$ has the semantic that $\gamma$ claims that it knows how to resist an attack from $\ar_1$ coming in response to using $\ar_0$, if it does come.
 
-Given $\phi \in {\gleadsto}(\allargs)$, define ${\ibeatse[!\phi]} \subseteq \allargs × \gargs[\phi]$ such that $\ar' \ibeatse[!\phi] \ar$ iff $(\ar', \ar) \ileadstoe ¬\phi$. Define ${\ibeatse[\phi]} \subseteq \gargs[\phi] × \allargs$ such that $\ar' \ibeatse[\phi] \ar$ iff $(\ar', \ar) \ileadstoe \phi$. 
+\commentOC{TODO next: check $\gbeatsstar$ can be replaced. Then, comment that Bounded length does not imply finiteness of arguments used as counter-arguments by the model: model is able to counter infinitely many arguments with infinitely many counter-args, but needs to declare that an (unknown) finite subset of those will suffice to convince $i$.}
 
 \subsection{Classify propositions}
 Define $(\ar_1, \ar) \ileadstostp \phi$ iff $(\ar_1, \ar) \nileadstoe ¬\phi \land (\ar_1, \ar) \ileadstoe \phi$. Define $\ar \ileadstostp \phi$ iff $\forall \ar_1 \in \allargs: (\ar_1, \ar) \ileadstostp \phi$.
