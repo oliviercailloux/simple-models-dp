@@ -62,22 +62,20 @@ Sketch: define normative models, using questions, and making claims about DJ. A 
 
 \subsection{Definition}
 A normative theory is a tuple $(\allprops, ¬, \allargs, I, (\ileadstoe[i])_{i \in I})$, 
-with ${\ileadstoe[i]} \subseteq (\allargs × \allargs) × \Phi$, 
-where $\Phi = \allprops × \set{\text{possible}, \text{sure}}$. 
+with ${\ileadstoe[i]} \subseteq \allhist × \Phi$, 
+where $\allhist$ denotes all finite sequences of elements in $\allargs$ (including the empty sequence) and $\Phi = \allprops × \set{\text{possible}, \text{sure}}$. 
 
-The symbol $¬$ is a negation operator on $\allprops$, such that $\forall \prop \in \allprops: ¬¬\prop = \prop$ (this article also uses this symbol to negate classical logic propositions and as a negation operator on $\Phi$, which should create no confusion). Define $¬$ on $\Phi$ as follows, $\forall \prop \in \allprops$: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. Observe that $¬¬\phi = \phi$.
+The symbol $¬$ is a negation operator on $\allprops$, such that $\forall \prop \in \allprops: ¬¬\prop = \prop$. This article also uses this symbol as a negation operator on $\Phi$, defined as follows, $\forall \prop \in \allprops$: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. Observe that $¬¬\phi = \phi$. (The symbol $¬$ is also used in this article to negate classical logic propositions; this should create no confusion.)
+As usual with binary relations, $\hist \nileadstoe[i] \phi$ means $(\hist, \phi) \notin {\ileadstoe[i]}$.
 
-Given any $\ar', \ar, \prop$, let $(\ar', \ar) \ileadstost (\prop, \text{sure})$ be equivalent to $(\ar', \ar) \nileadstoe (¬\prop, \text{poss}) \land (\ar', \ar) \ileadstoe (\prop, \text{sure}) \land (\ar', \ar) \nileadstoe (¬\prop, \text{sure})$; and $(\ar', \ar) \ileadstost (\prop, \text{poss})$ be equivalent to $(\ar', \ar) \nileadstoe (¬\prop, \text{sure})$.
-\footnote{Assume $i$, given $\ar$ and $\ar'$, picks repeatedly (in various circumstances) nonempty subsets of $\set{\prop, ¬\prop}$. Define $(\ar', \ar) \ileadstoe (\prop, \text{sure})$ iff she sometimes chooses $\set{\prop}$ and $(\ar', \ar) \ileadstoe (\prop, \text{poss})$ iff she sometimes chooses $\set{\prop}$ or $\set{\prop, ¬\prop}$. Then, $(\ar', \ar) \ileadstost (\prop, \text{sure})$ iff she always chooses $\set{\prop}$ and $(\ar', \ar) \ileadstost (\prop, \text{poss})$ iff she always chooses either $\set{\prop}$ or $\set{\prop, ¬\prop}$.}
+Given any $\ar_0 \in \allargs, \phi \in \Phi$, define $\ar_0 \ileadstost[i] \phi$ iff $\forall \hist \in \allhist, \ar_1 \in \allargs: (\hist, \ar_0) \nileadstoe[i] ¬\phi \land (\hist, \ar_0) \ileadstoe[i] \phi \land (\hist, \ar_0, \ar_1) \nileadstoe[i] ¬\phi \land (\hist, \ar_0, \ar_1) \ileadstoe[i] \phi$.
+\footnote{TODO Assume $i$, given $\ar$ and $\ar'$, picks repeatedly (in various circumstances) nonempty subsets of $\set{\prop, ¬\prop}$. Define $(\ar', \ar) \ileadstoe (\prop, \text{sure})$ iff she sometimes chooses $\set{\prop}$ and $(\ar', \ar) \ileadstoe (\prop, \text{poss})$ iff she sometimes chooses $\set{\prop}$ or $\set{\prop, ¬\prop}$. Then, $(\ar', \ar) \ileadstost (\prop, \text{sure})$ iff she always chooses $\set{\prop}$ and $(\ar', \ar) \ileadstost (\prop, \text{poss})$ iff she always chooses either $\set{\prop}$ or $\set{\prop, ¬\prop}$.}
 
-To lighten notations, $\ileadstoe[i]$ will generally be denoted by $\ileadstoe$, this symbol being understood as the result of a function of $i$. When the symbol $i$, $\ileadstoe$ or $\ileadstost$ is used in a formula without $i$ being bound, the binding $\forall i \in I$ is implied.
-
-As usual with binary relations, $(\ar', \ar) \nileadstost \phi$ means $¬[(\ar', \ar) \ileadstost \phi]$.
-Abusing notation, given $\ar \in \allargs$ and $\phi \in \Phi$, I write $\ar \ileadstost \phi$ to mean $[\forall \ar' \in \allargs: (\ar', \ar) \ileadstost \phi]$.
+To lighten notations, $\ileadstoe[i]$ and $\ileadstost[i]$ will generally be denoted by $\ileadstoe$ and $\ileadstost$, these symbols being understood as the result of a function of $i$. 
+When the symbol $\ileadstoe$ or $\ileadstost$ is used in a formula without $i$ being bound, the binding $\forall i \in I$ is implied.
 
 \subsection{Classify propositions}
-Define $(\ar_1, \ar) \ileadstostp \phi$ iff $(\ar_1, \ar) \nileadstoe ¬\phi \land (\ar_1, \ar) \ileadstoe \phi$. Define $\ar \ileadstostp \phi$ iff $\forall \ar_1 \in \allargs: (\ar_1, \ar) \ileadstostp \phi$.
-
+\commentOC{Check if I current definition of $\ileadstost$ is correct, in which case I can get rid of $\ileadstostp$.}
 \begin{axiom}[No contradiction]
 	\label{ax:nocontr}
 	$\forall \phi \in \Phi: \phi \in \iPhi ⇒ ¬\phi \notin \iPhi$.
@@ -148,6 +146,8 @@ The following proposition directly follows from the definitions.
 Models as defined here do not mandate Model completeness. This is good for two reasons. First, even the weaker Deliberation completeness can appear too strong. Second, it is dubious that, for non trivial decision problems, models can be found for which both Normative adequacy is normatively compelling and Model completeness holds.
 
 \section{Empirical theories}
+Given $\hist \in \allhist$ and $i \in I$, the claim $\hist \ileadstoe[i] \phi$ may not be verifiable, and is too specific to be falsifiable. However, given $\hist \in \allhist$, a broader claim is falsifiable: that for a given set of individuals $Q \subseteq I, \forall i \in Q, \hist \ileadstoe[i] \phi$ (provided $Q$ is big enough). Indeed, that claim it is equivalent to $\nexists i \in Q \suchthat \hist \nileadstoe[i] \phi$; exhibiting an $i \in Q$ such that $\hist \nileadstoe[i] \phi$ thus falsifies the broader claim.
+
 \subsection{Definition}
 An empirical theory for a normative theory is a tuple $(q, (\gleadsto[q(i)])_{q(i) \in q(I)}, \gbeats, +)$,
 with ${\gleadsto[q(i)]} \subseteq \allargs × \Phi$, ${\gbeats} \subseteq \allargs × \allargs$,
@@ -188,6 +188,9 @@ $\ar_0 + \ar_2$ anticipates attacks from those attacking either, minus those att
 	
 	To say that $\phi \in \iPhi$, need to not depend on choice of $q$, in the following sense: if with $q$, $\phi$ seems stable, but with $q'$, $¬\phi$ seems stable, then $\phi$ is not proved as being in $\iPhi$. But if with $q$, $\phi$ seems stable, but with $q'$, nothing can be shown to be stable, then $\phi$ is proved (temporarily) as being in $\iPhi$. More precisely, after $q'$, the model must be able to stabilize $i$ with its $q$.
 \end{remark}
+I think I need the following. Define $\ar_1 \ibeatse \ar_0$ iff $\exists \hist \suchthat (\hist, \ar_0, \ar_1) \ileadstoe ¬\phi$. The model claims that if $\ar_1 \ibeatse \ar_0$ and $\ar_3 \ibeatse \ar_0 + \ar_2$, then $(\hist, \ar_0 + \ar_2 + \ar_4) \ileadstoe \phi$ (for some suitable $\hist$ that does not contain yet this arg or their c-a, or perhaps just claim that $\exists \hist \suchthat \hist \ileadstoe \phi$ with $\hist$ containing this arg). 
+
+Better: the model claims that if $\ar_1 \ileadstoe ¬\phi$ and if $\ar_0$ and $\ar_1$ are in $\hist$ and none of the anticipated attackers of $\ar_0 + \ar_2$ are, then $(\hist, \ar_0 + \ar_2) \ileadstoe \phi$ (or, at least, that the model has at least one available candidate).
 
 \begin{remark}
 	I currently conceive these conditions in the following way. The model must anticipate in its initial arguments the counter-arguments that $i$ may have in mind. Thus, $\ar_1$ trumps $\ar_0$ is observed when $i$ has been given $\ar_1$. When the model answers with $\ar_2$, if $i$ is unconvinced (of $\ar_2 + \ar_0$ trumping $\ar_1$), the procedure stops (the model can’t argue that yes-but-maybe-$i$-has-$\ar_1'$-in-mind; in particular, it wouldn’t be feasible to interrogate $i$ if the arguments are given thanks to labeling in a supermarket). However, if $i$ is given $\ar_1'$, the model must be given a chance to play its counter-argument, and may not be falsified because $\ar_2 + \ar_0$ is not enough: once $i$ is given $\ar_1'$, it is no more claimed by the model that $\ar_2 + \ar_0$ suffices any longer.

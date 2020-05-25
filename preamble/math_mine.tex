@@ -17,7 +17,7 @@
 	%\makeatother
 
 %Deliberated Judgment
-\NewDocumentCommand{\allargs}{}{S^*}
+\NewDocumentCommand{\allargs}{}{\mathscr{S}}
 \NewDocumentCommand{\args}{}{S}
 \NewDocumentCommand{\gargs}{O{}}{S^{#1}_γ}
 \NewDocumentCommand{\ar}{o}{%
@@ -27,6 +27,8 @@
 		s%
 	}%
 }
+\NewDocumentCommand{\allhist}{}{\mathscr{S}^*}
+\NewDocumentCommand{\hist}{}{s^*}
 \NewDocumentCommand{\allprops}{}{T}
 \NewDocumentCommand{\prop}{}{t}
 \NewDocumentCommand{\propsure}{}{(t, \mathrm{sure})}
