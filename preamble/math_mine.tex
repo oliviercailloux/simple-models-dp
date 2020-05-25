@@ -40,7 +40,13 @@
 \NewDocumentCommand{\iacc}{}{\Phi^\mathrm{acc}_i}
 \NewDocumentCommand{\idet}{}{\Phi^\mathrm{det}_i}
 \NewDocumentCommand{\irej}{}{\Phi^\mathrm{rej}_i}
-\NewDocumentCommand{\ileadsto}{}{⇝}
+\NewDocumentCommand \ileadsto { o }{%
+	\IfValueTF{#1}{%
+		⇝^{#1}%
+	}{%
+		⇝%
+	}%
+}
 \NewDocumentCommand{\ileadstos}{}{\overset{s}{⇝_i}}
 \NewDocumentCommand{\ileadstost}{O{}}{⇝^{#1}_\forall}
 \NewDocumentCommand{\ileadstostw}{O{}}{⇝^\mathrm{w}_\forall}
