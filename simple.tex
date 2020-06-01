@@ -63,7 +63,7 @@ Sketch: define normative models, using questions, and making claims about DJ. A 
 \subsection{Definition}
 A normative theory is a tuple $(\allprops, ¬, \allargs, I, (\ileadstoe[i])_{i \in I})$, 
 with ${\ileadstoe[i]} \subseteq \allhist × \Phi$, 
-where $\allhist$ denotes all finite sequences of elements in $\allargs$ (including the empty sequence) and $\Phi = \allprops × \set{\text{possible}, \text{sure}}$. 
+where $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ denotes all finite sequences of elements in $\allargs$ (including the empty sequence) and $\Phi = \allprops × \set{\text{possible}, \text{sure}}$. 
 
 The symbol $¬$ is a negation operator on $\allprops$, such that $\forall \prop \in \allprops: ¬¬\prop = \prop$. This article also uses this symbol as a negation operator on $\Phi$, defined as follows, $\forall \prop \in \allprops$: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. Observe that $¬¬\phi = \phi$. (The symbol $¬$ is also used in this article to negate classical logic propositions; this should create no confusion.)
 As usual with binary relations, $\hist \nileadstoe[i] \phi$ means $(\hist, \phi) \notin {\ileadstoe[i]}$.
@@ -168,54 +168,39 @@ Given $\ar \in \gargs$, let $c(\ar) = \bigcup \set{\args \subseteq \gargs \sucht
 Given $\ar_2 \in \gargs, \ar_1 \in \allargs$, $\ar_2 \mbeats \ar_1$ has the semantic that $\gamma$ claims that $\ar_2$ trumps $\ar_1$ if necessary.
 Given $\ar_1 \in \allargs, \ar_0 \in \gargs$, $\ar_1 \mbeats \ar_0$ has the semantic that $\gamma$ claims that it knows how to resist an attack from $\ar_1$ coming in response to using $\ar_0$, if it does come.
 
-\commentOC{TODO also: in general, the model defines $\gargs[\phi]$ as a function of $\ileadstoe$? Start with $\gargs[\phi, 0]$, then observe all $\ar_1$ attacking those, and the model may define $\gargs[\phi, 1]$ depending on this observation, and so on. The condition is that one such argument be decisive.}
-
 \subsection{Validity}
 \begin{definition}[Validity]
 	An empirical theory is \emph{valid} iff $\forall \phi \in {\gleadsto}(\allargs): [\phi \in \iPhi \land ¬\phi \notin \iPhi]$.
 \end{definition}
 
-\subsection{Discussion}
-$\ar_0 + \ar_2$ anticipates attacks from those attacking either, minus those attacked by any. (Actually any attacked may still attack the addition, but that’s because of some other not-yet-attacked, anticipated, attack.)
-
+\subsection{Conditions with history}
 \begin{remark}
 	In fact, the model is tasked with finding a stable point after interrogating $i$. The process of trying counter-arguments $\ar_1, …$ is $q(i)$. When done, the model claims that $\ar_0 + \ar_2 + …$ is decisive. The model also claims that another process of interrogation does not lead to different answers. This is falsifiable.
-	
-	It follows that trying different $\ar_2, \ar'_2, …$ is also admissible.
-	
-	I need a (more) basic observable: a path $p$ is a sequence of arguments given to $i$, and I assume that whether $p \ileadsto[i] \phi$ is observable. But we can only assume that one path and its extensions is observable.
-	
 	When claiming that $(\ar_1, \ar_0) \ileadstost[i] \phi$, the model really claims that $\nexists p, i' \in q^{-1}(q(i)) \suchthat p, \ar_1, \ar_0 \ileadsto[i'] ¬\phi \lor p, \ar_0, \ar_1 \ileadsto[i'] ¬\phi$, where $i' \in q^{-1}(q(i))$ iff $q(i) = q(i')$.
 	
 	To say that $\phi \in \iPhi$, need to not depend on choice of $q$, in the following sense: if with $q$, $\phi$ seems stable, but with $q'$, $¬\phi$ seems stable, then $\phi$ is not proved as being in $\iPhi$. But if with $q$, $\phi$ seems stable, but with $q'$, nothing can be shown to be stable, then $\phi$ is proved (temporarily) as being in $\iPhi$. More precisely, after $q'$, the model must be able to stabilize $i$ with its $q$.
 \end{remark}
-I think I need the following. Define $\ar_1 \ibeatse \ar_0$ iff $\exists \hist \suchthat (\hist, \ar_0, \ar_1) \ileadstoe ¬\phi$. The model claims that if $\ar_1 \ibeatse \ar_0$ and $\ar_3 \ibeatse \ar_0 + \ar_2$, then $(\hist, \ar_0 + \ar_2 + \ar_4) \ileadstoe \phi$ (for some suitable $\hist$ that does not contain yet this arg or their c-a, or perhaps just claim that $\exists \hist \suchthat \hist \ileadstoe \phi$ with $\hist$ containing this arg). 
 
-Better: the model claims that if $\ar_1 \ileadstoe ¬\phi$ and if $\ar_0$ and $\ar_1$ are in $\hist$ and none of the anticipated attackers of $\ar_0 + \ar_2$ are, then $(\hist, \ar_0 + \ar_2) \ileadstoe \phi$ (or, at least, that the model has at least one available candidate).
-
-\begin{remark}
-	I currently conceive these conditions in the following way. The model must anticipate in its initial arguments the counter-arguments that $i$ may have in mind. Thus, $\ar_1$ trumps $\ar_0$ is observed when $i$ has been given $\ar_1$. When the model answers with $\ar_2$, if $i$ is unconvinced (of $\ar_2 + \ar_0$ trumping $\ar_1$), the procedure stops (the model can’t argue that yes-but-maybe-$i$-has-$\ar_1'$-in-mind; in particular, it wouldn’t be feasible to interrogate $i$ if the arguments are given thanks to labeling in a supermarket). However, if $i$ is given $\ar_1'$, the model must be given a chance to play its counter-argument, and may not be falsified because $\ar_2 + \ar_0$ is not enough: once $i$ is given $\ar_1'$, it is no more claimed by the model that $\ar_2 + \ar_0$ suffices any longer.
-	
-	Relatedly, Operational validity is (almost) void when $\ar_1$ trumps $\ar_0$ and $\ar_0 \gbeats \ar_1$ (and has already observed to be successful, thus $\ar_0$ trumps $\ar_1$): in that case, suffices to play $\ar_2 = \ar_0$ and define $\ar_0 + \ar_0 = \ar_0$, so $\ar_2 + \ar_0$ trumps $\ar_1$.
-	
-	In summary: when $\ar_1$ trumps $\ar_0$, and the model has not already answered this argument using $\ar_0$ (thus $¬ \ar_0 \gbeats \ar_1$), Op. val. demands an answer. When $\ar_1$ trumps $\ar_0$, and the model has answered already using $\ar_0$, and we have checked that indeed $\ar_0$ trumps $\ar_1$, Answerability demands that the model can explain this instability by the fact that someone must have given another argument $\ar_1'$ to $i$ (and this is to be checked using means outside the formal model).
-\end{remark}
-
-There must exist a sequence $\ar_0, \ar_2, \ar_4, …$ such that $\ar_0$ is defended by $\ar_2$, and so on.
-
-\subsection{Conditions with history}
-$S_4$ defends $S_2$ under protection of $S_6$ iff: $[\exists \hist, \ar_3 \suchthat \hist, \ar_2, \ar_3 \ileadstoe ¬\phi] ⇒ [\forall \hist \suchthat \set{\ar_5 \suchthat f(\ar_5, \ar_4) \cap \args_6 ≠ \emptyset} \cap \hist = \emptyset: \hist, \ar_4 \ileadstoe \phi]$. No, my condition is about defending when required, so just need to defend in the sense: $\forall \hist \suchthat \set{\ar_5 \suchthat f(\ar_5, \ar_4) \cap \args_6 ≠ \emptyset} \cap \hist = \emptyset: \hist, \ar_4 \ileadstoe \phi$. This may be adequate as if $\ar_0$ seems suitable but some unplanned attacker $\ar_1$ attacks it, then use $\ar_1 \in \hist$ and observe that $¬(\hist, \ar_0) \ileadstoe \phi$ to falsify the theory.
-
-$\ar_4$ defends $\phi$ under protection of $S_6$ iff: $\forall \hist \in \allhist \suchthat \set{\ar_5 \in \allargs \suchthat f(\ar_5, \ar_4) \cap \args_6 ≠ \emptyset} \cap \hist = \emptyset: \hist, \ar_4 \ileadstoe \phi$.
+Given $\ar_0 \in \allargs$ and $\args_2 \subseteq \allargs$, define the set $\args_1 \subseteq \allargs$ of arguments that $\args_2$ protects $\ar_0$ from as $S_1 = [f^{-1}(\args_2)]^{-1}(\ar_0) = \set{\ar_1 \in \allargs \suchthat f(\ar_1, \ar_0) \cap \args_2 ≠ \emptyset}$. 
+Define $g(\ar_0) \subseteq \allargs × \allargs$ as $g(\ar_0) = \set{(\ar_2, \ar_1) \suchthat \ar_2 \in f(\ar_1, \ar_0)} = \bigcup_{\ar_1 \in \allargs} (f(\ar_1, \ar_0) × \set{\ar_1})$. The set $g(\ar_0)(\allargs)$ are the planned attacks on $\ar_0$ and the set $g(\ar_0)^{-1}(\ar_1)$ are the planned protections of $\ar_0$ against $\ar_1$. 
+Then, $\args_1 = g(\ar_0)(\args_2)$.
+ 
+$\ar_0$ defends $\phi$ under protection of $S_2$ iff $\forall \hist \in \allhist: [\args_1 \cap \hist = \emptyset] ⇒ (\hist, \ar_0) \ileadstoe \phi$, where $\args_1 = g(\ar_0)(\args_2)$.
 
 \begin{definition}[Claim]
-	$\exists k \in 2\N$ and a finite sequence $(\args_i)_{i \in 2\N, i ≤ k} \suchthat \args_0 \subseteq {\gleadstoinv}(\phi)$ and $\forall i \in 2\N, i ≤ k, \forall \ar_i \in S_i: \ar_i$ defends $\phi$ under protection of $S_{i + 2}$ (defining $S_{k + 2} = \emptyset$) and $S_i \subseteq \cup_{\ar_{i - 2} \in S_{i - 2}, \ar_{i - 1} \in \allargs} f(\ar_{i - 1}, \ar_{i - 2})$.
+	$\forall i \in I, \exists k \in 2\N$ and a finite sequence $(\args_j)_{j \in 2\N, j ≤ k} \suchthat \args_0 \subseteq {\gleadstoinv}(\phi)$ and $\forall j \in 2\N, j ≤ k, \forall \ar_j \in S_j: \ar_j$ defends $\phi$ under protection of $S_{j + 2}$ (defining $S_{k + 2} = \emptyset$) and $S_j \subseteq \cup_{\ar_{j - 2} \in \args_{j - 2}, \ar_{j - 1} \in \allargs} f(\ar_{j - 1}, \ar_{j - 2})$.
 \end{definition}
 Note that requiring that $\args_0$ be a singleton does not modify the condition, in the sense that any theory satisfying the condition also satisfies its restriction.
 
-No, rather: if $\ar_2$ can’t be defended, and $\ar'_2$ can’t either (all those attacking $\ar_1$, in fact), then $\ar_0$ is not necessary; thus some other $\ar'_0$ is enough. (Or is this equivalent?) Theimportant stuff is to anticipate attacks: if not $\ar_0$ decisive, then $\ar_1$ attacks $\ar_0$ and $\ar_2$ is decisive.
+\begin{remark}
+	The claim must have the form: some structure is adequate for all individuals. Here, the structure is given by $f$. The claim should claim that looking at the attacks planned by $f$ is enough; and looking at the defenses planned by $f$ is enough.
 
-I need a condition of the form: $\forall i \suchthat …, \ar$ decisive. And the above claim is of that form (?): given $i$, either $\ar_0$ is decisive, or $\ar_1$ attacks it but then $\ar_2$ is decisive, …
+	This may be adequate as if $\ar_0$ seems suitable but some unplanned attacker $\ar_1$ attacks it, then use $\ar_1 \in \hist$ and observe that $¬(\hist, \ar_0) \ileadstoe \phi$ to deny the claim.
+	
+	Perhaps this could be phrased as follows. Say that $\ar_2$ is replaceable by $\args_2$ iff what $\ar_2$ protects is either protected by $\args_2$ or replaceable (by what?). Say that a set $\args$ is sufficient iff its complement is replaceable by $\args$. Then $g$ claims (among others) that $g(\ar_0)^{-1}(\ar_1)$ is sufficient.
+	
+	The claim can (hopefully) be given the form: $\forall i \suchthat …, \ar$ decisive. Given $i$, either $\ar_0$ is decisive, or $\ar_1$ attacks it but then $\ar_2$ is decisive, …
+\end{remark}
 
 \subsection{Conditions without history}
 To verify or falsify these conditions, whether $(\ar_1, \ar_0) \ileadstoe \phi$ must be observable, but one may suspect that once $i$ has seen some $\ar$, then no more $(\ar_1, \ar_0) \ileadstoe \phi$ but that this does not imply that this would hold without $\ar$ for $i$. The general falsifiable claim is not clear.
@@ -240,6 +225,16 @@ The following condition mandates that if the arguments used by the theory are no
 \begin{definition}[Operational validity]
 	$\forall \phi \in {\gleadsto}(\allargs), \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: [\ar_1 \gbeats \ar_0 \land (\ar_1, \ar_0) \nileadstost \phi] ⇒ \exists \ar_2 \in {\gbeatsinv}(\ar_1)$.
 \end{definition}
+
+$\ar_0 + \ar_2$ anticipates attacks from those attacking either, minus those attacked by any. (Actually any attacked may still attack the addition, but that’s because of some other not-yet-attacked, anticipated, attack.)
+
+\begin{remark}
+	I currently conceive these conditions in the following way. The model must anticipate in its initial arguments the counter-arguments that $i$ may have in mind. Thus, $\ar_1$ trumps $\ar_0$ is observed when $i$ has been given $\ar_1$. When the model answers with $\ar_2$, if $i$ is unconvinced (of $\ar_2 + \ar_0$ trumping $\ar_1$), the procedure stops (the model can’t argue that yes-but-maybe-$i$-has-$\ar_1'$-in-mind; in particular, it wouldn’t be feasible to interrogate $i$ if the arguments are given thanks to labeling in a supermarket). However, if $i$ is given $\ar_1'$, the model must be given a chance to play its counter-argument, and may not be falsified because $\ar_2 + \ar_0$ is not enough: once $i$ is given $\ar_1'$, it is no more claimed by the model that $\ar_2 + \ar_0$ suffices any longer.
+	
+	Relatedly, Operational validity is (almost) void when $\ar_1$ trumps $\ar_0$ and $\ar_0 \gbeats \ar_1$ (and has already observed to be successful, thus $\ar_0$ trumps $\ar_1$): in that case, suffices to play $\ar_2 = \ar_0$ and define $\ar_0 + \ar_0 = \ar_0$, so $\ar_2 + \ar_0$ trumps $\ar_1$.
+	
+	In summary: when $\ar_1$ trumps $\ar_0$, and the model has not already answered this argument using $\ar_0$ (thus $¬ \ar_0 \gbeats \ar_1$), Op. val. demands an answer. When $\ar_1$ trumps $\ar_0$, and the model has answered already using $\ar_0$, and we have checked that indeed $\ar_0$ trumps $\ar_1$, Answerability demands that the model can explain this instability by the fact that someone must have given another argument $\ar_1'$ to $i$ (and this is to be checked using means outside the formal model).
+\end{remark}
 
 I want an empirical theory to: 1) declare some $P \subseteq \Phi$ and it being valid; 2) prove its claims (otherwise, uncheckable and unfalsifiable and thus not empirical) by producing decisive arguments; 3) permit reuse… Focusing on valid theories is thus justified by the fact that if no valid theory for some $P$, then any theory will not be able to prove its claims (as there is no decisive argument).
 
