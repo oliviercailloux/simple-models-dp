@@ -170,11 +170,12 @@ Given $\ar_1 \in \allargs, \ar_0 \in \gargs$, $\ar_1 \mbeats \ar_0$ has the sema
 
 \commentOC{TODO also: in general, the model defines $\gargs[\phi]$ as a function of $\ileadstoe$? Start with $\gargs[\phi, 0]$, then observe all $\ar_1$ attacking those, and the model may define $\gargs[\phi, 1]$ depending on this observation, and so on. The condition is that one such argument be decisive.}
 
-\subsection{Validity and conditions}
+\subsection{Validity}
 \begin{definition}[Validity]
 	An empirical theory is \emph{valid} iff $\forall \phi \in {\gleadsto}(\allargs): [\phi \in \iPhi \land ¬\phi \notin \iPhi]$.
 \end{definition}
 
+\subsection{Discussion}
 $\ar_0 + \ar_2$ anticipates attacks from those attacking either, minus those attacked by any. (Actually any attacked may still attack the addition, but that’s because of some other not-yet-attacked, anticipated, attack.)
 
 \begin{remark}
@@ -199,6 +200,25 @@ Better: the model claims that if $\ar_1 \ileadstoe ¬\phi$ and if $\ar_0$ and $\
 	
 	In summary: when $\ar_1$ trumps $\ar_0$, and the model has not already answered this argument using $\ar_0$ (thus $¬ \ar_0 \gbeats \ar_1$), Op. val. demands an answer. When $\ar_1$ trumps $\ar_0$, and the model has answered already using $\ar_0$, and we have checked that indeed $\ar_0$ trumps $\ar_1$, Answerability demands that the model can explain this instability by the fact that someone must have given another argument $\ar_1'$ to $i$ (and this is to be checked using means outside the formal model).
 \end{remark}
+
+There must exist a sequence $\ar_0, \ar_2, \ar_4, …$ such that $\ar_0$ is defended by $\ar_2$, and so on.
+
+\subsection{Conditions with history}
+$S_4$ defends $S_2$ under protection of $S_6$ iff: $[\exists \hist, \ar_3 \suchthat \hist, \ar_2, \ar_3 \ileadstoe ¬\phi] ⇒ [\forall \hist \suchthat \set{\ar_5 \suchthat f(\ar_5, \ar_4) \cap \args_6 ≠ \emptyset} \cap \hist = \emptyset: \hist, \ar_4 \ileadstoe \phi]$. No, my condition is about defending when required, so just need to defend in the sense: $\forall \hist \suchthat \set{\ar_5 \suchthat f(\ar_5, \ar_4) \cap \args_6 ≠ \emptyset} \cap \hist = \emptyset: \hist, \ar_4 \ileadstoe \phi$. This may be adequate as if $\ar_0$ seems suitable but some unplanned attacker $\ar_1$ attacks it, then use $\ar_1 \in \hist$ and observe that $¬(\hist, \ar_0) \ileadstoe \phi$ to falsify the theory.
+
+$\ar_4$ defends $\phi$ under protection of $S_6$ iff: $\forall \hist \in \allhist \suchthat \set{\ar_5 \in \allargs \suchthat f(\ar_5, \ar_4) \cap \args_6 ≠ \emptyset} \cap \hist = \emptyset: \hist, \ar_4 \ileadstoe \phi$.
+
+\begin{definition}[Claim]
+	$\exists k \in 2\N$ and a finite sequence $(\args_i)_{i \in 2\N, i ≤ k} \suchthat \args_0 \subseteq {\gleadstoinv}(\phi)$ and $\forall i \in 2\N, i ≤ k, \forall \ar_i \in S_i: \ar_i$ defends $\phi$ under protection of $S_{i + 2}$ (defining $S_{k + 2} = \emptyset$) and $S_i \subseteq \cup_{\ar_{i - 2} \in S_{i - 2}, \ar_{i - 1} \in \allargs} f(\ar_{i - 1}, \ar_{i - 2})$.
+\end{definition}
+Note that requiring that $\args_0$ be a singleton does not modify the condition, in the sense that any theory satisfying the condition also satisfies its restriction.
+
+No, rather: if $\ar_2$ can’t be defended, and $\ar'_2$ can’t either (all those attacking $\ar_1$, in fact), then $\ar_0$ is not necessary; thus some other $\ar'_0$ is enough. (Or is this equivalent?) Theimportant stuff is to anticipate attacks: if not $\ar_0$ decisive, then $\ar_1$ attacks $\ar_0$ and $\ar_2$ is decisive.
+
+I need a condition of the form: $\forall i \suchthat …, \ar$ decisive. And the above claim is of that form (?): given $i$, either $\ar_0$ is decisive, or $\ar_1$ attacks it but then $\ar_2$ is decisive, …
+
+\subsection{Conditions without history}
+To verify or falsify these conditions, whether $(\ar_1, \ar_0) \ileadstoe \phi$ must be observable, but one may suspect that once $i$ has seen some $\ar$, then no more $(\ar_1, \ar_0) \ileadstoe \phi$ but that this does not imply that this would hold without $\ar$ for $i$. The general falsifiable claim is not clear.
 
 The following condition mandates that if the arguments used by the theory are not decisive, it knows a reason.
 \begin{definition}[Answerability]
