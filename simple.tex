@@ -63,7 +63,7 @@ Sketch: define normative models, using questions, and making claims about DJ. A 
 \subsection{Definition}
 A normative theory is a tuple $(\allprops, ¬, \allargs, I, (\ileadstoe[i])_{i \in I})$, 
 with ${\ileadstoe[i]} \subseteq \allhist × \Phi$, 
-where $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ denotes all finite sequences of elements in $\allargs$ (including the empty sequence) and $\Phi = \allprops × \set{\text{possible}, \text{sure}}$. 
+where $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ denotes all finite sequences of elements in $\allargs$ (including the empty sequence) and $\Phi = \allprops × \set{\text{possible}, \text{sure}}$. (Throughout the article, $\N$ includes zero, and note that $\intvl{1, 0} = \emptyset$.)  
 
 The symbol $¬$ is a negation operator on $\allprops$, such that $\forall \prop \in \allprops: ¬¬\prop = \prop$. This article also uses this symbol as a negation operator on $\Phi$, defined as follows, $\forall \prop \in \allprops$: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. Observe that $¬¬\phi = \phi$. (The symbol $¬$ is also used in this article to negate classical logic propositions; this should create no confusion.)
 As usual with binary relations, $\hist \nileadstoe[i] \phi$ means $(\hist, \phi) \notin {\ileadstoe[i]}$.
@@ -92,7 +92,9 @@ When the symbol $\ileadstoe$ or $\ileadstost$ is used in a formula without $i$ b
 	\end{equation}
 \end{axiom}
 
-For analytical clarity, it is desirable to check that \cref{ax:nocontr,ax:norm} do not hide a requirement on the content of $\ileadstostp$, thus, that they are together satisfiable without constraining $\ileadstostp$. To define this more precisely, consider temporarily these axioms as properties of a set $\iPhi \subseteq \Phi$. I write $A^1(\iPhi)$ if “axiom” 1 (interpreted as a property of $\iPhi$) holds on $\iPhi$, and similarly for $A^2(\iPhi)$. The required check amounts to prove that $\exists \iPhi \subseteq \Phi \suchthat A^1(\iPhi) \land A^2(\iPhi)$. 
+\commentOC{Discuss variant with an empirical claim: $\hist \ileadstoe \phi ⇒ \hist \nileadstoe ¬\phi$; and replace A2 with A2-weak: $[\forall \hist, \hist \ileadstoe \propposs] ⇒ \propposs \in \iPhi$, … This is essentially what will be done in the following, I suppose.} 
+
+For analytical clarity, it is desirable to check that \cref{ax:nocontr,ax:norm} do not hide a requirement on the content of $\ileadstostp$, thus, that they are together satisfiable without constraining $\ileadstostp$. To define this more precisely, consider temporarily these axioms as properties of a set $\iPhi \subseteq \Phi$. I write $A^1(\iPhi)$ if “axiom” 1 (interpreted as a property of $\iPhi$) holds on $\iPhi$, and similarly for $A^2(\iPhi)$. The required check amounts to prove that, given any $T, ¬, \allargs, I$, $\forall \ileadstoe: \exists \iPhi \subseteq \Phi \suchthat A^1(\iPhi) \land A^2(\iPhi)$. 
 
 Given a normative theory, define $\Box\Phi \subseteq \Phi$ as 
 $\propposs \in \Box\Phi$ iff $[\exists \ar \in \allargs \suchthat \ar \ileadstostp \propposs]$
@@ -108,7 +110,7 @@ For any decidable proposition: $\phi \in \Box\Phi \oplus ¬\phi \in \Box\Phi$, w
 	$[\exists \ar \in \allargs \suchthat \ar \ileadstost[pos] \phi] ⇒ [\nexists \ar \in \allargs \suchthat \ar \ileadstost[pos] ¬\phi]$.
 \end{proposition}
 \begin{proof}
-	Protocol coherence is satisfied by definition of $\ileadstost[pos]$. Indeed, if for some $\ar \in \allargs$, $\ar \ileadstost[pos] \phi$, then $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadstoe ¬\phi$; thus, for any $\ar' \in \allargs$, $\ar' \ileadstost[pos] ¬\phi$ is false, because it requires that $\forall \ar_1 \in \allargs: (\ar_1, \ar') \ileadstoe ¬\phi$, and thus in particular, that $(\ar', \ar) \ileadstoe ¬\phi$ (using the fact that the pair to the left of $\ileadstoe$ is unordered).
+	Protocol coherence is satisfied by definition of $\ileadstost[pos]$. Indeed, if for some $\ar \in \allargs$, $\ar \ileadstost[pos] \phi$, then $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadstoe ¬\phi$; thus, for any $\ar' \in \allargs$, $\ar' \ileadstost[pos] ¬\phi$ is false, because it requires that $\forall \hist \in \allhist, \ar_1 \in \allargs: (\hist, \ar', \ar_1) \ileadstoe ¬\phi$, and thus in particular, that $(\ar', \ar) \ileadstoe ¬\phi$.
 \end{proof}
 
 \begin{proposition}[Internal interpretability]
@@ -123,7 +125,7 @@ For any decidable proposition: $\phi \in \Box\Phi \oplus ¬\phi \in \Box\Phi$, w
 	$\forall \phi \suchthat [\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi]: \phi \in \iPhi \oplus ¬\phi \in \iPhi$.
 \end{definition}
 \begin{proposition}[Restricted interpretability satisfaction]
-	All models satisfying \cref{ax:nocontr,ax:norm} also satisfy Restricted interpretability.
+	All models satisfying \cref{ax:nocontr,ax:norm} satisfy Restricted interpretability.
 \end{proposition}
 \begin{proof}
 	This follows from \cref{th:intinterpr}.
@@ -154,13 +156,13 @@ with ${\gleadsto[q(i)]} \subseteq \allargs × \Phi$, ${\gbeats} \subseteq \allar
 and $+$ a commutative associative internal binary operation on $\allargs$. Given a finite $\args \subseteq \allargs$, the notation $\sum \args = \sum_{\ar \in \args} \ar$ thus designates a well-defined argument. 
 \commentOC{Check about finiteness.}
 
-An empirical theory is always defined for some normative theory. In the following, any reference to an empirical theory should always be understood as a reference to an implicit normative theory and an empirical theory for that normative theory.
+An empirical theory is defined only given some normative theory. In the following, any reference to an empirical theory should always be understood as an empirical theory for some (possibly implicitly defined) normative theory.
 
 As above,  $\gleadsto$ will be used instead of $\gleadsto[q(i)]$ when it creates no ambiguity, with the understanding that this symbol result of applying a function of $q(i)$; and the binding $\forall i \in I$ will generally be omitted.
 
 Given $\phi \in {\gleadsto}(\allargs)$, define ${\ibeatse[!\phi]} \subseteq \allargs × \allargs$ such that $\ar' \ibeatse[!\phi] \ar$ iff $(\ar', \ar) \nileadstost \phi$. 
 
-Given $\phi \in {\gleadsto}(\allargs)$, define $\gargs[\phi, 0] \subseteq \allargs$ as $\gargs[\phi, 0] = {\gleadstoinv}(\phi)$; and, for $k \in \N$, define $\gargs[\phi, k + 1] = \gargs[\phi, k] + [{\gbeatsinv} \circ {\ibeatseinv[!\phi]}](\gargs[\phi, k]) = \set{\ar_k + \ar \suchthat \ar_k \in \gargs[\phi, k], \ar  \in [{\gbeatsinv} \circ {\ibeatseinv[!\phi]}](\gargs[\phi, k])}$. (Throughout the article, $\N$ includes zero.) 
+Given $\phi \in {\gleadsto}(\allargs)$, define $\gargs[\phi, 0] \subseteq \allargs$ as $\gargs[\phi, 0] = {\gleadstoinv}(\phi)$; and, for $k \in \N$, define $\gargs[\phi, k + 1] = \gargs[\phi, k] + [{\gbeatsinv} \circ {\ibeatseinv[!\phi]}](\gargs[\phi, k]) = \set{\ar_k + \ar \suchthat \ar_k \in \gargs[\phi, k], \ar  \in [{\gbeatsinv} \circ {\ibeatseinv[!\phi]}](\gargs[\phi, k])}$.
 Define $\gargs[\phi] = \bigcup_{k \in \N} \gargs[\phi, k]$, and $\gargs = \cup_{\phi \in {\gleadsto}(\allargs)} \gargs[\phi]$. 
 
 Given $\ar \in \gargs$, let $c(\ar) = \bigcup \set{\args \subseteq \gargs \suchthat \ar = \sum \args} \subseteq \allargs$ denote the \emph{components} of $\ar$.
@@ -185,12 +187,14 @@ Given $\ar_0 \in \allargs$ and $\args_2 \subseteq \allargs$, define the set $\ar
 Define $g(\ar_0) \subseteq \allargs × \allargs$ as $g(\ar_0) = \set{(\ar_2, \ar_1) \suchthat \ar_2 \in f(\ar_1, \ar_0)} = \bigcup_{\ar_1 \in \allargs} (f(\ar_1, \ar_0) × \set{\ar_1})$. The set $g(\ar_0)(\allargs)$ are the planned attacks on $\ar_0$ and the set $g(\ar_0)^{-1}(\ar_1)$ are the planned protections of $\ar_0$ against $\ar_1$. 
 Then, $\args_1 = g(\ar_0)(\args_2)$.
  
-$\ar_0$ defends $\phi$ under protection of $S_2$ iff $\forall \hist \in \allhist: [\args_1 \cap \hist = \emptyset] ⇒ (\hist, \ar_0) \ileadstoe \phi$, where $\args_1 = g(\ar_0)(\args_2)$.
+ Define $\hist \ileadstosts \phi$ iff $[\phi = \propposs ⇒ \hist \ileadstostp \phi] \land [\phi = \propsure ⇒ \hist \ileadstostp \phi \land \hist \ileadstostp \propposs]$.
+ 
+$\ar_0$ defends $\phi$ under protection of $S_2$ iff, defining $\args_1 = g(\ar_0)(\args_2)$, $\forall \hist \in \allhist: [\args_1 \cap \hist = \emptyset] ⇒ (\hist, \ar_0) \ileadstosts \phi$.
 
-\begin{definition}[Claim]
-	$\forall i \in I, \exists k \in 2\N$ and a finite sequence $(\args_j)_{j \in 2\N, j ≤ k} \suchthat \args_0 \subseteq {\gleadstoinv}(\phi)$ and $\forall j \in 2\N, j ≤ k, \forall \ar_j \in S_j: \ar_j$ defends $\phi$ under protection of $S_{j + 2}$ (defining $S_{k + 2} = \emptyset$) and $S_j \subseteq \cup_{\ar_{j - 2} \in \args_{j - 2}, \ar_{j - 1} \in \allargs} f(\ar_{j - 1}, \ar_{j - 2})$.
+\begin{definition}[Convincingness]
+	$\forall i \in I, \phi \in {\gleadsto}(\allargs), \exists k \in 2\N$ and a finite sequence $(\args_j)_{j \in 2\N, j ≤ k} \suchthat \emptyset ≠ \args_0 \subseteq {\gleadstoinv}(\phi)$ and $\forall j \in 2\N, j ≤ k, \forall \ar_j \in S_j: \ar_j$ defends $\phi$ under protection of $S_{j + 2}$ (defining $S_{k + 2} = \emptyset$) and $S_j \subseteq \cup_{\ar_{j - 2} \in \args_{j - 2}, \ar_{j - 1} \in \allargs} f(\ar_{j - 1}, \ar_{j - 2})$.
 \end{definition}
-Note that requiring that $\args_0$ be a singleton does not modify the condition, in the sense that any theory satisfying the condition also satisfies its restriction.
+Note that requiring that $\args_0$ be a singleton does not modify the condition, in the sense that any theory satisfying the condition also satisfies its strenghtening. Similarly, requiring that $S_k ≠ \emptyset$ does not modify the condition (because if some $k$ satisfy the condition with $S_k = \emptyset$, then picking $k' = k-2$ with the same sets $S_j$ also satisfy the condition, and because $S_0 ≠ \emptyset$, this recursion must end with a suitable $k$).
 
 \begin{remark}
 	The claim must have the form: some structure is adequate for all individuals. Here, the structure is given by $f$. The claim should claim that looking at the attacks planned by $f$ is enough; and looking at the defenses planned by $f$ is enough.
@@ -201,6 +205,29 @@ Note that requiring that $\args_0$ be a singleton does not modify the condition,
 	
 	The claim can (hopefully) be given the form: $\forall i \suchthat …, \ar$ decisive. Given $i$, either $\ar_0$ is decisive, or $\ar_1$ attacks it but then $\ar_2$ is decisive, …
 \end{remark}
+
+\begin{theorem}
+	If an empirical theory is convincing, and its normative theory satisfies \cref{ax:nocontr,ax:norm}, then it is valid.
+\end{theorem}
+\begin{proof}
+	Consider $i \in I$ and $\phi \in {\gleadsto}(\allargs)$. 
+	By hypothesis, $\exists k$ such that some $\ar_k \in \args_k$ defends $\phi$ under protection of $\emptyset$. Therefore, $\ar_k \ileadstosts \phi$. Using \cref{ax:norm}, this yields that $\phi \in \iPhi$, and validity follows from \cref{ax:nocontr}.
+\end{proof}
+
+\subsection{Checking in practice}
+NOW: need to establish how convincingness can be checked in practice. This should also justify the complexity of this condition (VS simply demanding a decisive argument).
+
+Given any $(\alltopic, ¬, \allhist, I)$, an \emph{observation protocol} (with memory) is a binary tree whose nodes are among $I × \allhist × \Phi$ and whose two edges out of any non leaf node are labeled by “yes” and “no”. The observation protocol is said to assume memory iff for each node $n = (i, \hist, \phi)$ about $i$, any node $n' = (i, {\hist}', \phi')$ about $i$ that is further down the tree continues the history, that is, the sequence ${\hist}'$ starts with $\hist$. Given an observation protocol and observables $(\ileadstoe[i])_{i \in I}$, the \emph{observed path} refers to the path in the tree defined recursively as consisting of the root node and, for each node $n = (i, \hist, \phi)$ in the path, the child node along the branch “yes” if $\hist \ileadstoe[i] \phi$ and the child node along the branch “no” otherwise. The \emph{observations} refer to the set of nodes along the observed path.
+
+Given any $(\alltopic, ¬, \allhist, I)$, a \emph{normative claim} is any proposition involving the atoms $\iPhi$ and $\ileadstoe$ which, together with \cref{ax:nocontr,ax:norm}, permits to deduce that $\phi \in \iPhi$ for some $i \in I$ and $\phi \in \Phi$. An observation protocol, together with observables $(\ileadstoe[i])_{i \in I}$, \emph{falsifies} a normative claim iff the falsity of the claim is deducible from \cref{ax:nocontr,ax:norm} and the observations. A normative claim is \emph{falsifiable} iff there exists an observation protocol such that for any observables $(\ileadstoe[i])_{i \in I} \in (\allhist × \Phi)^I$, if the claim is false, then it is possible to deduce it from $\cref{ax:nocontr,ax:norm}$ and the observations given the observables.
+
+\commentOC{I want: An empirical theory for a normative theory is something like a normative and falsifiable claim. It is also configurable: it must be possible to guarantee that the falsification be easy (if the claim is false) depending on the kind of claim.}
+
+\commentOC{Falsifiable may not be the right word. It suggests that if a claim is not falsifiable, then a weaker claim is not falsifiable either, which does not hold. My falsifiability criterion demands that if a claim is false, we can see it; whether Popper’s demands that the claim be possibly false. Perhaps I should demand that we can pick a set of consequences of the claim and show it wrong it at least one possible state of the universe.}
+
+Validity itself fails falsifiability. 
+
+And the stronger claim that for a given $i$, $\phi \in \Box\Phi \land \phi \in \iPhi$ also does. If the theory says that for $i$, $\phi \in \iPhi$, and there are at least two arguments, then, a protocol that starts with $\ar_1$ will fail to detect if $\forall \hist \in \allhist: \ar_2, \hist \ileadsto ¬\phi$ (which proves that no argument is decisive, hence $\phi \notin \Box\Phi$).
 
 \subsection{Conditions without history}
 To verify or falsify these conditions, whether $(\ar_1, \ar_0) \ileadstoe \phi$ must be observable, but one may suspect that once $i$ has seen some $\ar$, then no more $(\ar_1, \ar_0) \ileadstoe \phi$ but that this does not imply that this would hold without $\ar$ for $i$. The general falsifiable claim is not clear.
