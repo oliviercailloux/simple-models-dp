@@ -67,17 +67,9 @@ where $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ denotes all finite
 The symbol $¬$ is a negation operator on $\allprops$, such that $\forall \prop \in \allprops: ¬¬\prop = \prop$. This article also uses this symbol as a negation operator on $\Phi$, defined as follows, $\forall \prop \in \allprops$: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. Observe that $¬¬\phi = \phi$. (The symbol $¬$ is also used in this article to negate classical logic propositions; this should create no confusion.)
 As usual with binary relations, $\hist \nileadstoe[i] \phi$ means $(\hist, \phi) \notin {\ileadstoe[i]}$.
 
-Given $\phi \in \Phi$, define ${\ibeatse[!\phi]} \subseteq (\allhist × \allargs) × \allargs$ such that $(\hist, \ar_1) \ibeatse[!\phi] \ar_0$ iff $[(\hist \ileadstoe ¬\phi) \lor (\hist \nileadstoe \phi)] \land [\hist \text{ ends with } \set{\ar_1, \ar_0}]$.
-I also write that $\ar_1 \ibeatse[!\phi] \ar_0$ iff $\exists \hist \in \allhist \suchthat (\hist, \ar_1) \ibeatse[!\phi] \ar_0$, and $\hist \ibeatse[!\phi] \ar_0$ iff $[(\hist \ileadstoe ¬\phi) \lor (\hist \nileadstoe \phi)] \land [(\exists \ar_1 \suchthat \hist \text{ ends with } \set{\ar_1, \ar_0}) \lor (\hist = \set{\ar_0})]$.
-
-Given any $\hist \in \allhist, \ar_0 \in \allargs, \phi \in \Phi$, define $(\hist, \ar_0) \ileadstost[i] \phi$ iff $\forall \ar_1 \in \allargs: (\hist, \ar_0) \nileadstoe[i] ¬\phi \land (\hist, \ar_0) \ileadstoe[i] \phi \land (\hist, \ar_0, \ar_1) \nileadstoe[i] ¬\phi \land (\hist, \ar_0, \ar_1) \ileadstoe[i] \phi$. 
-Define $(\hist, \ar_0) \ileadstosts \phi$ iff $[(\hist, \ar_0) \ileadstost \phi] \land [\phi = \propsure ⇒ (\hist, \ar_0) \ileadstost \propposs]$.
-Define $\ar_0 \ileadstost[i] \phi$ iff $\forall \hist \in \allhist, (\hist, \ar_0) \ileadstost[i] \phi$, and define similarly $\ar \ileadstosts \phi$ iff $\forall \hist \in \allhist, (\hist, \ar_0) \ileadstosts \phi$.
-Note in particular that: 
-\begin{equation}
-	\label{eq:st-in-terms-of-e}
-	\ar_0 \ileadstosts \phi ⇔ [\forall \ar_1: \ar_1 \nibeatse[!\phi] \ar_0] \land [\ar_0 \nileadstoe ¬\phi] \land [\ar_0 \ileadstoe \phi].
-\end{equation}
+Given $\phi \in \Phi$ and $\hist \in \allhist$, say that $\hist$ leads strongly to $\phi$ iff $\hist \ileadstoe \phi \land \hist \nileadstoe ¬\phi$.
+Define $\hist \ileadstosts \phi$ iff $[\hist \text{ leads strongly to } \phi] \land [\phi = \propsure ⇒ \hist \text{ leads strongly to } \propposs]$.
+Define $\ar \ileadstosts \phi$ iff $\forall \hist \in \allhist \suchthat \hist \text{ has } \ar \text{ as last or before last position }: \hist \ileadstosts \phi$.
 \footnote{TODO Assume $i$, given $\ar$ and $\ar'$, picks repeatedly (in various circumstances) nonempty subsets of $\set{\prop, ¬\prop}$. Define $(\ar', \ar) \ileadstoe (\prop, \text{sure})$ iff she sometimes chooses $\set{\prop}$ and $(\ar', \ar) \ileadstoe (\prop, \text{poss})$ iff she sometimes chooses $\set{\prop}$ or $\set{\prop, ¬\prop}$. Then, $(\ar', \ar) \ileadstost (\prop, \text{sure})$ iff she always chooses $\set{\prop}$ and $(\ar', \ar) \ileadstost (\prop, \text{poss})$ iff she always chooses either $\set{\prop}$ or $\set{\prop, ¬\prop}$.}
 
 To lighten notations, $\ileadstoe[i]$ and $\ileadstost[i]$ will generally be denoted by $\ileadstoe$ and $\ileadstost$, these symbols being understood as the result of a function of $i$. 
@@ -248,6 +240,26 @@ Also, from the previous definition, $g(\ar_0)(\ar_0 + \argsd_2) = dom(f^{-1}(\ar
 Note that $f^{-1}(\ar_0 + \ar_2) ≠ {\gbeats}(\ar_2) × \set{\ar_0}$: if ${\gbeats} = \set{(\ard_2, \ar_1), (\ar_1, \ar_0), (\ard_6, \ar_5), (\ar_5, \ar_4)}$, and $\ar_0 + \ard_2 = \ar_4 + \ard_6$, then $f^{-1}(\ar_0 + \ard_2) = f^{-1}(\ar_4 + \ard_6) = \set{(\ar_1, \ar_0), (\ar_5, \ar_4)}$ and ${\gbeats}(\ard_2) × \set{\ar_0} = \set{(\ar_1, \ar_0)}$.
 Also, note that $g(\ar_0)(\ar_0 + \argsd_2) ≠ {\gbeats}(\argsd_2) \cap {\gbeatsinv}(\ar_0)$. Consider ${\gbeats} = \set{(\ard_2, \ar_1), (\ar_1, \ar_0)}, \ar_2 = \ar_0 + \ard = \ar_0 + \ard_2$. Then, $(\ar_1, \ar_0) \in f^{-1}(\ar_0 + \ard)$, hence, $\ar_1 \in g(\ar_0)(\ar_0 + \ard)$, but ${\gbeats}(\ard) = \emptyset$.
 
+\begin{proposition}
+	An empirical theory has only finite sets $\gargs[i, \phi]$, and an upper bound on their size exists that is independent of ${\ileadsto}$.
+\end{proposition}
+\begin{proof}
+	Given $i, \phi$. Observe that $\forall \ard: d^{i, \phi}(\ard) \subseteq {\gbeatsmt}(\ard)$. Thus, $d^{i, \phi}$ is finite. Also, the transitive closure through $\sigma^i$ changes a finite number of time, otherwise it is possible to build an infinite chain in ${\gbeatsmt}$.
+\end{proof}
+
+Given $i \in I, \phi \in \Phi, \ar_1, \ar_0 \in \allargs$, define $\ar_1 \ibeatse[!\phi] \ar_0$ iff $\exists \hist \in \allhist \suchthat \hist \text{ ends with } \set{\ar_1, \ar_0} \land \hist \nileadstosts \phi$.
+
+\begin{proposition}
+	$\forall i \in I, \phi \in \Phi, \ar_0 \in \allargs$:
+\begin{equation}
+	\label{eq:st-in-terms-of-e}
+	\ar_0 \nileadstosts \phi ⇔ [\exists \ar_1 \in \allargs \suchthat \ar_1 \ibeatse[!\phi] \ar_0].
+\end{equation}
+\end{proposition}
+\begin{proof}
+	By definition of ${\ileadstosts}$, $\ar_0 \ileadstosts \phi ⇔ \forall \hist \in \allhist \suchthat [\exists \ar_1 \in \allargs \suchthat \hist \text{ ends with } \set{\ar_1, \ar_0}]: \hist \ileadstosts \phi.$ Equivalently, $\ar_0 \nileadstosts \phi ⇔ \exists \hist \in \allhist \suchthat [\exists \ar_1 \suchthat \hist \text{ ends with } \set{\ar_1, \ar_0}] \land \hist \nileadstosts \phi$. This is also equivalent to $\ar_0 \nileadstosts \phi ⇔ \exists \hist \in \allhist, \ar_1 \in \allargs \suchthat \hist \text{ ends with } \set{\ar_1, \ar_0} \land \hist \nileadstosts \phi$. By definition of ${\ibeatse}$, this is the proposition to be proven.
+\end{proof}
+
 $\ar_0$ $i$-defends $\phi$ when ignoring $\args_1$ iff $\forall \hist \in \allhist: [\args_1 \cap \hist = \emptyset] ⇒ (\hist, \ar_0) \ileadstosts \phi$.
 $\ar_0$ $i$-defends $\phi$ under protection of $\args_2$ iff $\ar_0$ $i$-defends $\phi$ when ignoring $g(\ar_0)(\args_2)$.
 $\ar_0$ $i$-defends $\phi$ under d-protection of $\argsd_2$ iff $\ar_0$ $i$-defends $\phi$ when ignoring ${\gbeats}(\argsd_2) \cap {\gbeatsinv}(\ar_0)$.
@@ -274,15 +286,10 @@ Define $\gargs[i, \phi] = \bigcup_{k \in 2\N} \gargs[i, \phi, k]$, and $\gargs =
 	$\forall i \in I, \phi \in {\gleadsto}(\allargs), (\phi, \ar, \ard) \in \gargs[i, \phi], \ar_0 = \ar + \ard: \ar_0$ $i$-defends $\phi$ under d-protection of $d^{i, \phi}(\ard)$.
 \end{definition}
 
-\begin{proposition}
-	An empirical theory has only finite sets $\gargs[i, \phi]$, and an upper bound on their size exists that is independent of ${\ileadsto}$.
-\end{proposition}
-\begin{proof}
-	Given $i, \phi$. Observe that $\forall \ard: d^{i, \phi}(\ard) \subseteq {\gbeatsmt}(\ard)$. Thus, $d^{i, \phi}$ is finite. Also, the transitive closure through $\sigma^i$ changes a finite number of time, otherwise it is possible to build an infinite chain in ${\gbeatsmt}$.
-\end{proof}
-
 1. Checkpath: this is completely general.
 2. Only using model that counter-argues: requires a sort of path independence. (arguments can be condensed: s5, s4, s1 => s1big)
+
+I also write that $\hist \ibeatse[!\phi] \ar_0$ iff $\exists \ar_1 \in \allargs \suchthat (\hist \text{ ends with } \set{\ar_1, \ar_0}) \land (\ar_1 \ibeatse[!\phi] \ar_0)$.
 
 A falsification instance of an empirical theory is a tuple $(i, \phi, \ar, \ard, \hist)$ such that $(\phi, \ar, \ard) \in \gargs[i, \phi]$ and, defining $\ar_0 = \ar + \ard$: $[{\gbeatsinv}(d^{i, \phi}(\ard)) \cap \hist = \emptyset] \land [\hist \ibeatse[!\phi] \ar_0]$ (the theory says that this history should defend $\phi$ under prot of something and that is not in the history).
 
