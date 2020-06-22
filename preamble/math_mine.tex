@@ -19,7 +19,9 @@
 %Deliberated Judgment
 \NewDocumentCommand{\allargs}{}{\mathscr{S}}
 \NewDocumentCommand{\args}{}{S}
+\NewDocumentCommand{\argsd}{}{S^\mathit{d}}
 \NewDocumentCommand{\gargs}{O{}}{S^{#1}_γ}
+\NewDocumentCommand \ard { }{s^\mathit{d}}
 \NewDocumentCommand{\ar}{o}{%
 	\IfValueTF{#1}{%
 		s^{(#1)}%
@@ -31,10 +33,10 @@
 \NewDocumentCommand{\hist}{}{s^*}
 \NewDocumentCommand{\allprops}{}{T}
 \NewDocumentCommand{\prop}{}{t}
-\NewDocumentCommand{\propsure}{}{(t, \mathrm{sure})}
-\NewDocumentCommand{\propposs}{}{(t, \mathrm{poss})}
-\NewDocumentCommand{\notpropsure}{}{(¬t, \mathrm{sure})}
-\NewDocumentCommand{\notpropposs}{}{(¬t, \mathrm{poss})}
+\NewDocumentCommand{\propsure}{}{(t, \mathit{sure})}
+\NewDocumentCommand{\propposs}{}{(t, \mathit{poss})}
+\NewDocumentCommand{\notpropsure}{}{(¬t, \mathit{sure})}
+\NewDocumentCommand{\notpropposs}{}{(¬t, \mathit{poss})}
 \NewDocumentCommand{\zar}{}{\mathbf{0}}%zero, or empty, argument
 %i
 \NewDocumentCommand{\Ti}{}{T_i}
@@ -51,9 +53,10 @@
 }
 \NewDocumentCommand{\ileadstos}{}{\overset{s}{⇝_i}}
 \NewDocumentCommand{\ileadstost}{O{}}{⇝^{#1}_\forall}
-\NewDocumentCommand{\ileadstostw}{O{}}{⇝^\mathrm{w}_\forall}
-\NewDocumentCommand{\ileadstostp}{O{}}{⇝^\mathrm{pos}_\forall}
-\NewDocumentCommand{\ileadstosts}{}{⇝^*_\forall}
+\NewDocumentCommand{\ileadstostw}{O{}}{⇝^\mathit{w}_\forall}
+\NewDocumentCommand{\ileadstostp}{O{}}{⇝^\mathit{pos}_\forall}
+\NewDocumentCommand{\ileadstosts}{}{⇝_*}
+\NewDocumentCommand{\nileadstosts}{}{\not⇝_*}
 \NewDocumentCommand{\nileadstost}{O{}}{\not⇝^{#1}_\forall}
 \NewDocumentCommand{\ileadstoe}{O{}}{⇝^{#1}_\exists}
 \NewDocumentCommand{\nileadstoe}{O{}}{\not⇝^{#1}_\exists}
@@ -70,8 +73,10 @@
 %\newcommand{\gleadsto}[1][γ]{\mathbin{\rightsquigarrow_{#1}}}
 \NewDocumentCommand{\ibeatse}{O{}}{⊳^{#1}_\exists}
 \NewDocumentCommand{\gbeats}{}{⊳_γ}
+\NewDocumentCommand{\ngbeats}{}{\not⊳_γ}
 \NewDocumentCommand{\gbeatsstar}{}{⊳_*}
 \NewDocumentCommand{\gbeatsinv}{o}{⊳^{-1}_γ}
+\NewDocumentCommand{\gbeatsmt}{o}{⊳^{-2}_γ}%minus two
 \NewDocumentCommand{\gbeatsstarinv}{o}{⊳^{-1}_*}
 \NewDocumentCommand{\mPhi}{}{\Phi_\gamma}
 
