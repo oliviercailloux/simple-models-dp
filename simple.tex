@@ -240,6 +240,7 @@ Also, from the previous definition, $g(\ar_0)(\ar_0 + \argsd_2) = dom(f^{-1}(\ar
 Note that $f^{-1}(\ar_0 + \ar_2) ≠ {\gbeats}(\ar_2) × \set{\ar_0}$: if ${\gbeats} = \set{(\ard_2, \ar_1), (\ar_1, \ar_0), (\ard_6, \ar_5), (\ar_5, \ar_4)}$, and $\ar_0 + \ard_2 = \ar_4 + \ard_6$, then $f^{-1}(\ar_0 + \ard_2) = f^{-1}(\ar_4 + \ard_6) = \set{(\ar_1, \ar_0), (\ar_5, \ar_4)}$ and ${\gbeats}(\ard_2) × \set{\ar_0} = \set{(\ar_1, \ar_0)}$.
 Also, note that $g(\ar_0)(\ar_0 + \argsd_2) ≠ {\gbeats}(\argsd_2) \cap {\gbeatsinv}(\ar_0)$. Consider ${\gbeats} = \set{(\ard_2, \ar_1), (\ar_1, \ar_0)}, \ar_2 = \ar_0 + \ard = \ar_0 + \ard_2$. Then, $(\ar_1, \ar_0) \in f^{-1}(\ar_0 + \ard)$, hence, $\ar_1 \in g(\ar_0)(\ar_0 + \ard)$, but ${\gbeats}(\ard) = \emptyset$.
 
+\subsection{Falsifiability}
 \begin{proposition}
 	An empirical theory has only finite sets $\gargs[i, \phi]$, and an upper bound on their size exists that is independent of ${\ileadsto}$.
 \end{proposition}
@@ -264,19 +265,6 @@ $\ar_0$ $i$-defends $\phi$ when ignoring $\args_1$ iff $\forall \hist \in \allhi
 $\ar_0$ $i$-defends $\phi$ under protection of $\args_2$ iff $\ar_0$ $i$-defends $\phi$ when ignoring $g(\ar_0)(\args_2)$.
 $\ar_0$ $i$-defends $\phi$ under d-protection of $\argsd_2$ iff $\ar_0$ $i$-defends $\phi$ when ignoring ${\gbeats}(\argsd_2) \cap {\gbeatsinv}(\ar_0)$.
 
-Define the crossing of $\args_{j-2}, \argsd_j \subseteq \allargs$ as $\args_j = \set{\ar_{j-2} + \ard_j \suchthat \ar_{j-2} \in \args_{j-2}, \ard_j \in {\gbeatsmt}(\ar_{j-2}) \cap \argsd_j}$.
-\begin{definition}[Convincingness (outdated)]
-	$\forall i \in I, \phi \in {\gleadsto}(\allargs), \exists k \in 2\N$ and finite sequences $(\args_j)_{j \in 2\N, j ≤ k}, (\argsd_j)_{j \in 2\N^*, j ≤ k}$ such that:
-	\begin{itemize}
-		\item $\emptyset ≠ \args_0 \subseteq {\gleadstoinv}(\phi)$;
-		\item $\forall j \in 2\N^*, j ≤ k: \argsd_j \subseteq {\gbeatsmt}(\args_{j-2})$;
-		\item $\forall j \in 2\N^*, j ≤ k: \args_j$ is the crossing of $\args_{j-2}, \argsd_j$;
-		\item $\forall j \in 2\N, j ≤ k, \forall \ar_j \in S_j: \ar_j$ $i$-defends $\phi$ under d-protection of $\argsd_{j + 2}$ (defining $\argsd_{k + 2} = \emptyset$).
-	\end{itemize}
-\end{definition}
-
-Now prove that Convincingness is the same thing as requiring that the elements be selected exactly when $\ar_1$ attacks $\ar_0$ (with single-try models).
-
 Given $i \in I, \phi \in {\gleadsto}(\allargs)$, define the $\phi$-protectors of $\ard$ as $d^{i, \phi}(\ard) = [{\gbeatsinv} \circ ({\gbeatsinv} \cap {\ibeatseinv[!\phi]})](\ard)$.
 Define the successors of $(\phi, \ar, \ard)$ as $\sigma^i(\phi, \ar, \ard) = \set{\phi} × \set{\ar + \ard} × d^{i, \phi}(\ard)$. Given $i \in I, \phi \in {\gleadsto}(\allargs)$, define $\gargs[i, \phi]$ as the transitive closure of $(\phi, \emptyset, \ar)$ under $\sigma^i$, with $\ar \gleadsto \phi$.
 \commentOC{Assuming only one $\ar$ leads to that $\phi$.}
@@ -291,7 +279,7 @@ Define $\gargs[i, \phi] = \bigcup_{k \in 2\N} \gargs[i, \phi, k]$, and $\gargs =
 
 I also write that $\hist \ibeatse[!\phi] \ar_0$ iff $\exists \ar_1 \in \allargs \suchthat (\hist \text{ ends with } \set{\ar_1, \ar_0}) \land (\ar_1 \ibeatse[!\phi] \ar_0)$.
 
-A falsification instance of an empirical theory is a tuple $(i, \phi, \ar, \ard, \hist)$ such that $(\phi, \ar, \ard) \in \gargs[i, \phi]$ and, defining $\ar_0 = \ar + \ard$: $[{\gbeatsinv}(d^{i, \phi}(\ard)) \cap \hist = \emptyset] \land [\hist \ibeatse[!\phi] \ar_0]$ (the theory says that this history should defend $\phi$ under prot of something and that is not in the history).
+A falsification instance of an empirical theory is a tuple $(i, \phi, \ar, \ard, \hist, \ar_1)$ such that $(\phi, \ar, \ard) \in \gargs[i, \phi]$ and, defining $\ar_0 = \ar + \ard$: $[{\gbeatsinv}(\ard) \cap \hist = \emptyset] \land [\hist \text{ ends with } \set{\ar_1, \ar_0}] \land \ar_1 \ibeatse[!\phi] \ar_0]$ (the theory says that this history should defend $\phi$ under prot of something and that is not in the history).
 
 \begin{theorem}
 	An empirical theory is conv.\ single-try iff it has no falsification instances.
