@@ -51,12 +51,24 @@
 		⇝%
 	}%
 }
+\NewDocumentCommand \nileadsto { o }{%
+	\IfValueTF{#1}{%
+		\not⇝^{#1}%
+	}{%
+		\not⇝%
+	}%
+}
+\NewDocumentCommand \ileadstoi { }{⇝^i}
+\NewDocumentCommand \nileadstoi { }{\not⇝^i}
+%\newcommand{\nileadsto}{\mathbin{\not\rightsquigarrow}}%\nrightarrow}
 \NewDocumentCommand{\ileadstos}{}{\overset{s}{⇝_i}}
 \NewDocumentCommand{\ileadstost}{O{}}{⇝^{#1}_\forall}
 \NewDocumentCommand{\ileadstostw}{O{}}{⇝^\mathit{w}_\forall}
 \NewDocumentCommand{\ileadstostp}{O{}}{⇝^\mathit{pos}_\forall}
 \NewDocumentCommand{\ileadstosts}{}{⇝_*}
 \NewDocumentCommand{\nileadstosts}{}{\not⇝_*}
+\NewDocumentCommand{\ileadstosti}{}{⇝^i_*}
+\NewDocumentCommand{\nileadstosti}{}{\not⇝^i_*}
 \NewDocumentCommand{\nileadstost}{O{}}{\not⇝^{#1}_\forall}
 \NewDocumentCommand{\ileadstoe}{O{}}{⇝^{#1}_\exists}
 \NewDocumentCommand{\nileadstoe}{O{}}{\not⇝^{#1}_\exists}
@@ -112,7 +124,6 @@
 \newcommand{\ileadstostinv}{\mathbin{\rightsquigarrow_\forall^{-1}}}
 \newcommand{\ileadstope}{\mathbin{\overset{\makebox[0pt]{\text{\tiny poss}}}{\rightsquigarrow}_\exists}}
 \newcommand{\ileadstose}{\mathbin{\overset{\makebox[0pt]{\text{\tiny sure}}}{\rightsquigarrow}_\exists}}
-\newcommand{\nileadsto}{\mathbin{\not\rightsquigarrow}}%\nrightarrow}
 \newcommand{\ileadstoinv}{\mathbin{\rightsquigarrow^{-1}}}
 \newcommand{\ileadstor}[1]{\mathbin{\restr{\rightsquigarrow}{#1}}}
 \newcommand{\mleadstoinv}{\mathbin{\rightsquigarrow_\eta^{-1}}}

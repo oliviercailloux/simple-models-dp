@@ -58,68 +58,68 @@ The first and third contexts of usage come together when it is desired to test w
 
 \section{Normative theories}
 \subsection{Definition}
-A normative theory is a tuple $(\allprops, ¬, \allargs, I, (\ileadstoe[i])_{i \in I})$, 
-with ${\ileadstoe[i]} \subseteq \allhist × \Phi$, 
+A normative theory is a tuple $(\allprops, ¬, \allargs, I, (\ileadstoi)_{i \in I})$, 
+with ${\ileadstoi} \subseteq \allhist × \Phi$, 
 where $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ denotes all finite sequences of elements in $\allargs$ (including the empty sequence) and $\Phi = \allprops × \set{\text{possible}, \text{sure}}$. (Throughout the article, $\N$ includes zero, and note that $\intvl{1, 0} = \emptyset$.)  
 
-The symbol $¬$ is a negation operator on $\allprops$, such that $\forall \prop \in \allprops: ¬¬\prop = \prop$. This article also uses this symbol as a negation operator on $\Phi$, defined as follows, $\forall \prop \in \allprops$: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. Observe that $¬¬\phi = \phi$. (The symbol $¬$ is also used in this article to negate classical logic propositions; this should create no confusion.)
-As usual with binary relations, $\hist \nileadstoe[i] \phi$ means $(\hist, \phi) \notin {\ileadstoe[i]}$.
+The symbol $¬$ is a negation operator on $\allprops$, such that $\forall \prop \in \allprops: ¬¬\prop = \prop$. This article also uses this symbol as a negation operator on $\Phi$, defined as follows, $\forall \prop \in \allprops$: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. Observe that $¬¬\phi = \phi$. (The symbol $¬$ is also used in this article to negate classical mathematical propositions; this should create no confusion.)
+As usual with binary relations, $\hist \nileadsto[i] \phi$ means $(\hist, \phi) \notin {\ileadsto[i]}$.
 
-Given $\phi \in \Phi$ and $\hist \in \allhist$, say that $\hist$ leads strongly to $\phi$ iff $\hist \ileadstoe \phi \land \hist \nileadstoe ¬\phi$.
-Define $\hist \ileadstosts \phi$ iff $[\hist \text{ leads strongly to } \phi] \land [\phi = \propsure ⇒ \hist \text{ leads strongly to } \propposs]$.
-Define $\ar \ileadstosts \phi$ iff $\forall \hist \in \allhist \suchthat \hist \text{ has } \ar \text{ as last or before last position }: \hist \ileadstosts \phi$.
-\footnote{TODO Assume $i$, given $\ar$ and $\ar'$, picks repeatedly (in various circumstances) nonempty subsets of $\set{\prop, ¬\prop}$. Define $(\ar', \ar) \ileadstoe (\prop, \text{sure})$ iff she sometimes chooses $\set{\prop}$ and $(\ar', \ar) \ileadstoe (\prop, \text{poss})$ iff she sometimes chooses $\set{\prop}$ or $\set{\prop, ¬\prop}$. Then, $(\ar', \ar) \ileadstost (\prop, \text{sure})$ iff she always chooses $\set{\prop}$ and $(\ar', \ar) \ileadstost (\prop, \text{poss})$ iff she always chooses either $\set{\prop}$ or $\set{\prop, ¬\prop}$.}
+Given $i \in I, \phi \in \Phi, \hist \in \allhist$, say that $\hist$ leads strongly to $\phi$ iff $\hist \ileadstoi \phi \land \hist \nileadstoi ¬\phi$.
+Define $\hist \ileadstosti \phi$ iff $[\hist \text{ leads strongly to } \phi] \land [\phi = \propsure ⇒ \hist \text{ leads strongly to } \propposs]$.
+Given $\hist \in \allhist$, let $\hist_\mathit{end}$ denote the set containing the last two elements of the sequence $\hist$ if the sequence has at least two elements; the singleton set containing the last element of the sequence if it has exactly one element; and the empty set if $\hist = \emptyset$.
+Given $i \in I, \phi \in \Phi, \ar \in \allargs$, define $\ar \ileadstosti \phi$ iff $\forall \hist \in \allhist \suchthat \ar \in \hist_\mathit{end}: \hist \ileadstosti \phi$.
 
-To lighten notations, $\ileadstoe[i]$ and $\ileadstost[i]$ will generally be denoted by $\ileadstoe$ and $\ileadstost$, these symbols being understood as the result of a function of $i$. 
-When the symbol $\ileadstoe$ or $\ileadstost$ is used in a formula without $i$ being bound, the binding $\forall i \in I$ is implied.
+To lighten notations, $\ileadstoi$ and $\ileadstosti$ will generally be denoted by $\ileadsto$ and $\ileadstosts$, these symbols being understood as the result of a function of $i$. 
+When the symbol $\ileadsto$ or $\ileadstosts$ is used in a formula without $i$ being bound, the binding $\forall i \in I$ is implied.
 
 \subsection{Classify propositions}
-\commentOC{Check if I current definition of $\ileadstost$ is correct, in which case I can get rid of $\ileadstostp$.}
 \begin{axiom}[No contradiction]
 	\label{ax:nocontr}
-	$\forall \phi \in \Phi: \phi \in \iPhi ⇒ ¬\phi \notin \iPhi$.
+	$\forall i \in I, \phi \in \Phi: \phi \in \iPhi ⇒ ¬\phi \notin \iPhi$.
 \end{axiom}
 \begin{axiom}[Normative adequacy]
 	\label{ax:norm}
-	$\forall \phi \in \Phi: 
-		[\exists \ar \in \allargs \suchthat \ar \ileadstosts \phi] ⇒ \phi \in \iPhi.$
+	$\forall i \in I, \phi \in \Phi: 
+		[\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi] ⇒ \phi \in \iPhi.$
 \end{axiom}
 
-\commentOC{Discuss variant with an empirical claim: $\hist \ileadstoe \phi ⇒ \hist \nileadstoe ¬\phi$; and replace A2 with A2-weak: $[\forall \hist, \hist \ileadstoe \propposs] ⇒ \propposs \in \iPhi$, … This is essentially what will be done in the following, I suppose.} 
+For analytical clarity, it is desirable to check that \cref{ax:nocontr,ax:norm} do not hide a requirement on the content of $\ileadstosti$, thus, that they are together satisfiable without constraining $\ileadstosti$. To define this more precisely, consider temporarily these axioms as properties of a set $\iPhi \subseteq \Phi$. I write $A^1(\iPhi)$ if “axiom” 1 (interpreted as a property of $\iPhi$) holds on $\iPhi$, and similarly for $A^2(\iPhi)$. The required check amounts to prove that, given any $T, ¬, \allargs, I$, $\forall {\ileadstoi} \subseteq \allhist × \Phi: \exists \iPhi \subseteq \Phi \suchthat A^1(\iPhi) \land A^2(\iPhi)$. 
 
-For analytical clarity, it is desirable to check that \cref{ax:nocontr,ax:norm} do not hide a requirement on the content of $\ileadstost$, thus, that they are together satisfiable without constraining $\ileadstost$. To define this more precisely, consider temporarily these axioms as properties of a set $\iPhi \subseteq \Phi$. I write $A^1(\iPhi)$ if “axiom” 1 (interpreted as a property of $\iPhi$) holds on $\iPhi$, and similarly for $A^2(\iPhi)$. The required check amounts to prove that, given any $T, ¬, \allargs, I$, $\forall {\ileadstoe} \subseteq  \allhist × \Phi: \exists \iPhi \subseteq \Phi \suchthat A^1(\iPhi) \land A^2(\iPhi)$. 
+To further analyze this and related matters, define, given a normative theory and $i \in I$, $\Box^i\Phi \subseteq \Phi$ as 
+$\Box^i\Phi = \set{\phi \in \Phi \suchthat \exists \ar \in \allargs \suchthat \ar \ileadstosti \phi}$.
+Define  $P^{*, i} \subseteq \Phi$ as the set of all \emph{$i$-decidable} propositions: $P^{*, i} = \set{\phi \in \Phi \suchthat \phi \in \Box^i\Phi \lor ¬\phi \in \Box^i\Phi}$; and define a set of propositions $P \subseteq \Phi$ as $i$-decidable iff $P \subseteq P^{*, i}$. 
+The propositions in $P^{*, i}$ are those on which the normative theory permits to take a position. It will generally be unknown in practical applications, and may be empty.
 
-Given a normative theory, define $\Box\Phi \subseteq \Phi$ as 
-$\Box\Phi = \set{\phi \in \Phi \suchthat \exists \ar \in \allargs \suchthat \ar \ileadstosts \phi}$.
-Define  $P^* \subseteq \Phi$ as the set of all \emph{decidable} propositions: $P^* = \set{\phi \in \Phi \suchthat \phi \in \Box\Phi \lor ¬\phi \in \Box\Phi}$; and define $P \subseteq \Phi$ as decidable iff $P \subseteq P^*$. 
-The propositions in $P^*$ are those on which the normative theory permits to take a position. It will generally be unknown in practical applications, and may be empty.
+For any $i$-decidable proposition: $\phi \in \Box^i\Phi \oplus ¬\phi \in \Box^i\Phi$, where $\oplus$ denotes the exclusive disjunction; equivalently: $\phi \in \Box^i\Phi ⇔ ¬\phi \notin \Box^i\Phi$. This is proven below, and shows that \cref{ax:nocontr,ax:norm} are satisfiable together (suffices to define $\iPhi = \Box^i\Phi$). Also proven below is that, for any $i$-decidable proposition: $\phi \in \iPhi \oplus ¬\phi \in \iPhi$, which ensures an unambiguous interpretation of the content of $\iPhi$ for those propositions whose status is known thanks to the model.
 
-For any decidable proposition: $\phi \in \Box\Phi \oplus ¬\phi \in \Box\Phi$, where $\oplus$ denotes the exclusive disjunction; equivalently: $\phi \in \Box\Phi ⇔ ¬\phi \notin \Box\Phi$. This is proven below, and shows that \cref{ax:nocontr,ax:norm} are satisfiable together (suffices to define $\iPhi = \Box\Phi$). Also proven below is that, for any decidable proposition: $\phi \in \iPhi \oplus ¬\phi \in \iPhi$, which ensures an unambiguous interpretation of the content of $\iPhi$ for those propositions whose status is known thanks to the model.
+To further analyze this and related matters, given a normative theory and $i \in I$, say that a proposition $\phi \in \Phi$ is \emph{$i$-decidable} iff $\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi \lor \ar \ileadstosti ¬\phi$.
+The $i$-decidable propositions are those on which the normative theory permits to take a position. It will generally be unknown in practical applications, and may be empty.
+
+For any $i$-decidable proposition $\phi$: $[\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi] \oplus [\exists \ar \in \allargs \suchthat \ar \ileadstosti ¬\phi]$, where $\oplus$ denotes the exclusive disjunction; equivalently: $[\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi] ⇔ ¬[\exists \ar \in \allargs \suchthat \ar \ileadstosti ¬\phi]$. This is proven below, and shows that \cref{ax:nocontr,ax:norm} are satisfiable together (suffices to define $\iPhi = \set{\phi \suchthat [\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi \lor \ar \ileadstosti ¬\phi]}$). Also proven below is that, for any $i$-decidable proposition: $\phi \in \iPhi \oplus ¬\phi \in \iPhi$, which ensures an unambiguous interpretation of the content of $\iPhi$ for those propositions whose status is known thanks to the model.
+
+\commentOC{If we do not have $\propsure$ implies $\propposs$, then we can have $\propsure$ and $\notpropsure$ both accepted. But those propositions would still hold, it seems.}
 
 \begin{proposition}[Protocol coherence]
 	\label{prop:protcoh}
-	$[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ [\nexists \ar \in \allargs \suchthat \ar \ileadstost ¬\phi]$.
+	$\forall i \in I, \phi \in \Phi$:
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi] ⇒ [\nexists \ar \in \allargs \suchthat \ar \ileadstosti ¬\phi].
+	\end{equation}
 \end{proposition}
 \begin{proof}
-	Protocol coherence is satisfied by definition of $\ileadstost$. Indeed, if for some $\ar \in \allargs$, $\ar \ileadstost \phi$, then $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadstoe ¬\phi$; thus, for any $\ar' \in \allargs$, $\ar' \ileadstost ¬\phi$ is false, because it requires that $\forall \hist \in \allhist, \ar_1 \in \allargs: (\hist, \ar', \ar_1) \ileadstoe ¬\phi$, and thus in particular, that $(\ar', \ar) \ileadstoe ¬\phi$.
+	Protocol coherence is satisfied by definition of $\ileadstosti$. Indeed, if for some $\ar \in \allargs$, $\ar \ileadstosti \phi$, then $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadstoi ¬\phi$; thus, for any $\ar' \in \allargs$, $\ar' \ileadstosti ¬\phi$ is false, because it requires that $\forall \ar_1 \in \allargs: (\ar', \ar_1) \ileadstoi ¬\phi$, and thus in particular, that $(\ar', \ar) \ileadstoi ¬\phi$.
 \end{proof}
 
-\begin{proposition}[Internal interpretability]
-	\label{th:intinterpr}
-	$\forall \phi \suchthat [\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi]: \phi \in \Box\Phi \oplus ¬\phi \in \Box\Phi$.
-\end{proposition}
-\begin{proof}
-	Consider $\phi \suchthat [\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi]$. Proving the claim only requires to show that $\phi \in \Box\Phi ⇒ ¬\phi \notin \Box\Phi$. By definition, $\phi \in \Box\Phi$ implies that $\exists \ar \suchthat \ar \ileadstost \phi$, and the implication is thus proven by using \cref{prop:protcoh}: $\phi \in \Box\Phi ⇒ [\exists \ar \suchthat \ar \ileadstost \phi] ⇒ ¬[\exists \ar \suchthat \ar \ileadstost ¬\phi] ⇒ \phi \notin \Box\Phi$.
-\end{proof}
 \begin{definition}[Restricted interpretability]
 	\label{def:restrinterpr}
-	$\forall \phi \suchthat [\phi \in \Box\Phi \lor ¬\phi \in \Box\Phi]: \phi \in \iPhi \oplus ¬\phi \in \iPhi$.
+	$\forall \phi \in \Phi: [\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi \lor \ar \ileadstosti ¬\phi] ⇒ [\phi \in \iPhi \oplus ¬\phi \in \iPhi]$.
 \end{definition}
 \begin{proposition}[Restricted interpretability satisfaction]
 	All models satisfying \cref{ax:nocontr,ax:norm} satisfy Restricted interpretability.
 \end{proposition}
 \begin{proof}
-	This follows from \cref{th:intinterpr}.
+	It is only required to prove that if $\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi$, then $¬\phi \notin \iPhi$. This follows from \cref{th:intinterpr}.
 \end{proof}
 
 \subsection{Non-completeness}
@@ -588,6 +588,10 @@ It is important to remark that when the query protocol does not admit observatio
 Define a way of saying “we never need this argument”: either the model can prove phi without s0, or if it can’t, then phi does not hold, because I can play s1 against it. 
 
 What about a model for only one situation? Then we need to accept that $q$ can’t be falsified, and accept that it defines the individual (or just assume without proof that it does not).
+
+Assume $i$, given $\ar$ and $\ar'$, picks repeatedly (in various circumstances) nonempty subsets of $\set{\prop, ¬\prop}$. Define $(\ar', \ar) \ileadstoe (\prop, \text{sure})$ iff she sometimes chooses $\set{\prop}$ and $(\ar', \ar) \ileadstoe (\prop, \text{poss})$ iff she sometimes chooses $\set{\prop}$ or $\set{\prop, ¬\prop}$. Then, $(\ar', \ar) \ileadstost (\prop, \text{sure})$ iff she always chooses $\set{\prop}$ and $(\ar', \ar) \ileadstost (\prop, \text{poss})$ iff she always chooses either $\set{\prop}$ or $\set{\prop, ¬\prop}$.
+
+Discuss variant with an empirical claim: $\hist \ileadstoi \phi ⇒ \hist \nileadstoi ¬\phi$; and change \cref{ax:norm}: $[\forall \hist, \hist \ileadstoi \propposs] ⇒ \propposs \in \iPhi$, … This is essentially what will be done in the following, I suppose.
 
 \section{Theories proposing decisive arguments}
 In most situations, there are too many arguments to attempt to exhaustively test whether any $\ar$ is a decisive argument for any $\phi$. And most importantly, it is impossible to confirm definitely that $(\ar, \ar') \ileadstost \phi$, whenever $(\ar, \ar') \ileadstost \phi$. This is why falsifiable theories are needed.
