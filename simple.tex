@@ -74,32 +74,12 @@ To lighten notations, $\ileadstoi$ and $\ileadstosti$ will generally be denoted 
 When the symbol $\ileadsto$ or $\ileadstosts$ is used in a formula without $i$ being bound, the binding $\forall i \in I$ is implied.
 
 \subsection{Classify propositions}
-\begin{axiom}[No contradiction]
-	\label{ax:nocontr}
-	$\forall i \in I, \phi \in \Phi: \phi \in \iPhi ⇒ ¬\phi \notin \iPhi$.
-\end{axiom}
 \begin{axiom}[Normative adequacy]
 	\label{ax:norm}
 	$\forall i \in I, \phi \in \Phi: 
-		[\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi] ⇒ \phi \in \iPhi.$
+		[(\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi) \land ¬(\exists \ar \in \allargs \suchthat \ar \ileadstosti ¬\phi)] ⇒ \phi \in \iPhi \land ¬\phi \notin \iPhi.$
 \end{axiom}
-
-For analytical clarity, it is desirable to check that \cref{ax:nocontr,ax:norm} do not hide a requirement on the content of $\ileadstosti$, thus, that they are together satisfiable without constraining $\ileadstosti$. To define this more precisely, consider temporarily these axioms as properties of a set $\iPhi \subseteq \Phi$. I write $A^1(\iPhi)$ if “axiom” 1 (interpreted as a property of $\iPhi$) holds on $\iPhi$, and similarly for $A^2(\iPhi)$. The required check amounts to prove that, given any $T, ¬, \allargs, I$, $\forall {\ileadstoi} \subseteq \allhist × \Phi: \exists \iPhi \subseteq \Phi \suchthat A^1(\iPhi) \land A^2(\iPhi)$. 
-
-To further analyze this and related matters, define, given a normative theory and $i \in I$, $\Box^i\Phi \subseteq \Phi$ as 
-$\Box^i\Phi = \set{\phi \in \Phi \suchthat \exists \ar \in \allargs \suchthat \ar \ileadstosti \phi}$.
-Define  $P^{*, i} \subseteq \Phi$ as the set of all \emph{$i$-decidable} propositions: $P^{*, i} = \set{\phi \in \Phi \suchthat \phi \in \Box^i\Phi \lor ¬\phi \in \Box^i\Phi}$; and define a set of propositions $P \subseteq \Phi$ as $i$-decidable iff $P \subseteq P^{*, i}$. 
-The propositions in $P^{*, i}$ are those on which the normative theory permits to take a position. It will generally be unknown in practical applications, and may be empty.
-
-For any $i$-decidable proposition: $\phi \in \Box^i\Phi \oplus ¬\phi \in \Box^i\Phi$, where $\oplus$ denotes the exclusive disjunction; equivalently: $\phi \in \Box^i\Phi ⇔ ¬\phi \notin \Box^i\Phi$. This is proven below, and shows that \cref{ax:nocontr,ax:norm} are satisfiable together (suffices to define $\iPhi = \Box^i\Phi$). Also proven below is that, for any $i$-decidable proposition: $\phi \in \iPhi \oplus ¬\phi \in \iPhi$, which ensures an unambiguous interpretation of the content of $\iPhi$ for those propositions whose status is known thanks to the model.
-
-To further analyze this and related matters, given a normative theory and $i \in I$, say that a proposition $\phi \in \Phi$ is \emph{$i$-decidable} iff $\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi \lor \ar \ileadstosti ¬\phi$.
-The $i$-decidable propositions are those on which the normative theory permits to take a position. It will generally be unknown in practical applications, and may be empty.
-
-For any $i$-decidable proposition $\phi$: $[\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi] \oplus [\exists \ar \in \allargs \suchthat \ar \ileadstosti ¬\phi]$, where $\oplus$ denotes the exclusive disjunction; equivalently: $[\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi] ⇔ ¬[\exists \ar \in \allargs \suchthat \ar \ileadstosti ¬\phi]$. This is proven below, and shows that \cref{ax:nocontr,ax:norm} are satisfiable together (suffices to define $\iPhi = \set{\phi \suchthat [\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi \lor \ar \ileadstosti ¬\phi]}$). Also proven below is that, for any $i$-decidable proposition: $\phi \in \iPhi \oplus ¬\phi \in \iPhi$, which ensures an unambiguous interpretation of the content of $\iPhi$ for those propositions whose status is known thanks to the model.
-
-\commentOC{If we do not have $\propsure$ implies $\propposs$, then we can have $\propsure$ and $\notpropsure$ both accepted. But those propositions would still hold, it seems.}
-
+This axiom can be simplified, thanks to the following proposition.
 \begin{proposition}[Protocol coherence]
 	\label{prop:protcoh}
 	$\forall i \in I, \phi \in \Phi$:
@@ -111,20 +91,25 @@ For any $i$-decidable proposition $\phi$: $[\exists \ar \in \allargs \suchthat \
 	Protocol coherence is satisfied by definition of $\ileadstosti$. Indeed, if for some $\ar \in \allargs$, $\ar \ileadstosti \phi$, then $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadstoi ¬\phi$; thus, for any $\ar' \in \allargs$, $\ar' \ileadstosti ¬\phi$ is false, because it requires that $\forall \ar_1 \in \allargs: (\ar', \ar_1) \ileadstoi ¬\phi$, and thus in particular, that $(\ar', \ar) \ileadstoi ¬\phi$.
 \end{proof}
 
-\begin{definition}[Restricted interpretability]
+Therefore, \cref{ax:norm} is actually equivalent to the following property.
+\begin{property}[Simple normative adequacy]
+	\label{ax:snorm}
+	$\forall i \in I, \phi \in \Phi: 
+		[\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi] ⇒ \phi \in \iPhi \land ¬\phi \notin \iPhi.$
+\end{property}
+
+To further analyze this and related matters, given a normative theory and $i \in I$, say that a proposition $\phi \in \Phi$ is \emph{$i$-decidable} iff $\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi \lor \ar \ileadstosti ¬\phi$.
+The $i$-decidable propositions are those on which the normative theory permits to take a position. It will generally be unknown in practical applications, and may be empty.
+The next property ensures an unambiguous interpretation of the content of $\iPhi$ for all $i$-decidable propositions. In this definition, $\oplus$ denotes the exclusive disjunction; thus $\phi \in \iPhi \oplus ¬\phi \in \iPhi$ is equivalent to: $\phi \in \iPhi ⇔ ¬\phi \notin \iPhi$. It can be seen to hold by recalling that \cref{ax:snorm} is equivalent to \cref{ax:norm}.
+
+\begin{property}[Restricted interpretability]
 	\label{def:restrinterpr}
-	$\forall \phi \in \Phi: [\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi \lor \ar \ileadstosti ¬\phi] ⇒ [\phi \in \iPhi \oplus ¬\phi \in \iPhi]$.
-\end{definition}
-\begin{proposition}[Restricted interpretability satisfaction]
-	All models satisfying \cref{ax:nocontr,ax:norm} satisfy Restricted interpretability.
-\end{proposition}
-\begin{proof}
-	It is only required to prove that if $\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi$, then $¬\phi \notin \iPhi$. This follows from \cref{th:intinterpr}.
-\end{proof}
+	$\forall i \in I, \phi \in \Phi: [\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi \lor \ar \ileadstosti ¬\phi] ⇒ [\phi \in \iPhi \oplus ¬\phi \in \iPhi]$.
+\end{property}
 
 \subsection{Non-completeness}
-\begin{definition}[Model completeness]
-	$\forall \phi \in \Phi: \phi \in \Box\Phi \lor ¬\phi \in \Box\Phi$.
+\begin{definition}[Theory completeness]
+	$\forall \phi \in \Phi: [\exists \ar \in \allargs \suchthat \ar \ileadstoi \phi] \lor [\exists \ar \in \allargs \suchthat \ar \ileadstoi ¬\phi]$.
 \end{definition}
 \begin{definition}[Unrestricted interpretability]
 	$\forall \phi \in \Phi: \phi \in \iPhi \oplus ¬\phi \in \iPhi$.
@@ -132,11 +117,11 @@ For any $i$-decidable proposition $\phi$: $[\exists \ar \in \allargs \suchthat \
 \begin{definition}[Deliberation completeness]
 	$\forall \phi \in \Phi: \phi \in \iPhi \lor ¬\phi \in \iPhi$.
 \end{definition}
-The following proposition directly follows from the definitions.
+The following proposition directly follows from the definitions, together with \cref{prop:protcoh}.
 \begin{proposition}
-	1) Under Normative adequacy, Model completeness implies Deliberation completeness. 2) Unrestricted interpretability implies Deliberation completeness. 3) Under No contradiction, Unrestricted interpretability is equivalent to Deliberation completeness.
+	1) Under Normative adequacy, Theory completeness implies Deliberation completeness. 2) Unrestricted interpretability implies Deliberation completeness.
 \end{proposition}
-Models as defined here do not mandate Model completeness. This is good for two reasons. First, even the weaker Deliberation completeness can appear too strong. Second, it is dubious that, for non trivial decision problems, models can be found for which both Normative adequacy is normatively compelling and Model completeness holds.
+Theories as defined here do not mandate Theory completeness. This is good for two reasons. First, even the weaker Deliberation completeness can be considered too strong. Second, it is dubious that, for non trivial decision problems, theories can be found for which both Normative adequacy is normatively compelling and Theory completeness holds.
 
 \section{Empirical theories}
 \subsection{Falsifiability}
@@ -592,6 +577,8 @@ What about a model for only one situation? Then we need to accept that $q$ can�
 Assume $i$, given $\ar$ and $\ar'$, picks repeatedly (in various circumstances) nonempty subsets of $\set{\prop, ¬\prop}$. Define $(\ar', \ar) \ileadstoe (\prop, \text{sure})$ iff she sometimes chooses $\set{\prop}$ and $(\ar', \ar) \ileadstoe (\prop, \text{poss})$ iff she sometimes chooses $\set{\prop}$ or $\set{\prop, ¬\prop}$. Then, $(\ar', \ar) \ileadstost (\prop, \text{sure})$ iff she always chooses $\set{\prop}$ and $(\ar', \ar) \ileadstost (\prop, \text{poss})$ iff she always chooses either $\set{\prop}$ or $\set{\prop, ¬\prop}$.
 
 Discuss variant with an empirical claim: $\hist \ileadstoi \phi ⇒ \hist \nileadstoi ¬\phi$; and change \cref{ax:norm}: $[\forall \hist, \hist \ileadstoi \propposs] ⇒ \propposs \in \iPhi$, … This is essentially what will be done in the following, I suppose.
+
+If we do not have $\propsure$ implies $\propposs$, then we can have $\propsure$ and $\notpropsure$ both accepted. But all propositions of the normative analysis would still hold, it seems. We could have a property that says: $\propsure \in \iPhi ⇒ \propposs \in \iPhi \land \notpropsure \notin \iPhi \land \notpropposs \notin \iPhi$.
 
 \section{Theories proposing decisive arguments}
 In most situations, there are too many arguments to attempt to exhaustively test whether any $\ar$ is a decisive argument for any $\phi$. And most importantly, it is impossible to confirm definitely that $(\ar, \ar') \ileadstost \phi$, whenever $(\ar, \ar') \ileadstost \phi$. This is why falsifiable theories are needed.
