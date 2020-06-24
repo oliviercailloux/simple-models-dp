@@ -123,90 +123,7 @@ The following proposition directly follows from the definitions, together with \
 \end{proposition}
 Theories as defined here do not mandate Theory completeness. This is good for two reasons. First, even the weaker Deliberation completeness can be considered too strong. Second, it is dubious that, for non trivial decision problems, theories can be found for which both Normative adequacy is normatively compelling and Theory completeness holds.
 
-\section{Empirical theories}
-\subsection{Falsifiability}
-\commentOC{I want: An empirical theory for a normative theory is something like a normative and falsifiable claim. It is also configurable: it must be possible to guarantee that the falsification be easy (if the claim is false) depending on the kind of claim.}
-
-Given $\hist \in \allhist$ and $i \in I$, the claim $\hist \ileadstoe[i] \phi$ may not be verifiable, and is too specific to be falsifiable. However, given $\hist \in \allhist$, a broader claim is falsifiable: that for a given set of individuals $Q \subseteq I, \forall i \in Q, \hist \ileadstoe[i] \phi$ (provided $Q$ is big enough). Indeed, that claim it is equivalent to $\nexists i \in Q \suchthat \hist \nileadstoe[i] \phi$; exhibiting an $i \in Q$ such that $\hist \nileadstoe[i] \phi$ thus falsifies the broader claim.
-
-Given any $(\alltopic, ¬, \allargs, I)$, an \emph{observation protocol} is a binary tree whose non-leaf nodes are among $I × \allhist × \Phi$ and whose two edges out of any non leaf node are labeled by “yes” and “no”; the leaf nodes being simply $\emptyset$. The observation protocol is said to assume memory iff for each non-leaf node $n = (i, \hist, \phi)$ about $i$, any node $n' = (i, {\hist}', \phi')$ about $i$ that is further down the tree continues the history, that is, the sequence ${\hist}'$ starts with $\hist$. Given an observation protocol and observables $(\ileadstoe[i])_{i \in I}$, the \emph{observed path} refers to the path in the tree defined recursively as consisting of the root node and, for each non-leaf node $n = (i, \hist, \phi)$ in the path, the child node along the branch “yes” if $\hist \ileadstoe[i] \phi$ and the child node along the branch “no” otherwise. The \emph{observations} refer to the set of nodes along the observed path.
-
-Given any $(\alltopic, ¬, \allargs, I)$, a \emph{normative claim} about $(\alltopic, ¬, \allargs, I)$ (or about $\allargs$, when the other defined objects are left implicit) is any first-order logic proposition involving the atoms $[(\hist, \phi) \in {\ileadstoe[i]}], \hist \in \allhist, \phi \in \Phi$ which, together with \cref{ax:nocontr,ax:norm}, permits to deduce that $\phi \in \iPhi$ for some $i \in I$ and $\phi \in \Phi$. The claim is said to be \emph{about} the given set $\allargs$. An observation protocol, together with observables $(\ileadstoe[i])_{i \in I}$, \emph{falsifies} a normative claim iff the falsity of the claim is deducible from \cref{ax:nocontr,ax:norm} and the observations. A normative claim is \emph{falsifiable} iff there exists a finite observation protocol such that for any observables $(\ileadstoe[i])_{i \in I} \in (\allhist × \Phi)^I$, if the claim is false given these observables, then it is possible to deduce it from \cref{ax:nocontr,ax:norm} and the observations given the observables.
-
-\commentOC{Falsifiable may not be the right word. Perhaps “provable“, meaning “tautological or Popper-falsifiable”. “Falsifiable” suggests that if a claim is not falsifiable, then a weaker claim is not falsifiable either, which does not hold. My falsifiability criterion demands that if a claim is false, we can see it; whether Popper’s demands that the claim be possibly false. Perhaps I should demand that we can pick a set of consequences of the claim and show it wrong it at least one possible state of the universe.}
-
-A normative claim is \emph{trivial} iff it is about a singleton $\allargs = \set{\ar}$, and has the form: $\ar \ileadstosts \phi$, for some $i \in I$. A normative claim is minimal iff it has the form: $\exists \ar \in \allargs \suchthat \ar \ileadstosts \phi$, for some $i \in I$ and $\phi \in \Phi$. Note that given a minimal claim, $\card{\allargs} = 1$ is equivalent to the claim being trivial.
-
-\begin{proposition}[Trivial claims are not falsifiable]
-	Given any $(\alltopic, ¬, \allargs ≠ \emptyset, I)$, no minimal normative claim is falsifiable.
-\end{proposition}
-\begin{proof}
-	Consider any claim about some $i$ and some $\phi$ and any finite observation protocol. We have to show that for some observables, the claim is false, but it is impossible to observe it (meaning, to deduce it from \cref{ax:nocontr,ax:norm} and observations).
-	
-	Given $k \in \N$, define $\ileadstosts[k]$ as $\ar^k \ileadstosts \phi$ and $\ar^{k+1} \ileadstosts ¬\phi$ (where $\ar^k$ designates a finite sequence repeating $k$ times $\ar$, for $\ar \in \allargs$). I claim that for some $k$, the observables that include this relation makes the claim false, but not observably so. This is because the observation protocol is finite, thus, only permits to observe some finite number of instances of the relation $\ileadsto$. Suffices to define $k$ as that number.
-\end{proof}
-
-There is another reason for non falsifiability, which does not involve the problem of finiteness.
-\begin{proposition}[Minimal non-trivial claims are not falsifiable]
-	Given any $(\alltopic, ¬, \allargs, I), \card{\allargs} ≥ 2$, no minimal normative claim is falsifiable.
-\end{proposition}
-\begin{proof}
-	Define $\ar_1$ as the first element of the sequence $\hist$ of the root node of the observation protocol (if the observation protocol is empty, suffices to define any observables that make the claim false). Define the observables so that $\forall \hist \in \allhist: \ar_2, \hist \ileadsto ¬\phi$. This proves that no argument is decisive, hence $\phi \notin \Box\Phi$, and the claim is false. But the observables may also be defined so as to satisfy the protocol (defined as: when going through the protocol, the observations can’t fail the claim).
-\end{proof}
-
-\subsection{Definition}
-A general empirical theory for a normative theory $(\allprops, ¬, \allargs, I, (\ileadstoe[i])_{i \in I})$ is a tuple $({\gleadsto}, f)$, where ${\gleadsto} \subseteq \allargs × \Phi$ and $f \subseteq (\allargs × \allargs) × \allargs$ with $f(\allargs × \allargs)$ being finite.
-
-Define $g(\ar_0) \subseteq \allargs × \allargs$ as $g(\ar_0) = \set{(\ar_2, \ar_1) \suchthat \ar_2 \in f(\ar_1, \ar_0)} = \bigcup_{\ar_1 \in \allargs} (f(\ar_1, \ar_0) × \set{\ar_1})$. The set $g(\ar_0)(\allargs)$ contains the planned attacks on $\ar_0$; the set $g(\ar_0)(\ar_2)$ contains the planned attacks on $\ar_0$ for which $\ar_2$ is a planned response; and the set $g(\ar_0)^{-1}(\ar_1) = f(\ar_1, \ar_0)$ contains the planned protections of $\ar_0$ against $\ar_1$. 
-
-Given $\ar_0 \in \allargs$ and $\args_2 \subseteq \allargs$, define the set $\args_1 \subseteq \allargs$ of arguments that $\args_2$ protects $\ar_0$ from as $\args_1 = [f^{-1}(\args_2)]^{-1}(\ar_0) = \set{\ar_1 \in \allargs \suchthat f(\ar_1, \ar_0) \cap \args_2 ≠ \emptyset} = g(\ar_0)(\args_2) = dom(f^{-1}(\args_2) \cap \allargs × \set{\ar_0})$.
- 
-\subsection{A general condition sufficient for validity and (hopefully) falsifiability}
-It should be possible to define this condition as a claim that does not involve $f$, so that it can be done before defining an empirical theory. Then, show that a normative and falsifiable claim must have the form of a convincingness claim.
-
-\begin{remark}
-	In fact, the model is tasked with finding a stable point after interrogating $i$. The process of trying counter-arguments $\ar_1, …$ is $q(i)$. When done, the model claims that $\ar_0 + \ar_2 + …$ is decisive. The model also claims that another process of interrogation does not lead to different answers. This is falsifiable.
-	When claiming that $(\ar_1, \ar_0) \ileadstost[i] \phi$, the model really claims that $\nexists p, i' \in q^{-1}(q(i)) \suchthat p, \ar_1, \ar_0 \ileadsto[i'] ¬\phi \lor p, \ar_0, \ar_1 \ileadsto[i'] ¬\phi$, where $i' \in q^{-1}(q(i))$ iff $q(i) = q(i')$.
-	
-	To say that $\phi \in \iPhi$, need to not depend on choice of $q$, in the following sense: if with $q$, $\phi$ seems stable, but with $q'$, $¬\phi$ seems stable, then $\phi$ is not proved as being in $\iPhi$. But if with $q$, $\phi$ seems stable, but with $q'$, nothing can be shown to be stable, then $\phi$ is proved (temporarily) as being in $\iPhi$. More precisely, after $q'$, the model must be able to stabilize $i$ with its $q$.
-\end{remark}
-
-$\ar_0$ $i$-defends $\phi$ when ignoring $S_1$ iff $\forall \hist \in \allhist: [\args_1 \cap \hist = \emptyset] ⇒ (\hist, \ar_0) \ileadstosts \phi$.
-$\ar_0$ $i$-defends $\phi$ under protection of $S_2$ iff $\ar_0$ $i$-defends $\phi$ when ignoring $g(\ar_0)(\args_2)$.
-
-\begin{definition}[Convincingness]
-	$\forall i \in I, \phi \in {\gleadsto}(\allargs), \exists k \in 2\N$ and a finite sequence $(\args_j)_{j \in 2\N, j ≤ k} \suchthat \emptyset ≠ \args_0 \subseteq {\gleadstoinv}(\phi)$ and $\forall j \in 2\N, j ≤ k, \forall \ar_j \in S_j: \ar_j$ $i$-defends $\phi$ under protection of $S_{j + 2}$ (defining $S_{k + 2} = \emptyset$) and $S_j \subseteq \cup_{\ar_{j - 2} \in \args_{j - 2}, \ar_{j - 1} \in \allargs} f(\ar_{j - 1}, \ar_{j - 2})$.
-\end{definition}
-Note that requiring that $\args_0$ be a singleton does not modify the condition, in the sense that any theory satisfying the condition also satisfies its strenghtening. Similarly, requiring that $S_k ≠ \emptyset$ does not modify the condition (because if some $k$ satisfy the condition with $S_k = \emptyset$, then picking $k' = k-2$ with the same sets $S_j$ also satisfy the condition, and because $S_0 ≠ \emptyset$, this recursion must end with a suitable $k$).
-
-\begin{remark}
-	The claim must have the form: some structure is adequate for all individuals. Here, the structure is given by $f$. The claim should claim that looking at the attacks planned by $f$ is enough; and looking at the defenses planned by $f$ is enough.
-
-	This may be adequate as if $\ar_0$ seems suitable but some unplanned attacker $\ar_1$ attacks it, then use $\ar_1 \in \hist$ and observe that $¬(\hist, \ar_0) \ileadstoe \phi$ to deny the claim.
-	
-	Perhaps this could be phrased as follows. Say that $\ar_2$ is replaceable by $\args_2$ iff what $\ar_2$ protects is either protected by $\args_2$ or replaceable (by what?). Say that a set $\args$ is sufficient iff its complement is replaceable by $\args$. Then $g$ claims (among others) that $g(\ar_0)^{-1}(\ar_1)$ is sufficient.
-	
-	The claim can (hopefully) be given the form: $\forall i \suchthat …, \ar$ decisive. Given $i$, either $\ar_0$ is decisive, or $\ar_1$ attacks it but then $\ar_2$ is decisive, …
-\end{remark}
-
-\begin{theorem}
-	If an empirical theory is convincing, and its normative theory satisfies \cref{ax:nocontr,ax:norm}, then it is valid.
-\end{theorem}
-\begin{proof}
-	Consider $i \in I$ and $\phi \in {\gleadsto}(\allargs)$. 
-	By hypothesis, $\exists k$ such that some $\ar_k \in \args_k$ defends $\phi$ under protection of $\emptyset$. Therefore, $\ar_k \ileadstosts \phi$. Using \cref{ax:norm}, this yields that $\phi \in \iPhi$, and validity follows from \cref{ax:nocontr}.
-\end{proof}
-
-\begin{theorem}
-	The convincingness claim of any empirical theory is falsifiable: given an ET, there exists a finite obs prot with memory such that for any observables, if the claim is false given these observables, then it is possible to deduce it from the axioms and observations.
-\end{theorem}
-\begin{proof}
-	
-\end{proof}
-
-\section{Additive empirical theories}
-TODO: 3) define single-answer models. 4) phrase conditions below for history and single-answer models. 5) show that these conditions can be verified or falsified. 6) show that if the claim of the model does not include these conditions, then the model is not falsifiable, as suggested here below for some form of claims.
-
+\section{Additive single-answer empirical theories}
 \subsection{Definition}
 An empirical theory for a normative theory is a tuple $(q, (\gleadsto[q(i)])_{q(i) \in q(I)}, \gbeats, +)$,
 with ${\gleadsto[q(i)]} \subseteq \allargs × \Phi$, ${\gbeats} \subseteq \allargs × \allargs$,
@@ -579,6 +496,88 @@ Assume $i$, given $\ar$ and $\ar'$, picks repeatedly (in various circumstances) 
 Discuss variant with an empirical claim: $\hist \ileadstoi \phi ⇒ \hist \nileadstoi ¬\phi$; and change \cref{ax:norm}: $[\forall \hist, \hist \ileadstoi \propposs] ⇒ \propposs \in \iPhi$, … This is essentially what will be done in the following, I suppose.
 
 If we do not have $\propsure$ implies $\propposs$, then we can have $\propsure$ and $\notpropsure$ both accepted. But all propositions of the normative analysis would still hold, it seems. We could have a property that says: $\propsure \in \iPhi ⇒ \propposs \in \iPhi \land \notpropsure \notin \iPhi \land \notpropposs \notin \iPhi$.
+
+Show that if the claim of the model is of a different form, then the model is not falsifiable, as suggested here below for some form of claims.
+
+Extend the definition of additive single-answer theories to non-additive single-answer theories.
+
+\section{Empirical theories}
+\subsection{Falsifiability}
+\commentOC{I want: An empirical theory for a normative theory is something like a normative and falsifiable claim. It is also configurable: it must be possible to guarantee that the falsification be easy (if the claim is false) depending on the kind of claim.}
+
+Given $\hist \in \allhist$ and $i \in I$, the claim $\hist \ileadstoe[i] \phi$ may not be verifiable, and is too specific to be falsifiable. However, given $\hist \in \allhist$, a broader claim is falsifiable: that for a given set of individuals $Q \subseteq I, \forall i \in Q, \hist \ileadstoe[i] \phi$ (provided $Q$ is big enough). Indeed, that claim it is equivalent to $\nexists i \in Q \suchthat \hist \nileadstoe[i] \phi$; exhibiting an $i \in Q$ such that $\hist \nileadstoe[i] \phi$ thus falsifies the broader claim.
+
+Given any $(\alltopic, ¬, \allargs, I)$, an \emph{observation protocol} is a binary tree whose non-leaf nodes are among $I × \allhist × \Phi$ and whose two edges out of any non leaf node are labeled by “yes” and “no”; the leaf nodes being simply $\emptyset$. The observation protocol is said to assume memory iff for each non-leaf node $n = (i, \hist, \phi)$ about $i$, any node $n' = (i, {\hist}', \phi')$ about $i$ that is further down the tree continues the history, that is, the sequence ${\hist}'$ starts with $\hist$. Given an observation protocol and observables $(\ileadstoe[i])_{i \in I}$, the \emph{observed path} refers to the path in the tree defined recursively as consisting of the root node and, for each non-leaf node $n = (i, \hist, \phi)$ in the path, the child node along the branch “yes” if $\hist \ileadstoe[i] \phi$ and the child node along the branch “no” otherwise. The \emph{observations} refer to the set of nodes along the observed path.
+
+Given any $(\alltopic, ¬, \allargs, I)$, a \emph{normative claim} about $(\alltopic, ¬, \allargs, I)$ (or about $\allargs$, when the other defined objects are left implicit) is any first-order logic proposition involving the atoms $[(\hist, \phi) \in {\ileadstoe[i]}], \hist \in \allhist, \phi \in \Phi$ which, together with the axioms, permits to deduce that $\phi \in \iPhi$ for some $i \in I$ and $\phi \in \Phi$. The claim is said to be \emph{about} the given set $\allargs$. An observation protocol, together with observables $(\ileadstoe[i])_{i \in I}$, \emph{falsifies} a normative claim iff the falsity of the claim is deducible from the axioms and the observations. A normative claim is \emph{falsifiable} iff there exists a finite observation protocol such that for any observables $(\ileadstoe[i])_{i \in I} \in (\allhist × \Phi)^I$, if the claim is false given these observables, then it is possible to deduce it from the axioms and the observations given the observables.
+
+\commentOC{Falsifiable may not be the right word. Perhaps “provable“, meaning “tautological or Popper-falsifiable”. “Falsifiable” suggests that if a claim is not falsifiable, then a weaker claim is not falsifiable either, which does not hold. My falsifiability criterion demands that if a claim is false, we can see it; whether Popper’s demands that the claim be possibly false. Perhaps I should demand that we can pick a set of consequences of the claim and show it wrong it at least one possible state of the universe.}
+
+A normative claim is \emph{trivial} iff it is about a singleton $\allargs = \set{\ar}$, and has the form: $\ar \ileadstosts \phi$, for some $i \in I$. A normative claim is minimal iff it has the form: $\exists \ar \in \allargs \suchthat \ar \ileadstosts \phi$, for some $i \in I$ and $\phi \in \Phi$. Note that given a minimal claim, $\card{\allargs} = 1$ is equivalent to the claim being trivial.
+
+\begin{proposition}[Trivial claims are not falsifiable]
+	Given any $(\alltopic, ¬, \allargs ≠ \emptyset, I)$, no minimal normative claim is falsifiable.
+\end{proposition}
+\begin{proof}
+	Consider any claim about some $i$ and some $\phi$ and any finite observation protocol. We have to show that for some observables, the claim is false, but it is impossible to observe it (meaning, to deduce it from the axioms and observations).
+	
+	Given $k \in \N$, define $\ileadstosts[k]$ as $\ar^k \ileadstosts \phi$ and $\ar^{k+1} \ileadstosts ¬\phi$ (where $\ar^k$ designates a finite sequence repeating $k$ times $\ar$, for $\ar \in \allargs$). I claim that for some $k$, the observables that include this relation makes the claim false, but not observably so. This is because the observation protocol is finite, thus, only permits to observe some finite number of instances of the relation $\ileadsto$. Suffices to define $k$ as that number.
+\end{proof}
+
+There is another reason for non falsifiability, which does not involve the problem of finiteness.
+\begin{proposition}[Minimal non-trivial claims are not falsifiable]
+	Given any $(\alltopic, ¬, \allargs, I), \card{\allargs} ≥ 2$, no minimal normative claim is falsifiable.
+\end{proposition}
+\begin{proof}
+	Define $\ar_1$ as the first element of the sequence $\hist$ of the root node of the observation protocol (if the observation protocol is empty, suffices to define any observables that make the claim false). Define the observables so that $\forall \hist \in \allhist: \ar_2, \hist \ileadsto ¬\phi$. This proves that no argument is decisive, hence $\phi \notin \Box\Phi$, and the claim is false. But the observables may also be defined so as to satisfy the protocol (defined as: when going through the protocol, the observations can’t fail the claim).
+\end{proof}
+
+\subsection{Definition}
+A general empirical theory for a normative theory $(\allprops, ¬, \allargs, I, (\ileadstoe[i])_{i \in I})$ is a tuple $({\gleadsto}, f)$, where ${\gleadsto} \subseteq \allargs × \Phi$ and $f \subseteq (\allargs × \allargs) × \allargs$ with $f(\allargs × \allargs)$ being finite.
+
+Define $g(\ar_0) \subseteq \allargs × \allargs$ as $g(\ar_0) = \set{(\ar_2, \ar_1) \suchthat \ar_2 \in f(\ar_1, \ar_0)} = \bigcup_{\ar_1 \in \allargs} (f(\ar_1, \ar_0) × \set{\ar_1})$. The set $g(\ar_0)(\allargs)$ contains the planned attacks on $\ar_0$; the set $g(\ar_0)(\ar_2)$ contains the planned attacks on $\ar_0$ for which $\ar_2$ is a planned response; and the set $g(\ar_0)^{-1}(\ar_1) = f(\ar_1, \ar_0)$ contains the planned protections of $\ar_0$ against $\ar_1$. 
+
+Given $\ar_0 \in \allargs$ and $\args_2 \subseteq \allargs$, define the set $\args_1 \subseteq \allargs$ of arguments that $\args_2$ protects $\ar_0$ from as $\args_1 = [f^{-1}(\args_2)]^{-1}(\ar_0) = \set{\ar_1 \in \allargs \suchthat f(\ar_1, \ar_0) \cap \args_2 ≠ \emptyset} = g(\ar_0)(\args_2) = dom(f^{-1}(\args_2) \cap \allargs × \set{\ar_0})$.
+ 
+\subsection{A general condition sufficient for validity and (hopefully) falsifiability}
+It should be possible to define this condition as a claim that does not involve $f$, so that it can be done before defining an empirical theory. Then, show that a normative and falsifiable claim must have the form of a convincingness claim.
+
+\begin{remark}
+	In fact, the model is tasked with finding a stable point after interrogating $i$. The process of trying counter-arguments $\ar_1, …$ is $q(i)$. When done, the model claims that $\ar_0 + \ar_2 + …$ is decisive. The model also claims that another process of interrogation does not lead to different answers. This is falsifiable.
+	When claiming that $(\ar_1, \ar_0) \ileadstost[i] \phi$, the model really claims that $\nexists p, i' \in q^{-1}(q(i)) \suchthat p, \ar_1, \ar_0 \ileadsto[i'] ¬\phi \lor p, \ar_0, \ar_1 \ileadsto[i'] ¬\phi$, where $i' \in q^{-1}(q(i))$ iff $q(i) = q(i')$.
+	
+	To say that $\phi \in \iPhi$, need to not depend on choice of $q$, in the following sense: if with $q$, $\phi$ seems stable, but with $q'$, $¬\phi$ seems stable, then $\phi$ is not proved as being in $\iPhi$. But if with $q$, $\phi$ seems stable, but with $q'$, nothing can be shown to be stable, then $\phi$ is proved (temporarily) as being in $\iPhi$. More precisely, after $q'$, the model must be able to stabilize $i$ with its $q$.
+\end{remark}
+
+$\ar_0$ $i$-defends $\phi$ when ignoring $S_1$ iff $\forall \hist \in \allhist: [\args_1 \cap \hist = \emptyset] ⇒ (\hist, \ar_0) \ileadstosts \phi$.
+$\ar_0$ $i$-defends $\phi$ under protection of $S_2$ iff $\ar_0$ $i$-defends $\phi$ when ignoring $g(\ar_0)(\args_2)$.
+
+\begin{definition}[Convincingness]
+	$\forall i \in I, \phi \in {\gleadsto}(\allargs), \exists k \in 2\N$ and a finite sequence $(\args_j)_{j \in 2\N, j ≤ k} \suchthat \emptyset ≠ \args_0 \subseteq {\gleadstoinv}(\phi)$ and $\forall j \in 2\N, j ≤ k, \forall \ar_j \in S_j: \ar_j$ $i$-defends $\phi$ under protection of $S_{j + 2}$ (defining $S_{k + 2} = \emptyset$) and $S_j \subseteq \cup_{\ar_{j - 2} \in \args_{j - 2}, \ar_{j - 1} \in \allargs} f(\ar_{j - 1}, \ar_{j - 2})$.
+\end{definition}
+Note that requiring that $\args_0$ be a singleton does not modify the condition, in the sense that any theory satisfying the condition also satisfies its strenghtening. Similarly, requiring that $S_k ≠ \emptyset$ does not modify the condition (because if some $k$ satisfy the condition with $S_k = \emptyset$, then picking $k' = k-2$ with the same sets $S_j$ also satisfy the condition, and because $S_0 ≠ \emptyset$, this recursion must end with a suitable $k$).
+
+\begin{remark}
+	The claim must have the form: some structure is adequate for all individuals. Here, the structure is given by $f$. The claim should claim that looking at the attacks planned by $f$ is enough; and looking at the defenses planned by $f$ is enough.
+
+	This may be adequate as if $\ar_0$ seems suitable but some unplanned attacker $\ar_1$ attacks it, then use $\ar_1 \in \hist$ and observe that $¬(\hist, \ar_0) \ileadstoe \phi$ to deny the claim.
+	
+	Perhaps this could be phrased as follows. Say that $\ar_2$ is replaceable by $\args_2$ iff what $\ar_2$ protects is either protected by $\args_2$ or replaceable (by what?). Say that a set $\args$ is sufficient iff its complement is replaceable by $\args$. Then $g$ claims (among others) that $g(\ar_0)^{-1}(\ar_1)$ is sufficient.
+	
+	The claim can (hopefully) be given the form: $\forall i \suchthat …, \ar$ decisive. Given $i$, either $\ar_0$ is decisive, or $\ar_1$ attacks it but then $\ar_2$ is decisive, …
+\end{remark}
+
+\begin{theorem}
+	If an empirical theory is convincing, and its normative theory satisfies the axioms, then it is valid.
+\end{theorem}
+\begin{proof}
+	Consider $i \in I$ and $\phi \in {\gleadsto}(\allargs)$. 
+	By hypothesis, $\exists k$ such that some $\ar_k \in \args_k$ defends $\phi$ under protection of $\emptyset$. Therefore, $\ar_k \ileadstosts \phi$. Using \cref{ax:norm}, validity follows.
+\end{proof}
+
+\begin{theorem}
+	The convincingness claim of any empirical theory is falsifiable: given an ET, there exists a finite obs prot with memory such that for any observables, if the claim is false given these observables, then it is possible to deduce it from the axioms and observations.
+\end{theorem}
 
 \section{Theories proposing decisive arguments}
 In most situations, there are too many arguments to attempt to exhaustively test whether any $\ar$ is a decisive argument for any $\phi$. And most importantly, it is impossible to confirm definitely that $(\ar, \ar') \ileadstost \phi$, whenever $(\ar, \ar') \ileadstost \phi$. This is why falsifiable theories are needed.
