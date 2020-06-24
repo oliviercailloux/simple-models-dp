@@ -67,8 +67,8 @@ As usual with binary relations, $\hist \nileadsto[i] \phi$ means $(\hist, \phi) 
 
 Given $i \in I, \phi \in \Phi, \hist \in \allhist$, say that $\hist$ leads strongly to $\phi$ iff $\hist \ileadstoi \phi \land \hist \nileadstoi ¬\phi$.
 Define $\hist \ileadstosti \phi$ iff $[\hist \text{ leads strongly to } \phi] \land [\phi = \propsure ⇒ \hist \text{ leads strongly to } \propposs]$.
-Given $\hist \in \allhist$, let $\hist_\mathit{end}$ denote the set containing the last two elements of the sequence $\hist$ if the sequence has at least two elements; the singleton set containing the last element of the sequence if it has exactly one element; and the empty set if $\hist = \emptyset$.
-Given $i \in I, \phi \in \Phi, \ar \in \allargs$, define $\ar \ileadstosti \phi$ iff $\forall \hist \in \allhist \suchthat \ar \in \hist_\mathit{end}: \hist \ileadstosti \phi$.
+Given $\hist \in \allhist$, let $\histend$ denote the set containing the last two elements of the sequence $\hist$ if the sequence has at least two elements; the singleton set containing the last element of the sequence if it has exactly one element; and the empty set if $\hist = \emptyset$.
+Given $i \in I, \phi \in \Phi, \ar \in \allargs$, define $\ar \ileadstosti \phi$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \ileadstosti \phi$.
 
 To lighten notations, $\ileadstoi$ and $\ileadstosti$ will generally be denoted by $\ileadsto$ and $\ileadstosts$, these symbols being understood as the result of a function of $i$. 
 When the symbol $\ileadsto$ or $\ileadstosts$ is used in a formula without $i$ being bound, the binding $\forall i \in I$ is implied.
@@ -125,50 +125,49 @@ Theories as defined here do not mandate Theory completeness. This is good for tw
 
 \section{Additive single-answer empirical theories}
 \subsection{Definition}
-An empirical theory for a normative theory is a tuple $(q, (\gleadsto[q(i)])_{q(i) \in q(I)}, \gbeats, +)$,
-with ${\gleadsto[q(i)]} \subseteq \allargs × \Phi$, ${\gbeats} \subseteq \allargs × \allargs$,
-${\gbeatsinv}(\allargs)$ finite,
-and $+$ a commutative associative internal binary operation on $\allargs$. Given a finite $\args \subseteq \allargs$, the notation $\sum \args = \sum_{\ar \in \args} \ar$ thus designates a well-defined argument. 
-\commentOC{Check about finiteness.}
-\commentOC{${\gbeatsinv}$ need not be finite, only those even ones: the transitive closure of ${\gleadstoinv}(\Phi)$ through ${\gbeatsinv}^2$, that is, $({\gbeatsinv})^2[{\gleadstoinv}(\Phi)] = \cup_{k \in 2\N}({\gbeatsinv}^{k}({\gleadstoinv}(\Phi)))$.}
-\commentOC{I should only define $\ar \in \allargs$ plus $\ard$.}
-
-This defines a function: $\forall \ar_1 \gbeats \ar_0: f(\ar_1, \ar_0) = \ar_0 + {\gbeatsinv}(\ar_1) = \set{\ar_0 + \ard_2 \suchthat \ard_2 \in {\gbeatsinv}(\ar_1)}$, and $f(\ar_1, \ar_0) = \emptyset$ otherwise. Thus, $f = \set{((\ar_1, \ar_0), \ar_2) \suchthat \exists \ard_2 \in \allargs \suchthat \ard_2 \gbeats \ar_1 \gbeats \ar_0 \land \ar_2 = \ar_0 + \ard_2}$.
-Also, from the previous definition, $g(\ar_0)(\ar_0 + \argsd_2) = dom(f^{-1}(\ar_0 + \argsd_2) \cap (\allargs × \set{\ar_0})) = {\gbeats}(\argsd_2) \cap {\gbeatsinv}(\ar_0)$ because $(\ar_1, \ar_0) \in f^{-1}(\ar_0 + \argsd_2) ⇔ \exists \ar_2 \in \ar_0 + \argsd_2 \suchthat \ar_2 \in f(\ar_1, \ar_0) ⇔ \ar_1 \gbeats \ar_0 \land \exists \ard \in \argsd_2 \suchthat \ard \gbeats \ar_1$.
-\commentOC{Could be false. Define }
-
-Note that $f^{-1}(\ar_0 + \ar_2) ≠ {\gbeats}(\ar_2) × \set{\ar_0}$: if ${\gbeats} = \set{(\ard_2, \ar_1), (\ar_1, \ar_0), (\ard_6, \ar_5), (\ar_5, \ar_4)}$, and $\ar_0 + \ard_2 = \ar_4 + \ard_6$, then $f^{-1}(\ar_0 + \ard_2) = f^{-1}(\ar_4 + \ard_6) = \set{(\ar_1, \ar_0), (\ar_5, \ar_4)}$ and ${\gbeats}(\ard_2) × \set{\ar_0} = \set{(\ar_1, \ar_0)}$.
-Also, note that $g(\ar_0)(\ar_0 + \argsd_2) ≠ {\gbeats}(\argsd_2) \cap {\gbeatsinv}(\ar_0)$. Consider ${\gbeats} = \set{(\ard_2, \ar_1), (\ar_1, \ar_0)}, \ar_2 = \ar_0 + \ard = \ar_0 + \ard_2$. Then, $(\ar_1, \ar_0) \in f^{-1}(\ar_0 + \ard)$, hence, $\ar_1 \in g(\ar_0)(\ar_0 + \ard)$, but ${\gbeats}(\ard) = \emptyset$.
+\commentOC{I leave the definition as is, but for the moment I only consider ${\gleadsto}$, a relation that does not depend on $i$; and I do not use $q(i)$.}
+An empirical theory for a normative theory is a tuple $(q, (\gleadsto[q(i)])_{q(i) \in q(I)}, \gbeats, \alldargs, \dbeats, +)$,
+with ${\gleadsto[q(i)]} \subseteq (\allargs × \Phi) \cap (\alldargs × \Phi)$, 
+${\gbeats} \subseteq \allargs × \allargs$,
+${\dbeats} \subseteq \alldargs × \allargs$ and is injective (thus $\forall \ar \in \allargs: {\dbeatsinv}(\ar)$ is a singleton or empty). 
+Define $\df \subseteq \allargs × \alldargs$ as $\df = {\dbeatsinv} \circ {\gbeatsinv}$. 
+The symbol $+$ in an empirical theory stands for a function $+: \bigcup_{\ar \in \allargs}(\set{s} × \df(\ar)) → \allargs$.
+As usual, $\ar + \ard$ means $+(\ar, \ard)$. 
+Define $\dfp \subseteq \allargs × \allargs$ as, $\forall \ar \in \allargs$: $\dfp(\ar) = \ar + \df(\ar) = \set{\ar + \ard \suchthat \ard \in \df(\ar)}$.
+An empirical theory must satisfy
+$\forall \ar \in {\gleadsto}(\allargs): \exists k \in \N^* \suchthat \dfp^k(\ar) = \emptyset$.
 
 \subsection{Falsifiability}
-\begin{proposition}
-	An empirical theory has only finite sets $\gargs[i, \phi]$, and an upper bound on their size exists that is independent of ${\ileadsto}$.
-\end{proposition}
-\begin{proof}
-	Given $i, \phi$. Observe that $\forall \ard: d^{i, \phi}(\ard) \subseteq {\gbeatsmt}(\ard)$. Thus, $d^{i, \phi}$ is finite. Also, the transitive closure through $\sigma^i$ changes a finite number of time, otherwise it is possible to build an infinite chain in ${\gbeatsmt}$.
-\end{proof}
-
-Given $i \in I, \phi \in \Phi, \ar_1, \ar_0 \in \allargs$, define $\ar_1 \ibeatse[!\phi] \ar_0$ iff $\exists \hist \in \allhist \suchthat \hist \text{ ends with } \set{\ar_1, \ar_0} \land \hist \nileadstosts \phi$.
+Given $i \in I, \phi \in \Phi, \ar_1, \ar_0 \in \allargs$, define $\ar_1 \ibeatsi \ar_0$ iff $\exists \hist \in \allhist \suchthat \set{\ar_1, \ar_0} \subseteq \histend \land \hist \nileadstosti \phi$.
 
 \begin{proposition}
 	$\forall i \in I, \phi \in \Phi, \ar_0 \in \allargs$:
 \begin{equation}
 	\label{eq:st-in-terms-of-e}
-	\ar_0 \nileadstosts \phi ⇔ [\exists \ar_1 \in \allargs \suchthat \ar_1 \ibeatse[!\phi] \ar_0].
+	\ar_0 \nileadstosti \phi ⇔ [\exists \ar_1 \in \allargs \suchthat \ar_1 \ibeatsi \ar_0].
 \end{equation}
 \end{proposition}
 \begin{proof}
-	By definition of ${\ileadstosts}$, $\ar_0 \ileadstosts \phi ⇔ \forall \hist \in \allhist \suchthat [\exists \ar_1 \in \allargs \suchthat \hist \text{ ends with } \set{\ar_1, \ar_0}]: \hist \ileadstosts \phi.$ Equivalently, $\ar_0 \nileadstosts \phi ⇔ \exists \hist \in \allhist \suchthat [\exists \ar_1 \suchthat \hist \text{ ends with } \set{\ar_1, \ar_0}] \land \hist \nileadstosts \phi$. This is also equivalent to $\ar_0 \nileadstosts \phi ⇔ \exists \hist \in \allhist, \ar_1 \in \allargs \suchthat \hist \text{ ends with } \set{\ar_1, \ar_0} \land \hist \nileadstosts \phi$. By definition of ${\ibeatse}$, this is the proposition to be proven.
+	By definition of ${\ileadstosti}$, $\ar_0 \ileadstosti \phi ⇔ \forall \hist \in \allhist \suchthat \ar_0 \in \histend: \hist \ileadstosti \phi$. 
+Equivalently, $\ar_0 \ileadstosti \phi ⇔ \forall \hist \in \allhist \suchthat [\exists \ar_1 \in \allargs \suchthat \set{\ar_1, \ar_0} \subseteq \histend]: \hist \ileadstosti \phi$. 
+Still equivalently, $\ar_0 \nileadstosti \phi ⇔ \exists \hist \in \allhist \suchthat [\exists \ar_1 \in \allargs \suchthat \set{\ar_1, \ar_0} \subseteq \histend] \land \hist \nileadstosti \phi$. 
+This can also be written: $\ar_0 \nileadstosti \phi ⇔ \exists \hist \in \allhist, \ar_1 \in \allargs \suchthat \set{\ar_1, \ar_0} \subseteq \histend \land \hist \nileadstosti \phi$. By definition of ${\ibeatsi}$, this is the proposition to be proven.
 \end{proof}
+
+Given $i \in I, \phi \in {\gleadsto}(\allargs), \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $d^{i, \phi}(\ar) \subseteq \alldargs$, as $d^{i, \phi}(\ar) = [{\dbeatsinv} \circ ({\gbeatsinv} \cap {\ibeatsiinv})](\ar)$.
+%Given $i \in I, \phi \in {\gleadsto}(\allargs), \ar \in \allargs, \ard \in \df(\ar)$, define the \emph{successors} of $(\ar, \ard)$ as $\sigma^{i, \phi}(\ar, \ard) = \set{\ar + \ard} × d^{i, \phi}(\ar + \ard)$. 
+Given $i \in I, \phi \in {\gleadsto}(\allargs)$, define $\gargs[i, \phi] \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dfp$: $\gargs[i, \phi] = \cup_{k \in \N} \dfp^k({\gleadstoinv}(\phi))$, where $\dfp^0$ is the identity function.
+
+%\begin{proposition}
+%	An empirical theory has only finite sets $\gargs[i, \phi]$, and an upper bound on their size exists that is independent of ${\ileadsto}$.
+%\end{proposition}
+%\begin{proof}
+%	Given $i, \phi$. Observe that $\forall \ard: d^{i, \phi}(\ard) \subseteq {\gbeatsmt}(\ard)$. Thus, $d^{i, \phi}$ is finite. Also, the transitive closure through $\sigma^i$ changes a finite number of time, otherwise it is possible to build an infinite chain in ${\gbeatsmt}$.
+%\end{proof}
 
 $\ar_0$ $i$-defends $\phi$ when ignoring $\args_1$ iff $\forall \hist \in \allhist: [\args_1 \cap \hist = \emptyset] ⇒ (\hist, \ar_0) \ileadstosts \phi$.
 $\ar_0$ $i$-defends $\phi$ under protection of $\args_2$ iff $\ar_0$ $i$-defends $\phi$ when ignoring $g(\ar_0)(\args_2)$.
 $\ar_0$ $i$-defends $\phi$ under d-protection of $\argsd_2$ iff $\ar_0$ $i$-defends $\phi$ when ignoring ${\gbeats}(\argsd_2) \cap {\gbeatsinv}(\ar_0)$.
-
-Given $i \in I, \phi \in {\gleadsto}(\allargs)$, define the $\phi$-protectors of $\ard$ as $d^{i, \phi}(\ard) = [{\gbeatsinv} \circ ({\gbeatsinv} \cap {\ibeatseinv[!\phi]})](\ard)$.
-Define the successors of $(\phi, \ar, \ard)$ as $\sigma^i(\phi, \ar, \ard) = \set{\phi} × \set{\ar + \ard} × d^{i, \phi}(\ard)$. Given $i \in I, \phi \in {\gleadsto}(\allargs)$, define $\gargs[i, \phi]$ as the transitive closure of $(\phi, \emptyset, \ar)$ under $\sigma^i$, with $\ar \gleadsto \phi$.
-\commentOC{Assuming only one $\ar$ leads to that $\phi$.}
-Define $\gargs[i, \phi] = \bigcup_{k \in 2\N} \gargs[i, \phi, k]$, and $\gargs = \cup_{i \in I, \phi \in {\gleadsto}(\allargs)} \gargs[i, \phi]$. 
 
 \begin{definition}[Conv. single-try]
 	$\forall i \in I, \phi \in {\gleadsto}(\allargs), (\phi, \ar, \ard) \in \gargs[i, \phi], \ar_0 = \ar + \ard: \ar_0$ $i$-defends $\phi$ under d-protection of $d^{i, \phi}(\ard)$.
@@ -501,7 +500,17 @@ Show that if the claim of the model is of a different form, then the model is no
 
 Extend the definition of additive single-answer theories to non-additive single-answer theories.
 
+An additive theory need not have freedom for defining planned attacks on additive terms: this should be a consequence on the planned attacks on defenses and on initial arguments only. This makes the theory easier to define, as only attacks on partial arguments are to be defined.
+
 \section{Empirical theories}
+\subsection{Simple to complex}
+From an additive single-answer empirical theory, we can define a function: $\forall \ar_1 \gbeats \ar_0: f(\ar_1, \ar_0) = \ar_0 + {\gbeatsinv}(\ar_1) = \set{\ar_0 + \ard_2 \suchthat \ard_2 \in {\gbeatsinv}(\ar_1)}$, and $f(\ar_1, \ar_0) = \emptyset$ otherwise. Thus, $f = \set{((\ar_1, \ar_0), \ar_2) \suchthat \exists \ard_2 \in \allargs \suchthat \ard_2 \gbeats \ar_1 \gbeats \ar_0 \land \ar_2 = \ar_0 + \ard_2}$.
+Also, from the previous definition, $g(\ar_0)(\ar_0 + \argsd_2) = dom(f^{-1}(\ar_0 + \argsd_2) \cap (\allargs × \set{\ar_0})) = {\gbeats}(\argsd_2) \cap {\gbeatsinv}(\ar_0)$ because $(\ar_1, \ar_0) \in f^{-1}(\ar_0 + \argsd_2) ⇔ \exists \ar_2 \in \ar_0 + \argsd_2 \suchthat \ar_2 \in f(\ar_1, \ar_0) ⇔ \ar_1 \gbeats \ar_0 \land \exists \ard \in \argsd_2 \suchthat \ard \gbeats \ar_1$.
+\commentOC{Could be false. Define }
+
+Note that $f^{-1}(\ar_0 + \ar_2) ≠ {\gbeats}(\ar_2) × \set{\ar_0}$: if ${\gbeats} = \set{(\ard_2, \ar_1), (\ar_1, \ar_0), (\ard_6, \ar_5), (\ar_5, \ar_4)}$, and $\ar_0 + \ard_2 = \ar_4 + \ard_6$, then $f^{-1}(\ar_0 + \ard_2) = f^{-1}(\ar_4 + \ard_6) = \set{(\ar_1, \ar_0), (\ar_5, \ar_4)}$ and ${\gbeats}(\ard_2) × \set{\ar_0} = \set{(\ar_1, \ar_0)}$.
+Also, note that $g(\ar_0)(\ar_0 + \argsd_2) ≠ {\gbeats}(\argsd_2) \cap {\gbeatsinv}(\ar_0)$. Consider ${\gbeats} = \set{(\ard_2, \ar_1), (\ar_1, \ar_0)}, \ar_2 = \ar_0 + \ard = \ar_0 + \ard_2$. Then, $(\ar_1, \ar_0) \in f^{-1}(\ar_0 + \ard)$, hence, $\ar_1 \in g(\ar_0)(\ar_0 + \ard)$, but ${\gbeats}(\ard) = \emptyset$.
+
 \subsection{Falsifiability}
 \commentOC{I want: An empirical theory for a normative theory is something like a normative and falsifiable claim. It is also configurable: it must be possible to guarantee that the falsification be easy (if the claim is false) depending on the kind of claim.}
 

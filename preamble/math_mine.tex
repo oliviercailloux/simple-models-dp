@@ -31,6 +31,7 @@
 }
 \NewDocumentCommand{\allhist}{}{\mathscr{S}^*}
 \NewDocumentCommand{\hist}{}{s^*}
+\NewDocumentCommand{\histend}{}{s^*_\mathit{end}}
 \NewDocumentCommand{\allprops}{}{T}
 \NewDocumentCommand{\prop}{}{t}
 \NewDocumentCommand{\propsure}{}{(t, \mathit{sure})}
@@ -72,6 +73,11 @@
 \NewDocumentCommand{\nileadstost}{O{}}{\not⇝^{#1}_\forall}
 \NewDocumentCommand{\ileadstoe}{O{}}{⇝^{#1}_\exists}
 \NewDocumentCommand{\nileadstoe}{O{}}{\not⇝^{#1}_\exists}
+%model
+\NewDocumentCommand{\gleadsto}{O{}}{⇝^{#1}_γ}
+\NewDocumentCommand{\gleadstoinv}{}{⇝^{-1}_γ}
+%\newcommand{\gleadsto}[1][γ]{\mathbin{\rightsquigarrow_{#1}}}
+\NewDocumentCommand{\ibeatse}{O{}}{⊳^{#1}_\exists}
 \NewDocumentCommand \ibeatseinv { o }{%TODO improve
 	\IfValueTF{#1}{%
 		{⊳_\exists^{#1}}^{-1}%
@@ -79,13 +85,15 @@
 		⊳_\exists^{-1}%
 	}%
 }
-%model
-\NewDocumentCommand{\gleadsto}{O{}}{⇝^{#1}_γ}
-\NewDocumentCommand{\gleadstoinv}{}{⇝^{-1}_γ}
-%\newcommand{\gleadsto}[1][γ]{\mathbin{\rightsquigarrow_{#1}}}
-\NewDocumentCommand{\ibeatse}{O{}}{⊳^{#1}_\exists}
-\NewDocumentCommand{\gbeats}{}{⊳_γ}
-\NewDocumentCommand{\ngbeats}{}{\not⊳_γ}
+\NewDocumentCommand{\ibeatsi}{}{⊳^{!\phi}_i}
+\NewDocumentCommand{\ibeatsiinv}{}{⊳_i^{{!\phi}^{-1}}}
+\NewDocumentCommand{\gbeats}{}{⊳_a}
+\NewDocumentCommand{\ngbeats}{}{\not⊳_a}
+\NewDocumentCommand{\dbeats}{}{⊳_d}
+\NewDocumentCommand{\df}{}{\mathit{def}}
+\NewDocumentCommand{\dfp}{}{\mathit{def}_+}
+\NewDocumentCommand{\dbeatsinv}{}{⊳_d^{-1}}
+\NewDocumentCommand{\alldargs}{}{\mathscr{S}^d}
 \NewDocumentCommand{\gbeatsstar}{}{⊳_*}
 \NewDocumentCommand{\gbeatsinv}{o}{⊳^{-1}_γ}
 \NewDocumentCommand{\gbeatsmt}{o}{⊳^{-2}_γ}%minus two
