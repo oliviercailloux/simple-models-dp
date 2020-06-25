@@ -129,7 +129,7 @@ Theories as defined here do not mandate Theory completeness. This is good for tw
 An empirical theory for a normative theory is a tuple $(q, (\gleadsto[q(i)])_{q(i) \in q(I)}, \gbeats, \alldargs, \dbeats, +)$,
 with ${\gleadsto[q(i)]} \subseteq (\allargs × \Phi) \cap (\alldargs × \Phi)$, 
 ${\gbeats} \subseteq \allargs × \allargs$,
-${\dbeats} \subseteq \alldargs × \allargs$ and is injective (thus $\forall \ar \in \allargs: {\dbeatsinv}(\ar)$ is a singleton or empty). 
+${\dbeats} \subseteq \alldargs × \allargs$ and is injective and its range equals ${\gbeatsinv}(\allargs)$, the domain of ${\gbeats}$ (thus $\forall \ar_1 \suchthat [\exists \ar_0 \suchthat \ar_1 \gbeats \ar_0]$: ${\dbeatsinv}(\ar_1)$ is a singleton). 
 Define $\df \subseteq \allargs × \alldargs$ as $\df = {\dbeatsinv} \circ {\gbeatsinv}$. 
 The symbol $+$ in an empirical theory stands for a function $+: \bigcup_{\ar \in \allargs}(\set{s} × \df(\ar)) → \allargs$.
 As usual, $\ar + \ard$ means $+(\ar, \ard)$. 
@@ -139,6 +139,28 @@ $\forall \ar \in {\gleadsto}(\allargs): \exists k \in \N^* \suchthat \dfp^k(\ar)
 
 \subsection{Falsifiability}
 Given $i \in I, \phi \in \Phi, \ar_1, \ar_0 \in \allargs$, define $\ar_1 \ibeatsi \ar_0$ iff $\exists \hist \in \allhist \suchthat \set{\ar_1, \ar_0} \subseteq \histend \land \hist \nileadstosti \phi$.
+
+Given $i \in I, \phi \in {\gleadsto}(\allargs), \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $d^{i, \phi}(\ar) \subseteq \alldargs$, as $d^{i, \phi}(\ar) = [{\dbeatsinv} \circ ({\gbeatsinv} \cap {\ibeatsiinv})](\ar)$. Define $d^{i, \phi}_+$ as $d^{i, \phi}_+(\ar) = \ar + d^{i, \phi}(\ar)$.
+Given $i \in I, \phi \in {\gleadsto}(\allargs)$, define $\gargs[i, \phi] \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $d^{i, \phi}_+$: $\gargs[i, \phi] = \cup_{k \in \N} (d^{i, \phi}_+)^k({\gleadstoinv}(\phi))$, where $(d^{i, \phi}_+)^0$ is the identity function.
+
+Given $\hist \in \allhist$, $\hist(\intvl{1, l(\hist)})$, where $l(\hist) \in \N$ is the length of the sequence $\hist$, denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$. Abusing notation, given $\args_1 \subseteq \allargs$, I write $\args_1 \cap \hist$ to designate $\args_1 \cap \hist(\intvl{1, l(\hist)})$, therefore using simply $\hist$ in that expression to denote the \emph{range} of $\hist$.
+
+$\ar$ $i$-defends $\phi$ iff $\forall \hist \in \allhist \suchthat \left[\ar \in \histend \land {\gbeatsinv}(\ar) \cap \hist = \emptyset\right]: \hist \ileadstosti \phi$.
+
+\begin{definition}[Convincingness]
+	$\forall i \in I, \phi \in {\gleadsto}(\allargs), \ar \in \gargs[i, \phi]: \ar$ $i$-defends $\phi$.
+\end{definition}
+
+A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hist) \in I × {\gleadsto}(\allargs) × \allhist$ such that $\exists \ar \in \histend \cap \gargs[i, \phi] \suchthat {\gbeatsinv}(\ar) \cap \hist = \emptyset \land \hist \nileadstosti \phi$.
+
+\begin{theorem}
+	An empirical theory is convincing iff it has no falsification instances.
+\end{theorem}
+\begin{proof}
+	For all $i \in I, \phi \in {\gleadsto}(\allargs)$: $\exists \ar \in \gargs[i, \phi]$ that does not $i$-defend $\phi$ iff $\exists \ar \in \gargs[i, \phi], \hist \in \allhist \suchthat \left[\ar \in \histend \land {\gbeatsinv}(\ar) \cap \hist = \emptyset \land \hist \nileadstosti \phi\right]$ iff $\exists \hist \in \allhist$ such that $(i, \phi, \hist)$ is a falsification instance.
+
+	For all $i \in I, \phi \in {\gleadsto}(\allargs)$, the following equivalences hold. $\forall \ar \in \gargs[i, \phi]$, $\ar$ $i$-defends $\phi$ iff $\forall \ar \in \gargs[i, \phi], \hist \suchthat \left[\ar \in \histend \land {\gbeatsinv}(\ar) \cap \hist = \emptyset\right]$, $\hist \ileadstosti \phi$ iff $\forall \hist \suchthat \left[\ar \in \histend \land {\gbeatsinv}(\ar) \cap \hist = \emptyset\right]$, $(i, \phi, \hist)$ is not a falsification instance.
+\end{proof}
 
 \begin{proposition}
 	$\forall i \in I, \phi \in \Phi, \ar_0 \in \allargs$:
@@ -151,35 +173,15 @@ Given $i \in I, \phi \in \Phi, \ar_1, \ar_0 \in \allargs$, define $\ar_1 \ibeats
 	By definition of ${\ileadstosti}$, $\ar_0 \ileadstosti \phi ⇔ \forall \hist \in \allhist \suchthat \ar_0 \in \histend: \hist \ileadstosti \phi$. 
 Equivalently, $\ar_0 \ileadstosti \phi ⇔ \forall \hist \in \allhist \suchthat [\exists \ar_1 \in \allargs \suchthat \set{\ar_1, \ar_0} \subseteq \histend]: \hist \ileadstosti \phi$. 
 Still equivalently, $\ar_0 \nileadstosti \phi ⇔ \exists \hist \in \allhist \suchthat [\exists \ar_1 \in \allargs \suchthat \set{\ar_1, \ar_0} \subseteq \histend] \land \hist \nileadstosti \phi$. 
-This can also be written: $\ar_0 \nileadstosti \phi ⇔ \exists \hist \in \allhist, \ar_1 \in \allargs \suchthat \set{\ar_1, \ar_0} \subseteq \histend \land \hist \nileadstosti \phi$. By definition of ${\ibeatsi}$, this is the proposition to be proven.
+It can also be written $\ar_0 \nileadstosti \phi ⇔ \exists \hist \in \allhist, \ar_1 \in \allargs \suchthat \set{\ar_1, \ar_0} \subseteq \histend \land \hist \nileadstosti \phi$. By definition of ${\ibeatsi}$, this is the proposition to be proven.
 \end{proof}
 
-Given $i \in I, \phi \in {\gleadsto}(\allargs), \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $d^{i, \phi}(\ar) \subseteq \alldargs$, as $d^{i, \phi}(\ar) = [{\dbeatsinv} \circ ({\gbeatsinv} \cap {\ibeatsiinv})](\ar)$.
-Given $i \in I, \phi \in {\gleadsto}(\allargs)$, define $\gargs[i, \phi] \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dfp$: $\gargs[i, \phi] = \cup_{k \in \N} \dfp^k({\gleadstoinv}(\phi))$, where $\dfp^0$ is the identity function.
-
-$\ar_0$ $i$-defends $\phi$ when ignoring $\args_1$ iff $\forall \hist \in \allhist: [\args_1 \cap \hist = \emptyset] ⇒ (\hist, \ar_0) \ileadstosts \phi$.
-$\ar_0$ $i$-defends $\phi$ under protection of $\args_2$ iff $\ar_0$ $i$-defends $\phi$ when ignoring $g(\ar_0)(\args_2)$.
-$\ar_0$ $i$-defends $\phi$ under d-protection of $\argsd_2$ iff $\ar_0$ $i$-defends $\phi$ when ignoring ${\gbeats}(\argsd_2) \cap {\gbeatsinv}(\ar_0)$.
-
-\begin{definition}[Conv. single-try]
-	$\forall i \in I, \phi \in {\gleadsto}(\allargs), (\phi, \ar, \ard) \in \gargs[i, \phi], \ar_0 = \ar + \ard: \ar_0$ $i$-defends $\phi$ under d-protection of $d^{i, \phi}(\ard)$.
-\end{definition}
-
+\subsection{Vrac from here}
 1. Checkpath: this is completely general.
 2. Only using model that counter-argues: requires a sort of path independence. (arguments can be condensed: s5, s4, s1 => s1big)
 
 I also write that $\hist \ibeatse[!\phi] \ar_0$ iff $\exists \ar_1 \in \allargs \suchthat (\hist \text{ ends with } \set{\ar_1, \ar_0}) \land (\ar_1 \ibeatse[!\phi] \ar_0)$.
 
-A falsification instance of an empirical theory is a tuple $(i, \phi, \ar, \ard, \hist, \ar_1)$ such that $(\phi, \ar, \ard) \in \gargs[i, \phi]$ and, defining $\ar_0 = \ar + \ard$: $[{\gbeatsinv}(\ard) \cap \hist = \emptyset] \land [\hist \text{ ends with } \set{\ar_1, \ar_0}] \land \ar_1 \ibeatse[!\phi] \ar_0]$ (the theory says that this history should defend $\phi$ under prot of something and that is not in the history).
-
-\begin{theorem}
-	An empirical theory is conv.\ single-try iff it has no falsification instances.
-\end{theorem}
-\begin{proof}
-	Given $i, \phi, (\phi, \ar, \ard) \in \gargs[i, \phi]$. Define $\args_1 = {\gbeats}(d^{i, \phi}(\ard)) \cap {\gbeatsinv}(\ar)$. Now $\ar$ $i$-defends $\phi$ ignoring $\args_1$ is equivalent to: $\forall \hist: \hist \cap \args_1 = \emptyset ⇒ (\hist, \ar) \ileadstosts \phi$. Negation: $\exists \hist \suchthat \hist \cap \args_1 = \emptyset \land (\hist, \ar) \nileadstosts \phi$. TODO prove that equivalent to no falsification.
-\end{proof}
-
-\subsection{Vrac from here}
 An empirical theory is defined only given some normative theory. In the following, any reference to an empirical theory should always be understood as an empirical theory for some (sometimes implicitly defined) normative theory.
 
 As above,  $\gleadsto$ will be used instead of $\gleadsto[q(i)]$ when it creates no ambiguity, with the understanding that this symbol result of applying a function of $q(i)$; and the binding $\forall i \in I$ will generally be omitted.
