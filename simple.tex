@@ -158,22 +158,6 @@ A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hi
 \end{theorem}
 \begin{proof}
 	For all $i \in I, \phi \in {\gleadsto}(\allargs)$: $\exists \ar \in \gargs[i, \phi]$ that does not $i$-defend $\phi$ iff $\exists \ar \in \gargs[i, \phi], \hist \in \allhist \suchthat \left[\ar \in \histend \land {\gbeatsinv}(\ar) \cap \hist = \emptyset \land \hist \nileadstosti \phi\right]$ iff $\exists \hist \in \allhist$ such that $(i, \phi, \hist)$ is a falsification instance.
-
-	For all $i \in I, \phi \in {\gleadsto}(\allargs)$, the following equivalences hold. $\forall \ar \in \gargs[i, \phi]$, $\ar$ $i$-defends $\phi$ iff $\forall \ar \in \gargs[i, \phi], \hist \suchthat \left[\ar \in \histend \land {\gbeatsinv}(\ar) \cap \hist = \emptyset\right]$, $\hist \ileadstosti \phi$ iff $\forall \hist \suchthat \left[\ar \in \histend \land {\gbeatsinv}(\ar) \cap \hist = \emptyset\right]$, $(i, \phi, \hist)$ is not a falsification instance.
-\end{proof}
-
-\begin{proposition}
-	$\forall i \in I, \phi \in \Phi, \ar_0 \in \allargs$:
-\begin{equation}
-	\label{eq:st-in-terms-of-e}
-	\ar_0 \nileadstosti \phi ⇔ [\exists \ar_1 \in \allargs \suchthat \ar_1 \ibeatsi \ar_0].
-\end{equation}
-\end{proposition}
-\begin{proof}
-	By definition of ${\ileadstosti}$, $\ar_0 \ileadstosti \phi ⇔ \forall \hist \in \allhist \suchthat \ar_0 \in \histend: \hist \ileadstosti \phi$. 
-Equivalently, $\ar_0 \ileadstosti \phi ⇔ \forall \hist \in \allhist \suchthat [\exists \ar_1 \in \allargs \suchthat \set{\ar_1, \ar_0} \subseteq \histend]: \hist \ileadstosti \phi$. 
-Still equivalently, $\ar_0 \nileadstosti \phi ⇔ \exists \hist \in \allhist \suchthat [\exists \ar_1 \in \allargs \suchthat \set{\ar_1, \ar_0} \subseteq \histend] \land \hist \nileadstosti \phi$. 
-It can also be written $\ar_0 \nileadstosti \phi ⇔ \exists \hist \in \allhist, \ar_1 \in \allargs \suchthat \set{\ar_1, \ar_0} \subseteq \histend \land \hist \nileadstosti \phi$. By definition of ${\ibeatsi}$, this is the proposition to be proven.
 \end{proof}
 
 \subsection{Vrac from here}
