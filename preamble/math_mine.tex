@@ -75,8 +75,8 @@
 \NewDocumentCommand{\nileadstoe}{O{}}{\not⇝^{#1}_\exists}
 %model
 \NewDocumentCommand{\gleadsto}{O{}}{⇝^{#1}_γ}
+\NewDocumentCommand{\gPhi}{}{{⇝_γ}(\allargs)}
 \NewDocumentCommand{\gleadstoinv}{}{⇝^{-1}_γ}
-%\newcommand{\gleadsto}[1][γ]{\mathbin{\rightsquigarrow_{#1}}}
 \NewDocumentCommand{\ibeatse}{O{}}{⊳^{#1}_\exists}
 \NewDocumentCommand \ibeatseinv { o }{%TODO improve
 	\IfValueTF{#1}{%
@@ -92,6 +92,8 @@
 \NewDocumentCommand{\dbeats}{}{⊳_d}
 \NewDocumentCommand{\df}{}{\mathit{def}}
 \NewDocumentCommand{\dfp}{}{\mathit{def}_+}
+\NewDocumentCommand{\di}{}{d^{i, \phi}}
+\NewDocumentCommand{\dip}{}{d^{i, \phi}_+}
 \NewDocumentCommand{\dbeatsinv}{}{⊳_d^{-1}}
 \NewDocumentCommand{\alldargs}{}{\mathscr{S}^d}
 \NewDocumentCommand{\gbeatsstar}{}{⊳_*}
