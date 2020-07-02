@@ -138,12 +138,14 @@ An empirical theory must satisfy
 $\forall \ar \in \gPhi: \exists k \in \N^* \suchthat \dfp^k(\ar) = \emptyset$.
 
 \subsection{Falsifiability}
-Given $i \in I, \phi \in \Phi, \ar_1, \ar_0 \in \allargs$, define $\ar_1 \ibeatsi \ar_0$ iff $\exists \hist \in \allhist \suchthat \set{\ar_1, \ar_0} \subseteq \histend \land \hist \nileadstosti \phi$, and say that $\ar_1$ is an effective attack against $\ar_0$ (from $i$’s perspective).
+Given $\hist \in \allhist$, $\hist(\intvl{1, l(\hist)})$, where $l(\hist) \in \N$ is the length of the sequence $\hist$, denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$. Abusing notation, given $\args \subseteq \allargs$, I write $\args \cap \hist$ to designate $\args \cap \hist(\intvl{1, l(\hist)})$, therefore using simply $\hist$ in that expression to denote the \emph{range} of $\hist$.
+
+Given $i \in I, \phi \in \Phi, \ar_1, \ar_0 \in \allargs, \args \subseteq \allargs$, with $\args$ finite, define recursively, on the basis of the cardinality of $\args$: $\emptyset \nibeatsi \ar_0$, and $\args \ibeatsi \ar_0$ iff $[\args \subseteq {\gbeatsinv}(\ar_0)] \land [\exists \hist \in \allhist \suchthat (\hist \cap {\gbeatsinv}(\ar_0) \subseteq \args \land \ar_0 \in \histend)] \land [\forall \args' \subset \args: \args' \nibeatsi \ar_0]$.
+
+TODO claim that if $\hist \nileadstoi \phi$, with $\ar_1, \ar'_1 \in \hist$ and $\ar_0 \in \histend$, then $\ar_2$ is among the defensors, or $\ar'_2$ is.
 
 Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $\di(\ar) \subseteq \alldargs$, as $\di(\ar) = [{\dbeatsinv} \circ ({\gbeatsinv} \cap {\ibeatsiinv})](\ar)$. Define $\dip: \allargs → \allargs$ as $\dip(\ar) = \ar + \di(\ar)$.
 Given $i \in I, \phi \in \gPhi$, define $\gargs[i, \phi] \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs[i, \phi] = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\phi))$, where $(\dip)^0$ is the identity function over $\allargs$.
-
-Given $\hist \in \allhist$, $\hist(\intvl{1, l(\hist)})$, where $l(\hist) \in \N$ is the length of the sequence $\hist$, denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$. Abusing notation, given $\args_1 \subseteq \allargs$, I write $\args_1 \cap \hist$ to designate $\args_1 \cap \hist(\intvl{1, l(\hist)})$, therefore using simply $\hist$ in that expression to denote the \emph{range} of $\hist$.
 
 $\ar$ $i$-defends $\phi$ iff $\forall \hist \in \allhist \suchthat \left[\ar \in \histend \land {\gbeatsinv}(\ar) \cap \hist = \emptyset\right]: \hist \ileadstosti \phi$.
 
