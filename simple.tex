@@ -140,33 +140,43 @@ $\forall \ar \in \gPhi: \exists k \in \N^* \suchthat \dfp^k(\ar) = \emptyset$.
 \subsection{Falsifiability}
 Given $\hist \in \allhist$, $\hist(\intvl{1, l(\hist)})$, where $l(\hist) \in \N$ is the length of the sequence $\hist$, denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$. Abusing notation, given $\args \subseteq \allargs$, I write $\args \cap \hist$ to designate $\args \cap \hist(\intvl{1, l(\hist)})$, therefore using simply $\hist$ in that expression to denote the \emph{range} of $\hist$.
 
-Given $i \in I, \phi \in \Phi, \ar_1, \ar_0 \in \allargs, \args \subseteq \allargs$, with $\args$ finite, define recursively, on the basis of the cardinality of $\args$: $\emptyset \nibeatsi \ar_0$, and $\args \ibeatsi \ar_0$ iff $[\args \subseteq {\gbeatsinv}(\ar_0)] \land [\exists \hist \in \allhist \suchthat (\hist \cap {\gbeatsinv}(\ar_0) \subseteq \args \land \ar_0 \in \histend)] \land [\forall \args' \subset \args: \args' \nibeatsi \ar_0]$.
+Given $i \in I, \phi \in \Phi, \ar_1, \ar_0 \in \allargs$, define $\ar_1 \ibeatsi \ar_0$ iff $\exists \hist \in \allhist \suchthat {\gbeatsinv}(\ar_0) \cap \hist = \set{\ar_1} \land \ar_0 \in \histend \land \hist \nileadstoi \phi$.
 
-TODO claim that if $\hist \nileadstoi \phi$, with $\ar_1, \ar'_1 \in \hist$ and $\ar_0 \in \histend$, then $\ar_2$ is among the defensors, or $\ar'_2$ is.
-
-Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $\di(\ar) \subseteq \alldargs$, as $\di(\ar) = [{\dbeatsinv} \circ ({\gbeatsinv} \cap {\ibeatsiinv})](\ar)$. Define $\dip: \allargs → \allargs$ as $\dip(\ar) = \ar + \di(\ar)$.
+Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $\di(\ar) \subseteq \alldargs$, as $\di(\ar) = [{\dbeatsinv} \circ {\ibeatsiinv}](\ar)$. Define $\dip: \allargs → \allargs$ as $\dip(\ar) = \ar + \di(\ar)$.
 Given $i \in I, \phi \in \gPhi$, define $\gargs[i, \phi] \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs[i, \phi] = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\phi))$, where $(\dip)^0$ is the identity function over $\allargs$.
 
-$\ar$ $i$-defends $\phi$ iff $\forall \hist \in \allhist \suchthat \left[\ar \in \histend \land {\gbeatsinv}(\ar) \cap \hist = \emptyset\right]: \hist \ileadstosti \phi$.
+$\ar$ $i$-defends $\phi$ iff $\forall \hist \in \allhist \suchthat \left[\ar \in \histend \land {\gbeatsinv}(\ar) \cap \hist = \emptyset\right]: \hist \ileadstosti \phi$. $\ar_0$ recursively $i$-defends $\phi$ iff $\forall \ar \in \cup_{k \in \N}(\dip)^k(\ar_0)$: $\ar$ $i$-defends $\phi$.
 
 \begin{definition}[Convincingness]
 	$\forall i \in I, \phi \in \gPhi, \ar \in \gargs[i, \phi]: \ar$ $i$-defends $\phi$.
 \end{definition}
 
-A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hist) \in I × \gPhi × \allhist$ such that $\exists \ar \in (\histend \cap \gargs[i, \phi]) \suchthat {\gbeatsinv}(\ar) \cap \hist = \emptyset \land \hist \nileadstosti \phi$.
+A \emph{convincingness falsification instance} of an empirical theory is a tuple $(i, \phi, \hist) \in I × \gPhi × \allhist$ such that $\exists \ar \in (\histend \cap \gargs[i, \phi]) \suchthat {\gbeatsinv}(\ar) \cap \hist = \emptyset \land \hist \nileadstosti \phi$.
 
 \begin{theorem}
-	An empirical theory is convincing iff it has no falsification instances.
+	An empirical theory is convincing iff it has no convincingness falsification instances.
 \end{theorem}
 \begin{proof}
-	For all $i \in I, \phi \in \gPhi$: $\exists \ar \in \gargs[i, \phi]$ that does not $i$-defend $\phi$ iff $\exists \ar \in \gargs[i, \phi], \hist \in \allhist \suchthat \left[\ar \in \histend \land {\gbeatsinv}(\ar) \cap \hist = \emptyset \land \hist \nileadstosti \phi\right]$ iff $\exists \hist \in \allhist$ such that $(i, \phi, \hist)$ is a falsification instance.
+	For all $i \in I, \phi \in \gPhi$: $\exists \ar \in \gargs[i, \phi]$ that does not $i$-defend $\phi$ iff $\exists \ar \in \gargs[i, \phi], \hist \in \allhist \suchthat \left[\ar \in \histend \land {\gbeatsinv}(\ar) \cap \hist = \emptyset \land \hist \nileadstosti \phi\right]$ iff $\exists \hist \in \allhist$ such that $(i, \phi, \hist)$ is a convincingness falsification instance.
 \end{proof}
+
+\begin{definition}[Unnecessary coalitions]
+	$\forall i \in I, \phi \in \gPhi, \hist \in \allhist, \ar_0 \in \gargs[i, \phi], \set{\ar_1, \ar'_1} \subseteq {\gbeatsinv}(\ar_0) \cap \hist, \ar_0 \in \histend, \hist \nileadstoi \phi$: $\exists \ar_2 \in {\dbeatsinv}(\set{\ar_1, \ar'_1})$ such that $\ar_2$ recursively $i$-defends $\phi$.
+\end{definition}
 
 \begin{definition}[Validity]
 	An empirical theory is \emph{valid} iff $\forall i \in I, \phi \in \gPhi: [\phi \in \iPhi \land ¬\phi \notin \iPhi]$.
 \end{definition}
 
+Possible easy approach: If $\args \ibeatsi \ar_0$, then both $\ar_1 \ibeatsi \ar_0$ and $\ar'_1$.
+
+Sophistication: when $\args = \set{\ar_1, \ar'_1}$ attack $\ar_0$, it is too demanding to ask that both $\ar_2$ and $\ar'_2$ defend $\phi$. Perhaps $\ar_2$ does but $\ar'_2$ fails (and $\ar'_2 + \ar_2$ as well) because it confuses $i$, which finds $\ar'_1$ irrelevant or hard to understand. To relax the claim, could define that $\ar_1$ seems ineffective against $\ar_0$ iff $\exists \hist \suchthat \set{\ar_1, \ar_0} = \histend \land \hist \ileadstosti \phi$. If so, and if $\args \ibeatsi \ar_0$, then $\ar'_2$ must be in the defensors. This supplementary condition (about ineffectivity) is there to show that $\ar'_1$ plays at least some role in the attack, because the theory must not claim that $\ar'_2$ defends $\phi$ when $\ar'_1$ is not really an attacker, which it would seem to be if $\args \ibeatsi \ar_0$ because of $\ar_1$. More generally, $\args$ seems ineffective against $\ar_0$ iff $\exists \hist = (…, \args, \ar_0) \suchthat \hist \ileadstosti \phi$. If so, and if $\args \cup \set{\ar_1} \ibeatsi \ar_0$, then $\ar_2$ must be in the defensors.
+
+TODO implement the sophisticated approach with: $\args \cup \ar_1 att \ar_0 \land \args$ seems uneff implies $\ar_1 \ibeatsi \ar_0$. (Here att stands for $\ibeatsi$ for coalitions.) Check that it works for coalitions of more than two.
+
 \begin{remark}[TODO]
+	I could make that claim (unnecessary coalitions) stronger by mandating that if $\ar_0$ fails, that must be because some $\ar_1$ always attacks $\ar_0$, in the sense that when $\ar_1$ and $\ar_0$ are in $\histend$, then $¬\phi$. Such a claim largely eases falsification. But this is too demanding: $\ar_1$ may be a not-so-great argument that does sometimes contradict $\ar_0$ but not systematically, and that $\ar_2$ can reply to convincingly.
+	
 	$\ar_1 \ibeatsi \ar_0$ only when $\ar_1$ att $\ar_0$ alone (among those planned attacks of $\ar_0$), but $\ar_1$ need not necessarily be at the end of $\hist$. Thus, ${\ibeatsi}$ is a theoretical claim (that other arguments do not matter and that $\ar_1$ is indeed responsible for the change of mind), and $\ar_1 \ibeatsi \ar_0 ⇒ \ar_1 \gbeats \ar_0$.
 	
 	Also, a coalition can attack $\ar_0$. Required because could have coal together attacks $\ar_0$ but individual arguments do not. Thus, I am interested in minimal coalitions that attack. For those, the theory must be able to answer with the sum of its replies (in which order?).
@@ -198,20 +208,10 @@ Thus, falsification: hist, ar1=> hist', ar1' => hist'', where hist uses ar1 and 
 \begin{proof}
 	\commentOC{This might be false. Consider ${\gbeats} = \set{(\ar_1, \ar_0)}, {\dbeats} = \set{(\ar_2, \ar_1)}, (\ar_1, \ar_0, \ar'_1) \ileadstoi ¬\phi$. There is no decisive argument in $\gargs[i, \phi]$ as $\ar'_1 \ibeatsi \ar_0$, but no falsification instance as $\hist = (\ar_1, \ar_0, \ar'_1)$ includes $\ar_1$. In such a situation, $\ar_1$ should be considered as attacking $\ar_0$, as (from the model pov) it is $\ar_1$ which makes $i$ fail to adopt $\phi$.}
 	
-	For all $i \in I, \phi \in \gPhi$, suffices to show that for some $\ar \in \gargs[i, \phi]$, $\ar \ileadstosti \phi$.
+	For all $i \in I, \phi \in \gPhi$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstosti \phi$. (Actually, $\ar \in \dfp^k(\ar_0)$ for some $k$.)
 	
-	Consider any $\ar_0 \gleadsto \phi$.
-	By definition of $\dip$, $\forall k \in \N^*: (\dip)^k(\ar_0) \subseteq \dfp^k(\ar_0)$.
-	By definition of an empirical theory, $\exists k \in \N^* \suchthat \dfp^k(\ar_0) = \emptyset$. 
-	Therefore, $\exists k \in \N^* \suchthat (\dip)^k(\ar_0) = \emptyset$. 
-	Define $l = \min \set{k \in \N^* \suchthat (\dip)^k(\ar_0) = \emptyset}$.
-	
-	Consider any $\ar \in (\dip)^{l-1}(\ar_0)$, and let us show that $\ar \ileadstosti \phi$. 
-	
-	If $\exists \ar_1 \in \allargs \suchthat \ar_1 \ibeatsi \ar$, then $\exists \hist \in \allhist \suchthat \set{\ar_1, \ar} \subseteq \histend \land \hist \nileadstosti \phi$, and a falsification instance $(i, \phi, \hist)$ is found, which contradicts convincingness. \commentOC{Unless $\hist$ contains some planned attack!}
-	Therefore, no $\ar_1 \ibeatsi \ar$.
-	
-	Because $\ar \in \gargs[i, \phi]$, $\ar$ $i$-defends $\phi$. Furthermore, ${\gbeatsinv}(\ar) = \emptyset$, because by definition of an empirical theory, if $\ar_1 \gbeats \ar$, then $\ar_2 \dbeats \ar_1$, which contradicts $\dip$ NO!
+	Lemma: if $\ar_0$ recursively $i$-defends $\phi$, then either $\ar_0$ is decisive, or $\ard_2 \dbeats \ar_1 \gbeats \ar_0$ with $\ar_2 = \ar_0 + \ard_2$ recursively $i$-defending $\phi$ and $\ar_2 \in \dfp(\ar_0)$.
+	If $\ar_0$ is not decisive, and because $\ar_0$ defends, some $\hist$ ending with $\ar_0$ includes some $\ar_1 \gbeats \ar_0$. If this is the only one, then $\ar_1 \ibeatsi \ar_0$, and $\ar_2$ recursively defends. If it is not the only one, use the no coalition property.
 \end{proof}
 
 \subsection{Vrac from here}
