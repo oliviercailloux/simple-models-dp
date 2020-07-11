@@ -31,7 +31,9 @@
 }
 \NewDocumentCommand{\allhist}{}{\mathscr{S}^*}
 \NewDocumentCommand{\hist}{}{s^*}
+\NewDocumentCommand{\histp}{}{s^{*\prime}}
 \NewDocumentCommand{\histend}{}{s^*_\mathit{end}}
+\NewDocumentCommand{\histpend}{}{s^{*\prime}_\mathit{end}}
 \NewDocumentCommand{\allprops}{}{T}
 \NewDocumentCommand{\prop}{}{t}
 \NewDocumentCommand{\propsure}{}{(t, \mathit{sure})}
@@ -76,7 +78,7 @@
 %model
 \NewDocumentCommand{\gleadsto}{O{}}{⇝^{#1}_γ}
 \NewDocumentCommand{\gPhi}{}{{⇝_γ}(\allargs)}
-\NewDocumentCommand{\gleadstoinv}{}{⇝^{-1}_γ}
+\NewDocumentCommand{\gleadstoinv}{}{{⇝^{-1}_γ}}
 \NewDocumentCommand{\ibeatse}{O{}}{⊳^{#1}_\exists}
 \NewDocumentCommand \ibeatseinv { o }{%TODO improve
 	\IfValueTF{#1}{%
@@ -95,13 +97,14 @@
 \NewDocumentCommand{\dfp}{}{\mathit{def}_+}
 \NewDocumentCommand{\di}{}{d^{i, \phi}}
 \NewDocumentCommand{\dip}{}{d^{i, \phi}_+}
-\NewDocumentCommand{\dbeatsinv}{}{⊳_d^{-1}}
+\NewDocumentCommand{\dbeatsinv}{}{{⊳_d^{-1}}}
 \NewDocumentCommand{\alldargs}{}{\mathscr{S}^d}
 \NewDocumentCommand{\gbeatsstar}{}{⊳_*}
-\NewDocumentCommand{\gbeatsinv}{o}{⊳^{-1}_a}
+\NewDocumentCommand{\gbeatsinv}{o}{{⊳^{-1}_a}}
 \NewDocumentCommand{\gbeatsmt}{o}{⊳^{-2}_γ}%minus two
 \NewDocumentCommand{\gbeatsstarinv}{o}{⊳^{-1}_*}
 \NewDocumentCommand{\mPhi}{}{\Phi_\gamma}
+\NewDocumentCommand{\sinef}{}{\bowtie^{i, \phi}}
 
 %\newcommand{\ibeatseinv}{\mathbin{\vartriangleright_\exists^{-1}}}
 %\newcommand{\ibeatse}[1][]{\mathbin{\vartriangleright_\exists^{#1}}}
@@ -117,7 +120,6 @@
 \newcommand{\mbeats}[1][\eta]{\mathbin{\vartriangleright_{#1}}}
 
 \newcommand{\argsdec}{S_\textnormal{decisive}}
-\newcommand{\alltopic}{T^*}
 \newcommand{\iposs}{T_i}
 \newcommand{\ipnsure}{\boldsymbol{T}^\textbf{¬sure}_i}%provably not sure
 \newcommand{\ipposs}{\boldsymbol{T}^\textbf{p}_i}%provably poss

@@ -128,91 +128,82 @@ Theories as defined here do not mandate Theory completeness. This is good for tw
 \commentOC{I leave the definition as is, but for the moment I only consider ${\gleadsto}$, a relation that does not depend on $i$; and I do not use $q(i)$.}
 An empirical theory for a normative theory is a tuple $(q, (\gleadsto[q(i)])_{q(i) \in q(I)}, \gbeats, \alldargs, \dbeats, +)$,
 with ${\gleadsto[q(i)]} \subseteq (\allargs × \Phi) \cap (\alldargs × \Phi)$, 
-${\gbeats} \subseteq \allargs × \allargs$,
-${\dbeats} \subseteq \alldargs × \allargs$ and is injective and its range equals ${\gbeatsinv}(\allargs)$, the domain of ${\gbeats}$ (thus $\forall \ar_1 \suchthat [\exists \ar_0 \suchthat \ar_1 \gbeats \ar_0]$: ${\dbeatsinv}(\ar_1)$ is a singleton). 
-Define $\df \subseteq \allargs × \alldargs$ as $\df = {\dbeatsinv} \circ {\gbeatsinv}$. 
+${\gbeats} \subseteq \allargs × \allargs$ and is irreflexive,
+${\dbeats} \subseteq \alldargs × \allargs$ and is injective and its range equals $\gbeatsinv(\allargs)$, the domain of ${\gbeats}$ (thus $\forall \ar_1 \suchthat [\exists \ar_0 \suchthat \ar_1 \gbeats \ar_0]$: $\dbeatsinv(\ar_1)$ is a singleton). 
+Define $\df \subseteq \allargs × \alldargs$ as $\df = \dbeatsinv \circ \gbeatsinv$. 
 The symbol $+$ in an empirical theory stands for a function $+: \bigcup_{\ar \in \allargs}(\set{s} × \df(\ar)) → \allargs$.
 As usual, $\ar + \ard$ means $+(\ar, \ard)$. 
 Define $\dfp \subseteq \allargs × \allargs$ as, $\forall \ar \in \allargs$: $\dfp(\ar) = \ar + \df(\ar) = \set{\ar + \ard \suchthat \ard \in \df(\ar)}$.
 An empirical theory must satisfy
-$\forall \ar \in \gPhi: \exists k \in \N^* \suchthat \dfp^k(\ar) = \emptyset$.
+$\exists k \in \N \suchthat \dfp^k(\gleadstoinv(\allprops)) = \emptyset$.
 
 \subsection{Falsifiability}
 Given $\hist \in \allhist$, $\hist(\intvl{1, l(\hist)})$, where $l(\hist) \in \N$ is the length of the sequence $\hist$, denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$. Abusing notation, given $\args \subseteq \allargs$, I write $\args \cap \hist$ to designate $\args \cap \hist(\intvl{1, l(\hist)})$, therefore using simply $\hist$ in that expression to denote the \emph{range} of $\hist$.
 
-Given $i \in I, \phi \in \Phi, \ar_1, \ar_0 \in \allargs$, define $\ar_1 \ibeatsi \ar_0$ iff $\exists \hist \in \allhist \suchthat {\gbeatsinv}(\ar_0) \cap \hist = \set{\ar_1} \land \ar_0 \in \histend \land \hist \nileadstoi \phi$.
+Given $\phi \in \Phi$, $\args \subseteq \allargs$ and $\ar_0 \in \allargs$, say that $\args$ seems $i$-ineffective against $\ar_0$ for $\phi$, $\args \bowtie^{i, \phi} \ar_0$, iff $\exists \hist \in \allhist \suchthat \hist(\intvl{l(\hist)-\card{\args}, l(\hist)-1}) = \args \land \hist(l(\hist)) = \ar_0 \land \hist \ileadstosti \phi$, that is, when some $\hist$ ends with $\args$ followed by $\ar_0$ and leads to $\phi$. Note that for all $\ar_0 \in \allargs$ such that $\exists \hist \in \allhist \suchthat [\hist(l(\hist)) = \ar_0 \land \hist \ileadstosti \phi]$: $\emptyset \sinef \ar_0$.
 
-Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $\di(\ar) \subseteq \alldargs$, as $\di(\ar) = [{\dbeatsinv} \circ {\ibeatsiinv}](\ar)$. Define $\dip: \allargs → \allargs$ as $\dip(\ar) = \ar + \di(\ar)$.
+Given $i \in I, \phi \in \Phi, \ar_1, \ar_0 \in \allargs$, define $\ar_1 \ibeatsi \ar_0$ iff $\exists \hist \in \allhist \suchthat \ar_1 \in (\gbeatsinv(\ar_0) \cap \hist) \land \ar_0 \in \histend \land \hist \nileadstoi \phi \land (\gbeatsinv(\ar_0) \cap \hist) \setminus \set{\ar_1} \sinef \ar_0$.
+
+Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $\di(\ar) \subseteq \alldargs$, as $\di(\ar) = [\dbeatsinv \circ {\ibeatsiinv}](\ar)$. Define $\dip: \allargs → \allargs$ as $\dip(\ar) = \ar + \di(\ar)$.
 Given $i \in I, \phi \in \gPhi$, define $\gargs[i, \phi] \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs[i, \phi] = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\phi))$, where $(\dip)^0$ is the identity function over $\allargs$.
 
-$\ar$ $i$-defends $\phi$ iff $\forall \hist \in \allhist \suchthat \left[\ar \in \histend \land {\gbeatsinv}(\ar) \cap \hist = \emptyset\right]: \hist \ileadstosti \phi$. $\ar_0$ recursively $i$-defends $\phi$ iff $\forall \ar \in \cup_{k \in \N}(\dip)^k(\ar_0)$: $\ar$ $i$-defends $\phi$.
+$\ar$ $i$-defends $\phi$ iff $\forall \hist \in \allhist \suchthat \left[\ar \in \histend \land \gbeatsinv(\ar) \cap \hist = \emptyset\right]: \hist \ileadstosti \phi$. 
+%$\ar_0$ recursively $i$-defends $\phi$ iff $\forall \ar \in \cup_{k \in \N}(\dip)^k(\ar_0)$: $\ar$ $i$-defends $\phi$.
 
 \begin{definition}[Convincingness]
 	$\forall i \in I, \phi \in \gPhi, \ar \in \gargs[i, \phi]: \ar$ $i$-defends $\phi$.
 \end{definition}
 
-A \emph{convincingness falsification instance} of an empirical theory is a tuple $(i, \phi, \hist) \in I × \gPhi × \allhist$ such that $\exists \ar \in (\histend \cap \gargs[i, \phi]) \suchthat {\gbeatsinv}(\ar) \cap \hist = \emptyset \land \hist \nileadstosti \phi$.
+A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hist) \in I × \gPhi × \allhist$ such that $\exists \ar \in (\histend \cap \gargs[i, \phi]) \suchthat \gbeatsinv(\ar) \cap \hist = \emptyset \land \hist \nileadstosti \phi$.
 
 \begin{theorem}
-	An empirical theory is convincing iff it has no convincingness falsification instances.
+	An empirical theory is convincing iff it has no falsification instances.
 \end{theorem}
 \begin{proof}
-	For all $i \in I, \phi \in \gPhi$: $\exists \ar \in \gargs[i, \phi]$ that does not $i$-defend $\phi$ iff $\exists \ar \in \gargs[i, \phi], \hist \in \allhist \suchthat \left[\ar \in \histend \land {\gbeatsinv}(\ar) \cap \hist = \emptyset \land \hist \nileadstosti \phi\right]$ iff $\exists \hist \in \allhist$ such that $(i, \phi, \hist)$ is a convincingness falsification instance.
+	For all $i \in I, \phi \in \gPhi$: $\exists \ar \in \gargs[i, \phi]$ that does not $i$-defend $\phi$ iff $\exists \ar \in \gargs[i, \phi], \hist \in \allhist \suchthat \left[\ar \in \histend \land \gbeatsinv(\ar) \cap \hist = \emptyset \land \hist \nileadstosti \phi\right]$ iff $\exists \hist \in \allhist$ such that $(i, \phi, \hist)$ is a falsification instance.
 \end{proof}
-
-\begin{definition}[Unnecessary coalitions]
-	$\forall i \in I, \phi \in \gPhi, \hist \in \allhist, \ar_0 \in \gargs[i, \phi], \set{\ar_1, \ar'_1} \subseteq {\gbeatsinv}(\ar_0) \cap \hist, \ar_0 \in \histend, \hist \nileadstoi \phi$: $\exists \ar_2 \in {\dbeatsinv}(\set{\ar_1, \ar'_1})$ such that $\ar_2$ recursively $i$-defends $\phi$.
-\end{definition}
 
 \begin{definition}[Validity]
 	An empirical theory is \emph{valid} iff $\forall i \in I, \phi \in \gPhi: [\phi \in \iPhi \land ¬\phi \notin \iPhi]$.
 \end{definition}
 
-Possible easy approach: If $\args \ibeatsi \ar_0$, then both $\ar_1 \ibeatsi \ar_0$ and $\ar'_1$.
-
-Sophistication: when $\args = \set{\ar_1, \ar'_1}$ attack $\ar_0$, it is too demanding to ask that both $\ar_2$ and $\ar'_2$ defend $\phi$. Perhaps $\ar_2$ does but $\ar'_2$ fails (and $\ar'_2 + \ar_2$ as well) because it confuses $i$, which finds $\ar'_1$ irrelevant or hard to understand. To relax the claim, could define that $\ar_1$ seems ineffective against $\ar_0$ iff $\exists \hist \suchthat \set{\ar_1, \ar_0} = \histend \land \hist \ileadstosti \phi$. If so, and if $\args \ibeatsi \ar_0$, then $\ar'_2$ must be in the defensors. This supplementary condition (about ineffectivity) is there to show that $\ar'_1$ plays at least some role in the attack, because the theory must not claim that $\ar'_2$ defends $\phi$ when $\ar'_1$ is not really an attacker, which it would seem to be if $\args \ibeatsi \ar_0$ because of $\ar_1$. More generally, $\args$ seems ineffective against $\ar_0$ iff $\exists \hist = (…, \args, \ar_0) \suchthat \hist \ileadstosti \phi$. If so, and if $\args \cup \set{\ar_1} \ibeatsi \ar_0$, then $\ar_2$ must be in the defensors.
-
-TODO implement the sophisticated approach with: $\args \cup \ar_1 att \ar_0 \land \args$ seems uneff implies $\ar_1 \ibeatsi \ar_0$. (Here att stands for $\ibeatsi$ for coalitions.) Check that it works for coalitions of more than two.
-
-\begin{remark}[TODO]
-	I could make that claim (unnecessary coalitions) stronger by mandating that if $\ar_0$ fails, that must be because some $\ar_1$ always attacks $\ar_0$, in the sense that when $\ar_1$ and $\ar_0$ are in $\histend$, then $¬\phi$. Such a claim largely eases falsification. But this is too demanding: $\ar_1$ may be a not-so-great argument that does sometimes contradict $\ar_0$ but not systematically, and that $\ar_2$ can reply to convincingly.
-	
-	$\ar_1 \ibeatsi \ar_0$ only when $\ar_1$ att $\ar_0$ alone (among those planned attacks of $\ar_0$), but $\ar_1$ need not necessarily be at the end of $\hist$. Thus, ${\ibeatsi}$ is a theoretical claim (that other arguments do not matter and that $\ar_1$ is indeed responsible for the change of mind), and $\ar_1 \ibeatsi \ar_0 ⇒ \ar_1 \gbeats \ar_0$.
-	
-	Also, a coalition can attack $\ar_0$. Required because could have coal together attacks $\ar_0$ but individual arguments do not. Thus, I am interested in minimal coalitions that attack. For those, the theory must be able to answer with the sum of its replies (in which order?).
-	Define $\set{\ar_1, \ar'_1} \ibeatsi \ar_0$. Requires that each argument of the coalition be among the planned attackers; and that sub-coalitions do not attack. This requires a specific answer from the theory, namely, $\ar_0 + \ar_2 + \ar'_2$.
-	
-	Define that $\ar_0$ strongly defends $\phi$ iff defense works when using no planned attack, and that $\ar_0 + \ar_2$ works when using only $\ar_1$ and if $\ar_1 \ibeatsi \ar_0$, and that $\ar_0 + \ar_2 + \ar'_2$ works when using both $\ar_1$ and $\ar'_1$ and this is a minimal planned attacking coalition.
-
-	Now, a falsification instance is $\hist$ containing $\ar_1$ and $\ar'_1$, two planned attacks, such that $\ar_2$ alone sometimes fails, $\ar'_2$ alone sometimes fails, and the addition sometimes fails: this proves the theory wrong in all cases, one argument alone attacking or both together being required.
-	
-	A coalition could have a synergic effect: theory can reply individually, but fail its collective reply. However, that should not deserve explicit consideration: if individual replies work, and individual argument attacks, then some decisive argument exists.
-\end{remark}
-
-I want that s1 attacks-i s0 only when it’s because of s1 (according to the theory). Otherwise, the theory is forced to answer s1, an irrelevant argument. Thus, s1 attacks-e s0 requires that no s1' (planned attack against s0) is used.
-
-Also, everything must be falsifications except when it’s because of s1 i-attacking s0 (in which case the theory commits to answer). Thus, if two planned attacks are used, this is a falsification instance? No, because the theory commits to answer each one separately. Thus, if two planned attacks are used AND individual ones do not i-attack, then it is a falsification instance. Also, if (s1, s0, s0) leads to not phi, and not (s0, s1, s0), then this is a falsification instance.
-
-Convincingness must happen exactly when there is no falsification instance. Thus, ar i-defends phi when all dangerous histories are answered to by ar and when two planned attacks i-attack, some individual one i-attacks and when (s1, s0, s0) leads to not phi, then (s0, s1, s0) leads to not phi.
-
-Hence, the dangerous histories are those such that no reordering lead to $\set{\ar_1, \ar_0} = \histend$ for some $\ar_1$ that is a planned, effective attack. (involve no planned-attack or multiple irreducible planned attacks or an attack that happens only with a strange ordering).
-Well, that’s not great: to know whether an instance falsifies, we’d need to ensure, for each reordering of planned attacks, that they are non effective attacks, which is basically impossible. NO suffices to exhibit some history hist' with ar1, ar0 at end and leading to phi.
-
-Thus, falsification: hist, ar1=> hist', ar1' => hist'', where hist uses ar1 and ar1' (which are all the planned attacks in hist) and hist' ends with ar1, ar0, hist => notphi, hist' => phi, and so on.
-
-%Rather keep falsification instances simple, and enlarge the situations that the theory commits to answer. If some history combine ar1 and ar1' and lead to not phi, the theory must answer either ar1 or ar1' (it can choose => if ar1, ar0 in histend lead to not phi, it must answer ar1; if ar1' etc.; and if none, then it has lost). Thus falsification happens when both ar1 and ar1' are used and some some hist, ar1 does not attack ar0 and for some hist, ar1' does not attack ar0. This can be checked. And about (s1, s0, s0) (with s1 not planned): this is a falsification instance. Define it as: no planned attack is used AND s1 in hist AND s0 in histend.
-
 \begin{theorem}
 	A normatively adequate and convincing empirical theory is valid.
 \end{theorem}
 \begin{proof}
-	\commentOC{This might be false. Consider ${\gbeats} = \set{(\ar_1, \ar_0)}, {\dbeats} = \set{(\ar_2, \ar_1)}, (\ar_1, \ar_0, \ar'_1) \ileadstoi ¬\phi$. There is no decisive argument in $\gargs[i, \phi]$ as $\ar'_1 \ibeatsi \ar_0$, but no falsification instance as $\hist = (\ar_1, \ar_0, \ar'_1)$ includes $\ar_1$. In such a situation, $\ar_1$ should be considered as attacking $\ar_0$, as (from the model pov) it is $\ar_1$ which makes $i$ fail to adopt $\phi$.}
+	\NewDocumentCommand{\allhistsznp}{}{\mathscr{S}^{*, \ar_0}_{\not⇝ \phi}}
+	\NewDocumentCommand{\allhistred}{}{\mathscr{S}^{*, \ar_0, \mathit{red}}_{\not⇝ \phi}}
+	\NewDocumentCommand{\allhistnonred}{}{\mathscr{S}^{*, \ar_0, \mathit{irred}}_{\not⇝ \phi}}
 	
-	For all $i \in I, \phi \in \gPhi$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstosti \phi$. (Actually, $\ar \in \dfp^k(\ar_0)$ for some $k$.)
+	Given any $i \in I$ and $\phi \in \gPhi$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstosti \phi$, and normative adequacy brings the conclusion. 
 	
-	Lemma: if $\ar_0$ recursively $i$-defends $\phi$, then either $\ar_0$ is decisive, or $\ard_2 \dbeats \ar_1 \gbeats \ar_0$ with $\ar_2 = \ar_0 + \ard_2$ recursively $i$-defending $\phi$ and $\ar_2 \in \dfp(\ar_0)$.
-	If $\ar_0$ is not decisive, and because $\ar_0$ defends, some $\hist$ ending with $\ar_0$ includes some $\ar_1 \gbeats \ar_0$. If this is the only one, then $\ar_1 \ibeatsi \ar_0$, and $\ar_2$ recursively defends. If it is not the only one, use the no coalition property.
+	Given any $\ar_0 \in \allargs$, define $\args^{\hist} = \gbeatsinv(\ar_0) \cap \hist$ and $\allhistsznp = \set{\hist \in \allhist \suchthat \ar_0 \in \histend \land \hist \nileadstosti \phi}$. Given $\hist \in \allhistsznp$, say that $\hist$ is \emph{reducible} iff $\hist \in \allhistred$, defined as $\allhistred = \set{\hist \in \allhistsznp \suchthat \forall \ar_1 \in \args^{\hist}: \args^{\hist} \setminus \set{\ar_1} \not\sinef \ar_0}$; define accordingly $\allhistnonred = \allhistsznp \setminus \allhistred = \set{\hist \in \allhistsznp \suchthat \exists \ar_1 \in \args^{\hist} \suchthat \args^{\hist} \setminus \set{\ar_1} \sinef \ar_0}$.
+	
+	Lemma: given any $\ar_0 \in \allargs$ such that $\ar_0$ $i$-defends $\phi$, if $\allhistsznp ≠ \emptyset$, $\hist \in \allhistred ⇒ \exists \histp \in \allhistsznp \suchthat \emptyset ≠ \args^{\histp} \subset \args^{\hist}$. To see this, pick as $\histp$ any sequence consisting of the arguments contained in $\args^{\hist} \setminus \set{\ar_1}$, followed by $\ar_0$. 
+	First, $\histp \in \allhistsznp$, because as $\hist \in \allhistred$, $\args^{\hist} \setminus \set{\ar_1} \not\sinef \ar_0$, thus, $\histp \nileadstosti \phi$. 
+	Second, $\args^{\histp} = \args^{\hist} \setminus \set{\ar_1}$, because $\args^{\hist} \setminus \set{\ar_1} \subseteq \args^{\histp} = \left(\gbeatsinv(\ar_0) \cap \histp\right) \subseteq \args^{\hist} \setminus \set{\ar_1}$.
+	Finally, $\args^{\histp} ≠ \emptyset$ follows from two facts: that $\args^{\hist} \setminus \set{\ar_1} \not\sinef \ar_0$ (see “First” here above) and that $\emptyset \sinef \ar_0$, which is implied by $\ar_0$ $i$-defends $\phi$.
+	
+	We conclude from this lemma that given any $\ar_0 \in \allargs$ such that $\ar_0$ $i$-defends $\phi$, if $\exists \hist \in \allhistsznp \suchthat \args^{\hist} ≠ \emptyset$, then $\exists \histp \in \allhistnonred$. To see this, given $\hist \in \allhistsznp \suchthat \args^{\hist} ≠ \emptyset$, define a finite sequence of sequences of arguments, starting with $\hist_0 = \hist$, then, for $k \in \N$, if $\hist_k \in \allhistred$, define $\hist_{k + 1} \in \allhistsznp$ by applying the lemma, thus with $\emptyset ≠ \args^{\hist_{k + 1}} \subset \args^{\hist_k}$. Because $\hist_0$ is finite (being an element of $\allhist$), $\args^{\hist_0}$ is finite, thus this process ends with some $\hist_k \in \allhistnonred$.
+	
+	Lemma: if $\ar_0$ $i$-defends $\phi$, then $\ar_0 \nileadstosti \phi ⇒ \exists \ar_1 \in \allargs, \ard_2 \in \allargs \suchthat \ard_2 \dbeats \ar_1 \ibeatsi \ar_0 \land \ar_1 \gbeats \ar_0 \land \ar_2 = \ar_0 + \ard_2 \in \dip(\ar_0)$.
+	Consider any $\ar_0 \in \allargs$ such that $\ar_0$ $i$-defends $\phi$ and $\ar_0 \nileadstosti \phi$. 
+	By definition, $\ar_0 \nileadstosti \phi$ means that $\exists \hist \in \allhistsznp$.
+	Because $\ar_0$ $i$-defends $\phi$, $\args^{\hist} ≠ \emptyset$. 
+	From the preceding conclusion, we can pick some $\histp \in \allhistnonred$.
+	Thus, $\exists \ar_1 \in \args^{\histp} \suchthat \args^{\histp} \setminus \set{\ar_1} \sinef \ar_0$.
+	By definition, this means that $\ar_1 \ibeatsi \ar_0$ and, as $\ar_1 \in \args^{\histp} = \gbeatsinv(\ar_0) \cap \histp$, $\ar_1 \gbeats \ar_0$. 
+	It now follows from the definition of an empirical theory that $\dbeatsinv(\ar_1)$ is not empty, thus, $\exists \ard_2 \in \allargs \suchthat \ard_2 \dbeats \ar_1$. Defining $\ar_2 = \ar_0 + \ard_2$, by definition of $\dip$, $\ar_2 \in \dip(\ar_0)$.
+	
+	From this lemma, using convincingness, we deduce that $[\ar_0 \in \gargs[i, \phi] \land \ar_0 \nileadstosti \phi] ⇒ \exists \ar_2 \in \gargs[i, \phi] \cap \dfp(\ar_0)$. That is because $\ar_0 \in \gargs[i, \phi] ⇒ \ar_0$ $i$-defends $\phi$, by convincingness, and, considering $\ard_2$ and $\ar_2$ as defined in the lemma, $\ar_2 \in \gargs[i, \phi]$ by definition of $\gargs[i, \phi]$ and $\ard_2 \in \df(\ar_0)$ by definition of $\df$.
+
+	To prove the theorem, build a finite sequence of arguments in $\gargs[i, \phi]$, starting with any $\ar_0 \in \ileadstoinv(\phi)$. Observe that $\ar_0 \in \gargs[i, \phi]$. Given $k \in 2\N$, if $\ar_k \nileadstosti \phi$, define $\ar_{k + 2}$ using the deduction following the last lemma, obtaining $\ar_{k + 2} \in \gargs[i, \phi] \cap \dfp^\frac{k + 2}{2}(\ar_0)$. 
+	By definition of an empirical theory, $\exists k \in \N \suchthat \dfp^k(\ar_0) = \emptyset$, thus, this process ends with some $\ar$ such that $\ar \ileadstosti \phi$.
 \end{proof}
+
+\subsection{Effectively comparing models}
+\subsection{Preference theories}
+Given a set of alternatives $\allalts$. Define $\allprops = \prop_{ab}$.
 
 \subsection{Vrac from here}
 1. Checkpath: this is completely general.
@@ -404,6 +395,8 @@ Then the normative criterion is: $t$ in DJ of $i$ when $\exists s \suchthat \for
 \commentOC{Say that a theory supposedly draws on general principles, which justifies that it talks about multiple $\phi$, even though at this level, there is no connection between them.}
 
 \section{Decision situation}
+\newcommand{\alltopic}{T^*}
+
 The object of study in a given decision situation is the deliberated preferences of a given individual $i$. 
 A decision situation concerns a topic $\alltopic$, given a set of arguments $\allargs$, given a certain query protocol, and over a certain time frame. The relation $\ileadstost$, to be defined shortly, models the reaction of $i$ to arguments about the topic. The decision situation will be defined as a triple $(\alltopic, \allargs, \ileadstost)$ satisfying some conditions to be defined after having presented those three fundamental elements.
 
