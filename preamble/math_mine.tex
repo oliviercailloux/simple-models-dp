@@ -15,8 +15,19 @@
 	%\def\@myRgood@#1#2{\mathrel{R^X_{#2}}}
 	%\def\myRgood{\@ifnextchar_{\@myRgood@}{\mathrel{R^X}}}
 	%\makeatother
+\NewDocumentCommand{\peq}{}{\succeq}
+\NewDocumentCommand{\pst}{}{\succ}
 
 %Deliberated Judgment
+\NewDocumentCommand{\ppeqab}{}{t_{a \succeq b}}
+\NewDocumentCommand{\ppst}{O{a}O{b}}{t_{#1 \succ #2}}
+\NewDocumentCommand{\ppstsure}{O{a}O{b}}{(t_{#1 \succ #2}, \mathit{sure})}
+\NewDocumentCommand{\ppstbc}{}{t_{b \succ c}}
+\NewDocumentCommand{\ppstac}{}{t_{a \succ c}}
+\NewDocumentCommand{\ppstba}{}{t_{b \succ a}}
+\NewDocumentCommand{\ppeq}{O{a}O{b}}{t_{#1 \succeq #2}}
+\NewDocumentCommand{\ppeqsure}{O{a}O{b}}{(t_{#1 \succeq #2}, \mathit{sure})}
+\NewDocumentCommand{\domc}{}{\mathscr{B}}
 \NewDocumentCommand{\allargs}{}{\mathscr{S}}
 \NewDocumentCommand{\args}{}{S}
 \NewDocumentCommand{\argsd}{}{S^\mathit{d}}
@@ -34,7 +45,8 @@
 \NewDocumentCommand{\histp}{}{s^{*\prime}}
 \NewDocumentCommand{\histend}{}{s^*_\mathit{end}}
 \NewDocumentCommand{\histpend}{}{s^{*\prime}_\mathit{end}}
-\NewDocumentCommand{\allprops}{}{T}
+\NewDocumentCommand{\allprops}{}{\mathscr{T}}
+\NewDocumentCommand{\props}{}{T}
 \NewDocumentCommand{\prop}{}{t}
 \NewDocumentCommand{\propsure}{}{(t, \mathit{sure})}
 \NewDocumentCommand{\propposs}{}{(t, \mathit{poss})}

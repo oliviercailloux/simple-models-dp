@@ -60,9 +60,9 @@ The first and third contexts of usage come together when it is desired to test w
 \subsection{Definition}
 A normative theory is a tuple $(\allprops, ¬, \allargs, I, (\ileadstoi)_{i \in I})$, 
 with ${\ileadstoi} \subseteq \allhist × \Phi$, 
-where $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ denotes all finite sequences of elements in $\allargs$ (including the empty sequence) and $\Phi = \allprops × \set{\text{possible}, \text{sure}}$. (Throughout the article, $\N$ includes zero, and note that $\intvl{1, 0} = \emptyset$.)  
+where $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ denotes all finite sequences of elements in $\allargs$ (including the empty sequence) and $\Phi = \allprops × \set{\mathit{poss}, \mathit{sure}}$. (Throughout the article, $\N$ includes zero, and note that $\intvl{1, 0} = \emptyset$.)  
 
-The symbol $¬$ is a negation operator on $\allprops$, such that $\forall \prop \in \allprops: ¬¬\prop = \prop$. This article also uses this symbol as a negation operator on $\Phi$, defined as follows, $\forall \prop \in \allprops$: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. Observe that $¬¬\phi = \phi$. (The symbol $¬$ is also used in this article to negate classical mathematical propositions; this should create no confusion.)
+The symbol $¬$ is a negation operator on $\allprops$, such that $\forall \prop \in \allprops: ¬¬\prop = \prop$. This article also uses this symbol as a negation operator on $\Phi$, defined as follows, $\forall \prop \in \allprops$: $¬\propposs = (¬\prop, \mathit{sure})$ and $¬\propsure = (¬\prop, \mathit{poss})$. Observe that $¬¬\phi = \phi$. (The symbol $¬$ is also used in this article to negate classical mathematical propositions; this should create no confusion.)
 As usual with binary relations, $\hist \nileadsto[i] \phi$ means $(\hist, \phi) \notin {\ileadsto[i]}$.
 
 Given $i \in I, \phi \in \Phi, \hist \in \allhist$, say that $\hist$ leads strongly to $\phi$ iff $\hist \ileadstoi \phi \land \hist \nileadstoi ¬\phi$.
@@ -202,197 +202,39 @@ A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hi
 \end{proof}
 
 \subsection{Effectively comparing models}
-\subsection{Preference theories}
-Given a set of alternatives $\allalts$. Define $\allprops = \prop_{ab}$.
-
-\subsection{Vrac from here}
-1. Checkpath: this is completely general.
-2. Only using model that counter-argues: requires a sort of path independence. (arguments can be condensed: s5, s4, s1 => s1big)
-
-I also write that $\hist \ibeatse[!\phi] \ar_0$ iff $\exists \ar_1 \in \allargs \suchthat (\hist \text{ ends with } \set{\ar_1, \ar_0}) \land (\ar_1 \ibeatse[!\phi] \ar_0)$.
-
-An empirical theory is defined only given some normative theory. In the following, any reference to an empirical theory should always be understood as an empirical theory for some (sometimes implicitly defined) normative theory.
-
-As above,  $\gleadsto$ will be used instead of $\gleadsto[q(i)]$ when it creates no ambiguity, with the understanding that this symbol result of applying a function of $q(i)$; and the binding $\forall i \in I$ will generally be omitted.
-
-Given $\phi \in \gPhi$, define $\gargs[i, \phi, 0] \subseteq \allargs$ as $\gargs[i, \phi, 0] = {\gleadstoinv}(\phi)$; and, for $k \in 2\N$, define $\gargs[i, \phi, k + 2] = \gargs[i, \phi, k] + [{\gbeatsinv} \circ ({\gbeatsinv} \cap {\ibeatseinv[!\phi]})](\gargs[i, \phi, k]) = \set{\ar_k + \ar \suchthat \ar_k \in \gargs[i, \phi, k], \ar  \in [{\gbeatsinv} \circ ({\gbeatsinv} \cap {\ibeatseinv[!\phi]})](\gargs[i, \phi, k])}$.
-Define $\gargs[i, \phi] = \bigcup_{k \in 2\N} \gargs[i, \phi, k]$, and $\gargs = \cup_{i \in I, \phi \in \gPhi} \gargs[i, \phi]$. 
-
-Given $\ar \in \gargs$, let $c(\ar) = \bigcup \set{\args \subseteq \gargs \suchthat \ar = \sum \args} \subseteq \allargs$ denote the \emph{components} of $\ar$.
-
-Given $\ar_2 \in \gargs, \ar_1 \in \allargs$, $\ar_2 \mbeats \ar_1$ has the semantic that $\gamma$ claims that $\ar_2$ trumps $\ar_1$ if necessary.
-Given $\ar_1 \in \allargs, \ar_0 \in \gargs$, $\ar_1 \mbeats \ar_0$ has the semantic that $\gamma$ claims that it knows how to resist an attack from $\ar_1$ coming in response to using $\ar_0$, if it does come.
-
-\subsection{Validity}
-\subsection{Single-try empirical models}
-NB these two conditions should be phrased as properties of a claim. A claim has bl iff for some $k$, … 
-
-What we search for here are conditions of the form: $\forall i$.
-
-For now, assume that $\ar_1$ attacks a single argument, so that there is no problem with replying with $\ar_2$ independently of which argument $\ar_1$ attacks.
-
-\begin{definition}[Conv.\ SA]
-	$\forall i \in I, \phi \in \gPhi, k \in 2\N, \ar \in \gargs[i, \phi, k]: \ar$ $i$-defends $\phi$ ignoring ${\gbeats}(\gargs[i, \phi, k + 2])$.
-\end{definition}
-
-\begin{definition}[Length bounded a priori]
-	$\exists m \in \N^* \suchthat ({\gbeats})^m(\allargs) = \emptyset$.
-\end{definition}
-
-\begin{theorem}
-	If an empirical theory is Conv.\ SA and has a priori bounded length, and its normative theory satisfies \cref{ax:nocontr,ax:norm}, then it is valid.
-\end{theorem}
-\begin{proof}
-	Consider $i \in I$ and $\phi \in \gPhi$. 
-
-	Lemma: $\forall \ar_0 \in \gargs[i, \phi], \ar_1 \in \allargs: \ar_1 \ibeatse \ar_0 ⇒ [\exists \ar_2, \ar_1' \in \allargs \suchthat \ar_2 \gbeats \ar_1' \gbeats \ar_0]$. 
-	Consider $\ar_0 \in \gargs[i, \phi], \ar_1 \in \allargs \suchthat \ar_1 \ibeatse \ar_0$.
-	Define $\args^1 = {\gbeats}(\gargs[i, \phi, k + 2])$. Thus, $\ar_0$ $i$-defends $\phi$ ignoring $\args^1$. Now, $\args^1 ≠ \emptyset$, because otherwise, by definition of $i$-defense, $\ar_0 \ileadstosts \phi$, which is incompatible with $\ar_1 \ibeatse \ar_0$, by \cref{eq:st-in-terms-of-e}. 
-	Pick $\ar \in \args^1$ and observe that, by definition of $\args^1$, $\exists \ar_2 \in \gargs[i, \phi, k + 2] \suchthat \ar_2 \gbeats \ar$, and by definition of $\gargs[i, \phi, k + 2]$,  $\exists \ar_1' \suchthat \ar_2 \gbeats \ar_1' \gbeats \ar_0$. \commentOC{NO. I should be protected only from anticipated attacks. Currently, $\ar_1$ need not be anticipated (another $\ar_1'$ may be anticipated and then $\ar_2$ attacking both would suffice). Perhaps I need to define $\gargs[2]$ with only requiring that $\ar_1 \ibeatse \ar_0$, not $\ar_1 \ibeatse \ar_0$ and $\ar_1 \gbeats \ar_0$, because otherwise no requirements on attackers of attackers of $\ar_0$. I need to observe that if $\ar_1 \ibeatse \ar_0$, and $\ar_0$ defends $\phi$, then $\ar_1$ is ignored. Thus, it is anticipated (because I can ignore only those I anticipate).}
-	
-	But $\ar_0$ i-def $\phi$, if not ignoring $\ar_1$, implies that $\forall \hist \in \allhist: (\hist, \ar_1, \ar_0) \ileadstosts \phi$. Thus, $\ar_1$ is ignored.
-
-	Thus, $\gargs[2] \subseteq ({\gbeatsinv})^2(\ar_0)$.
-	Thus, some $\gargs[k] = \emptyset$ (by bounded length).
-	Thus, some $\gargs[k] ≠ \emptyset$ that nobody attacks. This is our decisive argument.
-	Therefore, $\ar_k \ileadstosts \phi$. Using \cref{ax:norm}, this yields that $\phi \in \iPhi$, and validity follows from \cref{ax:nocontr}.
-\end{proof}
-
-\subsection{Conditions without history}
-To verify or falsify these conditions, whether $(\ar_1, \ar_0) \ileadstoe \phi$ must be observable, but one may suspect that once $i$ has seen some $\ar$, then no more $(\ar_1, \ar_0) \ileadstoe \phi$ but that this does not imply that this would hold without $\ar$ for $i$. The general falsifiable claim is not clear.
-
-Given $\phi \in \gPhi$, define ${\ibeatse[!\phi]} \subseteq \allargs × \allargs$ such that $\ar' \ibeatse[!\phi] \ar$ iff $(\ar', \ar) \nileadstost \phi$. 
-
-The following condition mandates that if the arguments used by the theory are not decisive, it knows a reason.
-\begin{definition}[Answerability]
-	$\forall \phi \in \gPhi, \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: (\ar_1, \ar_0) \nileadstost \phi ⇒ [\exists \ar_1' \in {\gbeatsinv}(\ar_0)]$.
-\end{definition}
-
-\begin{definition}[Bounded length]
-	$\gargs$ must be finite.
-\end{definition}
-
-\begin{remark}
-	Bounded length does not imply finiteness of arguments used as counter-arguments by the model: model is able to counter infinitely many arguments with infinitely many counter-args, but needs to declare that an (unknown) finite subset of those will suffice to convince $i$.
-\end{remark}
-
-\begin{definition}[No repetition]
-	$\nexists \ar_0 \in \gargs[\phi], \ar_1 \in \allargs, \ar_2 \in c(\ar_0) \suchthat \ar_2 \gbeats \ar_1 \gbeats \ar_0$.
-\end{definition}
-
-\begin{definition}[Operational validity]
-	$\forall \phi \in \gPhi, \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: [\ar_1 \gbeats \ar_0 \land (\ar_1, \ar_0) \nileadstost \phi] ⇒ \exists \ar_2 \in {\gbeatsinv}(\ar_1)$.
-\end{definition}
-
-$\ar_0 + \ar_2$ anticipates attacks from those attacking either, minus those attacked by any. (Actually any attacked may still attack the addition, but that’s because of some other not-yet-attacked, anticipated, attack.)
-
-\begin{remark}
-	I currently conceive these conditions in the following way. The model must anticipate in its initial arguments the counter-arguments that $i$ may have in mind. Thus, $\ar_1$ trumps $\ar_0$ is observed when $i$ has been given $\ar_1$. When the model answers with $\ar_2$, if $i$ is unconvinced (of $\ar_2 + \ar_0$ trumping $\ar_1$), the procedure stops (the model can’t argue that yes-but-maybe-$i$-has-$\ar_1'$-in-mind; in particular, it wouldn’t be feasible to interrogate $i$ if the arguments are given thanks to labeling in a supermarket). However, if $i$ is given $\ar_1'$, the model must be given a chance to play its counter-argument, and may not be falsified because $\ar_2 + \ar_0$ is not enough: once $i$ is given $\ar_1'$, it is no more claimed by the model that $\ar_2 + \ar_0$ suffices any longer.
-	
-	Relatedly, Operational validity is (almost) void when $\ar_1$ trumps $\ar_0$ and $\ar_0 \gbeats \ar_1$ (and has already observed to be successful, thus $\ar_0$ trumps $\ar_1$): in that case, suffices to play $\ar_2 = \ar_0$ and define $\ar_0 + \ar_0 = \ar_0$, so $\ar_2 + \ar_0$ trumps $\ar_1$.
-	
-	In summary: when $\ar_1$ trumps $\ar_0$, and the model has not already answered this argument using $\ar_0$ (thus $¬ \ar_0 \gbeats \ar_1$), Op. val. demands an answer. When $\ar_1$ trumps $\ar_0$, and the model has answered already using $\ar_0$, and we have checked that indeed $\ar_0$ trumps $\ar_1$, Answerability demands that the model can explain this instability by the fact that someone must have given another argument $\ar_1'$ to $i$ (and this is to be checked using means outside the formal model).
-\end{remark}
-
-I want an empirical theory to: 1) declare some $P \subseteq \Phi$ and it being valid; 2) prove its claims (otherwise, uncheckable and unfalsifiable and thus not empirical) by producing decisive arguments; 3) permit reuse… Focusing on valid theories is thus justified by the fact that if no valid theory for some $P$, then any theory will not be able to prove its claims (as there is no decisive argument).
-
-\subsection{Theorem}
-\begin{theorem}
-	If a theory is answerable, has bounded length, does not repeat, and is operationally valid, it is valid.
-\end{theorem}
-\begin{proof}
-	Lemma: given $\phi \in \gPhi$ and $\ar[k] \in \gargs[\phi]$, if $\ar[k] \nileadstost \phi$, then: $\exists \ar[k + 1] \in \gargs[\phi] \suchthat \card{c(\ar[k + 1])} ≥ \card{c(\ar[k])} + 1$.
-	To prove the lemma, let us pick any $\phi \in \gPhi$ and $\ar[k] \in \gargs[\phi]$ such that $\ar[k] \nileadstost \phi$. 
-	We know that $\exists \ar_1 \in \allargs \suchthat (\ar_1, \ar[k]) \nileadstost \phi$. 
-	Therefore, by Answerability, $\exists \ar_1' \in \allargs \suchthat \ar_1' \gbeats \ar[k]$, and, by Operational validity, $\exists \ar_2 \in \gargs[\phi] \suchthat \ar_2 \gbeats \ar'_1$. 
-	Define $\ar[k + 1] = \ar[k] + \ar_2$. This is the element we look for.
-	First, $\ar[k + 1] \in \gargs[\phi]$ because $\ar[k + 1] \gbeats \ar_1' \ibeatse[!\phi] \ar[k]$.
-	Second, by No repetition, $\ar_2 \notin c(\ar[k])$,
-	thus, $\card{c(\ar[k + 1])} ≥ \card{c(\ar[k])} + 1$ (observing that, by definition of $c$, for any $\ar, \ar'$: $c(\ar) \subseteq c(\ar + \ar')$).
-	
-	To prove the theorem, given $\phi \in \gPhi$, we need to exhibit an argument $\ar$ such that $\ar \ileadstost \phi$.
-	Define a finite sequence $(\ar[0], \ar[1], \ar[2], …)$, starting from $\ar[0] = {\gleadstoinv}(\phi)$, using the lemma, until the condition $\ar[k] \nileadstost \phi$ no longer holds. This condition must turn false after some finite number of steps, because $\card{c(\ar[k])}$ grows at each step, $c(\ar[k]) \subseteq \gargs$ by definition of $c(.)$, and using Bounded length. The last element of the sequence is the argument we look for.
-\end{proof}
-\commentOC{If playing $\ar_2$ at some stage did not move $i$ and $\ar_1$ still attacks $\ar_0 + \ar_2$, we can say that the model missed answering that step, thus either we choose to give it a second chance (maybe it chose the wrong $\ar_2$ to counter the $\ar_1'$ it believed was relevant, or it needed both $\ar_2$ and $\ar_4$), or we give up in fear of losing our time. Actually, the protocol is that when applying Answerability, we are supposed to pick the $\ar_1'$ that $i$ just was given by another model, thus, if that’s still the same $\ar_1$ as the step before, the model has lost (it can’t map what it’s told to an argument it knows how to answer).}
-
-\subsection{Multiple tries}
-Should generalize the building of possible arguments attempted by the model. A model defines $m(\ar_0, \ar_1) \subseteq \allargs$ giving its possible arguments for answering $\ar_1$. Define $\gargs[\phi, 0] = \mleadsto(\allargs)$. If $\ar_k$ has lost (thus the model can’t answer some counter-argument to it), there must be another candidate argument.
-
-Mandate that $\exists \ar_0 \in \gargs[\phi, 0]$ such that $\exists \ar_1 \in \allargs \suchthat \ar_1 \ibeatse[!\phi] \ar \land f(\ar_0, \ar_1) ≠ \emptyset$. 
-
-\commentOC{TODO 1. Justify the fundamental restriction: mandates that $\exists \ar_0 \in \gargs[\phi] \suchthat \ar_0$ decisive. 2. Rephrase condition as: must not be that at some point, for all $\ar_0$ in the current set of possibilities, $\nexists \ar_1 \ibeatse \ar_0 \suchthat \ar_2 \gbeats \ar_1$ (or rather $m(\ar_0, \ar_1) \subseteq C$ with $C$ the current set of possibilities).}
-
-First point is not restrictive: if there is a decisive argument for $\phi$, there is a valid model which says that $\phi$ (and if there is a valid model for $\phi$, then $\phi \in \iPhi$).
-
-First point bars models that want to fully explore $\ibeatse$ and then choose a decisive argument, for example. This would not be desirable because if model can’t be a priori expressed as a restricted model, then we have no means to check that really $\ar \ileadsto \phi$ as another path can’t be adopted (unless $i$ forgets). Also, what if $i$ gets tired after 10 arguments?
-
-\subsection{Current question}
-Should I leave open the uplifting of $+$ for more generality? Is this really sufficiently general to encompass both interpretations of Answerability, and more? Or should I stick to the current, “single-try”, approach and interpretation?
-
-\subsection{Interpreting Answerability}
-At a given stage in operationalizing the protocol, define $f(\ar_0)$ as the arguments that are considered as having a chance to attack $\ar_0$ (without backtracking). Thus, this will not include $\ar_1$ if indeed $\ar_2$ is considered by $i$ as a satisfying answer to $\ar_1$. We can interpret Answerability in the following ways. Strong answ: $\exists \ar_1 \in f(\ar_0) \suchthat \ar_1 \gbeats \ar_0$. Weak answ: $f(\ar_0) ≠ \emptyset ⇒ \exists \ar_1' \suchthat \ar_1' \gbeats \ar_0$. Or suppress Answ and replace Op. val. by Strong op. val.: $\forall \phi \in \gPhi, \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: (\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ \exists \ar_2 \in {\gbeatsinv}(\ar_1)$.
-
-A model can be allowed to try only once each answer. If $\ar_2 \gbeats \ar_1 \land \ar_1 \in f(\ar_0 + \ar_2)$, the model has lost.
-
-Thus, four variants, given $\ar_2 \gbeats \ar_1$.
-\begin{itemize}
-	\item Strong answ with single try: $\ar_1 \notin f(\ar_0 + \ar_2) \land \forall \ar_1' \in f(\ar_0 + \ar_2): \ar_1' \gbeats \ar_0 + \ar_2$.
-	\item Strong answ with multiple tries: $\forall \ar_1' \in f(\ar_0 + \ar_2): \ar_1' \gbeats \ar_0 + \ar_2$. (Example: $\ar_1 = \text{“for ethical reasons”}$, and $\eta$ knows two c-a to this, from different angles.) 	\item Weak answ with single try: $\ar_1 \notin f(\ar_0 + \ar_2) \land [f(\ar_0 + \ar_2) ≠ \emptyset ⇒ \exists \ar_1' \suchthat \ar_1' \gbeats \ar_0]$.
-	\item Weak answ with multiple tries: $f(\ar_0 + \ar_2) ≠ \emptyset ⇒ \exists \ar_1' \suchthat \ar_1' \gbeats \ar_0 + \ar_2$.
-\end{itemize}
-
-Goal: leave addition free so as to admit multiple tries, and prove that Strong answ with multiple tries is the right one for a general approach: suitable restriction to the model permits single try (with same conditions); and weak answ actually does not permit more models.
-
-When $f$ is available and is single-valued, question: should we use Strong or weak answ? Right answer: use Strong answ. It is stricly more general. A model that wants weak answ can define its internal attacks suitable (to be proven); and a model that wants to claim more can.
-
-When $f$ is not available, only remains: single try (just give a decisive argument) or multiple tries (try more and more arguments, blindly).
-
-Suppose that a model also defines $f_\eta$, meaning: $f_\eta(\ar_1) = \ar_2$ the argument the model plays against $\ar_1$. Thus $f_\eta$, like $\gbeats$, is a binary relation over $\allargs$, but $f_\eta$ in supplement returns a single argument or none. Also, $\ar_2 = f(\ar_1) ⇒ \ar_2 \gbeats \ar_1$. When a reason $\ar_1$ for rejecting $\ar_0$ is not known, $f_\eta(\ar_0)$ instead gives the argument to be played next. Note that $f_\eta$ is only useful when (in the known c-a variant) for some $\ar_1$ there are multiple candidates $\ar_2$ or when (in the unknown c-a variant) for some $\ar_0$ here are multiple candidates $\ar_2$. In fact, this is more complicated: $f_\eta(\ar_1)$ can give first $\ar_2$, then, if that is not enough, $\ar_4$ (thus it’s rather $f_\eta(\ar_1, \ar_0)$).
-
-Under Strong anws, we ask that $f(\ar_0) \cap {\gbeatsinv}(\ar_0) ≠ \emptyset$, and (inevitably) that $f_\eta(\ar_1) ≠ \emptyset$. Under weak answ, we do not expect anticipation and only demand that $f_\eta(\ar_1) ≠ \emptyset$. But this does not allow supplementary models. TODO prove this.
-
-\subsection{Single-try models}
-The above models can define several $\ar_2$ for one $\ar_1$. Even when interpreting Answerability in the strong sense (mandating that exactly the $\ar_1'$ we search for be defined, not just any $\ar_1'$), this gives a lot of flexibility to the model, and correspondingly, makes it very difficult to falsify: we only know that is unconclusive when all possible subset of answers to a $\ar_1$ has been tried
-
-\commentOC{This is incorrect. The current approach already mandates single-try. If $\ar_2 \gbeats \ar_1$, then $\ar_1 \ibeatse \ar_0 + \ar_2$, in the sense that $\ar_1$ would be the only such argument, is forbidden because this would require $\ar_1 \gbeats \ar_0 + \ar_2$ and thus yields a repetition.}
-
-\subsection{Example model}
-\begin{itemize}
-	\item $\ar_0 = \text{“Veg bec of ethics and health”}$
-	\item $\ar_1 = \text{“Ethics is not defined”}$
-	\item $\ar_2 = \text{“It is since Aristotle at least”}$
-	\item $\ar_1' = \text{“Health isn’t important”}$
-	\item $\ar_2' = \text{“Ask my grandmother”}$
-	\item $\ar_1 \mbeats \ar_0$, $\ar_1' \mbeats \ar_0$
-	\item $\ar_2 \mbeats \ar_1$, $\ar_2' \mbeats \ar_1'$
-	\item $\ar_0 + \ar_2 \mbeats \ar_1$
-	\item $\ar_1' \mbeats \ar_0 + \ar_2$
-	\item $\ar_0 + \ar_2' \mbeats \ar_1'$
-	\item $\ar_1 \mbeats \ar_0 + \ar_2'$
-	\item $\ar_0 + \ar_2 + \ar_2' \mbeats \ar_1$
-	\item $\ar_0 + \ar_2 + \ar_2' \mbeats \ar_1'$
-\end{itemize}
-
-\subsection{The rest}
-Change conditions. I should be able to prove the theorem using reinst + bounded width instead of bounded length. Reinst should serve to discard: $(\ar_2, \ar_1) \ileadstost \phi$, $(\ar'_2, \ar'_1) \ileadstost \phi$, $(\ar'_1, \ar_2) \ileadstoe ¬\phi$, $(\ar_1, \ar'_2) \ileadstoe ¬\phi$.
-
-Clarification. General theory says that $\ar_1$ is replaceable (suspects that it’s good for some people): $(\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ (\ar'_1, \ar_0) \ileadstoe ¬\phi$. (This will fail if some $i$ thinks $\ar'_1$ is bad arg because of $\ar_0$ but $\ar_1$ is bad because of $\ar_2$.) It may say that $\ar_1$ is bad. General theory prepares potentially good arg $\ar_0$ and claims that if $\ar_0 \ileadstoe \phi$, then $\ar_0 \ileadstost \phi$ (this is Answerability). So that the model only has to prove the weaker existential claim.
-
 Model: for a given $i$. Defends $\prop$. $\exists \ar_1 \in \args_\eta \suchthat \ar_1 \ileadstoe \prop$. Then, $\forall \ar_2 \in \gargs \suchthat (\ar_2, \ar_1) \ileadstoe ¬\prop: \exists \ar_3 \in \args_\eta \suchthat (\ar_3, \ar_2) \ileadstoe \prop.$
 
-TODO: theorist proposes theory $\gamma$. Contains set $\allargs$. The theory must exhibit a limited number of candidates $s_c$ when $s'$ sometimes trumps $s$ and $s'$ sometimes does not trump $s$ (valid for all $i$): that’s falsifiable, and then permits validation of $\eta$. Also, $\gamma$ must exhibit a replacer $s$ of $s_3, s_1$ against $s_2$, or a set of candidate replacers. The replacer (or candidates) may depend on $s_3$ and $s_1$, but not on $i$. This is falsifiable again. And $\gamma$ must fix bounds of width and breadth. And $\gamma$ must indicate how an $s \notin \args_\gamma$ is unnecessary, by exhibiting resistant [not trumped by any decisive argument in $\args_\gamma$] candidates from $\args_\gamma$ such that at least one trump $s$ or replace $s$.
+\subsection{Transitive, complete preference theories}
+Given a set of alternatives $\allalts$. Define $\allprops_\allalts = \set{\ppst, a ≠ b \in \allalts} \cup \set{\ppstba, a ≠ b \in \allalts}$. Define $¬_\allalts$ such that $\forall a, b \in \allalts: ¬_\allalts\ppst = \ppstba, ¬_\allalts\ppstba = \ppst$. Define $\Phi_\allalts = \props_\allalts × \set{\mathit{sure}, \mathit{poss}}$.
 
-A counter-theory may propose $\args^\text{ext}$ with some arguments not in $\allargs$ (or, more generally, may propose to enlarge the conditions for considering that $s', s \ileadsto t$: if DM has eaten a pancake or has eaten no pancake, must be stable). Then they either can exhibit a plausible argument in $\args^\text{ext}$ not in $\allargs$ (and indeed $\allargs$ is rejected), or not, and then both theories are equivalent, better keep the simpler one.
+Let $I$ represent a given set of individuals; $\allalts$ a set of products; 
+and $\allargs$ the set of all strings.
+Given $i \in I$, define $\ileadstosti$ as follows. 
+Given $\hist \in \allhist$ and $\phi \in \Phi_\allalts$, with $\phi \in \set{\ppst} × \set{\mathit{sure}, \mathit{poss}}$ for some $a ≠ b \in \allalts$, the individual is presented the arguments in $\hist$, and has then to choose a product from the set $\set{a, b}$. Define $\hist \ileadstosti \phi$ iff $i$ chooses $a$. \commentOC{This is inadequate: if $i$ picks $b$ from $\set{a, b, c}$, the current definition considers it compatible with $\ppstsure \in \iPhi$, thus, $\ppst$ does not have a meaningful content. Should rather define $\ppstsure$ so that $a$ is picked rather than $b$ whatever the choice set. This requires to generalize $\ileadstosti$.}
 
-Thus, $\gamma$ takes positions only on those things true for all $i$.
+Any normative theory of the form $(\allprops_\allalts, ¬_\allalts, \allargs, I, (\ileadstoi)_{i \in I})$, for some sets $\allargs$ and $I$, is called a normative theory about $\allalts$.
 
-Then a theorist can propose a mapping $i$ to $\eta_i$. If $\gamma$ is valid, then it is easy to validate $\eta_i$.
+Given a set $\domc \subseteq \powersetz{\allalts}$, where $\powersetz{\allalts}$ designates the set of subsets of $\allalts$ without the empty set, a function $c: \domc → \allalts$ is a choice function iff $\forall B \in \domc: c(B) \subseteq B$.
 
-More generally, I need a set of possible situations, and an operation defined by the theory $\gamma$, that brings a situation to another situation, that is normatively better for taking a decision (or innocuous?). The operation is: adding an argument. This operation corresponds to forming the pair $(s', s)$: from a situation $s'$, we add the argument $s$ and bring $i$ in the situation $(s', s)$ where she has heard two arguments.
+Given a normative theory about $\allalts$, an individual $i \in I$, a set $\domc \subseteq \powersetz{\allalts}$ and a choice function $c$, say that $c$ represents a \emph{deliberated choice function} for $i$ iff $\forall B \in \domc: c(B) \subseteq \set{a \in B \suchthat \forall b \in B: \ppstsure[b][a] \notin \iPhi}$.
 
-Then the normative criterion is: $t$ in DJ of $i$ when $\exists s \suchthat \forall s': (s', s) \ileadstost t$ (the theory provides a part of this guarantee under falsification, claiming for all $i$, the model makes the rest under validation for this $i$).
+A normative theory about $\allalts$ is transitive iff $\forall a ≠ b ≠ c ≠ a \in \allalts: [\exists \ar_{a \pst b} \in \allargs \suchthat \ar_{a \pst b} \ileadstosti \ppstsure] \land [\exists \ar_{b \pst c} \in \allargs \suchthat \ar_{b \pst c} \ileadstosti \ppstsure[b][c]] ⇒ [\exists \ar_{a \pst c} \in \allargs \suchthat \ar_{a \pst c} \ileadstosti \ppstsure[a][c]]$. 
 
-\commentOC{Say that a theory supposedly draws on general principles, which justifies that it talks about multiple $\phi$, even though at this level, there is no connection between them.}
+A set of propositions $P \subseteq \Phi_\allalts$ is transitive iff $\forall a ≠ b ≠ c ≠ a \in \allalts: \ppstsure \in P \land \ppstsure[b][c] \in P ⇒ \ppstsure[a][c] \in P$.
+
+A transitive empirical preference theory about $\allalts$ is an empirical theory for a normative theory about $\allalts$ such that $\gPhi$ is transitive.
+
+Associate to such a theory a preference ordering $\succ$ on $\allalts$ as follows: $a \succ b$ iff $\ppstsure \in \gPhi$.
+
+The deliberated preference of $i$ under a normative theory 
+Then, observe $a$ incomp to $z$ using a good argument for $a > z$ and one for $z > a$. Observe also $b$ incomp to $z$. And observe $a > b$. This proves incompleteness as $z$ indifferent to the rest is impossible. BUT this requires to observe possibility.
+
+\subsubsection{Transitive arguments}
+Given a normative theory and a function $\tau: \allargs × \allargs → \allargs$, say that $\tau$ is a transitive argument builder iff $\forall a ≠ b ≠ c ≠ a \in \allalts, \ar_{a \pst b}, \ar_{b \pst c} \in \allargs \suchthat \ar_{a \pst b} \ileadstosti \ppstsure \land \ar_{b \pst c} \ileadstosti \ppstsure[b][c]: \tau(\ar_{a \pst b}, \ar_{b \pst c}) \ileadstosti \ppstsure[a][c]$.
+
+Observe that if a normative theory admits a transitive argument builder, then it is transitive.
+
+TODO It is possible to determine whether a given function $\tau$ is a transitive argument builder empiricially. But not to prove empirically that a normative theory is not transitive.
 
 \section{Decision situation}
 \newcommand{\alltopic}{T^*}
@@ -522,6 +364,47 @@ Show that if the claim of the model is of a different form, then the model is no
 Extend the definition of additive single-answer theories to non-additive single-answer theories.
 
 An additive theory need not have freedom for defining planned attacks on additive terms: this should be a consequence on the planned attacks on defenses and on initial arguments only. This makes the theory easier to define, as only attacks on partial arguments are to be defined.
+
+General theory says that $\ar_1$ is replaceable (suspects that it’s good for some people): $(\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ (\ar'_1, \ar_0) \ileadstoe ¬\phi$. (This will fail if some $i$ thinks $\ar'_1$ is bad arg because of $\ar_0$ but $\ar_1$ is bad because of $\ar_2$.) It may say that $\ar_1$ is bad. General theory prepares potentially good arg $\ar_0$ and claims that if $\ar_0 \ileadstoe \phi$, then $\ar_0 \ileadstost \phi$ (this is Answerability). So that the model only has to prove the weaker existential claim.
+
+\subsection{Example model}
+\begin{itemize}
+	\item $\ar_0 = \text{“Veg bec of ethics and health”}$
+	\item $\ar_1 = \text{“Ethics is not defined”}$
+	\item $\ar_2 = \text{“It is since Aristotle at least”}$
+	\item $\ar_1' = \text{“Health isn’t important”}$
+	\item $\ar_2' = \text{“Ask my grandmother”}$
+	\item $\ar_1 \mbeats \ar_0$, $\ar_1' \mbeats \ar_0$
+	\item $\ar_2 \mbeats \ar_1$, $\ar_2' \mbeats \ar_1'$
+	\item $\ar_0 + \ar_2 \mbeats \ar_1$
+	\item $\ar_1' \mbeats \ar_0 + \ar_2$
+	\item $\ar_0 + \ar_2' \mbeats \ar_1'$
+	\item $\ar_1 \mbeats \ar_0 + \ar_2'$
+	\item $\ar_0 + \ar_2 + \ar_2' \mbeats \ar_1$
+	\item $\ar_0 + \ar_2 + \ar_2' \mbeats \ar_1'$
+\end{itemize}
+
+\subsection{Interpreting Answerability}
+At a given stage in operationalizing the protocol, define $f(\ar_0)$ as the arguments that are considered as having a chance to attack $\ar_0$ (without backtracking). Thus, this will not include $\ar_1$ if indeed $\ar_2$ is considered by $i$ as a satisfying answer to $\ar_1$. We can interpret Answerability in the following ways. Strong answ: $\exists \ar_1 \in f(\ar_0) \suchthat \ar_1 \gbeats \ar_0$. Weak answ: $f(\ar_0) ≠ \emptyset ⇒ \exists \ar_1' \suchthat \ar_1' \gbeats \ar_0$. Or suppress Answ and replace Op. val. by Strong op. val.: $\forall \phi \in \gPhi, \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: (\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ \exists \ar_2 \in {\gbeatsinv}(\ar_1)$.
+
+A model can be allowed to try only once each answer. If $\ar_2 \gbeats \ar_1 \land \ar_1 \in f(\ar_0 + \ar_2)$, the model has lost.
+
+Thus, four variants, given $\ar_2 \gbeats \ar_1$.
+\begin{itemize}
+	\item Strong answ with single try: $\ar_1 \notin f(\ar_0 + \ar_2) \land \forall \ar_1' \in f(\ar_0 + \ar_2): \ar_1' \gbeats \ar_0 + \ar_2$.
+	\item Strong answ with multiple tries: $\forall \ar_1' \in f(\ar_0 + \ar_2): \ar_1' \gbeats \ar_0 + \ar_2$. (Example: $\ar_1 = \text{“for ethical reasons”}$, and $\eta$ knows two c-a to this, from different angles.) 	\item Weak answ with single try: $\ar_1 \notin f(\ar_0 + \ar_2) \land [f(\ar_0 + \ar_2) ≠ \emptyset ⇒ \exists \ar_1' \suchthat \ar_1' \gbeats \ar_0]$.
+	\item Weak answ with multiple tries: $f(\ar_0 + \ar_2) ≠ \emptyset ⇒ \exists \ar_1' \suchthat \ar_1' \gbeats \ar_0 + \ar_2$.
+\end{itemize}
+
+Goal: leave addition free so as to admit multiple tries, and prove that Strong answ with multiple tries is the right one for a general approach: suitable restriction to the model permits single try (with same conditions); and weak answ actually does not permit more models.
+
+When $f$ is available and is single-valued, question: should we use Strong or weak answ? Right answer: use Strong answ. It is stricly more general. A model that wants weak answ can define its internal attacks suitable (to be proven); and a model that wants to claim more can.
+
+When $f$ is not available, only remains: single try (just give a decisive argument) or multiple tries (try more and more arguments, blindly).
+
+Suppose that a model also defines $f_\eta$, meaning: $f_\eta(\ar_1) = \ar_2$ the argument the model plays against $\ar_1$. Thus $f_\eta$, like $\gbeats$, is a binary relation over $\allargs$, but $f_\eta$ in supplement returns a single argument or none. Also, $\ar_2 = f(\ar_1) ⇒ \ar_2 \gbeats \ar_1$. When a reason $\ar_1$ for rejecting $\ar_0$ is not known, $f_\eta(\ar_0)$ instead gives the argument to be played next. Note that $f_\eta$ is only useful when (in the known c-a variant) for some $\ar_1$ there are multiple candidates $\ar_2$ or when (in the unknown c-a variant) for some $\ar_0$ here are multiple candidates $\ar_2$. In fact, this is more complicated: $f_\eta(\ar_1)$ can give first $\ar_2$, then, if that is not enough, $\ar_4$ (thus it’s rather $f_\eta(\ar_1, \ar_0)$).
+
+Under Strong anws, we ask that $f(\ar_0) \cap {\gbeatsinv}(\ar_0) ≠ \emptyset$, and (inevitably) that $f_\eta(\ar_1) ≠ \emptyset$. Under weak answ, we do not expect anticipation and only demand that $f_\eta(\ar_1) ≠ \emptyset$. But this does not allow supplementary models. TODO prove this.
 
 \section{Empirical theories}
 \subsection{Simple to complex}
