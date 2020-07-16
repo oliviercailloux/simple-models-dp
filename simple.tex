@@ -204,38 +204,6 @@ A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hi
 \subsection{Effectively comparing models}
 Model: for a given $i$. Defends $\prop$. $\exists \ar_1 \in \args_\eta \suchthat \ar_1 \ileadstoe \prop$. Then, $\forall \ar_2 \in \gargs \suchthat (\ar_2, \ar_1) \ileadstoe ¬\prop: \exists \ar_3 \in \args_\eta \suchthat (\ar_3, \ar_2) \ileadstoe \prop.$
 
-\subsection{Transitive, complete preference theories}
-Given a set of alternatives $\allalts$. Define $\allprops_\allalts = \set{\ppst, a ≠ b \in \allalts} \cup \set{\ppstba, a ≠ b \in \allalts}$. Define $¬_\allalts$ such that $\forall a, b \in \allalts: ¬_\allalts\ppst = \ppstba, ¬_\allalts\ppstba = \ppst$. Define $\Phi_\allalts = \props_\allalts × \set{\mathit{sure}, \mathit{poss}}$.
-
-Let $I$ represent a given set of individuals; $\allalts$ a set of products; 
-and $\allargs$ the set of all strings.
-Given $i \in I$, define $\ileadstosti$ as follows. 
-Given $\hist \in \allhist$ and $\phi \in \Phi_\allalts$, with $\phi \in \set{\ppst} × \set{\mathit{sure}, \mathit{poss}}$ for some $a ≠ b \in \allalts$, the individual is presented the arguments in $\hist$, and has then to choose a product from the set $\set{a, b}$. Define $\hist \ileadstosti \phi$ iff $i$ chooses $a$. \commentOC{This is inadequate: if $i$ picks $b$ from $\set{a, b, c}$, the current definition considers it compatible with $\ppstsure \in \iPhi$, thus, $\ppst$ does not have a meaningful content. Should rather define $\ppstsure$ so that $a$ is picked rather than $b$ whatever the choice set. This requires to generalize $\ileadstosti$.}
-
-Any normative theory of the form $(\allprops_\allalts, ¬_\allalts, \allargs, I, (\ileadstoi)_{i \in I})$, for some sets $\allargs$ and $I$, is called a normative theory about $\allalts$.
-
-Given a set $\domc \subseteq \powersetz{\allalts}$, where $\powersetz{\allalts}$ designates the set of subsets of $\allalts$ without the empty set, a function $c: \domc → \allalts$ is a choice function iff $\forall B \in \domc: c(B) \subseteq B$.
-
-Given a normative theory about $\allalts$, an individual $i \in I$, a set $\domc \subseteq \powersetz{\allalts}$ and a choice function $c$, say that $c$ represents a \emph{deliberated choice function} for $i$ iff $\forall B \in \domc: c(B) \subseteq \set{a \in B \suchthat \forall b \in B: \ppstsure[b][a] \notin \iPhi}$.
-
-A normative theory about $\allalts$ is transitive iff $\forall a ≠ b ≠ c ≠ a \in \allalts: [\exists \ar_{a \pst b} \in \allargs \suchthat \ar_{a \pst b} \ileadstosti \ppstsure] \land [\exists \ar_{b \pst c} \in \allargs \suchthat \ar_{b \pst c} \ileadstosti \ppstsure[b][c]] ⇒ [\exists \ar_{a \pst c} \in \allargs \suchthat \ar_{a \pst c} \ileadstosti \ppstsure[a][c]]$. 
-
-A set of propositions $P \subseteq \Phi_\allalts$ is transitive iff $\forall a ≠ b ≠ c ≠ a \in \allalts: \ppstsure \in P \land \ppstsure[b][c] \in P ⇒ \ppstsure[a][c] \in P$.
-
-A transitive empirical preference theory about $\allalts$ is an empirical theory for a normative theory about $\allalts$ such that $\gPhi$ is transitive.
-
-Associate to such a theory a preference ordering $\succ$ on $\allalts$ as follows: $a \succ b$ iff $\ppstsure \in \gPhi$.
-
-The deliberated preference of $i$ under a normative theory 
-Then, observe $a$ incomp to $z$ using a good argument for $a > z$ and one for $z > a$. Observe also $b$ incomp to $z$. And observe $a > b$. This proves incompleteness as $z$ indifferent to the rest is impossible. BUT this requires to observe possibility.
-
-\subsubsection{Transitive arguments}
-Given a normative theory and a function $\tau: \allargs × \allargs → \allargs$, say that $\tau$ is a transitive argument builder iff $\forall a ≠ b ≠ c ≠ a \in \allalts, \ar_{a \pst b}, \ar_{b \pst c} \in \allargs \suchthat \ar_{a \pst b} \ileadstosti \ppstsure \land \ar_{b \pst c} \ileadstosti \ppstsure[b][c]: \tau(\ar_{a \pst b}, \ar_{b \pst c}) \ileadstosti \ppstsure[a][c]$.
-
-Observe that if a normative theory admits a transitive argument builder, then it is transitive.
-
-TODO It is possible to determine whether a given function $\tau$ is a transitive argument builder empiricially. But not to prove empirically that a normative theory is not transitive.
-
 \section{Decision situation}
 \newcommand{\alltopic}{T^*}
 
@@ -405,6 +373,38 @@ When $f$ is not available, only remains: single try (just give a decisive argume
 Suppose that a model also defines $f_\eta$, meaning: $f_\eta(\ar_1) = \ar_2$ the argument the model plays against $\ar_1$. Thus $f_\eta$, like $\gbeats$, is a binary relation over $\allargs$, but $f_\eta$ in supplement returns a single argument or none. Also, $\ar_2 = f(\ar_1) ⇒ \ar_2 \gbeats \ar_1$. When a reason $\ar_1$ for rejecting $\ar_0$ is not known, $f_\eta(\ar_0)$ instead gives the argument to be played next. Note that $f_\eta$ is only useful when (in the known c-a variant) for some $\ar_1$ there are multiple candidates $\ar_2$ or when (in the unknown c-a variant) for some $\ar_0$ here are multiple candidates $\ar_2$. In fact, this is more complicated: $f_\eta(\ar_1)$ can give first $\ar_2$, then, if that is not enough, $\ar_4$ (thus it’s rather $f_\eta(\ar_1, \ar_0)$).
 
 Under Strong anws, we ask that $f(\ar_0) \cap {\gbeatsinv}(\ar_0) ≠ \emptyset$, and (inevitably) that $f_\eta(\ar_1) ≠ \emptyset$. Under weak answ, we do not expect anticipation and only demand that $f_\eta(\ar_1) ≠ \emptyset$. But this does not allow supplementary models. TODO prove this.
+
+\subsection{Transitive, complete preference theories}
+Given a set of alternatives $\allalts$. Define $\allprops_\allalts = \set{\ppst, a ≠ b \in \allalts} \cup \set{\ppstba, a ≠ b \in \allalts}$. Define $¬_\allalts$ such that $\forall a, b \in \allalts: ¬_\allalts\ppst = \ppstba, ¬_\allalts\ppstba = \ppst$. Define $\Phi_\allalts = \props_\allalts × \set{\mathit{sure}, \mathit{poss}}$.
+
+Let $I$ represent a given set of individuals; $\allalts$ a set of products; 
+and $\allargs$ the set of all strings.
+Given $i \in I$, define $\ileadstosti$ as follows. 
+Given $\hist \in \allhist$ and $\phi \in \Phi_\allalts$, with $\phi \in \set{\ppst} × \set{\mathit{sure}, \mathit{poss}}$ for some $a ≠ b \in \allalts$, the individual is presented the arguments in $\hist$, and has then to choose a product from the set $\set{a, b}$. Define $\hist \ileadstosti \phi$ iff $i$ chooses $a$. \commentOC{This is inadequate: if $i$ picks $b$ from $\set{a, b, c}$, the current definition considers it compatible with $\ppstsure \in \iPhi$, thus, $\ppst$ does not have a meaningful content. Should rather define $\ppstsure$ so that $a$ is picked rather than $b$ whatever the choice set. This requires to generalize $\ileadstosti$.}
+
+Any normative theory of the form $(\allprops_\allalts, ¬_\allalts, \allargs, I, (\ileadstoi)_{i \in I})$, for some sets $\allargs$ and $I$, is called a normative theory about $\allalts$.
+
+Given a set $\domc \subseteq \powersetz{\allalts}$, where $\powersetz{\allalts}$ designates the set of subsets of $\allalts$ without the empty set, a function $c: \domc → \allalts$ is a choice function iff $\forall B \in \domc: c(B) \subseteq B$.
+
+Given a normative theory about $\allalts$, an individual $i \in I$, a set $\domc \subseteq \powersetz{\allalts}$ and a choice function $c$, say that $c$ represents a \emph{deliberated choice function} for $i$ iff $\forall B \in \domc: c(B) \subseteq \set{a \in B \suchthat \forall b \in B: \ppstsure[b][a] \notin \iPhi}$.
+
+A normative theory about $\allalts$ is transitive iff $\forall a ≠ b ≠ c ≠ a \in \allalts: [\exists \ar_{a \pst b} \in \allargs \suchthat \ar_{a \pst b} \ileadstosti \ppstsure] \land [\exists \ar_{b \pst c} \in \allargs \suchthat \ar_{b \pst c} \ileadstosti \ppstsure[b][c]] ⇒ [\exists \ar_{a \pst c} \in \allargs \suchthat \ar_{a \pst c} \ileadstosti \ppstsure[a][c]]$. 
+
+A set of propositions $P \subseteq \Phi_\allalts$ is transitive iff $\forall a ≠ b ≠ c ≠ a \in \allalts: \ppstsure \in P \land \ppstsure[b][c] \in P ⇒ \ppstsure[a][c] \in P$.
+
+A transitive empirical preference theory about $\allalts$ is an empirical theory for a normative theory about $\allalts$ such that $\gPhi$ is transitive.
+
+Associate to such a theory a preference ordering $\succ$ on $\allalts$ as follows: $a \succ b$ iff $\ppstsure \in \gPhi$.
+
+The deliberated preference of $i$ under a normative theory 
+Then, observe $a$ incomp to $z$ using a good argument for $a > z$ and one for $z > a$. Observe also $b$ incomp to $z$. And observe $a > b$. This proves incompleteness as $z$ indifferent to the rest is impossible. BUT this requires to observe possibility.
+
+\subsubsection{Transitive arguments}
+Given a normative theory and a function $\tau: \allargs × \allargs → \allargs$, say that $\tau$ is a transitive argument builder iff $\forall a ≠ b ≠ c ≠ a \in \allalts, \ar_{a \pst b}, \ar_{b \pst c} \in \allargs \suchthat \ar_{a \pst b} \ileadstosti \ppstsure \land \ar_{b \pst c} \ileadstosti \ppstsure[b][c]: \tau(\ar_{a \pst b}, \ar_{b \pst c}) \ileadstosti \ppstsure[a][c]$.
+
+Observe that if a normative theory admits a transitive argument builder, then it is transitive.
+
+TODO It is possible to determine whether a given function $\tau$ is a transitive argument builder empiricially. But not to prove empirically that a normative theory is not transitive.
 
 \section{Empirical theories}
 \subsection{Simple to complex}
