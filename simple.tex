@@ -7,7 +7,7 @@
 %\input{preamble/draw}
 %\input{preamble/acronyms}
 \addtokomafont{labelinglabel}{\sffamily\bfseries}
-\renewcommand{\phi}{\varphi}
+\renewcommand{\phi}{\varphi}%TODO
 \DeclareMathAlphabet{\mathup}{OT1}{\familydefault}{m}{n}
 
 %I find these settings useful in draft mode. Should be removed for final versions.
@@ -63,45 +63,45 @@ with ${\ileadsto} \subseteq \allhist × \Phi$,
 where $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ denotes all finite sequences of elements in $\allargs$ (including the empty sequence) and $\Phi = \allprops × \set{\mathit{poss}, \mathit{sure}}$. (Throughout the article, $\N$ includes zero, and note that $\intvl{1, 0} = \emptyset$.)  
 
 The symbol $¬$ is a negation operator on $\allprops$, such that $\forall \prop \in \allprops: ¬¬\prop = \prop$. This article also uses this symbol as a negation operator on $\Phi$, defined as follows, $\forall \prop \in \allprops$: $¬\propposs = (¬\prop, \mathit{sure})$ and $¬\propsure = (¬\prop, \mathit{poss})$. Observe that $¬¬\phi = \phi$. (The symbol $¬$ is also used in this article to negate classical mathematical propositions; this should create no confusion.)
-As usual with binary relations, $\hist \nileadstoi \phi$ means $(\hist, \phi) \notin {\ileadsto}$.
+As usual with binary relations, $\hist \nileadsto \phi$ means $(\hist, \phi) \notin {\ileadsto}$.
 
-Given $i \in I, \phi \in \Phi, \hist \in \allhist$, say that $\hist$ leads strongly to $\phi$ iff $\hist \ileadsto \phi \land \hist \nileadstoi ¬\phi$.
-Define $\hist \ileadstosti \phi$ iff $[\hist \text{ leads strongly to } \phi] \land [\phi = \propsure ⇒ \hist \text{ leads strongly to } \propposs]$.
+Given $i \in I, \phi \in \Phi, \hist \in \allhist$, say that $\hist$ leads strongly to $\phi$ iff $\hist \ileadsto \phi \land \hist \nileadsto ¬\phi$.
+Define $\hist \ileadstost \phi$ iff $[\hist \text{ leads strongly to } \phi] \land [\phi = \propsure ⇒ \hist \text{ leads strongly to } \propposs]$.
 Given $\hist \in \allhist$, let $\histend$ denote the set containing the last two elements of the sequence $\hist$ if the sequence has at least two elements; the singleton set containing the last element of the sequence if it has exactly one element; and the empty set if $\hist = \emptyset$.
-Given $i \in I, \phi \in \Phi, \ar \in \allargs$, define $\ar \ileadstosti \phi$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \ileadstosti \phi$.
+Given $i \in I, \phi \in \Phi, \ar \in \allargs$, define $\ar \ileadstost \phi$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \ileadstost \phi$.
 
 \subsection{Classify propositions}
 \begin{axiom}[Normative adequacy]
 	\label{ax:norm}
 	$\forall i \in I, \phi \in \Phi: 
-		[(\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi) \land ¬(\exists \ar \in \allargs \suchthat \ar \ileadstosti ¬\phi)] ⇒ \phi \in \iPhi \land ¬\phi \notin \iPhi.$
+		[(\exists \ar \in \allargs \suchthat \ar \ileadstost \phi) \land ¬(\exists \ar \in \allargs \suchthat \ar \ileadstost ¬\phi)] ⇒ \phi \in \iPhi \land ¬\phi \notin \iPhi.$
 \end{axiom}
 This axiom can be simplified, thanks to the following proposition.
 \begin{proposition}[Protocol coherence]
 	\label{prop:protcoh}
 	$\forall i \in I, \phi \in \Phi$:
 	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi] ⇒ [\nexists \ar \in \allargs \suchthat \ar \ileadstosti ¬\phi].
+		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ [\nexists \ar \in \allargs \suchthat \ar \ileadstost ¬\phi].
 	\end{equation}
 \end{proposition}
 \begin{proof}
-	Protocol coherence is satisfied by definition of $\ileadstosti$. Indeed, if for some $\ar \in \allargs$, $\ar \ileadstosti \phi$, then $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadstoi ¬\phi$; thus, for any $\ar' \in \allargs$, $\ar' \ileadstosti ¬\phi$ is false, because it requires that $\forall \ar_1 \in \allargs: (\ar', \ar_1) \ileadsto ¬\phi$, and thus in particular, that $(\ar', \ar) \ileadsto ¬\phi$.
+	Protocol coherence is satisfied by definition of $\ileadstost$. Indeed, if for some $\ar \in \allargs$, $\ar \ileadstost \phi$, then $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadsto ¬\phi$; thus, for any $\ar' \in \allargs$, $\ar' \ileadstost ¬\phi$ is false, because it requires that $\forall \ar_1 \in \allargs: (\ar', \ar_1) \ileadsto ¬\phi$, and thus in particular, that $(\ar', \ar) \ileadsto ¬\phi$.
 \end{proof}
 
 Therefore, \cref{ax:norm} is actually equivalent to the following property.
 \begin{property}[Simple normative adequacy]
 	\label{ax:snorm}
 	$\forall i \in I, \phi \in \Phi: 
-		[\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi] ⇒ \phi \in \iPhi \land ¬\phi \notin \iPhi.$
+		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ \phi \in \iPhi \land ¬\phi \notin \iPhi.$
 \end{property}
 
-To further analyze this and related matters, given a normative theory and $i \in I$, say that a proposition $\phi \in \Phi$ is \emph{$i$-decidable} iff $\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi \lor \ar \ileadstosti ¬\phi$.
+To further analyze this and related matters, given a normative theory and $i \in I$, say that a proposition $\phi \in \Phi$ is \emph{$i$-decidable} iff $\exists \ar \in \allargs \suchthat \ar \ileadstost \phi \lor \ar \ileadstost ¬\phi$.
 The $i$-decidable propositions are those on which the normative theory permits to take a position. It will generally be unknown in practical applications, and may be empty.
 The next property ensures an unambiguous interpretation of the content of $\iPhi$ for all $i$-decidable propositions. In this definition, $\oplus$ denotes the exclusive disjunction; thus $\phi \in \iPhi \oplus ¬\phi \in \iPhi$ is equivalent to: $\phi \in \iPhi ⇔ ¬\phi \notin \iPhi$. It can be seen to hold by recalling that \cref{ax:snorm} is equivalent to \cref{ax:norm}.
 
 \begin{property}[Restricted interpretability]
 	\label{def:restrinterpr}
-	$\forall i \in I, \phi \in \Phi: [\exists \ar \in \allargs \suchthat \ar \ileadstosti \phi \lor \ar \ileadstosti ¬\phi] ⇒ [\phi \in \iPhi \oplus ¬\phi \in \iPhi]$.
+	$\forall i \in I, \phi \in \Phi: [\exists \ar \in \allargs \suchthat \ar \ileadstost \phi \lor \ar \ileadstost ¬\phi] ⇒ [\phi \in \iPhi \oplus ¬\phi \in \iPhi]$.
 \end{property}
 
 \subsection{Non-completeness}
@@ -137,27 +137,27 @@ $\exists k \in \N \suchthat \dfp^k(\gleadstoinv(\allprops)) = \emptyset$.
 \subsection{Falsifiability}
 Given $\hist \in \allhist$, $\hist(\intvl{1, l(\hist)})$, where $l(\hist) \in \N$ is the length of the sequence $\hist$, denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$. Abusing notation, given $\args \subseteq \allargs$, I write $\args \cap \hist$ to designate $\args \cap \hist(\intvl{1, l(\hist)})$, therefore using simply $\hist$ in that expression to denote the \emph{range} of $\hist$.
 
-Given $\phi \in \Phi$, $\args \subseteq \allargs$ and $\ar_0 \in \allargs$, say that $\args$ seems $i$-ineffective against $\ar_0$ for $\phi$, $\args \bowtie^{i, \phi} \ar_0$, iff $\exists \hist \in \allhist \suchthat \hist(\intvl{l(\hist)-\card{\args}, l(\hist)-1}) = \args \land \hist(l(\hist)) = \ar_0 \land \hist \ileadstosti \phi$, that is, when some $\hist$ ends with $\args$ followed by $\ar_0$ and leads to $\phi$. Note that for all $\ar_0 \in \allargs$ such that $\exists \hist \in \allhist \suchthat [\hist(l(\hist)) = \ar_0 \land \hist \ileadstosti \phi]$: $\emptyset \sinef \ar_0$.
+Given $\phi \in \Phi$, $\args \subseteq \allargs$ and $\ar_0 \in \allargs$, say that $\args$ seems $i$-ineffective against $\ar_0$ for $\phi$, $\args \bowtie^{i, \phi} \ar_0$, iff $\exists \hist \in \allhist \suchthat \hist(\intvl{l(\hist)-\card{\args}, l(\hist)-1}) = \args \land \hist(l(\hist)) = \ar_0 \land \hist \ileadstost \phi$, that is, when some $\hist$ ends with $\args$ followed by $\ar_0$ and leads to $\phi$. Note that for all $\ar_0 \in \allargs$ such that $\exists \hist \in \allhist \suchthat [\hist(l(\hist)) = \ar_0 \land \hist \ileadstost \phi]$: $\emptyset \sinef \ar_0$.
 
-Given $i \in I, \phi \in \Phi, \ar_1, \ar_0 \in \allargs$, define $\ar_1 \ibeatsi \ar_0$ iff $\exists \hist \in \allhist \suchthat \ar_1 \in (\gbeatsinv(\ar_0) \cap \hist) \land \ar_0 \in \histend \land \hist \nileadstoi \phi \land (\gbeatsinv(\ar_0) \cap \hist) \setminus \set{\ar_1} \sinef \ar_0$.
+Given $i \in I, \phi \in \Phi, \ar_1, \ar_0 \in \allargs$, define $\ar_1 \ibeats \ar_0$ iff $\exists \hist \in \allhist \suchthat \ar_1 \in (\gbeatsinv(\ar_0) \cap \hist) \land \ar_0 \in \histend \land \hist \nileadsto \phi \land (\gbeatsinv(\ar_0) \cap \hist) \setminus \set{\ar_1} \sinef \ar_0$.
 
-Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $\di(\ar) \subseteq \alldargs$, as $\di(\ar) = [\dbeatsinv \circ {\ibeatsiinv}](\ar)$. Define $\dip: \allargs → \allargs$ as $\dip(\ar) = \ar + \di(\ar)$.
+Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $\di(\ar) \subseteq \alldargs$, as $\di(\ar) = [\dbeatsinv \circ {\ibeatsinv}](\ar)$. Define $\dip: \allargs → \allargs$ as $\dip(\ar) = \ar + \di(\ar)$.
 Given $i \in I, \phi \in \gPhi$, define $\gargs[i, \phi] \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs[i, \phi] = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\phi))$, where $(\dip)^0$ is the identity function over $\allargs$.
 
-$\ar$ $i$-defends $\phi$ iff $\forall \hist \in \allhist \suchthat \left[\ar \in \histend \land \gbeatsinv(\ar) \cap \hist = \emptyset\right]: \hist \ileadstosti \phi$. 
+$\ar$ $i$-defends $\phi$ iff $\forall \hist \in \allhist \suchthat \left[\ar \in \histend \land \gbeatsinv(\ar) \cap \hist = \emptyset\right]: \hist \ileadstost \phi$. 
 %$\ar_0$ recursively $i$-defends $\phi$ iff $\forall \ar \in \cup_{k \in \N}(\dip)^k(\ar_0)$: $\ar$ $i$-defends $\phi$.
 
 \begin{definition}[Convincingness]
 	$\forall i \in I, \phi \in \gPhi, \ar \in \gargs[i, \phi]: \ar$ $i$-defends $\phi$.
 \end{definition}
 
-A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hist) \in I × \gPhi × \allhist$ such that $\exists \ar \in (\histend \cap \gargs[i, \phi]) \suchthat \gbeatsinv(\ar) \cap \hist = \emptyset \land \hist \nileadstosti \phi$.
+A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hist) \in I × \gPhi × \allhist$ such that $\exists \ar \in (\histend \cap \gargs[i, \phi]) \suchthat \gbeatsinv(\ar) \cap \hist = \emptyset \land \hist \nileadstost \phi$.
 
 \begin{theorem}
 	An empirical theory is convincing iff it has no falsification instances.
 \end{theorem}
 \begin{proof}
-	For all $i \in I, \phi \in \gPhi$: $\exists \ar \in \gargs[i, \phi]$ that does not $i$-defend $\phi$ iff $\exists \ar \in \gargs[i, \phi], \hist \in \allhist \suchthat \left[\ar \in \histend \land \gbeatsinv(\ar) \cap \hist = \emptyset \land \hist \nileadstosti \phi\right]$ iff $\exists \hist \in \allhist$ such that $(i, \phi, \hist)$ is a falsification instance.
+	For all $i \in I, \phi \in \gPhi$: $\exists \ar \in \gargs[i, \phi]$ that does not $i$-defend $\phi$ iff $\exists \ar \in \gargs[i, \phi], \hist \in \allhist \suchthat \left[\ar \in \histend \land \gbeatsinv(\ar) \cap \hist = \emptyset \land \hist \nileadstost \phi\right]$ iff $\exists \hist \in \allhist$ such that $(i, \phi, \hist)$ is a falsification instance.
 \end{proof}
 
 \begin{definition}[Validity]
@@ -172,30 +172,30 @@ A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hi
 	\NewDocumentCommand{\allhistred}{}{\mathscr{S}^{*, \ar_0, \mathit{red}}_{\not⇝ \phi}}
 	\NewDocumentCommand{\allhistnonred}{}{\mathscr{S}^{*, \ar_0, \mathit{irred}}_{\not⇝ \phi}}
 	
-	Given any $i \in I$ and $\phi \in \gPhi$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstosti \phi$, and normative adequacy brings the conclusion. 
+	Given any $i \in I$ and $\phi \in \gPhi$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstost \phi$, and normative adequacy brings the conclusion. 
 	
-	Given any $\ar_0 \in \allargs$, define $\args^{\hist} = \gbeatsinv(\ar_0) \cap \hist$ and $\allhistsznp = \set{\hist \in \allhist \suchthat \ar_0 \in \histend \land \hist \nileadstosti \phi}$. Given $\hist \in \allhistsznp$, say that $\hist$ is \emph{reducible} iff $\hist \in \allhistred$, defined as $\allhistred = \set{\hist \in \allhistsznp \suchthat \forall \ar_1 \in \args^{\hist}: \args^{\hist} \setminus \set{\ar_1} \not\sinef \ar_0}$; define accordingly $\allhistnonred = \allhistsznp \setminus \allhistred = \set{\hist \in \allhistsznp \suchthat \exists \ar_1 \in \args^{\hist} \suchthat \args^{\hist} \setminus \set{\ar_1} \sinef \ar_0}$.
+	Given any $\ar_0 \in \allargs$, define $\args^{\hist} = \gbeatsinv(\ar_0) \cap \hist$ and $\allhistsznp = \set{\hist \in \allhist \suchthat \ar_0 \in \histend \land \hist \nileadstost \phi}$. Given $\hist \in \allhistsznp$, say that $\hist$ is \emph{reducible} iff $\hist \in \allhistred$, defined as $\allhistred = \set{\hist \in \allhistsznp \suchthat \forall \ar_1 \in \args^{\hist}: \args^{\hist} \setminus \set{\ar_1} \not\sinef \ar_0}$; define accordingly $\allhistnonred = \allhistsznp \setminus \allhistred = \set{\hist \in \allhistsznp \suchthat \exists \ar_1 \in \args^{\hist} \suchthat \args^{\hist} \setminus \set{\ar_1} \sinef \ar_0}$.
 	
 	Lemma: given any $\ar_0 \in \allargs$ such that $\ar_0$ $i$-defends $\phi$, if $\allhistsznp ≠ \emptyset$, $\hist \in \allhistred ⇒ \exists \histp \in \allhistsznp \suchthat \emptyset ≠ \args^{\histp} \subset \args^{\hist}$. To see this, pick as $\histp$ any sequence consisting of the arguments contained in $\args^{\hist} \setminus \set{\ar_1}$, followed by $\ar_0$. 
-	First, $\histp \in \allhistsznp$, because as $\hist \in \allhistred$, $\args^{\hist} \setminus \set{\ar_1} \not\sinef \ar_0$, thus, $\histp \nileadstosti \phi$. 
+	First, $\histp \in \allhistsznp$, because as $\hist \in \allhistred$, $\args^{\hist} \setminus \set{\ar_1} \not\sinef \ar_0$, thus, $\histp \nileadstost \phi$. 
 	Second, $\args^{\histp} = \args^{\hist} \setminus \set{\ar_1}$, because $\args^{\hist} \setminus \set{\ar_1} \subseteq \args^{\histp} = \left(\gbeatsinv(\ar_0) \cap \histp\right) \subseteq \args^{\hist} \setminus \set{\ar_1}$.
 	Finally, $\args^{\histp} ≠ \emptyset$ follows from two facts: that $\args^{\hist} \setminus \set{\ar_1} \not\sinef \ar_0$ (see “First” here above) and that $\emptyset \sinef \ar_0$, which is implied by $\ar_0$ $i$-defends $\phi$.
 	
 	We conclude from this lemma that given any $\ar_0 \in \allargs$ such that $\ar_0$ $i$-defends $\phi$, if $\exists \hist \in \allhistsznp \suchthat \args^{\hist} ≠ \emptyset$, then $\exists \histp \in \allhistnonred$. To see this, given $\hist \in \allhistsznp \suchthat \args^{\hist} ≠ \emptyset$, define a finite sequence of sequences of arguments, starting with $\hist_0 = \hist$, then, for $k \in \N$, if $\hist_k \in \allhistred$, define $\hist_{k + 1} \in \allhistsznp$ by applying the lemma, thus with $\emptyset ≠ \args^{\hist_{k + 1}} \subset \args^{\hist_k}$. Because $\hist_0$ is finite (being an element of $\allhist$), $\args^{\hist_0}$ is finite, thus this process ends with some $\hist_k \in \allhistnonred$.
 	
-	Lemma: if $\ar_0$ $i$-defends $\phi$, then $\ar_0 \nileadstosti \phi ⇒ \exists \ar_1 \in \allargs, \ard_2 \in \allargs \suchthat \ard_2 \dbeats \ar_1 \ibeatsi \ar_0 \land \ar_1 \gbeats \ar_0 \land \ar_2 = \ar_0 + \ard_2 \in \dip(\ar_0)$.
-	Consider any $\ar_0 \in \allargs$ such that $\ar_0$ $i$-defends $\phi$ and $\ar_0 \nileadstosti \phi$. 
-	By definition, $\ar_0 \nileadstosti \phi$ means that $\exists \hist \in \allhistsznp$.
+	Lemma: if $\ar_0$ $i$-defends $\phi$, then $\ar_0 \nileadstost \phi ⇒ \exists \ar_1 \in \allargs, \ard_2 \in \allargs \suchthat \ard_2 \dbeats \ar_1 \ibeats \ar_0 \land \ar_1 \gbeats \ar_0 \land \ar_2 = \ar_0 + \ard_2 \in \dip(\ar_0)$.
+	Consider any $\ar_0 \in \allargs$ such that $\ar_0$ $i$-defends $\phi$ and $\ar_0 \nileadstost \phi$. 
+	By definition, $\ar_0 \nileadstost \phi$ means that $\exists \hist \in \allhistsznp$.
 	Because $\ar_0$ $i$-defends $\phi$, $\args^{\hist} ≠ \emptyset$. 
 	From the preceding conclusion, we can pick some $\histp \in \allhistnonred$.
 	Thus, $\exists \ar_1 \in \args^{\histp} \suchthat \args^{\histp} \setminus \set{\ar_1} \sinef \ar_0$.
-	By definition, this means that $\ar_1 \ibeatsi \ar_0$ and, as $\ar_1 \in \args^{\histp} = \gbeatsinv(\ar_0) \cap \histp$, $\ar_1 \gbeats \ar_0$. 
+	By definition, this means that $\ar_1 \ibeats \ar_0$ and, as $\ar_1 \in \args^{\histp} = \gbeatsinv(\ar_0) \cap \histp$, $\ar_1 \gbeats \ar_0$. 
 	It now follows from the definition of an empirical theory that $\dbeatsinv(\ar_1)$ is not empty, thus, $\exists \ard_2 \in \allargs \suchthat \ard_2 \dbeats \ar_1$. Defining $\ar_2 = \ar_0 + \ard_2$, by definition of $\dip$, $\ar_2 \in \dip(\ar_0)$.
 	
-	From this lemma, using convincingness, we deduce that $[\ar_0 \in \gargs[i, \phi] \land \ar_0 \nileadstosti \phi] ⇒ \exists \ar_2 \in \gargs[i, \phi] \cap \dfp(\ar_0)$. That is because $\ar_0 \in \gargs[i, \phi] ⇒ \ar_0$ $i$-defends $\phi$, by convincingness, and, considering $\ard_2$ and $\ar_2$ as defined in the lemma, $\ar_2 \in \gargs[i, \phi]$ by definition of $\gargs[i, \phi]$ and $\ard_2 \in \df(\ar_0)$ by definition of $\df$.
+	From this lemma, using convincingness, we deduce that $[\ar_0 \in \gargs[i, \phi] \land \ar_0 \nileadstost \phi] ⇒ \exists \ar_2 \in \gargs[i, \phi] \cap \dfp(\ar_0)$. That is because $\ar_0 \in \gargs[i, \phi] ⇒ \ar_0$ $i$-defends $\phi$, by convincingness, and, considering $\ard_2$ and $\ar_2$ as defined in the lemma, $\ar_2 \in \gargs[i, \phi]$ by definition of $\gargs[i, \phi]$ and $\ard_2 \in \df(\ar_0)$ by definition of $\df$.
 
-	To prove the theorem, build a finite sequence of arguments in $\gargs[i, \phi]$, starting with any $\ar_0 \in \gleadstoinv(\phi)$. Observe that $\ar_0 \in \gargs[i, \phi]$. Given $k \in 2\N$, if $\ar_k \nileadstosti \phi$, define $\ar_{k + 2}$ using the deduction following the last lemma, obtaining $\ar_{k + 2} \in \gargs[i, \phi] \cap \dfp^\frac{k + 2}{2}(\ar_0)$. 
-	By definition of an empirical theory, $\exists k \in \N \suchthat \dfp^k(\ar_0) = \emptyset$, thus, this process ends with some $\ar$ such that $\ar \ileadstosti \phi$.
+	To prove the theorem, build a finite sequence of arguments in $\gargs[i, \phi]$, starting with any $\ar_0 \in \gleadstoinv(\phi)$. Observe that $\ar_0 \in \gargs[i, \phi]$. Given $k \in 2\N$, if $\ar_k \nileadstost \phi$, define $\ar_{k + 2}$ using the deduction following the last lemma, obtaining $\ar_{k + 2} \in \gargs[i, \phi] \cap \dfp^\frac{k + 2}{2}(\ar_0)$. 
+	By definition of an empirical theory, $\exists k \in \N \suchthat \dfp^k(\ar_0) = \emptyset$, thus, this process ends with some $\ar$ such that $\ar \ileadstost \phi$.
 \end{proof}
 
 \subsection{Effectively comparing models}
@@ -204,15 +204,13 @@ Model: for a given $i$. Defends $\prop$. $\exists \ar_1 \in \args_\eta \suchthat
 \section{Next}
 \NewDocumentCommand{\ileadstoe}{O{}}{⇝^{#1}_\exists}
 \NewDocumentCommand{\nileadstoe}{O{}}{\not⇝^{#1}_\exists}
-\NewDocumentCommand{\ileadstost}{O{}}{⇝^{#1}_\forall}
-\NewDocumentCommand{\nileadstost}{O{}}{\not⇝^{#1}_\forall}
 Define a way of saying “we never need this argument”: either the model can prove phi without s0, or if it can’t, then phi does not hold, because I can play s1 against it. 
 
 What about a model for only one situation? Then we need to accept that $q$ can’t be falsified, and accept that it defines the individual (or just assume without proof that it does not).
 
 Assume $i$, given $\ar$ and $\ar'$, picks repeatedly (in various circumstances) nonempty subsets of $\set{\prop, ¬\prop}$. Define $(\ar', \ar) \ileadstoe (\prop, \text{sure})$ iff she sometimes chooses $\set{\prop}$ and $(\ar', \ar) \ileadstoe (\prop, \text{poss})$ iff she sometimes chooses $\set{\prop}$ or $\set{\prop, ¬\prop}$. Then, $(\ar', \ar) \ileadstost (\prop, \text{sure})$ iff she always chooses $\set{\prop}$ and $(\ar', \ar) \ileadstost (\prop, \text{poss})$ iff she always chooses either $\set{\prop}$ or $\set{\prop, ¬\prop}$.
 
-Discuss variant with an empirical claim: $\hist \ileadsto \phi ⇒ \hist \nileadstoi ¬\phi$; and change \cref{ax:norm}: $[\forall \hist, \hist \ileadsto \propposs] ⇒ \propposs \in \iPhi$, … This is essentially what will be done in the following, I suppose.
+Discuss variant with an empirical claim: $\hist \ileadsto \phi ⇒ \hist \nileadsto ¬\phi$; and change \cref{ax:norm}: $[\forall \hist, \hist \ileadsto \propposs] ⇒ \propposs \in \iPhi$, … This is essentially what will be done in the following, I suppose.
 
 If we do not have $\propsure$ implies $\propposs$, then we can have $\propsure$ and $\notpropsure$ both accepted. But all propositions of the normative analysis would still hold, it seems. We could have a property that says: $\propsure \in \iPhi ⇒ \propposs \in \iPhi \land \notpropsure \notin \iPhi \land \notpropposs \notin \iPhi$.
 
@@ -270,8 +268,8 @@ Given a set of alternatives $\allalts$. Define $\allprops_\allalts = \set{\ppst,
 
 Let $I$ represent a given set of individuals; $\allalts$ a set of products; 
 and $\allargs$ the set of all strings.
-Given $i \in I$, define $\ileadstosti$ as follows. 
-Given $\hist \in \allhist$ and $\phi \in \Phi_\allalts$, with $\phi \in \set{\ppst} × \set{\mathit{sure}, \mathit{poss}}$ for some $a ≠ b \in \allalts$, the individual is presented the arguments in $\hist$, and has then to choose a product from the set $\set{a, b}$. Define $\hist \ileadstosti \phi$ iff $i$ chooses $a$. \commentOC{This is inadequate: if $i$ picks $b$ from $\set{a, b, c}$, the current definition considers it compatible with $\ppstsure \in \iPhi$, thus, $\ppst$ does not have a meaningful content. Should rather define $\ppstsure$ so that $a$ is picked rather than $b$ whatever the choice set. This requires to generalize $\ileadstosti$.}
+Given $i \in I$, define $\ileadstost$ as follows. 
+Given $\hist \in \allhist$ and $\phi \in \Phi_\allalts$, with $\phi \in \set{\ppst} × \set{\mathit{sure}, \mathit{poss}}$ for some $a ≠ b \in \allalts$, the individual is presented the arguments in $\hist$, and has then to choose a product from the set $\set{a, b}$. Define $\hist \ileadstost \phi$ iff $i$ chooses $a$. \commentOC{This is inadequate: if $i$ picks $b$ from $\set{a, b, c}$, the current definition considers it compatible with $\ppstsure \in \iPhi$, thus, $\ppst$ does not have a meaningful content. Should rather define $\ppstsure$ so that $a$ is picked rather than $b$ whatever the choice set. This requires to generalize $\ileadstost$.}
 
 Any normative theory of the form $(\allprops_\allalts, ¬_\allalts, \allargs, I, (\ileadsto)_{i \in I})$, for some sets $\allargs$ and $I$, is called a normative theory about $\allalts$.
 
@@ -279,7 +277,7 @@ Given a set $\domc \subseteq \powersetz{\allalts}$, where $\powersetz{\allalts}$
 
 Given a normative theory about $\allalts$, an individual $i \in I$, a set $\domc \subseteq \powersetz{\allalts}$ and a choice function $c$, say that $c$ represents a \emph{deliberated choice function} for $i$ iff $\forall B \in \domc: c(B) \subseteq \set{a \in B \suchthat \forall b \in B: \ppstsure[b][a] \notin \iPhi}$.
 
-A normative theory about $\allalts$ is transitive iff $\forall a ≠ b ≠ c ≠ a \in \allalts: [\exists \ar_{a \pst b} \in \allargs \suchthat \ar_{a \pst b} \ileadstosti \ppstsure] \land [\exists \ar_{b \pst c} \in \allargs \suchthat \ar_{b \pst c} \ileadstosti \ppstsure[b][c]] ⇒ [\exists \ar_{a \pst c} \in \allargs \suchthat \ar_{a \pst c} \ileadstosti \ppstsure[a][c]]$. 
+A normative theory about $\allalts$ is transitive iff $\forall a ≠ b ≠ c ≠ a \in \allalts: [\exists \ar_{a \pst b} \in \allargs \suchthat \ar_{a \pst b} \ileadstost \ppstsure] \land [\exists \ar_{b \pst c} \in \allargs \suchthat \ar_{b \pst c} \ileadstost \ppstsure[b][c]] ⇒ [\exists \ar_{a \pst c} \in \allargs \suchthat \ar_{a \pst c} \ileadstost \ppstsure[a][c]]$. 
 
 A set of propositions $P \subseteq \Phi_\allalts$ is transitive iff $\forall a ≠ b ≠ c ≠ a \in \allalts: \ppstsure \in P \land \ppstsure[b][c] \in P ⇒ \ppstsure[a][c] \in P$.
 
@@ -291,7 +289,7 @@ The deliberated preference of $i$ under a normative theory
 Then, observe $a$ incomp to $z$ using a good argument for $a > z$ and one for $z > a$. Observe also $b$ incomp to $z$. And observe $a > b$. This proves incompleteness as $z$ indifferent to the rest is impossible. BUT this requires to observe possibility.
 
 \subsubsection{Transitive arguments}
-Given a normative theory and a function $\tau: \allargs × \allargs → \allargs$, say that $\tau$ is a transitive argument builder iff $\forall a ≠ b ≠ c ≠ a \in \allalts, \ar_{a \pst b}, \ar_{b \pst c} \in \allargs \suchthat \ar_{a \pst b} \ileadstosti \ppstsure \land \ar_{b \pst c} \ileadstosti \ppstsure[b][c]: \tau(\ar_{a \pst b}, \ar_{b \pst c}) \ileadstosti \ppstsure[a][c]$.
+Given a normative theory and a function $\tau: \allargs × \allargs → \allargs$, say that $\tau$ is a transitive argument builder iff $\forall a ≠ b ≠ c ≠ a \in \allalts, \ar_{a \pst b}, \ar_{b \pst c} \in \allargs \suchthat \ar_{a \pst b} \ileadstost \ppstsure \land \ar_{b \pst c} \ileadstost \ppstsure[b][c]: \tau(\ar_{a \pst b}, \ar_{b \pst c}) \ileadstost \ppstsure[a][c]$.
 
 Observe that if a normative theory admits a transitive argument builder, then it is transitive.
 
@@ -300,13 +298,6 @@ TODO It is possible to determine whether a given function $\tau$ is a transitive
 \section{Decision situation}
 \NewDocumentCommand{\ileadstoprop}{}{⇝^\prop}
 \NewDocumentCommand{\ileadstonprop}{}{⇝^{¬\prop}}
-\NewDocumentCommand \nileadsto { o }{%
-	\IfValueTF{#1}{%
-		\not⇝^{#1}%
-	}{%
-		\not⇝%
-	}%
-}
 \NewDocumentCommand{\ileadstosts}{}{⇝_*}
 \NewDocumentCommand{\ileadstos}{}{\overset{s}{⇝_i}}
 \NewDocumentCommand{\ileadstostw}{O{}}{⇝^\mathit{w}_\forall}
@@ -324,6 +315,8 @@ TODO It is possible to determine whether a given function $\tau$ is a transitive
 \NewDocumentCommand{\zar}{}{\mathbf{0}}%zero, or empty, argument
 \NewDocumentCommand{\mPhi}{}{\Phi_\gamma}
 \NewDocumentCommand{\argsd}{}{S^\mathit{d}}
+\RenewDocumentCommand{\ileadstost}{O{}}{⇝^{#1}_\forall}
+\RenewDocumentCommand{\nileadstost}{O{}}{\not⇝^{#1}_\forall}
 
 The object of study in a given decision situation is the deliberated preferences of a given individual $i$. 
 A decision situation concerns a topic $\allprops$, given a set of arguments $\allargs$, given a certain query protocol, and over a certain time frame. The relation $\ileadstost$, to be defined shortly, models the reaction of $i$ to arguments about the topic. The decision situation will be defined as a triple $(\allprops, \allargs, \ileadstost)$ satisfying some conditions to be defined after having presented those three fundamental elements.
