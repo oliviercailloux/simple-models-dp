@@ -58,14 +58,14 @@ The first and third contexts of usage come together when it is desired to test w
 
 \section{Normative theories}
 \subsection{Definition}
-A normative theory is a tuple $(\allprops, ¬, \allargs, I, (\ileadstoi)_{i \in I})$, 
-with ${\ileadstoi} \subseteq \allhist × \Phi$, 
+A normative theory is a tuple $(\allprops, ¬, \allargs, I, (\ileadsto)_{i \in I})$, 
+with ${\ileadsto} \subseteq \allhist × \Phi$, 
 where $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ denotes all finite sequences of elements in $\allargs$ (including the empty sequence) and $\Phi = \allprops × \set{\mathit{poss}, \mathit{sure}}$. (Throughout the article, $\N$ includes zero, and note that $\intvl{1, 0} = \emptyset$.)  
 
 The symbol $¬$ is a negation operator on $\allprops$, such that $\forall \prop \in \allprops: ¬¬\prop = \prop$. This article also uses this symbol as a negation operator on $\Phi$, defined as follows, $\forall \prop \in \allprops$: $¬\propposs = (¬\prop, \mathit{sure})$ and $¬\propsure = (¬\prop, \mathit{poss})$. Observe that $¬¬\phi = \phi$. (The symbol $¬$ is also used in this article to negate classical mathematical propositions; this should create no confusion.)
-As usual with binary relations, $\hist \nileadstoi \phi$ means $(\hist, \phi) \notin {\ileadstoi}$.
+As usual with binary relations, $\hist \nileadstoi \phi$ means $(\hist, \phi) \notin {\ileadsto}$.
 
-Given $i \in I, \phi \in \Phi, \hist \in \allhist$, say that $\hist$ leads strongly to $\phi$ iff $\hist \ileadstoi \phi \land \hist \nileadstoi ¬\phi$.
+Given $i \in I, \phi \in \Phi, \hist \in \allhist$, say that $\hist$ leads strongly to $\phi$ iff $\hist \ileadsto \phi \land \hist \nileadstoi ¬\phi$.
 Define $\hist \ileadstosti \phi$ iff $[\hist \text{ leads strongly to } \phi] \land [\phi = \propsure ⇒ \hist \text{ leads strongly to } \propposs]$.
 Given $\hist \in \allhist$, let $\histend$ denote the set containing the last two elements of the sequence $\hist$ if the sequence has at least two elements; the singleton set containing the last element of the sequence if it has exactly one element; and the empty set if $\hist = \emptyset$.
 Given $i \in I, \phi \in \Phi, \ar \in \allargs$, define $\ar \ileadstosti \phi$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \ileadstosti \phi$.
@@ -85,7 +85,7 @@ This axiom can be simplified, thanks to the following proposition.
 	\end{equation}
 \end{proposition}
 \begin{proof}
-	Protocol coherence is satisfied by definition of $\ileadstosti$. Indeed, if for some $\ar \in \allargs$, $\ar \ileadstosti \phi$, then $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadstoi ¬\phi$; thus, for any $\ar' \in \allargs$, $\ar' \ileadstosti ¬\phi$ is false, because it requires that $\forall \ar_1 \in \allargs: (\ar', \ar_1) \ileadstoi ¬\phi$, and thus in particular, that $(\ar', \ar) \ileadstoi ¬\phi$.
+	Protocol coherence is satisfied by definition of $\ileadstosti$. Indeed, if for some $\ar \in \allargs$, $\ar \ileadstosti \phi$, then $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadstoi ¬\phi$; thus, for any $\ar' \in \allargs$, $\ar' \ileadstosti ¬\phi$ is false, because it requires that $\forall \ar_1 \in \allargs: (\ar', \ar_1) \ileadsto ¬\phi$, and thus in particular, that $(\ar', \ar) \ileadsto ¬\phi$.
 \end{proof}
 
 Therefore, \cref{ax:norm} is actually equivalent to the following property.
@@ -106,7 +106,7 @@ The next property ensures an unambiguous interpretation of the content of $\iPhi
 
 \subsection{Non-completeness}
 \begin{definition}[Theory completeness]
-	$\forall \phi \in \Phi: [\exists \ar \in \allargs \suchthat \ar \ileadstoi \phi] \lor [\exists \ar \in \allargs \suchthat \ar \ileadstoi ¬\phi]$.
+	$\forall \phi \in \Phi: [\exists \ar \in \allargs \suchthat \ar \ileadsto \phi] \lor [\exists \ar \in \allargs \suchthat \ar \ileadsto ¬\phi]$.
 \end{definition}
 \begin{definition}[Unrestricted interpretability]
 	$\forall \phi \in \Phi: \phi \in \iPhi \oplus ¬\phi \in \iPhi$.
@@ -199,122 +199,20 @@ A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hi
 \end{proof}
 
 \subsection{Effectively comparing models}
-Model: for a given $i$. Defends $\prop$. $\exists \ar_1 \in \args_\eta \suchthat \ar_1 \ileadstoi \prop$. Then, $\forall \ar_2 \in \gargs \suchthat (\ar_2, \ar_1) \ileadstoi ¬\prop: \exists \ar_3 \in \args_\eta \suchthat (\ar_3, \ar_2) \ileadstoi \prop.$
-
-\section{Decision situation}
-\NewDocumentCommand \ileadsto { o }{%
-	\IfValueTF{#1}{%
-		⇝^{#1}%
-	}{%
-		⇝%
-	}%
-}
-\NewDocumentCommand \nileadsto { o }{%
-	\IfValueTF{#1}{%
-		\not⇝^{#1}%
-	}{%
-		\not⇝%
-	}%
-}
-\NewDocumentCommand{\ileadstost}{O{}}{⇝^{#1}_\forall}
-\NewDocumentCommand{\ileadstosts}{}{⇝_*}
-\NewDocumentCommand{\ileadstos}{}{\overset{s}{⇝_i}}
-\NewDocumentCommand{\ileadstostw}{O{}}{⇝^\mathit{w}_\forall}
-\NewDocumentCommand{\ileadstostp}{O{}}{⇝^\mathit{pos}_\forall}
-\NewDocumentCommand{\nileadstosts}{}{\not⇝_*}
-\NewDocumentCommand{\Ti}{}{T_i}
-\NewDocumentCommand{\nileadstost}{O{}}{\not⇝^{#1}_\forall}
-\NewDocumentCommand{\ileadstoe}{O{}}{⇝^{#1}_\exists}
-\NewDocumentCommand{\nileadstoe}{O{}}{\not⇝^{#1}_\exists}
-\NewDocumentCommand{\ibeatse}{O{}}{⊳^{#1}_\exists}
-\NewDocumentCommand \ibeatseinv { o }{
-	\IfValueTF{#1}{%
-		{⊳_\exists^{#1}}^{-1}%
-	}{%
-		⊳_\exists^{-1}%
-	}%
-}
-\NewDocumentCommand{\zar}{}{\mathbf{0}}%zero, or empty, argument
-\NewDocumentCommand{\mPhi}{}{\Phi_\gamma}
-\NewDocumentCommand{\argsd}{}{S^\mathit{d}}
-
-The object of study in a given decision situation is the deliberated preferences of a given individual $i$. 
-A decision situation concerns a topic $\allprops$, given a set of arguments $\allargs$, given a certain query protocol, and over a certain time frame. The relation $\ileadstost$, to be defined shortly, models the reaction of $i$ to arguments about the topic. The decision situation will be defined as a triple $(\allprops, \allargs, \ileadstost)$ satisfying some conditions to be defined after having presented those three fundamental elements.
-
-The decision situation relates to a topic denoted by $\allprops$, which is a set of propositions $\prop \in \allprops$ about which we are interested of knowing the deliberated preferences of $i$. Propositions are not described further, but are supposedly understandable by $i$ (for example, they could be sentences in some natural language). Alternatively, in the case of an analyst helping $i$ to make a decision, $\allprops$ is a set of propositions about which $i$ is interested to know his own deliberated preferences. I assume $\allprops$ is closed under negation and introduce a symbol $¬$ for negating a proposition: if $\prop \in \allprops$, then $¬\prop \in \allprops$, and $¬(¬\prop) = \prop$. 
-
-With the decision situation comes also a set of all arguments $\allargs$. This set contains all the arguments that may possibly be considered relevant by $i$ for his decision problem, and possibly more.
-Importantly, the notion of deliberated preferences does not require to constrain a priori $\allargs$ to some set of arguments that would fit some precise notion of relevancy, coherence, or even well-formedness. This permits to avoid introducing inadequate normative principles into the deliberated preferences: only the individual $i$ is then considered legitimate to dictate what is a relevant argument. Under that view, $\allargs$ may contain anything that can possibly be considered as an argument by anyone, under the widest possible conception of an argument. The notion of deliberated judgment can however also be applied when considering a restricted set of arguments, for example, the arguments that have been put forward by some specific set of experts when talking about the topic $\allprops$. 
-
-The set $\allargs$ may be infinite or very large: as we will see, thanks to our falsificationist approach, there is no need to be able to explore it entirely. The set of arguments contains at least the empty argument, denoted by $\zar$.
-
-\begin{example}
-	Consider a decision problem where a set of alternatives $\allalts$ is given, containing food products among which $i$ would like to form a deliberated preference (taking into account the effects of food on health, price, pleasure, morality issues related to the production process, and so on). The topic could be defined as $\allprops$ = $\set{\prop_\alt, ¬\prop_\alt, \forall \alt \in \allalts}$, where $\prop_\alt$ is the proposition according to which $\alt$ is one of the best alternatives among $\allalts$ (there is no strictly better alternatives among $\allalts$, from $i$’s point of view), and $¬\prop_\alt$ is the proposition according to which $\alt$ is not one of the best alternatives among $\allalts$ (some $\alt' \in \allalts$ is a strictly better alternative, from $i$’s point of view). 
-	The set $\allargs$ is defined as the set of all strings, because in this example it is considered acceptable to restrict arguments to those that can take a textual form.
-\end{example}
-
-Define $\Phi = \allprops × \set{\text{possible}, \text{sure}}$. Elements in $\Phi$ will also be called propositions, which should create no ambiguity. 
-The relation $\ileadstost \subseteq (\allargs × \allargs) × \Phi$, pronounced “always leads to”, has the following semantics.
-Whenever $(\ar, \ar') \ileadstost (\prop, \text{sure})$, $i$ always considers that $\prop$ is sure (meaning that $¬\prop$ is excluded), when presented with these two arguments, and whenever $(\ar, \ar') \ileadstost (\prop, \text{possible})$, $i$ always considers that $\prop$ is “at least” possible (meaning that $¬\prop$ may be possible as well), when presented with these two arguments. In both cases, the term “always” means that the consideration is stable over time, including after having presented other arguments to $i$. 
-Two query protocols presented below will illustrate how these semantics might be satisfied. 
-However, I voluntarily leave the querying protocol not precisely specified in general, as multiple reasonable choices are possible. The results of this article depend only on assumptions about $\ileadstost$. 
-
-Define the negation operator $¬$ over $\Phi$ as: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. It follows that $¬¬\phi = \phi$. Write $(\ar, \ar') \nileadstost \phi$ for $¬[(\ar, \ar') \ileadstost \phi]$ and define $(\ar, \ar') \ileadstoe \phi$ as equivalent to $(\ar, \ar') \nileadstost ¬\phi$. 
-The relation $\ileadstoe$ is pronounced “sometimes leads to”.
-A proposition $\phi$ is about $\prop$ iff $\phi \in \{\prop, ¬\prop\} × \{\text{possible}, \text{sure}\}$. 
-
-The pair $(\ar, \ar')$ is to be understood as unordered (thus $(\ar, \ar') \ileadstost \prop ⇔ (\ar', \ar) \ileadstost \prop$).
-
-\begin{definition}[Decision situation]
-	A decision situation is a topic $\allprops$ closed under negation, a set of arguments $\allargs$, an “always leads to” relation $\ileadstost \subseteq (\allargs × \allargs) × \Phi$ satisfying (A1) and (A2) and using unordered pairs of arguments, $\Phi$ being the set of propositions $\allprops × \set{\text{sure}, \text{possible}}$.
-\end{definition}
-
-\subsection{Query protocols}
-As vNM aptly summarize, “It is clear that every measurement – or rather every claim of measurability – must ultimately be based on some immediate sensation, which possibly cannot and certainly need not be analyzed any futher.” The fundamental element here is the reaction of $i$ to arguments, which will serve as the informational basis to define $\ileadstost$. Given a proposition $\prop$ and two arguments $\ar, \ar' \in \allargs$, a query consists in presenting both arguments to $i$ and observing which proposition $i$ considers valid in her current state of mind, thus using both arguments and possibly other arguments she has in mind: is it that $\prop$ holds, that $¬\prop$ holds, or that both are possible? The third possibility allows for the case where no argument appears more decisive than the other one. 
-
-It is also necessary to capture the evolution of the position of $i$ towards arguments over time: a repeated query using a given pair of arguments may yield different answers, for example because the repeated question has been interleaved with another query containing other arguments (which $i$ may still have in mind when answering the second repetition), or for any other known or unknown reason. The important information for us is the \emph{set} of answers that $i$ could give to a query involving two given arguments and a given topic, among the set $\{\prop, ¬\prop, \text{both}\}$. The set designates all possible answers over time and over different order of asking the queries.
-Hence, given $\prop \in \allprops$, define a relation $\ileadsto^\prop \subseteq (\allargs × \allargs) × \powersetz{\{\prop, ¬\prop, \text{both}\}}$, where $\powersetz{B}$ designates the subsets of $B$ excluding the emptyset, with the semantics that $(\ar, \ar') \ileadsto^\prop C$, with $C \subseteq \set{\prop, ¬\prop, \text{both}}$, iff $\forall c \in C$, it is observable at least once that $i$, when presented with $(\ar, \ar')$, considers $c$ valid in her current state of mind. The querying protocol is supposedly made so that for any $\prop \in \allprops$, $\ileadsto^\prop = \ileadsto^{¬\prop}$.
-
-This information is only indirectly observable: for example, if $(\ar, \ar') \ileadsto^\prop \{\prop\}$, a querier will never know more than $(\ar, \ar') \ileadsto^\prop C$ with $\prop \in C \subseteq \set{\prop, ¬\prop, \text{both}}$. 
-Also, it may be only possible to test one ordering of the queries (assuming that $i$ forgets over time might permit to test different orderings, but this assumption might be unrealistic). In some cases, it may even be only possible to test a single query with a given individual.
-This limitation of our observation will not be a problem for the results of this article. Intuitively, this bears on the fact that, first, theories apply to multiple individuals, and second, if a theory claims that $(\ar, \ar') \ileadsto^\prop \{\prop\}$, then either this claim is correct, or it is falsifiable, in the sense that there is a possibility of observing a contradiction to its claim.
-
-To be more concrete, one possible choice of a query protocol, when arguments and propositions are strings, is to read both arguments to $i$, together with $\prop$, and ask $i$ to verbally report the choice he opts for among the three possibilities. Another is to present both arguments and ask $i$ to pick an item among some choice set and make the choice correspond to a validation of $\prop$ or $¬\prop$, possibly even letting the choice engage $i$, for example telling $i$ that she may keep the object of choice (this is illustrated in \cref{ex:pick}). This second possibility is especially interesting as it makes the protocol partially observable in the restricted sense usually appreciated in revealed preferences approaches. Note that depending on the protocol, the choice “both” is not necessarily observable (more about this below).
-%In that case, the semantics of $\prop$ and $¬\prop$ relatedly change: instead of meaning that $\prop$ is definitely the 
-%Indeed, \citet{tversky_intransitivity_1969} note that individuals “are not perfectly consistent in their choices. When faced with repeated choices between x and y, people often choose x in some instances and y in others. Furthermore, such inconsistencies are observed even in the absence of systematic changes in the decision maker’s taste which might be due to learning or sequential effects. It seems, therefore, that the observed inconsistencies reflect inherent variability or momentary fluctuation in the evaluative process.” This is an accepted fact of experimental psychology \citep{luce_utility_2000}. However, it is reasonable to suspect that fluctuations occur less often, if at all, for some choices. For example, facing a choice between tea or coffee, I would virtually never pick tea (all other things being equal). We are interested in capturing precisely those kind of preferences.
-
-One can also use $\zar$ as one or both of the arguments, in which case the protocol queries the preference of $i$ given only one or given no argument.
-
-\begin{example}[cont.]
-	\label{ex:pick}
-	Continuing the example, define the querying protocol as, given $\prop_\alt$, presenting two arguments to $i$ and let $i$ choose an item among $\allalts$. $i$ may keep the chosen item. 
-	If $i$ chooses $\alt$, it is considered that $i$ has validated $\prop_\alt$, otherwise, $¬\prop_\alt$. The option “both” is not observable.
-%	Queries are separated by one week at least, which (as supposed in this example) is enough to ensure that no effect of pleasure for variability enter into play. 
-\end{example}
-
-Define $\ileadstost$ from $\ileadsto^\prop$ as follows, for any $\prop \in \allprops$: $(\ar, \ar') \ileadstost (\prop, \text{possible}) ⇔ (\ar, \ar') \ileadsto^\prop C$ with $C \subseteq \set{\prop, \text{both}}$; and $(\ar, \ar') \ileadstost (\prop, \text{sure}) ⇔ (\ar, \ar') \ileadsto^\prop \set{\prop}$. 
-
-Note that (A1) and (A2) hold.
-
-When “both” is not observable, $\ileadstost$ is defined as: $(\ar, \ar') \ileadstost (\prop, \text{possible}) ⇔ (\ar, \ar') \ileadstost (\prop, \text{sure}) ⇔ (\ar, \ar') \ileadsto^\prop \set{\prop}$. (A1) and (A2) still hold. We say in this case that $\ileadstost$ does not distinguish sure from possible. Thus, elements $\phi \in \Phi$ may be considered as simply equal to $\prop$ or $¬\prop$, as $(\prop, \text{sure})$ is treated exactly as $(\prop, \text{possible})$.
-
-\subsection{Example}
-\begin{example}[(cont.)]
-	Returning to the previous example, a theory $T$ could claim that, for all individuals that belong to some given socio-economic situation and that have some given degree (described by the theory in sufficient details that it is possible to determine precisely to which kind of individuals it applies), $(\prop_a, \text{sure})$ is in the deliberated preferences of the individuals, for a given alternative $\alt$ also described by $T$. 
-The theory also suggests some argument $\ar$, a text that (according to $T$) will convince any individual (fitting the description) that $\prop_\alt$ holds, thus, that $\alt$ is a “good” food product for him. 
-The theory can be put to the test by picking an individual fitting the description, presenting the argument together with any other argument (for example, proposed by another theory), and observing whether $i$ is convinced.
-$T$ resists to such a falsification test if $i$ is convinced. According to a previous theorem, $T$ tells the truth if it would resist to any possible falsification test. (This is impossible to definitely make sure of.)
-\end{example}
-This example illustrates a difference between this proposal and the classical revealed approach: it could be that $T$ tells the truth even though its claim does not correspond to the revealed preference of some individuals, thus that, given no argument, some individuals would consider $a$ as dominated by another alternative in the set considered. It also illustrates a difference between this proposal and persuasion: the goal of $T$ is not merely to convince $i$ (possibly by using its lack of knowledge of any counter-argument to what $T$ says), but to resist any falsification attempt. Thus, $T$ should be confronted to arguments coming from as varied perspectives as possible, in order to give confidence that it tells the truth.
+Model: for a given $i$. Defends $\prop$. $\exists \ar_1 \in \args_\eta \suchthat \ar_1 \ileadsto \prop$. Then, $\forall \ar_2 \in \gargs \suchthat (\ar_2, \ar_1) \ileadsto ¬\prop: \exists \ar_3 \in \args_\eta \suchthat (\ar_3, \ar_2) \ileadsto \prop.$
 
 \section{Next}
+\NewDocumentCommand{\ileadstoe}{O{}}{⇝^{#1}_\exists}
+\NewDocumentCommand{\nileadstoe}{O{}}{\not⇝^{#1}_\exists}
+\NewDocumentCommand{\ileadstost}{O{}}{⇝^{#1}_\forall}
+\NewDocumentCommand{\nileadstost}{O{}}{\not⇝^{#1}_\forall}
 Define a way of saying “we never need this argument”: either the model can prove phi without s0, or if it can’t, then phi does not hold, because I can play s1 against it. 
 
 What about a model for only one situation? Then we need to accept that $q$ can’t be falsified, and accept that it defines the individual (or just assume without proof that it does not).
 
 Assume $i$, given $\ar$ and $\ar'$, picks repeatedly (in various circumstances) nonempty subsets of $\set{\prop, ¬\prop}$. Define $(\ar', \ar) \ileadstoe (\prop, \text{sure})$ iff she sometimes chooses $\set{\prop}$ and $(\ar', \ar) \ileadstoe (\prop, \text{poss})$ iff she sometimes chooses $\set{\prop}$ or $\set{\prop, ¬\prop}$. Then, $(\ar', \ar) \ileadstost (\prop, \text{sure})$ iff she always chooses $\set{\prop}$ and $(\ar', \ar) \ileadstost (\prop, \text{poss})$ iff she always chooses either $\set{\prop}$ or $\set{\prop, ¬\prop}$.
 
-Discuss variant with an empirical claim: $\hist \ileadstoi \phi ⇒ \hist \nileadstoi ¬\phi$; and change \cref{ax:norm}: $[\forall \hist, \hist \ileadstoi \propposs] ⇒ \propposs \in \iPhi$, … This is essentially what will be done in the following, I suppose.
+Discuss variant with an empirical claim: $\hist \ileadsto \phi ⇒ \hist \nileadstoi ¬\phi$; and change \cref{ax:norm}: $[\forall \hist, \hist \ileadsto \propposs] ⇒ \propposs \in \iPhi$, … This is essentially what will be done in the following, I suppose.
 
 If we do not have $\propsure$ implies $\propposs$, then we can have $\propsure$ and $\notpropsure$ both accepted. But all propositions of the normative analysis would still hold, it seems. We could have a property that says: $\propsure \in \iPhi ⇒ \propposs \in \iPhi \land \notpropsure \notin \iPhi \land \notpropposs \notin \iPhi$.
 
@@ -375,7 +273,7 @@ and $\allargs$ the set of all strings.
 Given $i \in I$, define $\ileadstosti$ as follows. 
 Given $\hist \in \allhist$ and $\phi \in \Phi_\allalts$, with $\phi \in \set{\ppst} × \set{\mathit{sure}, \mathit{poss}}$ for some $a ≠ b \in \allalts$, the individual is presented the arguments in $\hist$, and has then to choose a product from the set $\set{a, b}$. Define $\hist \ileadstosti \phi$ iff $i$ chooses $a$. \commentOC{This is inadequate: if $i$ picks $b$ from $\set{a, b, c}$, the current definition considers it compatible with $\ppstsure \in \iPhi$, thus, $\ppst$ does not have a meaningful content. Should rather define $\ppstsure$ so that $a$ is picked rather than $b$ whatever the choice set. This requires to generalize $\ileadstosti$.}
 
-Any normative theory of the form $(\allprops_\allalts, ¬_\allalts, \allargs, I, (\ileadstoi)_{i \in I})$, for some sets $\allargs$ and $I$, is called a normative theory about $\allalts$.
+Any normative theory of the form $(\allprops_\allalts, ¬_\allalts, \allargs, I, (\ileadsto)_{i \in I})$, for some sets $\allargs$ and $I$, is called a normative theory about $\allalts$.
 
 Given a set $\domc \subseteq \powersetz{\allalts}$, where $\powersetz{\allalts}$ designates the set of subsets of $\allalts$ without the empty set, a function $c: \domc → \allalts$ is a choice function iff $\forall B \in \domc: c(B) \subseteq B$.
 
@@ -398,6 +296,103 @@ Given a normative theory and a function $\tau: \allargs × \allargs → \allargs
 Observe that if a normative theory admits a transitive argument builder, then it is transitive.
 
 TODO It is possible to determine whether a given function $\tau$ is a transitive argument builder empiricially. But not to prove empirically that a normative theory is not transitive.
+
+\section{Decision situation}
+\NewDocumentCommand{\ileadstoprop}{}{⇝^\prop}
+\NewDocumentCommand{\ileadstonprop}{}{⇝^{¬\prop}}
+\NewDocumentCommand \nileadsto { o }{%
+	\IfValueTF{#1}{%
+		\not⇝^{#1}%
+	}{%
+		\not⇝%
+	}%
+}
+\NewDocumentCommand{\ileadstosts}{}{⇝_*}
+\NewDocumentCommand{\ileadstos}{}{\overset{s}{⇝_i}}
+\NewDocumentCommand{\ileadstostw}{O{}}{⇝^\mathit{w}_\forall}
+\NewDocumentCommand{\ileadstostp}{O{}}{⇝^\mathit{pos}_\forall}
+\NewDocumentCommand{\nileadstosts}{}{\not⇝_*}
+\NewDocumentCommand{\Ti}{}{T_i}
+\NewDocumentCommand{\ibeatse}{O{}}{⊳^{#1}_\exists}
+\NewDocumentCommand \ibeatseinv { o }{
+	\IfValueTF{#1}{%
+		{⊳_\exists^{#1}}^{-1}%
+	}{%
+		⊳_\exists^{-1}%
+	}%
+}
+\NewDocumentCommand{\zar}{}{\mathbf{0}}%zero, or empty, argument
+\NewDocumentCommand{\mPhi}{}{\Phi_\gamma}
+\NewDocumentCommand{\argsd}{}{S^\mathit{d}}
+
+The object of study in a given decision situation is the deliberated preferences of a given individual $i$. 
+A decision situation concerns a topic $\allprops$, given a set of arguments $\allargs$, given a certain query protocol, and over a certain time frame. The relation $\ileadstost$, to be defined shortly, models the reaction of $i$ to arguments about the topic. The decision situation will be defined as a triple $(\allprops, \allargs, \ileadstost)$ satisfying some conditions to be defined after having presented those three fundamental elements.
+
+The decision situation relates to a topic denoted by $\allprops$, which is a set of propositions $\prop \in \allprops$ about which we are interested of knowing the deliberated preferences of $i$. Propositions are not described further, but are supposedly understandable by $i$ (for example, they could be sentences in some natural language). Alternatively, in the case of an analyst helping $i$ to make a decision, $\allprops$ is a set of propositions about which $i$ is interested to know his own deliberated preferences. I assume $\allprops$ is closed under negation and introduce a symbol $¬$ for negating a proposition: if $\prop \in \allprops$, then $¬\prop \in \allprops$, and $¬(¬\prop) = \prop$. 
+
+With the decision situation comes also a set of all arguments $\allargs$. This set contains all the arguments that may possibly be considered relevant by $i$ for his decision problem, and possibly more.
+Importantly, the notion of deliberated preferences does not require to constrain a priori $\allargs$ to some set of arguments that would fit some precise notion of relevancy, coherence, or even well-formedness. This permits to avoid introducing inadequate normative principles into the deliberated preferences: only the individual $i$ is then considered legitimate to dictate what is a relevant argument. Under that view, $\allargs$ may contain anything that can possibly be considered as an argument by anyone, under the widest possible conception of an argument. The notion of deliberated judgment can however also be applied when considering a restricted set of arguments, for example, the arguments that have been put forward by some specific set of experts when talking about the topic $\allprops$. 
+
+The set $\allargs$ may be infinite or very large: as we will see, thanks to our falsificationist approach, there is no need to be able to explore it entirely. The set of arguments contains at least the empty argument, denoted by $\zar$.
+
+\begin{example}
+	Consider a decision problem where a set of alternatives $\allalts$ is given, containing food products among which $i$ would like to form a deliberated preference (taking into account the effects of food on health, price, pleasure, morality issues related to the production process, and so on). The topic could be defined as $\allprops$ = $\set{\prop_\alt, ¬\prop_\alt, \forall \alt \in \allalts}$, where $\prop_\alt$ is the proposition according to which $\alt$ is one of the best alternatives among $\allalts$ (there is no strictly better alternatives among $\allalts$, from $i$’s point of view), and $¬\prop_\alt$ is the proposition according to which $\alt$ is not one of the best alternatives among $\allalts$ (some $\alt' \in \allalts$ is a strictly better alternative, from $i$’s point of view). 
+	The set $\allargs$ is defined as the set of all strings, because in this example it is considered acceptable to restrict arguments to those that can take a textual form.
+\end{example}
+
+Define $\Phi = \allprops × \set{\text{possible}, \text{sure}}$. Elements in $\Phi$ will also be called propositions, which should create no ambiguity. 
+The relation $\ileadstost \subseteq (\allargs × \allargs) × \Phi$, pronounced “always leads to”, has the following semantics.
+Whenever $(\ar, \ar') \ileadstost (\prop, \text{sure})$, $i$ always considers that $\prop$ is sure (meaning that $¬\prop$ is excluded), when presented with these two arguments, and whenever $(\ar, \ar') \ileadstost (\prop, \text{possible})$, $i$ always considers that $\prop$ is “at least” possible (meaning that $¬\prop$ may be possible as well), when presented with these two arguments. In both cases, the term “always” means that the consideration is stable over time, including after having presented other arguments to $i$. 
+Two query protocols presented below will illustrate how these semantics might be satisfied. 
+However, I voluntarily leave the querying protocol not precisely specified in general, as multiple reasonable choices are possible. The results of this article depend only on assumptions about $\ileadstost$. 
+
+Define the negation operator $¬$ over $\Phi$ as: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. It follows that $¬¬\phi = \phi$. Write $(\ar, \ar') \nileadstost \phi$ for $¬[(\ar, \ar') \ileadstost \phi]$ and define $(\ar, \ar') \ileadstoe \phi$ as equivalent to $(\ar, \ar') \nileadstost ¬\phi$. 
+The relation $\ileadstoe$ is pronounced “sometimes leads to”.
+A proposition $\phi$ is about $\prop$ iff $\phi \in \{\prop, ¬\prop\} × \{\text{possible}, \text{sure}\}$. 
+
+The pair $(\ar, \ar')$ is to be understood as unordered (thus $(\ar, \ar') \ileadstost \prop ⇔ (\ar', \ar) \ileadstost \prop$).
+
+\begin{definition}[Decision situation]
+	A decision situation is a topic $\allprops$ closed under negation, a set of arguments $\allargs$, an “always leads to” relation $\ileadstost \subseteq (\allargs × \allargs) × \Phi$ satisfying (A1) and (A2) and using unordered pairs of arguments, $\Phi$ being the set of propositions $\allprops × \set{\text{sure}, \text{possible}}$.
+\end{definition}
+
+\subsection{Query protocols}
+As vNM aptly summarize, “It is clear that every measurement – or rather every claim of measurability – must ultimately be based on some immediate sensation, which possibly cannot and certainly need not be analyzed any futher.” The fundamental element here is the reaction of $i$ to arguments, which will serve as the informational basis to define $\ileadstost$. Given a proposition $\prop$ and two arguments $\ar, \ar' \in \allargs$, a query consists in presenting both arguments to $i$ and observing which proposition $i$ considers valid in her current state of mind, thus using both arguments and possibly other arguments she has in mind: is it that $\prop$ holds, that $¬\prop$ holds, or that both are possible? The third possibility allows for the case where no argument appears more decisive than the other one. 
+
+It is also necessary to capture the evolution of the position of $i$ towards arguments over time: a repeated query using a given pair of arguments may yield different answers, for example because the repeated question has been interleaved with another query containing other arguments (which $i$ may still have in mind when answering the second repetition), or for any other known or unknown reason. The important information for us is the \emph{set} of answers that $i$ could give to a query involving two given arguments and a given topic, among the set $\{\prop, ¬\prop, \text{both}\}$. The set designates all possible answers over time and over different order of asking the queries.
+Hence, given $\prop \in \allprops$, define a relation $\ileadstoprop \subseteq (\allargs × \allargs) × \powersetz{\{\prop, ¬\prop, \text{both}\}}$, where $\powersetz{B}$ designates the subsets of $B$ excluding the emptyset, with the semantics that $(\ar, \ar') \ileadstoprop C$, with $C \subseteq \set{\prop, ¬\prop, \text{both}}$, iff $\forall c \in C$, it is observable at least once that $i$, when presented with $(\ar, \ar')$, considers $c$ valid in her current state of mind. The querying protocol is supposedly made so that for any $\prop \in \allprops$, $\ileadstoprop = \ileadstonprop$.
+
+This information is only indirectly observable: for example, if $(\ar, \ar') \ileadstoprop \{\prop\}$, a querier will never know more than $(\ar, \ar') \ileadstoprop C$ with $\prop \in C \subseteq \set{\prop, ¬\prop, \text{both}}$. 
+Also, it may be only possible to test one ordering of the queries (assuming that $i$ forgets over time might permit to test different orderings, but this assumption might be unrealistic). In some cases, it may even be only possible to test a single query with a given individual.
+This limitation of our observation will not be a problem for the results of this article. Intuitively, this bears on the fact that, first, theories apply to multiple individuals, and second, if a theory claims that $(\ar, \ar') \ileadstoprop \{\prop\}$, then either this claim is correct, or it is falsifiable, in the sense that there is a possibility of observing a contradiction to its claim.
+
+To be more concrete, one possible choice of a query protocol, when arguments and propositions are strings, is to read both arguments to $i$, together with $\prop$, and ask $i$ to verbally report the choice he opts for among the three possibilities. Another is to present both arguments and ask $i$ to pick an item among some choice set and make the choice correspond to a validation of $\prop$ or $¬\prop$, possibly even letting the choice engage $i$, for example telling $i$ that she may keep the object of choice (this is illustrated in \cref{ex:pick}). This second possibility is especially interesting as it makes the protocol partially observable in the restricted sense usually appreciated in revealed preferences approaches. Note that depending on the protocol, the choice “both” is not necessarily observable (more about this below).
+%In that case, the semantics of $\prop$ and $¬\prop$ relatedly change: instead of meaning that $\prop$ is definitely the 
+%Indeed, \citet{tversky_intransitivity_1969} note that individuals “are not perfectly consistent in their choices. When faced with repeated choices between x and y, people often choose x in some instances and y in others. Furthermore, such inconsistencies are observed even in the absence of systematic changes in the decision maker’s taste which might be due to learning or sequential effects. It seems, therefore, that the observed inconsistencies reflect inherent variability or momentary fluctuation in the evaluative process.” This is an accepted fact of experimental psychology \citep{luce_utility_2000}. However, it is reasonable to suspect that fluctuations occur less often, if at all, for some choices. For example, facing a choice between tea or coffee, I would virtually never pick tea (all other things being equal). We are interested in capturing precisely those kind of preferences.
+
+One can also use $\zar$ as one or both of the arguments, in which case the protocol queries the preference of $i$ given only one or given no argument.
+
+\begin{example}[cont.]
+	\label{ex:pick}
+	Continuing the example, define the querying protocol as, given $\prop_\alt$, presenting two arguments to $i$ and let $i$ choose an item among $\allalts$. $i$ may keep the chosen item. 
+	If $i$ chooses $\alt$, it is considered that $i$ has validated $\prop_\alt$, otherwise, $¬\prop_\alt$. The option “both” is not observable.
+%	Queries are separated by one week at least, which (as supposed in this example) is enough to ensure that no effect of pleasure for variability enter into play. 
+\end{example}
+
+Define $\ileadstost$ from $\ileadstoprop$ as follows, for any $\prop \in \allprops$: $(\ar, \ar') \ileadstost (\prop, \text{possible}) ⇔ (\ar, \ar') \ileadstoprop C$ with $C \subseteq \set{\prop, \text{both}}$; and $(\ar, \ar') \ileadstost (\prop, \text{sure}) ⇔ (\ar, \ar') \ileadstoprop \set{\prop}$. 
+
+Note that (A1) and (A2) hold.
+
+When “both” is not observable, $\ileadstost$ is defined as: $(\ar, \ar') \ileadstost (\prop, \text{possible}) ⇔ (\ar, \ar') \ileadstost (\prop, \text{sure}) ⇔ (\ar, \ar') \ileadstoprop \set{\prop}$. (A1) and (A2) still hold. We say in this case that $\ileadstost$ does not distinguish sure from possible. Thus, elements $\phi \in \Phi$ may be considered as simply equal to $\prop$ or $¬\prop$, as $(\prop, \text{sure})$ is treated exactly as $(\prop, \text{possible})$.
+
+\subsection{Example}
+\begin{example}[(cont.)]
+	Returning to the previous example, a theory $T$ could claim that, for all individuals that belong to some given socio-economic situation and that have some given degree (described by the theory in sufficient details that it is possible to determine precisely to which kind of individuals it applies), $(\prop_a, \text{sure})$ is in the deliberated preferences of the individuals, for a given alternative $\alt$ also described by $T$. 
+The theory also suggests some argument $\ar$, a text that (according to $T$) will convince any individual (fitting the description) that $\prop_\alt$ holds, thus, that $\alt$ is a “good” food product for him. 
+The theory can be put to the test by picking an individual fitting the description, presenting the argument together with any other argument (for example, proposed by another theory), and observing whether $i$ is convinced.
+$T$ resists to such a falsification test if $i$ is convinced. According to a previous theorem, $T$ tells the truth if it would resist to any possible falsification test. (This is impossible to definitely make sure of.)
+\end{example}
+This example illustrates a difference between this proposal and the classical revealed approach: it could be that $T$ tells the truth even though its claim does not correspond to the revealed preference of some individuals, thus that, given no argument, some individuals would consider $a$ as dominated by another alternative in the set considered. It also illustrates a difference between this proposal and persuasion: the goal of $T$ is not merely to convince $i$ (possibly by using its lack of knowledge of any counter-argument to what $T$ says), but to resist any falsification attempt. Thus, $T$ should be confronted to arguments coming from as varied perspectives as possible, in order to give confidence that it tells the truth.
 
 \section{Empirical theories}
 \subsection{Simple to complex}
