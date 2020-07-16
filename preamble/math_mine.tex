@@ -19,10 +19,9 @@
 \NewDocumentCommand{\pst}{}{\succ}
 
 %Deliberated Judgment
+%%Normative theory
 \NewDocumentCommand{\allargs}{}{\mathscr{S}}
 \NewDocumentCommand{\args}{}{S}
-\NewDocumentCommand{\argsd}{}{S^\mathit{d}}
-\NewDocumentCommand{\gargs}{O{}}{S^{#1}_γ}
 \NewDocumentCommand \ard { }{s^\mathit{d}}
 \NewDocumentCommand{\ar}{o}{%
 	\IfValueTF{#1}{%
@@ -43,70 +42,30 @@
 \NewDocumentCommand{\propposs}{}{(t, \mathit{poss})}
 \NewDocumentCommand{\notpropsure}{}{(¬t, \mathit{sure})}
 \NewDocumentCommand{\notpropposs}{}{(¬t, \mathit{poss})}
-\NewDocumentCommand{\zar}{}{\mathbf{0}}%zero, or empty, argument
-%i
-\NewDocumentCommand{\Ti}{}{T_i}
+%%Empirical theory
+\NewDocumentCommand{\gPhi}{}{{⇝_γ}(\allargs)}
+\NewDocumentCommand{\alldargs}{}{\mathscr{S}^d}
+\NewDocumentCommand{\gargs}{O{}}{S^{#1}_γ}
+\NewDocumentCommand{\gleadsto}{O{}}{⇝^{#1}_γ}
+\NewDocumentCommand{\gleadstoinv}{}{{⇝^{-1}_γ}}
+\NewDocumentCommand{\gbeats}{}{⊳_a}
+\NewDocumentCommand{\gbeatsinv}{o}{{⊳^{-1}_a}}
+\NewDocumentCommand{\ngbeats}{}{\not⊳_a}
+\NewDocumentCommand{\dbeats}{}{⊳_d}
+\NewDocumentCommand{\dbeatsinv}{}{{⊳_d^{-1}}}
+\NewDocumentCommand{\df}{}{\mathit{def}}
+\NewDocumentCommand{\dfp}{}{\mathit{def}_+}
+%%i
 \NewDocumentCommand{\iPhi}{}{\Phi_i}
-\NewDocumentCommand{\iacc}{}{\Phi^\mathrm{acc}_i}
-\NewDocumentCommand{\idet}{}{\Phi^\mathrm{det}_i}
-\NewDocumentCommand{\irej}{}{\Phi^\mathrm{rej}_i}
-\NewDocumentCommand \ileadsto { o }{%
-	\IfValueTF{#1}{%
-		⇝^{#1}%
-	}{%
-		⇝%
-	}%
-}
-\NewDocumentCommand \nileadsto { o }{%
-	\IfValueTF{#1}{%
-		\not⇝^{#1}%
-	}{%
-		\not⇝%
-	}%
-}
 \NewDocumentCommand \ileadstoi { }{⇝^i}
 \NewDocumentCommand \nileadstoi { }{\not⇝^i}
-%\newcommand{\nileadsto}{\mathbin{\not\rightsquigarrow}}%\nrightarrow}
-\NewDocumentCommand{\ileadstos}{}{\overset{s}{⇝_i}}
-\NewDocumentCommand{\ileadstost}{O{}}{⇝^{#1}_\forall}
-\NewDocumentCommand{\ileadstostw}{O{}}{⇝^\mathit{w}_\forall}
-\NewDocumentCommand{\ileadstostp}{O{}}{⇝^\mathit{pos}_\forall}
-\NewDocumentCommand{\ileadstosts}{}{⇝_*}
-\NewDocumentCommand{\nileadstosts}{}{\not⇝_*}
 \NewDocumentCommand{\ileadstosti}{}{⇝^i_*}
 \NewDocumentCommand{\nileadstosti}{}{\not⇝^i_*}
-\NewDocumentCommand{\nileadstost}{O{}}{\not⇝^{#1}_\forall}
-\NewDocumentCommand{\ileadstoe}{O{}}{⇝^{#1}_\exists}
-\NewDocumentCommand{\nileadstoe}{O{}}{\not⇝^{#1}_\exists}
-%model
-\NewDocumentCommand{\gleadsto}{O{}}{⇝^{#1}_γ}
-\NewDocumentCommand{\gPhi}{}{{⇝_γ}(\allargs)}
-\NewDocumentCommand{\gleadstoinv}{}{{⇝^{-1}_γ}}
-\NewDocumentCommand{\ibeatse}{O{}}{⊳^{#1}_\exists}
-\NewDocumentCommand \ibeatseinv { o }{%TODO improve
-	\IfValueTF{#1}{%
-		{⊳_\exists^{#1}}^{-1}%
-	}{%
-		⊳_\exists^{-1}%
-	}%
-}
+\NewDocumentCommand{\di}{}{d^{i, \phi}}
+\NewDocumentCommand{\dip}{}{d^{i, \phi}_+}
 \NewDocumentCommand{\ibeatsi}{}{⊳^{!\phi}_i}
 \NewDocumentCommand{\nibeatsi}{}{\not⊳^{!\phi}_i}
 \NewDocumentCommand{\ibeatsiinv}{}{⊳_i^{{!\phi}^{-1}}}
-\NewDocumentCommand{\gbeats}{}{⊳_a}
-\NewDocumentCommand{\ngbeats}{}{\not⊳_a}
-\NewDocumentCommand{\dbeats}{}{⊳_d}
-\NewDocumentCommand{\df}{}{\mathit{def}}
-\NewDocumentCommand{\dfp}{}{\mathit{def}_+}
-\NewDocumentCommand{\di}{}{d^{i, \phi}}
-\NewDocumentCommand{\dip}{}{d^{i, \phi}_+}
-\NewDocumentCommand{\dbeatsinv}{}{{⊳_d^{-1}}}
-\NewDocumentCommand{\alldargs}{}{\mathscr{S}^d}
-\NewDocumentCommand{\gbeatsstar}{}{⊳_*}
-\NewDocumentCommand{\gbeatsinv}{o}{{⊳^{-1}_a}}
-\NewDocumentCommand{\gbeatsmt}{o}{⊳^{-2}_γ}%minus two
-\NewDocumentCommand{\gbeatsstarinv}{o}{⊳^{-1}_*}
-\NewDocumentCommand{\mPhi}{}{\Phi_\gamma}
 \NewDocumentCommand{\sinef}{}{\bowtie^{i, \phi}}
 
 %Deliberated Preference

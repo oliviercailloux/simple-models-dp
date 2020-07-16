@@ -63,15 +63,12 @@ with ${\ileadstoi} \subseteq \allhist × \Phi$,
 where $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ denotes all finite sequences of elements in $\allargs$ (including the empty sequence) and $\Phi = \allprops × \set{\mathit{poss}, \mathit{sure}}$. (Throughout the article, $\N$ includes zero, and note that $\intvl{1, 0} = \emptyset$.)  
 
 The symbol $¬$ is a negation operator on $\allprops$, such that $\forall \prop \in \allprops: ¬¬\prop = \prop$. This article also uses this symbol as a negation operator on $\Phi$, defined as follows, $\forall \prop \in \allprops$: $¬\propposs = (¬\prop, \mathit{sure})$ and $¬\propsure = (¬\prop, \mathit{poss})$. Observe that $¬¬\phi = \phi$. (The symbol $¬$ is also used in this article to negate classical mathematical propositions; this should create no confusion.)
-As usual with binary relations, $\hist \nileadsto[i] \phi$ means $(\hist, \phi) \notin {\ileadsto[i]}$.
+As usual with binary relations, $\hist \nileadstoi \phi$ means $(\hist, \phi) \notin {\ileadstoi}$.
 
 Given $i \in I, \phi \in \Phi, \hist \in \allhist$, say that $\hist$ leads strongly to $\phi$ iff $\hist \ileadstoi \phi \land \hist \nileadstoi ¬\phi$.
 Define $\hist \ileadstosti \phi$ iff $[\hist \text{ leads strongly to } \phi] \land [\phi = \propsure ⇒ \hist \text{ leads strongly to } \propposs]$.
 Given $\hist \in \allhist$, let $\histend$ denote the set containing the last two elements of the sequence $\hist$ if the sequence has at least two elements; the singleton set containing the last element of the sequence if it has exactly one element; and the empty set if $\hist = \emptyset$.
 Given $i \in I, \phi \in \Phi, \ar \in \allargs$, define $\ar \ileadstosti \phi$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \ileadstosti \phi$.
-
-To lighten notations, $\ileadstoi$ and $\ileadstosti$ will generally be denoted by $\ileadsto$ and $\ileadstosts$, these symbols being understood as the result of a function of $i$. 
-When the symbol $\ileadsto$ or $\ileadstosts$ is used in a formula without $i$ being bound, the binding $\forall i \in I$ is implied.
 
 \subsection{Classify propositions}
 \begin{axiom}[Normative adequacy]
@@ -202,10 +199,44 @@ A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hi
 \end{proof}
 
 \subsection{Effectively comparing models}
-Model: for a given $i$. Defends $\prop$. $\exists \ar_1 \in \args_\eta \suchthat \ar_1 \ileadstoe \prop$. Then, $\forall \ar_2 \in \gargs \suchthat (\ar_2, \ar_1) \ileadstoe ¬\prop: \exists \ar_3 \in \args_\eta \suchthat (\ar_3, \ar_2) \ileadstoe \prop.$
+Model: for a given $i$. Defends $\prop$. $\exists \ar_1 \in \args_\eta \suchthat \ar_1 \ileadstoi \prop$. Then, $\forall \ar_2 \in \gargs \suchthat (\ar_2, \ar_1) \ileadstoi ¬\prop: \exists \ar_3 \in \args_\eta \suchthat (\ar_3, \ar_2) \ileadstoi \prop.$
 
 \section{Decision situation}
-\newcommand{\alltopic}{T^*}
+\NewDocumentCommand \ileadsto { o }{%
+	\IfValueTF{#1}{%
+		⇝^{#1}%
+	}{%
+		⇝%
+	}%
+}
+\NewDocumentCommand \nileadsto { o }{%
+	\IfValueTF{#1}{%
+		\not⇝^{#1}%
+	}{%
+		\not⇝%
+	}%
+}
+\NewDocumentCommand{\ileadstost}{O{}}{⇝^{#1}_\forall}
+\NewDocumentCommand{\ileadstosts}{}{⇝_*}
+\NewDocumentCommand{\ileadstos}{}{\overset{s}{⇝_i}}
+\NewDocumentCommand{\ileadstostw}{O{}}{⇝^\mathit{w}_\forall}
+\NewDocumentCommand{\ileadstostp}{O{}}{⇝^\mathit{pos}_\forall}
+\NewDocumentCommand{\nileadstosts}{}{\not⇝_*}
+\NewDocumentCommand{\Ti}{}{T_i}
+\NewDocumentCommand{\nileadstost}{O{}}{\not⇝^{#1}_\forall}
+\NewDocumentCommand{\ileadstoe}{O{}}{⇝^{#1}_\exists}
+\NewDocumentCommand{\nileadstoe}{O{}}{\not⇝^{#1}_\exists}
+\NewDocumentCommand{\ibeatse}{O{}}{⊳^{#1}_\exists}
+\NewDocumentCommand \ibeatseinv { o }{
+	\IfValueTF{#1}{%
+		{⊳_\exists^{#1}}^{-1}%
+	}{%
+		⊳_\exists^{-1}%
+	}%
+}
+\NewDocumentCommand{\zar}{}{\mathbf{0}}%zero, or empty, argument
+\NewDocumentCommand{\mPhi}{}{\Phi_\gamma}
+\NewDocumentCommand{\argsd}{}{S^\mathit{d}}
 
 The object of study in a given decision situation is the deliberated preferences of a given individual $i$. 
 A decision situation concerns a topic $\allprops$, given a set of arguments $\allargs$, given a certain query protocol, and over a certain time frame. The relation $\ileadstost$, to be defined shortly, models the reaction of $i$ to arguments about the topic. The decision situation will be defined as a triple $(\allprops, \allargs, \ileadstost)$ satisfying some conditions to be defined after having presented those three fundamental elements.
