@@ -59,12 +59,14 @@
 \NewDocumentCommand{\iPhi}{}{\Phi_i}
 \NewDocumentCommand{\ileadsto}{O{i}}{⇝^{#1}}
 \NewDocumentCommand{\nileadsto}{O{i}}{\not⇝^{#1}}
+\NewDocumentCommand{\ileadstoe}{O{i}}{⇝^{#1}_\exists}
+\NewDocumentCommand{\nileadstoe}{O{i}}{\not⇝^{#1}_\exists}
 \NewDocumentCommand{\ileadstost}{}{⇝^i_*}
 \NewDocumentCommand{\nileadstost}{}{\not⇝^i_*}
 \NewDocumentCommand{\di}{}{d^{i, \phi}}
 \NewDocumentCommand{\dip}{}{d^{i, \phi}_+}
-\NewDocumentCommand{\ibeats}{}{⊳^{!\phi}_i}
-\NewDocumentCommand{\ibeatsinv}{}{⊳_i^{{!\phi}^{-1}}}
+\NewDocumentCommand{\ibeats}{}{⊳^{i, !\phi}}
+\NewDocumentCommand{\ibeatsinv}{}{(⊳^{i, !\phi})^{-1}}
 \NewDocumentCommand{\sinef}{}{\bowtie^{i, \phi}}
 
 %Deliberated Preference

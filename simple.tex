@@ -202,8 +202,6 @@ A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hi
 Model: for a given $i$. Defends $\prop$. $\exists \ar_1 \in \args_\eta \suchthat \ar_1 \ileadsto \prop$. Then, $\forall \ar_2 \in \gargs \suchthat (\ar_2, \ar_1) \ileadsto ¬\prop: \exists \ar_3 \in \args_\eta \suchthat (\ar_3, \ar_2) \ileadsto \prop.$
 
 \section{Next}
-\NewDocumentCommand{\ileadstoe}{O{}}{⇝^{#1}_\exists}
-\NewDocumentCommand{\nileadstoe}{O{}}{\not⇝^{#1}_\exists}
 Define a way of saying “we never need this argument”: either the model can prove phi without s0, or if it can’t, then phi does not hold, because I can play s1 against it. 
 
 What about a model for only one situation? Then we need to accept that $q$ can’t be falsified, and accept that it defines the individual (or just assume without proof that it does not).
@@ -397,6 +395,8 @@ Note that $f^{-1}(\ar_0 + \ar_2) ≠ {\gbeats}(\ar_2) × \set{\ar_0}$: if ${\gbe
 Also, note that $g(\ar_0)(\ar_0 + \argsd_2) ≠ {\gbeats}(\argsd_2) \cap {\gbeatsinv}(\ar_0)$. Consider ${\gbeats} = \set{(\ard_2, \ar_1), (\ar_1, \ar_0)}, \ar_2 = \ar_0 + \ard = \ar_0 + \ard_2$. Then, $(\ar_1, \ar_0) \in f^{-1}(\ar_0 + \ard)$, hence, $\ar_1 \in g(\ar_0)(\ar_0 + \ard)$, but ${\gbeats}(\ard) = \emptyset$.
 
 \subsection{Falsifiability}
+\commentOC{I should define $\Box(\hist \ileadsto \phi)$ iff it has been observed that $\hist \ileadsto \phi$. Then, axiom Correct observations (that is self-evident): $\Box(\hist \ileadsto \phi) ⇒ \hist \ileadsto \phi$ (what has been observed is). Supplementary axiom Falsification is enough (that is not self-evident): $\not\Box(\hist \ileadsto \phi) ⇒ \hist \nileadsto \phi$ (what has not been observed is not).}
+
 \commentOC{I want: An empirical theory for a normative theory is something like a normative and falsifiable claim. It is also configurable: it must be possible to guarantee that the falsification be easy (if the claim is false) depending on the kind of claim.}
 
 Given $\hist \in \allhist$ and $i \in I$, the claim $\hist \ileadstoe[i] \phi$ may not be verifiable, and is too specific to be falsifiable. However, given $\hist \in \allhist$, a broader claim is falsifiable: that for a given set of individuals $Q \subseteq I, \forall i \in Q, \hist \ileadstoe[i] \phi$ (provided $Q$ is big enough). Indeed, that claim it is equivalent to $\nexists i \in Q \suchthat \hist \nileadstoe[i] \phi$; exhibiting an $i \in Q$ such that $\hist \nileadstoe[i] \phi$ thus falsifies the broader claim.
