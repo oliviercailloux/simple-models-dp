@@ -126,13 +126,13 @@ Theories as defined here do not mandate Theory completeness. This is good for tw
 An empirical theory for a normative theory is a tuple $(q, (\gleadsto[q(i)])_{q(i) \in q(I)}, \gbeats, \alldargs, \dbeats, +)$,
 with ${\gleadsto[q(i)]} \subseteq (\allargs × \Phi) \cap (\alldargs × \Phi)$, 
 ${\gbeats} \subseteq \allargs × \allargs$ and is irreflexive,
-${\dbeats} \subseteq \alldargs × \allargs$ and is injective and its range equals $\gbeatsinv(\allargs)$, the domain of ${\gbeats}$ (thus $\forall \ar_1 \suchthat [\exists \ar_0 \suchthat \ar_1 \gbeats \ar_0]$: $\dbeatsinv(\ar_1)$ is a singleton). 
+${\dbeats} \subseteq \alldargs × \allargs$ and is injective and its range includes $\gbeatsinv(\allargs)$, the domain of ${\gbeats}$ (thus $\forall \ar_1 \suchthat [\exists \ar_0 \suchthat \ar_1 \gbeats \ar_0]$: $\dbeatsinv(\ar_1)$ is a singleton). 
 Define $\df \subseteq \allargs × \alldargs$ as $\df = \dbeatsinv \circ \gbeatsinv$. 
 The symbol $+$ in an empirical theory stands for a function $+: \bigcup_{\ar \in \allargs}(\set{s} × \df(\ar)) → \allargs$.
 As usual, $\ar + \ard$ means $+(\ar, \ard)$. 
 Define $\dfp \subseteq \allargs × \allargs$ as, $\forall \ar \in \allargs$: $\dfp(\ar) = \ar + \df(\ar) = \set{\ar + \ard \suchthat \ard \in \df(\ar)}$.
 An empirical theory must satisfy
-$\exists k \in \N \suchthat \dfp^k(\gleadstoinv(\allprops)) = \emptyset$.
+$\exists k \in \N \suchthat \dfp^k(\dfp(\zar) \cup \gleadstoinv(\Phi)) = \emptyset$, where $\dfp^0$ is the identity function over $\allargs$.
 
 \subsection{Falsifiability}
 Given $\hist \in \allhist$, $\hist(\intvl{1, l(\hist)})$, where $l(\hist) \in \N$ is the length of the sequence $\hist$, denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$. Abusing notation, given $\args \subseteq \allargs$, I write $\args \cap \hist$ to designate $\args \cap \hist(\intvl{1, l(\hist)})$, therefore using simply $\hist$ in that expression to denote the \emph{range} of $\hist$.
@@ -142,7 +142,7 @@ Given $\phi \in \Phi$, $\args \subseteq \allargs$ and $\ar_0 \in \allargs$, say 
 Given $i \in I, \phi \in \Phi, \ar_1, \ar_0 \in \allargs$, define $\ar_1 \ibeats \ar_0$ iff $\exists \hist \in \allhist \suchthat \ar_1 \in (\gbeatsinv(\ar_0) \cap \hist) \land \ar_0 \in \histend \land \hist \nileadsto \phi \land (\gbeatsinv(\ar_0) \cap \hist) \setminus \set{\ar_1} \sinef \ar_0$.
 
 Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $\di(\ar) \subseteq \alldargs$, as $\di(\ar) = [\dbeatsinv \circ {\ibeatsinv}](\ar)$. Define $\dip: \allargs → \allargs$ as $\dip(\ar) = \ar + \di(\ar)$.
-Given $i \in I, \phi \in \gPhi$, define $\gargs[i, \phi] \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs[i, \phi] = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\phi))$, where $(\dip)^0$ is the identity function over $\allargs$.
+Given $i \in I, \phi \in \gPhi$, define $\gargs[i, \phi] \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs[i, \phi] = \cup_{k \in \N} (\dip)^k(\dip(\zar) \cup {\gleadstoinv}(\phi))$.
 
 $\ar$ $i$-defends $\phi$ iff $\forall \hist \in \allhist \suchthat \left[\ar \in \histend \land \gbeatsinv(\ar) \cap \hist = \emptyset\right]: \hist \ileadstost \phi$. 
 %$\ar_0$ recursively $i$-defends $\phi$ iff $\forall \ar \in \cup_{k \in \N}(\dip)^k(\ar_0)$: $\ar$ $i$-defends $\phi$.
@@ -199,6 +199,16 @@ A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hi
 \end{proof}
 
 \subsection{Effectively comparing models}
+Given a normative theory, consider two empirical theories $(q, (\gleadsto[q(i)])_{q(i) \in q(I)}, \gbeats, \alldargs, \dbeats, +)$ and $(q', (\gleadsto[q(i)][\delta])_{q(i) \in q(I)}, \gbeats', \alldargs, \dbeats', +')$.
+
+Given a normative theory and $\phi \in \Phi$, say that two empirical theories (for that normative theory) disagree about $\phi$ iff $\phi \in \gPhi \land ¬\phi \in \gPhi[\delta]$.
+
+If $\gamma$ and $\delta$ agree about all $\phi$, there is nothing to test as the theories are compatible. Otherwise, here is a test procedure for that falsifies at least one of these theories, given any $\phi \in \Phi$ about which they disagree and any $i \in I$.
+
+Note first that $\ar_0 \gbeats \ar_0$ is impossible because … TODO why didn’t I need this before?
+
+Consider $\ar_0 \in \allargs \suchthat \ar_0 \gleadsto \phi$. Test whether $(\ar_0) \ileadstost \phi$. If not, $(i, \phi, (\ar_0))$ is a falsification instance of $\gamma$. If $(\ar_0) \ileadsto \phi$, check whether some $\ar_1 \dbeats' \ar_0$. If not, $\delta$ is falsified? ($\ar_0$ attacks $\delta$ but $\delta$ is not able to defend.)…
+
 Model: for a given $i$. Defends $\prop$. $\exists \ar_1 \in \args_\eta \suchthat \ar_1 \ileadsto \prop$. Then, $\forall \ar_2 \in \gargs \suchthat (\ar_2, \ar_1) \ileadsto ¬\prop: \exists \ar_3 \in \args_\eta \suchthat (\ar_3, \ar_2) \ileadsto \prop.$
 
 \section{Next}
@@ -310,14 +320,13 @@ TODO It is possible to determine whether a given function $\tau$ is a transitive
 		⊳_\exists^{-1}%
 	}%
 }
-\NewDocumentCommand{\zar}{}{\mathbf{0}}%zero, or empty, argument
 \NewDocumentCommand{\mPhi}{}{\Phi_\gamma}
 \NewDocumentCommand{\argsd}{}{S^\mathit{d}}
-\RenewDocumentCommand{\ileadstost}{O{}}{⇝^{#1}_\forall}
-\RenewDocumentCommand{\nileadstost}{O{}}{\not⇝^{#1}_\forall}
+\NewDocumentCommand{\ileadstoall}{O{}}{⇝^{#1}_\forall}
+\NewDocumentCommand{\nileadstoall}{O{}}{\not⇝^{#1}_\forall}
 
 The object of study in a given decision situation is the deliberated preferences of a given individual $i$. 
-A decision situation concerns a topic $\allprops$, given a set of arguments $\allargs$, given a certain query protocol, and over a certain time frame. The relation $\ileadstost$, to be defined shortly, models the reaction of $i$ to arguments about the topic. The decision situation will be defined as a triple $(\allprops, \allargs, \ileadstost)$ satisfying some conditions to be defined after having presented those three fundamental elements.
+A decision situation concerns a topic $\allprops$, given a set of arguments $\allargs$, given a certain query protocol, and over a certain time frame. The relation $\ileadstoall$, to be defined shortly, models the reaction of $i$ to arguments about the topic. The decision situation will be defined as a triple $(\allprops, \allargs, \ileadstoall)$ satisfying some conditions to be defined after having presented those three fundamental elements.
 
 The decision situation relates to a topic denoted by $\allprops$, which is a set of propositions $\prop \in \allprops$ about which we are interested of knowing the deliberated preferences of $i$. Propositions are not described further, but are supposedly understandable by $i$ (for example, they could be sentences in some natural language). Alternatively, in the case of an analyst helping $i$ to make a decision, $\allprops$ is a set of propositions about which $i$ is interested to know his own deliberated preferences. I assume $\allprops$ is closed under negation and introduce a symbol $¬$ for negating a proposition: if $\prop \in \allprops$, then $¬\prop \in \allprops$, and $¬(¬\prop) = \prop$. 
 
@@ -332,23 +341,23 @@ The set $\allargs$ may be infinite or very large: as we will see, thanks to our 
 \end{example}
 
 Define $\Phi = \allprops × \set{\text{possible}, \text{sure}}$. Elements in $\Phi$ will also be called propositions, which should create no ambiguity. 
-The relation $\ileadstost \subseteq (\allargs × \allargs) × \Phi$, pronounced “always leads to”, has the following semantics.
-Whenever $(\ar, \ar') \ileadstost (\prop, \text{sure})$, $i$ always considers that $\prop$ is sure (meaning that $¬\prop$ is excluded), when presented with these two arguments, and whenever $(\ar, \ar') \ileadstost (\prop, \text{possible})$, $i$ always considers that $\prop$ is “at least” possible (meaning that $¬\prop$ may be possible as well), when presented with these two arguments. In both cases, the term “always” means that the consideration is stable over time, including after having presented other arguments to $i$. 
+The relation $\ileadstoall \subseteq (\allargs × \allargs) × \Phi$, pronounced “always leads to”, has the following semantics.
+Whenever $(\ar, \ar') \ileadstoall (\prop, \text{sure})$, $i$ always considers that $\prop$ is sure (meaning that $¬\prop$ is excluded), when presented with these two arguments, and whenever $(\ar, \ar') \ileadstoall (\prop, \text{possible})$, $i$ always considers that $\prop$ is “at least” possible (meaning that $¬\prop$ may be possible as well), when presented with these two arguments. In both cases, the term “always” means that the consideration is stable over time, including after having presented other arguments to $i$. 
 Two query protocols presented below will illustrate how these semantics might be satisfied. 
-However, I voluntarily leave the querying protocol not precisely specified in general, as multiple reasonable choices are possible. The results of this article depend only on assumptions about $\ileadstost$. 
+However, I voluntarily leave the querying protocol not precisely specified in general, as multiple reasonable choices are possible. The results of this article depend only on assumptions about $\ileadstoall$. 
 
-Define the negation operator $¬$ over $\Phi$ as: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. It follows that $¬¬\phi = \phi$. Write $(\ar, \ar') \nileadstost \phi$ for $¬[(\ar, \ar') \ileadstost \phi]$ and define $(\ar, \ar') \ileadstoe \phi$ as equivalent to $(\ar, \ar') \nileadstost ¬\phi$. 
+Define the negation operator $¬$ over $\Phi$ as: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. It follows that $¬¬\phi = \phi$. Write $(\ar, \ar') \nileadstoall \phi$ for $¬[(\ar, \ar') \ileadstoall \phi]$ and define $(\ar, \ar') \ileadstoe \phi$ as equivalent to $(\ar, \ar') \nileadstoall ¬\phi$. 
 The relation $\ileadstoe$ is pronounced “sometimes leads to”.
 A proposition $\phi$ is about $\prop$ iff $\phi \in \{\prop, ¬\prop\} × \{\text{possible}, \text{sure}\}$. 
 
-The pair $(\ar, \ar')$ is to be understood as unordered (thus $(\ar, \ar') \ileadstost \prop ⇔ (\ar', \ar) \ileadstost \prop$).
+The pair $(\ar, \ar')$ is to be understood as unordered (thus $(\ar, \ar') \ileadstoall \prop ⇔ (\ar', \ar) \ileadstoall \prop$).
 
 \begin{definition}[Decision situation]
-	A decision situation is a topic $\allprops$ closed under negation, a set of arguments $\allargs$, an “always leads to” relation $\ileadstost \subseteq (\allargs × \allargs) × \Phi$ satisfying (A1) and (A2) and using unordered pairs of arguments, $\Phi$ being the set of propositions $\allprops × \set{\text{sure}, \text{possible}}$.
+	A decision situation is a topic $\allprops$ closed under negation, a set of arguments $\allargs$, an “always leads to” relation $\ileadstoall \subseteq (\allargs × \allargs) × \Phi$ satisfying (A1) and (A2) and using unordered pairs of arguments, $\Phi$ being the set of propositions $\allprops × \set{\text{sure}, \text{possible}}$.
 \end{definition}
 
 \subsection{Query protocols}
-As vNM aptly summarize, “It is clear that every measurement – or rather every claim of measurability – must ultimately be based on some immediate sensation, which possibly cannot and certainly need not be analyzed any futher.” The fundamental element here is the reaction of $i$ to arguments, which will serve as the informational basis to define $\ileadstost$. Given a proposition $\prop$ and two arguments $\ar, \ar' \in \allargs$, a query consists in presenting both arguments to $i$ and observing which proposition $i$ considers valid in her current state of mind, thus using both arguments and possibly other arguments she has in mind: is it that $\prop$ holds, that $¬\prop$ holds, or that both are possible? The third possibility allows for the case where no argument appears more decisive than the other one. 
+As vNM aptly summarize, “It is clear that every measurement – or rather every claim of measurability – must ultimately be based on some immediate sensation, which possibly cannot and certainly need not be analyzed any futher.” The fundamental element here is the reaction of $i$ to arguments, which will serve as the informational basis to define $\ileadstoall$. Given a proposition $\prop$ and two arguments $\ar, \ar' \in \allargs$, a query consists in presenting both arguments to $i$ and observing which proposition $i$ considers valid in her current state of mind, thus using both arguments and possibly other arguments she has in mind: is it that $\prop$ holds, that $¬\prop$ holds, or that both are possible? The third possibility allows for the case where no argument appears more decisive than the other one. 
 
 It is also necessary to capture the evolution of the position of $i$ towards arguments over time: a repeated query using a given pair of arguments may yield different answers, for example because the repeated question has been interleaved with another query containing other arguments (which $i$ may still have in mind when answering the second repetition), or for any other known or unknown reason. The important information for us is the \emph{set} of answers that $i$ could give to a query involving two given arguments and a given topic, among the set $\{\prop, ¬\prop, \text{both}\}$. The set designates all possible answers over time and over different order of asking the queries.
 Hence, given $\prop \in \allprops$, define a relation $\ileadstoprop \subseteq (\allargs × \allargs) × \powersetz{\{\prop, ¬\prop, \text{both}\}}$, where $\powersetz{B}$ designates the subsets of $B$ excluding the emptyset, with the semantics that $(\ar, \ar') \ileadstoprop C$, with $C \subseteq \set{\prop, ¬\prop, \text{both}}$, iff $\forall c \in C$, it is observable at least once that $i$, when presented with $(\ar, \ar')$, considers $c$ valid in her current state of mind. The querying protocol is supposedly made so that for any $\prop \in \allprops$, $\ileadstoprop = \ileadstonprop$.
@@ -370,11 +379,11 @@ One can also use $\zar$ as one or both of the arguments, in which case the proto
 %	Queries are separated by one week at least, which (as supposed in this example) is enough to ensure that no effect of pleasure for variability enter into play. 
 \end{example}
 
-Define $\ileadstost$ from $\ileadstoprop$ as follows, for any $\prop \in \allprops$: $(\ar, \ar') \ileadstost (\prop, \text{possible}) ⇔ (\ar, \ar') \ileadstoprop C$ with $C \subseteq \set{\prop, \text{both}}$; and $(\ar, \ar') \ileadstost (\prop, \text{sure}) ⇔ (\ar, \ar') \ileadstoprop \set{\prop}$. 
+Define $\ileadstoall$ from $\ileadstoprop$ as follows, for any $\prop \in \allprops$: $(\ar, \ar') \ileadstoall (\prop, \text{possible}) ⇔ (\ar, \ar') \ileadstoprop C$ with $C \subseteq \set{\prop, \text{both}}$; and $(\ar, \ar') \ileadstoall (\prop, \text{sure}) ⇔ (\ar, \ar') \ileadstoprop \set{\prop}$. 
 
 Note that (A1) and (A2) hold.
 
-When “both” is not observable, $\ileadstost$ is defined as: $(\ar, \ar') \ileadstost (\prop, \text{possible}) ⇔ (\ar, \ar') \ileadstost (\prop, \text{sure}) ⇔ (\ar, \ar') \ileadstoprop \set{\prop}$. (A1) and (A2) still hold. We say in this case that $\ileadstost$ does not distinguish sure from possible. Thus, elements $\phi \in \Phi$ may be considered as simply equal to $\prop$ or $¬\prop$, as $(\prop, \text{sure})$ is treated exactly as $(\prop, \text{possible})$.
+When “both” is not observable, $\ileadstoall$ is defined as: $(\ar, \ar') \ileadstoall (\prop, \text{possible}) ⇔ (\ar, \ar') \ileadstoall (\prop, \text{sure}) ⇔ (\ar, \ar') \ileadstoprop \set{\prop}$. (A1) and (A2) still hold. We say in this case that $\ileadstoall$ does not distinguish sure from possible. Thus, elements $\phi \in \Phi$ may be considered as simply equal to $\prop$ or $¬\prop$, as $(\prop, \text{sure})$ is treated exactly as $(\prop, \text{possible})$.
 
 \subsection{Example}
 \begin{example}[(cont.)]
@@ -438,7 +447,7 @@ It should be possible to define this condition as a claim that does not involve 
 
 \begin{remark}
 	In fact, the model is tasked with finding a stable point after interrogating $i$. The process of trying counter-arguments $\ar_1, …$ is $q(i)$. When done, the model claims that $\ar_0 + \ar_2 + …$ is decisive. The model also claims that another process of interrogation does not lead to different answers. This is falsifiable.
-	When claiming that $(\ar_1, \ar_0) \ileadstost[i] \phi$, the model really claims that $\nexists p, i' \in q^{-1}(q(i)) \suchthat p, \ar_1, \ar_0 \ileadsto[i'] ¬\phi \lor p, \ar_0, \ar_1 \ileadsto[i'] ¬\phi$, where $i' \in q^{-1}(q(i))$ iff $q(i) = q(i')$.
+	When claiming that $(\ar_1, \ar_0) \ileadstoall[i] \phi$, the model really claims that $\nexists p, i' \in q^{-1}(q(i)) \suchthat p, \ar_1, \ar_0 \ileadsto[i'] ¬\phi \lor p, \ar_0, \ar_1 \ileadsto[i'] ¬\phi$, where $i' \in q^{-1}(q(i))$ iff $q(i) = q(i')$.
 	
 	To say that $\phi \in \iPhi$, need to not depend on choice of $q$, in the following sense: if with $q$, $\phi$ seems stable, but with $q'$, $¬\phi$ seems stable, then $\phi$ is not proved as being in $\iPhi$. But if with $q$, $\phi$ seems stable, but with $q'$, nothing can be shown to be stable, then $\phi$ is proved (temporarily) as being in $\iPhi$. More precisely, after $q'$, the model must be able to stabilize $i$ with its $q$.
 \end{remark}

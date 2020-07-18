@@ -30,6 +30,7 @@
 		s%
 	}%
 }
+\NewDocumentCommand{\zar}{}{\mathbf{0}}%zero, or empty, argument
 \NewDocumentCommand{\allhist}{}{\mathscr{S}^*}
 \NewDocumentCommand{\hist}{}{s^*}
 \NewDocumentCommand{\histp}{}{s^{*\prime}}
@@ -43,10 +44,10 @@
 \NewDocumentCommand{\notpropsure}{}{(¬t, \mathit{sure})}
 \NewDocumentCommand{\notpropposs}{}{(¬t, \mathit{poss})}
 %%Empirical theory
-\NewDocumentCommand{\gPhi}{}{{⇝_γ}(\allargs)}
+\NewDocumentCommand{\gPhi}{O{γ}}{{⇝_{#1}}(\allargs)}
 \NewDocumentCommand{\alldargs}{}{\mathscr{S}^d}
 \NewDocumentCommand{\gargs}{O{}}{S^{#1}_γ}
-\NewDocumentCommand{\gleadsto}{O{}}{⇝^{#1}_γ}
+\NewDocumentCommand{\gleadsto}{O{}O{γ}}{⇝^{#1}_{#2}}
 \NewDocumentCommand{\gleadstoinv}{}{{⇝^{-1}_γ}}
 \NewDocumentCommand{\gbeats}{}{⊳_a}
 \NewDocumentCommand{\gbeatsinv}{o}{{⊳^{-1}_a}}
