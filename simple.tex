@@ -132,7 +132,7 @@ The symbol $+$ in an empirical theory stands for a function $+: \bigcup_{\ar \in
 As usual, $\ar + \ard$ means $+(\ar, \ard)$. 
 Define $\dfp \subseteq \allargs × \allargs$ as, $\forall \ar \in \allargs$: $\dfp(\ar) = \ar + \df(\ar) = \set{\ar + \ard \suchthat \ard \in \df(\ar)}$.
 An empirical theory must satisfy
-$\exists k \in \N \suchthat \dfp^k(\dfp(\zar) \cup \gleadstoinv(\Phi)) = \emptyset$, where $\dfp^0$ is the identity function over $\allargs$.
+$\exists k \in \N \suchthat \dfp^k(\gleadstoinv(\Phi)) = \emptyset$, where $\dfp^0$ is the identity function over $\allargs$.
 
 \subsection{Falsifiability}
 Given $\hist \in \allhist$, $\hist(\intvl{1, l(\hist)})$, where $l(\hist) \in \N$ is the length of the sequence $\hist$, denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$. Abusing notation, given $\args \subseteq \allargs$, I write $\args \cap \hist$ to designate $\args \cap \hist(\intvl{1, l(\hist)})$, therefore using simply $\hist$ in that expression to denote the \emph{range} of $\hist$.
@@ -146,7 +146,7 @@ Given $i \in I, \phi \in \Phi, \ar_1, \ar_0 \in \allargs$, define $\ar_1 \ibeats
 	\hist \nileadstost \phi$.
 
 Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $\di(\ar) \subseteq \alldargs$, as $\di(\ar) = [\dbeatsinv \circ {\ibeatsinv}](\ar)$. Define $\dip: \allargs → \allargs$ as $\dip(\ar) = \ar + \di(\ar)$.
-Given $i \in I, \phi \in \gPhi$, define $\gargs[i, \phi] \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs[i, \phi] = \cup_{k \in \N} (\dip)^k(\dip(\zar) \cup {\gleadstoinv}(\phi))$.
+Given $i \in I, \phi \in \gPhi$, define $\gargs[i, \phi] \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs[i, \phi] = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\phi))$.
 
 $\ar$ $i$-defends $\phi$ iff $\forall \hist \in \allhist \suchthat \left[\ar \in \histend \land \gbeatsinv(\ar) \cap \hist = \emptyset\right]: \hist \ileadstost \phi$. 
 %$\ar_0$ recursively $i$-defends $\phi$ iff $\forall \ar \in \cup_{k \in \N}(\dip)^k(\ar_0)$: $\ar$ $i$-defends $\phi$.
