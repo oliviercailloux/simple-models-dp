@@ -139,7 +139,11 @@ Given $\hist \in \allhist$, $\hist(\intvl{1, l(\hist)})$, where $l(\hist) \in \N
 
 Given $\phi \in \Phi$, $\args \subseteq \allargs$ and $\ar_0 \in \allargs$, say that $\args$ seems $i$-ineffective against $\ar_0$ for $\phi$, $\args \bowtie^{i, \phi} \ar_0$, iff $\exists \hist \in \allhist \suchthat \hist(\intvl{l(\hist)-\card{\args}, l(\hist)-1}) = \args \land \hist(l(\hist)) = \ar_0 \land \hist \ileadstost \phi$, that is, when some $\hist$ ends with $\args$ followed by $\ar_0$ and leads to $\phi$. Note that for all $\ar_0 \in \allargs$ such that $\exists \hist \in \allhist \suchthat [\hist(l(\hist)) = \ar_0 \land \hist \ileadstost \phi]$: $\emptyset \sinef \ar_0$.
 
-Given $i \in I, \phi \in \Phi, \ar_1, \ar_0 \in \allargs$, define $\ar_1 \ibeats \ar_0$ iff $\exists \hist \in \allhist \suchthat \ar_1 \in (\gbeatsinv(\ar_0) \cap \hist) \land \ar_0 \in \histend \land \hist \nileadsto \phi \land (\gbeatsinv(\ar_0) \cap \hist) \setminus \set{\ar_1} \sinef \ar_0$.
+Given $i \in I, \phi \in \Phi, \ar_1, \ar_0 \in \allargs$, define $\ar_1 \ibeats \ar_0$ iff $\exists \hist \in \allhist \suchthat 
+	\ar_1 \in (\gbeatsinv(\ar_0) \cap \hist) \land 
+	(\gbeatsinv(\ar_0) \cap \hist) \setminus \set{\ar_1} \sinef \ar_0 \land 
+	\ar_0 \in \histend \land 
+	\hist \nileadsto \phi$.
 
 Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $\di(\ar) \subseteq \alldargs$, as $\di(\ar) = [\dbeatsinv \circ {\ibeatsinv}](\ar)$. Define $\dip: \allargs → \allargs$ as $\dip(\ar) = \ar + \di(\ar)$.
 Given $i \in I, \phi \in \gPhi$, define $\gargs[i, \phi] \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs[i, \phi] = \cup_{k \in \N} (\dip)^k(\dip(\zar) \cup {\gleadstoinv}(\phi))$.
@@ -174,9 +178,9 @@ A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hi
 	
 	Given any $i \in I$ and $\phi \in \gPhi$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstost \phi$, and normative adequacy brings the conclusion. 
 	
-	Given any $\ar_0 \in \allargs$, define $\args^{\hist} = \gbeatsinv(\ar_0) \cap \hist$ and $\allhistsznp = \set{\hist \in \allhist \suchthat \ar_0 \in \histend \land \hist \nileadstost \phi}$. Given $\hist \in \allhistsznp$, say that $\hist$ is \emph{reducible} iff $\hist \in \allhistred$, defined as $\allhistred = \set{\hist \in \allhistsznp \suchthat \forall \ar_1 \in \args^{\hist}: \args^{\hist} \setminus \set{\ar_1} \not\sinef \ar_0}$; define accordingly $\allhistnonred = \allhistsznp \setminus \allhistred = \set{\hist \in \allhistsznp \suchthat \exists \ar_1 \in \args^{\hist} \suchthat \args^{\hist} \setminus \set{\ar_1} \sinef \ar_0}$.
+	Given any $\ar_0 \in \allargs$, define $\args^{\hist} = \gbeatsinv(\ar_0) \cap \hist$ and $\allhistsznp = \set{\hist \in \allhist \suchthat \ar_0 \in \histend \land \hist \nileadstost \phi}$. Given $\hist \in \allhistsznp$, say that $\hist$ is \emph{reducible} iff $\hist \in \allhistred = \set{\hist \in \allhistsznp \suchthat \forall \ar_1 \in \args^{\hist}: \args^{\hist} \setminus \set{\ar_1} \not\sinef \ar_0}$; define accordingly $\allhistnonred = \allhistsznp \setminus \allhistred = \set{\hist \in \allhistsznp \suchthat \exists \ar_1 \in \args^{\hist} \suchthat \args^{\hist} \setminus \set{\ar_1} \sinef \ar_0}$.
 	
-	Lemma: given any $\ar_0 \in \allargs$ such that $\ar_0$ $i$-defends $\phi$, if $\allhistsznp ≠ \emptyset$, $\hist \in \allhistred ⇒ \exists \histp \in \allhistsznp \suchthat \emptyset ≠ \args^{\histp} \subset \args^{\hist}$. To see this, pick as $\histp$ any sequence consisting of the arguments contained in $\args^{\hist} \setminus \set{\ar_1}$, followed by $\ar_0$. 
+	Lemma: given any $\ar_0 \in \allargs$ such that $\ar_0$ $i$-defends $\phi$, if $\allhistsznp ≠ \emptyset$, then $\hist \in \allhistred ⇒ \exists \histp \in \allhistsznp \suchthat \emptyset ≠ \args^{\histp} \subset \args^{\hist}$. To see this, pick as $\histp$ any sequence consisting of the arguments contained in $\args^{\hist} \setminus \set{\ar_1}$, followed by $\ar_0$. 
 	First, $\histp \in \allhistsznp$, because as $\hist \in \allhistred$, $\args^{\hist} \setminus \set{\ar_1} \not\sinef \ar_0$, thus, $\histp \nileadstost \phi$. 
 	Second, $\args^{\histp} = \args^{\hist} \setminus \set{\ar_1}$, because $\args^{\hist} \setminus \set{\ar_1} \subseteq \args^{\histp} = \left(\gbeatsinv(\ar_0) \cap \histp\right) \subseteq \args^{\hist} \setminus \set{\ar_1}$.
 	Finally, $\args^{\histp} ≠ \emptyset$ follows from two facts: that $\args^{\hist} \setminus \set{\ar_1} \not\sinef \ar_0$ (see “First” here above) and that $\emptyset \sinef \ar_0$, which is implied by $\ar_0$ $i$-defends $\phi$.
@@ -207,7 +211,13 @@ If $\gamma$ and $\delta$ agree about all $\phi$, there is nothing to test as the
 
 Note first that $\ar_0 \gbeats \ar_0$ is impossible because … TODO why didn’t I need this before?
 
-Consider $\ar_0 \in \allargs \suchthat \ar_0 \gleadsto \phi$. Test whether $(\ar_0) \ileadstost \phi$. If not, $(i, \phi, (\ar_0))$ is a falsification instance of $\gamma$. If $(\ar_0) \ileadsto \phi$, check whether some $\ar_1 \dbeats' \ar_0$. If not, $\delta$ is falsified? ($\ar_0$ attacks $\delta$ but $\delta$ is not able to defend.)…
+\begin{remark}
+	$\allargs \setminus \gleadstoinv(\phi)$ are the non-initial arguments. An empirical theory must satisfy: $\dbeats$ covers all attackers and $\allargs \setminus \gleadstoinv(\phi)$. Note that $\ar'_0 \gbeats \ar_0$ seems possible (thus, an attacker not in $\allargs \setminus \gleadstoinv(\phi)$), and $\zar$ not attacking anything but in $\allargs \setminus \gleadstoinv(\phi)$ is possible, where $\zar$ designates an argument that says nothing.
+	
+	If $\hist$ does not include any initial argument, and includes $\ar_1$, and leads to $¬\phi$, then proceed as if $\ar_1$ attacks $\emptyset$, thus, include the defensor against $\ar_1$. This defensor must be in $\allargs \cap \alldargs$. (It’s probably better to remove the $\alldargs$ concept.)
+\end{remark}
+
+Consider $\ar_0 \in \allargs \suchthat \ar_0 \gleadsto \phi$. Test whether $(\ar_0) \ileadstost \phi$. If not, $(i, \phi, (\ar_0))$ is a falsification instance of $\gamma$. If $(\ar_0) \ileadstost \phi$, check whether some $\ar_1 \dbeats' \ar_0$. If not, $\delta$ is falsified? ($\ar_0$ attacks $\delta$ but $\delta$ is not able to defend.)…
 
 Model: for a given $i$. Defends $\prop$. $\exists \ar_1 \in \args_\eta \suchthat \ar_1 \ileadsto \prop$. Then, $\forall \ar_2 \in \gargs \suchthat (\ar_2, \ar_1) \ileadsto ¬\prop: \exists \ar_3 \in \args_\eta \suchthat (\ar_3, \ar_2) \ileadsto \prop.$
 
