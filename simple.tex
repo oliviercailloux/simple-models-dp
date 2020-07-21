@@ -149,7 +149,21 @@ Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the \emph{$\phi$-defen
 Given $i \in I, \phi \in \gPhi$, define $\gargs[i, \phi] \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs[i, \phi] = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\phi))$.
 
 $\ar$ $i$-defends $\phi$ iff $\forall \hist \in \allhist \suchthat \left[\ar \in \histend \land \gbeatsinv(\ar) \cap \hist = \emptyset\right]: \hist \ileadstost \phi$. 
-%$\ar_0$ recursively $i$-defends $\phi$ iff $\forall \ar \in \cup_{k \in \N}(\dip)^k(\ar_0)$: $\ar$ $i$-defends $\phi$.
+
+\begin{remark}
+	Perhaps the following simpler definition would work. 
+	Define $\args \ibeats \ar_0$ iff $\exists \hist \in \allhist \suchthat 
+	\args \subseteq \gbeatsinv(\ar_0) \cap \hist \land 
+	\ar_0 \in \histend \land 
+	\hist \nileadstost \phi$.
+	Define $\ar_1 \ibeats \ar_0$ iff $\exists \set{\ar_1} \subseteq \args \subseteq \allargs \suchthat 
+	\args \ibeats \ar_0 \land
+	[\nexists \args' \subset \args \suchthat \args' \ibeats \ar_0]$.
+	
+	I then need the following two facts. 1) If $\ar_0$ $i$-defends $\phi$, then $\ar_0 \nileadstost \phi ⇒ \exists \args \ibeats \ar_0$. 2) Proving that $\ar_2 \in \gargs$ is easy enough, thus, if $\args = \set{\ar_1, \ar'_1}$ is minimal for $\args \ibeats \ar_0$, then, showing $\exists \hist = (…, \ar_1, \ar_0) \ileadstost \phi, \ar'_1 \notin \hist$ (and the same inverting $\ar_1$ and $\ar'_1$), is enough. But this seems false: it is possible that $\exists \hist… \land \ar_1 \ibeats \ar_0$.
+	
+	Thus, maybe need to define $\args' \ibeats[\prime] \ar_0$ iff $\exists \hist… \ileadstost \phi$.
+\end{remark}
 
 \begin{definition}[Convincingness]
 	$\forall i \in I, \phi \in \gPhi, \ar \in \gargs[i, \phi]: \ar$ $i$-defends $\phi$.
@@ -217,6 +231,8 @@ Note first that $\ar_0 \gbeats \ar_0$ is impossible because … TODO why didn’
 	$\allargs \setminus \gleadstoinv(\phi)$ are the non-initial arguments. An empirical theory must satisfy: $\dbeats$ covers all attackers and $\allargs \setminus \gleadstoinv(\phi)$. Note that $\ar'_0 \gbeats \ar_0$ seems possible (thus, an attacker not in $\allargs \setminus \gleadstoinv(\phi)$), and $\zar$ not attacking anything but in $\allargs \setminus \gleadstoinv(\phi)$ is possible, where $\zar$ designates an argument that says nothing.
 	
 	If $\hist$ does not include any initial argument, and includes $\ar_1$, and leads to $¬\phi$, then proceed as if $\ar_1$ attacks $\emptyset$, thus, include the defensor against $\ar_1$. This defensor must be in $\allargs \cap \alldargs$. (It’s probably better to remove the $\alldargs$ concept.)
+	
+	Better first simplify the related definitions in the “normal” case.
 \end{remark}
 
 Consider $\ar_0 \in \allargs \suchthat \ar_0 \gleadsto \phi$. Test whether $(\ar_0) \ileadstost \phi$. If not, $(i, \phi, (\ar_0))$ is a falsification instance of $\gamma$. If $(\ar_0) \ileadstost \phi$, check whether some $\ar_1 \dbeats' \ar_0$. If not, $\delta$ is falsified? ($\ar_0$ attacks $\delta$ but $\delta$ is not able to defend.)…
