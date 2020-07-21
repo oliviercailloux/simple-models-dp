@@ -193,8 +193,10 @@ A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hi
 	Because $\ar_0$ $i$-defends $\phi$, $\args^{\hist} ≠ \emptyset$. 
 	From the preceding conclusion, we can pick some $\histp \in \allhistnonred$.
 	Thus, $\exists \ar_1 \in \args^{\histp} \suchthat \args^{\histp} \setminus \set{\ar_1} \sinef \ar_0$.
-	By definition, this means that $\ar_1 \ibeats \ar_0$ and, as $\ar_1 \in \args^{\histp} = \gbeatsinv(\ar_0) \cap \histp$, $\ar_1 \gbeats \ar_0$. 
-	It now follows from the definition of an empirical theory that $\dbeatsinv(\ar_1)$ is not empty, thus, $\exists \ard_2 \in \allargs \suchthat \ard_2 \dbeats \ar_1$. Defining $\ar_2 = \ar_0 + \ard_2$, by definition of $\dip$, $\ar_2 \in \dip(\ar_0)$.
+	This shows that $\ar_1 \gbeats \ar_0$ and $\ar_1 \ibeats \ar_0$: 
+		by definition of $\args^{\histp}$, $\ar_1 \in \gbeatsinv(\ar_0) \cap \histp$; and 
+		$[\ar_0 \in \histp \land \histp \nileadstost \phi]$ follow from $\histp \in \allhistnonred$.
+	It now follows from the definition of an empirical theory that $\dbeatsinv(\ar_1)$ is not empty, thus, $\exists \ard_2 \in \alldargs \suchthat \ard_2 \dbeats \ar_1$. Defining $\ar_2 = \ar_0 + \ard_2$, $\ar_2 \in \dip(\ar_0)$ by definition of $\dip$.
 	
 	From this lemma, using convincingness, we deduce that $[\ar_0 \in \gargs[i, \phi] \land \ar_0 \nileadstost \phi] ⇒ \exists \ar_2 \in \gargs[i, \phi] \cap \dfp(\ar_0)$. That is because $\ar_0 \in \gargs[i, \phi] ⇒ \ar_0$ $i$-defends $\phi$, by convincingness, and, considering $\ard_2$ and $\ar_2$ as defined in the lemma, $\ar_2 \in \gargs[i, \phi]$ by definition of $\gargs[i, \phi]$ and $\ard_2 \in \df(\ar_0)$ by definition of $\df$.
 
