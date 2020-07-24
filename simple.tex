@@ -137,41 +137,19 @@ $\exists k \in \N \suchthat \dfp^k(\gleadstoinv(\Phi)) = \emptyset$, where $\dfp
 \subsection{Falsifiability}
 Given $\hist \in \allhist$, $\hist(\intvl{1, l(\hist)})$, where $l(\hist) \in \N$ is the length of the sequence $\hist$, denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$. Abusing notation, given $\args \subseteq \allargs$, I write $\args \cap \hist$ to designate $\args \cap \hist(\intvl{1, l(\hist)})$, therefore using simply $\hist$ in that expression to denote the \emph{range} of $\hist$.
 
-Given $\phi \in \Phi$, $\args \subseteq \allargs$ and $\ar_0 \in \allargs$, say that $\args$ seems $i$-ineffective against $\ar_0$ for $\phi$, $\args \bowtie^{i, \phi} \ar_0$, iff $\exists \hist \in \allhist \suchthat \hist(\intvl{l(\hist)-\card{\args}, l(\hist)-1}) = \args \land \hist(l(\hist)) = \ar_0 \land \hist \ileadstost \phi$, that is, when some $\hist$ ends with $\args$ followed by $\ar_0$ and leads to $\phi$. Note that for all $\ar_0 \in \allargs$ such that $\exists \hist \in \allhist \suchthat [\hist(l(\hist)) = \ar_0 \land \hist \ileadstost \phi]$: $\emptyset \sinef \ar_0$.
+Given $i \in I, \phi \in \Phi, \ar_0 \in \allargs$ and $\args \subseteq \gbeatsinv(\ar_0)$, define $\args \ibeatscoal \ar_0$ iff $\exists \hist \in \allhist \suchthat \args = \gbeatsinv(\ar_0) \cap \hist \land \ar_0 \in \histend \land \hist \nileadstost \phi$. 
+Define $\args \ibeatscoalstr \ar_0$ iff $\forall \hist \in \allhist: [\hist(\intvl{l(\hist)-\card{\args}, l(\hist)-1}) = \args \land \hist(l(\hist)) = \ar_0] ⇒ \hist \nileadstost \phi$, that is, iff no $\hist$ that end with $\args$ followed by $\ar_0$ lead to $\phi$.
+Note that $\forall \ar_0 \in \allargs, \args \subseteq \gbeatsinv(\ar_0): \args \ibeatscoalstr \ar_0 ⇒ \args \ibeatscoal \ar_0$. That is because $\ar_0 \ngbeats \ar_0$, because $\gbeats$ is irreflexive by definition of an empirical theory, and thus suffices to consider any sequence of arguments $\hist$ using only and all the arguments $\args \cup \set{\ar_0}$ and placing $\ar_0$ last: because $\args \ibeatscoalstr \ar_0$, $\hist \nileadstost \phi$, and the existence of $\hist$ proves that $\args \ibeatscoal \ar_0$.
 
-Given $i \in I, \phi \in \Phi, \ar_1, \ar_0 \in \allargs$, define $\ar_1 \ibeats \ar_0$ iff $\exists \hist \in \allhist \suchthat 
-	\ar_1 \in (\gbeatsinv(\ar_0) \cap \hist) \land 
-	(\gbeatsinv(\ar_0) \cap \hist) \setminus \set{\ar_1} \sinef \ar_0 \land 
-	\ar_0 \in \histend \land 
-	\hist \nileadstost \phi$.
+Given $i \in I, \phi \in \Phi$ and $\ar_0, \ar_1 \in \allargs$, define $\ar_1 \ibeats \ar_0$ iff $\exists \args \subseteq \gbeatsinv(\ar_0) \suchthat \ar_1 \in \args \land \args \ibeatscoal \ar_0 \land \args \setminus \set{\ar_1} \nibeatscoalstr \ar_0$. 
 
 Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $\di(\ar) \subseteq \alldargs$, as $\di(\ar) = [\dbeatsinv \circ {\ibeatsinv}](\ar)$. Define $\dip: \allargs → \allargs$ as $\dip(\ar) = \ar + \di(\ar)$.
 Given $i \in I, \phi \in \gPhi$, define $\gargs[i, \phi] \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs[i, \phi] = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\phi))$.
 
-$\ar$ $i$-defends $\phi$ iff $\forall \hist \in \allhist \suchthat \left[\ar \in \histend \land \gbeatsinv(\ar) \cap \hist = \emptyset\right]: \hist \ileadstost \phi$. 
+$\ar$ $i$-defends $\phi$ iff $\emptyset \nibeatscoal \ar$. 
 
 \begin{remark}
-	Perhaps the following simpler definition would work. 
-	Define $\args \ibeats \ar_0$ iff $\exists \hist \in \allhist \suchthat 
-	\args \subseteq \gbeatsinv(\ar_0) \cap \hist \land 
-	\ar_0 \in \histend \land 
-	\hist \nileadstost \phi$.
-	Define $\ar_1 \ibeats \ar_0$ iff $\exists \set{\ar_1} \subseteq \args \subseteq \allargs \suchthat 
-	\args \ibeats \ar_0 \land
-	[\nexists \args' \subset \args \suchthat \args' \ibeats \ar_0]$.
-	
-	I then need the following two facts. 1) If $\ar_0$ $i$-defends $\phi$, then $\ar_0 \nileadstost \phi ⇒ \exists \args \ibeats \ar_0$. 2) Proving that $\ar_2 \in \gargs$ is easy enough, thus, if $\args = \set{\ar_1, \ar'_1}$ is minimal for $\args \ibeats \ar_0$, then, showing $\exists \hist = (…, \ar_1, \ar_0) \ileadstost \phi, \ar'_1 \notin \hist$ (and the same inverting $\ar_1$ and $\ar'_1$), is enough. But this seems false: it is possible that $\exists \hist… \land \ar_1 \ibeats \ar_0$.
-	
-	Thus, maybe need to define $\args' \ibeats[\prime] \ar_0$ iff $\exists \hist… \ileadstost \phi$.
-	
-	Given $i \in I, \phi \in \Phi$, define $\args \ibeatscoal \ar_0$ iff $\exists \hist \in \allhist \suchthat \args = \gbeatsinv(\ar_0) \cap \hist \land \ar_0 \in \histend \land \hist \nileadstost \phi$. 
-	Define $\args \ibeatscoalstr \ar_0$ iff $\forall \hist \in \allhist: [\hist(\intvl{l(\hist)-\card{\args}, l(\hist)-1}) = \args \land \hist(l(\hist)) = \ar_0] ⇒ \hist \nileadstost \phi$, that is, iff no $\hist$ that end with $\args$ followed by $\ar_0$ lead to $\phi$.
-	Define $\ar_1 \ibeats \ar_0$ iff $\exists \set{\ar_1} \subseteq \args \subseteq \allargs \suchthat \args \ibeatscoal \ar_0 \land \args \setminus \set{\ar_1} \nibeatscoalstr \ar_0$. 
-	
-	Lemma. Given any $\ar_0$ that $i$-defends $\phi$, $\forall \args \subseteq \allargs: [\args \ibeatscoal \ar_0 ⇒ \exists \ar_1 \in \args \suchthat \ar_1 \ibeats \ar_0]$. Observe that the implication holds for $\args = \emptyset$, because $\emptyset \nibeatscoal \ar_0$ as $\ar_0$ $i$-defends $\phi$. Now, given $k \in \N$, assume that $\forall \args \subseteq \allargs \suchthat \card{\args} = k: [\args \ibeatscoal \ar_0 ⇒ \exists \ar_1 \in \args \suchthat \ar_1 \ibeats \ar_0]$, and let us show that $\forall \args \subseteq \allargs \suchthat \card{\args} = k + 1: [\args \ibeatscoal \ar_0 ⇒ \exists \ar_1 \in \args \suchthat \ar_1 \ibeats \ar_0]$.
-	Consider $\args \subseteq \allargs \suchthat \card{\args} = k + 1 \land \args \ibeatscoal \ar_0$. One of the following two cases hold. First case: $\forall \args' \subset \args \suchthat \card{\args'} = k: \args \nibeatscoalstr \ar_0$. Then, $\forall \ar_1 \in \args: \ar_1 \ibeats \ar_0$. Second case: $\exists \args' \subset \args \suchthat \card{\args'} = k \land \args' \ibeatscoalstr \ar_0$. Then, $\args' \ibeatscoal \ar_0$ (noting that ${\ibeatscoalstr} \subseteq {\ibeatscoal}$), thus $\exists \ar_1 \in \args' \suchthat \ar_1 \ibeats \ar_0$ (using the hypothesis of recurrence), hence, $\exists \ar_1 \in \args \suchthat \ar_1 \ibeats \ar_0$.
-	
-	This lemma permits to deduce that, given $\ar_0$ that $i$-defends $\phi$, $\hist \suchthat \ar_0 \in \histend \land \hist \nileadstost \phi$, and $\args = \gbeatsinv(\ar_0) \cap \hist$: $\args ≠ \emptyset ⇒ \exists \ar_1 \in \args \suchthat \ar_1 \ibeats \ar_0$. This holds because in that case, $\args \ibeatscoal \ar_0$.
+	I need the following two facts. 1) If $\ar_0$ $i$-defends $\phi$, then $\ar_0 \nileadstost \phi ⇒ \exists \args \ibeats \ar_0$. 2) Proving that $\ar_2 \in \gargs$ is easy enough, thus, if $\args = \set{\ar_1, \ar'_1}$ is minimal for $\args \ibeats \ar_0$, then, showing $\exists \hist = (…, \ar_1, \ar_0) \ileadstost \phi, \ar'_1 \notin \hist$ (and the same inverting $\ar_1$ and $\ar'_1$), is enough.
 	
 	Problem happens in the following case. $\ar'_1$ alone is uncertain, meaning $\exists \hist = (… \ar'_1 … \ar_0) \nileadstost \phi$ and $\exists \hist = (…, \ar'_1, \ar_0) \ileadstost \phi$. Then, a counter-theory $\delta$ may claim that $\ar'_1$ alone is ineffective: suffice to show the example $(…, \ar'_1, \ar_0) \ileadstost \phi$. Whereas in fact $\ar'_1$ alone is sometimes effective. Then, $\args = \set{\ar_1, \ar'_1}$ may be claimed to be effective by combination effect (and $\ar'_1$ can’t be blamed, although it should, as $\delta$ has “proven” it ineffective). Thus, $\ar_2$, defending against $\ar_1$, ends up in $\gargs$. Assume $\ar_1$ is innocuous for $i$ (otherwise, no problem, as $\ar_2$ is legitimate) ($\ar_1$ could be efficient for others than $i$, which justifies $\ar_1 \gbeats \ar_0$). Then $\ar_2$ shouldn’t be played, it is only included as a result of the weak demand about proving that $\ar'_1$ is ineffective. 
 
@@ -207,24 +185,17 @@ A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hi
 	
 	Given any $i \in I$ and $\phi \in \gPhi$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstost \phi$, and normative adequacy brings the conclusion. 
 	
-	Given any $\ar_0 \in \allargs$, define $\args^{\hist} = \gbeatsinv(\ar_0) \cap \hist$ and $\allhistsznp = \set{\hist \in \allhist \suchthat \ar_0 \in \histend \land \hist \nileadstost \phi}$. Given $\hist \in \allhistsznp$, say that $\hist$ is \emph{reducible} iff $\hist \in \allhistred = \set{\hist \in \allhistsznp \suchthat \forall \ar_1 \in \args^{\hist}: \args^{\hist} \setminus \set{\ar_1} \not\sinef \ar_0}$; define accordingly $\allhistnonred = \allhistsznp \setminus \allhistred = \set{\hist \in \allhistsznp \suchthat \exists \ar_1 \in \args^{\hist} \suchthat \args^{\hist} \setminus \set{\ar_1} \sinef \ar_0}$.
+	Lemma. Given any $\ar_0$ that $i$-defends $\phi$, $\forall \args \subseteq \gbeatsinv(\ar_0): [\args \ibeatscoal \ar_0 ⇒ \exists \ar_1 \in \args \suchthat \ar_1 \ibeats \ar_0]$. Observe that the implication holds for $\args = \emptyset$, because $\emptyset \nibeatscoal \ar_0$ as $\ar_0$ $i$-defends $\phi$. Now, given $k \in \N$, assume that $\forall \args \subseteq \allargs \suchthat \card{\args} = k: [\args \ibeatscoal \ar_0 ⇒ \exists \ar_1 \in \args \suchthat \ar_1 \ibeats \ar_0]$, and let us show that $\forall \args \subseteq \allargs \suchthat \card{\args} = k + 1: [\args \ibeatscoal \ar_0 ⇒ \exists \ar_1 \in \args \suchthat \ar_1 \ibeats \ar_0]$.
+	Consider $\args \subseteq \allargs \suchthat \card{\args} = k + 1 \land \args \ibeatscoal \ar_0$. One of the following two cases hold. First case: $\forall \args' \subset \args \suchthat \card{\args'} = k: \args \nibeatscoalstr \ar_0$. Then, $\forall \ar_1 \in \args: \ar_1 \ibeats \ar_0$. Second case: $\exists \args' \subset \args \suchthat \card{\args'} = k \land \args' \ibeatscoalstr \ar_0$. Then, $\args' \ibeatscoal \ar_0$ (recalling that ${\ibeatscoalstr} \subseteq {\ibeatscoal}$ and using the contrapositive), thus $\exists \ar_1 \in \args' \suchthat \ar_1 \ibeats \ar_0$ (using the induction hypothesis), hence, $\exists \ar_1 \in \args \suchthat \ar_1 \ibeats \ar_0$.
 	
-	Lemma: given any $\ar_0 \in \allargs$ such that $\ar_0$ $i$-defends $\phi$, if $\allhistsznp ≠ \emptyset$, then $\hist \in \allhistred ⇒ \exists \histp \in \allhistsznp \suchthat \emptyset ≠ \args^{\histp} \subset \args^{\hist}$. To see this, pick as $\histp$ any sequence consisting of the arguments contained in $\args^{\hist} \setminus \set{\ar_1}$, followed by $\ar_0$. 
-	First, $\histp \in \allhistsznp$, because as $\hist \in \allhistred$, $\args^{\hist} \setminus \set{\ar_1} \not\sinef \ar_0$, thus, $\histp \nileadstost \phi$. 
-	Second, $\args^{\histp} = \args^{\hist} \setminus \set{\ar_1}$, because $\args^{\hist} \setminus \set{\ar_1} \subseteq \args^{\histp} = \left(\gbeatsinv(\ar_0) \cap \histp\right) \subseteq \args^{\hist} \setminus \set{\ar_1}$.
-	Finally, $\args^{\histp} ≠ \emptyset$ follows from two facts: that $\args^{\hist} \setminus \set{\ar_1} \not\sinef \ar_0$ (see “First” here above) and that $\emptyset \sinef \ar_0$, which is implied by $\ar_0$ $i$-defends $\phi$.
-	
-	We conclude from this lemma that given any $\ar_0 \in \allargs$ such that $\ar_0$ $i$-defends $\phi$, if $\exists \hist \in \allhistsznp \suchthat \args^{\hist} ≠ \emptyset$, then $\exists \histp \in \allhistnonred$. To see this, given $\hist \in \allhistsznp \suchthat \args^{\hist} ≠ \emptyset$, define a finite sequence of sequences of arguments, starting with $\hist_0 = \hist$, then, for $k \in \N$, if $\hist_k \in \allhistred$, define $\hist_{k + 1} \in \allhistsznp$ by applying the lemma, thus with $\emptyset ≠ \args^{\hist_{k + 1}} \subset \args^{\hist_k}$. Because $\hist_0$ is finite (being an element of $\allhist$), $\args^{\hist_0}$ is finite, thus this process ends with some $\hist_k \in \allhistnonred$.
+	This lemma permits to deduce that, given $\ar_0$ that $i$-defends $\phi$, $\hist \suchthat \ar_0 \in \histend \land \hist \nileadstost \phi$, and $\args = \gbeatsinv(\ar_0) \cap \hist$: $\args ≠ \emptyset ⇒ \exists \ar_1 \in \args \suchthat \ar_1 \ibeats \ar_0$. This holds because in that case, $\args \ibeatscoal \ar_0$.
 	
 	Lemma: if $\ar_0$ $i$-defends $\phi$, then $\ar_0 \nileadstost \phi ⇒ \exists \ar_1 \in \allargs, \ard_2 \in \allargs \suchthat \ard_2 \dbeats \ar_1 \ibeats \ar_0 \land \ar_1 \gbeats \ar_0 \land \ar_2 = \ar_0 + \ard_2 \in \dip(\ar_0)$.
 	Consider any $\ar_0 \in \allargs$ such that $\ar_0$ $i$-defends $\phi$ and $\ar_0 \nileadstost \phi$. 
-	By definition, $\ar_0 \nileadstost \phi$ means that $\exists \hist \in \allhistsznp$.
-	Because $\ar_0$ $i$-defends $\phi$, $\args^{\hist} ≠ \emptyset$. 
-	From the preceding conclusion, we can pick some $\histp \in \allhistnonred$.
-	Thus, $\exists \ar_1 \in \args^{\histp} \suchthat \args^{\histp} \setminus \set{\ar_1} \sinef \ar_0$.
-	This shows that $\ar_1 \gbeats \ar_0$ and $\ar_1 \ibeats \ar_0$: 
-		by definition of $\args^{\histp}$, $\ar_1 \in \gbeatsinv(\ar_0) \cap \histp$; and 
-		$[\ar_0 \in \histp \land \histp \nileadstost \phi]$ follow from $\histp \in \allhistnonred$.
+	By definition, $\ar_0 \nileadstost \phi$ means that $\exists \hist \in \allhist \suchthat \ar_0 \in \histend \land \hist \nileadstost \phi$.
+	Define $\args = \gbeatsinv(\ar_0) \cap \hist$.
+	Because $\ar_0$ $i$-defends $\phi$, $\args ≠ \emptyset$. 
+	From the preceding conclusion, $\exists \ar_1 \in \args \suchthat \ar_1 \gbeats \ar_0$ and $\ar_1 \ibeats \ar_0$.
 	It now follows from the definition of an empirical theory that $\dbeatsinv(\ar_1)$ is not empty, thus, $\exists \ard_2 \in \alldargs \suchthat \ard_2 \dbeats \ar_1$. Defining $\ar_2 = \ar_0 + \ard_2$, $\ar_2 \in \dip(\ar_0)$ by definition of $\dip$.
 	
 	From this lemma, using convincingness, we deduce that $[\ar_0 \in \gargs[i, \phi] \land \ar_0 \nileadstost \phi] ⇒ \exists \ar_2 \in \gargs[i, \phi] \cap \dfp(\ar_0)$. That is because $\ar_0 \in \gargs[i, \phi] ⇒ \ar_0$ $i$-defends $\phi$, by convincingness, and, considering $\ard_2$ and $\ar_2$ as defined in the lemma, $\ar_2 \in \gargs[i, \phi]$ by definition of $\gargs[i, \phi]$ and $\ard_2 \in \df(\ar_0)$ by definition of $\df$.
