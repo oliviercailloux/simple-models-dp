@@ -68,6 +68,10 @@
 \NewDocumentCommand{\dip}{}{d^{i, \phi}_+}
 \NewDocumentCommand{\ibeats}{}{⊳^{i, !\phi}}
 \NewDocumentCommand{\ibeatsinv}{}{(⊳^{i, !\phi})^{-1}}
+\NewDocumentCommand{\ibeatscoal}{O{i, !\phi}}{>^{#1}}
+\NewDocumentCommand{\nibeatscoal}{O{i, !\phi}}{\not>^{#1}}
+\NewDocumentCommand{\ibeatscoalstr}{O{i, !\phi}}{\gg^{#1}}%\circledgtr txfonts/pxfonts \lJoin\strictfi; %\succdot mathabx \gg \ggg \gtrdot; \rightslice MnSymbol \closedsucc; \Succ stix \csup; \blacktriangleright from amsfont (which is not great because \not has low sailence). Unknown: circledgtr, succdot, rightslice, closedsucc, Succ. Candidates: $\gg$ $\ggg$ $\gtrdot$.
+\NewDocumentCommand{\nibeatscoalstr}{O{i, !\phi}}{\not\gg^{#1}}
 \NewDocumentCommand{\sinef}{}{\bowtie^{i, \phi}}
 
 %Deliberated Preference
