@@ -179,10 +179,6 @@ A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hi
 	A normatively adequate and convincing empirical theory is valid.
 \end{theorem}
 \begin{proof}
-	\NewDocumentCommand{\allhistsznp}{}{\mathscr{S}^{*, \ar_0}_{\not⇝ \phi}}
-	\NewDocumentCommand{\allhistred}{}{\mathscr{S}^{*, \ar_0, \mathit{red}}_{\not⇝ \phi}}
-	\NewDocumentCommand{\allhistnonred}{}{\mathscr{S}^{*, \ar_0, \mathit{irred}}_{\not⇝ \phi}}
-	
 	Given any $i \in I$ and $\phi \in \gPhi$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstost \phi$, and normative adequacy brings the conclusion. 
 	
 	Lemma. Given any $\ar_0$ that $i$-defends $\phi$, $\forall \args \subseteq \gbeatsinv(\ar_0): [\args \ibeatscoal \ar_0 ⇒ \exists \ar_1 \in \args \suchthat \ar_1 \ibeats \ar_0]$. Observe that the implication holds for $\args = \emptyset$, because $\emptyset \nibeatscoal \ar_0$ as $\ar_0$ $i$-defends $\phi$. Now, given $k \in \N$, assume that $\forall \args \subseteq \allargs \suchthat \card{\args} = k: [\args \ibeatscoal \ar_0 ⇒ \exists \ar_1 \in \args \suchthat \ar_1 \ibeats \ar_0]$, and let us show that $\forall \args \subseteq \allargs \suchthat \card{\args} = k + 1: [\args \ibeatscoal \ar_0 ⇒ \exists \ar_1 \in \args \suchthat \ar_1 \ibeats \ar_0]$.
