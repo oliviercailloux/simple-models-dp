@@ -22,7 +22,7 @@
 %%Normative theory
 \NewDocumentCommand{\allargs}{}{\mathscr{S}}
 \NewDocumentCommand{\args}{}{S}
-\NewDocumentCommand \ard { }{s^\mathit{d}}
+\NewDocumentCommand{\ard}{O{2}}{s^\mathit{d}_{#1}}
 \NewDocumentCommand{\ar}{o}{%
 	\IfValueTF{#1}{%
 		s^{(#1)}%
@@ -45,6 +45,7 @@
 \NewDocumentCommand{\notpropposs}{}{(¬t, \mathit{poss})}
 %%Empirical theory
 \NewDocumentCommand{\gPhi}{O{γ}}{{⇝_{#1}}(\allargs)}
+\NewDocumentCommand{\dargs}{}{S^d}
 \NewDocumentCommand{\alldargs}{}{\mathscr{S}^d}
 \NewDocumentCommand{\gargs}{O{}}{S^{#1}_γ}
 \NewDocumentCommand{\gleadsto}{O{}O{γ}}{⇝^{#1}_{#2}}
@@ -70,8 +71,6 @@
 \NewDocumentCommand{\ibeatsinv}{}{(⊳^{i, !\phi})^{-1}}
 \NewDocumentCommand{\ibeatscoal}{O{i, !\phi}}{>^{#1}}
 \NewDocumentCommand{\nibeatscoal}{O{i, !\phi}}{\not>^{#1}}
-\NewDocumentCommand{\ibeatscoalstr}{O{i, !\phi}}{\gg^{#1}}%\circledgtr txfonts/pxfonts \lJoin\strictfi; %\succdot mathabx \gg \ggg \gtrdot; \rightslice MnSymbol \closedsucc; \Succ stix \csup; \blacktriangleright from amsfont (which is not great because \not has low sailence). Unknown: circledgtr, succdot, rightslice, closedsucc, Succ. Candidates: $\gg$ $\ggg$ $\gtrdot$.
-\NewDocumentCommand{\nibeatscoalstr}{O{i, !\phi}}{\not\gg^{#1}}
 
 %Deliberated Preference
 \NewDocumentCommand{\ppeqab}{}{t_{a \succeq b}}
