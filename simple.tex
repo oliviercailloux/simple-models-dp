@@ -147,21 +147,21 @@ Given $i \in I, \phi \in \Phi, \ar_0 \in \allargs$ and $\args \subseteq \gbeatsi
 Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $\di(\ar) \subseteq \powersetz{\alldargs}$, as $\di(\ar) = \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0) \land \args \ibeats \ar_0}$. 
 Observe that $\di(\ar) \subseteq \df(\ar)$.
 Define $\dip \subseteq \allargs × \allargs$ as $\dip(\ar) = \set{(\ar + \dargs) \suchthat \dargs \in \di(\ar)}$.
-Given $i \in I, \phi \in \gPhi$, define $\gargs[i, \phi] \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs[i, \phi] = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\phi))$.
+Given $i \in I, \phi \in \gPhi$, define $\gargs \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\phi))$.
 
 $\ar$ $i$-defends $\phi$ iff $\emptyset \nibeats \ar$. 
 
 \begin{definition}[Convincingness]
-	$\forall i \in I, \phi \in \gPhi, \ar \in \gargs[i, \phi]: \ar$ $i$-defends $\phi$.
+	$\forall i \in I, \phi \in \gPhi, \ar \in \gargs: \ar$ $i$-defends $\phi$.
 \end{definition}
 
-A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hist) \in I × \gPhi × \allhist$ such that $\exists \ar \in (\histend \cap \gargs[i, \phi]) \suchthat \gbeatsinv(\ar) \cap \hist = \emptyset \land \hist \nileadstost \phi$.
+A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hist) \in I × \gPhi × \allhist$ such that $\exists \ar \in (\histend \cap \gargs) \suchthat \gbeatsinv(\ar) \cap \hist = \emptyset \land \hist \nileadstost \phi$.
 
 \begin{theorem}
 	An empirical theory is convincing iff it has no falsification instances.
 \end{theorem}
 \begin{proof}
-	For all $i \in I, \phi \in \gPhi$: $\exists \ar \in \gargs[i, \phi]$ that does not $i$-defend $\phi$ iff $\exists \ar \in \gargs[i, \phi], \hist \in \allhist \suchthat \left[\ar \in \histend \land \gbeatsinv(\ar) \cap \hist = \emptyset \land \hist \nileadstost \phi\right]$ iff $\exists \hist \in \allhist$ such that $(i, \phi, \hist)$ is a falsification instance.
+	For all $i \in I, \phi \in \gPhi$: $\exists \ar \in \gargs$ that does not $i$-defend $\phi$ iff $\exists \ar \in \gargs, \hist \in \allhist \suchthat \left[\ar \in \histend \land \gbeatsinv(\ar) \cap \hist = \emptyset \land \hist \nileadstost \phi\right]$ iff $\exists \hist \in \allhist$ such that $(i, \phi, \hist)$ is a falsification instance.
 \end{proof}
 
 \begin{definition}[Validity]
@@ -181,9 +181,9 @@ A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hi
 	Also, because $\ar_0$ $i$-defends $\phi$, $\args ≠ \emptyset$. 
 	Therefore, $\dbeatsinv(\args) \in \di(\ar_0)$.
 	
-	From this lemma, using convincingness, we deduce that $[\ar_0 \in \gargs[i, \phi] \land \ar_0 \nileadstost \phi] ⇒ \exists \ar_2 \in \gargs[i, \phi] \cap \dfp(\ar_0)$. That is because $\ar_0 \in \gargs[i, \phi] ⇒ \ar_0$ $i$-defends $\phi$, by convincingness, and, considering any $\dargs \in \di(\ar_0)$ and $\ar_2 = \ar_0 + \dargs$, $\ar_2 \in \gargs[i, \phi]$ by definition of $\gargs[i, \phi]$ and $\ar_2 \in \dfp(\ar_0)$ because $\dargs \in \di(\ar_0) ⇒ \dargs \in \df(\ar_0)$.
+	From this lemma, using convincingness, we deduce that $[\ar_0 \in \gargs \land \ar_0 \nileadstost \phi] ⇒ \exists \ar_2 \in \gargs \cap \dfp(\ar_0)$. That is because $\ar_0 \in \gargs ⇒ \ar_0$ $i$-defends $\phi$, by convincingness, and, considering any $\dargs \in \di(\ar_0)$ and $\ar_2 = \ar_0 + \dargs$, $\ar_2 \in \gargs$ by definition of $\gargs$ and $\ar_2 \in \dfp(\ar_0)$ because $\dargs \in \di(\ar_0) ⇒ \dargs \in \df(\ar_0)$.
 
-	To prove the theorem, build a finite sequence of arguments in $\gargs[i, \phi]$, starting with any $\ar_0 \in \gleadstoinv(\phi)$. Observe that $\ar_0 \in \gargs[i, \phi]$. Given $k \in 2\N$, if $\ar_k \nileadstost \phi$, define $\ar_{k + 2}$ using the deduction following the lemma, obtaining $\ar_{k + 2} \in \gargs[i, \phi] \cap \dfp^\frac{k + 2}{2}(\ar_0)$. 
+	To prove the theorem, build a finite sequence of arguments in $\gargs$, starting with any $\ar_0 \in \gleadstoinv(\phi)$. Observe that $\ar_0 \in \gargs$. Given $k \in 2\N$, if $\ar_k \nileadstost \phi$, define $\ar_{k + 2}$ using the deduction following the lemma, obtaining $\ar_{k + 2} \in \gargs \cap \dfp^\frac{k + 2}{2}(\ar_0)$. 
 	By definition of an empirical theory, $\exists k \in \N \suchthat \dfp^k(\ar_0) = \emptyset$, thus, this process ends with some $\ar$ such that $\ar \ileadstost \phi$.
 \end{proof}
 
@@ -192,21 +192,24 @@ Given a normative theory, consider two empirical theories $(q, (\gleadsto[q(i)])
 
 Given a normative theory and $\phi \in \Phi$, say that two empirical theories (for that normative theory) disagree about $\phi$ iff $\phi \in \gPhi \land ¬\phi \in \gPhi[\delta]$.
 
-If $\gamma$ and $\delta$ agree about all $\phi$, there is nothing to test as the theories are compatible. Otherwise, here is a test procedure for that falsifies at least one of these theories, given any $\phi \in \Phi$ about which they disagree and any $i \in I$.
+If $\gamma$ and $\delta$ agree about all $\phi$, there is nothing to test as the theories are compatible. Otherwise, here is a test procedure that falsifies at least one of these theories, given any $\phi \in \Phi$ about which they disagree and any $i \in I$.
 
 \begin{remark}
-	$\allargs \setminus \gleadstoinv(\phi)$ are the non-initial arguments. An empirical theory must satisfy: $\dbeats$ covers all attackers and $\allargs \setminus \gleadstoinv(\phi)$. Note that $\ar'_0 \gbeats \ar_0$ seems possible (thus, an attacker not in $\allargs \setminus \gleadstoinv(\phi)$), and $\zar$ not attacking anything but in $\allargs \setminus \gleadstoinv(\phi)$ is possible, where $\zar$ designates an argument that says nothing.
-	
-	If $\hist$ does not include any initial argument, and includes $\ar_1$, and leads to $¬\phi$, then proceed as if $\ar_1$ attacks $\emptyset$, thus, include the defensor against $\ar_1$. This defensor must be in $\allargs \cap \alldargs$. (It’s probably better to remove the $\alldargs$ concept.)
-	
-	Better first simplify the related definitions in the “normal” case.
+	Make $\gamma$ able to answer directly $\ar_1$ when $\delta$ starts the protocol. 
 
-	Consider extending $\histend$ with $\zar$ to have $\zar \in \histend$.
+	Using $\zar$, this can be done as follows. Assume $\zar \notin \allargs$. Define $\ar_1 \gbeats \zar$ iff $\ar_1 \in \allargs \setminus \gleadstoinv(\phi)$ (the non-initial arguments). Demand that $\dbeats$ cover all non-initial arguments. (Note that $\ar'_0 \gbeats \ar_0$ seems possible (thus, an attacker not in $\allargs \setminus \gleadstoinv(\phi)$), and $\zar$ not attacking anything but in $\allargs \setminus \gleadstoinv(\phi)$ is possible, where $\zar$ designates an argument that says nothing.) Remove the $\alldargs$ concept, so as to be able to use directly the defensors against the non-initial arguments (alternative: extend $+$ to allow $\zar + \ard$). Extend $\histend$ with $\zar$ to have $\zar \in \histend$. Define $\gargs = (\dip)^k(\gleadstoinv(\Phi) \cup \di(\zar))$.
+	
+	It can also be done without using $\zar$, as follows. Demand that $\dbeats$ cover all non-initial arguments. Define $\di(\zar) = \set{\dbeatsinv(\args) \suchthat \exists \hist \in \allhist \suchthat \emptyset ≠ \args = \allargs \setminus \gbeatsinv(\Phi) \cap \hist \land \hist \nileadstost \phi}$. Define $\gargs = (\dip)^k(\gleadstoinv(\Phi) \cup \di(\zar))$.
 \end{remark}
 
-Consider $\ar_0 \in \allargs \suchthat \ar_0 \gleadsto \phi$. Test whether $(\ar_0) \ileadstost \phi$. If not, $(i, \phi, (\ar_0))$ is a falsification instance of $\gamma$. If $(\ar_0) \ileadstost \phi$, check whether some $\ar_1 \dbeats' \ar_0$. If not, $\delta$ is falsified? ($\ar_0$ attacks $\delta$ but $\delta$ is not able to defend.)…
+\begin{remark}
+	Informal idea.
+	Consider $\ar_0 \in \allargs \suchthat \ar_0 \gleadsto \phi$. Test whether $(\ar_0) \ileadstost \phi$. If not, $(i, \phi, (\ar_0))$ is a falsification instance of $\gamma$. If $(\ar_0) \ileadstost \phi$, check whether some $\ar_1 \dbeats' \ar_0$. If not, $\delta$ is falsified? ($\ar_0$ attacks $\delta$ but $\delta$ is not able to defend.)…
+\end{remark}
 
-Model: for a given $i$. Defends $\prop$. $\exists \ar_1 \in \args_\eta \suchthat \ar_1 \ileadsto \prop$. Then, $\forall \ar_2 \in \gargs \suchthat (\ar_2, \ar_1) \ileadsto ¬\prop: \exists \ar_3 \in \args_\eta \suchthat (\ar_3, \ar_2) \ileadsto \prop.$
+Lemma (variant of a previous one). $\ar_0$ $i$-defends $\phi$, and $\hist \nileadstost \phi$ with $\ar_0 \in \histend$, thus $\dargs = \dbeatsinv(\gbeatsinv(\ar_0) \cap \hist) \in \di(\ar_0)$, thus $\ar_2 = \ar_0 + \dargs \in \gargs \cap \dfp(\ar_0)$.
+
+Consider $(…, \ar_0) \ileadstost \phi$ and $\hist = (…, \ar_0, \ar_{-1}) \nileadstost ¬\phi$, with $\ar_0 \in \gargs, \ar_{-1} \in \gargs[¬\phi]$. By the lemma (applied on $\ar_{-1}$), $\ar_1 = \ar_{-1} + \dbeatsinv(\gbeatsinv(\ar_{-1}) \cap \hist) \in \gargs[¬\phi] \cap \dfp(\ar_{-1})$. Iterating if necessary, we obtain $(…, \ar_1) \ileadstost ¬\phi$. Now either already the previous step was $(…, \ar_0, \ar_1)$, or we test $(…, \ar_1, \ar_0)$. If $(…, \ar_1, \ar_0) \ileadstost \phi$, apply the lemma again on $\ar_1$, and go on. Finally: $\hist = (…, \ar_1, \ar_0) \nileadstost \phi$. Similarly, then, obtain $\ar_2 = \ar_0 + \dargs \in \gargs \cap \dfp(\ar_0)$. If $\ar_0 \in (\dfp)^k(…)$, then $\ar_2 \in (\dfp)^{k'}(…)$, with $k' > k$. And $(…, \ar_2, \ar_1) \nileadstost ¬\phi$, so we can apply the strating step again.
 
 \section{Next}
 Define a way of saying “we never need this argument”: either the model can prove phi without s0, or if it can’t, then phi does not hold, because I can play s1 against it. 
