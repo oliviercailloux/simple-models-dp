@@ -142,14 +142,14 @@ $\exists k \in \N \suchthat \dfp^k(\gleadstoinv(\Phi)) = \emptyset$, where $\dfp
 \subsection{Falsifiability}
 Given $\hist \in \allhist$, $\hist(\intvl{1, l(\hist)})$, where $l(\hist) \in \N$ is the length of the sequence $\hist$, denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$. Abusing notation, given $\args \subseteq \allargs$, I write $\args \cap \hist$ to designate $\args \cap \hist(\intvl{1, l(\hist)})$, therefore using simply $\hist$ in that expression to denote the \emph{range} of $\hist$.
 
-Given $i \in I, \phi \in \Phi, \ar_0 \in \allargs$ and $\args \subseteq \gbeatsinv(\ar_0)$, define $\args \ibeatscoal \ar_0$ iff $\exists \hist \in \allhist \suchthat \args = \gbeatsinv(\ar_0) \cap \hist \land \ar_0 \in \histend \land \hist \nileadstost \phi$. 
+Given $i \in I, \phi \in \Phi, \ar_0 \in \allargs$ and $\args \subseteq \gbeatsinv(\ar_0)$, define $\args \ibeats \ar_0$ iff $\exists \hist \in \allhist \suchthat \args = \gbeatsinv(\ar_0) \cap \hist \land \ar_0 \in \histend \land \hist \nileadstost \phi$. 
 
-Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $\di(\ar) \subseteq \powersetz{\alldargs}$, as $\di(\ar) = \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0) \land \args \ibeatscoal \ar_0}$. 
+Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $\di(\ar) \subseteq \powersetz{\alldargs}$, as $\di(\ar) = \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0) \land \args \ibeats \ar_0}$. 
 Observe that $\di(\ar) \subseteq \df(\ar)$.
 Define $\dip \subseteq \allargs × \allargs$ as $\dip(\ar) = \set{(\ar + \dargs) \suchthat \dargs \in \di(\ar)}$.
 Given $i \in I, \phi \in \gPhi$, define $\gargs[i, \phi] \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs[i, \phi] = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\phi))$.
 
-$\ar$ $i$-defends $\phi$ iff $\emptyset \nibeatscoal \ar$. 
+$\ar$ $i$-defends $\phi$ iff $\emptyset \nibeats \ar$. 
 
 \begin{definition}[Convincingness]
 	$\forall i \in I, \phi \in \gPhi, \ar \in \gargs[i, \phi]: \ar$ $i$-defends $\phi$.
@@ -177,7 +177,7 @@ A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hi
 	Lemma: if $\ar_0$ $i$-defends $\phi$, then $\ar_0 \nileadstost \phi ⇒ \exists \dargs \in \di(\ar_0)$.
 	Consider any $\ar_0 \in \allargs$ such that $\ar_0$ $i$-defends $\phi$ and $\ar_0 \nileadstost \phi$. 
 	By definition, $\ar_0 \nileadstost \phi$ means that $\exists \hist \in \allhist \suchthat \ar_0 \in \histend \land \hist \nileadstost \phi$.
-	Define $\args = \gbeatsinv(\ar_0) \cap \hist$. Thus, $\args \ibeatscoal \ar_0$.
+	Define $\args = \gbeatsinv(\ar_0) \cap \hist$. Thus, $\args \ibeats \ar_0$.
 	Also, because $\ar_0$ $i$-defends $\phi$, $\args ≠ \emptyset$. 
 	Therefore, $\dbeatsinv(\args) \in \di(\ar_0)$.
 	
@@ -193,8 +193,6 @@ Given a normative theory, consider two empirical theories $(q, (\gleadsto[q(i)])
 Given a normative theory and $\phi \in \Phi$, say that two empirical theories (for that normative theory) disagree about $\phi$ iff $\phi \in \gPhi \land ¬\phi \in \gPhi[\delta]$.
 
 If $\gamma$ and $\delta$ agree about all $\phi$, there is nothing to test as the theories are compatible. Otherwise, here is a test procedure for that falsifies at least one of these theories, given any $\phi \in \Phi$ about which they disagree and any $i \in I$.
-
-Note first that $\ar_0 \gbeats \ar_0$ is impossible because … TODO why didn’t I need this before?
 
 \begin{remark}
 	$\allargs \setminus \gleadstoinv(\phi)$ are the non-initial arguments. An empirical theory must satisfy: $\dbeats$ covers all attackers and $\allargs \setminus \gleadstoinv(\phi)$. Note that $\ar'_0 \gbeats \ar_0$ seems possible (thus, an attacker not in $\allargs \setminus \gleadstoinv(\phi)$), and $\zar$ not attacking anything but in $\allargs \setminus \gleadstoinv(\phi)$ is possible, where $\zar$ designates an argument that says nothing.
