@@ -47,34 +47,33 @@
 \NewDocumentCommand{\notpropposs}{}{(¬t, \mathit{poss})}
 %%Empirical theory
 \NewDocumentCommand{\gPhi}{O{γ}}{{⇝_{#1}}(\allargs)}
-\NewDocumentCommand{\dargs}{}{S^d}
+\NewDocumentCommand{\dargs}{}{S^\mathit{d}}
 \NewDocumentCommand{\alldargs}{}{\mathscr{S}^d}
-\NewDocumentCommand{\gargs}{O{\phi}}{S^{i, #1}_γ}
-\NewDocumentCommand{\gargsalpha}{}{S^{i, \phi}_α}
-\NewDocumentCommand{\gargsbeta}{}{S^{i, ¬\phi}_β}
-\NewDocumentCommand{\gargsdelta}{}{S^{i, ¬\phi}_δ}
-\NewDocumentCommand{\gleadsto}{O{}O{γ}}{⇝^{#1}_{#2}}
+\NewDocumentCommand{\gargs}{O{\phi}}{S^{#1}_{γ, i}}
+\NewDocumentCommand{\gargsalpha}{}{S^{\phi}_{α, i}}
+\NewDocumentCommand{\gargsbeta}{}{S^{¬\phi}_{β, i}}
+\NewDocumentCommand{\gargsdelta}{}{S^{¬\phi}_{δ, i}}
+\NewDocumentCommand{\gleadsto}{O{γ}}{⇝_{#1}}
 \NewDocumentCommand{\gleadstoinv}{O{γ}}{{⇝^{-1}_{#1}}}
-\NewDocumentCommand{\gbeats}{O{γ}}{⊳^a_{#1}}
-\NewDocumentCommand{\gbeatsinv}{O{γ}}{{(⊳^a_{#1})^{-1}}}
-\NewDocumentCommand{\ngbeats}{O{γ}}{\not⊳^a_{#1}}
-\NewDocumentCommand{\dbeats}{O{γ}}{⊳^d_{#1}}
-\NewDocumentCommand{\dbeatsinv}{O{γ}}{{(⊳^d_{#1})^{-1}}}
+\NewDocumentCommand{\gbeats}{O{γ}}{⊳^\mathit{a}_{#1}}
+\NewDocumentCommand{\gbeatsinv}{O{γ}}{{(⊳^\mathit{a}_{#1})^{-1}}}
+\NewDocumentCommand{\ngbeats}{O{γ}}{\not⊳^\mathit{a}_{#1}}
+\NewDocumentCommand{\dbeats}{O{γ}}{⊳^\mathit{d}_{#1}}
+\NewDocumentCommand{\dbeatsinv}{O{γ}}{{(⊳^\mathit{d}_{#1})^{-1}}}
 \NewDocumentCommand{\df}{O{γ}}{\mathit{def}_{#1}}
 \NewDocumentCommand{\dfp}{O{γ}}{\mathit{def}_{#1}^+}
-\NewDocumentCommand{\dfpclosure}{O{γ}}{(\dfp[#1])^k(\gleadstoinv[#1](\phi))}
 %%i
 \NewDocumentCommand{\iPhi}{}{\Phi_i}
-\NewDocumentCommand{\ileadsto}{O{i}}{⇝^{#1}}
-\NewDocumentCommand{\nileadsto}{O{i}}{\not⇝^{#1}}
-\NewDocumentCommand{\ileadstoe}{O{i}}{⇝^{#1}_\exists}
-\NewDocumentCommand{\nileadstoe}{O{i}}{\not⇝^{#1}_\exists}
-\NewDocumentCommand{\ileadstost}{}{⇝^i_*}
-\NewDocumentCommand{\nileadstost}{}{\not⇝^i_*}
-\NewDocumentCommand{\di}{}{d^{i, \phi}}
-\NewDocumentCommand{\dip}{}{d^{i, \phi}_+}
-\NewDocumentCommand{\ibeats}{O{i, !\phi}}{⊳^{#1}}
-\NewDocumentCommand{\nibeats}{O{i, !\phi}}{⋫^{#1}}
+\NewDocumentCommand{\ileadsto}{O{i}}{⇝_{#1}}%Or \dashrightarrow?
+\NewDocumentCommand{\nileadsto}{O{i}}{\not⇝_{#1}}
+\NewDocumentCommand{\ileadstoe}{O{i}}{⇝_{#1}^\exists}
+\NewDocumentCommand{\nileadstoe}{O{i}}{\not⇝_{#1}^\exists}
+\NewDocumentCommand{\ileadstost}{}{\hookrightarrow^i}
+\NewDocumentCommand{\nileadstost}{}{\not\hookrightarrow^i}
+\NewDocumentCommand{\di}{}{d^\phi_i}
+\NewDocumentCommand{\dip}{}{d^{\phi +}_i}
+\NewDocumentCommand{\ibeats}{}{⊳^\text{\sout{\ensuremath\phi}}_i}
+\NewDocumentCommand{\nibeats}{}{⋫^\text{\sout{\ensuremath\phi}}_i}
 
 %Deliberated Preference
 \NewDocumentCommand{\ppeqab}{}{t_{a \succeq b}}

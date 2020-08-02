@@ -4,6 +4,7 @@
 \input{preamble/math_basics}
 \input{preamble/math_mine}
 \input{preamble/redac}
+\usepackage[normalem]{ulem}
 %\input{preamble/draw}
 %\input{preamble/acronyms}
 \addtokomafont{labelinglabel}{\sffamily\bfseries}
@@ -67,6 +68,7 @@ As usual with binary relations, $\hist \nileadsto \phi$ means $(\hist, \phi) \no
 
 Given $i \in I, \phi \in \Phi, \hist \in \allhist$, say that $\hist$ leads strongly to $\phi$ iff $\hist \ileadsto \phi \land \hist \nileadsto ¬\phi$.
 Define $\hist \ileadstost \phi$ iff $[\hist \text{ leads strongly to } \phi] \land [\phi = \propsure ⇒ \hist \text{ leads strongly to } \propposs]$.
+(The visual proximity of the symbols $\ileadsto$ and $\ileadstost$ creates a small risk of confusion, but I feel it is justified by the fact that $\ileadsto$ is not used in the rest of this article, except in the proof of \cref{th:protcoh}.)
 Given $\hist \in \allhist$, let $\histend$ denote the set containing the last two elements of the sequence $\hist$ if the sequence has at least two elements; the singleton set containing the last element of the sequence if it has exactly one element; and the empty set if $\hist = \emptyset$.
 Given $i \in I, \phi \in \Phi, \ar \in \allargs$, define $\ar \ileadstost \phi$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \ileadstost \phi$.
 
@@ -117,7 +119,7 @@ The next property ensures an unambiguous interpretation of the content of $\iPhi
 
 \subsection{Non-completeness}
 \begin{definition}[Theory completeness]
-	$\forall \phi \in \Phi: [\exists \ar \in \allargs \suchthat \ar \ileadsto \phi] \lor [\exists \ar \in \allargs \suchthat \ar \ileadsto ¬\phi]$.
+	$\forall \phi \in \Phi: [\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] \lor [\exists \ar \in \allargs \suchthat \ar \ileadstost ¬\phi]$.
 \end{definition}
 \begin{definition}[Unrestricted interpretability]
 	$\forall \phi \in \Phi: \phi \in \iPhi \oplus ¬\phi \in \iPhi$.
@@ -133,9 +135,8 @@ Theories as defined here do not mandate Theory completeness. This is good for tw
 
 \section{Additive single-answer empirical theories}
 \subsection{Definition}
-\commentOC{I leave the definition as is, but for the moment I only consider ${\gleadsto}$, a relation that does not depend on $i$; and I do not use $q(i)$.}
-An empirical theory for a normative theory is a tuple $(q, (\gleadsto[q(i)])_{q(i) \in q(I)}, \gbeats, \alldargs, \dbeats, +)$,
-with ${\gleadsto[q(i)]} \subseteq (\allargs × \Phi) \cap (\alldargs × \Phi)$, 
+An empirical theory for a normative theory is a tuple $(\gleadsto, \gbeats, \alldargs, \dbeats, +)$,
+with ${\gleadsto} \subseteq \allargs × \Phi$, 
 ${\gbeats} \subseteq \allargs × \allargs$ and is irreflexive,
 ${\dbeats} \subseteq \alldargs × \allargs$ and is injective and its range includes $\gbeatsinv(\allargs)$ (thus $\forall \ar_1 \suchthat [\exists \ar_0 \suchthat \ar_1 \gbeats \ar_0]$: $\dbeatsinv(\ar_1)$ is a singleton). 
 Define $\df: \allargs → \powersetz{\allargs}$ as $\df = \dbeatsinv \circ \gbeatsinv$.
@@ -161,7 +162,7 @@ $\exists k \in \N \suchthat (\dfp)^k(\gleadstoinv(\Phi)) = \emptyset$, where $(\
 \subsection{Falsifiability}
 Given $\hist \in \allhist$, $\hist(\intvl{1, l(\hist)})$, where $l(\hist) \in \N$ is the length of the sequence $\hist$, denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$. Abusing notation, given $\args \subseteq \allargs$, I write $\args \cap \hist$ to designate $\args \cap \hist(\intvl{1, l(\hist)})$, therefore using simply $\hist$ in that expression to denote the \emph{range} of $\hist$.
 
-Given $i \in I, \phi \in \Phi, \ar \in \allargs$ and $\args \subseteq \gbeatsinv(\ar)$, define $\args \ibeats \ar$ iff $\exists \hist \in \allhist \suchthat \args = \gbeatsinv(\ar) \cap \hist \land \ar \in \histend \land \hist \nileadstost \phi$. 
+Given $i \in I, \phi \in \Phi, \ar \in \allargs$ and $\args \subseteq \gbeatsinv(\ar)$, define $\args \ibeats \ar$ iff $\exists \hist \in \allhist \suchthat \args = \gbeatsinv(\ar) \cap \hist \land \ar \in \histend \land \hist \nileadstost \phi$. (The striked through $\phi$ in superscript is there to suggest that, intuitively, $\args$ argue against $\phi$, from the point of view of $i$.)
 
 Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $\di(\ar) \subseteq \powersetz{\alldargs}$, as $\di(\ar) = \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar) \land \args \ibeats \ar}$. 
 Observe that $\di(\ar) \subseteq \df(\ar)$.
@@ -219,7 +220,7 @@ I also write that $(i, \phi, \hist, \ar)$ falsifies $\gamma$ to mean that it is 
 Given $\phi \in \Phi$ and two empirical theories $\gamma$ and $\delta$ for a given normative theory, say that they disagree about $\phi$ iff $\phi \in \gPhi[\gamma] \land ¬\phi \in \gPhi[\delta]$. Say that they are incompatible iff there is at least one $\phi \in \Phi$ that they disagree about.
 
 Given $\phi \in \Phi$, $\hist \in \allhist$ and $\ar_\gamma \in \gargs$, say that $(\hist, \ar_\gamma)$ challenges $(\gamma, \phi)$ iff $\hist \nileadstost \phi$ and $\ar_\gamma \in \histend$.
-Given $\phi \in \Phi, \ar_\gamma \in \gargs, \ar_\delta \in \gargsdelta$, say that $(\hist, \ar_\gamma, \ar_\delta)$ is a $(\gamma, \phi$ or $\delta, ¬\phi)$-challenge iff $(\hist, \ar_\gamma)$ challenges $(\gamma, \phi)$ or $(\hist, \ar_\delta)$ challenges $(\delta, ¬\phi)$. \commentOC{This should be called a $\phi$-or-$¬\phi$-challenge.}
+Given $\phi \in \Phi, \ar_\gamma \in \gargs, \ar_\delta \in \gargsdelta$, say that $(\hist, \ar_\gamma, \ar_\delta)$ is a $(\gamma, \phi$ or $\delta, ¬\phi)$-challenge iff $(\hist, \ar_\gamma)$ challenges $(\gamma, \phi)$ or $(\hist, \ar_\delta)$ challenges $(\delta, ¬\phi)$. \commentOC{This should be called a $\phi$/$¬\phi$-challenge.}
 
 \begin{lemma}
 	\label{th:endchal}
@@ -231,7 +232,7 @@ Given $\phi \in \Phi, \ar_\gamma \in \gargs, \ar_\delta \in \gargsdelta$, say th
 
 \begin{lemma}
 	\label{th:nextchal}
-	Given $(\hist, \ar_\gamma)$ challenging $(\gamma, \phi)$, with $\ar_\gamma \in \gargs \cap \dfpclosure$, and $\ar_\delta \in \gargsdelta$: either $(i, \phi, \hist, \ar_\gamma)$ falsifies $\gamma$, or there exists a $(\gamma, \phi$ or $\delta, ¬\phi)$-challenge $(\histp, \ar'_\gamma, \ar_\delta)$, with $\ar'_\gamma \in \gargs \cap (\dfp)^{k + 1}(\gleadstoinv(\phi))$.
+	Given $(\hist, \ar_\gamma)$ challenging $(\gamma, \phi)$, with $\ar_\gamma \in \gargs \cap (\dfp)^k(\gleadstoinv(\phi))$, and $\ar_\delta \in \gargsdelta$: either $(i, \phi, \hist, \ar_\gamma)$ falsifies $\gamma$, or there exists a $(\gamma, \phi$ or $\delta, ¬\phi)$-challenge $(\histp, \ar'_\gamma, \ar_\delta)$, with $\ar'_\gamma \in \gargs \cap (\dfp)^{k + 1}(\gleadstoinv(\phi))$.
 \end{lemma}
 \begin{proof}
 	If $\ar_\gamma$ does not $i$-defend $\phi$, then $(i, \phi, \hist, \ar_\gamma)$ falsifies $\gamma$, which ends the proof. 
@@ -256,7 +257,7 @@ A sequence of arguments $\histp$ starts with a sequence of arguments $\hist$ of 
 \commentOC{Need the test procedure to be a tree. Atom: $(k, \phi)$ meaning whether ${\hist}^k \ileadstost \phi$. Branch label: atoms linked using or and and operators. From a node $n = (\hist, \ar, \phi)$, let branches depart, such that their labels do not overlap. From a node, if no branch label is true, the node must falsify a theory. In the case of the procedure below, it is not a list because we may query several times the same theory or switch to the other one, depending on the last answer. But if simplifying the theory (single-try), we may then simplify the definition of a test procedure.}
 
 \begin{theorem}
-	Given two incompatible empirical theories for a given normative theory, $\alpha = (q, (\gleadsto[q(i)][\alpha])_{q(i) \in q(I)}, \gbeats[\alpha], \alldargs, \dbeats[\alpha], +_\alpha)$ and $\beta = (q', (\gleadsto[q(i)][\beta])_{q(i) \in q(I)}, \gbeats[\beta], \alldargs, \dbeats[\beta], +')$ and given any $i \in I$, there exists a test procedure with $i$ that falsifies one of these theories.
+	Given two incompatible empirical theories for a given normative theory, $\alpha = (\gleadsto[\alpha], \gbeats[\alpha], \alldargs, \dbeats[\alpha], +_\alpha)$ and $\beta = (\gleadsto[\beta], \gbeats[\beta], \alldargs, \dbeats[\beta], +')$ and given any $i \in I$, there exists a test procedure with $i$ that falsifies one of these theories.
 \end{theorem}
 \begin{proof}
 	Pick any $\phi \in \Phi$ about which $\alpha$ and $\beta$ disagree.
@@ -266,10 +267,10 @@ A sequence of arguments $\histp$ starts with a sequence of arguments $\hist$ of 
 	$(\hist, \ar_\alpha, \ar_\beta)$ is a challenge of complexity $(k_\alpha, k_\beta)$ iff 
 	$(\hist, \ar_\alpha, \ar_\beta)$ is a $(\alpha, \phi$ or $\beta, ¬\phi)$-challenge, $\ar_\alpha \in (\dfp[\alpha])^{k_\alpha}(\gleadstoinv[\alpha](\phi))$, and $\ar_\beta \in (\dfp[\beta])^{k_\beta}(\gleadstoinv[\beta](¬\phi))$.
 	
-	Pick any $\ar_{-1} \in \allargs \suchthat \ar_{-1} \gleadsto[][\beta] ¬\phi$. Observe that $\ar_{-1} \in \gargsbeta \cap (\dfp[\beta])^0(\gleadstoinv[\beta](¬\phi))$. Test whether $(\ar_{-1}) \nileadstost \phi$. If so, $(i, \phi, (\ar_{-1}), \ar_{-1})$ falsifies $\beta$, which ends the procedure. 
+	Pick any $\ar_{-1} \in \allargs \suchthat \ar_{-1} \gleadsto[\beta] ¬\phi$. Observe that $\ar_{-1} \in \gargsbeta \cap (\dfp[\beta])^0(\gleadstoinv[\beta](¬\phi))$. Test whether $(\ar_{-1}) \nileadstost \phi$. If so, $(i, \phi, (\ar_{-1}), \ar_{-1})$ falsifies $\beta$, which ends the procedure. 
 	Thus, assume that $(\ar_{-1}) \ileadstost \phi$. 
 	
-	Pick any $\ar_0 \in \allargs \suchthat \ar_0 \gleadsto[][\alpha] \phi$. Observe that $\ar_0 \in \gargsalpha \cap (\dfp[\alpha])^0(\gleadstoinv[\alpha](\phi))$.  Define $\hist = (\ar_{-1}, \ar_0)$ and test whether $\hist \nileadstost \phi$. By \cref{th:endchal}, $(\hist, \ar_0, \ar_{-1})$ is a $(\alpha, \phi$ or $\beta, ¬\phi)$-challenge, thus, $(\hist, \ar_0, \ar_{-1})$ is a challenge of complexity $(0, 0)$.
+	Pick any $\ar_0 \in \allargs \suchthat \ar_0 \gleadsto[\alpha] \phi$. Observe that $\ar_0 \in \gargsalpha \cap (\dfp[\alpha])^0(\gleadstoinv[\alpha](\phi))$.  Define $\hist = (\ar_{-1}, \ar_0)$ and test whether $\hist \nileadstost \phi$. By \cref{th:endchal}, $(\hist, \ar_0, \ar_{-1})$ is a $(\alpha, \phi$ or $\beta, ¬\phi)$-challenge, thus, $(\hist, \ar_0, \ar_{-1})$ is a challenge of complexity $(0, 0)$.
 	
 	Suffices now to apply \cref{th:nextchal} repetitively, until finding a falsification instance of $\alpha$ or $\beta$. This is because, given a challenge $(\hist, \ar_\alpha, \ar_\beta)$ of complexity $(k_\alpha, k_\beta)$, \cref{th:nextchal} applies, yielding either a falsification instance, or a new challenge of higher complexity. 
 Indeed, if $(\hist, \ar_\alpha)$ challenges $(\alpha, \phi)$, apply \cref{th:nextchal} with $\alpha$ for $\gamma$, $\beta$ for $\delta$, and obtain either that $\hist$ falsifies $\alpha$, or a new tuple $(\histp, \ar'_\alpha, \ar_\beta)$ that is a challenge of complexity $(k_\alpha + 1, k_\beta)$.
@@ -317,7 +318,7 @@ Theory claims that all $i$’s prefer deliberately $P$ to $D$, in the sense of b
 
 Define $\phi$ as: $i$ deliberately prefers $P$ to $D$, in the sense of bidding at least as much for $P$ than for $D$ after deliberation. Define $¬\phi$ similarly, but bidding more for $D$ than for $P$. 
 
-Define $\ileadsto$ as follows. Given $\hist = (…, \ar)$, $\hist \ileadstost \phi$ iff, in a situation of $i$ having been exposed to the prefix …, saying: “Considering the argument $\ar$, would you please indicate your maximum selling price for $P$, and for $D$” leads $i$ to act accordig to $\phi$. Note that $\hist \ileadsto \phi$ iff $\hist \nileadsto ¬\phi$.
+Define $\ileadstost$ as follows. Given $\hist = (…, \ar)$, $\hist \ileadstost \phi$ iff, in a situation of $i$ having been exposed to the prefix …, saying: “Considering the argument $\ar$, would you please indicate your maximum selling price for $P$, and for $D$” leads $i$ to act accordig to $\phi$. Note that $\hist \ileadstost \phi$ iff $\hist \nileadstost ¬\phi$.
 
 Thus, the normative axiom is satisfied iff, whenever there is a argument that, facing any counter-argument, leads $i$ to bid at least as much for $P$ than for $D$, we are ready to accept that $i$ deliberately prefers $P$ to $D$, in the bidding sense.
 
