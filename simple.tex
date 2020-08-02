@@ -150,21 +150,27 @@ Given any $\ar \in \allargs$, define $\dfp(\ar)$, the \emph{defenders of $\ar$},
 An empirical theory must satisfy
 $\exists k \in \N \suchthat (\dfp)^k(\gleadstoinv(\Phi)) = \emptyset$, where $(\dfp)^0$ is the identity function over $\allargs$.
 
-\begin{remark}
-	$\df'(\ar) = \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar)} = \powersetz{\df(\ar)}$. 
-	First, $\forall \args \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0): \dargs = \dbeatsinv(\args) \in \powersetz{\dbeatsinv \circ \gbeatsinv}$. 
-	Indeed, $\ar_1 \in \args$ thus $\ar_1 \gbeats \ar_0$, hence, $\ard \dbeats \ar_1$ (as mandated by ${\dbeats}$), thus $\dargs ≠ \emptyset$; and $\ard \in \dargs$ thus $\ard \dbeats \ar_1 \in \args$ thus $\ar_1 \gbeats \ar_0$. 
-	Second, $\dargs \in \powersetz{\dbeatsinv \circ \gbeatsinv} ⇒ \exists \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0) \suchthat \dbeatsinv(\args) = \dargs$. 
-	Defining $\args = {\dbeats}(\dargs) \cap \gbeatsinv(\ar_0)$, we see that $\dbeatsinv(\args) = \dargs$: considering $\ard \in \dargs$, $\ard \dbeats \ar_1 \gbeats \ar_0$, $\ar_1 \in \args$, $\ard \in \dbeatsinv(\ar_1)$, thus, $\ard \in \dbeatsinv(\args)$; and considering $\ard \in \dbeatsinv(\args)$, $\ard \dbeats \ar_1 \in \args$, $\ar_1 \gbeats \ar_0$, thus, $\ard \in \dargs$. 
-	That $\args ≠ \emptyset$ follows from $\dargs ≠ \emptyset$.
-\end{remark}
-
 \subsection{Falsifiability}
 Given $\hist \in \allhist$, $\hist(\intvl{1, l(\hist)})$, where $l(\hist) \in \N$ is the length of the sequence $\hist$, denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$. Abusing notation, given $\args \subseteq \allargs$, I write $\args \cap \hist$ to designate $\args \cap \hist(\intvl{1, l(\hist)})$, therefore using simply $\hist$ in that expression to denote the \emph{range} of $\hist$.
 
 Given $i \in I, \phi \in \Phi, \ar \in \allargs$ and $\args \subseteq \gbeatsinv(\ar)$, define $\args \ibeats \ar$ iff $\exists \hist \in \allhist \suchthat \args = \gbeatsinv(\ar) \cap \hist \land \ar \in \histend \land \hist \nileadstost \phi$. (The striked through $\phi$ in superscript is there to suggest that, intuitively, $\args$ argue against $\phi$, from the point of view of $i$.)
 
-Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $\di(\ar) \subseteq \powersetz{\alldargs}$, as $\di(\ar) = \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar) \land \args \ibeats \ar}$. 
+Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the $\di(\ar) \subseteq \powersetz{\alldargs}$ as $\di(\ar) = \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar) \land \args \ibeats \ar}$. It represents the coalitions of fragments required to defend $\ar$ (when arguing for $\phi$) from the point of view of $i$. 
+The following proposition shows that these coalitions can be added to $\ar$, and will be useful for other results.
+\begin{proposition}
+	$\dargs \in \di(\ar) ⇒ \emptyset ≠ \dargs \subseteq \df(\ar)$.
+\end{proposition}
+\begin{proof}
+	Let us prove that $\set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar)} = \powersetz{\df(\ar)}$, from which the conclusion follows, and which can be useful to clarify the relationship between $\di(\ar)$ and $\df(\ar)$.
+
+	First (from left to right), $\forall \args \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0): \dargs = \dbeatsinv(\args) \in \powersetz{(\dbeatsinv \circ \gbeatsinv)(\ar)}$. 
+	Indeed, as $\args ≠ \emptyset$, we can pick some $\ar_1 \in \args$, and $\ar_1 \gbeats \ar_0$, hence, for some $\ard \in \alldargs$, $\ard \dbeats \ar_1$ (as mandated by ${\dbeats}$), thus $\ard \in \dargs$, hence $\dargs ≠ \emptyset$. Also, picking any $\ard \in \dargs$, we see that for some $\ar_1 \in \args$, $\ard \dbeats \ar_1 \gbeats \ar_0$. 
+	
+	Second (from right to left), $\dargs \in \powersetz{(\dbeatsinv \circ \gbeatsinv)(\ar)} ⇒ \exists \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0) \suchthat \dbeatsinv(\args) = \dargs$. 
+	Defining $\args = {\dbeats}(\dargs) \cap \gbeatsinv(\ar_0)$, we see that $\dbeatsinv(\args) = \dargs$: considering any $\ard \in \dargs$, $\ard \dbeats \ar_1 \gbeats \ar_0$ for some $\ar_1 \in \allargs$, thus, $\ar_1 \in \args$, thus, $\ard \in \dbeatsinv(\args)$; and considering any $\ard \in \dbeatsinv(\args)$, $\ard \dbeats \ar_1 \in \args$, $\ar_1 \gbeats \ar_0$, thus, $\ard \in \dargs$ \commentOC{This is incorrect.}. 
+	That $\args ≠ \emptyset$ follows from $\dargs ≠ \emptyset$.
+\end{proof}
+
 Observe that $\di(\ar) \subseteq \df(\ar)$.
 Define $\dip \subseteq \allargs × \allargs$ as $\dip(\ar) = \set{(\ar + \dargs) \suchthat \dargs \in \di(\ar)}$.
 Given $i \in I, \phi \in \gPhi$, define $\gargs \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\phi))$.
@@ -193,7 +199,7 @@ I also write that $(i, \phi, \hist, \ar)$ falsifies $\gamma$ to mean that it is 
 	A normatively adequate and convincing empirical theory is valid.
 \end{theorem}
 \begin{proof}
-	Given any $i \in I$ and $\phi \in \gPhi$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstost \phi$, and normative adequacy brings the conclusion. 
+	Given any $i \in I$ and $\phi \in \gPhi$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstost \phi$; the conclusion then follows thanks to normative adequacy. 
 	
 	Lemma: if $\ar_0$ $i$-defends $\phi$, then $\ar_0 \nileadstost \phi ⇒ \exists \dargs \in \di(\ar_0)$.
 	Consider any $\ar_0 \in \allargs$ such that $\ar_0$ $i$-defends $\phi$ and $\ar_0 \nileadstost \phi$. 

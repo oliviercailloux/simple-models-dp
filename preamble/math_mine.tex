@@ -46,15 +46,15 @@
 \NewDocumentCommand{\notpropsure}{}{(¬t, \mathit{sure})}
 \NewDocumentCommand{\notpropposs}{}{(¬t, \mathit{poss})}
 %%Empirical theory
-\NewDocumentCommand{\gPhi}{O{γ}}{{⇝_{#1}}(\allargs)}
+\NewDocumentCommand{\gPhi}{O{γ}}{{\hookrightarrow_{#1}}(\allargs)}
 \NewDocumentCommand{\dargs}{}{S^\mathit{d}}
 \NewDocumentCommand{\alldargs}{}{\mathscr{S}^d}
 \NewDocumentCommand{\gargs}{O{\phi}}{S^{#1}_{γ, i}}
 \NewDocumentCommand{\gargsalpha}{}{S^{\phi}_{α, i}}
 \NewDocumentCommand{\gargsbeta}{}{S^{¬\phi}_{β, i}}
 \NewDocumentCommand{\gargsdelta}{}{S^{¬\phi}_{δ, i}}
-\NewDocumentCommand{\gleadsto}{O{γ}}{⇝_{#1}}
-\NewDocumentCommand{\gleadstoinv}{O{γ}}{{⇝^{-1}_{#1}}}
+\NewDocumentCommand{\gleadsto}{O{γ}}{\hookrightarrow_{#1}}
+\NewDocumentCommand{\gleadstoinv}{O{γ}}{{\hookrightarrow^{-1}_{#1}}}
 \NewDocumentCommand{\gbeats}{O{γ}}{⊳^\mathit{a}_{#1}}
 \NewDocumentCommand{\gbeatsinv}{O{γ}}{{(⊳^\mathit{a}_{#1})^{-1}}}
 \NewDocumentCommand{\ngbeats}{O{γ}}{\not⊳^\mathit{a}_{#1}}
@@ -68,12 +68,12 @@
 \NewDocumentCommand{\nileadsto}{O{i}}{\not⇝_{#1}}
 \NewDocumentCommand{\ileadstoe}{O{i}}{⇝_{#1}^\exists}
 \NewDocumentCommand{\nileadstoe}{O{i}}{\not⇝_{#1}^\exists}
-\NewDocumentCommand{\ileadstost}{}{\hookrightarrow^i}
-\NewDocumentCommand{\nileadstost}{}{\not\hookrightarrow^i}
-\NewDocumentCommand{\di}{}{d^\phi_i}
-\NewDocumentCommand{\dip}{}{d^{\phi +}_i}
-\NewDocumentCommand{\ibeats}{}{⊳^\text{\sout{\ensuremath\phi}}_i}
-\NewDocumentCommand{\nibeats}{}{⋫^\text{\sout{\ensuremath\phi}}_i}
+\NewDocumentCommand{\ileadstost}{}{\hookrightarrow_i}
+\NewDocumentCommand{\nileadstost}{}{\not\hookrightarrow_i}
+\NewDocumentCommand{\di}{}{c^\phi_{γ, i}}
+\NewDocumentCommand{\dip}{}{d^{\phi +}_{γ, i}}
+\NewDocumentCommand{\ibeats}{}{⊳^\text{\sout{\ensuremath\phi}}_{γ, i}}
+\NewDocumentCommand{\nibeats}{}{⋫^\text{\sout{\ensuremath\phi}}_{γ, i}}
 
 %Deliberated Preference
 \NewDocumentCommand{\ppeqab}{}{t_{a \succeq b}}
