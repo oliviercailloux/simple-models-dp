@@ -76,28 +76,39 @@ Given $i \in I, \phi \in \Phi, \ar \in \allargs$, define $\ar \ileadstost \phi$ 
 	$\forall i \in I, \phi \in \Phi: 
 		[(\exists \ar \in \allargs \suchthat \ar \ileadstost \phi) \land ¬(\exists \ar \in \allargs \suchthat \ar \ileadstost ¬\phi)] ⇒ \phi \in \iPhi \land ¬\phi \notin \iPhi.$
 \end{axiom}
-This axiom can be simplified, thanks to the following proposition.
-\begin{proposition}[Protocol coherence]
-	\label{th:protcoh}
-	$\forall i \in I, \phi \in \Phi$:
-	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ [\nexists \ar \in \allargs \suchthat \ar \ileadstost ¬\phi].
-	\end{equation}
-\end{proposition}
-\begin{proof}
-	Protocol coherence is satisfied by definition of $\ileadstost$. Indeed, if for some $\ar \in \allargs$, $\ar \ileadstost \phi$, then $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadsto ¬\phi$; thus, for any $\ar' \in \allargs$, $\ar' \ileadstost ¬\phi$ is false, because it requires that $\forall \ar_1 \in \allargs: (\ar', \ar_1) \ileadsto ¬\phi$, and thus in particular, that $(\ar', \ar) \ileadsto ¬\phi$.
-\end{proof}
 
-Therefore, \cref{ax:norm} is actually equivalent to the following property.
+\Cref{ax:norm} is actually equivalent to the following property.
 \begin{property}[Simple normative adequacy]
 	\label{ax:snorm}
 	$\forall i \in I, \phi \in \Phi: 
 		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ \phi \in \iPhi \land ¬\phi \notin \iPhi.$
 \end{property}
 
+To see why this hold, consider the following definition.
+\begin{definition}[Protocol coherence]
+	\label{def:protcoh}
+	$\forall i \in I, \phi \in \Phi$:
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ [\nexists \ar \in \allargs \suchthat \ar \ileadstost ¬\phi].
+	\end{equation}
+\end{definition}
+\begin{proposition}
+	\label{th:protcoh}
+	Any normative theory satisfies Protocol coherence.
+\end{proposition}
+\begin{proof}
+	Protocol coherence is satisfied by definition of $\ileadstost$. Indeed, if for some $\ar \in \allargs$, $\ar \ileadstost \phi$, then $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadsto ¬\phi$; thus, for any $\ar' \in \allargs$, $\ar' \ileadstost ¬\phi$ is false, because it requires that $\forall \ar_1 \in \allargs: (\ar', \ar_1) \ileadsto ¬\phi$, and thus in particular, that $(\ar', \ar) \ileadsto ¬\phi$.
+\end{proof}
+
+That \cref{ax:norm} is equivalent to \cref{ax:snorm} immediately follows from \cref{th:protcoh}.
+\begin{proposition}
+	\label{th:normeqsnorm}
+	Any normative theory satisfies Normative adequacy iff it satisfies simple normative adequacy.
+\end{proposition}
+
 To further analyze this and related matters, given a normative theory and $i \in I$, say that a proposition $\phi \in \Phi$ is \emph{$i$-decidable} iff $\exists \ar \in \allargs \suchthat \ar \ileadstost \phi \lor \ar \ileadstost ¬\phi$.
 The $i$-decidable propositions are those on which the normative theory permits to take a position. It will generally be unknown in practical applications, and may be empty.
-The next property ensures an unambiguous interpretation of the content of $\iPhi$ for all $i$-decidable propositions. In this definition, $\oplus$ denotes the exclusive disjunction; thus $\phi \in \iPhi \oplus ¬\phi \in \iPhi$ is equivalent to: $\phi \in \iPhi ⇔ ¬\phi \notin \iPhi$. It can be seen to hold by recalling that \cref{ax:snorm} is equivalent to \cref{ax:norm}.
+The next property ensures an unambiguous interpretation of the content of $\iPhi$ for all $i$-decidable propositions. In this definition, $\oplus$ denotes the exclusive disjunction; thus $\phi \in \iPhi \oplus ¬\phi \in \iPhi$ is equivalent to: $\phi \in \iPhi ⇔ ¬\phi \notin \iPhi$. It can be seen to hold by using \cref{th:normeqsnorm}.
 
 \begin{property}[Restricted interpretability]
 	\label{def:restrinterpr}
