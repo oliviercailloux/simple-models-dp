@@ -78,7 +78,7 @@ Given $i \in I, \phi \in \Phi, \ar \in \allargs$, define $\ar \ileadstost \phi$ 
 \end{axiom}
 This axiom can be simplified, thanks to the following proposition.
 \begin{proposition}[Protocol coherence]
-	\label{prop:protcoh}
+	\label{th:protcoh}
 	$\forall i \in I, \phi \in \Phi$:
 	\begin{equation}
 		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ [\nexists \ar \in \allargs \suchthat \ar \ileadstost ¬\phi].
@@ -114,7 +114,7 @@ The next property ensures an unambiguous interpretation of the content of $\iPhi
 \begin{definition}[Deliberation completeness]
 	$\forall \phi \in \Phi: \phi \in \iPhi \lor ¬\phi \in \iPhi$.
 \end{definition}
-The following proposition directly follows from the definitions, together with \cref{prop:protcoh}.
+The following proposition directly follows from the definitions, together with \cref{th:protcoh}.
 \begin{proposition}
 	1) Under Normative adequacy, Theory completeness implies Deliberation completeness. 2) Unrestricted interpretability implies Deliberation completeness.
 \end{proposition}
@@ -133,35 +133,41 @@ Given any $\ar \in \allargs$ and $\dargs \in \df(\ar)$, $\ar + \dargs$ means $+(
 Define $\dfp \subseteq \allargs × \allargs$ as $\forall \ar \in \allargs: \dfp(\ar) = \set{\ar + \dargs \suchthat \dargs \in \df(\ar)}$.
 
 \begin{remark}
-	Equivalently, $\df(\ar_0) = \powersetz{\dbeatsinv \circ \gbeatsinv}$. First, $\forall \args \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0): \dargs = \dbeatsinv(\args) \in \powersetz{\dbeatsinv \circ \gbeatsinv}$. Indeed, $\ar_1 \in \args$ thus $\ar_1 \gbeats \ar_0$, hence, $\ard \dbeats \ar_1$ (as mandated by ${\dbeats}$), thus $\dargs ≠ \emptyset$; and $\ard \in \dargs$ thus $\ard \dbeats \ar_1 \in \args$ thus $\ar_1 \gbeats \ar_0$. Second, $\dargs \in \powersetz{\dbeatsinv \circ \gbeatsinv} ⇒ \exists \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0) \suchthat \dbeatsinv(\args) = \dargs$. Defining $\args = {\dbeats}(\dargs) \cap \gbeatsinv(\ar_0)$, $\dbeatsinv(\args) = \dargs$: considering $\ard \in \dargs$, $\ard \dbeats \ar_1 \gbeats \ar_0$, $\ar_1 \in \args$, $\ard \in \dbeatsinv(\ar_1)$, thus, $\ard \in \dbeatsinv(\args)$; and considering $\ard \in \dbeatsinv(\args)$, $\ard \dbeats \ar_1 \in \args$, $\ar_1 \gbeats \ar_0$, thus, $\ard \in \dargs$. That $\args ≠ \emptyset$ follows from $\dargs ≠ \emptyset$.
+	Equivalently, $\df(\ar_0) = \powersetz{\dbeatsinv \circ \gbeatsinv}$. 
+	First, $\forall \args \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0): \dargs = \dbeatsinv(\args) \in \powersetz{\dbeatsinv \circ \gbeatsinv}$. 
+	Indeed, $\ar_1 \in \args$ thus $\ar_1 \gbeats \ar_0$, hence, $\ard \dbeats \ar_1$ (as mandated by ${\dbeats}$), thus $\dargs ≠ \emptyset$; and $\ard \in \dargs$ thus $\ard \dbeats \ar_1 \in \args$ thus $\ar_1 \gbeats \ar_0$. 
+	Second, $\dargs \in \powersetz{\dbeatsinv \circ \gbeatsinv} ⇒ \exists \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0) \suchthat \dbeatsinv(\args) = \dargs$. 
+	Defining $\args = {\dbeats}(\dargs) \cap \gbeatsinv(\ar_0)$, we see that $\dbeatsinv(\args) = \dargs$: considering $\ard \in \dargs$, $\ard \dbeats \ar_1 \gbeats \ar_0$, $\ar_1 \in \args$, $\ard \in \dbeatsinv(\ar_1)$, thus, $\ard \in \dbeatsinv(\args)$; and considering $\ard \in \dbeatsinv(\args)$, $\ard \dbeats \ar_1 \in \args$, $\ar_1 \gbeats \ar_0$, thus, $\ard \in \dargs$. 
+	That $\args ≠ \emptyset$ follows from $\dargs ≠ \emptyset$.
 \end{remark}
 
 An empirical theory must satisfy
-$\exists k \in \N \suchthat \dfp^k(\gleadstoinv(\Phi)) = \emptyset$, where $\dfp^0$ is the identity function over $\allargs$.
+$\exists k \in \N \suchthat (\dfp)^k(\gleadstoinv(\Phi)) = \emptyset$, where $(\dfp)^0$ is the identity function over $\allargs$.
 
 \subsection{Falsifiability}
 Given $\hist \in \allhist$, $\hist(\intvl{1, l(\hist)})$, where $l(\hist) \in \N$ is the length of the sequence $\hist$, denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$. Abusing notation, given $\args \subseteq \allargs$, I write $\args \cap \hist$ to designate $\args \cap \hist(\intvl{1, l(\hist)})$, therefore using simply $\hist$ in that expression to denote the \emph{range} of $\hist$.
 
-Given $i \in I, \phi \in \Phi, \ar_0 \in \allargs$ and $\args \subseteq \gbeatsinv(\ar_0)$, define $\args \ibeats \ar_0$ iff $\exists \hist \in \allhist \suchthat \args = \gbeatsinv(\ar_0) \cap \hist \land \ar_0 \in \histend \land \hist \nileadstost \phi$. 
+Given $i \in I, \phi \in \Phi, \ar \in \allargs$ and $\args \subseteq \gbeatsinv(\ar)$, define $\args \ibeats \ar$ iff $\exists \hist \in \allhist \suchthat \args = \gbeatsinv(\ar) \cap \hist \land \ar \in \histend \land \hist \nileadstost \phi$. 
 
-Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $\di(\ar) \subseteq \powersetz{\alldargs}$, as $\di(\ar) = \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0) \land \args \ibeats \ar_0}$. 
+Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the \emph{$\phi$-defensors of $\ar$ required for $i$}, $\di(\ar) \subseteq \powersetz{\alldargs}$, as $\di(\ar) = \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar) \land \args \ibeats \ar}$. 
 Observe that $\di(\ar) \subseteq \df(\ar)$.
 Define $\dip \subseteq \allargs × \allargs$ as $\dip(\ar) = \set{(\ar + \dargs) \suchthat \dargs \in \di(\ar)}$.
 Given $i \in I, \phi \in \gPhi$, define $\gargs \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\phi))$.
 
-$\ar$ $i$-defends $\phi$ iff $\emptyset \nibeats \ar$. 
+I write that $\ar$ \emph{$i$-defends} $\phi$ to mean that $\emptyset \nibeats \ar$. 
 
 \begin{definition}[Convincingness]
 	$\forall i \in I, \phi \in \gPhi, \ar \in \gargs: \ar$ $i$-defends $\phi$.
 \end{definition}
 
-A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hist) \in I × \gPhi × \allhist$ such that $\exists \ar \in (\histend \cap \gargs) \suchthat \gbeatsinv(\ar) \cap \hist = \emptyset \land \hist \nileadstost \phi$.
+A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hist, \ar) \in I × \gPhi × \allhist × \gargs$ such that $\gbeatsinv(\ar) \cap \hist = \emptyset \land \ar \in \histend \land \hist \nileadstost \phi$. 
+I also write that $(i, \phi, \hist, \ar)$ falsifies $\gamma$ to mean that it is a falsification instance of $\gamma$.
 
 \begin{theorem}
 	An empirical theory is convincing iff it has no falsification instances.
 \end{theorem}
 \begin{proof}
-	For all $i \in I, \phi \in \gPhi$: $\exists \ar \in \gargs$ that does not $i$-defend $\phi$ iff $\exists \ar \in \gargs, \hist \in \allhist \suchthat \left[\ar \in \histend \land \gbeatsinv(\ar) \cap \hist = \emptyset \land \hist \nileadstost \phi\right]$ iff $\exists \hist \in \allhist$ such that $(i, \phi, \hist)$ is a falsification instance.
+	For all $i \in I, \phi \in \gPhi, \ar \in \gargs$: $\ar$ does not $i$-defend $\phi$ iff $\exists \hist \in \allhist \suchthat \left[\gbeatsinv(\ar) \cap \hist = \emptyset \land \ar \in \histend \land \hist \nileadstost \phi\right]$ iff $\exists \hist \in \allhist$ such that $(i, \phi, \hist, \ar)$ falsifies $\gamma$. Therefore, $\gamma$ is not convincing iff $\exists (i, \phi, \ar) \suchthat \ar$ does not $i$-defend $\phi$ iff $\exists \hist \suchthat (i, \phi, \hist, \ar)$ falsifies $\gamma$ iff $\gamma$ has a falsification instance.
 \end{proof}
 
 \begin{definition}[Validity]
@@ -183,16 +189,80 @@ A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hi
 	
 	From this lemma, using convincingness, we deduce that $[\ar_0 \in \gargs \land \ar_0 \nileadstost \phi] ⇒ \exists \ar_2 \in \gargs \cap \dfp(\ar_0)$. That is because $\ar_0 \in \gargs ⇒ \ar_0$ $i$-defends $\phi$, by convincingness, and, considering any $\dargs \in \di(\ar_0)$ and $\ar_2 = \ar_0 + \dargs$, $\ar_2 \in \gargs$ by definition of $\gargs$ and $\ar_2 \in \dfp(\ar_0)$ because $\dargs \in \di(\ar_0) ⇒ \dargs \in \df(\ar_0)$.
 
-	To prove the theorem, build a finite sequence of arguments in $\gargs$, starting with any $\ar_0 \in \gleadstoinv(\phi)$. Observe that $\ar_0 \in \gargs$. Given $k \in 2\N$, if $\ar_k \nileadstost \phi$, define $\ar_{k + 2}$ using the deduction following the lemma, obtaining $\ar_{k + 2} \in \gargs \cap \dfp^\frac{k + 2}{2}(\ar_0)$. 
-	By definition of an empirical theory, $\exists k \in \N \suchthat \dfp^k(\ar_0) = \emptyset$, thus, this process ends with some $\ar$ such that $\ar \ileadstost \phi$.
+	To prove the theorem, build a finite sequence of arguments in $\gargs$, starting with any $\ar_0 \in \gleadstoinv(\phi)$. Observe that $\ar_0 \in \gargs$. Given $k \in 2\N$, if $\ar_k \nileadstost \phi$, define $\ar_{k + 2}$ using the deduction following the lemma, obtaining $\ar_{k + 2} \in \gargs \cap (\dfp)^\frac{k + 2}{2}(\ar_0)$. 
+	By definition of an empirical theory, $\exists k \in \N \suchthat (\dfp)^k(\ar_0) = \emptyset$, thus, this process ends with some $\ar$ such that $\ar \ileadstost \phi$.
 \end{proof}
 
 \subsection{Effectively comparing models}
-Given a normative theory, consider two empirical theories $(q, (\gleadsto[q(i)])_{q(i) \in q(I)}, \gbeats, \alldargs, \dbeats, +)$ and $(q', (\gleadsto[q(i)][\delta])_{q(i) \in q(I)}, \gbeats', \alldargs, \dbeats', +')$.
+\begin{lemma}
+	\label{th:produce}
+	Given $\phi \in \Phi$, $\ar_0 \in \allargs$ that $i$-defends $\phi$, and $\hist \nileadstost \phi$ with $\ar_0 \in \histend$, define $\args =  \gbeatsinv(\ar_0) \cap \hist$, $\dargs = \dbeatsinv(\args)$, and $\ar_2 = \ar_0 + \dargs$. Then, $\ar_2 \in \gargs \cap \dfp(\ar_0)$.
+\end{lemma}
+\begin{proof}
+	Because $\dargs \in \di(\ar_0)$.
+\end{proof}
 
-Given a normative theory and $\phi \in \Phi$, say that two empirical theories (for that normative theory) disagree about $\phi$ iff $\phi \in \gPhi \land ¬\phi \in \gPhi[\delta]$.
+Given $\phi \in \Phi$ and two empirical theories $\gamma$ and $\delta$ for a given normative theory, say that they disagree about $\phi$ iff $\phi \in \gPhi[\gamma] \land ¬\phi \in \gPhi[\delta]$. Say that they are incompatible iff there is at least one $\phi \in \Phi$ that they disagree about.
 
-If $\gamma$ and $\delta$ agree about all $\phi$, there is nothing to test as the theories are compatible. Otherwise, here is a test procedure that falsifies at least one of these theories, given any $\phi \in \Phi$ about which they disagree and any $i \in I$.
+Given $\phi \in \Phi$, $\hist \in \allhist$ and $\ar_\gamma \in \gargs$, say that $(\hist, \ar_\gamma)$ challenges $(\gamma, \phi)$ iff $\hist \nileadstost \phi$ and $\ar_\gamma \in \histend$.
+Given $\phi \in \Phi, \ar_\gamma \in \gargs, \ar_\delta \in \gargsdelta$, say that $(\hist, \ar_\gamma, \ar_\delta)$ is a $(\gamma, \phi$ or $\delta, ¬\phi)$-challenge iff $(\hist, \ar_\gamma)$ challenges $(\gamma, \phi)$ or $(\hist, \ar_\delta)$ challenges $(\delta, ¬\phi)$. \commentOC{This should be called a $\phi$-or-$¬\phi$-challenge.}
+
+\begin{lemma}
+	\label{th:endchal}
+	Given $\ar_\gamma \in \gargs$, $\ar_\delta \in \gargsdelta$ and $\hist \in \allhist$ such that $\set{\ar_\gamma, \ar_\delta} \subseteq \histend$: $(\hist, \ar_\gamma, \ar_\delta)$ is a $(\gamma, \phi$ or $\delta, ¬\phi)$-challenge.
+\end{lemma}
+\begin{proof}
+	Either $\hist \nileadstost \phi$, and $(\hist, \ar_\gamma, \ar_\delta)$ challenges $(\gamma, \phi)$, or $\hist \ileadstost \phi$, hence, by \cref{th:protcoh}, $\hist \nileadstost ¬\phi$, and $(\hist, \ar_\gamma, \ar_\delta)$ challenges $(\delta, ¬\phi)$. 
+\end{proof}
+
+\begin{lemma}
+	\label{th:nextchal}
+	Given $(\hist, \ar_\gamma)$ challenging $(\gamma, \phi)$, with $\ar_\gamma \in \gargs \cap \dfpclosure$, and $\ar_\delta \in \gargsdelta$: either $(i, \phi, \hist, \ar_\gamma)$ falsifies $\gamma$, or there exists a $(\gamma, \phi$ or $\delta, ¬\phi)$-challenge $(\histp, \ar'_\gamma, \ar_\delta)$, with $\ar'_\gamma \in \gargs \cap (\dfp)^{k + 1}(\gleadstoinv(\phi))$.
+\end{lemma}
+\begin{proof}
+	If $\ar_\gamma$ does not $i$-defend $\phi$, then $(i, \phi, \hist, \ar_\gamma)$ falsifies $\gamma$, which ends the proof. 
+	Thus, assume that $\ar_\gamma$ $i$-defends $\phi$. 
+
+	\Cref{th:produce} applies and yields $\ar'_\gamma = \ar_\gamma + \dbeatsinv(\gbeatsinv(\ar_\gamma)) \in \gargs \cap \dfp(\ar_\gamma)$, thus $\ar'_\gamma \in (\dfp)^{(k + 1)}(\gleadstoinv(\phi))$. 
+	Now, define $\histpp = (\hist, \ar'_\gamma)$ and test whether $\histpp \nileadstost \phi$. 
+	
+	If $\histpp \nileadstost \phi$, define $\histp = \histpp$, and observe that $(\histp, \ar'_\gamma, \ar_\delta)$ challenges $(\gamma, \phi)$, which concludes the proof. 
+	Thus, assume that $\histpp \ileadstost \phi$. 
+
+	Let us now define $\histp$ such that $\set{\ar'_\gamma, \ar_\delta} \subseteq \histpend$, so that \cref{th:endchal} applies on $(\histp, \ar'_\gamma, \ar_\delta)$, which will conclude the proof. 
+	
+	If $\ar_\delta \in \histppend$, this is done by defining $\histp = \histpp$. Otherwise, define $\histp = (\histpp, \ar_\delta)$ and test whether $\histp \nileadstost \phi$. 
+\end{proof}
+
+Given a normative theory and two empirical theories for that normative theory and $i \in I$, 
+a \emph{test procedure with $i$} is a finite sequence $({\hist}^k)_{k \in \intvl{1, N}}$, for some $N \in \N^*$, of sequences of arguments, 
+such that $\forall k \in \intvl{2, N}, {\hist}^k$ starts with ${\hist}^{k-1}$, and 
+such that $(i, \phi, {\hist}^N)$ falsifies one of the empirical theories for some $\phi \in \Phi$. 
+A sequence of arguments $\histp$ starts with a sequence of arguments $\hist$ of length $l$ iff $\histp$ has length at least $l$ and $\forall k \in \intvl{1, l}: \histp_k = \hist_k$.
+\commentOC{Need the test procedure to be a tree. Atom: $(k, \phi)$ meaning whether ${\hist}^k \ileadstost \phi$. Branch label: atoms linked using or and and operators. From a node $n = (\hist, \ar, \phi)$, let branches depart, such that their labels do not overlap. From a node, if no branch label is true, the node must falsify a theory. In the case of the procedure below, it is not a list because we may query several times the same theory or switch to the other one, depending on the last answer. But if simplifying the theory (single-try), we may then simplify the definition of a test procedure.}
+
+\begin{theorem}
+	Given two incompatible empirical theories for a given normative theory, $\alpha = (q, (\gleadsto[q(i)][\alpha])_{q(i) \in q(I)}, \gbeats[\alpha], \alldargs, \dbeats[\alpha], +_\alpha)$ and $\beta = (q', (\gleadsto[q(i)][\beta])_{q(i) \in q(I)}, \gbeats[\beta], \alldargs, \dbeats[\beta], +')$ and given any $i \in I$, there exists a test procedure with $i$ that falsifies one of these theories.
+\end{theorem}
+\begin{proof}
+	Pick any $\phi \in \Phi$ about which $\alpha$ and $\beta$ disagree.
+	
+	Given $k_\alpha, k_\beta \in \N, \hist \in \allhist, \ar_\alpha \in \gargsalpha, \ar_\beta \in \gargsbeta$, 
+	say that 
+	$(\hist, \ar_\alpha, \ar_\beta)$ is a challenge of complexity $(k_\alpha, k_\beta)$ iff 
+	$(\hist, \ar_\alpha, \ar_\beta)$ is a $(\alpha, \phi$ or $\beta, ¬\phi)$-challenge, $\ar_\alpha \in (\dfp[\alpha])^{k_\alpha}(\gleadstoinv[\alpha](\phi))$, and $\ar_\beta \in (\dfp[\beta])^{k_\beta}(\gleadstoinv[\beta](¬\phi))$.
+	
+	Pick any $\ar_{-1} \in \allargs \suchthat \ar_{-1} \gleadsto[][\beta] ¬\phi$. Observe that $\ar_{-1} \in \gargsbeta \cap (\dfp[\beta])^0(\gleadstoinv[\beta](¬\phi))$. Test whether $(\ar_{-1}) \nileadstost \phi$. If so, $(i, \phi, (\ar_{-1}), \ar_{-1})$ falsifies $\beta$, which ends the procedure. 
+	Thus, assume that $(\ar_{-1}) \ileadstost \phi$. 
+	
+	Pick any $\ar_0 \in \allargs \suchthat \ar_0 \gleadsto[][\alpha] \phi$. Observe that $\ar_0 \in \gargsalpha \cap (\dfp[\alpha])^0(\gleadstoinv[\alpha](\phi))$.  Define $\hist = (\ar_{-1}, \ar_0)$ and test whether $\hist \nileadstost \phi$. By \cref{th:endchal}, $(\hist, \ar_0, \ar_{-1})$ is a $(\alpha, \phi$ or $\beta, ¬\phi)$-challenge, thus, $(\hist, \ar_0, \ar_{-1})$ is a challenge of complexity $(0, 0)$.
+	
+	Suffices now to apply \cref{th:nextchal} repetitively, until finding a falsification instance of $\alpha$ or $\beta$. This is because, given a challenge $(\hist, \ar_\alpha, \ar_\beta)$ of complexity $(k_\alpha, k_\beta)$, \cref{th:nextchal} applies, yielding either a falsification instance, or a new challenge of higher complexity. 
+Indeed, if $(\hist, \ar_\alpha)$ challenges $(\alpha, \phi)$, apply \cref{th:nextchal} with $\alpha$ for $\gamma$, $\beta$ for $\delta$, and obtain either that $\hist$ falsifies $\alpha$, or a new tuple $(\histp, \ar'_\alpha, \ar_\beta)$ that is a challenge of complexity $(k_\alpha + 1, k_\beta)$.
+And if $(\hist, \ar_\beta)$ challenges $(\beta, ¬\phi)$, apply \cref{th:nextchal} with $¬\phi$ for $\phi$, $\beta$ for $\gamma$, $\alpha$ for $\delta$, and obtain either that $\hist$ falsifies $\beta$, or a new tuple $(\histp, \ar'_\beta, \ar_\alpha)$ such that $(\histp, \ar_\alpha, \ar'_\beta)$ is a challenge of complexity $(k_\alpha, k_\beta + 1)$.
+	
+	Given that $\exists K_\alpha \suchthat (\dfp[\alpha])^{K_\alpha}(\gleadstoinv[\alpha](\phi)) = \emptyset$ and $K_\beta \suchthat (\dfp[\beta])^{K_\beta}(\gleadstoinv[\beta](¬\phi)) = \emptyset$ by definition of empirical theories, this process must end with a falsifying instance of $\alpha$ or $\beta$.
+\end{proof}
 
 \begin{remark}
 	Make $\gamma$ able to answer directly $\ar_1$ when $\delta$ starts the protocol. 
@@ -202,14 +272,49 @@ If $\gamma$ and $\delta$ agree about all $\phi$, there is nothing to test as the
 	It can also be done without using $\zar$, as follows. Demand that $\dbeats$ cover all non-initial arguments. Define $\di(\zar) = \set{\dbeatsinv(\args) \suchthat \exists \hist \in \allhist \suchthat \emptyset ≠ \args = \allargs \setminus \gbeatsinv(\Phi) \cap \hist \land \hist \nileadstost \phi}$. Define $\gargs = (\dip)^k(\gleadstoinv(\Phi) \cup \di(\zar))$.
 \end{remark}
 
-\begin{remark}
-	Informal idea.
-	Consider $\ar_0 \in \allargs \suchthat \ar_0 \gleadsto \phi$. Test whether $(\ar_0) \ileadstost \phi$. If not, $(i, \phi, (\ar_0))$ is a falsification instance of $\gamma$. If $(\ar_0) \ileadstost \phi$, check whether some $\ar_1 \dbeats' \ar_0$. If not, $\delta$ is falsified? ($\ar_0$ attacks $\delta$ but $\delta$ is not able to defend.)…
-\end{remark}
+\subsection{TODO, about comparisons}
+Count the number of tests; assume simpler theory.
 
-Lemma (variant of a previous one). $\ar_0$ $i$-defends $\phi$, and $\hist \nileadstost \phi$ with $\ar_0 \in \histend$, thus $\dargs = \dbeatsinv(\gbeatsinv(\ar_0) \cap \hist) \in \di(\ar_0)$, thus $\ar_2 = \ar_0 + \dargs \in \gargs \cap \dfp(\ar_0)$.
+Indicate sufficient hypothesis for ensuring that if a model resisted every attack, it is valid. Thus, that searching for falsification instances in the tested ones is enough.
 
-Consider $(…, \ar_0) \ileadstost \phi$ and $\hist = (…, \ar_0, \ar_{-1}) \nileadstost ¬\phi$, with $\ar_0 \in \gargs, \ar_{-1} \in \gargs[¬\phi]$. By the lemma (applied on $\ar_{-1}$), $\ar_1 = \ar_{-1} + \dbeatsinv(\gbeatsinv(\ar_{-1}) \cap \hist) \in \gargs[¬\phi] \cap \dfp(\ar_{-1})$. Iterating if necessary, we obtain $(…, \ar_1) \ileadstost ¬\phi$. Now either already the previous step was $(…, \ar_0, \ar_1)$, or we test $(…, \ar_1, \ar_0)$. If $(…, \ar_1, \ar_0) \ileadstost \phi$, apply the lemma again on $\ar_1$, and go on. Finally: $\hist = (…, \ar_1, \ar_0) \nileadstost \phi$. Similarly, then, obtain $\ar_2 = \ar_0 + \dargs \in \gargs \cap \dfp(\ar_0)$. If $\ar_0 \in (\dfp)^k(…)$, then $\ar_2 \in (\dfp)^{k'}(…)$, with $k' > k$. And $(…, \ar_2, \ar_1) \nileadstost ¬\phi$, so we can apply the strating step again.
+\section{LS}
+%Idea: argue for P > $.
+%4 ways:
+%- choose
+%- rate attractivity: b1 → +; b2 → ++ thus b2 > b1
+%- bids to buy (B-bid): I’d pay max $4 to buy and play b1; I’d pay max $6 to play b2 thus b2 > b1
+%- bids to sell (S-bid): I’d sell b1 for at least $3; I’d sell b2 for at least $5 thus b2 > b1.
+%
+%First two: focus on probs. Last two: focus on amounts.
+%
+%Compare P = (.99, +$4; .01, −$0.1) VS $ = (.33, +$16; .67, −$2). Typically, choose P and bid more for $.
+%E[P] ≈ $4; E[$] ≈ 5+1/3 − 4/3 = $4.
+%
+%XP1. Choice VS S-bid. No gambling. 6 P bets, 7 $ bets. 12 pairs, of which 6 presented in the table: (P, $), choose one, and indicate the strength of your preference (slight to very strong). Then 19 bets using S-big, 6 practice (other bets) then 13 were analyzed.
+%
+%E[P] and E[$] (of the example above) are similar, but bids “greatly exceeding the expected value of $3.94 are common”.
+%
+%XP2. Choice VS B-bid.
+%
+%XP3. With effective gambling and iterated thinking to thing about their preference.
+Define $P = (.99, +\$4; .01, −\$0.1)$ and $D = (.33, +\$16; .67, −\$2)$.
+
+Theory claims that all $i$’s prefer deliberately $P$ to $D$, in the sense of betting at least as much for.
+
+Define $\phi$ as: $i$ deliberately prefers $P$ to $D$, in the sense of bidding at least as much for $P$ than for $D$ after deliberation. Define $¬\phi$ similarly, but bidding more for $D$ than for $P$. 
+
+Define $\ileadsto$ as follows. Given $\hist = (…, \ar)$, $\hist \ileadstost \phi$ iff, in a situation of $i$ having been exposed to the prefix …, saying: “Considering the argument $\ar$, would you please indicate your maximum selling price for $P$, and for $D$” leads $i$ to act accordig to $\phi$. Note that $\hist \ileadsto \phi$ iff $\hist \nileadsto ¬\phi$.
+
+Thus, the normative axiom is satisfied iff, whenever there is a argument that, facing any counter-argument, leads $i$ to bid at least as much for $P$ than for $D$, we are ready to accept that $i$ deliberately prefers $P$ to $D$, in the bidding sense.
+
+Define $\ar_0$ as arguing that the bid for both P and D should equal their expected revenue, namely, $.99 × (\$4) − 0.01 × \$0.1$ or etc. “Imagine you play this bet 100 times. On average, you will win 99 times and lose 1 time, which means gaining 99 × \$4 = \$396 and losing 1 × \$0.10 = \$0.10, hence a total net gain of \$395.90. Thus, your average net gain for the $P$ bet would be \$3.9590. Etc.”
+
+Define $\ar_1$ as arguing that the utility of money should matter, not the revenue, and arguing that a loss hurts more than a gain. Define $\ar_2$ as arguing that the goal is to maximise average revenue, and thus, losses should count equally to gains. Define $\ar'_1$ as arguing by considering only what is to be gained and not the probabilities, and thus, arguing that $D$ is worth much more. Define $\ar'_2$ as arguing that also the probabilities should be taken into account.
+Define $+$ as the simple concatenation of its arguments.
+
+Then, define $\gbeats = \set{(\ar_1, \ar_0), (\ar'_1, \ar_0), (\ar'_1, \ar_2), (\ar_1, \ar'_2)}$, $\dbeats = \set{(\ar_2, \ar_1), (\ar'_2, \ar'_1)}$.
+
+TODO consider using only $\phi$ being sure, and dropping everything related to possibility.
 
 \section{Next}
 Define a way of saying “we never need this argument”: either the model can prove phi without s0, or if it can’t, then phi does not hold, because I can play s1 against it. 

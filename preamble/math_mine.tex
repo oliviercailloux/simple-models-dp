@@ -34,8 +34,10 @@
 \NewDocumentCommand{\allhist}{}{\mathscr{S}^*}
 \NewDocumentCommand{\hist}{}{s^*}
 \NewDocumentCommand{\histp}{}{s^{*\prime}}
+\NewDocumentCommand{\histpp}{}{s^{*\prime\prime}}
 \NewDocumentCommand{\histend}{}{s^*_\mathit{end}}
 \NewDocumentCommand{\histpend}{}{s^{*\prime}_\mathit{end}}
+\NewDocumentCommand{\histppend}{}{s^{*\prime\prime}_\mathit{end}}
 \NewDocumentCommand{\allprops}{}{\mathscr{T}}
 \NewDocumentCommand{\props}{}{T}
 \NewDocumentCommand{\prop}{}{t}
@@ -48,15 +50,19 @@
 \NewDocumentCommand{\dargs}{}{S^d}
 \NewDocumentCommand{\alldargs}{}{\mathscr{S}^d}
 \NewDocumentCommand{\gargs}{O{\phi}}{S^{i, #1}_γ}
+\NewDocumentCommand{\gargsalpha}{}{S^{i, \phi}_α}
+\NewDocumentCommand{\gargsbeta}{}{S^{i, ¬\phi}_β}
+\NewDocumentCommand{\gargsdelta}{}{S^{i, ¬\phi}_δ}
 \NewDocumentCommand{\gleadsto}{O{}O{γ}}{⇝^{#1}_{#2}}
-\NewDocumentCommand{\gleadstoinv}{}{{⇝^{-1}_γ}}
-\NewDocumentCommand{\gbeats}{}{⊳_a}
-\NewDocumentCommand{\gbeatsinv}{o}{{⊳^{-1}_a}}
-\NewDocumentCommand{\ngbeats}{}{\not⊳_a}
-\NewDocumentCommand{\dbeats}{}{⊳_d}
-\NewDocumentCommand{\dbeatsinv}{}{{⊳_d^{-1}}}
-\NewDocumentCommand{\df}{}{\mathit{def}}
-\NewDocumentCommand{\dfp}{}{\mathit{def}_+}
+\NewDocumentCommand{\gleadstoinv}{O{γ}}{{⇝^{-1}_{#1}}}
+\NewDocumentCommand{\gbeats}{O{γ}}{⊳^a_{#1}}
+\NewDocumentCommand{\gbeatsinv}{O{γ}}{{(⊳^a_{#1})^{-1}}}
+\NewDocumentCommand{\ngbeats}{O{γ}}{\not⊳^a_{#1}}
+\NewDocumentCommand{\dbeats}{O{γ}}{⊳^d_{#1}}
+\NewDocumentCommand{\dbeatsinv}{O{γ}}{{(⊳^d_{#1})^{-1}}}
+\NewDocumentCommand{\df}{O{γ}}{\mathit{def}_{#1}}
+\NewDocumentCommand{\dfp}{O{γ}}{\mathit{def}_{#1}^+}
+\NewDocumentCommand{\dfpclosure}{O{γ}}{(\dfp[#1])^k(\gleadstoinv[#1](\phi))}
 %%i
 \NewDocumentCommand{\iPhi}{}{\Phi_i}
 \NewDocumentCommand{\ileadsto}{O{i}}{⇝^{#1}}
