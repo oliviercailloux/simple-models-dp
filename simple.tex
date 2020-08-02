@@ -138,22 +138,25 @@ An empirical theory for a normative theory is a tuple $(q, (\gleadsto[q(i)])_{q(
 with ${\gleadsto[q(i)]} \subseteq (\allargs × \Phi) \cap (\alldargs × \Phi)$, 
 ${\gbeats} \subseteq \allargs × \allargs$ and is irreflexive,
 ${\dbeats} \subseteq \alldargs × \allargs$ and is injective and its range includes $\gbeatsinv(\allargs)$ (thus $\forall \ar_1 \suchthat [\exists \ar_0 \suchthat \ar_1 \gbeats \ar_0]$: $\dbeatsinv(\ar_1)$ is a singleton). 
-Given $\ar \in \allargs$, define $\df(\ar) \subseteq \powersetz{\alldargs}$ as $\df(\ar) = \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar)}$. 
-The symbol $+$ in an empirical theory stands for a function $+: \bigcup_{\ar \in \allargs}(\set{s} × \df(\ar)) → \allargs$.
-Given any $\ar \in \allargs$ and $\dargs \in \df(\ar)$, $\ar + \dargs$ means $+(\ar, \dargs)$. 
-Define $\dfp \subseteq \allargs × \allargs$ as $\forall \ar \in \allargs: \dfp(\ar) = \set{\ar + \dargs \suchthat \dargs \in \df(\ar)}$.
+Define $\df: \allargs → \powersetz{\allargs}$ as $\df = \dbeatsinv \circ \gbeatsinv$.
+Given $\ar \in \allargs$, $\df(\ar)$ denotes the \emph{fragments defending $\ar$}. 
+In other words, given $\ard \in \dargs$ and $\ar_0 \in \allargs$, $\ar_2 \in \df(\ar_0)$ iff $\exists \ar_1 \in \allargs \suchthat \ar_2 \dbeats \ar_1 \gbeats \ar_0$.
+A \emph{coalition defending $\ar$} is any element of $\powersetz{\df(\ar)}$.
+The symbol $+$ in an empirical theory stands for a function $+: \bigcup_{\ar \in \allargs}(\set{s} × \powersetz{\df(\ar)}) → \allargs$.
+Given any $\ar \in \allargs$ and $\emptyset ≠ \dargs \subseteq \df(\ar)$, $\ar + \dargs$ means $+(\ar, \dargs)$. 
+Given any $\ar \in \allargs$, define $\dfp(\ar)$, the \emph{defenders of $\ar$}, as $\dfp(\ar) = \set{\ar + \dargs \suchthat \emptyset ≠ \dargs \subseteq \df(\ar)}$.
+
+An empirical theory must satisfy
+$\exists k \in \N \suchthat (\dfp)^k(\gleadstoinv(\Phi)) = \emptyset$, where $(\dfp)^0$ is the identity function over $\allargs$.
 
 \begin{remark}
-	Equivalently, $\df(\ar_0) = \powersetz{\dbeatsinv \circ \gbeatsinv}$. 
+	$\df'(\ar) = \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar)} = \powersetz{\df(\ar)}$. 
 	First, $\forall \args \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0): \dargs = \dbeatsinv(\args) \in \powersetz{\dbeatsinv \circ \gbeatsinv}$. 
 	Indeed, $\ar_1 \in \args$ thus $\ar_1 \gbeats \ar_0$, hence, $\ard \dbeats \ar_1$ (as mandated by ${\dbeats}$), thus $\dargs ≠ \emptyset$; and $\ard \in \dargs$ thus $\ard \dbeats \ar_1 \in \args$ thus $\ar_1 \gbeats \ar_0$. 
 	Second, $\dargs \in \powersetz{\dbeatsinv \circ \gbeatsinv} ⇒ \exists \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0) \suchthat \dbeatsinv(\args) = \dargs$. 
 	Defining $\args = {\dbeats}(\dargs) \cap \gbeatsinv(\ar_0)$, we see that $\dbeatsinv(\args) = \dargs$: considering $\ard \in \dargs$, $\ard \dbeats \ar_1 \gbeats \ar_0$, $\ar_1 \in \args$, $\ard \in \dbeatsinv(\ar_1)$, thus, $\ard \in \dbeatsinv(\args)$; and considering $\ard \in \dbeatsinv(\args)$, $\ard \dbeats \ar_1 \in \args$, $\ar_1 \gbeats \ar_0$, thus, $\ard \in \dargs$. 
 	That $\args ≠ \emptyset$ follows from $\dargs ≠ \emptyset$.
 \end{remark}
-
-An empirical theory must satisfy
-$\exists k \in \N \suchthat (\dfp)^k(\gleadstoinv(\Phi)) = \emptyset$, where $(\dfp)^0$ is the identity function over $\allargs$.
 
 \subsection{Falsifiability}
 Given $\hist \in \allhist$, $\hist(\intvl{1, l(\hist)})$, where $l(\hist) \in \N$ is the length of the sequence $\hist$, denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$. Abusing notation, given $\args \subseteq \allargs$, I write $\args \cap \hist$ to designate $\args \cap \hist(\intvl{1, l(\hist)})$, therefore using simply $\hist$ in that expression to denote the \emph{range} of $\hist$.
