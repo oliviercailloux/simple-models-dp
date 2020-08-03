@@ -227,20 +227,20 @@ I also write that $(i, \phi, \hist, \ar)$ falsifies $\gamma$ to mean that it is 
 \subsection{Effectively comparing models}
 Given $\phi \in \Phi$ and two empirical theories $\gamma$ and $\delta$ for a given normative theory, say that they disagree about $\phi$ iff $\phi \in \gPhi[\gamma] \land ¬\phi \in \gPhi[\delta]$. Say that they are incompatible iff there is at least one $\phi \in \Phi$ that they disagree about.
 
-Given $\phi \in \Phi$, $\hist \in \allhist$ and $\ar_\gamma \in \gargs$, say that $(\hist, \ar_\gamma)$ challenges $(\gamma, \phi)$ iff $\hist \nileadstost \phi$ and $\ar_\gamma \in \histend$.
-Given $\phi \in \Phi, \ar_\gamma \in \gargs, \ar_\delta \in \gargsdelta$, say that $(\hist, \ar_\gamma, \ar_\delta)$ is a $(\gamma, \phi$ or $\delta, ¬\phi)$-challenge iff $(\hist, \ar_\gamma)$ challenges $(\gamma, \phi)$ or $(\hist, \ar_\delta)$ challenges $(\delta, ¬\phi)$. \commentOC{This should be called a $\phi$/$¬\phi$-challenge.}
+Given $\phi \in \Phi$, $\hist \in \allhist$ and $\ar_\gamma \in \gargs$, say that $(\hist, \ar_\gamma)$ challenges $\phi$ iff $\hist \nileadstost \phi$ and $\ar_\gamma \in \histend$.
+Given $\phi \in \Phi, \ar_\gamma \in \gargs, \ar_\delta \in \gargsdelta$, say that $(\hist, \ar_\gamma, \ar_\delta)$ is a $\phi/¬\phi$-challenge iff $(\hist, \ar_\gamma)$ challenges $(\gamma, \phi)$ or $(\hist, \ar_\delta)$ challenges $(\delta, ¬\phi)$.
 
 \begin{lemma}
 	\label{th:endchal}
-	Given $\ar_\gamma \in \gargs$, $\ar_\delta \in \gargsdelta$ and $\hist \in \allhist$ such that $\set{\ar_\gamma, \ar_\delta} \subseteq \histend$: $(\hist, \ar_\gamma, \ar_\delta)$ is a $(\gamma, \phi$ or $\delta, ¬\phi)$-challenge.
+	Given $\ar_\gamma \in \gargs$, $\ar_\delta \in \gargsdelta$ and $\hist \in \allhist$ such that $\set{\ar_\gamma, \ar_\delta} \subseteq \histend$: $(\hist, \ar_\gamma, \ar_\delta)$ is a $\phi/¬\phi$-challenge.
 \end{lemma}
 \begin{proof}
-	Either $\hist \nileadstost \phi$, and $(\hist, \ar_\gamma, \ar_\delta)$ challenges $(\gamma, \phi)$, or $\hist \ileadstost \phi$, hence, by \cref{th:protcoh}, $\hist \nileadstost ¬\phi$, and $(\hist, \ar_\gamma, \ar_\delta)$ challenges $(\delta, ¬\phi)$. 
+	Either $\hist \nileadstost \phi$, and $(\hist, \ar_\gamma)$ challenges $\phi$, or $\hist \ileadstost \phi$, hence, by \cref{th:protcoh}, $\hist \nileadstost ¬\phi$, and $(\hist, \ar_\delta)$ challenges $¬\phi$. 
 \end{proof}
 
 \begin{lemma}
 	\label{th:nextchal}
-	Given $(\hist, \ar_\gamma)$ challenging $(\gamma, \phi)$, with $\ar_\gamma \in \gargs \cap (\dfp)^k(\gleadstoinv(\phi))$, and $\ar_\delta \in \gargsdelta$: either $(i, \phi, \hist, \ar_\gamma)$ falsifies $\gamma$, or there exists a $(\gamma, \phi$ or $\delta, ¬\phi)$-challenge $(\histp, \ar'_\gamma, \ar_\delta)$, with $\ar'_\gamma \in \gargs \cap (\dfp)^{k + 1}(\gleadstoinv(\phi))$.
+	Given $(\hist, \ar_\gamma)$ challenging $\phi$, with $\ar_\gamma \in \gargs \cap (\dfp)^k(\gleadstoinv(\phi))$, and $\ar_\delta \in \gargsdelta$: either $(i, \phi, \hist, \ar_\gamma)$ falsifies $\gamma$, or there exists a $\phi/¬\phi$-challenge $(\histp, \ar'_\gamma, \ar_\delta)$, with $\ar'_\gamma \in \gargs \cap (\dfp)^{k + 1}(\gleadstoinv(\phi))$.
 \end{lemma}
 \begin{proof}
 	If $\ar_\gamma$ does not $i$-defend $\phi$, then $(i, \phi, \hist, \ar_\gamma)$ falsifies $\gamma$, which ends the proof. 
@@ -249,7 +249,7 @@ Given $\phi \in \Phi, \ar_\gamma \in \gargs, \ar_\delta \in \gargsdelta$, say th
 	\Cref{th:produce} applies and yields $\ar'_\gamma = \ar_\gamma + \dbeatsinv(\gbeatsinv(\ar_\gamma)) \in \gargs \cap \dfp(\ar_\gamma)$, thus $\ar'_\gamma \in (\dfp)^{(k + 1)}(\gleadstoinv(\phi))$. 
 	Now, define $\histpp = (\hist, \ar'_\gamma)$ and test whether $\histpp \nileadstost \phi$. 
 	
-	If $\histpp \nileadstost \phi$, define $\histp = \histpp$, and observe that $(\histp, \ar'_\gamma, \ar_\delta)$ challenges $(\gamma, \phi)$, which concludes the proof. 
+	If $\histpp \nileadstost \phi$, define $\histp = \histpp$, and observe that $(\histp, \ar'_\gamma, \ar_\delta)$ challenges $\phi$, which concludes the proof. 
 	Thus, assume that $\histpp \ileadstost \phi$. 
 
 	Let us now define $\histp$ such that $\set{\ar'_\gamma, \ar_\delta} \subseteq \histpend$, so that \cref{th:endchal} applies on $(\histp, \ar'_\gamma, \ar_\delta)$, which will conclude the proof. 
@@ -273,16 +273,16 @@ A sequence of arguments $\histp$ starts with a sequence of arguments $\hist$ of 
 	Given $k_\alpha, k_\beta \in \N, \hist \in \allhist, \ar_\alpha \in \gargsalpha, \ar_\beta \in \gargsbeta$, 
 	say that 
 	$(\hist, \ar_\alpha, \ar_\beta)$ is a challenge of complexity $(k_\alpha, k_\beta)$ iff 
-	$(\hist, \ar_\alpha, \ar_\beta)$ is a $(\alpha, \phi$ or $\beta, ¬\phi)$-challenge, $\ar_\alpha \in (\dfp[\alpha])^{k_\alpha}(\gleadstoinv[\alpha](\phi))$, and $\ar_\beta \in (\dfp[\beta])^{k_\beta}(\gleadstoinv[\beta](¬\phi))$.
+	$(\hist, \ar_\alpha, \ar_\beta)$ is a $\phi/¬\phi$-challenge, $\ar_\alpha \in (\dfp[\alpha])^{k_\alpha}(\gleadstoinv[\alpha](\phi))$, and $\ar_\beta \in (\dfp[\beta])^{k_\beta}(\gleadstoinv[\beta](¬\phi))$.
 	
 	Pick any $\ar_{-1} \in \allargs \suchthat \ar_{-1} \gleadsto[\beta] ¬\phi$. Observe that $\ar_{-1} \in \gargsbeta \cap (\dfp[\beta])^0(\gleadstoinv[\beta](¬\phi))$. Test whether $(\ar_{-1}) \nileadstost \phi$. If so, $(i, \phi, (\ar_{-1}), \ar_{-1})$ falsifies $\beta$, which ends the procedure. 
 	Thus, assume that $(\ar_{-1}) \ileadstost \phi$. 
 	
-	Pick any $\ar_0 \in \allargs \suchthat \ar_0 \gleadsto[\alpha] \phi$. Observe that $\ar_0 \in \gargsalpha \cap (\dfp[\alpha])^0(\gleadstoinv[\alpha](\phi))$.  Define $\hist = (\ar_{-1}, \ar_0)$ and test whether $\hist \nileadstost \phi$. By \cref{th:endchal}, $(\hist, \ar_0, \ar_{-1})$ is a $(\alpha, \phi$ or $\beta, ¬\phi)$-challenge, thus, $(\hist, \ar_0, \ar_{-1})$ is a challenge of complexity $(0, 0)$.
+	Pick any $\ar_0 \in \allargs \suchthat \ar_0 \gleadsto[\alpha] \phi$. Observe that $\ar_0 \in \gargsalpha \cap (\dfp[\alpha])^0(\gleadstoinv[\alpha](\phi))$.  Define $\hist = (\ar_{-1}, \ar_0)$ and test whether $\hist \nileadstost \phi$. By \cref{th:endchal}, $(\hist, \ar_0, \ar_{-1})$ is a $\phi/¬\phi$-challenge, thus, $(\hist, \ar_0, \ar_{-1})$ is a challenge of complexity $(0, 0)$.
 	
 	Suffices now to apply \cref{th:nextchal} repetitively, until finding a falsification instance of $\alpha$ or $\beta$. This is because, given a challenge $(\hist, \ar_\alpha, \ar_\beta)$ of complexity $(k_\alpha, k_\beta)$, \cref{th:nextchal} applies, yielding either a falsification instance, or a new challenge of higher complexity. 
-Indeed, if $(\hist, \ar_\alpha)$ challenges $(\alpha, \phi)$, apply \cref{th:nextchal} with $\alpha$ for $\gamma$, $\beta$ for $\delta$, and obtain either that $\hist$ falsifies $\alpha$, or a new tuple $(\histp, \ar'_\alpha, \ar_\beta)$ that is a challenge of complexity $(k_\alpha + 1, k_\beta)$.
-And if $(\hist, \ar_\beta)$ challenges $(\beta, ¬\phi)$, apply \cref{th:nextchal} with $¬\phi$ for $\phi$, $\beta$ for $\gamma$, $\alpha$ for $\delta$, and obtain either that $\hist$ falsifies $\beta$, or a new tuple $(\histp, \ar'_\beta, \ar_\alpha)$ such that $(\histp, \ar_\alpha, \ar'_\beta)$ is a challenge of complexity $(k_\alpha, k_\beta + 1)$.
+Indeed, if $(\hist, \ar_\alpha)$ challenges $\phi$, apply \cref{th:nextchal} with $\alpha$ for $\gamma$, $\beta$ for $\delta$, and obtain either that $\hist$ falsifies $\alpha$, or a new tuple $(\histp, \ar'_\alpha, \ar_\beta)$ that is a challenge of complexity $(k_\alpha + 1, k_\beta)$.
+And if $(\hist, \ar_\beta)$ challenges $¬\phi$, apply \cref{th:nextchal} with $¬\phi$ for $\phi$, $\beta$ for $\gamma$, $\alpha$ for $\delta$, and obtain either that $\hist$ falsifies $\beta$, or a new tuple $(\histp, \ar'_\beta, \ar_\alpha)$ such that $(\histp, \ar_\alpha, \ar'_\beta)$ is a challenge of complexity $(k_\alpha, k_\beta + 1)$.
 	
 	Given that $\exists K_\alpha \suchthat (\dfp[\alpha])^{K_\alpha}(\gleadstoinv[\alpha](\phi)) = \emptyset$ and $K_\beta \suchthat (\dfp[\beta])^{K_\beta}(\gleadstoinv[\beta](¬\phi)) = \emptyset$ by definition of empirical theories, this process must end with a falsifying instance of $\alpha$ or $\beta$.
 \end{proof}
