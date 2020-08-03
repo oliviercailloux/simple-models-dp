@@ -287,14 +287,6 @@ And if $(\hist, \ar_\beta)$ challenges $¬\phi$, apply \cref{th:nextchal} with $
 	Given that $\exists K_\alpha \suchthat (\dfp[\alpha])^{K_\alpha}(\gleadstoinv[\alpha](\phi)) = \emptyset$ and $K_\beta \suchthat (\dfp[\beta])^{K_\beta}(\gleadstoinv[\beta](¬\phi)) = \emptyset$ by definition of empirical theories, this process must end with a falsifying instance of $\alpha$ or $\beta$.
 \end{proof}
 
-\begin{remark}
-	Make $\gamma$ able to answer directly $\ar_1$ when $\delta$ starts the protocol. 
-
-	Using $\zar$, this can be done as follows. Assume $\zar \notin \allargs$. Define $\ar_1 \gbeats \zar$ iff $\ar_1 \in \allargs \setminus \gleadstoinv(\phi)$ (the non-initial arguments). Demand that $\dbeats$ cover all non-initial arguments. (Note that $\ar'_0 \gbeats \ar_0$ seems possible (thus, an attacker not in $\allargs \setminus \gleadstoinv(\phi)$), and $\zar$ not attacking anything but in $\allargs \setminus \gleadstoinv(\phi)$ is possible, where $\zar$ designates an argument that says nothing.) Remove the $\alldargs$ concept, so as to be able to use directly the defensors against the non-initial arguments (alternative: extend $+$ to allow $\zar + \ard$). Extend $\histend$ with $\zar$ to have $\zar \in \histend$. Define $\gargs = (\dip)^k(\gleadstoinv(\Phi) \cup \di(\zar))$.
-	
-	It can also be done without using $\zar$, as follows. Demand that $\dbeats$ cover all non-initial arguments. Define $\di(\zar) = \set{\dbeatsinv(\args) \suchthat \exists \hist \in \allhist \suchthat \emptyset ≠ \args = \allargs \setminus \gbeatsinv(\Phi) \cap \hist \land \hist \nileadstost \phi}$. Define $\gargs = (\dip)^k(\gleadstoinv(\Phi) \cup \di(\zar))$.
-\end{remark}
-
 \subsection{TODO, about comparisons}
 Count the number of tests; assume simpler theory.
 
