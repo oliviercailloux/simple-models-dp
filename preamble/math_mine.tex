@@ -22,7 +22,8 @@
 %%Normative theory
 \NewDocumentCommand{\allargs}{}{\mathscr{S}}
 \NewDocumentCommand{\args}{}{S}
-\NewDocumentCommand{\ard}{O{2}}{s^\mathit{d}_{#1}}
+\NewDocumentCommand{\ard}{O{}}{s^\mathit{d}_{#1}}
+\NewDocumentCommand{\ardp}{O{}}{s^{\mathit{d}\prime}_{#1}}
 \NewDocumentCommand{\ar}{o}{%
 	\IfValueTF{#1}{%
 		s^{(#1)}%

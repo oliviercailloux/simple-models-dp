@@ -141,7 +141,7 @@ ${\gbeats} \subseteq \allargs × \allargs$ and is irreflexive,
 ${\dbeats} \subseteq \alldargs × \allargs$ and is injective and its range includes $\gbeatsinv(\allargs)$ (thus $\forall \ar_1 \suchthat [\exists \ar_0 \suchthat \ar_1 \gbeats \ar_0]$: $\dbeatsinv(\ar_1)$ is a singleton). 
 Define $\df: \allargs → \powersetz{\allargs}$ as $\df = \dbeatsinv \circ \gbeatsinv$.
 Given $\ar \in \allargs$, $\df(\ar)$ denotes the \emph{fragments defending $\ar$}. 
-In other words, given $\ard \in \dargs$ and $\ar_0 \in \allargs$, $\ar_2 \in \df(\ar_0)$ iff $\exists \ar_1 \in \allargs \suchthat \ar_2 \dbeats \ar_1 \gbeats \ar_0$.
+In other words, given $\ard \in \dargs$ and $\ar_0 \in \allargs$, $\ard \in \df(\ar_0)$ iff $\exists \ar_1 \in \allargs \suchthat \ard \dbeats \ar_1 \gbeats \ar_0$.
 A \emph{coalition defending $\ar$} is any element of $\powersetz{\df(\ar)}$.
 The symbol $+$ in an empirical theory stands for a function $+: \bigcup_{\ar \in \allargs}(\set{s} × \powersetz{\df(\ar)}) → \allargs$.
 Given any $\ar \in \allargs$ and $\emptyset ≠ \dargs \subseteq \df(\ar)$, $\ar + \dargs$ means $+(\ar, \dargs)$. 
@@ -158,66 +158,31 @@ Given $i \in I, \phi \in \Phi, \ar \in \allargs$ and $\args \subseteq \gbeatsinv
 Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the $\di(\ar) \subseteq \powersetz{\alldargs}$ as $\di(\ar) = \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar) \land \args \ibeats \ar}$. It represents the coalitions of fragments required to defend $\ar$ (when arguing for $\phi$) from the point of view of $i$. 
 The following proposition shows that these coalitions can be added to $\ar$, and will be useful for other results.
 \begin{proposition}
-	$\dargs \in \di(\ar) ⇒ \emptyset ≠ \dargs \subseteq \df(\ar)$.
+	$\forall i \in I, \phi \in \gPhi, \ar \in \allargs: \dargs \in \di(\ar) ⇒ \emptyset ≠ \dargs \subseteq \df(\ar)$.
 \end{proposition}
 \begin{proof}
-	Let us prove that $\set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar)} = \powersetz{\df(\ar)}$, from which the conclusion follows, and which can be useful to clarify the relationship between $\di(\ar)$ and $\df(\ar)$. Note that by definition of $\df(\ar)$, $\dargs \in \powersetz{\df(\ar)}$ iff $\emptyset ≠ \dargs \subseteq \dbeatsinv(\gbeatsinv(\ar))$.
-
-	First (from left to right), given any $\args \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0)$, define $\dargs = \dbeatsinv(\args)$, and let us show that $\dargs ≠ \emptyset$ and that $\dargs \subseteq \dbeatsinv(\gbeatsinv(\ar))$. 
-	Indeed, as $\args ≠ \emptyset$, we can pick some $\ar_1 \in \args$, from which follows that $\ar_1 \gbeats \ar_0$, hence, for some $\ard \in \alldargs$, $\ard \dbeats \ar_1$ (as mandated by ${\dbeats}$), thus $\ard \in \dargs$, hence $\dargs ≠ \emptyset$. Also, because $\args \subseteq \gbeatsinv(\ar)$, $\dbeatsinv(\args) \subseteq \dbeatsinv(\gbeatsinv(\ar))$. 
-	
-	Second (from right to left), $\emptyset ≠ \dargs \subseteq \dbeatsinv(\gbeatsinv(\ar)) ⇒ \exists \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0) \suchthat \dbeatsinv(\args) = \dargs$. 
-	Defining $\args = {\dbeats}(\dargs) \cap \gbeatsinv(\ar_0)$, we see that $\dbeatsinv(\args) = \dargs$: considering any $\ard \in \dargs$, $\ard \dbeats \ar_1 \gbeats \ar_0$ for some $\ar_1 \in \allargs$, thus, $\ar_1 \in \args$, thus, $\ard \in \dbeatsinv(\args)$; and considering any $\ard \in \dbeatsinv(\args)$, $\ard \dbeats \ar_1 \in \args$, $\ar_1 \gbeats \ar_0$, thus, $\ard \in \dargs$ \commentOC{This is incomplete, should mention injectivity.}. 
-	That $\args ≠ \emptyset$ follows from $\dargs ≠ \emptyset$.
-\end{proof}
-
-\begin{proof}[Alternative proof]
-	Given $\args, \dargs, \ar$ such that $\emptyset ≠ \args = {\dbeats}(\dargs) \cap \gbeatsinv(\ar)$:
-	\begin{equation}
-		\dbeatsinv(\args) = \dargs ⇔ \emptyset ≠ \dargs \subseteq \dbeatsinv(\gbeatsinv(\ar)).
-	\end{equation}
-
-	LHS equiv $\ard \in \dargs ⇔ \exists \ar_1 \in \args \suchthat \ard \dbeats \ar_1$.
-	Using $\args \subseteq \gbeatsinv(\ar)$, it is also equivalent to: $\ard \in \dargs ⇔ \exists \ar_1 \in \args \suchthat \ard \dbeats \ar_1 \gbeats \ar$.
-	
-	RHS equiv $\ard \in \dargs ⇒ \exists \ar_1 \in \allargs \suchthat \ard \dbeats \ar_1 \gbeats \ar$.
-	
-	LHS implies RHS. Obvious.
-	
-	RHS implies LHS. First, $\dargs \subseteq \dbeatsinv(\gbeatsinv(\ar))$ (by RHS), and $\ard \in \dbeatsinv(\gbeatsinv(\ar)) ⇔ \exists \ar_1 \in \gbeatsinv(\ar) \cap {\dbeats}(\ard) ⇔ \exists \ar_1 \in \gbeatsinv(\ar) \cap {\dbeats}(\dargs) \suchthat \ard \dbeats \ar_1 ⇔ \ard \in \dbeatsinv(\args)$.
-	
-	Second, $\exists \ar_1 \in \args \suchthat \ard \dbeats \ar_1 ⇒ \ard \in \dargs$: it follows from $\args \subseteq \dbeats(\dargs)$ and injectivity: $\ar_1 \in \args$ thus $\ar_1 \in {\dbeats}(\dargs)$ thus $\exists \ar_2 \in \dargs \suchthat \ar_2 \dbeats \ar_1$, and $\ar_2 = \ard$ by injectivity, thus $\ard \in \dargs$.
-	
-	Finally, prove that $\emptyset ≠ \dargs \subseteq \dbeatsinv(\gbeatsinv(\ar)) ⇔ \exists \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0) \suchthat \dbeatsinv(\args) = \dargs$.
-	\commentOC{This equivalence is true, but the proof above might be insufficient: it only proves that RHS ⇒ LHS when $\args$ is chosen as defined, but it could be that sometimes $\args$ can be chosen differently, so that $\dbeatsinv(\args) = \dargs$ but $\args ≠ {\dbeats}(\dargs)$.}
-\end{proof}
-
-\begin{proof}[More promising]
+	Let us prove that $\forall \ar \in \allargs: \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar)} = \powersetz{\df(\ar)}$, from which the conclusion follows, and which can be useful to clarify the relationship between $\di(\ar)$ and $\df(\ar)$. Note that by definition of $\df(\ar)$, $\dargs \in \powersetz{\df(\ar)}$ iff $\emptyset ≠ \dargs \subseteq \dbeatsinv(\gbeatsinv(\ar))$. 
+	Thus, we have to prove that
 	$\forall \dargs \subseteq \allargs$:
 	\begin{equation}
 		\exists \emptyset ≠ \args \subseteq \gbeatsinv(\ar) \suchthat \dbeatsinv(\args) = \dargs ⇔ \emptyset ≠ \dargs \subseteq \dbeatsinv(\gbeatsinv(\ar)).
 	\end{equation}
-	
-	LHS implies RHS. Prove that $\emptyset ≠ \dbeatsinv(\args) \subseteq \dbeatsinv(\gbeatsinv(\ar))$. $\args \subseteq \gbeatsinv(\ar)$, thus, $\dbeatsinv(\args) \subseteq \dbeatsinv(\gbeatsinv(\ar))$. Also, $\args ≠ \emptyset$, thus $\dbeatsinv(\args) ≠ \emptyset$, as mandated by $\dbeats$, by definition of empirical theories.
-	
-	RHS implies LHS. Define $\args = {\dbeats}(\dargs) \cap \gbeatsinv(\ar)$ and prove that $\args ≠ \emptyset$ and $\dbeatsinv(\args) = \dargs$.
-	
-	First, $\dargs \subseteq \dbeatsinv(\args)$. That is because $\dbeatsinv(\gbeatsinv(\ar)) = \dbeatsinv(\args)$. This can be seen by: $\ard \in \dbeatsinv(\gbeatsinv(\ar)) ⇔ \exists \ar_1 \in \gbeatsinv(\ar) \cap {\dbeats}(\ard) ⇔ \exists \ar_1 \in \gbeatsinv(\ar) \cap {\dbeats}(\dargs) \suchthat \ard \dbeats \ar_1 ⇔ \ard \in \dbeatsinv(\args)$.
 
-	Second, $\dbeatsinv(\args) \subseteq \dargs$. That is because $\dbeatsinv(\args) \subseteq \dbeatsinv({\dbeats}(\dargs)) \subseteq \dargs$, by injectivity of $\dbeats$.
+	First (from left to right), given any $\args \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0) \land \dargs = \dbeatsinv(\args)$, let us show that $\dargs ≠ \emptyset$ and that $\dargs \subseteq \dbeatsinv(\gbeatsinv(\ar))$. 
+	Indeed, as $\args ≠ \emptyset$, we can pick some $\ar_1 \in \args$, from which follows that $\ar_1 \gbeats \ar_0$, hence, for some $\ard \in \alldargs$, $\ard \dbeats \ar_1$ (as mandated by ${\dbeats}$), thus $\ard \in \dargs$, hence $\dargs ≠ \emptyset$. Also, because $\args \subseteq \gbeatsinv(\ar)$, $\dbeatsinv(\args) \subseteq \dbeatsinv(\gbeatsinv(\ar))$. 
 	
-	RHS implies LHS (alt). RHS implies $\dargs \subseteq \dbeatsinv(\gbeatsinv(\ar))$, which implies that $\dbeatsinv({\dbeats}(\dargs)) = \dargs$, by injectivity of $\dbeats$, and $\dbeatsinv({\dbeats}(\dargs)) = \dbeatsinv({\dbeats}(\dargs) \cap \gbeatsinv(\ar))$. 
-	Therefore, $\dargs = \dbeatsinv({\dbeats}(\dargs)) = \dbeatsinv({\dbeats}(\dargs) \cap \gbeatsinv(\ar)) = \dbeatsinv(\args)$.
+	Second (from right to left), let us show that $\emptyset ≠ \dargs \subseteq \dbeatsinv(\gbeatsinv(\ar)) ⇒ \exists \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0) \suchthat \dbeatsinv(\args) = \dargs$. 
+	Defining $\args = {\dbeats}(\dargs) \cap \gbeatsinv(\ar_0)$, we see that $\dbeatsinv(\args) = \dargs$: considering any $\ard \in \dargs$, $\ard \dbeats \ar_1 \gbeats \ar_0$ for some $\ar_1 \in \allargs$, thus, $\ar_1 \in \args$, thus, $\ard \in \dbeatsinv(\args)$; and considering any $\ar' \in \dbeatsinv(\args)$, $\ar' \dbeats \ar_1$ for some $\ar_1 \in \args$, thus $\ar_1 \gbeats \ar_0$, thus, $\ar_1 \in {\dbeats}(\dargs)$, thus $\ard \dbeats \ar_1$ for some $\ard \in \dargs$, and by injectivity  of $\dargs$, $\ar' = \ard$, whence $\ar' \in \dargs$. 
+	That $\args ≠ \emptyset$ follows from $\dargs ≠ \emptyset$.
 \end{proof}
 
-Observe that $\di(\ar) \subseteq \df(\ar)$.
-Define $\dip \subseteq \allargs × \allargs$ as $\dip(\ar) = \set{(\ar + \dargs) \suchthat \dargs \in \di(\ar)}$.
+Given $\ar \in \allargs$, define $\dip(\ar) = \set{(\ar + \dargs) \suchthat \dargs \in \di(\ar)}$, representing the subset of defenders of $\ar$ useful for proving $\phi$ from the point of view of $i$.
 Given $i \in I, \phi \in \gPhi$, define $\gargs \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\phi))$.
 
 I write that $\ar$ \emph{$i$-defends} $\phi$ to mean that $\emptyset \nibeats \ar$. 
 
 \begin{definition}[Convincingness]
-	$\forall i \in I, \phi \in \gPhi, \ar \in \gargs: \ar$ $i$-defends $\phi$.
+	An empirical theory is \emph{convincing} iff $\forall i \in I, \phi \in \gPhi, \ar \in \gargs: \ar$ $i$-defends $\phi$.
 \end{definition}
 
 A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hist, \ar) \in I × \gPhi × \allhist × \gargs$ such that $\gbeatsinv(\ar) \cap \hist = \emptyset \land \ar \in \histend \land \hist \nileadstost \phi$. 
