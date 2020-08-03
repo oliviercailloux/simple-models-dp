@@ -158,6 +158,7 @@ Given $i \in I, \phi \in \Phi, \ar \in \allargs$ and $\args \subseteq \gbeatsinv
 Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the $\di(\ar) \subseteq \powersetz{\alldargs}$ as $\di(\ar) = \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar) \land \args \ibeats \ar}$. It represents the coalitions of fragments required to defend $\ar$ (when arguing for $\phi$) from the point of view of $i$. 
 The following proposition shows that these coalitions can be added to $\ar$, and will be useful for other results.
 \begin{proposition}
+	\label{th:indf}
 	$\forall i \in I, \phi \in \gPhi, \ar \in \allargs: \dargs \in \di(\ar) ⇒ \emptyset ≠ \dargs \subseteq \df(\ar)$.
 \end{proposition}
 \begin{proof}
@@ -199,34 +200,31 @@ I also write that $(i, \phi, \hist, \ar)$ falsifies $\gamma$ to mean that it is 
 	An empirical theory is \emph{valid} iff $\forall i \in I, \phi \in \gPhi: [\phi \in \iPhi \land ¬\phi \notin \iPhi]$.
 \end{definition}
 
+\begin{lemma}
+	\label{th:produce}
+	Given $\phi \in \gPhi$, $\ar_0 \in \gargs$ that $i$-defends $\phi$, and $\hist \nileadstost \phi$ with $\ar_0 \in \histend$, define $\args =  \gbeatsinv(\ar_0) \cap \hist$, $\dargs = \dbeatsinv(\args)$, and $\ar_2 = \ar_0 + \dargs$. Then, $\ar_2 \in \gargs \cap \dfp(\ar_0)$.
+\end{lemma}
+\begin{proof}
+	By definition of $\ibeats$, $\args \ibeats \ar_0$.
+	Also, because $\ar_0$ $i$-defends $\phi$, $\args ≠ \emptyset$. 
+	Therefore, $\dargs \in \di(\ar_0)$.
+	It follows that $\dargs \in \df(\ar_0)$, by \cref{th:indf}, and that $\ar_2 \in \dfp(\ar_0)$, by definition of $\dfp$. It also follows that $\ar_2 \in \dip(\ar_0)$, hence, that $\ar_2 \in \gargs$.
+\end{proof}
+
 \begin{theorem}
 	A normatively adequate and convincing empirical theory is valid.
 \end{theorem}
 \begin{proof}
-	Given any $i \in I$ and $\phi \in \gPhi$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstost \phi$; the conclusion then follows thanks to normative adequacy. 
+	Given any $i \in I$ and $\phi \in \gPhi$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstost \phi$; the conclusion then follows thanks to simple normative adequacy (equivalent to normative adequacy thanks to \cref{th:normeqsnorm}). 
 	
-	Lemma: if $\ar_0$ $i$-defends $\phi$, then $\ar_0 \nileadstost \phi ⇒ \exists \dargs \in \di(\ar_0)$.
-	Consider any $\ar_0 \in \allargs$ such that $\ar_0$ $i$-defends $\phi$ and $\ar_0 \nileadstost \phi$. 
-	By definition, $\ar_0 \nileadstost \phi$ means that $\exists \hist \in \allhist \suchthat \ar_0 \in \histend \land \hist \nileadstost \phi$.
-	Define $\args = \gbeatsinv(\ar_0) \cap \hist$. Thus, $\args \ibeats \ar_0$.
-	Also, because $\ar_0$ $i$-defends $\phi$, $\args ≠ \emptyset$. 
-	Therefore, $\dbeatsinv(\args) \in \di(\ar_0)$.
-	
-	From this lemma, using convincingness, we deduce that $[\ar_0 \in \gargs \land \ar_0 \nileadstost \phi] ⇒ \exists \ar_2 \in \gargs \cap \dfp(\ar_0)$. That is because $\ar_0 \in \gargs ⇒ \ar_0$ $i$-defends $\phi$, by convincingness, and, considering any $\dargs \in \di(\ar_0)$ and $\ar_2 = \ar_0 + \dargs$, $\ar_2 \in \gargs$ by definition of $\gargs$ and $\ar_2 \in \dfp(\ar_0)$ because $\dargs \in \di(\ar_0) ⇒ \dargs \in \df(\ar_0)$.
+	Lemma: $[\ar_0 \in \gargs \land \ar_0 \nileadstost \phi] ⇒ \exists \ar_2 \in \gargs \cap \dfp(\ar_0)$. That is because $\ar_0 \in \gargs ⇒ \ar_0$ $i$-defends $\phi$, by convincingness, and,
+	by definition, $\ar_0 \nileadstost \phi$ means that $\exists \hist \in \allhist \suchthat \ar_0 \in \histend \land \hist \nileadstost \phi$; \cref{th:produce} thus applies.
 
-	To prove the theorem, build a finite sequence of arguments in $\gargs$, starting with any $\ar_0 \in \gleadstoinv(\phi)$. Observe that $\ar_0 \in \gargs$. Given $k \in 2\N$, if $\ar_k \nileadstost \phi$, define $\ar_{k + 2}$ using the deduction following the lemma, obtaining $\ar_{k + 2} \in \gargs \cap (\dfp)^\frac{k + 2}{2}(\ar_0)$. 
+	To prove the theorem, build a finite sequence of arguments in $\gargs$, starting with any $\ar_0 \in \gleadstoinv(\phi)$. Observe that $\ar_0 \in \gargs$. Given $k \in 2\N$, if $\ar_k \nileadstost \phi$, define $\ar_{k + 2}$ using the above lemma, obtaining $\ar_{k + 2} \in \gargs \cap (\dfp)^\frac{k + 2}{2}(\ar_0)$. Continue applying the lemma and producing further arguments as long as $\ar_k \nileadstost \phi$.
 	By definition of an empirical theory, $\exists k \in \N \suchthat (\dfp)^k(\ar_0) = \emptyset$, thus, this process ends with some $\ar$ such that $\ar \ileadstost \phi$.
 \end{proof}
 
 \subsection{Effectively comparing models}
-\begin{lemma}
-	\label{th:produce}
-	Given $\phi \in \Phi$, $\ar_0 \in \allargs$ that $i$-defends $\phi$, and $\hist \nileadstost \phi$ with $\ar_0 \in \histend$, define $\args =  \gbeatsinv(\ar_0) \cap \hist$, $\dargs = \dbeatsinv(\args)$, and $\ar_2 = \ar_0 + \dargs$. Then, $\ar_2 \in \gargs \cap \dfp(\ar_0)$.
-\end{lemma}
-\begin{proof}
-	Because $\dargs \in \di(\ar_0)$.
-\end{proof}
-
 Given $\phi \in \Phi$ and two empirical theories $\gamma$ and $\delta$ for a given normative theory, say that they disagree about $\phi$ iff $\phi \in \gPhi[\gamma] \land ¬\phi \in \gPhi[\delta]$. Say that they are incompatible iff there is at least one $\phi \in \Phi$ that they disagree about.
 
 Given $\phi \in \Phi$, $\hist \in \allhist$ and $\ar_\gamma \in \gargs$, say that $(\hist, \ar_\gamma)$ challenges $(\gamma, \phi)$ iff $\hist \nileadstost \phi$ and $\ar_\gamma \in \histend$.
