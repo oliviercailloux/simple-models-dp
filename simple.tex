@@ -36,10 +36,11 @@
 \maketitle
 
 \begin{abstract}
-	TODO
+	TODO: abstract
 \end{abstract}
 
 \section{Motivation}
+Talk about \citet{von_neumann_theory_2004}.
 
 \section{Normative theories}
 \subsection{Definition}
@@ -276,7 +277,38 @@ Count the number of tests; assume simpler theory.
 
 Indicate sufficient hypothesis for ensuring that if a model resisted every attack, it is valid. Thus, that searching for falsification instances in the tested ones is enough.
 
-\section{LS}
+\section{Preferences}
+\subsection{Preferences}
+Let $\allalts$ be a set of alternatives. Define $\Phi_\allalts$ as follows. Let $\phi_{a > b} \in \iPhi$ represent $i$ deliberately preferring strictly $a$ to $b$. Let $\phi_{a ≥ b} \in \iPhi$ represent $i$ deliberately preferring weakly $a$ to $b$. Define $¬\phi_{a > b} = \phi_{b ≥ a}$.
+
+A normative theory of preferences about $\allalts$ is a theory about $\Phi_\allalts$: a tuple $(\allprops, ¬, \allargs, I, (\ileadsto)_{i \in I})$, with $\allprops$ defined as $\allprops_\allalts$, $¬$ defined as above.
+
+Define $≥_i$, the deliberated preference of $i$, as $a ≥_i b$ iff $\phi_{a ≥ b} \in \iPhi$. 
+
+Given an empirical theory for a normative theory of preferences, say that it claims a complete preference iff $\forall a, b \in \allalts: \phi_{a ≥ b} \in \gPhi \lor \phi_{b ≥ a} \in \gPhi$. Similarly, it claims a transitive preference iff $\forall a, b, c \in \allalts: \phi_{a ≥ b} \in \gPhi \land \phi_{b ≥ c} \in \gPhi ⇒ \phi_{a ≥ c} \in \gPhi$. Observe that establishing whether an empirical theory claims a complete or transitive preference can be determined a priori (without empirical observations).
+
+Given a bundle $B \subseteq \allalts$ and $i \in I$, $b \in B$ is a deliberated preferred choice for $i$ among $B$ iff $\forall b' \in B: b ≥_i b'$.
+
+The next result follows from these definitions and from classical results about choice functions and complete, transitive preferences. \TODO{Be more precise.}
+ \begin{theorem}
+ 	If an empirical theory for a normatively adequate normative theory of preference claims a complete and transitive preference and is valid, then, given any bundle $\emptyset ≠ B \subseteq \allalts$, some $b \in B$ is a deliberated preferred choice for $i$ among $B$.
+ \end{theorem}
+ 
+Given $i$ and $\phi_{a > b}$, $\hist \ileadsto \phi$ iff $i$, after having been presented $\ar$, is asked to choose among $a$, $b$, or declare she is indifferent if permitted; and $i$ chooses $a$. And $\hist \ileadsto \phi_{a ≥ b}$ iff $i$ does not choose $b$ (thus chooses $a$ or declare she is indifferent if permitted). Note that $\hist \ileadsto \phi ⇔ \hist \nileadsto ¬\phi$.
+
+\subsection{Satisfaction}
+Consider a normative theory of preferences about a given set of alternatives $\allalts$. Let $\gamma$ be the following empirical theory for that normative theory.
+
+Define $C$ a set of criteria, functions $c: \allalts → \R$ measuring the performances of the alternatives according to some point of view. Let $t: \R^C$ be a set of thresholds, thus, consisting of one real threshold $t_c \in \R$ per criterion. Say that $a \in \allalts$ is satisficing iff $\forall c \in C: c(a) ≥ t_c$.
+
+The theory $\gamma$ says that $i$ is a satisficer using some defined criteria $C$ and thresholds $t = (t_c)_{c \in C}$. The set $\gPhi$ is defined as $\set{\phi_{a > b} \suchthat a \text{ is satisficing and $b$ is not}}$. Given $a, b \in \allalts$, with $a$ satisficing and $b$ not, define $\ar_{a > b}$ as the text: “$a$ has performance $c_1(a)$ on criterion $c_1$, and it is reasonable to consider that having at least $t_{c_1}$ is satisfying enough from the point of view captured by $c_1$, (… same phrase for the other criteria…), therefore, it is a fully satisfactory alternative; whereas $b$ is not satisfactory on criteria (… enumeration of the criteria such that $c(b) < t_{c}$).” 
+Define ${\gleadsto} = \set{\ar_{a > b}, \phi_{a > b}) \suchthat a \text{ is satisficing and $b$ is not}}$.
+Define $\alldargs = \gbeats = \dbeats = {+} = \emptyset$: the theory does not consider any counter-argument as potentially damaging. 
+This defines the theory $(\gleadsto, \gbeats, \alldargs, \dbeats, +)$.
+
+Observe that $\gamma$ does not claim a complete preference, but, whenever there is exactly one satisficing alternative in $\allalts$, it still determines a deliberated preferred choice for $i$ among $\allalts$.
+
+\subsection{LS}
 %Idea: argue for P > $.
 %4 ways:
 %- choose
@@ -313,7 +345,7 @@ Define $+$ as the simple concatenation of its arguments.
 
 Then, define $\gbeats = \set{(\ar_1, \ar_0), (\ar'_1, \ar_0), (\ar'_1, \ar_2), (\ar_1, \ar'_2)}$, $\dbeats = \set{(\ar_2, \ar_1), (\ar'_2, \ar'_1)}$.
 
-TODO consider using only $\phi$ being sure, and dropping everything related to possibility.
+\TODO{Consider using only $\phi$ being sure, and dropping everything related to possibility.}
 
 \section{Next}
 Define a way of saying “we never need this argument”: either the model can prove phi without s0, or if it can’t, then phi does not hold, because I can play s1 against it. 
