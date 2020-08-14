@@ -22,7 +22,7 @@
 		\vbadness=1300
 
 \begin{document}
-\title{Empirical normative theories}
+\title{Toward theories of deliberated preferences}
 \author{Olivier Cailloux}
 \affil{Université Paris-Dauphine, PSL Research University, CNRS, LAMSADE, 75016 PARIS, FRANCE\\
 	\href{mailto:olivier.cailloux@dauphine.fr}{olivier.cailloux@dauphine.fr}
@@ -39,22 +39,141 @@
 	TODO: abstract
 \end{abstract}
 
-\section{Motivation}
-Talk about \citet{von_neumann_theory_2004}.
+\section{Motivation} 
+\TODO{“Before asking whether agents want to revise their choices or not, both rival theories should be proposed.” Guala 2000. My approach can be qualified as a debiasing technique (Mitchell, Libertarian paternalism is an oxymoron. Nw UL Rev 99:1245–1817, 2005). Mitchell observes that “in many of those surveys that governments use in order to inform social policy there are not enough resources (time and money) in order to reach the stage where preferences are not labile” (exact quote?).} 
+
+It has escaped nobody’s attention that 
+studying reflective preferences, in supplement to shallow preferences, is an important endeavor for economics: we want to recommend to individual decision makers; we want to adopt optimization criteria for society, and this ought not to merely faithfully reproduce unreflectful behavior. This is one important difference between the normative and the (inappropriately called, as will be seen) “descriptive” approach in economics. As \citet{hausman_preference_1994} illustrate with an example of a person drinking a fatal poison while erroneously thinking that it is water, shallow preferences are not sufficient to inform normative economics.
+Yet, classical methods to obtain preference models in economics are either formally defined on the basis of observable data that do not describe reflective preferences, or are obtained by other means than observable preferential data and systematic reproducible formal procedures. 
+
+This article is interested in defining theories of decision making based on another kind of observable data, namely, the reactions of decision makers to arguments. This permits to overcome a current important limitation of normative approaches, that of being not empirical (in a sense that will be developed below).
+
+By reflective preferences (of an individual), I mean here preferences that represent informed, pondered decisions, that would be taken after due consideration by the individual. Reflective preferences can be contrasted to shallow preferences, those that \citet[p.\ 16]{von_neumann_theory_2004} describe as “intuitive”, as originating from an “immediate sensation” (cited in \citet{fishburn_retrospective_1989}).
+This distinction draws on our capacity, as human beings, to think about our shallow preferences and consider some of them as mistaken \citep{frankfurt_freedom_1971}. A famous example of such a situation is the one of \citet[pp.\ 101--103]{savage_foundations_1972} having realized, after due consideration, that his initial declared preference in a decision problem presented by \citet{allais_so-called_1979} was mistaken.
+
+It is well known that shallow preferences do not always match reflective ones.
+Indeed, forming reflective preferences is recognised as a difficult problem in many decision problems, contrary, by definition, to shallow preferences. For example, \citet[p.\ 6]{colell_microeconomic_1995} write, when presenting the preference relation that is the basis for most of their famous book about Microeconomic theory: “Introspection quickly reveals how hard it is to evaluate alternatives that are far from the realm of common experience. It takes work and serious reflection to find out one’s own preferences.” 
+It can be expected that some behavior highlighted by psychologists \citet{lichtenstein_construction_2006}, such as framing effects, would be rejected by the individuals themselves when pondering their decisions. 
+
+That reflective preferences are relevant to economic theory, in supplement to shallow preferences, is also illustrated by the general requirement of transitivity of preferences for economic theory, which is reasonably expected from reflective rather than from shallow preferences. As an illustration, \citet[p.\ 7]{colell_microeconomic_1995} go on writing: “the transitivity assumption can be hard to satisfy when evaluating alternatives far from common experience. As compared to the completeness property, however, it is also more fundamental in the sense that substantial portions of economic theory would not survive if economic agents could not be assumed to have transitive preferences.” 
+
+Let me state how the approach proposed here differs from those proposed in the literature, and what problems it aims at solving.
+
+\subsection{Existing approaches for capturing reflective preferences}
+\subsubsection{Laundering preferences}
+An approach much discussed recently is the one of laundering preferences, also called preference purification \citep{bernheim_beyond_2009, rubinstein_eliciting_2011, infante_preference_2016}: having collected shallow preference data (from the field or from interviews), laundering preferences consists in transforming them, using a formal process, in such a way that they satisfy axioms generally considered as required by rationality, or keeping only preference data collected in some situations considered appropriate to determine welfare-relevant preferences. For example, \citet{bleichrodt_making_2001} transform observed preferences in order to obtain a classical Expected Utility model; \citet{bernheim_beyond_2009} propose to exclude situations where the individual seems (by objective criteria) unable to process information considered relevant. 
+
+This creates a risk of mis-representing the reflective preferences of the individual: not only is it not known whether the individual would reflectively want to adhere to these axioms and, if so, how she would reflectively adapt her preferences when her shallow preferences exhibit related inconsistencies; but it is not even discussed how in principle this could be known. As a result, a theory postulating constraints on individual’s behavior on the basis of rational requirements is subject to the criticism addressed by \citet[p.\ 228]{dold_toward_2018} to libertarian paternalism, in that it “effectively denies the possibility that deviations from rational choice might be something to be acknowledged as reasonable”. 
+That this is an important methodological problem is sometimes recognized by authors adopting this approach. \Citet{bleichrodt_making_2001}, for example, state that laundering require controversial assumptions (p. 1500), and recommend it only as a last resort, recommending discussing with the decision-maker whenever possible to elicit her reflective preferences (p. 1499). Note that nudging \citep{thaler_nudge_2009} creates a similar problem: we have to guess what the individual would like if he thought hard about the decision problem, was well-informed, and actively worked against the psychological features he himself does not consider adequate for good decision making. \TODO{Comment about akrasia: we may want to correct for features that the individual herself can’t correct.}  
+
+Some axioms arguably seem innocuous. For example, Pareto-dominance requires that $a$ be weakly preferred to $b$ if $a$ is at least as good as $b$ on every point of view that matter. However, as has been amply remarked, what is required is not merely the correctness of the axiom in the abstract, but its correct application to the decision situation. Has a point of view that the decision maker considers relevant been forgotten, leading the analyst to mistakenly think that $a$ Pareto-dominates $b$, and the seemingly impeccable conclusion that $a$ ought to be preferred to $b$ turns incorrect. \citet{sen_maximisation_1997} illustrated this reasoning (with another axiom) with his well-known example of a person picking her second most-preferred fruit from a basket out of politeness reasons, which could be considered irrational by an analyst blindly applying WARP. As \citet[p.\ 40]{lecouteux_reconciling_2015} puts it (citing \citet[p.\ 13]{bacharach_beyond_2006} for the part in italics), and as analyzed by \citet{sen_information_1986, sen_internal_1993}, “whether a decision-theoretic principle of rationality has been violated \emph{depends on how we, the theorists, ‘cut up the world’}” \TODO{Find that book}.
+
+\subsubsection{Informal deliberation}
+Another path to obtain reflectful preferences has been followed: the one of deliberation, an umbrella term by which I designate processes, either, involving discussions between an analyst and a decision-maker while querying her preferences in view of building a formal model of it \citep{raiffa_back_1985, keeney_decisions_1993, roy_multicriteria_1996, belton_multiple_2002}, or involving group discussions, with presentations from experts to an audience and internal deliberation phases \citep{fishkin_when_2011}, aiming to obtain well-informed preferences. 
+
+A major problem of these techniques is that they are not easily reproducible, and that the resulting preferences elicited from the subjects might reflect properties of the personalities of the intervening experts or group-dynamic effects rather than true reflective preferences of the individuals \commentOCf{Yves, as-tu une référence pour moi ?}. This problem is exacerbated by the fact that psychologists have shown that apparent coherence can appear, that is, preferences that do not violate axioms usually considered as representing rationality, although some framing effect may be at play that result in the apparently coherent preferences to arguably not represent reflective preferences \citep{ariely_predictably_2010}. It also remains to be clarified how to check on a principled, systematic basis, whether all relevant arguments have been presented faithfully. Comfronted with (possibly self-designated) experts with enough assertiveness, a decision-maker can be convinced to follow principles of decision-making that several experts in the field of decision-theory consider incorrect. As an illustration, after discussing the weaknesses of the \ac{AHP}, \citet[p.\ 53]{howard_foundations_2007} write: “Why, then, do inferior processes find favor with decision makers? The answer is that they do not force you to think very hard or to think in new ways.”
+Beyond the controversial \ac{AHP}, famous decision analysts have voiced disagreements with normative theories of decision making \citep{ellsberg_risk_1961, allais_so-called_1979} that are however generally applied in the field. 
+\Citet[p.\ 669]{ellsberg_risk_1961} concluded his influential article as follows: “[In some situations, for some people,] the Bayesian or Savage approach gives [...] bad advice. [Some people] act in conflict with the axioms deliberately, without apology, because it seems to them the sensible way to behave. Are they clearly mistaken?” 
+This rethorical question illustrates the need of systematic procedures able to determine whether decision-makers, when confronted with the relevant arguments, accept the soundness of the principles on whose basis the recommendation rests (this has been somewhat explored, but not systematically, for current lack of a systematic way of confronting decision makers to arguments \citep{slovic_who_1974, stanovich_discrepancies_1999}). 
+
+Different analysts, using different methods and different axioms as their favorite conception of rational decision-making, will obtain possibly contradictory conclusions, “elicited” from the decision-makers who hire them. Some analysts admit this possibility and do not consider it to be a problem.
+For example, \citet[p.\ 214]{roy_comparison_1995} write: “In our view, these inevitable disagreements do not imply that decision-aid is useless but simply that a single problem may have several valid responses. Given that two different decision-aid models cannot be implemented in the same decision process, the decision-maker must be conscious of the qualitative choices implied by the different models – often conveying the analysts’ own ethical choices – before coming to personal conclusions on the choice to be made. In this domain, the many different approaches reflect in our view the complexity of the researcher's task much more than a scientific weakness.”
+%Some analysts claim that the value of such interactions between decision-makers and analysts is the fact that it made decision-makers think hard about the problem, and not the resulting preference model. 
+Although being an important insight about the (likely vain) hope of determining a single correct recommendation in many complex decision situations (about which more below), this answer does not address the problem that some principles of decision making may be wrong guides in some situations, possibly including some principles that are commonly applied in the field, hence the need of principled ways of discriminating them.
+
+The prescriptive approach to decision making \citep{bell_decision_1988} has been proposed (in supplement to the normative one and the descriptive one), which insists on incorporating the findings of psychologists about decision maker’s weaknesses of reasoning in the procedures leading to recommendations. I do not discuss this approach specifically here, because its methods can be considered to fall into the two categories I have described here above when it aims at obtaining reflective preference models. When considering normative economics broadly, as I do here, as the methods aiming for valid prescription for an individual or a group, prescriptive approaches are a part of normative economics.
+
+\TODO{Argumentation theory inspired; but they consider arguments are given. Pursues another article of mine.}
+
+\subsection{This approach}
+The proposal of this article to capture reflective preferences while avoiding the just described problems is to define normative theories on the basis of a low demanding axiom complemented with principles of reasonings; that allow decision makers to “reconstruct” the reasoning proposed by the principles so as to be able to check that they apply to their situation; therefore permitting to falsify the theories using observable data representing the rejection by the decision makers of these principles. Such theories are therefore both normative and empirical: normative, in the sense of claiming to capture reflective preferences, which provide a better basis for recommendations or policy making than shallow preferences; and empirical, in the sense of the principles of reasoning being exposed to empirical falsification.
+
+The proposed approach is based on a concept of preference that I call deliberated preference, a formal refinement of the vague notion of reflective preferences. Those are the preferences of an individual that are stable facing counter-arguments. The arguments are presented to the decision maker, and her reaction is observed, for example, in the form of a choice between some alternatives. This is the basic observable of interest to the theories here defined.
+
+It is not an ambition of this article to actually propose concrete theories of deliberated preferences, for this is not achievable in a single article; and the theories as defined here admittedly still suffer important weaknesses. The ambition of this article is accordingly limited to present a novel approach of capturing reflective preferences in simple enough settings.
+%This requires to define precisely what such theories should aim to capture; and how they should be compared, which is the sole ambition of this article. 
+Some challenges that must be overcomed in order to build concrete theories applicable in realistic settings will be discussed in conclusion.
+
+One long-term goal of this research program is to give individuals the means to reject theories that they find unconvincing after due consideration of all arguments; and accordingly, give incentives to decision theorists to build defenses of these theories able to convince individuals whose preferences are modeled of the soundness of these theories. This might match \possessivecite{hausman_debate_2010} suggestion that we should use rational persuasion rather than nudge individuals, arguing that it would promote autonomy.
+
+\section{Informal presentation}
+Although the final aim is about the concept of deliberated preference, which permits to compare alternatives (options in a decision problem), this article will mostly discuss \acp{DJ}. That is because, once the concept of \ac{DJ} is clearly established, it is a simple matter to define deliberated preferences, and will be done in a later section, by viewing a preference instance as a judgment about a pair of alternatives.
+
+For a clear separation of concern, this article defines first normative theories, then empirical theories for these normative theories. A normative theory makes normative claims only, which have to be accepted or rejected on the basis of the apparent soundness of the axiom on which it rests. An empirical theory for a given normative theory, by contrast, makes empirical claims, hence, can be falsified by data. What I call here an empirical theory, for simplicity, is not however purely empirical, but can also be considered normative, for two reasons. First, its conclusions inevitably rest on the normative validity of the normative theory for which it is built. Second, it claims to capture preferences that provide an appropriate basis for recommendation. Empirical theories of \ac{DJ} could thus be called empirical normative theories of \ac{DJ}.
+
+\subsection{Normative theories}
+As \citet[p.\ 16]{von_neumann_theory_2004} aptly summarize, “It is clear that every measurement – or rather every claim of measurability – must ultimately be based on some immediate sensation, which possibly cannot and certainly need not be analyzed any futher”. The fundamental element of a normative theory of deliberated preferences is the reaction of an individual, whose preferences are to be captured, to arguments. 
+
+Normative theories define an agenda: a set of propositions that we are interested in knowing the deliberated judgment of individuals about; a set of individuals that the theory claims applies to; a set of arguments; and a protocol of observation of the judgments an individual adopts towards a proposition after exposure to various arguments. Normative theories also define a negation operation on the set of propositions, which this discussion neglects for the sake of simplicity.
+
+Examples of propositions in the agenda include: “I ought to pay at most \$100 for purchasing bundle $b$”, “I ought to acquire alternative $a$ rather than $b$ if it is available in the same conditions”; “I ought not to perform action $a$ because it is immoral”.
+
+The set of individuals in a normative theory represents the situations, socio-economic conditions, acquired diplomas, or other observable features of individuals that must be satisfied for the theory to apply to them. (More about this in conclusion. \TODO{})
+
+Arguments are defined here as anything that can be presented to an individual that may possibly influence her judgment. As an example, an argument can be a text presenting the features of an alternative, or arguing for the (im)morality of an action. The term argument evokes a debate, a metaphor appropriate for the comparison of theories that will be described later; but that should be taken with a grain of salt: an image, a tag price, a poem can be an argument in this article. 
+
+The protocol of observation in a normative theory defines how the theory proposes to present a sequence of arguments to an individual, and how to observe her resulting judgment about a proposition of interest. This protocol permits to determine whether a sequence of arguments “leads” a given individual to a given proposition. If the arguments are texts and propositions are of the form “I ought to acquire alternative $a$ rather than $b$”, an example of such a protocol is: present each argument (each text) in the sequence to the individual, asking her to read it carefully; then give the individual a choice between $a$ and $b$; the sequence of arguments is considered to having led the individual to the proposition “I ought to acquire alternative $a$ rather than $b$” iff he chose $a$ rather than $b$.
+In order to allow for repeated observations with a given individual without modifying his endowment, this example protocol should either be content with purely hypothetical choices, or can make these choices binding by letting the individual know that one of his choices will be picked randomly at the end of the experiment and honored.
+
+The judgment of an individual towards propositions may evolve during her exposition to sequences of arguments. Of interest to theories of \ac{DJ} are the cases where a so-called decisive argument exists for a given proposition: an argument is decisive when its presence at the end of the sequence of arguments systematically leads the individual to the proposition, whatever the sequence of arguments. An argument is at the end of a sequence iff it is the last or before last argument of the sequence. Therefore, an argument is decisive when, intuitively, it is able to resist every counter-arguments. 
+
+Theories of \ac{DJ} attempt to capture the \emph{\acl{DJ}} of the individuals it deals with, towards some of the propositions in the agenda. 
+The \ac{DJ} of an individual is conceived here as existing independently of any theories of decision.
+The \emph{normative adequacy} axiom, the sole axiom on which a normative theory rests, defines a proposition as being in the deliberated judgment of an individual whenever some argument is decisive for that proposition.
+Accepting this axiom require to accept that decisive arguments, in the sense defined here, reveal something about the \ac{DJ} of an individual. 
+
+That the \ac{DJ} of an individual exists independently of any theory of decision making might be considered a strong assumption, by analogy to shallow preferences: psychologists have shown that shallow preferences often depend on a priori irrelevant features pertaining to the description of the decision problem or the context of interrogation. Preferences are often said to be constructed, thus, to not exist independently of the framing and context of study.
+
+With no intent of reducing the importance of these findings, it is important to qualify such statements. In supplement to them being not necessarily applicable to reflective preferences, the findings of psychologists do not, evidently, show that all preference statements are labile. As \citet[p.\ xvi]{lichtenstein_construction_2006} write, “To be sure, there are limits to the process of construction. Some televisions just won’t sell; most of the time, people are unlikely to want 80\% of their wages to go into savings. It would be an overstatement to say of preferences, as Gertrude Stein said of Oakland, that “there is no there there.” 
+
+This remark points towards the importance of allowing for incomplete theories of reflective preferences. As \citet{mandler_difficult_2001} discusses in details, it would be unrealistic to postulate that individuals would, after due reflection, in non trivial decision problems, adopt a well specified judgment about any possible proposition of interest.
+From this does not follow that \acp{DJ} do not exist, but that someone’s \ac{DJ} should not be considered to be necessarily complete. 
+\TODO{Check Mandler.}
+The definitions of the theories presented here accordingly tolerate both theory incompleteness, which permits the theory to stay silent on some of the propositions in the agenda, and, more fundamentally, deliberation incompleteness, which permits to tolerate that for some propositions, neither it nor its negation figure in someone’s \ac{DJ}. 
+%\cref{sec:incompl} defines formally the notions of theory incompleteness and deliberation incompleteness, and briefly analyzes their relationships.
+
+\subsection{Empirical theories}
+A normative theory defines how to determine that an argument is not decisive for a given proposition: suffices to find a sequence of arguments that does not lead to that proposition. This, in turn, under condition of accepting its normative validity, permits to know something about the \ac{DJ} of an individual. But this gives no concrete means to know someone’s \ac{DJ}. The set of potentially relevant arguments will generally be very large, and can’t be explored thoroughfully. More importantly, only some sequences of arguments can be tested for a given individual. That is because, first, the individual’s patience is limited, and second, once a sequence has been presented to the individual, this cannot necessarily be undone: she might remember some of the arguments, and they may have a lasting influence on her perspective. Postulating that the individual forgets after some time and separating the tests in time might mitigate this problem, but not necessarily cancel it. 
+
+%As a result, it should be possible to determine someone’s \ac{DJ} using only a small increasing set of sequences of arguments. A set of sequences of arguments is increasing iff the sequences can be ordered completely such that each sequence following another one “continues” the other one: its first arguments are those constituting the sequence that it follows.
+
+These two problems are tackled by introducing empirical theories of \ac{DJ}. An empirical theory for a given normative theory defines a subset of propositions of the agenda, that it claims are contained in the \acp{DJ} of individuals concerned by the normative theory. They are called the proposition that the theory supports. The theory also claims that it is able to argue in favor of the proposition it supports in such a way that individuals will be convinced of the quality of these arguments. This is accomplished by three binary relations, part of the definition of empiricial theories: one represents its initial arguments, one plans the possible attacks, and one defines its counter-arguments. (An empirical theory also defines a concatenation operation able to dynamically build arguments from fragments of arguments, an aspect which is not discussed in this informal presentation.)
+
+\TODO{Pursue here.}
+More precisely, the argumentation requirements are as follows. Given an individual, the empirical theory must be able to present an argument that is, at least initially, convincing to the individual (as judged thanks to the observation protocol of the normative theory). It is not mandated that this argument be decisive, as only a weaker requirement is enough to ensure the validity of its claims. Instead, the theory must declare which arguments it knows how to answer. Such arguments are called the planned attackers. Whether an argument effectively attacks another one (from the point of view of the individual) can, again, be defined in terms of the observation protocol of the normative theory. Requiring that the theory declares in advance its attackers mean that if an argument effectively attacks one of its argument, then this attack must have been planned. 
+
+More precisely, the theory must, for each sequence of arguments leading the individual to a proposition contrary to what the theory supports, be able to exhibit an argument that, when appended to that sequence, leads the 
+
+exhibit a decisive argument for that proposition, as judged from the individual’s point of view.
 
 \section{Normative theories}
 \subsection{Definition}
-A normative theory is a tuple $(\allprops, ¬, \allargs, I, (\ileadsto)_{i \in I})$, 
-with ${\ileadsto} \subseteq \allhist × \Phi$, 
-where $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ denotes all finite sequences of elements in $\allargs$ (including the empty sequence) and $\Phi = \allprops × \set{\mathit{poss}, \mathit{sure}}$. (Throughout the article, $\N$ includes zero, and note that $\intvl{1, 0} = \emptyset$.)  
+One of the primitive elements of a normative theory is a set of arguments $\allargs$.
+Given a set of arguments $\allargs$, define the set of finite sequences of elements in $\allargs$ (including the empty sequence) as $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$.
+Throughout the article, $\N$ includes zero and $\N^* = \N \setminus \set{0}$. Given $j, k \in \N$, the notation $\intvl{j, k}$ represents $\set{l \suchthat j ≤ l ≤ k}$. Note that $\intvl{1, 0} = \emptyset$, and given any set $S$, the notation $S^\emptyset$ represents the empty set. A generic element of $\allhist$ is denoted by $\hist$ and called a path.
 
-The symbol $¬$ is a negation operator on $\allprops$, such that $\forall \prop \in \allprops: ¬¬\prop = \prop$. This article also uses this symbol as a negation operator on $\Phi$, defined as follows, $\forall \prop \in \allprops$: $¬\propposs = (¬\prop, \mathit{sure})$ and $¬\propsure = (¬\prop, \mathit{poss})$. Observe that $¬¬\phi = \phi$. (The symbol $¬$ is also used in this article to negate classical mathematical propositions; this should create no confusion.)
+Two supplementary primitive elements of a normative theory are its agenda $\allprops$, whose elements are called propositions; and a set of individuals $I$ that the theory applies to.
+Given a set of individuals, a set of arguments and an agenda, an observation protocol ${\allleadsto}: I → \Phi^{\allhist}$ maps individuals and paths to propositions. 
+Equivalently, given any individual $i \in I$, ${\ileadsto}: \allhist → \Phi$ maps paths to propositions for this individual. 
+Given an individual $i \in I$, a path $\hist$ and a proposition $\phi$, the path is said to lead to the proposition for this individual iff $\hist \ileadsto \phi$.
+
+A normative theory also defines an involution operator $¬$ on $\allprops$, thus a function $¬: \allprops → \allprops$ satisfying $\forall \prop \in \allprops: ¬¬\prop = \prop$.
+
+A normative theory is a tuple $(\allprops, ¬, \allargs, I, {\allleadsto})$ 
+%with $\allprops$ an agenda, $¬$ a negation operator on $\allprops$, $\allargs$ a set of arguments, $I$ a set of individuals, and ${\allleadsto}$ an observation protocol, 
+satisfying the constraints described here above.
+%where $\Phi = \allprops × \set{\mathit{poss}, \mathit{sure}}$.
+
+This article also uses this symbol as a negation operator on $\Phi$, defined as follows, $\forall \prop \in \allprops$: $¬\propposs = (¬\prop, \mathit{sure})$ and $¬\propsure = (¬\prop, \mathit{poss})$. Observe that $¬¬\phi = \phi$. (The symbol $¬$ is also used in this article to negate classical mathematical propositions; this should create no confusion.)
 As usual with binary relations, $\hist \nileadsto \phi$ means $(\hist, \phi) \notin {\ileadsto}$.
 
 Given $i \in I, \phi \in \Phi, \hist \in \allhist$, say that $\hist$ leads strongly to $\phi$ iff $\hist \ileadsto \phi \land \hist \nileadsto ¬\phi$.
 Define $\hist \ileadstost \phi$ iff $[\hist \text{ leads strongly to } \phi] \land [\phi = \propsure ⇒ \hist \text{ leads strongly to } \propposs]$.
-(The visual proximity of the symbols $\ileadsto$ and $\ileadstost$ creates a small risk of confusion, but I feel it is justified by the fact that $\ileadsto$ is not used in the rest of this article, except in the proof of \cref{th:protcoh}.)
-Given $\hist \in \allhist$, let $\histend$ denote the set containing the last two elements of the sequence $\hist$ if the sequence has at least two elements; the singleton set containing the last element of the sequence if it has exactly one element; and the empty set if $\hist = \emptyset$.
+(The visual proximity of the symbols $\ileadsto$ and $\ileadstost$ creates a small risk of confusion, but its usage seems justified by the fact that $\ileadsto$ is not used in the rest of this article, except in the proof of \cref{th:protcoh}.)
+
+Given $\hist \in \allhist$, if $l$ denotes its length, $\hist(\intvl{1, l})$ denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$.
+Let $\histend = \hist(\intvl{\max(1, l-1), l})$ denote the set containing the last two arguments of the sequence $\hist$ if the sequence has at least two elements; and all arguments of the sequence if it has exactly one element or is empty.
+
 Given $i \in I, \phi \in \Phi, \ar \in \allargs$, define $\ar \ileadstost \phi$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \ileadstost \phi$.
 
 \subsection{Classify propositions}
@@ -71,7 +190,7 @@ Given $i \in I, \phi \in \Phi, \ar \in \allargs$, define $\ar \ileadstost \phi$ 
 		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ \phi \in \iPhi \land ¬\phi \notin \iPhi.$
 \end{property}
 
-To see why this hold, consider the following definition.
+To see why this hold, consider the following definition and proposition.
 \begin{definition}[Protocol coherence]
 	\label{def:protcoh}
 	$\forall i \in I, \phi \in \Phi$:
@@ -103,6 +222,7 @@ The next property ensures an unambiguous interpretation of the content of $\iPhi
 \end{property}
 
 \subsection{Non-completeness}
+\label{sec:incompl}
 \begin{definition}[Theory completeness]
 	$\forall \phi \in \Phi: [\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] \lor [\exists \ar \in \allargs \suchthat \ar \ileadstost ¬\phi]$.
 \end{definition}
@@ -118,36 +238,78 @@ The following proposition directly follows from the definitions, together with \
 \end{proposition}
 Theories as defined here do not mandate Theory completeness. This is good for two reasons. First, even the weaker Deliberation completeness can be considered too strong. Second, it is dubious that, for non trivial decision problems, theories can be found for which both Normative adequacy is normatively compelling and Theory completeness holds.
 
-\section{Additive single-answer empirical theories}
+\section{Empirical theories}
 \subsection{Definition}
-An empirical theory for a normative theory is a tuple $(\gleadsto, \gbeats, \alldargs, \dbeats, +)$,
-with ${\gleadsto} \subseteq \allargs × \Phi$, 
-${\gbeats} \subseteq \allargs × \allargs$ and is irreflexive,
-${\dbeats} \subseteq \alldargs × \allargs$ and is injective and its range includes $\gbeatsinv(\allargs)$ (thus $\forall \ar_1 \suchthat [\exists \ar_0 \suchthat \ar_1 \gbeats \ar_0]$: $\dbeatsinv(\ar_1)$ is a singleton). 
+In this section, a normative theory is supposed given.
+
+An empirical theory is constituted of the following elements.
+
+An initial argumentation relation ${\gleadsto} \subseteq \allargs × \allprops$ relates some arguments to some propositions. Its role in an empirical theory is to define the propositions that the empirical theory supports (corresponding to $\gPhi$, the range of ${\gleadsto}$) and, for each such proposition, to define the arguments that the theory wants to use as initial arguments to argue in favor of this proposition. The set of initial arguments is $\gleadstoinv(\Phi) = \set{\ar \in \allargs \suchthat \exists \phi \in \Phi \suchthat \ar \gleadsto \phi}$.
+
+A planned attacks relation ${\gbeats} \subseteq \allargs × \allargs$ is an irreflexive binary relation on the arguments. An argument $\ar_1$ is said to be a planned attack against an argument $\ar_0$ iff $\ar_1 \gbeats \ar_0$. Given  an argument $\ar_0$, $\gbeatsinv(\ar_0) = \set{\ar_1 \in \allargs \suchthat \ar_1 \gbeats \ar_0}$ denotes the set of planned attacks against $\ar_0$; and $\gbeatsinv(\allargs) = \set{\ar_1 \in \allargs \suchthat \exists \ar_0 \in \allargs \suchthat \ar_1 \gbeats \ar_0}$ denotes the set of arguments that are planned attacks against at least one argument.
+
+An empirical theory defines a set of argument fragments $\alldargs$. They are primitive elements that can be added to selected other fragments and arguments to form new arguments. They are used to dynamically build defensive arguments against the planned attacks. 
+
+A defense relation ${\dbeats} \subseteq \alldargs × \gbeatsinv(\allargs)$ is an injective and surjective binary relation over $\alldargs × \gbeatsinv(\allargs)$. Thus, $\forall \ar_1 \suchthat [\exists \ar_0 \suchthat \ar_1 \gbeats \ar_0]$: $\dbeatsinv(\ar_1)$ is a singleton. 
+Note that $\dbeats$ need not be a bijection as it is generally not a function. 
+Given $\ar_1 \in \gbeatsinv(\allargs)$, $\dbeatsinv(\ar_1)$ represents the fragment that the theory $\gamma$ plans to use as a defense against the planned attack $\ar_1$.
+
+A fragment is said to defend an argument iff it is used as a defense against a planned attack against that argument. Formally, given any set $S$, define $\powersetz{S}$ as the set of subsets of $S$ without the empty set.
 Define $\df: \allargs → \powersetz{\allargs}$ as $\df = \dbeatsinv \circ \gbeatsinv$.
 Given $\ar \in \allargs$, $\df(\ar)$ denotes the \emph{fragments defending $\ar$}. 
 In other words, given $\ard \in \dargs$ and $\ar_0 \in \allargs$, $\ard \in \df(\ar_0)$ iff $\exists \ar_1 \in \allargs \suchthat \ard \dbeats \ar_1 \gbeats \ar_0$.
-A \emph{coalition defending $\ar$} is any element of $\powersetz{\df(\ar)}$.
-The symbol $+$ in an empirical theory stands for a function $+: \bigcup_{\ar \in \allargs}(\set{s} × \powersetz{\df(\ar)}) → \allargs$.
-Given any $\ar \in \allargs$ and $\emptyset ≠ \dargs \subseteq \df(\ar)$, $\ar + \dargs$ means $+(\ar, \dargs)$. 
-Given any $\ar \in \allargs$, define $\dfp(\ar)$, the \emph{defenders of $\ar$}, as $\dfp(\ar) = \set{\ar + \dargs \suchthat \emptyset ≠ \dargs \subseteq \df(\ar)}$.
 
+A \emph{coalition of fragments defending $\ar$} is any element of $\powersetz{\df(\ar)}$.
+Such a coalition can be combined with the argument it defends to form a new argument.
+An empirical theory defines, to that effect, a function $+: \bigcup_{\ar \in \allargs}(\set{s} × \powersetz{\df(\ar)}) → \allargs$.
+Given any $\ar \in \allargs$ and $\emptyset ≠ \dargs \subseteq \df(\ar)$, the notation $\ar + \dargs$ stands for $+(\ar, \dargs)$. 
+
+This finally permits to define the defenders of an argument: they are all the arguments that can be formed by adding the argument to a coalition of fragments that defends it.
+Given any $\ar \in \allargs$, define $\dfp(\ar) \subseteq \allargs$, the \emph{defenders of $\ar$}, as $\dfp(\ar) = \set{\ar + \dargs \suchthat \emptyset ≠ \dargs \subseteq \df(\ar)}$.
+
+This mechanism permits to define defenders of defenders of an argument, $\dfp(\dfp(\ar))$, defenders of defenders of defenders of an argument, … An empirical theory must however be a priori restricted in the maximal “depth” of its argumentation strategy, in the following sense.
+Given any set $S$ and function $f: S → S$, let $f^0$ represent the identity function, and given $k \in \N$, let $f^{k + 1} = f \circ f^k$.
 An empirical theory must satisfy
-$\exists k \in \N \suchthat (\dfp)^k(\gleadstoinv(\Phi)) = \emptyset$, where $(\dfp)^0$ is the identity function over $\allargs$.
+$\exists k \in \N \suchthat (\dfp)^k(\gleadstoinv(\Phi)) = \emptyset$.
+This does not imply that the relations $\gbeats$ or $\dbeats$ should be finite, however.
+
+An empirical theory (for a normative theory) can now be defined as a tuple $(\gleadsto, \gbeats, \alldargs, \dbeats, +)$ satisfying the constraints described here above.
+
+An example permits to ensure that the constraint of finite depth does not mandate finiteness of the relations $\gbeats$ or $\dbeats$.
+\begin{proposition}[Possibility of infinite relations]
+	An empirical theory may involve infinite relations $\gbeats$ and $\dbeats$.
+\end{proposition}
+\begin{proof}
+	Consider an agenda containing two propositions, $\allprops = \set{\phi, ¬\phi}$, an infinite set of arguments $\allargs = \set{\ar_k \suchthat k \in \N}$ with $\forall j, k \in \N: \ar_j ≠ \ar_k$, and consider any set of individuals $I$ and observation protocol $\allleadsto$. 
+	Define $2\N^* = \set{k \suchthat k / 2 \in \N^*}$ as the set of non-zero even integers.
+	Define ${\gleadsto} = \set{(\ar_0, \phi)}$.
+	Define ${\gbeats} = \set{(\ar_{k - 1}, \ar_0) \suchthat k \in 2\N^*}$ so that all odd numbered arguments are planned attacks against $\ar_0$. 
+	Consider an infinite set of fragments $\alldargs = \set{\ard[k] \suchthat k \in 2\N^*}$ with $\forall j, k \in 2\N^*: \ard[j] ≠ \ard[k]$ so that fragments correspond to non-zero even integers, and define ${\dbeats} = \set{(\ard[k], \ar_{k - 1}) \suchthat k \in 2\N^*}$ so that each (even numbered) defense fragment attacks exactly one (odd numbered) planned attacker of $\ar_0$. 
+	Given any coalition of fragments $\dargs$ defending $\ar_0$, consider the set of indices corresponding to the fragments in the coalition, $K_{\dargs} = \set{k \in 2\N^* \suchthat \exists \ard[k] \in \dargs}$; 
+	define $j_{\dargs} = \sum_{k \in K_{\dargs}}$ as the sum of these indices;
+	and define $\ar_0 + \dargs = \ar_{j_{\dargs}}$. 
+%	$\ard[k] \in \alldargs$, define $\ar_0 + \set{\ard[k]} = \ar_k$. 
+	Consider an empirical theory $(\gleadsto, \gbeats, \alldargs, \dbeats, +)$ for the normative theory $(\allprops, ¬, \allargs, I, {\allleadsto})$. That this is indeed a legal empirical theory can be confirmed by checking that all constraints are satisfied, in particular, $(\dfp)^2(\gleadstoinv(\Phi)) = \dfp(\dfp(\ar_0)) = \dfp(\set{\ar_k \suchthat k \in 2\N^*}) = \emptyset$ because there is no planned attack against any argument in $\set{\ar_k \suchthat k \in 2\N^*}$. This theory involves infinite relations $\gbeats$ and $\dbeats$.
+\end{proof}
 
 \subsection{Falsifiability}
-Given $\hist \in \allhist$, $\hist(\intvl{1, l(\hist)})$, where $l(\hist) \in \N$ is the length of the sequence $\hist$, denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$. Abusing notation, given $\args \subseteq \allargs$, I write $\args \cap \hist$ to designate $\args \cap \hist(\intvl{1, l(\hist)})$, therefore using simply $\hist$ in that expression to denote the \emph{range} of $\hist$.
+Given $\args \subseteq \allargs$, $\hist \in \allhist$, and letting $l$ denote the length of $\hist$,
+the set $\args \cap \hist(\intvl{1, l})$ denotes the arguments that are both in $\args$ and contained in the sequence $\hist$.
+Abusing notation, I write $\args \cap \hist$ to designate $\args \cap \hist(\intvl{1, l})$, therefore using simply $\hist$ in that expression to denote the \emph{range} of $\hist$.
 
-Given $i \in I, \phi \in \Phi, \ar \in \allargs$ and $\args \subseteq \gbeatsinv(\ar)$, define $\args \ibeats \ar$ iff $\exists \hist \in \allhist \suchthat \args = \gbeatsinv(\ar) \cap \hist \land \ar \in \histend \land \hist \nileadstost \phi$. (The notation uses a striked through $\phi$ in superscript to suggest that when $\args \ibeats \ar$, the coalition $\args$ argues against $\phi$, from the point of view of $i$.)
+Given $i \in I, \phi \in \Phi, \ar \in \allargs$ and $\args \subseteq \gbeatsinv(\ar)$, define $\args \ibeats \ar$ iff $\exists \hist \in \allhist \suchthat \args = \gbeatsinv(\ar) \cap \hist \land \ar \in \histend \land \hist \nileadstost \phi$. 
+Such a set $\args$, when not empty, represents an effective set of planned attackers of $\ar$ against $\phi$. 
+The notation uses a striked through $\phi$ in superscript to suggest that when $\args \ibeats \ar$, the coalition $\args$ argues against $\phi$, from the point of view of $i$.
+I write that $\ar$ \emph{$i$-defends} $\phi$ to mean that $\emptyset \nibeats \ar$. 
 
-Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define the $\di(\ar) \subseteq \powersetz{\alldargs}$ as $\di(\ar) = \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar) \land \args \ibeats \ar}$. It represents the coalitions of fragments required to defend $\ar$ (when arguing for $\phi$) from the point of view of $i$. 
+Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define $\di(\ar) \subseteq \powersetz{\alldargs}$ as $\di(\ar) = \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar) \land \args \ibeats \ar}$. It represents the coalitions of fragments defending $\ar$ (when arguing for $\phi$), from the point of view of $i$, against its effective planned attackers. 
 The following proposition shows that these coalitions can be added to $\ar$, and will be useful for other results.
 \begin{proposition}
 	\label{th:indf}
 	$\forall i \in I, \phi \in \gPhi, \ar \in \allargs: \dargs \in \di(\ar) ⇒ \emptyset ≠ \dargs \subseteq \df(\ar)$.
 \end{proposition}
 \begin{proof}
-	Let us prove that $\forall \ar \in \allargs: \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar)} = \powersetz{\df(\ar)}$, from which the conclusion follows, and which can be useful to clarify the relationship between $\di(\ar)$ and $\df(\ar)$. Note that by definition of $\df(\ar)$, $\dargs \in \powersetz{\df(\ar)}$ iff $\emptyset ≠ \dargs \subseteq \dbeatsinv(\gbeatsinv(\ar))$. 
+	I will prove that $\forall \ar \in \allargs: \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar)} = \powersetz{\df(\ar)}$, from which the conclusion follows, and which can be useful to clarify the relationship between $\di(\ar)$ and $\df(\ar)$. Note that by definition of $\df(\ar)$, $\dargs \in \powersetz{\df(\ar)}$ iff $\emptyset ≠ \dargs \subseteq \dbeatsinv(\gbeatsinv(\ar))$. 
 	Thus, we have to prove that
 	$\forall \dargs \subseteq \allargs$:
 	\begin{equation}
@@ -158,14 +320,12 @@ The following proposition shows that these coalitions can be added to $\ar$, and
 	Indeed, as $\args ≠ \emptyset$, we can pick some $\ar_1 \in \args$, from which follows that $\ar_1 \gbeats \ar_0$, hence, for some $\ard \in \alldargs$, $\ard \dbeats \ar_1$ (as mandated by ${\dbeats}$), thus $\ard \in \dargs$, hence $\dargs ≠ \emptyset$. Also, because $\args \subseteq \gbeatsinv(\ar)$, $\dbeatsinv(\args) \subseteq \dbeatsinv(\gbeatsinv(\ar))$. 
 	
 	Second (from right to left), let us show that $\emptyset ≠ \dargs \subseteq \dbeatsinv(\gbeatsinv(\ar)) ⇒ \exists \emptyset ≠ \args \subseteq \gbeatsinv(\ar_0) \suchthat \dbeatsinv(\args) = \dargs$. 
-	Defining $\args = {\dbeats}(\dargs) \cap \gbeatsinv(\ar_0)$, we see that $\dbeatsinv(\args) = \dargs$: considering any $\ard \in \dargs$, $\ard \dbeats \ar_1 \gbeats \ar_0$ for some $\ar_1 \in \allargs$, thus, $\ar_1 \in \args$, thus, $\ard \in \dbeatsinv(\args)$; and considering any $\ar' \in \dbeatsinv(\args)$, $\ar' \dbeats \ar_1$ for some $\ar_1 \in \args$, thus $\ar_1 \gbeats \ar_0$, thus, $\ar_1 \in {\dbeats}(\dargs)$, thus $\ard \dbeats \ar_1$ for some $\ard \in \dargs$, and by injectivity  of $\dargs$, $\ar' = \ard$, whence $\ar' \in \dargs$. 
+	Defining $\args = {\dbeats}(\dargs) \cap \gbeatsinv(\ar_0)$, we see that $\dbeatsinv(\args) = \dargs$: considering any $\ard \in \dargs$, $\ard \dbeats \ar_1 \gbeats \ar_0$ for some $\ar_1 \in \allargs$, thus, $\ar_1 \in \args$, thus, $\ard \in \dbeatsinv(\args)$; and considering any $\ar' \in \dbeatsinv(\args)$, $\ar' \dbeats \ar_1$ for some $\ar_1 \in \args$, thus $\ar_1 \gbeats \ar_0$, thus, $\ar_1 \in {\dbeats}(\dargs)$, thus $\ard \dbeats \ar_1$ for some $\ard \in \dargs$, and by injectivity  of $\dbeats$, $\ar' = \ard$, whence $\ar' \in \dargs$. 
 	That $\args ≠ \emptyset$ follows from $\dargs ≠ \emptyset$.
 \end{proof}
 
-Given $\ar \in \allargs$, define $\dip(\ar) = \set{(\ar + \dargs) \suchthat \dargs \in \di(\ar)}$, representing the subset of defenders of $\ar$ useful for proving $\phi$ from the point of view of $i$.
+Given $\ar \in \allargs$, define $\dip(\ar) = \set{(\ar + \dargs) \suchthat \dargs \in \di(\ar)}$, representing the subset of defenders of $\ar$ required for convincing $i$ of $\phi$.
 Given $i \in I, \phi \in \gPhi$, define $\gargs \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\phi))$.
-
-I write that $\ar$ \emph{$i$-defends} $\phi$ to mean that $\emptyset \nibeats \ar$. 
 
 \begin{definition}[Convincingness]
 	An empirical theory is \emph{convincing} iff $\forall i \in I, \phi \in \gPhi, \ar \in \gargs: \ar$ $i$-defends $\phi$.
@@ -200,9 +360,9 @@ I also write that $(i, \phi, \hist, \ar)$ falsifies $\gamma$ to mean that it is 
 	A normatively adequate and convincing empirical theory is valid.
 \end{theorem}
 \begin{proof}
-	Given any $i \in I$ and $\phi \in \gPhi$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstost \phi$; the conclusion then follows thanks to simple normative adequacy (equivalent to normative adequacy thanks to \cref{th:normeqsnorm}). 
+	Given any $i \in I$ and $\phi \in \gPhi$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstost \phi$; the conclusion then follows thanks to simple normative adequacy (that \cref{th:normeqsnorm} shows to be equivalent to normative adequacy). 
 	
-	Lemma: $[\ar_0 \in \gargs \land \ar_0 \nileadstost \phi] ⇒ \exists \ar_2 \in \gargs \cap \dfp(\ar_0)$. That is because $\ar_0 \in \gargs ⇒ \ar_0$ $i$-defends $\phi$, by convincingness, and,
+	Lemma: $[\ar_0 \in \gargs \land \ar_0 \nileadstost \phi] ⇒ \exists \ar_2 \in \gargs \cap \dfp(\ar_0)$. That is because $\ar_0 \in \gargs$ implies that $\ar_0$ $i$-defends $\phi$, by convincingness, and,
 	by definition, $\ar_0 \nileadstost \phi$ means that $\exists \hist \in \allhist \suchthat \ar_0 \in \histend \land \hist \nileadstost \phi$; \cref{th:produce} thus applies.
 
 	To prove the theorem, build a finite sequence of arguments in $\gargs$, starting with any $\ar_0 \in \gleadstoinv(\phi)$. Observe that $\ar_0 \in \gargs$. Given $k \in 2\N$, if $\ar_k \nileadstost \phi$, define $\ar_{k + 2}$ using the above lemma, obtaining $\ar_{k + 2} \in \gargs \cap (\dfp)^\frac{k + 2}{2}(\ar_0)$. Continue applying the lemma and producing further arguments as long as $\ar_k \nileadstost \phi$.
@@ -217,7 +377,7 @@ Given $\phi \in \Phi, \ar_\gamma \in \gargs, \ar_\delta \in \gargsdelta$, say th
 
 \begin{lemma}
 	\label{th:endchal}
-	Given $\ar_\gamma \in \gargs$, $\ar_\delta \in \gargsdelta$ and $\hist \in \allhist$ such that $\set{\ar_\gamma, \ar_\delta} \subseteq \histend$: $(\hist, \ar_\gamma, \ar_\delta)$ is a $\phi/¬\phi$-challenge.
+	Given $\ar_\gamma \in \gargs$, $\ar_\delta \in \gargsdelta$ and $\hist \in \allhist$ such that $\set{\ar_\gamma, \ar_\delta} \subseteq \histend$, $(\hist, \ar_\gamma, \ar_\delta)$ is a $\phi/¬\phi$-challenge.
 \end{lemma}
 \begin{proof}
 	Either $\hist \nileadstost \phi$, and $(\hist, \ar_\gamma)$ challenges $\phi$, or $\hist \ileadstost \phi$, hence, by \cref{th:protcoh}, $\hist \nileadstost ¬\phi$, and $(\hist, \ar_\delta)$ challenges $¬\phi$. 
@@ -246,12 +406,11 @@ Given $\phi \in \Phi, \ar_\gamma \in \gargs, \ar_\delta \in \gargsdelta$, say th
 %a \emph{test procedure with $i$} is a finite sequence 
 \commentOC{Need the test procedure to be a tree. Atom: $(k, \phi)$ meaning whether ${\hist}^k \ileadstost \phi$. Branch label: atoms linked using or and and operators. From a node $n = (\hist, \ar, \phi)$, let branches depart, such that their labels do not overlap. From a node, if no branch label is true, the node must falsify a theory. In the case of the procedure below, it is not a list because we may query several times the same theory or switch to the other one, depending on the last answer. But if simplifying the theory (single-try), we may then simplify the definition of a test procedure.}
 
-An increasing sequence of arguments is a finite sequence $({\hist}^k)_{k \in \intvl{1, N}}$, for some $N \in \N^*$, of sequences of arguments, 
-such that $\forall k \in \intvl{2, N}, {\hist}^k$ starts with ${\hist}^{k-1}$, and 
-such that $(i, \phi, {\hist}^N)$ falsifies one of the empirical theories for some $\phi \in \Phi$. 
-A sequence of arguments $\histp$ starts with a sequence of arguments $\hist$ of length $l$ iff $\histp$ has length at least $l$ and $\forall k \in \intvl{1, l}: \histp_k = \hist_k$.
+A path $\histp$ starts with a path $\hist$ of length $l$ iff $\histp$ has length at least $l$ and $\forall k \in \intvl{1, l}: \histp_k = \hist_k$.
+An increasing sequence of paths is a finite sequence $({\hist}^k)_{k \in \intvl{1, N}}$, for some $N \in \N^*$, of paths, 
+such that $\forall k \in \intvl{2, N}, {\hist}^k$ starts with ${\hist}^{k-1}$. 
 
-Given two incompatible empirical theories for a given normative theory, $\alpha = (\gleadsto[\alpha], \gbeats[\alpha], \alldargs_\alpha, \dbeats[\alpha], +_\alpha)$ and $\beta = (\gleadsto[\beta], \gbeats[\beta], \alldargs_\beta, \dbeats[\beta], +_\beta)$ and given any $i \in I$, the following procedure falsifies one of these theories, involve only $i$, and uses queries only about increasing sequences of arguments.
+Given two incompatible empirical theories for a given normative theory, $\alpha = (\gleadsto[\alpha], \gbeats[\alpha], \alldargs_\alpha, \dbeats[\alpha], +_\alpha)$ and $\beta = (\gleadsto[\beta], \gbeats[\beta], \alldargs_\beta, \dbeats[\beta], +_\beta)$ and given any $i \in I$, the following procedure falsifies one of these theories, queries only $i$, and queries $i$ only about some increasing sequence of paths.
 \begin{procedure}
 	Pick any $\phi \in \Phi$ about which $\alpha$ and $\beta$ disagree.
 	
@@ -279,15 +438,15 @@ Indicate sufficient hypothesis for ensuring that if a model resisted every attac
 
 \section{Preferences}
 \subsection{Preferences}
-Let $\allalts$ be a set of alternatives. Define $\Phi_\allalts$ as follows. Let $\phi_{a > b} \in \iPhi$ represent $i$ deliberately preferring strictly $a$ to $b$. Let $\phi_{a ≥ b} \in \iPhi$ represent $i$ deliberately preferring weakly $a$ to $b$. Define $¬\phi_{a > b} = \phi_{b ≥ a}$.
+Let $\allalts$ be a set of alternatives. Define $\Phi_\allalts = \{\phi_{a \pst b} \suchthat a ≠ b \in \allalts\} \cup \{\phi_{a \peq b} \suchthat a ≠ b \in \allalts\}$, with $\phi_{a \pst b}$ intuitively representing a strict preference of $i$ for $a$ against $b$, and $\phi_{a \peq b}$ intuitively representing a weak preference of $i$ for $a$ against $b$. Define $¬\phi_{a \pst b} = \phi_{b \peq a}$ and $¬\phi_{a \peq b} = \phi_{b \pst a}$.
 
 A normative theory of preferences about $\allalts$ is a theory about $\Phi_\allalts$: a tuple $(\allprops, ¬, \allargs, I, (\ileadsto)_{i \in I})$, with $\allprops$ defined as $\allprops_\allalts$, $¬$ defined as above.
 
-Define $≥_i$, the deliberated preference of $i$, as $a ≥_i b$ iff $\phi_{a ≥ b} \in \iPhi$. 
+Define $\peqi$, the deliberated preference of $i$, as $a \peqi b$ iff $a = b \lor \phi_{a \peq b} \in \iPhi$. 
 
-Given an empirical theory for a normative theory of preferences, say that it claims a complete preference iff $\forall a, b \in \allalts: \phi_{a ≥ b} \in \gPhi \lor \phi_{b ≥ a} \in \gPhi$. Similarly, it claims a transitive preference iff $\forall a, b, c \in \allalts: \phi_{a ≥ b} \in \gPhi \land \phi_{b ≥ c} \in \gPhi ⇒ \phi_{a ≥ c} \in \gPhi$. Observe that establishing whether an empirical theory claims a complete or transitive preference can be determined a priori (without empirical observations).
+Given an empirical theory for a normative theory of preferences, say that it claims a complete preference iff $\forall a ≠ b \in \allalts: \phi_{a \peq b} \in \gPhi \lor \phi_{b \peq a} \in \gPhi$. Similarly, it claims a transitive preference iff $\forall a, b, c \in \allalts: \phi_{a \peq b} \in \gPhi \land \phi_{b \peq c} \in \gPhi ⇒ \phi_{a \peq c} \in \gPhi$. Observe that establishing whether an empirical theory claims a complete or transitive preference can be determined a priori (without empirical observations).
 
-Given a bundle $B \subseteq \allalts$ and $i \in I$, $b \in B$ is a deliberated preferred choice for $i$ among $B$ iff $\forall b' \in B: b ≥_i b'$.
+Given a bundle $B \subseteq \allalts$ and $i \in I$, $b \in B$ is a deliberated preferred choice for $i$ among $B$ iff $\forall b' \in B: b \peqi b'$.
 
 The next result follows from these definitions and from classical results about choice functions and complete, transitive preferences. \TODO{Be more precise.}
  \begin{theorem}
@@ -346,6 +505,13 @@ Define $+$ as the simple concatenation of its arguments.
 Then, define $\gbeats = \set{(\ar_1, \ar_0), (\ar'_1, \ar_0), (\ar'_1, \ar_2), (\ar_1, \ar'_2)}$, $\dbeats = \set{(\ar_2, \ar_1), (\ar'_2, \ar'_1)}$.
 
 \TODO{Consider using only $\phi$ being sure, and dropping everything related to possibility.}
+
+\section{Conclusion}
+Back To Bentham? Explorations Of Experienced Utility, Kahneman Wakker, Sarin, propose to measure hedonimeter total for normative.
+
+\citet[p.\ 100]{raiffa_back_1985} (about SEU): “Give therapy to deviators”.
+\citet[p.\ 108]{raiffa_back_1985}: “In experiments with my students, my ingenious protestations did not always prove to be ingenious enough.
+Yes, they were dazzled (and perhaps confused) but many remained unconvinced; if the chips were down, they would behave just as before.”
 
 \section{Next}
 Define a way of saying “we never need this argument”: either the model can prove phi without s0, or if it can’t, then phi does not hold, because I can play s1 against it. 
@@ -618,5 +784,6 @@ Note that requiring that $\args_0$ be a singleton does not modify the condition,
 	The convincingness claim of any empirical theory is falsifiable: given an ET, there exists a finite obs prot with memory such that for any observables, if the claim is false given these observables, then it is possible to deduce it from the axioms and observations.
 \end{theorem}
 
+\hbadness 10000
 \bibliography{simple}
 \end{document}
