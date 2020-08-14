@@ -450,20 +450,9 @@ Given $\emptyset ≠ B \subseteq \allalts$, define $\emptyset ≠ B_{\hist, i} \
 Define $\hist \ileadsto \phi_{B, a \ind b}$ iff $[a \in B_{\hist, i} ⇔ b \in B_{\hist, i}]$.
 Define $\hist \ileadsto \phi_{B, ¬a}$ iff $a \notin B_{\hist, i}$.
 
-Given $a ≠ b$, define $a \peq b$ iff $\forall \set{a, b} \subseteq B: \phi_{B, a \ind b} \in \gPhi \lor \phi_{B, ¬b} \in \gPhi$.
+Given $a, b \in \allalts$, define $a \peq b$ iff $[a = b] \lor [\forall \set{a, b} \subseteq B: \phi_{B, a \ind b} \in \gPhi \lor \phi_{B, ¬b} \in \gPhi]$.
 
 In order to be as resolute as possible, define an arbitrary connected ordering $>$ on $\allalts$ (a transitive, asymmetric and connected relation, connected meaning that $\forall a ≠ b \in \allalts:  [a > b \lor b > a]$), used to break indifference. Define $a \pst b$ iff $[a \peq b \land (b \npeq a \lor a > b)]$.
-
-Old approach follows.
-
-Define $\Phi_\allalts = \set{\phi_{B, \mathcal{C}} \suchthat \emptyset ≠ B \subseteq \allalts, \mathcal{C} \subseteq \powersetz{B}}$.
-
-$\gamma$ gives, for each 
-Define $\phi_{(B_k), B}$: $\hist \ileadsto \phi$ iff given $B$, $i$ chooses some $B_{\hist, i} \subseteq B$ such that $\exists B_k \subseteq B_{\hist, i}$.
-
-Define $a \peq b$ iff $\forall \set{a, b} \subseteq B: [\exists \set{a, b} \subseteq B_k \lor (\exists a \in B_k \land \nexists b \in B_k)]$.
-
-Define $a \pst b$ iff $a \peq b \land b \npst a$.
 
 To prove. 1) $\peq$ is transitive. 2) If $a \pst b$, then $b$ is never chosen by $i$ when $a$ is present: $\forall \phi_{B_k} \in \iPhi: $ no $B_k$ contain $b$.
 
