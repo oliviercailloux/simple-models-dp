@@ -15,8 +15,11 @@
 	%\def\@myRgood@#1#2{\mathrel{R^X_{#2}}}
 	%\def\myRgood{\@ifnextchar_{\@myRgood@}{\mathrel{R^X}}}
 	%\makeatother
-\NewDocumentCommand{\peq}{}{\succeq}
-\NewDocumentCommand{\pst}{}{\succ}
+\NewDocumentCommand{\ind}{}{\sim}
+\NewDocumentCommand{\peq}{}{\succeq_\gamma}
+\NewDocumentCommand{\pst}{}{\succ_\gamma}
+\NewDocumentCommand{\npeq}{}{\nsucceq_\gamma}
+\NewDocumentCommand{\npst}{}{\nsucc_\gamma}
 \NewDocumentCommand{\peqi}{}{\succeq_i}
 \NewDocumentCommand{\psti}{}{\succ_i}
 
