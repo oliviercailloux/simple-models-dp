@@ -440,32 +440,53 @@ Indicate sufficient hypothesis for ensuring that if a model resisted every attac
 \subsection{Preferences, better}
 Let $\allalts$ be a set of alternatives. 
 
+Define $\Phi_\allalts = \set{\phi_{B, a}, \phi_{B, ¬a} \suchthat \emptyset ≠ B \subseteq \allalts, a \in B}$.
+
+Given $\emptyset ≠ B \subseteq \allalts$, define $\emptyset ≠ B_{\hist, i} \subseteq B$ as the subset that $i$ chooses as her indifference choice after exposure to $\hist$.
+Define $\hist \ileadsto \phi_{B, a}$ iff $a \in B_{\hist, i}$.
+Define $\hist \ileadsto \phi_{B, ¬a}$ iff $a \notin B_{\hist, i}$.
+
+Given $a, b \in \allalts$, define $a \pst b$ iff $\forall \set{a, b} \subseteq B: \phi_{B, ¬b} \in \gPhi$.
+Define $a \ind b$ iff $ \forall c \in \allalts: [a \pst c ⇔ b \pst c] \land \forall \set{a, b} \subseteq B: [\phi_{B, a} \in \gPhi ⇔ \phi_{B, b} \in \gPhi]$.
+Define ${\peq} = {\pst} \cup {\ind}$.
+
+The $\peq$ relation is reflexive because $a = b ⇒ a \ind b$.
+\begin{proposition}[Transitivity]
+	The $\peq$ relation is transitive.
+\end{proposition}
+\begin{proof}
+	Well, this is false.
+\end{proof}
+
+\subsection{Older}
 A choice prediction $C_\gamma: \powersetz{\allalts} → \powersetz{\powersetz{\allalts}}$ is a mapping from each possible bundle $\emptyset ≠ B \subseteq \allalts$ to a non-empty set $\emptyset ≠ C_\gamma(B) = \mathcal{C} \subseteq \powersetz{B}$ of non-empty sets of alternatives included in the bundle. 
 Thus, a generic element $\alts \in C_\gamma(B)$ satisfies $\emptyset ≠ \alts \subseteq B$. 
 The choice prediction given a bundle $B$ predicts that $i$ will, given $B$, choose some indifference set that includes one of the elements $\alts \in C_\gamma(B)$.
 
 Define $\Phi_\allalts = \set{\phi_{B, a \ind b} \suchthat \emptyset ≠ B \subseteq \allalts, a ≠ b \in B} \cup \set{\phi_{B, ¬a} \suchthat \emptyset ≠ B \subseteq \allalts, a \in B}$.
 
-Given $\emptyset ≠ B \subseteq \allalts$, define $\emptyset ≠ B_{\hist, i} \subseteq B$ as the subset that $i$ chooses as her indifference choice after exposure to $\hist$.
-Define $\hist \ileadsto \phi_{B, a \ind b}$ iff $[a \in B_{\hist, i} ⇔ b \in B_{\hist, i}]$.
-Define $\hist \ileadsto \phi_{B, ¬a}$ iff $a \notin B_{\hist, i}$.
-
 Given $a, b \in \allalts$, define $a \peq b$ iff $[a = b] \lor [\forall \set{a, b} \subseteq B: \phi_{B, a \ind b} \in \gPhi \lor \phi_{B, ¬b} \in \gPhi]$.
 
 In order to be as resolute as possible, define an arbitrary connected ordering $>$ on $\allalts$ (a transitive, asymmetric and connected relation, connected meaning that $\forall a ≠ b \in \allalts:  [a > b \lor b > a]$), used to break indifference. Define $a \pst b$ iff $[a \peq b \land (b \npeq a \lor a > b)]$.
 
-To prove. 1) $\peq$ is transitive. 2) If $a \pst b$, then $b$ is never chosen by $i$ when $a$ is present: $\forall \phi_{B_k} \in \iPhi: $ no $B_k$ contain $b$.
+Note that $\peq$ is not necessarily transitive. Given $\allalts = \set{a, b, c}$, given $i$, for all $\hist \in \allhist$, define $\set{a, b}_{\hist, i} = \set{a, b}$, $\set{a, c}_{\hist, i} = \set{a}$, $\set{b, c}_{\hist, i} = \set{b, c}$, and $\set{a, b, c}_{\hist, i} = \set{a, b, c}$. Then, $\gamma$ may be valid while supporting $a \ind b$ and $b \ind c$ and have no opinion about $a$ VS $c$: indeed, neither $¬c$ nor $a \ind c$ hold. That’s because WARP is broken: $\set{a, b, c}$ contain $\set{a, c}$ and $c$ is chosen, but in $\set{a, c}$, $c$ is not chosen.
+
+To prove. 1) If $\peq$ is transitive and the model is valid, and $a \pst b$, then $b$ is never chosen by $i$ when $a$ is present. 2) If a WARP argument is effective, then (something like) $\ipeq$ is transitive.
+
+Consider defining $\ipeq$ and showing that $\peq$ must be a subset of it, if valid?
+
+Perhaps, define $a \pst b$ iff $\forall \set{a, b} \subseteq B$, $a$ chosen or $b$ not chosen and sometimes both $a$ chosen and $b$ not chosen. Then define $a \ind b$ iff $\forall c \in \allalts: [a \pst c ⇔ b \pst c]$ and $\forall \set{a, b} \subseteq B$, $a$ chosen iff $b$ chosen.
 
 \subsection{Preferences}
 Let $\allalts$ be a set of alternatives. Define $\Phi_\allalts = \{\phi_{a \pst b} \suchthat a ≠ b \in \allalts\} \cup \{\phi_{a \peq b} \suchthat a ≠ b \in \allalts\}$, with $\phi_{a \pst b}$ intuitively representing a strict preference of $i$ for $a$ against $b$, and $\phi_{a \peq b}$ intuitively representing a weak preference of $i$ for $a$ against $b$. Define $¬\phi_{a \pst b} = \phi_{b \peq a}$ and $¬\phi_{a \peq b} = \phi_{b \pst a}$.
 
 A normative theory of preferences about $\allalts$ is a theory about $\Phi_\allalts$: a tuple $(\allprops, ¬, \allargs, I, (\ileadsto)_{i \in I})$, with $\allprops$ defined as $\allprops_\allalts$, $¬$ defined as above.
 
-Define $\peqi$, the deliberated preference of $i$, as $a \peqi b$ iff $a = b \lor \phi_{a \peq b} \in \iPhi$. 
+Define $\ipeq$, the deliberated preference of $i$, as $a \ipeq b$ iff $a = b \lor \phi_{a \peq b} \in \iPhi$. 
 
 Given an empirical theory for a normative theory of preferences, say that it claims a complete preference iff $\forall a ≠ b \in \allalts: \phi_{a \peq b} \in \gPhi \lor \phi_{b \peq a} \in \gPhi$. Similarly, it claims a transitive preference iff $\forall a, b, c \in \allalts: \phi_{a \peq b} \in \gPhi \land \phi_{b \peq c} \in \gPhi ⇒ \phi_{a \peq c} \in \gPhi$. Observe that establishing whether an empirical theory claims a complete or transitive preference can be determined a priori (without empirical observations).
 
-Given a bundle $B \subseteq \allalts$ and $i \in I$, $b \in B$ is a deliberated preferred choice for $i$ among $B$ iff $\forall b' \in B: b \peqi b'$.
+Given a bundle $B \subseteq \allalts$ and $i \in I$, $b \in B$ is a deliberated preferred choice for $i$ among $B$ iff $\forall b' \in B: b \ipeq b'$.
 
 The next result follows from these definitions and from classical results about choice functions and complete, transitive preferences. \TODO{Be more precise.}
  \begin{theorem}
