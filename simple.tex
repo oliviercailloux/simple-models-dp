@@ -437,26 +437,71 @@ Count the number of tests; assume simpler theory.
 Indicate sufficient hypothesis for ensuring that if a model resisted every attack, it is valid. Thus, that searching for falsification instances in the tested ones is enough.
 
 \section{Preferences}
-\subsection{Preferences, better}
+\subsection{Representing deliberated preferences}
 Let $\allalts$ be a set of alternatives. 
 
 Define $\Phi_\allalts = \set{\phi_{B, a}, \phi_{B, ¬a} \suchthat \emptyset ≠ B \subseteq \allalts, a \in B}$.
 
-Given $\emptyset ≠ B \subseteq \allalts$, define $\emptyset ≠ B_{\hist, i} \subseteq B$ as the subset that $i$ chooses as her indifference choice after exposure to $\hist$.
-Define $\hist \ileadsto \phi_{B, a}$ iff $a \in B_{\hist, i}$.
-Define $\hist \ileadsto \phi_{B, ¬a}$ iff $a \notin B_{\hist, i}$.
+Given $\emptyset ≠ B \subseteq \allalts$, define $\emptyset ≠ c^\hist_i(B) \subseteq B$ as the subset that $i$ chooses as her indifference choice after exposure to $\hist$.
+Define $\hist \ileadsto \phi_{B, a}$ iff $a \in c^\hist_i(B)$.
+Define $\hist \ileadsto \phi_{B, ¬a}$ iff $a \notin c^\hist_i(B)$.
 
-Given $a, b \in \allalts$, define $a \pst b$ iff $\forall \set{a, b} \subseteq B: \phi_{B, ¬b} \in \gPhi$.
-Define $a \ind b$ iff $ \forall c \in \allalts: [a \pst c ⇔ b \pst c] \land \forall \set{a, b} \subseteq B: [\phi_{B, a} \in \gPhi ⇔ \phi_{B, b} \in \gPhi]$.
-Define ${\peq} = {\pst} \cup {\ind}$.
+Given $a, b \in \allalts$, define $a \gpst b$ iff $\forall \set{a, b} \subseteq B: \phi_{B, ¬b} \in \gPhi$.
+Define $a \gind b$ iff either $a = b$ or $\forall \set{a, b} \subseteq B: [\phi_{B, a} \in \gPhi \land \phi_{B, b} \in \gPhi] \lor [\exists c \in B \suchthat c \gpst a \land c \gpst b]$.
+Define ${\gpeq} = {\gpst} \cup {\gind}$.
 
-The $\peq$ relation is reflexive because $a = b ⇒ a \ind b$.
-\begin{proposition}[Transitivity]
-	The $\peq$ relation is transitive.
+An empirical theory is said to be coherent iff $\forall \emptyset ≠ B \subseteq \allalts$: $¬(\forall a \in B: \phi_{B, ¬a} \in \gPhi) \land ¬(\exists a \in B \suchthat \phi_{B, a} \in \gPhi \land \phi_{B, ¬a} \in \gPhi)$. Coherence is required for validity, but, contrary to validity, is not an empirical property, in the sense that it can be verified without experiments, as it is independent of $\ileadsto$.
+
+If $\gpeq$ is transitive, and if $\gamma$ is valid, $\gpeq$ can be said to represent part of the deliberated preference of $i$, in the sense that choosing from the undominated elements of parts of $\gpeq$ restricts choice in a way that is systematically compatible with $i$’s \ac{DJ}. This is made precise below.
+
+Given $i \in I$ and a bundle $B$, say that a subset $B' \subseteq B$ is a deliberated restricted choice set for $i$ given $B$ iff $[\forall a \in B \setminus B': \phi_{B, ¬a} \in \iPhi] \lor [\exists a \in B' \suchthat \phi_{B, a} \in \iPhi]$. Restricting consideration to deliberated restricted choice sets respects $i$’s \ac{DJ} in the sense that such sets exclude from $B$ only alternatives that $i$ deliberately excludes from possible choice among the bundle $B$, or include an alternative that $i$ deliberately chooses when choosing from the bundle $B$.
+
+If $\gpeq$ is transitive and $\gamma$ is valid, the following theorem shows that a choice function can be defined by picking from undominated elements of $\gpeq$ in such a way that only deliberated restricted choice sets result. $\powersetz[\mathit{F}]{\allalts}$ designates the finite non-empty subsets of $\allalts$.
+
+\begin{theorem}[Deliberated preference]
+	\label{th:dp}
+	If $\gpeq$ is transitive and $\gamma$ is valid, let $r$ be a choice function such that, given any $B \in \powersetz[\mathit{F}]{\allalts}$, $r(B)$ contains exactly one arbitrary argument of each undominated equivalence classes of $B$, where $\gind$ determines the equivalence classes and $\gpst$ determines the undominated elements. Then, $\forall B \in \powersetz[\mathit{F}]{\allalts}$, $r(B)$ is a deliberated restricted choice set for $i$ given $B$.
+\end{theorem}
+\begin{proof}
+	Observe that under these hypothesis, $\gpeq$ is a transitive, reflexive binary relation on $\allalts$, $\gpst$ is its asymmetric part and $\gind$ is its symmetric part. That $\gpst$ is asymmetric follows from coherence, which requires, considering $B = \set{a, b}$, that $\phi_{B, ¬a} \notin \gPhi$ or $\phi_{B, ¬b} \notin \gPhi$ (hence $b \ngpst a$ or $a \ngpst b$). Coherence itself follows from validity.
+	
+	The phrasing of the theorem only defines $r$ informally. These supplementary notations may be useful to avoid ambiguity. Given $B \subseteq \allalts$, let $B / {\gind} = \set{{\gind}(a) \suchthat a \in B}$ denote the equivalence classes defined by $\gind$ among the elements of $B$. The relation $\gpst$ can be used to discriminate some of these equivalence classes. Define $\gpst^*$, an asymmetric transitive relation on $B / {\gind}$, such that given any two equivalence classes $\alts, \alts' \in B / {\gind}$, $\alts \gpst^* \alts'$ iff $\forall \alt \in \alts, \alt' \in \alts': \alt \gpst \alt'$. Let $\max_{\gpst^*}(B / {\gind}) = \set{\alts \in B / {\gind} \suchthat \forall \alts' \in B / {\gind}: \alts' \ngpst^* \alts}$ denote the undominated equivalence classes of $B / {\gind}$ considering $\gpst^*$.
+
+	In some situations, multiple deliberated restricted choice sets exist. A linear ordering $>$ on $\allalts$ can be used to break ties and obtain a precisely defined choice function. (A linear ordering $>$ on $\allalts$ is a transitive, asymmetric and connected binary relation over $\allalts × \allalts$, connected meaning that $\forall a ≠ b \in \allalts:  [a > b \lor b > a]$.) Note that this tie breaking strategy is adopted for concreteness and conceptual simplicity, but the proof does not depend on this specific choice. It may in general depend on the bundle.
+
+	Define now the choice function $r: \powersetz[\mathit{F}]{\allalts} → \powersetz{\allalts}$ as picking the maximal element (as determined by $>$) of each undominated equivalence class in $B$, thus, $r(B) = \set{\max_>(\alts) \suchthat \alts \in \max_{\gpst^*}(B / {\gind})}$.
+	
+	Given any bundle $B \in \powersetz[\mathit{F}]{\allalts}$, we now have to show that $B' = r(B)$ satisfies $[\forall a \in B \setminus B': \phi_{B, ¬a} \in \iPhi] \lor [\exists a \in B' \suchthat \phi_{B, a} \in \iPhi]$. Because $\gamma$ is valid, suffices to show that $[\forall a \in B \setminus B': \phi_{B, ¬a} \in \gPhi] \lor [\exists a \in B' \suchthat \phi_{B, a} \in \gPhi]$.
+	Consider any $a \in B \setminus B'$. Because $B'$ is finite, for some $b \in B'$, $b \gpst a$ or $b \gind a$.
+	
+	If $b \gpst a$, and because $\set{a, b} \in B$, $\phi_{B, ¬a} \in \gPhi$.
+	
+	If $b \gind a$, and because $\set{a, b} \in B$, $\phi_{B, b} \in \gPhi$ (because $\nexists c \in B \suchthat c \gpst b$, otherwise $b \notin B'$).
+\end{proof}
+The phrasing of this theorem considers only finite bundles for simplicity. It more generally applies to bundles that are closed according to $\gpst$. \TODO{Check.}
+
+\begin{proposition}[Completeness implies transitivity]
+	\label{th:comptrans}
+	If $\gpeq$ is complete ($\forall a, b \in \allalts: a \gpeq b \lor b \gpeq a$) and $\gamma$ is coherent, then it is transitive.
 \end{proposition}
 \begin{proof}
-	Well, this is false.
+	Consider any $a, b, c \in \allalts$ with $a \gpeq b \gpeq c$ and let us show that $a \gpeq c$.
+	
+	Observe first that given any bundle $B \subseteq \allalts$ with $x, y \in B$, when $x \gpeq y$, $\phi_{B, ¬y} \notin \gPhi ⇒ \phi_{B, ¬x} \notin \gPhi$. 
+	Indeed, when $x ≠ y$,
+	because $x \gpeq y$, either $\phi_{B, ¬y} \in \gPhi$ or $\phi_{B, x} \in \gPhi$; thus, if $\phi_{B, ¬y} \notin \gPhi$, then $\phi_{B, x} \in \gPhi$, hence, by coherence, $\phi_{B, ¬x} \notin \gPhi$.
+
+	Consider now the bundle $B = \set{a, b, c}$. By coherence, $[\phi_{B, ¬a} \notin \gPhi \lor \phi_{B, ¬b} \notin \gPhi \lor \phi_{B, ¬c} \notin \gPhi]$. The above observation leads to $\phi_{B, ¬c} \notin \gPhi ⇒ \phi_{B, ¬b} \notin \gPhi$ and $\phi_{B, ¬b} \notin \gPhi ⇒ \phi_{B, ¬a} \notin \gPhi$. Therefore, $\phi_{B, ¬a} \notin \gPhi$.
+	
+	Completeness implies that $a \gpeq c \lor c \gpeq a$, or equivalently, $a \gpeq c \lor c \gpst a \lor c \gind a$. Excluding $c \gpst a$ thanks to $\phi_{B, ¬a} \notin \gPhi$, we obtain $a \gpeq c$.
 \end{proof}
+
+The following proposition follows from \cref{th:comptrans,th:dp}.
+\begin{proposition}[Completeness implies single recommendations]
+	If $\gpeq$ is complete and $\gamma$ is valid, then the choice function $r$ defined in \cref{th:dp} associates to each finite bundle a singleton set.
+\end{proposition}
+
+When $\gpeq$ is not transitive, this relation still permits to define choice functions that could be said to respect, in some reasonable sense, the deliberated preference of the individuals. However, this claim is more arguable, as it is generally (though by all means not unanimously) considered in the literature that a reflective preference should be transitive. Further explorations of this path are left for future articles.
 
 \subsection{Older}
 A choice prediction $C_\gamma: \powersetz{\allalts} → \powersetz{\powersetz{\allalts}}$ is a mapping from each possible bundle $\emptyset ≠ B \subseteq \allalts$ to a non-empty set $\emptyset ≠ C_\gamma(B) = \mathcal{C} \subseteq \powersetz{B}$ of non-empty sets of alternatives included in the bundle. 

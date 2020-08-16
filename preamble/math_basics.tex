@@ -3,7 +3,7 @@
 %\mathscr is rounder than \mathcal.
 \NewDocumentCommand{\powerset}{m}{\mathscr{P}(#1)}
 %Powerset without zero.
-\NewDocumentCommand{\powersetz}{m}{\mathscr{P}^*(#1)}
+\NewDocumentCommand{\powersetz}{O{}m}{\mathscr{P}_{#1}^*(#2)}
 %https://tex.stackexchange.com/a/45732, works within both \set and \set*, same spacing than \mid (https://tex.stackexchange.com/a/52905).
 \NewDocumentCommand{\suchthat}{}{\;\ifnum\currentgrouptype=16 \middle\fi|\;}
 %Integer interval.

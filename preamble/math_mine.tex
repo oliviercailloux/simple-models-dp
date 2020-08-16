@@ -16,12 +16,10 @@
 	%\def\myRgood{\@ifnextchar_{\@myRgood@}{\mathrel{R^X}}}
 	%\makeatother
 \NewDocumentCommand{\ind}{}{\sim}
-\NewDocumentCommand{\peq}{}{\succeq_\gamma}
-\NewDocumentCommand{\pst}{}{\succ_\gamma}
-\NewDocumentCommand{\npeq}{}{\nsucceq_\gamma}
-\NewDocumentCommand{\npst}{}{\nsucc_\gamma}
-\NewDocumentCommand{\ipeq}{}{\succeq_i}
-\NewDocumentCommand{\ipst}{}{\succ_i}
+\NewDocumentCommand{\peq}{}{\succeq}
+\NewDocumentCommand{\pst}{}{\succ}
+\NewDocumentCommand{\npeq}{}{\nsucceq}
+\NewDocumentCommand{\npst}{}{\nsucc}
 
 %Deliberated Judgment
 %%Normative theory
@@ -82,6 +80,12 @@
 \NewDocumentCommand{\ibeats}{}{⊳^\text{\sout{\ensuremath\phi}}_{γ, i}}
 \NewDocumentCommand{\nibeats}{}{⋫^\text{\sout{\ensuremath\phi}}_{γ, i}}
 
+\NewDocumentCommand{\gind}{O{}}{\sim_\gamma^{#1}}
+\NewDocumentCommand{\gpeq}{}{\succeq_\gamma}
+\NewDocumentCommand{\gpst}{}{\succ_\gamma}
+\NewDocumentCommand{\ngpeq}{}{\nsucceq_\gamma}
+\NewDocumentCommand{\ngpst}{}{\nsucc_\gamma}
+
 %Deliberated Preference
 \NewDocumentCommand{\ppeqab}{}{t_{a \succeq b}}
 \NewDocumentCommand{\ppst}{O{a}O{b}}{t_{#1 \succ #2}}
@@ -92,4 +96,6 @@
 \NewDocumentCommand{\ppeq}{O{a}O{b}}{t_{#1 \succeq #2}}
 \NewDocumentCommand{\ppeqsure}{O{a}O{b}}{(t_{#1 \succeq #2}, \mathit{sure})}
 \NewDocumentCommand{\domc}{}{\mathscr{B}}
+\NewDocumentCommand{\ipeq}{}{\succeq_i}
+\NewDocumentCommand{\ipst}{}{\succ_i}
 
