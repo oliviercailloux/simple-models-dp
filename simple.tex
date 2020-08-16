@@ -503,16 +503,6 @@ The following proposition follows from \cref{th:comptrans,th:dp}.
 
 When $\gpeq$ is not transitive, this relation still permits to define choice functions that could be said to respect, in some reasonable sense, the deliberated preference of the individuals. However, this claim is more arguable, as it is generally (though by all means not unanimously) considered in the literature that a reflective preference should be transitive. Further explorations of this path are left for future articles.
 
-\subsection{WARP}
-Note that $\peq$ is not necessarily transitive. Given $\allalts = \set{a, b, c}$, given $i$, for all $\hist \in \allhist$, define $\set{a, b}_{\hist, i} = \set{a, b}$, $\set{a, c}_{\hist, i} = \set{a}$, $\set{b, c}_{\hist, i} = \set{b, c}$, and $\set{a, b, c}_{\hist, i} = \set{a, b, c}$. Then, $\gamma$ may be valid while supporting $a \ind b$ and $b \ind c$ and have no opinion about $a$ VS $c$: indeed, neither $¬c$ nor $a \ind c$ hold. That’s because WARP is broken: $\set{a, b, c}$ contain $\set{a, c}$ and $c$ is chosen, but in $\set{a, c}$, $c$ is not chosen.
-
-A normative theory satisfies WARP iff $[\exists \ar_{ab} \ileadstost \phi_{\set{a, b}, a} \land \exists \ar_{bc} \ileadstost \phi_{\set{b, c}, b}] ⇒ \exists \ar_{abc} \ileadstost \phi_{\set{a, b, c}, a}$.
-
-\begin{theorem}[WARP implies transitivity]
-	If an empirical theory $\gamma$ for a normative theory satisfying WARP is valid, then an empirical theory $\delta$ is valid with $\gpeq$ being transitive.
-\end{theorem}
-This is not enough. Need to build intermediate arguments: given $\ar_0$ for $\phi_{\set{a, b}, a}$ and $\ar_2$ for $\phi_{\set{b, c}, b}$, need $\ar = \ar_0 + \ar_2$ for $\phi_{\set{a, b, c}, a}$ that is subject to no more attacks.
-
 \subsection{Preferences}
 Let $\allalts$ be a set of alternatives. Define $\Phi_\allalts = \{\phi_{a \pst b} \suchthat a ≠ b \in \allalts\} \cup \{\phi_{a \peq b} \suchthat a ≠ b \in \allalts\}$, with $\phi_{a \pst b}$ intuitively representing a strict preference of $i$ for $a$ against $b$, and $\phi_{a \peq b}$ intuitively representing a weak preference of $i$ for $a$ against $b$. Define $¬\phi_{a \pst b} = \phi_{b \peq a}$ and $¬\phi_{a \peq b} = \phi_{b \pst a}$.
 
