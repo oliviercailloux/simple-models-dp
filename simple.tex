@@ -442,7 +442,7 @@ Let $\allalts$ be a set of alternatives.
 
 Define $\Phi_\allalts = \set{\phi_{B, a}, \phi_{B, ¬a} \suchthat \emptyset ≠ B \subseteq \allalts, a \in B}$.
 
-Given $\emptyset ≠ B \subseteq \allalts$, define $\emptyset ≠ c^\hist_i(B) \subseteq B$ as the subset that $i$ chooses as her indifference choice after exposure to $\hist$.
+The observation protocol goes as follows. Given $i$ and $\emptyset ≠ B \subseteq \allalts$ and $\hist$, $i$, after having been presented $\hist$, is asked to choose among a subset of elements from $B$ among which she is indifferent. Define $\emptyset ≠ c^\hist_i(B) \subseteq B$ as the subset that $i$ chooses as her indifference choice after exposure to $\hist$.
 Define $\hist \ileadsto \phi_{B, a}$ iff $a \in c^\hist_i(B)$.
 Define $\hist \ileadsto \phi_{B, ¬a}$ iff $a \notin c^\hist_i(B)$.
 
@@ -501,25 +501,7 @@ The following proposition follows from \cref{th:comptrans,th:dp}.
 	If $\gpeq$ is complete and $\gamma$ is valid, then the choice function $r$ defined in \cref{th:dp} associates to each finite bundle a singleton set.
 \end{proposition}
 
-When $\gpeq$ is not transitive, this relation still permits to define choice functions that could be said to respect, in some reasonable sense, the deliberated preference of the individuals. However, this claim is more arguable, as it is generally (though by all means not unanimously) considered in the literature that a reflective preference should be transitive. Further explorations of this path are left for future articles.
-
-\subsection{Preferences}
-Let $\allalts$ be a set of alternatives. Define $\Phi_\allalts = \{\phi_{a \pst b} \suchthat a ≠ b \in \allalts\} \cup \{\phi_{a \peq b} \suchthat a ≠ b \in \allalts\}$, with $\phi_{a \pst b}$ intuitively representing a strict preference of $i$ for $a$ against $b$, and $\phi_{a \peq b}$ intuitively representing a weak preference of $i$ for $a$ against $b$. Define $¬\phi_{a \pst b} = \phi_{b \peq a}$ and $¬\phi_{a \peq b} = \phi_{b \pst a}$.
-
-A normative theory of preferences about $\allalts$ is a theory about $\Phi_\allalts$: a tuple $(\allprops, ¬, \allargs, I, (\ileadsto)_{i \in I})$, with $\allprops$ defined as $\allprops_\allalts$, $¬$ defined as above.
-
-Define $\ipeq$, the deliberated preference of $i$, as $a \ipeq b$ iff $a = b \lor \phi_{a \peq b} \in \iPhi$. 
-
-Given an empirical theory for a normative theory of preferences, say that it claims a complete preference iff $\forall a ≠ b \in \allalts: \phi_{a \peq b} \in \gPhi \lor \phi_{b \peq a} \in \gPhi$. Similarly, it claims a transitive preference iff $\forall a, b, c \in \allalts: \phi_{a \peq b} \in \gPhi \land \phi_{b \peq c} \in \gPhi ⇒ \phi_{a \peq c} \in \gPhi$. Observe that establishing whether an empirical theory claims a complete or transitive preference can be determined a priori (without empirical observations).
-
-Given a bundle $B \subseteq \allalts$ and $i \in I$, $b \in B$ is a deliberated preferred choice for $i$ among $B$ iff $\forall b' \in B: b \ipeq b'$.
-
-The next result follows from these definitions and from classical results about choice functions and complete, transitive preferences. \TODO{Be more precise.}
- \begin{theorem}
- 	If an empirical theory for a normatively adequate normative theory of preference claims a complete and transitive preference and is valid, then, given any bundle $\emptyset ≠ B \subseteq \allalts$, some $b \in B$ is a deliberated preferred choice for $i$ among $B$.
- \end{theorem}
- 
-Given $i$ and $\phi_{a > b}$, $\hist \ileadsto \phi$ iff $i$, after having been presented $\ar$, is asked to choose among $a$, $b$, or declare she is indifferent if permitted; and $i$ chooses $a$. And $\hist \ileadsto \phi_{a ≥ b}$ iff $i$ does not choose $b$ (thus chooses $a$ or declare she is indifferent if permitted). Note that $\hist \ileadsto \phi ⇔ \hist \nileadsto ¬\phi$.
+When $\gpeq$ is not transitive, this relation still permits to define choice functions that could be said to respect, in some reasonable sense, the deliberated preference of the individuals. However, this claim is more arguable, as it is generally (though by all means not unanimously) considered in the literature that a reflective preference should be transitive. Further explorations of this possibility are left for future articles.
 
 \subsection{Satisfaction}
 Consider a normative theory of preferences about a given set of alternatives $\allalts$. Let $\gamma$ be the following empirical theory for that normative theory.
