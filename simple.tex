@@ -53,18 +53,18 @@ This distinction draws on our capacity, as human beings, to think about our shal
 
 It is well known that shallow preferences do not always match reflective ones.
 Indeed, forming reflective preferences is recognised as a difficult problem in many decision problems, contrary, by definition, to shallow preferences. For example, \citet[p.\ 6]{colell_microeconomic_1995} write, when presenting the preference relation that is the basis for most of their famous book about Microeconomic theory: “Introspection quickly reveals how hard it is to evaluate alternatives that are far from the realm of common experience. It takes work and serious reflection to find out one’s own preferences.” 
-It can be expected that some behavior highlighted by psychologists \citet{lichtenstein_construction_2006}, such as framing effects, would be rejected by the individuals themselves when pondering their decisions. 
+It can be expected that some behavior highlighted by psychologists \citep{kahneman_thinking_2012}, such as framing effects, would be rejected by the individuals themselves when pondering their decisions. 
 
 That reflective preferences are relevant to economic theory, in supplement to shallow preferences, is also illustrated by the general requirement of transitivity of preferences for economic theory, which is reasonably expected from reflective rather than from shallow preferences. As an illustration, \citet[p.\ 7]{colell_microeconomic_1995} go on writing: “the transitivity assumption can be hard to satisfy when evaluating alternatives far from common experience. As compared to the completeness property, however, it is also more fundamental in the sense that substantial portions of economic theory would not survive if economic agents could not be assumed to have transitive preferences.” 
 
-Let me state how the approach proposed here differs from those proposed in the literature, and what problems it aims at solving.
+Let me state how the approach proposed here to capture reflective preferences differs from those proposed in the literature, and what problems it aims at solving.
 
 \subsection{Existing approaches for capturing reflective preferences}
 \subsubsection{Laundering preferences}
 An approach much discussed recently is the one of laundering preferences, also called preference purification \citep{bernheim_beyond_2009, rubinstein_eliciting_2011, infante_preference_2016}: having collected shallow preference data (from the field or from interviews), laundering preferences consists in transforming them, using a formal process, in such a way that they satisfy axioms generally considered as required by rationality, or keeping only preference data collected in some situations considered appropriate to determine welfare-relevant preferences. For example, \citet{bleichrodt_making_2001} transform observed preferences in order to obtain a classical Expected Utility model; \citet{bernheim_beyond_2009} propose to exclude situations where the individual seems (by objective criteria) unable to process information considered relevant. 
 
 This creates a risk of mis-representing the reflective preferences of the individual: not only is it not known whether the individual would reflectively want to adhere to these axioms and, if so, how she would reflectively adapt her preferences when her shallow preferences exhibit related inconsistencies; but it is not even discussed how in principle this could be known. As a result, a theory postulating constraints on individual’s behavior on the basis of rational requirements is subject to the criticism addressed by \citet[p.\ 228]{dold_toward_2018} to libertarian paternalism, in that it “effectively denies the possibility that deviations from rational choice might be something to be acknowledged as reasonable”. 
-That this is an important methodological problem is sometimes recognized by authors adopting this approach. \Citet{bleichrodt_making_2001}, for example, state that laundering require controversial assumptions (p. 1500), and recommend it only as a last resort, recommending discussing with the decision-maker whenever possible to elicit her reflective preferences (p. 1499). Note that nudging \citep{thaler_nudge_2009} creates a similar problem: we have to guess what the individual would like if he thought hard about the decision problem, was well-informed, and actively worked against the psychological features he himself does not consider adequate for good decision making. \TODO{Comment about akrasia: we may want to correct for features that the individual herself can’t correct.}  
+That this is an important methodological problem is sometimes recognized by authors adopting this approach. \Citet{bleichrodt_making_2001}, for example, state that laundering require controversial assumptions (p.\ 1500), and recommend it only as a last resort, recommending discussing with the decision-maker whenever possible to elicit her reflective preferences (p.\ 1499). Note that nudging \citep{thaler_nudge_2009} creates a similar problem: we have to guess what the individual would like if he thought hard about the decision problem, was well-informed, and actively worked against the psychological features he himself does not consider adequate for good decision making. \TODO{Comment about akrasia: we may want to correct for features that the individual herself can’t correct.}  
 
 Some axioms arguably seem innocuous. For example, Pareto-dominance requires that $a$ be weakly preferred to $b$ if $a$ is at least as good as $b$ on every point of view that matter. However, as has been amply remarked, what is required is not merely the correctness of the axiom in the abstract, but its correct application to the decision situation. Has a point of view that the decision maker considers relevant been forgotten, leading the analyst to mistakenly think that $a$ Pareto-dominates $b$, and the seemingly impeccable conclusion that $a$ ought to be preferred to $b$ turns incorrect. \citet{sen_maximisation_1997} illustrated this reasoning (with another axiom) with his well-known example of a person picking her second most-preferred fruit from a basket out of politeness reasons, which could be considered irrational by an analyst blindly applying WARP. As \citet[p.\ 40]{lecouteux_reconciling_2015} puts it (citing \citet[p.\ 13]{bacharach_beyond_2006} for the part in italics), and as analyzed by \citet{sen_information_1986, sen_internal_1993}, “whether a decision-theoretic principle of rationality has been violated \emph{depends on how we, the theorists, ‘cut up the world’}” \TODO{Find that book}.
 
@@ -442,15 +442,23 @@ Let $\allalts$ be a set of alternatives.
 
 Define $\Phi_\allalts = \set{\phi_{B, a}, \phi_{B, ¬a} \suchthat \emptyset ≠ B \subseteq \allalts, a \in B}$.
 
-The observation protocol goes as follows. Given $i$ and $\emptyset ≠ B \subseteq \allalts$ and $\hist$, $i$, after having been presented $\hist$, is asked to choose among a subset of elements from $B$ among which she is indifferent. Define $\emptyset ≠ c^\hist_i(B) \subseteq B$ as the subset that $i$ chooses as her indifference choice after exposure to $\hist$.
+Let $I$ and $\allargs$ be any sets of individuals and arguments.
+
+The observation protocol goes as follows. Given $i \in I$, $\emptyset ≠ B \subseteq \allalts$ and $\hist \in \allhist$, the individual $i$, after having been presented the arguments in the sequence $\hist$, is asked to choose among a subset of elements from $B$ among which she is indifferent. Define $\emptyset ≠ c^\hist_i(B) \subseteq B$ as the subset that $i$ chooses after exposure to $\hist$.
 Define $\hist \ileadsto \phi_{B, a}$ iff $a \in c^\hist_i(B)$.
 Define $\hist \ileadsto \phi_{B, ¬a}$ iff $a \notin c^\hist_i(B)$.
 
-Given $a, b \in \allalts$, define $a \gpst b$ iff $\forall \set{a, b} \subseteq B: \phi_{B, ¬b} \in \gPhi$.
+\begin{remark}
+	This does not work, because $\gamma$ supporting $\phi_{\set{a, b, c, d}, ¬b}$, $\phi_{\set{a, b, c, d}, ¬c}$ and $\phi_{\set{a, b, c, d}, ¬d}$ may be valid even if $i$ never chooses $a$: $i$ may satisfy $¬b$ (by picking $c$) when given an argument for $¬b$, satisfy both $¬b$ and $¬c$ (by picking $d$) when given arguments for $¬b$ and $¬c$, and so on. The individual $i$ is not obliged to satisfy the three arguments for $¬b$, $¬c$ and $¬d$ simultaneously, as these arguments are required to count only when they are at the end of the sequence.
+\end{remark}
+
+This defines normative theories about $\allalts$. Any empirical theory for a normative theory about $\allalts$ is said to be an empirical theory about $\allalts$.
+
+Given an empirical theory about $\allalts$ and $a, b \in \allalts$, define $a \gpst b$ iff $\forall \set{a, b} \subseteq B: \phi_{B, ¬b} \in \gPhi$.
 Define $a \gind b$ iff either $a = b$ or $\forall \set{a, b} \subseteq B: [\phi_{B, a} \in \gPhi \land \phi_{B, b} \in \gPhi] \lor [\exists c \in B \suchthat c \gpst a \land c \gpst b]$.
 Define ${\gpeq} = {\gpst} \cup {\gind}$.
 
-An empirical theory is said to be coherent iff $\forall \emptyset ≠ B \subseteq \allalts$: $¬(\forall a \in B: \phi_{B, ¬a} \in \gPhi) \land ¬(\exists a \in B \suchthat \phi_{B, a} \in \gPhi \land \phi_{B, ¬a} \in \gPhi)$. Coherence is required for validity, but, contrary to validity, is not an empirical property, in the sense that it can be verified without experiments, as it is independent of $\ileadsto$.
+An empirical theory about $\allalts$ is said to be coherent iff $\forall \emptyset ≠ B \subseteq \allalts$: $¬(\forall a \in B: \phi_{B, ¬a} \in \gPhi) \land ¬(\exists a \in B \suchthat \phi_{B, a} \in \gPhi \land \phi_{B, ¬a} \in \gPhi)$. Coherence is required for validity. Note that it is not an empirical property, in the sense that it can be verified without experiments, as it is independent of $\ileadsto$.
 
 If $\gpeq$ is transitive, and if $\gamma$ is valid, $\gpeq$ can be said to represent part of the deliberated preference of $i$, in the sense that choosing from the undominated elements of parts of $\gpeq$ restricts choice in a way that is systematically compatible with $i$’s \ac{DJ}. This is made precise below.
 
@@ -460,7 +468,7 @@ If $\gpeq$ is transitive and $\gamma$ is valid, the following theorem shows that
 
 \begin{theorem}[Deliberated preference]
 	\label{th:dp}
-	If $\gpeq$ is transitive and $\gamma$ is valid, let $r$ be a choice function such that, given any $B \in \powersetz[\mathit{F}]{\allalts}$, $r(B)$ contains exactly one arbitrary argument of each undominated equivalence classes of $B$, where $\gind$ determines the equivalence classes and $\gpst$ determines the undominated elements. Then, $\forall B \in \powersetz[\mathit{F}]{\allalts}$, $r(B)$ is a deliberated restricted choice set for $i$ given $B$.
+	Let $\gamma$ be a valid empirical theory for a normatively adequate normative theory about $\allalts$, and such that $\gpeq$ is transitive. Let $r$ be a choice function such that, given any $B \in \powersetz[\mathit{F}]{\allalts}$, $r(B)$ contains exactly one arbitrary argument of each undominated equivalence classes of $B$, where $\gind$ determines the equivalence classes and $\gpst$ determines the undominated elements. Then, $\forall B \in \powersetz[\mathit{F}]{\allalts}$, $r(B)$ is a deliberated restricted choice set for $i$ given $B$.
 \end{theorem}
 \begin{proof}
 	Observe that under these hypothesis, $\gpeq$ is a transitive, reflexive binary relation on $\allalts$, $\gpst$ is its asymmetric part and $\gind$ is its symmetric part. That $\gpst$ is asymmetric follows from coherence, which requires, considering $B = \set{a, b}$, that $\phi_{B, ¬a} \notin \gPhi$ or $\phi_{B, ¬b} \notin \gPhi$ (hence $b \ngpst a$ or $a \ngpst b$). Coherence itself follows from validity.
@@ -478,7 +486,7 @@ If $\gpeq$ is transitive and $\gamma$ is valid, the following theorem shows that
 	
 	If $b \gind a$, and because $\set{a, b} \in B$, $\phi_{B, b} \in \gPhi$ (because $\nexists c \in B \suchthat c \gpst b$, otherwise $b \notin B'$).
 \end{proof}
-The phrasing of this theorem considers only finite bundles for simplicity. It more generally applies to bundles that are closed according to $\gpst$. \TODO{Check.}
+The phrasing of this theorem considers only finite bundles for simplicity. It more generally applies to bundles that are closed according to $\gpst$. \TODO{Phrase this correctly.}
 
 \begin{proposition}[Completeness implies transitivity]
 	\label{th:comptrans}
@@ -501,14 +509,16 @@ The following proposition follows from \cref{th:comptrans,th:dp}.
 	If $\gpeq$ is complete and $\gamma$ is valid, then the choice function $r$ defined in \cref{th:dp} associates to each finite bundle a singleton set.
 \end{proposition}
 
-When $\gpeq$ is not transitive, this relation still permits to define choice functions that could be said to respect, in some reasonable sense, the deliberated preference of the individuals. However, this claim is more arguable, as it is generally (though by all means not unanimously) considered in the literature that a reflective preference should be transitive. Further explorations of this possibility are left for future articles.
+When $\gpeq$ is not transitive, it still permits to define choice functions that could be said to respect, in some reasonable sense, the deliberated preference of the individuals. However, this claim is more arguable, as it is generally (though by all means not unanimously) considered in the literature that a reflective preference should be transitive. Further explorations of this possibility are left for future articles.
+
+The claims of an empirical theory about $\allalts$ can sometimes be defined on the basis of a preference ordering $\peq$. In such a case, the claims …
 
 \subsection{Satisfaction}
 Consider a normative theory of preferences about a given set of alternatives $\allalts$. Let $\gamma$ be the following empirical theory for that normative theory.
 
-Define $C$ a set of criteria, functions $c: \allalts → \R$ measuring the performances of the alternatives according to some point of view. Let $t: \R^C$ be a set of thresholds, thus, consisting of one real threshold $t_c \in \R$ per criterion. Say that $a \in \allalts$ is satisficing iff $\forall c \in C: c(a) ≥ t_c$.
+Define $C$ a set of criteria, functions $c: \allalts → \R$, each function measuring the performances of the alternatives according to some point of view. Let $t \in \R^C$ be a set of thresholds, thus, consisting of one real valued threshold $t_c \in \R$ per criterion. Say that $a \in \allalts$ is satisfying iff $\forall c \in C: c(a) ≥ t_c$.
 
-The theory $\gamma$ says that $i$ is a satisficer using some defined criteria $C$ and thresholds $t = (t_c)_{c \in C}$. The set $\gPhi$ is defined as $\set{\phi_{a > b} \suchthat a \text{ is satisficing and $b$ is not}}$. Given $a, b \in \allalts$, with $a$ satisficing and $b$ not, define $\ar_{a > b}$ as the text: “$a$ has performance $c_1(a)$ on criterion $c_1$, and it is reasonable to consider that having at least $t_{c_1}$ is satisfying enough from the point of view captured by $c_1$, (… same phrase for the other criteria…), therefore, it is a fully satisfactory alternative; whereas $b$ is not satisfactory on criteria (… enumeration of the criteria such that $c(b) < t_{c}$).” 
+The theory $\gamma$ claims, intuitively, that individuals $i \in I$ are satisficers using some defined criteria $C$ and thresholds $t = (t_c)_{c \in C}$. The set $\gPhi$ is defined as $\set{\phi_{a > b} \suchthat a \text{ is satisficing and $b$ is not}}$. Given $a, b \in \allalts$, with $a$ satisficing and $b$ not, define $\ar_{a > b}$ as the text: “$a$ has performance $c_1(a)$ on criterion $c_1$, and it is reasonable to consider that having at least $t_{c_1}$ is satisfying enough from the point of view captured by $c_1$, (… same phrase for the other criteria…), therefore, it is a fully satisfactory alternative; whereas $b$ is not satisfactory on criteria (… enumeration of the criteria such that $c(b) < t_{c}$).” 
 Define ${\gleadsto} = \set{\ar_{a > b}, \phi_{a > b}) \suchthat a \text{ is satisficing and $b$ is not}}$.
 Define $\alldargs = \gbeats = \dbeats = {+} = \emptyset$: the theory does not consider any counter-argument as potentially damaging. 
 This defines the theory $(\gleadsto, \gbeats, \alldargs, \dbeats, +)$.
