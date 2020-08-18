@@ -158,75 +158,53 @@ Given a set of individuals, a set of arguments and an agenda, an observation pro
 Equivalently, given any individual $i \in I$, ${\ileadsto}: \allhist → \allprops$ maps paths to propositions for this individual. 
 Given an individual $i \in I$, a path $\hist$ and a proposition $\prop$, the path is said to lead to the proposition for this individual iff $\hist \ileadsto \prop$.
 
-A normative theory also defines an involution operator $¬$ on $\allprops$, thus a function $¬: \allprops → \allprops$ satisfying $\forall \prop \in \allprops: ¬¬\prop = \prop$.
-(The symbol $¬$ is also used in this article to negate classical mathematical propositions; this should create no confusion.)
-
-A normative theory is a tuple $(\allprops, ¬, \allargs, I, {\allleadsto})$ 
-%with $\allprops$ an agenda, $¬$ a negation operator on $\allprops$, $\allargs$ a set of arguments, $I$ a set of individuals, and ${\allleadsto}$ an observation protocol, 
+A normative theory is a tuple $(\allprops, \allargs, I, {\allleadsto})$ 
 satisfying the constraints described here above.
-%where $\allprops = \allprops × \set{\mathit{poss}, \mathit{sure}}$.
 
 As usual with binary relations, $\hist \nileadsto \prop$ means $(\hist, \prop) \notin {\ileadsto}$.
-
-Given $i \in I, \prop \in \allprops, \hist \in \allhist$, say that $\hist$ leads strongly to $\prop$, $\hist \ileadstost \prop$, iff $\hist \ileadsto \prop \land \hist \nileadsto ¬\prop$.
-(The visual proximity of the symbols $\ileadsto$ and $\ileadstost$ creates a small risk of confusion, but its usage seems justified by the fact that $\ileadsto$ is not used in the rest of this article, except in the proof of \cref{th:protcoh}.)
 
 Given $\hist \in \allhist$, if $l$ denotes its length, $\hist(\intvl{1, l})$ denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$.
 Let $\histend = \hist(\intvl{\max(1, l-1), l})$ denote the set containing the last two arguments of the sequence $\hist$ if the sequence has at least two elements; and all arguments of the sequence if it has exactly one element or is empty.
 
 Given $i \in I, \prop \in \allprops, \ar \in \allargs$, define $\ar \ileadstost \prop$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \ileadstost \prop$.
 
-\begin{remark}
-	I’d rather drop the negation and observe that if the protocol is defined so that $\hist \ileadsto \prop_1 ⇒ \hist \nileadsto \prop_2$, then $\prop_1 \in \iprops ⇒ \prop_2 \notin \iprops$. Observe that this is always possible. The definitions about completeness should use a negation operator in supplement to the normative theory tuple.
-\end{remark}
-
-\subsection{Classify propositions}
+\subsection{Coherence}
 \begin{axiom}[Normative adequacy]
 	\label{ax:norm}
 	$\forall i \in I, \prop \in \allprops: 
-		[(\exists \ar \in \allargs \suchthat \ar \ileadstost \prop) \land ¬(\exists \ar \in \allargs \suchthat \ar \ileadstost ¬\prop)] ⇒ \prop \in \iprops \land ¬\prop \notin \iprops.$
+		[(\exists \ar \in \allargs \suchthat \ar \ileadstost \prop)] ⇒ \prop \in \iprops.$
 \end{axiom}
 
-\Cref{ax:norm} is actually equivalent to the following property.
-\begin{property}[Simple normative adequacy]
-	\label{ax:snorm}
-	$\forall i \in I, \prop \in \allprops: 
-		[\exists \ar \in \allargs \suchthat \ar \ileadstost \prop] ⇒ \prop \in \iprops \land ¬\prop \notin \iprops.$
-\end{property}
+A relation $n \subseteq \allprops × \allprops$ is said to be an incompatibility relation iff $\forall \hist \in \allhist, (\prop, \propbar) \in n: \hist \ileadsto \prop ⇒ \hist \nileadsto \propbar$. Two propositions $\prop, \prop' \in \allprops$ are said to be incompatible iff $(\prop, \prop') \in n$. Such a pair will generally denoted by $(\prop, \propbar)$.
+(This article does not use the overline to denote set complementarity, thus this notation should create no confusion.)
 
-To see why this hold, consider the following definition and proposition.
-\begin{definition}[Protocol coherence]
-	\label{def:protcoh}
-	$\forall i \in I, \prop \in \allprops$:
-	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \ileadstost \prop] ⇒ [\nexists \ar \in \allargs \suchthat \ar \ileadstost ¬\prop].
-	\end{equation}
-\end{definition}
-\begin{proposition}
+It is desirable to ensure that this axiom cannot lead to incompatible propositions being considered deliberated. Consider the following proposition.
+\begin{proposition}[Protocol coherence]
 	\label{th:protcoh}
-	Any normative theory satisfies Protocol coherence.
+	Given any normative theory and incompatibility relation $n$,
+	$\forall i \in I, (\prop, \propbar) \in n$:
+	\begin{equation}
+		[\exists \ar \in \allargs \suchthat \ar \ileadstost \prop] ⇒ [\nexists \ar \in \allargs \suchthat \ar \ileadstost \propbar].
+	\end{equation}
 \end{proposition}
 \begin{proof}
-	Protocol coherence is satisfied by definition of $\ileadstost$. Indeed, if for some $\ar \in \allargs$, $\ar \ileadstost \prop$, then $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadsto ¬\prop$; thus, for any $\ar' \in \allargs$, $\ar' \ileadstost ¬\prop$ is false, because it requires that $\forall \ar_1 \in \allargs: (\ar', \ar_1) \ileadsto ¬\prop$, and thus in particular, that $(\ar', \ar) \ileadsto ¬\prop$.
+	If for some $\ar \in \allargs$, $\ar \ileadstost \prop$, then by definition of $\ileadstost$, $\forall \ar_1 \in \allargs: (\ar_1, \ar) \ileadsto \prop$, thus by definition of $n$, $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadsto \propbar$; thus, for any $\ar' \in \allargs$, $\ar' \ileadstost \propbar$ is false, because it requires that $\forall \ar_1 \in \allargs: (\ar', \ar_1) \ileadsto \propbar$, and thus in particular, that $(\ar', \ar) \ileadsto \propbar$.
 \end{proof}
 
-That \cref{ax:norm} is equivalent to \cref{ax:snorm} immediately follows from \cref{th:protcoh}.
-\begin{proposition}
-	\label{th:normeqsnorm}
-	Any normative theory satisfies Normative adequacy iff it satisfies simple normative adequacy.
+To further analyze this and related matters, consider defined a negation operator $¬$ on $\allprops$. $¬$ is a negation operator iff it is an involution operator (thus a function $¬: \allprops → \allprops$ satisfying $\forall \prop \in \allprops: ¬¬\prop = \prop$) and furthermore satisfying, $\forall \phi \in \allprops: \hist \ileadsto \prop ⇒ \hist \nileadsto ¬\prop$.
+Given any $i \in I$, say that a proposition $\prop \in \allprops$ is \emph{$i$-decidable} iff $\exists \ar \in \allargs \suchthat \ar \ileadstost \prop \lor \ar \ileadstost \propbar$.
+The $i$-decidable propositions are those on which the normative theory permits to take a position. 
+%It will generally be unknown in practical applications, and may be empty.
+The next proposition ensures an unambiguous interpretation of the content of $\iprops$ for all $i$-decidable propositions. The symbol $\oplus$ denotes the exclusive disjunction; thus $\prop \in \iprops \oplus ¬\prop \in \iprops$ is equivalent to: $\prop \in \iprops ⇔ ¬\prop \notin \iprops$. It can be seen to hold by using \cref{th:protcoh}.
+
+\begin{proposition}[Restricted interpretability]
+	\label{th:restrinterpr}
+	Any normative theory with a negation operator $¬$ satisfy,
+	$\forall i \in I, \prop \in \allprops: [\exists \ar \in \allargs \suchthat \ar \ileadstost \prop \lor \ar \ileadstost ¬\prop] ⇒ [\prop \in \iprops \oplus ¬\prop \in \iprops]$.
 \end{proposition}
 
-To further analyze this and related matters, given a normative theory and $i \in I$, say that a proposition $\prop \in \allprops$ is \emph{$i$-decidable} iff $\exists \ar \in \allargs \suchthat \ar \ileadstost \prop \lor \ar \ileadstost ¬\prop$.
-The $i$-decidable propositions are those on which the normative theory permits to take a position. It will generally be unknown in practical applications, and may be empty.
-The next property ensures an unambiguous interpretation of the content of $\iprops$ for all $i$-decidable propositions. In this definition, $\oplus$ denotes the exclusive disjunction; thus $\prop \in \iprops \oplus ¬\prop \in \iprops$ is equivalent to: $\prop \in \iprops ⇔ ¬\prop \notin \iprops$. It can be seen to hold by using \cref{th:normeqsnorm}.
+This interpretability is however restricted to the $i$-decidable propositions. The following definitions and propositions (assuming a normative theory and a negation operator $¬$ defined) argue that going further is not desirable.
 
-\begin{property}[Restricted interpretability]
-	\label{def:restrinterpr}
-	$\forall i \in I, \prop \in \allprops: [\exists \ar \in \allargs \suchthat \ar \ileadstost \prop \lor \ar \ileadstost ¬\prop] ⇒ [\prop \in \iprops \oplus ¬\prop \in \iprops]$.
-\end{property}
-
-\subsection{Non-completeness}
-\label{sec:incompl}
 \begin{definition}[Theory completeness]
 	$\forall \prop \in \allprops: [\exists \ar \in \allargs \suchthat \ar \ileadstost \prop] \lor [\exists \ar \in \allargs \suchthat \ar \ileadstost ¬\prop]$.
 \end{definition}
@@ -284,8 +262,8 @@ An example permits to ensure that the constraint of finite depth does not mandat
 	An empirical theory may involve infinite relations $\gbeats$ and $\dbeats$.
 \end{proposition}
 \begin{proof}
-	Consider an agenda containing two propositions, $\allprops = \set{\prop, ¬\prop}$, an infinite set of arguments $\allargs = \set{\ar_k \suchthat k \in \N}$ with $\forall j, k \in \N: \ar_j ≠ \ar_k$, and consider any set of individuals $I$ and observation protocol $\allleadsto$. 
-	Define $2\N^* = \set{k \suchthat k / 2 \in \N^*}$ as the set of non-zero even integers.
+	Consider an agenda $\allprops = \set{\prop}$ containing a single proposition, an infinite set of arguments $\allargs = \set{\ar_k \suchthat k \in \N}$ with $\forall j, k \in \N: \ar_j ≠ \ar_k$, and consider any set of individuals $I$ and observation protocol $\allleadsto$. 
+	Define $2\N^* = \set{k \in \N^* \suchthat k / 2 \in \N^*}$ as the set of non-zero even integers.
 	Define ${\gleadsto} = \set{(\ar_0, \prop)}$.
 	Define ${\gbeats} = \set{(\ar_{k - 1}, \ar_0) \suchthat k \in 2\N^*}$ so that all odd numbered arguments are planned attacks against $\ar_0$. 
 	Consider an infinite set of fragments $\alldargs = \set{\ard[k] \suchthat k \in 2\N^*}$ with $\forall j, k \in 2\N^*: \ard[j] ≠ \ard[k]$ so that fragments correspond to non-zero even integers, and define ${\dbeats} = \set{(\ard[k], \ar_{k - 1}) \suchthat k \in 2\N^*}$ so that each (even numbered) defense fragment attacks exactly one (odd numbered) planned attacker of $\ar_0$. 
@@ -293,7 +271,7 @@ An example permits to ensure that the constraint of finite depth does not mandat
 	define $j_{\dargs} = \sum_{k \in K_{\dargs}}$ as the sum of these indices;
 	and define $\ar_0 + \dargs = \ar_{j_{\dargs}}$. 
 %	$\ard[k] \in \alldargs$, define $\ar_0 + \set{\ard[k]} = \ar_k$. 
-	Consider an empirical theory $(\gleadsto, \gbeats, \alldargs, \dbeats, +)$ for the normative theory $(\allprops, ¬, \allargs, I, {\allleadsto})$. That this is indeed a legal empirical theory can be confirmed by checking that all constraints are satisfied, in particular, $(\dfp)^2(\gleadstoinv(\allprops)) = \dfp(\dfp(\ar_0)) = \dfp(\set{\ar_k \suchthat k \in 2\N^*}) = \emptyset$ because there is no planned attack against any argument in $\set{\ar_k \suchthat k \in 2\N^*}$. This theory involves infinite relations $\gbeats$ and $\dbeats$.
+	Consider an empirical theory $(\gleadsto, \gbeats, \alldargs, \dbeats, +)$ for the normative theory $(\allprops, \allargs, I, {\allleadsto})$. That this is indeed a legal empirical theory can be confirmed by checking that all constraints are satisfied, in particular, $(\dfp)^2(\gleadstoinv(\allprops)) = \dfp(\dfp(\ar_0)) = \dfp(\set{\ar_k \suchthat k \in 2\N^*}) = \emptyset$ because there is no planned attack against any argument in $\set{\ar_k \suchthat k \in 2\N^*}$. This theory involves infinite relations $\gbeats$ and $\dbeats$.
 \end{proof}
 
 \subsection{Falsifiability}
@@ -346,7 +324,7 @@ I also write that $(i, \prop, \hist, \ar)$ falsifies $\gamma$ to mean that it is
 \end{proof}
 
 \begin{definition}[Validity]
-	An empirical theory is \emph{valid} iff $\forall i \in I, \prop \in \gpropse: [\prop \in \iprops \land ¬\prop \notin \iprops]$.
+	An empirical theory is \emph{valid} iff $\forall i \in I, \prop \in \gpropse: \prop \in \iprops$.
 \end{definition}
 
 \begin{lemma}
@@ -364,7 +342,7 @@ I also write that $(i, \prop, \hist, \ar)$ falsifies $\gamma$ to mean that it is
 	A normatively adequate and convincing empirical theory is valid.
 \end{theorem}
 \begin{proof}
-	Given any $i \in I$ and $\prop \in \gpropse$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstost \prop$; the conclusion then follows thanks to simple normative adequacy (that \cref{th:normeqsnorm} shows to be equivalent to normative adequacy). 
+	Given any $i \in I$ and $\prop \in \gpropse$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstost \prop$; the conclusion then follows thanks to normative adequacy. 
 	
 	Lemma: $[\ar_0 \in \gargs \land \ar_0 \nileadstost \prop] ⇒ \exists \ar_2 \in \gargs \cap \dfp(\ar_0)$. That is because $\ar_0 \in \gargs$ implies that $\ar_0$ $i$-defends $\prop$, by convincingness, and,
 	by definition, $\ar_0 \nileadstost \prop$ means that $\exists \hist \in \allhist \suchthat \ar_0 \in \histend \land \hist \nileadstost \prop$; \cref{th:produce} thus applies.
@@ -374,22 +352,22 @@ I also write that $(i, \prop, \hist, \ar)$ falsifies $\gamma$ to mean that it is
 \end{proof}
 
 \subsection{Effectively comparing models}
-Given $\prop \in \allprops$ and two empirical theories $\gamma$ and $\delta$ for a given normative theory, say that they disagree about $\prop$ iff $\prop \in \gpropse[\gamma] \land ¬\prop \in \gpropse[\delta]$. Say that they are incompatible iff there is at least one $\prop \in \allprops$ that they disagree about.
+Given $\prop \in \allprops$ and two empirical theories $\gamma$ and $\delta$ for a given normative theory with an incompatibility relation $n$, say that they disagree about $(\prop, \propbar) \in n$ iff $\prop \in \gpropse[\gamma] \land \propbar \in \gpropse[\delta]$. Say that they are incompatible iff there is at least one pair $(\prop, \propbar) \in \allprops$ that they disagree about.
 
 Given $\prop \in \allprops$, $\hist \in \allhist$ and $\ar_\gamma \in \gargs$, say that $(\hist, \ar_\gamma)$ challenges $\prop$ iff $\hist \nileadstost \prop$ and $\ar_\gamma \in \histend$.
-Given $\prop \in \allprops, \ar_\gamma \in \gargs, \ar_\delta \in \gargsdelta$, say that $(\hist, \ar_\gamma, \ar_\delta)$ is a $\prop/¬\prop$-challenge iff $(\hist, \ar_\gamma)$ challenges $(\gamma, \prop)$ or $(\hist, \ar_\delta)$ challenges $(\delta, ¬\prop)$.
+Given $\prop \in \allprops, \ar_\gamma \in \gargs, \ar_\delta \in \gargsdelta$, say that $(\hist, \ar_\gamma, \ar_\delta)$ is a $\prop/\propbar$-challenge iff $(\hist, \ar_\gamma)$ challenges $(\gamma, \prop)$ or $(\hist, \ar_\delta)$ challenges $(\delta, \propbar)$.
 
 \begin{lemma}
 	\label{th:endchal}
-	Given $\ar_\gamma \in \gargs$, $\ar_\delta \in \gargsdelta$ and $\hist \in \allhist$ such that $\set{\ar_\gamma, \ar_\delta} \subseteq \histend$, $(\hist, \ar_\gamma, \ar_\delta)$ is a $\prop/¬\prop$-challenge.
+	Given $\ar_\gamma \in \gargs$, $\ar_\delta \in \gargsdelta$ and $\hist \in \allhist$ such that $\set{\ar_\gamma, \ar_\delta} \subseteq \histend$, $(\hist, \ar_\gamma, \ar_\delta)$ is a $\prop/\propbar$-challenge.
 \end{lemma}
 \begin{proof}
-	Either $\hist \nileadstost \prop$, and $(\hist, \ar_\gamma)$ challenges $\prop$, or $\hist \ileadstost \prop$, hence, by \cref{th:protcoh}, $\hist \nileadstost ¬\prop$, and $(\hist, \ar_\delta)$ challenges $¬\prop$. 
+	Either $\hist \nileadstost \prop$, and $(\hist, \ar_\gamma)$ challenges $\prop$, or $\hist \ileadstost \prop$, hence, by \cref{th:protcoh}, $\hist \nileadstost \propbar$, and $(\hist, \ar_\delta)$ challenges $\propbar$. 
 \end{proof}
 
 \begin{lemma}
 	\label{th:nextchal}
-	Given $(\hist, \ar_\gamma)$ challenging $\prop$, with $\ar_\gamma \in \gargs \cap (\dfp)^k(\gleadstoinv(\prop))$, and $\ar_\delta \in \gargsdelta$: either $(i, \prop, \hist, \ar_\gamma)$ falsifies $\gamma$, or there exists a $\prop/¬\prop$-challenge $(\histp, \ar'_\gamma, \ar_\delta)$, with $\ar'_\gamma \in \gargs \cap (\dfp)^{k + 1}(\gleadstoinv(\prop))$.
+	Given $(\hist, \ar_\gamma)$ challenging $\prop$, with $\ar_\gamma \in \gargs \cap (\dfp)^k(\gleadstoinv(\prop))$, and $\ar_\delta \in \gargsdelta$: either $(i, \prop, \hist, \ar_\gamma)$ falsifies $\gamma$, or there exists a $\prop/\propbar$-challenge $(\histp, \ar'_\gamma, \ar_\delta)$, with $\ar'_\gamma \in \gargs \cap (\dfp)^{k + 1}(\gleadstoinv(\prop))$.
 \end{lemma}
 \begin{proof}
 	If $\ar_\gamma$ does not $i$-defend $\prop$, then $(i, \prop, \hist, \ar_\gamma)$ falsifies $\gamma$, which ends the proof. 
@@ -421,18 +399,18 @@ Given two incompatible empirical theories for a given normative theory, $\alpha 
 	Given $k_\alpha, k_\beta \in \N, \hist \in \allhist, \ar_\alpha \in \gargsalpha, \ar_\beta \in \gargsbeta$, 
 	say that 
 	$(\hist, \ar_\alpha, \ar_\beta)$ is a challenge of complexity $(k_\alpha, k_\beta)$ iff 
-	$(\hist, \ar_\alpha, \ar_\beta)$ is a $\prop/¬\prop$-challenge, $\ar_\alpha \in (\dfp[\alpha])^{k_\alpha}(\gleadstoinv[\alpha](\prop))$, and $\ar_\beta \in (\dfp[\beta])^{k_\beta}(\gleadstoinv[\beta](¬\prop))$.
+	$(\hist, \ar_\alpha, \ar_\beta)$ is a $\prop/\propbar$-challenge, $\ar_\alpha \in (\dfp[\alpha])^{k_\alpha}(\gleadstoinv[\alpha](\prop))$, and $\ar_\beta \in (\dfp[\beta])^{k_\beta}(\gleadstoinv[\beta](\propbar))$.
 	
-	Pick any $\ar_{-1} \in \allargs \suchthat \ar_{-1} \gleadsto[\beta] ¬\prop$. Observe that $\ar_{-1} \in \gargsbeta \cap (\dfp[\beta])^0(\gleadstoinv[\beta](¬\prop))$. Test whether $(\ar_{-1}) \nileadstost \prop$. If so, $(i, \prop, (\ar_{-1}), \ar_{-1})$ falsifies $\beta$, which ends the procedure. 
+	Pick any $\ar_{-1} \in \allargs \suchthat \ar_{-1} \gleadsto[\beta] \propbar$. Observe that $\ar_{-1} \in \gargsbeta \cap (\dfp[\beta])^0(\gleadstoinv[\beta](\propbar))$. Test whether $(\ar_{-1}) \nileadstost \prop$. If so, $(i, \prop, (\ar_{-1}), \ar_{-1})$ falsifies $\beta$, which ends the procedure. 
 	Thus, assume that $(\ar_{-1}) \ileadstost \prop$. 
 	
-	Pick any $\ar_0 \in \allargs \suchthat \ar_0 \gleadsto[\alpha] \prop$. Observe that $\ar_0 \in \gargsalpha \cap (\dfp[\alpha])^0(\gleadstoinv[\alpha](\prop))$.  Define $\hist = (\ar_{-1}, \ar_0)$ and test whether $\hist \nileadstost \prop$. By \cref{th:endchal}, $(\hist, \ar_0, \ar_{-1})$ is a $\prop/¬\prop$-challenge, thus, $(\hist, \ar_0, \ar_{-1})$ is a challenge of complexity $(0, 0)$.
+	Pick any $\ar_0 \in \allargs \suchthat \ar_0 \gleadsto[\alpha] \prop$. Observe that $\ar_0 \in \gargsalpha \cap (\dfp[\alpha])^0(\gleadstoinv[\alpha](\prop))$.  Define $\hist = (\ar_{-1}, \ar_0)$ and test whether $\hist \nileadstost \prop$. By \cref{th:endchal}, $(\hist, \ar_0, \ar_{-1})$ is a $\prop/\propbar$-challenge, thus, $(\hist, \ar_0, \ar_{-1})$ is a challenge of complexity $(0, 0)$.
 	
 	Suffices now to apply \cref{th:nextchal} repetitively, until finding a falsification instance of $\alpha$ or $\beta$. This is because, given a challenge $(\hist, \ar_\alpha, \ar_\beta)$ of complexity $(k_\alpha, k_\beta)$, \cref{th:nextchal} applies, yielding either a falsification instance, or a new challenge of higher complexity. 
 Indeed, if $(\hist, \ar_\alpha)$ challenges $\prop$, apply \cref{th:nextchal} with $\alpha$ for $\gamma$, $\beta$ for $\delta$, and obtain either that $\hist$ falsifies $\alpha$, or a new tuple $(\histp, \ar'_\alpha, \ar_\beta)$ that is a challenge of complexity $(k_\alpha + 1, k_\beta)$.
-And if $(\hist, \ar_\beta)$ challenges $¬\prop$, apply \cref{th:nextchal} with $¬\prop$ for $\prop$, $\beta$ for $\gamma$, $\alpha$ for $\delta$, and obtain either that $\hist$ falsifies $\beta$, or a new tuple $(\histp, \ar'_\beta, \ar_\alpha)$ such that $(\histp, \ar_\alpha, \ar'_\beta)$ is a challenge of complexity $(k_\alpha, k_\beta + 1)$.
+And if $(\hist, \ar_\beta)$ challenges $\propbar$, apply \cref{th:nextchal} with $\propbar$ for $\prop$, $\beta$ for $\gamma$, $\alpha$ for $\delta$, and obtain either that $\hist$ falsifies $\beta$, or a new tuple $(\histp, \ar'_\beta, \ar_\alpha)$ such that $(\histp, \ar_\alpha, \ar'_\beta)$ is a challenge of complexity $(k_\alpha, k_\beta + 1)$.
 	
-	Given that $\exists K_\alpha \suchthat (\dfp[\alpha])^{K_\alpha}(\gleadstoinv[\alpha](\prop)) = \emptyset$ and $K_\beta \suchthat (\dfp[\beta])^{K_\beta}(\gleadstoinv[\beta](¬\prop)) = \emptyset$ by definition of empirical theories, this process must end with a falsifying instance of $\alpha$ or $\beta$.
+	Given that $\exists K_\alpha \suchthat (\dfp[\alpha])^{K_\alpha}(\gleadstoinv[\alpha](\prop)) = \emptyset$ and $K_\beta \suchthat (\dfp[\beta])^{K_\beta}(\gleadstoinv[\beta](\propbar)) = \emptyset$ by definition of empirical theories, this process must end with a falsifying instance of $\alpha$ or $\beta$.
 \end{procedure}
 
 \subsection{TODO, about comparisons}
