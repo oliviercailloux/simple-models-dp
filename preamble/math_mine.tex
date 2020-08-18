@@ -42,22 +42,17 @@
 \NewDocumentCommand{\histend}{}{p_\mathit{end}}
 \NewDocumentCommand{\histpend}{}{p^{\prime}_\mathit{end}}
 \NewDocumentCommand{\histppend}{}{p^{\prime\prime}_\mathit{end}}
-\NewDocumentCommand{\allprops}{}{\mathscr{T}}
-\NewDocumentCommand{\props}{}{T}
-\NewDocumentCommand{\prop}{}{t}
-\NewDocumentCommand{\propsure}{}{(t, \mathit{sure})}
-\NewDocumentCommand{\propposs}{}{(t, \mathit{poss})}
-\NewDocumentCommand{\notpropsure}{}{(¬t, \mathit{sure})}
-\NewDocumentCommand{\notpropposs}{}{(¬t, \mathit{poss})}
+\NewDocumentCommand{\allprops}{}{\Phi}
+\NewDocumentCommand{\prop}{}{φ}
 %%Empirical theory
-\NewDocumentCommand{\gPhie}{O{γ}}{{\hookrightarrow_{#1}}(\allargs)}%e for explicit
-\NewDocumentCommand{\gPhi}{O{γ}}{\Phi_{#1}}
+\NewDocumentCommand{\gpropse}{O{γ}}{{\hookrightarrow_{#1}}(\allargs)}%e for explicit
+\NewDocumentCommand{\gprops}{O{γ}}{\Phi_{#1}}
 \NewDocumentCommand{\dargs}{}{S^\mathit{d}}
 \NewDocumentCommand{\alldargs}{}{\mathscr{S}^d}
-\NewDocumentCommand{\gargs}{O{\phi}}{S^{#1}_{γ, i}}
-\NewDocumentCommand{\gargsalpha}{}{S^{\phi}_{α, i}}
-\NewDocumentCommand{\gargsbeta}{}{S^{¬\phi}_{β, i}}
-\NewDocumentCommand{\gargsdelta}{}{S^{¬\phi}_{δ, i}}
+\NewDocumentCommand{\gargs}{O{t}}{S^{#1}_{γ, i}}
+\NewDocumentCommand{\gargsalpha}{}{S^{φ}_{α, i}}
+\NewDocumentCommand{\gargsbeta}{}{S^{¬φ}_{β, i}}
+\NewDocumentCommand{\gargsdelta}{}{S^{¬φ}_{δ, i}}
 \NewDocumentCommand{\gleadsto}{O{γ}}{\hookrightarrow_{#1}}
 \NewDocumentCommand{\gleadstoinv}{O{γ}}{{\hookrightarrow^{-1}_{#1}}}
 \NewDocumentCommand{\gbeats}{O{γ}}{⊳^\mathit{a}_{#1}}
@@ -67,8 +62,16 @@
 \NewDocumentCommand{\dbeatsinv}{O{γ}}{{(⊳^\mathit{d}_{#1})^{-1}}}
 \NewDocumentCommand{\df}{O{γ}}{\mathit{def}_{#1}}
 \NewDocumentCommand{\dfp}{O{γ}}{\mathit{def}_{#1}^+}
+%%%DP
+\NewDocumentCommand{\choices}{}{\mathscr{C}}
+\NewDocumentCommand{\gind}{O{}}{\sim_\gamma^{#1}}
+\NewDocumentCommand{\gpeq}{}{\succeq_\gamma}
+\NewDocumentCommand{\gpst}{}{\succ_\gamma}
+\NewDocumentCommand{\ngpeq}{}{\nsucceq_\gamma}
+\NewDocumentCommand{\ngpst}{}{\nsucc_\gamma}
+
 %%i
-\NewDocumentCommand{\iPhi}{}{\Phi_i}
+\NewDocumentCommand{\iprops}{}{\Phi_i}
 \NewDocumentCommand{\allleadsto}{}{⇝}%Or \dashrightarrow?
 \NewDocumentCommand{\ileadsto}{O{i}}{⇝_{#1}}
 \NewDocumentCommand{\nileadsto}{O{i}}{\not⇝_{#1}}
@@ -76,28 +79,11 @@
 \NewDocumentCommand{\nileadstoe}{O{i}}{\not⇝_{#1}^\exists}
 \NewDocumentCommand{\ileadstost}{}{\hookrightarrow_i}
 \NewDocumentCommand{\nileadstost}{}{\not\hookrightarrow_i}
-\NewDocumentCommand{\di}{}{c^\phi_{γ, i}}
-\NewDocumentCommand{\dip}{}{d^{\phi +}_{γ, i}}
-\NewDocumentCommand{\ibeats}{}{⊳^\text{\sout{\ensuremath\phi}}_{γ, i}}
-\NewDocumentCommand{\nibeats}{}{⋫^\text{\sout{\ensuremath\phi}}_{γ, i}}
-
-\NewDocumentCommand{\gind}{O{}}{\sim_\gamma^{#1}}
-\NewDocumentCommand{\gpeq}{}{\succeq_\gamma}
-\NewDocumentCommand{\gpst}{}{\succ_\gamma}
-\NewDocumentCommand{\ngpeq}{}{\nsucceq_\gamma}
-\NewDocumentCommand{\ngpst}{}{\nsucc_\gamma}
-
-%Deliberated Preference
-\NewDocumentCommand{\choices}{}{\mathscr{C}}
-\NewDocumentCommand{\ppeqab}{}{t_{a \succeq b}}
-\NewDocumentCommand{\ppst}{O{a}O{b}}{t_{#1 \succ #2}}
-\NewDocumentCommand{\ppstsure}{O{a}O{b}}{(t_{#1 \succ #2}, \mathit{sure})}
-\NewDocumentCommand{\ppstbc}{}{t_{b \succ c}}
-\NewDocumentCommand{\ppstac}{}{t_{a \succ c}}
-\NewDocumentCommand{\ppstba}{}{t_{b \succ a}}
-\NewDocumentCommand{\ppeq}{O{a}O{b}}{t_{#1 \succeq #2}}
-\NewDocumentCommand{\ppeqsure}{O{a}O{b}}{(t_{#1 \succeq #2}, \mathit{sure})}
-\NewDocumentCommand{\domc}{}{\mathscr{B}}
+\NewDocumentCommand{\di}{}{c^φ_{γ, i}}
+\NewDocumentCommand{\dip}{}{d^{φ +}_{γ, i}}
+\NewDocumentCommand{\ibeats}{}{⊳^\text{\sout{\ensuremath{φ}}}_{γ, i}}%Or: \usepackage[normalem]{ulem} \text{\sout{\ensuremath t}}
+\NewDocumentCommand{\nibeats}{}{⋫^\text{\sout{\ensuremath{φ}}}_{γ, i}}
+%%%Deliberated Preference
 \NewDocumentCommand{\ipeq}{}{\succeq_i}
 \NewDocumentCommand{\ipst}{}{\succ_i}
 

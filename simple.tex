@@ -8,7 +8,6 @@
 %\input{preamble/draw}
 %\input{preamble/acronyms}
 \addtokomafont{labelinglabel}{\sffamily\bfseries}
-\renewcommand{\phi}{\varphi}%TODO
 \DeclareMathAlphabet{\mathup}{OT1}{\familydefault}{m}{n}
 
 %I find these settings useful in draft mode. Should be removed for final versions.
@@ -149,60 +148,58 @@ exhibit a decisive argument for that proposition, as judged from the individual�
 
 \section{Normative theories}
 \subsection{Definition}
-\TODO{Consider using only $\phi$ being sure, and dropping everything related to possibility.}
-
 One of the primitive elements of a normative theory is a set of arguments $\allargs$.
+(The calligraphic letter $S$ is used to denote the arguments in order to reserve the letter $A$ for sets of alternatives.)
 Given a set of arguments $\allargs$, define the set of finite sequences of elements in $\allargs$ (including the empty sequence) as $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$.
 Throughout the article, $\N$ includes zero and $\N^* = \N \setminus \set{0}$. Given $j, k \in \N$, the notation $\intvl{j, k}$ represents $\set{l \suchthat j ≤ l ≤ k}$. Note that $\intvl{1, 0} = \emptyset$, and given any set $S$, the notation $S^\emptyset$ represents the empty set. A generic element of $\allhist$ is denoted by $\hist$ and called a path.
 
 Two supplementary primitive elements of a normative theory are its agenda $\allprops$, whose elements are called propositions; and a set of individuals $I$ that the theory applies to.
-Given a set of individuals, a set of arguments and an agenda, an observation protocol ${\allleadsto}: I → \Phi^{\allhist}$ maps individuals and paths to propositions. 
-Equivalently, given any individual $i \in I$, ${\ileadsto}: \allhist → \Phi$ maps paths to propositions for this individual. 
-Given an individual $i \in I$, a path $\hist$ and a proposition $\phi$, the path is said to lead to the proposition for this individual iff $\hist \ileadsto \phi$.
+Given a set of individuals, a set of arguments and an agenda, an observation protocol ${\allleadsto}: I → \allprops^{\allhist}$ maps individuals and paths to propositions. 
+Equivalently, given any individual $i \in I$, ${\ileadsto}: \allhist → \allprops$ maps paths to propositions for this individual. 
+Given an individual $i \in I$, a path $\hist$ and a proposition $\prop$, the path is said to lead to the proposition for this individual iff $\hist \ileadsto \prop$.
 
 A normative theory also defines an involution operator $¬$ on $\allprops$, thus a function $¬: \allprops → \allprops$ satisfying $\forall \prop \in \allprops: ¬¬\prop = \prop$.
+(The symbol $¬$ is also used in this article to negate classical mathematical propositions; this should create no confusion.)
 
 A normative theory is a tuple $(\allprops, ¬, \allargs, I, {\allleadsto})$ 
 %with $\allprops$ an agenda, $¬$ a negation operator on $\allprops$, $\allargs$ a set of arguments, $I$ a set of individuals, and ${\allleadsto}$ an observation protocol, 
 satisfying the constraints described here above.
-%where $\Phi = \allprops × \set{\mathit{poss}, \mathit{sure}}$.
+%where $\allprops = \allprops × \set{\mathit{poss}, \mathit{sure}}$.
 
-This article also uses this symbol as a negation operator on $\Phi$, defined as follows, $\forall \prop \in \allprops$: $¬\propposs = (¬\prop, \mathit{sure})$ and $¬\propsure = (¬\prop, \mathit{poss})$. Observe that $¬¬\phi = \phi$. (The symbol $¬$ is also used in this article to negate classical mathematical propositions; this should create no confusion.)
-As usual with binary relations, $\hist \nileadsto \phi$ means $(\hist, \phi) \notin {\ileadsto}$.
+As usual with binary relations, $\hist \nileadsto \prop$ means $(\hist, \prop) \notin {\ileadsto}$.
 
-Given $i \in I, \phi \in \Phi, \hist \in \allhist$, say that $\hist$ leads strongly to $\phi$ iff $\hist \ileadsto \phi \land \hist \nileadsto ¬\phi$.
-Define $\hist \ileadstost \phi$ iff $[\hist \text{ leads strongly to } \phi] \land [\phi = \propsure ⇒ \hist \text{ leads strongly to } \propposs]$.
+Given $i \in I, \prop \in \allprops, \hist \in \allhist$, say that $\hist$ leads strongly to $\prop$, $\hist \ileadstost \prop$, iff $\hist \ileadsto \prop \land \hist \nileadsto ¬\prop$.
 (The visual proximity of the symbols $\ileadsto$ and $\ileadstost$ creates a small risk of confusion, but its usage seems justified by the fact that $\ileadsto$ is not used in the rest of this article, except in the proof of \cref{th:protcoh}.)
 
 Given $\hist \in \allhist$, if $l$ denotes its length, $\hist(\intvl{1, l})$ denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$.
 Let $\histend = \hist(\intvl{\max(1, l-1), l})$ denote the set containing the last two arguments of the sequence $\hist$ if the sequence has at least two elements; and all arguments of the sequence if it has exactly one element or is empty.
 
-Given $i \in I, \phi \in \Phi, \ar \in \allargs$, define $\ar \ileadstost \phi$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \ileadstost \phi$.
+Given $i \in I, \prop \in \allprops, \ar \in \allargs$, define $\ar \ileadstost \prop$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \ileadstost \prop$.
 
 \begin{remark}
-	I’d rather drop the negation and observe that if the protocol is defined so that $\hist \ileadsto \phi_1 ⇒ \hist \nileadsto \phi_2$, then $\phi_1 \in \iPhi ⇒ \phi_2 \notin \iPhi$. Observe that this is always possible. The definitions about completeness should use a negation operator in supplement to the normative theory tuple.
+	I’d rather drop the negation and observe that if the protocol is defined so that $\hist \ileadsto \prop_1 ⇒ \hist \nileadsto \prop_2$, then $\prop_1 \in \iprops ⇒ \prop_2 \notin \iprops$. Observe that this is always possible. The definitions about completeness should use a negation operator in supplement to the normative theory tuple.
 \end{remark}
 
 \subsection{Classify propositions}
 \begin{axiom}[Normative adequacy]
 	\label{ax:norm}
-	$\forall i \in I, \phi \in \Phi: 
-		[(\exists \ar \in \allargs \suchthat \ar \ileadstost \phi) \land ¬(\exists \ar \in \allargs \suchthat \ar \ileadstost ¬\phi)] ⇒ \phi \in \iPhi \land ¬\phi \notin \iPhi.$
+	$\forall i \in I, \prop \in \allprops: 
+		[(\exists \ar \in \allargs \suchthat \ar \ileadstost \prop) \land ¬(\exists \ar \in \allargs \suchthat \ar \ileadstost ¬\prop)] ⇒ \prop \in \iprops \land ¬\prop \notin \iprops.$
 \end{axiom}
 
 \Cref{ax:norm} is actually equivalent to the following property.
 \begin{property}[Simple normative adequacy]
 	\label{ax:snorm}
-	$\forall i \in I, \phi \in \Phi: 
-		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ \phi \in \iPhi \land ¬\phi \notin \iPhi.$
+	$\forall i \in I, \prop \in \allprops: 
+		[\exists \ar \in \allargs \suchthat \ar \ileadstost \prop] ⇒ \prop \in \iprops \land ¬\prop \notin \iprops.$
 \end{property}
 
 To see why this hold, consider the following definition and proposition.
 \begin{definition}[Protocol coherence]
 	\label{def:protcoh}
-	$\forall i \in I, \phi \in \Phi$:
+	$\forall i \in I, \prop \in \allprops$:
 	\begin{equation}
-		[\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] ⇒ [\nexists \ar \in \allargs \suchthat \ar \ileadstost ¬\phi].
+		[\exists \ar \in \allargs \suchthat \ar \ileadstost \prop] ⇒ [\nexists \ar \in \allargs \suchthat \ar \ileadstost ¬\prop].
 	\end{equation}
 \end{definition}
 \begin{proposition}
@@ -210,7 +207,7 @@ To see why this hold, consider the following definition and proposition.
 	Any normative theory satisfies Protocol coherence.
 \end{proposition}
 \begin{proof}
-	Protocol coherence is satisfied by definition of $\ileadstost$. Indeed, if for some $\ar \in \allargs$, $\ar \ileadstost \phi$, then $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadsto ¬\phi$; thus, for any $\ar' \in \allargs$, $\ar' \ileadstost ¬\phi$ is false, because it requires that $\forall \ar_1 \in \allargs: (\ar', \ar_1) \ileadsto ¬\phi$, and thus in particular, that $(\ar', \ar) \ileadsto ¬\phi$.
+	Protocol coherence is satisfied by definition of $\ileadstost$. Indeed, if for some $\ar \in \allargs$, $\ar \ileadstost \prop$, then $\forall \ar_1 \in \allargs: (\ar_1, \ar) \nileadsto ¬\prop$; thus, for any $\ar' \in \allargs$, $\ar' \ileadstost ¬\prop$ is false, because it requires that $\forall \ar_1 \in \allargs: (\ar', \ar_1) \ileadsto ¬\prop$, and thus in particular, that $(\ar', \ar) \ileadsto ¬\prop$.
 \end{proof}
 
 That \cref{ax:norm} is equivalent to \cref{ax:snorm} immediately follows from \cref{th:protcoh}.
@@ -219,25 +216,25 @@ That \cref{ax:norm} is equivalent to \cref{ax:snorm} immediately follows from \c
 	Any normative theory satisfies Normative adequacy iff it satisfies simple normative adequacy.
 \end{proposition}
 
-To further analyze this and related matters, given a normative theory and $i \in I$, say that a proposition $\phi \in \Phi$ is \emph{$i$-decidable} iff $\exists \ar \in \allargs \suchthat \ar \ileadstost \phi \lor \ar \ileadstost ¬\phi$.
+To further analyze this and related matters, given a normative theory and $i \in I$, say that a proposition $\prop \in \allprops$ is \emph{$i$-decidable} iff $\exists \ar \in \allargs \suchthat \ar \ileadstost \prop \lor \ar \ileadstost ¬\prop$.
 The $i$-decidable propositions are those on which the normative theory permits to take a position. It will generally be unknown in practical applications, and may be empty.
-The next property ensures an unambiguous interpretation of the content of $\iPhi$ for all $i$-decidable propositions. In this definition, $\oplus$ denotes the exclusive disjunction; thus $\phi \in \iPhi \oplus ¬\phi \in \iPhi$ is equivalent to: $\phi \in \iPhi ⇔ ¬\phi \notin \iPhi$. It can be seen to hold by using \cref{th:normeqsnorm}.
+The next property ensures an unambiguous interpretation of the content of $\iprops$ for all $i$-decidable propositions. In this definition, $\oplus$ denotes the exclusive disjunction; thus $\prop \in \iprops \oplus ¬\prop \in \iprops$ is equivalent to: $\prop \in \iprops ⇔ ¬\prop \notin \iprops$. It can be seen to hold by using \cref{th:normeqsnorm}.
 
 \begin{property}[Restricted interpretability]
 	\label{def:restrinterpr}
-	$\forall i \in I, \phi \in \Phi: [\exists \ar \in \allargs \suchthat \ar \ileadstost \phi \lor \ar \ileadstost ¬\phi] ⇒ [\phi \in \iPhi \oplus ¬\phi \in \iPhi]$.
+	$\forall i \in I, \prop \in \allprops: [\exists \ar \in \allargs \suchthat \ar \ileadstost \prop \lor \ar \ileadstost ¬\prop] ⇒ [\prop \in \iprops \oplus ¬\prop \in \iprops]$.
 \end{property}
 
 \subsection{Non-completeness}
 \label{sec:incompl}
 \begin{definition}[Theory completeness]
-	$\forall \phi \in \Phi: [\exists \ar \in \allargs \suchthat \ar \ileadstost \phi] \lor [\exists \ar \in \allargs \suchthat \ar \ileadstost ¬\phi]$.
+	$\forall \prop \in \allprops: [\exists \ar \in \allargs \suchthat \ar \ileadstost \prop] \lor [\exists \ar \in \allargs \suchthat \ar \ileadstost ¬\prop]$.
 \end{definition}
 \begin{definition}[Unrestricted interpretability]
-	$\forall \phi \in \Phi: \phi \in \iPhi \oplus ¬\phi \in \iPhi$.
+	$\forall \prop \in \allprops: \prop \in \iprops \oplus ¬\prop \in \iprops$.
 \end{definition}
 \begin{definition}[Deliberation completeness]
-	$\forall \phi \in \Phi: \phi \in \iPhi \lor ¬\phi \in \iPhi$.
+	$\forall \prop \in \allprops: \prop \in \iprops \lor ¬\prop \in \iprops$.
 \end{definition}
 The following proposition directly follows from the definitions, together with \cref{th:protcoh}.
 \begin{proposition}
@@ -251,7 +248,7 @@ In this section, a normative theory is supposed given.
 
 An empirical theory is constituted of the following elements.
 
-An initial argumentation relation ${\gleadsto} \subseteq \allargs × \allprops$ relates some arguments to some propositions. Its role in an empirical theory is to define the propositions that the empirical theory supports (corresponding to $\gPhie$, the range of ${\gleadsto}$) and, for each such proposition, to define the arguments that the theory wants to use as initial arguments to argue in favor of this proposition. The set of initial arguments is $\gleadstoinv(\Phi) = \set{\ar \in \allargs \suchthat \exists \phi \in \Phi \suchthat \ar \gleadsto \phi}$.
+An initial argumentation relation ${\gleadsto} \subseteq \allargs × \allprops$ relates some arguments to some propositions. Its role in an empirical theory is to define the propositions that the empirical theory supports (corresponding to $\gpropse$, the range of ${\gleadsto}$) and, for each such proposition, to define the arguments that the theory wants to use as initial arguments to argue in favor of this proposition. The set of initial arguments is $\gleadstoinv(\allprops) = \set{\ar \in \allargs \suchthat \exists \prop \in \allprops \suchthat \ar \gleadsto \prop}$.
 
 A planned attacks relation ${\gbeats} \subseteq \allargs × \allargs$ is an irreflexive binary relation on the arguments. An argument $\ar_1$ is said to be a planned attack against an argument $\ar_0$ iff $\ar_1 \gbeats \ar_0$. Given  an argument $\ar_0$, $\gbeatsinv(\ar_0) = \set{\ar_1 \in \allargs \suchthat \ar_1 \gbeats \ar_0}$ denotes the set of planned attacks against $\ar_0$; and $\gbeatsinv(\allargs) = \set{\ar_1 \in \allargs \suchthat \exists \ar_0 \in \allargs \suchthat \ar_1 \gbeats \ar_0}$ denotes the set of arguments that are planned attacks against at least one argument.
 
@@ -277,7 +274,7 @@ Given any $\ar \in \allargs$, define $\dfp(\ar) \subseteq \allargs$, the \emph{d
 This mechanism permits to define defenders of defenders of an argument, $\dfp(\dfp(\ar))$, defenders of defenders of defenders of an argument, … An empirical theory must however be a priori restricted in the maximal “depth” of its argumentation strategy, in the following sense.
 Given any set $S$ and function $f: S → S$, let $f^0$ represent the identity function, and given $k \in \N$, let $f^{k + 1} = f \circ f^k$.
 An empirical theory must satisfy
-$\exists k \in \N \suchthat (\dfp)^k(\gleadstoinv(\Phi)) = \emptyset$.
+$\exists k \in \N \suchthat (\dfp)^k(\gleadstoinv(\allprops)) = \emptyset$.
 This does not imply that the relations $\gbeats$ or $\dbeats$ should be finite, however.
 
 An empirical theory (for a normative theory) can now be defined as a tuple $(\gleadsto, \gbeats, \alldargs, \dbeats, +)$ satisfying the constraints described here above.
@@ -287,16 +284,16 @@ An example permits to ensure that the constraint of finite depth does not mandat
 	An empirical theory may involve infinite relations $\gbeats$ and $\dbeats$.
 \end{proposition}
 \begin{proof}
-	Consider an agenda containing two propositions, $\allprops = \set{\phi, ¬\phi}$, an infinite set of arguments $\allargs = \set{\ar_k \suchthat k \in \N}$ with $\forall j, k \in \N: \ar_j ≠ \ar_k$, and consider any set of individuals $I$ and observation protocol $\allleadsto$. 
+	Consider an agenda containing two propositions, $\allprops = \set{\prop, ¬\prop}$, an infinite set of arguments $\allargs = \set{\ar_k \suchthat k \in \N}$ with $\forall j, k \in \N: \ar_j ≠ \ar_k$, and consider any set of individuals $I$ and observation protocol $\allleadsto$. 
 	Define $2\N^* = \set{k \suchthat k / 2 \in \N^*}$ as the set of non-zero even integers.
-	Define ${\gleadsto} = \set{(\ar_0, \phi)}$.
+	Define ${\gleadsto} = \set{(\ar_0, \prop)}$.
 	Define ${\gbeats} = \set{(\ar_{k - 1}, \ar_0) \suchthat k \in 2\N^*}$ so that all odd numbered arguments are planned attacks against $\ar_0$. 
 	Consider an infinite set of fragments $\alldargs = \set{\ard[k] \suchthat k \in 2\N^*}$ with $\forall j, k \in 2\N^*: \ard[j] ≠ \ard[k]$ so that fragments correspond to non-zero even integers, and define ${\dbeats} = \set{(\ard[k], \ar_{k - 1}) \suchthat k \in 2\N^*}$ so that each (even numbered) defense fragment attacks exactly one (odd numbered) planned attacker of $\ar_0$. 
 	Given any coalition of fragments $\dargs$ defending $\ar_0$, consider the set of indices corresponding to the fragments in the coalition, $K_{\dargs} = \set{k \in 2\N^* \suchthat \exists \ard[k] \in \dargs}$; 
 	define $j_{\dargs} = \sum_{k \in K_{\dargs}}$ as the sum of these indices;
 	and define $\ar_0 + \dargs = \ar_{j_{\dargs}}$. 
 %	$\ard[k] \in \alldargs$, define $\ar_0 + \set{\ard[k]} = \ar_k$. 
-	Consider an empirical theory $(\gleadsto, \gbeats, \alldargs, \dbeats, +)$ for the normative theory $(\allprops, ¬, \allargs, I, {\allleadsto})$. That this is indeed a legal empirical theory can be confirmed by checking that all constraints are satisfied, in particular, $(\dfp)^2(\gleadstoinv(\Phi)) = \dfp(\dfp(\ar_0)) = \dfp(\set{\ar_k \suchthat k \in 2\N^*}) = \emptyset$ because there is no planned attack against any argument in $\set{\ar_k \suchthat k \in 2\N^*}$. This theory involves infinite relations $\gbeats$ and $\dbeats$.
+	Consider an empirical theory $(\gleadsto, \gbeats, \alldargs, \dbeats, +)$ for the normative theory $(\allprops, ¬, \allargs, I, {\allleadsto})$. That this is indeed a legal empirical theory can be confirmed by checking that all constraints are satisfied, in particular, $(\dfp)^2(\gleadstoinv(\allprops)) = \dfp(\dfp(\ar_0)) = \dfp(\set{\ar_k \suchthat k \in 2\N^*}) = \emptyset$ because there is no planned attack against any argument in $\set{\ar_k \suchthat k \in 2\N^*}$. This theory involves infinite relations $\gbeats$ and $\dbeats$.
 \end{proof}
 
 \subsection{Falsifiability}
@@ -304,16 +301,16 @@ Given $\args \subseteq \allargs$, $\hist \in \allhist$, and letting $l$ denote t
 the set $\args \cap \hist(\intvl{1, l})$ denotes the arguments that are both in $\args$ and contained in the sequence $\hist$.
 Abusing notation, I write $\args \cap \hist$ to designate $\args \cap \hist(\intvl{1, l})$, therefore using simply $\hist$ in that expression to denote the \emph{range} of $\hist$.
 
-Given $i \in I, \phi \in \Phi, \ar \in \allargs$ and $\args \subseteq \gbeatsinv(\ar)$, define $\args \ibeats \ar$ iff $\exists \hist \in \allhist \suchthat \args = \gbeatsinv(\ar) \cap \hist \land \ar \in \histend \land \hist \nileadstost \phi$. 
-Such a set $\args$, when not empty, represents an effective set of planned attackers of $\ar$ against $\phi$. 
-The notation uses a striked through $\phi$ in superscript to suggest that when $\args \ibeats \ar$, the coalition $\args$ argues against $\phi$, from the point of view of $i$.
-I write that $\ar$ \emph{$i$-defends} $\phi$ to mean that $\emptyset \nibeats \ar$. 
+Given $i \in I, \prop \in \allprops, \ar \in \allargs$ and $\args \subseteq \gbeatsinv(\ar)$, define $\args \ibeats \ar$ iff $\exists \hist \in \allhist \suchthat \args = \gbeatsinv(\ar) \cap \hist \land \ar \in \histend \land \hist \nileadstost \prop$. 
+Such a set $\args$, when not empty, represents an effective set of planned attackers of $\ar$ against $\prop$. 
+The notation uses a striked through $\prop$ in superscript to suggest that when $\args \ibeats \ar$, the coalition $\args$ argues against $\prop$, from the point of view of $i$.
+I write that $\ar$ \emph{$i$-defends} $\prop$ to mean that $\emptyset \nibeats \ar$. 
 
-Given $i \in I, \phi \in \gPhie, \ar \in \allargs$, define $\di(\ar) \subseteq \powersetz{\alldargs}$ as $\di(\ar) = \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar) \land \args \ibeats \ar}$. It represents the coalitions of fragments defending $\ar$ (when arguing for $\phi$), from the point of view of $i$, against its effective planned attackers. 
+Given $i \in I, \prop \in \gpropse, \ar \in \allargs$, define $\di(\ar) \subseteq \powersetz{\alldargs}$ as $\di(\ar) = \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar) \land \args \ibeats \ar}$. It represents the coalitions of fragments defending $\ar$ (when arguing for $\prop$), from the point of view of $i$, against its effective planned attackers. 
 The following proposition shows that these coalitions can be added to $\ar$, and will be useful for other results.
 \begin{proposition}
 	\label{th:indf}
-	$\forall i \in I, \phi \in \gPhie, \ar \in \allargs: \dargs \in \di(\ar) ⇒ \emptyset ≠ \dargs \subseteq \df(\ar)$.
+	$\forall i \in I, \prop \in \gpropse, \ar \in \allargs: \dargs \in \di(\ar) ⇒ \emptyset ≠ \dargs \subseteq \df(\ar)$.
 \end{proposition}
 \begin{proof}
 	I will prove that $\forall \ar \in \allargs: \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar)} = \powersetz{\df(\ar)}$, from which the conclusion follows, and which can be useful to clarify the relationship between $\di(\ar)$ and $\df(\ar)$. Note that by definition of $\df(\ar)$, $\dargs \in \powersetz{\df(\ar)}$ iff $\emptyset ≠ \dargs \subseteq \dbeatsinv(\gbeatsinv(\ar))$. 
@@ -331,34 +328,34 @@ The following proposition shows that these coalitions can be added to $\ar$, and
 	That $\args ≠ \emptyset$ follows from $\dargs ≠ \emptyset$.
 \end{proof}
 
-Given $\ar \in \allargs$, define $\dip(\ar) = \set{(\ar + \dargs) \suchthat \dargs \in \di(\ar)}$, representing the subset of defenders of $\ar$ required for convincing $i$ of $\phi$.
-Given $i \in I, \phi \in \gPhie$, define $\gargs \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\phi))$.
+Given $\ar \in \allargs$, define $\dip(\ar) = \set{(\ar + \dargs) \suchthat \dargs \in \di(\ar)}$, representing the subset of defenders of $\ar$ required for convincing $i$ of $\prop$.
+Given $i \in I, \prop \in \gpropse$, define $\gargs \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\prop)$ under $\dip$: $\gargs = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\prop))$.
 
 \begin{definition}[Convincingness]
-	An empirical theory is \emph{convincing} iff $\forall i \in I, \phi \in \gPhie, \ar \in \gargs: \ar$ $i$-defends $\phi$.
+	An empirical theory is \emph{convincing} iff $\forall i \in I, \prop \in \gpropse, \ar \in \gargs: \ar$ $i$-defends $\prop$.
 \end{definition}
 
-A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hist, \ar) \in I × \gPhie × \allhist × \gargs$ such that $\gbeatsinv(\ar) \cap \hist = \emptyset \land \ar \in \histend \land \hist \nileadstost \phi$. 
-I also write that $(i, \phi, \hist, \ar)$ falsifies $\gamma$ to mean that it is a falsification instance of $\gamma$.
+A \emph{falsification instance} of an empirical theory is a tuple $(i, \prop, \hist, \ar) \in I × \gpropse × \allhist × \gargs$ such that $\gbeatsinv(\ar) \cap \hist = \emptyset \land \ar \in \histend \land \hist \nileadstost \prop$. 
+I also write that $(i, \prop, \hist, \ar)$ falsifies $\gamma$ to mean that it is a falsification instance of $\gamma$.
 
 \begin{theorem}
 	An empirical theory is convincing iff it has no falsification instances.
 \end{theorem}
 \begin{proof}
-	For all $i \in I, \phi \in \gPhie, \ar \in \gargs$: $\ar$ does not $i$-defend $\phi$ iff $\exists \hist \in \allhist \suchthat \left[\gbeatsinv(\ar) \cap \hist = \emptyset \land \ar \in \histend \land \hist \nileadstost \phi\right]$ iff $\exists \hist \in \allhist$ such that $(i, \phi, \hist, \ar)$ falsifies $\gamma$. Therefore, $\gamma$ is not convincing iff $\exists (i, \phi, \ar) \suchthat \ar$ does not $i$-defend $\phi$ iff $\exists \hist \suchthat (i, \phi, \hist, \ar)$ falsifies $\gamma$ iff $\gamma$ has a falsification instance.
+	For all $i \in I, \prop \in \gpropse, \ar \in \gargs$: $\ar$ does not $i$-defend $\prop$ iff $\exists \hist \in \allhist \suchthat \left[\gbeatsinv(\ar) \cap \hist = \emptyset \land \ar \in \histend \land \hist \nileadstost \prop\right]$ iff $\exists \hist \in \allhist$ such that $(i, \prop, \hist, \ar)$ falsifies $\gamma$. Therefore, $\gamma$ is not convincing iff $\exists (i, \prop, \ar) \suchthat \ar$ does not $i$-defend $\prop$ iff $\exists \hist \suchthat (i, \prop, \hist, \ar)$ falsifies $\gamma$ iff $\gamma$ has a falsification instance.
 \end{proof}
 
 \begin{definition}[Validity]
-	An empirical theory is \emph{valid} iff $\forall i \in I, \phi \in \gPhie: [\phi \in \iPhi \land ¬\phi \notin \iPhi]$.
+	An empirical theory is \emph{valid} iff $\forall i \in I, \prop \in \gpropse: [\prop \in \iprops \land ¬\prop \notin \iprops]$.
 \end{definition}
 
 \begin{lemma}
 	\label{th:produce}
-	Given $\phi \in \gPhie$, $\ar_0 \in \gargs$ that $i$-defends $\phi$, and $\hist \nileadstost \phi$ with $\ar_0 \in \histend$, define $\args =  \gbeatsinv(\ar_0) \cap \hist$, $\dargs = \dbeatsinv(\args)$, and $\ar_2 = \ar_0 + \dargs$. Then, $\ar_2 \in \gargs \cap \dfp(\ar_0)$.
+	Given $\prop \in \gpropse$, $\ar_0 \in \gargs$ that $i$-defends $\prop$, and $\hist \nileadstost \prop$ with $\ar_0 \in \histend$, define $\args =  \gbeatsinv(\ar_0) \cap \hist$, $\dargs = \dbeatsinv(\args)$, and $\ar_2 = \ar_0 + \dargs$. Then, $\ar_2 \in \gargs \cap \dfp(\ar_0)$.
 \end{lemma}
 \begin{proof}
 	By definition of $\ibeats$, $\args \ibeats \ar_0$.
-	Also, because $\ar_0$ $i$-defends $\phi$, $\args ≠ \emptyset$. 
+	Also, because $\ar_0$ $i$-defends $\prop$, $\args ≠ \emptyset$. 
 	Therefore, $\dargs \in \di(\ar_0)$.
 	It follows that $\dargs \in \df(\ar_0)$, by \cref{th:indf}, and that $\ar_2 \in \dfp(\ar_0)$, by definition of $\dfp$. It also follows that $\ar_2 \in \dip(\ar_0)$, hence, that $\ar_2 \in \gargs$.
 \end{proof}
@@ -367,51 +364,51 @@ I also write that $(i, \phi, \hist, \ar)$ falsifies $\gamma$ to mean that it is 
 	A normatively adequate and convincing empirical theory is valid.
 \end{theorem}
 \begin{proof}
-	Given any $i \in I$ and $\phi \in \gPhie$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstost \phi$; the conclusion then follows thanks to simple normative adequacy (that \cref{th:normeqsnorm} shows to be equivalent to normative adequacy). 
+	Given any $i \in I$ and $\prop \in \gpropse$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstost \prop$; the conclusion then follows thanks to simple normative adequacy (that \cref{th:normeqsnorm} shows to be equivalent to normative adequacy). 
 	
-	Lemma: $[\ar_0 \in \gargs \land \ar_0 \nileadstost \phi] ⇒ \exists \ar_2 \in \gargs \cap \dfp(\ar_0)$. That is because $\ar_0 \in \gargs$ implies that $\ar_0$ $i$-defends $\phi$, by convincingness, and,
-	by definition, $\ar_0 \nileadstost \phi$ means that $\exists \hist \in \allhist \suchthat \ar_0 \in \histend \land \hist \nileadstost \phi$; \cref{th:produce} thus applies.
+	Lemma: $[\ar_0 \in \gargs \land \ar_0 \nileadstost \prop] ⇒ \exists \ar_2 \in \gargs \cap \dfp(\ar_0)$. That is because $\ar_0 \in \gargs$ implies that $\ar_0$ $i$-defends $\prop$, by convincingness, and,
+	by definition, $\ar_0 \nileadstost \prop$ means that $\exists \hist \in \allhist \suchthat \ar_0 \in \histend \land \hist \nileadstost \prop$; \cref{th:produce} thus applies.
 
-	To prove the theorem, build a finite sequence of arguments in $\gargs$, starting with any $\ar_0 \in \gleadstoinv(\phi)$. Observe that $\ar_0 \in \gargs$. Given $k \in 2\N$, if $\ar_k \nileadstost \phi$, define $\ar_{k + 2}$ using the above lemma, obtaining $\ar_{k + 2} \in \gargs \cap (\dfp)^\frac{k + 2}{2}(\ar_0)$. Continue applying the lemma and producing further arguments as long as $\ar_k \nileadstost \phi$.
-	By definition of an empirical theory, $\exists k \in \N \suchthat (\dfp)^k(\ar_0) = \emptyset$, thus, this process ends with some $\ar$ such that $\ar \ileadstost \phi$.
+	To prove the theorem, build a finite sequence of arguments in $\gargs$, starting with any $\ar_0 \in \gleadstoinv(\prop)$. Observe that $\ar_0 \in \gargs$. Given $k \in 2\N$, if $\ar_k \nileadstost \prop$, define $\ar_{k + 2}$ using the above lemma, obtaining $\ar_{k + 2} \in \gargs \cap (\dfp)^\frac{k + 2}{2}(\ar_0)$. Continue applying the lemma and producing further arguments as long as $\ar_k \nileadstost \prop$.
+	By definition of an empirical theory, $\exists k \in \N \suchthat (\dfp)^k(\ar_0) = \emptyset$, thus, this process ends with some $\ar$ such that $\ar \ileadstost \prop$.
 \end{proof}
 
 \subsection{Effectively comparing models}
-Given $\phi \in \Phi$ and two empirical theories $\gamma$ and $\delta$ for a given normative theory, say that they disagree about $\phi$ iff $\phi \in \gPhie[\gamma] \land ¬\phi \in \gPhie[\delta]$. Say that they are incompatible iff there is at least one $\phi \in \Phi$ that they disagree about.
+Given $\prop \in \allprops$ and two empirical theories $\gamma$ and $\delta$ for a given normative theory, say that they disagree about $\prop$ iff $\prop \in \gpropse[\gamma] \land ¬\prop \in \gpropse[\delta]$. Say that they are incompatible iff there is at least one $\prop \in \allprops$ that they disagree about.
 
-Given $\phi \in \Phi$, $\hist \in \allhist$ and $\ar_\gamma \in \gargs$, say that $(\hist, \ar_\gamma)$ challenges $\phi$ iff $\hist \nileadstost \phi$ and $\ar_\gamma \in \histend$.
-Given $\phi \in \Phi, \ar_\gamma \in \gargs, \ar_\delta \in \gargsdelta$, say that $(\hist, \ar_\gamma, \ar_\delta)$ is a $\phi/¬\phi$-challenge iff $(\hist, \ar_\gamma)$ challenges $(\gamma, \phi)$ or $(\hist, \ar_\delta)$ challenges $(\delta, ¬\phi)$.
+Given $\prop \in \allprops$, $\hist \in \allhist$ and $\ar_\gamma \in \gargs$, say that $(\hist, \ar_\gamma)$ challenges $\prop$ iff $\hist \nileadstost \prop$ and $\ar_\gamma \in \histend$.
+Given $\prop \in \allprops, \ar_\gamma \in \gargs, \ar_\delta \in \gargsdelta$, say that $(\hist, \ar_\gamma, \ar_\delta)$ is a $\prop/¬\prop$-challenge iff $(\hist, \ar_\gamma)$ challenges $(\gamma, \prop)$ or $(\hist, \ar_\delta)$ challenges $(\delta, ¬\prop)$.
 
 \begin{lemma}
 	\label{th:endchal}
-	Given $\ar_\gamma \in \gargs$, $\ar_\delta \in \gargsdelta$ and $\hist \in \allhist$ such that $\set{\ar_\gamma, \ar_\delta} \subseteq \histend$, $(\hist, \ar_\gamma, \ar_\delta)$ is a $\phi/¬\phi$-challenge.
+	Given $\ar_\gamma \in \gargs$, $\ar_\delta \in \gargsdelta$ and $\hist \in \allhist$ such that $\set{\ar_\gamma, \ar_\delta} \subseteq \histend$, $(\hist, \ar_\gamma, \ar_\delta)$ is a $\prop/¬\prop$-challenge.
 \end{lemma}
 \begin{proof}
-	Either $\hist \nileadstost \phi$, and $(\hist, \ar_\gamma)$ challenges $\phi$, or $\hist \ileadstost \phi$, hence, by \cref{th:protcoh}, $\hist \nileadstost ¬\phi$, and $(\hist, \ar_\delta)$ challenges $¬\phi$. 
+	Either $\hist \nileadstost \prop$, and $(\hist, \ar_\gamma)$ challenges $\prop$, or $\hist \ileadstost \prop$, hence, by \cref{th:protcoh}, $\hist \nileadstost ¬\prop$, and $(\hist, \ar_\delta)$ challenges $¬\prop$. 
 \end{proof}
 
 \begin{lemma}
 	\label{th:nextchal}
-	Given $(\hist, \ar_\gamma)$ challenging $\phi$, with $\ar_\gamma \in \gargs \cap (\dfp)^k(\gleadstoinv(\phi))$, and $\ar_\delta \in \gargsdelta$: either $(i, \phi, \hist, \ar_\gamma)$ falsifies $\gamma$, or there exists a $\phi/¬\phi$-challenge $(\histp, \ar'_\gamma, \ar_\delta)$, with $\ar'_\gamma \in \gargs \cap (\dfp)^{k + 1}(\gleadstoinv(\phi))$.
+	Given $(\hist, \ar_\gamma)$ challenging $\prop$, with $\ar_\gamma \in \gargs \cap (\dfp)^k(\gleadstoinv(\prop))$, and $\ar_\delta \in \gargsdelta$: either $(i, \prop, \hist, \ar_\gamma)$ falsifies $\gamma$, or there exists a $\prop/¬\prop$-challenge $(\histp, \ar'_\gamma, \ar_\delta)$, with $\ar'_\gamma \in \gargs \cap (\dfp)^{k + 1}(\gleadstoinv(\prop))$.
 \end{lemma}
 \begin{proof}
-	If $\ar_\gamma$ does not $i$-defend $\phi$, then $(i, \phi, \hist, \ar_\gamma)$ falsifies $\gamma$, which ends the proof. 
-	Thus, assume that $\ar_\gamma$ $i$-defends $\phi$. 
+	If $\ar_\gamma$ does not $i$-defend $\prop$, then $(i, \prop, \hist, \ar_\gamma)$ falsifies $\gamma$, which ends the proof. 
+	Thus, assume that $\ar_\gamma$ $i$-defends $\prop$. 
 
-	\Cref{th:produce} applies and yields $\ar'_\gamma = \ar_\gamma + \dbeatsinv(\gbeatsinv(\ar_\gamma)) \in \gargs \cap \dfp(\ar_\gamma)$, thus $\ar'_\gamma \in (\dfp)^{(k + 1)}(\gleadstoinv(\phi))$. 
-	Now, define $\histpp = (\hist, \ar'_\gamma)$ and test whether $\histpp \nileadstost \phi$. 
+	\Cref{th:produce} applies and yields $\ar'_\gamma = \ar_\gamma + \dbeatsinv(\gbeatsinv(\ar_\gamma)) \in \gargs \cap \dfp(\ar_\gamma)$, thus $\ar'_\gamma \in (\dfp)^{(k + 1)}(\gleadstoinv(\prop))$. 
+	Now, define $\histpp = (\hist, \ar'_\gamma)$ and test whether $\histpp \nileadstost \prop$. 
 	
-	If $\histpp \nileadstost \phi$, define $\histp = \histpp$, and observe that $(\histp, \ar'_\gamma, \ar_\delta)$ challenges $\phi$, which concludes the proof. 
-	Thus, assume that $\histpp \ileadstost \phi$. 
+	If $\histpp \nileadstost \prop$, define $\histp = \histpp$, and observe that $(\histp, \ar'_\gamma, \ar_\delta)$ challenges $\prop$, which concludes the proof. 
+	Thus, assume that $\histpp \ileadstost \prop$. 
 
 	Let us now define $\histp$ such that $\set{\ar'_\gamma, \ar_\delta} \subseteq \histpend$, so that \cref{th:endchal} applies on $(\histp, \ar'_\gamma, \ar_\delta)$, which will conclude the proof. 
 	
-	If $\ar_\delta \in \histppend$, this is done by defining $\histp = \histpp$. Otherwise, define $\histp = (\histpp, \ar_\delta)$ and test whether $\histp \nileadstost \phi$. 
+	If $\ar_\delta \in \histppend$, this is done by defining $\histp = \histpp$. Otherwise, define $\histp = (\histpp, \ar_\delta)$ and test whether $\histp \nileadstost \prop$. 
 \end{proof}
 
 %Given a normative theory and two empirical theories for that normative theory and $i \in I$, 
 %a \emph{test procedure with $i$} is a finite sequence 
-\commentOC{Need the test procedure to be a tree. Atom: $(k, \phi)$ meaning whether ${\hist}^k \ileadstost \phi$. Branch label: atoms linked using or and and operators. From a node $n = (\hist, \ar, \phi)$, let branches depart, such that their labels do not overlap. From a node, if no branch label is true, the node must falsify a theory. In the case of the procedure below, it is not a list because we may query several times the same theory or switch to the other one, depending on the last answer. But if simplifying the theory (single-try), we may then simplify the definition of a test procedure.}
+\commentOC{Need the test procedure to be a tree. Atom: $(k, \prop)$ meaning whether ${\hist}^k \ileadstost \prop$. Branch label: atoms linked using or and and operators. From a node $n = (\hist, \ar, \prop)$, let branches depart, such that their labels do not overlap. From a node, if no branch label is true, the node must falsify a theory. In the case of the procedure below, it is not a list because we may query several times the same theory or switch to the other one, depending on the last answer. But if simplifying the theory (single-try), we may then simplify the definition of a test procedure.}
 
 A path $\histp$ starts with a path $\hist$ of length $l$ iff $\histp$ has length at least $l$ and $\forall k \in \intvl{1, l}: \histp_k = \hist_k$.
 An increasing sequence of paths is a finite sequence $({\hist}^k)_{k \in \intvl{1, N}}$, for some $N \in \N^*$, of paths, 
@@ -419,23 +416,23 @@ such that $\forall k \in \intvl{2, N}, {\hist}^k$ starts with ${\hist}^{k-1}$.
 
 Given two incompatible empirical theories for a given normative theory, $\alpha = (\gleadsto[\alpha], \gbeats[\alpha], \alldargs_\alpha, \dbeats[\alpha], +_\alpha)$ and $\beta = (\gleadsto[\beta], \gbeats[\beta], \alldargs_\beta, \dbeats[\beta], +_\beta)$ and given any $i \in I$, the following procedure falsifies one of these theories, queries only $i$, and queries $i$ only about some increasing sequence of paths.
 \begin{procedure}
-	Pick any $\phi \in \Phi$ about which $\alpha$ and $\beta$ disagree.
+	Pick any $\prop \in \allprops$ about which $\alpha$ and $\beta$ disagree.
 	
 	Given $k_\alpha, k_\beta \in \N, \hist \in \allhist, \ar_\alpha \in \gargsalpha, \ar_\beta \in \gargsbeta$, 
 	say that 
 	$(\hist, \ar_\alpha, \ar_\beta)$ is a challenge of complexity $(k_\alpha, k_\beta)$ iff 
-	$(\hist, \ar_\alpha, \ar_\beta)$ is a $\phi/¬\phi$-challenge, $\ar_\alpha \in (\dfp[\alpha])^{k_\alpha}(\gleadstoinv[\alpha](\phi))$, and $\ar_\beta \in (\dfp[\beta])^{k_\beta}(\gleadstoinv[\beta](¬\phi))$.
+	$(\hist, \ar_\alpha, \ar_\beta)$ is a $\prop/¬\prop$-challenge, $\ar_\alpha \in (\dfp[\alpha])^{k_\alpha}(\gleadstoinv[\alpha](\prop))$, and $\ar_\beta \in (\dfp[\beta])^{k_\beta}(\gleadstoinv[\beta](¬\prop))$.
 	
-	Pick any $\ar_{-1} \in \allargs \suchthat \ar_{-1} \gleadsto[\beta] ¬\phi$. Observe that $\ar_{-1} \in \gargsbeta \cap (\dfp[\beta])^0(\gleadstoinv[\beta](¬\phi))$. Test whether $(\ar_{-1}) \nileadstost \phi$. If so, $(i, \phi, (\ar_{-1}), \ar_{-1})$ falsifies $\beta$, which ends the procedure. 
-	Thus, assume that $(\ar_{-1}) \ileadstost \phi$. 
+	Pick any $\ar_{-1} \in \allargs \suchthat \ar_{-1} \gleadsto[\beta] ¬\prop$. Observe that $\ar_{-1} \in \gargsbeta \cap (\dfp[\beta])^0(\gleadstoinv[\beta](¬\prop))$. Test whether $(\ar_{-1}) \nileadstost \prop$. If so, $(i, \prop, (\ar_{-1}), \ar_{-1})$ falsifies $\beta$, which ends the procedure. 
+	Thus, assume that $(\ar_{-1}) \ileadstost \prop$. 
 	
-	Pick any $\ar_0 \in \allargs \suchthat \ar_0 \gleadsto[\alpha] \phi$. Observe that $\ar_0 \in \gargsalpha \cap (\dfp[\alpha])^0(\gleadstoinv[\alpha](\phi))$.  Define $\hist = (\ar_{-1}, \ar_0)$ and test whether $\hist \nileadstost \phi$. By \cref{th:endchal}, $(\hist, \ar_0, \ar_{-1})$ is a $\phi/¬\phi$-challenge, thus, $(\hist, \ar_0, \ar_{-1})$ is a challenge of complexity $(0, 0)$.
+	Pick any $\ar_0 \in \allargs \suchthat \ar_0 \gleadsto[\alpha] \prop$. Observe that $\ar_0 \in \gargsalpha \cap (\dfp[\alpha])^0(\gleadstoinv[\alpha](\prop))$.  Define $\hist = (\ar_{-1}, \ar_0)$ and test whether $\hist \nileadstost \prop$. By \cref{th:endchal}, $(\hist, \ar_0, \ar_{-1})$ is a $\prop/¬\prop$-challenge, thus, $(\hist, \ar_0, \ar_{-1})$ is a challenge of complexity $(0, 0)$.
 	
 	Suffices now to apply \cref{th:nextchal} repetitively, until finding a falsification instance of $\alpha$ or $\beta$. This is because, given a challenge $(\hist, \ar_\alpha, \ar_\beta)$ of complexity $(k_\alpha, k_\beta)$, \cref{th:nextchal} applies, yielding either a falsification instance, or a new challenge of higher complexity. 
-Indeed, if $(\hist, \ar_\alpha)$ challenges $\phi$, apply \cref{th:nextchal} with $\alpha$ for $\gamma$, $\beta$ for $\delta$, and obtain either that $\hist$ falsifies $\alpha$, or a new tuple $(\histp, \ar'_\alpha, \ar_\beta)$ that is a challenge of complexity $(k_\alpha + 1, k_\beta)$.
-And if $(\hist, \ar_\beta)$ challenges $¬\phi$, apply \cref{th:nextchal} with $¬\phi$ for $\phi$, $\beta$ for $\gamma$, $\alpha$ for $\delta$, and obtain either that $\hist$ falsifies $\beta$, or a new tuple $(\histp, \ar'_\beta, \ar_\alpha)$ such that $(\histp, \ar_\alpha, \ar'_\beta)$ is a challenge of complexity $(k_\alpha, k_\beta + 1)$.
+Indeed, if $(\hist, \ar_\alpha)$ challenges $\prop$, apply \cref{th:nextchal} with $\alpha$ for $\gamma$, $\beta$ for $\delta$, and obtain either that $\hist$ falsifies $\alpha$, or a new tuple $(\histp, \ar'_\alpha, \ar_\beta)$ that is a challenge of complexity $(k_\alpha + 1, k_\beta)$.
+And if $(\hist, \ar_\beta)$ challenges $¬\prop$, apply \cref{th:nextchal} with $¬\prop$ for $\prop$, $\beta$ for $\gamma$, $\alpha$ for $\delta$, and obtain either that $\hist$ falsifies $\beta$, or a new tuple $(\histp, \ar'_\beta, \ar_\alpha)$ such that $(\histp, \ar_\alpha, \ar'_\beta)$ is a challenge of complexity $(k_\alpha, k_\beta + 1)$.
 	
-	Given that $\exists K_\alpha \suchthat (\dfp[\alpha])^{K_\alpha}(\gleadstoinv[\alpha](\phi)) = \emptyset$ and $K_\beta \suchthat (\dfp[\beta])^{K_\beta}(\gleadstoinv[\beta](¬\phi)) = \emptyset$ by definition of empirical theories, this process must end with a falsifying instance of $\alpha$ or $\beta$.
+	Given that $\exists K_\alpha \suchthat (\dfp[\alpha])^{K_\alpha}(\gleadstoinv[\alpha](\prop)) = \emptyset$ and $K_\beta \suchthat (\dfp[\beta])^{K_\beta}(\gleadstoinv[\beta](¬\prop)) = \emptyset$ by definition of empirical theories, this process must end with a falsifying instance of $\alpha$ or $\beta$.
 \end{procedure}
 
 \subsection{TODO, about comparisons}
@@ -447,25 +444,25 @@ Indicate sufficient hypothesis for ensuring that if a model resisted every attac
 \subsection{Representing deliberated preferences}
 Let $\allalts$ be a set of alternatives. 
 
-Define $\Phi_\allalts = \set{\phi_{B, \choices} \suchthat \emptyset ≠ B \subseteq \allalts, \choices \subseteq \powersetz{B}}$.
+Define $\allprops_\allalts = \set{\prop_{B, \choices} \suchthat \emptyset ≠ B \subseteq \allalts, \choices \subseteq \powersetz{B}}$.
 
 Let $I$ and $\allargs$ be any sets of individuals and arguments.
 
 The observation protocol goes as follows. Given $i \in I$, $\emptyset ≠ B \subseteq \allalts$ and $\hist \in \allhist$, the individual $i$, after having been presented the arguments in the sequence $\hist$, is asked to choose among a subset of elements from $B$ among which she is indifferent. Define $\emptyset ≠ c^\hist_i(B) \subseteq B$ as the subset that $i$ chooses after exposure to $\hist$.
-Define $\hist \ileadsto \phi_{B, \choices}$ iff $c^\hist_i(B) \in \choices$.
+Define $\hist \ileadsto \prop_{B, \choices}$ iff $c^\hist_i(B) \in \choices$.
 
-This defines normative theories about $\allalts$. Any empirical theory for a normative theory about $\allalts$ that satisfies $\forall \emptyset ≠ B \subseteq \allalts: \exists ! \emptyset ≠ \choices \subseteq \powersetz{B} \suchthat \phi_{B, \choices} \in \gPhie$ is said to be an empirical theory about $\allalts$. The notation $\exists!$ means: there exists a unique element. The requirement that there is at least one is innocuous, as choosing $\choices = \powersetz{B}$ ensures that $\phi_{B, \choices} \in \iPhi$, by definition of $\ileadsto$.
+This defines normative theories about $\allalts$. Any empirical theory for a normative theory about $\allalts$ that satisfies $\forall \emptyset ≠ B \subseteq \allalts: \exists ! \emptyset ≠ \choices \subseteq \powersetz{B} \suchthat \prop_{B, \choices} \in \gpropse$ is said to be an empirical theory about $\allalts$. The notation $\exists!$ means: there exists a unique element. The requirement that there is at least one is innocuous, as choosing $\choices = \powersetz{B}$ ensures that $\prop_{B, \choices} \in \iprops$, by definition of $\ileadsto$.
 
-An empirical theory about $\allalts$ thus associates to each possible bundle $B$ a set of possible choices $\choices$, whose semantics is that the theory claims that the deliberated choice of $i$, given the bundle $B$, lies among $\choices$. Let $\gPhi(B) \subseteq \powersetz{B}$ denote this set of possible choices, thus $\gPhi(B) = \choices  ⇔ \phi_{B, \choices} \in \gPhie$.
+An empirical theory about $\allalts$ thus associates to each possible bundle $B$ a set of possible choices $\choices$, whose semantics is that the theory claims that the deliberated choice of $i$, given the bundle $B$, lies among $\choices$. Let $\gprops(B) \subseteq \powersetz{B}$ denote this set of possible choices, thus $\gprops(B) = \choices  ⇔ \prop_{B, \choices} \in \gpropse$.
 
-Given an empirical theory about $\allalts$ and $a, b \in \allalts$, define $a \gpst b$ iff $\forall \set{a, b} \subseteq B: b \notin \bigcup \gPhi(B)$. Thus, $a \gpst b$ iff $\gamma$ claims that $b$ is not deliberately chosen in presence of $a$.
+Given an empirical theory about $\allalts$ and $a, b \in \allalts$, define $a \gpst b$ iff $\forall \set{a, b} \subseteq B: b \notin \bigcup \gprops(B)$. Thus, $a \gpst b$ iff $\gamma$ claims that $b$ is not deliberately chosen in presence of $a$.
 Define $a \gind b$ iff $\forall \set{a, b} \subseteq B: [\forall C \in \choices: a \in C ⇔ b \in C]$.
 Define ${\gpeq} = {\gpst} \cup {\gind}$.
 
 If $\gpeq$ is transitive, and if $\gamma$ is valid, $\gpeq$ can be said to represent part of the deliberated preference of $i$, in the sense that choosing from the undominated elements of parts of $\gpeq$ restricts choice in a way that is systematically compatible with $i$’s \ac{DJ}. This is made precise below.
 
 Given $i \in I$ and a bundle $B$, say that a subset $B' \subseteq B$ is a deliberated restricted choice set for $i$ given $B$ iff 
-$\exists \phi_{B, \choices} \in \iPhi \suchthat \forall C \in \choices: C \cap B' ≠ \emptyset$.
+$\exists \prop_{B, \choices} \in \iprops \suchthat \forall C \in \choices: C \cap B' ≠ \emptyset$.
 Restricting consideration to deliberated restricted choice sets respects $i$’s \ac{DJ} in the sense that it necessarily includes at least one alternative that is a deliberated choice of $i$.
 
 If $\gpeq$ is transitive and $\gamma$ is valid, the following theorem shows that a choice function can be defined by picking from undominated elements of $\gpeq$ in such a way that only deliberated restricted choice sets result. $\powersetz[\mathit{F}]{\allalts}$ designates the finite non-empty subsets of $\allalts$.
@@ -477,7 +474,7 @@ If $\gpeq$ is transitive and $\gamma$ is valid, the following theorem shows that
 \begin{proof}
 	Observe that under these hypothesis, $\gpeq$ is a transitive, reflexive binary relation on $\allalts$, $\gpst$ is its asymmetric part and $\gind$ is its symmetric part. 
 	$\gpeq$ is reflexive because $\gind$ is.
-	That $\gpst$ is asymmetric is seen by considering, given any $a, b \in \allalts$, the bundle $B = \set{a, b}$: pick any $C \in \gPhi(B) \subseteq \powersetz{B}$, thus, $C \in \powersetz{B}$, hence, $a \in C$ or $b \in C$, and therefore, $b \ngpst a$ or $a \ngpst b$.
+	That $\gpst$ is asymmetric is seen by considering, given any $a, b \in \allalts$, the bundle $B = \set{a, b}$: pick any $C \in \gprops(B) \subseteq \powersetz{B}$, thus, $C \in \powersetz{B}$, hence, $a \in C$ or $b \in C$, and therefore, $b \ngpst a$ or $a \ngpst b$.
 	
 	The phrasing of the theorem only defines $r$ informally. These supplementary notations may be useful to avoid ambiguity. Given $B \subseteq \allalts$, let $B / {\gind} = \set{{\gind}(a) \suchthat a \in B}$ denote the equivalence classes defined by $\gind$ among the elements of $B$. The relation $\gpst$ can be used to discriminate some of these equivalence classes. Define $\gpst^*$, an asymmetric transitive relation on $B / {\gind}$, such that given any two equivalence classes $\alts, \alts' \in B / {\gind}$, $\alts \gpst^* \alts'$ iff $\forall \alt \in \alts, \alt' \in \alts': \alt \gpst \alt'$. Let $\max_{\gpst^*}(B / {\gind}) = \set{\alts \in B / {\gind} \suchthat \forall \alts' \in B / {\gind}: \alts' \ngpst^* \alts}$ denote the undominated equivalence classes of $B / {\gind}$ considering $\gpst^*$.
 
@@ -486,11 +483,11 @@ If $\gpeq$ is transitive and $\gamma$ is valid, the following theorem shows that
 	Define now the choice function $r: \powersetz[\mathit{F}]{\allalts} → \powersetz{\allalts}$ as picking the maximal element (as determined by $>$) of each undominated equivalence class in $B$, thus, $r(B) = \set{\max_>(\alts) \suchthat \alts \in \max_{\gpst^*}(B / {\gind})}$.
 	
 	Given any bundle $B \in \powersetz[\mathit{F}]{\allalts}$, we now have to show that $B' = r(B)$ satisfies 
-	$\exists \phi_{B, \choices} \in \iPhi \suchthat \forall C \in \choices: C \cap B' ≠ \emptyset$.
-%	$[\forall a \in B \setminus B': \phi_{B, ¬a} \in \iPhi] \lor [\exists a \in B' \suchthat \phi_{B, a} \in \iPhi]$. 
-	Because $\gamma$ is valid, suffices to show that, given $\choices = \gPhi(B) \subseteq \powersetz{B}$, 
+	$\exists \prop_{B, \choices} \in \iprops \suchthat \forall C \in \choices: C \cap B' ≠ \emptyset$.
+%	$[\forall a \in B \setminus B': \prop_{B, ¬a} \in \iprops] \lor [\exists a \in B' \suchthat \prop_{B, a} \in \iprops]$. 
+	Because $\gamma$ is valid, suffices to show that, given $\choices = \gprops(B) \subseteq \powersetz{B}$, 
 	$\forall C \in \choices: C \cap B' ≠ \emptyset$.
-%	$[\forall a \in B \setminus B': \phi_{B, ¬a} \in \gPhie] \lor [\exists a \in B' \suchthat \phi_{B, a} \in \gPhie]$.
+%	$[\forall a \in B \setminus B': \prop_{B, ¬a} \in \gpropse] \lor [\exists a \in B' \suchthat \prop_{B, a} \in \gpropse]$.
 	Pick any $C \in \choices$ and any $a \in C$ (thus, $a \in B$). By definition of $\gpst$, $\nexists b \in B \suchthat b \gpst a$ as otherwise, $a \notin C$.
 	Note that, by construction of $B'$, as $a \in B$ is undominated, it belongs to some equivalence class of which a member has been brought in $B'$. In other words, $\exists b \in B' \suchthat b \gind a$. Therefore, by definition of $\gind$, $b \in C$. Thus, $b \in C \cap B'$.
 \end{proof}
@@ -502,7 +499,7 @@ The phrasing of this theorem considers only finite bundles for simplicity. It mo
 \end{proposition}
 \begin{proof}
 	Consider any $a, b, c \in \allalts$ with $a \gpeq b \gpeq c$ and let us show that $a \gpeq c$.
-	Consider the bundle $B = \set{a, b, c}$ and let $\choices = \gPhi(B)$.
+	Consider the bundle $B = \set{a, b, c}$ and let $\choices = \gprops(B)$.
 	
 	Observe first that if $x, y \in B$ and $x \gpeq y$, $y \in \bigcup \choices ⇒ x \in \bigcup \choices$. 
 	Indeed, if $x \gpst y$, $y \notin \bigcup \choices$, and if $x \gind y$, $y \in \bigcup \choices ⇔ x \in \bigcup \choices$ as $x$ and $y$ can then be treated interchangeably considering their memberships to elements of $\choices$.
@@ -521,7 +518,7 @@ Note that $\gpeq$ is independent of $\ileadsto$; thus, any property of $\gpeq$, 
 
 When $\gpeq$ is not transitive, choice functions could still be defined that could be said to respect, in some reasonable sense, the deliberated preference of the individuals. However, this claim is more arguable, as it is generally (though by all means not unanimously) considered in the literature that a reflective preference should be transitive. Further explorations of this possibility are left for future articles.
 
-In what follows, the claims of an empirical theory about $\allalts$ will be defined on the basis of a transitive preference ordering $\peq$ on $\allalts$, as follows. Given $\emptyset ≠ B \subseteq \allalts$, define $\gPhi(B) = \set{\cup \choices' \suchthat \emptyset ≠ \choices' \subseteq \choices}$, where $\choices$ are the undominated equivalence classes in $B$ according to $\peq$ (thus $\choices = \max_{\pst^*}(B / {\ind})$, using the notations defined in \cref{th:dp}). The check that ${\peq} = {\gpeq}$ is left to the reader. Thus, all the examples that follow have a transitive $\gpeq$ and therefore claim to represent a deliberated preference (when valid) in the sense defined in this section.
+In what follows, the claims of an empirical theory about $\allalts$ will be defined on the basis of a transitive preference ordering $\peq$ on $\allalts$, as follows. Given $\emptyset ≠ B \subseteq \allalts$, define $\gprops(B) = \set{\cup \choices' \suchthat \emptyset ≠ \choices' \subseteq \choices}$, where $\choices$ are the undominated equivalence classes in $B$ according to $\peq$ (thus $\choices = \max_{\pst^*}(B / {\ind})$, using the notations defined in \cref{th:dp}). The check that ${\peq} = {\gpeq}$ is left to the reader. Thus, all the examples that follow have a transitive $\gpeq$ and therefore claim to represent a deliberated preference (when valid) in the sense defined in this section.
 
 \subsection{A theory based on Satisfaction}
 Consider a normative theory of preferences about a given set of alternatives $\allalts$. Let $\gamma$ be the following empirical theory for that normative theory.
@@ -529,7 +526,7 @@ Consider a normative theory of preferences about a given set of alternatives $\a
 Define $C$ a set of criteria, functions $c: \allalts → \R$, each function measuring the performances of the alternatives according to some point of view. Let $t \in \R^C$ be a set of thresholds, thus, consisting of one real valued threshold $t_c \in \R$ per criterion. Say that $a \in \allalts$ is satisfying iff $\forall c \in C: c(a) ≥ t_c$.
  Let $A$ denote the satisfying alternatives.
  
-The theory $\gamma$ claims, intuitively, that individuals $i \in I$ are satisficers using some defined criteria $C$ and thresholds $t = (t_c)_{c \in C}$. Define $\peq$ as $a \peq b$ iff $a \in A \lor b \notin A$. Note that $\peq$ is complete and contains at most two equivalence classes: $A$, and $\allalts \setminus A$. This defines the set of claims that $\gamma$ supports, namely, for any $\emptyset ≠ B \subseteq \allalts$, $\gPhi(B) = B \cap A$.
+The theory $\gamma$ claims, intuitively, that individuals $i \in I$ are satisficers using some defined criteria $C$ and thresholds $t = (t_c)_{c \in C}$. Define $\peq$ as $a \peq b$ iff $a \in A \lor b \notin A$. Note that $\peq$ is complete and contains at most two equivalence classes: $A$, and $\allalts \setminus A$. This defines the set of claims that $\gamma$ supports, namely, for any $\emptyset ≠ B \subseteq \allalts$, $\gprops(B) = B \cap A$.
 
 Given $a \in A$, define the fragment $\ar_a$ as the text: “$a$ has performance $c_1(a)$ on criterion $c_1$, and it is reasonable to consider that having at least $t_{c_1}$ is satisfying enough from the point of view captured by $c_1$, [… same phrase for the other criteria…], therefore, it is a fully satisfactory alternative.”
 Given $b \in \allalts \setminus A$, define $\ar_b$ as the text: “$b$ is not satisfactory on the criterion [some criterion such that $c(b) < t_{c}$]: the performance $t_c$ should be attained for considering $b$ as satisfying on that point of view, but it obtains only $c(b)$ on that criterion [… same phrase for the other criteria such that $c(b) < t_c$].” 
@@ -537,7 +534,7 @@ Given $b \in \allalts \setminus A$, define $\ar_b$ as the text: “$b$ is not sa
 Given a bundle $B$, define $\ar_B$ as the text obtained by concatenating all fragments in $\set{\ar_a \suchthat a \in B}$.
 
 %Given $a \in A, b \in \allalts \setminus A$, define $\ar_{a > b}$ as the text: “$a$ has performance $c_1(a)$ on criterion $c_1$, and it is reasonable to consider that having at least $t_{c_1}$ is satisfying enough from the point of view captured by $c_1$, [… same phrase for the other criteria…], therefore, it is a fully satisfactory alternative; whereas $b$ is not satisfactory on criteria [… enumeration of the criteria such that $c(b) < t_{c}$].” 
-Define ${\gleadsto} = \set{(\ar_B, \gPhi(B)) \suchthat \emptyset ≠ B \subseteq \allalts}$.
+Define ${\gleadsto} = \set{(\ar_B, \gprops(B)) \suchthat \emptyset ≠ B \subseteq \allalts}$.
 Define $\alldargs = {\gbeats} = {\dbeats} = {+} = \emptyset$: the theory does not consider any counter-argument as potentially damaging. 
 This defines an empirical theory $(\gleadsto, \gbeats, \alldargs, \dbeats, +)$ about $\allargs$.
 
@@ -572,10 +569,10 @@ This example is interesting because when asked to bid for lotteries, the theory 
 
 This section presents a theory that claims that $i$ deliberately prefers $P$ to $D$, in the sense of bidding at least as much for $P$ than for $D$. Because the goal of this example is mainly to illustrate the mechanisms of counter-argumentation, this example defines the theory only for these two lotteries. The reader should understand how the mechanisms described here above, together with the principle of argumentation presented here for these two specific lotteries, would permit to define a more general theory about lotteries that argues similarly to this one. \TODO{Think about the right discursive approach here.}
 
-Define $\allprops = \set{\phi, ¬\phi}$, $\phi$ representing intuitively the case that $i$ deliberately prefers $P$ to $D$, in the sense of bidding at least as much for $P$ than for $D$ after deliberation, and $¬\phi$, the opposite.
+Define $\allprops = \set{\prop, ¬\prop}$, $\prop$ representing intuitively the case that $i$ deliberately prefers $P$ to $D$, in the sense of bidding at least as much for $P$ than for $D$ after deliberation, and $¬\prop$, the opposite.
 
-Define $\ileadstost$ as follows. Given $\hist = (…, \ar)$, $\hist \ileadstost \phi$ iff, in a situation of $i$ having been exposed to these arguments, saying: “Considering these arguments, would you please indicate your maximum selling price for $P$, and for $D$” leads $i$ to bid at least as much for $P$ than for $D$. $\hist \ileadstost ¬\phi$ is defined similarly.
-%Note that $\hist \ileadstost \phi$ iff $\hist \nileadstost ¬\phi$.
+Define $\ileadstost$ as follows. Given $\hist = (…, \ar)$, $\hist \ileadstost \prop$ iff, in a situation of $i$ having been exposed to these arguments, saying: “Considering these arguments, would you please indicate your maximum selling price for $P$, and for $D$” leads $i$ to bid at least as much for $P$ than for $D$. $\hist \ileadstost ¬\prop$ is defined similarly.
+%Note that $\hist \ileadstost \prop$ iff $\hist \nileadstost ¬\prop$.
 
 Thus, the normative adequacy axiom is satisfied iff, whenever there is a argument that, facing any counter-argument, leads $i$ to bid at least as much for $P$ than for $D$, we are ready to accept that $i$ deliberately prefers $P$ to $D$, in the bidding sense.
 
@@ -602,19 +599,15 @@ What about a model for only one situation? Then we need to accept that $q$ can�
 
 Assume $i$, given $\ar$ and $\ar'$, picks repeatedly (in various circumstances) nonempty subsets of $\set{\prop, ¬\prop}$. Define $(\ar', \ar) \ileadstoe (\prop, \text{sure})$ iff she sometimes chooses $\set{\prop}$ and $(\ar', \ar) \ileadstoe (\prop, \text{poss})$ iff she sometimes chooses $\set{\prop}$ or $\set{\prop, ¬\prop}$. Then, $(\ar', \ar) \ileadstost (\prop, \text{sure})$ iff she always chooses $\set{\prop}$ and $(\ar', \ar) \ileadstost (\prop, \text{poss})$ iff she always chooses either $\set{\prop}$ or $\set{\prop, ¬\prop}$.
 
-Discuss variant with an empirical claim: $\hist \ileadsto \phi ⇒ \hist \nileadsto ¬\phi$; and change \cref{ax:norm}: $[\forall \hist, \hist \ileadsto \propposs] ⇒ \propposs \in \iPhi$, … This is essentially what will be done in the following, I suppose.
-
-If we do not have $\propsure$ implies $\propposs$, then we can have $\propsure$ and $\notpropsure$ both accepted. But all propositions of the normative analysis would still hold, it seems. We could have a property that says: $\propsure \in \iPhi ⇒ \propposs \in \iPhi \land \notpropsure \notin \iPhi \land \notpropposs \notin \iPhi$.
-
 Show that if the claim of the model is of a different form, then the model is not falsifiable, as suggested here below for some form of claims.
 
 Extend the definition of additive single-answer theories to non-additive single-answer theories.
 
 An additive theory need not have freedom for defining planned attacks on additive terms: this should be a consequence on the planned attacks on defenses and on initial arguments only. This makes the theory easier to define, as only attacks on partial arguments are to be defined.
 
-General theory says that $\ar_1$ is replaceable (suspects that it’s good for some people): $(\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ (\ar'_1, \ar_0) \ileadstoe ¬\phi$. (This will fail if some $i$ thinks $\ar'_1$ is bad arg because of $\ar_0$ but $\ar_1$ is bad because of $\ar_2$.) It may say that $\ar_1$ is bad. General theory prepares potentially good arg $\ar_0$ and claims that if $\ar_0 \ileadstoe \phi$, then $\ar_0 \ileadstost \phi$ (this is Answerability). So that the model only has to prove the weaker existential claim.
+General theory says that $\ar_1$ is replaceable (suspects that it’s good for some people): $(\ar_1, \ar_0) \ileadstoe ¬\prop ⇒ (\ar'_1, \ar_0) \ileadstoe ¬\prop$. (This will fail if some $i$ thinks $\ar'_1$ is bad arg because of $\ar_0$ but $\ar_1$ is bad because of $\ar_2$.) It may say that $\ar_1$ is bad. General theory prepares potentially good arg $\ar_0$ and claims that if $\ar_0 \ileadstoe \prop$, then $\ar_0 \ileadstost \prop$ (this is Answerability). So that the model only has to prove the weaker existential claim.
 
-It is important to remark that when the query protocol does not admit observation of “both”, thus, when $\ileadstost$ does not distinguish sure from possible, it does \emph{not} follow that $i$ is sure of either $\prop$ or $¬\prop$ for every pair of proposition: the “undecided” case will hold whenever $i$ considers no argument as sufficiently strong to determine a decisive preference (assuming that in that case, $i$ at least sometimes alternates his choice). Admittedly, it might also happen that $i$ is really indifferent between $\prop$ and $¬\prop$ but still systematically chooses, say, $\prop$ over $¬\prop$, in which case it will be (somewhat) erroneously concluded that $\prop \in \iPhi$. This is the price to pay for using protocols that do not allow to observe indifference. Observe however that (depending on the application) this error might be considered not harmful, as the obtained model will be faithful to $i$’s behavior after deliberation.
+It is important to remark that when the query protocol does not admit observation of “both”, thus, when $\ileadstost$ does not distinguish sure from possible, it does \emph{not} follow that $i$ is sure of either $\prop$ or $¬\prop$ for every pair of proposition: the “undecided” case will hold whenever $i$ considers no argument as sufficiently strong to determine a decisive preference (assuming that in that case, $i$ at least sometimes alternates his choice). Admittedly, it might also happen that $i$ is really indifferent between $\prop$ and $¬\prop$ but still systematically chooses, say, $\prop$ over $¬\prop$, in which case it will be (somewhat) erroneously concluded that $\prop \in \iprops$. This is the price to pay for using protocols that do not allow to observe indifference. Observe however that (depending on the application) this error might be considered not harmful, as the obtained model will be faithful to $i$’s behavior after deliberation.
 
 \subsection{Example model}
 \begin{itemize}
@@ -634,7 +627,7 @@ It is important to remark that when the query protocol does not admit observatio
 \end{itemize}
 
 \subsection{Interpreting Answerability}
-At a given stage in operationalizing the protocol, define $f(\ar_0)$ as the arguments that are considered as having a chance to attack $\ar_0$ (without backtracking). Thus, this will not include $\ar_1$ if indeed $\ar_2$ is considered by $i$ as a satisfying answer to $\ar_1$. We can interpret Answerability in the following ways. Strong answ: $\exists \ar_1 \in f(\ar_0) \suchthat \ar_1 \gbeats \ar_0$. Weak answ: $f(\ar_0) ≠ \emptyset ⇒ \exists \ar_1' \suchthat \ar_1' \gbeats \ar_0$. Or suppress Answ and replace Op. val. by Strong op. val.: $\forall \phi \in \gPhie, \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: (\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ \exists \ar_2 \in {\gbeatsinv}(\ar_1)$.
+At a given stage in operationalizing the protocol, define $f(\ar_0)$ as the arguments that are considered as having a chance to attack $\ar_0$ (without backtracking). Thus, this will not include $\ar_1$ if indeed $\ar_2$ is considered by $i$ as a satisfying answer to $\ar_1$. We can interpret Answerability in the following ways. Strong answ: $\exists \ar_1 \in f(\ar_0) \suchthat \ar_1 \gbeats \ar_0$. Weak answ: $f(\ar_0) ≠ \emptyset ⇒ \exists \ar_1' \suchthat \ar_1' \gbeats \ar_0$. Or suppress Answ and replace Op. val. by Strong op. val.: $\forall \prop \in \gpropse, \ar_0 \in \gargs[\prop], \ar_1 \in \allargs: (\ar_1, \ar_0) \ileadstoe ¬\prop ⇒ \exists \ar_2 \in {\gbeatsinv}(\ar_1)$.
 
 A model can be allowed to try only once each answer. If $\ar_2 \gbeats \ar_1 \land \ar_1 \in f(\ar_0 + \ar_2)$, the model has lost.
 
@@ -656,26 +649,36 @@ Suppose that a model also defines $f_\eta$, meaning: $f_\eta(\ar_1) = \ar_2$ the
 Under Strong anws, we ask that $f(\ar_0) \cap {\gbeatsinv}(\ar_0) ≠ \emptyset$, and (inevitably) that $f_\eta(\ar_1) ≠ \emptyset$. Under weak answ, we do not expect anticipation and only demand that $f_\eta(\ar_1) ≠ \emptyset$. But this does not allow supplementary models. TODO prove this.
 
 \subsection{Transitive, complete preference theories}
-Given a set of alternatives $\allalts$. Define $\allprops_\allalts = \set{\ppst, a ≠ b \in \allalts} \cup \set{\ppstba, a ≠ b \in \allalts}$. Define $¬_\allalts$ such that $\forall a, b \in \allalts: ¬_\allalts\ppst = \ppstba, ¬_\allalts\ppstba = \ppst$. Define $\Phi_\allalts = \props_\allalts × \set{\mathit{sure}, \mathit{poss}}$.
+\NewDocumentCommand{\ppeqab}{}{t_{a \succeq b}}
+\NewDocumentCommand{\ppst}{O{a}O{b}}{t_{#1 \succ #2}}
+\NewDocumentCommand{\ppstsure}{O{a}O{b}}{(t_{#1 \succ #2}, \mathit{sure})}
+\NewDocumentCommand{\ppstbc}{}{t_{b \succ c}}
+\NewDocumentCommand{\ppstac}{}{t_{a \succ c}}
+\NewDocumentCommand{\ppstba}{}{t_{b \succ a}}
+\NewDocumentCommand{\ppeq}{O{a}O{b}}{t_{#1 \succeq #2}}
+\NewDocumentCommand{\ppeqsure}{O{a}O{b}}{(t_{#1 \succeq #2}, \mathit{sure})}
+\NewDocumentCommand{\domc}{}{\mathscr{B}}
+
+Given a set of alternatives $\allalts$. Define $\allprops_\allalts = \set{\ppst, a ≠ b \in \allalts} \cup \set{\ppstba, a ≠ b \in \allalts}$. Define $¬_\allalts$ such that $\forall a, b \in \allalts: ¬_\allalts\ppst = \ppstba, ¬_\allalts\ppstba = \ppst$. Define $\allprops_\allalts = T_\allalts × \set{\mathit{sure}, \mathit{poss}}$.
 
 Let $I$ represent a given set of individuals; $\allalts$ a set of products; 
 and $\allargs$ the set of all strings.
 Given $i \in I$, define $\ileadstost$ as follows. 
-Given $\hist \in \allhist$ and $\phi \in \Phi_\allalts$, with $\phi \in \set{\ppst} × \set{\mathit{sure}, \mathit{poss}}$ for some $a ≠ b \in \allalts$, the individual is presented the arguments in $\hist$, and has then to choose a product from the set $\set{a, b}$. Define $\hist \ileadstost \phi$ iff $i$ chooses $a$. \commentOC{This is inadequate: if $i$ picks $b$ from $\set{a, b, c}$, the current definition considers it compatible with $\ppstsure \in \iPhi$, thus, $\ppst$ does not have a meaningful content. Should rather define $\ppstsure$ so that $a$ is picked rather than $b$ whatever the choice set. This requires to generalize $\ileadstost$.}
+Given $\hist \in \allhist$ and $\prop \in \allprops_\allalts$, with $\prop \in \set{\ppst} × \set{\mathit{sure}, \mathit{poss}}$ for some $a ≠ b \in \allalts$, the individual is presented the arguments in $\hist$, and has then to choose a product from the set $\set{a, b}$. Define $\hist \ileadstost \prop$ iff $i$ chooses $a$. \commentOC{This is inadequate: if $i$ picks $b$ from $\set{a, b, c}$, the current definition considers it compatible with $\ppstsure \in \iprops$, thus, $\ppst$ does not have a meaningful content. Should rather define $\ppstsure$ so that $a$ is picked rather than $b$ whatever the choice set. This requires to generalize $\ileadstost$.}
 
 Any normative theory of the form $(\allprops_\allalts, ¬_\allalts, \allargs, I, (\ileadsto)_{i \in I})$, for some sets $\allargs$ and $I$, is called a normative theory about $\allalts$.
 
 Given a set $\domc \subseteq \powersetz{\allalts}$, where $\powersetz{\allalts}$ designates the set of subsets of $\allalts$ without the empty set, a function $c: \domc → \allalts$ is a choice function iff $\forall B \in \domc: c(B) \subseteq B$.
 
-Given a normative theory about $\allalts$, an individual $i \in I$, a set $\domc \subseteq \powersetz{\allalts}$ and a choice function $c$, say that $c$ represents a \emph{deliberated choice function} for $i$ iff $\forall B \in \domc: c(B) \subseteq \set{a \in B \suchthat \forall b \in B: \ppstsure[b][a] \notin \iPhi}$.
+Given a normative theory about $\allalts$, an individual $i \in I$, a set $\domc \subseteq \powersetz{\allalts}$ and a choice function $c$, say that $c$ represents a \emph{deliberated choice function} for $i$ iff $\forall B \in \domc: c(B) \subseteq \set{a \in B \suchthat \forall b \in B: \ppstsure[b][a] \notin \iprops}$.
 
 A normative theory about $\allalts$ is transitive iff $\forall a ≠ b ≠ c ≠ a \in \allalts: [\exists \ar_{a \pst b} \in \allargs \suchthat \ar_{a \pst b} \ileadstost \ppstsure] \land [\exists \ar_{b \pst c} \in \allargs \suchthat \ar_{b \pst c} \ileadstost \ppstsure[b][c]] ⇒ [\exists \ar_{a \pst c} \in \allargs \suchthat \ar_{a \pst c} \ileadstost \ppstsure[a][c]]$. 
 
-A set of propositions $P \subseteq \Phi_\allalts$ is transitive iff $\forall a ≠ b ≠ c ≠ a \in \allalts: \ppstsure \in P \land \ppstsure[b][c] \in P ⇒ \ppstsure[a][c] \in P$.
+A set of propositions $P \subseteq \allprops_\allalts$ is transitive iff $\forall a ≠ b ≠ c ≠ a \in \allalts: \ppstsure \in P \land \ppstsure[b][c] \in P ⇒ \ppstsure[a][c] \in P$.
 
-A transitive empirical preference theory about $\allalts$ is an empirical theory for a normative theory about $\allalts$ such that $\gPhie$ is transitive.
+A transitive empirical preference theory about $\allalts$ is an empirical theory for a normative theory about $\allalts$ such that $\gpropse$ is transitive.
 
-Associate to such a theory a preference ordering $\succ$ on $\allalts$ as follows: $a \succ b$ iff $\ppstsure \in \gPhie$.
+Associate to such a theory a preference ordering $\succ$ on $\allalts$ as follows: $a \succ b$ iff $\ppstsure \in \gpropse$.
 
 The deliberated preference of $i$ under a normative theory 
 Then, observe $a$ incomp to $z$ using a good argument for $a > z$ and one for $z > a$. Observe also $b$ incomp to $z$. And observe $a > b$. This proves incompleteness as $z$ indifferent to the rest is impossible. BUT this requires to observe possibility.
@@ -704,7 +707,7 @@ TODO It is possible to determine whether a given function $\tau$ is a transitive
 		⊳_\exists^{-1}%
 	}%
 }
-\NewDocumentCommand{\mPhi}{}{\Phi_\gamma}
+\NewDocumentCommand{\mPhi}{}{\allprops_\gamma}
 \NewDocumentCommand{\argsd}{}{S^\mathit{d}}
 \NewDocumentCommand{\ileadstoall}{O{}}{⇝^{#1}_\forall}
 \NewDocumentCommand{\nileadstoall}{O{}}{\not⇝^{#1}_\forall}
@@ -724,20 +727,20 @@ The set $\allargs$ may be infinite or very large: as we will see, thanks to our 
 	The set $\allargs$ is defined as the set of all strings, because in this example it is considered acceptable to restrict arguments to those that can take a textual form.
 \end{example}
 
-Define $\Phi = \allprops × \set{\text{possible}, \text{sure}}$. Elements in $\Phi$ will also be called propositions, which should create no ambiguity. 
-The relation $\ileadstoall \subseteq (\allargs × \allargs) × \Phi$, pronounced “always leads to”, has the following semantics.
+Define $\allprops = \allprops × \set{\text{possible}, \text{sure}}$. Elements in $\allprops$ will also be called propositions, which should create no ambiguity. 
+The relation $\ileadstoall \subseteq (\allargs × \allargs) × \allprops$, pronounced “always leads to”, has the following semantics.
 Whenever $(\ar, \ar') \ileadstoall (\prop, \text{sure})$, $i$ always considers that $\prop$ is sure (meaning that $¬\prop$ is excluded), when presented with these two arguments, and whenever $(\ar, \ar') \ileadstoall (\prop, \text{possible})$, $i$ always considers that $\prop$ is “at least” possible (meaning that $¬\prop$ may be possible as well), when presented with these two arguments. In both cases, the term “always” means that the consideration is stable over time, including after having presented other arguments to $i$. 
 Two query protocols presented below will illustrate how these semantics might be satisfied. 
 However, I voluntarily leave the querying protocol not precisely specified in general, as multiple reasonable choices are possible. The results of this article depend only on assumptions about $\ileadstoall$. 
 
-Define the negation operator $¬$ over $\Phi$ as: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. It follows that $¬¬\phi = \phi$. Write $(\ar, \ar') \nileadstoall \phi$ for $¬[(\ar, \ar') \ileadstoall \phi]$ and define $(\ar, \ar') \ileadstoe \phi$ as equivalent to $(\ar, \ar') \nileadstoall ¬\phi$. 
+Define the negation operator $¬$ over $\allprops$ as: $¬(\prop, \text{possible}) = (¬\prop, \text{sure})$ and $¬(\prop, \text{sure}) = (¬\prop, \text{possible})$. It follows that $¬¬\prop = \prop$. Write $(\ar, \ar') \nileadstoall \prop$ for $¬[(\ar, \ar') \ileadstoall \prop]$ and define $(\ar, \ar') \ileadstoe \prop$ as equivalent to $(\ar, \ar') \nileadstoall ¬\prop$. 
 The relation $\ileadstoe$ is pronounced “sometimes leads to”.
-A proposition $\phi$ is about $\prop$ iff $\phi \in \{\prop, ¬\prop\} × \{\text{possible}, \text{sure}\}$. 
+A proposition $\prop$ is about $\prop$ iff $\prop \in \{\prop, ¬\prop\} × \{\text{possible}, \text{sure}\}$. 
 
 The pair $(\ar, \ar')$ is to be understood as unordered (thus $(\ar, \ar') \ileadstoall \prop ⇔ (\ar', \ar) \ileadstoall \prop$).
 
 \begin{definition}[Decision situation]
-	A decision situation is a topic $\allprops$ closed under negation, a set of arguments $\allargs$, an “always leads to” relation $\ileadstoall \subseteq (\allargs × \allargs) × \Phi$ satisfying (A1) and (A2) and using unordered pairs of arguments, $\Phi$ being the set of propositions $\allprops × \set{\text{sure}, \text{possible}}$.
+	A decision situation is a topic $\allprops$ closed under negation, a set of arguments $\allargs$, an “always leads to” relation $\ileadstoall \subseteq (\allargs × \allargs) × \allprops$ satisfying (A1) and (A2) and using unordered pairs of arguments, $\allprops$ being the set of propositions $\allprops × \set{\text{sure}, \text{possible}}$.
 \end{definition}
 
 \subsection{Query protocols}
@@ -767,7 +770,7 @@ Define $\ileadstoall$ from $\ileadstoprop$ as follows, for any $\prop \in \allpr
 
 Note that (A1) and (A2) hold.
 
-When “both” is not observable, $\ileadstoall$ is defined as: $(\ar, \ar') \ileadstoall (\prop, \text{possible}) ⇔ (\ar, \ar') \ileadstoall (\prop, \text{sure}) ⇔ (\ar, \ar') \ileadstoprop \set{\prop}$. (A1) and (A2) still hold. We say in this case that $\ileadstoall$ does not distinguish sure from possible. Thus, elements $\phi \in \Phi$ may be considered as simply equal to $\prop$ or $¬\prop$, as $(\prop, \text{sure})$ is treated exactly as $(\prop, \text{possible})$.
+When “both” is not observable, $\ileadstoall$ is defined as: $(\ar, \ar') \ileadstoall (\prop, \text{possible}) ⇔ (\ar, \ar') \ileadstoall (\prop, \text{sure}) ⇔ (\ar, \ar') \ileadstoprop \set{\prop}$. (A1) and (A2) still hold. We say in this case that $\ileadstoall$ does not distinguish sure from possible. Thus, elements $\prop \in \allprops$ may be considered as simply equal to $\prop$ or $¬\prop$, as $(\prop, \text{sure})$ is treated exactly as $(\prop, \text{possible})$.
 
 \subsection{Example}
 \begin{example}[(cont.)]
@@ -788,27 +791,27 @@ Note that $f^{-1}(\ar_0 + \ar_2) ≠ {\gbeats}(\ar_2) × \set{\ar_0}$: if ${\gbe
 Also, note that $g(\ar_0)(\ar_0 + \argsd_2) ≠ {\gbeats}(\argsd_2) \cap {\gbeatsinv}(\ar_0)$. Consider ${\gbeats} = \set{(\ard, \ar_1), (\ar_1, \ar_0)}, \ar_2 = \ar_0 + \ard = \ar_0 + \ard$. Then, $(\ar_1, \ar_0) \in f^{-1}(\ar_0 + \ard)$, hence, $\ar_1 \in g(\ar_0)(\ar_0 + \ard)$, but ${\gbeats}(\ard) = \emptyset$.
 
 \subsection{Falsifiability}
-\commentOC{I should define $\Box(\hist \ileadsto \phi)$ iff it has been observed that $\hist \ileadsto \phi$. Then, axiom Correct observations (that is self-evident): $\Box(\hist \ileadsto \phi) ⇒ \hist \ileadsto \phi$ (what has been observed is). Supplementary axiom Falsification is enough (that is not self-evident): $\not\Box(\hist \ileadsto \phi) ⇒ \hist \nileadsto \phi$ (what has not been observed is not).}
+\commentOC{I should define $\Box(\hist \ileadsto \prop)$ iff it has been observed that $\hist \ileadsto \prop$. Then, axiom Correct observations (that is self-evident): $\Box(\hist \ileadsto \prop) ⇒ \hist \ileadsto \prop$ (what has been observed is). Supplementary axiom Falsification is enough (that is not self-evident): $\not\Box(\hist \ileadsto \prop) ⇒ \hist \nileadsto \prop$ (what has not been observed is not).}
 
 \commentOC{I want: An empirical theory for a normative theory is something like a normative and falsifiable claim. It is also configurable: it must be possible to guarantee that the falsification be easy (if the claim is false) depending on the kind of claim.}
 
-Given $\hist \in \allhist$ and $i \in I$, the claim $\hist \ileadstoe[i] \phi$ may not be verifiable, and is too specific to be falsifiable. However, given $\hist \in \allhist$, a broader claim is falsifiable: that for a given set of individuals $Q \subseteq I, \forall i \in Q, \hist \ileadstoe[i] \phi$ (provided $Q$ is big enough). Indeed, that claim it is equivalent to $\nexists i \in Q \suchthat \hist \nileadstoe[i] \phi$; exhibiting an $i \in Q$ such that $\hist \nileadstoe[i] \phi$ thus falsifies the broader claim.
+Given $\hist \in \allhist$ and $i \in I$, the claim $\hist \ileadstoe[i] \prop$ may not be verifiable, and is too specific to be falsifiable. However, given $\hist \in \allhist$, a broader claim is falsifiable: that for a given set of individuals $Q \subseteq I, \forall i \in Q, \hist \ileadstoe[i] \prop$ (provided $Q$ is big enough). Indeed, that claim it is equivalent to $\nexists i \in Q \suchthat \hist \nileadstoe[i] \prop$; exhibiting an $i \in Q$ such that $\hist \nileadstoe[i] \prop$ thus falsifies the broader claim.
 
-Given any $(\allprops, ¬, \allargs, I)$, an \emph{observation protocol} is a binary tree whose non-leaf nodes are among $I × \allhist × \Phi$ and whose two edges out of any non leaf node are labeled by “yes” and “no”; the leaf nodes being simply $\emptyset$. The observation protocol is said to assume memory iff for each non-leaf node $n = (i, \hist, \phi)$ about $i$, any node $n' = (i, {\hist}', \phi')$ about $i$ that is further down the tree continues the history, that is, the sequence ${\hist}'$ starts with $\hist$. Given an observation protocol and observables $(\ileadstoe[i])_{i \in I}$, the \emph{observed path} refers to the path in the tree defined recursively as consisting of the root node and, for each non-leaf node $n = (i, \hist, \phi)$ in the path, the child node along the branch “yes” if $\hist \ileadstoe[i] \phi$ and the child node along the branch “no” otherwise. The \emph{observations} refer to the set of nodes along the observed path.
+Given any $(\allprops, ¬, \allargs, I)$, an \emph{observation protocol} is a binary tree whose non-leaf nodes are among $I × \allhist × \allprops$ and whose two edges out of any non leaf node are labeled by “yes” and “no”; the leaf nodes being simply $\emptyset$. The observation protocol is said to assume memory iff for each non-leaf node $n = (i, \hist, \prop)$ about $i$, any node $n' = (i, {\hist}', \prop')$ about $i$ that is further down the tree continues the history, that is, the sequence ${\hist}'$ starts with $\hist$. Given an observation protocol and observables $(\ileadstoe[i])_{i \in I}$, the \emph{observed path} refers to the path in the tree defined recursively as consisting of the root node and, for each non-leaf node $n = (i, \hist, \prop)$ in the path, the child node along the branch “yes” if $\hist \ileadstoe[i] \prop$ and the child node along the branch “no” otherwise. The \emph{observations} refer to the set of nodes along the observed path.
 
-Given any $(\allprops, ¬, \allargs, I)$, a \emph{normative claim} about $(\allprops, ¬, \allargs, I)$ (or about $\allargs$, when the other defined objects are left implicit) is any first-order logic proposition involving the atoms $[(\hist, \phi) \in {\ileadstoe[i]}], \hist \in \allhist, \phi \in \Phi$ which, together with the axioms, permits to deduce that $\phi \in \iPhi$ for some $i \in I$ and $\phi \in \Phi$. The claim is said to be \emph{about} the given set $\allargs$. An observation protocol, together with observables $(\ileadstoe[i])_{i \in I}$, \emph{falsifies} a normative claim iff the falsity of the claim is deducible from the axioms and the observations. A normative claim is \emph{falsifiable} iff there exists a finite observation protocol such that for any observables $(\ileadstoe[i])_{i \in I} \in (\allhist × \Phi)^I$, if the claim is false given these observables, then it is possible to deduce it from the axioms and the observations given the observables.
+Given any $(\allprops, ¬, \allargs, I)$, a \emph{normative claim} about $(\allprops, ¬, \allargs, I)$ (or about $\allargs$, when the other defined objects are left implicit) is any first-order logic proposition involving the atoms $[(\hist, \prop) \in {\ileadstoe[i]}], \hist \in \allhist, \prop \in \allprops$ which, together with the axioms, permits to deduce that $\prop \in \iprops$ for some $i \in I$ and $\prop \in \allprops$. The claim is said to be \emph{about} the given set $\allargs$. An observation protocol, together with observables $(\ileadstoe[i])_{i \in I}$, \emph{falsifies} a normative claim iff the falsity of the claim is deducible from the axioms and the observations. A normative claim is \emph{falsifiable} iff there exists a finite observation protocol such that for any observables $(\ileadstoe[i])_{i \in I} \in (\allhist × \allprops)^I$, if the claim is false given these observables, then it is possible to deduce it from the axioms and the observations given the observables.
 
 \commentOC{Falsifiable may not be the right word. Perhaps “provable“, meaning “tautological or Popper-falsifiable”. “Falsifiable” suggests that if a claim is not falsifiable, then a weaker claim is not falsifiable either, which does not hold. My falsifiability criterion demands that if a claim is false, we can see it; whether Popper’s demands that the claim be possibly false. Perhaps I should demand that we can pick a set of consequences of the claim and show it wrong it at least one possible state of the universe.}
 
-A normative claim is \emph{trivial} iff it is about a singleton $\allargs = \set{\ar}$, and has the form: $\ar \ileadstosts \phi$, for some $i \in I$. A normative claim is minimal iff it has the form: $\exists \ar \in \allargs \suchthat \ar \ileadstosts \phi$, for some $i \in I$ and $\phi \in \Phi$. Note that given a minimal claim, $\card{\allargs} = 1$ is equivalent to the claim being trivial.
+A normative claim is \emph{trivial} iff it is about a singleton $\allargs = \set{\ar}$, and has the form: $\ar \ileadstosts \prop$, for some $i \in I$. A normative claim is minimal iff it has the form: $\exists \ar \in \allargs \suchthat \ar \ileadstosts \prop$, for some $i \in I$ and $\prop \in \allprops$. Note that given a minimal claim, $\card{\allargs} = 1$ is equivalent to the claim being trivial.
 
 \begin{proposition}[Trivial claims are not falsifiable]
 	Given any $(\allprops, ¬, \allargs ≠ \emptyset, I)$, no minimal normative claim is falsifiable.
 \end{proposition}
 \begin{proof}
-	Consider any claim about some $i$ and some $\phi$ and any finite observation protocol. We have to show that for some observables, the claim is false, but it is impossible to observe it (meaning, to deduce it from the axioms and observations).
+	Consider any claim about some $i$ and some $\prop$ and any finite observation protocol. We have to show that for some observables, the claim is false, but it is impossible to observe it (meaning, to deduce it from the axioms and observations).
 	
-	Given $k \in \N$, define $\ileadstosts[k]$ as $\ar^k \ileadstosts \phi$ and $\ar^{k+1} \ileadstosts ¬\phi$ (where $\ar^k$ designates a finite sequence repeating $k$ times $\ar$, for $\ar \in \allargs$). I claim that for some $k$, the observables that include this relation makes the claim false, but not observably so. This is because the observation protocol is finite, thus, only permits to observe some finite number of instances of the relation $\ileadsto$. Suffices to define $k$ as that number.
+	Given $k \in \N$, define $\ileadstosts[k]$ as $\ar^k \ileadstosts \prop$ and $\ar^{k+1} \ileadstosts ¬\prop$ (where $\ar^k$ designates a finite sequence repeating $k$ times $\ar$, for $\ar \in \allargs$). I claim that for some $k$, the observables that include this relation makes the claim false, but not observably so. This is because the observation protocol is finite, thus, only permits to observe some finite number of instances of the relation $\ileadsto$. Suffices to define $k$ as that number.
 \end{proof}
 
 There is another reason for non falsifiability, which does not involve the problem of finiteness.
@@ -816,11 +819,11 @@ There is another reason for non falsifiability, which does not involve the probl
 	Given any $(\allprops, ¬, \allargs, I), \card{\allargs} ≥ 2$, no minimal normative claim is falsifiable.
 \end{proposition}
 \begin{proof}
-	Define $\ar_1$ as the first element of the sequence $\hist$ of the root node of the observation protocol (if the observation protocol is empty, suffices to define any observables that make the claim false). Define the observables so that $\forall \hist \in \allhist: \ar_2, \hist \ileadsto ¬\phi$. This proves that no argument is decisive, hence $\phi \notin \Box\Phi$, and the claim is false. But the observables may also be defined so as to satisfy the protocol (defined as: when going through the protocol, the observations can’t fail the claim).
+	Define $\ar_1$ as the first element of the sequence $\hist$ of the root node of the observation protocol (if the observation protocol is empty, suffices to define any observables that make the claim false). Define the observables so that $\forall \hist \in \allhist: \ar_2, \hist \ileadsto ¬\prop$. This proves that no argument is decisive, hence $\prop \notin \Box\Phi$, and the claim is false. But the observables may also be defined so as to satisfy the protocol (defined as: when going through the protocol, the observations can’t fail the claim).
 \end{proof}
 
 \subsection{Definition}
-A general empirical theory for a normative theory $(\allprops, ¬, \allargs, I, (\ileadstoe[i])_{i \in I})$ is a tuple $({\gleadsto}, f)$, where ${\gleadsto} \subseteq \allargs × \Phi$ and $f \subseteq (\allargs × \allargs) × \allargs$ with $f(\allargs × \allargs)$ being finite.
+A general empirical theory for a normative theory $(\allprops, ¬, \allargs, I, (\ileadstoe[i])_{i \in I})$ is a tuple $({\gleadsto}, f)$, where ${\gleadsto} \subseteq \allargs × \allprops$ and $f \subseteq (\allargs × \allargs) × \allargs$ with $f(\allargs × \allargs)$ being finite.
 
 Define $g(\ar_0) \subseteq \allargs × \allargs$ as $g(\ar_0) = \set{(\ar_2, \ar_1) \suchthat \ar_2 \in f(\ar_1, \ar_0)} = \bigcup_{\ar_1 \in \allargs} (f(\ar_1, \ar_0) × \set{\ar_1})$. The set $g(\ar_0)(\allargs)$ contains the planned attacks on $\ar_0$; the set $g(\ar_0)(\ar_2)$ contains the planned attacks on $\ar_0$ for which $\ar_2$ is a planned response; and the set $g(\ar_0)^{-1}(\ar_1) = f(\ar_1, \ar_0)$ contains the planned protections of $\ar_0$ against $\ar_1$. 
 
@@ -831,23 +834,23 @@ It should be possible to define this condition as a claim that does not involve 
 
 \begin{remark}
 	In fact, the model is tasked with finding a stable point after interrogating $i$. The process of trying counter-arguments $\ar_1, …$ is $q(i)$. When done, the model claims that $\ar_0 + \ar_2 + …$ is decisive. The model also claims that another process of interrogation does not lead to different answers. This is falsifiable.
-	When claiming that $(\ar_1, \ar_0) \ileadstoall[i] \phi$, the model really claims that $\nexists p, i' \in q^{-1}(q(i)) \suchthat p, \ar_1, \ar_0 \ileadsto[i'] ¬\phi \lor p, \ar_0, \ar_1 \ileadsto[i'] ¬\phi$, where $i' \in q^{-1}(q(i))$ iff $q(i) = q(i')$.
+	When claiming that $(\ar_1, \ar_0) \ileadstoall[i] \prop$, the model really claims that $\nexists p, i' \in q^{-1}(q(i)) \suchthat p, \ar_1, \ar_0 \ileadsto[i'] ¬\prop \lor p, \ar_0, \ar_1 \ileadsto[i'] ¬\prop$, where $i' \in q^{-1}(q(i))$ iff $q(i) = q(i')$.
 	
-	To say that $\phi \in \iPhi$, need to not depend on choice of $q$, in the following sense: if with $q$, $\phi$ seems stable, but with $q'$, $¬\phi$ seems stable, then $\phi$ is not proved as being in $\iPhi$. But if with $q$, $\phi$ seems stable, but with $q'$, nothing can be shown to be stable, then $\phi$ is proved (temporarily) as being in $\iPhi$. More precisely, after $q'$, the model must be able to stabilize $i$ with its $q$.
+	To say that $\prop \in \iprops$, need to not depend on choice of $q$, in the following sense: if with $q$, $\prop$ seems stable, but with $q'$, $¬\prop$ seems stable, then $\prop$ is not proved as being in $\iprops$. But if with $q$, $\prop$ seems stable, but with $q'$, nothing can be shown to be stable, then $\prop$ is proved (temporarily) as being in $\iprops$. More precisely, after $q'$, the model must be able to stabilize $i$ with its $q$.
 \end{remark}
 
-$\ar_0$ $i$-defends $\phi$ when ignoring $S_1$ iff $\forall \hist \in \allhist: [\args_1 \cap \hist = \emptyset] ⇒ (\hist, \ar_0) \ileadstosts \phi$.
-$\ar_0$ $i$-defends $\phi$ under protection of $S_2$ iff $\ar_0$ $i$-defends $\phi$ when ignoring $g(\ar_0)(\args_2)$.
+$\ar_0$ $i$-defends $\prop$ when ignoring $S_1$ iff $\forall \hist \in \allhist: [\args_1 \cap \hist = \emptyset] ⇒ (\hist, \ar_0) \ileadstosts \prop$.
+$\ar_0$ $i$-defends $\prop$ under protection of $S_2$ iff $\ar_0$ $i$-defends $\prop$ when ignoring $g(\ar_0)(\args_2)$.
 
 \begin{definition}[Convincingness]
-	$\forall i \in I, \phi \in \gPhie, \exists k \in 2\N$ and a finite sequence $(\args_j)_{j \in 2\N, j ≤ k} \suchthat \emptyset ≠ \args_0 \subseteq {\gleadstoinv}(\phi)$ and $\forall j \in 2\N, j ≤ k, \forall \ar_j \in S_j: \ar_j$ $i$-defends $\phi$ under protection of $S_{j + 2}$ (defining $S_{k + 2} = \emptyset$) and $S_j \subseteq \cup_{\ar_{j - 2} \in \args_{j - 2}, \ar_{j - 1} \in \allargs} f(\ar_{j - 1}, \ar_{j - 2})$.
+	$\forall i \in I, \prop \in \gpropse, \exists k \in 2\N$ and a finite sequence $(\args_j)_{j \in 2\N, j ≤ k} \suchthat \emptyset ≠ \args_0 \subseteq {\gleadstoinv}(\prop)$ and $\forall j \in 2\N, j ≤ k, \forall \ar_j \in S_j: \ar_j$ $i$-defends $\prop$ under protection of $S_{j + 2}$ (defining $S_{k + 2} = \emptyset$) and $S_j \subseteq \cup_{\ar_{j - 2} \in \args_{j - 2}, \ar_{j - 1} \in \allargs} f(\ar_{j - 1}, \ar_{j - 2})$.
 \end{definition}
 Note that requiring that $\args_0$ be a singleton does not modify the condition, in the sense that any theory satisfying the condition also satisfies its strenghtening. Similarly, requiring that $S_k ≠ \emptyset$ does not modify the condition (because if some $k$ satisfy the condition with $S_k = \emptyset$, then picking $k' = k-2$ with the same sets $S_j$ also satisfy the condition, and because $S_0 ≠ \emptyset$, this recursion must end with a suitable $k$).
 
 \begin{remark}
 	The claim must have the form: some structure is adequate for all individuals. Here, the structure is given by $f$. The claim should claim that looking at the attacks planned by $f$ is enough; and looking at the defenses planned by $f$ is enough.
 
-	This may be adequate as if $\ar_0$ seems suitable but some unplanned attacker $\ar_1$ attacks it, then use $\ar_1 \in \hist$ and observe that $¬(\hist, \ar_0) \ileadstoe \phi$ to deny the claim.
+	This may be adequate as if $\ar_0$ seems suitable but some unplanned attacker $\ar_1$ attacks it, then use $\ar_1 \in \hist$ and observe that $¬(\hist, \ar_0) \ileadstoe \prop$ to deny the claim.
 	
 	Perhaps this could be phrased as follows. Say that $\ar_2$ is replaceable by $\args_2$ iff what $\ar_2$ protects is either protected by $\args_2$ or replaceable (by what?). Say that a set $\args$ is sufficient iff its complement is replaceable by $\args$. Then $g$ claims (among others) that $g(\ar_0)^{-1}(\ar_1)$ is sufficient.
 	
@@ -858,8 +861,8 @@ Note that requiring that $\args_0$ be a singleton does not modify the condition,
 	If an empirical theory is convincing, and its normative theory satisfies the axioms, then it is valid.
 \end{theorem}
 \begin{proof}
-	Consider $i \in I$ and $\phi \in \gPhie$. 
-	By hypothesis, $\exists k$ such that some $\ar_k \in \args_k$ defends $\phi$ under protection of $\emptyset$. Therefore, $\ar_k \ileadstosts \phi$. Using \cref{ax:norm}, validity follows.
+	Consider $i \in I$ and $\prop \in \gpropse$. 
+	By hypothesis, $\exists k$ such that some $\ar_k \in \args_k$ defends $\prop$ under protection of $\emptyset$. Therefore, $\ar_k \ileadstosts \prop$. Using \cref{ax:norm}, validity follows.
 \end{proof}
 
 \begin{theorem}
