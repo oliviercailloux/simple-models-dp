@@ -50,7 +50,8 @@
 \NewDocumentCommand{\notpropsure}{}{(¬t, \mathit{sure})}
 \NewDocumentCommand{\notpropposs}{}{(¬t, \mathit{poss})}
 %%Empirical theory
-\NewDocumentCommand{\gPhi}{O{γ}}{{\hookrightarrow_{#1}}(\allargs)}
+\NewDocumentCommand{\gPhie}{O{γ}}{{\hookrightarrow_{#1}}(\allargs)}%e for explicit
+\NewDocumentCommand{\gPhi}{O{γ}}{\Phi_{#1}}
 \NewDocumentCommand{\dargs}{}{S^\mathit{d}}
 \NewDocumentCommand{\alldargs}{}{\mathscr{S}^d}
 \NewDocumentCommand{\gargs}{O{\phi}}{S^{#1}_{γ, i}}
@@ -87,6 +88,7 @@
 \NewDocumentCommand{\ngpst}{}{\nsucc_\gamma}
 
 %Deliberated Preference
+\NewDocumentCommand{\choices}{}{\mathscr{C}}
 \NewDocumentCommand{\ppeqab}{}{t_{a \succeq b}}
 \NewDocumentCommand{\ppst}{O{a}O{b}}{t_{#1 \succ #2}}
 \NewDocumentCommand{\ppstsure}{O{a}O{b}}{(t_{#1 \succ #2}, \mathit{sure})}

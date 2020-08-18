@@ -53,7 +53,8 @@ This distinction draws on our capacity, as human beings, to think about our shal
 
 It is well known that shallow preferences do not always match reflective ones.
 Indeed, forming reflective preferences is recognised as a difficult problem in many decision problems, contrary, by definition, to shallow preferences. For example, \citet[p.\ 6]{colell_microeconomic_1995} write, when presenting the preference relation that is the basis for most of their famous book about Microeconomic theory: “Introspection quickly reveals how hard it is to evaluate alternatives that are far from the realm of common experience. It takes work and serious reflection to find out one’s own preferences.” 
-It can be expected that some behavior highlighted by psychologists \citep{kahneman_thinking_2012}, such as framing effects, would be rejected by the individuals themselves when pondering their decisions. 
+In the words of \citet[p.\ 9]{bell_descriptive_1988}, “Our decision makers are not economic automatons; they make mistakes, have remorse, suffer anxieties, and cannot make up their minds” (cited by \citet[p.\ 87]{deparis_etude_2012}).
+Indeed, it is to be expected that some behavior highlighted by psychologists \citep{kahneman_thinking_2012}, such as framing effects, would be rejected by the individuals themselves when pondering their decisions. 
 
 That reflective preferences are relevant to economic theory, in supplement to shallow preferences, is also illustrated by the general requirement of transitivity of preferences for economic theory, which is reasonably expected from reflective rather than from shallow preferences. As an illustration, \citet[p.\ 7]{colell_microeconomic_1995} go on writing: “the transitivity assumption can be hard to satisfy when evaluating alternatives far from common experience. As compared to the completeness property, however, it is also more fundamental in the sense that substantial portions of economic theory would not survive if economic agents could not be assumed to have transitive preferences.” 
 
@@ -148,6 +149,8 @@ exhibit a decisive argument for that proposition, as judged from the individual�
 
 \section{Normative theories}
 \subsection{Definition}
+\TODO{Consider using only $\phi$ being sure, and dropping everything related to possibility.}
+
 One of the primitive elements of a normative theory is a set of arguments $\allargs$.
 Given a set of arguments $\allargs$, define the set of finite sequences of elements in $\allargs$ (including the empty sequence) as $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$.
 Throughout the article, $\N$ includes zero and $\N^* = \N \setminus \set{0}$. Given $j, k \in \N$, the notation $\intvl{j, k}$ represents $\set{l \suchthat j ≤ l ≤ k}$. Note that $\intvl{1, 0} = \emptyset$, and given any set $S$, the notation $S^\emptyset$ represents the empty set. A generic element of $\allhist$ is denoted by $\hist$ and called a path.
@@ -175,6 +178,10 @@ Given $\hist \in \allhist$, if $l$ denotes its length, $\hist(\intvl{1, l})$ den
 Let $\histend = \hist(\intvl{\max(1, l-1), l})$ denote the set containing the last two arguments of the sequence $\hist$ if the sequence has at least two elements; and all arguments of the sequence if it has exactly one element or is empty.
 
 Given $i \in I, \phi \in \Phi, \ar \in \allargs$, define $\ar \ileadstost \phi$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \ileadstost \phi$.
+
+\begin{remark}
+	I’d rather drop the negation and observe that if the protocol is defined so that $\hist \ileadsto \phi_1 ⇒ \hist \nileadsto \phi_2$, then $\phi_1 \in \iPhi ⇒ \phi_2 \notin \iPhi$. Observe that this is always possible. The definitions about completeness should use a negation operator in supplement to the normative theory tuple.
+\end{remark}
 
 \subsection{Classify propositions}
 \begin{axiom}[Normative adequacy]
@@ -244,7 +251,7 @@ In this section, a normative theory is supposed given.
 
 An empirical theory is constituted of the following elements.
 
-An initial argumentation relation ${\gleadsto} \subseteq \allargs × \allprops$ relates some arguments to some propositions. Its role in an empirical theory is to define the propositions that the empirical theory supports (corresponding to $\gPhi$, the range of ${\gleadsto}$) and, for each such proposition, to define the arguments that the theory wants to use as initial arguments to argue in favor of this proposition. The set of initial arguments is $\gleadstoinv(\Phi) = \set{\ar \in \allargs \suchthat \exists \phi \in \Phi \suchthat \ar \gleadsto \phi}$.
+An initial argumentation relation ${\gleadsto} \subseteq \allargs × \allprops$ relates some arguments to some propositions. Its role in an empirical theory is to define the propositions that the empirical theory supports (corresponding to $\gPhie$, the range of ${\gleadsto}$) and, for each such proposition, to define the arguments that the theory wants to use as initial arguments to argue in favor of this proposition. The set of initial arguments is $\gleadstoinv(\Phi) = \set{\ar \in \allargs \suchthat \exists \phi \in \Phi \suchthat \ar \gleadsto \phi}$.
 
 A planned attacks relation ${\gbeats} \subseteq \allargs × \allargs$ is an irreflexive binary relation on the arguments. An argument $\ar_1$ is said to be a planned attack against an argument $\ar_0$ iff $\ar_1 \gbeats \ar_0$. Given  an argument $\ar_0$, $\gbeatsinv(\ar_0) = \set{\ar_1 \in \allargs \suchthat \ar_1 \gbeats \ar_0}$ denotes the set of planned attacks against $\ar_0$; and $\gbeatsinv(\allargs) = \set{\ar_1 \in \allargs \suchthat \exists \ar_0 \in \allargs \suchthat \ar_1 \gbeats \ar_0}$ denotes the set of arguments that are planned attacks against at least one argument.
 
@@ -302,11 +309,11 @@ Such a set $\args$, when not empty, represents an effective set of planned attac
 The notation uses a striked through $\phi$ in superscript to suggest that when $\args \ibeats \ar$, the coalition $\args$ argues against $\phi$, from the point of view of $i$.
 I write that $\ar$ \emph{$i$-defends} $\phi$ to mean that $\emptyset \nibeats \ar$. 
 
-Given $i \in I, \phi \in \gPhi, \ar \in \allargs$, define $\di(\ar) \subseteq \powersetz{\alldargs}$ as $\di(\ar) = \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar) \land \args \ibeats \ar}$. It represents the coalitions of fragments defending $\ar$ (when arguing for $\phi$), from the point of view of $i$, against its effective planned attackers. 
+Given $i \in I, \phi \in \gPhie, \ar \in \allargs$, define $\di(\ar) \subseteq \powersetz{\alldargs}$ as $\di(\ar) = \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar) \land \args \ibeats \ar}$. It represents the coalitions of fragments defending $\ar$ (when arguing for $\phi$), from the point of view of $i$, against its effective planned attackers. 
 The following proposition shows that these coalitions can be added to $\ar$, and will be useful for other results.
 \begin{proposition}
 	\label{th:indf}
-	$\forall i \in I, \phi \in \gPhi, \ar \in \allargs: \dargs \in \di(\ar) ⇒ \emptyset ≠ \dargs \subseteq \df(\ar)$.
+	$\forall i \in I, \phi \in \gPhie, \ar \in \allargs: \dargs \in \di(\ar) ⇒ \emptyset ≠ \dargs \subseteq \df(\ar)$.
 \end{proposition}
 \begin{proof}
 	I will prove that $\forall \ar \in \allargs: \set{\dbeatsinv(\args) \suchthat \emptyset ≠ \args \subseteq \gbeatsinv(\ar)} = \powersetz{\df(\ar)}$, from which the conclusion follows, and which can be useful to clarify the relationship between $\di(\ar)$ and $\df(\ar)$. Note that by definition of $\df(\ar)$, $\dargs \in \powersetz{\df(\ar)}$ iff $\emptyset ≠ \dargs \subseteq \dbeatsinv(\gbeatsinv(\ar))$. 
@@ -325,29 +332,29 @@ The following proposition shows that these coalitions can be added to $\ar$, and
 \end{proof}
 
 Given $\ar \in \allargs$, define $\dip(\ar) = \set{(\ar + \dargs) \suchthat \dargs \in \di(\ar)}$, representing the subset of defenders of $\ar$ required for convincing $i$ of $\phi$.
-Given $i \in I, \phi \in \gPhi$, define $\gargs \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\phi))$.
+Given $i \in I, \phi \in \gPhie$, define $\gargs \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\phi)$ under $\dip$: $\gargs = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\phi))$.
 
 \begin{definition}[Convincingness]
-	An empirical theory is \emph{convincing} iff $\forall i \in I, \phi \in \gPhi, \ar \in \gargs: \ar$ $i$-defends $\phi$.
+	An empirical theory is \emph{convincing} iff $\forall i \in I, \phi \in \gPhie, \ar \in \gargs: \ar$ $i$-defends $\phi$.
 \end{definition}
 
-A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hist, \ar) \in I × \gPhi × \allhist × \gargs$ such that $\gbeatsinv(\ar) \cap \hist = \emptyset \land \ar \in \histend \land \hist \nileadstost \phi$. 
+A \emph{falsification instance} of an empirical theory is a tuple $(i, \phi, \hist, \ar) \in I × \gPhie × \allhist × \gargs$ such that $\gbeatsinv(\ar) \cap \hist = \emptyset \land \ar \in \histend \land \hist \nileadstost \phi$. 
 I also write that $(i, \phi, \hist, \ar)$ falsifies $\gamma$ to mean that it is a falsification instance of $\gamma$.
 
 \begin{theorem}
 	An empirical theory is convincing iff it has no falsification instances.
 \end{theorem}
 \begin{proof}
-	For all $i \in I, \phi \in \gPhi, \ar \in \gargs$: $\ar$ does not $i$-defend $\phi$ iff $\exists \hist \in \allhist \suchthat \left[\gbeatsinv(\ar) \cap \hist = \emptyset \land \ar \in \histend \land \hist \nileadstost \phi\right]$ iff $\exists \hist \in \allhist$ such that $(i, \phi, \hist, \ar)$ falsifies $\gamma$. Therefore, $\gamma$ is not convincing iff $\exists (i, \phi, \ar) \suchthat \ar$ does not $i$-defend $\phi$ iff $\exists \hist \suchthat (i, \phi, \hist, \ar)$ falsifies $\gamma$ iff $\gamma$ has a falsification instance.
+	For all $i \in I, \phi \in \gPhie, \ar \in \gargs$: $\ar$ does not $i$-defend $\phi$ iff $\exists \hist \in \allhist \suchthat \left[\gbeatsinv(\ar) \cap \hist = \emptyset \land \ar \in \histend \land \hist \nileadstost \phi\right]$ iff $\exists \hist \in \allhist$ such that $(i, \phi, \hist, \ar)$ falsifies $\gamma$. Therefore, $\gamma$ is not convincing iff $\exists (i, \phi, \ar) \suchthat \ar$ does not $i$-defend $\phi$ iff $\exists \hist \suchthat (i, \phi, \hist, \ar)$ falsifies $\gamma$ iff $\gamma$ has a falsification instance.
 \end{proof}
 
 \begin{definition}[Validity]
-	An empirical theory is \emph{valid} iff $\forall i \in I, \phi \in \gPhi: [\phi \in \iPhi \land ¬\phi \notin \iPhi]$.
+	An empirical theory is \emph{valid} iff $\forall i \in I, \phi \in \gPhie: [\phi \in \iPhi \land ¬\phi \notin \iPhi]$.
 \end{definition}
 
 \begin{lemma}
 	\label{th:produce}
-	Given $\phi \in \gPhi$, $\ar_0 \in \gargs$ that $i$-defends $\phi$, and $\hist \nileadstost \phi$ with $\ar_0 \in \histend$, define $\args =  \gbeatsinv(\ar_0) \cap \hist$, $\dargs = \dbeatsinv(\args)$, and $\ar_2 = \ar_0 + \dargs$. Then, $\ar_2 \in \gargs \cap \dfp(\ar_0)$.
+	Given $\phi \in \gPhie$, $\ar_0 \in \gargs$ that $i$-defends $\phi$, and $\hist \nileadstost \phi$ with $\ar_0 \in \histend$, define $\args =  \gbeatsinv(\ar_0) \cap \hist$, $\dargs = \dbeatsinv(\args)$, and $\ar_2 = \ar_0 + \dargs$. Then, $\ar_2 \in \gargs \cap \dfp(\ar_0)$.
 \end{lemma}
 \begin{proof}
 	By definition of $\ibeats$, $\args \ibeats \ar_0$.
@@ -360,7 +367,7 @@ I also write that $(i, \phi, \hist, \ar)$ falsifies $\gamma$ to mean that it is 
 	A normatively adequate and convincing empirical theory is valid.
 \end{theorem}
 \begin{proof}
-	Given any $i \in I$ and $\phi \in \gPhi$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstost \phi$; the conclusion then follows thanks to simple normative adequacy (that \cref{th:normeqsnorm} shows to be equivalent to normative adequacy). 
+	Given any $i \in I$ and $\phi \in \gPhie$, suffices to show that for some $\ar \in \allargs$, $\ar \ileadstost \phi$; the conclusion then follows thanks to simple normative adequacy (that \cref{th:normeqsnorm} shows to be equivalent to normative adequacy). 
 	
 	Lemma: $[\ar_0 \in \gargs \land \ar_0 \nileadstost \phi] ⇒ \exists \ar_2 \in \gargs \cap \dfp(\ar_0)$. That is because $\ar_0 \in \gargs$ implies that $\ar_0$ $i$-defends $\phi$, by convincingness, and,
 	by definition, $\ar_0 \nileadstost \phi$ means that $\exists \hist \in \allhist \suchthat \ar_0 \in \histend \land \hist \nileadstost \phi$; \cref{th:produce} thus applies.
@@ -370,7 +377,7 @@ I also write that $(i, \phi, \hist, \ar)$ falsifies $\gamma$ to mean that it is 
 \end{proof}
 
 \subsection{Effectively comparing models}
-Given $\phi \in \Phi$ and two empirical theories $\gamma$ and $\delta$ for a given normative theory, say that they disagree about $\phi$ iff $\phi \in \gPhi[\gamma] \land ¬\phi \in \gPhi[\delta]$. Say that they are incompatible iff there is at least one $\phi \in \Phi$ that they disagree about.
+Given $\phi \in \Phi$ and two empirical theories $\gamma$ and $\delta$ for a given normative theory, say that they disagree about $\phi$ iff $\phi \in \gPhie[\gamma] \land ¬\phi \in \gPhie[\delta]$. Say that they are incompatible iff there is at least one $\phi \in \Phi$ that they disagree about.
 
 Given $\phi \in \Phi$, $\hist \in \allhist$ and $\ar_\gamma \in \gargs$, say that $(\hist, \ar_\gamma)$ challenges $\phi$ iff $\hist \nileadstost \phi$ and $\ar_\gamma \in \histend$.
 Given $\phi \in \Phi, \ar_\gamma \in \gargs, \ar_\delta \in \gargsdelta$, say that $(\hist, \ar_\gamma, \ar_\delta)$ is a $\phi/¬\phi$-challenge iff $(\hist, \ar_\gamma)$ challenges $(\gamma, \phi)$ or $(\hist, \ar_\delta)$ challenges $(\delta, ¬\phi)$.
@@ -440,29 +447,26 @@ Indicate sufficient hypothesis for ensuring that if a model resisted every attac
 \subsection{Representing deliberated preferences}
 Let $\allalts$ be a set of alternatives. 
 
-Define $\Phi_\allalts = \set{\phi_{B, a}, \phi_{B, ¬a} \suchthat \emptyset ≠ B \subseteq \allalts, a \in B}$.
+Define $\Phi_\allalts = \set{\phi_{B, \choices} \suchthat \emptyset ≠ B \subseteq \allalts, \choices \subseteq \powersetz{B}}$.
 
 Let $I$ and $\allargs$ be any sets of individuals and arguments.
 
 The observation protocol goes as follows. Given $i \in I$, $\emptyset ≠ B \subseteq \allalts$ and $\hist \in \allhist$, the individual $i$, after having been presented the arguments in the sequence $\hist$, is asked to choose among a subset of elements from $B$ among which she is indifferent. Define $\emptyset ≠ c^\hist_i(B) \subseteq B$ as the subset that $i$ chooses after exposure to $\hist$.
-Define $\hist \ileadsto \phi_{B, a}$ iff $a \in c^\hist_i(B)$.
-Define $\hist \ileadsto \phi_{B, ¬a}$ iff $a \notin c^\hist_i(B)$.
+Define $\hist \ileadsto \phi_{B, \choices}$ iff $c^\hist_i(B) \in \choices$.
 
-\begin{remark}
-	This does not work, because $\gamma$ supporting $\phi_{\set{a, b, c, d}, ¬b}$, $\phi_{\set{a, b, c, d}, ¬c}$ and $\phi_{\set{a, b, c, d}, ¬d}$ may be valid even if $i$ never chooses $a$: $i$ may satisfy $¬b$ (by picking $c$) when given an argument for $¬b$, satisfy both $¬b$ and $¬c$ (by picking $d$) when given arguments for $¬b$ and $¬c$, and so on. The individual $i$ is not obliged to satisfy the three arguments for $¬b$, $¬c$ and $¬d$ simultaneously, as these arguments are required to count only when they are at the end of the sequence.
-\end{remark}
+This defines normative theories about $\allalts$. Any empirical theory for a normative theory about $\allalts$ that satisfies $\forall \emptyset ≠ B \subseteq \allalts: \exists ! \emptyset ≠ \choices \subseteq \powersetz{B} \suchthat \phi_{B, \choices} \in \gPhie$ is said to be an empirical theory about $\allalts$. The notation $\exists!$ means: there exists a unique element. The requirement that there is at least one is innocuous, as choosing $\choices = \powersetz{B}$ ensures that $\phi_{B, \choices} \in \iPhi$, by definition of $\ileadsto$.
 
-This defines normative theories about $\allalts$. Any empirical theory for a normative theory about $\allalts$ is said to be an empirical theory about $\allalts$.
+An empirical theory about $\allalts$ thus associates to each possible bundle $B$ a set of possible choices $\choices$, whose semantics is that the theory claims that the deliberated choice of $i$, given the bundle $B$, lies among $\choices$. Let $\gPhi(B) \subseteq \powersetz{B}$ denote this set of possible choices, thus $\gPhi(B) = \choices  ⇔ \phi_{B, \choices} \in \gPhie$.
 
-Given an empirical theory about $\allalts$ and $a, b \in \allalts$, define $a \gpst b$ iff $\forall \set{a, b} \subseteq B: \phi_{B, ¬b} \in \gPhi$.
-Define $a \gind b$ iff either $a = b$ or $\forall \set{a, b} \subseteq B: [\phi_{B, a} \in \gPhi \land \phi_{B, b} \in \gPhi] \lor [\exists c \in B \suchthat c \gpst a \land c \gpst b]$.
+Given an empirical theory about $\allalts$ and $a, b \in \allalts$, define $a \gpst b$ iff $\forall \set{a, b} \subseteq B: b \notin \bigcup \gPhi(B)$. Thus, $a \gpst b$ iff $\gamma$ claims that $b$ is not deliberately chosen in presence of $a$.
+Define $a \gind b$ iff $\forall \set{a, b} \subseteq B: [\forall C \in \choices: a \in C ⇔ b \in C]$.
 Define ${\gpeq} = {\gpst} \cup {\gind}$.
-
-An empirical theory about $\allalts$ is said to be coherent iff $\forall \emptyset ≠ B \subseteq \allalts$: $¬(\forall a \in B: \phi_{B, ¬a} \in \gPhi) \land ¬(\exists a \in B \suchthat \phi_{B, a} \in \gPhi \land \phi_{B, ¬a} \in \gPhi)$. Coherence is required for validity. Note that it is not an empirical property, in the sense that it can be verified without experiments, as it is independent of $\ileadsto$.
 
 If $\gpeq$ is transitive, and if $\gamma$ is valid, $\gpeq$ can be said to represent part of the deliberated preference of $i$, in the sense that choosing from the undominated elements of parts of $\gpeq$ restricts choice in a way that is systematically compatible with $i$’s \ac{DJ}. This is made precise below.
 
-Given $i \in I$ and a bundle $B$, say that a subset $B' \subseteq B$ is a deliberated restricted choice set for $i$ given $B$ iff $[\forall a \in B \setminus B': \phi_{B, ¬a} \in \iPhi] \lor [\exists a \in B' \suchthat \phi_{B, a} \in \iPhi]$. Restricting consideration to deliberated restricted choice sets respects $i$’s \ac{DJ} in the sense that such sets exclude from $B$ only alternatives that $i$ deliberately excludes from possible choice among the bundle $B$, or include an alternative that $i$ deliberately chooses when choosing from the bundle $B$.
+Given $i \in I$ and a bundle $B$, say that a subset $B' \subseteq B$ is a deliberated restricted choice set for $i$ given $B$ iff 
+$\exists \phi_{B, \choices} \in \iPhi \suchthat \forall C \in \choices: C \cap B' ≠ \emptyset$.
+Restricting consideration to deliberated restricted choice sets respects $i$’s \ac{DJ} in the sense that it necessarily includes at least one alternative that is a deliberated choice of $i$.
 
 If $\gpeq$ is transitive and $\gamma$ is valid, the following theorem shows that a choice function can be defined by picking from undominated elements of $\gpeq$ in such a way that only deliberated restricted choice sets result. $\powersetz[\mathit{F}]{\allalts}$ designates the finite non-empty subsets of $\allalts$.
 
@@ -471,7 +475,9 @@ If $\gpeq$ is transitive and $\gamma$ is valid, the following theorem shows that
 	Let $\gamma$ be a valid empirical theory for a normatively adequate normative theory about $\allalts$, and such that $\gpeq$ is transitive. Let $r$ be a choice function such that, given any $B \in \powersetz[\mathit{F}]{\allalts}$, $r(B)$ contains exactly one arbitrary argument of each undominated equivalence classes of $B$, where $\gind$ determines the equivalence classes and $\gpst$ determines the undominated elements. Then, $\forall B \in \powersetz[\mathit{F}]{\allalts}$, $r(B)$ is a deliberated restricted choice set for $i$ given $B$.
 \end{theorem}
 \begin{proof}
-	Observe that under these hypothesis, $\gpeq$ is a transitive, reflexive binary relation on $\allalts$, $\gpst$ is its asymmetric part and $\gind$ is its symmetric part. That $\gpst$ is asymmetric follows from coherence, which requires, considering $B = \set{a, b}$, that $\phi_{B, ¬a} \notin \gPhi$ or $\phi_{B, ¬b} \notin \gPhi$ (hence $b \ngpst a$ or $a \ngpst b$). Coherence itself follows from validity.
+	Observe that under these hypothesis, $\gpeq$ is a transitive, reflexive binary relation on $\allalts$, $\gpst$ is its asymmetric part and $\gind$ is its symmetric part. 
+	$\gpeq$ is reflexive because $\gind$ is.
+	That $\gpst$ is asymmetric is seen by considering, given any $a, b \in \allalts$, the bundle $B = \set{a, b}$: pick any $C \in \gPhi(B) \subseteq \powersetz{B}$, thus, $C \in \powersetz{B}$, hence, $a \in C$ or $b \in C$, and therefore, $b \ngpst a$ or $a \ngpst b$.
 	
 	The phrasing of the theorem only defines $r$ informally. These supplementary notations may be useful to avoid ambiguity. Given $B \subseteq \allalts$, let $B / {\gind} = \set{{\gind}(a) \suchthat a \in B}$ denote the equivalence classes defined by $\gind$ among the elements of $B$. The relation $\gpst$ can be used to discriminate some of these equivalence classes. Define $\gpst^*$, an asymmetric transitive relation on $B / {\gind}$, such that given any two equivalence classes $\alts, \alts' \in B / {\gind}$, $\alts \gpst^* \alts'$ iff $\forall \alt \in \alts, \alt' \in \alts': \alt \gpst \alt'$. Let $\max_{\gpst^*}(B / {\gind}) = \set{\alts \in B / {\gind} \suchthat \forall \alts' \in B / {\gind}: \alts' \ngpst^* \alts}$ denote the undominated equivalence classes of $B / {\gind}$ considering $\gpst^*$.
 
@@ -479,12 +485,14 @@ If $\gpeq$ is transitive and $\gamma$ is valid, the following theorem shows that
 
 	Define now the choice function $r: \powersetz[\mathit{F}]{\allalts} → \powersetz{\allalts}$ as picking the maximal element (as determined by $>$) of each undominated equivalence class in $B$, thus, $r(B) = \set{\max_>(\alts) \suchthat \alts \in \max_{\gpst^*}(B / {\gind})}$.
 	
-	Given any bundle $B \in \powersetz[\mathit{F}]{\allalts}$, we now have to show that $B' = r(B)$ satisfies $[\forall a \in B \setminus B': \phi_{B, ¬a} \in \iPhi] \lor [\exists a \in B' \suchthat \phi_{B, a} \in \iPhi]$. Because $\gamma$ is valid, suffices to show that $[\forall a \in B \setminus B': \phi_{B, ¬a} \in \gPhi] \lor [\exists a \in B' \suchthat \phi_{B, a} \in \gPhi]$.
-	Consider any $a \in B \setminus B'$. Because $B'$ is finite, for some $b \in B'$, $b \gpst a$ or $b \gind a$.
-	
-	If $b \gpst a$, and because $\set{a, b} \in B$, $\phi_{B, ¬a} \in \gPhi$.
-	
-	If $b \gind a$, and because $\set{a, b} \in B$, $\phi_{B, b} \in \gPhi$ (because $\nexists c \in B \suchthat c \gpst b$, otherwise $b \notin B'$).
+	Given any bundle $B \in \powersetz[\mathit{F}]{\allalts}$, we now have to show that $B' = r(B)$ satisfies 
+	$\exists \phi_{B, \choices} \in \iPhi \suchthat \forall C \in \choices: C \cap B' ≠ \emptyset$.
+%	$[\forall a \in B \setminus B': \phi_{B, ¬a} \in \iPhi] \lor [\exists a \in B' \suchthat \phi_{B, a} \in \iPhi]$. 
+	Because $\gamma$ is valid, suffices to show that, given $\choices = \gPhi(B) \subseteq \powersetz{B}$, 
+	$\forall C \in \choices: C \cap B' ≠ \emptyset$.
+%	$[\forall a \in B \setminus B': \phi_{B, ¬a} \in \gPhie] \lor [\exists a \in B' \suchthat \phi_{B, a} \in \gPhie]$.
+	Pick any $C \in \choices$ and any $a \in C$ (thus, $a \in B$). By definition of $\gpst$, $\nexists b \in B \suchthat b \gpst a$ as otherwise, $a \notin C$.
+	Note that, by construction of $B'$, as $a \in B$ is undominated, it belongs to some equivalence class of which a member has been brought in $B'$. In other words, $\exists b \in B' \suchthat b \gind a$. Therefore, by definition of $\gind$, $b \in C$. Thus, $b \in C \cap B'$.
 \end{proof}
 The phrasing of this theorem considers only finite bundles for simplicity. It more generally applies to bundles that are closed according to $\gpst$. \TODO{Phrase this correctly.}
 
@@ -494,14 +502,14 @@ The phrasing of this theorem considers only finite bundles for simplicity. It mo
 \end{proposition}
 \begin{proof}
 	Consider any $a, b, c \in \allalts$ with $a \gpeq b \gpeq c$ and let us show that $a \gpeq c$.
+	Consider the bundle $B = \set{a, b, c}$ and let $\choices = \gPhi(B)$.
 	
-	Observe first that given any bundle $B \subseteq \allalts$ with $x, y \in B$, when $x \gpeq y$, $\phi_{B, ¬y} \notin \gPhi ⇒ \phi_{B, ¬x} \notin \gPhi$. 
-	Indeed, when $x ≠ y$,
-	because $x \gpeq y$, either $\phi_{B, ¬y} \in \gPhi$ or $\phi_{B, x} \in \gPhi$; thus, if $\phi_{B, ¬y} \notin \gPhi$, then $\phi_{B, x} \in \gPhi$, hence, by coherence, $\phi_{B, ¬x} \notin \gPhi$.
+	Observe first that if $x, y \in B$ and $x \gpeq y$, $y \in \bigcup \choices ⇒ x \in \bigcup \choices$. 
+	Indeed, if $x \gpst y$, $y \notin \bigcup \choices$, and if $x \gind y$, $y \in \bigcup \choices ⇔ x \in \bigcup \choices$ as $x$ and $y$ can then be treated interchangeably considering their memberships to elements of $\choices$.
 
-	Consider now the bundle $B = \set{a, b, c}$. By coherence, $[\phi_{B, ¬a} \notin \gPhi \lor \phi_{B, ¬b} \notin \gPhi \lor \phi_{B, ¬c} \notin \gPhi]$. The above observation leads to $\phi_{B, ¬c} \notin \gPhi ⇒ \phi_{B, ¬b} \notin \gPhi$ and $\phi_{B, ¬b} \notin \gPhi ⇒ \phi_{B, ¬a} \notin \gPhi$. Therefore, $\phi_{B, ¬a} \notin \gPhi$.
+	Because $\bigcup \choices ≠ \emptyset$, $[a \in \bigcup \choices \lor b \in \bigcup \choices \lor c \in \bigcup \choices]$. The above observation leads to $c \in \bigcup \choices ⇒ b \in \bigcup \choices$ and $b \in \bigcup \choices ⇒ a \in \bigcup \choices$. Therefore, $a \in \bigcup \choices$.
 	
-	Completeness implies that $a \gpeq c \lor c \gpeq a$, or equivalently, $a \gpeq c \lor c \gpst a \lor c \gind a$. Excluding $c \gpst a$ thanks to $\phi_{B, ¬a} \notin \gPhi$, we obtain $a \gpeq c$.
+	Completeness implies that $a \gpeq c \lor c \gpeq a$, or equivalently, $a \gpeq c \lor c \gpst a \lor c \gind a$. Excluding $c \gpst a$ thanks to $a \in \bigcup \choices$, we obtain $a \gpeq c$.
 \end{proof}
 
 The following proposition follows from \cref{th:comptrans,th:dp}.
@@ -509,23 +517,36 @@ The following proposition follows from \cref{th:comptrans,th:dp}.
 	If $\gpeq$ is complete and $\gamma$ is valid, then the choice function $r$ defined in \cref{th:dp} associates to each finite bundle a singleton set.
 \end{proposition}
 
-When $\gpeq$ is not transitive, it still permits to define choice functions that could be said to respect, in some reasonable sense, the deliberated preference of the individuals. However, this claim is more arguable, as it is generally (though by all means not unanimously) considered in the literature that a reflective preference should be transitive. Further explorations of this possibility are left for future articles.
+Note that $\gpeq$ is independent of $\ileadsto$; thus, any property of $\gpeq$, such as transitiveness or completeness, is a priori (as opposed to empirical), meaning that its satisfaction can be verified without experiments.
 
-The claims of an empirical theory about $\allalts$ can sometimes be defined on the basis of a preference ordering $\peq$. In such a case, the claims …
+When $\gpeq$ is not transitive, choice functions could still be defined that could be said to respect, in some reasonable sense, the deliberated preference of the individuals. However, this claim is more arguable, as it is generally (though by all means not unanimously) considered in the literature that a reflective preference should be transitive. Further explorations of this possibility are left for future articles.
 
-\subsection{Satisfaction}
+In what follows, the claims of an empirical theory about $\allalts$ will be defined on the basis of a transitive preference ordering $\peq$ on $\allalts$, as follows. Given $\emptyset ≠ B \subseteq \allalts$, define $\gPhi(B) = \set{\cup \choices' \suchthat \emptyset ≠ \choices' \subseteq \choices}$, where $\choices$ are the undominated equivalence classes in $B$ according to $\peq$ (thus $\choices = \max_{\pst^*}(B / {\ind})$, using the notations defined in \cref{th:dp}). The check that ${\peq} = {\gpeq}$ is left to the reader. Thus, all the examples that follow have a transitive $\gpeq$ and therefore claim to represent a deliberated preference (when valid) in the sense defined in this section.
+
+\subsection{A theory based on Satisfaction}
 Consider a normative theory of preferences about a given set of alternatives $\allalts$. Let $\gamma$ be the following empirical theory for that normative theory.
 
 Define $C$ a set of criteria, functions $c: \allalts → \R$, each function measuring the performances of the alternatives according to some point of view. Let $t \in \R^C$ be a set of thresholds, thus, consisting of one real valued threshold $t_c \in \R$ per criterion. Say that $a \in \allalts$ is satisfying iff $\forall c \in C: c(a) ≥ t_c$.
+ Let $A$ denote the satisfying alternatives.
+ 
+The theory $\gamma$ claims, intuitively, that individuals $i \in I$ are satisficers using some defined criteria $C$ and thresholds $t = (t_c)_{c \in C}$. Define $\peq$ as $a \peq b$ iff $a \in A \lor b \notin A$. Note that $\peq$ is complete and contains at most two equivalence classes: $A$, and $\allalts \setminus A$. This defines the set of claims that $\gamma$ supports, namely, for any $\emptyset ≠ B \subseteq \allalts$, $\gPhi(B) = B \cap A$.
 
-The theory $\gamma$ claims, intuitively, that individuals $i \in I$ are satisficers using some defined criteria $C$ and thresholds $t = (t_c)_{c \in C}$. The set $\gPhi$ is defined as $\set{\phi_{a > b} \suchthat a \text{ is satisficing and $b$ is not}}$. Given $a, b \in \allalts$, with $a$ satisficing and $b$ not, define $\ar_{a > b}$ as the text: “$a$ has performance $c_1(a)$ on criterion $c_1$, and it is reasonable to consider that having at least $t_{c_1}$ is satisfying enough from the point of view captured by $c_1$, (… same phrase for the other criteria…), therefore, it is a fully satisfactory alternative; whereas $b$ is not satisfactory on criteria (… enumeration of the criteria such that $c(b) < t_{c}$).” 
-Define ${\gleadsto} = \set{\ar_{a > b}, \phi_{a > b}) \suchthat a \text{ is satisficing and $b$ is not}}$.
-Define $\alldargs = \gbeats = \dbeats = {+} = \emptyset$: the theory does not consider any counter-argument as potentially damaging. 
-This defines the theory $(\gleadsto, \gbeats, \alldargs, \dbeats, +)$.
+Given $a \in A$, define the fragment $\ar_a$ as the text: “$a$ has performance $c_1(a)$ on criterion $c_1$, and it is reasonable to consider that having at least $t_{c_1}$ is satisfying enough from the point of view captured by $c_1$, [… same phrase for the other criteria…], therefore, it is a fully satisfactory alternative.”
+Given $b \in \allalts \setminus A$, define $\ar_b$ as the text: “$b$ is not satisfactory on the criterion [some criterion such that $c(b) < t_{c}$]: the performance $t_c$ should be attained for considering $b$ as satisfying on that point of view, but it obtains only $c(b)$ on that criterion [… same phrase for the other criteria such that $c(b) < t_c$].” 
 
-Observe that $\gamma$ does not claim a complete preference, but, whenever there is exactly one satisficing alternative in $\allalts$, it still determines a deliberated preferred choice for $i$ among $\allalts$.
+Given a bundle $B$, define $\ar_B$ as the text obtained by concatenating all fragments in $\set{\ar_a \suchthat a \in B}$.
 
-\subsection{LS}
+%Given $a \in A, b \in \allalts \setminus A$, define $\ar_{a > b}$ as the text: “$a$ has performance $c_1(a)$ on criterion $c_1$, and it is reasonable to consider that having at least $t_{c_1}$ is satisfying enough from the point of view captured by $c_1$, [… same phrase for the other criteria…], therefore, it is a fully satisfactory alternative; whereas $b$ is not satisfactory on criteria [… enumeration of the criteria such that $c(b) < t_{c}$].” 
+Define ${\gleadsto} = \set{(\ar_B, \gPhi(B)) \suchthat \emptyset ≠ B \subseteq \allalts}$.
+Define $\alldargs = {\gbeats} = {\dbeats} = {+} = \emptyset$: the theory does not consider any counter-argument as potentially damaging. 
+This defines an empirical theory $(\gleadsto, \gbeats, \alldargs, \dbeats, +)$ about $\allargs$.
+
+A more realistic variant of this empirical theory would refrain from claiming that all satisfactory alternatives are equivalent, and that all non-satisfactory alternatives are equivalent. Indeed, this claims is likely to fail reflecting the deliberated preferences of the individuals: $i$ will probably pick $a$ rather than $\set{a, b}$ given a bundle of two satisfactory alternatives $\set{a, b}$ with $a$ Pareto-dominating $b$. 
+
+To this effect, given $a, b \in \allalts$, define $a \peq b$ iff $a \in A \land b \notin A$ (this also changes the set of claims that $\gamma$ supports) and keep the other definitions intact.
+The resulting theory does not claim to capture complete deliberated preferences, as it ignores how any two alternatives that are both satisfactory, or both unsatisfactory, compare. However, whenever there is exactly one satisficing alternative in $B$, it still determines a single deliberated preferred choice for $i$ among $B$.
+
+\subsection{Comparing two lotteries}
 %Idea: argue for P > $.
 %4 ways:
 %- choose
@@ -545,24 +566,27 @@ Observe that $\gamma$ does not claim a complete preference, but, whenever there 
 %XP2. Choice VS B-bid.
 %
 %XP3. With effective gambling and iterated thinking to thing about their preference.
-Define $P = (.99, +\$4; .01, −\$0.1)$ and $D = (.33, +\$16; .67, −\$2)$.
+In an article about preference reversals, LS discuss an example involving two lotteries. The lottery $P$ makes you win four dollars with 99\% chance and lose ten cents with 1\% chance; in summary, $P = (.99, +\$4; .01, −\$0.1)$. The lottery $D$ is, using the same notations: $(.33, +\$16; .67, −\$2)$. The letter $P$ stands for probability: one salient aspect of $P$ is the very high chance of winning. The letter $D$ stands for dollar: one salient aspect of $D$ is the high gain it gives (compared to $P$) in dollar amount if the player is lucky.
 
-Theory claims that all $i$’s prefer deliberately $P$ to $D$, in the sense of betting at least as much for.
+This example is interesting because when asked to bid for lotteries, the theory discussed by the authors predicts, and their experiments confirm, that subjects tend to bid more for $D$ than for $P$ (because the bidding question tend to make individuals focus on dollar amounts) whereas when asked to choose one lottery, the lotteries being presented in pairs, subjects tend to choose $P$ (giving a greater attention to probabilities).
 
-Define $\phi$ as: $i$ deliberately prefers $P$ to $D$, in the sense of bidding at least as much for $P$ than for $D$ after deliberation. Define $¬\phi$ similarly, but bidding more for $D$ than for $P$. 
+This section presents a theory that claims that $i$ deliberately prefers $P$ to $D$, in the sense of bidding at least as much for $P$ than for $D$. Because the goal of this example is mainly to illustrate the mechanisms of counter-argumentation, this example defines the theory only for these two lotteries. The reader should understand how the mechanisms described here above, together with the principle of argumentation presented here for these two specific lotteries, would permit to define a more general theory about lotteries that argues similarly to this one. \TODO{Think about the right discursive approach here.}
 
-Define $\ileadstost$ as follows. Given $\hist = (…, \ar)$, $\hist \ileadstost \phi$ iff, in a situation of $i$ having been exposed to the prefix …, saying: “Considering the argument $\ar$, would you please indicate your maximum selling price for $P$, and for $D$” leads $i$ to act accordig to $\phi$. Note that $\hist \ileadstost \phi$ iff $\hist \nileadstost ¬\phi$.
+Define $\allprops = \set{\phi, ¬\phi}$, $\phi$ representing intuitively the case that $i$ deliberately prefers $P$ to $D$, in the sense of bidding at least as much for $P$ than for $D$ after deliberation, and $¬\phi$, the opposite.
 
-Thus, the normative axiom is satisfied iff, whenever there is a argument that, facing any counter-argument, leads $i$ to bid at least as much for $P$ than for $D$, we are ready to accept that $i$ deliberately prefers $P$ to $D$, in the bidding sense.
+Define $\ileadstost$ as follows. Given $\hist = (…, \ar)$, $\hist \ileadstost \phi$ iff, in a situation of $i$ having been exposed to these arguments, saying: “Considering these arguments, would you please indicate your maximum selling price for $P$, and for $D$” leads $i$ to bid at least as much for $P$ than for $D$. $\hist \ileadstost ¬\phi$ is defined similarly.
+%Note that $\hist \ileadstost \phi$ iff $\hist \nileadstost ¬\phi$.
 
-Define $\ar_0$ as arguing that the bid for both P and D should equal their expected revenue, namely, $.99 × (\$4) − 0.01 × \$0.1$ or etc. “Imagine you play this bet 100 times. On average, you will win 99 times and lose 1 time, which means gaining 99 × \$4 = \$396 and losing 1 × \$0.10 = \$0.10, hence a total net gain of \$395.90. Thus, your average net gain for the $P$ bet would be \$3.9590. Etc.”
+Thus, the normative adequacy axiom is satisfied iff, whenever there is a argument that, facing any counter-argument, leads $i$ to bid at least as much for $P$ than for $D$, we are ready to accept that $i$ deliberately prefers $P$ to $D$, in the bidding sense.
 
-Define $\ar_1$ as arguing that the utility of money should matter, not the revenue, and arguing that a loss hurts more than a gain. Define $\ar_2$ as arguing that the goal is to maximise average revenue, and thus, losses should count equally to gains. Define $\ar'_1$ as arguing by considering only what is to be gained and not the probabilities, and thus, arguing that $D$ is worth much more. Define $\ar'_2$ as arguing that also the probabilities should be taken into account.
-Define $+$ as the simple concatenation of its arguments.
+Define $\ar_0$ as arguing that the bid for both $P$ and $D$ should equal their expected revenue, namely, $.99 × (\$4) − 0.01 × \$0.1$ for $P$. Here is a possible text for $\ar_0$. “Imagine you play this bet 100 times. On average, you will win 99 times and lose 1 time, which means gaining 99 × \$4 = \$396 and losing 1 × \$0.10 = \$0.10, hence a total net gain of \$395.90. Thus, your average net gain for the $P$ bet would be \$3.9590. Therefore, we suggest you bet \$3.9590 for $P$. [Similar text for $D$.]”
 
-Then, define $\gbeats = \set{(\ar_1, \ar_0), (\ar'_1, \ar_0), (\ar'_1, \ar_2), (\ar_1, \ar'_2)}$, $\dbeats = \set{(\ar_2, \ar_1), (\ar'_2, \ar'_1)}$.
+Define $\ar_1$ as arguing that the utility of money should matter, not the revenue, and arguing that a loss hurts more than a gain. Define $\ard[2]$ as arguing that the goal is to maximise average revenue, and thus, losses should count equally to gains. Define $\ar_3$ as arguing by considering only what is to be gained and not the probabilities, and thus, arguing that $D$ is worth much more. Define $\ard[4]$ as arguing that also the probabilities should be taken into account.
+Define $+$ as the simple concatenation of its arguments, which define $\ar_2 = \ar_0 + \set{\ard[2]}$, $\ar_4 = \ar_0 + \set{\ard[4]}$, $\ar_6 = \ar_0 + \set{\ard[2], \ard[4]} = \ar_2 + \set{\ard[4]} = \ar_4 + \set{\ard[2]}$.
 
-\TODO{Consider using only $\phi$ being sure, and dropping everything related to possibility.}
+Finally, define $\gbeats = \set{(\ar_1, \ar_0), (\ar_3, \ar_0), (\ar_3, \ar_2), (\ar_1, \ar_4)}$, $\dbeats = \set{(\ard[2], \ar_1), (\ard[4], \ar_3)}$.
+
+This defines a normative and an empirical theory about $\allalts = \set{P, D}$.
 
 \section{Conclusion}
 Back To Bentham? Explorations Of Experienced Utility, Kahneman Wakker, Sarin, propose to measure hedonimeter total for normative.
@@ -610,7 +634,7 @@ It is important to remark that when the query protocol does not admit observatio
 \end{itemize}
 
 \subsection{Interpreting Answerability}
-At a given stage in operationalizing the protocol, define $f(\ar_0)$ as the arguments that are considered as having a chance to attack $\ar_0$ (without backtracking). Thus, this will not include $\ar_1$ if indeed $\ar_2$ is considered by $i$ as a satisfying answer to $\ar_1$. We can interpret Answerability in the following ways. Strong answ: $\exists \ar_1 \in f(\ar_0) \suchthat \ar_1 \gbeats \ar_0$. Weak answ: $f(\ar_0) ≠ \emptyset ⇒ \exists \ar_1' \suchthat \ar_1' \gbeats \ar_0$. Or suppress Answ and replace Op. val. by Strong op. val.: $\forall \phi \in \gPhi, \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: (\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ \exists \ar_2 \in {\gbeatsinv}(\ar_1)$.
+At a given stage in operationalizing the protocol, define $f(\ar_0)$ as the arguments that are considered as having a chance to attack $\ar_0$ (without backtracking). Thus, this will not include $\ar_1$ if indeed $\ar_2$ is considered by $i$ as a satisfying answer to $\ar_1$. We can interpret Answerability in the following ways. Strong answ: $\exists \ar_1 \in f(\ar_0) \suchthat \ar_1 \gbeats \ar_0$. Weak answ: $f(\ar_0) ≠ \emptyset ⇒ \exists \ar_1' \suchthat \ar_1' \gbeats \ar_0$. Or suppress Answ and replace Op. val. by Strong op. val.: $\forall \phi \in \gPhie, \ar_0 \in \gargs[\phi], \ar_1 \in \allargs: (\ar_1, \ar_0) \ileadstoe ¬\phi ⇒ \exists \ar_2 \in {\gbeatsinv}(\ar_1)$.
 
 A model can be allowed to try only once each answer. If $\ar_2 \gbeats \ar_1 \land \ar_1 \in f(\ar_0 + \ar_2)$, the model has lost.
 
@@ -649,9 +673,9 @@ A normative theory about $\allalts$ is transitive iff $\forall a ≠ b ≠ c ≠
 
 A set of propositions $P \subseteq \Phi_\allalts$ is transitive iff $\forall a ≠ b ≠ c ≠ a \in \allalts: \ppstsure \in P \land \ppstsure[b][c] \in P ⇒ \ppstsure[a][c] \in P$.
 
-A transitive empirical preference theory about $\allalts$ is an empirical theory for a normative theory about $\allalts$ such that $\gPhi$ is transitive.
+A transitive empirical preference theory about $\allalts$ is an empirical theory for a normative theory about $\allalts$ such that $\gPhie$ is transitive.
 
-Associate to such a theory a preference ordering $\succ$ on $\allalts$ as follows: $a \succ b$ iff $\ppstsure \in \gPhi$.
+Associate to such a theory a preference ordering $\succ$ on $\allalts$ as follows: $a \succ b$ iff $\ppstsure \in \gPhie$.
 
 The deliberated preference of $i$ under a normative theory 
 Then, observe $a$ incomp to $z$ using a good argument for $a > z$ and one for $z > a$. Observe also $b$ incomp to $z$. And observe $a > b$. This proves incompleteness as $z$ indifferent to the rest is impossible. BUT this requires to observe possibility.
@@ -816,7 +840,7 @@ $\ar_0$ $i$-defends $\phi$ when ignoring $S_1$ iff $\forall \hist \in \allhist: 
 $\ar_0$ $i$-defends $\phi$ under protection of $S_2$ iff $\ar_0$ $i$-defends $\phi$ when ignoring $g(\ar_0)(\args_2)$.
 
 \begin{definition}[Convincingness]
-	$\forall i \in I, \phi \in \gPhi, \exists k \in 2\N$ and a finite sequence $(\args_j)_{j \in 2\N, j ≤ k} \suchthat \emptyset ≠ \args_0 \subseteq {\gleadstoinv}(\phi)$ and $\forall j \in 2\N, j ≤ k, \forall \ar_j \in S_j: \ar_j$ $i$-defends $\phi$ under protection of $S_{j + 2}$ (defining $S_{k + 2} = \emptyset$) and $S_j \subseteq \cup_{\ar_{j - 2} \in \args_{j - 2}, \ar_{j - 1} \in \allargs} f(\ar_{j - 1}, \ar_{j - 2})$.
+	$\forall i \in I, \phi \in \gPhie, \exists k \in 2\N$ and a finite sequence $(\args_j)_{j \in 2\N, j ≤ k} \suchthat \emptyset ≠ \args_0 \subseteq {\gleadstoinv}(\phi)$ and $\forall j \in 2\N, j ≤ k, \forall \ar_j \in S_j: \ar_j$ $i$-defends $\phi$ under protection of $S_{j + 2}$ (defining $S_{k + 2} = \emptyset$) and $S_j \subseteq \cup_{\ar_{j - 2} \in \args_{j - 2}, \ar_{j - 1} \in \allargs} f(\ar_{j - 1}, \ar_{j - 2})$.
 \end{definition}
 Note that requiring that $\args_0$ be a singleton does not modify the condition, in the sense that any theory satisfying the condition also satisfies its strenghtening. Similarly, requiring that $S_k ≠ \emptyset$ does not modify the condition (because if some $k$ satisfy the condition with $S_k = \emptyset$, then picking $k' = k-2$ with the same sets $S_j$ also satisfy the condition, and because $S_0 ≠ \emptyset$, this recursion must end with a suitable $k$).
 
@@ -834,7 +858,7 @@ Note that requiring that $\args_0$ be a singleton does not modify the condition,
 	If an empirical theory is convincing, and its normative theory satisfies the axioms, then it is valid.
 \end{theorem}
 \begin{proof}
-	Consider $i \in I$ and $\phi \in \gPhi$. 
+	Consider $i \in I$ and $\phi \in \gPhie$. 
 	By hypothesis, $\exists k$ such that some $\ar_k \in \args_k$ defends $\phi$ under protection of $\emptyset$. Therefore, $\ar_k \ileadstosts \phi$. Using \cref{ax:norm}, validity follows.
 \end{proof}
 
