@@ -104,9 +104,9 @@ For a clear separation of concern, this article defines first normative theories
 \subsection{Normative theories}
 As \citet[p.\ 16]{von_neumann_theory_2004} aptly summarize, “It is clear that every measurement – or rather every claim of measurability – must ultimately be based on some immediate sensation, which possibly cannot and certainly need not be analyzed any futher”. The fundamental element of a normative theory of deliberated preferences is the reaction of an individual, whose preferences are to be captured, to arguments. 
 
-Normative theories define an agenda: a set of propositions that we are interested in knowing the deliberated judgment of individuals about; a set of individuals that the theory claims applies to; a set of arguments; and a protocol of observation of the judgments an individual adopts towards a proposition after exposure to various arguments. Normative theories also define a negation operation on the set of propositions, which this discussion neglects for the sake of simplicity.
+Normative theories define an agenda: a set of propositions that we are interested in knowing the deliberated judgment of individuals about; a set of individuals that the theory claims applies to; a set of arguments; and a protocol of observation of the judgments an individual adopts towards a proposition after exposure to various arguments.
 
-Examples of propositions in the agenda include: “I ought to pay at most \$100 for purchasing bundle $b$”, “I ought to acquire alternative $a$ rather than $b$ if it is available in the same conditions”; “I ought not to perform action $a$ because it is immoral”.
+Examples of propositions to be included in agenda include: “I ought to pay at most \$100 for purchasing bundle $b$”, “I ought to acquire alternative $a$ rather than $b$ if it is available in the same conditions”; “I ought not to perform action $a$ because it is immoral”.
 
 The set of individuals in a normative theory represents the situations, socio-economic conditions, acquired diplomas, or other observable features of individuals that must be satisfied for the theory to apply to them. (More about this in conclusion. \TODO{})
 
@@ -138,13 +138,11 @@ A normative theory defines how to determine that an argument is not decisive for
 %As a result, it should be possible to determine someone’s \ac{DJ} using only a small increasing set of sequences of arguments. A set of sequences of arguments is increasing iff the sequences can be ordered completely such that each sequence following another one “continues” the other one: its first arguments are those constituting the sequence that it follows.
 
 These two problems are tackled by introducing empirical theories of \ac{DJ}. An empirical theory for a given normative theory defines a subset of propositions of the agenda, that it claims are contained in the \acp{DJ} of individuals concerned by the normative theory. They are called the proposition that the theory supports. The theory also claims that it is able to argue in favor of the proposition it supports in such a way that individuals will be convinced of the quality of these arguments. This is accomplished by three binary relations, part of the definition of empiricial theories: one represents its initial arguments, one plans the possible attacks, and one defines its counter-arguments. (An empirical theory also defines a concatenation operation able to dynamically build arguments from fragments of arguments, an aspect which is not discussed in this informal presentation.)
+The theory claims that when one of its arguments in support of one of its claims is unconvincing to an individual, it is because of one of the planned attacks; and the theory claims to be able to provide counter-arguments to such attacks as they come, that will in turn be either convincing to the individual, or fail to be because of some planned attack. (The theory is also constrained to have “finite depth”, meaning that it must set an a priori limit to the number of such iterations of attacks and counter-arguments.)
 
-\TODO{Pursue here.}
-More precisely, the argumentation requirements are as follows. Given an individual, the empirical theory must be able to present an argument that is, at least initially, convincing to the individual (as judged thanks to the observation protocol of the normative theory). It is not mandated that this argument be decisive, as only a weaker requirement is enough to ensure the validity of its claims. Instead, the theory must declare which arguments it knows how to answer. Such arguments are called the planned attackers. Whether an argument effectively attacks another one (from the point of view of the individual) can, again, be defined in terms of the observation protocol of the normative theory. Requiring that the theory declares in advance its attackers mean that if an argument effectively attacks one of its argument, then this attack must have been planned. 
+Thanks to these operators, an empirical theory may adjust its argumentation to each individual. Instead of having to give a single decisive argument in support of its claims, the theory may react to exactly the counter-arguments that a given individual thinks relevant. This task is easier, but still permits to obtain what is desired in this article. First, the claim of the theory, of being able to argue convincingly, can be checked by ensuring that no empirical counter-examples exist, thus, it is a fully empirical claim (in the sense that it requires no axiom). Second, if indeed a theory is convincing in that sense, then it is valid, meaning that the proposition that it claims are \acp{DJ} are indeed \acp{DJ}.
 
-More precisely, the theory must, for each sequence of arguments leading the individual to a proposition contrary to what the theory supports, be able to exhibit an argument that, when appended to that sequence, leads the 
-
-exhibit a decisive argument for that proposition, as judged from the individual’s point of view.
+The following section defines normative and empirical theories precisely.
 
 \section{Normative theories}
 \subsection{Definition}
@@ -413,11 +411,6 @@ And if $(\hist, \ar_\beta)$ challenges $\propbar$, apply \cref{th:nextchal} with
 	Given that $\exists K_\alpha \suchthat (\dfp[\alpha])^{K_\alpha}(\gleadstoinv[\alpha](\prop)) = \emptyset$ and $K_\beta \suchthat (\dfp[\beta])^{K_\beta}(\gleadstoinv[\beta](\propbar)) = \emptyset$ by definition of empirical theories, this process must end with a falsifying instance of $\alpha$ or $\beta$.
 \end{procedure}
 
-\subsection{TODO, about comparisons}
-Count the number of tests; assume simpler theory.
-
-Indicate sufficient hypothesis for ensuring that if a model resisted every attack, it is valid. Thus, that searching for falsification instances in the tested ones is enough.
-
 \section{Preferences}
 \subsection{Representing deliberated preferences}
 Let $\allalts$ be a set of alternatives. 
@@ -603,6 +596,11 @@ It is important to remark that when the query protocol does not admit observatio
 	\item $\ar_0 + \ar_2 + \ar_2' \gbeats \ar_1$
 	\item $\ar_0 + \ar_2 + \ar_2' \gbeats \ar_1'$
 \end{itemize}
+
+\subsection{About comparisons}
+Count the number of tests; assume simpler theory.
+
+Indicate sufficient hypothesis for ensuring that if a model resisted every attack, it is valid. Thus, that searching for falsification instances in the tested ones is enough.
 
 \subsection{Interpreting Answerability}
 At a given stage in operationalizing the protocol, define $f(\ar_0)$ as the arguments that are considered as having a chance to attack $\ar_0$ (without backtracking). Thus, this will not include $\ar_1$ if indeed $\ar_2$ is considered by $i$ as a satisfying answer to $\ar_1$. We can interpret Answerability in the following ways. Strong answ: $\exists \ar_1 \in f(\ar_0) \suchthat \ar_1 \gbeats \ar_0$. Weak answ: $f(\ar_0) ≠ \emptyset ⇒ \exists \ar_1' \suchthat \ar_1' \gbeats \ar_0$. Or suppress Answ and replace Op. val. by Strong op. val.: $\forall \prop \in \gpropse, \ar_0 \in \gargs[\prop], \ar_1 \in \allargs: (\ar_1, \ar_0) \ileadstoe ¬\prop ⇒ \exists \ar_2 \in {\gbeatsinv}(\ar_1)$.
