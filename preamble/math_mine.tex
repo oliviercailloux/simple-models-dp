@@ -1,8 +1,10 @@
+\NewDocumentCommand{\range}{}{R}
+
 %Decision Theory (MCDA and SC)
-\NewDocumentCommand{\allalts}{}{\mathscr{A}}
+\NewDocumentCommand{\allalts}{}{\mathscr{X}}
 \NewDocumentCommand{\allcrits}{}{\mathscr{C}}
-\NewDocumentCommand{\alts}{}{A}
-\NewDocumentCommand{\alt}{}{a}
+\NewDocumentCommand{\alts}{}{X}
+\NewDocumentCommand{\alt}{}{x}
 \NewDocumentCommand{\dm}{}{i}
 \NewDocumentCommand{\allF}{}{\mathscr{F}}
 \NewDocumentCommand{\allvoters}{}{\mathscr{N}}
@@ -23,42 +25,48 @@
 
 %Deliberated Judgment
 %%Normative theory
-\NewDocumentCommand{\allargs}{}{\mathscr{S}}
-\NewDocumentCommand{\args}{}{S}
-\NewDocumentCommand{\ard}{O{}}{s^\mathit{d}_{#1}}
-\NewDocumentCommand{\ardp}{O{}}{s^{\mathit{d}\prime}_{#1}}
+\NewDocumentCommand{\allargs}{}{\mathscr{A}}
+\NewDocumentCommand{\args}{}{A}
+\NewDocumentCommand{\ard}{O{}}{a^\mathit{d}_{#1}}
+\NewDocumentCommand{\ardp}{O{}}{a^{\mathit{d}\prime}_{#1}}
 \NewDocumentCommand{\ar}{o}{%
 	\IfValueTF{#1}{%
-		s^{(#1)}%
+		a^{(#1)}%
 	}{%
-		s%
+		a%
 	}%
 }
 \NewDocumentCommand{\zar}{}{\mathbf{0}}%zero, or empty, argument
-\NewDocumentCommand{\allhist}{}{\mathscr{S}^*}
-\NewDocumentCommand{\hist}{}{p}
-\NewDocumentCommand{\histp}{}{p^{\prime}}
-\NewDocumentCommand{\histpp}{}{p^{\prime\prime}}
-\NewDocumentCommand{\histend}{}{p_\mathit{end}}
-\NewDocumentCommand{\histpend}{}{p^{\prime}_\mathit{end}}
-\NewDocumentCommand{\histppend}{}{p^{\prime\prime}_\mathit{end}}
+\NewDocumentCommand{\allhist}{}{\mathscr{A}^*}
+\NewDocumentCommand{\hist}{}{α}
+\NewDocumentCommand{\histp}{}{α^{\prime}}
+\NewDocumentCommand{\histpp}{}{α^{\prime\prime}}
+\NewDocumentCommand{\histend}{o}{%
+	\IfValueTF{#1}{%
+		α^{#1}_\mathit{end}%
+	}{%
+		α_\mathit{end}%
+	}%
+}
+\NewDocumentCommand{\histpend}{}{α^{\prime}_\mathit{end}}
+\NewDocumentCommand{\histppend}{}{α^{\prime\prime}_\mathit{end}}
 \NewDocumentCommand{\allprops}{}{\Phi}
 \NewDocumentCommand{\prop}{}{φ}
-\NewDocumentCommand{\propbar}{}{\overline{φ}}
+\NewDocumentCommand{\propbar}{}{φ'}%\overline
 %%Empirical theory
 \NewDocumentCommand{\gpropse}{O{γ}}{{\hookrightarrow_{#1}}(\allargs)}%e for explicit
 \NewDocumentCommand{\gprops}{O{γ}}{\Phi_{#1}}
-\NewDocumentCommand{\dargs}{}{S^\mathit{d}}
-\NewDocumentCommand{\alldargs}{}{\mathscr{S}^d}
-\NewDocumentCommand{\gargs}{O{φ}}{S^{#1}_{γ, i}}
-\NewDocumentCommand{\gargsalpha}{}{S^{φ}_{α, i}}
-\NewDocumentCommand{\gargsbeta}{}{S^{¬φ}_{β, i}}
-\NewDocumentCommand{\gargsdelta}{}{S^{¬φ}_{δ, i}}
+\NewDocumentCommand{\dargs}{O{}}{A^\mathit{d}_{#1}}
+\NewDocumentCommand{\alldargs}{}{\mathscr{A}^d}
+\NewDocumentCommand{\gargs}{O{φ}}{A^{#1}_{γ, i}}
+\NewDocumentCommand{\gargsalpha}{}{A^{φ}_{α, i}}
+\NewDocumentCommand{\gargsbeta}{}{A^{¬φ}_{β, i}}
+\NewDocumentCommand{\gargsdelta}{}{A^{¬φ}_{δ, i}}
 \NewDocumentCommand{\gleadsto}{O{γ}}{\hookrightarrow_{#1}}
 \NewDocumentCommand{\gleadstoinv}{O{γ}}{{\hookrightarrow^{-1}_{#1}}}
-\NewDocumentCommand{\gbeats}{O{γ}}{⊳^\mathit{a}_{#1}}
-\NewDocumentCommand{\gbeatsinv}{O{γ}}{{(⊳^\mathit{a}_{#1})^{-1}}}
-\NewDocumentCommand{\ngbeats}{O{γ}}{\not⊳^\mathit{a}_{#1}}
+\NewDocumentCommand{\gbeats}{O{γ}}{⊳^\mathit{t}_{#1}}
+\NewDocumentCommand{\gbeatsinv}{O{γ}}{{(⊳^\mathit{t}_{#1})^{-1}}}
+\NewDocumentCommand{\ngbeats}{O{γ}}{\not⊳^\mathit{t}_{#1}}
 \NewDocumentCommand{\dbeats}{O{γ}}{⊳^\mathit{d}_{#1}}
 \NewDocumentCommand{\dbeatsinv}{O{γ}}{{(⊳^\mathit{d}_{#1})^{-1}}}
 \NewDocumentCommand{\df}{O{γ}}{\mathit{def}_{#1}}
