@@ -5,6 +5,7 @@
 \NewDocumentCommand{\allcrits}{}{\mathscr{C}}
 \NewDocumentCommand{\alts}{}{X}
 \NewDocumentCommand{\alt}{}{x}
+\NewDocumentCommand{\altp}{}{y}%alt prime, another alt
 \NewDocumentCommand{\dm}{}{i}
 \NewDocumentCommand{\allF}{}{\mathscr{F}}
 \NewDocumentCommand{\allvoters}{}{\mathscr{N}}
@@ -60,8 +61,8 @@
 \NewDocumentCommand{\alldargs}{}{\mathscr{A}^d}
 \NewDocumentCommand{\gargs}{O{φ}}{A^{#1}_{γ, i}}
 \NewDocumentCommand{\gargsalpha}{}{A^{φ}_{α, i}}
-\NewDocumentCommand{\gargsbeta}{}{A^{¬φ}_{β, i}}
-\NewDocumentCommand{\gargsdelta}{}{A^{¬φ}_{δ, i}}
+\NewDocumentCommand{\gargsbeta}{}{A^{φ'}_{β, i}}
+\NewDocumentCommand{\gargsdelta}{}{A^{φ'}_{δ, i}}
 \NewDocumentCommand{\gleadsto}{O{γ}}{\hookrightarrow_{#1}}
 \NewDocumentCommand{\gleadstoinv}{O{γ}}{{\hookrightarrow^{-1}_{#1}}}
 \NewDocumentCommand{\gbeats}{O{γ}}{⊳^\mathit{t}_{#1}}
