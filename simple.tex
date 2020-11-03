@@ -423,9 +423,9 @@ Given such a supported proposition $\prop \in \gpropse$, let $\gleadstoinv(\prop
 
 An anticipated attacks relation ${\gbeats} \subseteq \allargs × \allargs$ is an irreflexive binary relation on the arguments. An argument $\ar_1$ is said to be an anticipated attack against an argument $\ar_0$ iff $\ar_1 \gbeats \ar_0$. Given  an argument $\ar_0$, $\gbeatsinv(\ar_0) = \set{\ar_1 \in \allargs \suchthat \ar_1 \gbeats \ar_0}$ denotes the set of anticipated attacks against $\ar_0$; and $\gbeatsinv(\allargs) = \set{\ar_1 \in \allargs \suchthat \exists \ar_0 \in \allargs \suchthat \ar_1 \gbeats \ar_0}$ denotes the set of arguments that are anticipated attacks against at least one argument.
 
-A defense relation ${\dbeats} \subseteq \alldargs × \gbeatsinv(\allargs)$ is an injective and surjective binary relation over $\alldargs × \gbeatsinv(\allargs)$. \commentYM{le fait qu'elle soit surjective et injective est une exigence que tu poses dans la définiton ? pourquoi ? à quoi est-ce que cela sert ?} 
+A defense relation ${\dbeats} \subseteq \alldargs × \gbeatsinv(\allargs)$ is an injective (left-unique) and surjective (right-total) binary relation over $\alldargs × \gbeatsinv(\allargs)$. \commentYM{le fait qu'elle soit surjective et injective est une exigence que tu poses dans la définiton ? pourquoi ? à quoi est-ce que cela sert ?} 
 These constraints guarantee that every anticipated attack has exactly one fragment defending against it, thus, $\forall \ar_1 \suchthat [\exists \ar_0 \suchthat \ar_1 \gbeats \ar_0]$: $\dbeatsinv(\ar_1)$ is a singleton. 
-Note that $\dbeats$ need not be a bijection as it is generally not a function. 
+Note that $\dbeats$ need not be a bijection as it is generally not a function (it is not restrictive to suppose it left-total, but it is generally not right-unique). 
 Given $\ar_1 \in \gbeatsinv(\allargs)$, define $\dbeatsinv(\ar_1)$ as the fragment defending against the anticipated attack $\ar_1$.
 \commentYM{dans toute cette sous-section la lecture est rendue très difficile par ce genre de formulation qui assigne une intentionnalité à la théorie. Je ne comprends pas le sens métaphorique de ces phrase, donc je ne les comprends pas}
 
