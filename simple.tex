@@ -294,9 +294,10 @@ of arguments to an individual, and how to observe her resulting judgment about a
 To define formally the notion of an observation protocol, the concept of a sequence of arguments is required.
 Define the set of finite sequences of elements in $\allargs$ \commentYM{qu'est-ce qui lie les uns aux autres les éléments d'une séquence ? pourquoi est-ce que ça s'appelle une "séquence" ? une connotation temporelle ? une idée de succession ?}
 (including the empty sequence) as $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$.\commentYM{la notation $\allhist$ rend les choses inutilement difficiles à lire. Pourquoi noter ça comme on noterait $\allargs$ sans le zéro, si ça voulait dire quelque chose ? J'aurais inventé un symbole du genre $ \allargs^{\intvl{}}$ ; par ailleurs je trouve l'explication relative à l'empty sequence particulièrement alambiquée}
-\commentOCf{Il me semble assez naturel de, étant donné un ensemble de caractères $S$, définir l’ensemble des chaines de caractères par $S^*$ (représentant le fait de prendre toutes les puissances possibles de $S$), mais c’est peut-être un tropisme d’informaticien qui ne sera donc pas compris par des lecteurs économistes. J’ai vu la notation $Seq(\allargs)$ être utilisée, mais elle me semble un peu longue, vu l’usage intensif de ce symbole. Oui, peut-être en viendrai-je à l’invention que tu proposes, mais inventer ses propres symboles n’est légitime que si aucun n’existe déjà. Je vais essayer d’interroger d’autres gens, dis-moi en attendant si tu penses qu’on peut s’y habituer ou si c’est vraiment très dérangeant.} 
+\commentOCf{Il me semble assez naturel de, étant donné un ensemble de caractères $S$, définir l’ensemble des chaines de caractères par $S^*$ (représentant le fait de prendre toutes les puissances possibles de $S$), mais c’est peut-être un tropisme d’informaticien qui ne sera donc pas compris par des lecteurs économistes, et effectivement l’étoile est aussi utilisée pour exclure zéro, ce qui n’a rien à voir. J’ai vu la notation $Seq(\allargs)$ être utilisée, mais elle me semble un peu longue, vu l’usage intensif de ce symbole ici. Oui, peut-être en viendrai-je à l’invention que tu proposes, mais inventer ses propres symboles n’est légitime que si aucun n’existe déjà. Je vais essayer d’interroger d’autres gens, dis-moi en attendant si tu penses qu’on peut s’y habituer ou si c’est vraiment très dérangeant.} 
 Throughout the article, $\N$ includes zero. %and $\N^* = \N \setminus \set{0}$. 
-Given $j, k \in \N$, the notation $\intvl{j, k}$ represents $\set{l \suchthat j ≤ l ≤ k}$. 
+Given $j, l \in \N$, the notation $\intvl{j, l}$ represents $\set{k \in \N \suchthat j ≤ k ≤ l}$.
+Thus, given an argumentative path $\alpha$ of length $l \in \N$, $\forall k \in \intvl{1, l}$, $\alpha_k \in A$, and $\alpha = \emptyset ⇔ l = 0$.
 %Note that $\intvl{1, 0} = \emptyset$, and given any set $S$, the notation $S^\emptyset$ represents the empty set. 
 A generic element of $\allhist$ is denoted by $\hist$ and called an argumentative path, or simply a path when this raises no ambiguity.
 
@@ -305,8 +306,28 @@ Equivalently, given any individual $i \in I$, ${\ileadsto}: \allhist → \allpro
 Given an individual $i \in I$, a path $\hist$ and a proposition $\prop$, the path is said to lead to the proposition for this individual iff $\hist \ileadsto \prop$.\commentYM{la correspondance entre cette définition et la définition du protocole donné dans la partie informelle est pour le moins difficile à voir. Où cette défintion formelle spécifie-t-elle comment on observe quoi ? Il me semble que ça ressemble + à une définition formelle de ce que je disais plus haut manquer dans ta définition}
 \commentOCf{Je ne comprends pas le problème, il faut qu’on en discute.}
 
-This defines a normative theory of \ac{DJ}. 
-To make it useful, an axiom is required that links the observable reactions of the individuals to their \ac{DJ}.
+This defines a normative theory of \ac{DJ}.
+
+\begin{example}[A normative theory about two lotteries]
+	\label{ex:twolott}
+	In a famous article about preference reversals, \citet{lichtenstein_reversals_2006} discuss an example involving two lotteries. The lottery $P$ makes you win four dollars with 99\% chance and lose ten cents with 1\% chance; in summary, $P = (.99, +\$4; .01, −\$0.1)$. The lottery $D$ is, using the same notations: $(.33, +\$16; .67, −\$2)$. The letter $P$ stands for probability: one salient aspect of $P$ is the very high chance of winning. The letter $D$ stands for dollar: one salient aspect of $D$ is the high gain it gives (compared to $P$) in dollar amount if the player is lucky.
+
+This example is interesting because when asked to bid for lotteries, the theory discussed by the authors predicts, and their experiments confirm, that subjects tend to bid more for $D$ than for $P$ (because the bidding question tend to make individuals focus on dollar amounts) whereas when asked to choose one lottery, the lotteries being presented in pairs, subjects tend to choose $P$ (giving a greater attention to probabilities) among the pair $\set{P, D}$.
+
+Define $\allprops = \set{P ≥ D, P > D, D ≥ P, D > P}$, where $P ≥ D$ represents the proposition that $i$ should choose $P$ or declare to be indifferent when choosing among $\set{P, D}$; $P > D$, the proposition that $i$ should choose $P$ and not $D$ when choosing among $\set{P, D}$; and similarly for $D ≥ P$ and $D > P$.
+
+Define $\ar_0$ as a text arguing that the choice for both $P$ and $D$ should be according to their expected revenue, namely, $\$3.9590$ for $P$ and $\$4$ for $D$. Here is a possible text for $\ar_0$. “Imagine you play this bet 100 times. On average, you would win 99 times and lose once, which means gaining 99 × \$4 = \$396 and losing 1 × \$0.10 = \$0.10, hence a total net gain of \$395.90. Thus, your average net gain for the $P$ bet would be \$3.9590. [Similar text for $D$.] Therefore, we suggest you choose $D$ for a higher expected revenue.”
+Define $\ar_1$ as a text arguing that the utility of money should matter, not the revenue, and arguing that a loss hurts more than a gain. 
+Omitting many other relevant arguments for now (such as observing that utility should be linear for small amounts of money, for example), define $\allargs = \set{\ar_0, \ar_1}$.
+
+Define $I$ as a set of individuals facing a choice between $P$ and $D$ in a laboratory experiment.
+
+Define $\ileadsto$ as follows. Given $\hist$, $\hist \ileadsto (P ≥ D)$ iff, in a situation of $i$ having been exposed, in order, to the arguments in $\hist$, saying: “Considering these arguments, would you please choose either to play $P$, or play $D$, or declare to be indifferent (in which case one will be picked randomly for you)” leads $i$ to choose $P$ than $D$, or declare indifference. $\hist \ileadsto \prop$ is defined similarly for other elements $\prop \in \allprops$.
+
+The tuple $(\allprops, \allargs, I, {\allleadsto})$ is an example of a normative theory of \ac{DJ}.
+\end{example}
+
+We now need an axiom that links the observable reactions of the individuals to their \ac{DJ}.
 This will be done through the notion of a decisive argument, that is, intuitively, an argument that is able to convince an individual of the acceptability of a proposition whatever the argumentative path the individual has been submitted to. For formal definitions, some supplementary notations must be defined.
 
 \subsection{Normative adequacy}
@@ -333,7 +354,13 @@ The following axiom permits the theory to have bite on what should be recommende
 \end{axiom}
 \commentYM{où est défini $\iprops$ ? Par ailleurs, je pense qu'il faut expliquer le sens des axiomes, sinon l'article ne peut pas être convaincant ; enfin, pourquoi cet axiome s'appelle-t-il ainsi ? cela ressemble plus à un critère de validité empirique quà un critère normatif. Mais peut-être mon incompréhension vient-elle du fait que je ne comprend pas ce que dénote $\iprops$}
 
-To end the presentation of the normative theories of \ac{DJ}, it may be useful to analyze the status of contradictory propositions. \Cref{th:protcoh} shows that two propositions which are readily judged to be incompatible by $i$ cannot both be acceptable. In supplement, it may be interesting to observe that theories of \ac{DJ} do not require to postulate that $i$’s \ac{DJ} is complete, in the sense that when the agenda is closed under negation, it must not necessarily be the case that either the proposition or its negation is in $i$’s \ac{DJ}. This justifies that the normative axiom asks only for an implication between acceptability and \ac{DJ}, instead of an equivalence.
+\begin{example}[Two lotteries (cont.)]
+	Continuing \cref{ex:twolott}, the normative adequacy axiom is satisfied for that normative theory iff, for all $i \in I$, if there is a argument $\ar \in \allargs$ that leads $i$ to never choose $D$, facing any counter-argument and in the context of any preceding argumentative path, under condition that $\ar$ be included towards the end of the path, then we are ready to accept that $i$ deliberately judges that he should choose $P$ rather than $D$, and similarly for the other propositions $\prop \in \allprops$.
+	
+	As described in \cref{ex:twolott}, the set $\allargs$ is not wide enough to make this axiom reasonably acceptable: normative adequacy can only be considered a reasonable requirement when the set of arguments includes all arguments that can possibly change the opinion of at least one individual $i \in I$ about the considered topic $\allprops$.
+\end{example}
+
+To end the presentation of the normative theories of \ac{DJ}, it may be useful to analyze the status of contradictory propositions. \Cref{th:protcoh} shows that two incompatible propositions cannot both be acceptable. In supplement, it may be interesting to observe that theories of \ac{DJ} do not require to postulate that $i$’s \ac{DJ} is complete, in the sense that when the agenda is closed under negation, it must not necessarily be the case that either the proposition or its negation is in $i$’s \ac{DJ}. This justifies that the normative axiom asks only for an implication between acceptability and \ac{DJ}, instead of an equivalence.
 
 \subsection{Coherence and completeness}
 A relation $n \subseteq \allprops × \allprops$ is said to be an incompatibility relation iff $\forall \hist \in \allhist, (\prop, \prop') \in n: \hist \ileadsto \prop ⇒ \hist \nileadsto \prop'$. Two propositions $\prop, \prop' \in \allprops$ are said to be incompatible iff $(\prop, \prop') \in n$.
@@ -354,8 +381,8 @@ The following proposition shows that \cref{ax:norm} cannot lead to incompatible 
 
 To further analyze coherence matters, 
 \commentYM{analyser quoi ? qu'y a-t-il à analyser et pourquoi voudrait-on l'analyser ?}
-consider defined a negation operator $¬$ on $\allprops$. $¬$ is a negation operator iff it is an involution operator (thus a function $¬: \allprops → \allprops$ satisfying $\forall \prop \in \allprops: ¬¬\prop = \prop$) and furthermore satisfying, $\forall \phi \in \allprops: \hist \ileadsto \prop ⇒ \hist \nileadsto ¬\prop$.
-Given any $i \in I$, say that a proposition $\prop \in \allprops$ is \emph{$i$-decidable} iff $\exists \ar \in \allargs \suchthat \ar \ileadstost \prop \lor \ar \ileadstost \propbar$.
+consider defined a negation operator $¬$ on $\allprops$. $¬$ is a negation operator iff it is an involution operator (thus a function $¬: \allprops → \allprops$ satisfying $\forall \prop \in \allprops: ¬¬\prop = \prop$) and furthermore satisfying, $\forall \hist \in \allhist, \phi \in \allprops: \hist \ileadsto \prop ⇒ \hist \nileadsto ¬\prop$.
+Given any $i \in I$, say that a proposition $\prop \in \allprops$ is \emph{$i$-decidable} iff $\exists \ar \in \allargs \suchthat \ar \ileadstost \prop \lor \ar \ileadstost ¬\prop$.
 The $i$-decidable propositions are those on which the normative theory permits, in principle, to take a position. 
 %It will generally be unknown in practical applications, and may be empty.
 When a proposition $\prop$ is such that $\prop \in \iprops ⇔ ¬\prop \notin \iprops$, I say that this proposition admits an unambiguous interpretation in terms of $i$’s \ac{DJ}.
@@ -377,21 +404,36 @@ that going further is not desirable.
 	$\forall \prop \in \allprops: [\exists \ar \in \allargs \suchthat \ar \ileadstost \prop] \lor [\exists \ar \in \allargs \suchthat \ar \ileadstost ¬\prop]$.
 \end{definition}
 \begin{definition}[Unrestricted interpretability]
-	$\forall \prop \in \allprops: \prop \in \iprops \oplus ¬\prop \in \iprops$.
+	$\forall \prop \in \allprops: \prop \in \iprops ⇔ ¬\prop \notin \iprops$.
 \end{definition}
 \begin{definition}[Deliberation completeness]
 	$\forall \prop \in \allprops: \prop \in \iprops \lor ¬\prop \in \iprops$.
 \end{definition}
+	
 The following proposition directly follows from the definitions, together with \cref{th:protcoh}.
 \begin{proposition}
 	1) Under Normative adequacy, Theory completeness implies Deliberation completeness. 2) Unrestricted interpretability implies Deliberation completeness.
 \end{proposition}
+
+\begin{example}[Two lotteries: completeness]
+	Applying these definitions and results to \cref{ex:twolott}, we can define a negation operator such that $¬(P ≥ D) = D > P$ and $¬(D ≥ P) = P > D$. We see that $P ≥ D$ is $i$-decidable iff $D > P$ is $i$-decidable iff there exists a decisive argument $\ar \in \allargs$ for $P ≥ D$ or for $D > P$. It follows from \cref{th:restrinterpr} that at most one of $P ≥ D$ and $D > P$ are in $\iprops$.
+	Theory completeness holds iff there exists a decisive argument for $P ≥ D$ or for $D > P$ and a decisive argument for $D ≥ P$ or for $P > D$. In such a case, and assuming normative adequacy holds, Deliberation completeness holds as well, thus for every proposition, either it or its contrary is in $i$’s \ac{DJ}.
+\end{example}
+
 Theories as defined here do not mandate Theory completeness.
 This is good for two reasons. First, even the weaker Deliberation completeness can be considered too strong. Second, it is dubious that, for non trivial decision problems, theories can be found for which both Normative adequacy is normatively compelling and Theory completeness holds.
 
-That the \ac{DJ} of an individual exists independently of any theory of decision making might be considered a strong assumption, by analogy to shallow preferences: psychologists have shown that shallow preferences often depend on a priori irrelevant features pertaining to the description of the decision problem or the context of interrogation. Preferences are often said to be constructed, thus, to not exist independently of the framing and context of study.
+It might be useful to exemplify those remarks in the case of our running example before discussing them further.
+\begin{example}[Discussion about completeness]
+	It should be remarked that there is no logical contradiction in assuming that $i$ could, for example, deliberately judge that $P ≥ D$, but have no deliberated judgment about whether $D ≥ P$ or rather $P > D$ holds, thus, whether these two lotteries have equal worth in terms of bidding or whether $P$ is worth strictly more.  In such a case, Deliberation completeness does not hold.
+	More pragmatically, there may be no argument in $\allargs$ strong enough to convince $i$ to pick $P$ rather than $D$, but no argument strong enough to convince $i$ that $P$ and $D$ are equally preferable. For a formal example where this would happen, assume $\ileadsto$ is such that it $i$ is lead to choose only $P$ when $\ar_0$ comes last in the argumentative path, but $i$ is lead to be indifferent when $\ar_0$ is before last in the argumentative path.
+\end{example}
 
-With no intent of reducing the importance of these findings, it is important to qualify such statements. In supplement to them being not necessarily applicable to reflective preferences, the findings of psychologists do not, evidently, show that all preference statements are labile. As \citet[p.\ xvi]{lichtenstein_construction_2006} write, “To be sure, there are limits to the process of construction. Some televisions just won’t sell; most of the time, people are unlikely to want 80\% of their wages to go into savings. It would be an overstatement to say of preferences, as Gertrude Stein said of Oakland, that “there is no there there.” 
+Not mandating Theory completeness is a first important element to allow hope that effective theories of \ac{DJ} can be built.
+
+That the \ac{DJ} of an individual exists independently of any theory of decision making might be considered a strong assumption, by analogy to the case of shallow preferences: psychologists have shown that shallow preferences often depend on a priori irrelevant features pertaining to the description of the decision problem or the context of interrogation. Preferences are often said to be constructed, thus, to not exist independently of the framing and context of study.
+
+With no intent of reducing the importance of these findings, it is important to qualify such statements. In supplement to them being not necessarily applicable to reflective preferences, the findings of psychologists do not, evidently, show that all preference statements are labile. As \citet[p.\ xvi]{lichtenstein_construction_2006} write, “To be sure, there are limits to the process of construction. Some televisions just won’t sell; most of the time, people are unlikely to want 80\% of their wages to go into savings. It would be an overstatement to say of preferences, as Gertrude Stein said of Oakland, that ‘there is no there there’.”
 \commentYM{ce § et le précédent me semble mériter plus que le reste une réécriture. Par ailleurs, je ne vois pas à quoi ils servent dans cette sous-section}
 
 This remark points towards the importance of allowing for incomplete theories of reflective preferences. \commentYM{définir ce qu'il faut entendre ici par "incomplete"} 
@@ -627,22 +669,9 @@ The resulting theory does not claim to capture complete deliberated preferences,
 %XP2. Choice VS B-bid.
 %
 %XP3. With effective gambling and iterated thinking to thing about their preference.
-In an article about preference reversals, LS discuss an example involving two lotteries. The lottery $P$ makes you win four dollars with 99\% chance and lose ten cents with 1\% chance; in summary, $P = (.99, +\$4; .01, −\$0.1)$. The lottery $D$ is, using the same notations: $(.33, +\$16; .67, −\$2)$. The letter $P$ stands for probability: one salient aspect of $P$ is the very high chance of winning. The letter $D$ stands for dollar: one salient aspect of $D$ is the high gain it gives (compared to $P$) in dollar amount if the player is lucky.
-
-This example is interesting because when asked to bid for lotteries, the theory discussed by the authors predicts, and their experiments confirm, that subjects tend to bid more for $D$ than for $P$ (because the bidding question tend to make individuals focus on dollar amounts) whereas when asked to choose one lottery, the lotteries being presented in pairs, subjects tend to choose $P$ (giving a greater attention to probabilities).
-
 This section presents a theory that claims that $i$ deliberately prefers $P$ to $D$, in the sense of bidding at least as much for $P$ than for $D$. Because the goal of this example is mainly to illustrate the mechanisms of counter-argumentation, this example defines the theory only for these two lotteries. The reader should understand how the mechanisms described here above, together with the principle of argumentation presented here for these two specific lotteries, would permit to define a more general theory about lotteries that argues similarly to this one. \TODO{Think about the right discursive approach here.}
 
-Define $\allprops = \set{\prop, ¬\prop}$, $\prop$ representing intuitively the case that $i$ deliberately prefers $P$ to $D$, in the sense of bidding at least as much for $P$ than for $D$ after deliberation, and $¬\prop$, the opposite.
-
-Define $\ileadstost$ as follows. Given $\hist = (…, \ar)$, $\hist \ileadstost \prop$ iff, in a situation of $i$ having been exposed to these arguments, saying: “Considering these arguments, would you please indicate your maximum selling price for $P$, and for $D$” leads $i$ to bid at least as much for $P$ than for $D$. $\hist \ileadstost ¬\prop$ is defined similarly.
-%Note that $\hist \ileadstost \prop$ iff $\hist \nileadstost ¬\prop$.
-
-Thus, the normative adequacy axiom is satisfied iff, whenever there is a argument that, facing any counter-argument, leads $i$ to bid at least as much for $P$ than for $D$, we are ready to accept that $i$ deliberately prefers $P$ to $D$, in the bidding sense.
-
-Define $\ar_0$ as arguing that the bid for both $P$ and $D$ should equal their expected revenue, namely, $.99 × (\$4) − 0.01 × \$0.1$ for $P$. Here is a possible text for $\ar_0$. “Imagine you play this bet 100 times. On average, you will win 99 times and lose 1 time, which means gaining 99 × \$4 = \$396 and losing 1 × \$0.10 = \$0.10, hence a total net gain of \$395.90. Thus, your average net gain for the $P$ bet would be \$3.9590. Therefore, we suggest you bet \$3.9590 for $P$. [Similar text for $D$.]”
-
-Define $\ar_1$ as arguing that the utility of money should matter, not the revenue, and arguing that a loss hurts more than a gain. Define $\ard[2]$ as arguing that the goal is to maximise average revenue, and thus, losses should count equally to gains. Define $\ar_3$ as arguing by considering only what is to be gained and not the probabilities, and thus, arguing that $D$ is worth much more. Define $\ard[4]$ as arguing that also the probabilities should be taken into account.
+Define $\ard[2]$ as arguing that the goal is to maximise average revenue, and thus, losses should count equally to gains. Define $\ar_3$ as arguing by considering only what is to be gained and not the probabilities, and thus, arguing that $D$ is worth much more. Define $\ard[4]$ as arguing that also the probabilities should be taken into account.
 Define $+$ as the simple concatenation of its arguments, which define $\ar_2 = \ar_0 + \set{\ard[2]}$, $\ar_4 = \ar_0 + \set{\ard[4]}$, $\ar_6 = \ar_0 + \set{\ard[2], \ard[4]} = \ar_2 + \set{\ard[4]} = \ar_4 + \set{\ard[2]}$.
 
 Finally, define $\gbeats = \set{(\ar_1, \ar_0), (\ar_3, \ar_0), (\ar_3, \ar_2), (\ar_1, \ar_4)}$, $\dbeats = \set{(\ard[2], \ar_1), (\ard[4], \ar_3)}$.
