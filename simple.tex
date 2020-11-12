@@ -419,8 +419,8 @@ The following proposition directly follows from the definitions, together with \
 \end{proposition}
 
 \begin{example}[Two lotteries: completeness]
-	Applying these definitions and results to \cref{ex:twolott}, we can define a negation operator such that $¬(P ≥ D) = D > P$ and $¬(D ≥ P) = P > D$. We see that $P ≥ D$ is $i$-decidable iff $D > P$ is $i$-decidable iff there exists a decisive argument $\ar \in \allargs$ for $P ≥ D$ or for $D > P$. It follows from \cref{th:restrinterpr} that at most one of $P ≥ D$ and $D > P$ are in $\iprops$.
-	Theory completeness holds iff there exists a decisive argument for $P ≥ D$ or for $D > P$ and a decisive argument for $D ≥ P$ or for $P > D$. In such a case, and assuming normative adequacy holds, Deliberation completeness holds as well, thus for every proposition, either it or its contrary is in $i$’s \ac{DJ}.
+	Applying these definitions and results to \cref{ex:twolott}, we see that $\set{(P ≥ D, D > P), (D ≥ P, P > D)} \subseteq \incompat$, and we can define a negation operator such that $¬(P ≥ D) = D > P$ and $¬(D ≥ P) = P > D$. We see that $P ≥ D$ is $i$-decidable iff $D > P$ is $i$-decidable iff there exists a decisive argument $\ar \in \allargs$ for $P ≥ D$ or for $D > P$. It follows from \cref{th:restrinterpr} that at most one of $P ≥ D$ and $D > P$ are in $\iprops$.
+	Theory completeness holds iff there exists a decisive argument for $P ≥ D$ or for $D > P$ and a decisive argument for $D ≥ P$ or for $P > D$. In such a case, and assuming Normative Adequacy holds, Deliberation completeness holds as well, thus for every $i$ and every proposition, either it or its contrary is in $i$’s \ac{DJ}.
 \end{example}
 
 Theories as defined here do not mandate Theory completeness.
@@ -428,8 +428,8 @@ This is good for two reasons. First, even the weaker Deliberation completeness c
 
 It might be useful to exemplify those remarks in the case of our running example before discussing them further.
 \begin{example}[Discussion about completeness]
-	It should be remarked that there is no logical contradiction in assuming that $i$ could, for example, deliberately judge that $P ≥ D$, but have no deliberated judgment about whether $D ≥ P$ or rather $P > D$ holds, thus, whether these two lotteries have equal worth in terms of bidding or whether $P$ is worth strictly more.  In such a case, Deliberation completeness does not hold.
-	More pragmatically, there may be no argument in $\allargs$ strong enough to convince $i$ to pick $P$ rather than $D$, but no argument strong enough to convince $i$ that $P$ and $D$ are equally preferable. For a formal example where this would happen, assume $\ileadsto$ is such that it $i$ is lead to choose only $P$ when $\ar_0$ comes last in the argumentative path, but $i$ is lead to be indifferent when $\ar_0$ is before last in the argumentative path.
+	It should be remarked that there is no logical contradiction in assuming that $i$ could, for example, deliberately judge that $P ≥ D$, but have no deliberated judgment about whether $D ≥ P$ or rather $P > D$ holds, thus, whether these two lotteries have equal worth or whether $P$ is strictly more valuable.  In such a case, Deliberation completeness does not hold.
+	More pragmatically, there may be a decisive argument in $\allargs$ for $P ≥ D$, but no argument in $\allargs$ strong enough to convince $i$ to pick $P$ rather than $D$ against all counter-arguments, and no argument strong enough to convince $i$ that $P$ and $D$ are equally preferable. For a formal example where this would happen, assume $\ileadsto$ is such that $i$ is lead to choose only $P$ for some of the paths including $\ar_0$ towards their end, but to be indifferent for the other ones. Thus: $\forall \hist \in \allhist \suchthat \ar_0 \in \histend: \hist \ileadsto P ≥ D$, $\exists \hist \suchthat \ar_0 \in \histend \land \hist \ileadsto P > D$ and $\exists \hist \suchthat \ar_0 \in \histend \land \hist \ileadsto D ≥ P$.
 \end{example}
 
 Not mandating Theory completeness is a first important element to allow hope that effective theories of \ac{DJ} can be built.
