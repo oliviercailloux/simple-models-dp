@@ -365,8 +365,7 @@ The following axiom permits the theory to have bite on what should be recommende
 To end the presentation of the normative theories of \ac{DJ}, it may be useful to analyze the status of contradictory propositions. \Cref{th:protcoh} shows that two incompatible propositions cannot both be acceptable. In supplement, it may be interesting to observe that theories of \ac{DJ} do not require to postulate that $i$’s \ac{DJ} is complete, in the sense that when the agenda is closed under negation, it must not necessarily be the case that either the proposition or its negation is in $i$’s \ac{DJ}. This justifies that the normative axiom asks only for an implication between acceptability and \ac{DJ}, instead of an equivalence.
 
 \subsection{Coherence and completeness}
-%A relation $n \subseteq \allprops × \allprops$ is said to be an incompatibility relation iff $\forall \hist \in \allhist, (\prop, \prop') \in n: \hist \ileadsto \prop ⇒ \hist \nileadsto \prop'$. 
-%Two propositions $\prop, \prop' \in \allprops$ are said to be incompatible iff $(\prop, \prop') \in n$.
+\label{sec:coh}
 Two propositions $\prop, \prop' \in \allprops$ are said to be incompatible iff $\forall \hist \in \allhist: \hist \ileadsto \prop ⇒ \hist \nileadsto \prop'$. Let $\incompat \subseteq \Phi × \Phi$ denote the set of incompatible pairs of propositions.
 
 The following proposition shows that \cref{ax:norm} cannot lead to incompatible propositions being considered deliberated. 
@@ -545,7 +544,8 @@ A descriptive theory has no falsification sequence iff $\forall (i, \ar_0, \phi)
 
 \subsection{Effectively comparing models}
 \label{sec:compare}
-Given $\prop \in \allprops$ and two empirical theories $\gamma$ and $\delta$ for a given normative theory with an incompatibility relation $n$, say that they disagree about $(\prop, \propbar) \in n$ iff $\prop \in \gpropse[\gamma] \land \propbar \in \gpropse[\delta]$. Say that they are incompatible iff there is at least one pair $(\prop, \propbar) \in \allprops$ that they disagree about.
+Recall from \cref{sec:coh} that $\incompat = \set{(\prop, \prop') \suchthat \forall \hist \in \allhist: \hist \ileadsto \prop ⇒ \hist \nileadsto \prop'}$ denotes the set of pairs of incompatible propositions.
+Given two empirical theories $\gamma$ and $\delta$ for a given normative theory, say that they disagree about $(\prop, \propbar) \in \incompat$ iff $\prop \in \gpropse[\gamma] \land \propbar \in \gpropse[\delta]$. Say that the theories are incompatible iff there is at least one pair $(\prop, \propbar) \in \incompat$ that they disagree about.
 
 A path $\histp$ starts with a path $\hist$ of length $l$ iff $\histp$ has length at least $l$ and $\forall k \in \intvl{1, l}: \histp_k = \hist_k$.
 An increasing sequence of paths is a finite sequence $({\hist}^k)_{k \in \intvl{1, N}}$, for some $N \in \N$, of paths, 
@@ -877,7 +877,7 @@ Given $\prop \in \allprops, \ar_\gamma \in \gargs, \ar_\delta \in \gargsdelta$, 
 
 \begin{procedure}
 	\label{proc}
-	Pick any $\prop \in \allprops$ about which $\alpha$ and $\beta$ disagree.
+	Pick any $\prop, \propbar \in \incompat$ about which $\alpha$ and $\beta$ disagree.
 	
 	Given $k_\alpha, k_\beta \in \N, \hist \in \allhist, \ar_\alpha \in \gargsalpha, \ar_\beta \in \gargsbeta$, 
 	say that 
