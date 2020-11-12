@@ -296,10 +296,10 @@ Define the set of finite sequences of elements in $\allargs$ \commentYM{qu'est-c
 (including the empty sequence) as $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$.\commentYM{la notation $\allhist$ rend les choses inutilement difficiles à lire. Pourquoi noter ça comme on noterait $\allargs$ sans le zéro, si ça voulait dire quelque chose ? J'aurais inventé un symbole du genre $ \allargs^{\intvl{}}$ ; par ailleurs je trouve l'explication relative à l'empty sequence particulièrement alambiquée}
 \commentOCf{Il me semble assez naturel de, étant donné un ensemble de caractères $S$, définir l’ensemble des chaines de caractères par $S^*$ (représentant le fait de prendre toutes les puissances possibles de $S$), mais c’est peut-être un tropisme d’informaticien qui ne sera donc pas compris par des lecteurs économistes, et effectivement l’étoile est aussi utilisée pour exclure zéro, ce qui n’a rien à voir. J’ai vu la notation $Seq(\allargs)$ être utilisée, mais elle me semble un peu longue, vu l’usage intensif de ce symbole ici. Oui, peut-être en viendrai-je à l’invention que tu proposes, mais inventer ses propres symboles n’est légitime que si aucun n’existe déjà. Je vais essayer d’interroger d’autres gens, dis-moi en attendant si tu penses qu’on peut s’y habituer ou si c’est vraiment très dérangeant.} 
 Throughout the article, $\N$ includes zero. %and $\N^* = \N \setminus \set{0}$. 
+A generic element of $\allhist$ is denoted by $\hist$ and called an argumentative path, or simply a path when this raises no ambiguity. Its length is denoted by $\card{\hist} \in \N$.
 Given $j, l \in \N$, the notation $\intvl{j, l}$ represents $\set{k \in \N \suchthat j ≤ k ≤ l}$.
-Thus, given an argumentative path $\alpha$ of length $l \in \N$, $\forall k \in \intvl{1, l}$, $\alpha_k \in A$, and $\alpha = \emptyset ⇔ l = 0$.
+Thus, given an argumentative path $\hist \in \allhist$, $\forall k \in \intvl{1, \card{\hist}}$, $\hist_k \in A$, and $\hist = \emptyset ⇔ \card{\hist} = 0$.
 %Note that $\intvl{1, 0} = \emptyset$, and given any set $S$, the notation $S^\emptyset$ represents the empty set. 
-A generic element of $\allhist$ is denoted by $\hist$ and called an argumentative path, or simply a path when this raises no ambiguity.
 
 An observation protocol ${\allleadsto}: I → \allprops^{\allhist}$ maps individuals and paths to propositions. 
 Equivalently, given any individual $i \in I$, ${\ileadsto}: \allhist → \allprops$ maps paths to propositions for this individual. 
@@ -340,8 +340,8 @@ As usual with binary relations, $\hist \nileadsto \prop$ means $(\hist, \prop) \
 The judgment of an individual towards propositions may evolve during her exposition to sequences of arguments. Of interest to theories of \ac{DJ} are the cases where a so-called decisive argument exists for a given proposition: an argument is decisive, informally, when its presence towards the end of the sequence of arguments systematically leads the individual to accepting the proposition, whatever the sequence of arguments. 
 Therefore, an argument is decisive when, intuitively, it is able to resist every counter-arguments. 
 
-Given $\hist \in \allhist$, if $l$ denotes its length, $\range(\hist) = \hist(\intvl{1, l})$ denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$.
-Let $\histend = \hist(\intvl{\max(1, l-1), l})$ denote the set containing the last two arguments of the sequence $\hist$ if the sequence has at least two elements; the unique argument of the sequence if it has exactly one element; and the empty set if it is empty.
+Given $\hist \in \allhist$, $\range(\hist) = \hist(\intvl{1, \card{\hist}})$ denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$.
+Let $\histend = \hist(\intvl{\max(1, \card{\hist} - 1), \card{\hist}})$ denote the set containing the last two arguments of the sequence $\hist$ if the sequence has at least two elements; the unique argument of the sequence if it has exactly one element; and the empty set if it is empty.
 
 Given $i \in I, \prop \in \allprops, \ar \in \allargs$, define $\ar \ileadstost \prop$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \ileadsto \prop$. 
 When $\ar \ileadstost \prop$, $\ar$ is said to be a decisive argument for $\prop$ from $i$’s point of view. 
@@ -564,7 +564,7 @@ A descriptive theory has no falsification sequence iff $\forall (i, \ar_0, \phi)
 Recall from \cref{sec:coh} that $\incompat = \set{(\prop, \prop') \suchthat \forall \hist \in \allhist: \hist \ileadsto \prop ⇒ \hist \nileadsto \prop'}$ denotes the set of pairs of incompatible propositions.
 Given two empirical theories $\gamma$ and $\delta$ for a given normative theory, say that they disagree about $(\prop, \propbar) \in \incompat$ iff $\prop \in \gpropse[\gamma] \land \propbar \in \gpropse[\delta]$. Say that the theories are incompatible iff there is at least one pair $(\prop, \propbar) \in \incompat$ that they disagree about.
 
-A path $\histp$ starts with a path $\hist$ of length $l$ iff $\histp$ has length at least $l$ and $\forall k \in \intvl{1, l}: \histp_k = \hist_k$.
+A path $\histp$ starts with a path $\hist$ iff $\card{\histp} ≥ \card{\hist}$ and $\forall k \in \intvl{1, \card{\hist}}: \histp_k = \hist_k$.
 An increasing sequence of paths is a finite sequence $({\hist}^k)_{k \in \intvl{1, N}}$, for some $N \in \N$, of paths, 
 such that $\forall k \in \intvl{2, N}, {\hist}^k$ starts with ${\hist}^{k-1}$. 
 
