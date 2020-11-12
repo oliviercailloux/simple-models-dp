@@ -570,7 +570,7 @@ such that $\forall k \in \intvl{2, N}, {\hist}^k$ starts with ${\hist}^{k-1}$.
 
 \begin{theorem}
 	\label{th:proc}
-	Given two incompatible empirical theories for a given normative theory, $\alpha = (\gleadsto[\alpha], \gbeats[\alpha], \alldargs_\alpha, \dbeats[\alpha], +_\alpha)$ and $\beta = (\gleadsto[\beta], \gbeats[\beta], \alldargs_\beta, \dbeats[\beta], +_\beta)$ and given any $i \in I$, there exists a procedure that falsifies one of these theories, queries only $i$, and queries $i$ only about some increasing sequence of paths.
+	Given two incompatible empirical theories for a given normative theory, $\gamma = (\gleadsto[\gamma], \gbeats[\gamma], \alldargs_\gamma, \dbeats[\gamma], +_\gamma)$ and $\delta = (\gleadsto[\delta], \gbeats[\delta], \alldargs_\delta, \dbeats[\delta], +_\delta)$ and given any $i \in I$, there exists a procedure that falsifies one of these theories, queries only $i$, and queries $i$ only about some increasing sequence of paths.
 \end{theorem}
 That procedure is described in \cref{sec:proc}.
 
@@ -855,37 +855,37 @@ I also write that $(i, \prop, \hist, \ar)$ falsifies $\gamma$ to mean that it is
 \label{sec:proc}
 This section proves \cref{th:proc} constructively, by describing the sequence of tests that must be performed and showing that they must lead to falsifying one of the theories.
 To do this, the notion of challenge must be defined and a few simple lemmas are required.
-
-Given $\prop \in \allprops$, $\hist \in \allhist$ and $\ar_\gamma \in \gargs$, say that $(\hist, \ar_\gamma)$ challenges $\prop$ iff $\hist \nileadstost \prop$ and $\ar_\gamma \in \histend$.
-Given $\prop \in \allprops, \ar_\gamma \in \gargs, \ar_\delta \in \gargsdelta$, say that $(\hist, \ar_\gamma, \ar_\delta)$ is a $\prop/\propbar$-challenge iff $(\hist, \ar_\gamma)$ challenges $(\gamma, \prop)$ or $(\hist, \ar_\delta)$ challenges $(\delta, \propbar)$.
+In order to leave the letters $\gamma$ and $\delta$ unbounded for clearer application of the intermediate results to the theorem to be proven, let $\mu$ and $\nu$ designate any two descriptive theories for a given normative theory of \ac{DJ}.
+Given $\prop \in \allprops$, $\hist \in \allhist$ and $\ar_\mu \in \gargsmu$, say that $(\hist, \ar_\mu)$ challenges $\prop$ iff $\hist \nileadsto \prop$ and $\ar_\mu \in \histend$.
+Given $\prop \in \allprops, \ar_\mu \in \gargsmu, \ar_\nu \in \gargsnu$, say that $(\hist, \ar_\mu, \ar_\nu)$ is a $\prop/\propbar$-challenge iff $(\hist, \ar_\mu)$ challenges $(\mu, \prop)$ or $(\hist, \ar_\nu)$ challenges $(\nu, \propbar)$.
 
 \commentYM{il faudrait tenir la main du lecture : dire pourquoi tu définis ça. Ca se comprends, je sais, mais ça demande au lecteur un gros effort qui n'est pas récompensé par une impression de comprendre où ça va}
 
 \begin{lemma}
 	\label{th:endchal}
-	Given $\ar_\gamma \in \gargs$, $\ar_\delta \in \gargsdelta$ and $\hist \in \allhist$ such that $\set{\ar_\gamma, \ar_\delta} \subseteq \histend$, $(\hist, \ar_\gamma, \ar_\delta)$ is a $\prop/\propbar$-challenge.
+	Given $\ar_\mu \in \gargs$, $\ar_\nu \in \gargsnu$ and $\hist \in \allhist$ such that $\set{\ar_\mu, \ar_\nu} \subseteq \histend$, $(\hist, \ar_\mu, \ar_\nu)$ is a $\prop/\propbar$-challenge.
 \end{lemma}
 \begin{proof}
-	Either $\hist \nileadstost \prop$, and $(\hist, \ar_\gamma)$ challenges $\prop$, or $\hist \ileadstost \prop$, hence, by \cref{th:protcoh}, $\hist \nileadstost \propbar$, and $(\hist, \ar_\delta)$ challenges $\propbar$. 
+	Either $\hist \nileadsto \prop$, and $(\hist, \ar_\mu)$ challenges $\prop$, or $\hist \ileadsto \prop$, hence, by incompatibility of $\prop$ and $\propbar$, $\hist \nileadsto \propbar$, and $(\hist, \ar_\nu)$ challenges $\propbar$. 
 \end{proof}
 
 \begin{lemma}
 	\label{th:nextchal}
-	Given $(\hist, \ar_\gamma)$ challenging $\prop$, with $\ar_\gamma \in \gargs \cap (\dfp)^k(\gleadstoinv(\prop))$, and $\ar_\delta \in \gargsdelta$: either $(i, \prop, \hist, \ar_\gamma)$ falsifies $\gamma$, or there exists a $\prop/\propbar$-challenge $(\histp, \ar'_\gamma, \ar_\delta)$, with $\ar'_\gamma \in \gargs \cap (\dfp)^{k + 1}(\gleadstoinv(\prop))$.
+	Given $(\hist, \ar_\mu)$ challenging $\prop$, with $\ar_\mu \in \gargsmu \cap (\dfp)^k(\gleadstoinv(\prop))$, and $\ar_\nu \in \gargsnu$: either $(i, \prop, \hist, \ar_\mu)$ falsifies $\mu$, or there exists a $\prop/\propbar$-challenge $(\histp, \ar'_\mu, \ar_\nu)$, with $\ar'_\mu \in \gargsmu \cap (\dfp)^{k + 1}(\gleadstoinv(\prop))$.
 \end{lemma}
 \begin{proof}
-	If $\ar_\gamma$ does not $i$-defend $\prop$, then $(i, \prop, \hist, \ar_\gamma)$ falsifies $\gamma$, which ends the proof. 
-	Thus, assume that $\ar_\gamma$ $i$-defends $\prop$. 
+	If $\ar_\mu$ does not $i$-defend $\prop$, then $(i, \prop, \hist, \ar_\mu)$ falsifies $\mu$, which ends the proof. 
+	Thus, assume that $\ar_\mu$ $i$-defends $\prop$. 
 
-	\Cref{th:produce} applies and yields $\ar'_\gamma = \ar_\gamma + \dbeatsinv(\gbeatsinv(\ar_\gamma)) \in \gargs \cap \dfp(\ar_\gamma)$, thus $\ar'_\gamma \in (\dfp)^{(k + 1)}(\gleadstoinv(\prop))$. 
-	Now, define $\histpp = (\hist, \ar'_\gamma)$ and test whether $\histpp \nileadstost \prop$. 
+	\Cref{th:produce} applies and yields $\ar'_\mu = \ar_\mu + \dbeatsinv(\gbeatsinv(\ar_\mu)) \in \gargsmu \cap \dfp(\ar_\mu)$, thus $\ar'_\mu \in (\dfp)^{(k + 1)}(\gleadstoinv(\prop))$. 
+	Now, define $\histpp = (\hist, \ar'_\mu)$ and test whether $\histpp \nileadstost \prop$. 
 	
-	If $\histpp \nileadstost \prop$, define $\histp = \histpp$, and observe that $(\histp, \ar'_\gamma, \ar_\delta)$ challenges $\prop$, which concludes the proof. 
-	Thus, assume that $\histpp \ileadstost \prop$. 
+	If $\histpp \nileadsto \prop$, define $\histp = \histpp$, and observe that $(\histp, \ar'_\mu, \ar_\nu)$ challenges $\prop$, which concludes the proof. 
+	Thus, assume that $\histpp \ileadsto \prop$. 
 
-	Let us now define $\histp$ such that $\set{\ar'_\gamma, \ar_\delta} \subseteq \histpend$, so that \cref{th:endchal} applies on $(\histp, \ar'_\gamma, \ar_\delta)$, which will conclude the proof. 
+	Let us now define $\histp$ such that $\set{\ar'_\mu, \ar_\nu} \subseteq \histpend$, so that \cref{th:endchal} applies on $(\histp, \ar'_\mu, \ar_\nu)$, which will conclude the proof. 
 	
-	If $\ar_\delta \in \histppend$, this is done by defining $\histp = \histpp$. Otherwise, define $\histp = (\histpp, \ar_\delta)$ and test whether $\histp \nileadstost \prop$. 
+	If $\ar_\nu \in \histppend$, this is done by defining $\histp = \histpp$. Otherwise, define $\histp = (\histpp, \ar_\nu)$ and test whether $\histp \nileadsto \prop$. 
 \end{proof}
 
 %Given a normative theory and two empirical theories for that normative theory and $i \in I$, 
@@ -894,23 +894,23 @@ Given $\prop \in \allprops, \ar_\gamma \in \gargs, \ar_\delta \in \gargsdelta$, 
 
 \begin{procedure}
 	\label{proc}
-	Pick any $\prop, \propbar \in \incompat$ about which $\alpha$ and $\beta$ disagree.
+	Pick any $\prop, \propbar \in \incompat$ about which $\gamma$ and $\delta$ disagree.
 	
-	Given $k_\alpha, k_\beta \in \N, \hist \in \allhist, \ar_\alpha \in \gargsalpha, \ar_\beta \in \gargsbeta$, 
+	Given $k_\gamma, k_\delta \in \N, \hist \in \allhist, \ar_\gamma \in \gargsgamma, \ar_\delta \in \gargsdelta$, 
 	say that 
-	$(\hist, \ar_\alpha, \ar_\beta)$ is a challenge of complexity $(k_\alpha, k_\beta)$ iff 
-	$(\hist, \ar_\alpha, \ar_\beta)$ is a $\prop/\propbar$-challenge, $\ar_\alpha \in (\dfp[\alpha])^{k_\alpha}(\gleadstoinv[\alpha](\prop))$, and $\ar_\beta \in (\dfp[\beta])^{k_\beta}(\gleadstoinv[\beta](\propbar))$.
+	$(\hist, \ar_\gamma, \ar_\delta)$ is a challenge of complexity $(k_\gamma, k_\delta)$ iff 
+	$(\hist, \ar_\gamma, \ar_\delta)$ is a $\prop/\propbar$-challenge, $\ar_\gamma \in (\dfp[\gamma])^{k_\gamma}(\gleadstoinv[\gamma](\prop))$, and $\ar_\delta \in (\dfp[\delta])^{k_\delta}(\gleadstoinv[\delta](\propbar))$.
 	
-	Pick any $\ar_{-1} \in \allargs \suchthat \ar_{-1} \gleadsto[\beta] \propbar$. Observe that $\ar_{-1} \in \gargsbeta \cap (\dfp[\beta])^0(\gleadstoinv[\beta](\propbar))$. Test whether $(\ar_{-1}) \nileadstost \prop$. If so, $(i, \prop, (\ar_{-1}), \ar_{-1})$ falsifies $\beta$, which ends the procedure. 
-	Thus, assume that $(\ar_{-1}) \ileadstost \prop$. 
+	Pick any $\ar_{-1} \in \allargs \suchthat \ar_{-1} \gleadsto[\delta] \propbar$. Observe that $\ar_{-1} \in \gargsdelta \cap (\dfp[\delta])^0(\gleadstoinv[\delta](\propbar))$. Test whether $(\ar_{-1}) \nileadsto \prop$. If so, $(i, \prop, (\ar_{-1}), \ar_{-1})$ falsifies $\delta$, which ends the procedure. 
+	Thus, assume that $(\ar_{-1}) \ileadsto \prop$. 
 	
-	Pick any $\ar_0 \in \allargs \suchthat \ar_0 \gleadsto[\alpha] \prop$. Observe that $\ar_0 \in \gargsalpha \cap (\dfp[\alpha])^0(\gleadstoinv[\alpha](\prop))$.  Define $\hist = (\ar_{-1}, \ar_0)$ and test whether $\hist \nileadstost \prop$. By \cref{th:endchal}, $(\hist, \ar_0, \ar_{-1})$ is a $\prop/\propbar$-challenge, thus, $(\hist, \ar_0, \ar_{-1})$ is a challenge of complexity $(0, 0)$.
+	Pick any $\ar_0 \in \allargs \suchthat \ar_0 \gleadsto[\gamma] \prop$. Observe that $\ar_0 \in \gargsgamma \cap (\dfp[\gamma])^0(\gleadstoinv[\gamma](\prop))$.  Define $\hist = (\ar_{-1}, \ar_0)$ and test whether $\hist \nileadsto \prop$. By \cref{th:endchal}, $(\hist, \ar_0, \ar_{-1})$ is a $\prop/\propbar$-challenge, thus, $(\hist, \ar_0, \ar_{-1})$ is a challenge of complexity $(0, 0)$.
 	
-	Suffices now to apply \cref{th:nextchal} repetitively, until finding a falsification instance of $\alpha$ or $\beta$. This is because, given a challenge $(\hist, \ar_\alpha, \ar_\beta)$ of complexity $(k_\alpha, k_\beta)$, \cref{th:nextchal} applies, yielding either a falsification instance, or a new challenge of higher complexity. 
-Indeed, if $(\hist, \ar_\alpha)$ challenges $\prop$, apply \cref{th:nextchal} with $\alpha$ for $\gamma$, $\beta$ for $\delta$, and obtain either that $\hist$ falsifies $\alpha$, or a new tuple $(\histp, \ar'_\alpha, \ar_\beta)$ that is a challenge of complexity $(k_\alpha + 1, k_\beta)$.
-And if $(\hist, \ar_\beta)$ challenges $\propbar$, apply \cref{th:nextchal} with $\propbar$ for $\prop$, $\beta$ for $\gamma$, $\alpha$ for $\delta$, and obtain either that $\hist$ falsifies $\beta$, or a new tuple $(\histp, \ar'_\beta, \ar_\alpha)$ such that $(\histp, \ar_\alpha, \ar'_\beta)$ is a challenge of complexity $(k_\alpha, k_\beta + 1)$.
+	Suffices now to apply \cref{th:nextchal} repetitively, until finding a falsification instance of $\gamma$ or $\delta$. This is because, given a challenge $(\hist, \ar_\gamma, \ar_\delta)$ of complexity $(k_\gamma, k_\delta)$, \cref{th:nextchal} applies, yielding either a falsification instance, or a new challenge of higher complexity. 
+Indeed, if $(\hist, \ar_\gamma)$ challenges $\prop$, apply \cref{th:nextchal} with $\gamma$ for $\mu$, $\delta$ for $\nu$, and obtain either that $\hist$ falsifies $\gamma$, or a new tuple $(\histp, \ar'_\gamma, \ar_\delta)$ that is a challenge of complexity $(k_\gamma + 1, k_\delta)$.
+And if $(\hist, \ar_\delta)$ challenges $\propbar$, apply \cref{th:nextchal} with $\propbar$ for $\prop$, $\delta$ for $\mu$, $\gamma$ for $\nu$, and obtain either that $\hist$ falsifies $\delta$, or a new tuple $(\histp, \ar'_\delta, \ar_\gamma)$ such that $(\histp, \ar_\gamma, \ar'_\delta)$ is a challenge of complexity $(k_\gamma, k_\delta + 1)$.
 	
-	Given that $\exists K_\alpha \suchthat (\dfp[\alpha])^{K_\alpha}(\gleadstoinv[\alpha](\prop)) = \emptyset$ and $K_\beta \suchthat (\dfp[\beta])^{K_\beta}(\gleadstoinv[\beta](\propbar)) = \emptyset$ by definition of empirical theories, this process must end with a falsifying instance of $\alpha$ or $\beta$.
+	Given that $\exists K_\gamma \suchthat (\dfp[\gamma])^{K_\gamma}(\gleadstoinv[\gamma](\prop)) = \emptyset$ and $\exists K_\delta \suchthat (\dfp[\delta])^{K_\delta}(\gleadstoinv[\delta](\propbar)) = \emptyset$ by definition of empirical theories, this process must end with a falsifying instance of $\gamma$ or $\delta$.
 \end{procedure}
 
 \end{document}
