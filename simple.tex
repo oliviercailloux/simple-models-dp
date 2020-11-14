@@ -460,17 +460,16 @@ A normative theory defines when a given argument is decisive for a given proposi
 \commentOCf{Non, thoroughfully n’existe pas, en effet}. 
 Furthermore, only some argumentative paths can be tested for a given individual: the individual’s patience is limited. 
 
-A supplementary problem might happen in some situations. Once an argumentative path has been presented to the individual, this cannot necessarily be undone: she might remember some of the arguments, and they may have a lasting influence on her perspective. Let me call this possibility the hypothesis of persistence, and the converse hypothesis, the hypothesis of immediacy.
-Under the hypothesis of persistence, it is impossible to test twice the same path. Tests of the stability of the opinion of $i$ towards a given set of arguments can still be performed, as the next example indicates.
-The converse hypothesis amounts to postulating that the individual forgets after some time and use an observation protocol that separates the tests in time sufficiently.
+A supplementary problem might happen in some situations. Once an argumentative path has been presented to the individual, this cannot necessarily be undone easily: she might remember some of the arguments, and they may have a lasting influence on her perspective. This may render difficult to test several unrelated paths on a given individual: such tests require to wait long enough that it can be reasonably thought that the individual is no more under influence of the arguments he has seen. It is therefore desirable to point out which testing protocols permit to avoid these difficulties.
 \commentYM{je comprends ce que tu veux dire ici car ça fait un bout de temps qu'on parle de ces question. Je doute cependant qu'un lecteur innocent comprenne un traitre mot}
-The hypothesis of memory further reduces the possible paths that can be tested with a given individual.
 An illustration of some consequences of these possibilities on our running example may be useful. 
 \begin{example}[Hypothesis of memory]
-	 The definition of $\ileadsto$ as given so far implicitly assumes that a given path can be tested at most once with a given individual, as it does not indicate what to conclude when a path $\hist$ leads $i$ to adopt a proposition $\prop$ only some of the time. This is justified under the hypothesis of memory. 
-	 Recall that in \cref{ex:incompl}, $\hist \ileadsto P ≥ D$ and $\hist' \ileadsto D > P$ for some $\hist, \hist' \in \allhist$. If we further assume that $\range(\hist) = \range(\hist')$, in other words, that these two paths use the same arguments, this illustrates the remark that instability of $i$ towards some set of argument can be observed even under the hypothesis of memory. Consider $\hist = \left<\ar_0, \ar_1\right>$ and $\alpha' = \left<\ar_0, \ar_1, \ar_0\right>$ as an example. As $\hist'$ is a sequence that starts with $\hist$, it is possible to test these two paths on $i$, even under the hypothesis of memory.
+	 The definition of $\ileadsto$ as given so far implicitly assumes that a given path can be tested at most once with a given individual, as it does not indicate what to conclude when a path $\hist$ leads $i$ to accept a proposition $\prop$ only some of the time. This is justified under the hypothesis that individuals remember arguments forever. 
+	It is interesting to note that even in that case, instability of $i$ towards some set of argument can be observed. As an illustration of such an instability, recall \cref{ex:incompl}, which assumes that for some $\hist, \hist' \in \allhist$, $\hist \ileadsto P ≥ D$ and $\hist' \ileadsto D > P$.
+	Consider $\hist = \left<\ar_0, \ar_1\right>$ and $\hist' = \left<\ar_0, \ar_1, \ar_0\right>$ and assume we tested first $\hist$ then $\hist'$ on the same individual. Even assuming that the individual remembers, when exposed to $\hist'$, having seen these two arguments during the previous test, she might be fundamentally undecided as to whether $P ≥ D$ or $D > P$, and pick items randomly when exposed to these two arguments in any order. As $\hist'$ is a sequence that starts with $\hist$, it is possible to test these two paths on $i$, even under the hypothesis of unbounded memory, and observe an instability of $i$ towards the arguments $\ar_0$ and $\ar_1$.
 
-	If, on the contrary, it is considered that the individual forgets over time, we must define $\ileadsto$ differently. Define $T$ a series of time steps, and given $t \in T$, define $\hist \ileadsto^t \prop$ as the observation of the adoption of $\prop$ by $i$ when having been presented the arguments in $\hist$ at time $t$. Define then $\hist \ileadsto \prop$ iff $\forall t \in T: \hist \ileadsto^t \prop$. Under the hypothesis of immediacy, it could be that $\exists \hist \suchthat \hist \nileadsto P ≥ D \land \hist \nileadsto D > P$.
+	Under the more realistic hypothesis that the individual forgets over time, not only can we test unrelated paths on a given individual, but we can test several times the same path. We must then define $\ileadsto$ differently. Define $\hist \ileadsto \prop$ iff the individual would be lead to accept $\prop$ on every presentation of $\hist$. It is then possible that $\exists \hist \in \allhist \suchthat \hist \nileadsto P ≥ D \land \hist \nileadsto D > P$.
+	Note that this makes it impossible to observe that $\hist \ileadsto \prop$. This is not a problem for the methodology presented here: it is still possible to observe that $\hist \nileadsto \prop$, as it suffices to observe that the individual did not accept $\prop$ under at least one presentation of $\hist$. The falsification sequences defined here below rest only on that kind of observations.
 \end{example}
 
 Importantly, theories of \ac{DJ} must also be able to argue differently for different individuals. Even considering individuals with the same \ac{DJ}, different individuals might consider as decisive different arguments. Accepting non trivial propositions often requires to accept several sub-propositions, that together permit to be convinced of the acceptability of the proposition. Depending on which of these sub-propositions the individual already considers to be acceptable, parts of the argumentation can be omitted, and, perhaps, must be omitted: an overly long argument, stating many things that the listener already knows, has fewer chance to convince the listener than a short argument that goes straight to the point about which the listener doubts. 
@@ -487,9 +486,11 @@ Achieving practical knowledge of \acp{DJ} is tackled by introducing descriptive 
 Such theories achieve what has been announced, namely, their conclusions rest solely on a weak normative axiom and on empirically falsifiable claims. 
 Granted normative adequacy, if no falsification sequence exist for a given theory of \ac{DJ}, then it is valid, meaning that the propositions that it claims are \acp{DJ} are indeed \acp{DJ}.
 \Cref{sec:validity} defines formally the notion of falsification sequence and proves this central claim.
-The practical meaningfulness of this result is not affected by the hypothesis of memory, under condition that the set $I$ be large enough: we can always then perform falsification tests on different individuals for each path that has to be tested, so that memory of individuals does not matter. Exploring settings where $I$ is too small to apply this strategy is left aside in this article.
 
-This result permits to ensure that, under Normative adequacy, Validity is an empirical property. But it does not give a concrete way of arbitrating between conflicting theories. A supplementary important result, described in \cref{sec:compare}, is that when two theories disagree about incompatible propositions, one of the theories at least must fail some given sequence of empirical tests, which the proof describes. These tests can all be performed on a single individual and are robust against the hypothesis of memory, which suggest that arbitration between theories could be performed reasonably easily.
+This result permits to ensure that, under Normative adequacy, Validity is an empirical property. But it does not give a concrete way of arbitrating between conflicting theories. A supplementary important result, described in \cref{sec:compare}, is that when two theories disagree about incompatible propositions, one of the theories at least must fail some given sequence of empirical tests, which the proof describes. 
+
+These arbitration tests can all be performed on a single individual and are robust against the hypothesis of memory, which suggest that arbitration between theories could be performed reasonably easily.
+By contrast, the falsification sequences used in the preceding result of \cref{sec:validity} may require to test unrelated paths on the same individual, which may be practically difficult, as acknowledged here above. I expect however that the second result, permitting to arbitrate between theories, will be more often used in practice, thus, that falsification tests of the previous kind will be comparatively rare. This article is content with the existence of a principled, systematic way of falsifying theories of \ac{DJ} and leaves to later studies the comparison of approaches from the practical point of view of easiness of falsifying them.
 
 \subsection{Definition}
 \label{sec:descrdef}
@@ -527,7 +528,7 @@ Here is an example of a theory that does not use an argumentation strategy, but 
 	Define a normative theory as in \cref{ex:twolott}, with an extended set of arguments: define $\allargs$ as the set of all strings. (This correspondingly changes $\allhist$ and thus $\ileadsto$, which must be extended to its new domain.) Define $\ar_0$ as in \cref{ex:twolott}.
 	Define $\ar_\text{for$P$}$ as the text “We recommend to adopt $P$: it has a much higher probability of winning.” 
 	Define ${\gleadsto} = \set{(\ar_\text{for$P$}, P > D)}$.
-	In order to define a counter-argument to $\ar_0$, given a real number $r \in \R$, define $\ar^r_\text{non-linear}$ as the text “It is absurd to reason in terms of expected gain. For example, consider a choice between winning $r$ dollars with probability $0.8$ and winning $2r$ dollars with probability $0.4$. They have the same expected gain, but the first one is clearly preferrable”. (The value of $r$ and $2r$ is to be used in the relevant places in  the text.)
+	In order to define a counter-argument to $\ar_0$, given a real number $r \in \R$, define $\ar^r_\text{non-linear}$ as the text “$D$ is better than $P$ in terms of expected gain, but it is in general absurd to reason in terms of expected gain. For example, consider a choice between winning $r$ dollars with probability $0.8$ and winning $2r$ dollars with probability $0.4$. They have the same expected gain, but the first one is clearly preferrable. Therefore, we recommend to rather pick $P$ as it presents a much better chance of earning money”. (The value of $r$ and $2r$ is to be used in the relevant places in  the text.)
 	Define $\dg = \set{(\ar_\text{for$P$}, \hist, \ar^{10^6}_\text{non-linear}) \suchthat \hist \in \allhist \land \ar_0 \in \hist}$. This strategy anticipates a possible attack using $\ar_0$ against $\ar_\text{for$P$}$, and prepares $\ar^{10^6}_\text{non-linear}$ as a counter-argument.
 	This defines a descriptive theory of depth $2$.
 \end{example}
@@ -538,7 +539,8 @@ The following less trivial example of a descriptive theory illustrates a theory 
 	Define a normative theory and the arguments $\ar_0$ and $\ar^r_\text{non-linear}$ for any $r \in \R$ as in \cref{ex:twolottstrings}.
 	Define ${\gleadsto} = \set{(\ar_0, D > P)}$.
 	Define $\ar_\text{linear}$ as the text “We agree that when the money amounts involved are large and the game is not repeated, there is no good reason to consider only expected gains when choosing a lottery. But in our case, the money amounts are small and the game is repeated. Therefore, expected gain is the right indicator to consider for a systematic and sound decision strategy.”
-	Define $\dg = \set{(\ar_0, \ar^r_\text{non-linear}, \ar_\text{linear}) \suchthat r \in \R}$. This strategy sets up the argument $\ar_\text{linear}$ as an answer to any argument of the form described in \cref{ex:twolottstrings}, arguing for non-linearity of utility of money.
+	Define $+$ as the concatenation operator over strings.
+	Define $\dg = \set{(\ar_0, \ar^r_\text{non-linear}, \ar_0 + \ar_\text{linear}) \suchthat r \in \R}$. This strategy sets up the argument $\ar_0 + \ar_\text{linear}$ as an answer to any argument of the form described in \cref{ex:twolottstrings}, arguing for non-linearity of utility of money.
 	This defines a descriptive theory of depth $2$.
 \end{example}
 
@@ -558,7 +560,7 @@ Define $\gargs \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(
 \begin{example}[Required arguments]
 	\label{ex:required}
 	Continuing \cref{ex:infinite}, define the subset of individuals that find some argument $\ar^r_\text{non-linear}$ convincing in presence of $\ar_0$ as the set of $i \in I$ such that $\exists \hist \in \allhist \suchthat \ar_0 \in \histend \land \ar^r_\text{non-linear} \in \range(\hist) \land \hist \nileadsto D > P$.
-	We see that for any $i$ in that set of individuals, $\gargs[D > P] = \set{\ar_0, \ar_\text{linear}}$, and for any $i$ in the complementary set of individuals, $\gargs[D > P] = \set{\ar_0}$.
+	We see that for any $i$ in that set of individuals, $\gargs[D > P] = \set{\ar_0, \ar_0 + \ar_\text{linear}}$, and for any $i$ in the complementary set of individuals, $\gargs[D > P] = \set{\ar_0}$.
 \end{example}
 
 Given $\ar \in \gargs$, say that $\ar$ $i$-defends $\phi$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend \land \hist \nileadsto \phi: d(\ar, \hist) ≠ \emptyset$.
@@ -566,28 +568,26 @@ Given $\ar \in \gargs$, say that $\ar$ $i$-defends $\phi$ iff $\forall \hist \in
 	An empirical theory is \emph{convincing} iff $\forall i \in I, \prop \in \gpropse, \ar \in \gargs: \ar$ $i$-defends $\prop$.
 \end{definition}
 \begin{example}[Convincingness]
-	Pursuing with \cref{ex:required}, that theory will be convincing iff either $i$ finds some argument $\ar^r_\text{non-linear}$ convincing in presence of $\ar_0$ and both $\ar_0$ and $\ar_\text{linear}$ $i$-defend $D > P$, or $i$ does not find any argument $\ar^r_\text{non-linear}$ convincing in presence of $\ar_0$ and $\ar_0$ $i$-defends $D > P$. 
+	Pursuing with \cref{ex:required}, that theory will be convincing iff either $i$ finds some argument $\ar^r_\text{non-linear}$ convincing in presence of $\ar_0$ and both $\ar_0$ and $\ar_0 + \ar_\text{linear}$ $i$-defend $D > P$, or $i$ does not find any argument $\ar^r_\text{non-linear}$ convincing in presence of $\ar_0$ and $\ar_0$ $i$-defends $D > P$. 
 	
 	$\ar_0$ $i$-defends $D > P$ iff any argumentative path $\hist$ that contains $\ar_0$ towards its end and that does not lead $i$ to accept $D > P$ is such that $\dg(\ar_0, \hist) ≠ \emptyset$, or equivalently, is such that the theory has some argument to answer to $\hist$, or still equivalently, is such that it contains some $\ar^r_\text{non-linear}$.
 	This property mandates that no argumentative path has been “forgotten” in $\dg$: if some path is found that attacks $\ar_0$ successfully (thus $\ar_0 \in \histend \land \hist \nileadsto D > P$), and if the theory has nothing to answer to it (thus $\dg(\ar_0, \hist) = \emptyset$), then the theory is not Convincing.
 \end{example}
 
-To verify that the property of Convincingness is purely empirical, it is necessary to show that whenever a theory fails it, it is possible to see it using a set of observations of $\ileadsto$. Conversely, it is also desirable to ensure that only the observations that ensure that Convincingness is false count as falsifying a theory.
+To verify that the property of Convincingness is purely empirical, it is necessary to show that whenever a theory fails it, it is possible to see it using a set of observations of $\leadsto$. Conversely, it is also desirable to ensure that only the observations that ensure that Convincingness is false count for falsifying a theory.
 The following example may help forging an intuition about what the possible falsifying sets of observations are.
 \begin{example}[Falsification sequences]
 	Let us examine the possible observations that would suffice to show that the theory presented in our running example is not Convincing. 
 	
 	First, one could exhibit a path $\hist$ that attacks $\ar_0$ and does not trigger the strategic defense of the theory. Those are the paths that satisfy $\ar_0 \in \histend \land \hist \nileadsto D > P \land \forall r \in \R: \ar^r_\text{non-linear} \in \range(\hist)$.
 	
-	The second possibility is slightly more demanding, and is the only one that is available if indeed $\ar_0$ $i$-defends $D > P$. It requires first to show that $\ar_\text{linear}$ is a required argument to convince $i$, then to show that this argument fails to convince $i$. For this, two paths are required: $\hist^0 \in \allhist \suchthat \ar_0 \in \histend[0] \land \hist^0 \nileadsto D > P \land [\exists r \in \R \suchthat \ar^r_\text{non-linear} \in \range(\hist^0)]$, and $\hist^1 \in \allhist \suchthat \ar_\text{linear} \in \histend[1] \land \hist^1 \nileadsto D > P$.
+	The second possibility is slightly more demanding, and is the only one that is available if indeed $\ar_0$ $i$-defends $D > P$. It requires first to show that $\ar_0 + \ar_\text{linear}$ is a required argument to convince $i$, then to show that this argument fails to convince $i$. For this, two paths are required: $\hist^0 \in \allhist \suchthat \ar_0 \in \histend[0] \land \hist^0 \nileadsto D > P \land \dg(\ar_0, \hist^0) = \ar_0 + \ar_\text{linear}$, and $\hist^1 \in \allhist \suchthat (\ar_0 + \ar_\text{linear}) \in \histend[1] \land \hist^1 \nileadsto D > P$.
 \end{example}
-
-NB suffices to prove that any $\ar_k \in (\dgip)^k$ iff $\exists (\ar_0, \hist^0, \ar_1 = \dg(\ar_0, \hist^0), …, \ar_k)$ with $\ar_0 \in \histend \land \hist \nileadsto \phi$.
 
 Define a falsification sequence for $(i, \ar_0, \phi)$, with $\ar_0 \gleadsto \phi$, thus $\ar_0$ an initial argument for $\phi$, as a finite sequence $(\hist^k)_{k \in \intvl{0, N}}$, for some $N \in \N$, such that it presents successive challenges, which means the following. 
 Given $k \in \intvl{0, N}$, assuming $\ar_k$ is defined, define $\ar_{k + 1} = d(\ar_k, \hist^k)$ if $d(\ar_k, \hist^k) ≠ \emptyset$ and say that $\ar_{k + 1}$ is undefined otherwise.
 %Define the \emph{defending} sequence of arguments as a finite sequence of arguments $\ar_{k + 1} = d(\ar_k, \hist^k)$, for $k \in \intvl{1, N}$, as long as $d(\ar_k, \hist^k)$ is not empty, thus letting the length of the sequence be the first value of $k$ for which $d(\ar_k, \hist^k) = \emptyset$.
-A falsification sequence presents successive challenges iff [$\ar_{k + 1}$ is undefined exactly when $k = N$] and [$\forall k \in \intvl{0, N}: \ar_k \in \histend[k] \land \hist^k \nileadsto \phi$].
+A sequence $(\hist^k)_{k \in \intvl{0, N}}$ presents successive challenges iff [$\ar_{k + 1}$ is undefined exactly when $k = N$] and [$\forall k \in \intvl{0, N}: \ar_k \in \histend[k] \land \hist^k \nileadsto \phi$].
 
 %Given $\args \subseteq \allargs$ and $\hist \in \allhist$, recall that the set $\args \cap \range(\hist)$ denotes the arguments that are both in $\args$ and contained in the sequence $\hist$.
 
@@ -599,6 +599,8 @@ A falsification sequence presents successive challenges iff [$\ar_{k + 1}$ is un
 %The sequence presents successive challenges iff, $\forall k \in 2\N \suchthat k ≤ N$, we have that $\ar_k \in \histend[k + 1]$, $\hist^{k + 1} \nileadsto \phi$, and $[\args_{k + 1} = \emptyset ⇔ k = N]$.
 
 A descriptive theory has no falsification sequence iff $\forall (i, \ar_0, \phi)$, no finite sequence of paths present successive challenges.
+
+\commentOC{Suffices to prove that any $\ar_k \in (\dgip)^k$ iff $\exists (\ar_0, \hist^0, \ar_1 = \dg(\ar_0, \hist^0), …, \ar_k)$ with $\ar_0 \in \histend \land \hist \nileadsto \phi$.}
 
 \begin{theorem}
 	\label{th:svalid}
