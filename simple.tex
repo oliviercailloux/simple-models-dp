@@ -494,8 +494,7 @@ This result permits to ensure that, under Normative adequacy, Validity is an emp
 \subsection{Definition}
 \label{sec:descrdef}
 In this section, a normative theory of \ac{DJ} $(\allprops, \allargs, I, {\allleadsto})$ is supposed given.
-A descriptive tuple for a normative theory of \ac{DJ} is defined as a tuple $(\gleadsto, \gbeats, \alldargs, \dbeats, +)$, where ${\gleadsto} \subseteq \allargs × \allprops$ is an initial argumentation relation; ${\gbeats} \subseteq \allargs × \allargs$ is an anticipated attacks relation; $\alldargs$ is a primitive set of argument fragments; ${\dbeats} \subseteq \alldargs × \gbeatsinv(\allargs)$ is a defense relation; and $+$ combines arguments to coalitions of fragments in order to form new arguments.
-A descriptive theory for a normative theory of \ac{DJ} is a descriptive tuple that has a bounded depth.
+A descriptive theory for a normative theory of \ac{DJ} is defined as a tuple $(\gleadsto, \dg)$, where ${\gleadsto} \subseteq \allargs × \allprops$ is an initial argumentation relation and $\dg$ is a defense relation; satisfying bounded depth.
 These concepts are now defined formally.
 \commentYM{puisque la théorie empirique est une théorie empirique D'UNE CERTAINE THEORIE NORMATIVE, je m'attendrais  à ce qu'on voit apparaître la théorie normative dans la formule de la théorie empirique, non ?}
 
@@ -503,54 +502,101 @@ An initial argumentation relation ${\gleadsto} \subseteq \allargs × \allprops$ 
 More precisely, let $\gpropse$, the range of ${\gleadsto}$, be called the propositions \emph{supported} by the descriptive theory.
 Given such a supported proposition $\prop \in \gpropse$, let $\gleadstoinv(\prop) = \set{\ar \in \allargs \suchthat \ar \gleadsto \prop}$ be called the initial arguments in favor of $\prop$.
 
-An anticipated attacks relation ${\gbeats} \subseteq \allargs × \allargs$ is an irreflexive binary relation on the arguments. An argument $\ar_1$ is said to be an anticipated attack against an argument $\ar_0$ iff $\ar_1 \gbeats \ar_0$. Given  an argument $\ar_0$, $\gbeatsinv(\ar_0) = \set{\ar_1 \in \allargs \suchthat \ar_1 \gbeats \ar_0}$ denotes the set of anticipated attacks against $\ar_0$; and $\gbeatsinv(\allargs) = \set{\ar_1 \in \allargs \suchthat \exists \ar_0 \in \allargs \suchthat \ar_1 \gbeats \ar_0}$ denotes the set of arguments that are anticipated attacks against at least one argument.
+A defense relation $\dg \subseteq (\allargs × \allhist) × \allargs$ is a right-unique relation, thus given any $\ar \in \allargs, \hist \in \allhist$, $\dg(\ar, \hist)$ is empty or is a singleton. %, and must satisfy $\ar \notin \histend ⇒ \dg(\ar, \hist) = \emptyset$. 
+As is usual for right-unique relations, I write $\dg(\ar_0, \hist) = \ar_1$ instead of $\dg(\ar_0, \hist) = \set{\ar_1}$.
+Say that $\ar_1$ defends $\ar_0$ iff $\exists \hist \suchthat \dg(\ar_0, \hist) = \ar_1$.
+Define $\dg(\ar) = \dfp(\ar) = \dg(\ar, \allhist) = \set{\dg(\ar, \hist) \suchthat \hist \in \allhist} \subseteq \allargs$ as all the defenders of $\ar$.
+The relation $\dg$ defines the argumentation strategy of the theory. Informally speaking, its role is to adapt the arguments the theory produces to the reactions of the individual it is trying to convince. Assuming the theory has played an argument $\ar_0$ and a path $\hist$ challenges some of the conclusions this argument supports (as judged by the individual), $\dg(\ar_0, \hist)$ is the argument that the theory plays as a counter-argument to the path $\hist$.
+%The condition that when $\dg(\ar_0, \hist)$, $\ar_0 \in \histend$ is imposed for simplicity: as will appear, an argument $\ar_0$ needs defense only when it is challenged by some path $\hist \suchthat \ar_0 \in \histend$, thus, letting $\dg$ define counter-arguments to paths not satisfying this condition would be of no use.
 
-A defense relation ${\dbeats} \subseteq \alldargs × \gbeatsinv(\allargs)$ is an injective (left-unique) and surjective (right-total) binary relation over $\alldargs × \gbeatsinv(\allargs)$. \commentYM{le fait qu'elle soit surjective et injective est une exigence que tu poses dans la définiton ? pourquoi ? à quoi est-ce que cela sert ?} 
-These constraints guarantee that every anticipated attack has exactly one fragment defending against it, thus, $\forall \ar_1 \suchthat [\exists \ar_0 \suchthat \ar_1 \gbeats \ar_0]$, $\dbeatsinv(\ar_1)$ is a singleton. 
-Note that $\dbeats$ need not be a bijection as it is generally not a function (it is not restrictive to suppose it left-total, but it generally is not right-unique). 
-Given $\ar_1 \in \gbeatsinv(\allargs)$, define $\dbeatsinv(\ar_1)$ as the fragment defending against the anticipated attack $\ar_1$.
-\commentYM{dans toute cette sous-section la lecture est rendue très difficile par ce genre de formulation qui assigne une intentionnalité à la théorie. Je ne comprends pas le sens métaphorique de ces phrase, donc je ne les comprends pas}
-
-A fragment is said to defend an argument iff it defends against an anticipated attack against that argument. \commentYM{"it is used" par qui, comment ? De quoi tu parles là ? Des stratégies argumentatives que contient la "théorie empirique" ?} 
-Formally, 
-given any set $S$, define $\powerset{S}$ as the set of subsets of $S$ and $\powersetz{S}$ as the set of subsets of $S$ without the empty set.
-Define $\df: \allargs → \powerset{\alldargs}$ as follows:
-given $\ar_0 \in \allargs$ and $\ard \in \dargs$, $\ard \in \df(\ar_0)$ iff $\exists \ar_1 \in \allargs \suchthat \ard \dbeats \ar_1 \gbeats \ar_0$.
-In other words, $\df = \dbeatsinv \circ \gbeatsinv$.
-Given $\ar \in \allargs$, $\df(\ar)$ denotes \emph{all fragments defending $\ar$}. 
-
-A \emph{coalition of fragments defending $\ar$} is any non-empty subset of $\df(\ar)$.
-Such a coalition can be combined with the argument it defends to form a new argument.
-An empirical theory defines, to that effect, a function $+: \allargs × \powersetz{\alldargs} → \allargs$.
-Given any $\ar \in \allargs$ and $\emptyset ≠ \dargs \subseteq \alldargs$, the notation $\ar + \dargs$ stands for $+(\ar, \dargs)$. (The function $+$ need not be defined on so large a domain, because an argument is only ever added to its own defenders, but this definition is adopted here for simplicity; \cref{sec:append} refines this requirement.)
-
-This finally permits to define the defenders of an argument: they are all the arguments that can be formed by adding the argument to a coalition of fragments that defends it.
-Given any $\ar \in \allargs$, define $\dfp(\ar) \subseteq \allargs$, the \emph{defenders of $\ar$}, as $\dfp(\ar) = \set{\ar + \dargs \suchthat \emptyset ≠ \dargs \subseteq \df(\ar)}$.
-
-This mechanism permits to define defenders of defenders of an argument, $\dfp(\dfp(\ar))$, defenders of defenders of defenders of an argument, … 
+This mechanism permits to define defenders of defenders of an argument, $\dg(\dg(\ar))$, defenders of defenders of defenders of an argument, … 
 For the results to be presented here to hold, an empirical theory must be a priori restricted in the maximal “depth” of its argumentation strategy, in the following sense. 
 \commentYM{ok soit, ça semble raisonnable, mais tu n'as pas de raison plus forte, j'adopterais une formulation plus modeste et ouverte, du genre "ça semble souhaitable"}
 Given any set $S$ and function $f: S → S$, let $f^0$ represent the identity function, and given $k \in \N$, let $f^{k + 1} = f \circ f^k$.
-A tuple $(\gleadsto, \gbeats, \alldargs, \dbeats, +)$ has a bounded depth iff
-$\exists k \in \N \suchthat (\dfp)^k(\gleadstoinv(\allprops)) = \emptyset$.
+The bounded depth condition on a descriptive theory imposes that
+$\exists k \in \N \suchthat (\dg)^k(\gleadstoinv(\allprops)) = \emptyset$.
+The smallest such $k$ is called the depth of the theory.
 
-The bounded depth constraint does not imply finiteness of the relations $\gbeats$ or $\dbeats$, as \cref{th:infinite} shows.
+Here is an example of a theory that does not use an argumentation strategy, but simply plays an argument that it claims is decisive for everybody.
+\begin{example}[Constant argumentation]
+	Given the normative theory of \cref{ex:twolott}, define ${\gleadsto} = \set{(\ar_0, D > P)}$ and $\dg = \emptyset$. This defines a descriptive theory of depth $1$ for that normative theory.
+\end{example}
+
+\begin{example}[A theory for $P$]
+	\label{ex:twolottstrings}
+	Define a normative theory as in \cref{ex:twolott}, with an extended set of arguments: define $\allargs$ as the set of all strings. (This correspondingly changes $\allhist$ and thus $\ileadsto$, which must be extended to its new domain.) Define $\ar_0$ as in \cref{ex:twolott}.
+	Define $\ar_\text{for$P$}$ as the text “We recommend to adopt $P$: it has a much higher probability of winning.” 
+	Define ${\gleadsto} = \set{(\ar_\text{for$P$}, P > D)}$.
+	In order to define a counter-argument to $\ar_0$, given a real number $r \in \R$, define $\ar^r_\text{non-linear}$ as the text “It is absurd to reason in terms of expected gain. For example, consider a choice between winning $r$ dollars with probability $0.8$ and winning $2r$ dollars with probability $0.4$. They have the same expected gain, but the first one is clearly preferrable”. (The value of $r$ and $2r$ is to be used in the relevant places in  the text.)
+	Define $\dg = \set{(\ar_\text{for$P$}, \hist, \ar^{10^6}_\text{non-linear}) \suchthat \hist \in \allhist \land \ar_0 \in \hist}$. This strategy anticipates a possible attack using $\ar_0$ against $\ar_\text{for$P$}$, and prepares $\ar^{10^6}_\text{non-linear}$ as a counter-argument.
+	This defines a descriptive theory of depth $2$.
+\end{example}
+
+The following less trivial example of a descriptive theory illustrates a theory that claims to be able to answer an infinite number of arguments. This also shows that the bounded depth constraint does not imply finiteness of the relation $\dg$.
+\begin{example}[Infinite $\dg$]
+	\label{ex:infinite}
+	Define a normative theory and the arguments $\ar_0$ and $\ar^r_\text{non-linear}$ for any $r \in \R$ as in \cref{ex:twolottstrings}.
+	Define ${\gleadsto} = \set{(\ar_0, D > P)}$.
+	Define $\ar_\text{linear}$ as the text “We agree that when the money amounts involved are large and the game is not repeated, there is no good reason to consider only expected gains when choosing a lottery. But in our case, the money amounts are small and the game is repeated. Therefore, expected gain is the right indicator to consider for a systematic and sound decision strategy.”
+	Define $\dg = \set{(\ar_0, \ar^r_\text{non-linear}, \ar_\text{linear}) \suchthat r \in \R}$. This strategy sets up the argument $\ar_\text{linear}$ as an answer to any argument of the form described in \cref{ex:twolottstrings}, arguing for non-linearity of utility of money.
+	This defines a descriptive theory of depth $2$.
+\end{example}
 
 \subsection{Validity and falsification sequences}
 \label{sec:validity}
+An empirical theory claims to be valid, in the following sense.
 \begin{definition}[Validity]
 	An empirical theory is \emph{valid} iff $\forall i \in I, \prop \in \gpropse: \prop \in \iprops$.
 \end{definition}
+To achieve this goal, it claims that it is able to produce decisive arguments for its supported propositions.
+These arguments can vary according to the individual $i \in I$.
+Given an individual, the theory claims that a decisive argument will be systematically found by starting from an initial argument given by $\gleadsto$, and following a chain of defense defined by $\dg$ as required, depending on the paths that challenge the arguments produced along the way, as judged by the individual $i$. The property that a theory manages to systematically produce decisive arguments in such a way is named Convincingness. Defining it requires to define first the notion of required arguments.
 
-Given $\args \subseteq \allargs$ and $\hist \in \allhist$,
-recall that the set $\args \cap \range(\hist)$ denotes the arguments that are both in $\args$ and contained in the sequence $\hist$.
+Given $i \in I, \prop \in \gpropse$, define $\dgip(\ar) = \set{\dg(\ar, \hist) \suchthat \ar \notin \histend \land \hist \nileadsto \phi} \subseteq \dg(\ar)$, representing the subset of defenders of $\ar$ required for convincing $i$ of $\prop$.
+Given any set $S$ and function $f: S → S$, let $f^0$ represent the identity function, and given $k \in \N$, let $f^{k + 1} = f \circ f^k$.
+Define $\gargs \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\prop)$ under $\dgip$: $\gargs = \cup_{k \in \N} (\dgip)^k({\gleadstoinv}(\prop))$. The set $\gargs$ is the set of arguments required to convince $i$ of $\phi$.
+\begin{example}[Required arguments]
+	\label{ex:required}
+	Continuing \cref{ex:infinite}, define the subset of individuals that find some argument $\ar^r_\text{non-linear}$ convincing in presence of $\ar_0$ as the set of $i \in I$ such that $\exists \hist \in \allhist \suchthat \ar_0 \in \histend \land \ar^r_\text{non-linear} \in \range(\hist) \land \hist \nileadsto D > P$.
+	We see that for any $i$ in that set of individuals, $\gargs[D > P] = \set{\ar_0, \ar_\text{linear}}$, and for any $i$ in the complementary set of individuals, $\gargs[D > P] = \set{\ar_0}$.
+\end{example}
 
-Define a falsification sequence for $(i, \ar_0, \phi)$, with $\ar_0 \gleadsto \phi$, thus $\ar_0$ an initial argument for $\phi$, as a finite sequence $\hist^1, \hist^3, …, \hist^{N + 1}$, for some $N \in 2\N$, such that it presents successive challenges, which means the following. 
-Given $k \in 2\N \suchthat k ≤ N$, $\ar_k \in \allargs$ and $\hist^{k + 1} \in \allhist$, 
-define $\args_{k + 1} = \gbeatsinv(\ar_k) \cap \range(\hist^{k + 1})$; 
-define $\dargs[k + 2] = \dbeatsinv(\args_{k + 1})$ as those fragments defending against the anticipated attackers $\args_{k + 1}$; 
-and, if $\args_{k + 1} ≠ \emptyset$ (equivalently, if $\dargs[k + 2] ≠ \emptyset$), define $\ar_{k + 2} = \ar_k + \dargs[k + 2]$. 
-The sequence presents successive challenges iff, $\forall k \in 2\N \suchthat k ≤ N$, we have that $\ar_k \in \histend[k + 1]$, $\hist^{k + 1} \nileadstost \phi$, and $[\args_{k + 1} = \emptyset ⇔ k = N]$.
+Given $\ar \in \gargs$, say that $\ar$ $i$-defends $\phi$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend \land \hist \nileadsto \phi: d(\ar, \hist) ≠ \emptyset$.
+\begin{definition}[Convincingness]
+	An empirical theory is \emph{convincing} iff $\forall i \in I, \prop \in \gpropse, \ar \in \gargs: \ar$ $i$-defends $\prop$.
+\end{definition}
+\begin{example}[Convincingness]
+	Pursuing with \cref{ex:required}, that theory will be convincing iff either $i$ finds some argument $\ar^r_\text{non-linear}$ convincing in presence of $\ar_0$ and both $\ar_0$ and $\ar_\text{linear}$ $i$-defend $D > P$, or $i$ does not find any argument $\ar^r_\text{non-linear}$ convincing in presence of $\ar_0$ and $\ar_0$ $i$-defends $D > P$. 
+	
+	$\ar_0$ $i$-defends $D > P$ iff any argumentative path $\hist$ that contains $\ar_0$ towards its end and that does not lead $i$ to accept $D > P$ is such that $\dg(\ar_0, \hist) ≠ \emptyset$, or equivalently, is such that the theory has some argument to answer to $\hist$, or still equivalently, is such that it contains some $\ar^r_\text{non-linear}$.
+	This property mandates that no argumentative path has been “forgotten” in $\dg$: if some path is found that attacks $\ar_0$ successfully (thus $\ar_0 \in \histend \land \hist \nileadsto D > P$), and if the theory has nothing to answer to it (thus $\dg(\ar_0, \hist) = \emptyset$), then the theory is not Convincing.
+\end{example}
+
+To verify that the property of Convincingness is purely empirical, it is necessary to show that whenever a theory fails it, it is possible to see it using a set of observations of $\ileadsto$. Conversely, it is also desirable to ensure that only the observations that ensure that Convincingness is false count as falsifying a theory.
+The following example may help forging an intuition about what the possible falsifying sets of observations are.
+\begin{example}[Falsification sequences]
+	Let us examine the possible observations that would suffice to show that the theory presented in our running example is not Convincing. 
+	
+	First, one could exhibit a path $\hist$ that attacks $\ar_0$ and does not trigger the strategic defense of the theory. Those are the paths that satisfy $\ar_0 \in \histend \land \hist \nileadsto D > P \land \forall r \in \R: \ar^r_\text{non-linear} \in \range(\hist)$.
+	
+	The second possibility is slightly more demanding, and is the only one that is available if indeed $\ar_0$ $i$-defends $D > P$. It requires first to show that $\ar_\text{linear}$ is a required argument to convince $i$, then to show that this argument fails to convince $i$. For this, two paths are required: $\hist^0 \in \allhist \suchthat \ar_0 \in \histend[0] \land \hist^0 \nileadsto D > P \land [\exists r \in \R \suchthat \ar^r_\text{non-linear} \in \range(\hist^0)]$, and $\hist^1 \in \allhist \suchthat \ar_\text{linear} \in \histend[1] \land \hist^1 \nileadsto D > P$.
+\end{example}
+
+NB suffices to prove that any $\ar_k \in (\dgip)^k$ iff $\exists (\ar_0, \hist^0, \ar_1 = \dg(\ar_0, \hist^0), …, \ar_k)$ with $\ar_0 \in \histend \land \hist \nileadsto \phi$.
+
+Define a falsification sequence for $(i, \ar_0, \phi)$, with $\ar_0 \gleadsto \phi$, thus $\ar_0$ an initial argument for $\phi$, as a finite sequence $(\hist^k)_{k \in \intvl{0, N}}$, for some $N \in \N$, such that it presents successive challenges, which means the following. 
+Given $k \in \intvl{0, N}$, assuming $\ar_k$ is defined, define $\ar_{k + 1} = d(\ar_k, \hist^k)$ if $d(\ar_k, \hist^k) ≠ \emptyset$ and say that $\ar_{k + 1}$ is undefined otherwise.
+%Define the \emph{defending} sequence of arguments as a finite sequence of arguments $\ar_{k + 1} = d(\ar_k, \hist^k)$, for $k \in \intvl{1, N}$, as long as $d(\ar_k, \hist^k)$ is not empty, thus letting the length of the sequence be the first value of $k$ for which $d(\ar_k, \hist^k) = \emptyset$.
+A falsification sequence presents successive challenges iff [$\ar_{k + 1}$ is undefined exactly when $k = N$] and [$\forall k \in \intvl{0, N}: \ar_k \in \histend[k] \land \hist^k \nileadsto \phi$].
+
+%Given $\args \subseteq \allargs$ and $\hist \in \allhist$, recall that the set $\args \cap \range(\hist)$ denotes the arguments that are both in $\args$ and contained in the sequence $\hist$.
+
+%Define a falsification sequence for $(i, \ar_0, \phi)$, with $\ar_0 \gleadsto \phi$, thus $\ar_0$ an initial argument for $\phi$, as a finite sequence $\hist^1, \hist^3, …, \hist^{N + 1}$, for some $N \in 2\N$, such that it presents successive challenges, which means the following. 
+%Given $k \in 2\N \suchthat k ≤ N$, $\ar_k \in \allargs$ and $\hist^{k + 1} \in \allhist$, 
+%define $\args_{k + 1} = \gbeatsinv(\ar_k) \cap \range(\hist^{k + 1})$; 
+%define $\dargs[k + 2] = \dbeatsinv(\args_{k + 1})$ as those fragments defending against the anticipated attackers $\args_{k + 1}$; 
+%and, if $\args_{k + 1} ≠ \emptyset$ (equivalently, if $\dargs[k + 2] ≠ \emptyset$), define $\ar_{k + 2} = \ar_k + \dargs[k + 2]$. 
+%The sequence presents successive challenges iff, $\forall k \in 2\N \suchthat k ≤ N$, we have that $\ar_k \in \histend[k + 1]$, $\hist^{k + 1} \nileadsto \phi$, and $[\args_{k + 1} = \emptyset ⇔ k = N]$.
 
 A descriptive theory has no falsification sequence iff $\forall (i, \ar_0, \phi)$, no finite sequence of paths present successive challenges.
 
@@ -784,12 +830,12 @@ Given $i \in I, \prop \in \gpropse, \ar \in \allargs$, define $\di(\ar) \subsete
 Given $\ar \in \allargs$, define $\dip(\ar) = \set{(\ar + \dargs) \suchthat \dargs \in \di(\ar)}$, representing the subset of defenders of $\ar$ required for convincing $i$ of $\prop$.
 Given $i \in I, \prop \in \gpropse$, define $\gargs \subseteq \allargs$ as the transitive closure of ${\gleadstoinv}(\prop)$ under $\dip$: $\gargs = \cup_{k \in \N} (\dip)^k({\gleadstoinv}(\prop))$.
 
-\begin{definition}[Convincingness]
-	An empirical theory is \emph{convincing} iff $\forall i \in I, \prop \in \gpropse, \ar \in \gargs: \ar$ $i$-defends $\prop$.
-\end{definition}
-
 A \emph{falsification instance} of an empirical theory is a tuple $(i, \prop, \hist, \ar) \in I × \gpropse × \allhist × \gargs$ such that $\gbeatsinv(\ar) \cap \range(\hist) = \emptyset \land \ar \in \histend \land \hist \nileadstost \prop$. 
+
+A \emph{falsification instance} of an empirical theory is a tuple $(i, \prop, \hist, \ar) \in I × \gpropse × \allhist × \gargs$ such that $\ar \in \histend \land \hist \nileadsto \prop \land \dg(\ar, \hist) = \emptyset$. 
 I also write that $(i, \prop, \hist, \ar)$ falsifies $\gamma$ to mean that it is a falsification instance of $\gamma$.
+We readily see that \cref{th:convnofals} is true.
+With a falsification sequence $(\ar_0, \hist^0, \ar_1, \hist^1)$, we see that $\ar_1 \in (\dgip)^1(\ar_0)$, and similarly for longer falsification sequences, $\ar_k \in (\dgip)^k(\ar_0)$.
 
 \begin{lemma}
 	\label{th:convnofals}
