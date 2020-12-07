@@ -180,6 +180,10 @@ The field of formal argumentation theory has developed technical approaches to d
 
 The field of Empirical social choice \citep{gaertner_empirical_2012} investigates individuals’s judgments about fairness: in a typical laboratory experiment, subjects are described some setting requiring to distribute resources among a set of individuals, and are asked to choose a distribution that they consider fair. These interesting approaches permit to study empirically the sense of fairness of real individuals, and compare them to social choice theories. They are distinct from the currently proposed approach as they seek to obtain their a priori sense of fairness, rather than aim at observing how subjects would appreciate (possibly counter-intuitive) claims about justice when they are backed by (possibly elaborate) arguments; and do not specifically aim to prescribe to an individual.
 
+The phrase “\acl{DP}” has been used by \citet{orchard-webb_deliberative_2016, kenter_deliberative_2017} in the context of group deliberation. As used in this article, the concept of deliberation does not necessarily refer to a group deliberation: this approach is agnostic as to the provenance of the arguments.
+
+The idea of using axiomatized decision theories to systematically generate explanations targeted to non experts has received much interest recently \citep{labreuche_general_2011, belahcene_explaining_2017, belahcene_accountable_2018, belahcene_comparing_2019, cailloux_arguing_2016, boixel_automated_2020, peters_explainable_2020, procaccia_axioms_2019}. These works are most interesting from the point of view of producing concrete theories of \ac{DJ}, but do not discuss how to systematically exploit decision makers’s judgments about the strengths of texts promoting different alternatives. They should therefore be viewed as complementary to this proposition.
+
 \subsection{Preference purification}
 \label{sec:purification}
 An approach much discussed recently is the one of preference purification \citep{bernheim_beyond_2009, rubinstein_eliciting_2011, infante_preference_2016}.
@@ -205,7 +209,7 @@ Some axioms arguably seem innocuous. For example, Pareto-dominance requires that
 Another path to obtain reflective preferences has been followed: the one of deliberation, an umbrella term by which I designate processes, either, involving discussions between an analyst and a decision-maker while querying her preferences in view of building a formal model of them \citep{raiffa_back_1985, keeney_decisions_1993, roy_multicriteria_1996, belton_multiple_2002}, or involving group discussions, with presentations from experts to an audience and internal deliberation phases \citep{fishkin_when_2011, chappell_deliberative_2012}, aiming to obtain well-informed preferences. 
 The term as used here also includes the informal use of debiasing techniques: techniques that aim at encouraging individuals to think more about their decision problem in order to reduce occurrence of behavioral “mistakes”. Examples include suggesting the individuals to consider alternative points of view, or asking them to give reasons for their choices (an insightful article by \citet{mitchell_libertarian_2004} cite many such studies). 
 \commentYM{il me semble nécessaire ici de mentionner aussi tous les dispositifs participatifs et de concertation employés en routine dans les prises de décisions relatives aux politiques publiques et leur mise en oeuvre}
-\commentOC{Je m’interroge. Ça me semble de pus en plus éloigné du scope, car je m’intéresse aux préférences d’un individu donné, hors questions d’agrégation.}
+\commentOC{Je m’interroge. Ça me semble de plus en plus éloigné du scope, car je m’intéresse aux préférences d’un individu donné, hors questions d’agrégation.}
 
 A major problem of these techniques is that they are not easily reproducible \commentYM{il faudrait expliquer en quel sens}, because they require informal interactions with experts. Furthermore, the resulting preferences elicited from the subjects might reflect properties of the personalities of the intervening experts or group-dynamic effects rather than true reflective preferences of the individuals. 
 
@@ -288,7 +292,7 @@ The term argument generally evokes a debate, a metaphor appropriate for the comp
 The set of individuals in a normative theory represents the situations, socio-economic conditions, acquired diplomas, or other observable features of individuals that must be satisfied for the theory to apply to them \commentYM{cela ressemble plus à un domaine d'application, qu'à un ensemble d'individus auxquels ça s'applique. Dans ce cas pourquoi ne pas le dire clairement ?}.
 
 The protocol of observation in a normative theory defines how the theory proposes to present a sequence \commentYM{qu'est-ce qu'une séquence ? y a-t-il une notion de temporalité ? de lien logique entre les arguments ? une nécessité que chaque élément de la "séquence" attaque le précédent ? les embranchements sont-ils exclus ? les cycles ? bref, de quoi parles-tu ?}
-\commentOCf{C’est le \href{https://en.wikipedia.org/wiki/Sequence}{terme habituel} en mathématiques, à ma connaissance.}
+\commentOCf{C’est le \hrefblue{https://en.wikipedia.org/wiki/Sequence}{\underline{terme habituel}} en mathématiques, à ma connaissance.}
 of arguments to an individual, and how to observe her resulting judgment about a proposition of interest. This protocol permits to determine whether a sequence of arguments “leads” a given individual to a given proposition. If the arguments are texts and propositions are of the form “I ought to acquire alternative $a$ rather than $b$”, an example of such a protocol is: present each argument (each text) in the sequence to the individual, asking her to read it carefully; then give the individual a choice between $a$ and $b$; the sequence of arguments is considered to having led the individual to the proposition “I ought to acquire alternative $a$ rather than $b$” iff he chose $a$ rather than $b$.
 
 To define formally the notion of an observation protocol, the concept of a sequence of arguments is required.
@@ -575,7 +579,7 @@ Given $\ar \in \gargs$, say that $\ar$ $i$-defends $\phi$ iff $\forall \hist \in
 \end{example}
 
 To verify that the property of Convincingness is purely empirical, it is necessary to show that whenever a theory fails it, it is possible to see it using a set of observations of $\allleadsto$. Conversely, it is also desirable to ensure that only the observations that ensure that Convincingness is false count for falsifying a theory.
-The following example may help forging an intuition about what the possible falsifying sets of observations are.
+The following example may help to form an intuition about what the possible falsifying sets of observations are.
 \begin{example}[Falsification sequences]
 	Let us examine the possible observations that would suffice to show that the theory presented in our running example is not Convincing. 
 	
@@ -600,7 +604,22 @@ A sequence $(\hist^k)_{k \in \intvl{0, N}}$ presents successive challenges iff [
 
 A descriptive theory has no falsification sequence iff $\forall (i, \ar_0, \phi)$, no finite sequence of paths present successive challenges.
 
+\subsection{Attempt}
+As $\ileadsto \subseteq I × \allhist × \Phi$, the set of a priori possible $\ileadsto$ is $\powerset{I × \allhist × \Phi}$.
+
+A claim $C$ is a subset of $\powerset{I × \allhist × \Phi}$.
+
 \commentOC{Suffices to prove that any $\ar_k \in (\dgip)^k$ iff $\exists (\ar_0, \hist^0, \ar_1 = \dg(\ar_0, \hist^0), …, \ar_k)$ with $\ar_0 \in \histend \land \hist \nileadsto \phi$.}
+\commentOC{We want a descriptive theory to have a property $P$ that implies validity, and that is falsifiable, that is, $P$ implying that no finite sequence of alphas exist in some given set.}
+A theory $\gamma$ must define a set $P$ of possible $\ileadsto$ and the theory claims that any effective $\ileadsto$ is in $P$. It must be visible that no, if no, with a finite set of observations of $\ileadsto$.
+
+A claim about $\ileadsto$ is a set $P \subseteq I × \allhist × \Phi$. A claim $P$ is falsifiable iff $\exists O \subseteq I × \allhist × \Phi$, $O$ finite, such that $P \cap \set{{\leadsto} \suchthat {\leadsto} \supseteq O} = \emptyset$.
+
+The theory is falsifiable iff $\exists$ finite $O$ st no completion of it makes the theory convincing.
+
+In other words, such a set $O$ is sufficient to show that the theory is not convincing.
+
+Theorem: the theory is falsifiable iff it says more than nothing.
 
 \begin{theorem}
 	\label{th:svalid}
