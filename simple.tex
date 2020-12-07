@@ -578,6 +578,18 @@ Given $\ar \in \gargs$, say that $\ar$ $i$-defends $\phi$ iff $\forall \hist \in
 	This property mandates that no argumentative path has been “forgotten” in $\dg$: if some path is found that attacks $\ar_0$ successfully (thus $\ar_0 \in \histend \land \hist \nileadsto D > P$), and if the theory has nothing to answer to it (thus $\dg(\ar_0, \hist) = \emptyset$), then the theory is not Convincing.
 \end{example}
 
+It is now necessary to verify that, first, the claim of convincingness is falsifiable, and second, that it suffices to prove validity. 
+
+Let us first clarify what falsifiability formally means in our context. Define a claim $C \subseteq \powerset{I × \allhist × \Phi}$ as a subset of the possible relations $\leadsto$. When a theory claims that $C$, it claims that $\leadsto$ is indeed a member of $C$. Say that a set of observations $O \subseteq I × \allhist × \Phi$ falsifies the claim $C$ iff $C \cap \set{R \subseteq O} = \emptyset$. In such a case, $C$ contains no possible relation $R$ compatible with the observations in $O$, or in other words, the observations $O$ prove that ${\leadsto} \notin C$. Say that $C$ is falsifiable iff some finite set of observation falsifies it.
+\begin{example}[Two claims]
+	Given a normative theory and $\phi \in \Phi$, the claim $C_1 = \set{{\leadsto} \subseteq I × \allhist × \Phi \suchthat \forall i \in I, \exists \ar \in \allargs \suchthat \ar \ileadstost \phi}$ corresponds to claiming that for all individuals $i \in I$, some argument is $i$-decisive for $\phi$. If the set of arguments is infinite, $C_1$ is not falsifiable.  
+	Given $\ar \in \allargs$ and $\phi \in \Phi$, the set $C_2 = \set{{\leadsto} \subseteq I × \allhist × \Phi \suchthat \forall i \in I, \ar \ileadstost \phi}$ denotes the claim that all individuals will consider the argument $\ar$ as decisive for $\phi$. This claim is falsified by any observation such that $\hist \nileadsto \phi$ for some $\hist \in \allhist$ with $\ar \in \histend$, thus, $C_2$ is falsifiable.
+\end{example}
+
+Let the claim of a descriptive theory by defined as $C = …$.
+\begin{theorem}
+	…
+	
 To verify that the property of Convincingness is purely empirical, it is necessary to show that whenever a theory fails it, it is possible to see it using a set of observations of $\allleadsto$. Conversely, it is also desirable to ensure that only the observations that ensure that Convincingness is false count for falsifying a theory.
 The following example may help to form an intuition about what the possible falsifying sets of observations are.
 \begin{example}[Falsification sequences]
