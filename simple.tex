@@ -548,7 +548,7 @@ The following less trivial example of a descriptive theory illustrates a theory 
 	This defines a descriptive theory of depth $2$.
 \end{example}
 
-\subsection{Validity and falsification sequences}
+\subsection{Validity and falsification}
 \label{sec:validity}
 An empirical theory claims to be valid, in the following sense.
 \begin{definition}[Validity]
@@ -556,7 +556,7 @@ An empirical theory claims to be valid, in the following sense.
 \end{definition}
 To achieve this goal, it claims that it is able to produce decisive arguments for its supported propositions.
 These arguments can vary according to the individual $i \in I$.
-Given an individual, the theory claims that a decisive argument will be systematically found by starting from an initial argument given by $\gleadsto$, and following a chain of defense defined by $\dg$ as required, depending on the paths that challenge the arguments produced along the way, as judged by the individual $i$. The property that a theory manages to systematically produce decisive arguments in such a way is named Convincingness. Defining it requires to define first the notion of required arguments.
+Given an individual, the theory claims that a decisive argument will be systematically found by starting from an initial argument given by $\gleadsto$, and following a chain of defense defined by $\dg$ as required, depending on the paths that challenge the arguments produced along the way, as judged by the individual $i$. The property that a theory manages to systematically produce decisive arguments in such a way is named Convincingness. Defining it precisely requires to define first the notion of required arguments.
 
 Given $i \in I, \prop \in \gpropse$, define $\dgip(\ar) = \set{\dg(\ar, \hist) \suchthat \ar \notin \histend \land \hist \nileadsto \phi} \subseteq \dg(\ar)$, representing the subset of defenders of $\ar$ required for convincing $i$ of $\prop$.
 Given any set $S$ and function $f: S → S$, let $f^0$ represent the identity function, and given $k \in \N$, let $f^{k + 1} = f \circ f^k$.
@@ -578,69 +578,36 @@ Given $\ar \in \gargs$, say that $\ar$ $i$-defends $\phi$ iff $\forall \hist \in
 	This property mandates that no argumentative path has been “forgotten” in $\dg$: if some path is found that attacks $\ar_0$ successfully (thus $\ar_0 \in \histend \land \hist \nileadsto D > P$), and if the theory has nothing to answer to it (thus $\dg(\ar_0, \hist) = \emptyset$), then the theory is not Convincing.
 \end{example}
 
-It is now necessary to verify that, first, the claim of convincingness is falsifiable, and second, that it suffices to prove validity. 
+It is now necessary to verify that the claim of convincingness is, first, falsifiable, and second, sufficient to yield validity. 
 
-Let us first clarify what falsifiability formally means in our context. Define a claim $C \subseteq \powerset{I × \allhist × \Phi}$ as a subset of the possible relations $\leadsto$. When a theory claims that $C$, it claims that $\leadsto$ is indeed a member of $C$. Say that a set of observations $O \subseteq I × \allhist × \Phi$ falsifies the claim $C$ iff $C \cap \set{R \subseteq O} = \emptyset$. In such a case, $C$ contains no possible relation $R$ compatible with the observations in $O$, or in other words, the observations $O$ prove that ${\leadsto} \notin C$. Say that $C$ is falsifiable iff some finite set of observation falsifies it.
-\begin{example}[Two claims]
-	Given a normative theory and $\phi \in \Phi$, the claim $C_1 = \set{{\leadsto} \subseteq I × \allhist × \Phi \suchthat \forall i \in I, \exists \ar \in \allargs \suchthat \ar \ileadstost \phi}$ corresponds to claiming that for all individuals $i \in I$, some argument is $i$-decisive for $\phi$. If the set of arguments is infinite, $C_1$ is not falsifiable.  
-	Given $\ar \in \allargs$ and $\phi \in \Phi$, the set $C_2 = \set{{\leadsto} \subseteq I × \allhist × \Phi \suchthat \forall i \in I, \ar \ileadstost \phi}$ denotes the claim that all individuals will consider the argument $\ar$ as decisive for $\phi$. This claim is falsified by any observation such that $\hist \nileadsto \phi$ for some $\hist \in \allhist$ with $\ar \in \histend$, thus, $C_2$ is falsifiable.
-\end{example}
+Let us first clarify what falsifiability formally means in our context. So far, convincingness is defined only for the “real” relation $\leadsto$; we now need it defined more generally. Given any relation $R \subseteq I × \allhist × \Phi$, say that a descriptive theory is convincing under $R$ whenever it is convincing, as defined above, but replacing $\leadsto$ by $R$. 
+We can now speak counterfactually of the theory being convincing, or not, assuming the observable relation is $R$ instead of $\leadsto$. 
+Observations of the relation $\leadsto$ can in general include positive statements, of the form $\hist \ileadsto \phi$, and negative ones, of the form $\hist \nileadsto \phi$. (One way to obtain such negative observations is to use an incompatible proposition $\phi'$ and deduce from $\hist \ileadsto \phi'$ that $\hist \nileadsto \phi$.) A relation $R \subseteq I × \allhist × \Phi$ is compatible with the positive observations $O \subseteq I × \allhist × \Phi$ and the negative observations $O' \subseteq I × \allhist × \Phi$ iff $O \subseteq R \land R \cap O' = \emptyset$.
+The claim of convincingness is said to be falsifiable iff there exists finite set of observations $O, O' \subseteq I × \allhist × \Phi$ such that $\forall R \subseteq I × \allhist × \Phi \suchthat O \supseteq R \land R \cap O' = \emptyset$, the theory is not convincing under $R$. 
+In such a case, no possible relation $R$ compatible with the observations $O, O'$ make the theory convincing; in other words, the observations $O, O'$ prove that the theory is not convincing.
+%\begin{example}[Two claims]
+%	Given a normative theory and $\phi \in \Phi$, the claim $C_1 = \set{{\leadsto} \subseteq I × \allhist × \Phi \suchthat \forall i \in I, \exists \ar \in \allargs \suchthat \ar \ileadstost \phi}$ corresponds to claiming that for all individuals $i \in I$, some argument is $i$-decisive for $\phi$. If the set of arguments is infinite, $C_1$ is not falsifiable.  
+%	Given $\ar \in \allargs$ and $\phi \in \Phi$, the set $C_2 = \set{{\leadsto} \subseteq I × \allhist × \Phi \suchthat \forall i \in I, \ar \ileadstost \phi}$ denotes the claim that all individuals will consider the argument $\ar$ as decisive for $\phi$. This claim is falsified by any observation such that $\hist \nileadsto \phi$ for some $\hist \in \allhist$ with $\ar \in \histend$, thus, $C_2$ is falsifiable.
+%\end{example}
 
-Let the claim of a descriptive theory by defined as $C = …$.
+The following theorem states that the descriptive theories defined here are falsifiable, unless they state nothing about anybody’s \ac{DJ}. \Cref{sec:prooffals} proves it and describes the set of falsifiers of such theories.
+This theorem implicitly assumes full observability, that is, it supposes that any positive or negative observations are in principle observable and thus available for falsification attempts. Further works should investigate to which extent this hypothesis can be relaxed.
 \begin{theorem}
-	…
-	
-To verify that the property of Convincingness is purely empirical, it is necessary to show that whenever a theory fails it, it is possible to see it using a set of observations of $\allleadsto$. Conversely, it is also desirable to ensure that only the observations that ensure that Convincingness is false count for falsifying a theory.
-The following example may help to form an intuition about what the possible falsifying sets of observations are.
-\begin{example}[Falsification sequences]
-	Let us examine the possible observations that would suffice to show that the theory presented in our running example is not Convincing. 
-	
-	First, one could exhibit a path $\hist$ that attacks $\ar_0$ and does not trigger the strategic defense of the theory. Those are the paths that satisfy $\ar_0 \in \histend \land \hist \nileadsto D > P \land \forall r \in \R: \ar^r_\text{non-linear} \in \range(\hist)$.
-	
-	The second possibility is slightly more demanding, and is the only one that is available if indeed $\ar_0$ $i$-defends $D > P$. It requires first to show that $\ar_0 + \ar_\text{linear}$ is a required argument to convince $i$, then to show that this argument fails to convince $i$. For this, two paths are required: $\hist^0 \in \allhist \suchthat \ar_0 \in \histend[0] \land \hist^0 \nileadsto D > P \land \dg(\ar_0, \hist^0) = \ar_0 + \ar_\text{linear}$, and $\hist^1 \in \allhist \suchthat (\ar_0 + \ar_\text{linear}) \in \histend[1] \land \hist^1 \nileadsto D > P$.
-\end{example}
-
-Define a falsification sequence for $(i, \ar_0, \phi)$, with $\ar_0 \gleadsto \phi$, thus $\ar_0$ an initial argument for $\phi$, as a finite sequence $(\hist^k)_{k \in \intvl{0, N}}$, for some $N \in \N$, such that it presents successive challenges, which means the following. 
-Given $k \in \intvl{0, N}$, assuming $\ar_k$ is defined, define $\ar_{k + 1} = d(\ar_k, \hist^k)$ if $d(\ar_k, \hist^k) ≠ \emptyset$ and say that $\ar_{k + 1}$ is undefined otherwise.
-%Define the \emph{defending} sequence of arguments as a finite sequence of arguments $\ar_{k + 1} = d(\ar_k, \hist^k)$, for $k \in \intvl{1, N}$, as long as $d(\ar_k, \hist^k)$ is not empty, thus letting the length of the sequence be the first value of $k$ for which $d(\ar_k, \hist^k) = \emptyset$.
-A sequence $(\hist^k)_{k \in \intvl{0, N}}$ presents successive challenges iff [$\ar_{k + 1}$ is undefined exactly when $k = N$] and [$\forall k \in \intvl{0, N}: \ar_k \in \histend[k] \land \hist^k \nileadsto \phi$].
-
-%Given $\args \subseteq \allargs$ and $\hist \in \allhist$, recall that the set $\args \cap \range(\hist)$ denotes the arguments that are both in $\args$ and contained in the sequence $\hist$.
-
-%Define a falsification sequence for $(i, \ar_0, \phi)$, with $\ar_0 \gleadsto \phi$, thus $\ar_0$ an initial argument for $\phi$, as a finite sequence $\hist^1, \hist^3, …, \hist^{N + 1}$, for some $N \in 2\N$, such that it presents successive challenges, which means the following. 
-%Given $k \in 2\N \suchthat k ≤ N$, $\ar_k \in \allargs$ and $\hist^{k + 1} \in \allhist$, 
-%define $\args_{k + 1} = \gbeatsinv(\ar_k) \cap \range(\hist^{k + 1})$; 
-%define $\dargs[k + 2] = \dbeatsinv(\args_{k + 1})$ as those fragments defending against the anticipated attackers $\args_{k + 1}$; 
-%and, if $\args_{k + 1} ≠ \emptyset$ (equivalently, if $\dargs[k + 2] ≠ \emptyset$), define $\ar_{k + 2} = \ar_k + \dargs[k + 2]$. 
-%The sequence presents successive challenges iff, $\forall k \in 2\N \suchthat k ≤ N$, we have that $\ar_k \in \histend[k + 1]$, $\hist^{k + 1} \nileadsto \phi$, and $[\args_{k + 1} = \emptyset ⇔ k = N]$.
-
-A descriptive theory has no falsification sequence iff $\forall (i, \ar_0, \phi)$, no finite sequence of paths present successive challenges.
-
-\subsection{Attempt}
-As $\ileadsto \subseteq I × \allhist × \Phi$, the set of a priori possible $\ileadsto$ is $\powerset{I × \allhist × \Phi}$.
-
-A claim $C$ is a subset of $\powerset{I × \allhist × \Phi}$.
-
-\commentOC{Suffices to prove that any $\ar_k \in (\dgip)^k$ iff $\exists (\ar_0, \hist^0, \ar_1 = \dg(\ar_0, \hist^0), …, \ar_k)$ with $\ar_0 \in \histend \land \hist \nileadsto \phi$.}
-\commentOC{We want a descriptive theory to have a property $P$ that implies validity, and that is falsifiable, that is, $P$ implying that no finite sequence of alphas exist in some given set.}
-A theory $\gamma$ must define a set $P$ of possible $\ileadsto$ and the theory claims that any effective $\ileadsto$ is in $P$. It must be visible that no, if no, with a finite set of observations of $\ileadsto$.
-
-A claim about $\ileadsto$ is a set $P \subseteq I × \allhist × \Phi$. A claim $P$ is falsifiable iff $\exists O \subseteq I × \allhist × \Phi$, $O$ finite, such that $P \cap \set{{\leadsto} \suchthat {\leadsto} \supseteq O} = \emptyset$.
-
-The theory is falsifiable iff $\exists$ finite $O$ st no completion of it makes the theory convincing.
-
-In other words, such a set $O$ is sufficient to show that the theory is not convincing.
-
-Theorem: the theory is falsifiable iff it says more than nothing.
-
-\begin{theorem}
-	\label{th:svalid}
-	A normatively adequate empirical theory that has no falsification sequence is valid.
+	\label{th:convfals}
+	The claim of convincingness is falsifiable iff ${\gleadsto} ≠ \emptyset$.
 \end{theorem}
+It can also be seen that if a theory is not constrained in its depth, its claim of convincingness may be unfalsifiable, thus the hypothesis of finite depth is required to obtain this theorem. The formal proof of this fact is omitted because it is not especially enlightening; that this fact holds can be seen by examining the use of this hypothesis in the proof of \cref{th:convfals}.
 
+Only remains now to prove that convincingness, together with normative adequacy, is sufficient to obtain validity. The proof is also provided in \cref{sec:prooffals}.
+\begin{theorem}
+	\label{th:convvalid}
+	A normatively adequate empirical theory that is convincing is valid.
+\end{theorem}
+ 
 \subsection{Effectively comparing models}
 \label{sec:compare}
 Recall from \cref{sec:coh} that $\incompat = \set{(\prop, \prop') \suchthat \forall \hist \in \allhist: \hist \ileadsto \prop ⇒ \hist \nileadsto \prop'}$ denotes the set of pairs of incompatible propositions.
+\commentOC{Does this mandate completeness?}
 Given two empirical theories $\gamma$ and $\delta$ for a given normative theory, say that they disagree about $(\prop, \propbar) \in \incompat$ iff $\prop \in \gpropse[\gamma] \land \propbar \in \gpropse[\delta]$. Say that the theories are incompatible iff there is at least one pair $(\prop, \propbar) \in \incompat$ that they disagree about.
 
 A path $\histp$ starts with a path $\hist$ iff $\card{\histp} ≥ \card{\hist}$ and $\forall k \in \intvl{1, \card{\hist}}: \histp_k = \hist_k$.
@@ -823,6 +790,48 @@ This example permits to ensure that the constraint of bounded depth does not man
 %	$\ard[k] \in \alldargs$, define $\ar_0 + \set{\ard[k]} = \ar_k$. 
 	Consider an empirical theory $(\gleadsto, \gbeats, \alldargs, \dbeats, +)$ for the normative theory $(\allprops, \allargs, I, {\allleadsto})$. That this is indeed a legal empirical theory can be confirmed by checking that all constraints are satisfied, in particular, $(\dfp)^2(\gleadstoinv(\allprops)) = \dfp(\dfp(\ar_0)) = \dfp(\set{\ar_k \suchthat k \in 2\N^*}) = \emptyset$ because there is no anticipated attack against any argument in $\set{\ar_k \suchthat k \in 2\N^*}$. This theory involves infinite relations $\gbeats$ and $\dbeats$.
 \end{proof}
+
+\section{Empirical validity, first}
+\label{sec:prooffals}
+To verify that the property of Convincingness is purely empirical, it is necessary to show that whenever a theory fails it, it is possible to see it using a set of observations of $\allleadsto$. Conversely, it is also desirable to ensure that only the observations that ensure that Convincingness is false count for falsifying a theory.
+In other words, it is desirable to capture exactly which sets of observations falsify the claim of convincingness. This will also provide a proof of \cref{th:convfals}.
+
+The following example may help to form an intuition about what the possible falsifying sets of observations are.
+\begin{example}[Falsification sequences]
+	Let us examine the possible observations that would suffice to show that the theory presented in our running example is not Convincing. 
+	
+	First, one could exhibit a path $\hist$ that attacks $\ar_0$ and does not trigger the strategic defense of the theory. Those are the paths that satisfy $\ar_0 \in \histend \land \hist \nileadsto D > P \land \forall r \in \R: \ar^r_\text{non-linear} \in \range(\hist)$.
+	
+	The second possibility is slightly more demanding, and is the only one that is available if indeed $\ar_0$ $i$-defends $D > P$. It requires first to show that $\ar_0 + \ar_\text{linear}$ is a required argument to convince $i$, then to show that this argument fails to convince $i$. For this, two paths are required: $\hist^0 \in \allhist \suchthat \ar_0 \in \histend[0] \land \hist^0 \nileadsto D > P \land \dg(\ar_0, \hist^0) = \ar_0 + \ar_\text{linear}$, and $\hist^1 \in \allhist \suchthat (\ar_0 + \ar_\text{linear}) \in \histend[1] \land \hist^1 \nileadsto D > P$.
+\end{example}
+
+Define a falsification sequence for $(i, \ar_0, \phi)$, with $\ar_0 \gleadsto \phi$, thus $\ar_0$ an initial argument for $\phi$, as a finite sequence $(\hist^k)_{k \in \intvl{0, N}}$, for some $N \in \N$, such that it presents successive challenges, which means the following. 
+Given $k \in \intvl{0, N}$, assuming $\ar_k$ is defined, define $\ar_{k + 1} = d(\ar_k, \hist^k)$ if $d(\ar_k, \hist^k) ≠ \emptyset$ and say that $\ar_{k + 1}$ is undefined otherwise.
+%Define the \emph{defending} sequence of arguments as a finite sequence of arguments $\ar_{k + 1} = d(\ar_k, \hist^k)$, for $k \in \intvl{1, N}$, as long as $d(\ar_k, \hist^k)$ is not empty, thus letting the length of the sequence be the first value of $k$ for which $d(\ar_k, \hist^k) = \emptyset$.
+A sequence $(\hist^k)_{k \in \intvl{0, N}}$ presents successive challenges iff [$\ar_{k + 1}$ is undefined exactly when $k = N$] and [$\forall k \in \intvl{0, N}: \ar_k \in \histend[k] \land \hist^k \nileadsto \phi$].
+
+%Given $\args \subseteq \allargs$ and $\hist \in \allhist$, recall that the set $\args \cap \range(\hist)$ denotes the arguments that are both in $\args$ and contained in the sequence $\hist$.
+
+%Define a falsification sequence for $(i, \ar_0, \phi)$, with $\ar_0 \gleadsto \phi$, thus $\ar_0$ an initial argument for $\phi$, as a finite sequence $\hist^1, \hist^3, …, \hist^{N + 1}$, for some $N \in 2\N$, such that it presents successive challenges, which means the following. 
+%Given $k \in 2\N \suchthat k ≤ N$, $\ar_k \in \allargs$ and $\hist^{k + 1} \in \allhist$, 
+%define $\args_{k + 1} = \gbeatsinv(\ar_k) \cap \range(\hist^{k + 1})$; 
+%define $\dargs[k + 2] = \dbeatsinv(\args_{k + 1})$ as those fragments defending against the anticipated attackers $\args_{k + 1}$; 
+%and, if $\args_{k + 1} ≠ \emptyset$ (equivalently, if $\dargs[k + 2] ≠ \emptyset$), define $\ar_{k + 2} = \ar_k + \dargs[k + 2]$. 
+%The sequence presents successive challenges iff, $\forall k \in 2\N \suchthat k ≤ N$, we have that $\ar_k \in \histend[k + 1]$, $\hist^{k + 1} \nileadsto \phi$, and $[\args_{k + 1} = \emptyset ⇔ k = N]$.
+
+A descriptive theory has no falsification sequence iff $\forall (i, \ar_0, \phi)$, no finite sequence of paths present successive challenges.
+
+ \commentOC{Suffices to prove that any $\ar_k \in (\dgip)^k$ iff $\exists (\ar_0, \hist^0, \ar_1 = \dg(\ar_0, \hist^0), …, \ar_k)$ with $\ar_0 \in \histend \land \hist \nileadsto \phi$.}
+\commentOC{We want a descriptive theory to have a property $P$ that implies validity, and that is falsifiable, that is, $P$ implying that no finite sequence of alphas exist in some given set.}
+A theory $\gamma$ must define a set $P$ of possible $\ileadsto$ and the theory claims that any effective $\ileadsto$ is in $P$. It must be visible that no, if no, with a finite set of observations of $\ileadsto$.
+
+A claim about $\ileadsto$ is a set $P \subseteq I × \allhist × \Phi$. A claim $P$ is falsifiable iff $\exists O \subseteq I × \allhist × \Phi$, $O$ finite, such that $P \cap \set{{\leadsto} \suchthat {\leadsto} \supseteq O} = \emptyset$.
+
+The theory is falsifiable iff $\exists$ finite $O$ st no completion of it makes the theory convincing.
+
+In other words, such a set $O$ is sufficient to show that the theory is not convincing.
+
+Theorem: the theory is falsifiable iff it says more than nothing.
 
 \section{Empirical validity}
 \label{sec:append}
