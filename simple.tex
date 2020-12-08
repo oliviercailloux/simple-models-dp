@@ -469,66 +469,68 @@ Achieving practical knowledge of \acp{DJ} is tackled by introducing descriptive 
 \subsection{Definition}
 \label{sec:descrdef}
 In this section, a normative theory of \ac{DJ} $(\allprops, \allargs, I, {\allleadsto})$ is supposed given.
-A descriptive theory for a normative theory of \ac{DJ} is defined as a tuple $(\gC, \gPhi)$, where $\gC \subseteq \powerset{I × \allhist × \Phi}$ is a falsifiable claim and $\gPhi \subseteq \Phi$ are the proposition that the theory claims are in the \acp{DJ} of the individuals.
+A descriptive theory $\gamma$ for a normative theory of \ac{DJ} is defined as a tuple $(\gC, \gPhi)$, where $\gC \subseteq \powerset{I × \allhist × \Phi}$ is a falsifiable claim, $\gPhi \subseteq \Phi$ are the propositions that the theory claims are in the \acp{DJ} of the individuals, and such that its falsifiable claim implies its validity.
 \commentYM{dans la mesure où, à ce stade, je ne comprends pas bien ce que contient une "normative theory", la séparation avec l' "empirical theory" n'est pas claire pour moi} 
-
 These concepts are now defined formally.
 \commentYM{puisque la théorie empirique est une théorie empirique D'UNE CERTAINE THEORIE NORMATIVE, je m'attendrais  à ce qu'on voit apparaître la théorie normative dans la formule de la théorie empirique, non ?}
 
-A claim $\gC \subseteq \powerset{I × \allhist × \Phi}$ represents the theory’s claim about the relation $\leadsto$: the theory claims that $\leadsto \in \gC$. 
-A claim $\gC \subseteq \powerset{I × \allhist × \Phi}$ is falsifiable iff 
+A claim $\gC \subseteq \powerset{I × \allhist × \Phi}$ represents the theory’s claim about the relation $\leadsto$: the theory claims that ${\leadsto} \in \gC$. Such a claim is required to be falsifiable, which is defined as follows.
+Observations of the relation $\leadsto$ can in general include positive statements, of the form $\hist \ileadsto \phi$, and negative ones, of the form $\hist \nileadsto \phi$. (One way to obtain such negative observations is to use an incompatible proposition $\phi'$ and deduce from $\hist \ileadsto \phi'$ that $\hist \nileadsto \phi$.) A relation $R \subseteq I × \allhist × \Phi$ is compatible with the positive observations $O \subseteq I × \allhist × \Phi$ and the negative observations $O' \subseteq I × \allhist × \Phi$ iff $O \subseteq R \land R \cap O' = \emptyset$.
+The claim $\gC$ is said to be falsifiable iff there exists finite set of observations $O, O' \subseteq I × \allhist × \Phi$ such that $\forall R \subseteq I × \allhist × \Phi \suchthat O \subseteq R \land R \cap O' = \emptyset$: $R \notin \gC$. 
+In such a case, no possible relation $R$ compatible with the observations $O, O'$ are in $\gC$; in other words, the observations $O, O'$ prove that the claim that ${\leadsto} \in \gC$ is false.
 
-An initial argumentation relation ${\gleadsto} \subseteq \allargs × \allprops$ defines the set of supported  propositions and, for each supported propositions, the set of initial arguments for these propositions. 
-More precisely, let $\gpropse$, the range of ${\gleadsto}$, be called the propositions \emph{supported} by the descriptive theory.
-Given such a supported proposition $\prop \in \gpropse$, let $\gleadstoinv(\prop) = \set{\ar \in \allargs \suchthat \ar \gleadsto \prop}$ be called the initial arguments in favor of $\prop$.
+The notion of validity permits to relate the falsifiable claim of a theory, $\gC$, and the set of propositions it supports, $\gPhi$.
+\begin{definition}[Validity]
+	An empirical theory is \emph{valid} iff $\forall i \in I, \gPhi \subseteq \iprops$.
+\end{definition}
+The required relationship is as follows: it is required that, assuming normative acceptability, if ${\leadsto} \in \gC$, then the theory is valid.
 
-A defense relation $\dg \subseteq (\allargs × \allhist) × \allargs$ is a right-unique relation, thus given any $\ar \in \allargs, \hist \in \allhist$, $\dg(\ar, \hist)$ is empty or is a singleton. %, and must satisfy $\ar \notin \histend ⇒ \dg(\ar, \hist) = \emptyset$. 
-As is usual for right-unique relations, I write $\dg(\ar_0, \hist) = \ar_1$ instead of $\dg(\ar_0, \hist) = \set{\ar_1}$.
-Say that $\ar_1$ defends $\ar_0$ iff $\exists \hist \suchthat \dg(\ar_0, \hist) = \ar_1$.
-Define $\dg(\ar) = \dfp(\ar) = \dg(\ar, \allhist) = \set{\dg(\ar, \hist) \suchthat \hist \in \allhist} \subseteq \allargs$ as all the defenders of $\ar$.
-The relation $\dg$ defines the argumentation strategy of the theory. Informally speaking, its role is to adapt the arguments the theory produces to the reactions of the individual it is trying to convince. Assuming the theory has played an argument $\ar_0$ and a path $\hist$ challenges some of the conclusions this argument supports (as judged by the individual), $\dg(\ar_0, \hist)$ is the argument that the theory plays as a counter-argument to the path $\hist$.
-%The condition that when $\dg(\ar_0, \hist)$, $\ar_0 \in \histend$ is imposed for simplicity: as will appear, an argument $\ar_0$ needs defense only when it is challenged by some path $\hist \suchthat \ar_0 \in \histend$, thus, letting $\dg$ define counter-arguments to paths not satisfying this condition would be of no use.
-
-This mechanism permits to define defenders of defenders of an argument, $\dg(\dg(\ar))$, defenders of defenders of defenders of an argument, … 
-For the results to be presented here to hold, an empirical theory must be a priori restricted in the maximal “depth” of its argumentation strategy, in the following sense. 
-\commentYM{ok soit, ça semble raisonnable, mais tu n'as pas de raison plus forte, j'adopterais une formulation plus modeste et ouverte, du genre "ça semble souhaitable"}
-Given any set $S$ and function $f: S → S$, let $f^0$ represent the identity function, and given $k \in \N$, let $f^{k + 1} = f \circ f^k$.
-The bounded depth condition on a descriptive theory imposes that
-$\exists k \in \N \suchthat (\dg)^k(\gleadstoinv(\allprops)) = \emptyset$.
-The smallest such $k$ is called the depth of the theory.
-
-Here is an example of a theory that does not use an argumentation strategy, but simply plays an argument that it claims is decisive for everybody.
-\begin{example}[Constant argumentation]
-	Given the normative theory of \cref{ex:twolott}, define ${\gleadsto} = \set{(\ar_0, D > P)}$ and $\dg = \emptyset$. This defines a descriptive theory of depth $1$ for that normative theory.
+\begin{example}[Two claims]
+	Given a normative theory and $\phi \in \Phi$, the claim $C_1 = \set{{\leadsto} \subseteq I × \allhist × \Phi \suchthat \forall i \in I, \exists \ar \in \allargs \suchthat \ar \ileadstost \phi}$ corresponds to claiming that for all individuals $i \in I$, some argument is $i$-decisive for $\phi$. If the set of arguments is infinite, $C_1$ is not falsifiable.  
+	Given $\ar \in \allargs$ and $\phi \in \Phi$, the set $C_2 = \set{{\leadsto} \subseteq I × \allhist × \Phi \suchthat \forall i \in I, \ar \ileadstost \phi}$ denotes the claim that all individuals will consider the argument $\ar$ as decisive for $\phi$. This claim is falsified by any observation such that $\hist \nileadsto \phi$ for some $\hist \in \allhist$ with $\ar \in \histend$, thus, $C_2$ is falsifiable.
+	
+	Consider the pairs $(C_1, \set{\phi})$ and $(C_2, \set{\phi})$: only the second one constitutes a descriptive theory. Both pairs satisfy the requirement that, assuming normative adequacy, if $\leadsto \in \gC$, then $\forall i \in I: \phi \in \iprops$ (with $\gC = C_1$ or $\gC = C_2$), but $C_1$ fails to be falsifiable.
 \end{example}
+
+Returning to our running scenario permits to give more concrete examples. Here is an example of a theory that simply claims that a given argument is decisive for everybody.
+\begin{example}[Constant argumentation]
+	Given the normative theory of \cref{ex:twolott}, and the argument $\ar_0$ as defined there, define $\gC = \set{{\leadsto} \subseteq I × \allhist × \Phi \suchthat \forall i \in I: \ar_0 \ileadstost D > P}$ and $\gPhi = \set{D > P}$. The pair $(\gC, \gPhi)$ is a descriptive theory for that normative theory.
+\end{example}
+
+The following example illustrates that a descriptive theory need not claim that a given argument will convince everybody.
 
 \begin{example}[A theory for $P$]
 	\label{ex:twolottstrings}
-	Define a normative theory as in \cref{ex:twolott}, with an extended set of arguments: define $\allargs$ as the set of all strings. (This correspondingly changes $\allhist$ and thus $\ileadsto$, which must be extended to its new domain.) Define $\ar_0$ as in \cref{ex:twolott}.
+	Define a normative theory as in \cref{ex:twolott}, with an extended set of arguments: define $\allargs$ as the set of all strings. (This correspondingly changes $\allhist$ and thus $\ileadsto$, which must be extended to its new domain.) 
+	Define $\ar_0$ as in \cref{ex:twolott}.
 	Define $\ar_\text{for$P$}$ as the text “We recommend to adopt $P$: it has a much higher probability of winning.” 
-	Define ${\gleadsto} = \set{(\ar_\text{for$P$}, P > D)}$.
-	In order to define a counter-argument to $\ar_0$, given a real number $r \in \R$, define $\ar^r_\text{non-linear}$ as the text “$D$ is better than $P$ in terms of expected gain, but it is in general absurd to reason in terms of expected gain. For example, consider a choice between winning $r$ dollars with probability $0.8$ and winning $2r$ dollars with probability $0.4$. They have the same expected gain, but the first one is clearly preferrable. Therefore, we recommend to rather pick $P$ as it presents a much better chance of earning money”. (The value of $r$ and $2r$ is to be used in the relevant places in  the text.)
-	Define $\dg = \set{(\ar_\text{for$P$}, \hist, \ar^{10^6}_\text{non-linear}) \suchthat \hist \in \allhist \land \ar_0 \in \hist}$. This strategy anticipates a possible attack using $\ar_0$ against $\ar_\text{for$P$}$, and prepares $\ar^{10^6}_\text{non-linear}$ as a counter-argument.
-	This defines a descriptive theory of depth $2$.
+	
+	The goal of this example is to define a theory that argues in favor of $P$ using two arguments. Following the intuition described just above, the theory will first attempt to use $\ar_\text{for$P$}$, a short argument that may be sufficient to convince a subset of individuals. But some may be left unconvinced because of the counter-argument $\ar_0$ in favor of $D$. In that case, the theory is ready to use another argument, more subtle, designed to counter $\ar_0$. The theory claims that at least one of these two arguments is decisive.
+	In order to define a counter-argument to $\ar_0$, define $\ar_\text{non-linear}$ as the text “$D$ is better than $P$ in terms of expected gain, but it is in general absurd to reason in terms of expected gain. For example, consider a choice between winning $10^6$ dollars with probability $0.8$ and winning $2 × 10^6$ dollars with probability $0.4$. These two lotteries have the same expected gain, but the first one is clearly preferrable. Therefore, we recommend to rather pick $P$ as it presents a much better chance of earning money”.
+	
+	Define $\gC = \set{{\leadsto} \suchthat \forall i \in I: \ar_\text{for$P$} \ileadstost P > D \lor \ar_\text{non-linear} \ileadstost P > D}$.
+	Define $\gPhi = \set{P > D}$.
+	Define the theory as $(\gC, \gPhi)$. We see that the claim $\gC$ is indeed falsifiable, as any set of observation including $\alpha^0 \ileadsto D > P$ and $\alpha^1 \ileadsto D > P$ such that $\ar_\text{for$P$} \in \histend^0 \land \ar_\text{non-linear} \in \histend^1$ will falsify the claim.
+	
+	This example thus defines a theory that anticipates a possible attack using $\ar_0$ against $\ar_\text{for$P$}$, and prepares $\ar_\text{non-linear}$ as an alternative argument in case $\ar_\text{for$P$}$ does not convince an individual.
 \end{example}
+Refining such descriptive theories to let them articulate better the arguments and counter-arguments, and describing more realistic argumentative strategies, is left for future work.
 
-The following less trivial example of a descriptive theory illustrates a theory that claims to be able to answer an infinite number of arguments. This also shows that the bounded depth constraint does not imply finiteness of the relation $\dg$.
-\begin{example}[Infinite $\dg$]
+Here is a less trivial example of a descriptive theory that claims to be able to answer an infinite number of arguments. This shows that the requirement of being falsifiable using a finite set of observations does not imply a requirement of dealing only with finitely many arguments.
+\begin{example}[Arguing for $D$ against infinitely many counter-arguments]
 	\label{ex:infinite}
-	Define a normative theory and the arguments $\ar_0$ and $\ar^r_\text{non-linear}$ for any $r \in \R$ as in \cref{ex:twolottstrings}.
+	Suppose that a theorist is interested in defining a more general theory of \ac{DJ}, able to argue about lotteries spanning a wider range of outcomes than just $P$ and $D$. To keep this example reasonably small, as only the intuition is important here, I will describe this theory without introducing all the formal notations required to be fully precise. Assume that a normative theory is defined, similar to the one of \cref{ex:twolottstrings}, but with an enlarged set $\Phi$ covering a lottery space spanning small (a few dollars) to big (millions of dollars) monetary amounts. Assume the theorist postulates that the \acp{DJ} of the individuals in $I$ can be described using a utility function of money the form $u(x) = 1 - \frac{1}{e^{10^{-5}x}}$, where $x$ is the dollar amount.
+	
+	For small monetary amounts, it is reasonable to consider such utility as linear, and thus the argument $\ar_\text{for$P$}$ defined previously can be used for arguing in favor of $P > D$. But this is insufficent, as individuals in $I$ may be convinced by a counter-argument similar to $\ar_\text{non-linear}$ defined above. Our example theorist wants to plan arguments for such individuals that go slightly deeper into the intricacies of utility theory, in order to keep them convinced that the theory applies generally and makes sense. But she also wants to keep the reasoning concrete by instantiating the reasoning on specific monetary amounts, such as $10^6$ dollars as used above. This argumentation should be adaptative, because similar arguments than $\ar_\text{non-linear}$ could be used, using other monetary amounts than $10^6$ dollars.
+
+	Given a real number $r \in \R$, define $\ar^r_\text{non-linear}$ as the same text than $\ar_\text{non-linear}$ but where the value of $r$ and $2r$ is used instead of $10^6$ and $2 × 10^6$.
 	Define ${\gleadsto} = \set{(\ar_0, D > P)}$.
-	Define $\ar_\text{linear}$ as the text “We agree that when the money amounts involved are large and the game is not repeated, there is no good reason to consider only expected gains when choosing a lottery. But in our case, the money amounts are small and the game is repeated. Therefore, expected gain is the right indicator to consider for a systematic and sound decision strategy.”
-	Define $+$ as the concatenation operator over strings.
-	Define $\dg = \set{(\ar_0, \ar^r_\text{non-linear}, \ar_0 + \ar_\text{linear}) \suchthat r \in \R}$. This strategy sets up the argument $\ar_0 + \ar_\text{linear}$ as an answer to any argument of the form described in \cref{ex:twolottstrings}, arguing for non-linearity of utility of money.
-	This defines a descriptive theory of depth $2$.
+	Define $\ar^r_\text{linear}$ as the text “Large monetary amounts should be “discounted” by transforming them before computing expectations using the lottery probabilities. For example, we attribute a “worth” of $1 - \frac{1}{e^{10^{-5} r}} = u(r)$ to the amount $\$ r$ and $1 - \frac{1}{e^{10^{-5} 2 r}} = u(2r)$ to the amount $\$ 2r$, hence, winning $\$ r$ with probability $0.8$ is worth $0.8 × u(r)$, which is equivalent to winning $\$ 2r$ with probability $\frac{0.8 × u(r)}{u(2r)}$. However, in the case of choosing between $P$ and $D$, the monetary amounts are small enough that such discounting does not change significantly the worth of the related lotteries. Therefore, expected gain (with discounted worth for large monetary amounts) is the right indicator to consider for a systematic and sound decision strategy, which leads us to recommend to choose D rather than P.” (The computed values of $u(r)$, $u(2r)$ and $\frac{0.8 × u(r)}{u(2r)}$ have to be used in the text in the relevant places.)
+
 \end{example}
 
 \subsection{Validity and falsification}
 \label{sec:validity}
-An empirical theory claims to be valid, in the following sense.
-\begin{definition}[Validity]
-	An empirical theory is \emph{valid} iff $\forall i \in I, \prop \in \gpropse: \prop \in \iprops$.
-\end{definition}
 To achieve this goal, it claims that it is able to produce decisive arguments for its supported propositions.
 These arguments can vary according to the individual $i \in I$.
 Given an individual, the theory claims that a decisive argument will be systematically found by starting from an initial argument given by $\gleadsto$, and following a chain of defense defined by $\dg$ as required, depending on the paths that challenge the arguments produced along the way, as judged by the individual $i$. The property that a theory manages to systematically produce decisive arguments in such a way is named Convincingness. Defining it precisely requires to define first the notion of required arguments.
@@ -560,10 +562,6 @@ We can now speak counterfactually of the theory being convincing, or not, assumi
 Observations of the relation $\leadsto$ can in general include positive statements, of the form $\hist \ileadsto \phi$, and negative ones, of the form $\hist \nileadsto \phi$. (One way to obtain such negative observations is to use an incompatible proposition $\phi'$ and deduce from $\hist \ileadsto \phi'$ that $\hist \nileadsto \phi$.) A relation $R \subseteq I × \allhist × \Phi$ is compatible with the positive observations $O \subseteq I × \allhist × \Phi$ and the negative observations $O' \subseteq I × \allhist × \Phi$ iff $O \subseteq R \land R \cap O' = \emptyset$.
 The claim of convincingness is said to be falsifiable iff there exists finite set of observations $O, O' \subseteq I × \allhist × \Phi$ such that $\forall R \subseteq I × \allhist × \Phi \suchthat O \supseteq R \land R \cap O' = \emptyset$, the theory is not convincing under $R$. 
 In such a case, no possible relation $R$ compatible with the observations $O, O'$ make the theory convincing; in other words, the observations $O, O'$ prove that the theory is not convincing.
-%\begin{example}[Two claims]
-%	Given a normative theory and $\phi \in \Phi$, the claim $C_1 = \set{{\leadsto} \subseteq I × \allhist × \Phi \suchthat \forall i \in I, \exists \ar \in \allargs \suchthat \ar \ileadstost \phi}$ corresponds to claiming that for all individuals $i \in I$, some argument is $i$-decisive for $\phi$. If the set of arguments is infinite, $C_1$ is not falsifiable.  
-%	Given $\ar \in \allargs$ and $\phi \in \Phi$, the set $C_2 = \set{{\leadsto} \subseteq I × \allhist × \Phi \suchthat \forall i \in I, \ar \ileadstost \phi}$ denotes the claim that all individuals will consider the argument $\ar$ as decisive for $\phi$. This claim is falsified by any observation such that $\hist \nileadsto \phi$ for some $\hist \in \allhist$ with $\ar \in \histend$, thus, $C_2$ is falsifiable.
-%\end{example}
 
 The following theorem states that the descriptive theories defined here are falsifiable, unless they state nothing about anybody’s \ac{DJ}. \Cref{sec:prooffals} proves it and describes the set of falsifiers of such theories.
 This theorem implicitly assumes full observability, that is, it supposes that any positive or negative observations are in principle observable and thus available for falsification attempts. Further works should investigate to which extent this hypothesis can be relaxed.
