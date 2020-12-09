@@ -479,6 +479,8 @@ Observations of the relation $\leadsto$ can in general include positive statemen
 The claim $\gC$ is said to be falsifiable iff there exists finite set of observations $O, O' \subseteq I × \allhist × \Phi$ such that $\forall R \subseteq I × \allhist × \Phi \suchthat O \subseteq R \land R \cap O' = \emptyset$: $R \notin \gC$. 
 In such a case, no possible relation $R$ compatible with the observations $O, O'$ are in $\gC$; in other words, the observations $O, O'$ prove that the claim that ${\leadsto} \in \gC$ is false.
 
+TODO distinguigh: exists real relation $\leadsto$ suchthat exists observations that show the claim is false VS forall relations $\leadsto$ not in C, exists observations that show the claim is false. If I claim "a is dec for phi", if this is false, it is possible to show it (second case); but if I claim "a is dec for phi AND some argument is decisive for phi'" (or "$\alpha \ileadsto \phi$ and some argument is decisive for phi"), then the first case is satisfied, but not the second one: if indeed $\alpha \ileadsto \phi$ but NO arg dec, it is impossible to observe the falsity of the claim. Note that the first requirement is satisfied by BR but not the second one.
+
 The notion of validity permits to relate the falsifiable claim of a theory, $\gC$, and the set of propositions it supports, $\gPhi$.
 \begin{definition}[Validity]
 	An empirical theory is \emph{valid} iff $\forall i \in I, \gPhi \subseteq \iprops$.
@@ -519,13 +521,15 @@ Refining such descriptive theories to let them articulate better the arguments a
 \section{Preferences}
 \label{sec:preferences}
 \subsection{Representing deliberated preferences}
+A normative theory of deliberated choice is a normative theory of DJ using propositions of a certain form and a specific protocol of observation.
+
 Let $\allalts$ be a set of alternatives. 
 
 Define $\allprops_\allalts = \set{\prop_{B, \choices} \suchthat \emptyset ≠ B \subseteq \allalts, \choices \subseteq \powersetz{B}}$.
 
 Let $I$ and $\allargs$ be any sets of individuals and arguments.
 
-The observation protocol goes as follows. Given $i \in I$, $\emptyset ≠ B \subseteq \allalts$ and $\hist \in \allhist$, the individual $i$, after having been presented the arguments in the sequence $\hist$, is asked to choose among a subset of elements from $B$ among which she is indifferent. Define $\emptyset ≠ c^\hist_i(B) \subseteq B$ as the subset that $i$ chooses after exposure to $\hist$.
+The observation protocol goes as follows. Given $i \in I$, $\emptyset ≠ B \subseteq \allalts$ and $\hist \in \allhist$, the individual $i$, after having been presented the arguments in the sequence $\hist$, is asked to choose a subset of elements from $B$ among which she is indifferent. Define $\emptyset ≠ c^\hist_i(B) \subseteq B$ as the subset that $i$ chooses after exposure to $\hist$.
 Define $\hist \ileadsto \prop_{B, \choices}$ iff $c^\hist_i(B) \in \choices$.
 
 This defines normative theories about $\allalts$. Any empirical theory for a normative theory about $\allalts$ that satisfies $\forall \emptyset ≠ B \subseteq \allalts: \exists ! \emptyset ≠ \choices \subseteq \powersetz{B} \suchthat \prop_{B, \choices} \in \gpropse$ is said to be an empirical theory about $\allalts$. The notation $\exists!$ means: there exists a unique element. The requirement that there is at least one is innocuous, as choosing $\choices = \powersetz{B}$ ensures that $\prop_{B, \choices} \in \iprops$, by definition of $\ileadsto$.
