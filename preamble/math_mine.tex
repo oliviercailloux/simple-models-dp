@@ -56,8 +56,8 @@
 \NewDocumentCommand{\propbar}{}{φ'}%\overline
 \NewDocumentCommand{\incompat}{}{\Phi^\mathit{incompat}}
 %%Empirical theory
-\NewDocumentCommand{\gC}{}{C_γ}
-\NewDocumentCommand{\gPhi}{}{\Phi_γ}
+\NewDocumentCommand{\gC}{O{γ}}{C_#1}
+\NewDocumentCommand{\gPhi}{O{γ}}{\Phi_#1}
 \NewDocumentCommand{\gpropse}{O{γ}}{{\hookrightarrow_{#1}}(\allargs)}%e for explicit
 \NewDocumentCommand{\gprops}{O{γ}}{\Phi_{#1}}
 \NewDocumentCommand{\dargs}{O{}}{A^\mathit{d}_{#1}}

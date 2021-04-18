@@ -21,7 +21,7 @@
 		\vbadness=1300
 
 \begin{document}
-\title{Toward theories of deliberated preferences}
+\title{A definition of descriptive theories with normative power}
 \author{Olivier Cailloux}
 \affil{Université Paris-Dauphine, PSL Research University, CNRS, LAMSADE, 75016 PARIS, FRANCE\\
 	\href{mailto:olivier.cailloux@dauphine.fr}{olivier.cailloux@dauphine.fr}
@@ -39,47 +39,49 @@
 \end{abstract}
 
 \section{Introduction} 
-Decision theoretic approaches in economy divide into (at least) two sub-fields. Normative approaches aim at prescribing decision behavior; descriptive approaches aim at describing decision behavior. This partition is not always (depending on the authors) considered a complete cover of decision theoretic approaches in economy, but it is definitely considered disjoint.
+Decision theoretic approaches in economy are classically divided into normative and descriptive approaches. Normative approaches aim at prescribing decision behavior; descriptive approaches aim at describing decision behavior. These two goals are generally considered incompatible: what is normative is not to be judged on descriptive grounds, and conversely. (Some authors consider prescription as the art of using descriptive insights to inform recommendation \citep{bell_decision_1988}, a view that also considers the normative aim as distinct to the descriptive aim.)
 
-As a result, normative approaches are difficult to validate: being considered as non-descriptive in their goal, normative claims cannot be submitted to empirical tests that would permit to verify or falsify them.
-Instead, the validity of a normative approach is to be determined by examining the convincingness power of the normative axioms on which it rests.
+As a result, normative approaches are difficult to validate: being considered as non-descriptive in their goal, normative claims cannot be submitted to empirical tests that would permit to verify or falsify them. Observing a behavior that deviates from a prescribed norm can be taken as a sign that the norm is useful: a decision maker does not hire analysts just to be prescribed the choice that she would have naturally opted for.
+Instead, the validity of a normative approach is generally considered to be determined by examining the convincingness power of the normative axioms on which it rests.
 \commentYM{par qui ? dans le cadre de l'analyse ou en amont ? et pourquoi sur la seule base de la soundness de l'axiome ? pourquoi pas sur la base de ses implications dans des cas concrets ?}
-This validity criterion is unsatisfactory, as it is unable to settle disputes between experts when they arise. In supplement, agreement between experts in decision theory is arguably not enough to ground the practical applicability of some normative axioms: it is desirable to check that decision makers to which the prescription is addressed agree with the particular instanciation of these axioms in the specific decision problem under study. But no systematic, formally defined procedure has been proposed to proceed with this check, to the best of my knowledge. 
+This validity criterion is unsatisfactory, as it is unable to settle disputes between experts when they arise. In supplement, agreement between experts in decision theory is arguably not enough to ground the practical applicability of some normative axioms: one must ensure that decision makers to which the prescription is addressed agree with the particular instanciation of these axioms in the specific decision problem under study. But no systematic, formally defined procedure has been proposed to proceed with this check, to the best of my knowledge. 
 In practical applications, an expert may informally discuss the axioms with the decision maker in order to check endorsement, either in general, or by discussing violations on a case by case basis when they are observed during an interactive elicitation session. 
 The resulting state of conviction arguably depends in part on the rethorical ability of the expert, not solely on the normative strength of the axioms. It may lead to a decision maker accepting a decision procedure considered unsound by many experts in the field, such as the \ac{AHP} \citep{smith_anniversary_2004}. 
 This problem is compounded by the enormous constraining power gained when axioms interact, as the celebrated theorem of Arrow shows dramatically: axioms that appear innocuous when taken alone may precipitate undesirable results when combined.
 
-By contrast, this difficulty of validation is much alleviated with descriptive approaches. Such approaches can be validated by confronting their predictions to empirical data. When two descriptive theories disagree on their predictions, it is often possible to show that at least one of them is wrong with a suitable experiment. 
+By contrast, this difficulty of validation is much alleviated with descriptive approaches. Such approaches can be validated by confronting their predictions to empirical data. When two descriptive theories disagree on their predictions, it is in principle possible to show that at least one of them is wrong with a suitable experiment. 
 \commentYM{quelle différence avec les implications empiriques d'une théorie normative ?}
-Alàs, descriptive approaches as currently existing in decision theory are not suitable to obtain valid prescriptions.
+\commentOC{Est-ce plus clair maintenant ?}
+Alàs, descriptive approaches as currently existing in decision theory are not suitable to obtain valid prescriptions, as we do not merely want to prescribe natural, unreflectful behavior.
 
 This article defines decision theories, called theories of \ac{DJ}, that are both normative and descriptive: they claim to be able to yield valid prescriptions, and these prescriptions are claimed to predict reflective behavior. Reflective behavior as defined in this article is observable, by means of observing the reaction of individuals to arguments. This allows to confront theories of \ac{DJ} to empirical data.
 
-It is by no means my intent to claim that descriptive approaches never face validation difficulties. Experimental tests to arbitrate between theories may not be feasible in practice, descriptions are not always solely about the future, falsificationist approaches in turn raise epistemological difficulties, and so on. Correspondingly, the possible confrontation to empirical data of the theories defined here is no magical means to definitively solve every difficulty about validation. My less naïve claim, that should suffice to motivate the present endeavor, is that it is often a good thing for a theory to make empirically testable claims, from the point of view of the possibilities of solving disputes and validating theories.
-
-As the plural indicates, this article defines a kind of theory, namely, theories of \ac{DJ}, not a specific theory of \ac{DJ}. Specific theories of \ac{DJ} are tailored to a set of situations and yield claims relevant to those situations. For example, a specific theory of \ac{DJ} may be tailored to situations of choice between lotteries involving money. This article adopts a more general point of view. It proposes a definition of what theories of \ac{DJ} should look like, and proves claims that hold for any specific theory of \ac{DJ}, showing that such theories are indeed normative and descriptive.
+This article defines theories of \ac{DJ} in general, not a specific theory of \ac{DJ}. Specific theories of \ac{DJ} are tailored to a set of situations and yield claims relevant to those situations. For example, a specific theory of \ac{DJ} may be tailored to situations of choice between lotteries involving money. This article adopts a more general point of view. It defines a general form for theories of \ac{DJ}, and proves claims that hold for any specific theory of \ac{DJ}, showing that such theories are indeed normative and descriptive in some technical sense to be defined.
 
 Here is an example opposing two simplistic theories of \ac{DJ}, meant to give a flavor of the sort of theories this article aims at defining.
 
-\begin{example}[Two theories about two alternatives]
-	Consider a set $\alts = \set{\alt_1, \alt_2}$ of two alternatives whose evaluations on two criteria (say, price and speed, for concreteness), are $(g_1(\alt_1), g_2(\alt_1))$ and $(g_1(\alt_2), g_2(\alt_2))$, respectively, where $g_i: \alts → \R$ are functions giving the performance of alternatives on the criterion $i$.
-
-	Two theories of \ac{DJ} are opposed on their prediction of the reflexive choice of a given set of individuals $I$ having to choose one alternative among $\alts$.
-	The \emph{satisfycing} theory claims that any individual $i \in I$ ought to choose, and will reflectively choose, whichever alternative is satisfying (and be indifferent if they are both satisfying or if none of them is). An alternative $\alt$ is satisfying iff $g_1(\alt) < t_1 \land g_2(\alt) > t_2$, where $t_1$ and $t_2$ are two real numbers chosen by the theorist.
-	The \emph{additive} theory claims that any individual $i \in I$ ought to choose, and will reflectively choose, whichever alternative $\alt$ maximises $v(\alt) = v_1(g_1(\alt)) + v_2(g_2(\alt))$, where $v_i: \R → \R$ are functions  chosen by the theorist.
+\begin{example}[Two disagreeing theories]
+	\label{ex:two}
+	Consider a set $\allalts$ of items evaluated on two criteria, say, price and speed, using functions $g_1$ and $g_2$, where $g_i: \allalts → \R$ measures the performance of items on the criterion $i$, and a set of individuals $I$ whose reflective choice among $\allalts$ we are interested in. 
+	Consider the following the theories of \ac{DJ}.
 	
-	Assume that the theories disagree, thus, that $\alt_1$ is satisfying and $\alt_2$ is not (say, it fails on the speed criterion), but $v(\alt_2) > v(\alt_1)$. To determine which theory is right, it is insufficient to simply observe what an individual $i \in I$ effectively chooses. This would merely represent her unreflective behavior. The approach adopted in this article to capture \acp{DJ} is to declare that the winning theory (if any) is the one that exhibit arguments able to systematically convince individuals that their proposed choice is to be adopted.
+	The \emph{satisfycing} theory claims that any individual $i \in I$ ought to choose, and will reflectively choose, whichever item is satisfying (and be indifferent if they are both satisfying or if none of them is). An item $\alt$ is satisfying iff $g_1(\alt) < t_1 \land g_2(\alt) > t_2$, where $t_1$ and $t_2$ are two real numbers determined by the theorist.
+
+	The \emph{additive} theory claims that any individual $i \in I$ ought to choose, and will reflectively choose, whichever item $\alt$ maximises $v(\alt) = v_1(g_1(\alt)) + v_2(g_2(\alt))$, where $v_i: \R → \R$ are functions  chosen by the theorist.
+	
+	Consider a set $\alts = \set{\alt_1, \alt_2} \subset \allalts$ of two items, and assume the two theories of \ac{DJ} are opposed on their prediction of the reflexive choice of individuals having to choose one item among $\alts$. Say, $\alt_1$ is satisfying and $\alt_2$ is not, failing on the speed criterion; while $v(\alt_2) > v(\alt_1)$.
+	
+	To determine which theory is right, it is insufficient to simply observe what an individual $i \in I$ effectively chooses. This would merely represent her unreflective behavior. The approach adopted in this article to capture \acp{DJ} is to declare that the winning theory (if any) is the one that exhibit arguments able to systematically convince individuals that their proposed choice is to be adopted.
 	The satisfycing theory could argue as follows: “$\alt_1$ is better than $\alt_2$, because it has a satisfactory price (lower than $t_1$, an acceptable price) and a satisfactory speed (higher than $t_2$, an acceptable performance); whereas $\alt_2$ is not satisfactory on the speed criterion”. 
 	The additive theory could use the following argument: “$\alt_2$ is better than $\alt_1$, because $\alt_2$ is cheaper than $\alt_1$, and this more than compensates for its weaker performance in terms of speed”.
 	
-	The basic intuition on which this article is based is that determining which theory is right requires to present both arguments to $i$, then let her choose one alternative in $\alts$, to see which argument she finds more convincing.
+	The basic intuition on which this article is based is that determining which theory is right requires to present both arguments to $i$, then let her choose one item in $\alts$, to see which argument she finds more convincing.
 \end{example}
-%The proposed approach starts with this intuition that the reaction of individuals to arguments should matter, and presents a general solution to the problem of capturing reflective judgments or choices. Contrary to the simplistic situation of \cref{ex:two}, this solution must allow to confront more than just two arguments or two theories. It should define precisely what is required for a judgment to be called deliberated, and determine formally which hypothesis are required for the prescriptions of a theory of \ac{DJ} to be valid.
 
-The important question about how the parameters $t_i$ and $v_i$ of these illustrative theories would be determined is left aside in this article. This article aims at defining and studying theories of \ac{DJ} in general, not at proposing a way of building a specific theory of \ac{DJ}. %For this example, one can assume that these parameters are determined on the basis of observation of the behavior of some population in some similar circumstances. 
+The proposed approach starts with this intuition that the reaction of individuals to arguments should matter, and presents a general solution to the problem of capturing reflective judgments or choices. Contrary to the simplistic situation of \cref{ex:two}, this solution must allow to confront more than just two arguments or two theories. It should define precisely what is required for a judgment to be called deliberated, and determine formally which hypothesis are required for the prescriptions of a theory of \ac{DJ} to be valid.
 
-The approach it adopts is the following.
-First, it introduces a normative axiom that mandates that whatever propositions the \ac{DM} accepts when reasoning carefully can be prescribed. This notion of careful acceptability is defined formally on the basis of an observable relation that captures the reactions of the \ac{DM} to arguments.
+The pursued path is as follows.
+This article introduces first a normative axiom that mandates that whatever propositions the \ac{DM} accepts when reasoning carefully can be prescribed. This notion of careful acceptability is defined formally on the basis of an observable relation that captures the reactions of the \ac{DM} to arguments.
 This requirement is described here as a normative axiom because it has to be accepted on the basis of its apparent adequacy to capture what is intuitively an acceptable requirement for a procedure aiming at prescribing to a \ac{DM}. In other words, it is not a hypothesis on the observable world: that the requirement holds cannot be proven by observation. It has, in that sense, a similar epistemological status as axioms of classical decision theories when they are applied for prescription, for example, Savage’s sure thing principle. Arguably, we can observe whether individuals unreflectively behave according to Savage’s sure thing principle, or any other decision-theoretic axiom, but even when they fail to, it can be said that this is because of a mistake: the normative status of an axiom is not hit by violations due to unreflective behavior. In that sense, such axioms are not falsifiable.
 
 Second, this article defines descriptive theories of acceptable propositions. Acceptable here is in the sense of the careful acceptability just defined informally. Descriptive here means that these theories can predict at least some of the propositions that will be considered acceptable by the \ac{DM}.
@@ -469,7 +471,7 @@ Achieving practical knowledge of \acp{DJ} is tackled by introducing descriptive 
 \subsection{Definition}
 \label{sec:descrdef}
 In this section, a normative theory of \ac{DJ} $(\allprops, \allargs, I, {\allleadsto})$ is supposed given.
-A descriptive theory $\gamma$ for a normative theory of \ac{DJ} is defined as a tuple $(\gC, \gPhi)$, where $\gC \subseteq \powerset{I × \allhist × \Phi}$ is a falsifiable claim, $\gPhi \subseteq \Phi$ are the propositions that the theory claims are in the \acp{DJ} of the individuals, and such that its falsifiable claim implies its validity.
+A descriptive theory $\gamma$ for a normative theory of \ac{DJ} is defined as a tuple $(\gC, \gPhi)$, where $\gC \subseteq \powerset{I × \allhist × \Phi}$ is a falsifiable claim, $\gPhi \subseteq \Phi$ are the propositions that the theory claims are in the \acp{DJ} of the individuals, and such that its falsifiable claim implies its convincingness.
 \commentYM{dans la mesure où, à ce stade, je ne comprends pas bien ce que contient une "normative theory", la séparation avec l' "empirical theory" n'est pas claire pour moi} 
 These concepts are now defined formally.
 \commentYM{puisque la théorie empirique est une théorie empirique D'UNE CERTAINE THEORIE NORMATIVE, je m'attendrais  à ce qu'on voit apparaître la théorie normative dans la formule de la théorie empirique, non ?}
@@ -479,22 +481,29 @@ A claim $\gC \subseteq \powerset{I × \allhist × \Phi}$ represents the theory�
 Recall that $\leadsto$ will in general not be known in its entirety, but can be queried through observations. Observations of the relation $\leadsto$ can in general include positive statements, of the form $\hist \ileadsto \phi$, and negative ones, of the form $\hist \nileadsto \phi$. (One way to obtain such negative observations is to use an incompatible proposition $\phi'$ and deduce from $\hist \ileadsto \phi'$ that $\hist \nileadsto \phi$.) 
 Assuming (possibly counterfactually) that $R \subseteq I × \allhist × \Phi$ is the “real” relation $\leadsto$, the possible observations are $(O, O') \suchthat O, O' \subseteq I × \allhist × \Phi \land [O \subseteq R] \land [R \cap O' = \emptyset]$; and conversely, once we have gathered some observations $(O, O')$, we know that ${\leadsto} \in \set{R \subseteq I × \allhist × \Phi \suchthat O \subseteq R \land R \cap O' = \emptyset}$.
 
-A claim about ${\leadsto}$ being included in some given set is said to be falsifiable iff either it is true, or it is possible to prove it false using a finite set of observations. Formally, the claim $\gC \subseteq \powerset{I × \allhist × \Phi}$ is falsifiable iff $\forall R \notin \gC: \exists \text{ finite sets } O, O' \subseteq I × \allhist × \Phi \suchthat \forall R' \subseteq I × \allhist × \Phi \suchthat O \subseteq R' \land R' \cap O' = \emptyset: R' \notin \gC$. 
+A claim that ${\leadsto}$ is included in some given set is said to be falsifiable iff, assuming the claim is false, and whatever the real relation is that makes it false, it is possible to prove that the claim is false using a finite set of observations. Formally, the claim $\gC \subseteq \powerset{I × \allhist × \Phi}$ is falsifiable iff $\forall R \notin \gC: \exists \text{ finite sets } O, O' \subseteq I × \allhist × \Phi \suchthat \forall R' \subseteq I × \allhist × \Phi \suchthat O \subseteq R' \land R' \cap O' = \emptyset: R' \notin \gC$. 
 In such a case, no possible relation $R'$ compatible with the observations $O, O'$ are in $\gC$; in other words, the observations $O, O'$ prove that the claim that ${\leadsto} \in \gC$ is false.
 
-TODO distinguigh: exists real relation $\leadsto$ suchthat exists observations that show the claim is false VS forall relations $\leadsto$ not in C, exists observations that show the claim is false. If I claim "a is dec for phi", if this is false, it is possible to show it (second case); but if I claim "a is dec for phi AND some argument is decisive for phi'" (or "$\alpha \ileadsto \phi$ and some argument is decisive for phi"), then the first case is satisfied, but not the second one: if indeed $\alpha \ileadsto \phi$ but NO arg dec, it is impossible to observe the falsity of the claim. Note that the first requirement is satisfied by BR but not the second one.
+%Distinguish this condition from: $\exists R, finite O such that C is proven false$: the claim "a is dec for phi AND some argument is decisive for phi'" (or "$\alpha \ileadsto \phi$ and some argument is decisive for phi") satisfies this weaker condition, but it should not be considered falsifiable as it is not necessarily possible to distinguish it empirically from a disagreeing theory: if indeed $\alpha \ileadsto \phi$ but NO arg dec, it is impossible to observe the falsity of the claim. Note that the weaker requirement is satisfied by BR but not the stronger one.
+
+Finally, a descriptive theory must ensure that its falsifiable claim implies it being convincing, it the sense of being able to show the existence of decisive arguments in favor of its supported propositions, whatever the true relation is.
+So far, $\ar$ being a decisive argument for $\phi$ from the point of view of $i$ is denoted $\ar \ileadstost \phi$, this being defined on the basis of the real relation ${\leadsto}$. We need to extend this definition and notation: assuming the observable relation would be any $R \subseteq I × \allhist × \Phi$ (and not specifically $\leadsto$), let $\ar \ileadstost^R \phi$ denote the fact that $\ar$ is a decisive argument for $\phi$ from the point of view of $i$ when the observable relation is $R$.
+\begin{definition}[Conditional convincingness]
+	A pair $(\gC, \gPhi)$ is conditionally convincing iff $\forall R \in \gC, i \in I, \phi \in \gPhi: \exists \ar \in \allargs \suchthat \ar \ileadstost^R \phi$.
+\end{definition}
+TODO use notation: $a \suchthat \set{\hist \in \allhist \suchthat \ar \in \histend} R_i \phi$.
 
 The notion of validity permits to relate the falsifiable claim of a theory, $\gC$, and the set of propositions it supports, $\gPhi$.
 \begin{definition}[Validity]
 	An empirical theory is \emph{valid} iff $\forall i \in I, \gPhi \subseteq \iprops$.
 \end{definition}
-The required relationship is as follows: it is required that, assuming normative acceptability, if ${\leadsto} \in \gC$, then the theory is valid.
+The condition that the falsifiable claim entails convincingness is equivalent to the requirement that, assuming normative acceptability, if ${\leadsto} \in \gC$, then the theory is valid.
 
 \begin{example}[Two claims]
 	Given a normative theory and $\phi \in \Phi$, the claim $C_1 = \set{{\leadsto} \subseteq I × \allhist × \Phi \suchthat \forall i \in I, \exists \ar \in \allargs \suchthat \ar \ileadstost \phi}$ corresponds to claiming that for all individuals $i \in I$, some argument is $i$-decisive for $\phi$. If the set of arguments is infinite, $C_1$ is not falsifiable.  
 	Given $\ar \in \allargs$ and $\phi \in \Phi$, the set $C_2 = \set{{\leadsto} \subseteq I × \allhist × \Phi \suchthat \forall i \in I, \ar \ileadstost \phi}$ denotes the claim that all individuals will consider the argument $\ar$ as decisive for $\phi$. This claim is falsified by any observation such that $\hist \nileadsto \phi$ for some $\hist \in \allhist$ with $\ar \in \histend$, thus, $C_2$ is falsifiable.
 	
-	Consider the pairs $(C_1, \set{\phi})$ and $(C_2, \set{\phi})$: only the second one constitutes a descriptive theory. Both pairs satisfy the requirement that, assuming normative adequacy, if $\leadsto \in \gC$, then $\forall i \in I: \phi \in \iprops$ (with $\gC = C_1$ or $\gC = C_2$), but $C_1$ fails to be falsifiable.
+	Consider the pairs $(C_1, \set{\phi})$ and $(C_2, \set{\phi})$: only the second one constitutes a descriptive theory. Both pairs satisfy the requirement that if $\leadsto \in \gC$, then $\forall i \in I: \phi \in \iprops$ (with $\gC = C_1$ or $\gC = C_2$), but $C_1$ fails to be falsifiable.
 \end{example}
 
 Returning to our running scenario permits to give more concrete examples. Here is an example of a theory that simply claims that a given argument is decisive for everybody.
@@ -520,6 +529,18 @@ The following example illustrates that a descriptive theory need not claim that 
 	This example thus defines a theory that anticipates a possible attack using $\ar_0$ against $\ar_\text{for$P$}$, and prepares $\ar_\text{non-linear}$ as an alternative argument in case $\ar_\text{for$P$}$ does not convince an individual.
 \end{example}
 Refining such descriptive theories to let them articulate better the arguments and counter-arguments, and describing more realistic argumentative strategies, is left for future work.
+
+Given any two disagreeing descriptive theories $(\gC, \gPhi)$ and $(\gC[δ], \gPhi[δ])$ for a given normative theory and any two propositions $\prop, \propbar \in \incompat$, say that these two theories disagree about $(\prop, \propbar)$ iff $[\prop \in \gPhi ⇔ \propbar \notin \gPhi[δ]]$. Say that two theories disagree iff there exists some propositions about which they disagree.
+
+If two theories disagree, then it is possible to prove one of them wrong using a finite set of observations.
+\begin{proposition}
+	Consider two disagreeing descriptive theories $(\gC, \gPhi)$ and $(\gC[δ], \gPhi[δ])$ for a given normative theory. There exists a finite set of observations that prove $\gC$ false, or that prove $\gC$ false.
+\end{proposition}
+\begin{proof}
+	If they disagree, then $\gC \cap \gC[δ] = \emptyset$, otherwise, pick any $R \in \gC \cap \gC[δ]$, and obtain, using convincingness, the existence of decisive arguments for both $\prop$ and $\propbar$, which is impossible as seen in \cref{th:protcoh}.
+	
+	As $\gC \cap \gC[δ] = \emptyset$, then at least one of these propositions is true: ${\leadsto} \notin \gC$ or ${\leadsto} \notin \gC[δ]$. In both cases, thanks to falsifiability, the existence is proven.
+\end{proof}
 
 \section{Preferences}
 \label{sec:preferences}
@@ -675,6 +696,11 @@ In order to allow for repeated observations with a given individual without modi
 \bibliography{simple}
 
 \appendix
+\section{Optional supplements}
+It is by no means my intent to claim that descriptive approaches never face validation difficulties. Experimental tests to arbitrate between theories may not be feasible in practice, descriptions are not always solely about the future, falsificationist approaches in turn raise epistemological difficulties, and so on. Correspondingly, the possible confrontation to empirical data of the theories defined here is no magical means to definitively solve every difficulty about validation. My less naïve claim, that should suffice to motivate the present endeavor, is that it is often a good thing for a theory to make empirically testable claims, from the point of view of the possibilities of solving disputes and validating theories.
+
+The important question about how the parameters $t_i$ and $v_i$ of these illustrative theories would be determined is left aside in this article. This article aims at defining and studying theories of \ac{DJ} in general, not at proposing a way of building a specific theory of \ac{DJ}. %For this example, one can assume that these parameters are determined on the basis of observation of the behavior of some population in some similar circumstances. 
+
 \section{Finiteness}
 This example permits to ensure that the constraint of bounded depth does not mandate finiteness of the relations $\gbeats$ or $\dbeats$.
 \begin{proposition}[Possibility of infinite relations]
