@@ -21,7 +21,7 @@
 		\vbadness=1300
 
 \begin{document}
-\title{A definition of descriptive theories with normative power}
+\title{A definition of descriptive theories of choice with normative power}
 \author{Olivier Cailloux}
 \affil{Université Paris-Dauphine, PSL Research University, CNRS, LAMSADE, 75016 PARIS, FRANCE\\
 	\href{mailto:olivier.cailloux@dauphine.fr}{olivier.cailloux@dauphine.fr}
@@ -39,6 +39,24 @@
 \end{abstract}
 
 \section{Introduction} 
+This article defines theories that are prescriptive and empirical.
+They are prescriptive in that the claim $a \succ b$ has the semantics of recommending choosing $a$ rather than $b$ when both are available.
+They are empirical in that the validity of their recommendations rests on the basis of a mild axiom (compared to usual normative theories such as Savage’s Expected Utility theory) together with empirical claims, thus, claims that observations can falsify.
+
+For conceptual clarity, I will focus on the case of a single binary decision to take, akin to a choice situation facing a bundle of two objects among which exactly one must be adopted.
+
+\section{The model}
+Let $\Phi = \set{\phi, ¬\phi}$ represent the decision at stake. Let $I$ be a set of individuals. 
+
+A prescriptive theory is a tuple $(\allargs, {\allleadsto})$.
+$\allargs$ is a set of arguments. 
+Define $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ as the finite sequences of arguments. A sequence of arguments is called an argumentative path, or simply a path.
+The function ${\allleadsto} \in \powersetz{\Phi}^{I × \allhist}$ associates to each individual and path a non-empty subset of $\Phi$.
+
+ which associates to each $i \in I$ an element of $\Phi$ or nothing, with the semantics that this decision is the right one for that individual or that the theory abstains from recommending.
+
+\appendix
+\section{Old introduction} 
 Decision theoretic approaches in economy are classically divided into normative and descriptive approaches. Normative approaches aim at prescribing decision behavior; descriptive approaches aim at describing decision behavior. These two goals are generally considered incompatible: what is normative is not to be judged on descriptive grounds, and conversely. (Some authors consider prescription as the art of using descriptive insights to inform recommendation \citep{bell_decision_1988}, a view that also considers the normative aim as distinct to the descriptive aim.)
 
 As a result, normative approaches are difficult to validate: being considered as non-descriptive in their goal, normative claims cannot be submitted to empirical tests that would permit to verify or falsify them. Observing a behavior that deviates from a prescribed norm can be taken as a sign that the norm is useful: a decision maker does not hire analysts just to be prescribed the choice that she would have naturally opted for.
@@ -80,9 +98,18 @@ Here is an example opposing two simplistic theories of \ac{DJ}, meant to give a 
 
 The proposed approach starts with this intuition that the reaction of individuals to arguments should matter, and presents a general solution to the problem of capturing reflective judgments or choices. Contrary to the simplistic situation of \cref{ex:two}, this solution must allow to confront more than just two arguments or two theories. It should define precisely what is required for a judgment to be called deliberated, and determine formally which hypothesis are required for the prescriptions of a theory of \ac{DJ} to be valid.
 
+\section{Normative theories (focused)}
+Define a normative axiom as a formal constraint on behavior that constrains behavior so as to yield valid prescription. 
+Define a descriptive axiom as a formal constraint on behavior interpreted as an empirical prediction, that is, as a claim that behavior (in some a priori described circumstances) satisfies the constraint.
+
+A normative axiom has to be accepted on the basis of its apparent adequacy to capture what is intuitively an acceptable requirement for a prescription to a \ac{DM}. In other words, it is not a hypothesis on the observable world: that the requirement holds cannot be proven by observation. Examples are given by the axioms of classical decision theories, when they are applied for prescription. Consider for example Savage’s sure thing principle. One can observe whether individuals unreflectively behave according to Savage’s sure thing principle, but even when they fail to, it can be said that this is because of a mistake: the normative status of an axiom is not hit by violations due to unreflective behavior. Such axioms are not falsifiable by behavioral observation. Conversely, observing that some axiom perfectly matches observed behavior, that empirical observation alone does not yield any validity to prescription based on that constraint: accepting the validity of a prescription rests on accepting the soundness of its reasoning, not on its ability to reflect natural behavior.
+
+Let us assume that some natural behavior is not to be prescribed.
+
+At least one such axiom is required to ground any prescription. Hence, no theory can be fully descriptive, and theories of \ac{DJ} make no exception. The proposed path out of this conundrum is to restrict normative axioms to a self-evident claim, and leave most of the constraining power to descriptive claims. 
+
 The pursued path is as follows.
 This article introduces first a normative axiom that mandates that whatever propositions the \ac{DM} accepts when reasoning carefully can be prescribed. This notion of careful acceptability is defined formally on the basis of an observable relation that captures the reactions of the \ac{DM} to arguments.
-This requirement is described here as a normative axiom because it has to be accepted on the basis of its apparent adequacy to capture what is intuitively an acceptable requirement for a procedure aiming at prescribing to a \ac{DM}. In other words, it is not a hypothesis on the observable world: that the requirement holds cannot be proven by observation. It has, in that sense, a similar epistemological status as axioms of classical decision theories when they are applied for prescription, for example, Savage’s sure thing principle. Arguably, we can observe whether individuals unreflectively behave according to Savage’s sure thing principle, or any other decision-theoretic axiom, but even when they fail to, it can be said that this is because of a mistake: the normative status of an axiom is not hit by violations due to unreflective behavior. In that sense, such axioms are not falsifiable.
 
 Second, this article defines descriptive theories of acceptable propositions. Acceptable here is in the sense of the careful acceptability just defined informally. Descriptive here means that these theories can predict at least some of the propositions that will be considered acceptable by the \ac{DM}.
 This is arguably the more important and difficult part of the current research program: it has to convince that it is practically possible to define theories that predict such an a priori volatile thing as the way individuals reason. It is plain that mandating that theories be able to predict the reaction of individuals to every possible sequence of arguments they are exposed to would be plainly irrealistic. Some weaker criterion is required. How weak can it become? As announced, the proposed theories must be purely descriptive, apart from the required acceptance of the normative adequacy axiom described in the above paragraph. In other words, their conclusions must hold on the sole basis of the unique normative axiom, aided by claims that can be proven false experimentally. Equivalently, if the theory is invalid, in the sense of failing its predictions about the acceptability of propositions, then it must be falsifiable: there must exist a set of observable reactions of the \ac{DM} to arguments that contradict the claims of the theory. Accordingly, this article claims and proves that empirical theories of \ac{DJ} as defined here are such that under normative adequacy, if the theory is not falsified, then it is valid. I admit readily that this might not suffice to convince that building such concrete theories is feasible. It is only one of the difficulties to tackle.
@@ -695,7 +722,6 @@ In order to allow for repeated observations with a given individual without modi
 
 \bibliography{simple}
 
-\appendix
 \section{Optional supplements}
 It is by no means my intent to claim that descriptive approaches never face validation difficulties. Experimental tests to arbitrate between theories may not be feasible in practice, descriptions are not always solely about the future, falsificationist approaches in turn raise epistemological difficulties, and so on. Correspondingly, the possible confrontation to empirical data of the theories defined here is no magical means to definitively solve every difficulty about validation. My less naïve claim, that should suffice to motivate the present endeavor, is that it is often a good thing for a theory to make empirically testable claims, from the point of view of the possibilities of solving disputes and validating theories.
 
@@ -723,7 +749,7 @@ This example permits to ensure that the constraint of bounded depth does not man
 \section{Empirical validity, first}
 \label{sec:prooffals}
 To verify that the property of Convincingness is purely empirical, it is necessary to show that whenever a theory fails it, it is possible to see it using a set of observations of $\allleadsto$. Conversely, it is also desirable to ensure that only the observations that ensure that Convincingness is false count for falsifying a theory.
-In other words, it is desirable to capture exactly which sets of observations falsify the claim of convincingness. This will also provide a proof of \cref{th:convfals}.
+In other words, it is desirable to capture exactly which sets of observations falsify the claim of convincingness. This will also provide a proof of cref{th:convfals}.
 
 The following example may help to form an intuition about what the possible falsifying sets of observations are.
 \begin{example}[Falsification sequences]
@@ -833,10 +859,10 @@ With a falsification sequence $(\ar_0, \hist^0, \ar_1, \hist^1)$, we see that $\
 	An empirical theory has a falsification instance iff it has a falsification sequence.
 \end{lemma}
 \begin{proof}
-	First, from right to left, consider a falsification sequence $(\hist^{k + 1})_{k \in 2\N, k ≤ N}$ for some $N \in 2\N$, define, as in \cref{sec:validity}, $\args_{k + 1} = \gbeatsinv(\ar_k) \cap \range(\hist^{k + 1})$, $\dargs[k + 2] = \dbeatsinv(\args_{k + 1})$ and (for $k ≤ N - 2$) $\ar_{k + 2} = \ar_k + \dargs[k + 2]$, and let us show that $(i, \phi, \hist^{N + 1}, \ar_N)$ is a falsification instance. This amounts to show that $\ar_N \in \gargs$, which can be done by observing that $\ar_0 \in \gargs$, and showing that, $\forall k \in 2\N, k ≤ N - 2$, $\ar_k \in \gargs ⇒ \ar_{k + 2} \in \gargs$.
-	Indeed, \cref{th:dpiconstr} applies with $\ar_k$ for $\ar_0$ and $\ar_{k + 2}$ for $\ar_2$. As the second member of the equivalence is true by definition of a falsification sequence, $\ar_{k + 2} \in (\dip)(\ar_k)$, and because $\ar_k \in \gargs$, $\ar_{k + 2} \in \gargs$.
+	First, from right to left, consider a falsification sequence $(\hist^{k + 1})_{k \in 2\N, k ≤ N}$ for some $N \in 2\N$, define, as in cref{sec:validity}, $\args_{k + 1} = \gbeatsinv(\ar_k) \cap \range(\hist^{k + 1})$, $\dargs[k + 2] = \dbeatsinv(\args_{k + 1})$ and (for $k ≤ N - 2$) $\ar_{k + 2} = \ar_k + \dargs[k + 2]$, and let us show that $(i, \phi, \hist^{N + 1}, \ar_N)$ is a falsification instance. This amounts to show that $\ar_N \in \gargs$, which can be done by observing that $\ar_0 \in \gargs$, and showing that, $\forall k \in 2\N, k ≤ N - 2$, $\ar_k \in \gargs ⇒ \ar_{k + 2} \in \gargs$.
+	Indeed, cref{th:dpiconstr} applies with $\ar_k$ for $\ar_0$ and $\ar_{k + 2}$ for $\ar_2$. As the second member of the equivalence is true by definition of a falsification sequence, $\ar_{k + 2} \in (\dip)(\ar_k)$, and because $\ar_k \in \gargs$, $\ar_{k + 2} \in \gargs$.
 	
-	Second, from left to right, consider a falsification instance $(i, \phi, \hist^{N + 1}, \ar_N)$. As $\ar_N \in \gargs$, $\ar_N \in (\dip)^N({\gleadstoinv}(\prop))$ (equalizing the indices $N$ wlog). Given $\ar_{k + 2} \in (\dip)^j({\gleadstoinv}(\prop))$, with $j > 0$, thus $\ar_{k + 2} \in \dip(\ar_k)$ for some $\ar_k \in (\dip)^{j - 1}({\gleadstoinv}(\prop))$, apply \cref{th:dpiconstr}, obtain $\hist_{k + 1}$. Iterate while $j > 0$. When $j = 0$, the $\hist$ found corresponds to an initial argument.
+	Second, from left to right, consider a falsification instance $(i, \phi, \hist^{N + 1}, \ar_N)$. As $\ar_N \in \gargs$, $\ar_N \in (\dip)^N({\gleadstoinv}(\prop))$ (equalizing the indices $N$ wlog). Given $\ar_{k + 2} \in (\dip)^j({\gleadstoinv}(\prop))$, with $j > 0$, thus $\ar_{k + 2} \in \dip(\ar_k)$ for some $\ar_k \in (\dip)^{j - 1}({\gleadstoinv}(\prop))$, apply cref{th:dpiconstr}, obtain $\hist_{k + 1}$. Iterate while $j > 0$. When $j = 0$, the $\hist$ found corresponds to an initial argument.
 	
 	TODO improve this proof.
 \end{proof}
@@ -852,7 +878,7 @@ With a falsification sequence $(\ar_0, \hist^0, \ar_1, \hist^1)$, we see that $\
 	It follows that $\dargs \in \df(\ar_0)$, by \cref{th:indf}, and that $\ar_2 \in \dfp(\ar_0)$, by definition of $\dfp$. It also follows that $\ar_2 \in \dip(\ar_0)$, hence, that $\ar_2 \in \gargs$.
 \end{proof}
 
-\Cref{th:svalid} claims that a normatively adequate empirical theory that has no falsification sequence is valid. TODO prove it.
+Cref{th:svalid} claims that a normatively adequate empirical theory that has no falsification sequence is valid. TODO prove it.
 
 \begin{theorem}
 	\label{th:valid}
@@ -870,7 +896,7 @@ With a falsification sequence $(\ar_0, \hist^0, \ar_1, \hist^1)$, we see that $\
 
 \section{Comparing theories}
 \label{sec:proc}
-This section proves \cref{th:proc} constructively, by describing the sequence of tests that must be performed and showing that they must lead to falsifying one of the theories.
+This section proves cref{th:proc} constructively, by describing the sequence of tests that must be performed and showing that they must lead to falsifying one of the theories.
 To do this, the notion of challenge must be defined and a few simple lemmas are required.
 In order to leave the letters $\gamma$ and $\delta$ unbounded for clearer application of the intermediate results to the theorem to be proven, let $\mu$ and $\nu$ designate any two descriptive theories for a given normative theory of \ac{DJ}.
 Given $\prop \in \allprops$, $\hist \in \allhist$ and $\ar_\mu \in \gargsmu$, say that $(\hist, \ar_\mu)$ challenges $\prop$ iff $\hist \nileadsto \prop$ and $\ar_\mu \in \histend$.
