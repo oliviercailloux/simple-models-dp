@@ -49,11 +49,33 @@ For conceptual clarity, I will focus on the case of a single binary decision to 
 Let $\Phi = \set{\phi, ¬\phi}$ represent the decision at stake. Let $I$ be a set of individuals. 
 
 A prescriptive theory is a tuple $(\allargs, {\allleadsto})$.
-$\allargs$ is a set of arguments. 
-Define $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ as the finite sequences of arguments. A sequence of arguments is called an argumentative path, or simply a path.
-The function ${\allleadsto} \in \powersetz{\Phi}^{I × \allhist}$ associates to each individual and path a non-empty subset of $\Phi$.
 
- which associates to each $i \in I$ an element of $\Phi$ or nothing, with the semantics that this decision is the right one for that individual or that the theory abstains from recommending.
+$\allargs$ is a set of arguments. 
+Throughout the article, $\N$ includes zero. %and $\N^* = \N \setminus \set{0}$. 
+Define $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ as the finite sequences of arguments. A sequence of arguments is called an argumentative path, or simply a path.
+A generic element of $\allhist$ is denoted by $\hist$ and called an argumentative path, or simply a path when this raises no ambiguity. Its length is denoted by $\card{\hist} \in \N$.
+Given $j, l \in \N$, the notation $\intvl{j, l}$ represents $\set{k \in \N \suchthat j ≤ k ≤ l}$.
+Thus, given an argumentative path $\hist \in \allhist$, $\forall k \in \intvl{1, \card{\hist}}$, $\hist_k \in A$, and $\hist = \emptyset ⇔ \card{\hist} = 0$.
+
+The function ${\allleadsto}: I × \allhist → \powersetz{\Phi}$ associates to each individual and path a non-empty subset of $\Phi$. The case $\Phi$ is used to represent indifferent choice, in case this is observable.
+The observation that $\phi$ is considered among the best by $i$ considering $\alpha$ is represented by $\alpha \ileadsto \phi$, considering ${\ileadsto} \subseteq \allhist × \Phi$ as a binary relation.
+As usual with binary relations, $\hist \nileadsto \prop$ means $(\hist, \prop) \notin {\ileadsto}$.
+
+% which associates to each $i \in I$ an element of $\Phi$ or nothing, with the semantics that this decision is the right one for that individual or that the theory abstains from recommending.
+
+Given $\hist \in \allhist$, $\range(\hist) = \hist(\intvl{1, \card{\hist}})$ denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$.
+Let $\histend = \hist(\intvl{\max(1, \card{\hist} - 1), \card{\hist}})$ denote the set containing the last two arguments of the sequence $\hist$ if the sequence has at least two elements; the unique argument of the sequence if it has exactly one element; and the empty set if it is empty.
+
+Given $i \in I, \prop \in \allprops, \ar \in \allargs$, define $\ar \ileadstost \prop$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \ileadsto \prop$. 
+When $\ar \ileadstost \prop$, $\ar$ is said to be a decisive argument for $\prop$ from $i$’s point of view. 
+Given any $i \in I$, when some argument is decisive for some proposition $\prop$, thus, when $\exists \ar \in \allargs \suchthat \ar \ileadstost \prop$, the proposition is said to be acceptable, from $i$’s point of view.
+
+The following axiom permits the theory to have bite on what should be recommended to $i$. It says that it is sufficient that a proposition be acceptable to be in $i$’s \ac{DJ}.
+\begin{axiom}[Normative adequacy]
+%	\label{ax:norm}
+	$\forall i \in I, \prop \in \allprops: 
+		[(\exists \ar \in \allargs \suchthat \ar \ileadstost \prop)] ⇒ \prop \in \iprops.$
+\end{axiom}
 
 \appendix
 \section{Old introduction} 
