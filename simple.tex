@@ -60,12 +60,12 @@ The exposure protocol defines a set of argument and, importantly, how arguments 
 
 The deliberated judgment of a subject is defined as a function of the exposure protocol, as accepting every claims that resists every counter-arguments. The notion of resistance is itself defined according to the exposure protocol.
 
-Studying judgments resulting from exposure to arguments includes a difficulty that is not present with natural choice experiments: exposing an individual to arguments may change the individual’s stance, an effect that cannot be erased to submit the individual (considered “clean” again) to another sequence of arguments. The observer thus cannot in general assume that multiple unrelated sequences of arguments can be tested on a given individual. This difficulty will be worked around by considering general theories of deliberated judgments, that apply to sets of individuals. This is methodologically similar to defining theories of how objects break. One can test only one way of breaking a given object (assuming it cannot be repaired), so such theories must apply to sets of objects if one wants to be able to test multiple ways of falsifying the theories.
+Studying judgments resulting from exposure to arguments includes a difficulty that is not present with natural choice experiments: exposing an individual to arguments may change the individual’s stance, an effect that cannot be erased to submit the individual (considered “clean” again) to another sequence of arguments. The observer thus cannot in general assume that multiple unrelated sequences of arguments can be tested on a given individual. This difficulty will be worked around by considering general theories of deliberated judgments, that apply to sets of individuals. This is methodologically similar to defining theories of how objects break. One can test only one way of breaking a given (unrepairable) object, so such theories must apply to sets of objects if one wants to be able to test multiple ways of falsifying the theories.
 
-For conceptual clarity, I will focus on the case of a single binary decision to take, akin to a choice situation facing a bundle of two objects among which exactly one must be adopted.
+For conceptual clarity, I will focus on the case of a single binary decision to take, akin to a choice situation facing a bundle of two courses of action, exactly one of which must be adopted.
 
-\section{The model}
-Let $\Phi = \set{\phi, ¬\phi}$ represent the decision at stake.
+\section{Exposure protocol and deliberated choice}
+Let $\Phi = \set{\phi, ¬\phi}$ represent the decision at stake. The set $\Phi$ represents two antagonistic acts, such as “buy this object for the price of \$15” and “do not buy this object for the price of \$15”, or “take this job offer” and “decline this job offer”.
 
 \subsection{Exposure protocol}
 An exposure protocol is a tuple $(I, \allargs, {\allleadsto})$, where $I$ is a set of individuals, $\allargs$ is a set of arguments, and ${\allleadsto}$ is the behavior of the individuals as a function of the arguments they have been exposed to.
@@ -83,22 +83,68 @@ It is also denoted by $\alpha \ileadsto \phi$, considering ${\ileadsto} \subsete
 As usual with binary relations, $\hist \nileadsto \prop$ means $(\hist, \prop) \notin {\ileadsto}$ or equivalently $\phi \notin {\allleadsto}(i, \alpha)$.
 
 \subsection{Deliberated choice}
-We can now define the deliberated choice of $i$ given the exposure protocol $(I, \allargs, {\allleadsto})$.
-It is denoted $\Phi_i$ and is a subset of $\Phi$, with the semantics that $\phi \in \Phi_i$ means that $\phi$ is considered by $i$, after deliberation, one of the best options, given the exposure protocol. In other words, if $\Phi_i = \Phi$, the individual considers both $\phi$ and $¬\phi$ equally worth after deliberation and if $\Phi_i = \set{\phi}$, the individual considers $\phi$ the strictly best option among the proposed set, after deliberation (and similarly for $\Phi_i = \set{¬\phi}$).
+The deliberated choice of $i$ given the exposure protocol $(I, \allargs, {\allleadsto})$ is denoted $\iprops$ and is a strict subset of $\allprops$, with the semantics that $\iprops = \set{\prop}$ iff $\prop$ is considered by $i$ as the best option among the proposed set $\allprops$, after deliberation, given the exposure protocol. In other words, if $\iprops = \set{\phi}$, the individual considers $\phi$ strictly better than $\nprop$, after deliberation (and conversely for $\iprops = \set{¬\phi}$); and if $\iprops = \emptyset$, the deliberated judgment of $i$ considers neither $\phi$ nor $¬\phi$ as strictly better than the alternative. This latter possibility covers both the situation of indifference between both options (in the sense of being evaluated by $i$ as being exactly equally worth), which will be further developed in \cref{sec:multiple}, or the situation that $\phi$ is neither deliberately strictly better than, exactly equivalent to or strictly worst than $\nprop$.
+
+This latter possibility may look unpleasant, but it is a fact that facing some difficult problems, individuals sometimes are undecided, and it is an a priori empirical possibility that the individual remains undecided (or even, becomes \emph{more} undecided) when considering multiple arguments. That classical protocols of natural choice do not allow to observe such incompleteness has often been considered a weakness of those protocols, that our richer observational basis permits to overcome.
+
+The formal definition of $\iprops$ given $(I, \allargs, {\allleadsto})$ requires to define the notion of decisive argument.
 
 Given $\hist \in \allhist$, $\range(\hist) = \hist(\intvl{1, \card{\hist}})$ denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$.
 Let $\histend = \hist(\intvl{\max(1, \card{\hist} - 1), \card{\hist}})$ denote the set containing the last two arguments of the sequence $\hist$ if the sequence has at least two elements; the unique argument of the sequence if it has exactly one element; and the empty set if it is empty.
 
-Given $i \in I, \prop \in \allprops, \ar \in \allargs$, define $\ar \ileadstost \prop$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \ileadsto \prop$. 
-When $\ar \ileadstost \prop$, $\ar$ is said to be a decisive argument for $\prop$ from $i$’s point of view. 
-Given any $i \in I$, when some argument is decisive for some proposition $\prop$, thus, when $\exists \ar \in \allargs \suchthat \ar \ileadstost \prop$, the proposition is said to be acceptable, from $i$’s point of view.
-
-The following axiom permits the theory to have bite on what should be recommended to $i$. It says that it is sufficient that a proposition be acceptable to be in $i$’s \ac{DJ}.
-\begin{axiom}[Normative adequacy]
-%	\label{ax:norm}
+Given $i \in I, \prop \in \allprops, \ar \in \allargs$, define $\ar \ileadstost \prop$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \nileadsto \nprop$; equivalently, iff $\forall \hist \in \allhist \suchthat \ar \in \histend: {\leadsto}(i, \hist) = \set{\prop}$.
+When $\ar \ileadstost \prop$, $\ar$ is said to be a decisive argument for $\prop$ from $i$’s point of view (or just a decisive argument, for short). 
+The deliberated judgment of $i$ is then considered to contain the set of propositions supported by decisive arguments.
+\begin{axiom}[Decisive arguments define deliberated judgments]
+	\label{ax:decisive}
 	$\forall i \in I, \prop \in \allprops: 
-		[(\exists \ar \in \allargs \suchthat \ar \ileadstost \prop)] ⇒ \prop \in \iprops.$
+		\prop \in \iprops ⇔ [\exists \ar \in \allargs \suchthat \ar \ileadstost \prop].$
 \end{axiom}
+
+\subsection{An example and a discussion about observability}
+The following toy example is inspired by citet[p.~59]{Railton}, who uses this example to support his claim that beliefs may influence decisions. Here is his story.
+\begin{quote}
+An experiment in cognitive psychology reveals that when subjects observe two individuals taking a test, one of whom answers a high percentage of the early questions correctly but then falters, while the other does
+poorly initially but then answers a high percentage of the later questions
+correctly, the first is usually viewed as more able, even though in the end
+each answers the same number of questions correctly in all. If the subjects had been asked which test-taker they would prefer as a math tutor,
+they likely would have answered “The first,” and perhaps they would also
+have been willing to pay a premium to secure his services. But if they
+were to become convinced of the influence of sheer order on their evaluations of relative ability, they presumably would no longer want their
+initial preference for the first test-taker to influence their choices – or
+willingness to pay – in this way.
+\end{quote}
+\begin{example}[Math tutor]
+	\label{ex:tutor}
+	Let $I$ be a set of individuals desiring to evaluate two candidates $\set{m_1, m_2}$ for math tutoring.
+	Let ${\leadsto}(i, a_1)$ represent $i$ being shown a test of candidate $m_1$ wherein $m_1$ answers 70\% of the first half of questions correctly but then only 40\% of the other half correctly.
+	Let ${\leadsto}(i, a_2)$ represent $i$ being shown a test of candidate $m_2$ wherein $m_2$ answers 45\% of the first half of questions correctly, then 75\% of the other half correctly.
+%	Let ${\leadsto}(i, a_e)$ represent $i$ being given an explanation about the psychological phenomenon described in the quote above.
+	Let ${\leadsto}(i, a_e)$ represent $i$ being given the following argument. “When tested, $m_1$ answers 70\% of the first half of questions correctly but then only 40\% of the other half correctly; whereas $m_2$ answers 45\% of the first half of questions correctly, then 75\% of the other half correctly. It follows than $m_1$ answers on average less well than $m_2$. Observing the candidates take the tests may yield a contrary impression; this is a well-known psychological phenomenon depending on the order of the questions that the candidates answer correctly.”
+	Let $\Phi = \set{\prop_1, \prop_2}$ where $\prop_1$ represent $m_1$ and $\prop_2$ represent $m_2$.
+	
+	If the prediction described in the quote is correct, and applies equally to this modified experiment, then, given $i \in I$, $i$’s deliberated choice is $\prop_2$ because $a_e$ is a decisive argument for $\prop_2$, even though $i$ might have rather chosen $\prop_1$ if given only the arguments $a_1$ and $a_2$ without $a_e$.
+\end{example}
+
+That the deliberated choice of any individual $i$ is well-defined may be doubtful, as it involves counterfactuals.
+To see this, let $\alpha_{123} = (a_1, a_2, a_e)$ designate the history where the arguments are shown in the order they are described in the example, and let $\alpha_{321} = (a_3, a_2, a_1)$ designate the reverse order.
+The deliberated choice of $i$ is defined so as to not depend on the (arbitrary) order of the arguments shown to $i$: for $\prop \in \iprops$, it must be that directing to $i$ the path $\alpha_{123}$ or the path $\alpha_{321}$ both lead $i$ to choose $\prop$.
+However, once we have shown to $i$, say, $\alpha_{123}$, we cannot show to her $\alpha_{321}$ (unless assuming $i$ forgets arguments after a while and waiting for sufficiently long, which would create practical and theoretical difficulties).
+
+This difficulty is resolved using falsifiable general theories, applicable to $I$ and not solely to a given $i$, so that, intuitively speaking, $\alpha_{321}$ can be tested on some $i' ≠ i$. Indeed, what is needed is a way to make a claim such as the one concluding \cref{ex:tutor} empirically testable. This is achieved in the next section thanks to theories of deliberated choice. Such theories are defined so as to satisfy two properties. First, such a theory must be falsifiable in principle, meaning that there exists a world in which it is possible to observe it to be false. As a counter-example, using \cref{ex:tutor}, a theory that claims that $\forall i \in I: \alpha_{123} \ileadsto \prop_1 \lor \alpha_{321} \ileadsto \prop_1$ is not falsifiable in principle, as, whatever the real $\ileadsto$ relation, with a given $i$, one can never show that $\alpha_{123} \nileadsto \prop_1 \land \alpha_{123} \nileadsto \prop_1$. Second, such a theory must be so that if it is not possible to empirically falsify it, meaning that in the actual world it is not possible to observe it to be false, then it implies that some given alternative is in the deliberated judgment of the individuals in $I$.
+
+\section{Theories of deliberated choice}
+This section assumes that an exposure protocol $(I, \allargs, {\leadsto})$ is defined, and defines theories of deliberated choice associated with that exposure protocol.
+
+\subsection{Theories using a static decisive argument}
+\Cref{ex:tutor} suggests a simple form for theories of deliberated choice: suffice to determine an argument $\ar \in \allargs$ and an alternative $\prop \in \Phi$ such that the theory claims that $\forall i \in I: \ar \ileadstost \prop$.
+
+\begin{definition}[Static theory]
+	A static theory is a pair $(\ar, \prop)$ for some $\ar \in \allargs$ and some $\prop \in \Phi$.
+\end{definition}
+
+\section{Multiple}
+\label{sec:multiple}
 
 \appendix
 \section{Old introduction} 
@@ -444,7 +490,7 @@ To end the presentation of the normative theories of \ac{DJ}, it may be useful t
 
 \subsection{Coherence and completeness}
 \label{sec:coh}
-Two propositions $\prop, \prop' \in \allprops$ are said to be incompatible iff $\forall \hist \in \allhist: \hist \ileadsto \prop ⇒ \hist \nileadsto \prop'$. Let $\incompat \subseteq \Phi × \Phi$ denote the set of incompatible pairs of propositions.
+Two propositions $\prop, \prop' \in \allprops$ are said to be incompatible iff $\forall \hist \in \allhist: \hist \ileadsto \prop ⇒ \hist \nileadsto \prop'$. Let $\incompat \subseteq \allprops × \allprops$ denote the set of incompatible pairs of propositions.
 
 The following proposition shows that \cref{ax:norm} cannot lead to incompatible propositions being considered deliberated. 
 \begin{proposition}[Coherence of acceptability]
@@ -1001,6 +1047,74 @@ And if $(\hist, \ar_\delta)$ challenges $\propbar$, apply \cref{th:nextchal} wit
 	
 	Given that $\exists K_\gamma \suchthat (\dfp[\gamma])^{K_\gamma}(\gleadstoinv[\gamma](\prop)) = \emptyset$ and $\exists K_\delta \suchthat (\dfp[\delta])^{K_\delta}(\gleadstoinv[\delta](\propbar)) = \emptyset$ by definition of empirical theories, this process must end with a falsifying instance of $\gamma$ or $\delta$.
 \end{procedure}
+
+\section{Binary choice with indifference}
+Given $i \in I, \prop \in \allprops, \ar \in \allargs$, define $\ar \ileadstost^\text{strong} \prop$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \nileadsto \nprop$, equivalently, ${\ileadsto}(i, \hist) = \set{\prop}$. 
+
+Given $i \in I, \prop \in \allprops, \ar \in \allargs$, define $\ar \ileadstost^\text{vweak} \prop$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \ileadsto \prop$. 
+
+Given $i \in I, \prop \in \allprops, \ar \in \allargs$, define $\ar \ileadstost^\text{indif} \prop$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \ileadsto \prop \land \hist \ileadsto \nprop$, equivalently, ${\ileadsto}(i, \hist) = \Phi$. 
+
+Given $i \in I, \prop \in \allprops, \ar \in \allargs$, define $\ar \ileadstost^\text{right} \prop$ iff $\forall \hist \in \allhist_{… a} \suchthat \ar \in \histend: \hist \ileadsto \prop \land \forall \hist, \hist' \in \allhist \suchthat \ar \in \histend, \ar \in \histend': {\ileadsto}(i, \hist) = {\ileadsto}(i, \hist')$, equivalently, $[\forall \hist \in \allhist \suchthat \ar \in \histend: {\ileadsto}(i, \hist) = \Phi] \lor [\forall \hist \in \allhist \suchthat \ar \in \histend: {\ileadsto}(i, \hist) = \set{\phi}]$. 
+
+The converse of this is: $\ar \nileadstost^\text{right} \prop$ iff $\exists \hist \suchthat \hist \ileadsto \nprop \land [\exists \hist \suchthat \hist \nileadsto \prop \lor \exists \hist \suchthat \hist \nileadsto \nprop]$.
+
+Equivalently: $\ar \nileadstost^\text{right} \prop$ iff $[\exists \hist \suchthat \hist \ileadsto \nprop \land \exists \hist \suchthat \hist \nileadsto \prop] \lor [\exists \hist \suchthat \hist \ileadsto \nprop \land \exists \hist \suchthat \hist \nileadsto \nprop]$.
+
+The converse of this is: $\ar \ileadstost^\text{right} \prop$ iff $[\forall \hist: \hist \nileadsto \nprop \lor \forall \hist: \hist \ileadsto \prop] \land [\forall \hist: \hist \nileadsto \nprop \lor \forall \hist: \hist \ileadsto \nprop]$.
+
+Equivalently: $\ar \ileadstost^\text{right} \prop$ iff $[\forall \hist: \hist \nileadsto \nprop] \lor [\forall \hist: \hist \ileadsto \prop \land \forall \hist: \hist \ileadsto \nprop]$.
+
+The real thing that we need is this.
+\begin{axiom}[Really]
+	$\forall i \in I, \hist \in \allhist \suchthat \hist \ileadsto \prop: 
+		[\exists \ar \in \allargs \suchthat [\ar \ileadstost^\text{strong} \prop] \lor [\ar \ileadstost^\text{indif} \prop]] ⇔ \prop \in \iprops.$
+\end{axiom}
+
+\subsection{Draft}
+The following axiom imposes that given any $i \in I$, when some argument is decisive for some proposition $\prop$, thus, when $\exists \ar \in \allargs \suchthat \ar \ileadstost \prop$, the proposition is in $i$’s \ac{DJ}.
+\begin{axiom}[Decisive argument sufficiency]
+%	\label{ax:norm}
+	$\forall i \in I, \prop \in \allprops: 
+		[\exists \ar \in \allargs \suchthat \ar \ileadstost \prop] ⇒ \prop \in \iprops.$
+\end{axiom}
+\begin{property}[Decisive argument necessity]
+%	\label{ax:norm}
+	$\forall i \in I, \prop \in \allprops: 
+		[\nexists \ar \in \allargs \suchthat \ar \ileadstost \prop] ⇒ \prop \notin \iprops.$
+\end{property} 
+A path $\hist$ is in favor of $\prop$ for $i$ iff $\hist \ileadsto \prop$. The path is countered back to $\nprop$ iff $(\hist, a) \nileadsto \prop$.
+\begin{axiom}[Counter sufficiency]
+%	\label{ax:norm}
+	$\forall i \in I, \hist \in \allhist \suchthat \hist \ileadsto \prop: 
+		[\exists \ar \in \allargs \suchthat (\hist, \ar) \nileadsto \prop] ⇒ \prop \notin \iprops.$
+\end{axiom}
+
+With these axioms alone, if $\iprops = \emptyset$, it is impossible to know it. That is because if we can derive $\prop \notin \iprops$, then it follows that $\nprop \in \iprops$.
+
+Mandate stability. Either dec arg for $\set{\prop}$ or dec arg for $\Phi$ (then indifference).
+
+Try to obtain stability as a consequence of: if strong arg, then $\prop$ and not $¬\prop$; if unstability, then do not conclude ($\prop \notin \iprops$).
+
+\subsection{Draft concl}
+$[\exists \hist \suchthat \hist \nileadsto \prop] ⇒ \ar \nileadstost^\text{right} \prop$.
+
+$[\exists \hist \suchthat \hist \ileadsto \nprop \land \exists \hist \suchthat \hist \nileadsto \nprop] ⇒ \ar \nileadstost^\text{right} \prop$.
+
+$[\forall \hist: \hist \nileadsto \nprop] ⇒ \ar \ileadstost^\text{right} \prop$.
+
+$[\forall \hist: \hist \ileadsto \prop \land \forall \hist: \hist \ileadsto \nprop] ⇒ \ar \ileadstost^\text{right} \prop$.
+
+\subsection{Perhaps better}
+$\ar \ileadstost^\text{right} \prop ⇒ [\forall \hist: \hist \ileadsto \prop]$.
+
+$\ar \ileadstost^\text{right} \prop ⇒ [\forall \hist: \hist \nileadsto \nprop \lor \forall \hist: \hist \ileadsto \nprop]$.
+
+$[\forall \hist: \hist \nileadsto \nprop] ⇒ \ar \ileadstost^\text{right} \prop$.
+
+$[\forall \hist: \hist \ileadsto \prop \land \forall \hist: \hist \ileadsto \nprop] ⇒ \ar \ileadstost^\text{right} \prop$.
+
+We want that if we introduce phi-indiff that says “phi and ¬phi are indiff”, phi-indiff is adopted iff phi and ¬phi are indiff.
 
 \end{document}
 
