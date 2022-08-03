@@ -131,17 +131,85 @@ To see this, let $\alpha_{123} = (a_1, a_2, a_e)$ designate the history where th
 The deliberated choice of $i$ is defined so as to not depend on the (arbitrary) order of the arguments shown to $i$: for $\prop \in \iprops$, it must be that directing to $i$ the path $\alpha_{123}$ or the path $\alpha_{321}$ both lead $i$ to choose $\prop$.
 However, once we have shown to $i$, say, $\alpha_{123}$, we cannot show to her $\alpha_{321}$ (unless assuming $i$ forgets arguments after a while and waiting for sufficiently long, which would create practical and theoretical difficulties).
 
-This difficulty is resolved using falsifiable general theories, applicable to $I$ and not solely to a given $i$, so that, intuitively speaking, $\alpha_{321}$ can be tested on some $i' ≠ i$. Indeed, what is needed is a way to make a claim such as the one concluding \cref{ex:tutor} empirically testable. This is achieved in the next section thanks to theories of deliberated choice. Such theories are defined so as to satisfy two properties. First, such a theory must be falsifiable in principle, meaning that there exists a world in which it is possible to observe it to be false. As a counter-example, using \cref{ex:tutor}, a theory that claims that $\forall i \in I: \alpha_{123} \ileadsto \prop_1 \lor \alpha_{321} \ileadsto \prop_1$ is not falsifiable in principle, as, whatever the real $\ileadsto$ relation, with a given $i$, one can never show that $\alpha_{123} \nileadsto \prop_1 \land \alpha_{123} \nileadsto \prop_1$. Second, such a theory must be so that if it is not possible to empirically falsify it, meaning that in the actual world it is not possible to observe it to be false, then it implies that some given alternative is in the deliberated judgment of the individuals in $I$.
+This difficulty is resolved using falsifiable general theories, applicable to $I$ and not solely to a given $i$, so that, intuitively speaking, $\alpha_{321}$ can be tested on some $i' ≠ i$. Indeed, what is needed is a way to make a claim such as the one concluding \cref{ex:tutor} empirically testable. This is achieved in the next section thanks to theories of deliberated choice.
+% Such theories contain an observable claim and a conclusion claim, so as to satisfy two properties. First, such a theory must be falsifiable in principle, meaning that it must be possible, using our observational basis (propositions of the sort $\alpha \ileadsto \phi$), to invalidate the observable claim of the theory. As a counter-example, using \cref{ex:tutor}, a theory that claims that $\forall i \in I: \alpha_{123} \ileadsto \prop_1 \lor \alpha_{321} \ileadsto \prop_1$ is not falsifiable in principle, as, whatever the real $\ileadsto$ relation, with a given $i$, one can never show that $\alpha_{123} \nileadsto \prop_1 \land \alpha_{123} \nileadsto \prop_1$. Second, such a theory must be so that if its observable claim holds, then some given alternative is in the deliberated judgment of the individuals in $I$.
 
 \section{Theories of deliberated choice}
-This section assumes that an exposure protocol $(I, \allargs, {\leadsto})$ is defined, and defines theories of deliberated choice associated with that exposure protocol.
+This section assumes that an exposure protocol $(I, \allargs, {\leadsto})$ is defined, and defines theories of deliberated choice associated with that exposure protocol. We will start with very simple theories in order to build an intuition about the conditions required on theories of deliberated choice (\cref{sec:static}), then give an example to illustrate why more complex theories are needed (\cref{sec:lichtenstein}) and finally define more general theories of deliberated choice (\cref{sec:dynamic}).
 
 \subsection{Theories using a static decisive argument}
-\Cref{ex:tutor} suggests a simple form for theories of deliberated choice: suffice to determine an argument $\ar \in \allargs$ and an alternative $\prop \in \Phi$ such that the theory claims that $\forall i \in I: \ar \ileadstost \prop$.
+\label{sec:static}
+\Cref{ex:tutor} suggests a simple form for theories of deliberated choice: suffice to determine an argument $\ar \in \allargs$ and an alternative $\prop \in \Phi$ such that the theory claims that $\forall i \in I: \ar \ileadstost \prop$ and that $\prop \in \iprops$.
 
 \begin{definition}[Static theory]
+	\label{def:static}
 	A static theory is a pair $(\ar, \prop)$ for some $\ar \in \allargs$ and some $\prop \in \Phi$.
 \end{definition}
+Such a theory is said to be truthful iff $\forall i \in I: \ar \ileadstost \prop$, and to be correct iff $\prop \in \iprops$.
+We can then say that such theories are valid, meaning that their truthfulness implies their correctness. Let us make this (very simple) result stand out as a theorem, because a parallel will be usefully made with more complicated theories.
+%Note that this result immediately follows from \cref{ax:decisive}.
+\begin{theorem}[Static theories are valid]
+	Any truthful static theory is correct.
+\end{theorem}
+\begin{proof}
+	The result immediately follows from \cref{ax:decisive}.
+\end{proof}
+Importantly, truthfulness can indeed be checked using our observational basis, that is, if $\exists i \in I \suchthat \ar \nileadstost \prop$, then it is possible to exhibit this fact experimentally.
+
+Such theories have the merit of simplicity, but there is a need to design more adaptive theories: in many interesting cases, no single argument will be considered decisive by all individuals in $I$. What we need is a way to argue with individuals by reacting to what they consider good arguments. The following example illustrates this need.
+
+\subsection{Some decision problems with no single decisive argument}
+\label{sec:lichtenstein}
+One ambition of the theories to be proposed here is to permit exhibiting the existence of a deliberated consensus among a large set of persons about issues that involve numerous arguments and counter-arguments.
+
+In many decision problems, individuals will not be attracted by the same set of arguments and counter-arguments, even though they may finally opt for the same alternative. Imagine that some individual $i_1$ considers an argument $a_1$ for $\nprop$ relevant and some individual $i_2$ considers an argument $a_2$ for $\nprop$ relevant, but $i_1$ does not consider $a_2$ relevant and $i_2$ does not consider $a_1$ relevant (for example, because they already have some counter-arguments in mind to those arguments). Imagine further that there is some counter-argument $a'_1$ that can be given to $i_1$ to rebut $a_1$, and a different counter-argument $a'_2$ that can be given to $i_2$ to rebut $a_2$, so that they both have $\prop$ in their deliberated judgment when considering all these arguments.
+In such situation, static theories as defined in \cref{sec:static} are ill suited: these theories need to present the same argument to all individuals and would thus need to define a bigger argument $a$ containing both $a'_1$ and $a'_2$. Such an argument could be too long to be convincing to $i_1$ or $i_2$, as it needlessly spends efforts countering an argument that the individual already considers irrelevant. This  will become an important problem if there are not only two but many a priori possible arguments $a_k$ for $\nprop$, each with their own counter-argument $a'_k$ for $\prop$.
+
+%For a partial illustration about an ambitious setting, consider a decision to be taken about the relevance of some concrete action to help cope with climate change, and let $I$ be a set of citizens interested in the climate issue. The complete set of all arguments that will be considered relevant by at least one individual may well be very large. It may also be that, for each individual who considers relevant some arguments $A$ against the proposed concrete action, it is possible to give counter-arguments $A'$ that will convince the individual to opt for the proposal.
+One of the settings discussed by citet{sunstein} permits to illustrate this point more concretely.
+The authors claim that workers tend to not save enough because of psychological biases. 
+It is therefore tempting to conjecture that the deliberated choice of those workers is to save more, in the sense defined here, than what their natural choice (in absence of arguments) leads to.
+Let $I$ be a set of workers interested in establishing a savings plan. 
+A difficulty related to this decision problem is that the complete set of all arguments that will be considered relevant by at least one individual for such a complex issue may well be very large. It may also be that, for each individual who considers relevant some arguments $A$ for saving not much (i.e., spending more in the short term), it is possible to give counter-arguments $A'$ that will convince the individual to opt for saving more.
+But no single argument could be decisive for each $i \in I$: it could be that only tailored counter-arguments could convince individuals, given the complexity of the issue.
+This illustrates that the deliberated choice of each individuals in $I$ may be to save more even though no static theory (\cref{def:static}) may achieve showing it, as it could be that no such theory is truthful.
+
+The above setting illustrates the ambition of this research program, but at the price of rendering impossible in the confines of this article to define fully the set of arguments and giving a complete account of a concrete theory of deliberated choice in such a complex setting, an endeavor of its own.
+
+The following example illustrates this same point in a simpler setting which permits a complete definition of $\allargs$ and $\leadsto$.%, which permits defining the setting completely at the price of a reduced realism.
+\begin{example}[A decision problem about two lotteries]
+	\label{ex:lichtenstein}
+	In a famous article about preference reversals, \citet{lichtenstein_reversals_2006} discuss an example involving two lotteries. The lottery $P$ makes you win four dollars with 99\% chance and lose ten cents with 1\% chance; in summary, $P = (.99, +\$4; .01, −\$0.1)$. The lottery $D$ is, using the same notations: $(.33, +\$16; .67, −\$2)$. The letter $P$ stands for probability: one salient aspect of $P$ is the very high chance of winning. The letter $D$ stands for dollar: one salient aspect of $D$ is the high gain it gives (compared to $P$) in dollar amount if the player is lucky.
+
+This example is interesting because when asked to bid for lotteries, the theory discussed by the authors predicts, and their experiments confirm, that subjects tend to bid more for $D$ than for $P$, because the bidding question tend to make individuals focus on dollar amounts; whereas when asked to choose one lottery, the lotteries being presented in pairs, subjects tend to choose $P$ among the pair $\set{P, D}$, giving greater attention to probabilities.
+
+Define $\allprops = \set{\phi_P, \phi_D}$.
+
+Define $\ar_e$ as a text arguing that the choice between $P$ and $D$ should be determined by their expected revenue, namely, $\$3.959$ for $P$ and $\$4$ for $D$.
+\footnote{Here is a possible text for $\ar_e$. “Imagine you play $P$ 100 times. On average, you would win 99 times and lose once, which means gaining 99 × \$4 = \$396 and losing 1 × \$0.10 = \$0.10, hence a total net gain of \$395.90. Thus, your average net gain for the $P$ bet would be \$3.9590. [Similar text for $D$.] Therefore, we suggest you choose $D$ for a higher expected revenue.”}
+Define $\ar_u$ as a text arguing that the utility of money should matter, not the revenue, and arguing that a loss hurts more than a gain. 
+\footnote{Here is a possible text for $\ar_u$. “$D$ is better than $P$ in terms of expected gain, but it is in general absurd to reason in terms of expected gain. For example, consider a choice between winning $10^6$ dollars with probability $0.8$ and winning $2 × 10^6$ dollars with probability $0.4$. These two lotteries have the same expected gain, but the first one is clearly preferrable. Therefore, we recommend to rather pick $P$ as it presents a much better chance of earning money”.}
+Define a counter-argument to $\ar_u$, $\ar_l$, indicating that for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.
+\footnote{Here is a possible text for $\ar_l$. “The lottery $D$ has a higher expected revenue, and thus, a higher utility than $P$, because for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.”}
+Define $\ar$ so as to include the contents of $\ar_e$, $\ar_u$ and $\ar_l$.
+\footnote{Here is a possible text for $\ar$. [Text of $\ar_e$] “Note that one could say that the utility of money should matter, but for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.”}
+%Omitting many other relevant arguments for now (such as arguing that utility should be linear for small amounts of money, for example), 
+Define $\allargs = \set{\ar_e, \ar_u, \ar_l, \ar}$.
+
+Define $I$ as a set of individuals facing a choice between $P$ and $D$ in a laboratory experiment.
+Define $\ileadsto$ as simply exposing $i$ to $\alpha$ and observing the resulting choice by asking $i$ to indicate which lottery she prefers playing. 
+%Given an argumentative path $\hist$, $\hist \ileadsto (P ≥ D)$ iff, in a situation of $i$ having been exposed, in order, to the arguments in $\hist$, letting $i$ choose between $P$ and $D$ or declare indifference leads $i$ to choose $P$, or declare indifference. Here is a possible text presented to $i$ to ask for a choice: “Considering these arguments, would you please choose either to play $P$, or play $D$, or declare to be indifferent (in which case one will be picked randomly for you)”. 
+%Similarly, define $\hist \ileadsto (P > D)$ iff showing the arguments in $\hist$ to $i$ and letting $i$ choose between $P$ and $D$ or declare indifference leads $i$ to choose $P$ and not $D$. 
+%Define similarly $\hist \ileadsto \prop$ for $\prop \in \set{D ≥ P, D > P}$.
+
+Assume that some individuals $i \in I$ do not see the point of argument $\ar_u$ and some do but are convinced by the counter-argument $\ar_l$. Accordingly, define $\ileadsto[e]$, representing the first kind of individuals, as follows. $\forall \hist \in \allhist: \hist \ileadsto[e] D ⇔ [\ar_e \in R(\hist)]$. Note that in particular, if $\hist$ contains $\ar$ but not $\ar_e$, $\ar \nileadsto[e] D$, as we assume such individuals are confused by the longer argument $\ar$ referring to abstract notions and could therefore opt for $P$ (falling back to the common psychological bias).
+TODO change notation
+
+The exposure protocol $(I, \allargs, {\allleadsto})$ is an example of a normative theory of \ac{DJ}.
+\end{example}
+
+\subsection{Dynamic theories}
+\label{sec:dynamic}
 
 \section{Multiple}
 \label{sec:multiple}
