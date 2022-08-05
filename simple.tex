@@ -39,7 +39,7 @@
 \end{abstract}
 
 \section{Introduction} 
-Observing subjects performing acts of choice is the basis of much work in econometrics. Such acts have been used, among others, to give an observable basis to the concept of preference, thanks in part to the seminal work of Samuelson. Acts of choice are considered here in the broad sense of choice between courses of actions, encompassing the simple setting of choosing between various elementary consumption bundles as well as settings involving more abstract acts such as choosing between defection or cooperation in a game-theoretical setting. 
+Observing subjects performing acts of choice is the basis of much work in econometrics. Such acts have been used, among others, to give an observable basis to the concept of preference, thanks in part to the seminal work of Samuelson. %Acts of choice are considered here in the broad sense of choice between courses of actions, encompassing the simple setting of choosing between various elementary consumption bundles as well as settings involving more abstract acts such as choosing a strategy in a game-theoretical setting. 
 
 Most of these approaches consider only acts of choice that are performed spontaneously in the normal course of action of an individual, or that are given a specific frame depending on the psychological aspect that is to be studied. As an example of the former kind, typical willingness to pay studies asks the subject whether she prefers an object at some price or another object at another price, describing the objects in a way that is considered immediately understandable by the subject (or simply showing the objects). Examples of the latter kind include the celebrated work of Kahneman and Tversky.
 
@@ -178,7 +178,7 @@ This illustrates that the deliberated choice of each individuals in $I$ may be t
 The following example illustrates this same point in a simpler setting which permits a complete definition of $\allargs$ and $\leadsto$.%, which permits defining the setting completely at the price of a reduced realism.
 \begin{example}[A decision problem about two lotteries]
 	\label{ex:lichtenstein}
-	In a famous article about preference reversals, \citet{lichtenstein_reversals_2006} discuss an example involving two lotteries. The lottery $P$ makes you win four dollars with 99\% chance and lose ten cents with 1\% chance; in summary, $P = (.99, +\$4; .01, −\$0.1)$. The lottery $D$ is, using the same notations: $(.33, +\$16; .67, −\$2)$. The letter $P$ stands for probability: one salient aspect of $P$ is the very high chance of winning. The letter $D$ stands for dollar: one salient aspect of $D$ is the high gain it gives (compared to $P$) in dollar amount if the player is lucky.
+	In a famous article about preference reversals, \citet{lichtenstein_reversals_2006} discuss an example involving two lotteries. The lottery $P$ lets the subject win four dollars with 99\% chance and lose ten cents with 1\% chance; in summary, $P = (.99, +\$4; .01, −\$0.1)$. The lottery $D$ is, using the same notations: $(.33, +\$16; .67, −\$2)$. The letter $P$ stands for probability: one salient aspect of $P$ is the very high chance of winning. The letter $D$ stands for dollar: one salient aspect of $D$ is the high gain it gives (compared to $P$) in dollar amount if the subject is lucky.
 
 This example is interesting because when asked to bid for lotteries, the theory discussed by the authors predicts, and their experiments confirm, that subjects tend to bid more for $D$ than for $P$, because the bidding question tend to make individuals focus on dollar amounts; whereas when asked to choose one lottery, the lotteries being presented in pairs, subjects tend to choose $P$ among the pair $\set{P, D}$, giving greater attention to probabilities.
 
@@ -192,7 +192,6 @@ Define a counter-argument to $\ar_u$, $\ar_l$, indicating that for small monetar
 \footnote{Here is a possible text for $\ar_l$. “The lottery $D$ has a higher expected revenue, and thus, a higher utility than $P$, because for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.”}
 Define $\ar$ so as to include the contents of $\ar_e$, $\ar_u$ and $\ar_l$.
 \footnote{Here is a possible text for $\ar$. [Text of $\ar_e$] “Note that one could say that the utility of money should matter, but for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.”}
-%Omitting many other relevant arguments for now (such as arguing that utility should be linear for small amounts of money, for example), 
 Define $\allargs = \set{\ar_e, \ar_u, \ar_l, \ar}$.
 
 Define $I$ as a set of individuals facing a choice between $P$ and $D$ in a laboratory experiment.
@@ -201,14 +200,19 @@ Define $\ileadsto$ as simply exposing $i$ to $\alpha$ and observing the resultin
 %Similarly, define $\hist \ileadsto (P > D)$ iff showing the arguments in $\hist$ to $i$ and letting $i$ choose between $P$ and $D$ or declare indifference leads $i$ to choose $P$ and not $D$. 
 %Define similarly $\hist \ileadsto \prop$ for $\prop \in \set{D ≥ P, D > P}$.
 
-Assume that some individuals $i \in I$ do not see the point of argument $\ar_u$ and some do but are convinced by the counter-argument $\ar_l$. Accordingly, define $\ileadsto[e]$, representing the first kind of individuals, as follows. $\forall \hist \in \allhist: \hist \ileadsto[e] D ⇔ [\ar_e \in R(\hist)]$. Note that in particular, if $\hist$ contains $\ar$ but not $\ar_e$, $\ar \nileadsto[e] D$, as we assume such individuals are confused by the longer argument $\ar$ referring to abstract notions and could therefore opt for $P$ (falling back to the common psychological bias).
-TODO change notation
+Assume that some individuals $i \in I$ do not see the point of argument $\ar_u$ and some do but are convinced by the counter-argument $\ar_l$. Accordingly, define $\ileadsto[e]$, representing the first kind of individuals, as follows. $\forall \hist \in \allhist: \hist \ileadsto[e] D ⇔ [\ar_e \in R(\hist)]$, and $\hist \ileadsto[e] P$ otherwise. Note that in particular, if $\hist$ contains $\ar$ but not $\ar_e$, $\ar \nileadsto[e] D$, as we assume such individuals are confused by the longer argument $\ar$ referring to abstract notions and therefore opt for $P$, falling back to the common psychological bias.
+The second kind of individuals is represented by $\ileadsto[u]$ defined as $\forall \hist \in \allhist: \hist \ileadsto[u] D ⇔ [\ar_u \notin R(\hist) \lor \ar \in R(\hist) \lor \set{\ar_u, \ar_l} \subseteq R(\hist)]$, and $\hist \ileadsto[u] P$ otherwise.
+We assume here that such individuals think about $\ar_u$ as a correct argument in favor of $P$ until shown the rebuttal $\ar_l$ (or $\ar$, which contains the same rebuttal).
+Assuming finally $\allleadsto$ as equal to $\ileadsto[e]$ for individuals of the first kind and $\ileadsto[u]$ otherwise concludes the definition of the exposure protocol $(I, \allargs, {\allleadsto})$.
 
-The exposure protocol $(I, \allargs, {\allleadsto})$ is an example of a normative theory of \ac{DJ}.
+It follows from this definition that $\forall i \in I: \prop_D \in \iprops$, and that no static theory of that exposure protocol is truthful: only $\ar_e$ is a decisive argument for $\prop_D$ for the first kind of individuals whereas for the second kind, only $\ar$ is.
 \end{example}
+This example illustrates the need for theories that are able to react to arguments depending on what a given individual considers relevant. This is the object of the next section.
 
-\subsection{Dynamic theories}
+\subsection{General theories of deliberated choice}
 \label{sec:dynamic}
+A theory of deliberated choice presents a claim $C$ under the form of a constraint on ${\ileadsto}$.
+That claim 
 
 \section{Multiple}
 \label{sec:multiple}
