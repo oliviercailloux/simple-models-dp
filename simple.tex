@@ -65,7 +65,9 @@ Studying judgments resulting from exposure to arguments includes a difficulty th
 For conceptual clarity, I will focus on the case of a single binary decision to take, akin to a choice situation facing a bundle of two courses of action, exactly one of which must be adopted.
 
 \section{Exposure protocol and deliberated choice}
-Let $\Phi = \set{\phi, ¬\phi}$ represent the decision at stake. The set $\Phi$ represents two antagonistic acts, such as “buy this object for the price of \$15” and “do not buy this object for the price of \$15”, or “take this job offer” and “decline this job offer”.
+I assume given two antagonistic acts, constituting the decision at stake, such as “buy this object for the price of \$15” and “do not buy this object for the price of \$15”, or “take this job offer” and “decline this job offer”.
+%The letter $\phi$ will be used to denote a generic act (one of these two), and given an act $\phi$, $¬\phi$ denotes the other act.
+Let the set $P = \set{\phi, ¬\phi, 0}$ denote the set of possible preferences, where $\phi$ denote a strict preference for the first act against the other one, $¬\phi$ conversely, and $0$ denotes indifference (both acts are considered equally worth).
 
 \subsection{Exposure protocol}
 An exposure protocol is a tuple $(I, \allargs, {\allleadsto})$, where $I$ is a set of individuals, $\allargs$ is a set of arguments, and ${\allleadsto}$ is the behavior of the individuals as a function of the arguments they have been exposed to.
@@ -77,9 +79,9 @@ Define $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ as the finite seq
 A generic element of $\allhist$ (a sequence of arguments) is denoted by $\hist$ and called an argumentative path, or simply a path when this raises no ambiguity. Its length is denoted by $\card{\hist} \in \N$.
 Thus, given an argumentative path $\hist \in \allhist$, $\forall k \in \intvl{1, \card{\hist}}$, $\hist_k \in \allargs$, and $\hist = \emptyset ⇔ \card{\hist} = 0$.
 
-The function ${\allleadsto}: I × \allhist → \set{\phi, ¬\phi, 0}$ associates to each individual and path an element of $\Phi$ or the special symbol $0$ representing the absence of a strict preference. That is, ${\allleadsto}(i, \alpha)$ represents the choice of $i$ following exposure to the arguemnts of $\alpha$, in order. The case ${\allleadsto}(i, \alpha) = 0$ is used to represent indifference.
-The notation $\alpha \ileadsto \phi$ will be used to mean ${\allleadsto}(i, \alpha) = \phi$, considering ${\ileadsto} \subseteq \allhist × \Phi$ as a binary relation.
-As usual with binary relations, $\hist \nileadsto \prop$ means ${\allleadsto}(i, \alpha) ≠ \prop$ or equivalently ${\allleadsto}(i, \alpha) \in \set{\nprop, 0}$.
+The function ${\allleadsto}: I × \allhist → P$ associates to each individual and path an element of $P$, ${\allleadsto}(i, \alpha)$ representing the choice of $i$ following exposure to the arguments of $\alpha$, in order. That is, ${\allleadsto}(i, \alpha) = \phi$ denotes that $i$ chooses the first act after exposure to $\alpha$, ${\allleadsto}(i, \alpha) = ¬\phi$ denotes $i$ choosing the second act and ${\allleadsto}(i, \alpha) = 0$ is used to represent indifference of $i$.
+The notation $\alpha \ileadsto p$ will be used to mean ${\allleadsto}(i, \alpha) = p$, considering ${\ileadsto} \subseteq \allhist × P$ as a binary relation.
+As usual with binary relations, $\hist \nileadsto p$ means ${\allleadsto}(i, \alpha) ≠ p$ or equivalently ${\allleadsto}(i, \alpha) \in P \setminus \set{p}$.
 
 \subsection{Deliberated choice}
 The deliberated choice of $i$ given the exposure protocol $(I, \allargs, {\allleadsto})$ is denoted $\iprops$ and is a strict subset of $\allprops$, with the semantics that $\iprops = \set{\prop}$ iff $\prop$ is considered by $i$ as the best option among the proposed set $\allprops$, after deliberation, given the exposure protocol. In other words, if $\iprops = \set{\phi}$, the individual considers $\phi$ strictly better than $\nprop$, after deliberation (and conversely for $\iprops = \set{¬\phi}$); and if $\iprops = \emptyset$, the deliberated judgment of $i$ considers neither $\phi$ nor $¬\phi$ as strictly better than the alternative. This latter possibility covers both the situation of indifference between both options (in the sense of being evaluated by $i$ as being exactly equally worth), which will be further developed in \cref{sec:multiple}, or the situation that $\phi$ is neither deliberately strictly better than, exactly equivalent to or strictly worst than $\nprop$.
