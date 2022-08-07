@@ -224,32 +224,34 @@ This example illustrates the need for theories that are able to react to argumen
 
 \subsection{Argumentative theories of deliberated choice}
 \label{sec:dynamic}
-An argumentative theory of \ac{DC} is defined as a tuple $(p, \gleadsto, \dg)$, where $p \in P$ is the proposition supported by the theory, ${\gleadsto} \subseteq \allargs × \allprops$ is an initial argumentation relation and $\dg$ is a defense relation; satisfying bounded depth.
+An argumentative theory of \ac{DC} $\gamma$ is defined as a tuple $(\pga, \arga, \dg)$, where $\pga \in P$ is the proposition supported by the theory, $\arga \in \allargs$ is the initial argument and $\dg$ is a defense relation.
+\commentYM{puisque la théorie empirique est une théorie empirique D'UNE CERTAINE THEORIE NORMATIVE, je m'attendrais  à ce qu'on voit apparaître la théorie normative dans la formule de la théorie empirique, non ?}
+
+The defense relation $\dg \subseteq (\allargs × \allhist) × \allargs$ defines the argumentation strategy of the theory. Informally speaking, its role is to produce the arguments that the theory claims will convince the individuals in $I$ to choose $\pga$. Assuming that the theory has played an argument $\ar_0$ and a path $\hist$ challenges its intended conclusion in favor of $\pga$ (as judged by the individual), $\dg(\ar_0, \hist)$ is the argument that the theory plays as a counter-argument to the path $\hist$.
+
+Formally speaking, a defense relation $\dg \subseteq (\allargs × \allhist) × \allargs$ is a right-unique relation satisfying bounded depth. Right-unique means that given any $\ar \in \allargs, \hist \in \allhist$, $\dg(\ar, \hist)$ is empty or is a singleton. %, and must satisfy $\ar \notin \histend ⇒ \dg(\ar, \hist) = \emptyset$. 
+As is usual for right-unique relations, I write $\dg(\ar_0, \hist) = \ar_1$ instead of $\dg(\ar_0, \hist) = \set{\ar_1}$.
+Say that $\ar_1$ defends $\ar_0$ iff $\exists \hist \suchthat \dg(\ar_0, \hist) = \ar_1$.
+Define $\dg(\ar) = \dg(\ar, \allhist) = \set{\dg(\ar, \hist) \suchthat \hist \in \allhist} \subseteq \allargs$ as all the defenders of $\ar$.
+
+This mechanism permits to define defenders of defenders of an argument, $\dg(\dg(\ar))$, defenders of defenders of defenders of an argument, … This yields the following notion of depth.
+Given any set $S$ and function $f: S → S$, let $f^0$ represent the identity function, and given $k \in \N$, let $f^{k + 1} = f \circ f^k$.
+The bounded depth condition on the defense relation imposes that
+$\exists k \in \N \suchthat (\dg)^k(\gleadstoinv(\allprops)) = \emptyset$.
+The smallest such $k$ is called the depth of the theory.
+\commentYM{ok soit, ça semble raisonnable, mais tu n'as pas de raison plus forte, j'adopterais une formulation plus modeste et ouverte, du genre "ça semble souhaitable"}
+
+%The condition that when $\dg(\ar_0, \hist)$, $\ar_0 \in \histend$ is imposed for simplicity: as will appear, an argument $\ar_0$ needs defense only when it is challenged by some path $\hist \suchthat \ar_0 \in \histend$, thus, letting $\dg$ define counter-arguments to paths not satisfying this condition would be of no use.
+
+\subsubsection{Validity (draft)}
+I believe that I will need the following axiom.
+
+If truthful, given $a_2$ defending $a_1$, $\forall \hist \suchthat a_2 \in \histend: (a_1, \hist) \ileadsto p ⇒ \hist \ileadsto p$.
+
+This seems reasonable because $a_2$, as a defender of $a_1$, “contains” $a_1$.
 
 \subsection{Old definition}
 \label{sec:descrdef}
-In this section, a normative theory of \ac{DJ} $(\allprops, \allargs, I, {\allleadsto})$ is supposed given.
-These concepts are now defined formally.
-\commentYM{puisque la théorie empirique est une théorie empirique D'UNE CERTAINE THEORIE NORMATIVE, je m'attendrais  à ce qu'on voit apparaître la théorie normative dans la formule de la théorie empirique, non ?}
-
-An initial argumentation relation ${\gleadsto} \subseteq \allargs × \allprops$ defines the set of supported  propositions and, for each supported propositions, the set of initial arguments for these propositions. 
-More precisely, let $\gpropse$, the range of ${\gleadsto}$, be called the propositions \emph{supported} by the descriptive theory.
-Given such a supported proposition $\prop \in \gpropse$, let $\gleadstoinv(\prop) = \set{\ar \in \allargs \suchthat \ar \gleadsto \prop}$ be called the initial arguments in favor of $\prop$.
-
-A defense relation $\dg \subseteq (\allargs × \allhist) × \allargs$ is a right-unique relation, thus given any $\ar \in \allargs, \hist \in \allhist$, $\dg(\ar, \hist)$ is empty or is a singleton. %, and must satisfy $\ar \notin \histend ⇒ \dg(\ar, \hist) = \emptyset$. 
-As is usual for right-unique relations, I write $\dg(\ar_0, \hist) = \ar_1$ instead of $\dg(\ar_0, \hist) = \set{\ar_1}$.
-Say that $\ar_1$ defends $\ar_0$ iff $\exists \hist \suchthat \dg(\ar_0, \hist) = \ar_1$.
-Define $\dg(\ar) = \dfp(\ar) = \dg(\ar, \allhist) = \set{\dg(\ar, \hist) \suchthat \hist \in \allhist} \subseteq \allargs$ as all the defenders of $\ar$.
-The relation $\dg$ defines the argumentation strategy of the theory. Informally speaking, its role is to adapt the arguments the theory produces to the reactions of the individual it is trying to convince. Assuming the theory has played an argument $\ar_0$ and a path $\hist$ challenges some of the conclusions this argument supports (as judged by the individual), $\dg(\ar_0, \hist)$ is the argument that the theory plays as a counter-argument to the path $\hist$.
-%The condition that when $\dg(\ar_0, \hist)$, $\ar_0 \in \histend$ is imposed for simplicity: as will appear, an argument $\ar_0$ needs defense only when it is challenged by some path $\hist \suchthat \ar_0 \in \histend$, thus, letting $\dg$ define counter-arguments to paths not satisfying this condition would be of no use.
-
-This mechanism permits to define defenders of defenders of an argument, $\dg(\dg(\ar))$, defenders of defenders of defenders of an argument, … 
-For the results to be presented here to hold, an empirical theory must be a priori restricted in the maximal “depth” of its argumentation strategy, in the following sense. 
-\commentYM{ok soit, ça semble raisonnable, mais tu n'as pas de raison plus forte, j'adopterais une formulation plus modeste et ouverte, du genre "ça semble souhaitable"}
-Given any set $S$ and function $f: S → S$, let $f^0$ represent the identity function, and given $k \in \N$, let $f^{k + 1} = f \circ f^k$.
-The bounded depth condition on a descriptive theory imposes that
-$\exists k \in \N \suchthat (\dg)^k(\gleadstoinv(\allprops)) = \emptyset$.
-The smallest such $k$ is called the depth of the theory.
 
 Here is an example of a theory that does not use an argumentation strategy, but simply plays an argument that it claims is decisive for everybody.
 \begin{example}[Constant argumentation]
