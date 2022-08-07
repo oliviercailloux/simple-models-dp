@@ -77,32 +77,41 @@ Throughout the article, $\N$ includes zero. %and $\N^* = \N \setminus \set{0}$.
 Given $j, l \in \N$, the notation $\intvl{j, l}$ represents $\set{k \in \N \suchthat j ≤ k ≤ l}$ (thus $\forall j \in \N: \intvl{j, 0} = \emptyset$).
 Define $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ as the finite sequences of arguments, including the empty sequence. 
 A generic element of $\allhist$ (a sequence of arguments) is denoted by $\hist$ and called an argumentative path, or simply a path when this raises no ambiguity. Its length is denoted by $\card{\hist} \in \N$.
-Thus, given an argumentative path $\hist \in \allhist$, $\forall k \in \intvl{1, \card{\hist}}$, $\hist_k \in \allargs$, and $\hist = \emptyset ⇔ \card{\hist} = 0$.
+Thus, given an argumentative path $\hist \in \allhist$, $\forall k \in \intvl{1, \card{\hist}}: \hist_k \in \allargs$, and $\hist = \emptyset ⇔ \card{\hist} = 0$.
 
 The function ${\allleadsto}: I × \allhist → P$ associates to each individual and path an element of $P$, ${\allleadsto}(i, \alpha)$ representing the choice of $i$ following exposure to the arguments of $\alpha$, in order. That is, ${\allleadsto}(i, \alpha) = \phi$ denotes that $i$ chooses the first act after exposure to $\alpha$, ${\allleadsto}(i, \alpha) = ¬\phi$ denotes $i$ choosing the second act and ${\allleadsto}(i, \alpha) = 0$ is used to represent indifference of $i$.
 The notation $\alpha \ileadsto p$ will be used to mean ${\allleadsto}(i, \alpha) = p$, considering ${\ileadsto} \subseteq \allhist × P$ as a binary relation.
 As usual with binary relations, $\hist \nileadsto p$ means ${\allleadsto}(i, \alpha) ≠ p$ or equivalently ${\allleadsto}(i, \alpha) \in P \setminus \set{p}$.
 
 \subsection{Deliberated choice}
-The deliberated choice of $i$ given the exposure protocol $(I, \allargs, {\allleadsto})$ is denoted $p_i \in P$, with the semantics that $p_i$ represents the preference of $i$ over the proposed set of two acts, after deliberation, given the exposure protocol. In other words, if $p_i = \phi$, the individual considers the first act strictly better than the second one, after deliberation (and conversely for $p_i = ¬\phi$); and if $p_i = 0$, the deliberated choice of $i$ considers neither no act as strictly better than the alternative. This latter possibility covers both the situation of indifference between both options (in the sense of being evaluated by $i$ as being exactly equally worth), which will be further developed in \cref{sec:multiple}, or the situation that no act is deliberately strictly better than the other one and that they are also not deliberately exactly equivalent to each other.
-\footnote{It should be clear that $P$ as used as the codomain of ${\leadsto}$ and as the set of possible values of $p_i$ denote different entities. The letter is reused simply to reduce notations. The value ${\leadsto}(i, \alpha) \in P$ designates the directly observed choice of $i$ whereas the value $p_i \in P$ designates the non directly observable deliberated choice of $i$%; furthermore, $0$ in particular may acquire a very different meaning as the value ${\leadsto}(i, \alpha)$ than as the value $p_i = 0$
-.}
-
-This latter possibility may look unpleasant, but it is a fact that facing some difficult problems, individuals sometimes are undecided, and it is an a priori empirical possibility that the individual remains undecided (or even, becomes \emph{more} undecided) when considering multiple arguments. That classical protocols of natural choice do not allow to observe such incompleteness has often been considered a weakness of those protocols, that our richer observational basis permits to overcome.
-
-The formal definition of $p_i$ given $(I, \allargs, {\allleadsto})$ requires to define the notion of decisive argument.
+The deliberated choice of $i$ given the exposure protocol $(I, \allargs, {\allleadsto})$ is denoted $P_i \subset P$.
+Its formal defnition requires the notion of decisive argument.
 
 Given $\hist \in \allhist$, $\range(\hist) = \hist(\intvl{1, \card{\hist}})$ denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$.
 Let $\histend = \hist(\intvl{\max(1, \card{\hist} - 1), \card{\hist}})$ denote the set containing the last two arguments of the sequence $\hist$ if the sequence has at least two elements; the unique argument of the sequence if it has exactly one element; and the empty set if it is empty.
 
 Given $i \in I, p \in P, \ar \in \allargs$, define $\ar \ileadstost p$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \ileadsto p$.
 When $\ar \ileadstost p$, $\ar$ is said to be a decisive argument for $\prop$ from $i$’s point of view given the exposure protocol. 
-The deliberated judgment of $i$ is then considered as the set of propositions supported by decisive arguments.
-\begin{axiom}[Decisive arguments define deliberated judgments]
-	\label{ax:decisive}
+
+The deliberated choice of $i$ is then considered as the set of propositions supported by decisive arguments.
+\begin{definition}[Deliberated choice]
+	\label{def:decisive}
 	$\forall i \in I, p \in P: 
-		p \in P_i ⇔ [\exists \ar \in \allargs \suchthat \ar \ileadstost \prop].$
-\end{axiom}
+		p \in P_i ⇔ [\exists \ar \in \allargs \suchthat \ar \ileadstost p].$
+\end{definition}
+
+It follows from the consideration of “end” as the last \emph{two} arguments that decisive arguments can argue for at most one proposition, thus, that the deliberated choice cannot hold more than one proposition.
+\begin{theorem}[Deliberated choice singularity]
+	$\forall i \in I: \card{P_i} ≤ 1$.
+\end{theorem}
+\begin{proof}
+	Assume that $\exists \ar, \ar' \in \allargs, p, p' \in P \suchthat \ar \ileadstost p \land \ar' \ileadstost p'$.
+	Since $\ar \ileadstost p$, $(\ar, \ar') \ileadsto p$, and since $\ar' \ileadstost p'$, $(\ar, \ar') \ileadsto p'$, hence $p' = p$.
+\end{proof}
+
+The intended semantics is that $P_i$ represents the preference of $i$ over the proposed set of two acts, after deliberation, given the exposure protocol. In other words, if $P_i = \set{\phi}$, the individual considers the first act strictly better than the second one, after deliberation (and conversely for $P_i = \set{¬\phi}$); if $P_i = \set{0}$, the deliberated judgment of $i$ is that both acts are equally worth; and if $P_i = \emptyset$, no act is deliberately strictly better than the other one and they are also not deliberately exactly equivalent to each other.
+
+This latter possibility may look unpleasant, but it is a fact that facing some difficult problems, individuals sometimes are undecided, and it is an a priori empirical possibility that the individual remains undecided (or even, becomes \emph{more} undecided) when considering multiple arguments. 
 
 \subsection{An example and a discussion about observability}
 The following toy example is inspired by citet[p.~59]{Railton}, who uses this example to support his claim that beliefs may influence decisions. Here is his story.
@@ -142,20 +151,20 @@ This section assumes that an exposure protocol $(I, \allargs, {\leadsto})$ is de
 
 \subsection{Theories using a static decisive argument}
 \label{sec:static}
-\Cref{ex:tutor} suggests a simple form for theories of deliberated choice: suffice to determine an argument $\ar \in \allargs$ and an alternative $\prop \in \Phi$ such that the theory claims that $\forall i \in I: \ar \ileadstost \prop$ and that $\prop \in \iprops$.
+\Cref{ex:tutor} suggests a simple form for theories of deliberated choice: suffice to determine an argument $\ar \in \allargs$ and an alternative $\prop \in \Phi$ such that the theory claims that $\forall i \in I: \ar \ileadstost \prop$ and that $\forall i \in I: \prop \in \iprops$.
 
 \begin{definition}[Static theory]
 	\label{def:static}
 	A static theory is a pair $(\ar, \prop)$ for some $\ar \in \allargs$ and some $\prop \in \Phi$.
 \end{definition}
-Such a theory is said to be truthful iff $\forall i \in I: \ar \ileadstost \prop$, and to be correct iff $\prop \in \iprops$.
+Such a theory is said to be truthful iff $\forall i \in I: \ar \ileadstost \prop$, and to be correct iff $\forall i \in I: \prop \in \iprops$.
 We can then say that such theories are valid, meaning that their truthfulness implies their correctness. Let us make this (very simple) result stand out as a theorem, because a parallel will be usefully made with more complicated theories.
 %Note that this result immediately follows from \cref{ax:decisive}.
 \begin{theorem}[Static theories are valid]
 	Any truthful static theory is correct.
 \end{theorem}
 \begin{proof}
-	The result immediately follows from \cref{ax:decisive}.
+	This follows immediately from \cref{def:decisive}.
 \end{proof}
 Importantly, truthfulness can indeed be checked using our observational basis, that is, if $\exists i \in I \suchthat \ar \nileadstost \prop$, then it is possible to exhibit this fact experimentally.
 
@@ -179,7 +188,7 @@ This illustrates that the deliberated choice of each individuals in $I$ may be t
 
 %The above setting illustrates the ambition of this research program, but at the price of rendering impossible in the confines of this article to define fully the set of arguments and giving a complete account of a concrete theory of deliberated choice in such a complex setting, an endeavor of its own.
 
-The following example illustrates this same point in a simpler setting which permits a complete definition of $\allargs$ and $\leadsto$.%, which permits defining the setting completely at the price of a reduced realism.
+The following example illustrates this same point in a constrained setting which permits a complete definition of $\allargs$ and $\leadsto$.%, which permits defining the setting completely at the price of a reduced realism.
 \begin{example}[A decision problem about two lotteries]
 	\label{ex:lichtenstein}
 	In a famous article about preference reversals, \citet{lichtenstein_reversals_2006} discuss an example involving two lotteries. The lottery $P$ lets the subject win four dollars with 99\% chance and lose ten cents with 1\% chance; in summary, $P = (.99, +\$4; .01, −\$0.1)$. The lottery $D$ is, using the same notations: $(.33, +\$16; .67, −\$2)$. The letter $P$ stands for probability: one salient aspect of $P$ is the very high chance of winning. The letter $D$ stands for dollar: one salient aspect of $D$ is the high gain it gives (compared to $P$) in dollar amount if the subject is lucky.
@@ -215,7 +224,7 @@ This example illustrates the need for theories that are able to react to argumen
 
 \subsection{Argumentative theories of deliberated choice}
 \label{sec:dynamic}
-An argumentative theory of \ac{DC} is defined as a tuple $(\gleadsto, \dg)$, where ${\gleadsto} \subseteq \allargs × \allprops$ is an initial argumentation relation and $\dg$ is a defense relation; satisfying bounded depth.
+An argumentative theory of \ac{DC} is defined as a tuple $(p, \gleadsto, \dg)$, where $p \in P$ is the proposition supported by the theory, ${\gleadsto} \subseteq \allargs × \allprops$ is an initial argumentation relation and $\dg$ is a defense relation; satisfying bounded depth.
 
 \subsection{Old definition}
 \label{sec:descrdef}
