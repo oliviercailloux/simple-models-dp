@@ -251,26 +251,20 @@ Generalizing this observation, given $i \in I$, define $\dgi(\ar) = \set{\dg(\ar
 Given any set $S$ and function $f: S → S$, let $f^0$ represent the identity function, and given $k \in \N$, let $f^{k + 1} = f \circ f^k$.
 Define $\gargsi \subseteq \allargs$ as the transitive closure of $\arga$ under $\dgi$: $\gargsi = \cup_{k \in \N} (\dgi)^k(\arga)$. The set $\gargsi$ is the set of arguments required to convince $i$ of choosing $\pga$.
 
-Given $\ar \in \gargsi$, say that $\ar$ $i$-defends $\pga$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend \land \hist \nileadsto \pga: d(\ar, \hist) ≠ \emptyset$.
-Note that if an argument fails to $i$-defend $\pga$, then the argumentative strategy of the theory has failed: some path challenge an argument of the theory, and the theory is not ready to counter-argue against that path.
-
-Accordingly, an argumentative theory claims that all the arguments required to convince $i$ of choosing $\pga$ do $i$-defend $\pga$.
+An argumentative theory claims that whenever some of its arguments fail to convince $i$ of choosing $\pga$, it can argue something else.
 It is said to be truthful iff this claim is correct.
 \begin{definition}[Truthfulness]
 	\label{def:truth}
-	An argumentative theory $(\pga, \arga, \dg)$ for the exposure protocol $(I, \allargs, {\leadsto})$ is \emph{truthful} iff $\forall i \in I, \ar \in \gargsi: \ar$ $i$-defends $\pga$.
+	An argumentative theory $(\pga, \arga, \dg)$ for the exposure protocol $(I, \allargs, {\leadsto})$ is \emph{truthful} iff $\forall i \in I, \ar_2 \in \dgi(\arga), \ar_3 \in \dgi(\ar_2), …, \forall \hist \in \allhist \suchthat \hist = (\arga, …, \ar_2, …, \ar_3, …) \land \ar_3 \in \histend: [\hist \nileadsto \pga ⇒ d(\ar_3, \hist) ≠ \emptyset]$.
 \end{definition}
-
-NB we can check $a_1, a_x, a_y, a_2, …$ but not other paths after $a_2$.
-Thus, among the paths that contain $a_2$, they all contain $a_1$ before $a_2$.
 
 Note that a static theory $(p, \ar)$ can be considered as an argumentative theory $(p, \ar, \emptyset)$, and is truthful in the sense of \cref{sec:static} iff $(p, \ar, \emptyset)$ is truthful in the sense of \cref{def:truth}.
 
 Associated with an argumentative theory also comes the following axiom, that mandates that if some argument $\ar_2$ defends some argument $\ar_1$, and if $\ar_2$ leads $i$ to opt for $\pga$ in some path containing $\ar_1$, then $\ar_1$ can be omitted and the path will still lead $i$ to opt for $\pga$.
 
-\begin{axiom}[Omitting the defended argument]
+\begin{axiom}[Omitting defended arguments]
 	\label{ax:omitting}
-	If the theory is truthful, then $\forall \ar_1, \ar_2 \in \gargsi, \hist \suchthat \ar_2 \in \dgi(\ar_1) \land \ar_2 \in \histend: (\ar_1, \hist) \ileadsto \pga ⇒ \hist \ileadsto \pga$.
+	If the theory is truthful, then $\forall \ar_2 \in \dgi(\arga), \ar_3 \in \dgi(\ar_2), …, \hist \suchthat \ar_7 \in \histend: (…, \ar_4, \ar_5, …, \hist) \ileadsto \pga ⇒ (…, \ar_5, …, \hist) \ileadsto \pga$.
 \end{axiom}
 This is called an axiom because it cannot be falsified using observables. It has to be accepted on the basis of the rest of the observations. What it states are counterfactuals: if $i$ had been presented with $\hist$ not containing $\ar_1$, and assuming $i$ would have accepted an argument $\ar_2$ for $\pga$, …
 This seems reasonable because $a_2$, as a defender of $a_1$, “contains” $a_1$. 
@@ -282,9 +276,38 @@ As previously, it is said to be valid iff its truthfulness leads to its correctn
 	If an argumentative theory is truthful, then \cref{ax:omitting} implies that the theory is correct.
 \end{theorem}
 \begin{proof}
-	Assume, to start with, that $\arga$ is not decisive because $\hist \nileadsto \pga, \arga \in \histend$.
-	Assume that $\dgi(\arga) = \ar_2$ with no further hist against it.
-	…
+	Assume, to start with, that the theory is of depth 2, more precisely, $\arga$ is not decisive because $\hist \nileadsto \pga, \arga \in \histend$ and $\dgi(\arga) = \ar_2$ with no further hist against it.
+	
+	Consider any $i \in I$.
+	Assume $\arga$ is not decisive.
+	
+	Truthfulness brings this.
+	$\forall \hist = (\arga, …, \ar_2, …) \suchthat \ar_2 \in \histend: \hist \ileadsto \pga$.
+	
+	The axiom brings this.
+	$\forall \hist \suchthat \ar_2 \in \histend: (\arga, \hist) \ileadsto \pga ⇒ \hist \ileadsto \pga$.
+	
+	Consider any $\hist \suchthat \ar_2 \in \histend$. We want to show that $\hist \ileadsto \pga$.
+	If it starts with $\arga$: done thanks to truthfulness.
+	Otherwise: done thanks to truthfulness and the axiom.
+
+Consider now a theory of depth 3. 
+	Consider any $i \in I$.
+	Assume $\arga$ not decisive, $\ar_2$ not decisive.
+	
+	Truthfulness brings this.
+	$\forall \hist = (\arga, …, \ar_2, …, \ar_3, …) \suchthat \ar_3 \in \histend: \hist \ileadsto \pga$.
+	
+	The axiom brings this.
+	$\forall \hist \suchthat \ar_3 \in \histend: (\ar_2, \hist) \ileadsto \pga ⇒ (\hist) \ileadsto \pga$.
+	And this.
+	$\forall \hist \suchthat \ar_3 \in \histend: (\ar_1, \ar_2, \hist) \ileadsto \pga ⇒ (\ar_2, \hist) \ileadsto \pga$.
+	And $(\ar_1, \ar_2, \hist) \ileadsto \pga$ holds thanks to truthfulness, so $(\ar_2, \hist) \ileadsto \pga$, so $\hist \ileadsto \pga$.
+	
+	Consider any $\hist \suchthat \ar_3 \in \histend$. We want to show that $\hist \ileadsto \pga$.
+	If it includes a1 then a2, ok thanks to truthfulness.
+	
+	
 \end{proof}
 
 \subsection{Old definition}
