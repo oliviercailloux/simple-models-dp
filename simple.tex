@@ -56,7 +56,7 @@ In supplement to a possibly helpful conceptual clarification, such a sharp separ
 
 The deliberated judgment of a subject is said to depend on the exposure protocol, that is, on the set of arguments and the way they are submitted to the subject, and not only on the set of arguments, because the very way that they are transmitted to the individual may affect her judgment differently. For example, reading an image description and showing an image to a subject may impress them differently.
 
-The exposure protocol defines a set of argument and, importantly, how arguments are sent to the subject and her subsequent choice observed. There is, as need be, no requirement on the internal process that occurs in the subject’s mind while she (possibly) processes the arguments, as it is not desirable to assume that the internal process could be observed. We consider subjects as black boxes and only require a capacity of observation of their choices after exposure to arguments. Depending on the exposure protocol and the subject, it is of course possible for the arguments to never affect any judgment of the subject, a conclusion that may be interesting in its own right.
+The exposure protocol defines a set of argument and, importantly, how arguments are sent to the subject and her subsequent choice observed. There is, as need be, no requirement on the internal process that occurs in the subject’s mind while she (possibly) processes the arguments, as it is not desirable to assume that the internal process could be observed. We consider subjects as black boxes and only require a capacity of observation of their choices after exposure to arguments. Depending on the exposure protocol and the subject, it is of course possible for the arguments to never affect any choice of the subject, a conclusion that may be interesting in its own right.
 
 The deliberated judgment of a subject is defined as a function of the exposure protocol, as accepting every claims that resists every counter-arguments. The notion of resistance is itself defined according to the exposure protocol.
 
@@ -155,9 +155,9 @@ This section assumes that an exposure protocol $(I, \allargs, {\leadsto})$ is de
 
 \begin{definition}[Static theory]
 	\label{def:static}
-	A static theory is a pair $(\ar, \prop)$ for some $\ar \in \allargs$ and some $\prop \in \Phi$.
+	A static theory is a pair $(p, \ar)$ for some $p \in P$ and some $\ar \in \allargs$.
 \end{definition}
-Such a theory is said to be truthful iff $\forall i \in I: \ar \ileadstost \prop$, and to be correct iff $\forall i \in I: \prop \in \iprops$.
+A static theory $(p, \ar)$ is said to be truthful iff $\forall i \in I: \ar \ileadstost \prop$, and to be correct iff $\forall i \in I: \prop \in \iprops$.
 We can then say that such theories are valid, meaning that their truthfulness implies their correctness. Let us make this (very simple) result stand out as a theorem, because a parallel will be usefully made with more complicated theories.
 %Note that this result immediately follows from \cref{ax:decisive}.
 \begin{theorem}[Static theories are valid]
@@ -224,12 +224,12 @@ This example illustrates the need for theories that are able to react to argumen
 
 \subsection{Argumentative theories of deliberated choice}
 \label{sec:dynamic}
-An argumentative theory of \ac{DC} $\gamma$ is defined as a tuple $(\pga, \arga, \dg)$, where $\pga \in P$ is the proposition supported by the theory, $\arga \in \allargs$ is the initial argument and $\dg$ is a defense relation.
+An argumentative theory of \ac{DC} $\gamma$ is defined as a tuple $(\pga, \arga, \dg)$, where $\pga \in P$ is the proposition supported by the theory, $\arga \in \allargs$ is the initial argument in favor of $\pga$ and $\dg$ is a defense relation.
 \commentYM{puisque la théorie empirique est une théorie empirique D'UNE CERTAINE THEORIE NORMATIVE, je m'attendrais  à ce qu'on voit apparaître la théorie normative dans la formule de la théorie empirique, non ?}
 
-The defense relation $\dg \subseteq (\allargs × \allhist) × \allargs$ defines the argumentation strategy of the theory. Informally speaking, its role is to produce the arguments that the theory claims will convince the individuals in $I$ to choose $\pga$. Assuming that the theory has played an argument $\ar_0$ and a path $\hist$ challenges its intended conclusion in favor of $\pga$ (as judged by the individual), $\dg(\ar_0, \hist)$ is the argument that the theory plays as a counter-argument to the path $\hist$.
+The defense relation $\dg \subseteq (\allargs × \allhist) × \allargs$ defines the argumentation strategy of the theory. Informally speaking, its role is, together with $\arga$, to produce the arguments that the theory claims will convince the individuals in $I$ to choose $\pga$. Assuming that the theory has played an argument $\ar_0$ and a path $\hist$ challenges its intended conclusion in favor of $\pga$ (as judged by the individual), $\dg(\ar_0, \hist)$ is the argument that the theory plays as a counter-argument to the path $\hist$.
 
-Formally speaking, a defense relation $\dg \subseteq (\allargs × \allhist) × \allargs$ is a right-unique relation satisfying bounded depth. Right-unique means that given any $\ar \in \allargs, \hist \in \allhist$, $\dg(\ar, \hist)$ is empty or is a singleton. %, and must satisfy $\ar \notin \histend ⇒ \dg(\ar, \hist) = \emptyset$. 
+Formally speaking, a defense relation $\dg \subseteq (\allargs × \allhist) × \allargs$ is a right-unique relation satisfying bounded depth (to be defined shortly). Right-unique means that given any $\ar \in \allargs, \hist \in \allhist$, $\dg(\ar, \hist)$ is empty or is a singleton. %, and must satisfy $\ar \notin \histend ⇒ \dg(\ar, \hist) = \emptyset$. 
 As is usual for right-unique relations, I write $\dg(\ar_0, \hist) = \ar_1$ instead of $\dg(\ar_0, \hist) = \set{\ar_1}$.
 Say that $\ar_1$ defends $\ar_0$ iff $\exists \hist \suchthat \dg(\ar_0, \hist) = \ar_1$.
 Define $\dg(\ar) = \dg(\ar, \allhist) = \set{\dg(\ar, \hist) \suchthat \hist \in \allhist} \subseteq \allargs$ as all the defenders of $\ar$.
@@ -243,12 +243,49 @@ The smallest such $k$ is called the depth of the theory.
 
 %The condition that when $\dg(\ar_0, \hist)$, $\ar_0 \in \histend$ is imposed for simplicity: as will appear, an argument $\ar_0$ needs defense only when it is challenged by some path $\hist \suchthat \ar_0 \in \histend$, thus, letting $\dg$ define counter-arguments to paths not satisfying this condition would be of no use.
 
-\subsubsection{Validity (draft)}
-I believe that I will need the following axiom.
+An argumentative theory claims that its argumentation strategy, embodied by $\arga$ and $\dg$, will convince the individuals in $I$.
+More precisely, given $i \in I$, it claims that $\arga$ either is a decisive argument for $\pga$, or, if $\arga$ is not, that the theory will defend the argument by replying to every counter-argument to $\arga$ with an argument that either is a decisive argument for $\pga$ or, in turn, will be defended by the theory, and so on as long as the theory has counter-arguments to produce; the theory claiming that some argument along that chain is decisive.
 
-If truthful, given $a_2$ defending $a_1$, $\forall \hist \suchthat a_2 \in \histend: (a_1, \hist) \ileadsto p ⇒ \hist \ileadsto p$.
+To define this formally, note that either $\arga$ is a decisive argument for $\pga$, or some paths challenge this claim, namely those in $\set{\hist \in \allhist \suchthat \arga \in \histend \land \hist \nileadsto \pga}$.
+Generalizing this observation, given $i \in I$, define $\dgi(\ar) = \set{\dg(\ar, \hist) \suchthat \ar \in \histend \land \hist \nileadsto \pga} \subseteq \dg(\ar)$ as the subset of defenders of $\ar$ required for convincing $i$ of choosing $\pga$.
+Given any set $S$ and function $f: S → S$, let $f^0$ represent the identity function, and given $k \in \N$, let $f^{k + 1} = f \circ f^k$.
+Define $\gargsi \subseteq \allargs$ as the transitive closure of $\arga$ under $\dgi$: $\gargsi = \cup_{k \in \N} (\dgi)^k(\arga)$. The set $\gargsi$ is the set of arguments required to convince $i$ of choosing $\pga$.
 
-This seems reasonable because $a_2$, as a defender of $a_1$, “contains” $a_1$.
+Given $\ar \in \gargsi$, say that $\ar$ $i$-defends $\pga$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend \land \hist \nileadsto \pga: d(\ar, \hist) ≠ \emptyset$.
+Note that if an argument fails to $i$-defend $\pga$, then the argumentative strategy of the theory has failed: some path challenge an argument of the theory, and the theory is not ready to counter-argue against that path.
+
+Accordingly, an argumentative theory claims that all the arguments required to convince $i$ of choosing $\pga$ do $i$-defend $\pga$.
+It is said to be truthful iff this claim is correct.
+\begin{definition}[Truthfulness]
+	\label{def:truth}
+	An argumentative theory $(\pga, \arga, \dg)$ for the exposure protocol $(I, \allargs, {\leadsto})$ is \emph{truthful} iff $\forall i \in I, \ar \in \gargsi: \ar$ $i$-defends $\pga$.
+\end{definition}
+
+NB we can check $a_1, a_x, a_y, a_2, …$ but not other paths after $a_2$.
+Thus, among the paths that contain $a_2$, they all contain $a_1$ before $a_2$.
+
+Note that a static theory $(p, \ar)$ can be considered as an argumentative theory $(p, \ar, \emptyset)$, and is truthful in the sense of \cref{sec:static} iff $(p, \ar, \emptyset)$ is truthful in the sense of \cref{def:truth}.
+
+Associated with an argumentative theory also comes the following axiom, that mandates that if some argument $\ar_2$ defends some argument $\ar_1$, and if $\ar_2$ leads $i$ to opt for $\pga$ in some path containing $\ar_1$, then $\ar_1$ can be omitted and the path will still lead $i$ to opt for $\pga$.
+
+\begin{axiom}[Omitting the defended argument]
+	\label{ax:omitting}
+	If the theory is truthful, then $\forall \ar_1, \ar_2 \in \gargsi, \hist \suchthat \ar_2 \in \dgi(\ar_1) \land \ar_2 \in \histend: (\ar_1, \hist) \ileadsto \pga ⇒ \hist \ileadsto \pga$.
+\end{axiom}
+This is called an axiom because it cannot be falsified using observables. It has to be accepted on the basis of the rest of the observations. What it states are counterfactuals: if $i$ had been presented with $\hist$ not containing $\ar_1$, and assuming $i$ would have accepted an argument $\ar_2$ for $\pga$, …
+This seems reasonable because $a_2$, as a defender of $a_1$, “contains” $a_1$. 
+(To be finished.)
+
+An argumentative theory is said to be correct iff $\forall i \in I: \pga \in \iprops$.
+As previously, it is said to be valid iff its truthfulness leads to its correctness, except that the above axiom needs now be included as a price for the added flexibility of the theory.
+\begin{theorem}[Validity]
+	If an argumentative theory is truthful, then \cref{ax:omitting} implies that the theory is correct.
+\end{theorem}
+\begin{proof}
+	Assume, to start with, that $\arga$ is not decisive because $\hist \nileadsto \pga, \arga \in \histend$.
+	Assume that $\dgi(\arga) = \ar_2$ with no further hist against it.
+	…
+\end{proof}
 
 \subsection{Old definition}
 \label{sec:descrdef}
