@@ -265,7 +265,8 @@ Associated with an argumentative theory also comes the following axiom, that man
 
 \begin{axiom}[Omitting defended arguments]
 	\label{ax:omitting}
-	If the theory is truthful, then $\forall \ar_2 \in \dgi(\arga), \ar_3 \in \dgi(\ar_2), …, \hist \suchthat \ar_7 \in \histend: (…, \ar_4, \ar_5, …, \hist) \ileadsto \pga ⇒ (…, \ar_5, …, \hist) \ileadsto \pga$.
+	If the theory is truthful, then $\forall i \in I, k \in \N^*, l \in \intvl{2, k}, (\ar_j)_{j \in \intvl{1, k}} \in \allargs^k, \hist, \beta \in \allhist \suchthat [\ar_k \in \histend \land \forall j \in \intvl{2, k}: \ar_j \in \dgi(\ar_{j - 1})]:
+	(\beta, \ar_{l - 1}, \ar_l, \hist) \ileadsto \pga ⇒ (\beta, \ar_l, \hist) \ileadsto \pga$.
 \end{axiom}
 This is called an axiom because it cannot be falsified using observables. It has to be accepted on the basis of the rest of the observations. What it states are counterfactuals: if $i$ had been presented with $\hist$ not containing $\ar_1$, and assuming $i$ would have accepted an argument $\ar_2$ for $\pga$, …
 This seems reasonable because $a_2$, as a defender of $a_1$, “contains” $a_1$. 
