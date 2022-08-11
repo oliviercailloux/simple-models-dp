@@ -39,11 +39,11 @@
 \end{abstract}
 
 \section{Introduction} 
-Observing subjects performing acts of choice is the basis of much work in econometrics. Such acts have been used, among others, to give an observable basis to the concept of preference, thanks in part to the seminal work of Samuelson. %Acts of choice are considered here in the broad sense of choice between courses of actions, encompassing the simple setting of choosing between various elementary consumption bundles as well as settings involving more abstract acts such as choosing a strategy in a game-theoretical setting. 
+Observing subjects performing acts of choice is the basis of much work in econometrics. Such acts have been used, among others, to give an observable basis to the concept of preference \citep{samuelson_foundations_1983}. %Acts of choice are considered here in the broad sense of choice between courses of actions, encompassing the simple setting of choosing between various elementary consumption bundles as well as settings involving more abstract acts such as choosing a strategy in a game-theoretical setting. 
 
-Most of these approaches consider only acts of choice that are performed spontaneously in the normal course of action of an individual, or that are given a specific frame depending on the psychological aspect that is to be studied. As an example of the former kind, typical willingness to pay studies asks the subject whether she prefers an object at some price or another object at another price, describing the objects in a way that is considered immediately understandable by the subject (or simply showing the objects). Examples of the latter kind include the celebrated work of Kahneman and Tversky.
+Most of these approaches consider only acts of choice that are performed spontaneously in the normal course of action of an individual, or that are given a specific frame depending on the psychological aspect that is to be studied. As an example of the former kind, typical willingness to pay studies asks the subject whether she prefers an object at some price or another object at another price, describing the objects in a way that is considered immediately understandable by the subject (or simply showing the objects). Examples of the latter kind include the celebrated work of Kahneman and Tversky \citep{bell_descriptive_1988, kahneman_thinking_2012}.
 
-On the other hand, since at least the seminal work of Fishkin, another sort of judgment involving subjective desirability is emerging as also worth studying. These are judgments given by subjects after arguments in favor and against different possible stance have been considered. Such judgments may differ from immediate judgments of desirability given in natural conditions. Indeed, individuals may change opinion on the desirability of some course of action, and therefore revise their choice, while learning about the properties of objects, the consequences of some acts (or empirical knowledge useful to estimate the likelihood of some consequences), or the logical or empirical impossibilities between consequences. This is particularly likely to happen when choosing among non everyday objects or acts whose consequences are not well known by the subject. 
+On the other hand, since at least the seminal work of \citet{fishkin_when_2011}, another sort of judgment involving subjective desirability is emerging as also worth studying. These are judgments given by subjects after arguments in favor and against different possible stance have been considered. Such judgments may differ from immediate judgments of desirability given in natural conditions. Indeed, individuals may change opinion on the desirability of some course of action, and therefore revise their choice, while learning about the properties of objects, the consequences of some acts (or empirical knowledge useful to estimate the likelihood of some consequences), or the logical or empirical impossibilities between consequences. This is particularly likely to happen when choosing among non everyday objects or acts whose consequences are not well known by the subject. 
 
 While numerous articles have discussed the concept of deliberation in the last decades, it remains unsettled, to the best of my knowledge, how to observe a deliberated judgment, or, correspondingly, how to define this concept in a way that makes it amenable to empirical study, sufficiently precisely that any disagreement about someone’s deliberated judgment in a given context could be solved, at least in principle, by an empirical experiment. %This article is interested in defining the concept of deliberated judgementof a subject, as opposed to the classical one, that will henceforth be called her natural judgment, that is, the way that she chooses between acts when she does not face any arguments, i.e., 
 
@@ -114,7 +114,7 @@ The intended semantics is that $P_i$ represents the preference of $i$ over the p
 This latter possibility may look unpleasant, but it is a fact that facing some difficult problems, individuals sometimes are undecided, and it is an a priori empirical possibility that the individual remains undecided (or even, becomes \emph{more} undecided) when considering multiple arguments. 
 
 \subsection{An example and a discussion about observability}
-The following toy example is inspired by citet[p.~59]{Railton}, who uses this example to support his claim that beliefs may influence decisions. Here is his story.
+The following toy example is inspired by citet[p.~59]{Railton}\commentOC{TODO}, who uses this example to support his claim that beliefs may influence decisions. Here is his story.
 \begin{quote}
 An experiment in cognitive psychology reveals that when subjects observe two individuals taking a test, one of whom answers a high percentage of the early questions correctly but then falters, while the other does
 poorly initially but then answers a high percentage of the later questions
@@ -178,7 +178,7 @@ In many decision problems, individuals will not be attracted by the same set of 
 In such situation, static theories as defined in \cref{sec:static} are ill suited: these theories need to present the same argument to all individuals and would thus need to define a bigger argument $a$ containing both $a'_1$ and $a'_2$. Such an argument could be too long to be convincing to $i_1$ or $i_2$, as it needlessly spends efforts countering an argument that the individual considers irrelevant to start with. This  will become an important problem if there are not only two but many a priori possible arguments $a_k$ for $\nprop$, a small subset of which is considered relevant by a given individual, each with their own counter-argument $a'_k$ for $\prop$.
 
 %For a partial illustration about an ambitious setting, consider a decision to be taken about the relevance of some concrete action to help cope with climate change, and let $I$ be a set of citizens interested in the climate issue. The complete set of all arguments that will be considered relevant by at least one individual may well be very large. It may also be that, for each individual who considers relevant some arguments $A$ against the proposed concrete action, it is possible to give counter-arguments $A'$ that will convince the individual to opt for the proposal.
-One of the settings discussed by citet{sunstein} permits to illustrate this point more concretely.
+One of the settings discussed by \citet{thaler_nudge_2009} permits to illustrate this point more concretely.
 Let $I$ be a set of workers interested in establishing a savings plan. 
 The authors claim that workers tend to not save enough because of psychological biases. 
 It is therefore tempting to conjecture that the deliberated choice of those workers is to save more, in the sense defined here, than what their natural choice (the one revealed in absence of arguments) leads to.
@@ -277,39 +277,27 @@ As previously, it is said to be valid iff its truthfulness leads to its correctn
 \begin{theorem}[Validity]
 	If an argumentative theory is truthful, then \cref{ax:omitting} implies that the theory is correct.
 \end{theorem}
-\begin{proof}
+\begin{proof}[Sketch of proof]
 	Assume, to start with, that the theory is of depth 2, more precisely, $\arga$ is not decisive because $\hist \nileadsto \pga, \arga \in \histend$ and $\dgi(\arga) = \ar_2$ with no further hist against it.
 	
 	Consider any $i \in I$.
 	Assume $\arga$ is not decisive.
-	
-	Truthfulness brings this.
-	$\forall \hist = (\arga, …, \ar_2, …) \suchthat \ar_2 \in \histend: \hist \ileadsto \pga$.
-	
-	The axiom brings this.
-	$\forall \hist \suchthat \ar_2 \in \histend: (\arga, \hist) \ileadsto \pga ⇒ \hist \ileadsto \pga$.
-	
 	Consider any $\hist \suchthat \ar_2 \in \histend$. We want to show that $\hist \ileadsto \pga$.
-	If it starts with $\arga$: done thanks to truthfulness.
-	Otherwise: done thanks to truthfulness and the axiom.
+	
+IF $\hist$ contains $\arga$ before $\ar_2$, done by TF.
+Otherwise, define $hist'$ which has a1 just before a2.
+Apply TF on hist' then apply axiom.
 
 Consider now a theory of depth 3. 
 	Consider any $i \in I$.
 	Assume $\arga$ not decisive, $\ar_2$ not decisive.
-	
-	Truthfulness brings this.
-	$\forall \hist = (\arga, …, \ar_2, …, \ar_3, …) \suchthat \ar_3 \in \histend: \hist \ileadsto \pga$.
-	
-	The axiom brings this.
-	$\forall \hist \suchthat \ar_3 \in \histend: (\ar_2, \hist) \ileadsto \pga ⇒ (\hist) \ileadsto \pga$.
-	And this.
-	$\forall \hist \suchthat \ar_3 \in \histend: (\ar_1, \ar_2, \hist) \ileadsto \pga ⇒ (\ar_2, \hist) \ileadsto \pga$.
-	And $(\ar_1, \ar_2, \hist) \ileadsto \pga$ holds thanks to truthfulness, so $(\ar_2, \hist) \ileadsto \pga$, so $\hist \ileadsto \pga$.
-	
 	Consider any $\hist \suchthat \ar_3 \in \histend$. We want to show that $\hist \ileadsto \pga$.
+
 	If it includes a1 then a2, ok thanks to truthfulness.
-	
-	
+	Otherwise, build hist3 that has a1 then a2 just before a3.
+	That’s ok thanks to TF.
+	By axiom, hist2 with only a2 just before a3 is thus ok.
+	By axiom, hist is thus ok.
 \end{proof}
 
 \subsection{Old definition}
