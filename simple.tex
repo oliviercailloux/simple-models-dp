@@ -253,9 +253,10 @@ Define $\gargsi \subseteq \allargs$ as the transitive closure of $\arga$ under $
 
 An argumentative theory claims that whenever some of its arguments fail to convince $i$ of choosing $\pga$, it can argue something else.
 It is said to be truthful iff this claim is correct.
+More precisely, its claims are about paths of the sort $\hist = (\arga, …, \ar_2, …, \ar_3, …)$ where $\ar_2 \in \dgi(\arga)$, $\ar_3 \in \dgi(\ar_2)$, … The following definition makes this precise.
 \begin{definition}[Truthfulness]
 	\label{def:truth}
-	An argumentative theory $(\pga, \arga, \dg)$ for the exposure protocol $(I, \allargs, {\leadsto})$ is \emph{truthful} iff $\forall i \in I, \ar_2 \in \dgi(\arga), \ar_3 \in \dgi(\ar_2), …, \forall \hist \in \allhist \suchthat \hist = (\arga, …, \ar_2, …, \ar_3, …) \land \ar_3 \in \histend: [\hist \nileadsto \pga ⇒ d(\ar_3, \hist) ≠ \emptyset]$.
+	An argumentative theory $(\pga, \arga, \dg)$ for the exposure protocol $(I, \allargs, {\leadsto})$ is \emph{truthful} iff $\forall i \in I, k \in \N^*, (\ar_j) \in \allargs^k, \hist \in \allhist \suchthat [\ar_1 = \arga \land \ar_k \in \histend \land d(\ar_k, \hist) = \emptyset \land \forall j \in \intvl{2, k}: \hist^{-1}(\ar_{j - 1}) < \hist^{-1}(\ar_j) \land \ar_j \in \dgi(\ar_{j - 1})]: [\hist \ileadsto \pga]$.
 \end{definition}
 
 Note that a static theory $(p, \ar)$ can be considered as an argumentative theory $(p, \ar, \emptyset)$, and is truthful in the sense of \cref{sec:static} iff $(p, \ar, \emptyset)$ is truthful in the sense of \cref{def:truth}.
