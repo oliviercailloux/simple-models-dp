@@ -1,0 +1,110 @@
+\NewDocumentCommand{\range}{}{R}
+
+%Decision Theory (MCDA and SC)
+\NewDocumentCommand{\allalts}{}{\mathscr{X}}
+\NewDocumentCommand{\allcrits}{}{\mathscr{C}}
+\NewDocumentCommand{\alts}{}{X}
+\NewDocumentCommand{\alt}{}{x}
+\NewDocumentCommand{\altp}{}{y}%alt prime, another alt
+\NewDocumentCommand{\dm}{}{i}
+\NewDocumentCommand{\allF}{}{\mathscr{F}}
+\NewDocumentCommand{\allvoters}{}{\mathscr{N}}
+\NewDocumentCommand{\voters}{}{N}
+\NewDocumentCommand{\allprofs}{}{\boldsymbol{\mathcal{R}}}
+\NewDocumentCommand{\prof}{}{\boldsymbol{R}}
+\NewDocumentCommand{\linors}{}{\mathscr{L}(\allalts)}
+%Thanks to https://tex.stackexchange.com/q/154549
+	%\makeatletter
+	%\def\@myRgood@#1#2{\mathrel{R^X_{#2}}}
+	%\def\myRgood{\@ifnextchar_{\@myRgood@}{\mathrel{R^X}}}
+	%\makeatother
+\NewDocumentCommand{\ind}{}{\sim}
+\NewDocumentCommand{\peq}{}{\succeq}
+\NewDocumentCommand{\pst}{}{\succ}
+\NewDocumentCommand{\npeq}{}{\nsucceq}
+\NewDocumentCommand{\npst}{}{\nsucc}
+
+%Deliberated Judgment
+%%Normative theory
+\NewDocumentCommand{\allargs}{}{\mathscr{A}}
+\NewDocumentCommand{\args}{}{A}
+\NewDocumentCommand{\ard}{O{}}{a^\mathit{d}_{#1}}
+\NewDocumentCommand{\ardp}{O{}}{a^{\mathit{d}\prime}_{#1}}
+\NewDocumentCommand{\ar}{o}{%
+	\IfValueTF{#1}{%
+		a^{(#1)}%
+	}{%
+		a%
+	}%
+}
+\NewDocumentCommand{\arga}{}{\ar_\gamma}
+\NewDocumentCommand{\pga}{}{p_\gamma}
+\NewDocumentCommand{\zar}{}{\mathbf{0}}%zero, or empty, argument
+\NewDocumentCommand{\allhist}{}{\mathscr{A}^{<\N}}
+\NewDocumentCommand{\hist}{}{α}
+\NewDocumentCommand{\histp}{}{α^{\prime}}
+\NewDocumentCommand{\histpp}{}{α^{\prime\prime}}
+\NewDocumentCommand{\histend}{o}{%
+	\IfValueTF{#1}{%
+		α^{#1}_\mathit{end}%
+	}{%
+		α_\mathit{end}%
+	}%
+}
+\NewDocumentCommand{\histpend}{}{α^{\prime}_\mathit{end}}
+\NewDocumentCommand{\histppend}{}{α^{\prime\prime}_\mathit{end}}
+\NewDocumentCommand{\allprops}{}{\Phi}
+\NewDocumentCommand{\prop}{}{φ}
+\NewDocumentCommand{\nprop}{}{¬φ}
+\NewDocumentCommand{\propbar}{}{φ'}%\overline
+\NewDocumentCommand{\incompat}{}{\Phi^\mathit{incompat}}
+%%Empirical theory
+\NewDocumentCommand{\gC}{O{γ}}{C_#1}
+\NewDocumentCommand{\gPhi}{O{γ}}{\Phi_#1}
+\NewDocumentCommand{\gpropse}{O{γ}}{{\hookrightarrow_{#1}}(\allargs)}%e for explicit
+\NewDocumentCommand{\gprops}{O{γ}}{\Phi_{#1}}
+\NewDocumentCommand{\dargs}{O{}}{A^\mathit{d}_{#1}}
+\NewDocumentCommand{\alldargs}{}{\mathscr{A}^d}
+\NewDocumentCommand{\gargsi}{}{A_{γ, i}}
+\NewDocumentCommand{\gargs}{O{φ}}{A^{#1}_{γ, i}}
+\NewDocumentCommand{\gargsmu}{}{A^{φ}_{μ, i}}
+\NewDocumentCommand{\gargsnu}{}{A^{φ'}_{ν, i}}
+\NewDocumentCommand{\gargsgamma}{}{A^{φ}_{γ, i}}
+\NewDocumentCommand{\gargsdelta}{}{A^{φ'}_{δ, i}}
+\NewDocumentCommand{\gleadsto}{O{γ}}{\hookrightarrow_{#1}}
+\NewDocumentCommand{\gleadstoinv}{O{γ}}{{\hookrightarrow^{-1}_{#1}}}
+\NewDocumentCommand{\gbeats}{O{γ}}{⊳^\mathit{t}_{#1}}
+\NewDocumentCommand{\gbeatsinv}{O{γ}}{{(⊳^\mathit{t}_{#1})^{-1}}}
+\NewDocumentCommand{\ngbeats}{O{γ}}{\not⊳^\mathit{t}_{#1}}
+\NewDocumentCommand{\dbeats}{O{γ}}{⊳^\mathit{d}_{#1}}
+\NewDocumentCommand{\dbeatsinv}{O{γ}}{{(⊳^\mathit{d}_{#1})^{-1}}}
+\NewDocumentCommand{\df}{O{γ}}{\mathit{def}_{#1}}
+\NewDocumentCommand{\dfp}{O{γ}}{\mathit{def}_{#1}^+}
+\NewDocumentCommand{\dg}{O{γ}}{d_{#1}}
+\NewDocumentCommand{\dgi}{O{γ, i}}{d_{#1}}
+\NewDocumentCommand{\dgip}{O{γ, i}}{d^\phi_{#1}}
+%%%DP
+\NewDocumentCommand{\choices}{}{\mathscr{C}}
+\NewDocumentCommand{\gind}{O{}}{\sim_\gamma^{#1}}
+\NewDocumentCommand{\gpeq}{}{\succeq_\gamma}
+\NewDocumentCommand{\gpst}{}{\succ_\gamma}
+\NewDocumentCommand{\ngpeq}{}{\nsucceq_\gamma}
+\NewDocumentCommand{\ngpst}{}{\nsucc_\gamma}
+
+%%i
+\NewDocumentCommand{\iprops}{}{\Phi_i}
+\NewDocumentCommand{\allleadsto}{}{⇝}%Or \dashrightarrow?
+\NewDocumentCommand{\ileadsto}{O{i}}{⇝_{#1}}
+\NewDocumentCommand{\nileadsto}{O{i}}{\not⇝_{#1}}
+\NewDocumentCommand{\ileadstoe}{O{i}}{⇝_{#1}^\exists}
+\NewDocumentCommand{\nileadstoe}{O{i}}{\not⇝_{#1}^\exists}
+\NewDocumentCommand{\ileadstost}{}{\hookrightarrow_i}
+\NewDocumentCommand{\nileadstost}{}{\not\hookrightarrow_i}
+\NewDocumentCommand{\di}{}{c^φ_{γ, i}}
+\NewDocumentCommand{\dip}{}{d^{φ +}_{γ, i}}
+\NewDocumentCommand{\ibeats}{}{⊳^\text{\sout{\ensuremath{φ}}}_{γ, i}}%Or: \usepackage[normalem]{ulem} \text{\sout{\ensuremath t}}
+\NewDocumentCommand{\nibeats}{}{⋫^\text{\sout{\ensuremath{φ}}}_{γ, i}}
+%%%Deliberated Preference
+\NewDocumentCommand{\ipeq}{}{\succeq_i}
+\NewDocumentCommand{\ipst}{}{\succ_i}
+

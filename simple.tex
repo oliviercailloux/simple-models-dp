@@ -1,0 +1,302 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[version=last, pagesize, twoside=off, bibliography=totoc, DIV=calc, fontsize=12pt, a4paper, french, english]{scrartcl}
+\input{preamble/packages}
+\input{preamble/math_basics}
+\input{preamble/math_mine}
+\input{preamble/redac}
+\usepackage[normalem]{ulem}
+%\input{preamble/draw}
+%\input{preamble/acronyms}
+\addtokomafont{labelinglabel}{\sffamily\bfseries}
+\DeclareMathAlphabet{\mathup}{OT1}{\familydefault}{m}{n}
+
+%I find these settings useful in draft mode. Should be removed for final versions.
+	%Which line breaks are chosen: accept worse lines, therefore reducing risk of overfull lines. Default = 200.
+		\tolerance=2000
+	%Accept overfull hbox up to...
+		\hfuzz=2cm
+	%Reduces verbosity about the bad line breaks.
+		\hbadness 5000
+	%Reduces verbosity about the underful vboxes.
+		\vbadness=1300
+
+\begin{document}
+\title{Theories of deliberated choice}
+\author{Olivier Cailloux}
+\affil{Université Paris-Dauphine, PSL Research University, CNRS, LAMSADE, 75016 PARIS, FRANCE\\
+	\href{mailto:olivier.cailloux@dauphine.fr}{olivier.cailloux@dauphine.fr}
+}
+\makeatletter
+	\hypersetup{
+		pdfsubject={Epistemology},
+		pdfkeywords={Decision aiding, Decision making, Argumentation}
+	}
+\makeatother
+\maketitle
+
+\begin{abstract}
+	TODO: abstract
+\end{abstract}
+
+\section{Introduction} 
+Observing subjects perform acts of choice is the basis of much work in econometrics. Such acts have been used, among others, to give an observable basis to the concept of preference \citep{samuelson_foundations_1983}. %Acts of choice are considered here in the broad sense of choice between courses of actions, encompassing the simple setting of choosing between various elementary consumption bundles as well as settings involving more abstract acts such as choosing a strategy in a game-theoretical setting. 
+
+Most of these approaches consider only acts of choice that are performed spontaneously in the normal course of action of an individual, or that are given a specific frame depending on the psychological aspect that is to be studied. As an example of the former kind, typical willingness to pay studies asks the subject whether she prefers an object at some price or another object at another price, describing the objects in a way that is considered immediately understandable by the subject (or simply showing the objects). Examples of the latter kind include the celebrated work of Kahneman and Tversky \citep{bell_descriptive_1988, kahneman_thinking_2012}.
+
+On the other hand, since at least the seminal work of \citet{fishkin_when_2011}, another sort of judgment involving subjective desirability is emerging as also worth studying. These are judgments given by subjects after arguments in favor and against different possible stance have been considered. Such judgments may differ from immediate judgments of desirability given in natural conditions. Indeed, individuals may change opinion on the desirability of some course of action, and therefore revise their choice, while learning about the properties of objects, the consequences of some acts (or empirical knowledge useful to estimate the likelihood of some consequences), or the logical or empirical impossibilities between consequences. This is particularly likely to happen when choosing among non everyday objects or acts whose consequences are not well known by the subject. 
+
+While numerous articles have discussed the concept of deliberation in the last decades, it remains unsettled, to the best of my knowledge, how to observe a deliberated judgment in a systematic and reproducible fashion. There is a need to define this concept sufficiently precisely that, first, it is clear what counts as a deliberated judgment (i.e., when “sufficient” \citep{meinard_justification_2020} or “correct” deliberation has happened); and second, it is clear which part of the claim is empirical and which part stems from an unfalsifiable conception of what “deliberated” means. This permits to study deliberated judgments empirically, meaning here that disagreements about someone’s deliberated judgment in a given context can be solved, at least in principle, by an empirical experiment, provided the very conception of what constitutes a deliberated judgment is shared. This article is interested in defining the concept of deliberated judgement of a subject and show how one can study it in an emprical manner. The “classical” counterpart of deliberated judgments,, that does not involve confrontation with arguments, will henceforth be called the natural judgment. As we deal with choice acts, we will also name the concept “deliberated choice”, as opposed to “natural choice”.
+
+While the concept of deliberation in the deliberative democracy literature usually refers to multiple individuals debating, this article considers deliberation as related to a single individual at a time: an individual deliberates (in the sense of: carefully weights) the stance she considers most appropriate while being confronted to arguments. The deliberated judgment of an individual is thus defined with no requirement that the arguments be uttered by peers in a debate; they can be given by an automata, for example. In this sense, deliberated judgments come close to what \citet{rawls_theory_1999} calls reflective equilibrium (referring to an idea of \citet{goodman_fact_1983}), a concept that has much inspired the present proposal.
+
+To define deliberated judgments, one needs to start with the set of arguments under consideration, and the way the subject gets to know them, called hereafter the “exposure protocol”. As a result, we need always talk about the deliberated judgment \emph{given some exposure protocol}. The notion of argument invoked here is an extremely large one, including texts, images, sounds, experiences (a hiking trip), and so on: anything that can be transmitted to a subject qualifies as a possible argument. In particular, such an “argument” need not have the logical structure of what is considered a proper argument in argumentation theory. This important feature of this proposal permits to avoid taking a position on what is a correct argument, and permits to study wide enough conceptions of deliberated judgment, including those involving no paternalism \citep{cailloux_formal_2020}: anything that influences the judgment of a subject, as judged by the subject herself and not by any external standard, may a priori be considered worth including in at least some conceptions of deliberated judgment, thus including whatever some could consider as “incorrect reasoning” or “bad reasons”.
+
+The dependence of the deliberated judgment concept on the exposure protocol yields a first qualification about the concept of deliberated judgments when one desires to use it normatively: it is only as reasonable to call the resulting judgments “deliberate” in a normative sense as the exposure protocol is normatively relevant to deliberation. A sufficiently restricted, or even purposefully chosen, set of arguments may yield judgments that are only deliberate in the technical sense used here, but that pertain more to brain-washing than to reflective judgments. While it is indeed a long-term goal of this research program to yield a normatively relevant conception of preference (appropriate, for example, for recommendation), it is not a claim of this article that anything that corresponds to deliberated judgments as defined here qualify as being appropriate for any normative use: much depends on the chosen exposure protocol. The goal of this article is one of a conceptual and practical clarification. It proposes a sharp distinction between the empirical content and the normative content of the concept of deliberated judgments: the definition proposed here transfers the full normative weight on the choice of the exposure protocol; and leaves the rest of the disagreements to empirical settling. This is methodologically akin, mutatis mutandis, to the axiomatic study of justice such as done in social choice, only complementing mathematical deduction with empirical claims. In social choice, the choice of axioms bears the full normative weight; once axioms are chosen, it is a matter of logic which social choice rules (if any) correspond to that choice. In our case, once an exposure protocol is chosen, it is an empirical matter which deliberated judgments result.
+In supplement to a possibly helpful conceptual clarification, such a sharp separation may reveal practically useful for separation of concern as it permits to study deliberated judgments empirically under various exposure protocols independently of possible disagreements about which norms are more appropriate for deliberation in which circumstances.
+
+The deliberated judgment of a subject is said to depend on the exposure protocol, that is, on the set of arguments and the way they are submitted to the subject, and not only on the set of arguments, because the very way that they are transmitted to the individual may affect her judgment differently. For example, reading an image description and showing an image to a subject may impress them differently \citep{railton_facts_2003}.
+
+The exposure protocol defines a set of argument and, importantly, how arguments are sent to the subject and her subsequent choice observed. There is no explicit dependency on the internal process that occurs in the subject’s mind while she (possibly) processes the arguments, as it is not desirable to assume that the internal process could be observed. We consider subjects as black boxes and only require a capacity of observation of their choices after exposure to arguments. Depending on the exposure protocol and the subject, it is of course possible for the arguments to never affect any choice of the subject, a conclusion that may be interesting in its own right.
+
+The deliberated judgment of a subject is defined as a function of the exposure protocol, as accepting every claims that resists every counter-arguments. The notion of resistance is itself defined according to the exposure protocol.
+
+Studying judgments resulting from exposure to arguments includes a difficulty that is not present with natural choice experiments: exposing an individual to arguments may change the individual’s stance, an effect that cannot be erased in order to submit the individual to an unrelated sequence of arguments. The observer thus cannot in general assume that multiple unrelated sequences of arguments can be tested on a given individual. This difficulty will be worked around by considering general theories of deliberated judgments, that apply to sets of individuals. This is methodologically similar to defining theories of how objects break. One can test only one way of breaking a given (unrepairable) object, so such theories must apply to sets of objects if one wants to be able to test multiple ways of falsifying the theories.
+
+For conceptual clarity, I will focus on the case of a single binary decision to take, akin to a choice situation facing a bundle of two courses of action, exactly one of which must be adopted.
+
+\section{Exposure protocol and deliberated choice}
+I assume given two antagonistic acts, constituting the decision at stake, such as “buy this object for the price of \$15” and “do not buy this object for the price of \$15”, or “take this job offer” and “decline this job offer”.
+%The letter $\phi$ will be used to denote a generic act (one of these two), and given an act $\phi$, $¬\phi$ denotes the other act.
+Let the set $P = \set{\phi, ¬\phi, 0}$ denote the set of possible preferences, where $\phi$ denote a strict preference for the first act against the other one, $¬\phi$ conversely, and $0$ denotes indifference (both acts are considered equally worth).
+
+\subsection{Exposure protocol}
+An exposure protocol is a tuple $(I, \allargs, {\allleadsto})$, where $I$ is a set of individuals, $\allargs$ is a set of arguments, and ${\allleadsto}$ is the behavior of the individuals as a function of the arguments they have been exposed to.
+
+While $I$ and $\allargs$ are fundamental sets whose elements are considered elementary, a few notations and concepts are required to define ${\allleadsto}$.
+Throughout the article, $\N$ includes zero. %and $\N^* = \N \setminus \set{0}$. 
+Given $j, l \in \N$, the notation $\intvl{j, l}$ represents $\set{k \in \N \suchthat j ≤ k ≤ l}$ (thus $\forall j \in \N: \intvl{j, 0} = \emptyset$).
+Define $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ as the finite sequences of arguments, including the empty sequence. 
+A generic element of $\allhist$ (a sequence of arguments) is denoted by $\hist$ and called an argumentative path, or simply a path. Its length is denoted by $\card{\hist} \in \N$.
+Thus, given an argumentative path $\hist \in \allhist$, $\forall k \in \intvl{1, \card{\hist}}: \hist_k \in \allargs$, and $\hist = \emptyset ⇔ \card{\hist} = 0$.
+
+The function ${\allleadsto}: I × \allhist → P$ associates to each individual and path an element of $P$, ${\allleadsto}(i, \alpha)$ representing the choice of $i$ following exposure to the arguments of $\alpha$, in order. That is, ${\allleadsto}(i, \alpha) = \phi$ denotes that $i$ chooses the first act after exposure to $\alpha$, ${\allleadsto}(i, \alpha) = ¬\phi$ denotes $i$ choosing the second act and ${\allleadsto}(i, \alpha) = 0$ is used to represent indifference of $i$.
+The notation $\alpha \ileadsto p$ will be used to mean ${\allleadsto}(i, \alpha) = p$, considering ${\ileadsto} \subseteq \allhist × P$ as a binary relation.
+As usual with binary relations, $\hist \nileadsto p$ means ${\allleadsto}(i, \alpha) ≠ p$ or equivalently ${\allleadsto}(i, \alpha) \in P \setminus \set{p}$.
+
+\subsection{Deliberated choice}
+The deliberated choice of $i$ given the exposure protocol $(I, \allargs, {\allleadsto})$ is denoted $P_i \subset P$.
+Its formal definition requires the notion of decisive argument.
+
+Given $\hist \in \allhist$, $\range(\hist) = \hist(\intvl{1, \card{\hist}})$ denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$.
+Let $\histend = \hist(\intvl{\max(1, \card{\hist} - 1), \card{\hist}})$ denote the set containing the last two arguments of the sequence $\hist$ if the sequence has at least two elements; the unique argument of the sequence if it has exactly one element; and the empty set if it is empty.
+
+Given $i \in I, p \in P, \ar \in \allargs$, define $\ar \ileadstost p$ iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \ileadsto p$.
+When $\ar \ileadstost p$, $\ar$ is said to be a decisive argument for $\prop$ from $i$’s point of view given the exposure protocol. 
+
+The deliberated choice of $i$ is then considered as the set of propositions supported by decisive arguments.
+\begin{definition}[Deliberated choice]
+	\label{def:decisive}
+	$\forall i \in I, p \in P: 
+		p \in P_i ⇔ [\exists \ar \in \allargs \suchthat \ar \ileadstost p].$
+\end{definition}
+
+It follows from the consideration of “end” as the last \emph{two} arguments that decisive arguments can argue for at most one proposition, thus, that the deliberated choice cannot hold more than one proposition.
+\begin{theorem}[Deliberated choice singularity]
+	$\forall i \in I: \card{P_i} ≤ 1$.
+\end{theorem}
+\begin{proof}
+	Assume that $\exists \ar, \ar' \in \allargs, p, p' \in P \suchthat \ar \ileadstost p \land \ar' \ileadstost p'$.
+	Since $\ar \ileadstost p$, $(\ar, \ar') \ileadsto p$, and since $\ar' \ileadstost p'$, $(\ar, \ar') \ileadsto p'$, hence $p' = p$.
+\end{proof}
+
+The intended semantics is that $P_i$ represents the preference of $i$ over the proposed set of two acts, after deliberation, given the exposure protocol. In other words, if $P_i = \set{\phi}$, the individual considers the first act strictly better than the second one, after deliberation (and conversely for $P_i = \set{¬\phi}$); if $P_i = \set{0}$, the deliberated judgment of $i$ is that both acts are equally worth; and if $P_i = \emptyset$, no act is deliberately strictly better than the other one and they are also not deliberately exactly equivalent to each other.
+
+This latter possibility may look unpleasant, but it is a fact that facing some difficult problems, individuals sometimes are undecided, and it is an a priori empirical possibility that the individual remains undecided (or even, becomes \emph{more} undecided) when considering multiple arguments. 
+
+\subsection{An example and a discussion about observability}
+The following toy example is inspired by an argument from \citet[p.~59]{railton_facts_2003}. Here is his argument.
+\begin{quote}
+An experiment in cognitive psychology reveals that when subjects observe two individuals taking a test, one of whom answers a high percentage of the early questions correctly but then falters, while the other does
+poorly initially but then answers a high percentage of the later questions
+correctly, the first is usually viewed as more able, even though in the end
+each answers the same number of questions correctly in all. If the subjects had been asked which test-taker they would prefer as a math tutor,
+they likely would have answered “The first,” and perhaps they would also
+have been willing to pay a premium to secure his services. But if they
+were to become convinced of the influence of sheer order on their evaluations of relative ability, they presumably would no longer want their
+initial preference for the first test-taker to influence their choices – or
+willingness to pay – in this way.
+\end{quote}
+\begin{example}[Math tutor]
+	\label{ex:tutor}
+	Let $I$ be a set of individuals desiring to evaluate two candidates $\set{m_1, m_2}$ for math tutoring.
+	Let ${\leadsto}(i, a_1)$ represent $i$ being shown a test of candidate $m_1$ wherein $m_1$ answers 70\% of the first half of questions correctly but then only 40\% of the other half correctly.
+	Let ${\leadsto}(i, a_2)$ represent $i$ being shown a test of candidate $m_2$ wherein $m_2$ answers 45\% of the first half of questions correctly, then 75\% of the other half correctly.
+%	Let ${\leadsto}(i, a_e)$ represent $i$ being given an explanation about the psychological phenomenon described in the quote above.
+	Let ${\leadsto}(i, a_e)$ represent $i$ being given the following argument. “When tested, $m_1$ answers 70\% of the first half of questions correctly but then only 40\% of the other half correctly; whereas $m_2$ answers 45\% of the first half of questions correctly, then 75\% of the other half correctly. It follows than $m_1$ answers on average less well than $m_2$. Observing the candidates take the tests may yield a contrary impression; this is a well-known psychological phenomenon depending on the order of the questions that the candidates answer correctly.”
+	Let $\prop_1$ represent the choice of $m_1$ and $\prop_2$ that of $m_2$.
+	
+	If the prediction described in the quote is correct when applied to this modified experiment, then, given $i \in I$, $i$’s deliberated choice is $\prop_2$ because $a_e$ is a decisive argument for $\prop_2$, even though $i$ might have rather chosen $\prop_1$ if given only the arguments $a_1$ and $a_2$ without $a_e$.
+\end{example}
+
+That the deliberated choice of any individual $i$ is well-defined may be doubtful, as it involves counterfactuals.
+To see this, let $\alpha = (a_1, a_2, a_e)$ designate the argumentative path where the arguments are shown in the order they are described in the example, and let $\alpha' = (a_e, a_2, a_1)$ designate the reverse order.
+The deliberated choice concept is defined so as to not depend on the (arbitrary) order of the arguments shown to $i$: for $\prop \in P_i$, it must be that directing to $i$ the path $\alpha$ or the path $\alpha'$ both lead $i$ to choose $\prop$.
+However, once we have shown $\alpha$ to $i$, we cannot show to her $\alpha'$ (unless assuming $i$ forgets arguments after a while and waiting for sufficiently long, which would create practical and theoretical difficulties).
+
+This difficulty is resolved using falsifiable general theories, applicable to $I$ and not solely to a given $i$, so that $\alpha$ can be tested on $i$ and $\alpha'$ on some $i' ≠ i$. Indeed, what is needed is a way to make a claim such as the one concluding \cref{ex:tutor}, according to which $a_e$ is a decisive argument, empirically testable. This is achieved in the next section thanks to theories of deliberated choice.
+% Such theories contain an observable claim and a conclusion claim, so as to satisfy two properties. First, such a theory must be falsifiable in principle, meaning that it must be possible, using our observational basis (propositions of the sort $\alpha \ileadsto \phi$), to invalidate the observable claim of the theory. As a counter-example, using \cref{ex:tutor}, a theory that claims that $\forall i \in I: \alpha_{123} \ileadsto \prop_1 \lor \alpha_{321} \ileadsto \prop_1$ is not falsifiable in principle, as, whatever the real $\ileadsto$ relation, with a given $i$, one can never show that $\alpha_{123} \nileadsto \prop_1 \land \alpha_{123} \nileadsto \prop_1$. Second, such a theory must be so that if its observable claim holds, then some given alternative is in the deliberated judgment of the individuals in $I$.
+
+\section{Theories of deliberated choice}
+This section assumes that an exposure protocol $(I, \allargs, {\leadsto})$ is defined, and defines theories of deliberated choice associated with that exposure protocol. We will start with very simple theories (\cref{sec:static}) in order to build an intuition about the conditions required on theories of deliberated choice, then justify the need for more complex theories (\cref{sec:lichtenstein}) and finally define more general theories of deliberated choice (\cref{sec:dynamic}).
+
+\subsection{Theories using a static decisive argument}
+\label{sec:static}
+\Cref{ex:tutor} suggests a simple form for theories of deliberated choice: suffice to determine an argument $\ar \in \allargs$ and an alternative $\prop \in \Phi$ such that the theory claims that $\forall i \in I: \ar \ileadstost \prop$ and that $\forall i \in I: \prop \in \iprops$.
+
+\begin{definition}[Static theory]
+	\label{def:static}
+	A static theory is a pair $(p, \ar)$ for some $p \in P$ and some $\ar \in \allargs$.
+\end{definition}
+A static theory $(p, \ar)$ is said to be truthful iff $\forall i \in I: \ar \ileadstost \prop$, and to be correct iff $\forall i \in I: \prop \in \iprops$.
+We can then say that such theories are valid, meaning that their truthfulness implies their correctness. Let us make this (very simple) result stand out as a theorem, because a parallel will be usefully made with more complicated theories.
+%Note that this result immediately follows from \cref{ax:decisive}.
+\begin{theorem}[Static theories are valid]
+	Any truthful static theory is correct.
+\end{theorem}
+\begin{proof}
+	This follows immediately from \cref{def:decisive}.
+\end{proof}
+Importantly, truthfulness can indeed be checked using our observational basis, that is, if $\exists i \in I \suchthat \ar \nileadstost \prop$, then it is possible to exhibit this fact experimentally.
+
+Such theories have the merit of simplicity, but there is a need to design more adaptive theories: in many interesting cases, no single argument will be considered decisive by all individuals in $I$. What we need is a way to argue with individuals by reacting to what they consider good arguments. The following section illustrates this need.
+
+\subsection{Some decision problems with no single decisive argument}
+\label{sec:lichtenstein}
+One ambition of the theories to be proposed here is to permit exhibiting the existence of a deliberated consensus among a large set of persons about issues that involve numerous arguments and counter-arguments.
+
+In many decision problems, individuals will not be attracted by the same set of arguments and counter-arguments, even though they may finally opt for the same alternative. Imagine that some individual $i_1$ considers an argument $a_1$ for $\nprop$ relevant and some individual $i_2$ considers an argument $a_2$ for $\nprop$ relevant, but $i_1$ does not consider $a_2$ relevant and $i_2$ does not consider $a_1$ relevant (for example, because they already have some counter-arguments in mind to those arguments). Imagine further that there is some counter-argument $a'_1$ that can be given to $i_1$ to rebut $a_1$, and a different counter-argument $a'_2$ that can be given to $i_2$ to rebut $a_2$, so that they both have $\prop$ in their deliberated judgment when considering all these arguments.
+In such situation, static theories as defined in \cref{sec:static} are ill suited: these theories need to present the same argument to all individuals and would thus need to define a bigger argument $a$ containing both $a'_1$ and $a'_2$. Such an argument could be too long to be convincing to $i_1$ or $i_2$, as it needlessly spends efforts countering an argument that the individual considers irrelevant to start with. This  will become an important problem if there are not only two but many a priori possible arguments $a_k$ for $\nprop$, a small subset of which is considered relevant by any given individual, each with their own counter-argument $a'_k$ for $\prop$.
+
+%For a partial illustration about an ambitious setting, consider a decision to be taken about the relevance of some concrete action to help cope with climate change, and let $I$ be a set of citizens interested in the climate issue. The complete set of all arguments that will be considered relevant by at least one individual may well be very large. It may also be that, for each individual who considers relevant some arguments $A$ against the proposed concrete action, it is possible to give counter-arguments $A'$ that will convince the individual to opt for the proposal.
+One of the settings discussed by \citet{thaler_nudge_2009} permits to illustrate this point more concretely.
+Let $I$ be a set of workers interested in establishing a savings plan. 
+The authors claim that workers tend to not save enough because of psychological biases. 
+It is therefore tempting to conjecture that the deliberated choice of those workers is to save more, in the sense defined here, than what their natural choice (the one revealed in absence of arguments) leads to.
+A difficulty related to this decision problem is that the complete set of all arguments that will be considered relevant by at least one individual for such a complex issue may well be very large. It may also be that, for each individual who considers relevant some arguments $A$ for saving not much (i.e., spending more in the short term), it is possible to give counter-arguments $A'$ that will convince the individual to opt for saving more.
+But no single argument could be decisive for each $i \in I$: it could be that only counter-arguments built specifically according to what a given individual considers relevant could convince him, given the complexity of the issue.
+This illustrates that the deliberated choice of each individuals in $I$ may be to save more even though no static theory (\cref{def:static}) may achieve showing it, as it could be that no such theory is truthful.
+
+%The above setting illustrates the ambition of this research program, but at the price of rendering impossible in the confines of this article to define fully the set of arguments and giving a complete account of a concrete theory of deliberated choice in such a complex setting, an endeavor of its own.
+
+The following example illustrates this same point in a constrained setting which permits a complete definition of $\allargs$ and $\leadsto$.%, which permits defining the setting completely at the price of a reduced realism.
+\begin{example}[A decision problem about two lotteries]
+	\label{ex:lichtenstein}
+	In a famous article about preference reversals, \citet{lichtenstein_reversals_2006} discuss an example involving two lotteries. The lottery $P$ lets the subject win four dollars with 99\% chance and lose ten cents with 1\% chance; in summary, $P = (.99, +\$4; .01, −\$0.1)$. The lottery $D$ is, using the same notations: $(.33, +\$16; .67, −\$2)$. The letter $P$ stands for probability: one salient aspect of $P$ is the very high chance of winning. The letter $D$ stands for dollar: one salient aspect of $D$ is the high gain it gives (compared to $P$) in dollar amount if the subject is lucky.
+
+This example is interesting because when asked to bid for lotteries, the theory discussed by the authors predicts, and their experiments confirm, that subjects tend to bid more for $D$ than for $P$, because the bidding question tend to make individuals focus on dollar amounts; whereas when asked to choose one lottery, the lotteries being presented in pairs, subjects tend to choose $P$ among the pair $\set{P, D}$, giving greater attention to probabilities.
+
+Define $P = \set{\phi_P, \phi_D, 0}$.
+
+Define $\ar_e$ as a text arguing that the choice between $P$ and $D$ should be determined by their expected revenue, namely, $\$3.959$ for $P$ and $\$4$ for $D$.
+\footnote{Here is a possible text for $\ar_e$. “Imagine you play $P$ 100 times. On average, you would win 99 times and lose once, which means gaining 99 × \$4 = \$396 and losing 1 × \$0.10 = \$0.10, hence a total net gain of \$395.90. Thus, your average net gain for the $P$ bet would be \$3.9590. [Similar text for $D$.] Therefore, we suggest you choose $D$ for a higher expected revenue.”}
+Define $\ar_u$ as a text arguing that the utility of money should matter, not the revenue, and arguing that a loss hurts more than a gain. 
+\footnote{Here is a possible text for $\ar_u$. “$D$ is better than $P$ in terms of expected gain, but it is in general absurd to reason in terms of expected gain. For example, consider a choice between winning $10^6$ dollars with probability $0.8$ and winning $2 × 10^6$ dollars with probability $0.4$. These two lotteries have the same expected gain, but the first one is clearly preferrable. Therefore, we recommend to rather pick $P$ as it presents a much better chance of earning money”.}
+Define a counter-argument $\ar_l$ to $\ar_u$, indicating that for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.
+\footnote{Here is a possible text for $\ar_l$. “The lottery $D$ has a higher expected revenue, and thus, a higher utility than $P$, because for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.”}
+Define $\ar$ so as to include the contents of $\ar_e$, $\ar_u$ and $\ar_l$.
+\footnote{Here is a possible text for $\ar$. [Text of $\ar_e$] “Note that one could say that the utility of money should matter, but for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.”}
+Define $\allargs = \set{\ar_e, \ar_u, \ar_l, \ar}$.
+
+Define $I$ as a set of individuals facing a choice between $P$ and $D$ in a laboratory experiment.
+Define $\ileadsto$ as simply exposing $i$ to $\alpha$ and observing the resulting choice by asking $i$ to indicate which lottery she prefers playing. 
+%Given an argumentative path $\hist$, $\hist \ileadsto (P ≥ D)$ iff, in a situation of $i$ having been exposed, in order, to the arguments in $\hist$, letting $i$ choose between $P$ and $D$ or declare indifference leads $i$ to choose $P$, or declare indifference. Here is a possible text presented to $i$ to ask for a choice: “Considering these arguments, would you please choose either to play $P$, or play $D$, or declare to be indifferent (in which case one will be picked randomly for you)”. 
+%Similarly, define $\hist \ileadsto (P > D)$ iff showing the arguments in $\hist$ to $i$ and letting $i$ choose between $P$ and $D$ or declare indifference leads $i$ to choose $P$ and not $D$. 
+%Define similarly $\hist \ileadsto \prop$ for $\prop \in \set{D ≥ P, D > P}$.
+
+Assume that some individuals $i \in I$ do not see the point of argument $\ar_u$ and some do but are convinced by the counter-argument $\ar_l$. Accordingly, define $\ileadsto[e]$, representing the first kind of individuals, as follows. $\forall \hist \in \allhist: \hist \ileadsto[e] D ⇔ [\ar_e \in R(\hist)]$, and $\hist \ileadsto[e] P$ otherwise. Note that in particular, if $\hist$ contains $\ar$ but not $\ar_e$, $\ar \ileadsto[e] P$, as we assume such individuals are confused by the longer argument $\ar$ referring to abstract notions and therefore opt for $P$, falling back to the common psychological bias.
+The second kind of individuals is represented by $\ileadsto[u]$ defined as $\forall \hist \in \allhist: \hist \ileadsto[u] D ⇔ [\ar_u \notin R(\hist) \lor \ar \in R(\hist) \lor \set{\ar_u, \ar_l} \subseteq R(\hist)]$, and $\hist \ileadsto[u] P$ otherwise.
+We assume here that such individuals think about $\ar_u$ as a correct argument in favor of $P$ until shown the rebuttal $\ar_l$ (or $\ar$, which contains a similar rebuttal).
+Assuming finally $\allleadsto$ as equal to $\ileadsto[e]$ for individuals of the first kind and $\ileadsto[u]$ otherwise concludes the definition of the exposure protocol $(I, \allargs, {\allleadsto})$.
+
+It follows from this definition that $\forall i \in I: \prop_D \in \iprops$, and that no static theory of that exposure protocol is truthful: only $\ar_e$ is a decisive argument for $\prop_D$ for the first kind of individuals whereas for the second kind, only $\ar$ is.
+\end{example}
+This example illustrates the need for theories that are able to react to arguments depending on what a given individual considers relevant. This is the object of the next section.
+
+\subsection{Argumentative theories of deliberated choice}
+\label{sec:dynamic}
+An argumentative theory of deliberated choice $\gamma$ is defined as a tuple $(\pga, \arga, \dg)$, where $\pga \in P$ is the proposition supported by the theory, $\arga \in \allargs$ is the initial argument in favor of $\pga$ and $\dg$ is a defense relation.
+
+The defense relation $\dg \subseteq (\allargs × \allhist) × \allargs$ defines the argumentation strategy of the theory. Informally speaking, its role is, together with $\arga$, to produce the arguments that the theory claims will convince the individuals in $I$ to choose $\pga$. Assuming that the theory has played an argument $\ar_0$ and a path $\hist$ challenges its intended conclusion in favor of $\pga$ (as judged by the individual), $\dg(\ar_0, \hist)$ is the argument that the theory plays as a counter-argument to the path $\hist$.
+
+Formally speaking, a defense relation $\dg \subseteq (\allargs × \allhist) × \allargs$ is a right-unique relation satisfying bounded depth (to be defined shortly). Right-unique means that given any $\ar \in \allargs, \hist \in \allhist$, $\dg(\ar, \hist)$ is empty or is a singleton. %, and must satisfy $\ar \notin \histend ⇒ \dg(\ar, \hist) = \emptyset$. 
+As is usual for right-unique relations, we write $\dg(\ar_0, \hist) = \ar_1$ instead of $\dg(\ar_0, \hist) = \set{\ar_1}$.
+Say that $\ar_1$ defends $\ar_0$ iff $\exists \hist \suchthat \dg(\ar_0, \hist) = \ar_1$.
+Define $\dg(\ar) = \dg(\ar, \allhist) = \set{\dg(\ar, \hist) \suchthat \hist \in \allhist} \subseteq \allargs$ as all the defenders of $\ar$.
+
+This mechanism permits to define defenders of defenders of an argument, $\dg(\dg(\ar))$, defenders of defenders of defenders of an argument, … This yields the following notion of depth.
+Given any set $S$ and function $f: S → S$, let $f^0$ represent the identity function, and given $k \in \N$, let $f^{k + 1} = f \circ f^k$.
+The bounded depth condition on the defense relation imposes that
+$\exists k \in \N^* \suchthat (\dg)^k(\arga) = \emptyset$.
+The smallest such $k$ is called the depth of the theory.
+
+%The condition that when $\dg(\ar_0, \hist)$, $\ar_0 \in \histend$ is imposed for simplicity: as will appear, an argument $\ar_0$ needs defense only when it is challenged by some path $\hist \suchthat \ar_0 \in \histend$, thus, letting $\dg$ define counter-arguments to paths not satisfying this condition would be of no use.
+
+An argumentative theory claims that its argumentation strategy, embodied by $\arga$ and $\dg$, will convince the individuals in $I$.
+More precisely, given $i \in I$, it claims that $\arga$ either is a decisive argument for $\pga$, or, if $\arga$ is not, that the theory will defend the argument by replying to every counter-argument to $\arga$ with an argument that either is a decisive argument for $\pga$ or, in turn, will be defended by the theory, and so on as long as the theory has counter-arguments to produce; the theory claiming that some argument along that chain is decisive.
+
+To define this formally, note that either $\arga$ is a decisive argument for $\pga$, or some paths challenge this claim, namely those in $\set{\hist \in \allhist \suchthat \arga \in \histend \land \hist \nileadsto \pga}$.
+Generalizing this observation, given $i \in I$, define $\dgi(\ar) = \set{\dg(\ar, \hist) \suchthat \ar \in \histend \land \hist \nileadsto \pga} \subseteq \dg(\ar)$ as the subset of defenders of $\ar$ required for convincing $i$ of choosing $\pga$.
+Define $\gargsi \subseteq \allargs$ as the transitive closure of $\arga$ under $\dgi$: $\gargsi = \cup_{k \in \N} (\dgi)^k(\arga)$. The set $\gargsi$ is the set of arguments required to convince $i$ of choosing $\pga$.
+
+An argumentative theory claims that whenever some of its arguments fail to convince $i$ of choosing $\pga$, it can argue something else.
+It is said to be truthful iff this claim is correct.
+More precisely, its claims are about paths of the sort $\hist = (\arga, …, \ar_2, …, \ar_3, …)$ where $\ar_2 \in \dgi(\arga)$, $\ar_3 \in \dgi(\ar_2)$, … The following definition makes this precise.
+\begin{definition}[Truthfulness]
+	\label{def:truth}
+	An argumentative theory $(\pga, \arga, \dg)$ for the exposure protocol $(I, \allargs, {\leadsto})$ is \emph{truthful} iff $\forall i \in I, k \in \N^*, (\ar_j)_{j \in \intvl{1, k}} \in \allargs^k, \hist \in \allhist \suchthat [\ar_1 = \arga \land \ar_k \in \histend \land d(\ar_k, \hist) = \emptyset \land \forall j \in \intvl{1, k}: \ar_j \in R(\hist) \land \forall j \in \intvl{2, k}: \ar_j \in \dgi(\ar_{j - 1})]: [\hist \ileadsto \pga]$.
+\end{definition}
+
+This definition of truthfulness is adopted because of our goal of distinguishing empirical claims. Truthfulness, so defined, can be falsified empirically: if any of the set of claims embedded in this definition does not hold, it is possible to determine this empirically.
+
+Note that a static theory $(p, \ar)$ can be considered as an argumentative theory $(p, \ar, \emptyset)$, and is truthful in the sense of \cref{sec:static} iff $(p, \ar, \emptyset)$ is truthful in the sense of \cref{def:truth}.
+
+Associated with an argumentative theory also comes the following axiom, that mandates a more general version of the following requirement: if some argument $\ar_2$ defends some argument $\ar_1$, and if $\ar_2$ leads $i$ to opt for $\pga$ whenever it immediately follows $\ar_1$, then omitting $\ar_1$ would still have lead $i$ to opt for $\pga$.
+
+\begin{axiom}[Omitting defended arguments]
+	\label{ax:omitting}
+	If the theory is truthful, then $\forall i \in I, k \in \N^*, l \in \intvl{2, k}, (\ar_j)_{j \in \intvl{1, k}} \in \allargs^k, \hist, \beta \in \allhist \suchthat [\ar_k \in \histend \land \forall j \in \intvl{2, k}: \ar_j \in \dgi(\ar_{j - 1})]:
+	(\beta, \ar_{l - 1}, \ar_l, \hist) \ileadsto \pga ⇒ (\beta, \ar_l, \hist) \ileadsto \pga$.
+\end{axiom}
+This is called an axiom because it cannot be falsified using observables. It has to be accepted on the basis of the rest of the observations and on the contents of the defending arguments. As \cref{ex:lichtenstein} suggests, theories can be built so as to make this axiom plausible by embedding within defending arguments the content of the defended argument.
+
+An argumentative theory is said to be correct iff $\forall i \in I: \pga \in \iprops$.
+As previously, it is said to be valid iff its truthfulness leads to its correctness, except that the above axiom needs now be included as a price for the added flexibility of the theory.
+\begin{theorem}[Validity]
+	If an argumentative theory is truthful, then \cref{ax:omitting} implies that the theory is correct.
+\end{theorem}
+\begin{proof}[Sketch of proof]
+	Assume, to start with, that the theory is of depth 2, more precisely, $\arga$ is not decisive because $\hist \nileadsto \pga, \arga \in \histend$ and $\dgi(\arga) = \ar_2$ with no further hist against it.
+	
+	Consider any $i \in I$.
+	Assume $\arga$ is not decisive.
+	Consider any $\hist \suchthat \ar_2 \in \histend$. We want to show that $\hist \ileadsto \pga$.
+	
+IF $\hist$ contains $\arga$ before $\ar_2$, done by TF.
+Otherwise, define $hist'$ which has a1 just before a2.
+Apply TF on hist' then apply axiom.
+
+Consider now a theory of depth 3. 
+	Consider any $i \in I$.
+	Assume $\arga$ not decisive, $\ar_2$ not decisive.
+	Consider any $\hist \suchthat \ar_3 \in \histend$. We want to show that $\hist \ileadsto \pga$.
+
+	If it includes a1 then a2, ok thanks to truthfulness.
+	Otherwise, build hist3 that has a1 then a2 just before a3.
+	That’s ok thanks to TF.
+	By axiom, hist2 with only a2 just before a3 is thus ok.
+	By axiom, hist is thus ok.
+\end{proof}
+
+\hbadness=10000
+\bibliography{simple}
+\end{document}
