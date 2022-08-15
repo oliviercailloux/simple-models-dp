@@ -225,7 +225,6 @@ This example illustrates the need for theories that are able to react to argumen
 \subsection{Argumentative theories of deliberated choice}
 \label{sec:dynamic}
 An argumentative theory of deliberated choice $\gamma$ is defined as a tuple $(\pga, \arga, \dg)$, where $\pga \in P$ is the proposition supported by the theory, $\arga \in \allargs$ is the initial argument in favor of $\pga$ and $\dg$ is a defense relation.
-\commentYM{puisque la théorie empirique est une théorie empirique D'UNE CERTAINE THEORIE NORMATIVE, je m'attendrais  à ce qu'on voit apparaître la théorie normative dans la formule de la théorie empirique, non ?}
 
 The defense relation $\dg \subseteq (\allargs × \allhist) × \allargs$ defines the argumentation strategy of the theory. Informally speaking, its role is, together with $\arga$, to produce the arguments that the theory claims will convince the individuals in $I$ to choose $\pga$. Assuming that the theory has played an argument $\ar_0$ and a path $\hist$ challenges its intended conclusion in favor of $\pga$ (as judged by the individual), $\dg(\ar_0, \hist)$ is the argument that the theory plays as a counter-argument to the path $\hist$.
 
@@ -239,7 +238,6 @@ Given any set $S$ and function $f: S → S$, let $f^0$ represent the identity fu
 The bounded depth condition on the defense relation imposes that
 $\exists k \in \N^* \suchthat (\dg)^k(\arga) = \emptyset$.
 The smallest such $k$ is called the depth of the theory.
-\commentYM{ok soit, ça semble raisonnable, mais tu n'as pas de raison plus forte, j'adopterais une formulation plus modeste et ouverte, du genre "ça semble souhaitable"}
 
 %The condition that when $\dg(\ar_0, \hist)$, $\ar_0 \in \histend$ is imposed for simplicity: as will appear, an argument $\ar_0$ needs defense only when it is challenged by some path $\hist \suchthat \ar_0 \in \histend$, thus, letting $\dg$ define counter-arguments to paths not satisfying this condition would be of no use.
 
