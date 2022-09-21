@@ -151,13 +151,13 @@ This section assumes that an exposure protocol $(I, \allargs, {\leadsto})$ is de
 
 \subsection{Theories using a static decisive argument}
 \label{sec:static}
-\Cref{ex:tutor} suggests a simple form for theories of deliberated choice: suffice to determine an argument $\ar \in \allargs$ and an alternative $\prop \in \Phi$ such that the theory claims that $\forall i \in I: \ar \ileadstost \prop$ and that $\forall i \in I: \prop \in \iprops$.
+\Cref{ex:tutor} suggests a simple form for theories of deliberated choice: suffice to determine an argument $\ar \in \allargs$ and a preference $p \in P$ such that the theory claims that $\forall i \in I: \ar \ileadstost p$ and that $\forall i \in I: p \in P_i$.
 
 \begin{definition}[Static theory]
 	\label{def:static}
 	A static theory is a pair $(p, \ar)$ for some $p \in P$ and some $\ar \in \allargs$.
 \end{definition}
-A static theory $(p, \ar)$ is said to be truthful iff $\forall i \in I: \ar \ileadstost \prop$, and to be correct iff $\forall i \in I: \prop \in \iprops$.
+A static theory $(p, \ar)$ is said to be truthful iff $\forall i \in I: \ar \ileadstost p$, and to be correct iff $\forall i \in I: p \in P_i$.
 We can then say that such theories are valid, meaning that their truthfulness implies their correctness. Let us make this (very simple) result stand out as a theorem, because a parallel will be usefully made with more complicated theories.
 %Note that this result immediately follows from \cref{ax:decisive}.
 \begin{theorem}[Static theories are valid]
@@ -166,7 +166,7 @@ We can then say that such theories are valid, meaning that their truthfulness im
 \begin{proof}
 	This follows immediately from \cref{def:decisive}.
 \end{proof}
-Importantly, truthfulness can indeed be checked using our observational basis, that is, if $\exists i \in I \suchthat \ar \nileadstost \prop$, then it is possible to exhibit this fact experimentally.
+Importantly, truthfulness can indeed be checked using our observational basis, that is, if $\exists i \in I \suchthat \ar \nileadstost p$, then it is possible to exhibit this fact experimentally.
 
 Such theories have the merit of simplicity, but there is a need to design more adaptive theories: in many interesting cases, no single argument will be considered decisive by all individuals in $I$. What we need is a way to argue with individuals by reacting to what they consider good arguments. The following section illustrates this need.
 
@@ -191,34 +191,34 @@ This illustrates that the deliberated choice of each individuals in $I$ may be t
 The following example illustrates this same point in a constrained setting which permits a complete definition of $\allargs$ and $\leadsto$.%, which permits defining the setting completely at the price of a reduced realism.
 \begin{example}[A decision problem about two lotteries]
 	\label{ex:lichtenstein}
-	In a famous article about preference reversals, \citet{lichtenstein_reversals_2006} discuss an example involving two lotteries. The lottery $P$ lets the subject win four dollars with 99\% chance and lose ten cents with 1\% chance; in summary, $P = (.99, +\$4; .01, −\$0.1)$. The lottery $D$ is, using the same notations: $(.33, +\$16; .67, −\$2)$. The letter $P$ stands for probability: one salient aspect of $P$ is the very high chance of winning. The letter $D$ stands for dollar: one salient aspect of $D$ is the high gain it gives (compared to $P$) in dollar amount if the subject is lucky.
+	In a famous article about preference reversals, \citet{lichtenstein_reversals_2006} discuss an example involving two lotteries. The lottery $P$ lets the subject win four dollars with 99\% chance and lose ten cents with 1\% chance; in summary, $L_P = (.99, +\$4; .01, −\$0.1)$. The lottery $L_D$ is, using the same notations: $(.33, +\$16; .67, −\$2)$. The letter $P$ stands for probability: one salient aspect of $L_P$ is the very high chance of winning. The letter $D$ stands for dollar: one salient aspect of $L_D$ is the high gain it gives (compared to $P$) in dollar amount if the subject is lucky.
 
-This example is interesting because when asked to bid for lotteries, the theory discussed by the authors predicts, and their experiments confirm, that subjects tend to bid more for $D$ than for $P$, because the bidding question tend to make individuals focus on dollar amounts; whereas when asked to choose one lottery, the lotteries being presented in pairs, subjects tend to choose $P$ among the pair $\set{P, D}$, giving greater attention to probabilities.
+This example is interesting because when asked to bid for lotteries, the theory discussed by the authors predicts, and their experiments confirm, that subjects tend to bid more for $L_D$ than for $L_P$, because the bidding question tend to make individuals focus on dollar amounts; whereas when asked to choose one lottery, the lotteries being presented in pairs, subjects tend to choose $L_P$ among the pair $\set{L_P, L_D}$, giving greater attention to probabilities.
 
-Define $P = \set{\phi_P, \phi_D, 0}$.
+Define $P = \set{L_P, L_D, 0}$.
 
-Define $\ar_e$ as a text arguing that the choice between $P$ and $D$ should be determined by their expected revenue, namely, $\$3.959$ for $P$ and $\$4$ for $D$.
-\footnote{Here is a possible text for $\ar_e$. “Imagine you play $P$ 100 times. On average, you would win 99 times and lose once, which means gaining 99 × \$4 = \$396 and losing 1 × \$0.10 = \$0.10, hence a total net gain of \$395.90. Thus, your average net gain for the $P$ bet would be \$3.9590. [Similar text for $D$.] Therefore, we suggest you choose $D$ for a higher expected revenue.”}
+Define $\ar_e$ as a text arguing that the choice between $L_P$ and $L_D$ should be determined by their expected revenue, namely, $\$3.959$ for $L_P$ and $\$4$ for $L_D$.
+\footnote{Here is a possible text for $\ar_e$. “Imagine you play $L_P$ 100 times. On average, you would win 99 times and lose once, which means gaining 99 × \$4 = \$396 and losing 1 × \$0.10 = \$0.10, hence a total net gain of \$395.90. Thus, your average net gain for the $L_P$ bet would be \$3.9590. [Similar text for $L_D$.] Therefore, we suggest you choose $L_D$ for a higher expected revenue.”}
 Define $\ar_u$ as a text arguing that the utility of money should matter, not the revenue, and arguing that a loss hurts more than a gain. 
-\footnote{Here is a possible text for $\ar_u$. “$D$ is better than $P$ in terms of expected gain, but it is in general absurd to reason in terms of expected gain. For example, consider a choice between winning $10^6$ dollars with probability $0.8$ and winning $2 × 10^6$ dollars with probability $0.4$. These two lotteries have the same expected gain, but the first one is clearly preferrable. Therefore, we recommend to rather pick $P$ as it presents a much better chance of earning money”.}
+\footnote{Here is a possible text for $\ar_u$. “$L_D$ is better than $L_P$ in terms of expected gain, but it is in general absurd to reason in terms of expected gain. For example, consider a choice between winning $10^6$ dollars with probability $0.8$ and winning $2 × 10^6$ dollars with probability $0.4$. These two lotteries have the same expected gain, but the first one is clearly preferrable. Therefore, we recommend to rather pick $L_P$ as it presents a much better chance of earning money”.}
 Define a counter-argument $\ar_l$ to $\ar_u$, indicating that for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.
-\footnote{Here is a possible text for $\ar_l$. “The lottery $D$ has a higher expected revenue, and thus, a higher utility than $P$, because for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.”}
+\footnote{Here is a possible text for $\ar_l$. “The lottery $L_D$ has a higher expected revenue, and thus, a higher utility than $L_P$, because for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.”}
 Define $\ar$ so as to include the contents of $\ar_e$, $\ar_u$ and $\ar_l$.
 \footnote{Here is a possible text for $\ar$. [Text of $\ar_e$] “Note that one could say that the utility of money should matter, but for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.”}
 Define $\allargs = \set{\ar_e, \ar_u, \ar_l, \ar}$.
 
-Define $I$ as a set of individuals facing a choice between $P$ and $D$ in a laboratory experiment.
+Define $I$ as a set of individuals facing a choice between $L_P$ and $L_D$ in a laboratory experiment.
 Define $\ileadsto$ as simply exposing $i$ to $\alpha$ and observing the resulting choice by asking $i$ to indicate which lottery she prefers playing. 
 %Given an argumentative path $\hist$, $\hist \ileadsto (P ≥ D)$ iff, in a situation of $i$ having been exposed, in order, to the arguments in $\hist$, letting $i$ choose between $P$ and $D$ or declare indifference leads $i$ to choose $P$, or declare indifference. Here is a possible text presented to $i$ to ask for a choice: “Considering these arguments, would you please choose either to play $P$, or play $D$, or declare to be indifferent (in which case one will be picked randomly for you)”. 
 %Similarly, define $\hist \ileadsto (P > D)$ iff showing the arguments in $\hist$ to $i$ and letting $i$ choose between $P$ and $D$ or declare indifference leads $i$ to choose $P$ and not $D$. 
 %Define similarly $\hist \ileadsto \prop$ for $\prop \in \set{D ≥ P, D > P}$.
 
-Assume that some individuals $i \in I$ do not see the point of argument $\ar_u$ and some do but are convinced by the counter-argument $\ar_l$. Accordingly, define $\ileadsto[e]$, representing the first kind of individuals, as follows. $\forall \hist \in \allhist: \hist \ileadsto[e] D ⇔ [\ar_e \in R(\hist)]$, and $\hist \ileadsto[e] P$ otherwise. Note that in particular, if $\hist$ contains $\ar$ but not $\ar_e$, $\ar \ileadsto[e] P$, as we assume such individuals are confused by the longer argument $\ar$ referring to abstract notions and therefore opt for $P$, falling back to the common psychological bias.
-The second kind of individuals is represented by $\ileadsto[u]$ defined as $\forall \hist \in \allhist: \hist \ileadsto[u] D ⇔ [\ar_u \notin R(\hist) \lor \ar \in R(\hist) \lor \set{\ar_u, \ar_l} \subseteq R(\hist)]$, and $\hist \ileadsto[u] P$ otherwise.
-We assume here that such individuals think about $\ar_u$ as a correct argument in favor of $P$ until shown the rebuttal $\ar_l$ (or $\ar$, which contains a similar rebuttal).
+Assume that some individuals $i \in I$ do not see the point of argument $\ar_u$ and some do but are convinced by the counter-argument $\ar_l$. Accordingly, define $\ileadsto[e]$, representing the first kind of individuals, as follows. $\forall \hist \in \allhist: \hist \ileadsto[e] L_D ⇔ [\ar_e \in R(\hist)]$, and $\hist \ileadsto[e] L_P$ otherwise. Note that in particular, if $\hist$ contains $\ar$ but not $\ar_e$, $\ar \ileadsto[e] L_P$, as we assume such individuals are confused by the longer argument $\ar$ referring to abstract notions and therefore opt for $L_P$, falling back to the common psychological bias.
+The second kind of individuals is represented by $\ileadsto[u]$ defined as $\forall \hist \in \allhist: \hist \ileadsto[u] L_D ⇔ [\ar_u \notin R(\hist) \lor \ar \in R(\hist) \lor \set{\ar_u, \ar_l} \subseteq R(\hist)]$, and $\hist \ileadsto[u] L_P$ otherwise.
+We assume here that such individuals think about $\ar_u$ as a correct argument in favor of $L_P$ until shown the rebuttal $\ar_l$ (or $\ar$, which contains a similar rebuttal).
 Assuming finally $\allleadsto$ as equal to $\ileadsto[e]$ for individuals of the first kind and $\ileadsto[u]$ otherwise concludes the definition of the exposure protocol $(I, \allargs, {\allleadsto})$.
 
-It follows from this definition that $\forall i \in I: \prop_D \in \iprops$, and that no static theory of that exposure protocol is truthful: only $\ar_e$ is a decisive argument for $\prop_D$ for the first kind of individuals whereas for the second kind, only $\ar$ is.
+It follows from this definition that $\forall i \in I: L_D \in P_i$, and that no static theory of that exposure protocol is truthful: only $\ar_e$ is a decisive argument for $L_D$ for the first kind of individuals whereas for the second kind, only $\ar$ is.
 \end{example}
 This example illustrates the need for theories that are able to react to arguments depending on what a given individual considers relevant. This is the object of the next section.
 
