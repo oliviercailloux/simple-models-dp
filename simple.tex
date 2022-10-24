@@ -197,13 +197,13 @@ This example is interesting because when asked to bid for lotteries, the theory 
 
 Define $P = \set{L_P, L_D, 0}$.
 
-Define $\ar_e$ as a text arguing that the choice between $L_P$ and $L_D$ should be determined by their expected revenue, namely, $\$3.959$ for $L_P$ and $\$4$ for $L_D$.
+Define $\ar_e$ as a text arguing that the choice between $L_P$ and $L_D$ should be determined by their expected revenue, namely, $\$3.959$ for $L_P$ and $\$4$ for $L_D$.%
 \footnote{Here is a possible text for $\ar_e$. “Imagine you play $L_P$ 100 times. On average, you would win 99 times and lose once, which means gaining 99 × \$4 = \$396 and losing 1 × \$0.10 = \$0.10, hence a total net gain of \$395.90. Thus, your average net gain for the $L_P$ bet would be \$3.9590. [Similar text for $L_D$.] Therefore, we suggest you choose $L_D$ for a higher expected revenue.”}
-Define $\ar_u$ as a text arguing that the utility of money should matter, not the revenue, and arguing that a loss hurts more than a gain. 
+Define $\ar_u$ as a text arguing that the utility of money should matter, not the revenue, and arguing that a loss hurts more than a gain.% 
 \footnote{Here is a possible text for $\ar_u$. “$L_D$ is better than $L_P$ in terms of expected gain, but it is in general absurd to reason in terms of expected gain. For example, consider a choice between winning $10^6$ dollars with probability $0.8$ and winning $2 × 10^6$ dollars with probability $0.4$. These two lotteries have the same expected gain, but the first one is clearly preferrable. Therefore, we recommend to rather pick $L_P$ as it presents a much better chance of earning money”.}
-Define a counter-argument $\ar_l$ to $\ar_u$, indicating that for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.
+Define a counter-argument $\ar_l$ to $\ar_u$, indicating that for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.%
 \footnote{Here is a possible text for $\ar_l$. “The lottery $L_D$ has a higher expected revenue, and thus, a higher utility than $L_P$, because for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.”}
-Define $\ar$ so as to include the contents of $\ar_e$, $\ar_u$ and $\ar_l$.
+Define $\ar$ so as to include the contents of $\ar_e$, $\ar_u$ and $\ar_l$.%
 \footnote{Here is a possible text for $\ar$. [Text of $\ar_e$] “Note that one could say that the utility of money should matter, but for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.”}
 Define $\allargs = \set{\ar_e, \ar_u, \ar_l, \ar}$.
 
@@ -244,21 +244,21 @@ The smallest such $k$ is called the depth of the theory.
 An argumentative theory claims that its argumentation strategy, embodied by $\arga$ and $\dg$, will convince the individuals in $I$.
 More precisely, given $i \in I$, it claims that $\arga$ either is a decisive argument for $\pga$, or, if $\arga$ is not, that the theory will defend the argument by replying to every counter-argument to $\arga$ with an argument that either is a decisive argument for $\pga$ or, in turn, will be defended by the theory, and so on as long as the theory has counter-arguments to produce; the theory claiming that some argument along that chain is decisive.
 
-To define this formally, note that either $\arga$ is a decisive argument for $\pga$, or some paths challenge this claim, namely those in $\set{\hist \in \allhist \suchthat \arga \in \histend \land \hist \nileadsto \pga}$.
+To define this formally, note that either $\arga$ is a decisive argument for $\pga$, or some paths challenge this claim, namely those $\hist \in \allhist$ such that $[\arga \in \histend \land \hist \nileadsto \pga]$.
 Generalizing this observation, given $i \in I$, define $\dgi(\ar) = \set{\dg(\ar, \hist) \suchthat \ar \in \histend \land \hist \nileadsto \pga} \subseteq \dg(\ar)$ as the subset of defenders of $\ar$ required for convincing $i$ of choosing $\pga$.
 Define $\gargsi \subseteq \allargs$ as the transitive closure of $\arga$ under $\dgi$: $\gargsi = \cup_{k \in \N} (\dgi)^k(\arga)$. The set $\gargsi$ is the set of arguments required to convince $i$ of choosing $\pga$.
 
 An argumentative theory claims that whenever some of its arguments fail to convince $i$ of choosing $\pga$, it can argue something else.
 It is said to be truthful iff this claim is correct.
-More precisely, its claims are about paths of the sort $\hist = (\arga, …, \ar_2, …, \ar_3, …)$ where $\ar_2 \in \dgi(\arga)$, $\ar_3 \in \dgi(\ar_2)$, … The following definition makes this precise.
+More precisely, its claims are about paths $\hist$ containing ${\arga, \ar_2, \ar_3, …, \ar_k}$ where $\ar_2 \in \dgi(\arga)$, $\ar_3 \in \dgi(\ar_2)$, …, $\ar_k \in \histend$. The following definition makes this precise.
 \begin{definition}[Truthfulness]
 	\label{def:truth}
-	An argumentative theory $(\pga, \arga, \dg)$ for the exposure protocol $(I, \allargs, {\leadsto})$ is \emph{truthful} iff $\forall i \in I, k \in \N^*, (\ar_j)_{j \in \intvl{1, k}} \in \allargs^k, \hist \in \allhist \suchthat [\ar_1 = \arga \land \ar_k \in \histend \land d(\ar_k, \hist) = \emptyset \land \forall j \in \intvl{1, k}: \ar_j \in R(\hist) \land \forall j \in \intvl{2, k}: \ar_j \in \dgi(\ar_{j - 1})]: [\hist \ileadsto \pga]$.
+	An argumentative theory $(\pga, \arga, \dg)$ for the exposure protocol $(I, \allargs, {\leadsto})$ is \emph{truthful} iff $\forall i \in I, k \in \N^*, (\ar_j)_{j \in \intvl{1, k}} \in \allargs^k, \hist \in \allhist \suchthat [\ar_1 = \arga \land \ar_k \in \histend \land \forall j \in \intvl{1, k}: \ar_j \in R(\hist) \land \forall j \in \intvl{2, k}: \ar_j \in \dgi(\ar_{j - 1}) \land \hist \nileadsto \pga]: [d(\ar_k, \hist) ≠ \emptyset]$.
 \end{definition}
 
-This definition of truthfulness is adopted because of our goal of distinguishing empirical claims. Truthfulness, so defined, can be falsified empirically: if any of the set of claims embedded in this definition does not hold, it is possible to determine this empirically.
+This definition of truthfulness is adopted because of our goal of distinguishing empirical claims. Truthfulness, so defined, can be falsified empirically: if it does not hold, it is possible to prove this empirically by exhibiting a counter-example in the form of a tuple $i, k, (a_j)_{j \in \intvl{1, k}}, \alpha$ such that TODO.
 
-Note that a static theory $(p, \ar)$ can be considered as an argumentative theory $(p, \ar, \emptyset)$, and is truthful in the sense of \cref{sec:static} iff $(p, \ar, \emptyset)$ is truthful in the sense of \cref{def:truth}.
+Note that a static theory $(p, \ar)$ can be considered as an argumentative theory $(p, \ar, \emptyset)$, and $(p, \ar)$ is truthful in the sense of \cref{sec:static} iff $(p, \ar, \emptyset)$ is truthful in the sense of \cref{def:truth}.
 
 Associated with an argumentative theory also comes the following axiom, that mandates a more general version of the following requirement: if some argument $\ar_2$ defends some argument $\ar_1$, and if $\ar_2$ leads $i$ to opt for $\pga$ whenever it immediately follows $\ar_1$, then omitting $\ar_1$ would still have lead $i$ to opt for $\pga$.
 
