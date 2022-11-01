@@ -77,7 +77,7 @@ Throughout the article, $\N$ includes zero. %and $\N^* = \N \setminus \set{0}$.
 Given $j, l \in \N$, the notation $\intvl{j, l}$ represents $\set{k \in \N \suchthat j ≤ k ≤ l}$ (thus $\forall j \in \N: \intvl{j, 0} = \emptyset$).
 Define $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ as the finite sequences of arguments, including the empty sequence. 
 A generic element of $\allhist$ (a sequence of arguments) is denoted by $\hist$ and called an argumentative path, or simply a path. Its length is denoted by $\card{\hist} \in \N$.
-Thus, given an argumentative path $\hist \in \allhist$, $\forall k \in \intvl{1, \card{\hist}}: \hist_k \in \allargs$, and $\hist = \emptyset ⇔ \card{\hist} = 0$.
+Thus, given an argumentative path $\hist \in \allhist$, $\forall k \in \intvl{1, \card{\hist}}: \hist(k) = \hist_k \in \allargs$, and $\hist = \emptyset ⇔ \card{\hist} = 0$.
 
 The function ${\allleadsto}: I × \allhist → P$ associates to each individual and path an element of $P$, ${\allleadsto}(i, \alpha)$ representing the choice of $i$ following exposure to the arguments of $\alpha$, in order. That is, ${\allleadsto}(i, \alpha) = \phi$ denotes that $i$ chooses the first act after exposure to $\alpha$, ${\allleadsto}(i, \alpha) = ¬\phi$ denotes $i$ choosing the second act and ${\allleadsto}(i, \alpha) = 0$ is used to represent indifference of $i$.
 The notation $\alpha \ileadsto p$ will be used to mean ${\allleadsto}(i, \alpha) = p$, considering ${\ileadsto} \subseteq \allhist × P$ as a binary relation.
@@ -252,10 +252,18 @@ An argumentative theory claims that whenever some of its arguments fail to convi
 It is said to be truthful iff this claim is correct.
 The following definition makes this precise.%
 \footnote{To be fixed.
-If $a_1$, used by the theory, is not decisive, then the theory has an answer, namely, $a_2$, which works at least temporarily.}
+If $a_1$, used by the theory, is not decisive, then the theory has an answer, namely, $a_2$, which works at least temporarily.
+If $a_1$ used by th is not dec, and $a_2$ used by th is not dec *in the same sequence*, then $a_3$ needs to defend *in the same sequence*.
+$(…, a_1)$ NO and $(…, a_1, …, a_2)$ NO then $a_3$ defends it.
+$\alpha$ of the form $(\alpha^1, \alpha^2)$ where $a_1$ in end of $α^1$ NO and $a_2$ in end of $α^2$ NO.}
+In the following definition, $(\hist^1, …, \hist^j, …, \hist^n)$ represent the sequence $\hist^1$ to which is suffixed the sequence $\hist^2$ and so on.
 \begin{definition}[Truthfulness]
 	\label{def:truth}
-	An argumentative theory $(\pga, \arga, \dg)$ for the exposure protocol $(I, \allargs, {\leadsto})$ is \emph{truthful} iff $\forall i \in I, \hist \in \allhist, \ar \in \histend, \ar_1 \in \histend: [\hist \nileadsto \pga] ⇒ [\dg(\ar_1, \hist) ≠ \emptyset \land (\hist, \dg(\ar_1, \hist)) \ileadsto \pga]$.
+	An argumentative theory $(\pga, \arga, \dg)$ for the exposure protocol $(I, \allargs, {\leadsto})$ is \emph{truthful} iff 
+	$\forall i \in I, \hist \in \allhist \suchthat 
+	k_j \in \intvl{1, \card \hist} \land
+	\hist^j = (\hist_1, …, \hist_{k_j}) \land
+	\forall j: [k_{j - 1} < k_j \land \hist^j \nileadsto \pga \land \ar_1 = \arga \land \ar_j \in \histend[j] \land \ar_{j + 1} = \dg(\ar_j, \hist^j)]: (\hist, \ar_{n + 1}) \ileadsto \pga]$.
 \end{definition}
 \begin{axiom}[Answerability]
 	\label{ax:ans}
