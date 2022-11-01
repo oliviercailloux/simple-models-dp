@@ -250,20 +250,25 @@ Define $\gargsi \subseteq \allargs$ as the transitive closure of $\arga$ under $
 
 An argumentative theory claims that whenever some of its arguments fail to convince $i$ of choosing $\pga$, it can argue something else.
 It is said to be truthful iff this claim is correct.
-The following definition makes this precise.%
-\footnote{To be fixed.
+More precisely, its claims are about paths of the sort $\hist = (\arga, …, \ar_2, …, \ar_3, …)$ where $\ar_2 \in \dgi(\arga)$, $\ar_3 \in \dgi(\ar_2)$, …
+The following definition makes this precise by mandating that whenever increasing subsequences of $\hist$, involving arguments $\ar_j$ proposed by the theory, are not convincing, then the theory is able to produce yet another argument in defense of its claim.%
+\footnote{Intuition.
 If $a_1$, used by the theory, is not decisive, then the theory has an answer, namely, $a_2$, which works at least temporarily.
 If $a_1$ used by th is not dec, and $a_2$ used by th is not dec *in the same sequence*, then $a_3$ needs to defend *in the same sequence*.
 $(…, a_1)$ NO and $(…, a_1, …, a_2)$ NO then $a_3$ defends it.
 $\alpha$ of the form $(\alpha^1, \alpha^2)$ where $a_1$ in end of $α^1$ NO and $a_2$ in end of $α^2$ NO.}
-In the following definition, $(\hist^1, …, \hist^j, …, \hist^n)$ represent the sequence $\hist^1$ to which is suffixed the sequence $\hist^2$ and so on.
 \begin{definition}[Truthfulness]
 	\label{def:truth}
 	An argumentative theory $(\pga, \arga, \dg)$ for the exposure protocol $(I, \allargs, {\leadsto})$ is \emph{truthful} iff 
-	$\forall i \in I, \hist \in \allhist \suchthat 
-	k_j \in \intvl{1, \card \hist} \land
-	\hist^j = (\hist_1, …, \hist_{k_j}) \land
-	\forall j: [k_{j - 1} < k_j \land \hist^j \nileadsto \pga \land \ar_1 = \arga \land \ar_j \in \histend[j] \land \ar_{j + 1} = \dg(\ar_j, \hist^j)]: (\hist, \ar_{n + 1}) \ileadsto \pga]$.
+	$\forall i \in I, \hist \in \allhist, n \in \N, k \in \intvl{1, \card \hist}^n, \ar \in \allargs^n$:
+	\begin{equation}
+		\left.\begin{aligned}
+			&\ar_1 = \arga \\
+			&\forall 1 ≤ j < n: \ar_{j + 1} = \dg(\ar_j, α_{\intvl{1, k_j}}) \in \histbend{k_{j + 1}} \\
+			&\forall 1 ≤ j ≤ n: \hist_{\intvl{1, k_j}} \nileadsto \pga
+		\end{aligned}\right\}
+		⇒ \dg(\ar_n, \hist) ≠ \emptyset.
+	\end{equation}
 \end{definition}
 \begin{axiom}[Answerability]
 	\label{ax:ans}
