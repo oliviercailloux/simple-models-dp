@@ -76,7 +76,7 @@ While $I$ and $\allargs$ are fundamental sets whose elements are considered elem
 Throughout the article, $\N$ includes zero. %and $\N^* = \N \setminus \set{0}$. 
 Given $j, l \in \N$, the notation $\intvl{j, l}$ represents $\set{k \in \N \suchthat j ≤ k ≤ l}$ (thus $\forall j \in \N: \intvl{j, 0} = \emptyset$).
 Define $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ as the finite sequences of arguments, including the empty sequence. 
-A generic element of $\allhist$ (a sequence of arguments) is denoted by $\hist$ and called an argumentative path, or simply a path. Its length is denoted by $\card{\hist} \in \N$.
+A generic element of $\allhist$ (a sequence of arguments) is denoted by $\hist$ and called an argumentative path, or simply a path. Its length is denoted by $\card{\hist} \in \N$ and its elements, $\hist(k)$ or $\hist_k$.
 Thus, given an argumentative path $\hist \in \allhist$, $\forall k \in \intvl{1, \card{\hist}}: \hist(k) = \hist_k \in \allargs$, and $\hist = \emptyset ⇔ \card{\hist} = 0$.
 
 The function ${\allleadsto}: I × \allhist → P$ associates to each individual and path an element of $P$, ${\allleadsto}(i, \alpha)$ representing the choice of $i$ following exposure to the arguments of $\alpha$, in order. That is, ${\allleadsto}(i, \alpha) = \phi$ denotes that $i$ chooses the first act after exposure to $\alpha$, ${\allleadsto}(i, \alpha) = ¬\phi$ denotes $i$ choosing the second act and ${\allleadsto}(i, \alpha) = 0$ is used to represent indifference of $i$.
@@ -270,6 +270,7 @@ $\alpha$ of the form $(\alpha^1, \alpha^2)$ where $a_1$ in end of $α^1$ NO and 
 		⇒ \dg(\ar_n, \hist) ≠ \emptyset.
 	\end{equation}
 \end{definition}
+Given the paths $\alpha, \alpha'$, the sequence $(\alpha, \alpha')$ denotes a path constituted of the arguments in $\alpha$ followed by the arguments of $\alpha'$.
 \begin{axiom}[Answerability]
 	\label{ax:ans}
 	$\forall i \in I, \hist \in \allhist, \ar \in \gargsi$:
@@ -320,22 +321,17 @@ In fact, we might need (a weakening of) the following. If $a_1$ is “decisive�
 	Consider $a_1$ not decisive because of $a$ and then $(a_1, a, a_2) \ileadsto p$. But still $a_2$ not decisive: $a2 \nileadsto p$.
 \end{example}
 
-\begin{axiom}[Self-sufficiency of positive arguments, version for $\ar$]
+A path can be shortened to its first $k \in \intvl{0, \card{\hist}}$ elements, which is denoted by $\restr{\hist}{\intvl{1, k}}$, and “shortening” a path beyond its length yields the same path again, thus given $k \in \N$, $\restr{\hist}{\intvl{1, k}} = \restr{\hist}{\intvl{1, \min\set{\card{\hist}, k}}}$.
+Define a path as being decisive for $p$, $\hist \ileadstost p$, iff $\hist \ileadsto p \land \forall \ar \in \allargs: (\hist, \ar) \ileadsto p$, or equivalently, iff $\forall \hist' \suchthat \card{\hist} ≤ \card{\hist'} ≤ \card{\hist} + 1 \land \restr{\hist'}{\intvl{1, \card{\hist}}} = \hist: \hist' \ileadsto p$. Thus, $\hist \nileadstost p ⇔ \exists \ar \in \allargs \suchthat (\hist, \ar) \nileadsto p$.
+
+\begin{axiom}[Self-sufficiency of positive arguments]
 	$\forall \ar_1, \ar_2 \in \gargsi, \ar \in \allargs, \hist \in \allhist$:
 	\begin{equation}
 		\left.\begin{aligned}
-			&(\hist, \ar_1, \ar) \nileadsto \pga \\
-			&(\hist, \ar_2, \ar) \nileadsto \pga
+			&(\hist, \ar_1) \nileadstost \pga \\
+			&(\hist, \ar_2) \nileadstost \pga
 		\end{aligned}\right\}
-		⇒ (\hist, \ar_1, \ar_2, \ar) \nileadsto \pga,
-	\end{equation}
-	and, $\forall \ar_1, \ar_2 \in \gargsi, \hist \in \allhist$:
-	\begin{equation}
-		\left.\begin{aligned}
-			&(\hist, \ar_1) \nileadsto \pga \\
-			&(\hist, \ar_2) \nileadsto \pga
-		\end{aligned}\right\}
-		⇒ (\hist, \ar_1, \ar_2) \nileadsto \pga.
+		⇒ (\hist, \ar_1, \ar_2) \nileadstost \pga.
 	\end{equation}
 \end{axiom}
 
