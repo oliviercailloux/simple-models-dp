@@ -272,21 +272,90 @@ $\alpha$ of the form $(\alpha^1, \alpha^2)$ where $a_1$ in end of $α^1$ NO and 
 \end{definition}
 \begin{axiom}[Answerability]
 	\label{ax:ans}
-	$\forall \ar, \ar': [\exists \hist \suchthat (\hist, \ar, \ar') \nileadsto \pga \land \exists \hist \suchthat (\hist, \ar, \ar') \ileadsto \pga] ⇒ \exists \hist, \ar_c \suchthat (\hist, \ar, \ar', \ar_c) \nileadsto \pga$.
+	$\forall i \in I, \hist \in \allhist, \ar \in \gargsi$:
+	\begin{equation}
+		\left.\begin{aligned}
+			&\hist \nileadsto \pga \\
+			&(\hist, \ar) \ileadsto \pga \\
+			&\forall \ar' \in \allargs: (\hist, \ar, \ar') \ileadsto \pga
+		\end{aligned}\right\}
+		⇒ \ar \ileadstost \pga.
+	\end{equation}
 \end{axiom}
 \footnote{$a_1, a_2, a_3$ NOT and $a_1, a_2, a_3, a_4$ YES and $a_1', a_2, a_3, a_4$ NO imply that $a_1, a_2, a_3, a_4, a'_1$ NO.
 Generalizing: $\alpha$ NO and $\alpha, a_4$ YES and $\alpha', a_4$ NO imply that $\exists a' \in \alpha' \suchthat \alpha, a_4, a'$ NO.
-Let’s try with this too powerful axiom, but then we should weaken it, as it could be that $a_1$ AND $a_4$ TOGETHER are decisive, whence the axiom fails. We should have then some argument $a_1 + a_4$ to replace them, and…?}
+Let’s try with this too powerful axiom, but then we should weaken it, as it could be that $a_1$ AND $a_4$ TOGETHER are decisive, whence the axiom fails. We should have then some argument $a_1 + a_4$ to replace them, and…?
+In summary, we want to avoid that $a$ is not decisive but we can’t observe it when starting with some $α$ even though $α$ has also no decisive arguments: if $α$ has no decisive argument, then it must be possible to counter it.
+
+In fact, we might need (a weakening of) the following. If $a_1$ is “decisive” when starting with some $α$ (meaning $(α, a_1, a')$ YES for all arguments $a'$), then $a_1$ is decisive. Hopefully: if $(α, a')$ YES for all arguments $a'$, then some $a \in α$ is decisive.}
+\footnote{
+	There is a problem. Consider the following may hold for some $i$. $a_1, a_5, a_2$ not convincing, $a_1, a_4$ not convincing, whil $a_1, a_5$ and $a_1, a_4, a_2$ and other variants convincing. Then for all $i$ one of $a_1$ or $a_2$ will appear to be decisive although for those people neither is.
+	
+	Problem might be solved by observing that $(a_1, a_5, a_2, a_1)$ convincing means that $a_1$ is decisive after all; and not convincing means that we have observed not truthfulness.
+
+	We want that if the theory is invalid (thus some $i$ is not convinced), then either axiom fails or the theory is experimentally falsifiable.
+	In the following example, the theory seems invalid but the axiom holds and the theory can’t seem to be defeated experimentally.
+	
+	Imagine $i$ thinks as follows. $a_1$ counter $a_5$; $a_2$ counters $a_4$; but $a_4$ and $a_5$ together make $a_1$ and $a_2$ invalid, so that $(a_4, a_5)$ counter both $a_1$ and $a_2$ (and also $a_1$ and $a_2$ together). Also assume that $i$ has short memory so that $a_1, a_4, a_5$ does not convince ($a_4$ and $a_5$ win) while $a_4, a_5, a_1$ do ($a_1$ wins as $a_4$ is too far away). BUT $a_5, a_4, a_1$ should then not convince.
+}
+
 \begin{axiom}[Reinstatement]
 	\label{ax:r}
-	$\forall \hist, \ar_1 \in \gargsi: [(\hist, a_1, a) \nileadsto p \land (\hist, a_1, a, a_2, …) \ileadsto p] ⇒ [(\hist, a_2) \ileadsto p \land \forall \hist': (\hist', a_2, a') \ileadsto p ⇒ (\hist', a_1, a') \nileadsto p]$.
+	$\forall i \in I, \hist \in \allhist, \ar_1, \ar_2 \in \gargsi, \ar \in \allargs$:
+	\begin{equation}
+		\left.\begin{aligned}
+			&(\hist, \ar_1, \ar) \nileadsto \pga \\
+			&(\hist, \ar_1, \ar, \ar_2) \ileadsto \pga \\
+			&(\hist, \ar_1, \ar, \ar_2, \ar) \ileadsto \pga
+		\end{aligned}\right\}
+		⇒ 
+		\left\{\begin{aligned}
+			&(\hist, \ar_2) \ileadsto \pga \\
+			&(\hist, \ar_2, \ar) \ileadsto \pga \\
+			&\forall \ar': (\hist, a_2, a') \nileadsto \pga ⇒ (\hist, a_1, a') \nileadsto \pga.
+		\end{aligned}\right.
+	\end{equation}
 \end{axiom}
-\begin{example}[No reinstatement]
-	Reinstatement is required. Consider $a_1$ not decisive because of $a$ and then $(a_1, a, a_2) \ileadsto p$. But still $a_2$ not decisive: $a2 \nileadsto p$.
+\begin{example}[Reinstatement is required]
+	Consider $a_1$ not decisive because of $a$ and then $(a_1, a, a_2) \ileadsto p$. But still $a_2$ not decisive: $a2 \nileadsto p$.
 \end{example}
+
+\begin{axiom}[Self-sufficiency of positive arguments, version for $\ar$]
+	$\forall \ar_1, \ar_2 \in \gargsi, \ar \in \allargs, \hist \in \allhist$:
+	\begin{equation}
+		\left.\begin{aligned}
+			&(\hist, \ar_1, \ar) \nileadsto \pga \\
+			&(\hist, \ar_2, \ar) \nileadsto \pga
+		\end{aligned}\right\}
+		⇒ (\hist, \ar_1, \ar_2, \ar) \nileadsto \pga,
+	\end{equation}
+	and, $\forall \ar_1, \ar_2 \in \gargsi, \hist \in \allhist$:
+	\begin{equation}
+		\left.\begin{aligned}
+			&(\hist, \ar_1) \nileadsto \pga \\
+			&(\hist, \ar_2) \nileadsto \pga
+		\end{aligned}\right\}
+		⇒ (\hist, \ar_1, \ar_2) \nileadsto \pga.
+	\end{equation}
+\end{axiom}
+
 \begin{theorem}[Validity]
-	If an argumentative theory $(\pga, \arga, \dg)$ is truthful and $\allargs$ is finite, then \cref{ax:ans,ax:r} imply that the theory is correct.
+	If an argumentative theory $(\pga, \arga, \dg)$ is truthful and satisfy \cref{ax:ans,ax:r} and $\allargs$ is finite, then the theory is correct.
 \end{theorem}
+\begin{proof}
+	Consider any $i \in I$.
+	We have to show that $\pga \in \Phi_i$.
+	Assume depth $3$.
+	Assume that $\arga$ and $\ar_2$ are not decisive. Let’s show that $\ar_3$ is decisive.
+	Assume that $(a_4, \arga, \ar_2, a) \nileadsto \pga$.
+	By TF, $(a_4, \arga, \ar_2, a, \ar_3, ?) \ileadsto \pga$ (where $?$ stands for any argument or nothing).
+	By Reinst, $(a_4, \arga, \ar_3, ?) \ileadsto \pga$.
+	By Self-s, $(a_4, \ar_3, ?) \ileadsto \pga$.
+	
+	Now consider $(\ar_5, \ar_2) \ileadsto \pga$. (Or any such path not ending with $\ar_3$.)
+	By Answ, $\exists a \suchthat (\ar_5, \ar_2, a) \nileadsto \pga$.
+	We obtain $(\ar_5, \ar_3) \ileadsto \pga$.
+\end{proof}
 \begin{proof}[Sketch of proof]
 	Consider any $i$. We have to show that $\pga \in \Phi_i$.%
 	\footnote{Assume $(a_4, \arga, a) \nileadsto \pga$ (thus, $a$ attacks $\arga$). 
