@@ -265,12 +265,52 @@ $\alpha$ of the form $(\alpha^1, \alpha^2)$ where $a_1$ in end of $α^1$ NO and 
 		\left.\begin{aligned}
 			&\ar_1 = \arga \\
 			&\forall 1 ≤ j < n: \ar_{j + 1} = \dg(\ar_j, α_{\intvl{1, k_j}}) \in \histbend{k_{j + 1}} \\
-			&\forall 1 ≤ j ≤ n: \hist_{\intvl{1, k_j}} \nileadsto \pga
+			&\forall 1 ≤ j ≤ n: \restr{\hist}{\intvl{1, k_j}} \nileadsto \pga
 		\end{aligned}\right\}
 		⇒ \dg(\ar_n, \hist) ≠ \emptyset.
 	\end{equation}
 \end{definition}
 Given the paths $\alpha, \alpha'$, the sequence $(\alpha, \alpha')$ denotes a path constituted of the arguments in $\alpha$ followed by the arguments of $\alpha'$.
+\begin{axiom}[Answerability-1]
+	$\forall …$:
+	\begin{equation}
+		\left.\begin{aligned}
+			&(\ar_4, \ar_2, \ar) \nileadsto \pga \\
+			&(\ar_4, \ar_2, \ar, \ar_3) \ileadstost \pga \\
+			&(\ar_5, \ar_2, \ar) \nileadsto \pga
+		\end{aligned}\right\}
+		⇒ (\ar_5, \ar_2, \ar, \ar_3) \ileadstost \pga.
+	\end{equation}
+\end{axiom}
+Requires excluding:
+	\begin{equation}
+		\left.\begin{aligned}
+			&(\ar_4, \ar_2, \ar) \nileadsto \pga \\
+			&(\ar_4, \ar_2, \ar, \ar_3, \ar') \ileadsto \pga \\
+			&(\ar_5, \ar_2, \ar) \nileadsto \pga\\
+			&(\ar_5, \ar_2, \ar, \ar_3, \ar') \nileadsto \pga.
+		\end{aligned}\right\}
+	\end{equation}
+
+To exclude:
+	\begin{equation}
+		\left.\begin{aligned}
+			&(\ar_4, \ar_2, \ar) \nileadsto \pga \\
+			&(\ar_4, \ar_2, \ar, \ar_3) \ileadstost \pga \\
+			&(\ar_5, \ar_2, \ar) \ileadsto \pga\\
+			&(\ar_5, \ar_2, \ar_3, \ar') \nileadsto \pga
+		\end{aligned}\right\}
+	\end{equation}
+Using:
+	\begin{equation}
+		\left.\begin{aligned}
+			&(\ar_4, \ar_2, \ar) \nileadsto \pga \\
+			&(\ar_4, \ar_2, \ar, \ar_3) \ileadstost \pga \\
+			&(\ar_5, \ar_2, \ar) \ileadsto \pga
+		\end{aligned}\right\}
+		⇒ (\ar_5, \ar_2, \ar_3) \ileadstost \pga.
+	\end{equation}
+
 \begin{axiom}[Answerability]
 	\label{ax:ans}
 	$\forall i \in I, \hist \in \allhist, \ar \in \gargsi$:
@@ -300,6 +340,14 @@ In fact, we might need (a weakening of) the following. If $a_1$ is “decisive�
 	Imagine $i$ thinks as follows. $a_1$ counter $a_5$; $a_2$ counters $a_4$; but $a_4$ and $a_5$ together make $a_1$ and $a_2$ invalid, so that $(a_4, a_5)$ counter both $a_1$ and $a_2$ (and also $a_1$ and $a_2$ together). Also assume that $i$ has short memory so that $a_1, a_4, a_5$ does not convince ($a_4$ and $a_5$ win) while $a_4, a_5, a_1$ do ($a_1$ wins as $a_4$ is too far away). BUT $a_5, a_4, a_1$ should then not convince.
 }
 
+\begin{axiom}[Answerability - using newly built arguments (newest so far)]
+	\label{ax:ansn}
+	$\forall i \in I, \hist^j \in (\allhist)^n$:
+	\begin{equation}
+		[\forall j: \hist^j \ileadstost \pga] ⇒ [\exists \ar \in \allargs \suchthat \forall j: (\hist^j, \ar) \ileadstost \pga].
+	\end{equation}
+\end{axiom}
+
 \begin{axiom}[Reinstatement]
 	\label{ax:r}
 	$\forall i \in I, \hist \in \allhist, \ar_1, \ar_2 \in \gargsi, \ar \in \allargs$:
@@ -322,7 +370,7 @@ In fact, we might need (a weakening of) the following. If $a_1$ is “decisive�
 \end{example}
 
 A path can be shortened to its first $k \in \intvl{0, \card{\hist}}$ elements, which is denoted by $\restr{\hist}{\intvl{1, k}}$, and “shortening” a path beyond its length yields the same path again, thus given $k \in \N$, $\restr{\hist}{\intvl{1, k}} = \restr{\hist}{\intvl{1, \min\set{\card{\hist}, k}}}$.
-Define a path as being decisive for $p$, $\hist \ileadstost p$, iff $\hist \ileadsto p \land \forall \ar \in \allargs: (\hist, \ar) \ileadsto p$, or equivalently, iff $\forall \hist' \suchthat \card{\hist} ≤ \card{\hist'} ≤ \card{\hist} + 1 \land \restr{\hist'}{\intvl{1, \card{\hist}}} = \hist: \hist' \ileadsto p$. Thus, $\hist \nileadstost p ⇔ \exists \ar \in \allargs \suchthat (\hist, \ar) \nileadsto p$.
+Define a path as being decisive for $p$, $\hist \ileadstost p$, iff $\hist \ileadsto p \land \forall \ar \in \allargs: (\hist, \ar) \ileadsto p$, or equivalently, iff $\forall \hist' \suchthat \card{\hist} ≤ \card{\hist'} ≤ \card{\hist} + 1 \land \restr{\hist'}{\intvl{1, \card{\hist}}} = \hist: \hist' \ileadsto p$. Thus, $\hist \nileadstost p ⇔ \exists \ar \in \allargs \suchthat (\hist, \ar) \nileadsto p$ (or…?).
 
 \begin{axiom}[Self-sufficiency of positive arguments]
 	$\forall \ar_1, \ar_2 \in \gargsi, \ar \in \allargs, \hist \in \allhist$:
@@ -344,13 +392,14 @@ Define a path as being decisive for $p$, $\hist \ileadstost p$, iff $\hist \ilea
 	Assume depth $3$.
 	Assume that $\arga$ and $\ar_2$ are not decisive. Let’s show that $\ar_3$ is decisive.
 	Assume that $(a_4, \arga, \ar_2, a) \nileadsto \pga$.
-	By TF, $(a_4, \arga, \ar_2, a, \ar_3, ?) \ileadsto \pga$ (where $?$ stands for any argument or nothing).
-	By Reinst, $(a_4, \arga, \ar_3, ?) \ileadsto \pga$.
-	By Self-s, $(a_4, \ar_3, ?) \ileadsto \pga$.
+	By TF, $(a_4, \arga, \ar_2, a, \ar_3) \ileadstost \pga$.
+	By Reinst, $(a_4, \arga, \ar_2, \ar_3) \ileadstost \pga$.
+	By Self-s, $(a_4, \arga, \ar_3) \ileadstost \pga$.
+	By Self-s, $(a_4, \ar_3) \ileadstost \pga$.
 	
 	Now consider $(\ar_5, \ar_2) \ileadsto \pga$. (Or any such path not ending with $\ar_3$.)
+	We want $(\ar_5, \ar_2, \ar_3) \ileadstost \pga$.
 	By Answ, $\exists a \suchthat (\ar_5, \ar_2, a) \nileadsto \pga$.
-	We obtain $(\ar_5, \ar_3) \ileadsto \pga$.
 \end{proof}
 \begin{proof}[Sketch of proof]
 	Consider any $i$. We have to show that $\pga \in \Phi_i$.%
