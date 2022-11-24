@@ -1,0 +1,79 @@
+Notion d’attaque unidirectionnelle sensée mais à déterminer après coup. Dans l’ordre réel de résolution quand on sait qui gagne.
+a1 semble attaquer a2 simplement parce que a3 est joué d’abord et renforce a1 : a1 + a3 => p et a2 battu.
+a3 => p
+a3, a2 => ¬p
+a3, a2, a1 => p
+
+TF : théorie peut répondre. a1 => ¬p donc a2 => p. Utilise attaque apparente, ≠ de attaque après coup.
+
+Th longueur 2. On conçoit a2 comme complémentaire à a1, donc a2 fonctionne ⇒ a1 + a2 décisif, sans requérir a2 décisif.
+Il ne peut y avoir de chemin : a1 ne fct pas, a2 ne fct pas.
+
+Quid si a1 ne fct pas dans un chemin et a2 ne fct pas dans un autre ?
+a4, a1 NON
+a4, a1, a2 OUI
+a5, a2 NON [car a2 confus sans a4]
+a5, a1 OUI
+Mais alors a5, a1, a4 ?
+1. a5 synonyme de a2. Alors a5, a1, a4 OUI et a5, a1, a4, a2 OUI
+2. a5 vide. Alors a5, a1, a4, a2 OUI
+
+On obtient : a5, a1 + a2 OUI
+
+MAIS la défense d résume correctement : si a1 doit être répété lors de la production de la réponse a2, la théorie produit a1 + a2. Requis pour observer le changement de réponse !
+
+Quid si a1 ne fct pas dans un chemin et a2 ne fct pas dans un autre ?
+α, a1 NON 
+α, a1, a2 OUI
+=> α met a1 en échec mais a2 lui répond décisivement sur ce chemin.
+β, a1 NON
+Re-jouons α. Imaginons que a2 ne lui réponde pas, cette fois. Donc synergie entre α et β.
+β, a1, α, a1, a2 NON
+
+Reprenons.
+Quid si a1 ne fct pas dans un chemin et a2 ne fct pas dans un autre ?
+α, a1 NON 
+α, a1, a2 OUI
+=> α met a1 en échec mais a2 lui répond décisivement sur ce chemin.
+β, a1 OUI
+On veut a2 décisif.
+Sûrement B, a1, a2 décisif ?
+Car si B, a1, a2, a4 NON alors existe ? A, a1, a2, B, a1, a2, a4 NON ? Pas clair car A pourrait également répondre à a4. Mais en fait a2 + qqch de A est décisif.
+
+Re-jouons α. Imaginons que a2 ne lui réponde pas, cette fois. Donc synergie entre α et β.
+β, a1, α, a1, a2 NON
+
+C’est le même problème que : a2 est décisif mais on pourrait imaginer que *deux* arguments le contrent : a2, a, b NON.
+On doit pouvoir compresser les arguments contre.
+Donc on doit pouvoir extraire de β et α les arguments qui contrent a2.
+Donc α, a1, a2, subset-of-β NON
+
+Pour résumer.
+α, a1 NON 
+α, a1, a2 OUI
+β, a1 NON
+β, a1, α, a1, a2 NON
+⇒ \exists b [b combinant les arguments de β pertinents pour contrer a2] st α, a1, a2, b NON
+
+Ce qui suggère.
+β, a1 NON
+β, a1, α, a1, a2 NON
+⇒ \exists b [b combinant les arguments de β pertinents pour contrer a2] st α, a1, a2, b NON
+a, b <=> β
+c <=> a1
+d <=> α
+e <=> a2
+
+a, b, c NON
+a, b, c, d, c, e NON
+=> exists x st d, c, e, x NON
+
+Ou peut-être
+β, a1 NON
+β, a1, α NON
+⇒ \exists b [b combinant les arguments de β pertinents pour contrer a2] st α, b NON
+
+Ou encore, β ≠ ∅
+β NON
+β, α NON
+⇒ \exists b [b combinant les arguments de β pertinents pour contrer a2] st α, b NON
