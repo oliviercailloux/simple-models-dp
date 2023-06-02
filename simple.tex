@@ -239,14 +239,13 @@ iff $\exists \hist \in \allhist \suchthat \ar_0 \in R(\hist) \land \dg(\hist) = 
 iff $\ar_0 \in R(\dg^{-1}(\ar_1))$, equivalently, 
 iff $\ar_1 \in \dg(\set{\hist \suchthat \ar_0 \in R(\hist)})$.
 
-Say that $\gamma$ has depth at least $k \in \N^*$ iff $\exists (\alpha_i, 1 ≤ i ≤ k) \suchthat \forall 1 ≤ i ≤ k, d(\alpha_i) ≠ \emptyset \land \forall 1 ≤ i ≤ k - 1, \alpha_i \cup \set{d(\alpha_i)} \subseteq \alpha_{i + 1}$.
+Say that $\gamma$ has depth at least $k \in \N^*$ iff $\exists (\alpha_i, 1 ≤ i ≤ k) \suchthat \forall 1 ≤ i ≤ k, \dg(\set{\alpha_j \suchthat 1 ≤ j ≤ i - 1}) \subsetneq \dg(\set{\alpha_j \suchthat 1 ≤ j ≤ i}) \land \forall 1 ≤ i ≤ k - 1, \alpha_i \cup \set{\dg(\alpha_i)} \subseteq \alpha_{i + 1}$.
 The bounded depth condition on the defense relation imposes that for some $k \in \N^*$, $\gamma$ does not have depth at least $k$.
 The depth of a theory is defined as the smallest value $k \in \N$ such that it does not have depth at least $k + 1$.
-For example, $\gamma$ has depth $0$ iff $\dg = \emptyset$; and $\gamma$ has depth $1$ iff $\exists \alpha_1 \suchthat d(\alpha_1) ≠ \emptyset \land \forall \alpha_1 \cup \set{d(\alpha_1)} \subseteq \alpha_2: d(\alpha_2) = \emptyset$.
-\commentOC{Intuition. When last defense is burried under multiple other arguments so that it is not at end any more, just repeat the last defense. Otherwise the theory also needs to be able to compress the arguments against it. We prefer to keep this separated. As a result, an argument $\ar_0$ needs defense only when it is challenged by some path $\hist \suchthat \ar_0 \in \histend$, thus, letting $\dg$ define counter-arguments to paths not satisfying this condition would be of no use.}
+For example, $\gamma$ has depth $0$ iff $\dg = \emptyset$; and $\gamma$ has depth $1$ iff $[\exists \alpha_1 \suchthat \dg(\alpha_1) ≠ \emptyset] \land [\forall \alpha_1, \alpha_2 \suchthat \dg(\alpha_1) ≠ \emptyset \land \alpha_1 \cup \set{\dg(\alpha_1)} \subseteq \alpha_2: \dg(\alpha_2) \subseteq \dg(\alpha_1)]$.
 
 An argumentative theory claims that its argumentation strategy, embodied by $\arga$ and $\dg$, will convince the individuals in $I$.
-More precisely, given $i \in I$, it claims that $\arga$ either is a decisive argument for $\pga$, or, if $\arga$ is not, that the theory will defend the argument by replying to every counter-argument to $\arga$ with an argument that either is a decisive argument for $\pga$ or, in turn, will be defended by the theory, and so on as long as the theory has counter-arguments to produce; the theory claiming that some argument along that chain is decisive.
+More precisely, given $i \in I$, it claims that $\arga$ either is a decisive argument for $\pga$, or, if $\arga$ is not, that the theory will defend the argument by replying to every counter-argument to $\arga$ with an argument that either is a decisive argument for $\pga$ or, in turn, will be defended by the theory, and so on as long as the theory has new counter-arguments to produce; the theory claiming that some argument along that chain is decisive.
 
 To define this formally, note that either $\arga$ is a decisive argument for $\pga$, or some paths challenge this claim, namely those $\hist \in \allhist$ such that $[\arga \in \histend \land \hist \nileadsto \pga]$.
 Generalizing this observation, given $i \in I$, define $\dgi(\ar) = \set{\dg(\ar, \hist) \suchthat \ar \in \histend \land \hist \nileadsto \pga} \subseteq \dg(\ar)$ as the subset of defenders of $\ar$ required for convincing $i$ of choosing $\pga$.
