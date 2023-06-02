@@ -243,20 +243,7 @@ Say that $\gamma$ has depth at least $k \in \N^*$ iff $\exists (\alpha_i, 1 ≤ 
 The bounded depth condition on the defense relation imposes that for some $k \in \N^*$, $\gamma$ does not have depth at least $k$.
 The depth of a theory is defined as the smallest value $k \in \N$ such that it does not have depth at least $k + 1$.
 For example, $\gamma$ has depth $0$ iff $\dg = \emptyset$; and $\gamma$ has depth $1$ iff $\exists \alpha_1 \suchthat d(\alpha_1) ≠ \emptyset \land \forall \alpha_1 \cup \set{d(\alpha_1)} \subseteq \alpha_2: d(\alpha_2) = \emptyset$.
-
-Given $\ar \in \allargs$, define $\dlg(\ar) = \dg(\set{\hist \in \allhist \suchthat \ar \in R(\hist)}) = \set{\dg(\hist) \suchthat \hist \in \allhist \land \ar \in R(\hist)} \subseteq \allargs$ as all the defenders of $\ar$.
-Given $\args \subseteq \allargs$, define $\dlg(\args)$ as $\set{\dlg(\ar) \suchthat \ar \in \args}$.
-This is imperfect as $\dlg(\emptyset)$ should include the stuff that $\dg$ answers to when its own arguments are not involved.
-This permits to define defenders of defenders of an argument, $\dlg(\dlg(\ar))$, defenders of defenders of defenders of an argument, … 
-
-This yields the following notion of depth.
-Given any set $S$ and function $f: S → S$, let $f^0$ represent the identity function, and given $k \in \N$, let $f^{k + 1} = f \circ f^k$.
-The bounded depth condition on the defense relation imposes that
-$\exists k \in \N \suchthat (\dlg)^k(\dg(\emptyset)) = \emptyset$.
-The smallest such $k$ is called the depth of the theory.
-For example, $γ$ has depth $0$ iff $\dg(\emptyset) = \emptyset$.
-TODO that seems wrong: could be hist to which the theory wishes to reply.
-%The condition that when $\dg(\ar_0, \hist)$, $\ar_0 \in \histend$ is imposed for simplicity: as will appear, an argument $\ar_0$ needs defense only when it is challenged by some path $\hist \suchthat \ar_0 \in \histend$, thus, letting $\dg$ define counter-arguments to paths not satisfying this condition would be of no use.
+\commentOC{Intuition. When last defense is burried under multiple other arguments so that it is not at end any more, just repeat the last defense. Otherwise the theory also needs to be able to compress the arguments against it. We prefer to keep this separated. As a result, an argument $\ar_0$ needs defense only when it is challenged by some path $\hist \suchthat \ar_0 \in \histend$, thus, letting $\dg$ define counter-arguments to paths not satisfying this condition would be of no use.}
 
 An argumentative theory claims that its argumentation strategy, embodied by $\arga$ and $\dg$, will convince the individuals in $I$.
 More precisely, given $i \in I$, it claims that $\arga$ either is a decisive argument for $\pga$, or, if $\arga$ is not, that the theory will defend the argument by replying to every counter-argument to $\arga$ with an argument that either is a decisive argument for $\pga$ or, in turn, will be defended by the theory, and so on as long as the theory has counter-arguments to produce; the theory claiming that some argument along that chain is decisive.
