@@ -77,7 +77,7 @@ Throughout the article, $\N$ includes zero. %and $\N^* = \N \setminus \set{0}$.
 Given $j, l \in \N$, the notation $\intvl{j, l}$ represents $\set{k \in \N \suchthat j ≤ k ≤ l}$ (thus $\forall j \in \N^*: \intvl{j, 0} = \emptyset$).
 Define $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ as the finite sequences of arguments, including the empty sequence. 
 A generic element of $\allhist$ (a sequence of arguments) is denoted by $\hist$ and called an argumentative path, or simply a path. Its length is denoted by $\card{\hist} \in \N$ and its elements, $\hist(k)$ or $\hist_k$.
-Thus, given an argumentative path $\hist \in \allhist$, $\forall k \in \intvl{1, \card{\hist}}: \hist(k) = \hist_k \in \allargs$, and $\hist = \emptyset ⇔ \card{\hist} = 0$.
+Thus, given an argumentative path $\hist \in \allhist$, $\forall k \in \intvl{1, \card{\hist}}: \hist(k) = \hist_k \in \allargs$, and $\hist = \emptyset ⇔ \card{\hist} = 0$. A path $\hist$ is a sub-path of another path $\histp$ whenever $\hist \subseteq \histp$, thus, $\forall k \in \intvl{1, \card{\hist}}: \hist_k = \histp_k$.
 
 The function ${\allleadsto}: I × \allhist → P$ associates to each individual and path an element of $P$, ${\allleadsto}(i, \alpha)$ representing the choice of $i$ following exposure to the arguments of $\alpha$, in order. That is, ${\allleadsto}(i, \alpha) = \phi$ denotes that $i$ chooses the first act after exposure to $\alpha$, ${\allleadsto}(i, \alpha) = ¬\phi$ denotes $i$ choosing the second act and ${\allleadsto}(i, \alpha) = 0$ is used to represent indifference of $i$.
 The notation $\alpha \ileadsto p$, pronounced “$\alpha$ leads $i$ to $p$”, will be used to mean ${\allleadsto}(i, \alpha) = p$, considering ${\ileadsto} \subseteq \allhist × P$ as a binary relation.
@@ -225,6 +225,94 @@ It follows from this definition that $\forall i \in I: L_D \in P_i$, and that no
 \end{example}
 This example illustrates the need for theories that are able to react to arguments depending on what a given individual considers relevant. This is the object of the next section.
 
+\subsection{Form of theories (draft)}
+Given an exposure protocol $(I, \allargs, {\leadsto})$, we want to phrase some claims under the form of a logical sentence $C$ such that:
+if $C$ holds, then it implies something about the dj of some $i$;
+if $C$ fails, it is possible to falsify it.
+
+We can observe set $O$ that forms a function $f(i) = \set{\alpha \ileadsto \phi, \alpha' \ileadsto ¬\phi, …}$, with $\alpha \subset \alpha \subset …$ and with finite $O$.
+Our second condition is that $¬C \implies \exists O \suchthat O \implies ¬C$.
+For example, if $C$ is $\alpha \ileadsto \phi \lor \beta \leadsto[j] \phi$, $O$ is $\alpha \ileadsto ¬\phi \land \beta \leadsto ¬\phi$, then $O$ implies $¬C$.
+As another example, $C$ being $\exists \alpha \suchthat \alpha \ileadsto \phi$ is unfalsifiable, as its negation is $\forall \alpha: \alpha \nileadsto \phi$, which requires infinite $O$.
+
+Consider $\leadsto$ such that $\exists \ar, \phi \suchthat \forall i: \ar \ileadsto \phi$.
+Then some suitable $C$ exists.
+It is $\forall i: \ar \ileadstost \phi$.
+If false, it is falsifiable.
+Even though it is not provable by any $O$.
+
+Now consider $\leadsto$ such that $\exists J, K \subset I \suchthat \ar \ileadstost[j] \phi, \ar' \ileadstost[k] \phi$.
+Then no suitable $C$ exists?
+
+If $C$ has the form, whenever $a$ fails, $a'$ is then decisive, it is falsifiable, but does not lead to a decisive argument.
+Want to show: $j \ileadstost \phi$. Need to show: $ar$ or $ar'$ is decisive.
+Assume we know who is a $j$. Then we can!
+Claim: $\ar \ileadsto \phi$.
+Now assume that our claim has to be anonymous.
+Also, assume the formulas involve one $i$ at a time (not needed, probably, but not much restrictive so okay for now).
+So it is of the form $(i, \alpha, \phi) \lor (i, \alpha, \phi') \land (i, \alpha', \phi)…$ implies something decisive.
+So it must be of the form: all $\alpha$ ending with $\ar$ do $\ileadsto \phi$. Or must imply this.
+Let’s make it very strong, as much as possible, thus equal to $\ileadsto \cap \ileadsto[j]$.
+That’s not strong enough!
+
+Escaping?
+Assume that we know that 50\% are J and 50\% are K. 
+
+\subsection{Form of theories}
+Given an exposure protocol $(I, \allargs, {\leadsto})$, recall that ${\leadsto} \in P^{I × \allhist}$.
+
+Given a pair $(I, \allargs)$, a claim $C$ is a set of possibilities for $\leadsto$, thus, $C \subseteq P^{I × \allhist}$.
+The claim holds iff ${\leadsto} \in C$.
+When writing $C$ as a formula, it is intended to mean the set $\set{{\leadsto} \in P^{I × \allhist} \suchthat C({\leadsto})}$.
+
+Given a pair $(I, \allargs)$, a general observation $O$ is a finite subset of $I × \allhist × P$ such that $\forall i \in I, (i, \hist, p), (i, \histp, q) \in O: \card{\hist} ≤ \card{\hist'} \implies \hist \subseteq \hist'$.
+General observations are the a priori possible observations, that is, those that can be considered possible when nothing is known about $\leadsto$.
+Let $S_O = \set{f \in P^{I × \allhist} \suchthat O \subseteq f}$ denote the possibilities for $\leadsto$ compatible with the observations.
+
+A claim $C$ is falsifiable iff $\exists O \suchthat O \implies ¬C$, by which I mean $S_O \cap C = \emptyset$.
+\begin{example}
+	$(\ar) \ileadsto \phi \lor (\ar, \ar) \ileadsto \phi \lor …$ is not falsifiable.
+%	Its negation is $\forall k: (\ar^k) \nileadsto \phi$.
+%	The claim represents the set $\set{{\leadsto} \in P^{I × \allhist} \suchthat (\ar) \ileadsto \phi \lor  (\ar, \ar) \ileadsto \phi \lor …}$.
+	Given any $O$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in O} \card{\hist} + 1$. Pick any $\leadsto$ such that $O \subset {\leadsto} \land (\ar)^l \ileadsto \phi$. We have ${\leadsto} \in S_O \cap C ≠ \emptyset$.
+\end{example}
+\begin{example}
+	$(\ar) \ileadsto \phi \lor (\ar') \ileadsto \phi$ is not falsifiable.
+	Given any $O$, it may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $O$, pick any $\leadsto$ such that $O \subset {\leadsto} \land t \in {\leadsto}$. We have ${\leadsto} \in S_O \cap C ≠ \emptyset$.
+\end{example}
+\begin{example}[Fals. but shouldn’t]
+	$\hist \ileadsto[j] \phi \land [(\ar) \ileadsto \phi \lor (\ar, \ar) \ileadsto \phi \lor …]$ is falsifiable.
+	Consider $O = \set{(j, \hist, ¬\phi)}$.
+\end{example}
+\begin{example}[Fals. but shouldn’t, better]
+	\label{ex:fbs}
+	$\hist \ileadsto[j] \phi \land [(\ar) \ileadsto \phi \lor (\ar') \ileadsto \phi]$ is falsifiable.
+	Consider $O = \set{(j, \hist, ¬\phi)}$.
+\end{example}
+\begin{example}
+	$\forall i: \ar \ileadstost \phi$ is falsifiable.
+	Consider any $i \in I$ and $O = \set{(i, (\ar), ¬\phi)}$.
+\end{example}
+
+\Cref{ex:fbs} shows that this definition of falsifiability is wrong.
+We now say that $C$ is falsifiable iff $\forall {\leadsto} \in P^{I × \allhist}: ¬C({\leadsto}) \implies \exists O \subseteq {\leadsto} \suchthat O \implies ¬C$, meaning that
+$\forall {\leadsto} \notin C: \exists O \subseteq {\leadsto} \suchthat S_O \cap C = \emptyset$.
+\begin{example}
+	$(\ar) \ileadsto \phi \lor  (\ar, \ar) \ileadsto \phi \lor …$ is falsifiable.
+	Consider any ${\leadsto} \notin C$, thus satisfying $\exists k \suchthat (\ar)^k \nileadsto \phi$. Consider $O = \set{(i, (\ar)^k, {\leadsto}(i, (\ar)^k) ≠ \phi)}$, thus with $O \subset {\leadsto}$. We have $S_O \cap C = \emptyset$: consider any $O \subset f$, it is not in $C$.
+\end{example}
+\begin{example}
+	$(\ar) \ileadsto \phi \lor (\ar') \ileadsto \phi$ is not falsifiable.
+	Consider any ${\leadsto} \notin C$, thus satisfying $(\ar) \nileadsto \phi \land (\ar') \nileadsto \phi$.
+	Consider any $O \subseteq {\leadsto}$ and let us prove that $S_O \cap C ≠ \emptyset$.
+	By definition of a general observation, $O$ may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $O$, pick any $f$ such that $O \subset {f} \land t \in {f}$. We have ${f} \in S_O \cap C ≠ \emptyset$.
+\end{example}
+\begin{example}[TODO]
+	$\hist \ileadsto[j] \phi \land [(\ar) \ileadsto \phi \lor (\ar, \ar) \ileadsto \phi \lor …]$ is not falsifiable?
+	Consider any ${\leadsto} \notin C$, thus satisfying $\hist \nileadsto[j] \phi \lor [(\ar) \nileadsto \phi \land (\ar, \ar) \nileadsto \phi \land …]$.
+	Consider $O = \set{(j, \hist, ¬\phi)}$.
+\end{example}
+
 \subsection{Argumentative theories of deliberated choice}
 \label{sec:dynamic}
 An argumentative theory of deliberated choice $\gamma$ is defined as a tuple $(\pga, \dg)$, where $\pga \in P$ is the proposition supported by the theory and $\dg$ is a defense relation.
@@ -239,13 +327,19 @@ iff $\exists \hist \in \allhist \suchthat \ar_0 \in R(\hist) \land \dg(\hist) = 
 iff $\ar_0 \in R(\dg^{-1}(\ar_1))$, equivalently, 
 iff $\ar_1 \in \dg(\set{\hist \suchthat \ar_0 \in R(\hist)})$.
 
-Say that $\gamma$ has depth at least $k \in \N^*$ iff $\exists (\alpha_i, 1 ≤ i ≤ k) \suchthat \forall 1 ≤ i ≤ k, \dg(\set{\alpha_j \suchthat 1 ≤ j ≤ i - 1}) \subsetneq \dg(\set{\alpha_j \suchthat 1 ≤ j ≤ i}) \land \forall 1 ≤ i ≤ k - 1, \alpha_i \cup \set{\dg(\alpha_i)} \subseteq \alpha_{i + 1}$.
+Say that $\gamma$ has depth at least $k \in \N^*$ iff $\exists (\alpha_i, 1 ≤ i ≤ k) \suchthat \forall 1 ≤ i ≤ k, \dg(\set{\alpha_j \suchthat 1 ≤ j ≤ i - 1}) \subsetneq \dg(\set{\alpha_j \suchthat 1 ≤ j ≤ i}) \land \forall 1 ≤ i ≤ k - 1, \alpha_i \cup \dg(\alpha_i) \subseteq \alpha_{i + 1}$.
 The bounded depth condition on the defense relation imposes that for some $k \in \N^*$, $\gamma$ does not have depth at least $k$.
 The depth of a theory is defined as the smallest value $k \in \N$ such that it does not have depth at least $k + 1$.
-For example, $\gamma$ has depth $0$ iff $\dg = \emptyset$; and $\gamma$ has depth $1$ iff $[\exists \alpha_1 \suchthat \dg(\alpha_1) ≠ \emptyset] \land [\forall \alpha_1, \alpha_2 \suchthat \dg(\alpha_1) ≠ \emptyset \land \alpha_1 \cup \set{\dg(\alpha_1)} \subseteq \alpha_2: \dg(\alpha_2) \subseteq \dg(\alpha_1)]$.
+For example, $\gamma$ has depth $0$ iff $\dg = \emptyset$; and $\gamma$ has depth $1$ iff $[\exists \alpha_1 \suchthat \dg(\alpha_1) ≠ \emptyset] \land [\forall \alpha_1, \alpha_2 \suchthat \dg(\alpha_1) ≠ \emptyset \land \alpha_1 \cup \dg(\alpha_1) \subseteq \alpha_2: \dg(\alpha_2) \subseteq \dg(\alpha_1)]$.
+
+\commentOC{Intuition. Invoke $\dg$ at $\alpha$ only when $\alpha$ fails. Permit to invoke a previous defense again as maybe the counter was too long to perform when summarized. If $a_2$ fails, we must invoke $\dg(…, a_2, x)$; failures of $\dg(…, a_2, …, x)$ should not count. We should invoke $\dg$ only when $\alpha$ fails with some defense produced by $\dg()$ belongs to $\histend$.}
+
+%Falsification seems done when $\exists \alpha, \beta \suchthat d(\beta) \in \histend \land \alpha \ileadsto p$. But then seems to be required to tell $d$ what has been tried already!}
 
 An argumentative theory claims that its argumentation strategy, embodied by $\arga$ and $\dg$, will convince the individuals in $I$.
 More precisely, given $i \in I$, it claims that $\arga$ either is a decisive argument for $\pga$, or, if $\arga$ is not, that the theory will defend the argument by replying to every counter-argument to $\arga$ with an argument that either is a decisive argument for $\pga$ or, in turn, will be defended by the theory, and so on as long as the theory has new counter-arguments to produce; the theory claiming that some argument along that chain is decisive.
+
+\commentOC{Condition: $\hist \nileadsto \pga \land \exists \hist' \subseteq \hist \suchthat \dg(\histp) \in \histend \land \dg(\hist)$ is not decisive ($\exists \beta \subseteq \hist \suchthat \dg(\hist) \in \beta_\text{end} \land \beta \ileadsto \pga$).}
 
 To define this formally, note that either $\arga$ is a decisive argument for $\pga$, or some paths challenge this claim, namely those $\hist \in \allhist$ such that $[\arga \in \histend \land \hist \nileadsto \pga]$.
 Generalizing this observation, given $i \in I$, define $\dgi(\ar) = \set{\dg(\ar, \hist) \suchthat \ar \in \histend \land \hist \nileadsto \pga} \subseteq \dg(\ar)$ as the subset of defenders of $\ar$ required for convincing $i$ of choosing $\pga$.
@@ -341,6 +435,8 @@ In fact, we might need (a weakening of) the following. If $a_1$ is “decisive�
 	In the following example, the theory seems invalid but the axiom holds and the theory can’t seem to be defeated experimentally.
 	
 	Imagine $i$ thinks as follows. $a_1$ counter $a_5$; $a_2$ counters $a_4$; but $a_4$ and $a_5$ together make $a_1$ and $a_2$ invalid, so that $(a_4, a_5)$ counter both $a_1$ and $a_2$ (and also $a_1$ and $a_2$ together). Also assume that $i$ has short memory so that $a_1, a_4, a_5$ does not convince ($a_4$ and $a_5$ win) while $a_4, a_5, a_1$ do ($a_1$ wins as $a_4$ is too far away). BUT $a_5, a_4, a_1$ should then not convince.
+
+The solution is: after $a1, a5, a2$, $a1$ appears decisive, thus also $a1,a5, a2, a1, a4$ ok. Then some subset $a$ of $a1 \cup a_5 \cup a2$ should satisfy $a, a4$ OK and replace $a1$. And $a$ is decisive.
 }
 
 \begin{axiom}[Answerability - using newly built arguments (newest so far)]
