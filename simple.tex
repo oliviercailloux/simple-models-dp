@@ -262,7 +262,6 @@ Assume that we know that 50\% are J and 50\% are K.
 Given an exposure protocol $(I, \allargs, {\leadsto})$, recall that ${\leadsto} \in P^{I × \allhist}$.
 
 Given a pair $(I, \allargs)$, a claim $C$ is a set of possibilities for $\leadsto$, thus, $C \subseteq P^{I × \allhist}$.
-The claim holds iff ${\leadsto} \in C$.
 When writing $C$ as a formula, it is intended to mean the set $\set{{\leadsto} \in P^{I × \allhist} \suchthat C({\leadsto})}$.
 
 Given a pair $(I, \allargs)$, a general observation $O$ is a finite subset of $I × \allhist × P$ such that $\forall i \in I, (i, \hist, p), (i, \histp, q) \in O: \card{\hist} ≤ \card{\hist'} \implies \hist \subseteq \hist'$.
@@ -289,8 +288,8 @@ A claim $C$ is falsifiable iff $\exists O \suchthat O \implies ¬C$, by which I 
 	$\forall i: \ar \ileadstost \phi$ is falsifiable.
 	Consider any $i \in I$ and $O = \set{(i, (\ar), ¬\phi)}$.
 \end{example}
-
 \Cref{ex:fbs} shows that this definition of falsifiability is wrong.
+
 We now say that $C$ is falsifiable iff $\forall {\leadsto} \in P^{I × \allhist}: ¬C({\leadsto}) \implies \exists O \subseteq {\leadsto} \suchthat O \implies ¬C$, meaning that
 $\forall {\leadsto} \notin C: \exists O \subseteq {\leadsto} \suchthat S_O \cap C = \emptyset$.
 \begin{example}
@@ -298,15 +297,52 @@ $\forall {\leadsto} \notin C: \exists O \subseteq {\leadsto} \suchthat S_O \cap 
 	Consider any ${\leadsto} \notin C$, thus satisfying $\exists k \suchthat (\ar)^k \nileadsto \phi$. Consider $O = \set{(i, (\ar)^k, {\leadsto}(i, (\ar)^k) ≠ \phi)}$, thus with $O \subset {\leadsto}$. We have $S_O \cap C = \emptyset$: consider any $O \subset f$, it is not in $C$.
 \end{example}
 \begin{example}
+	\label{ex:unfals}
 	$(\ar) \ileadsto \phi \lor (\ar') \ileadsto \phi$ is not falsifiable.
 	Consider any ${\leadsto} \notin C$, thus satisfying $(\ar) \nileadsto \phi \land (\ar') \nileadsto \phi$.
 	Consider any $O \subseteq {\leadsto}$ and let us prove that $S_O \cap C ≠ \emptyset$.
 	By definition of a general observation, $O$ may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $O$, pick any $f$ such that $O \subset {f} \land t \in {f}$. We have ${f} \in S_O \cap C ≠ \emptyset$.
 \end{example}
-\begin{example}[TODO]
-	$\hist \ileadsto[j] \phi \land [(\ar) \ileadsto \phi \lor (\ar, \ar) \ileadsto \phi \lor …]$ is not falsifiable?
-	Consider any ${\leadsto} \notin C$, thus satisfying $\hist \nileadsto[j] \phi \lor [(\ar) \nileadsto \phi \land (\ar, \ar) \nileadsto \phi \land …]$.
-	Consider $O = \set{(j, \hist, ¬\phi)}$.
+\begin{example}
+	$\hist \ileadsto[j] \phi \land [(\ar) \ileadsto \phi \lor (\ar') \ileadsto \phi]$ is not falsifiable.
+	Consider any $\leadsto$ satisfying $(\ar) \nileadsto \phi \land (\ar') \nileadsto \phi$, thus with ${\leadsto} \notin C$.
+	\Cref{ex:unfals} concludes.
+\end{example}
+
+Deliberated choices are an element $\pi({\leadsto}) \subseteq I × P$ which is right unique (meaning that $\forall i \in I: \card{\pi({\leadsto})(i)} ≤ 1$).
+Equivalently, let $(P \cup \set{\emptyset})^I$ denote the right unique relations over $I × P$; and then the deliberated choices are an element $\pi({\leadsto}) \in (P \cup \set{\emptyset})^I$.
+We say that $C$ is informative iff $\exists f \in (P \cup \set{\emptyset})^I \suchthat C \implies ¬f$, meaning that $\pi(C) = \set{\pi(\leadsto) \suchthat {\leadsto} \in C} ≠ (P \cup \set{\emptyset})^I$.
+
+Given an exposure protocol, we say that a claim $C$ holds iff ${\leadsto} \in C$.
+$C$ is $\leadsto$-suitable iff it is informative and falsifiable and ${\leadsto} \in C$.
+
+The following theorem verifies that when $C$ holds, it will not be falsified ex post (though it may be (a priori) falsifiable).
+\begin{theorem}
+	\label{th:ex-post}
+	If ${\leadsto} \in C$, $\nexists O \subseteq {\leadsto} \suchthat S_O \cap C = \emptyset$.
+\end{theorem}
+\begin{proof}
+	Equivalently, considering any $O \subseteq {\leadsto} \in C$: $\exists O \subseteq f \suchthat f \in C$.
+	This holds as ${\leadsto}$ satisfies this.
+\end{proof}
+\Cref{th:ex-post} together with the definition of falsifiability leads to \cref{th:holdsiff}.
+\begin{corollary}
+	\label{th:holdsiff}
+	$C$ is falsifiable iff [${\leadsto} \in C$ iff $\nexists O \subseteq {\leadsto} \suchthat S_O \cap C = \emptyset$].
+\end{corollary}
+%\begin{proof}
+%	Assume that $C$ does not hold, thus, ${\leadsto} \notin C$.
+%	Because $C$ is falsifiable, $\exists O \subseteq {\leadsto} \suchthat S_O \cap C = \emptyset$.
+
+\begin{example}[To be corrected]
+Consider any $\leadsto$ such that $\exists \ar, \phi \suchthat \forall i: \ar \ileadstost \phi$.
+Then some suitable $C$ exists, for example, $\forall i: \ar \ileadstost \phi$.
+Note that it is falsifiable but not verifiable (that is, no $O$ implies $C$).
+\end{example}
+
+\begin{example}[To be corrected]
+Now consider $\leadsto$ such that $\exists J, K \subset I \suchthat \forall j \in J: \ar \ileadstost[j] \phi \land \forall k \in K: \ar' \ileadstost[k] \phi$.
+Then some suitable $C$ exists, for example, $\ar \ileadstost[j] \phi$.
 \end{example}
 
 \subsection{Argumentative theories of deliberated choice}
