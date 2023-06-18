@@ -342,7 +342,6 @@ We say that $C$ is \emph{informative} iff $\exists {\allleadstog} \in (P \cup \s
 
 Given a permutation $\sigma$ over $I$ and any ${\allleadstog} \in P^{I × \allhist}$, let ${\allleadstog} \circ \sigma$ denote $\set{(i, \hist, \phi) \suchthat (\sigma(i), \hist, \phi) \in {\allleadstog}}$ and let $C \circ \sigma$ denote $\set{{\allleadstog} \circ \sigma \suchthat {\allleadstog} \in C}$.
 A claim $C$ is \emph{anonymous} iff $\forall \sigma: C = C \circ \sigma$.
-(TODO Alt: very strong, $\forall \allleadsto \in C, i, j \in I: \ileadsto = \jleadsto$; misses for example $\card{\set{i \suchthat \hist \ileadsto \phi}} = \frac{I}{2}$; strong: $\set{\ileadsto \suchthat \allleadsto \in C} = \set{\jleadsto \suchthat \allleadsto \in C}$; misses perhaps “if $i$ says… then $j$ says…”.)
 \begin{example}
 	Given $\ar$ and $\phi$, the claim $\ar \ileadstog \phi$ is not anonymous iff $\card{I} ≥ 2$. Indeed, pick any $j ≠ i$ and define $\sigma(i) = j$, $\sigma(j) = i$ and $\forall k \in I \setminus \set{i, j}: \sigma(k) = k$, then $C = \set{{\allleadstog} \suchthat {\allleadstog}(i, \ar) = \phi}$, which contains in particular ${\allleadsto}$ defined as $\forall \hist: [\forall k \in I \setminus \set{j}, {\allleadsto}(k, \hist) = \phi \land {\allleadsto}(j, \hist) = ¬\phi$; while $C \circ \sigma = \set{{\allleadstog} \suchthat {\allleadstog}(j, \ar) = \phi}$ which does not contain ${\allleadsto}$.
 \end{example}
