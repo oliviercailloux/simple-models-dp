@@ -293,8 +293,8 @@ A claim $C$ is falsifiable iff $\exists O \suchthat O \implies ¬C$, by which I 
 We now say that $C$ is \emph{falsifiable} iff $\forall {\allleadstog} \in P^{I × \allhist}: ¬C({\allleadstog}) \implies \exists O \subseteq {\allleadstog} \suchthat O \implies ¬C$, meaning that
 $\forall {\allleadstog} \notin C: \exists O \subseteq {\allleadstog} \suchthat S_O \cap C = \emptyset$.
 \begin{example}
-	$(\ar) \ileadstog \phi \lor  (\ar, \ar) \ileadstog \phi \lor …$ is falsifiable.
-	Consider any ${\allleadstog} \notin C$, thus satisfying $\exists k \suchthat (\ar)^k \nileadstog \phi$. Consider $O = \set{(i, (\ar)^k, {\allleadstog}(i, (\ar)^k) ≠ \phi)}$, thus with $O \subset {\allleadstog}$. We have $S_O \cap C = \emptyset$: consider any $O \subset f$, it is not in $C$.
+	$(\ar) \ileadstog \phi \lor  (\ar, \ar) \ileadstog \phi \lor …$ is not falsifiable.
+	Given any $O$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in O} \card{\hist} + 1$. Pick any $\allleadstog$ such that $O \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in S_O \cap C ≠ \emptyset$.
 \end{example}
 \begin{example}
 	\label{ex:unfals}
