@@ -97,13 +97,18 @@
 
 %%i
 \NewDocumentCommand{\iprops}{}{\Phi_i}
-\NewDocumentCommand{\allleadsto}{}{⇝}%Or \dashrightarrow?
-\NewDocumentCommand{\ileadsto}{O{i}}{⇝_{#1}}
-\NewDocumentCommand{\nileadsto}{O{i}}{\not⇝_{#1}}
-\NewDocumentCommand{\ileadstoe}{O{i}}{⇝_{#1}^\exists}
-\NewDocumentCommand{\nileadstoe}{O{i}}{\not⇝_{#1}^\exists}
-\NewDocumentCommand{\ileadstost}{O{i}}{\hookrightarrow_{#1}}
-\NewDocumentCommand{\nileadstost}{O{i}}{\not\hookrightarrow_{#1}}
+\NewDocumentCommand{\allleadstog}{}{⇝}
+\NewDocumentCommand{\allleadsto}{}{\bm{⇝}}%Or \dashrightarrow?
+\NewDocumentCommand{\ileadsto}{O{i}}{\bm{⇝}_{#1}}
+\NewDocumentCommand{\ileadstog}{O{i}}{⇝_{#1}}
+\NewDocumentCommand{\nileadsto}{O{i}}{\not\bm{⇝}_{#1}}
+\NewDocumentCommand{\nileadstog}{O{i}}{\not⇝_{#1}}
+\NewDocumentCommand{\ileadstoe}{O{i}}{\bm{⇝}_{#1}^\exists}
+\NewDocumentCommand{\nileadstoe}{O{i}}{\not\bm{⇝}_{#1}^\exists}
+\NewDocumentCommand{\ileadstost}{O{i}}{\mathrel{\pmb{\hookrightarrow}_{\mkern-9mu{}#1}}}
+\NewDocumentCommand{\ileadstostg}{O{i}}{\hookrightarrow_{#1}}
+\NewDocumentCommand{\nileadstost}{O{i}}{\mathrel{\not\pmb{\hookrightarrow}_{\mkern-9mu{}#1}}}
+\NewDocumentCommand{\nileadstostg}{O{i}}{\not\hookrightarrow_{#1}}
 \NewDocumentCommand{\di}{}{c^φ_{γ, i}}
 \NewDocumentCommand{\dip}{}{d^{φ +}_{γ, i}}
 \NewDocumentCommand{\ibeats}{}{⊳^\text{\sout{\ensuremath{φ}}}_{γ, i}}%Or: \usepackage[normalem]{ulem} \text{\sout{\ensuremath t}}
