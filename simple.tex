@@ -290,7 +290,7 @@ A claim $C$ is falsifiable iff $\exists O \suchthat O \implies ¬C$, by which I 
 \end{example}
 \Cref{ex:fbs} shows that this definition of falsifiability is wrong.
 
-We now say that $C$ is falsifiable iff $\forall {\allleadstog} \in P^{I × \allhist}: ¬C({\allleadstog}) \implies \exists O \subseteq {\allleadstog} \suchthat O \implies ¬C$, meaning that
+We now say that $C$ is \emph{falsifiable} iff $\forall {\allleadstog} \in P^{I × \allhist}: ¬C({\allleadstog}) \implies \exists O \subseteq {\allleadstog} \suchthat O \implies ¬C$, meaning that
 $\forall {\allleadstog} \notin C: \exists O \subseteq {\allleadstog} \suchthat S_O \cap C = \emptyset$.
 \begin{example}
 	$(\ar) \ileadstog \phi \lor  (\ar, \ar) \ileadstog \phi \lor …$ is falsifiable.
@@ -301,20 +301,19 @@ $\forall {\allleadstog} \notin C: \exists O \subseteq {\allleadstog} \suchthat S
 	$(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi$ is not falsifiable.
 	Consider any ${\allleadstog} \notin C$, thus satisfying $(\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$.
 	Consider any $O \subseteq {\allleadstog}$ and let us prove that $S_O \cap C ≠ \emptyset$.
-	By definition of a general observation, $O$ may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $O$, pick any $f$ such that $O \subset {f} \land t \in {f}$. We have ${f} \in S_O \cap C ≠ \emptyset$.
+	By definition of a general observation, $O$ may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $O$, pick any ${\allleadstog'}$ such that $O \subset {\allleadstog'} \land t \in {\allleadstog'}$. We have ${\allleadstog'} \in S_O \cap C ≠ \emptyset$.
 \end{example}
 \begin{example}
 	$\hist \ileadstog[j] \phi \land [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$ is not falsifiable.
 	Consider any $\allleadstog$ satisfying $(\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$, thus with ${\allleadstog} \notin C$.
 	\Cref{ex:unfals} concludes.
 \end{example}
+\begin{example}
+	Consider any $\ar$ and $\phi$. The claim $\forall i: \ar \ileadstostg \phi$ is falsifiable.
+	Given any ${\allleadstog} \notin C$, consider any $i \suchthat \ar \nileadstostg \phi$ and any $\hist \suchthat \hist \nileadstog \phi \land \ar \in \histend$, and define $O = \set{(i, \hist, {\allleadstog}(i, \hist) ≠ \phi)}$.
+\end{example}
 
-Given an exposure protocol $\allleadsto$, deliberated choices are represented by an element $\pi({\allleadsto}) \subseteq I × P$ which is right unique (meaning that $\forall i \in I: \card{\pi({\allleadsto})(i)} ≤ 1$).
-Equivalently, let $(P \cup \set{\emptyset})^I$ denote the right unique relations over $I × P$; and then the deliberated choices are an element $\pi({\allleadsto}) \in (P \cup \set{\emptyset})^I$.
-We say that $C$ is informative iff $\exists {\allleadstog} \in (P \cup \set{\emptyset})^I \suchthat C \implies ¬{\allleadstog}$, meaning that $\pi(C) = \set{\pi(\allleadstog) \suchthat {\allleadstog} \in C} ≠ (P \cup \set{\emptyset})^I$.
-
-Given an exposure protocol $\allleadsto$, we say that a claim $C$ holds iff $C \ni {\allleadsto}$.
-$C$ is $\allleadsto$-suitable iff it is informative and falsifiable and ${\allleadsto} \in C$.
+Given an exposure protocol $\allleadsto$, we say that a claim $C$ \emph{holds} iff $C \ni {\allleadsto}$.
 
 The following theorem verifies that when $C$ holds, it will not be falsified ex post (though it may be (a priori) falsifiable).
 \begin{theorem}
@@ -324,7 +323,7 @@ The following theorem verifies that when $C$ holds, it will not be falsified ex 
 \begin{proof}
 	We have, $\forall C \suchthat C \ni {\allleadsto}, \forall O \subseteq {\allleadsto}$: $O \subseteq {\allleadsto} \in C$, equivalently, ${\allleadsto} \in S_O \cap C$, thus $S_O \cap C ≠ \emptyset$.
 \end{proof}
-Therefore, falsifiability guarantees that a claim holds if, and only if, it is not a posteriori falsifiable.
+Therefore, falsifiability guarantees that a claim holds if, and only if, it is not a posteriori falsifiable. (TODO syntactically fals VS empirically fals.)
 \begin{theorem}
 	\label{th:holdsiff}
 	For all falsifiable $C$: ${\allleadsto} \in C$ iff $\nexists O \subseteq {\allleadsto} \suchthat S_O \cap C = \emptyset$.
@@ -337,10 +336,16 @@ Therefore, falsifiability guarantees that a claim holds if, and only if, it is n
 	The reverse implication is proven by \cref{th:ex-post}.
 \end{proof}
 
+Given an exposure protocol $\allleadsto$, deliberated choices are represented by an element $\pi({\allleadsto}) \subseteq I × P$ which is right unique (meaning that $\forall i \in I: \card{\pi({\allleadsto})(i)} ≤ 1$).
+Equivalently, let $(P \cup \set{\emptyset})^I$ denote the right unique relations over $I × P$; and then the deliberated choices are an element $\pi({\allleadsto}) \in (P \cup \set{\emptyset})^I$.
+We say that $C$ is \emph{informative} iff $\exists {\allleadstog} \in (P \cup \set{\emptyset})^I \suchthat C \implies ¬{\allleadstog}$, meaning that $\pi(C) = \set{\pi(\allleadstog) \suchthat {\allleadstog} \in C} ≠ (P \cup \set{\emptyset})^I$.
+
+$C$ is \emph{suitable} iff it holds and is informative and falsifiable.
 \begin{example}[To be corrected]
-Consider any $\allleadsto$ such that $\exists \ar, \phi \suchthat \forall i: \ar \ileadstost \phi$.
-Then some suitable $C$ exists, for example, $\forall i: \ar \ileadstost \phi$.
-Note that it is falsifiable but not verifiable (that is, no $O$ implies $C$).
+	Assume that $\exists \ar, \phi \suchthat \forall i: \ar \ileadstost \phi$.
+	Then $\forall i: \ar \ileadstostg \phi$ is suitable.
+	
+	Note that it is falsifiable but not verifiable (that is, no $O$ implies $C$).
 \end{example}
 
 \begin{example}[To be corrected]
