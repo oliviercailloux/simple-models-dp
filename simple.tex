@@ -356,6 +356,7 @@ We say that $C$ is \emph{informative} iff $\exists {\allleadstog} \in (P \cup \s
 			&\forall i \in I, \hist \in \allhist \suchthat \ar_l \in \histend \land \hist \nileadstog \phi: \set{\histp \suchthat \hist \subseteq \histp \land \ar_k \in \histpend} \ileadstog \phi.
 		\end{aligned}\right.
 	\end{equation}
+	
 	Assume that ${\allleadsto} \in C$. Then 
 	$[\ar_k \nileadstost \phi \land \ar_l \nileadstost \phi]$ 
 	is equivalent to: 
@@ -363,6 +364,17 @@ We say that $C$ is \emph{informative} iff $\exists {\allleadstog} \in (P \cup \s
 		\left\{\begin{aligned}
 			&\exists \histk \suchthat \ar_k \in \histkend \land \histk \nileadsto \phi \land \set{\histp \suchthat \histk \subseteq \hist' \land \ar_l \in \histpend} \ileadsto \phi;\\
 			&\exists \histl \suchthat \ar_l \in \histlend \land \histl \nileadsto \phi \land \set{\histp \suchthat \histl \subseteq \hist' \land \ar_k \in \histpend} \ileadsto \phi.
+		\end{aligned}\right.
+	\end{equation}
+
+	Assume that ${\allleadsto} \in C$. Then 
+	$[\forall \ar \in \allargs: \ar \nileadstost \phi]$ 
+	is equivalent to: 
+	\begin{equation}
+		\left\{\begin{aligned}
+			&\exists \histk \suchthat \ar_k \in \histkend \land \histk \nileadsto \phi \land \set{\histp \suchthat \histk \subseteq \hist' \land \ar_l \in \histpend} \ileadsto \phi;\\
+			&\exists \histl \suchthat \ar_l \in \histlend \land \histl \nileadsto \phi \land \set{\histp \suchthat \histl \subseteq \hist' \land \ar_k \in \histpend} \ileadsto \phi;\\
+			&\forall \ar \in \allargs \setminus \set{\ar_k, \ar_l}: \exists \hist \suchthat \ar \in \histend \land \hist \nileadsto \phi.
 		\end{aligned}\right.
 	\end{equation}
 \end{theorem}
