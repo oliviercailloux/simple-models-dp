@@ -344,11 +344,9 @@ Given an exposure protocol $\allleadsto$, deliberated choices are represented by
 Equivalently, let $(P \cup \set{\emptyset})^I$ denote the right unique relations over $I × P$; and then the deliberated choices are an element $\pi({\allleadsto}) \in (P \cup \set{\emptyset})^I$.
 We say that $C$ is \emph{informative} iff $\exists {\allleadstog} \in (P \cup \set{\emptyset})^I \suchthat C \implies ¬{\allleadstog}$, meaning that $\pi(C) = \set{\pi(\allleadstog) \suchthat {\allleadstog} \in C} ≠ (P \cup \set{\emptyset})^I$.
 
-\NewDocumentCommand{\histk}{}{α^{(k)}}
-\NewDocumentCommand{\histkend}{}{α^{(k)}_\mathit{end}}
-\NewDocumentCommand{\histl}{}{α^{(l)}}
-\NewDocumentCommand{\histlend}{}{α^{(l)}_\mathit{end}}
-\begin{theorem}[To be checked and proven!]
+Given $\hist \in \allhist$ and $\ar_k, \ar_l \in \allargs$, let $(\hist, \ar_k, ?, \text{\ding{55}}, …, \ar_l, ?)$ denote the set $\set{\histl \suchthat \exists \histk \suchthat \hist \subset \histk \subset \histl \suchthat \ar_k \in \histkend \land \histk \nileadsto \phi \land \ar_l \in \histlend}$.
+
+\begin{theorem}
 	Given any $\phi \in P, \ar_k, \ar_l \in \allargs$, consider the following claim $C$: 
 	\begin{equation}
 		\left\{\begin{aligned}
@@ -356,6 +354,10 @@ We say that $C$ is \emph{informative} iff $\exists {\allleadstog} \in (P \cup \s
 			&\forall i \in I, \hist \in \allhist \suchthat \ar_l \in \histend \land \hist \nileadstog \phi: \set{\histp \suchthat \hist \subseteq \histp \land \ar_k \in \histpend} \ileadstog \phi.
 		\end{aligned}\right.
 	\end{equation}
+	In short,
+	$\forall \hist: [\ar_k \in \histend \land \hist \nileadstog \phi] \implies (\hist, …, \ar_l, ?) \ileadstog \phi$.
+	In shorter,
+	$(\hist, \ar_k, ?, \text{\ding{55}}, …, \ar_l, ?) \ileadstog \phi$, which is $\set{\histl \suchthat \exists \histk \suchthat \hist \subset \histk \subset \histl \suchthat \ar_k \in \histkend \land \ar_l \in \histlend \land \histk \nileadsto \phi}$.
 	
 	Assume that ${\allleadsto} \in C$. Then 
 	$[\ar_k \nileadstost \phi \land \ar_l \nileadstost \phi]$ 
@@ -366,6 +368,20 @@ We say that $C$ is \emph{informative} iff $\exists {\allleadstog} \in (P \cup \s
 			&\exists \histl \suchthat \ar_l \in \histlend \land \histl \nileadsto \phi \land \set{\histp \suchthat \histl \subseteq \hist' \land \ar_k \in \histpend} \ileadsto \phi.
 		\end{aligned}\right.
 	\end{equation}
+\end{theorem}
+\begin{proof}
+	$\ar_k \nileadstost \phi$ iff $\exists \histk \suchthat \ar_k \in \histkend \land \histk \nileadsto \phi$.
+\end{proof}
+\begin{remark}
+	Idea.
+	That consequence is unfalsifiable so we cannot include anything like this in $C$ (only something stronger, but of course a stronger statement could be false). Therefore, with no addition, we are doomed that exists some situations where no claim is suitable.
+\end{remark}
+\begin{theorem}
+	Assume that the NOT consequence holds and the claim holds.
+	Prove that there is no suitable claim.
+	If the claim is just the NOT cons and claim, then it is not fals.
+	If the claim is weaker, it does not permit to prove that $\ar_k$ or $\ar_l$ is decisive. (BUT does it possibly prove that some arg is decisive? But it may be false.)
+	If the claim is stronger, it may be false.
 \end{theorem}
 \begin{remark}
 	Idea: then use contrapositive. Not cons implies some dec arg.
