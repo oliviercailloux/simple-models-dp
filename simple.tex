@@ -366,21 +366,11 @@ We say that $C$ is \emph{informative} iff $\exists {\allleadstog} \in (P \cup \s
 			&\exists \histl \suchthat \ar_l \in \histlend \land \histl \nileadsto \phi \land \set{\histp \suchthat \histl \subseteq \hist' \land \ar_k \in \histpend} \ileadsto \phi.
 		\end{aligned}\right.
 	\end{equation}
-
-	Assume that ${\allleadsto} \in C$. Then 
-	$[\forall \ar \in \allargs: \ar \nileadstost \phi]$ 
-	is equivalent to: 
-	\begin{equation}
-		\left\{\begin{aligned}
-			&\exists \histk \suchthat \ar_k \in \histkend \land \histk \nileadsto \phi \land \set{\histp \suchthat \histk \subseteq \hist' \land \ar_l \in \histpend} \ileadsto \phi;\\
-			&\exists \histl \suchthat \ar_l \in \histlend \land \histl \nileadsto \phi \land \set{\histp \suchthat \histl \subseteq \hist' \land \ar_k \in \histpend} \ileadsto \phi;\\
-			&\forall \ar \in \allargs \setminus \set{\ar_k, \ar_l}: \exists \hist \suchthat \ar \in \histend \land \hist \nileadsto \phi.
-		\end{aligned}\right.
-	\end{equation}
 \end{theorem}
 \begin{remark}
 	Idea: then use contrapositive. Not cons implies some dec arg.
 	Prove equivalence to establish that we need to assume not cons to make such claims informative (in such a way).
+	We could also attempt to prove that $\exists \ar \suchthat \ar \ileadstost \phi$ but assuming the claim $C$ is everything we know, there is no hope in proving something about some argument that we ignore.
 
 	As an example, with the shortest possible paths, we get $\histk = (\ar_k)$ and $\histl = (\ar_l)$, thus:
 	\begin{equation}
