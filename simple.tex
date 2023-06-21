@@ -356,26 +356,19 @@ $\cup_{\hist \in \allhist} (\hist, \ar_k, ?, \nileadstog \phi, …, \ar_l, ?) =
 Given ${\ileadstog}$, $p \in P$ and $S \subseteq \allargs$, let $S \ileadstog p$ stand for $\forall s \in S: s \ileadstog p$ and $s \in S \ileadstog p$ stand for $s \in \set{s \in S \suchthat s \ileadstog p}$.
 
 \begin{theorem}
-	Given any $p \in P, \ar_k, \ar_l \in \allargs$, consider the following claim $C$: $\forall i \in I$,
-	\begin{equation}
-		\left\{\begin{aligned}
-			&\forall \histk \in (…, \ar_k, ?) \nileadstog p: (\histk, …, \ar_l, ?) \ileadstog p;\\
-			&\forall \histl \in (…, \ar_l, ?) \nileadstog p: (\histl, …, \ar_k, ?) \ileadstog p.
-		\end{aligned}\right.
-	\end{equation}
+	Given any $p \in P, \ar_k, \ar_l \in \allargs$, consider the claim $C = \forall i \in I, \forall \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l},
+\forall \hist \in (…, \ar_1, ?) \nileadstog p: (\hist, …, \ar_2, ?) \ileadstog p$.
 
 	Assume that ${\allleadsto} \in C$. Then 
 	$[\ar_k \nileadstost p \land \ar_l \nileadstost p]$ 
 	is equivalent to: 
 	\begin{equation}
-		\left\{\begin{aligned}
-			&\exists \histk \in (…, \ar_k, ?) \nileadsto p \suchthat (\histk, …, \ar_l, ?) \ileadsto p;\\
-			&\exists \histl \in (…, \ar_l, ?) \nileadsto p \suchthat (\histl, …, \ar_k, ?) \ileadsto p.
-		\end{aligned}\right.
+		\forall \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l}:
+		\exists \hist \in (…, \ar_1, ?) \nileadsto p \suchthat (\hist, …, \ar_2, ?) \ileadsto p.
 	\end{equation}
 \end{theorem}
 \begin{proof}
-	$\ar_k \nileadstost p$ iff $\exists \histk \suchthat \ar_k \in \histkend \land \histk \nileadsto p$.
+	$\ar_k \nileadstost p$ iff $\exists \hist \suchthat \ar_k \in \histend \land \hist \nileadsto p$.
 \end{proof}
 \begin{remark}
 	Idea.
