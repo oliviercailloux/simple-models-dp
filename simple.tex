@@ -344,14 +344,19 @@ Given an exposure protocol $\allleadsto$, deliberated choices are represented by
 Equivalently, let $(P \cup \set{\emptyset})^I$ denote the right unique relations over $I × P$; and then the deliberated choices are an element $\pi({\allleadsto}) \in (P \cup \set{\emptyset})^I$.
 We say that $C$ is \emph{informative} iff $\exists {\allleadstog} \in (P \cup \set{\emptyset})^I \suchthat C \implies ¬{\allleadstog}$, meaning that $\pi(C) = \set{\pi(\allleadstog) \suchthat {\allleadstog} \in C} ≠ (P \cup \set{\emptyset})^I$.
 
-Given $\hist \in \allhist$ and $\ar_k, \ar_l \in \allargs$, let $(\hist, \ar_k, ?, ✗, …, \ar_l, ?)$ denote the set $\set{\histl \suchthat \exists \histk \suchthat \hist \subset \histk \subset \histl \suchthat \ar_k \in \histkend \land \histk \nileadsto \phi \land \ar_l \in \histlend}$.
+Given $\hist \in \allhist$ and $\ar_k, \ar_l \in \allargs$, let $(\hist, \ar_k, ?, ✗, …, \ar_l, ?)$ denote the set 
+$\set{\histl \suchthat \exists \histk \suchthat \hist \subset \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadsto \phi \land \ar_l \in \histlend}$.
+Given $\ar_k, \ar_l \in \allargs$, let $(…, \ar_k, ?, ✗, …, \ar_l, ?)$ denote the set 
+$\cup_{\hist \in \allhist} (\hist, \ar_k, ?, ✗, …, \ar_l, ?) = 
+\set{\histl \suchthat \exists \hist, \histk \suchthat \hist \subset \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadsto \phi \land \ar_l \in \histlend} = 
+\set{\histl \suchthat \exists \histk \suchthat \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadsto \phi \land \ar_l \in \histlend}$.
 
 \begin{theorem}
-	Given any $\phi \in P, \ar_k, \ar_l \in \allargs$, consider the following claim $C$: 
+	Given any $\phi \in P, \ar_k, \ar_l \in \allargs$, consider the following claim $C$: $\forall i \in I$,
 	\begin{equation}
 		\left\{\begin{aligned}
-			&\forall i \in I, \hist \in \allhist \suchthat \ar_k \in \histend \land \hist \nileadstog \phi: \set{\histp \suchthat \hist \subseteq \histp \land \ar_l \in \histpend} \ileadstog \phi;\\
-			&\forall i \in I, \hist \in \allhist \suchthat \ar_l \in \histend \land \hist \nileadstog \phi: \set{\histp \suchthat \hist \subseteq \histp \land \ar_k \in \histpend} \ileadstog \phi.
+			&\forall \histk \in \allhist \suchthat \ar_k \in \histkend \land \histk \nileadstog \phi: \set{\histl \suchthat \histk \subseteq \histl \land \ar_l \in \histlend} \ileadstog \phi;\\
+			&\forall \hist \in \allhist \suchthat \ar_l \in \histend \land \hist \nileadstog \phi: \set{\histp \suchthat \hist \subseteq \histp \land \ar_k \in \histpend} \ileadstog \phi.
 		\end{aligned}\right.
 	\end{equation}
 	In short,
