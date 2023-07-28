@@ -355,15 +355,25 @@ $\cup_{\hist \in \allhist} (\hist, \ar_k, ?, \nileadstog \phi, …, \ar_l, ?) =
 \set{\histl \suchthat \exists \histk \suchthat \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadstog \phi \land \ar_l \in \histlend}$.
 Given ${\ileadstog}$, $p \in P$ and $S \subseteq \allargs$, let $S \ileadstog p$ stand for $\forall s \in S: s \ileadstog p$ and $s \in S \ileadstog p$ stand for $s \in \set{s \in S \suchthat s \ileadstog p}$.
 
-\begin{theorem}
-	Given any $p \in P, \ar_k, \ar_l \in \allargs$, consider the claim $C = \forall i \in I, \forall \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l},
-\forall \hist \in (…, \ar_1, ?) \nileadstog p: (\hist, …, \ar_2, ?) \ileadstog p$.
+$C$ is \emph{suitable} iff it holds and is anonymous, informative and falsifiable.
+\begin{example}
+	Assume that $\exists \ar, \phi \suchthat \forall i: \ar \ileadstost \phi$.
+	Then $\forall i: \ar \ileadstostg \phi$ is suitable.
+	Note that it is falsifiable but not verifiable (that is, no $O$ implies $C$).
+\end{example}
 
+\begin{theorem}
+	Given any $p \in P, \ar_k, \ar_l \in \allargs$, consider the following claim $C$: 
+	\begin{equation}
+		\label{eq:cl}
+		\forall i \in I, \forall \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l},
+		\forall \hist \in (…, \ar_1, ?) \nileadstog p: (\hist, …, \ar_2, ?) \ileadstog p.
+	\end{equation}
 	Assume that ${\allleadsto} \in C$. Then 
-	$[\ar_k \nileadstost p \land \ar_l \nileadstost p]$ 
+	$\exists i \in I \suchthat [\ar_k \nileadstost p \land \ar_l \nileadstost p]$ 
 	is equivalent to: 
 	\begin{equation}
-		\forall \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l}:
+		\exists i \in I \suchthat \forall \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l}:
 		\exists \hist \in (…, \ar_1, ?) \nileadsto p \suchthat (\hist, …, \ar_2, ?) \ileadsto p.
 	\end{equation}
 \end{theorem}
@@ -374,13 +384,46 @@ Given ${\ileadstog}$, $p \in P$ and $S \subseteq \allargs$, let $S \ileadstog p$
 	Idea.
 	That consequence is unfalsifiable so we cannot include anything like this in $C$ (only something stronger, but of course a stronger statement could be false). Therefore, with no addition, we are doomed that exists some situations where no claim is suitable.
 \end{remark}
-\begin{theorem}
+\begin{theorem}[Informal]
 	Assume that the NOT consequence holds and the claim holds.
 	Prove that there is no suitable claim.
 	If the claim is just the NOT cons and claim, then it is not fals.
 	If the claim is weaker, it does not permit to prove that $\ar_k$ or $\ar_l$ is decisive. (BUT does it possibly prove that some arg is decisive? But it may be false.)
 	If the claim is stronger, it may be false.
 \end{theorem}
+\begin{theorem}[Formal]
+	Pick any $\ar_k ≠ \ar_l$ and $p \in P$ and assume that $\allleadsto$ fails the above consequence, that is, satisfies:
+	\begin{equation}
+		\label{eq:answerable}
+		\forall i \in I, \exists \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l} \land
+		\forall \hist \in (…, \ar_1, ?) \nileadsto p: (\hist, …, \ar_2, ?) \nileadsto p.
+	\end{equation}
+	Assume further that $\allleadsto$ satisfies \eqref{eq:cl}, thus:
+	$\forall i \in I, \forall \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l},
+\forall \hist \in (…, \ar_1, ?) \nileadsto p: (\hist, …, \ar_2, ?) \ileadsto p$.
+	Then, there is no suitable claim.
+\end{theorem}
+\begin{proof}
+	Note that $\allleadsto$ satisfies, $\forall i \in I, \exists \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l} \land \forall \hist \in (…, \ar_1, ?): \hist \ileadsto p$; equivalently, $\ar_k \ileadstost p \lor \ar_l \ileadstost p$.
+
+	Assume the claim is just \eqref{eq:cl} $\land$ \eqref{eq:answerable}. Then if is not fals. 
+%	Intuitively, because it might require (with $\hist = (\ar_1)$) to observe that for a given $i$, $(a_1) \nileadsto p \land (\ar_1, \ar_2) \ileadsto p$ and also $(\ar_2) \nileadsto p \land (\ar_2, \ar_1) \ileadsto p$.
+	We need to exhibit some ${\allleadstog} \notin C$ such that $\forall O \subseteq {\allleadstog}: S_O \cap C ≠ \emptyset$.
+	Define $\allleadstog$ as, $\forall i \in I$, $(\ar_k) \nileadstog p, (\ar_l) \nileadstog p, \forall \hist \in \allhist \setminus \set{(\ar_k), (\ar_l)}: \hist \ileadstog p$.
+	It follows that $\ar_k \nileadstog p \land \ar_l \nileadstog p$. Thus, ${\allleadstog} \notin C$.
+	Now pick any $O \subseteq {\allleadstog}$. The set $O$ can’t have both $(\ar_k) \nileadstog p$ and $(\ar_l) \nileadstog p$.
+	Assume, wlog, that $(\ar_k, i, {\allleadstog}(\ar_k, i)) \notin O$.
+%	Then, intuitively, $\ar_k$ decisive is in $S_O \cap C$.
+	Pick any $p' ≠ p$ and define $\allleadstog'$ as, $\forall i \in I: \forall \hist \in \allhist \setminus \set{(\ar_l)}, \hist \ileadstog' p \land (\ar_l) \ileadstog' p' ≠ p$.
+	We have ${\allleadstog'} \in S_O \cap C$, which concludes [NB need to do it for each $i$, instead].
+	
+	If the claim is sufficiently stronger (to be falsifiable) than this (thus with $C' \subset C$, thus with ${\allleadstog} \notin C'$ as defined above), then it may be false.
+	Indeed, to be falsifiable, we need ${\allleadstog'} \notin C'$.
+	Now we need $C'$ to hold so it must contain ${\allleadsto}$ but not contain ${\allleadstog'}$. It does not contain ${\allleadstog'}$ iff it implies $¬(\land_{\hist \in \allhist \setminus \set{(\ar_l)}} \hist \ileadstog' p \land (\ar_l) \ileadstog' p')$. 
+	%So it must claim that $\ar_l$ is not decisive. Or something like, for some $\hist_1$: if $\ar_l \ileadstog' p'$, then $\hist_1 \ileadstog' ¬p$.
+	
+	Intuitively, need that when we do not observe $(\ar_k)$ for a given $i$, but only $(\ar_l)$ for that $i$, the claim says something contrary about that $(\ar_l, i)$. 
+\end{proof}
 \begin{remark}
 	Idea: then use contrapositive. Not cons implies some dec arg.
 	Prove equivalence to establish that we need to assume not cons to make such claims informative (in such a way).
@@ -419,13 +462,6 @@ Given a permutation $\sigma$ over $I$ and any ${\allleadstog} \in P^{I × \allhi
 A claim $C$ is \emph{anonymous} iff $\forall \sigma: C = C \circ \sigma$.
 \begin{example}
 	Given $\ar$ and $\phi$, the claim $\ar \ileadstog \phi$ is not anonymous iff $\card{I} ≥ 2$. Indeed, pick any $j ≠ i$ and define $\sigma(i) = j$, $\sigma(j) = i$ and $\forall k \in I \setminus \set{i, j}: \sigma(k) = k$, then $C = \set{{\allleadstog} \suchthat {\allleadstog}(i, \ar) = \phi}$, which contains in particular ${\allleadsto}$ defined as $\forall \hist: [\forall k \in I \setminus \set{j}, {\allleadsto}(k, \hist) = \phi \land {\allleadsto}(j, \hist) = ¬\phi$; while $C \circ \sigma = \set{{\allleadstog} \suchthat {\allleadstog}(j, \ar) = \phi}$ which does not contain ${\allleadsto}$.
-\end{example}
-
-$C$ is \emph{suitable} iff it holds and is anonymous, informative and falsifiable.
-\begin{example}
-	Assume that $\exists \ar, \phi \suchthat \forall i: \ar \ileadstost \phi$.
-	Then $\forall i: \ar \ileadstostg \phi$ is suitable.
-	Note that it is falsifiable but not verifiable (that is, no $O$ implies $C$).
 \end{example}
 
 \begin{example}[To be completed]
