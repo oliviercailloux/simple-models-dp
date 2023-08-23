@@ -294,7 +294,7 @@ We now say that $C$ is \emph{falsifiable} iff $\forall {\allleadstog} \in P^{I �
 $\forall {\allleadstog} \notin C: \exists O \subseteq {\allleadstog} \suchthat S_O \cap C = \emptyset$.
 \begin{example}
 	$(\ar) \ileadstog \phi \lor  (\ar, \ar) \ileadstog \phi \lor …$ is not falsifiable.
-	Given any $O$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in O} \card{\hist} + 1$. Pick any $\allleadstog$ such that $O \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in S_O \cap C ≠ \emptyset$.
+	Given any $O$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in O} \card{\hist} + 1$ if $\exists p \in P \suchthat (i, \hist, p) \in O$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $O \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in S_O \cap C ≠ \emptyset$.
 \end{example}
 \begin{example}
 	\label{ex:unfals}
@@ -353,7 +353,7 @@ $(…, \ar_k, ?, \nileadstog \phi, …, \ar_l, ?)$ denote the set
 $\cup_{\hist \in \allhist} (\hist, \ar_k, ?, \nileadstog \phi, …, \ar_l, ?) = 
 \set{\histl \suchthat \exists \hist, \histk \suchthat \hist \subset \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadstog \phi \land \ar_l \in \histlend} = 
 \set{\histl \suchthat \exists \histk \suchthat \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadstog \phi \land \ar_l \in \histlend}$.
-Given ${\ileadstog}$, $p \in P$ and $S \subseteq \allargs$, let $S \ileadstog p$ stand for $\forall s \in S: s \ileadstog p$ and $s \in S \ileadstog p$ stand for $s \in \set{s \in S \suchthat s \ileadstog p}$.
+Given ${\ileadstog}$, $p \in P$, $s \in \allargs$ and $S \subseteq \allargs$, note that $s \in \ileadstoinvg(p)$ stand for $s \ileadstog p$ and $S \subseteq \ileadstoinvg(p)$ stand for $\forall s \in S: s \ileadstog p$.
 
 $C$ is \emph{suitable} iff it holds and is anonymous, informative and falsifiable.
 \begin{example}
@@ -364,18 +364,21 @@ $C$ is \emph{suitable} iff it holds and is anonymous, informative and falsifiabl
 
 \begin{theorem}
 	Given any $p \in P, \ar_k, \ar_l \in \allargs$, consider the following claim $C$: 
-	\begin{equation}
+	\begin{multline}
 		\label{eq:cl}
 		\forall i \in I, \forall \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l},
-		\forall \hist \in (…, \ar_1, ?) \nileadstog p: (\hist, …, \ar_2, ?) \ileadstog p.
-	\end{equation}
+		\forall \hist \in (…, \ar_1, ?) \cap \nileadstoinvg(p): \\
+		(\hist, …, \ar_2, ?) \subseteq \ileadstoinvg(p).
+	\end{multline}
 	Assume that ${\allleadsto} \in C$. Then 
 	$\exists i \in I \suchthat [\ar_k \nileadstost p \land \ar_l \nileadstost p]$ 
 	is equivalent to: 
-	\begin{equation}
-		\exists i \in I \suchthat \forall \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l}:
-		\exists \hist \in (…, \ar_1, ?) \nileadsto p \suchthat (\hist, …, \ar_2, ?) \ileadsto p.
-	\end{equation}
+	\begin{multline}
+		\label{eq:cln}
+		\exists i \in I \suchthat \forall \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l}:\\
+		\exists \hist \in (…, \ar_1, ?) \cap \nileadstoinv(p) \suchthat
+		(\hist, …, \ar_2, ?) \subseteq \ileadstoinv(p).
+	\end{multline}
 \end{theorem}
 \begin{proof}
 	$\ar_k \nileadstost p$ iff $\exists \hist \suchthat \ar_k \in \histend \land \hist \nileadsto p$.
@@ -384,23 +387,31 @@ $C$ is \emph{suitable} iff it holds and is anonymous, informative and falsifiabl
 	Idea.
 	That consequence is unfalsifiable so we cannot include anything like this in $C$ (only something stronger, but of course a stronger statement could be false). Therefore, with no addition, we are doomed that exists some situations where no claim is suitable.
 \end{remark}
+\begin{theorem}
+	The claim \eqref{eq:cl} and not \eqref{eq:cln}, thus, \eqref{eq:cl} and $\forall i, \ar_k \ileadstostg p \lor \ar_l \ileadstostg p$ is not falsifiable.
+\end{theorem}
+\begin{proof}
+	
+\end{proof}
 \begin{theorem}[Informal]
-	Assume that the NOT consequence holds and the claim holds.
+		Assume that the NOT consequence holds and the claim holds.
 	Prove that there is no suitable claim.
 	If the claim is just the NOT cons and claim, then it is not fals.
 	If the claim is weaker, it does not permit to prove that $\ar_k$ or $\ar_l$ is decisive. (BUT does it possibly prove that some arg is decisive? But it may be false.)
 	If the claim is stronger, it may be false.
 \end{theorem}
 \begin{theorem}[Formal]
-	Pick any $\ar_k ≠ \ar_l$ and $p \in P$ and assume that $\allleadsto$ fails the above consequence, that is, satisfies:
-	\begin{equation}
+	Pick any $p \in P$ and $\ar_k ≠ \ar_l \in \allargs$ and assume that $\allleadsto$ fails \cref{eq:cln}, that is, satisfies:
+	\begin{multline}
 		\label{eq:answerable}
-		\forall i \in I, \exists \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l} \land
-		\forall \hist \in (…, \ar_1, ?) \nileadsto p: (\hist, …, \ar_2, ?) \nileadsto p.
-	\end{equation}
+		\forall i \in I, \exists \set{\ar_1, \ar_2} \suchthat
+		\set{\ar_1, \ar_2} = \set{\ar_k, \ar_l} \\ \land
+		\forall \hist \in (…, \ar_1, ?) \cap \nileadstoinv(p): 
+		(\hist, …, \ar_2, ?) \nsubseteq \nileadstoinv(p).
+	\end{multline}
 	Assume further that $\allleadsto$ satisfies \eqref{eq:cl}, thus:
 	$\forall i \in I, \forall \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l},
-\forall \hist \in (…, \ar_1, ?) \nileadsto p: (\hist, …, \ar_2, ?) \ileadsto p$.
+\forall \hist \in (…, \ar_1, ?) \cap \nileadstoinv(p): (\hist, …, \ar_2, ?) \subseteq \ileadstoinv(p)$.
 	Then, there is no suitable claim.
 \end{theorem}
 \begin{proof}

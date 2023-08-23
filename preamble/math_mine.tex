@@ -107,8 +107,12 @@
 \NewDocumentCommand{\allleadsto}{}{\bm{⇝}}%Or \dashrightarrow?
 \NewDocumentCommand{\ileadsto}{O{i}}{\bm{⇝}_{#1}}
 \NewDocumentCommand{\ileadstog}{O{i}}{⇝_{#1}}
+\NewDocumentCommand{\ileadstoinv}{O{i}}{\mathbin{\bm{⇝}_{#1}^{-1}}}
+\NewDocumentCommand{\ileadstoinvg}{O{i}}{\mathbin{⇝_{#1}^{-1}}}
 \NewDocumentCommand{\nileadsto}{O{i}}{\not\bm{⇝}_{#1}}
 \NewDocumentCommand{\nileadstog}{O{i}}{\not⇝_{#1}}
+\NewDocumentCommand{\nileadstoinv}{O{i}}{\mathbin{\not\bm{⇝}_{#1}^{-1}}}
+\NewDocumentCommand{\nileadstoinvg}{O{i}}{\mathbin{\not⇝_{#1}^{-1}}}
 \NewDocumentCommand{\ileadstoe}{O{i}}{\bm{⇝}_{#1}^\exists}
 \NewDocumentCommand{\nileadstoe}{O{i}}{\not\bm{⇝}_{#1}^\exists}
 \NewDocumentCommand{\ileadstost}{O{i}}{\mathrel{\pmb{\hookrightarrow}_{\mkern-9mu{}#1}}}
