@@ -1,4 +1,6 @@
 \NewDocumentCommand{\range}{}{R}
+\NewDocumentCommand{\incr}{}{\mathcal{I}}
+\NewDocumentCommand{\finite}{}{\mathcal{F}}
 
 %Decision Theory (MCDA and SC)
 \NewDocumentCommand{\allalts}{}{\mathscr{X}}
@@ -14,10 +16,10 @@
 \NewDocumentCommand{\prof}{}{\bm{R}}
 \NewDocumentCommand{\linors}{}{\mathscr{L}(\allalts)}
 %Thanks to https://tex.stackexchange.com/q/154549
-	%\makeatletter
-	%\def\@myRgood@#1#2{\mathrel{R^X_{#2}}}
-	%\def\myRgood{\@ifnextchar_{\@myRgood@}{\mathrel{R^X}}}
-	%\makeatother
+%\makeatletter
+%\def\@myRgood@#1#2{\mathrel{R^X_{#2}}}
+%\def\myRgood{\@ifnextchar_{\@myRgood@}{\mathrel{R^X}}}
+%\makeatother
 \NewDocumentCommand{\ind}{}{\sim}
 \NewDocumentCommand{\peq}{}{\succeq}
 \NewDocumentCommand{\pst}{}{\succ}
@@ -31,11 +33,11 @@
 \NewDocumentCommand{\ard}{O{}}{a^\mathit{d}_{#1}}
 \NewDocumentCommand{\ardp}{O{}}{a^{\mathit{d}\prime}_{#1}}
 \NewDocumentCommand{\ar}{o}{%
-	\IfValueTF{#1}{%
-		a^{(#1)}%
-	}{%
-		a%
-	}%
+  \IfValueTF{#1}{%
+    a^{(#1)}%
+  }{%
+    a%
+  }%
 }
 \NewDocumentCommand{\arga}{}{\ar_\gamma}
 \NewDocumentCommand{\pga}{}{p_\gamma}
@@ -45,14 +47,14 @@
 \NewDocumentCommand{\histp}{}{α^{\prime}}
 \NewDocumentCommand{\histpp}{}{α^{\prime\prime}}
 \NewDocumentCommand{\histend}{o}{%
-	\IfValueTF{#1}{%
-		α^{#1}_\mathit{end}%
-	}{%
-		α_\mathit{end}%
-	}%
+\IfValueTF{#1}{%
+α^{#1}_\mathit{end}%
+}{%
+α_\mathit{end}%
+}%
 }
 \NewDocumentCommand{\histbend}{m}{%
-	α_{\intvl{1, #1}, \mathit{end}}%
+α_{\intvl{1, #1}, \mathit{end}}%
 }
 \NewDocumentCommand{\histpend}{}{α^{\prime}_\mathit{end}}
 \NewDocumentCommand{\histppend}{}{α^{\prime\prime}_\mathit{end}}
