@@ -73,7 +73,7 @@ Let the set $P = \set{\phi, ¬\phi, 0}$ denote the set of possible preferences, 
 An exposure protocol is a tuple $(I, \allargs, {\allleadsto})$, where $I$ is a set of individuals, $\allargs$ is a set of arguments, and ${\allleadsto}$, “leads to”, is the behavior of the individuals as a function of the arguments they have been exposed to.
 
 While $I$ and $\allargs$ are fundamental sets whose elements are considered elementary, a few notations and concepts are required to define ${\allleadsto}$.
-Throughout the article, $\N$ includes zero and $\N^* = \N \setminus \set{0}$. 
+Throughout the article, $\N$ includes zero and $\N^* = \N \setminus \set{0}$.
 Given $j, l \in \N$, the notation $\intvl{j, l}$ represents $\set{k \in \N \suchthat j ≤ k ≤ l}$ (thus $\forall j \in \N^*: \intvl{j, 0} = \emptyset$).
 Define $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ as the finite sequences of arguments, including the empty sequence.
 A generic element of $\allhist$ (a sequence of arguments) is denoted by $\hist$ and called an argumentative path, or simply a path. Its length is denoted by $\card{\hist} \in \N$ and its elements, $\hist(k)$ or $\hist_k$.
@@ -273,13 +273,14 @@ Let $S_θ = \set{{\allleadstog} \in P^{I × \allhist} \suchthat θ \subseteq {\a
 We say that an observation $\theta$ is compatible with a claim $C$ iff $S_\theta \cap C ≠ \emptyset$, equivalently, iff $\theta \in C^\subseteq$.
 
 Given an observation $\theta$, let $\theta^{-1}(P) \subseteq I × \allhist$ denote the pairs $(i, \hist)$ in $\theta$.
-Let $\incr(\allhist) = \cup_{N \subseteq \N} \set{A \in (\allhist)^N \suchthat \card{A_i} = i \land i < j \implies A_i \subsetneq A_j} \subseteq \powerset{\allhist}$ denote the possibly empty embedded sequences of paths.
+Let $\incr(\allhist) = \cup_{N \subseteq \N} \set{A \in (\allhist)^N \suchthat [\card{A_i} = i] \land [i < j \implies A_i \subsetneq A_j]} \subseteq \powerset{\allhist}$ denote the possibly empty embedded sequences of paths.
 An element $\theta^{-1}(P)$ can also be seen as a (finite) function associating to each $i \in I$ an element of $\incr(\allhist)$, thus, a possibly empty embedded sequence of elements in $\allhist$.
 Therefore, we let $\incr(\allhist)^I = \set{\theta^{-1}(P) \suchthat \theta \in \Theta}$ denote the set of possible observations restricted to $I × \allhist$, the elements of which being called \emph{a priori observation}.
 Note that $\incr(\allhist)^I$ is downwards closed, meaning that $\forall O \in \incr(\allhist)^I: O' \subseteq O \implies O' \in \incr(\allhist)^I$.
 Let also $\max\incr(\allhist) = \set{A \in \incr(\allhist) \suchthat \nexists A' \in \incr(\allhist) \suchthat A \subset A'} = \set{A \in \incr(\allhist) \cap (\allhist)^\N}$ denote the maximal elements of $\incr(\allhist)$, in the sense of containing sequences that are not a subsequence of another sequence; equivalently, containing those sequences whose sequence of cardinals of their elements equals $\N$.
-Let a \emph{simple a priori observation} be defined as an element $O \in (\allhist)^I$.
-Given a simple a priori observation $O: I \mapsto \allhist$, we can define the a priori observation $O_O = \set{(i, \hist) \in I × \allhist \suchthat \forall i \in I: \hist \subseteq O(i)}$ as the completion of $O$ to all sub-paths in $O$. 
+
+Let the \emph{simple a priori observations} be defined as $(\allhist)^I$.
+Given a simple a priori observation $O: I \mapsto \allhist$, we can define the a priori observation $O_O = \set{(i, \hist) \in I × \allhist \suchthat \forall i \in I: \hist \subseteq O(i)}$ as the completion of $O$ to all sub-paths in $O$.
 Given $O$ and ${\allleadstog}$, it follows that $S_{\restr{\allleadstog}{O_O}}$ denotes the “leads to” relations that complete $O_O$ using $\allleadstog$.
 
 Similarly, we can view an observation $\theta$ as a function $\theta: I \mapsto \cup_{A \in \incr(\allhist)} P^A$ and thus $\Theta = \finite((\cup_{A \in \incr(\allhist)} P^A)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
@@ -288,58 +289,58 @@ Note that $(\cup_{A \in \max \incr(\allhist)}P^A)^I$ is the set of functions tha
 Given a claim $C$, we can also define the set $\Theta \cap C^\subseteq$ of possibilities for increasing sequences corresponding to the claim.
 This set is downwards-closed, as both $\Theta$ and $C^\subseteq$ are.
 
-  \begin{definition}
-    We say that $C$ is \emph{syntactically falsifiable}, or just falsifiable, iff
-    %$\forall {\allleadstog} \in P^{I × \allhist}: ¬C({\allleadstog}) \implies \exists θ \subseteq {\allleadstog} \suchthat θ \implies ¬C$, meaning that
-    $\forall {\allleadstog} \notin C: \exists θ \subseteq {\allleadstog} \suchthat S_θ \cap C = \emptyset$.
-  \end{definition}
-  Equivalently, iff $\forall {\allleadstog} \notin C: \exists θ \subseteq {\allleadstog} \suchthat \theta \notin C^\subseteq$.
-  Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \suchthat \forall \theta \in \Theta, \theta \subseteq {\allleadstog}: \theta \in C^\subseteq$.
-  \begin{example}
-    $(\ar) \ileadstog \phi \lor  (\ar, \ar) \ileadstog \phi \lor …$ is not falsifiable.
-    Given any $θ$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in θ} \card{\hist} + 1$ if $\exists p \in P \suchthat (i, \hist, p) \in θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in S_θ \cap C ≠ \emptyset$.
-  \end{example}
-  \begin{example}
-    \label{ex:unfals}
-    $(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi$ is not falsifiable.
-    Consider any ${\allleadstog} \notin C$, thus satisfying $(\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$.
-    Consider any $θ \subseteq {\allleadstog}$ and let us prove that $S_θ \cap C ≠ \emptyset$.
-    By definition of a general observation, $θ$ may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $θ$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} \land t \in {\allleadstog'}$. We have ${\allleadstog'} \in S_θ \cap C ≠ \emptyset$.
-  \end{example}
-  \begin{example}
-    $\hist \ileadstog[j] \phi \land [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$ is not falsifiable.
-    Consider any $\allleadstog$ satisfying $(\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$, thus with ${\allleadstog} \notin C$.
-    \Cref{ex:unfals} concludes.
-  \end{example}
-  \begin{example}
-    Consider any $\ar$ and $\phi$. The claim $\forall i: \ar \ileadstostg \phi$ is falsifiable.
-    Given any ${\allleadstog} \notin C$, consider any $i \suchthat \ar \nileadstostg \phi$ and any $\hist \suchthat \hist \nileadstog \phi \land \ar \in \histend$, and define $θ = \set{(i, \hist, {\allleadstog}(i, \hist) ≠ \phi)}$.
-  \end{example}
-  \begin{example}
-    Given an infinite $I$, the claim $\exists i \suchthat \ar \ileadstostg \phi$ is not falsifiable.
-    Given any ${\allleadstog} \notin C$, thus such that $\forall i: \ar \nileadstostg \phi$, any $θ \subseteq {\allleadstog}$ only has finitely many $(i, \hist, p ≠ \phi)$ thus $S_θ \cap C ≠ \emptyset$.
-  \end{example}
-  \begin{example}
-    Consider any $\ar_1 ≠ \ar_2 \in \allargs$, $p ≠ p' \in P$ and any ${\allleadstog^1}, {\allleadstog^2}$ such that $(\ar_1) \ileadstog^1 p$ and $(\ar_1) \ileadstog^2 p'$.
-    The claim $C = \set{{\allleadstog^1}, {\allleadstog^2}}$ is unfalsifiable.
+\begin{definition}
+  We say that $C$ is \emph{syntactically falsifiable}, or just falsifiable, iff
+  %$\forall {\allleadstog} \in P^{I × \allhist}: ¬C({\allleadstog}) \implies \exists θ \subseteq {\allleadstog} \suchthat θ \implies ¬C$, meaning that
+  $\forall {\allleadstog} \notin C: \exists θ \subseteq {\allleadstog} \suchthat S_θ \cap C = \emptyset$.
+\end{definition}
+Equivalently, iff $\forall {\allleadstog} \notin C: \exists θ \subseteq {\allleadstog} \suchthat \theta \notin C^\subseteq$.
+Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \suchthat \forall \theta \in \Theta, \theta \subseteq {\allleadstog}: \theta \in C^\subseteq$.
+\begin{example}
+  $(\ar) \ileadstog \phi \lor  (\ar, \ar) \ileadstog \phi \lor …$ is not falsifiable.
+  Given any $θ$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in θ} \card{\hist} + 1$ if $\exists p \in P \suchthat (i, \hist, p) \in θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in S_θ \cap C ≠ \emptyset$.
+\end{example}
+\begin{example}
+  \label{ex:unfals}
+  $(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi$ is not falsifiable.
+  Consider any ${\allleadstog} \notin C$, thus satisfying $(\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$.
+  Consider any $θ \subseteq {\allleadstog}$ and let us prove that $S_θ \cap C ≠ \emptyset$.
+  By definition of a general observation, $θ$ may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $θ$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} \land t \in {\allleadstog'}$. We have ${\allleadstog'} \in S_θ \cap C ≠ \emptyset$.
+\end{example}
+\begin{example}
+  $\hist \ileadstog[j] \phi \land [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$ is not falsifiable.
+  Consider any $\allleadstog$ satisfying $(\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$, thus with ${\allleadstog} \notin C$.
+  \Cref{ex:unfals} concludes.
+\end{example}
+\begin{example}
+  Consider any $\ar$ and $\phi$. The claim $\forall i: \ar \ileadstostg \phi$ is falsifiable.
+  Given any ${\allleadstog} \notin C$, consider any $i \suchthat \ar \nileadstostg \phi$ and any $\hist \suchthat \hist \nileadstog \phi \land \ar \in \histend$, and define $θ = \set{(i, \hist, {\allleadstog}(i, \hist) ≠ \phi)}$.
+\end{example}
+\begin{example}
+  Given an infinite $I$, the claim $\exists i \suchthat \ar \ileadstostg \phi$ is not falsifiable.
+  Given any ${\allleadstog} \notin C$, thus such that $\forall i: \ar \nileadstostg \phi$, any $θ \subseteq {\allleadstog}$ only has finitely many $(i, \hist, p ≠ \phi)$ thus $S_θ \cap C ≠ \emptyset$.
+\end{example}
+\begin{example}
+  Consider any $\ar_1 ≠ \ar_2 \in \allargs$, $p ≠ p' \in P$ and any ${\allleadstog^1}, {\allleadstog^2}$ such that $(\ar_1) \ileadstog^1 p$ and $(\ar_1) \ileadstog^2 p'$.
+  The claim $C = \set{{\allleadstog^1}, {\allleadstog^2}}$ is unfalsifiable.
 
-    Consider … (seems redundant).
-  \end{example}
-  \begin{remark}
-    The claim “For each glass, it will not break on a monday or not break on a tuesday, whatever happens to it.” is not falsifiable. But one can make it stronger and falsify it, by giving a general theory of how glasses break, proving that it holds, and that it is not compatible with the claim. I should think about this.
-  \end{remark}
-  \begin{remark}
-    To be falsifiable, I need each time I exclude some relation $R$ to also exclude a subset $Cbar$ such that some $O \subseteq R$ satisfies $S_O$ is entirely in $Cbar$.
-  \end{remark}
-  \begin{theorem}
-    A claim $C$ is falsifiable iff its complement $\Cbar$ satisfies:
-    $\forall {\allleadstog} \in \Cbar, \exists \theta \subseteq {\allleadstog} \suchthat S_\theta \subseteq \Cbar$, or equivalently:
-    $\forall {\allleadstog} \in \Cbar, \exists O \in (\allhist)^I \suchthat S_{\restr{\allleadstog}{O_O}} \subseteq \Cbar$.
-  \end{theorem}
+  Consider … (seems redundant).
+\end{example}
+\begin{remark}
+  The claim “For each glass, it will not break on a monday or not break on a tuesday, whatever happens to it.” is not falsifiable. But one can make it stronger and falsify it, by giving a general theory of how glasses break, proving that it holds, and that it is not compatible with the claim. I should think about this.
+\end{remark}
+\begin{remark}
+  To be falsifiable, I need each time I exclude some relation $R$ to also exclude a subset $Cbar$ such that some $O \subseteq R$ satisfies $S_O$ is entirely in $Cbar$.
+\end{remark}
+\begin{theorem}
+  A claim $C$ is falsifiable iff its complement $\Cbar$ satisfies:
+  $\forall {\allleadstog} \in \Cbar, \exists \theta \subseteq {\allleadstog} \suchthat S_\theta \subseteq \Cbar$, or equivalently:
+  $\forall {\allleadstog} \in \Cbar, \exists O \in (\allhist)^I \suchthat S_{\restr{\allleadstog}{O_O}} \subseteq \Cbar$.
+\end{theorem}
 \begin{proof}
   The first phrasing follows from the definition of falsifiability.
   Also, the second phrasing implies the first one: pick $\theta = \restr{\allleadstog}{O_O}$.
-  
+
   Let us prove that the first phrasing implies the second one.
   Given $\theta$, define $O = \set{(i, \argmax_{\hist \in (\theta(i) \cup \emptyset)} \card{\hist})}$ as associating to each $i$ the longest corresponding $\hist$ from $\theta$, or the empty sequence if $\theta(i)$ is empty.
   It follows that $\theta \subseteq \restr{\allleadstog}{O_O}$.
@@ -351,518 +352,536 @@ This set is downwards-closed, as both $\Theta$ and $C^\subseteq$ are.
   Equivalently, pick $k \in \N$, test each $O$ of that length; and proceed for each $k$. Nah.
 \end{conjecture}
 
-  \begin{remark}
-    Let $E \subseteq I × \allhist$ denote an observable compatible set. It is downwards closed.
-    Let $M$ denote a maximal $E$.
-    Any $M$ maps each individual $i \in I$ to an increasing sequence.
-    Given ${\allleadsto}$, let $E_{\allleadsto} \subseteq {\allleadsto}$ denote the observable compatible sets (triples, not pairs, thus including values). These are the $E$ to which the value associated is the one given by $\allleadsto$.
-    Define similarly $M_{\allleadsto}$.
-    Let $X_C \subseteq I × \allhist × P$ denote a subset that is completable to some ${\allleadsto}$ in $C$. It is downwards closed.
-    Let $N_C$ denote a maximal such subset.
-    A claim is not falsifiable iff $\exists {\allleadsto} \notin C \suchthat$ each $E_{\allleadsto}$ equals some $X_C$.
-    A claim is not falsifiable iff $\exists {\allleadsto} \notin C \suchthat$ each $M_{\allleadsto}$ equals some $X_C$.
-    A claim is not falsifiable iff it is possible to pick some $M_{\allleadsto_1}$ from $C$ (that is, a mapping of each individual to an increasing sequence, together with the associated value from $\allleadsto_1$), some other $M_{\allleadsto_2}$ from $C$, and on their common entries (if any) these two relations agree (so their union is a right-unique relation), and so on for each possible mappings $M$, so as to form a complete $\allleadsto$ that is not in $C$.
-    A claim is falsifiable iff it is closed under the above picking operation.
-    Equivalently, a claim is not falsifiable iff this can be done for a given number of $M$ whose union is not an $X_C$.
-    We could need more than two such $M$'s, I suppose: for the theorem below, the number of such $M$'s is equal to the cardinal of the set on which they differ.
-    TODO what about finiteness of observables? Might fail falsifiability because only infinite obs would falsify.
-  \end{remark}
-  \begin{remark}
-    If $C$ is such that $\exists {\allleadsto} \notin C \suchthat$ each $M_{\allleadsto}$ equals some $X_C$, then $C$ is not falsifiable.
-    This looks correct:
-    our counter-example has the relation with some $M$ not equal to any $X_C$.
+\begin{remark}
+  Let $E \subseteq I × \allhist$ denote an observable compatible set. It is downwards closed.
+  Let $M$ denote a maximal $E$.
+  Any $M$ maps each individual $i \in I$ to an increasing sequence.
+  Given ${\allleadsto}$, let $E_{\allleadsto} \subseteq {\allleadsto}$ denote the observable compatible sets (triples, not pairs, thus including values). These are the $E$ to which the value associated is the one given by $\allleadsto$.
+  Define similarly $M_{\allleadsto}$.
+  Let $X_C \subseteq I × \allhist × P$ denote a subset that is completable to some ${\allleadsto}$ in $C$. It is downwards closed.
+  Let $N_C$ denote a maximal such subset.
+  A claim is not falsifiable iff $\exists {\allleadsto} \notin C \suchthat$ each $E_{\allleadsto}$ equals some $X_C$.
+  A claim is not falsifiable iff $\exists {\allleadsto} \notin C \suchthat$ each $M_{\allleadsto}$ equals some $X_C$.
+  A claim is not falsifiable iff it is possible to pick some $M_{\allleadsto_1}$ from $C$ (that is, a mapping of each individual to an increasing sequence, together with the associated value from $\allleadsto_1$), some other $M_{\allleadsto_2}$ from $C$, and on their common entries (if any) these two relations agree (so their union is a right-unique relation), and so on for each possible mappings $M$, so as to form a complete $\allleadsto$ that is not in $C$.
+  A claim is falsifiable iff it is closed under the above picking operation.
+  Equivalently, a claim is not falsifiable iff this can be done for a given number of $M$ whose union is not an $X_C$.
+  We could need more than two such $M$'s, I suppose: for the theorem below, the number of such $M$'s is equal to the cardinal of the set on which they differ.
+  TODO what about finiteness of observables? Might fail falsifiability because only infinite obs would falsify.
+\end{remark}
+\begin{remark}
+  If $C$ is such that $\exists {\allleadsto} \notin C \suchthat$ each $M_{\allleadsto}$ equals some $X_C$, then $C$ is not falsifiable.
+  This looks correct:
+  our counter-example has the relation with some $M$ not equal to any $X_C$.
 
-    To obtain non fals, need to form a relation whose all decompositions into incr associations are in $C$, but itself not in $C$.
-  \end{remark}
-  \begin{conjecture}
-    Given a claim $C$, consider the subsets of $(\cup_{A \in \max \incr(\allhist)}P^A)^I \cap C^\subseteq$ whose union, considered as a relation on $(I × \allhist) × P$, is total and right-unique (that is, the subsets that form a new relation $\allleadstog$).
-    $C$ is falsifiable iff these new elements are necessarily in $C$.
-  \end{conjecture}
-  \begin{proof}
-    This seems false. (Consider $I = \set{i_1, i_2}$ and $\args = \set{a, b}$ and $\psi$ is ${\ileadsto[i_1]} = {\ileadsto[i_2]}$ and $S = \set{R_1, R_2, …}$ with $R_1$ are all sequences starting with $a$ sent to $p$ and $R_2$ are all sequences starting with $b$ sent to $p' ≠ p$.)
-    % Consider $S \subseteq (\cup_{A \in \max \incr(\allhist)}P^A)^I \cap C^\subseteq$ (thus each $R \in S$ is a relation $R \subseteq (I × \allhist) × P$). Assume that $\cup S$ is total and right-unique and is not in $C$.
-    % Let us show that $C$ is not falsifiable.
-    % Define ${\allleadstog} = \cup S$, pick any $\theta \in \Theta, \theta \subseteq {\allleadstog}$ and let us show that $\theta \in C^\subseteq$.
-    % Let us show that $\exists R \in S \suchthat \theta \subseteq R$.
-    % Pick any triple $t \in \theta$. Thus, $t \in \cup S$. Thus, for some $R \in S$, $t \in R$. And $R \in C^\subseteq$.
-    % Pick any two triples $t, t' \in \theta$. Wlog, $\hist \subseteq \hist'$.
-  \end{proof}
-  \begin{conjecture}
-    Given a claim $C$, consider the sets $S \subseteq C^\subseteq$ such that $\set{s^{-1}(P) \suchthat s \in S} = \incr(\allhist)^I$ and such that $\cup S$, considered as a relation on $(I × \allhist) × P$, is right-unique (that is, $\cup S$ forms a new relation $\allleadstog$).
-    $C$ is falsifiable iff all such sets $S$ are in $C$.
-  \end{conjecture}
-  \begin{proof}
-    Consider such $S$.
-    Assume that $\cup S$ is right-unique and is not in $C$.
-    Let us show that $C$ is not falsifiable.
-    Define ${\allleadstog} = \cup S$, pick any $\theta \in \Theta, \theta \subseteq {\allleadstog}$ and let us show that $\theta \in C^\subseteq$.
-    Define $O \in (\incr(\allhist))^I \suchthat \theta^{-1}(P) \subseteq O$. Thus, $O \in \set{s^{-1}(P) \suchthat s \in S}$. Pick an $s \in S \suchthat s^{-1}(P) = O$. We have $s \in C^\subseteq$ and $\theta^{-1}(P) \subseteq s^{-1}(P)$.
-    Also, $\theta \subseteq \cup S$, and $\cup S$ is right-unique, so $\theta$ coincides with $s$ on its domain. It follows that $\theta \subseteq s$. As $C^\subseteq$ is downwards-closed, this concludes.
+  To obtain non fals, need to form a relation whose all decompositions into incr associations are in $C$, but itself not in $C$.
+\end{remark}
+\begin{conjecture}
+  Given a claim $C$, consider the subsets of $(\cup_{A \in \max \incr(\allhist)}P^A)^I \cap C^\subseteq$ whose union, considered as a relation on $(I × \allhist) × P$, is total and right-unique (that is, the subsets that form a new relation $\allleadstog$).
+  $C$ is falsifiable iff these new elements are necessarily in $C$.
+\end{conjecture}
+\begin{proof}
+  This seems false. (Consider $I = \set{i_1, i_2}$ and $\args = \set{a, b}$ and $\psi$ is ${\ileadsto[i_1]} = {\ileadsto[i_2]}$ and $S = \set{R_1, R_2, …}$ with $R_1$ are all sequences starting with $a$ sent to $p$ and $R_2$ are all sequences starting with $b$ sent to $p' ≠ p$.)
+  % Consider $S \subseteq (\cup_{A \in \max \incr(\allhist)}P^A)^I \cap C^\subseteq$ (thus each $R \in S$ is a relation $R \subseteq (I × \allhist) × P$). Assume that $\cup S$ is total and right-unique and is not in $C$.
+  % Let us show that $C$ is not falsifiable.
+  % Define ${\allleadstog} = \cup S$, pick any $\theta \in \Theta, \theta \subseteq {\allleadstog}$ and let us show that $\theta \in C^\subseteq$.
+  % Let us show that $\exists R \in S \suchthat \theta \subseteq R$.
+  % Pick any triple $t \in \theta$. Thus, $t \in \cup S$. Thus, for some $R \in S$, $t \in R$. And $R \in C^\subseteq$.
+  % Pick any two triples $t, t' \in \theta$. Wlog, $\hist \subseteq \hist'$.
+\end{proof}
+\begin{theorem}
+  Given a claim $C$, consider the sets $S \subseteq C^\subseteq$ such that $\set{\theta^{-1}(P) \suchthat \theta \in S} = \incr(\allhist)^I$ and such that $\cup S$, considered as a relation on $(I × \allhist) × P$, is right-unique (that is, $\cup S$ forms a new relation $\allleadstog$).
+  $C$ is falsifiable iff all such sets $S$ satisfy $\cup S \in C$.
+\end{theorem}
+\begin{proof}
+  Consider such $S$.
+  Assume that $\cup S$ is not in $C$.
+  Let us show that $C$ is not falsifiable.
+  Define ${\allleadstog} = \cup S$, pick any $\theta \in \Theta, \theta \subseteq {\allleadstog}$ and let us show that $\theta \in C^\subseteq$.
+  Define $O \in (\incr(\allhist))^I \suchthat \theta^{-1}(P) \subseteq O$. Thus, $O \in \set{\theta^{-1}(P) \suchthat \theta \in S}$. Pick an element $\theta' \in S \suchthat (\theta')^{-1}(P) = O$. We have $\theta' \in C^\subseteq$ and $\theta^{-1}(P) \subseteq (\theta')^{-1}(P)$.
+  Also, $\theta \subseteq \cup S$, and $\cup S$ is right-unique, so $\theta$ coincides with $\theta'$ on its domain (meaning that $\theta = \restr{\theta'}{\theta^{-1}(P)}$). It follows that $\theta \subseteq \theta'$. As $C^\subseteq$ is downwards-closed, this concludes.
 
-    Now, Assume that $C$ is not falsifiable and pick any ${\allleadstog} \notin C \suchthat \forall \theta \in \Theta, \theta \subseteq {\allleadstog}: \theta \in C^\subseteq$. Let us exhibit a set $S$ such that $\cup S = {\allleadstog}$.
-    Pick any $O \in (\incr(\allhist))^I$ and complete it with values from $\allleadstog$ to obtain a $c$. Now, we know that $C^\subseteq$ contains all finite subsequences of $c$, but it does not follow that it contains the infinite sequence $O$, does it?
-    If $C ≠ \emptyset$, an element $c'$ has the same domain as $c$. We know that $c_1 \subseteq c_2 \subseteq …$, where each is a finite subset, is extensible to some function in $C$… ???
-  \end{proof}
+  Now, assume that $C$ is not falsifiable and pick any ${\allleadstog} \notin C \suchthat \forall \theta \in \Theta, \theta \subseteq {\allleadstog}: \theta \in C^\subseteq$.
+  Given any $O \in (\incr(\allhist))^I$, we have $\restr{\allleadstog}{O} \in C^\subseteq$.
+  Define $S = \set{\restr{\allleadstog}{O} \suchthat O \in (\incr(\allhist))^I}$.
+  The set $S$ satisfies the required conditions and $\cup S = {\allleadstog}$, thus, $\cup S \notin C$.
+\end{proof}
+Here is another way (perhaps more illuminating) of stating the same thing.
+Any relation $\allleadstog$ is equivalent to $\cup \set{\restr{\allleadstog}{O} \suchthat O \in (\incr(\allhist))^I}$.
+Conversely, any set $S$ such that $\set{\theta^{-1}(P) \suchthat \theta \in S} = \incr(\allhist)^I$ and $\cup S$ is right-unique corresponds to a unique relation $\cup S = {\allleadstog}$.
+Thus, there is a bijection between the set of such sets $S$ and the set of leads to relations.
+We can then rephrase the above theorem as follows.
+A claim $C$ is falsifiable iff $\forall S \in \mathcal{S}: S \subseteq C^\subseteq \implies \cup S \in C$.
+Equivalently, as follows.
+\begin{theorem}
+  A claim $C$ is falsifiable iff $\forall {\allleadstog} \in P^{I × \allhist}: \set{\restr{\allleadstog}{O} \suchthat O \in (\incr(\allhist))^I} \subseteq C^\subseteq \implies {\allleadstog} \in C$.
+\end{theorem}
+\begin{proof}
+  By definition, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \suchthat \forall θ \subseteq {\allleadstog}: S_θ \cap C \neq \emptyset$;
+  equivalently, iff $\exists {\allleadstog} \notin C \suchthat \forall θ \subseteq {\allleadstog}: θ \in C^\subseteq$;
+  equivalently, iff $\exists {\allleadstog} \notin C \suchthat \set{θ \subseteq {\allleadstog}} \subseteq C^\subseteq$.
 
-  Any claim containing two relations that differ only on incompatible observations is not falsifiable.
-  \begin{theorem}
-    Any $C$ such that $\exists {\allleadstog^1}, {\allleadstog^2} \in C \suchthat$ some combination of them ${\allleadstog} \notin C$ (meaning that ${\allleadstog} \subseteq {\allleadstog^1} \cup {\allleadstog^2}$) and the set over which they differ, $\set{(i, \hist) \suchthat {\allleadstog^1}(i, \hist) ≠ {\allleadstog^2}(i, \hist)}$, does not contain two elements that are simultaneously observable (meaning that no $θ$ contains more than one of these elements), is not falsifiable.
-  \end{theorem}
-  \begin{proof}
-    Consider any $θ \subset {\allleadstog}$.
-    If $θ$ is fully compatible with ${\allleadstog^1}$, then ${\allleadstog^1} \in S_θ \cap C ≠ \emptyset$.
-    Otherwise, $θ$ contains some element $(i, \hist, {\allleadstog^2}(i, \hist))$ with ${\allleadstog^2}(i, \hist) ≠ {\allleadstog^1}(i, \hist)$. Then, ${\allleadstog^2} \in S_θ \cap C ≠ \emptyset$, for otherwise, for at least one other element $(i', \histp)$, $θ$ contains $(i', \histp, {\allleadstog^1}(i', \histp))$ with ${\allleadstog^1}(i', \histp) ≠ {\allleadstog^2}(i', \histp)$, which violates the hypothesis.
-  \end{proof}
-  The following example illustrates the need for the condition about the combination in the theorem.
-  \begin{example}
-    Pick $i \in I$, $p ≠ p' \in P$ and $\hist, \histp \in \allhist$ with $\hist$ and $\histp$ non prefix related.
-    The claim $\psi = (\hist \ileadstog p \lor \hist \ileadstog p') \land (\histp \ileadstog p \lor \histp \ileadstog p') \land (\forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p)$ is falsifiable.
+  The theorem holds because $\forall {\allleadstog} \in P^{I × \allhist}: \set{\restr{\allleadstog}{O} \suchthat O \in (\incr(\allhist))^I} = \set{θ \subseteq {\allleadstog}}$.
+\end{proof}
 
-    Given $q, q' \in P$, let ${\allleadstog^{q, q'}}$ be defined as $\hist \ileadstog^{q, q'} q$, $\histp \ileadstog q'$ and $\forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p$.
-    Note that $C_\psi = \set{{\allleadstog^{p, p}}, {\allleadstog^{p, p'}}, {\allleadstog^{p', p}}, {\allleadstog^{p', p'}}}$.
-  \end{example}
+Any claim containing two relations that differ only on incompatible observations is not falsifiable.
+\begin{theorem}
+  Any $C$ such that $\exists {\allleadstog^1}, {\allleadstog^2} \in C \suchthat$ some combination of them ${\allleadstog} \notin C$ (meaning that ${\allleadstog} \subseteq {\allleadstog^1} \cup {\allleadstog^2}$) and the set over which they differ, $\set{(i, \hist) \suchthat {\allleadstog^1}(i, \hist) ≠ {\allleadstog^2}(i, \hist)}$, does not contain two elements that are simultaneously observable (meaning that no $θ$ contains more than one of these elements), is not falsifiable.
+\end{theorem}
+\begin{proof}
+  Consider any $θ \subset {\allleadstog}$.
+  If $θ$ is fully compatible with ${\allleadstog^1}$, then ${\allleadstog^1} \in S_θ \cap C ≠ \emptyset$.
+  Otherwise, $θ$ contains some element $(i, \hist, {\allleadstog^2}(i, \hist))$ with ${\allleadstog^2}(i, \hist) ≠ {\allleadstog^1}(i, \hist)$. Then, ${\allleadstog^2} \in S_θ \cap C ≠ \emptyset$, for otherwise, for at least one other element $(i', \histp)$, $θ$ contains $(i', \histp, {\allleadstog^1}(i', \histp))$ with ${\allleadstog^1}(i', \histp) ≠ {\allleadstog^2}(i', \histp)$, which violates the hypothesis.
+\end{proof}
+The following example illustrates the need for the condition about the combination in the theorem.
+\begin{example}
+  Pick $i \in I$, $p ≠ p' \in P$ and $\hist, \histp \in \allhist$ with $\hist$ and $\histp$ non prefix related.
+  The claim $\psi = (\hist \ileadstog p \lor \hist \ileadstog p') \land (\histp \ileadstog p \lor \histp \ileadstog p') \land (\forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p)$ is falsifiable.
 
-  \begin{conjecture}
-    If a claim $C$ is not falsifiable, then $\exists {\allleadstog^1}, {\allleadstog^2} \in C \suchthat$ some combination of them ${\allleadstog} \notin C$ (meaning that ${\allleadstog} \subseteq {\allleadstog^1} \cup {\allleadstog^2}$) and the set over which they differ, $\set{(i, \hist) \suchthat {\allleadstog^1}(i, \hist) ≠ {\allleadstog^2}(i, \hist)}$, does not contain two elements that are simultaneously observable (meaning that no $θ$ contains more than one of these elements).
-  \end{conjecture}
-  \begin{conjecture}
-    If $\forall {\allleadstog^1}, {\allleadstog^2} \in C \suchthat$ some combination of them ${\allleadstog} \notin C$ (meaning that ${\allleadstog} \subseteq {\allleadstog^1} \cup {\allleadstog^2}$), the set over which they differ, $\set{(i, \hist) \suchthat {\allleadstog^1}(i, \hist) ≠ {\allleadstog^2}(i, \hist)}$, contains at least two elements that are simultaneously observable (meaning that some $θ$ contains more than one of these elements), then $C$ is falsifiable.
-  \end{conjecture}
-  \begin{proof}
-    We need a stronger hypothesis.
-    Consider $one$ and $two$ differ on $(i, (a))$, $(i, (b))$ and $(i, (a, a))$. And some $three$ not in $C$ has $(i, (a)), (i, (a, a))$ as in $one$ and $(i, (b))$ as in $two$. Then $C$ is not falsifiable.
-  \end{proof}
-  \begin{conjecture}
-    If $\forall {\allleadstog^1}, {\allleadstog^2} \in C \suchthat$ some combination of them ${\allleadstog} \notin C$ (meaning that ${\allleadstog} \subseteq {\allleadstog^1} \cup {\allleadstog^2}$), the set over which they differ, $\set{(i, \hist) \suchthat {\allleadstog^1}(i, \hist) ≠ {\allleadstog^2}(i, \hist)}$, we can find some $(i, \hist) \in {\allleadstog^1}, (j, \hist') \in {\allleadstog^2}$ obs-compatible, then $C$ is falsifiable.
-  \end{conjecture}
-  \begin{proof}
-    This fails. Could have $one$, $two$, $three$, each sending everything to $p$, $¬p$ and $0$, respectively, and any combination of two of these in $C$, but no comb of three in $C$. Then $four$ a combination of the three ($i, a, p, i, b, ¬p, i, c, 0$), but $C$ not falsifiable. Actually, even if we can observe two among the three (using $i, a, p, i, aa, ¬p, i, b, 0$), we can’t falsifiy $four$.
-  \end{proof}
+  Given $q, q' \in P$, let ${\allleadstog^{q, q'}}$ be defined as $\hist \ileadstog^{q, q'} q$, $\histp \ileadstog q'$ and $\forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p$.
+  Note that $C_\psi = \set{{\allleadstog^{p, p}}, {\allleadstog^{p, p'}}, {\allleadstog^{p', p}}, {\allleadstog^{p', p'}}}$.
+\end{example}
 
-  Given an exposure protocol $\allleadsto$, we say that a claim $C$ \emph{holds} iff $C \ni {\allleadsto}$.
-  We say that $C$ is \emph{empirically falsifiable} iff $\exists θ \subseteq {\allleadsto} \suchthat S_θ \cap C = \emptyset$.
+\begin{conjecture}
+  If a claim $C$ is not falsifiable, then $\exists {\allleadstog^1}, {\allleadstog^2} \in C \suchthat$ some combination of them ${\allleadstog} \notin C$ (meaning that ${\allleadstog} \subseteq {\allleadstog^1} \cup {\allleadstog^2}$) and the set over which they differ, $\set{(i, \hist) \suchthat {\allleadstog^1}(i, \hist) ≠ {\allleadstog^2}(i, \hist)}$, does not contain two elements that are simultaneously observable (meaning that no $θ$ contains more than one of these elements).
+\end{conjecture}
+\begin{conjecture}
+  If $\forall {\allleadstog^1}, {\allleadstog^2} \in C \suchthat$ some combination of them ${\allleadstog} \notin C$ (meaning that ${\allleadstog} \subseteq {\allleadstog^1} \cup {\allleadstog^2}$), the set over which they differ, $\set{(i, \hist) \suchthat {\allleadstog^1}(i, \hist) ≠ {\allleadstog^2}(i, \hist)}$, contains at least two elements that are simultaneously observable (meaning that some $θ$ contains more than one of these elements), then $C$ is falsifiable.
+\end{conjecture}
+\begin{proof}
+  We need a stronger hypothesis.
+  Consider $one$ and $two$ differ on $(i, (a))$, $(i, (b))$ and $(i, (a, a))$. And some $three$ not in $C$ has $(i, (a)), (i, (a, a))$ as in $one$ and $(i, (b))$ as in $two$. Then $C$ is not falsifiable.
+\end{proof}
+\begin{conjecture}
+  If $\forall {\allleadstog^1}, {\allleadstog^2} \in C \suchthat$ some combination of them ${\allleadstog} \notin C$ (meaning that ${\allleadstog} \subseteq {\allleadstog^1} \cup {\allleadstog^2}$), the set over which they differ, $\set{(i, \hist) \suchthat {\allleadstog^1}(i, \hist) ≠ {\allleadstog^2}(i, \hist)}$, we can find some $(i, \hist) \in {\allleadstog^1}, (j, \hist') \in {\allleadstog^2}$ obs-compatible, then $C$ is falsifiable.
+\end{conjecture}
+\begin{proof}
+  This fails. Could have $one$, $two$, $three$, each sending everything to $p$, $¬p$ and $0$, respectively, and any combination of two of these in $C$, but no comb of three in $C$. Then $four$ a combination of the three ($i, a, p, i, b, ¬p, i, c, 0$), but $C$ not falsifiable. Actually, even if we can observe two among the three (using $i, a, p, i, aa, ¬p, i, b, 0$), we can’t falsifiy $four$.
+\end{proof}
 
-  The following theorem verifies that when $C$ holds, it is not empirically falsifiable (though it may be syntactically falsifiable).
-  \begin{theorem}
-    \label{th:ex-post}
-    $\forall C \ni {\allleadsto}: \nexists θ \subseteq {\allleadsto} \suchthat S_θ \cap C = \emptyset$.
-  \end{theorem}
-  \begin{proof}
-    We have, $\forall C \suchthat C \ni {\allleadsto}, \forall θ \subseteq {\allleadsto}$: $θ \subseteq {\allleadsto} \in C$, equivalently, ${\allleadsto} \in S_θ \cap C$, thus $S_θ \cap C ≠ \emptyset$.
-  \end{proof}
-  Therefore, synctactic falsifiability guarantees that a claim holds if, and only if, it is not empirically falsifiable.
-  \begin{theorem}
-    \label{th:holdsiff}
-    For all syntactically falsifiable $C$: ${\allleadsto} \in C$ iff $\nexists θ \subseteq {\allleadsto} \suchthat S_θ \cap C = \emptyset$.
-  \end{theorem}
-  \begin{proof}
-    Consider any syntactically falsifiable $C$.
-    By definition of falsifiability, $\forall {\allleadstog}: \nexists θ \subseteq {\allleadstog} \suchthat S_θ \cap C = \emptyset \implies {\allleadstog} \in C$.
-    In particular,
-    $\nexists θ \subseteq {\allleadsto} \suchthat S_θ \cap C = \emptyset \implies {\allleadsto} \in C$.
-    The reverse implication is proven by \cref{th:ex-post}.
-  \end{proof}
+Given an exposure protocol $\allleadsto$, we say that a claim $C$ \emph{holds} iff $C \ni {\allleadsto}$.
+We say that $C$ is \emph{empirically falsifiable} iff $\exists θ \subseteq {\allleadsto} \suchthat S_θ \cap C = \emptyset$.
 
-  Given an exposure protocol $\allleadsto$, deliberated choices are represented by an element $\pi({\allleadsto}) \subseteq I × P$ which is right unique (meaning that $\forall i \in I: \card{\pi({\allleadsto})(i)} ≤ 1$).
-  Equivalently, let $(P \cup \set{\emptyset})^I$ denote the right unique relations over $I × P$; and then the deliberated choices are an element $\pi({\allleadsto}) \in (P \cup \set{\emptyset})^I$.
-  We say that $C$ is \emph{informative} iff $\exists {\allleadstog} \in (P \cup \set{\emptyset})^I \suchthat C \implies ¬{\allleadstog}$, meaning that $\pi(C) = \set{\pi(\allleadstog) \suchthat {\allleadstog} \in C} ≠ (P \cup \set{\emptyset})^I$.
+The following theorem verifies that when $C$ holds, it is not empirically falsifiable (though it may be syntactically falsifiable).
+\begin{theorem}
+  \label{th:ex-post}
+  $\forall C \ni {\allleadsto}: \nexists θ \subseteq {\allleadsto} \suchthat S_θ \cap C = \emptyset$.
+\end{theorem}
+\begin{proof}
+  We have, $\forall C \suchthat C \ni {\allleadsto}, \forall θ \subseteq {\allleadsto}$: $θ \subseteq {\allleadsto} \in C$, equivalently, ${\allleadsto} \in S_θ \cap C$, thus $S_θ \cap C ≠ \emptyset$.
+\end{proof}
+Therefore, synctactic falsifiability guarantees that a claim holds if, and only if, it is not empirically falsifiable.
+\begin{theorem}
+  \label{th:holdsiff}
+  For all syntactically falsifiable $C$: ${\allleadsto} \in C$ iff $\nexists θ \subseteq {\allleadsto} \suchthat S_θ \cap C = \emptyset$.
+\end{theorem}
+\begin{proof}
+  Consider any syntactically falsifiable $C$.
+  By definition of falsifiability, $\forall {\allleadstog}: \nexists θ \subseteq {\allleadstog} \suchthat S_θ \cap C = \emptyset \implies {\allleadstog} \in C$.
+  In particular,
+  $\nexists θ \subseteq {\allleadsto} \suchthat S_θ \cap C = \emptyset \implies {\allleadsto} \in C$.
+  The reverse implication is proven by \cref{th:ex-post}.
+\end{proof}
 
-  \begin{definition}[Anonymity]
-    Given a permutation $\sigma$ over $I$ and any ${\allleadstog} \in P^{I × \allhist}$, let ${\allleadstog} \circ \sigma$ denote $\set{(i, \hist, \phi) \suchthat (\sigma(i), \hist, \phi) \in {\allleadstog}}$ and let $C \circ \sigma$ denote $\set{{\allleadstog} \circ \sigma \suchthat {\allleadstog} \in C}$.
-    A claim $C$ is \emph{anonymous} iff $\forall \sigma: C = C \circ \sigma$.
-  \end{definition}
-  \begin{example}
-    Given $\ar$ and $\phi$, the claim $\ar \ileadstog \phi$ is not anonymous iff $\card{I} ≥ 2$. Indeed, pick any $j ≠ i$ and define $\sigma(i) = j$, $\sigma(j) = i$ and $\forall k \in I \setminus \set{i, j}: \sigma(k) = k$, then $C = \set{{\allleadstog} \suchthat {\allleadstog}(i, \ar) = \phi}$, which contains in particular ${\allleadsto}$ defined as $\forall \hist: [\forall k \in I \setminus \set{j}, {\allleadsto}(k, \hist) = \phi \land {\allleadsto}(j, \hist) = ¬\phi$; while $C \circ \sigma = \set{{\allleadstog} \suchthat {\allleadstog}(j, \ar) = \phi}$ which does not contain ${\allleadsto}$.
-  \end{example}
+Given an exposure protocol $\allleadsto$, deliberated choices are represented by an element $\pi({\allleadsto}) \subseteq I × P$ which is right unique (meaning that $\forall i \in I: \card{\pi({\allleadsto})(i)} ≤ 1$).
+Equivalently, let $(P \cup \set{\emptyset})^I$ denote the right unique relations over $I × P$; and then the deliberated choices are an element $\pi({\allleadsto}) \in (P \cup \set{\emptyset})^I$.
+We say that $C$ is \emph{informative} iff $\exists {\allleadstog} \in (P \cup \set{\emptyset})^I \suchthat C \implies ¬{\allleadstog}$, meaning that $\pi(C) = \set{\pi(\allleadstog) \suchthat {\allleadstog} \in C} ≠ (P \cup \set{\emptyset})^I$.
+
+\begin{definition}[Anonymity]
+  Given a permutation $\sigma$ over $I$ and any ${\allleadstog} \in P^{I × \allhist}$, let ${\allleadstog} \circ \sigma$ denote $\set{(i, \hist, \phi) \suchthat (\sigma(i), \hist, \phi) \in {\allleadstog}}$ and let $C \circ \sigma$ denote $\set{{\allleadstog} \circ \sigma \suchthat {\allleadstog} \in C}$.
+  A claim $C$ is \emph{anonymous} iff $\forall \sigma: C = C \circ \sigma$.
+\end{definition}
+\begin{example}
+  Given $\ar$ and $\phi$, the claim $\ar \ileadstog \phi$ is not anonymous iff $\card{I} ≥ 2$. Indeed, pick any $j ≠ i$ and define $\sigma(i) = j$, $\sigma(j) = i$ and $\forall k \in I \setminus \set{i, j}: \sigma(k) = k$, then $C = \set{{\allleadstog} \suchthat {\allleadstog}(i, \ar) = \phi}$, which contains in particular ${\allleadsto}$ defined as $\forall \hist: [\forall k \in I \setminus \set{j}, {\allleadsto}(k, \hist) = \phi \land {\allleadsto}(j, \hist) = ¬\phi$; while $C \circ \sigma = \set{{\allleadstog} \suchthat {\allleadstog}(j, \ar) = \phi}$ which does not contain ${\allleadsto}$.
+\end{example}
 
 $C$ is \emph{suitable} iff it holds and is anonymous, informative and falsifiable.
-  \begin{example}
-    Assume that $\exists \ar, \phi \suchthat \forall i: \ar \ileadstost \phi$.
-    Then $\forall i: \ar \ileadstostg \phi$ is suitable.
-    Note that it is falsifiable but not verifiable (that is, no $O$ implies $C$).
-  \end{example}
+\begin{example}
+  Assume that $\exists \ar, \phi \suchthat \forall i: \ar \ileadstost \phi$.
+  Then $\forall i: \ar \ileadstostg \phi$ is suitable.
+  Note that it is falsifiable but not verifiable (that is, no $O$ implies $C$).
+\end{example}
 
-  Our goal now is to find an exposure protocol $\allleadsto$ with no suitable claim.
+Our goal now is to find an exposure protocol $\allleadsto$ with no suitable claim.
 
-  \subsection{Ideas for no suitable}
-  Given $\histk \in \allhist$ and $\ar_l \in \allargs$, let $(\histk, …, \ar_l, ?)$ denote the set
+\subsection{Ideas for no suitable}
+Given $\histk \in \allhist$ and $\ar_l \in \allargs$, let $(\histk, …, \ar_l, ?)$ denote the set
 $\set{\histl \suchthat \histk \subset \histl \land \ar_l \in \histlend}$.
-  Given $\hist \in \allhist$, ${\ileadstog}$ and $\ar_k, \ar_l \in \allargs$, let $(\hist, \ar_k, ?, \nileadstog \phi, …, \ar_l, ?)$ denote the set
+Given $\hist \in \allhist$, ${\ileadstog}$ and $\ar_k, \ar_l \in \allargs$, let $(\hist, \ar_k, ?, \nileadstog \phi, …, \ar_l, ?)$ denote the set
 $\set{\histl \suchthat \exists \histk \suchthat \hist \subset \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadstog \phi \land \ar_l \in \histlend}$.
-  Given $\ar_k, \ar_l \in \allargs$, let
+Given $\ar_k, \ar_l \in \allargs$, let
 $(…, \ar_k, ?, \nileadstog \phi, …, \ar_l, ?)$ denote the set
 $\cup_{\hist \in \allhist} (\hist, \ar_k, ?, \nileadstog \phi, …, \ar_l, ?) =
-\set{\histl \suchthat \exists \hist, \histk \suchthat \hist \subset \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadstog \phi \land \ar_l \in \histlend} =
-\set{\histl \suchthat \exists \histk \suchthat \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadstog \phi \land \ar_l \in \histlend}$.
-  Given ${\ileadstog}$, $p \in P$, $s \in \allargs$ and $S \subseteq \allargs$, note that $s \in \ileadstoinvg(p)$ stand for $s \ileadstog p$ and $S \subseteq \ileadstoinvg(p)$ stand for $\forall s \in S: s \ileadstog p$.
+  \set{\histl \suchthat \exists \hist, \histk \suchthat \hist \subset \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadstog \phi \land \ar_l \in \histlend} =
+  \set{\histl \suchthat \exists \histk \suchthat \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadstog \phi \land \ar_l \in \histlend}$.
+Given ${\ileadstog}$, $p \in P$, $s \in \allargs$ and $S \subseteq \allargs$, note that $s \in \ileadstoinvg(p)$ stand for $s \ileadstog p$ and $S \subseteq \ileadstoinvg(p)$ stand for $\forall s \in S: s \ileadstog p$.
 
-  \begin{theorem}
-    Given any $p \in P, \ar_k, \ar_l \in \allargs$, consider the following claim $C$:
-    \begin{multline}
-      \label{eq:cl}
-      \forall i \in I, \forall \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l},
-      \forall \hist \in (…, \ar_1, ?) \cap \nileadstoinvg(p): \\
-      (\hist, …, \ar_2, ?) \subseteq \ileadstoinvg(p).
-    \end{multline}
-    Assume that ${\allleadsto} \in C$. Then
-    $\exists i \in I \suchthat [\ar_k \nileadstost p \land \ar_l \nileadstost p]$
-    is equivalent to:
-    \begin{multline}
-      \label{eq:cln}
-      \exists i \in I \suchthat \forall \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l}:\\
-      \exists \hist \in (…, \ar_1, ?) \cap \nileadstoinv(p) \suchthat
-      (\hist, …, \ar_2, ?) \subseteq \ileadstoinv(p).
-    \end{multline}
-  \end{theorem}
-  \begin{proof}
-    $\ar_k \nileadstost p$ iff $\exists \hist \suchthat \ar_k \in \histend \land \hist \nileadsto p$.
-  \end{proof}
-  \begin{remark}
-    Idea.
-    That consequence is unfalsifiable so we cannot include anything like this in $C$ (only something stronger, but of course a stronger statement could be false). Therefore, with no addition, we are doomed that exists some situations where no claim is suitable.
-  \end{remark}
-  \begin{theorem}
-    Pick any $p \in P$ and $\ar_k ≠ \ar_l \in \allargs$ and consider the claim \eqref{eq:cl} and not \eqref{eq:cln}, thus, \eqref{eq:cl} and $\forall i, \ar_k \ileadstostg p \lor \ar_l \ileadstostg p$. It is not falsifiable.
-  \end{theorem}
-  \begin{proof}
-    %	Intuitively, because it might require (with $\hist = (\ar_1)$) to observe that for a given $i$, $(a_1) \nileadsto p \land (\ar_1, \ar_2) \ileadsto p$ and also $(\ar_2) \nileadsto p \land (\ar_2, \ar_1) \ileadsto p$.
-    We need to exhibit some ${\allleadstog} \notin C$ such that $\forall θ \subseteq {\allleadstog}: S_θ \cap C ≠ \emptyset$.
-    Define $\allleadstog$ as, $\forall i \in I$, $(\ar_k) \nileadstog p, (\ar_l) \nileadstog p, \forall \hist \in \allhist \setminus \set{(\ar_k), (\ar_l)}: \hist \ileadstog p$.
-    It follows that $\ar_k \nileadstostg p \land \ar_l \nileadstostg p$. Thus, ${\allleadstog} \notin C$.
-    Now pick any $θ \subseteq {\allleadstog}$.
-    % The set $O$ can’t have both $(\ar_k) \nileadstog p$ and $(\ar_l) \nileadstog p$.
-    % Assume, wlog, that $(\ar_k, i, {\allleadstog}(\ar_k, i)) \notin O$.
-    %	Then, intuitively, $\ar_k$ decisive is in $S_θ \cap C$.
-    Define $\allleadstog'$ as, $\forall i \in I: \forall \hist \in \allhist \setminus \set{(\ar_k), (\ar_l)}, \hist \ileadstog' p$
-    and $\forall \ar \in \set{\ar_k, \ar_l}$, $(\ar) \ileadstog' ({\allleadstog}(\ar, i))$ if $(\ar, i, {\allleadstog}(\ar, i)) \in O$, $(\ar) \ileadstog' p$ otherwise.
-    %Pick any $p' ≠ p$ and define $\allleadstog'$ as, $\forall i \in I: \forall \hist \in \allhist \setminus \set{(\ar_l)}, \hist \ileadstog' p \land (\ar_l) \ileadstog' p' ≠ p$.
-    The set $O$ can’t have both $(\ar_k) \nileadstog p$ and $(\ar_l) \nileadstog p$, thus, ${\allleadstog'} \in C$.
-    We conclude that ${\allleadstog'} \in S_θ \cap C$.
-  \end{proof}
-  \begin{theorem}[Informal]
-    Assume that the NOT consequence holds and the claim holds.
-    Prove that there is no suitable claim.
-    If the claim is just the NOT cons and claim, then it is not fals.
-    If the claim is weaker, it does not permit to prove that $\ar_k$ or $\ar_l$ is decisive. (BUT does it possibly prove that some arg is decisive? But it may be false.)
-    If the claim is stronger, it may be false.
-  \end{theorem}
-  \begin{theorem}[Formal]
-    Pick any $p \in P$ and $\ar_k ≠ \ar_l \in \allargs$ and assume that $\allleadsto$ fails \cref{eq:cln}, that is, satisfies:
-    \begin{multline}
-      \label{eq:answerable}
-      \forall i \in I, \exists \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l} \suchthat
-      \forall \hist \in (…, \ar_1, ?) \cap \nileadstoinv(p): \\
-      (\hist, …, \ar_2, ?) \cap \ileadstoinv(p) ≠ \emptyset.
-    \end{multline}
-    Assume further that $\allleadsto$ satisfies \eqref{eq:cl}, thus:
-    $\forall i \in I, \forall \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l},
-      \forall \hist \in (…, \ar_1, ?) \cap \nileadstoinv(p): (\hist, …, \ar_2, ?) \subseteq \ileadstoinv(p)$.
-    Then, there is no suitable claim.
-  \end{theorem}
-  \begin{proof}
-    Note that $\allleadsto$ satisfies, $\forall i \in I, \exists \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l} \land \forall \hist \in (…, \ar_1, ?): \hist \ileadsto p$; equivalently, $\ar_k \ileadstost p \lor \ar_l \ileadstost p$.
+\begin{theorem}
+  Given any $p \in P, \ar_k, \ar_l \in \allargs$, consider the following claim $C$:
+  \begin{multline}
+    \label{eq:cl}
+    \forall i \in I, \forall \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l},
+    \forall \hist \in (…, \ar_1, ?) \cap \nileadstoinvg(p): \\
+    (\hist, …, \ar_2, ?) \subseteq \ileadstoinvg(p).
+  \end{multline}
+  Assume that ${\allleadsto} \in C$. Then
+  $\exists i \in I \suchthat [\ar_k \nileadstost p \land \ar_l \nileadstost p]$
+  is equivalent to:
+  \begin{multline}
+    \label{eq:cln}
+    \exists i \in I \suchthat \forall \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l}:\\
+    \exists \hist \in (…, \ar_1, ?) \cap \nileadstoinv(p) \suchthat
+    (\hist, …, \ar_2, ?) \subseteq \ileadstoinv(p).
+  \end{multline}
+\end{theorem}
+\begin{proof}
+  $\ar_k \nileadstost p$ iff $\exists \hist \suchthat \ar_k \in \histend \land \hist \nileadsto p$.
+\end{proof}
+\begin{remark}
+  Idea.
+  That consequence is unfalsifiable so we cannot include anything like this in $C$ (only something stronger, but of course a stronger statement could be false). Therefore, with no addition, we are doomed that exists some situations where no claim is suitable.
+\end{remark}
+\begin{theorem}
+  Pick any $p \in P$ and $\ar_k ≠ \ar_l \in \allargs$ and consider the claim \eqref{eq:cl} and not \eqref{eq:cln}, thus, \eqref{eq:cl} and $\forall i, \ar_k \ileadstostg p \lor \ar_l \ileadstostg p$. It is not falsifiable.
+\end{theorem}
+\begin{proof}
+  %	Intuitively, because it might require (with $\hist = (\ar_1)$) to observe that for a given $i$, $(a_1) \nileadsto p \land (\ar_1, \ar_2) \ileadsto p$ and also $(\ar_2) \nileadsto p \land (\ar_2, \ar_1) \ileadsto p$.
+  We need to exhibit some ${\allleadstog} \notin C$ such that $\forall θ \subseteq {\allleadstog}: S_θ \cap C ≠ \emptyset$.
+  Define $\allleadstog$ as, $\forall i \in I$, $(\ar_k) \nileadstog p, (\ar_l) \nileadstog p, \forall \hist \in \allhist \setminus \set{(\ar_k), (\ar_l)}: \hist \ileadstog p$.
+  It follows that $\ar_k \nileadstostg p \land \ar_l \nileadstostg p$. Thus, ${\allleadstog} \notin C$.
+  Now pick any $θ \subseteq {\allleadstog}$.
+  % The set $O$ can’t have both $(\ar_k) \nileadstog p$ and $(\ar_l) \nileadstog p$.
+  % Assume, wlog, that $(\ar_k, i, {\allleadstog}(\ar_k, i)) \notin O$.
+  %	Then, intuitively, $\ar_k$ decisive is in $S_θ \cap C$.
+  Define $\allleadstog'$ as, $\forall i \in I: \forall \hist \in \allhist \setminus \set{(\ar_k), (\ar_l)}, \hist \ileadstog' p$
+  and $\forall \ar \in \set{\ar_k, \ar_l}$, $(\ar) \ileadstog' ({\allleadstog}(\ar, i))$ if $(\ar, i, {\allleadstog}(\ar, i)) \in O$, $(\ar) \ileadstog' p$ otherwise.
+  %Pick any $p' ≠ p$ and define $\allleadstog'$ as, $\forall i \in I: \forall \hist \in \allhist \setminus \set{(\ar_l)}, \hist \ileadstog' p \land (\ar_l) \ileadstog' p' ≠ p$.
+  The set $O$ can’t have both $(\ar_k) \nileadstog p$ and $(\ar_l) \nileadstog p$, thus, ${\allleadstog'} \in C$.
+  We conclude that ${\allleadstog'} \in S_θ \cap C$.
+\end{proof}
+\begin{theorem}[Informal]
+  Assume that the NOT consequence holds and the claim holds.
+  Prove that there is no suitable claim.
+  If the claim is just the NOT cons and claim, then it is not fals.
+  If the claim is weaker, it does not permit to prove that $\ar_k$ or $\ar_l$ is decisive. (BUT does it possibly prove that some arg is decisive? But it may be false.)
+  If the claim is stronger, it may be false.
+\end{theorem}
+\begin{theorem}[Formal]
+  Pick any $p \in P$ and $\ar_k ≠ \ar_l \in \allargs$ and assume that $\allleadsto$ fails \cref{eq:cln}, that is, satisfies:
+  \begin{multline}
+    \label{eq:answerable}
+    \forall i \in I, \exists \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l} \suchthat
+    \forall \hist \in (…, \ar_1, ?) \cap \nileadstoinv(p): \\
+    (\hist, …, \ar_2, ?) \cap \ileadstoinv(p) ≠ \emptyset.
+  \end{multline}
+  Assume further that $\allleadsto$ satisfies \eqref{eq:cl}, thus:
+  $\forall i \in I, \forall \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l},
+    \forall \hist \in (…, \ar_1, ?) \cap \nileadstoinv(p): (\hist, …, \ar_2, ?) \subseteq \ileadstoinv(p)$.
+  Then, there is no suitable claim.
+\end{theorem}
+\begin{proof}
+  Note that $\allleadsto$ satisfies, $\forall i \in I, \exists \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l} \land \forall \hist \in (…, \ar_1, ?): \hist \ileadsto p$; equivalently, $\ar_k \ileadstost p \lor \ar_l \ileadstost p$.
 
-    Assume the claim is just \eqref{eq:cl} $\land$ \eqref{eq:answerable}. Then if is not fals.
+  Assume the claim is just \eqref{eq:cl} $\land$ \eqref{eq:answerable}. Then if is not fals.
 
-    If the claim is sufficiently stronger (to be falsifiable) than this (thus with $C' \subset C$, thus with ${\allleadstog} \notin C'$ as defined above), then it may be false.
-    Indeed, to be falsifiable, we need ${\allleadstog'} \notin C'$.
-    Now we need $C'$ to hold so it must contain ${\allleadsto}$ but not contain ${\allleadstog'}$. It does not contain ${\allleadstog'}$ iff it implies $¬(\land_{\hist \in \allhist \setminus \set{(\ar_l)}} \hist \ileadstog' p \land (\ar_l) \ileadstog' p')$.
-    %So it must claim that $\ar_l$ is not decisive. Or something like, for some $\hist_1$: if $\ar_l \ileadstog' p'$, then $\hist_1 \ileadstog' ¬p$.
+  If the claim is sufficiently stronger (to be falsifiable) than this (thus with $C' \subset C$, thus with ${\allleadstog} \notin C'$ as defined above), then it may be false.
+  Indeed, to be falsifiable, we need ${\allleadstog'} \notin C'$.
+  Now we need $C'$ to hold so it must contain ${\allleadsto}$ but not contain ${\allleadstog'}$. It does not contain ${\allleadstog'}$ iff it implies $¬(\land_{\hist \in \allhist \setminus \set{(\ar_l)}} \hist \ileadstog' p \land (\ar_l) \ileadstog' p')$.
+  %So it must claim that $\ar_l$ is not decisive. Or something like, for some $\hist_1$: if $\ar_l \ileadstog' p'$, then $\hist_1 \ileadstog' ¬p$.
 
-    Intuitively, need that when we do not observe $(\ar_k)$ for a given $i$, but only $(\ar_l)$ for that $i$, the claim says something contrary about that $(\ar_l, i)$.
-  \end{proof}
-  \begin{remark}
-    Idea: then use contrapositive. Not cons implies some dec arg.
-    Prove equivalence to establish that we need to assume not cons to make such claims informative (in such a way).
-    We could also attempt to prove that $\exists \ar \suchthat \ar \ileadstost \phi$ but assuming the claim $C$ is everything we know, there is no hope in proving something about some argument that we ignore.
+  Intuitively, need that when we do not observe $(\ar_k)$ for a given $i$, but only $(\ar_l)$ for that $i$, the claim says something contrary about that $(\ar_l, i)$.
+\end{proof}
+\begin{remark}
+  Idea: then use contrapositive. Not cons implies some dec arg.
+  Prove equivalence to establish that we need to assume not cons to make such claims informative (in such a way).
+  We could also attempt to prove that $\exists \ar \suchthat \ar \ileadstost \phi$ but assuming the claim $C$ is everything we know, there is no hope in proving something about some argument that we ignore.
 
-    As an example, with the shortest possible paths, we get $\histk = (\ar_k)$ and $\histl = (\ar_l)$, thus:
-    \begin{equation}
-      \left\{\begin{aligned}
-         & (\ar_k ) \nileadsto \phi \land \set{\histp \suchthat (\ar_k) \subseteq \histp \land \ar_l \in \histpend} \ileadsto \phi; \\
-         & (\ar_l) \nileadsto \phi \land \set{\histp \suchthat (\ar_l) \subseteq \histp \land \ar_k \in \histpend} \ileadsto \phi.
-      \end{aligned}\right.
-    \end{equation}
+  As an example, with the shortest possible paths, we get $\histk = (\ar_k)$ and $\histl = (\ar_l)$, thus:
+  \begin{equation}
+    \left\{\begin{aligned}
+       & (\ar_k ) \nileadsto \phi \land \set{\histp \suchthat (\ar_k) \subseteq \histp \land \ar_l \in \histpend} \ileadsto \phi; \\
+       & (\ar_l) \nileadsto \phi \land \set{\histp \suchthat (\ar_l) \subseteq \histp \land \ar_k \in \histpend} \ileadsto \phi.
+    \end{aligned}\right.
+  \end{equation}
 
-    Idea: first consider that $a_l$ equals $a_j \cup a_k$ so that we can reasonably use an axiom.
-    Then in the more general case, assume $\phi$ is not in DJ at all, which also implies that $a = a_k \cup a_l$ fails; and we fall back to the same.
-  \end{remark}
-  \begin{remark}
-    The theorem is realistic in the following sense.
-    Some need $a_k$ only; others need $a_j \cup a_k$ (ignorant of $a_j$ at start).
-    Consider $C$ saying that if $a_k$ not convincing, then $a_j \cup a_k$ is convincing afterwards and if $a_j \cup a_k$ not convincing, then $a_k$ convincing afterwards.
-    Define $a_l = a_j \cup a_k$.
+  Idea: first consider that $a_l$ equals $a_j \cup a_k$ so that we can reasonably use an axiom.
+  Then in the more general case, assume $\phi$ is not in DJ at all, which also implies that $a = a_k \cup a_l$ fails; and we fall back to the same.
+\end{remark}
+\begin{remark}
+  The theorem is realistic in the following sense.
+  Some need $a_k$ only; others need $a_j \cup a_k$ (ignorant of $a_j$ at start).
+  Consider $C$ saying that if $a_k$ not convincing, then $a_j \cup a_k$ is convincing afterwards and if $a_j \cup a_k$ not convincing, then $a_k$ convincing afterwards.
+  Define $a_l = a_j \cup a_k$.
 
-    In other words.
-    Assume that knowing both $a_j$ and $a_k$ is required to get to $\phi$.
-    Assume that $J$ knows $a_j$ and when told it, gets bored, thus not convincing. For $j$, only $a_k$ is decisive.
-    But $K$ ignores $a_j$. For $k$, only $a_j \cup a_k$ is decisive.
-    %	
-    %	Could have:
-    %	a_k then a_l OK
-    %	ak KO
-    %	al KO
-    %	al then ak OK
-  \end{remark}
+  In other words.
+  Assume that knowing both $a_j$ and $a_k$ is required to get to $\phi$.
+  Assume that $J$ knows $a_j$ and when told it, gets bored, thus not convincing. For $j$, only $a_k$ is decisive.
+  But $K$ ignores $a_j$. For $k$, only $a_j \cup a_k$ is decisive.
+  %	
+  %	Could have:
+  %	a_k then a_l OK
+  %	ak KO
+  %	al KO
+  %	al then ak OK
+\end{remark}
 
-  \begin{example}[To be completed]
-    Assume that $\exists \ar_j ≠ \ar_k, J, K \subset I \suchthat J \cup K = I \land \card{J} \notin \N \land \card{K} \notin \N \land \forall j \in J: \ar_j \ileadstost[j] \phi \land \forall k \in K: \ar_k \ileadstost[k] \phi \land \forall \ar \in \allargs \setminus \set{\ar_j, \ar_k}, i \in I: \ar \nileadstost \phi$.
-    Then no suitable $C$ exists?
+\begin{example}[To be completed]
+  Assume that $\exists \ar_j ≠ \ar_k, J, K \subset I \suchthat J \cup K = I \land \card{J} \notin \N \land \card{K} \notin \N \land \forall j \in J: \ar_j \ileadstost[j] \phi \land \forall k \in K: \ar_k \ileadstost[k] \phi \land \forall \ar \in \allargs \setminus \set{\ar_j, \ar_k}, i \in I: \ar \nileadstost \phi$.
+  Then no suitable $C$ exists?
 
-    Let’s find some suitable $C$ that shows that $\phi \in P_i$.
-  \end{example}
+  Let’s find some suitable $C$ that shows that $\phi \in P_i$.
+\end{example}
 
-  Intuition: if $a_j$ and afterwards $a_k$ is convincing, then either $a_j$ is unuseful in which case $a_k$ is decisive; or $a_j$ is useful in which case $a_j \cup a_k$ is decisive. However, could also be that $a_j$ is essential as first argument; thus $a_j$ is useful but $a_j \cup a_k$ is not decisive as $a'$ then $a_j \cup a_k$ is not convincing. Note that the latter part can be excluded by a falsifiable claim: $\nexists a' \suchthat a', a_j \cup a_k \nileadsto \phi$.
+Intuition: if $a_j$ and afterwards $a_k$ is convincing, then either $a_j$ is unuseful in which case $a_k$ is decisive; or $a_j$ is useful in which case $a_j \cup a_k$ is decisive. However, could also be that $a_j$ is essential as first argument; thus $a_j$ is useful but $a_j \cup a_k$ is not decisive as $a'$ then $a_j \cup a_k$ is not convincing. Note that the latter part can be excluded by a falsifiable claim: $\nexists a' \suchthat a', a_j \cup a_k \nileadsto \phi$.
 
-  The following antecedent excludes two of these three hypothesis, leaving only the one that $a_j$ is useful.
+The following antecedent excludes two of these three hypothesis, leaving only the one that $a_j$ is useful.
 $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?); $\nexists \ar \suchthat [(\ar, …, a_k)$ not convincing $\land(\ar, …,  a_j \cup a_k)$ not convincing].
-The conclusion is: $a_j \cup a_k$ decisive.
+  The conclusion is: $a_j \cup a_k$ decisive.
 
-Is this an axiom or is this provable?
-And: is the part with $\nexists \ar$ a falsifiable claim?
+  Is this an axiom or is this provable?
+  And: is the part with $\nexists \ar$ a falsifiable claim?
 
-\subsection{Alternative definition of syntactic falsifiability}
-A claim $C$ is attempt-falsifiable iff $\exists θ \suchthat θ \implies ¬C$, by which I mean $S_θ \cap C = \emptyset$.
-\begin{example}
-  $(\ar) \ileadstog \phi \lor (\ar, \ar) \ileadstog \phi \lor …$ is not falsifiable.
-  %	Its negation is $\forall k: (\ar^k) \nileadsto \phi$.
-  %	The claim represents the set $\set{{\allleadsto} \in P^{I × \allhist} \suchthat (\ar) \ileadsto \phi \lor  (\ar, \ar) \ileadsto \phi \lor …}$.
-  Given any $O$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in O} \card{\hist} + 1$. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in S_θ \cap C ≠ \emptyset$.
-\end{example}
-\begin{example}
-  $(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi$ is not falsifiable.
-  Given any $O$, it may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $O$, pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land t \in {\allleadstog}$. We have ${\allleadstog} \in S_θ \cap C ≠ \emptyset$.
-\end{example}
-\begin{example}[Fals. but shouldn’t]
-  \label{ex:fbs}
-  $\hist \ileadstog[j] \phi \land [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$ is falsifiable.
-  Consider $θ = \set{(j, \hist, ¬\phi)}$.
-\end{example}
-\begin{example}
-  $\forall i: \ar \ileadstostg \phi$ is falsifiable.
-  Consider any $i \in I$ and $θ = \set{(i, (\ar), ¬\phi)}$.
-\end{example}
-\Cref{ex:fbs} shows that this definition of falsifiability is wrong.
+  \subsection{Alternative definition of syntactic falsifiability}
+  A claim $C$ is attempt-falsifiable iff $\exists θ \suchthat θ \implies ¬C$, by which I mean $S_θ \cap C = \emptyset$.
+  \begin{example}
+    $(\ar) \ileadstog \phi \lor (\ar, \ar) \ileadstog \phi \lor …$ is not falsifiable.
+    %	Its negation is $\forall k: (\ar^k) \nileadsto \phi$.
+    %	The claim represents the set $\set{{\allleadsto} \in P^{I × \allhist} \suchthat (\ar) \ileadsto \phi \lor  (\ar, \ar) \ileadsto \phi \lor …}$.
+    Given any $O$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in O} \card{\hist} + 1$. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in S_θ \cap C ≠ \emptyset$.
+  \end{example}
+  \begin{example}
+    $(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi$ is not falsifiable.
+    Given any $O$, it may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $O$, pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land t \in {\allleadstog}$. We have ${\allleadstog} \in S_θ \cap C ≠ \emptyset$.
+  \end{example}
+  \begin{example}[Fals. but shouldn’t]
+    \label{ex:fbs}
+    $\hist \ileadstog[j] \phi \land [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$ is falsifiable.
+    Consider $θ = \set{(j, \hist, ¬\phi)}$.
+  \end{example}
+  \begin{example}
+    $\forall i: \ar \ileadstostg \phi$ is falsifiable.
+    Consider any $i \in I$ and $θ = \set{(i, (\ar), ¬\phi)}$.
+  \end{example}
+  \Cref{ex:fbs} shows that this definition of falsifiability is wrong.
 
-\subsection{Argumentative theories of deliberated choice}
-\label{sec:dynamic}
-An argumentative theory of deliberated choice $\gamma$ is defined as a tuple $(\pga, \dg)$, where $\pga \in P$ is the proposition supported by the theory and $\dg$ is a defense relation.
+  \subsection{Argumentative theories of deliberated choice}
+  \label{sec:dynamic}
+  An argumentative theory of deliberated choice $\gamma$ is defined as a tuple $(\pga, \dg)$, where $\pga \in P$ is the proposition supported by the theory and $\dg$ is a defense relation.
 
-The defense relation $\dg \subseteq \allhist × \allargs$ defines the argumentation strategy of the theory. Informally speaking, it defines the arguments that the theory claims will convince the individuals in $I$ to choose $\pga$. Assuming that some path $\hist$ challenges the theory’s intended conclusion in favor of $\pga$ (as judged by the individual), $\dg(\hist)$ is the argument that the theory plays as a counter-argument to the path $\hist$.
+  The defense relation $\dg \subseteq \allhist × \allargs$ defines the argumentation strategy of the theory. Informally speaking, it defines the arguments that the theory claims will convince the individuals in $I$ to choose $\pga$. Assuming that some path $\hist$ challenges the theory’s intended conclusion in favor of $\pga$ (as judged by the individual), $\dg(\hist)$ is the argument that the theory plays as a counter-argument to the path $\hist$.
 
-Formally speaking, a defense relation $\dg \subseteq \allhist × \allargs$ is a right-unique relation satisfying bounded depth (to be defined shortly). Right-unique means that given any $\hist \in \allhist$, $\dg(\hist) = \set{\ar \in \allargs \suchthat (\hist, \ar) \in \dg}$ is empty or is a singleton.
-As is usual for right-unique relations, we write $\dg(\hist) = \ar$ instead of $\dg(\hist) = \set{\ar}$ when $\dg(\hist)$ is a singleton (and $\dg(\hist) = \emptyset$ otherwise).
-Given $H \subseteq \allhist$, define $\dg(H) = \set{\dg(\hist) \suchthat \alpha \in H} \subseteq \allargs$.
-Given $\ar_0, \ar_1 \in \allargs$, say that $\ar_1$ defends $\ar_0$
-iff $\exists \hist \in \allhist \suchthat \ar_0 \in R(\hist) \land \dg(\hist) = \ar_1$, equivalently,
-iff $\ar_0 \in R(\dg^{-1}(\ar_1))$, equivalently,
-iff $\ar_1 \in \dg(\set{\hist \suchthat \ar_0 \in R(\hist)})$.
+  Formally speaking, a defense relation $\dg \subseteq \allhist × \allargs$ is a right-unique relation satisfying bounded depth (to be defined shortly). Right-unique means that given any $\hist \in \allhist$, $\dg(\hist) = \set{\ar \in \allargs \suchthat (\hist, \ar) \in \dg}$ is empty or is a singleton.
+  As is usual for right-unique relations, we write $\dg(\hist) = \ar$ instead of $\dg(\hist) = \set{\ar}$ when $\dg(\hist)$ is a singleton (and $\dg(\hist) = \emptyset$ otherwise).
+  Given $H \subseteq \allhist$, define $\dg(H) = \set{\dg(\hist) \suchthat \alpha \in H} \subseteq \allargs$.
+  Given $\ar_0, \ar_1 \in \allargs$, say that $\ar_1$ defends $\ar_0$
+  iff $\exists \hist \in \allhist \suchthat \ar_0 \in R(\hist) \land \dg(\hist) = \ar_1$, equivalently,
+  iff $\ar_0 \in R(\dg^{-1}(\ar_1))$, equivalently,
+  iff $\ar_1 \in \dg(\set{\hist \suchthat \ar_0 \in R(\hist)})$.
 
-Say that $\gamma$ has depth at least $k \in \N^*$ iff $\exists (\alpha_i, 1 ≤ i ≤ k) \suchthat \forall 1 ≤ i ≤ k, \dg(\set{\alpha_j \suchthat 1 ≤ j ≤ i - 1}) \subsetneq \dg(\set{\alpha_j \suchthat 1 ≤ j ≤ i}) \land \forall 1 ≤ i ≤ k - 1, \alpha_i \cup \dg(\alpha_i) \subseteq \alpha_{i + 1}$.
-The bounded depth condition on the defense relation imposes that for some $k \in \N^*$, $\gamma$ does not have depth at least $k$.
-The depth of a theory is defined as the smallest value $k \in \N$ such that it does not have depth at least $k + 1$.
-For example, $\gamma$ has depth $0$ iff $\dg = \emptyset$; and $\gamma$ has depth $1$ iff $[\exists \alpha_1 \suchthat \dg(\alpha_1) ≠ \emptyset] \land [\forall \alpha_1, \alpha_2 \suchthat \dg(\alpha_1) ≠ \emptyset \land \alpha_1 \cup \dg(\alpha_1) \subseteq \alpha_2: \dg(\alpha_2) \subseteq \dg(\alpha_1)]$.
+  Say that $\gamma$ has depth at least $k \in \N^*$ iff $\exists (\alpha_i, 1 ≤ i ≤ k) \suchthat \forall 1 ≤ i ≤ k, \dg(\set{\alpha_j \suchthat 1 ≤ j ≤ i - 1}) \subsetneq \dg(\set{\alpha_j \suchthat 1 ≤ j ≤ i}) \land \forall 1 ≤ i ≤ k - 1, \alpha_i \cup \dg(\alpha_i) \subseteq \alpha_{i + 1}$.
+  The bounded depth condition on the defense relation imposes that for some $k \in \N^*$, $\gamma$ does not have depth at least $k$.
+  The depth of a theory is defined as the smallest value $k \in \N$ such that it does not have depth at least $k + 1$.
+  For example, $\gamma$ has depth $0$ iff $\dg = \emptyset$; and $\gamma$ has depth $1$ iff $[\exists \alpha_1 \suchthat \dg(\alpha_1) ≠ \emptyset] \land [\forall \alpha_1, \alpha_2 \suchthat \dg(\alpha_1) ≠ \emptyset \land \alpha_1 \cup \dg(\alpha_1) \subseteq \alpha_2: \dg(\alpha_2) \subseteq \dg(\alpha_1)]$.
 
-\commentOC{Intuition. Invoke $\dg$ at $\alpha$ only when $\alpha$ fails. Permit to invoke a previous defense again as maybe the counter was too long to perform when summarized. If $a_2$ fails, we must invoke $\dg(…, a_2, x)$; failures of $\dg(…, a_2, …, x)$ should not count. We should invoke $\dg$ only when $\alpha$ fails with some defense produced by $\dg()$ belongs to $\histend$.}
+  \commentOC{Intuition. Invoke $\dg$ at $\alpha$ only when $\alpha$ fails. Permit to invoke a previous defense again as maybe the counter was too long to perform when summarized. If $a_2$ fails, we must invoke $\dg(…, a_2, x)$; failures of $\dg(…, a_2, …, x)$ should not count. We should invoke $\dg$ only when $\alpha$ fails with some defense produced by $\dg()$ belongs to $\histend$.}
 
-%Falsification seems done when $\exists \alpha, \beta \suchthat d(\beta) \in \histend \land \alpha \ileadsto p$. But then seems to be required to tell $d$ what has been tried already!}
+  %Falsification seems done when $\exists \alpha, \beta \suchthat d(\beta) \in \histend \land \alpha \ileadsto p$. But then seems to be required to tell $d$ what has been tried already!}
 
-An argumentative theory claims that its argumentation strategy, embodied by $\arga$ and $\dg$, will convince the individuals in $I$.
-More precisely, given $i \in I$, it claims that $\arga$ either is a decisive argument for $\pga$, or, if $\arga$ is not, that the theory will defend the argument by replying to every counter-argument to $\arga$ with an argument that either is a decisive argument for $\pga$ or, in turn, will be defended by the theory, and so on as long as the theory has new counter-arguments to produce; the theory claiming that some argument along that chain is decisive.
+  An argumentative theory claims that its argumentation strategy, embodied by $\arga$ and $\dg$, will convince the individuals in $I$.
+  More precisely, given $i \in I$, it claims that $\arga$ either is a decisive argument for $\pga$, or, if $\arga$ is not, that the theory will defend the argument by replying to every counter-argument to $\arga$ with an argument that either is a decisive argument for $\pga$ or, in turn, will be defended by the theory, and so on as long as the theory has new counter-arguments to produce; the theory claiming that some argument along that chain is decisive.
 
-\commentOC{Condition: $\hist \nileadsto \pga \land \exists \hist' \subseteq \hist \suchthat \dg(\histp) \in \histend \land \dg(\hist)$ is not decisive ($\exists \beta \subseteq \hist \suchthat \dg(\hist) \in \beta_\text{end} \land \beta \ileadsto \pga$).}
+  \commentOC{Condition: $\hist \nileadsto \pga \land \exists \hist' \subseteq \hist \suchthat \dg(\histp) \in \histend \land \dg(\hist)$ is not decisive ($\exists \beta \subseteq \hist \suchthat \dg(\hist) \in \beta_\text{end} \land \beta \ileadsto \pga$).}
 
-To define this formally, note that either $\arga$ is a decisive argument for $\pga$, or some paths challenge this claim, namely those $\hist \in \allhist$ such that $[\arga \in \histend \land \hist \nileadsto \pga]$.
-Generalizing this observation, given $i \in I$, define $\dgi(\ar) = \set{\dg(\ar, \hist) \suchthat \ar \in \histend \land \hist \nileadsto \pga} \subseteq \dg(\ar)$ as the subset of defenders of $\ar$ required for convincing $i$ of choosing $\pga$.
-Define $\gargsi \subseteq \allargs$ as the transitive closure of $\arga$ under $\dgi$: $\gargsi = \cup_{k \in \N} (\dgi)^k(\arga)$. The set $\gargsi$ is the set of arguments required to convince $i$ of choosing $\pga$.
+  To define this formally, note that either $\arga$ is a decisive argument for $\pga$, or some paths challenge this claim, namely those $\hist \in \allhist$ such that $[\arga \in \histend \land \hist \nileadsto \pga]$.
+  Generalizing this observation, given $i \in I$, define $\dgi(\ar) = \set{\dg(\ar, \hist) \suchthat \ar \in \histend \land \hist \nileadsto \pga} \subseteq \dg(\ar)$ as the subset of defenders of $\ar$ required for convincing $i$ of choosing $\pga$.
+  Define $\gargsi \subseteq \allargs$ as the transitive closure of $\arga$ under $\dgi$: $\gargsi = \cup_{k \in \N} (\dgi)^k(\arga)$. The set $\gargsi$ is the set of arguments required to convince $i$ of choosing $\pga$.
 
-An argumentative theory claims that whenever some of its arguments fail to convince $i$ of choosing $\pga$, it can argue something else.
-It is said to be truthful iff this claim is correct.
-More precisely, its claims are about paths of the sort $\hist = (\arga, …, \ar_2, …, \ar_3, …)$ where $\ar_2 \in \dgi(\arga)$, $\ar_3 \in \dgi(\ar_2)$, …
-The following definition makes this precise by mandating that whenever increasing subsequences of $\hist$, involving arguments $\ar_j$ proposed by the theory, are not convincing, then the theory is able to produce yet another argument in defense of its claim.%
-\footnote{Intuition.
-  If $a_1$, used by the theory, is not decisive, then the theory has an answer, namely, $a_2$, which works at least temporarily.
-  If $a_1$ used by th is not dec, and $a_2$ used by th is not dec *in the same sequence*, then $a_3$ needs to defend *in the same sequence*.
-  $(…, a_1)$ NO and $(…, a_1, …, a_2)$ NO then $a_3$ defends it.
-  $\alpha$ of the form $(\alpha^1, \alpha^2)$ where $a_1$ in end of $α^1$ NO and $a_2$ in end of $α^2$ NO.}
-\begin{definition}[Truthfulness]
-  \label{def:truth}
-  An argumentative theory $(\pga, \arga, \dg)$ for the exposure protocol $(I, \allargs, {\allleadsto})$ is \emph{truthful} iff
-  $\forall i \in I, \hist \in \allhist, n \in \N, k \in \intvl{1, \card \hist}^n, \ar \in \allargs^n$:
+  An argumentative theory claims that whenever some of its arguments fail to convince $i$ of choosing $\pga$, it can argue something else.
+  It is said to be truthful iff this claim is correct.
+  More precisely, its claims are about paths of the sort $\hist = (\arga, …, \ar_2, …, \ar_3, …)$ where $\ar_2 \in \dgi(\arga)$, $\ar_3 \in \dgi(\ar_2)$, …
+  The following definition makes this precise by mandating that whenever increasing subsequences of $\hist$, involving arguments $\ar_j$ proposed by the theory, are not convincing, then the theory is able to produce yet another argument in defense of its claim.%
+  \footnote{Intuition.
+    If $a_1$, used by the theory, is not decisive, then the theory has an answer, namely, $a_2$, which works at least temporarily.
+    If $a_1$ used by th is not dec, and $a_2$ used by th is not dec *in the same sequence*, then $a_3$ needs to defend *in the same sequence*.
+    $(…, a_1)$ NO and $(…, a_1, …, a_2)$ NO then $a_3$ defends it.
+    $\alpha$ of the form $(\alpha^1, \alpha^2)$ where $a_1$ in end of $α^1$ NO and $a_2$ in end of $α^2$ NO.}
+  \begin{definition}[Truthfulness]
+    \label{def:truth}
+    An argumentative theory $(\pga, \arga, \dg)$ for the exposure protocol $(I, \allargs, {\allleadsto})$ is \emph{truthful} iff
+    $\forall i \in I, \hist \in \allhist, n \in \N, k \in \intvl{1, \card \hist}^n, \ar \in \allargs^n$:
+    \begin{equation}
+      \left.\begin{aligned}
+         & \ar_1 = \arga                                                                            \\
+         & \forall 1 ≤ j < n: \ar_{j + 1} = \dg(\ar_j, α_{\intvl{1, k_j}}) \in \histbend{k_{j + 1}} \\
+         & \forall 1 ≤ j ≤ n: \restr{\hist}{\intvl{1, k_j}} \nileadsto \pga
+      \end{aligned}\right\}
+      ⇒ \dg(\ar_n, \hist) ≠ \emptyset.
+    \end{equation}
+  \end{definition}
+  Given the paths $\alpha, \alpha'$, the sequence $(\alpha, \alpha')$ denotes a path constituted of the arguments in $\alpha$ followed by the arguments of $\alpha'$.
+  \begin{axiom}[Answerability-1]
+    $\forall …$:
+    \begin{equation}
+      \left.\begin{aligned}
+         & (\ar_4, \ar_2, \ar) \nileadsto \pga         \\
+         & (\ar_4, \ar_2, \ar, \ar_3) \ileadstost \pga \\
+         & (\ar_5, \ar_2, \ar) \nileadsto \pga
+      \end{aligned}\right\}
+      ⇒ (\ar_5, \ar_2, \ar, \ar_3) \ileadstost \pga.
+    \end{equation}
+  \end{axiom}
+  Requires excluding:
   \begin{equation}
     \left.\begin{aligned}
-       & \ar_1 = \arga                                                                            \\
-       & \forall 1 ≤ j < n: \ar_{j + 1} = \dg(\ar_j, α_{\intvl{1, k_j}}) \in \histbend{k_{j + 1}} \\
-       & \forall 1 ≤ j ≤ n: \restr{\hist}{\intvl{1, k_j}} \nileadsto \pga
+       & (\ar_4, \ar_2, \ar) \nileadsto \pga               \\
+       & (\ar_4, \ar_2, \ar, \ar_3, \ar') \ileadsto \pga   \\
+       & (\ar_5, \ar_2, \ar) \nileadsto \pga               \\
+       & (\ar_5, \ar_2, \ar, \ar_3, \ar') \nileadsto \pga.
     \end{aligned}\right\}
-    ⇒ \dg(\ar_n, \hist) ≠ \emptyset.
   \end{equation}
-\end{definition}
-Given the paths $\alpha, \alpha'$, the sequence $(\alpha, \alpha')$ denotes a path constituted of the arguments in $\alpha$ followed by the arguments of $\alpha'$.
-\begin{axiom}[Answerability-1]
-  $\forall …$:
+
+  To exclude:
   \begin{equation}
     \left.\begin{aligned}
        & (\ar_4, \ar_2, \ar) \nileadsto \pga         \\
        & (\ar_4, \ar_2, \ar, \ar_3) \ileadstost \pga \\
-       & (\ar_5, \ar_2, \ar) \nileadsto \pga
+       & (\ar_5, \ar_2, \ar) \ileadsto \pga          \\
+       & (\ar_5, \ar_2, \ar_3, \ar') \nileadsto \pga
     \end{aligned}\right\}
-    ⇒ (\ar_5, \ar_2, \ar, \ar_3) \ileadstost \pga.
   \end{equation}
-\end{axiom}
-Requires excluding:
-\begin{equation}
-  \left.\begin{aligned}
-     & (\ar_4, \ar_2, \ar) \nileadsto \pga               \\
-     & (\ar_4, \ar_2, \ar, \ar_3, \ar') \ileadsto \pga   \\
-     & (\ar_5, \ar_2, \ar) \nileadsto \pga               \\
-     & (\ar_5, \ar_2, \ar, \ar_3, \ar') \nileadsto \pga.
-  \end{aligned}\right\}
-\end{equation}
-
-To exclude:
-\begin{equation}
-  \left.\begin{aligned}
-     & (\ar_4, \ar_2, \ar) \nileadsto \pga         \\
-     & (\ar_4, \ar_2, \ar, \ar_3) \ileadstost \pga \\
-     & (\ar_5, \ar_2, \ar) \ileadsto \pga          \\
-     & (\ar_5, \ar_2, \ar_3, \ar') \nileadsto \pga
-  \end{aligned}\right\}
-\end{equation}
-Using:
-\begin{equation}
-  \left.\begin{aligned}
-     & (\ar_4, \ar_2, \ar) \nileadsto \pga         \\
-     & (\ar_4, \ar_2, \ar, \ar_3) \ileadstost \pga \\
-     & (\ar_5, \ar_2, \ar) \ileadsto \pga
-  \end{aligned}\right\}
-  ⇒ (\ar_5, \ar_2, \ar_3) \ileadstost \pga.
-\end{equation}
-
-\begin{axiom}[Answerability]
-  \label{ax:ans}
-  $\forall i \in I, \hist \in \allhist, \ar \in \gargsi$:
+  Using:
   \begin{equation}
     \left.\begin{aligned}
-       & \hist \nileadsto \pga                                        \\
-       & (\hist, \ar) \ileadsto \pga                                  \\
-       & \forall \ar' \in \allargs: (\hist, \ar, \ar') \ileadsto \pga
+       & (\ar_4, \ar_2, \ar) \nileadsto \pga         \\
+       & (\ar_4, \ar_2, \ar, \ar_3) \ileadstost \pga \\
+       & (\ar_5, \ar_2, \ar) \ileadsto \pga
     \end{aligned}\right\}
-    ⇒ \ar \ileadstost \pga.
+    ⇒ (\ar_5, \ar_2, \ar_3) \ileadstost \pga.
   \end{equation}
-\end{axiom}
-\footnote{$a_1, a_2, a_3$ NOT and $a_1, a_2, a_3, a_4$ YES and $a_1', a_2, a_3, a_4$ NO imply that $a_1, a_2, a_3, a_4, a'_1$ NO.
-  Generalizing: $\alpha$ NO and $\alpha, a_4$ YES and $\alpha', a_4$ NO imply that $\exists a' \in \alpha' \suchthat \alpha, a_4, a'$ NO.
-  Let’s try with this too powerful axiom, but then we should weaken it, as it could be that $a_1$ AND $a_4$ TOGETHER are decisive, whence the axiom fails. We should have then some argument $a_1 + a_4$ to replace them, and…?
-  In summary, we want to avoid that $a$ is not decisive but we can’t observe it when starting with some $α$ even though $α$ has also no decisive arguments: if $α$ has no decisive argument, then it must be possible to counter it.
 
-  In fact, we might need (a weakening of) the following. If $a_1$ is “decisive” when starting with some $α$ (meaning $(α, a_1, a')$ YES for all arguments $a'$), then $a_1$ is decisive. Hopefully: if $(α, a')$ YES for all arguments $a'$, then some $a \in α$ is decisive.}
-\footnote{
-  There is a problem. Consider the following may hold for some $i$. $a_1, a_5, a_2$ not convincing, $a_1, a_4$ not convincing, whil $a_1, a_5$ and $a_1, a_4, a_2$ and other variants convincing. Then for all $i$ one of $a_1$ or $a_2$ will appear to be decisive although for those people neither is.
+  \begin{axiom}[Answerability]
+    \label{ax:ans}
+    $\forall i \in I, \hist \in \allhist, \ar \in \gargsi$:
+    \begin{equation}
+      \left.\begin{aligned}
+         & \hist \nileadsto \pga                                        \\
+         & (\hist, \ar) \ileadsto \pga                                  \\
+         & \forall \ar' \in \allargs: (\hist, \ar, \ar') \ileadsto \pga
+      \end{aligned}\right\}
+      ⇒ \ar \ileadstost \pga.
+    \end{equation}
+  \end{axiom}
+  \footnote{$a_1, a_2, a_3$ NOT and $a_1, a_2, a_3, a_4$ YES and $a_1', a_2, a_3, a_4$ NO imply that $a_1, a_2, a_3, a_4, a'_1$ NO.
+    Generalizing: $\alpha$ NO and $\alpha, a_4$ YES and $\alpha', a_4$ NO imply that $\exists a' \in \alpha' \suchthat \alpha, a_4, a'$ NO.
+    Let’s try with this too powerful axiom, but then we should weaken it, as it could be that $a_1$ AND $a_4$ TOGETHER are decisive, whence the axiom fails. We should have then some argument $a_1 + a_4$ to replace them, and…?
+    In summary, we want to avoid that $a$ is not decisive but we can’t observe it when starting with some $α$ even though $α$ has also no decisive arguments: if $α$ has no decisive argument, then it must be possible to counter it.
 
-  Problem might be solved by observing that $(a_1, a_5, a_2, a_1)$ convincing means that $a_1$ is decisive after all; and not convincing means that we have observed not truthfulness.
+    In fact, we might need (a weakening of) the following. If $a_1$ is “decisive” when starting with some $α$ (meaning $(α, a_1, a')$ YES for all arguments $a'$), then $a_1$ is decisive. Hopefully: if $(α, a')$ YES for all arguments $a'$, then some $a \in α$ is decisive.}
+  \footnote{
+    There is a problem. Consider the following may hold for some $i$. $a_1, a_5, a_2$ not convincing, $a_1, a_4$ not convincing, whil $a_1, a_5$ and $a_1, a_4, a_2$ and other variants convincing. Then for all $i$ one of $a_1$ or $a_2$ will appear to be decisive although for those people neither is.
 
-  We want that if the theory is invalid (thus some $i$ is not convinced), then either axiom fails or the theory is experimentally falsifiable.
-  In the following example, the theory seems invalid but the axiom holds and the theory can’t seem to be defeated experimentally.
+    Problem might be solved by observing that $(a_1, a_5, a_2, a_1)$ convincing means that $a_1$ is decisive after all; and not convincing means that we have observed not truthfulness.
 
-  Imagine $i$ thinks as follows. $a_1$ counter $a_5$; $a_2$ counters $a_4$; but $a_4$ and $a_5$ together make $a_1$ and $a_2$ invalid, so that $(a_4, a_5)$ counter both $a_1$ and $a_2$ (and also $a_1$ and $a_2$ together). Also assume that $i$ has short memory so that $a_1, a_4, a_5$ does not convince ($a_4$ and $a_5$ win) while $a_4, a_5, a_1$ do ($a_1$ wins as $a_4$ is too far away). BUT $a_5, a_4, a_1$ should then not convince.
+    We want that if the theory is invalid (thus some $i$ is not convinced), then either axiom fails or the theory is experimentally falsifiable.
+    In the following example, the theory seems invalid but the axiom holds and the theory can’t seem to be defeated experimentally.
 
-  The solution is: after $a1, a5, a2$, $a1$ appears decisive, thus also $a1,a5, a2, a1, a4$ ok. Then some subset $a$ of $a1 \cup a_5 \cup a2$ should satisfy $a, a4$ OK and replace $a1$. And $a$ is decisive.
-}
+    Imagine $i$ thinks as follows. $a_1$ counter $a_5$; $a_2$ counters $a_4$; but $a_4$ and $a_5$ together make $a_1$ and $a_2$ invalid, so that $(a_4, a_5)$ counter both $a_1$ and $a_2$ (and also $a_1$ and $a_2$ together). Also assume that $i$ has short memory so that $a_1, a_4, a_5$ does not convince ($a_4$ and $a_5$ win) while $a_4, a_5, a_1$ do ($a_1$ wins as $a_4$ is too far away). BUT $a_5, a_4, a_1$ should then not convince.
 
-\begin{axiom}[Answerability - using newly built arguments (newest so far)]
-  \label{ax:ansn}
-  $\forall i \in I, \hist^j \in (\allhist)^n$:
-  \begin{equation}
-    [\forall j: \hist^j \ileadstost \pga] ⇒ [\exists \ar \in \allargs \suchthat \forall j: (\hist^j, \ar) \ileadstost \pga].
-  \end{equation}
-\end{axiom}
+    The solution is: after $a1, a5, a2$, $a1$ appears decisive, thus also $a1,a5, a2, a1, a4$ ok. Then some subset $a$ of $a1 \cup a_5 \cup a2$ should satisfy $a, a4$ OK and replace $a1$. And $a$ is decisive.
+  }
 
-\begin{axiom}[Reinstatement]
-  \label{ax:r}
-  $\forall i \in I, \hist \in \allhist, \ar_1, \ar_2 \in \gargsi, \ar \in \allargs$:
-  \begin{equation}
-    \left.\begin{aligned}
-       & (\hist, \ar_1, \ar) \nileadsto \pga            \\
-       & (\hist, \ar_1, \ar, \ar_2) \ileadsto \pga      \\
-       & (\hist, \ar_1, \ar, \ar_2, \ar) \ileadsto \pga
-    \end{aligned}\right\}
-    ⇒
-    \left\{\begin{aligned}
-       & (\hist, \ar_2) \ileadsto \pga                                                      \\
-       & (\hist, \ar_2, \ar) \ileadsto \pga                                                 \\
-       & \forall \ar': (\hist, a_2, a') \nileadsto \pga ⇒ (\hist, a_1, a') \nileadsto \pga.
-    \end{aligned}\right.
-  \end{equation}
-\end{axiom}
-\begin{example}[Reinstatement is required]
-  Consider $a_1$ not decisive because of $a$ and then $(a_1, a, a_2) \ileadsto p$. But still $a_2$ not decisive: $a2 \nileadsto p$.
-\end{example}
+  \begin{axiom}[Answerability - using newly built arguments (newest so far)]
+    \label{ax:ansn}
+    $\forall i \in I, \hist^j \in (\allhist)^n$:
+    \begin{equation}
+      [\forall j: \hist^j \ileadstost \pga] ⇒ [\exists \ar \in \allargs \suchthat \forall j: (\hist^j, \ar) \ileadstost \pga].
+    \end{equation}
+  \end{axiom}
 
-A path can be shortened to its first $k \in \intvl{0, \card{\hist}}$ elements, which is denoted by $\restr{\hist}{\intvl{1, k}}$, and “shortening” a path beyond its length yields the same path again, thus given $k \in \N$, $\restr{\hist}{\intvl{1, k}} = \restr{\hist}{\intvl{1, \min\set{\card{\hist}, k}}}$.
-Define a path as being decisive for $p$, $\hist \ileadstost p$, iff $\hist \ileadsto p \land \forall \ar \in \allargs: (\hist, \ar) \ileadsto p$, or equivalently, iff $\forall \hist' \suchthat \card{\hist} ≤ \card{\hist'} ≤ \card{\hist} + 1 \land \restr{\hist'}{\intvl{1, \card{\hist}}} = \hist: \hist' \ileadsto p$. Thus, $\hist \nileadstost p ⇔ \exists \ar \in \allargs \suchthat (\hist, \ar) \nileadsto p$ (or…?).
+  \begin{axiom}[Reinstatement]
+    \label{ax:r}
+    $\forall i \in I, \hist \in \allhist, \ar_1, \ar_2 \in \gargsi, \ar \in \allargs$:
+    \begin{equation}
+      \left.\begin{aligned}
+         & (\hist, \ar_1, \ar) \nileadsto \pga            \\
+         & (\hist, \ar_1, \ar, \ar_2) \ileadsto \pga      \\
+         & (\hist, \ar_1, \ar, \ar_2, \ar) \ileadsto \pga
+      \end{aligned}\right\}
+      ⇒
+      \left\{\begin{aligned}
+         & (\hist, \ar_2) \ileadsto \pga                                                      \\
+         & (\hist, \ar_2, \ar) \ileadsto \pga                                                 \\
+         & \forall \ar': (\hist, a_2, a') \nileadsto \pga ⇒ (\hist, a_1, a') \nileadsto \pga.
+      \end{aligned}\right.
+    \end{equation}
+  \end{axiom}
+  \begin{example}[Reinstatement is required]
+    Consider $a_1$ not decisive because of $a$ and then $(a_1, a, a_2) \ileadsto p$. But still $a_2$ not decisive: $a2 \nileadsto p$.
+  \end{example}
 
-\begin{axiom}[Self-sufficiency of positive arguments]
-  $\forall \ar_1, \ar_2 \in \gargsi, \ar \in \allargs, \hist \in \allhist$:
-  \begin{equation}
-    \left.\begin{aligned}
-       & (\hist, \ar_1) \nileadstost \pga \\
-       & (\hist, \ar_2) \nileadstost \pga
-    \end{aligned}\right\}
-    ⇒ (\hist, \ar_1, \ar_2) \nileadstost \pga.
-  \end{equation}
-\end{axiom}
+  A path can be shortened to its first $k \in \intvl{0, \card{\hist}}$ elements, which is denoted by $\restr{\hist}{\intvl{1, k}}$, and “shortening” a path beyond its length yields the same path again, thus given $k \in \N$, $\restr{\hist}{\intvl{1, k}} = \restr{\hist}{\intvl{1, \min\set{\card{\hist}, k}}}$.
+  Define a path as being decisive for $p$, $\hist \ileadstost p$, iff $\hist \ileadsto p \land \forall \ar \in \allargs: (\hist, \ar) \ileadsto p$, or equivalently, iff $\forall \hist' \suchthat \card{\hist} ≤ \card{\hist'} ≤ \card{\hist} + 1 \land \restr{\hist'}{\intvl{1, \card{\hist}}} = \hist: \hist' \ileadsto p$. Thus, $\hist \nileadstost p ⇔ \exists \ar \in \allargs \suchthat (\hist, \ar) \nileadsto p$ (or…?).
 
-\begin{theorem}[Validity]
-  If an argumentative theory $(\pga, \arga, \dg)$ is truthful and satisfy \cref{ax:ans,ax:r} and $\allargs$ is finite, then the theory is correct.
-\end{theorem}
-\begin{proof}
-  Consider any $i \in I$.
-  We have to show that $\pga \in \Phi_i$.
-  Assume depth $3$.
-  Assume that $\arga$ and $\ar_2$ are not decisive. Let’s show that $\ar_3$ is decisive.
-  Assume that $(a_4, \arga, \ar_2, a) \nileadsto \pga$.
-  By TF, $(a_4, \arga, \ar_2, a, \ar_3) \ileadstost \pga$.
-  By Reinst, $(a_4, \arga, \ar_2, \ar_3) \ileadstost \pga$.
-  By Self-s, $(a_4, \arga, \ar_3) \ileadstost \pga$.
-  By Self-s, $(a_4, \ar_3) \ileadstost \pga$.
+  \begin{axiom}[Self-sufficiency of positive arguments]
+    $\forall \ar_1, \ar_2 \in \gargsi, \ar \in \allargs, \hist \in \allhist$:
+    \begin{equation}
+      \left.\begin{aligned}
+         & (\hist, \ar_1) \nileadstost \pga \\
+         & (\hist, \ar_2) \nileadstost \pga
+      \end{aligned}\right\}
+      ⇒ (\hist, \ar_1, \ar_2) \nileadstost \pga.
+    \end{equation}
+  \end{axiom}
 
-  Now consider $(\ar_5, \ar_2) \ileadsto \pga$. (Or any such path not ending with $\ar_3$.)
-  We want $(\ar_5, \ar_2, \ar_3) \ileadstost \pga$.
-  By Answ, $\exists a \suchthat (\ar_5, \ar_2, a) \nileadsto \pga$.
-\end{proof}
-\begin{proof}[Sketch of proof]
-  Consider any $i$. We have to show that $\pga \in \Phi_i$.%
-  \footnote{Assume $(a_4, \arga, a) \nileadsto \pga$ (thus, $a$ attacks $\arga$).
-    By tf, $(a_4, \arga, a, \ar_2, …) \ileadsto \pga$.
-    We get $(a_3, \arga, a, \ar_2) \ileadsto \pga$ by answ.
-    By reinst: $(\ar_2)$ YES.}
+  \begin{theorem}[Validity]
+    If an argumentative theory $(\pga, \arga, \dg)$ is truthful and satisfy \cref{ax:ans,ax:r} and $\allargs$ is finite, then the theory is correct.
+  \end{theorem}
+  \begin{proof}
+    Consider any $i \in I$.
+    We have to show that $\pga \in \Phi_i$.
+    Assume depth $3$.
+    Assume that $\arga$ and $\ar_2$ are not decisive. Let’s show that $\ar_3$ is decisive.
+    Assume that $(a_4, \arga, \ar_2, a) \nileadsto \pga$.
+    By TF, $(a_4, \arga, \ar_2, a, \ar_3) \ileadstost \pga$.
+    By Reinst, $(a_4, \arga, \ar_2, \ar_3) \ileadstost \pga$.
+    By Self-s, $(a_4, \arga, \ar_3) \ileadstost \pga$.
+    By Self-s, $(a_4, \ar_3) \ileadstost \pga$.
 
-  Assume that $\arga$ is not decisive (otherwise, done). Thus, for some $\hist: (\hist, \arga, \ar) \nileadsto \pga$ or $(\hist, \ar, \arga)$.
-  Consider that $\hist: (\hist, \arga, \ar) \nileadsto \pga$.
-  Consider $\hist'$ and wonder whether $(\hist', \arga, \ar) \ileadsto \pga$. If so,
-  By Answ, this means that $\forall \hist, (\hist, \arga, \ar) \nileadsto \pga$.
-  By truthfulness, $\ar_2 = \dg(\ar_1, (\hist, \arga, \ar)) ≠ \emptyset \land (\hist, \arga, \ar, \ar_2) \ileadsto \pga$.
-  Assume now that $(\hist, \arga, \ar, \ar_2, …) \ileadsto \pga$.
-  Then by Reinstatement, $(\hist, \ar_2) \ileadsto \pga$.
+    Now consider $(\ar_5, \ar_2) \ileadsto \pga$. (Or any such path not ending with $\ar_3$.)
+    We want $(\ar_5, \ar_2, \ar_3) \ileadstost \pga$.
+    By Answ, $\exists a \suchthat (\ar_5, \ar_2, a) \nileadsto \pga$.
+  \end{proof}
+  \begin{proof}[Sketch of proof]
+    Consider any $i$. We have to show that $\pga \in \Phi_i$.%
+    \footnote{Assume $(a_4, \arga, a) \nileadsto \pga$ (thus, $a$ attacks $\arga$).
+      By tf, $(a_4, \arga, a, \ar_2, …) \ileadsto \pga$.
+      We get $(a_3, \arga, a, \ar_2) \ileadsto \pga$ by answ.
+      By reinst: $(\ar_2)$ YES.}
 
-  %	Assume, to start with, that the theory is of depth 2, more precisely, $\arga$ is not decisive because $\hist \nileadsto \pga, \arga \in \histend$ and $\dgi(\arga) = \ar_2$ with no further hist against it.
-\end{proof}
+    Assume that $\arga$ is not decisive (otherwise, done). Thus, for some $\hist: (\hist, \arga, \ar) \nileadsto \pga$ or $(\hist, \ar, \arga)$.
+    Consider that $\hist: (\hist, \arga, \ar) \nileadsto \pga$.
+    Consider $\hist'$ and wonder whether $(\hist', \arga, \ar) \ileadsto \pga$. If so,
+    By Answ, this means that $\forall \hist, (\hist, \arga, \ar) \nileadsto \pga$.
+    By truthfulness, $\ar_2 = \dg(\ar_1, (\hist, \arga, \ar)) ≠ \emptyset \land (\hist, \arga, \ar, \ar_2) \ileadsto \pga$.
+    Assume now that $(\hist, \arga, \ar, \ar_2, …) \ileadsto \pga$.
+    Then by Reinstatement, $(\hist, \ar_2) \ileadsto \pga$.
 
-This definition of truthfulness is adopted because of our goal of distinguishing empirical claims. Truthfulness, so defined, can be falsified empirically: if it does not hold, it is possible to prove this empirically by exhibiting a counter-example in the form of a tuple $i, k, (a_j)_{j \in \intvl{1, k}}, \alpha$ such that TODO.
+    %	Assume, to start with, that the theory is of depth 2, more precisely, $\arga$ is not decisive because $\hist \nileadsto \pga, \arga \in \histend$ and $\dgi(\arga) = \ar_2$ with no further hist against it.
+  \end{proof}
 
-Note that a static theory $(p, \ar)$ can be considered as an argumentative theory $(p, \ar, \emptyset)$, and $(p, \ar)$ is truthful in the sense of \cref{sec:static} iff $(p, \ar, \emptyset)$ is truthful in the sense of \cref{def:truth}.
+  This definition of truthfulness is adopted because of our goal of distinguishing empirical claims. Truthfulness, so defined, can be falsified empirically: if it does not hold, it is possible to prove this empirically by exhibiting a counter-example in the form of a tuple $i, k, (a_j)_{j \in \intvl{1, k}}, \alpha$ such that TODO.
 
-Associated with an argumentative theory also comes the following axiom, that mandates a more general version of the following requirement: if some argument $\ar_2$ defends some argument $\ar_1$, and if $\ar_2$ leads $i$ to opt for $\pga$ whenever it immediately follows $\ar_1$, then omitting $\ar_1$ would still have lead $i$ to opt for $\pga$.
+  Note that a static theory $(p, \ar)$ can be considered as an argumentative theory $(p, \ar, \emptyset)$, and $(p, \ar)$ is truthful in the sense of \cref{sec:static} iff $(p, \ar, \emptyset)$ is truthful in the sense of \cref{def:truth}.
 
-\begin{axiom}[Omitting defended arguments]
-  \label{ax:omitting}
-  If the theory is truthful, then $\forall i \in I, k \in \N^*, l \in \intvl{2, k}, (\ar_j)_{j \in \intvl{1, k}} \in \allargs^k, \hist, \beta \in \allhist \suchthat [\ar_k \in \histend \land \forall j \in \intvl{2, k}: \ar_j \in \dgi(\ar_{j - 1})]:
-    (\beta, \ar_{l - 1}, \ar_l, \hist) \ileadsto \pga ⇒ (\beta, \ar_l, \hist) \ileadsto \pga$.
-\end{axiom}
-This is called an axiom because it cannot be falsified using observables. It has to be accepted on the basis of the rest of the observations and on the contents of the defending arguments. As \cref{ex:lichtenstein} suggests, theories can be built so as to make this axiom plausible by embedding within defending arguments the content of the defended argument.
+  Associated with an argumentative theory also comes the following axiom, that mandates a more general version of the following requirement: if some argument $\ar_2$ defends some argument $\ar_1$, and if $\ar_2$ leads $i$ to opt for $\pga$ whenever it immediately follows $\ar_1$, then omitting $\ar_1$ would still have lead $i$ to opt for $\pga$.
 
-An argumentative theory is said to be correct iff $\forall i \in I: \pga \in \iprops$.
+  \begin{axiom}[Omitting defended arguments]
+    \label{ax:omitting}
+    If the theory is truthful, then $\forall i \in I, k \in \N^*, l \in \intvl{2, k}, (\ar_j)_{j \in \intvl{1, k}} \in \allargs^k, \hist, \beta \in \allhist \suchthat [\ar_k \in \histend \land \forall j \in \intvl{2, k}: \ar_j \in \dgi(\ar_{j - 1})]:
+      (\beta, \ar_{l - 1}, \ar_l, \hist) \ileadsto \pga ⇒ (\beta, \ar_l, \hist) \ileadsto \pga$.
+  \end{axiom}
+  This is called an axiom because it cannot be falsified using observables. It has to be accepted on the basis of the rest of the observations and on the contents of the defending arguments. As \cref{ex:lichtenstein} suggests, theories can be built so as to make this axiom plausible by embedding within defending arguments the content of the defended argument.
+
+  An argumentative theory is said to be correct iff $\forall i \in I: \pga \in \iprops$.
 As previously, it is said to be valid iff its truthfulness leads to its correctness, except that the above axiom needs now be included as a price for the added flexibility of the theory.
 \begin{theorem}[Validity]
   If an argumentative theory is truthful, then \cref{ax:omitting} implies that the theory is correct.
