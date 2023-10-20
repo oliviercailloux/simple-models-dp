@@ -388,24 +388,7 @@ Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \sucht
   % Pick any triple $t \in \theta$. Thus, $t \in \cup S$. Thus, for some $R \in S$, $t \in R$. And $R \in C^\subseteq$.
   % Pick any two triples $t, t' \in \theta$. Wlog, $\hist \subseteq \hist'$.
 \end{proof}
-\begin{theorem}[To check considering finiteness of observations]
-  Given a claim $C$, consider the sets $S \subseteq C^\subseteq$ such that $\set{\theta^{-1}(P) \suchthat \theta \in S} = \incr(\allhist)^I$ and such that $\cup S$, considered as a relation on $(I × \allhist) × P$, is right-unique (that is, $\cup S$ forms a new relation $\allleadstog$).
-  $C$ is falsifiable iff all such sets $S$ satisfy $\cup S \in C$.
-\end{theorem}
-\begin{proof}
-  Consider such $S$.
-  Assume that $\cup S$ is not in $C$.
-  Let us show that $C$ is not falsifiable.
-  Define ${\allleadstog} = \cup S$, pick any $\theta \in \Theta, \theta \subseteq {\allleadstog}$ and let us show that $\theta \in C^\subseteq$.
-  Define $O \in (\incr(\allhist))^I \suchthat \theta^{-1}(P) \subseteq O$. Thus, $O \in \set{\theta^{-1}(P) \suchthat \theta \in S}$. Pick an element $\theta' \in S \suchthat (\theta')^{-1}(P) = O$. We have $\theta' \in C^\subseteq$ and $\theta^{-1}(P) \subseteq (\theta')^{-1}(P)$.
-  Also, $\theta \subseteq \cup S$, and $\cup S$ is right-unique, so $\theta$ coincides with $\theta'$ on its domain (meaning that $\theta = \restr{\theta'}{\theta^{-1}(P)}$). It follows that $\theta \subseteq \theta'$. As $C^\subseteq$ is downwards-closed, this concludes.
 
-  Now, assume that $C$ is not falsifiable and pick any ${\allleadstog} \notin C \suchthat \forall \theta \in \Theta, \theta \subseteq {\allleadstog}: \theta \in C^\subseteq$.
-  Given any $O \in (\incr(\allhist))^I$, we have $\restr{\allleadstog}{O} \in C^\subseteq$.
-  Define $S = \set{\restr{\allleadstog}{O} \suchthat O \in (\incr(\allhist))^I}$.
-  The set $S$ satisfies the required conditions and $\cup S = {\allleadstog}$, thus, $\cup S \notin C$.
-\end{proof}
-Here is another way (perhaps more illuminating) of stating the same thing.
 \begin{remark}
   Any relation $\allleadstog$ is equivalent to $\cup \set{\restr{\allleadstog}{O} \suchthat O \in (\finite(\incr(\allhist))^I)}$.
   (Also, any relation $\allleadstog$ is equivalent to $\cup \set{\restr{\allleadstog}{O} \suchthat O \in \cup_{J \subseteq_\finite I} (\allhist)^J}$.)
