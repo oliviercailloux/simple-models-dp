@@ -259,28 +259,28 @@ Escaping?
 Assume that we know that 50\% are J and 50\% are K.
 
 \subsection{Form of theories}
-Given an exposure protocol $(I, \allargs, {\allleadsto})$, recall that ${\allleadsto} \in P^{I × \allhist}$.
+Given an exposure protocol $(I, \allargs, {\allleadsto})$, recall that ${\allleadsto} \in \allallleadsto$.
 
-Given a pair $(I, \allargs)$, a claim $C$ is a set of possibilities for $\allleadsto$, thus, $C \subseteq P^{I × \allhist}$.
-Given a formula $\psi$, let the corresponding claim be $C_\psi = \set{{\allleadstog} \in P^{I × \allhist} \suchthat {\allleadstog} \text{ satisfies } \psi}$.
+Given a pair $(I, \allargs)$, a claim $C$ is a set of possibilities for $\allleadsto$, thus, $C \subseteq \allallleadsto$.
+Given a formula $\psi$, let the corresponding claim be $C_\psi = \set{{\allleadstog} \in \allallleadsto \suchthat {\allleadstog} \text{ satisfies } \psi}$.
 A claim is finite iff its cardinal is finite (meaning that it is compatible with a finite number of possibilities).
 Let $C^\subseteq = \set{c \subseteq (I × \allhist) × P \suchthat \exists {\allleadstog} \in C \suchthat c \subseteq {\allleadstog}}$ denote the set of non necessarily complete possibilities compatible with $C$ (thus, each element $c \in C^\subseteq$ is right-unique but non necessarily total, meaning that it does not necessarily cover $(I × \allhist)$).
 Note that $C^\subseteq$ is downwards closed, meaning that $\forall c \in C^\subseteq: c' \subseteq c \implies c' \in C^\subseteq$.
 
 Given a pair $(I, \allargs)$, an observation $θ \in \Theta$ is a right unique finite subset of $(I × \allhist) × P$ such that $\forall i \in I, (i, \hist, p), (i, \histp, q) \in θ: \card{\hist} ≤ \card{\hist'} \implies \hist \subseteq \hist'$.
 The set $\Theta$ contains the a priori possible observations, that is, those that can be considered possible when nothing is known about $\allleadsto$.
-Let $S_θ = \set{{\allleadstog} \in P^{I × \allhist} \suchthat θ \subseteq {\allleadstog}}$ denote the possibilities for $\allleadsto$ compatible with the observations.
+Let $S_θ = \set{{\allleadstog} \in \allallleadsto \suchthat θ \subseteq {\allleadstog}}$ denote the possibilities for $\allleadsto$ compatible with the observations.
 We say that an observation $\theta$ is compatible with a claim $C$ iff $S_\theta \cap C ≠ \emptyset$, equivalently, iff $\theta \in C^\subseteq$.
 
 Given an observation $\theta$, let $\theta^{-1}(P) \subseteq I × \allhist$ denote the pairs $(i, \hist)$ in $\theta$.
-Let $\incr(\allhist) = \cup_{N \subseteq \N} \set{A \in (\allhist)^N \suchthat [\card{A_i} = i] \land [i < j \implies A_i \subsetneq A_j]} \subseteq \powerset{\allhist}$ denote the possibly empty embedded sequences of paths.
-An element $\theta^{-1}(P)$ can also be seen as a (finite) function associating to each $i \in I$ an element of $\incr(\allhist)$, thus, a possibly empty embedded sequence of elements in $\allhist$.
-Therefore, we let $\incr(\allhist)^I = \set{\theta^{-1}(P) \suchthat \theta \in \Theta}$ denote the set of possible observations restricted to $I × \allhist$, the elements of which being called \emph{a priori observation}.
-Note that $\incr(\allhist)^I$ is downwards closed, meaning that $\forall O \in \incr(\allhist)^I: O' \subseteq O \implies O' \in \incr(\allhist)^I$.
+Let $\incr(\allhist) = \set{\emptyset} \cup \cup_{\emptyset \neq N \subseteq \N} \set{A(N) \suchthat A \in (\allhist)^N \land [\card{A_i} = i] \land [i < j \implies A_i \subsetneq A_j]} \subseteq \powerset{\allhist}$ denote the possibly empty embedded sequences of paths.
+An element $\theta^{-1}(P)$ can also be seen as a (finite) function associating to each $i \in I$ an element of $\incr(\allhist)$.
+Therefore, we let $\finite(\incr(\allhist)^I) = \set{\theta^{-1}(P) \suchthat \theta \in \Theta}$ denote the set of possible observations restricted to $I × \allhist$, the elements of which being called \emph{a priori observation}, where $\finite(\incr(\allhist)^I)$ denote the functions $f: I \mapsto \incr(\allhist)$ with finite support, thus $\card{f^{-1}(\incr(\allhist) \setminus \emptyset)} < \N$.
+Note that $\finite(\incr(\allhist)^I)$ and $\incr(\allhist)^I$ are downwards closed, meaning that $\forall O \in \finite(\incr(\allhist)^I): O' \subseteq O \implies O' \in \finite(\incr(\allhist)^I)$ and $\forall O \in \incr(\allhist)^I: O' \subseteq O \implies O' \in \incr(\allhist)^I$.
 Let also $\max\incr(\allhist) = \set{A \in \incr(\allhist) \suchthat \nexists A' \in \incr(\allhist) \suchthat A \subset A'} = \set{A \in \incr(\allhist) \cap (\allhist)^\N}$ denote the maximal elements of $\incr(\allhist)$, in the sense of containing sequences that are not a subsequence of another sequence; equivalently, containing those sequences whose sequence of cardinals of their elements equals $\N$.
 
-Let the \emph{simple a priori observations} be defined as $(\allhist)^I$.
-Given a simple a priori observation $O: I \mapsto \allhist$, we can define the a priori observation $O_O = \set{(i, \hist) \in I × \allhist \suchthat \forall i \in I: \hist \subseteq O(i)}$ as the completion of $O$ to all sub-paths in $O$.
+Let the \emph{simple a priori observations} be defined as $\cup_{J \subseteq_\finite I} (\allhist)^J$, equivalently, as the right-unique finite relations over $I × \allhist$.
+Given a simple a priori observation $O: J \mapsto \allhist$, we can define the a priori observation $O_O = \set{(i, \hist) \in J × \allhist \suchthat \forall i \in J: \hist \subseteq O(i)}$ as the completion of $O$ to all sub-paths in $O$.
 Given $O$ and ${\allleadstog}$, it follows that $S_{\restr{\allleadstog}{O_O}}$ denotes the “leads to” relations that complete $O_O$ using $\allleadstog$.
 
 Similarly, we can view an observation $\theta$ as a function $\theta: I \mapsto \cup_{A \in \incr(\allhist)} P^A$ and thus $\Theta = \finite((\cup_{A \in \incr(\allhist)} P^A)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
@@ -291,7 +291,7 @@ This set is downwards-closed, as both $\Theta$ and $C^\subseteq$ are.
 
 \begin{definition}
   We say that $C$ is \emph{syntactically falsifiable}, or just falsifiable, iff
-  %$\forall {\allleadstog} \in P^{I × \allhist}: ¬C({\allleadstog}) \implies \exists θ \subseteq {\allleadstog} \suchthat θ \implies ¬C$, meaning that
+  %$\forall {\allleadstog} \in \allallleadsto: ¬C({\allleadstog}) \implies \exists θ \subseteq {\allleadstog} \suchthat θ \implies ¬C$, meaning that
   $\forall {\allleadstog} \notin C: \exists θ \subseteq {\allleadstog} \suchthat S_θ \cap C = \emptyset$.
 \end{definition}
 Equivalently, iff $\forall {\allleadstog} \notin C: \exists θ \subseteq {\allleadstog} \suchthat \theta \notin C^\subseteq$.
@@ -333,7 +333,7 @@ Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \sucht
   To be falsifiable, I need each time I exclude some relation $R$ to also exclude a subset $Cbar$ such that some $O \subseteq R$ satisfies $S_O$ is entirely in $Cbar$.
 \end{remark}
 \begin{theorem}
-  A claim $C$ is falsifiable iff its complement $\Cbar$ satisfies:
+  A claim $C$ is falsifiable iff its complement $\Cbar = \allallleadsto \setminus C$ satisfies:
   $\forall {\allleadstog} \in \Cbar, \exists \theta \subseteq {\allleadstog} \suchthat S_\theta \subseteq \Cbar$, or equivalently:
   $\forall {\allleadstog} \in \Cbar, \exists O \in (\allhist)^I \suchthat S_{\restr{\allleadstog}{O_O}} \subseteq \Cbar$.
 \end{theorem}
@@ -388,7 +388,7 @@ Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \sucht
   % Pick any triple $t \in \theta$. Thus, $t \in \cup S$. Thus, for some $R \in S$, $t \in R$. And $R \in C^\subseteq$.
   % Pick any two triples $t, t' \in \theta$. Wlog, $\hist \subseteq \hist'$.
 \end{proof}
-\begin{theorem}
+\begin{theorem}[To check considering finiteness of observations]
   Given a claim $C$, consider the sets $S \subseteq C^\subseteq$ such that $\set{\theta^{-1}(P) \suchthat \theta \in S} = \incr(\allhist)^I$ and such that $\cup S$, considered as a relation on $(I × \allhist) × P$, is right-unique (that is, $\cup S$ forms a new relation $\allleadstog$).
   $C$ is falsifiable iff all such sets $S$ satisfy $\cup S \in C$.
 \end{theorem}
@@ -406,21 +406,27 @@ Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \sucht
   The set $S$ satisfies the required conditions and $\cup S = {\allleadstog}$, thus, $\cup S \notin C$.
 \end{proof}
 Here is another way (perhaps more illuminating) of stating the same thing.
-Any relation $\allleadstog$ is equivalent to $\cup \set{\restr{\allleadstog}{O} \suchthat O \in (\incr(\allhist))^I}$.
-Conversely, any set $S$ such that $\set{\theta^{-1}(P) \suchthat \theta \in S} = \incr(\allhist)^I$ and $\cup S$ is right-unique corresponds to a unique relation $\cup S = {\allleadstog}$.
-Thus, there is a bijection between the set of such sets $S$ and the set of leads to relations.
-We can then rephrase the above theorem as follows.
-A claim $C$ is falsifiable iff $\forall S \in \mathcal{S}: S \subseteq C^\subseteq \implies \cup S \in C$.
-Equivalently, as follows.
+\begin{remark}
+  Any relation $\allleadstog$ is equivalent to $\cup \set{\restr{\allleadstog}{O} \suchthat O \in (\finite(\incr(\allhist))^I)}$.
+  (Also, any relation $\allleadstog$ is equivalent to $\cup \set{\restr{\allleadstog}{O} \suchthat O \in \cup_{J \subseteq_\finite I} (\allhist)^J}$.)
+  Conversely, any set $S$ of observations such that $\set{\theta^{-1}(P) \suchthat \theta \in S} = \incr(\allhist)^I$ and $\cup S$ is right-unique corresponds to a unique relation $\cup S = {\allleadstog}$.
+  Thus, there is a bijection between the set $\mathcal{S}$ of such sets $S$ and the set of leads to relations.
+
+  Therefore,
+  a claim $C$ is falsifiable iff $\forall S \in \mathcal{S}: S \subseteq C^\subseteq \implies \cup S \in C$.
+\end{remark}
+
 \begin{theorem}
-  A claim $C$ is falsifiable iff $\forall {\allleadstog} \in P^{I × \allhist}: \set{\restr{\allleadstog}{O} \suchthat O \in (\incr(\allhist))^I} \subseteq C^\subseteq \implies {\allleadstog} \in C$.
+  A claim $C$ is falsifiable iff \[\forall f \in C^{\finite(\incr(\allhist)^I)}: \cup_{O \in \finite(\incr(\allhist)^I)} \restr{f(O)}{O} \in C.\]
 \end{theorem}
 \begin{proof}
   By definition, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \suchthat \forall θ \subseteq {\allleadstog}: S_θ \cap C \neq \emptyset$;
   equivalently, iff $\exists {\allleadstog} \notin C \suchthat \forall θ \subseteq {\allleadstog}: θ \in C^\subseteq$;
   equivalently, iff $\exists {\allleadstog} \notin C \suchthat \set{θ \subseteq {\allleadstog}} \subseteq C^\subseteq$.
 
-  The theorem holds because $\forall {\allleadstog} \in P^{I × \allhist}: \set{\restr{\allleadstog}{O} \suchthat O \in (\incr(\allhist))^I} = \set{θ \subseteq {\allleadstog}}$.
+  The theorem states that a claim $C$ is falsifiable iff $\forall {\allleadstog} \in \allallleadsto: \set{\restr{\allleadstog}{O} \suchthat O \in \finite(\incr(\allhist)^I)} \subseteq C^\subseteq \implies {\allleadstog} \in C$.
+
+  This holds because $\forall {\allleadstog} \in \allallleadsto: \set{\restr{\allleadstog}{O} \suchthat O \in \finite(\incr(\allhist)^I)} = \set{θ \subseteq {\allleadstog}}$.
 \end{proof}
 
 Any claim containing two relations that differ only on incompatible observations is not falsifiable.
@@ -487,7 +493,7 @@ Equivalently, let $(P \cup \set{\emptyset})^I$ denote the right unique relations
 We say that $C$ is \emph{informative} iff $\exists {\allleadstog} \in (P \cup \set{\emptyset})^I \suchthat C \implies ¬{\allleadstog}$, meaning that $\pi(C) = \set{\pi(\allleadstog) \suchthat {\allleadstog} \in C} ≠ (P \cup \set{\emptyset})^I$.
 
 \begin{definition}[Anonymity]
-  Given a permutation $\sigma$ over $I$ and any ${\allleadstog} \in P^{I × \allhist}$, let ${\allleadstog} \circ \sigma$ denote $\set{(i, \hist, \phi) \suchthat (\sigma(i), \hist, \phi) \in {\allleadstog}}$ and let $C \circ \sigma$ denote $\set{{\allleadstog} \circ \sigma \suchthat {\allleadstog} \in C}$.
+  Given a permutation $\sigma$ over $I$ and any ${\allleadstog} \in \allallleadsto$, let ${\allleadstog} \circ \sigma$ denote $\set{(i, \hist, \phi) \suchthat (\sigma(i), \hist, \phi) \in {\allleadstog}}$ and let $C \circ \sigma$ denote $\set{{\allleadstog} \circ \sigma \suchthat {\allleadstog} \in C}$.
   A claim $C$ is \emph{anonymous} iff $\forall \sigma: C = C \circ \sigma$.
 \end{definition}
 \begin{example}
@@ -645,7 +651,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   \begin{example}
     $(\ar) \ileadstog \phi \lor (\ar, \ar) \ileadstog \phi \lor …$ is not falsifiable.
     %	Its negation is $\forall k: (\ar^k) \nileadsto \phi$.
-    %	The claim represents the set $\set{{\allleadsto} \in P^{I × \allhist} \suchthat (\ar) \ileadsto \phi \lor  (\ar, \ar) \ileadsto \phi \lor …}$.
+    %	The claim represents the set $\set{{\allleadsto} \in \allallleadsto \suchthat (\ar) \ileadsto \phi \lor  (\ar, \ar) \ileadsto \phi \lor …}$.
     Given any $O$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in O} \card{\hist} + 1$. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in S_θ \cap C ≠ \emptyset$.
   \end{example}
   \begin{example}
