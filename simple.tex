@@ -347,47 +347,6 @@ Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \sucht
   Thus, $S_{\restr{\allleadstog}{O_O}} \subseteq S_\theta$.
   As $S_\theta \subseteq \Cbar$, we obtain $S_{\restr{\allleadstog}{O_O}} \subseteq \Cbar$.
 \end{proof}
-\begin{conjecture}
-  Test each $O$ of a given length. If find ${\allleadstog} \in \Cbar \suchthat S_{\restr{\allleadstog}{O_O}} \cap C \neq \emptyset$, and also the more lengthy $O'$ completing $O$ satisfy this, then $C$ is not falsifiable; otherwise, it is.
-  Equivalently, pick $k \in \N$, test each $O$ of that length; and proceed for each $k$. Nah.
-\end{conjecture}
-
-\begin{remark}
-  Let $E \subseteq I × \allhist$ denote an observable compatible set. It is downwards closed.
-  Let $M$ denote a maximal $E$.
-  Any $M$ maps each individual $i \in I$ to an increasing sequence.
-  Given ${\allleadsto}$, let $E_{\allleadsto} \subseteq {\allleadsto}$ denote the observable compatible sets (triples, not pairs, thus including values). These are the $E$ to which the value associated is the one given by $\allleadsto$.
-  Define similarly $M_{\allleadsto}$.
-  Let $X_C \subseteq I × \allhist × P$ denote a subset that is completable to some ${\allleadsto}$ in $C$. It is downwards closed.
-  Let $N_C$ denote a maximal such subset.
-  A claim is not falsifiable iff $\exists {\allleadsto} \notin C \suchthat$ each $E_{\allleadsto}$ equals some $X_C$.
-  A claim is not falsifiable iff $\exists {\allleadsto} \notin C \suchthat$ each $M_{\allleadsto}$ equals some $X_C$.
-  A claim is not falsifiable iff it is possible to pick some $M_{\allleadsto_1}$ from $C$ (that is, a mapping of each individual to an increasing sequence, together with the associated value from $\allleadsto_1$), some other $M_{\allleadsto_2}$ from $C$, and on their common entries (if any) these two relations agree (so their union is a right-unique relation), and so on for each possible mappings $M$, so as to form a complete $\allleadsto$ that is not in $C$.
-  A claim is falsifiable iff it is closed under the above picking operation.
-  Equivalently, a claim is not falsifiable iff this can be done for a given number of $M$ whose union is not an $X_C$.
-  We could need more than two such $M$'s, I suppose: for the theorem below, the number of such $M$'s is equal to the cardinal of the set on which they differ.
-  TODO what about finiteness of observables? Might fail falsifiability because only infinite obs would falsify.
-\end{remark}
-\begin{remark}
-  If $C$ is such that $\exists {\allleadsto} \notin C \suchthat$ each $M_{\allleadsto}$ equals some $X_C$, then $C$ is not falsifiable.
-  This looks correct:
-  our counter-example has the relation with some $M$ not equal to any $X_C$.
-
-  To obtain non fals, need to form a relation whose all decompositions into incr associations are in $C$, but itself not in $C$.
-\end{remark}
-\begin{conjecture}
-  Given a claim $C$, consider the subsets of $(\cup_{A \in \max \incr(\allhist)}P^A)^I \cap C^\subseteq$ whose union, considered as a relation on $(I × \allhist) × P$, is total and right-unique (that is, the subsets that form a new relation $\allleadstog$).
-  $C$ is falsifiable iff these new elements are necessarily in $C$.
-\end{conjecture}
-\begin{proof}
-  This seems false. (Consider $I = \set{i_1, i_2}$ and $\args = \set{a, b}$ and $\psi$ is ${\ileadsto[i_1]} = {\ileadsto[i_2]}$ and $S = \set{R_1, R_2, …}$ with $R_1$ are all sequences starting with $a$ sent to $p$ and $R_2$ are all sequences starting with $b$ sent to $p' ≠ p$.)
-  % Consider $S \subseteq (\cup_{A \in \max \incr(\allhist)}P^A)^I \cap C^\subseteq$ (thus each $R \in S$ is a relation $R \subseteq (I × \allhist) × P$). Assume that $\cup S$ is total and right-unique and is not in $C$.
-  % Let us show that $C$ is not falsifiable.
-  % Define ${\allleadstog} = \cup S$, pick any $\theta \in \Theta, \theta \subseteq {\allleadstog}$ and let us show that $\theta \in C^\subseteq$.
-  % Let us show that $\exists R \in S \suchthat \theta \subseteq R$.
-  % Pick any triple $t \in \theta$. Thus, $t \in \cup S$. Thus, for some $R \in S$, $t \in R$. And $R \in C^\subseteq$.
-  % Pick any two triples $t, t' \in \theta$. Wlog, $\hist \subseteq \hist'$.
-\end{proof}
 
 \begin{remark}
   Any relation $\allleadstog$ is equivalent to $\cup \set{\restr{\allleadstog}{O} \suchthat O \in (\finite(\incr(\allhist))^I)}$.
