@@ -42,7 +42,7 @@
 \NewDocumentCommand{\arga}{}{\ar_\gamma}
 \NewDocumentCommand{\pga}{}{p_\gamma}
 \NewDocumentCommand{\zar}{}{\mathbf{0}}%zero, or empty, argument
-\NewDocumentCommand{\allhist}{}{\mathscr{A}^{<\N}}
+\NewDocumentCommand{\allhists}{}{\mathscr{A}^{<\N}}
 \NewDocumentCommand{\hist}{}{α}
 \NewDocumentCommand{\histp}{}{α^{\prime}}
 \NewDocumentCommand{\histpp}{}{α^{\prime\prime}}
@@ -107,7 +107,8 @@
 %%i
 \NewDocumentCommand{\iprops}{}{\Phi_i}
 \NewDocumentCommand{\allleadstog}{}{⇝}
-\NewDocumentCommand{\allallleadsto}{}{P^{I × \allhist}}
+\NewDocumentCommand{\allpriobss}{}{\finite(\incr(\allhists)^I)}
+\NewDocumentCommand{\allleadstos}{}{P^{I × \allhists}}
 \NewDocumentCommand{\allleadsto}{}{\bm{⇝}}%Or \dashrightarrow?
 \NewDocumentCommand{\ileadsto}{O{i}}{\bm{⇝}_{#1}}
 \NewDocumentCommand{\ileadstog}{O{i}}{⇝_{#1}}

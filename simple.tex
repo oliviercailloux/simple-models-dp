@@ -75,22 +75,22 @@ An exposure protocol is a tuple $(I, \allargs, {\allleadsto})$, where $I$ is a s
 While $I$ and $\allargs$ are fundamental sets whose elements are considered elementary, a few notations and concepts are required to define ${\allleadsto}$.
 Throughout the article, $\N$ includes zero and $\N^* = \N \setminus \set{0}$.
 Given $j, l \in \N$, the notation $\intvl{j, l}$ represents $\set{k \in \N \suchthat j ≤ k ≤ l}$ (thus $\forall j \in \N^*: \intvl{j, 0} = \emptyset$).
-Define $\allhist = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ as the finite sequences of arguments, including the empty sequence.
-A generic element of $\allhist$ (a sequence of arguments) is denoted by $\hist$ and called an argumentative path, or simply a path. Its length is denoted by $\card{\hist} \in \N$ and its elements, $\hist(k)$ or $\hist_k$.
-Thus, given an argumentative path $\hist \in \allhist$, $\forall k \in \intvl{1, \card{\hist}}: \hist(k) = \hist_k \in \allargs$, and $\hist = \emptyset ⇔ \card{\hist} = 0$. A path $\hist$ is a sub-path of another path $\histp$ whenever $\hist \subseteq \histp$, thus, $\forall k \in \intvl{1, \card{\hist}}: \hist_k = \histp_k$.
+Define $\allhists = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ as the finite sequences of arguments, including the empty sequence.
+A generic element of $\allhists$ (a sequence of arguments) is denoted by $\hist$ and called an argumentative path, or simply a path. Its length is denoted by $\card{\hist} \in \N$ and its elements, $\hist(k)$ or $\hist_k$.
+Thus, given an argumentative path $\hist \in \allhists$, $\forall k \in \intvl{1, \card{\hist}}: \hist(k) = \hist_k \in \allargs$, and $\hist = \emptyset ⇔ \card{\hist} = 0$. A path $\hist$ is a sub-path of another path $\histp$ whenever $\hist \subseteq \histp$, thus, $\forall k \in \intvl{1, \card{\hist}}: \hist_k = \histp_k$.
 
-The function ${\allleadsto}: I × \allhist → P$ associates to each individual and path an element of $P$, ${\allleadsto}(i, \alpha)$ representing the choice of $i$ following exposure to the arguments of $\alpha$, in order. That is, ${\allleadsto}(i, \alpha) = \phi$ denotes that $i$ chooses the first act after exposure to $\alpha$, ${\allleadsto}(i, \alpha) = ¬\phi$ denotes $i$ choosing the second act and ${\allleadsto}(i, \alpha) = 0$ is used to represent indifference of $i$.
-The notation $\alpha \ileadsto p$, pronounced “$\alpha$ leads $i$ to $p$”, will be used to mean ${\allleadsto}(i, \alpha) = p$, considering ${\ileadsto} \subseteq \allhist × P$ as a binary relation.
+The function ${\allleadsto}: I × \allhists → P$ associates to each individual and path an element of $P$, ${\allleadsto}(i, \alpha)$ representing the choice of $i$ following exposure to the arguments of $\alpha$, in order. That is, ${\allleadsto}(i, \alpha) = \phi$ denotes that $i$ chooses the first act after exposure to $\alpha$, ${\allleadsto}(i, \alpha) = ¬\phi$ denotes $i$ choosing the second act and ${\allleadsto}(i, \alpha) = 0$ is used to represent indifference of $i$.
+The notation $\alpha \ileadsto p$, pronounced “$\alpha$ leads $i$ to $p$”, will be used to mean ${\allleadsto}(i, \alpha) = p$, considering ${\ileadsto} \subseteq \allhists × P$ as a binary relation.
 As usual with binary relations, $\hist \nileadsto p$ means ${\allleadsto}(i, \alpha) ≠ p$ or equivalently ${\allleadsto}(i, \alpha) \in P \setminus \set{p}$.
 
 \subsection{Deliberated choice}
 The deliberated choice of $i$ given the exposure protocol $(I, \allargs, {\allleadsto})$ is denoted $P_i \subset P$.
 Its formal definition requires the notion of decisive argument.
 
-Given $\hist \in \allhist$, $\range(\hist) = \hist(\intvl{1, \card{\hist}})$ denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$.
+Given $\hist \in \allhists$, $\range(\hist) = \hist(\intvl{1, \card{\hist}})$ denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$.
 Let $\histend = \hist(\intvl{\max(1, \card{\hist} - 1), \card{\hist}})$ denote the set containing the last two arguments of the sequence $\hist$ if the sequence has at least two elements; the unique argument of the sequence if it has exactly one element; and the empty set if it is empty.
 
-Given $i \in I, p \in P, \ar \in \allargs$, define $\ar \ileadstost p$, pronounced “$a$ leads definitely $i$ to $p$”, iff $\forall \hist \in \allhist \suchthat \ar \in \histend: \hist \ileadsto p$.
+Given $i \in I, p \in P, \ar \in \allargs$, define $\ar \ileadstost p$, pronounced “$a$ leads definitely $i$ to $p$”, iff $\forall \hist \in \allhists \suchthat \ar \in \histend: \hist \ileadsto p$.
 When $\ar \ileadstost p$, $\ar$ is said to be a decisive argument for $\prop$ from $i$’s point of view given the exposure protocol.
 
 The deliberated choice of $i$ is then considered as the set of propositions supported by decisive arguments.
@@ -216,8 +216,8 @@ The following example illustrates this same point in a constrained setting which
   %Similarly, define $\hist \ileadsto (P > D)$ iff showing the arguments in $\hist$ to $i$ and letting $i$ choose between $P$ and $D$ or declare indifference leads $i$ to choose $P$ and not $D$. 
   %Define similarly $\hist \ileadsto \prop$ for $\prop \in \set{D ≥ P, D > P}$.
 
-  Assume that some individuals $i \in I$ do not see the point of argument $\ar_u$ and some do but are convinced by the counter-argument $\ar_l$. Accordingly, define $\ileadsto[e]$, representing the first kind of individuals, as follows. $\forall \hist \in \allhist: \hist \ileadsto[e] L_D ⇔ [\ar_e \in R(\hist)]$, and $\hist \ileadsto[e] L_P$ otherwise. Note that in particular, if $\hist$ contains $\ar$ but not $\ar_e$, $\ar \ileadsto[e] L_P$, as we assume such individuals are confused by the longer argument $\ar$ referring to abstract notions and therefore opt for $L_P$, falling back to the common psychological bias.
-  The second kind of individuals is represented by $\ileadsto[u]$ defined as $\forall \hist \in \allhist: \hist \ileadsto[u] L_D ⇔ [\ar_u \notin R(\hist) \lor \ar \in R(\hist) \lor \set{\ar_u, \ar_l} \subseteq R(\hist)]$, and $\hist \ileadsto[u] L_P$ otherwise.
+  Assume that some individuals $i \in I$ do not see the point of argument $\ar_u$ and some do but are convinced by the counter-argument $\ar_l$. Accordingly, define $\ileadsto[e]$, representing the first kind of individuals, as follows. $\forall \hist \in \allhists: \hist \ileadsto[e] L_D ⇔ [\ar_e \in R(\hist)]$, and $\hist \ileadsto[e] L_P$ otherwise. Note that in particular, if $\hist$ contains $\ar$ but not $\ar_e$, $\ar \ileadsto[e] L_P$, as we assume such individuals are confused by the longer argument $\ar$ referring to abstract notions and therefore opt for $L_P$, falling back to the common psychological bias.
+  The second kind of individuals is represented by $\ileadsto[u]$ defined as $\forall \hist \in \allhists: \hist \ileadsto[u] L_D ⇔ [\ar_u \notin R(\hist) \lor \ar \in R(\hist) \lor \set{\ar_u, \ar_l} \subseteq R(\hist)]$, and $\hist \ileadsto[u] L_P$ otherwise.
   We assume here that such individuals think about $\ar_u$ as a correct argument in favor of $L_P$ until shown the rebuttal $\ar_l$ (or $\ar$, which contains a similar rebuttal).
   Assuming finally $\allleadsto$ as equal to $\ileadsto[e]$ for individuals of the first kind and $\ileadsto[u]$ otherwise concludes the definition of the exposure protocol $(I, \allargs, {\allleadsto})$.
 
@@ -259,51 +259,70 @@ Escaping?
 Assume that we know that 50\% are J and 50\% are K.
 
 \subsection{Form of theories}
-Given an exposure protocol $(I, \allargs, {\allleadsto})$, recall that ${\allleadsto} \in \allallleadsto$.
+Given an exposure protocol $(I, \allargs, {\allleadsto})$, recall that ${\allleadsto} \in \allleadstos$.
 
-Given a pair $(I, \allargs)$, a claim $C$ is a set of possibilities for $\allleadsto$, thus, $C \subseteq \allallleadsto$.
-Given a formula $\psi$, let the corresponding claim be $C_\psi = \set{{\allleadstog} \in \allallleadsto \suchthat {\allleadstog} \text{ satisfies } \psi}$.
+Given a pair $(I, \allargs)$, a claim $C$ is a set of possibilities for $\allleadsto$, thus, $C \subseteq \allleadstos$.
+Given a formula $\psi$, let the corresponding claim be $C_\psi = \set{{\allleadstog} \in \allleadstos \suchthat {\allleadstog} \text{ satisfies } \psi}$.
+A claim is trivial iff it is the trivial claim, defined as $C = \allleadstos$.
 A claim is finite iff its cardinal is finite (meaning that it is compatible with a finite number of possibilities).
-Let $C^\subseteq = \set{c \subseteq (I × \allhist) × P \suchthat \exists {\allleadstog} \in C \suchthat c \subseteq {\allleadstog}}$ denote the set of non necessarily complete possibilities compatible with $C$ (thus, each element $c \in C^\subseteq$ is right-unique but non necessarily total, meaning that it does not necessarily cover $(I × \allhist)$).
+Let $C^\subseteq = \set{c \subseteq (I × \allhists) × P \suchthat \exists {\allleadstog} \in C \suchthat c \subseteq {\allleadstog}}$ denote the set of non necessarily complete possibilities compatible with $C$ (thus, each element $c \in C^\subseteq$ is right-unique but non necessarily total, meaning that it does not necessarily cover $(I × \allhists)$).
 Note that $C^\subseteq$ is downwards closed, meaning that $\forall c \in C^\subseteq: c' \subseteq c \implies c' \in C^\subseteq$.
 
-Given a pair $(I, \allargs)$, an observation $θ \in \Theta$ is a right unique finite subset of $(I × \allhist) × P$ such that $\forall i \in I, (i, \hist, p), (i, \histp, q) \in θ: \card{\hist} ≤ \card{\hist'} \implies \hist \subseteq \hist'$.
+Given a pair $(I, \allargs)$, an observation $θ \in \Theta$ is a right unique finite subset of $(I × \allhists) × P$ such that $\forall i \in I, (i, \hist, p), (i, \histp, q) \in θ: \card{\hist} ≤ \card{\hist'} \implies \hist \subseteq \hist'$.
 The set $\Theta$ contains the a priori possible observations, that is, those that can be considered possible when nothing is known about $\allleadsto$.
-Let $S_θ = \set{{\allleadstog} \in \allallleadsto \suchthat θ \subseteq {\allleadstog}}$ denote the possibilities for $\allleadsto$ compatible with the observations.
+Let $S_θ = \set{{\allleadstog} \in \allleadstos \suchthat θ \subseteq {\allleadstog}}$ denote the possibilities for $\allleadsto$ compatible with the observations.
 We say that an observation $\theta$ is compatible with a claim $C$ iff $S_\theta \cap C ≠ \emptyset$, equivalently, iff $\theta \in C^\subseteq$.
 
-Given an observation $\theta$, let $\theta^{-1}(P) \subseteq I × \allhist$ denote the pairs $(i, \hist)$ in $\theta$.
-Let $\incr(\allhist) = \set{\emptyset} \cup \cup_{\emptyset \neq N \subseteq \N} \set{A(N) \suchthat A \in (\allhist)^N \land [\card{A_i} = i] \land [i < j \implies A_i \subsetneq A_j]} \subseteq \powerset{\allhist}$ denote the possibly empty embedded sequences of paths.
-An element $\theta^{-1}(P)$ can also be seen as a (finite) function associating to each $i \in I$ an element of $\incr(\allhist)$.
-Therefore, we let $\finite(\incr(\allhist)^I) = \set{\theta^{-1}(P) \suchthat \theta \in \Theta}$ denote the set of possible observations restricted to $I × \allhist$, the elements of which being called \emph{a priori observation}, where $\finite(\incr(\allhist)^I)$ denote the functions $f: I \mapsto \incr(\allhist)$ with finite support, thus $\card{f^{-1}(\incr(\allhist) \setminus \emptyset)} < \N$.
-Note that $\finite(\incr(\allhist)^I)$ and $\incr(\allhist)^I$ are downwards closed, meaning that $\forall O \in \finite(\incr(\allhist)^I): O' \subseteq O \implies O' \in \finite(\incr(\allhist)^I)$ and $\forall O \in \incr(\allhist)^I: O' \subseteq O \implies O' \in \incr(\allhist)^I$.
-Let also $\max\incr(\allhist) = \set{A \in \incr(\allhist) \suchthat \nexists A' \in \incr(\allhist) \suchthat A \subset A'} = \set{A \in \incr(\allhist) \cap (\allhist)^\N}$ denote the maximal elements of $\incr(\allhist)$, in the sense of containing sequences that are not a subsequence of another sequence; equivalently, containing those sequences whose sequence of cardinals of their elements equals $\N$.
+Given an observation $\theta$, let $\theta^{-1}(P) \subseteq I × \allhists$ denote the pairs $(i, \hist)$ in $\theta$.
+Let $\incr(\allhists) = \set{\emptyset} \cup \cup_{\emptyset \neq N \subseteq \N} \set{A(N) \suchthat A \in (\allhists)^N \land [\card{A_i} = i] \land [i < j \implies A_i \subsetneq A_j]} \subseteq \powerset{\allhists}$ denote the possibly empty embedded sequences of paths.
+An element $\theta^{-1}(P)$ can also be seen as a (finite) function associating to each $i \in I$ an element of $\incr(\allhists)$.
+Therefore, we let $\finite(\incr(\allhists)^I) = \set{\theta^{-1}(P) \suchthat \theta \in \Theta}$ denote the set of possible observations restricted to $I × \allhists$, the elements of which being called \emph{a priori observation}, where $\finite(\incr(\allhists)^I)$ denote the functions $f: I \mapsto \incr(\allhists)$ with finite support, thus $\card{f^{-1}(\incr(\allhists) \setminus \emptyset)} < \N$.
+Note that $\allpriobss$ and $\incr(\allhists)^I$ are downwards closed, meaning that $\forall O \in \allpriobss: O' \subseteq O \implies O' \in \allpriobss$ and $\forall O \in \incr(\allhists)^I: O' \subseteq O \implies O' \in \incr(\allhists)^I$.
+Let also $\max\incr(\allhists) = \set{A \in \incr(\allhists) \suchthat \nexists A' \in \incr(\allhists) \suchthat A \subset A'} = \set{A \in \incr(\allhists) \cap (\allhists)^\N}$ denote the maximal elements of $\incr(\allhists)$, in the sense of containing sequences that are not a subsequence of another sequence; equivalently, containing those sequences whose sequence of cardinals of their elements equals $\N$.
 
-Let the \emph{simple a priori observations} be defined as $\cup_{J \subseteq_\finite I} (\allhist)^J$, equivalently, as the right-unique finite relations over $I × \allhist$.
-Given a simple a priori observation $O: J \mapsto \allhist$, we can define the a priori observation $O_O = \set{(i, \hist) \in J × \allhist \suchthat \forall i \in J: \hist \subseteq O(i)}$ as the completion of $O$ to all sub-paths in $O$.
+Let the \emph{simple a priori observations} be defined as $\cup_{J \subseteq_\finite I} (\allhists)^J$, equivalently, as the right-unique finite relations over $I × \allhists$.
+Given a simple a priori observation $O: J \mapsto \allhists$, we can define the a priori observation $O_O = \set{(i, \hist) \in J × \allhists \suchthat \forall i \in J: \hist \subseteq O(i)}$ as the completion of $O$ to all sub-paths in $O$.
 Given $O$ and ${\allleadstog}$, it follows that $S_{\restr{\allleadstog}{O_O}}$ denotes the “leads to” relations that complete $O_O$ using $\allleadstog$.
 
-Similarly, we can view an observation $\theta$ as a function $\theta: I \mapsto \cup_{A \in \incr(\allhist)} P^A$ and thus $\Theta = \finite((\cup_{A \in \incr(\allhist)} P^A)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
-Note that $(\cup_{A \in \max \incr(\allhist)}P^A)^I$ is the set of functions that associate to each $I$ a maximal increasing sequence of paths, together with values from $P$.
+Similarly, we can view an observation $\theta$ as a function $\theta: I \mapsto \cup_{A \in \incr(\allhists)} P^A$ and thus $\Theta = \finite((\cup_{A \in \incr(\allhists)} P^A)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
+Note that $(\cup_{A \in \max \incr(\allhists)}P^A)^I$ is the set of functions that associate to each $I$ a maximal increasing sequence of paths, together with values from $P$.
 
 Given a claim $C$, we can also define the set $\Theta \cap C^\subseteq$ of possibilities for increasing sequences corresponding to the claim.
 This set is downwards-closed, as both $\Theta$ and $C^\subseteq$ are.
 
+\begin{remark}
+  Any relation $\allleadstog$ is equivalent to $\cup \set{\restr{\allleadstog}{O} \suchthat O \in \cup_{J \subseteq_\finite I} (\allhists)^J}$.
+\end{remark}
+
 \begin{definition}
   We say that $C$ is \emph{syntactically falsifiable}, or just falsifiable, iff
-  %$\forall {\allleadstog} \in \allallleadsto: ¬C({\allleadstog}) \implies \exists θ \subseteq {\allleadstog} \suchthat θ \implies ¬C$, meaning that
+  %$\forall {\allleadstog} \in \allleadstos: ¬C({\allleadstog}) \implies \exists θ \subseteq {\allleadstog} \suchthat θ \implies ¬C$, meaning that
   $\forall {\allleadstog} \notin C: \exists θ \subseteq {\allleadstog} \suchthat S_θ \cap C = \emptyset$.
 \end{definition}
 Equivalently, iff $\forall {\allleadstog} \notin C: \exists θ \subseteq {\allleadstog} \suchthat \theta \notin C^\subseteq$.
 Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \suchthat \forall \theta \in \Theta, \theta \subseteq {\allleadstog}: \theta \in C^\subseteq$.
+
+\begin{remark}
+  Any relation $\allleadstog$ is equivalent to $\cup \set{\restr{\allleadstog}{O} \suchthat O \in (\finite(\incr(\allhists))^I)}$.
+  Conversely, any set $S$ of observations such that $\set{\theta^{-1}(P) \suchthat \theta \in S} = \incr(\allhists)^I$ and $\cup S$ is right-unique corresponds to a unique relation $\cup S = {\allleadstog}$.
+  Thus, there is a bijection between the set $\mathcal{S}$ of such sets $S$ and the set of leads to relations.
+
+  This is the intuitive reason that, as we will see,
+  a claim $C$ is falsifiable iff $\forall S \in \mathcal{S}: S \subseteq C^\subseteq \implies \cup S \in C$.
+\end{remark}
+
 \begin{example}
-  $(\ar) \ileadstog \phi \lor  (\ar, \ar) \ileadstog \phi \lor …$ is not falsifiable.
+  \label{ex:bigor}
+  $[\forall i: (\ar) \ileadstog \phi] \lor [\forall i: (\ar, \ar) \ileadstog \phi] \lor …$ is not falsifiable.
+  Here, $C = \set{{\allleadstog} \suchthat \exists n \in \N^* \suchthat \forall i: (a)^n \ileadstog \phi}$.
+
   Given any $θ$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in θ} \card{\hist} + 1$ if $\exists p \in P \suchthat (i, \hist, p) \in θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in S_θ \cap C ≠ \emptyset$.
 \end{example}
 \begin{example}
   \label{ex:unfals}
-  $(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi$ is not falsifiable.
-  Consider any ${\allleadstog} \notin C$, thus satisfying $(\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$.
+  Given $\ar \neq \ar' \in \allargs$,
+  $\forall i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$ is not falsifiable.
+  Consider any ${\allleadstog} \notin C$, thus satisfying, for some $i$, $(\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$.
   Consider any $θ \subseteq {\allleadstog}$ and let us prove that $S_θ \cap C ≠ \emptyset$.
   By definition of a general observation, $θ$ may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $θ$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} \land t \in {\allleadstog'}$. We have ${\allleadstog'} \in S_θ \cap C ≠ \emptyset$.
 \end{example}
@@ -333,9 +352,9 @@ Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \sucht
   To be falsifiable, I need each time I exclude some relation $R$ to also exclude a subset $Cbar$ such that some $O \subseteq R$ satisfies $S_O$ is entirely in $Cbar$.
 \end{remark}
 \begin{theorem}
-  A claim $C$ is falsifiable iff its complement $\Cbar = \allallleadsto \setminus C$ satisfies:
+  A claim $C$ is falsifiable iff its complement $\Cbar = \allleadstos \setminus C$ satisfies:
   $\forall {\allleadstog} \in \Cbar, \exists \theta \subseteq {\allleadstog} \suchthat S_\theta \subseteq \Cbar$, or equivalently:
-  $\forall {\allleadstog} \in \Cbar, \exists O \in (\allhist)^I \suchthat S_{\restr{\allleadstog}{O_O}} \subseteq \Cbar$.
+  $\forall {\allleadstog} \in \Cbar, \exists O \in (\allhists)^I \suchthat S_{\restr{\allleadstog}{O_O}} \subseteq \Cbar$.
 \end{theorem}
 \begin{proof}
   The first phrasing follows from the definition of falsifiability.
@@ -348,28 +367,61 @@ Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \sucht
   As $S_\theta \subseteq \Cbar$, we obtain $S_{\restr{\allleadstog}{O_O}} \subseteq \Cbar$.
 \end{proof}
 
-\begin{remark}
-  Any relation $\allleadstog$ is equivalent to $\cup \set{\restr{\allleadstog}{O} \suchthat O \in (\finite(\incr(\allhist))^I)}$.
-  (Also, any relation $\allleadstog$ is equivalent to $\cup \set{\restr{\allleadstog}{O} \suchthat O \in \cup_{J \subseteq_\finite I} (\allhist)^J}$.)
-  Conversely, any set $S$ of observations such that $\set{\theta^{-1}(P) \suchthat \theta \in S} = \incr(\allhist)^I$ and $\cup S$ is right-unique corresponds to a unique relation $\cup S = {\allleadstog}$.
-  Thus, there is a bijection between the set $\mathcal{S}$ of such sets $S$ and the set of leads to relations.
-
-  Therefore,
-  a claim $C$ is falsifiable iff $\forall S \in \mathcal{S}: S \subseteq C^\subseteq \implies \cup S \in C$.
-\end{remark}
-
 \begin{theorem}
-  A claim $C$ is falsifiable iff \[\forall f \in C^{\finite(\incr(\allhist)^I)}: \cup_{O \in \finite(\incr(\allhist)^I)} \restr{f(O)}{O} \in C.\]
+  \label{thm:caractFals}
+  A claim $C$ is falsifiable iff $\forall {\allleadstog} \in \allleadstos$:
+  \[\set{\restr{\allleadstog}{O} \suchthat O \in \allpriobss} \subseteq C^\subseteq \implies {\allleadstog} \in C.\]
 \end{theorem}
 \begin{proof}
   By definition, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \suchthat \forall θ \subseteq {\allleadstog}: S_θ \cap C \neq \emptyset$;
   equivalently, iff $\exists {\allleadstog} \notin C \suchthat \forall θ \subseteq {\allleadstog}: θ \in C^\subseteq$;
   equivalently, iff $\exists {\allleadstog} \notin C \suchthat \set{θ \subseteq {\allleadstog}} \subseteq C^\subseteq$.
 
-  The theorem states that a claim $C$ is falsifiable iff $\forall {\allleadstog} \in \allallleadsto: \set{\restr{\allleadstog}{O} \suchthat O \in \finite(\incr(\allhist)^I)} \subseteq C^\subseteq \implies {\allleadstog} \in C$.
-
-  This holds because $\forall {\allleadstog} \in \allallleadsto: \set{\restr{\allleadstog}{O} \suchthat O \in \finite(\incr(\allhist)^I)} = \set{θ \subseteq {\allleadstog}}$.
+  To conclude, note that $\forall {\allleadstog} \in \allleadstos$: $\set{\restr{\allleadstog}{O} \suchthat O \in \allpriobss} = \set{θ \subseteq {\allleadstog}}$.
 \end{proof}
+\begin{corollary}
+  A claim $C$ is falsifiable iff $\forall f \in C^{\allpriobss} \suchthat \forall O, O' \in \allpriobss: \restr{f(O)}{O \cap O'} = \restr{f(O')}{O \cap O'}$:
+  \[\cup_{O \in \allpriobss} \restr{f(O)}{O} \in C.\]
+\end{corollary}
+\begin{proof}
+  Consider a falsifiable claim $C$, consider such an $f$, and let us prove that $\cup_{O \in \allpriobss} \restr{f(O)}{O} \in C$.
+  Define ${\allleadstog} \subseteq (I × \allhists) × P$ as $\cup_{O \in \allpriobss} \restr{f(O)}{O}$. Its domain equals $I × \allhists$, and it is right-unique thanks to the condition on $f$.
+  Thus, \cref{thm:caractFals} applies and ${\allleadstog} \in C$.
+
+
+  Conversely, assume that the statement about all $f$ holds and let us prove that $C$ is falsifiable.
+  Consider any ${\allleadstog} \in \allleadstos$ such that $\set{\restr{\allleadstog}{O} \suchthat O \in \allpriobss} \subseteq C^\subseteq$.
+  Given any $O$, we have $\restr{\allleadstog}{O} \in C^\subseteq$ and therefore there is some $e_O \in C$ such that $\restr{\allleadstog}{O} = \restr{e_O}{O}$.
+  Define $f$ as $f(O) = e_O$.
+  As this $f$ satisfies the condition in the hypothesis, we obtain that $\cup_{O \in \allpriobss} \restr{f(O)}{O} \in C$, hence, $\cup_{O \in \allpriobss} \restr{\allleadstog}{O} \in C$.
+  Therefore, ${\allleadstog} \in C$.
+  Apply \cref{thm:caractFals} to conclude that $C$ is falsifiable.
+\end{proof}
+
+\begin{corollary}
+  \label{th:corffals}
+  A claim $C$ is falsifiable iff $\forall f \in \left(C^\subseteq\right)^{\allpriobss} \suchthat \forall O, O' \in \allpriobss: \restr{f(O)}{O \cap O'} = \restr{f(O')}{O \cap O'}$:
+  \[\cup_{O \in \allpriobss} \restr{f(O)}{O} \in C.\]
+\end{corollary}
+\begin{corollary}
+  \label{th:corffalsdom}
+  A claim $C$ is falsifiable iff $\forall f \in \cup_{O \in \allpriobss} \set{\set{O} × (P^O \cap C^\subseteq)} \suchthat \forall O, O' \in \allpriobss: \restr{f(O)}{O \cap O'} = \restr{f(O')}{O \cap O'}$:
+  \[\cup_{O \in \allpriobss} f(O) \in C.\]
+\end{corollary}
+\begin{corollary}
+  \label{th:veryunfals}
+  Any non-trivial claim $C$ satisfying $\forall O \in \allpriobss, {\allleadstog} \in \allleadstos: \restr{\allleadstog}{O} \in C^\subseteq$ is not falsifiable.
+\end{corollary}
+\begin{proof}
+  Pick any ${\allleadstog} \notin C$.
+  Define $f$ as $\forall O \in \allpriobss: f(O) = \restr{\allleadstog}{O}$.
+  Observe that $\cup_{O \in \allpriobss} f(O) = {\allleadstog}$ and hence $\cup_{O \in \allpriobss} f(O) \notin C$.
+  Apply \cref{th:corffalsdom}.
+\end{proof}
+
+\begin{example}
+  Considering again \cref{ex:bigor}, by \cref{th:veryunfals}, we see that $C = \set{{\allleadstog} \suchthat \exists n \in \N^* \suchthat \forall i: (a)^n \ileadstog \phi}$ is not falsifiable.
+\end{example}
 
 Any claim containing two relations that differ only on incompatible observations is not falsifiable.
 \begin{theorem}
@@ -382,7 +434,7 @@ Any claim containing two relations that differ only on incompatible observations
 \end{proof}
 The following example illustrates the need for the condition about the combination in the theorem.
 \begin{example}
-  Pick $i \in I$, $p ≠ p' \in P$ and $\hist, \histp \in \allhist$ with $\hist$ and $\histp$ non prefix related.
+  Pick $i \in I$, $p ≠ p' \in P$ and $\hist, \histp \in \allhists$ with $\hist$ and $\histp$ non prefix related.
   The claim $\psi = (\hist \ileadstog p \lor \hist \ileadstog p') \land (\histp \ileadstog p \lor \histp \ileadstog p') \land (\forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p)$ is falsifiable.
 
   Given $q, q' \in P$, let ${\allleadstog^{q, q'}}$ be defined as $\hist \ileadstog^{q, q'} q$, $\histp \ileadstog q'$ and $\forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p$.
@@ -435,7 +487,7 @@ Equivalently, let $(P \cup \set{\emptyset})^I$ denote the right unique relations
 We say that $C$ is \emph{informative} iff $\exists {\allleadstog} \in (P \cup \set{\emptyset})^I \suchthat C \implies ¬{\allleadstog}$, meaning that $\pi(C) = \set{\pi(\allleadstog) \suchthat {\allleadstog} \in C} ≠ (P \cup \set{\emptyset})^I$.
 
 \begin{definition}[Anonymity]
-  Given a permutation $\sigma$ over $I$ and any ${\allleadstog} \in \allallleadsto$, let ${\allleadstog} \circ \sigma$ denote $\set{(i, \hist, \phi) \suchthat (\sigma(i), \hist, \phi) \in {\allleadstog}}$ and let $C \circ \sigma$ denote $\set{{\allleadstog} \circ \sigma \suchthat {\allleadstog} \in C}$.
+  Given a permutation $\sigma$ over $I$ and any ${\allleadstog} \in \allleadstos$, let ${\allleadstog} \circ \sigma$ denote $\set{(i, \hist, \phi) \suchthat (\sigma(i), \hist, \phi) \in {\allleadstog}}$ and let $C \circ \sigma$ denote $\set{{\allleadstog} \circ \sigma \suchthat {\allleadstog} \in C}$.
   A claim $C$ is \emph{anonymous} iff $\forall \sigma: C = C \circ \sigma$.
 \end{definition}
 \begin{example}
@@ -452,13 +504,13 @@ $C$ is \emph{suitable} iff it holds and is anonymous, informative and falsifiabl
 Our goal now is to find an exposure protocol $\allleadsto$ with no suitable claim.
 
 \subsection{Ideas for no suitable}
-Given $\histk \in \allhist$ and $\ar_l \in \allargs$, let $(\histk, …, \ar_l, ?)$ denote the set
+Given $\histk \in \allhists$ and $\ar_l \in \allargs$, let $(\histk, …, \ar_l, ?)$ denote the set
 $\set{\histl \suchthat \histk \subset \histl \land \ar_l \in \histlend}$.
-Given $\hist \in \allhist$, ${\ileadstog}$ and $\ar_k, \ar_l \in \allargs$, let $(\hist, \ar_k, ?, \nileadstog \phi, …, \ar_l, ?)$ denote the set
+Given $\hist \in \allhists$, ${\ileadstog}$ and $\ar_k, \ar_l \in \allargs$, let $(\hist, \ar_k, ?, \nileadstog \phi, …, \ar_l, ?)$ denote the set
 $\set{\histl \suchthat \exists \histk \suchthat \hist \subset \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadstog \phi \land \ar_l \in \histlend}$.
 Given $\ar_k, \ar_l \in \allargs$, let
 $(…, \ar_k, ?, \nileadstog \phi, …, \ar_l, ?)$ denote the set
-$\cup_{\hist \in \allhist} (\hist, \ar_k, ?, \nileadstog \phi, …, \ar_l, ?) =
+$\cup_{\hist \in \allhists} (\hist, \ar_k, ?, \nileadstog \phi, …, \ar_l, ?) =
   \set{\histl \suchthat \exists \hist, \histk \suchthat \hist \subset \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadstog \phi \land \ar_l \in \histlend} =
   \set{\histl \suchthat \exists \histk \suchthat \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadstog \phi \land \ar_l \in \histlend}$.
 Given ${\ileadstog}$, $p \in P$, $s \in \allargs$ and $S \subseteq \allargs$, note that $s \in \ileadstoinvg(p)$ stand for $s \ileadstog p$ and $S \subseteq \ileadstoinvg(p)$ stand for $\forall s \in S: s \ileadstog p$.
@@ -494,15 +546,15 @@ Given ${\ileadstog}$, $p \in P$, $s \in \allargs$ and $S \subseteq \allargs$, no
 \begin{proof}
   %	Intuitively, because it might require (with $\hist = (\ar_1)$) to observe that for a given $i$, $(a_1) \nileadsto p \land (\ar_1, \ar_2) \ileadsto p$ and also $(\ar_2) \nileadsto p \land (\ar_2, \ar_1) \ileadsto p$.
   We need to exhibit some ${\allleadstog} \notin C$ such that $\forall θ \subseteq {\allleadstog}: S_θ \cap C ≠ \emptyset$.
-  Define $\allleadstog$ as, $\forall i \in I$, $(\ar_k) \nileadstog p, (\ar_l) \nileadstog p, \forall \hist \in \allhist \setminus \set{(\ar_k), (\ar_l)}: \hist \ileadstog p$.
+  Define $\allleadstog$ as, $\forall i \in I$, $(\ar_k) \nileadstog p, (\ar_l) \nileadstog p, \forall \hist \in \allhists \setminus \set{(\ar_k), (\ar_l)}: \hist \ileadstog p$.
   It follows that $\ar_k \nileadstostg p \land \ar_l \nileadstostg p$. Thus, ${\allleadstog} \notin C$.
   Now pick any $θ \subseteq {\allleadstog}$.
   % The set $O$ can’t have both $(\ar_k) \nileadstog p$ and $(\ar_l) \nileadstog p$.
   % Assume, wlog, that $(\ar_k, i, {\allleadstog}(\ar_k, i)) \notin O$.
   %	Then, intuitively, $\ar_k$ decisive is in $S_θ \cap C$.
-  Define $\allleadstog'$ as, $\forall i \in I: \forall \hist \in \allhist \setminus \set{(\ar_k), (\ar_l)}, \hist \ileadstog' p$
+  Define $\allleadstog'$ as, $\forall i \in I: \forall \hist \in \allhists \setminus \set{(\ar_k), (\ar_l)}, \hist \ileadstog' p$
   and $\forall \ar \in \set{\ar_k, \ar_l}$, $(\ar) \ileadstog' ({\allleadstog}(\ar, i))$ if $(\ar, i, {\allleadstog}(\ar, i)) \in O$, $(\ar) \ileadstog' p$ otherwise.
-  %Pick any $p' ≠ p$ and define $\allleadstog'$ as, $\forall i \in I: \forall \hist \in \allhist \setminus \set{(\ar_l)}, \hist \ileadstog' p \land (\ar_l) \ileadstog' p' ≠ p$.
+  %Pick any $p' ≠ p$ and define $\allleadstog'$ as, $\forall i \in I: \forall \hist \in \allhists \setminus \set{(\ar_l)}, \hist \ileadstog' p \land (\ar_l) \ileadstog' p' ≠ p$.
   The set $O$ can’t have both $(\ar_k) \nileadstog p$ and $(\ar_l) \nileadstog p$, thus, ${\allleadstog'} \in C$.
   We conclude that ${\allleadstog'} \in S_θ \cap C$.
 \end{proof}
@@ -533,7 +585,7 @@ Given ${\ileadstog}$, $p \in P$, $s \in \allargs$ and $S \subseteq \allargs$, no
 
   If the claim is sufficiently stronger (to be falsifiable) than this (thus with $C' \subset C$, thus with ${\allleadstog} \notin C'$ as defined above), then it may be false.
   Indeed, to be falsifiable, we need ${\allleadstog'} \notin C'$.
-  Now we need $C'$ to hold so it must contain ${\allleadsto}$ but not contain ${\allleadstog'}$. It does not contain ${\allleadstog'}$ iff it implies $¬(\land_{\hist \in \allhist \setminus \set{(\ar_l)}} \hist \ileadstog' p \land (\ar_l) \ileadstog' p')$.
+  Now we need $C'$ to hold so it must contain ${\allleadsto}$ but not contain ${\allleadstog'}$. It does not contain ${\allleadstog'}$ iff it implies $¬(\land_{\hist \in \allhists \setminus \set{(\ar_l)}} \hist \ileadstog' p \land (\ar_l) \ileadstog' p')$.
   %So it must claim that $\ar_l$ is not decisive. Or something like, for some $\hist_1$: if $\ar_l \ileadstog' p'$, then $\hist_1 \ileadstog' ¬p$.
 
   Intuitively, need that when we do not observe $(\ar_k)$ for a given $i$, but only $(\ar_l)$ for that $i$, the claim says something contrary about that $(\ar_l, i)$.
@@ -593,7 +645,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   \begin{example}
     $(\ar) \ileadstog \phi \lor (\ar, \ar) \ileadstog \phi \lor …$ is not falsifiable.
     %	Its negation is $\forall k: (\ar^k) \nileadsto \phi$.
-    %	The claim represents the set $\set{{\allleadsto} \in \allallleadsto \suchthat (\ar) \ileadsto \phi \lor  (\ar, \ar) \ileadsto \phi \lor …}$.
+    %	The claim represents the set $\set{{\allleadsto} \in \allleadstos \suchthat (\ar) \ileadsto \phi \lor  (\ar, \ar) \ileadsto \phi \lor …}$.
     Given any $O$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in O} \card{\hist} + 1$. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in S_θ \cap C ≠ \emptyset$.
   \end{example}
   \begin{example}
@@ -615,13 +667,13 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   \label{sec:dynamic}
   An argumentative theory of deliberated choice $\gamma$ is defined as a tuple $(\pga, \dg)$, where $\pga \in P$ is the proposition supported by the theory and $\dg$ is a defense relation.
 
-  The defense relation $\dg \subseteq \allhist × \allargs$ defines the argumentation strategy of the theory. Informally speaking, it defines the arguments that the theory claims will convince the individuals in $I$ to choose $\pga$. Assuming that some path $\hist$ challenges the theory’s intended conclusion in favor of $\pga$ (as judged by the individual), $\dg(\hist)$ is the argument that the theory plays as a counter-argument to the path $\hist$.
+  The defense relation $\dg \subseteq \allhists × \allargs$ defines the argumentation strategy of the theory. Informally speaking, it defines the arguments that the theory claims will convince the individuals in $I$ to choose $\pga$. Assuming that some path $\hist$ challenges the theory’s intended conclusion in favor of $\pga$ (as judged by the individual), $\dg(\hist)$ is the argument that the theory plays as a counter-argument to the path $\hist$.
 
-  Formally speaking, a defense relation $\dg \subseteq \allhist × \allargs$ is a right-unique relation satisfying bounded depth (to be defined shortly). Right-unique means that given any $\hist \in \allhist$, $\dg(\hist) = \set{\ar \in \allargs \suchthat (\hist, \ar) \in \dg}$ is empty or is a singleton.
+  Formally speaking, a defense relation $\dg \subseteq \allhists × \allargs$ is a right-unique relation satisfying bounded depth (to be defined shortly). Right-unique means that given any $\hist \in \allhists$, $\dg(\hist) = \set{\ar \in \allargs \suchthat (\hist, \ar) \in \dg}$ is empty or is a singleton.
   As is usual for right-unique relations, we write $\dg(\hist) = \ar$ instead of $\dg(\hist) = \set{\ar}$ when $\dg(\hist)$ is a singleton (and $\dg(\hist) = \emptyset$ otherwise).
-  Given $H \subseteq \allhist$, define $\dg(H) = \set{\dg(\hist) \suchthat \alpha \in H} \subseteq \allargs$.
+  Given $H \subseteq \allhists$, define $\dg(H) = \set{\dg(\hist) \suchthat \alpha \in H} \subseteq \allargs$.
   Given $\ar_0, \ar_1 \in \allargs$, say that $\ar_1$ defends $\ar_0$
-  iff $\exists \hist \in \allhist \suchthat \ar_0 \in R(\hist) \land \dg(\hist) = \ar_1$, equivalently,
+  iff $\exists \hist \in \allhists \suchthat \ar_0 \in R(\hist) \land \dg(\hist) = \ar_1$, equivalently,
   iff $\ar_0 \in R(\dg^{-1}(\ar_1))$, equivalently,
   iff $\ar_1 \in \dg(\set{\hist \suchthat \ar_0 \in R(\hist)})$.
 
@@ -639,7 +691,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 
   \commentOC{Condition: $\hist \nileadsto \pga \land \exists \hist' \subseteq \hist \suchthat \dg(\histp) \in \histend \land \dg(\hist)$ is not decisive ($\exists \beta \subseteq \hist \suchthat \dg(\hist) \in \beta_\text{end} \land \beta \ileadsto \pga$).}
 
-  To define this formally, note that either $\arga$ is a decisive argument for $\pga$, or some paths challenge this claim, namely those $\hist \in \allhist$ such that $[\arga \in \histend \land \hist \nileadsto \pga]$.
+  To define this formally, note that either $\arga$ is a decisive argument for $\pga$, or some paths challenge this claim, namely those $\hist \in \allhists$ such that $[\arga \in \histend \land \hist \nileadsto \pga]$.
   Generalizing this observation, given $i \in I$, define $\dgi(\ar) = \set{\dg(\ar, \hist) \suchthat \ar \in \histend \land \hist \nileadsto \pga} \subseteq \dg(\ar)$ as the subset of defenders of $\ar$ required for convincing $i$ of choosing $\pga$.
   Define $\gargsi \subseteq \allargs$ as the transitive closure of $\arga$ under $\dgi$: $\gargsi = \cup_{k \in \N} (\dgi)^k(\arga)$. The set $\gargsi$ is the set of arguments required to convince $i$ of choosing $\pga$.
 
@@ -655,7 +707,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   \begin{definition}[Truthfulness]
     \label{def:truth}
     An argumentative theory $(\pga, \arga, \dg)$ for the exposure protocol $(I, \allargs, {\allleadsto})$ is \emph{truthful} iff
-    $\forall i \in I, \hist \in \allhist, n \in \N, k \in \intvl{1, \card \hist}^n, \ar \in \allargs^n$:
+    $\forall i \in I, \hist \in \allhists, n \in \N, k \in \intvl{1, \card \hist}^n, \ar \in \allargs^n$:
     \begin{equation}
       \left.\begin{aligned}
          & \ar_1 = \arga                                                                            \\
@@ -708,7 +760,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 
   \begin{axiom}[Answerability]
     \label{ax:ans}
-    $\forall i \in I, \hist \in \allhist, \ar \in \gargsi$:
+    $\forall i \in I, \hist \in \allhists, \ar \in \gargsi$:
     \begin{equation}
       \left.\begin{aligned}
          & \hist \nileadsto \pga                                        \\
@@ -739,7 +791,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 
   \begin{axiom}[Answerability - using newly built arguments (newest so far)]
     \label{ax:ansn}
-    $\forall i \in I, \hist^j \in (\allhist)^n$:
+    $\forall i \in I, \hist^j \in (\allhists)^n$:
     \begin{equation}
       [\forall j: \hist^j \ileadstost \pga] ⇒ [\exists \ar \in \allargs \suchthat \forall j: (\hist^j, \ar) \ileadstost \pga].
     \end{equation}
@@ -747,7 +799,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 
   \begin{axiom}[Reinstatement]
     \label{ax:r}
-    $\forall i \in I, \hist \in \allhist, \ar_1, \ar_2 \in \gargsi, \ar \in \allargs$:
+    $\forall i \in I, \hist \in \allhists, \ar_1, \ar_2 \in \gargsi, \ar \in \allargs$:
     \begin{equation}
       \left.\begin{aligned}
          & (\hist, \ar_1, \ar) \nileadsto \pga            \\
@@ -770,7 +822,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   Define a path as being decisive for $p$, $\hist \ileadstost p$, iff $\hist \ileadsto p \land \forall \ar \in \allargs: (\hist, \ar) \ileadsto p$, or equivalently, iff $\forall \hist' \suchthat \card{\hist} ≤ \card{\hist'} ≤ \card{\hist} + 1 \land \restr{\hist'}{\intvl{1, \card{\hist}}} = \hist: \hist' \ileadsto p$. Thus, $\hist \nileadstost p ⇔ \exists \ar \in \allargs \suchthat (\hist, \ar) \nileadsto p$ (or…?).
 
   \begin{axiom}[Self-sufficiency of positive arguments]
-    $\forall \ar_1, \ar_2 \in \gargsi, \ar \in \allargs, \hist \in \allhist$:
+    $\forall \ar_1, \ar_2 \in \gargsi, \ar \in \allargs, \hist \in \allhists$:
     \begin{equation}
       \left.\begin{aligned}
          & (\hist, \ar_1) \nileadstost \pga \\
@@ -824,7 +876,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 
   \begin{axiom}[Omitting defended arguments]
     \label{ax:omitting}
-    If the theory is truthful, then $\forall i \in I, k \in \N^*, l \in \intvl{2, k}, (\ar_j)_{j \in \intvl{1, k}} \in \allargs^k, \hist, \beta \in \allhist \suchthat [\ar_k \in \histend \land \forall j \in \intvl{2, k}: \ar_j \in \dgi(\ar_{j - 1})]:
+    If the theory is truthful, then $\forall i \in I, k \in \N^*, l \in \intvl{2, k}, (\ar_j)_{j \in \intvl{1, k}} \in \allargs^k, \hist, \beta \in \allhists \suchthat [\ar_k \in \histend \land \forall j \in \intvl{2, k}: \ar_j \in \dgi(\ar_{j - 1})]:
       (\beta, \ar_{l - 1}, \ar_l, \hist) \ileadsto \pga ⇒ (\beta, \ar_l, \hist) \ileadsto \pga$.
   \end{axiom}
   This is called an axiom because it cannot be falsified using observables. It has to be accepted on the basis of the rest of the observations and on the contents of the defending arguments. As \cref{ex:lichtenstein} suggests, theories can be built so as to make this axiom plausible by embedding within defending arguments the content of the defended argument.
