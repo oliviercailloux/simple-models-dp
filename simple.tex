@@ -319,7 +319,7 @@ Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \sucht
   Given any $θ$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in θ} \card{\hist} + 1$ if $\exists p \in P \suchthat (i, \hist, p) \in θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in S_θ \cap C ≠ \emptyset$.
 \end{example}
 \begin{example}
-  \label{ex:unfals}
+  \label{ex:disj}
   Given $\ar \neq \ar' \in \allargs$,
   $\forall i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$ is not falsifiable.
   Consider any ${\allleadstog} \notin C$, thus satisfying, for some $i$, $(\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$.
@@ -327,9 +327,11 @@ Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \sucht
   By definition of a general observation, $θ$ may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $θ$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} \land t \in {\allleadstog'}$. We have ${\allleadstog'} \in S_θ \cap C ≠ \emptyset$.
 \end{example}
 \begin{example}
-  $\hist \ileadstog[j] \phi \land [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$ is not falsifiable.
+  \label{ex:partlyU}
+  Given $j \in I$, $\hist \in \allhists$ and $\ar \neq \ar' \in \allargs$,
+  $\hist \ileadstog[j] \phi \land \forall i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$ is not falsifiable.
   Consider any $\allleadstog$ satisfying $(\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$, thus with ${\allleadstog} \notin C$.
-  \Cref{ex:unfals} concludes.
+  \Cref{ex:disj} concludes.
 \end{example}
 \begin{example}
   Consider any $\ar$ and $\phi$. The claim $\forall i: \ar \ileadstostg \phi$ is falsifiable.
@@ -410,10 +412,11 @@ Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \sucht
 \end{corollary}
 \begin{corollary}
   \label{th:veryunfals}
-  Any non-trivial claim $C$ satisfying $\forall O \in \allpriobss, {\allleadstog} \in \allleadstos: \restr{\allleadstog}{O} \in C^\subseteq$ is not falsifiable.
+  Any non-trivial claim $C$ satisfying $\Theta \subseteq C^\subseteq$ is not falsifiable.
 \end{corollary}
 \begin{proof}
   Pick any ${\allleadstog} \notin C$.
+  Per hypothesis, $\forall O \in \allpriobss$: $\restr{\allleadstog}{O} \in C^\subseteq$.
   Define $f$ as $\forall O \in \allpriobss: f(O) = \restr{\allleadstog}{O}$.
   Observe that $\cup_{O \in \allpriobss} f(O) = {\allleadstog}$ and hence $\cup_{O \in \allpriobss} f(O) \notin C$.
   Apply \cref{th:corffalsdom}.
@@ -421,7 +424,23 @@ Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \sucht
 
 \begin{example}
   Considering again \cref{ex:bigor}, by \cref{th:veryunfals}, we see that $C = \set{{\allleadstog} \suchthat \exists n \in \N^* \suchthat \forall i: (a)^n \ileadstog \phi}$ is not falsifiable.
+
+  Similarly, considering again \cref{ex:disj}, given $\ar \neq \ar' \in \allargs$,
+  $\forall i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$ is not falsifiable, by \cref{th:veryunfals}.
+
+  Turning to \cref{ex:partlyU},
+  given $j \in I$, $\hist \in \allhists$ and $\ar \neq \ar' \in \allargs$,
+  $C = \set{{\allleadstog} \suchthat \hist \ileadstog[j] \phi \land \forall i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]}$ is not falsifiable but \cref{th:veryunfals} is not applicable.
+  Observe that $C^\subseteq = \set{R \in I × \allhists × P \suchthat [(j, \hist) \in R^{-1}(P) \implies (j, \hist, \phi) \in R] \land \forall i: [(i, (\ar)) \in R^{-1}(P) \land (i, (\ar')) \in R^{-1}(P)] \implies [(i, (\ar), \phi) \in R \land (i, (\ar'), \phi) \in R]}$.
+  Pick any $\allleadstog$ satisfying $\hist \ileadstog[j] \phi$ and $\exists i \suchthat (\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$.
+  The definition of non-falsifiability applies: pick any $\theta \subseteq {\allleadstog}$, we have $\theta \in C^\subseteq$ as $(j, \hist, \phi)$ is compatible with $\theta$ and the other condition excludes nothing in $\Theta$.
+  We can apply Thm 4 similarly: given any $O$, we have $\restr{\allleadstog}{O} \in C^\subseteq$.
+
+  We should be able to apply a corollary similarly.
+  Given any $O$, define $f(O) = \restr{\allleadstog}{O}$ and observe that $f(O) \in C^\subseteq$ although $\cup_{O \in \allpriobss} f(O) \notin C$.
 \end{example}
+
+TODO continue here (finish examples above).
 
 Any claim containing two relations that differ only on incompatible observations is not falsifiable.
 \begin{theorem}
