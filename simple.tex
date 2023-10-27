@@ -469,15 +469,6 @@ Then, the relations observably in $C$ are exactly those obs-compatible with $C^\
   Any relation ${\allleadstog}$ is obs-compatible with that set as $C^\subseteq \cap \Theta = \Theta$: given any $\theta \in \Theta$, there is an $i$ such that $\forall \hist: \theta(i, \hist) = \emptyset$ as $\theta$ must have a finite support.
 \end{example}
 
-\begin{remark}
-  Consider a set $S \wsub \Theta$.
-  We can define its border as follows.
-  Define a converging sequence in $\Theta$ as a sequence of strictly embedded elements $\Theta$, meaning increasing per strict inclusion (so $\theta_1 \ssub \theta_2 \ssub \theta_3…$), and which include every elements of $\hist × I$ (thus $\cup_i(\theta_i)^{-1}(P) = \hist × I$).
-  Such a sequence can be associated to a relation ${\allleadstog} \in \allleadstos$ in the natural way (${\allleadstog} = \cup_i(\theta_i)$).
-  Define $s_S$ as the set of such sequences.
-  The border of $S$ is the set $\set{\cup_i(\theta_i) \suchthat (\theta_i) \in s_S}$.
-  Nope, that’s not useful. That border is empty as soon as $\card{\allargs} ≥ 2$.
-\end{remark}
 \begin{conjecture}
   Each element of $C$ is a forest (here, meaning, an association of each $i$ to a tree, whose nodes are all the triples in the element and related by “the pair in $\allhists × I$ is a close suffix of the pair in the parent”).
   $C$ is falsifiable iff exists two compatible paths in two different such forests, for a given $i$, that are not in a single forest, for that $i$, of $C$.
