@@ -334,19 +334,16 @@ Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \sucht
   \Cref{ex:disj} concludes.
 \end{example}
 \begin{example}
+  \label{ex:allParticular}
   Consider any $\ar$ and $\phi$. The claim $\forall i: \ar \ileadstostg \phi$ is falsifiable.
   Given any ${\allleadstog} \notin C$, consider any $i \suchthat \ar \nileadstostg \phi$ and any $\hist \suchthat \hist \nileadstog \phi \land \ar \in \histend$, and define $θ = \set{(i, \hist, {\allleadstog}(i, \hist) ≠ \phi)}$.
 \end{example}
 \begin{example}
+  \label{ex:existsParticular}
   Given an infinite $I$, the claim $\exists i \suchthat \ar \ileadstostg \phi$ is not falsifiable.
   Given any ${\allleadstog} \notin C$, thus such that $\forall i: \ar \nileadstostg \phi$, any $θ \subseteq {\allleadstog}$ only has finitely many $(i, \hist, p ≠ \phi)$ thus $S_θ \cap C ≠ \emptyset$.
 \end{example}
-\begin{example}
-  Consider any $\ar_1 ≠ \ar_2 \in \allargs$, $p ≠ p' \in P$ and any ${\allleadstog^1}, {\allleadstog^2}$ such that $(\ar_1) \ileadstog^1 p$ and $(\ar_1) \ileadstog^2 p'$.
-  The claim $C = \set{{\allleadstog^1}, {\allleadstog^2}}$ is unfalsifiable.
 
-  Consider … (seems redundant).
-\end{example}
 \begin{remark}
   The claim “For each glass, it will not break on a monday or not break on a tuesday, whatever happens to it.” is not falsifiable. But one can make it stronger and falsify it, by giving a general theory of how glasses break, proving that it holds, and that it is not compatible with the claim. I should think about this.
 \end{remark}
@@ -422,6 +419,28 @@ Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \sucht
   Apply \cref{th:corffalsdom}.
 \end{proof}
 
+We thus reach a procedure to determine whether a claim is falsifiable.
+Given $C$, compute $C^\subseteq$. Find the set $R$ of relations $\allleadstog$ satisfying $\forall O: \restr{\allleadstog}{O} \in C^\subseteq$. The claim $C$ is falsifiable iff $R \subseteq C$.
+\begin{corollary}
+  A claim $C$ is falsifiable iff $\set{{\allleadstog} \in \allleadstos \suchthat \forall O \in \allpriobss: \restr{\allleadstog}{O} \in C^\subseteq} \subseteq C$.
+\end{corollary}
+A relation $\allleadstog$ is observably in $C$ iff $\forall \theta \in \Theta: ({\allleadstog} \cap \theta) \in (C^\subseteq \cap \Theta)$.
+All relations in $C$ are observably in $C$. The question of falsifiability asks whether the converse holds.
+In other words, $C$ is falsifiable iff it includes the relations observably in $C$.
+Define that a relation ${\allleadstog} \in {\allleadstos}$ is \emph{obs-compatible} with a set $S$ iff $\forall \theta \in \Theta: ({\allleadstog} \cap \theta) \in S$.
+Then, the relations observably in $C$ are exactly those obs-compatible with $C^\subseteq \cap \Theta$.
+\begin{corollary}
+  A claim $C$ is falsifiable iff $\set{{\allleadstog} \in \allleadstos \suchthat \forall \theta \in \Theta: ({\allleadstog} \cap \theta) \in (C^\subseteq \cap \Theta)} = C$.
+\end{corollary}
+\begin{remark}
+  The question of falsifiability is whether the set of relations $\allleadstog$ “compatible” with $C^\subseteq \cap \Theta$ equals $C$.
+  Compatibility needs to consider the observables, not a subset of it.
+  Define $\Theta_1 \subset \Theta$ as the observations that observe only one pair $(i, \hist)$.
+  Define $R_1 = \set{{\allleadstog} \in \allleadstos \suchthat \forall \theta \in \Theta_1: ({\allleadstog} \cap \theta) \in (C^\subseteq \cap \Theta)}$.
+  Note that $R \subseteq R_1$.
+  We know that $C$ is falsifiable iff $R \subseteq C$. Thus, $C$ is not falsifiable implies $C \subsetneq R \subseteq R_1$ thus $C \subsetneq R_1$. But we do not have that $C \subsetneq R_1$ implies $C$ not falsifiable: could have $C \subsetneq R_1$ but still $R = C$.
+\end{remark}
+
 \begin{example}
   Considering again \cref{ex:bigor}, by \cref{th:veryunfals}, we see that $C = \set{{\allleadstog} \suchthat \exists n \in \N^* \suchthat \forall i: (a)^n \ileadstog \phi}$ is not falsifiable.
 
@@ -431,16 +450,85 @@ Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \sucht
   Turning to \cref{ex:partlyU},
   given $j \in I$, $\hist \in \allhists$ and $\ar \neq \ar' \in \allargs$,
   $C = \set{{\allleadstog} \suchthat \hist \ileadstog[j] \phi \land \forall i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]}$ is not falsifiable but \cref{th:veryunfals} is not applicable.
-  Observe that $C^\subseteq = \set{R \in I × \allhists × P \suchthat [(j, \hist) \in R^{-1}(P) \implies (j, \hist, \phi) \in R] \land \forall i: [(i, (\ar)) \in R^{-1}(P) \land (i, (\ar')) \in R^{-1}(P)] \implies [(i, (\ar), \phi) \in R \land (i, (\ar'), \phi) \in R]}$.
-  Pick any $\allleadstog$ satisfying $\hist \ileadstog[j] \phi$ and $\exists i \suchthat (\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$.
-  The definition of non-falsifiability applies: pick any $\theta \subseteq {\allleadstog}$, we have $\theta \in C^\subseteq$ as $(j, \hist, \phi)$ is compatible with $\theta$ and the other condition excludes nothing in $\Theta$.
-  We can apply Thm 4 similarly: given any $O$, we have $\restr{\allleadstog}{O} \in C^\subseteq$.
+  Observe that
+  $C^\subseteq = \set{R \in I × \allhists × P \suchthat [(j, \hist) \in R^{-1}(P) \implies (j, \hist, \phi) \in R] \land \forall i: [(i, (\ar)) \in R^{-1}(P) \land (i, (\ar')) \in R^{-1}(P)] \implies [(i, (\ar), \phi) \in R \land (i, (\ar'), \phi) \in R]}$ and
+  $C^\subseteq \cap \Theta = \set{\theta \in \Theta \suchthat (j, \hist) \in \theta^{-1}(P) \implies (j, \hist, \phi) \in \theta}$.
+  % Pick any $\allleadstog$ satisfying $\hist \ileadstog[j] \phi$ and $\exists i \suchthat (\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$.
+  % The definition of non-falsifiability applies: pick any $\theta \subseteq {\allleadstog}$, we have $\theta \in C^\subseteq$ as $(j, \hist, \phi)$ is compatible with $\theta$ and the other condition excludes nothing in $\Theta$.
+  % We can apply Thm 4 similarly: given any $O$, we have $\restr{\allleadstog}{O} \in C^\subseteq$.
+  % We should be able to apply a corollary similarly.
+  The relations obs-compatible with $C^\subseteq \cap \Theta$ are those satisfying $\hist \ileadstog[j] \phi$.
+  We conclude that $C$ is not falsifiable as $C$ is smaller than that set.
 
-  We should be able to apply a corollary similarly.
-  Given any $O$, define $f(O) = \restr{\allleadstog}{O}$ and observe that $f(O) \in C^\subseteq$ although $\cup_{O \in \allpriobss} f(O) \notin C$.
+  In \cref{ex:allParticular} we considered a given $\ar$ and $\phi$ and defined the falsifiable claim $C = \set{{\allleadstog} \suchthat \forall i: \ar \ileadstostg \phi}$.
+  Observe that $C^\subseteq \cap \Theta = \set{\theta \in \Theta \suchthat \forall \hist \suchthat \ar \in \histend: \theta(i, \hist) = \emptyset \lor \theta(i, \hist) = \phi}$.
+  The relations obs-compatible with $C^\subseteq \cap \Theta$ are exactly those in $C$.
+
+  \Cref{ex:existsParticular} assumed an infinite $I$, in which case the claim $\exists i \suchthat \ar \ileadstostg \phi$ is not falsifiable.
+  Observe that $C^\subseteq \cap \Theta = \set{\theta \in \Theta \suchthat \exists i \suchthat \forall \hist \suchthat \ar \in \histend: \theta(i, \hist) = \emptyset \lor \theta(i, \hist) = \phi}$.
+  Any relation ${\allleadstog}$ is obs-compatible with that set as $C^\subseteq \cap \Theta = \Theta$: given any $\theta \in \Theta$, there is an $i$ such that $\forall \hist: \theta(i, \hist) = \emptyset$ as $\theta$ must have a finite support.
 \end{example}
 
-TODO continue here (finish examples above).
+\begin{remark}
+  Consider a set $S \wsub \Theta$.
+  We can define its border as follows.
+  Define a converging sequence in $\Theta$ as a sequence of strictly embedded elements $\Theta$, meaning increasing per strict inclusion (so $\theta_1 \ssub \theta_2 \ssub \theta_3…$), and which include every elements of $\hist × I$ (thus $\cup_i(\theta_i)^{-1}(P) = \hist × I$).
+  Such a sequence can be associated to a relation ${\allleadstog} \in \allleadstos$ in the natural way (${\allleadstog} = \cup_i(\theta_i)$).
+  Define $s_S$ as the set of such sequences.
+  The border of $S$ is the set $\set{\cup_i(\theta_i) \suchthat (\theta_i) \in s_S}$.
+  Nope, that’s not useful. That border is empty as soon as $\card{\allargs} ≥ 2$.
+\end{remark}
+\begin{conjecture}
+  Each element of $C$ is a forest (here, meaning, an association of each $i$ to a tree, whose nodes are all the triples in the element and related by “the pair in $\allhists × I$ is a close suffix of the pair in the parent”).
+  $C$ is falsifiable iff exists two compatible paths in two different such forests, for a given $i$, that are not in a single forest, for that $i$, of $C$.
+  % Given a claim $C$, define $S = C^\wsub \cap \Theta$.
+  % We have: $\set{\cup_i(\theta_i) \in \allleadstos \suchthat (\theta_i) \in s_S} = \set{{\allleadstog} \in \allleadstos \suchthat \forall \theta \in \Theta: ({\allleadstog} \cap \theta) \in S}$.
+\end{conjecture}
+\begin{proof}
+  
+\end{proof}
+TODO continue here. Use example of constant to $p$ and constant to $p'$ with or without the empty argument and singleton $I$ (falsifiable VS not).
+\begin{example}
+  Consider any $i$, $\ar_1 ≠ \ar_2 \in \allargs$, $p, p' \in P$.
+  The claim $C = \set{{\allleadstog} \suchthat (\ar_1) \ileadstog p \land (\ar_2) \ileadstog p'}$ is falsifiable.
+
+  We have $C^\subseteq \cap \Theta = \set{\theta \suchthat (\theta((\ar_1), i) = \emptyset \lor \theta((\ar_1), i) = p) \land (\theta((\ar_2), i) = \emptyset \lor \theta((\ar_2), i) = p')}$.
+  The obs-compatible relations are $\set{{\allleadstog} \suchthat (\ar_1) \ileadstog p \land (\ar_2) \ileadstog p'}$.
+\end{example}
+\begin{example}
+  Consider any $i$, $\ar_1 ≠ \ar_2 \in \allargs$, $p, p' \in P$.
+  The claim $C = \set{{\allleadstog} \suchthat (\ar_1) \ileadstog p \lor (\ar_2) \ileadstog p'}$ is unfalsifiable.
+
+  We have $C^\subseteq \cap \Theta = \set{\theta \suchthat (\theta((\ar_1), i) = \emptyset \lor \theta((\ar_1), i) = p) \lor (\theta((\ar_2), i) = \emptyset \lor \theta((\ar_2), i) = p')}$.
+  Observe that any $\theta \in \Theta$ satisfy $\theta((\ar_1), i) = \emptyset \lor \theta((\ar_2), i) = \emptyset$, thus, $C^\subseteq \cap \Theta = \Theta$.
+  It follows that the obs-compatible relations are $\allleadstos$, which is bigger than $C$.
+
+  The same holds if replacing $(\ar_1)$ and $(\ar_2)$ by any $\hist, \hist' \in \allhists$ that are not one a prefix of the other one.
+
+  Now consider the smaller claim $C' = \set{{\allleadstog} \suchthat (\ar_1) \ileadstog p}$ (thus $C' \ssub C$).
+  It yields a smaller set ${C'}^\subseteq \cap \Theta = \set{\theta \suchthat (\theta((\ar_1), i) = \emptyset \lor \theta((\ar_1), i) = p)}$.
+  The obs-compatible relations are the smaller set $\set{{\allleadstog} \suchthat (\ar_1) \ileadstog p}$.
+  Thus, $C'$ is falsifiable.
+
+  Note that any claim $C^{\prime\prime}$ bigger than $C$ is unfalsifiable as well (unless trivial):
+  from $C \wsub C^{\prime\prime}$, we deduce $\Theta = C^\subseteq \cap \Theta \wsub {C^{\prime\prime}}^\subseteq \cap \Theta$, thus ${C^{\prime\prime}}^\subseteq \cap \Theta = \Theta$ and the obs-compatible relations are $\allleadstos$, which equals $C^{\prime\prime}$ only if $C^{\prime\prime}$ is trivial.
+
+  Now consider the constant functions ${\allleadstog^p}$ to $p$ and ${\allleadstog^{p'}}$ to $p'$ and the alternative smaller claim $C^{(2)} = \set{{\allleadstog^p}, {\allleadstog^{p'}}}$ (thus $C^{(2)} \ssub C$).
+  It yields a smaller set ${C^{(2)}}^\subseteq \cap \Theta = \set{\theta \suchthat \theta(\theta^{-1}(P)) = \set{p} \lor \theta(\theta^{-1}(P)) = \set{p'}}$.
+  Consider any relation $\allleadstog$ that is obs-compatible with ${C^{(2)}}^\subseteq \cap \Theta$. Assume that for some $\hist, i$, $\hist \ileadstog p$. Then, pick any $j \neq i$, and observe that by obs-compatibility, for any $\hist'$, $\hist' \ileadstog[j] p$.
+  It follows, still by obs-compatibility, that for any $\hist'$, $\hist' \ileadstog p$ (otherwise pick $\theta$ including $(\hist', i)$ and any $(\hist^{\prime\prime}, j)$). Conclude that $\allleadstog$ is constant to $p$.
+  It follows that the obs-compatible relations are $\set{{\allleadstog^p}, {\allleadstog^{p'}}}$, thus, $C^{(2)}$ is falsifiable.
+\end{example}
+\begin{remark}
+  Intuition (to be explored, TODO) is that when $C^\wsub \cap \Theta$ has the covering property, then the obs-compatible relations are easily deduced from the set (something like, just consider compatibility point per point, one singleton observation at a time). Covering is what is used above, something like $\exists i, \hist, \histp$ such that $\forall \hist^{\prime\prime}: [\forall j \neq i: \set{(\hist, i, .), (\histp, j, .)} \in C^\wsub \cap \Theta] \land [\exists j \neq i \suchthat \set{(\hist', i, .), (\hist^{\prime\prime}, j, .)} \in C^\wsub \cap \Theta]$.
+\end{remark}
+\begin{example}
+  Consider any $i$, $\ar_1 ≠ \ar_2 \in \allargs$, $p ≠ p' \in P$ and any ${\allleadstog^1}, {\allleadstog^2}$ such that $(\ar_1) \ileadstog^1 p$ and $(\ar_2) \ileadstog^2 p'$.
+  Consider the claim $C = \set{{\allleadstog^1}, {\allleadstog^2}}$. When is it falsifiable considering these two relations?
+\end{example}
+
+TODO investigate claims that are non falsifiable but with $C^\wsub \cap \Theta \neq \Theta$.
+Then exhibit a claim such that a smaller one is not the same status and a bigger one is not the same status.
 
 Any claim containing two relations that differ only on incompatible observations is not falsifiable.
 \begin{theorem}
