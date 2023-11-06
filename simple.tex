@@ -424,7 +424,7 @@ Given $C$, compute $C^\subseteq$. Find the set $R$ of relations $\allleadstog$ s
 \begin{corollary}
   A claim $C$ is falsifiable iff $\set{{\allleadstog} \in \allleadstos \suchthat \forall O \in \allpriobss: \restr{\allleadstog}{O} \in C^\subseteq} \subseteq C$.
 \end{corollary}
-A relation $\allleadstog$ is observably in $C$ iff $\forall \theta \in \Theta: ({\allleadstog} \cap \theta) \in (C^\subseteq \cap \Theta)$.
+A relation $\allleadstog$ is observably in $C$ iff $\forall O \in \allpriobss: \restr{\allleadstog}{O} \in C^\subseteq$, equivalently, iff $\forall \theta \in \Theta: ({\allleadstog} \cap \theta) \in (C^\subseteq \cap \Theta)$.
 All relations in $C$ are observably in $C$. The question of falsifiability asks whether the converse holds.
 In other words, $C$ is falsifiable iff it includes the relations observably in $C$.
 Define that a relation ${\allleadstog} \in {\allleadstos}$ is \emph{obs-compatible} with a set $S$ iff $\forall \theta \in \Theta: ({\allleadstog} \cap \theta) \in S$.
@@ -440,7 +440,6 @@ Then, the relations observably in $C$ are exactly those obs-compatible with $C^\
   Note that $R \subseteq R_1$.
   We know that $C$ is falsifiable iff $R \subseteq C$. Thus, $C$ is not falsifiable implies $C \subsetneq R \subseteq R_1$ thus $C \subsetneq R_1$. But we do not have that $C \subsetneq R_1$ implies $C$ not falsifiable: could have $C \subsetneq R_1$ but still $R = C$.
 \end{remark}
-
 \begin{example}
   Considering again \cref{ex:bigor}, by \cref{th:veryunfals}, we see that $C = \set{{\allleadstog} \suchthat \exists n \in \N^* \suchthat \forall i: (a)^n \ileadstog \phi}$ is not falsifiable.
 
@@ -469,16 +468,25 @@ Then, the relations observably in $C$ are exactly those obs-compatible with $C^\
   Any relation ${\allleadstog}$ is obs-compatible with that set as $C^\subseteq \cap \Theta = \Theta$: given any $\theta \in \Theta$, there is an $i$ such that $\forall \hist: \theta(i, \hist) = \emptyset$ as $\theta$ must have a finite support.
 \end{example}
 
-\begin{conjecture}
-  Each element of $C$ is a forest (here, meaning, an association of each $i$ to a tree, whose nodes are all the triples in the element and related by “the pair in $\allhists × I$ is a close suffix of the pair in the parent”).
-  $C$ is falsifiable iff exists two compatible paths in two different such forests, for a given $i$, that are not in a single forest, for that $i$, of $C$.
-  % Given a claim $C$, define $S = C^\wsub \cap \Theta$.
-  % We have: $\set{\cup_i(\theta_i) \in \allleadstos \suchthat (\theta_i) \in s_S} = \set{{\allleadstog} \in \allleadstos \suchthat \forall \theta \in \Theta: ({\allleadstog} \cap \theta) \in S}$.
-\end{conjecture}
-\begin{proof}
-  
-\end{proof}
-TODO continue here. Use example of constant to $p$ and constant to $p'$ with or without the empty argument and singleton $I$ (falsifiable VS not).
+\begin{example}
+  \label{ex:cardPart}
+  Pick $i \in I$, $p ≠ p' \in P$ and $\hist, \histp \in \allhists$ with $\hist$ and $\histp$ non prefix related.
+  The claim $\psi = (\hist \ileadstog p \lor \hist \ileadstog p') \land (\histp \ileadstog p \lor \histp \ileadstog p') \land (\forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p)$ is falsifiable.
+
+  Given $q, q' \in P$, let ${\allleadstog^{q, q'}}$ be defined as $\hist \ileadstog^{q, q'} q$, $\histp \ileadstog^{q, q'} q'$ and $\forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j]^{q, q'} p$.
+  Note that $C_\psi = \set{{\allleadstog^{p, p}}, {\allleadstog^{p, p'}}, {\allleadstog^{p', p}}, {\allleadstog^{p', p'}}}$.
+
+  Then, $C_\psi^\wsub \cap \Theta =
+    \set{\theta \in \Theta \suchthat \theta(\hist, i) \in \set{\emptyset, p, p'} \land \theta(\histp, i) \in \set{\emptyset, p, p'} \land \forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \theta(\histpp, j) \in \set{\emptyset, p}}$.
+  % and we see that $C_\psi^\wsub \cap \Theta =
+  % \set{\theta \in \Theta \suchthat [\theta(\hist, i) = \theta(\histp, i) = \emptyset \lor \theta(\hist, i) \in \set{p, p'} \lor \theta(\histp, i) \in \set{p, p'}] \land \forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \theta(\histpp, j) \in \set{\emptyset, p}}$.
+
+  Any obs-compatible relation has to satisfy $\forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p$.
+  It also must satisfy ${\allleadstog}(\hist, i) \in \set{p, p'}$, for otherwise, with $\theta = \set{(\hist, i, {\allleadstog}(\hist, i))}$, we get $({\allleadstog} \cap \theta) \notin C_\psi^\wsub \cap \Theta$.
+  Similarly, it must satisfy ${\allleadstog}(\histp, i) \in \set{p, p'}$.
+  % are $\set{{\allleadstog} \in \allleadstos \suchthat [{\allleadstog}(\hist, i) \in \set{p, p'} \lor {\allleadstog}(\histp, i) \in \set{p, p'}] \land \forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p}$, which, given $p \neq p^{\prime\prime} \neq p'$, contains ${\allleadstog^{p, p^{\prime\prime}}}$, contrary to $C_\psi$.
+\end{example}
+
 \begin{example}
   Consider any $i$, $\ar_1 ≠ \ar_2 \in \allargs$, $p, p' \in P$.
   The claim $C = \set{{\allleadstog} \suchthat (\ar_1) \ileadstog p \land (\ar_2) \ileadstog p'}$ is falsifiable.
@@ -487,32 +495,399 @@ TODO continue here. Use example of constant to $p$ and constant to $p'$ with or 
   The obs-compatible relations are $\set{{\allleadstog} \suchthat (\ar_1) \ileadstog p \land (\ar_2) \ileadstog p'}$.
 \end{example}
 \begin{example}
-  Consider any $i$, $\ar_1 ≠ \ar_2 \in \allargs$, $p, p' \in P$.
-  The claim $C = \set{{\allleadstog} \suchthat (\ar_1) \ileadstog p \lor (\ar_2) \ileadstog p'}$ is unfalsifiable.
+  \label{ex:consti2}
+  Assume that $\card{I} ≥ 2$.
+  Consider any $p, p' \in P$ and the constant functions ${\allleadstog^p}$ to $p$ and ${\allleadstog^{p'}}$ to $p'$ and the claim $C = \set{{\allleadstog^p}, {\allleadstog^{p'}}}$.
+  We have $C^\wsub \cap \Theta = \set{\theta \suchthat \theta(\theta^{-1}(P)) = \set{p} \lor \theta(\theta^{-1}(P)) = \set{p'}}$.
+  Consider any relation $\allleadstog$ that is obs-compatible with $C^\wsub \cap \Theta$. Assume that for some $\hist, i$, $\hist \ileadstog p$. Then, pick any $j \neq i$, and observe that by obs-compatibility, for any $\hist'$, $\hist' \ileadstog[j] p$.
+  It follows, still by obs-compatibility, that for any $\hist'$, $\hist' \ileadstog p$ (otherwise pick $\theta$ including $(\hist', i)$ and any $(\hist^{\prime\prime}, j)$). Conclude that $\allleadstog$ is constant to $p$.
+  It follows that the obs-compatible relations are $\set{{\allleadstog^p}, {\allleadstog^{p'}}}$, thus, $C$ is falsifiable.
+\end{example}
+\begin{example}
+  \label{ex:consti1}
+  Assume that $\card{I} = 1$.
+  Consider any $p, p' \in P$ and the constant functions ${\allleadstog^p}$ to $p$ and ${\allleadstog^{p'}}$ to $p'$ and the claim $C = \set{{\allleadstog^p}, {\allleadstog^{p'}}}$.
+  We have $C^\wsub \cap \Theta = \set{\theta \suchthat \theta(\theta^{-1}(P)) = \set{p} \lor \theta(\theta^{-1}(P)) = \set{p'}}$.
+  Consider any relation $\allleadstog$ that is obs-compatible with $C^\wsub \cap \Theta$. Assume that for some $\hist, i$, $\hist \ileadstog p$. Observe that by obs-compatibility, $\emptyset \ileadstog p$.
+  It follows, still by obs-compatibility, that for any $\hist'$, $\hist' \ileadstog p$ (otherwise pick $\theta$ including $(\hist', i)$ and $(\emptyset, i)$). Conclude that $\allleadstog$ is constant to $p$.
+  It follows that the obs-compatible relations are $\set{{\allleadstog^p}, {\allleadstog^{p'}}}$, thus, $C$ is falsifiable.
+\end{example}
+\begin{example}
+  \label{ex:constwout0}
+  Consider any $p, p' \in P$ and the claim $C = \set{{\allleadstog} \suchthat (\forall \hist \neq \emptyset, i \in I: \hist \ileadstog p) \lor (\forall \hist \neq \emptyset, i \in I: \hist \ileadstog p')}$. That claim is falsifiable iff $\card I ≥ 2$ or $\card \allargs = 1$. The proof if so is similar to \cref{ex:consti2}; otherwise, pick any $\ar \in \allargs$ and note that any relation satisfying $(a.*) \ileadstog p$ and $\forall b \neq a: (b.*) \ileadstog p'$ is obs-compatible with $C^\wsub \cap \Theta$ but is not in $C$.
+\end{example}
+\begin{example}
+  \label{ex:unfor}
+  Consider any $i$, $\hist, \histp \in \allhists$, $p, p' \in P$ where $\hist$ and $\histp$ are not prefix related.
+  The claim $C = \set{{\allleadstog} \suchthat \hist \ileadstog p \lor \histp \ileadstog p'}$ is unfalsifiable.
 
-  We have $C^\subseteq \cap \Theta = \set{\theta \suchthat (\theta((\ar_1), i) = \emptyset \lor \theta((\ar_1), i) = p) \lor (\theta((\ar_2), i) = \emptyset \lor \theta((\ar_2), i) = p')}$.
-  Observe that any $\theta \in \Theta$ satisfy $\theta((\ar_1), i) = \emptyset \lor \theta((\ar_2), i) = \emptyset$, thus, $C^\subseteq \cap \Theta = \Theta$.
+  We have $C^\wsub \cap \Theta = \set{\theta \suchthat (\theta(\hist, i) = \emptyset \lor \theta(\hist, i) = p) \lor (\theta(\histp, i) = \emptyset \lor \theta(\histp, i) = p')}$.
+  Observe that any $\theta \in \Theta$ satisfy $\theta(\hist, i) = \emptyset \lor \theta(\histp, i) = \emptyset$, thus, $C^\wsub \cap \Theta = \Theta$.
   It follows that the obs-compatible relations are $\allleadstos$, which is bigger than $C$.
-
-  The same holds if replacing $(\ar_1)$ and $(\ar_2)$ by any $\hist, \hist' \in \allhists$ that are not one a prefix of the other one.
+\end{example}
+\begin{example}
+  Consider any $i$, $\ar \neq \ar' \in \allargs$, $p, p' \in P$.
+  The claim $C = \set{{\allleadstog} \suchthat (\ar) \ileadstog p \lor (\ar') \ileadstog p'}$ is unfalsifiable (per \cref{ex:unfor}).
 
   Now consider the smaller claim $C' = \set{{\allleadstog} \suchthat (\ar_1) \ileadstog p}$ (thus $C' \ssub C$).
-  It yields a smaller set ${C'}^\subseteq \cap \Theta = \set{\theta \suchthat (\theta((\ar_1), i) = \emptyset \lor \theta((\ar_1), i) = p)}$.
+  It yields a smaller set ${C'}^\wsub \cap \Theta = \set{\theta \suchthat (\theta((\ar_1), i) = \emptyset \lor \theta((\ar_1), i) = p)}$.
   The obs-compatible relations are the smaller set $\set{{\allleadstog} \suchthat (\ar_1) \ileadstog p}$.
   Thus, $C'$ is falsifiable.
 
-  Note that any claim $C^{\prime\prime}$ bigger than $C$ is unfalsifiable as well (unless trivial):
-  from $C \wsub C^{\prime\prime}$, we deduce $\Theta = C^\subseteq \cap \Theta \wsub {C^{\prime\prime}}^\subseteq \cap \Theta$, thus ${C^{\prime\prime}}^\subseteq \cap \Theta = \Theta$ and the obs-compatible relations are $\allleadstos$, which equals $C^{\prime\prime}$ only if $C^{\prime\prime}$ is trivial.
+  Note that any claim $C^{\prime\prime}$ bigger than $C$ is unfalsifiable as well, unless trivial:
+  from $C \wsub C^{\prime\prime}$, we deduce $\Theta = C^\wsub \cap \Theta \wsub {C^{\prime\prime}}^\wsub \cap \Theta$, thus ${C^{\prime\prime}}^\wsub \cap \Theta = \Theta$ and the obs-compatible relations are $\allleadstos$, which equals $C^{\prime\prime}$ only if $C^{\prime\prime}$ is trivial.
 
-  Now consider the constant functions ${\allleadstog^p}$ to $p$ and ${\allleadstog^{p'}}$ to $p'$ and the alternative smaller claim $C^{(2)} = \set{{\allleadstog^p}, {\allleadstog^{p'}}}$ (thus $C^{(2)} \ssub C$).
-  It yields a smaller set ${C^{(2)}}^\subseteq \cap \Theta = \set{\theta \suchthat \theta(\theta^{-1}(P)) = \set{p} \lor \theta(\theta^{-1}(P)) = \set{p'}}$.
-  Consider any relation $\allleadstog$ that is obs-compatible with ${C^{(2)}}^\subseteq \cap \Theta$. Assume that for some $\hist, i$, $\hist \ileadstog p$. Then, pick any $j \neq i$, and observe that by obs-compatibility, for any $\hist'$, $\hist' \ileadstog[j] p$.
-  It follows, still by obs-compatibility, that for any $\hist'$, $\hist' \ileadstog p$ (otherwise pick $\theta$ including $(\hist', i)$ and any $(\hist^{\prime\prime}, j)$). Conclude that $\allleadstog$ is constant to $p$.
-  It follows that the obs-compatible relations are $\set{{\allleadstog^p}, {\allleadstog^{p'}}}$, thus, $C^{(2)}$ is falsifiable.
+  Now consider the alternative smaller claim of \cref{ex:consti2}, $C^{(2)} = \set{{\allleadstog^p}, {\allleadstog^{p'}}}$ (thus $C^{(2)} \ssub C$).
+  It yields a smaller set ${C^{(2)}}^\wsub \cap \Theta$.
 \end{example}
+\begin{example}
+  \label{ex:for}
+  Consider any $i$ and $p, p' \in P$.
+  The claim $C = \set{{\allleadstog} \suchthat (\forall \hist: \card{\hist} \in 2\N \implies \hist \ileadstog p) \lor (\forall \hist: (\card{\hist} \in 2\N + 1 \lor \hist = \emptyset) \implies \hist \ileadstog p')}$, namely, all paths of even lengths lead $i$ to $p$ OR all paths of odd lengths or empty lead $i$ to $p'$, is falsifiable.
+
+  Note that $C^\wsub \cap \Theta = \set{\theta \in \Theta \suchthat (\forall \hist: \card{\hist} \in 2\N \implies \theta(\hist) \in \set{\emptyset, p}) \lor (\forall \hist: (\card{\hist} \in 2\N + 1 \lor \hist = \emptyset) \implies \theta(\hist) \in \set{\emptyset, p'})}$.
+  Consider any obs-compatible ${\allleadstog}$.
+  Assume that $\exists \hist \suchthat \card{\hist} \in 2\N \land \hist \nileadstog p$.
+  Pick $\theta = \set{(\emptyset, i, {\ileadstog}(\emptyset)), (\hist, i, {\ileadstog}(\hist))}$. We have $({\allleadstog} \cap \theta) \in C^\wsub \cap \Theta$, and ${\allleadstog} \cap \theta = \theta$, and from $\theta \in C^\wsub \cap \Theta$ we obtain ${\ileadstog}(\emptyset) = p'$.
+  Similarly, using $\theta = \set{(\emptyset, i, {\ileadstog}(\emptyset)), (\histp, j, {\ileadstog[j]}(\histp))}$, we obtain that $\allleadsto$ conforms to the relation in $C$.
+\end{example}
+
+\begin{remark}
+  \label{rq:closedcomb}
+  Being closed-under-combinations (where a combination forms a new relation by union of parts of relations in $C$) is sufficient to be falsifiable, but not necessary, as seen with \cref{ex:consti2}.
+\end{remark}
+
 \begin{remark}
   Intuition (to be explored, TODO) is that when $C^\wsub \cap \Theta$ has the covering property, then the obs-compatible relations are easily deduced from the set (something like, just consider compatibility point per point, one singleton observation at a time). Covering is what is used above, something like $\exists i, \hist, \histp$ such that $\forall \hist^{\prime\prime}: [\forall j \neq i: \set{(\hist, i, .), (\histp, j, .)} \in C^\wsub \cap \Theta] \land [\exists j \neq i \suchthat \set{(\hist', i, .), (\hist^{\prime\prime}, j, .)} \in C^\wsub \cap \Theta]$.
 \end{remark}
+
+Define the \emph{suffix} relation $R = \set{(\hist, \histp) \in \allhists × \allhists \suchthat \histp = (\hist, .)}$ as the (infinite) tree whose set of nodes is $\allhists$ and which links  argumentative paths to all of their direct suffixes.
+Note that a path in such a tree (an increasing sequence of elements in $\allhists$) corresponds to an argumentative path, that is, to an element of $\allhists$.
+
+Any function ${\ileadstog}: \allhists \mapsto P$ can be considered as having this tree as a domain.
+% Define a forest as an association of each $i \in I$ to such a tree.
+Any relation ${\allleadstog} \in \allleadstos$ can then be viewed as a forest associating each $i \in I$ to a tree labeled by the function ${\ileadstog}$ (see \cref{fig:forest}).
+
+\begin{figure}
+  \begin{tikzpicture}[level distance=0.7cm]
+
+    \tikzstyle{treenode}=[execute at begin node=$, execute at end node=$]
+    \tikzstyle{treelabel}=[treenode, anchor=west, inner sep=0]
+    \tikzstyle{bottomnode}=[execute at begin node=$\scriptstyle, execute at end node=$]
+    \tikzstyle{bottomlabel}=[bottomnode, anchor=west, inner sep=0]
+    \tikzstyle{tree}=[level 1/.style={sibling distance=3.4cm, every node/.style=treenode},
+    level 2/.style={sibling distance=1.6cm, every node/.style=bottomnode},
+    level 3/.style={sibling distance=0.7cm, every node/.style=treenode}
+    ]
+    \newlength{\lhi}
+    \setlength{\lhi}{3.5cm}
+    \newlength{\lvi}
+    \setlength{\lvi}{1.2cm}
+
+    \path node (all) {$\allleadstog$};
+
+    \path (-\lhi, -\lvi) node[anchor=north] (tree1) {\begin{tikzpicture}
+        \path[tree] node (root) {$\emptyset$}
+        child {
+            node (a) {(a)}
+            child {
+                node (aa) {(aa)}
+                child {
+                    node {…}
+                  }
+                child {
+                    node {…}
+                  }
+              }
+            child {
+                node (ab) {(ab)}
+                child {
+                    node {…}
+                  }
+                child {
+                    node {…}
+                  }
+              }
+          }
+        child {
+            node (b) {(b)}
+            child {
+                node (ba) {(ba)}
+                child {
+                    node {…}
+                  }
+                child {
+                    node {…}
+                  }
+              }
+            child {
+                node (bb) {(bb)}
+                child {
+                    node {…}
+                  }
+                child {
+                    node {…}
+                  }
+              }
+          }
+        ;
+        \begin{scope}[style=treelabel]
+          \path (root.east) node {\mapsto p};
+          \path (a.east) node {\mapsto p'};
+          \path (b.east) node {\mapsto p};
+        \end{scope}
+        \begin{scope}[style=bottomlabel]
+          \path (aa.east) node {\mapsto p'};
+          \path (ab.east) node {\mapsto p'};
+          \path (ba.east) node {\mapsto p'};
+          \path (bb.east) node {\mapsto p};
+        \end{scope}
+      \end{tikzpicture}};
+    \path[->] (all) edge node[midway, above] {$i_1$} (tree1.north);
+
+    \path (\lhi, -\lvi) node[anchor=north] (tree2) {\begin{tikzpicture}
+        \path[tree] node (root) {$\emptyset$}
+        child {
+            node (a) {(a)}
+            child {
+                node (aa) {(aa)}
+                child {
+                    node {…}
+                  }
+                child {
+                    node {…}
+                  }
+              }
+            child {
+                node (ab) {(ab)}
+                child {
+                    node {…}
+                  }
+                child {
+                    node {…}
+                  }
+              }
+          }
+        child {
+            node (b) {(b)}
+            child {
+                node (ba) {(ba)}
+                child {
+                    node {…}
+                  }
+                child {
+                    node {…}
+                  }
+              }
+            child {
+                node (bb) {(bb)}
+                child {
+                    node {…}
+                  }
+                child {
+                    node {…}
+                  }
+              }
+          }
+        ;
+        \begin{scope}[style=treelabel]
+          \path (root.east) node {\mapsto p};
+          \path (a.east) node {\mapsto p};
+          \path (b.east) node {\mapsto p'};
+        \end{scope}
+        \begin{scope}[style=bottomlabel]
+          \path (aa.east) node {\mapsto p};
+          \path (ab.east) node {\mapsto p'};
+          \path (ba.east) node {\mapsto p'};
+          \path (bb.east) node {\mapsto p};
+        \end{scope}
+      \end{tikzpicture}};
+    \path[->] (all) edge node[midway, above] {$i_2$} (tree2.north);
+  \end{tikzpicture}
+  \caption{A forest}
+  \label{fig:forest}
+\end{figure}
+
+\begin{conjecture}
+  $C$ is falsifiable iff exists two compatible paths in two different such forests, for a given $i$, that are not in a single forest, for that $i$, of $C$.
+  This seems incorrect; need to be able to build a union relation!
+  Prove that it is false with claim "i goes to phi OR i goes to not phi except for empty set going to phi"?
+  Actually I need to be able to merge two relations that agree on everything but some part of the tree, in such a way that all paths crossing the boundary must be in $C$, but not the merge.
+  TODO caract with singleton $I$.
+  % Given a claim $C$, define $S = C^\wsub \cap \Theta$.
+  % We have: $\set{\cup_i(\theta_i) \in \allleadstos \suchthat (\theta_i) \in s_S} = \set{{\allleadstog} \in \allleadstos \suchthat \forall \theta \in \Theta: ({\allleadstog} \cap \theta) \in S}$.
+\end{conjecture}
+\begin{remark}
+  Say that $(r1, o1)$ is determined in $C$ (to $p$) iff all relations in $C$ including $r1$ agree on ${\allleadstog}(o)$ (satisfy ${\allleadstog}(o) = p$).
+  Let $C(r, o)$ equal $\set{{\allleadstog}(o) \suchthat {\allleadstog} \in C \land r \in {\allleadstog}}$.
+
+  A claim satisfying, $\forall {\allleadstog} \in C$:
+  $\forall r1 = (o1, p1) \in {\allleadstog}$, $\exists o2$ with $o1$ and $o2$ obs-compatible and $(r1, o2)$ determined in $C$ such that $\forall o3: (o2, o3)$ is obs-compatible and $(r2 = (o2, C(r1, o2)), o3)$ is determined in $C$
+  %Perhaps can omit $(r1, o2)$ determined. In fact, has to satisfy that these determine only relations in $C$.
+  % \[\forall (\hist, i, p) \in {\allleadstog}, \exists (\histp, j, p) \in {\allleadstog} \suchthat \forall (\histpp, k) \in \allhists × I: \set{(\histp, j), (\histpp, k)} \in O\]
+  is falsifiable.
+
+  NOPE.
+  Need to say that $C$ is a union of disjoint subsets such that each subset $C'$ include all relations that are specified on a subset of observations (and left free on everything else) which satisfy something like the above condition: all points related to a point that is related to all others.
+\end{remark}
+\begin{theorem}
+  Given $R \subseteq I × \allhists$, say that $C$ is determined on $R$ iff
+  % $C = \set{\restr{\allleadstog}{R} \cup \restr{\allleadstog}{R'} \suchthat R' \in (I × \allhists) \setminus R}$.
+  $\exists f \in P^R \suchthat C = \set{f \cup g \suchthat g \in P^{(I × \allhists) \setminus R}}$.
+
+  If $\exists R \subseteq I × \allhists$ such that $C$ is determined on $R$ and satisfying $\exists o \in R \suchthat \forall o' \in R: (\set{o, o'} \in \allpriobss)$, then $C$ is falsifiable.
+\end{theorem}
+\begin{proof}
+  Note that as $C$ is closed-under-combinations, this follows from \cref{rq:closedcomb}, but let’s design a more direct proof in hope of weakening the condition.
+
+  Consider any ${\allleadstog}$ obs-compatible with $C^\wsub \cap \Theta$ and let us prove that ${\allleadstog} \in C$.
+
+  % Pick any $o_1 \in R$.
+  % Define $r_1 = (o_1, {\allleadstog}(o_1))$, thus with $r_1 \in {\allleadstog}$.
+  Pick some $o \in R$ as in the hypothesis.
+  Consider any $o' \in R$.
+  As $\set{o, o'} \in \allpriobss$ and ${\allleadstog}$ being obs-compatible, we have
+  % $\exists {\allleadstog'} \suchthat \restr{\allleadstog}{\set{o, o'}} = \restr{\allleadstog'}{\set{o, o'}}$.
+  $\restr{\allleadstog}{\set{o, o'}} \in C^\wsub$.
+  Thus, ${\allleadstog}(o') = f(o')$.
+
+  We obtain that $\forall o' \in R: {\allleadstog}(o') = f(o')$, therefore, ${\allleadstog} \in C$.
+\end{proof}
+\begin{conjecture}[draft]
+  Given $R \subseteq I × \allhists$, say that $C$ is determined on $R$ iff
+  % $C = \set{\restr{\allleadstog}{R} \cup \restr{\allleadstog}{R'} \suchthat R' \in (I × \allhists) \setminus R}$.
+  $\exists f \in P^R \suchthat C = \set{f \cup g \suchthat g \in P^{(I × \allhists) \setminus R}}$.
+  Say that $R$ is coverable iff $\exists o_1, …, O_1, … \suchthat \forall o \in O_1: \set{o_1, o} \in \allpriobss \land \forall o \in O_2: \set{o_2, o} \in \allpriobss \land … \land \set{o_i, o_{i + 1}} \in \allpriobss \land \cup O_i = R \land o_i \in R$.
+
+  If $\exists R \subseteq I × \allhists$ coverable and such that $C$ is determined on $R$, then $C$ is falsifiable.
+\end{conjecture}
+\begin{proof}
+  Consider any ${\allleadstog}$ obs-compatible with $C^\wsub \cap \Theta$ and let us prove that ${\allleadstog} \in C$.
+
+  Pick some $o_1 \in R$ as in the hypothesis.
+  Consider any $o \in O_1 \cup \set{o_2}$.
+  As $\set{o_1, o} \in \allpriobss$ and ${\allleadstog}$ being obs-compatible, we have
+  $\restr{\allleadstog}{\set{o_1, o}} \in C^\wsub$.
+  As also $o_1, o \in R$, ${\allleadstog}(o) = f(o)$.
+  In particular, ${\allleadstog}(o_2) = f(o_2)$.
+  Iterate with $o_2$ and $o \in O_2$, and so on.
+  We obtain that $\forall o \in R: {\allleadstog}(o) = f(o)$, therefore, ${\allleadstog} \in C$.
+\end{proof}
+\begin{example}
+  Pick $i \in I$ and
+  define $o_1 = ((a), i)$,
+  $o_2 = (\emptyset, i)$ and
+  $o_3 = ((b), i)$.
+  Define $R = \set{o_1, o_2, o_3}$.
+  Define $f_1, f_2, f_3 \in P^R$ as follows.
+  $f_1(o_1) = \phi$,
+  $f_1(o_2) = ¬\phi$,
+  $f_1(o_3) = \phi$.
+  $f_2(o_1) = \phi$,
+  $f_2(o_2) = \phi$,
+  $f_2(o_3) = ¬\phi$.
+  $f_3(o_1) = ¬\phi$,
+  $f_3(o_2) = \phi$,
+  $f_3(o_3) = \phi$.
+  Define $C = \set{f \cup g \suchthat f \in \set{f_1, f_2, f_3} \land g \in P^{(I × \allhists) \setminus R}}$.
+
+  Note that $R$ is covered by $O_1 = \set{o_1}, O_2 = \set{o_2}, O_3 = \set{o_3}$.
+  Note that $C$ is determined on $R$.
+  Yet, $C$ is not falsifiable.
+
+  Note that
+  \begin{equation}
+    C^\wsub \cap \Theta = \left\{\theta \in \Theta \suchthat
+    \begin{aligned}
+       & (\theta(o_1) \in \set{\emptyset, \phi} \land \theta(o_2) \in \set{\emptyset, ¬\phi} \land \theta(o_3) \in \set{\emptyset, \phi}) \lor \mbox{} \\
+       & (\theta(o_1) \in \set{\emptyset, \phi} \land \theta(o_2) \in \set{\emptyset, \phi} \land \theta(o_3) \in \set{\emptyset, ¬\phi}) \lor \mbox{} \\
+       & (\theta(o_1) \in \set{\emptyset, ¬\phi} \land \theta(o_2) \in \set{\emptyset, \phi} \land \theta(o_3) \in \set{\emptyset, \phi})
+    \end{aligned}\right\}.
+  \end{equation}
+  Also, $\theta(o_1) \neq \emptyset \implies \theta(o_3) = \emptyset$ (and equivalently, $\theta(o_3) \neq \emptyset \implies \theta(o_1) = \emptyset$),
+  whence:
+  \begin{equation}
+    C^\wsub \cap \Theta = \left\{\theta \in \Theta \suchthat
+    \begin{aligned}
+       & (\theta(o_1) = \theta(o_3) = \emptyset \land \theta(o_2) \in \set{\emptyset, ¬\phi}) \lor \mbox{} \\
+       & (\theta(o_1) = \phi \land \theta(o_2) \in \set{\emptyset, ¬\phi}) \lor \mbox{}                    \\
+       & (\theta(o_3) = \phi \land \theta(o_2) \in \set{\emptyset, ¬\phi}) \lor \mbox{}                    \\
+       & (\theta(o_1) = \theta(o_3) = \emptyset \land \theta(o_2) \in \set{\emptyset, \phi}) \lor \mbox{}  \\
+       & (\theta(o_1) = \phi \land \theta(o_2) \in \set{\emptyset, \phi}) \lor \mbox{}                     \\
+       & (\theta(o_3) = ¬\phi \land \theta(o_2) \in \set{\emptyset, \phi}) \lor \mbox{}                    \\
+       & (\theta(o_1) = \theta(o_3) = \emptyset \land \theta(o_2) \in \set{\emptyset, \phi}) \lor \mbox{}  \\
+       & (\theta(o_1) = ¬\phi \land \theta(o_2) \in \set{\emptyset, \phi}) \lor \mbox{}                    \\
+       & (\theta(o_3) = \phi \land \theta(o_2) \in \set{\emptyset, \phi})
+    \end{aligned}\right\}.
+  \end{equation}
+  Factorizing:
+  \begin{equation}
+    C^\wsub \cap \Theta = \left\{\theta \in \Theta \suchthat
+    \begin{aligned}
+       & (\theta(o_1) = \theta(o_3) = \emptyset \land \theta(o_2) \in \set{\emptyset, \phi, ¬\phi})) \lor \mbox{} \\
+       & (\theta(o_1) = \phi \land \theta(o_2) \in \set{\emptyset, \phi, ¬\phi}) \lor \mbox{}                     \\
+       & (\theta(o_3) = \phi \land \theta(o_2) \in \set{\emptyset, \phi, ¬\phi}) \lor \mbox{}                     \\
+       & (\theta(o_3) = ¬\phi \land \theta(o_2) \in \set{\emptyset, \phi}) \lor \mbox{}                           \\
+       & (\theta(o_1) = ¬\phi \land \theta(o_2) \in \set{\emptyset, \phi})
+    \end{aligned}\right\}.
+  \end{equation}
+
+  Pick any $g \in P^{(I × \allhists) \setminus R}$ and define ${\allleadstog} = \set{(\emptyset, i, \phi), ((a), i, \phi), ((b), i, \phi)} \cup g$.
+  This relation is obs-compatible with $C^\wsub \cap \Theta$, but ${\allleadstog} \notin C$.
+\end{example}
+\begin{conjecture}
+  Given $R \subseteq I × \allhists$, say that $C$ is determined on $R$ iff
+  $\exists f \in P^R \suchthat C = \set{f \cup g \suchthat g \in P^{(I × \allhists) \setminus R}}$.
+  Say that $R$ is coverable iff $\exists k \in \N, (O_l)_{l \in \intvl{1, k}}, (o_l)_{l \in \intvl{1, k}} \suchthat
+    \cup_{l \in \intvl{1, k}} O_l = R \land
+    \forall l \in \intvl{1, k}: o_l \in O_l \land
+    \forall o \in O_l: \set{o_l, o} \in \allpriobss \land
+    \forall l \in \intvl{1, k - 1}: \set{o_l, o_{l + 1}} \in \allpriobss$.
+
+  If $\exists R \subseteq I × \allhists$ coverable and such that $C$ is determined on $R$, then $C$ is falsifiable.
+\end{conjecture}
+\begin{proof}
+  Consider any ${\allleadstog}$ obs-compatible with $C^\wsub \cap \Theta$ and let us prove that ${\allleadstog} \in C$.
+
+  Pick some $k \in \N, (O_l)_{l \in \intvl{1, k}}, (o_l)_{l \in \intvl{1, k}}$ as in the hypothesis.
+  Consider any $l \in \intvl{1, k - 1}$
+  and any $o \in O_l \cup \set{o_{l + 1}}$.
+  As $\set{o_l, o} \in \allpriobss$ and ${\allleadstog}$ being obs-compatible, we have
+  $\restr{\allleadstog}{\set{o_l, o}} \in C^\wsub$.
+  As also $o_l, o \in R$ (per $\cup_{l' \in \intvl{1, k}} O_{l'} = R$), ${\allleadstog}(o) = f(o)$.
+  In particular, ${\allleadstog}(o_{l + 1}) = f(o_{l + 1})$.
+  Iterate with $o_2$ and $o \in O_2$, and so on.
+  We obtain that $\forall o \in R: {\allleadstog}(o) = f(o)$, therefore, ${\allleadstog} \in C$.
+\end{proof}
+\begin{conjecture}
+  Given $R \subseteq I × \allhists$, define ${\sim_R} \subseteq \allleadstos × \allleadstos$ as $f \sim_R f'$ iff $\restr{f}{R} = \restr{f'}{R}$. This is an equivalence relation.
+  Given $f \in \allleadstos$, define the equivalence class of $f$ for ${\sim_R}$ as ${\sim_R}(f) = \set{f' \in \allleadstos \suchthat f \sim_R f'} = \set{f' \in P^{(I × \allhists)} \suchthat \restr{f}{R} = \restr{f'}{R}}$.
+
+  Given $R \subseteq I × \allhists$, define the a priori observable subsets of $R$ as $Z_R = \allpriobss \cap \powerset{R}$.
+
+  Consider $R \subseteq I × \allhists$, $F \subseteq P^R$ and $C = \set{f \cup g \suchthat f \in F \land g \in P^{(I × \allhists) \setminus R}}$.
+  The claim $C$ is unfalsifiable iff $\exists {\allleadstog} \in \allleadstos \suchthat \bigcap_{O \in Z_R} {\sim_O}(f) \cap C = \emptyset$.
+
+    % Given $k \in \N$ and a family $(O_l)_{l \in \intvl{1, k}}$, consider $\exists f \in C \suchthat 
+    Say that $R$ is coverable iff $\exists k \in \N, (O_l)_{l \in \intvl{1, k}}, (o_l)_{l \in \intvl{1, k}} \suchthat
+  \cup_{l \in \intvl{1, k}} O_l = R \land
+  \forall l \in \intvl{1, k}: o_l \in O_l \land
+  \forall o \in O_l: \set{o_l, o} \in \allpriobss \land
+  \forall l \in \intvl{1, k - 1}: \set{o_l, o_{l + 1}} \in \allpriobss$.
+
+    If $\exists R \subseteq I × \allhists$ coverable and such that $C$ is determined on $R$, then $C$ is falsifiable.
+\end{conjecture}
+TODO extend this so as to cover eg $C$ containing $f_1$ and $f_2$ constant functions as in example; but not covering when the domain is not suitable!
+Use proof similar to \cref{ex:for}, getting started with observing that any obs-compatible $\allleadstog$ failing every element but one of $C$ at least at one point must then satisfy the last element of $C$ at some point (?).
+\begin{conjecture}
+  If $\forall {\allleadstog} \in C: \exists R \suchthat {\allleadstog} = f \cup g$ with $f \in P^R, g \in P^{(I × \allhists) \setminus R}$ and $R$ converable, then $C$ is falsifiable.
+  Should be specified better, but also, not sure that this holds: consider C being a leads i to phi OR b leads i to phi (given i).
+  Perhaps something like $\exists F \suchthat C = \cup_{f \in F} \set{f \cup g}$ where $f^{-1}(P)$ being coverable.
+\end{conjecture}
+\begin{proof}
+  Problem is: how to get started?
+\end{proof}
+
 \begin{example}
   Consider any $i$, $\ar_1 ≠ \ar_2 \in \allargs$, $p ≠ p' \in P$ and any ${\allleadstog^1}, {\allleadstog^2}$ such that $(\ar_1) \ileadstog^1 p$ and $(\ar_2) \ileadstog^2 p'$.
   Consider the claim $C = \set{{\allleadstog^1}, {\allleadstog^2}}$. When is it falsifiable considering these two relations?
@@ -530,14 +905,7 @@ Any claim containing two relations that differ only on incompatible observations
   If $θ$ is fully compatible with ${\allleadstog^1}$, then ${\allleadstog^1} \in S_θ \cap C ≠ \emptyset$.
   Otherwise, $θ$ contains some element $(i, \hist, {\allleadstog^2}(i, \hist))$ with ${\allleadstog^2}(i, \hist) ≠ {\allleadstog^1}(i, \hist)$. Then, ${\allleadstog^2} \in S_θ \cap C ≠ \emptyset$, for otherwise, for at least one other element $(i', \histp)$, $θ$ contains $(i', \histp, {\allleadstog^1}(i', \histp))$ with ${\allleadstog^1}(i', \histp) ≠ {\allleadstog^2}(i', \histp)$, which violates the hypothesis.
 \end{proof}
-The following example illustrates the need for the condition about the combination in the theorem.
-\begin{example}
-  Pick $i \in I$, $p ≠ p' \in P$ and $\hist, \histp \in \allhists$ with $\hist$ and $\histp$ non prefix related.
-  The claim $\psi = (\hist \ileadstog p \lor \hist \ileadstog p') \land (\histp \ileadstog p \lor \histp \ileadstog p') \land (\forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p)$ is falsifiable.
-
-  Given $q, q' \in P$, let ${\allleadstog^{q, q'}}$ be defined as $\hist \ileadstog^{q, q'} q$, $\histp \ileadstog q'$ and $\forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p$.
-  Note that $C_\psi = \set{{\allleadstog^{p, p}}, {\allleadstog^{p, p'}}, {\allleadstog^{p', p}}, {\allleadstog^{p', p'}}}$.
-\end{example}
+\Cref{ex:cardPart} illustrates the need for the condition about the combination in the theorem.
 
 \begin{conjecture}
   If a claim $C$ is not falsifiable, then $\exists {\allleadstog^1}, {\allleadstog^2} \in C \suchthat$ some combination of them ${\allleadstog} \notin C$ (meaning that ${\allleadstog} \subseteq {\allleadstog^1} \cup {\allleadstog^2}$) and the set over which they differ, $\set{(i, \hist) \suchthat {\allleadstog^1}(i, \hist) ≠ {\allleadstog^2}(i, \hist)}$, does not contain two elements that are simultaneously observable (meaning that no $θ$ contains more than one of these elements).
