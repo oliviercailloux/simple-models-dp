@@ -219,7 +219,7 @@ The following theorem verifies that when $C$ holds, it is not rejectable.
   \label{th:ex-post}
   $\forall C \ni {\allleadsto}:
     % \nexists θ \in \Theta \suchthat \theta \subseteq {\allleadsto} \land θ \notin C^\wsub$.
-  \Theta \cap \powerset{\allleadsto} \subseteq C^\wsub$.
+    \Theta \cap \powerset{\allleadsto} \subseteq C^\wsub$.
 \end{theorem}
 \begin{proof}
   This holds by definition of $C^\wsub = \cup_{{\allleadstog} \in C} \powerset{\allleadstog}$.
@@ -233,7 +233,7 @@ The converse, however, does not hold.
   \label{ex:disjR}
   Given $\ar \neq \ar' \in \allargs$,
   the claim $\forall i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$ is not rejectable.
-  In fact, 
+  In fact,
   % $\nexists \theta \in \Theta \suchthat \theta \notin C^\wsub$.
   $\Theta \wsub C^\wsub$.
   % Consider any ${\allleadstog} \notin C$, thus satisfying, for some $i$, $(\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$.
@@ -275,17 +275,21 @@ falsifiability guarantees that a claim holds if, and only if, it is not rejectab
 
 \begin{definition}
   A claim is \emph{unfalsifiable} iff $\exists {\allleadstog} \notin C \suchthat \Theta \cap \powerset{\allleadstog} \wsub C^\wsub$.
-\end{definition} 
+\end{definition}
 \begin{definition}
   A non-trivial claim is \emph{strongly unfalsifiable} iff $\Theta \wsub C^\wsub$.
-\end{definition} 
+\end{definition}
 
-\begin{example}[Big disjunct, not falsifiable]
+\begin{example}[Big disjunct, strongly unfalsifiable]
   \label{ex:bigor}
-  $[\forall i: (\ar) \ileadstog \phi] \lor [\forall i: (\ar, \ar) \ileadstog \phi] \lor …$ is not falsifiable.
-  Here, $C = \set{{\allleadstog} \suchthat \exists n \in \N^* \suchthat \forall i: (a)^n \ileadstog \phi}$.
+  Consider $\ar \in \allargs$.
+  The claim $[\forall i: (\ar) \ileadstog \phi] \lor [\forall i: (\ar, \ar) \ileadstog \phi] \lor …$,
+  thus, $C = \set{{\allleadstog} \suchthat \exists n \in \N^* \suchthat \forall i: (a)^n \ileadstog \phi}$,
+  is strongly unfalsifiable.
 
-  Given any $θ$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in θ} \card{\hist} + 1$ if $\exists p \in P \suchthat (i, \hist, p) \in θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in S_θ \cap C ≠ \emptyset$.
+  Given any $θ \in \Theta$, define $l = \max_{\hist \suchthat \exists i \in I, p \in P \suchthat (i, \hist, p) \in θ} \card{\hist} + 1$ if $\exists p \in P \suchthat (i, \hist, p) \in θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have
+  % ${\allleadstog} \in S_θ \cap C ≠ \emptyset$.
+  $\theta \in \powerset{\allleadstog}$ and ${\allleadstog} \in C$, thus, $\theta \in C^\wsub$.
 \end{example}
 \begin{example}[Disjunct with incompatible paths, not falsifiable]
   \label{ex:disj}
@@ -293,7 +297,7 @@ falsifiability guarantees that a claim holds if, and only if, it is not rejectab
   $\forall i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$, is not falsifiable.
   Consider any ${\allleadstog} \notin C$, thus satisfying, for some $i$, $(\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$.
   Consider any $θ \subseteq {\allleadstog}$ and let us prove that $\theta \in C^\wsub$.
-  By definition of a general observation, $θ$ may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $θ$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} \land t \in {\allleadstog'}$. We have ${\allleadstog'} \in \theta \in C^\wsub$.
+  By definition of a general observation, $θ$ may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $θ$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} \land t \in {\allleadstog'}$. We have ${\allleadstog'} \in S_θ \cap C ≠ \emptyset$.
 \end{example}
 \begin{example}[Partly falsifiable is still unfalsifiable]
   \label{ex:partlyU}
@@ -1463,10 +1467,10 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   So it is of the form $(i, \alpha, \phi) \lor (i, \alpha, \phi') \land (i, \alpha', \phi)…$ implies something decisive.
   So it must be of the form: all $\alpha$ ending with $\ar$ do $\ileadsto \phi$. Or must imply this.
   Let’s make it very strong, as much as possible, thus equal to $\ileadsto \cap \ileadsto[j]$.
-That’s not strong enough!
+  That’s not strong enough!
 
-Escaping?
-Assume that we know that 50\% are J and 50\% are K.
+  Escaping?
+  Assume that we know that 50\% are J and 50\% are K.
 
 \section{Technical notes about falsification}
 A claim $C$ is \emph{falsifiable} iff $\forall {\allleadstog} \notin C: \exists θ \subseteq {\allleadstog} \suchthat \theta \notin C^\subseteq$,
@@ -1484,6 +1488,19 @@ equivalently iff $\exists {\allleadstog} \notin C \suchthat \forall \theta \in \
   This is the intuitive reason that, as we will see,
   a claim $C$ is falsifiable iff $\forall S \in \mathcal{S}: S \subseteq C^\subseteq \implies \cup S \in C$.
 \end{remark}
+
+\begin{example}[Bigger disjunct, strongly unfalsifiable]
+  \label{ex:biggeror}
+  Pick any $i \in I$ and $\ar \in \allargs$.
+  The claim $[(\ar) \ileadstog \phi] \lor [(\ar, \ar) \ileadstog \phi] \lor …$,
+  thus, $C = \set{{\allleadstog} \suchthat \exists n \in \N^* \suchthat (a)^n \ileadstog \phi}$,
+  is strongly unfalsifiable.
+
+  Let $C' = \set{{\allleadstog} \suchthat \exists n \in \N^* \suchthat \forall j: (a)^n \ileadstog[j] \phi}$ denote the claim of \cref{ex:bigor}.
+  We have $C' \subseteq C$.
+  It follows that ${C'}^\wsub \subseteq C^\wsub$.
+  We know from \cref{ex:bigor} that $\Theta \wsub {C'}^\wsub$, thus, $\Theta \wsub C^\wsub$.
+\end{example}
 
 \hbadness=10000
 \bibliography{simple}
