@@ -253,11 +253,9 @@ The property demands that whatever the attitude of individuals, if the attitude 
 \begin{definition}
   \label{def:fals}
   A claim $C$ is \emph{falsifiable} iff
-  %$\forall {\allleadstog} \in \allleadstos: ¬C({\allleadstog}) \implies \exists θ \subseteq {\allleadstog} \suchthat θ \implies ¬C$, meaning that
   $\forall {\allleadstog} \notin C: \exists θ \in \Theta \cap \powerset{\allleadstog} \suchthat \theta \notin C^\wsub$.
+  %Actually we need to exclude trivial claims with an exists in supplement to forall; so that trivial claims are not falsifiable. Then the property that we seek is trivial-or-falsifiable.
 \end{definition}
-% A claim $C$ is \emph{falsifiable} iff $\forall {\allleadstog} \notin C: \exists θ \subseteq {\allleadstog} \suchthat \theta \notin C^\subseteq$,
-% equivalently iff $\exists {\allleadstog} \notin C \suchthat \forall \theta \in \Theta, \theta \subseteq {\allleadstog}: \theta \in C^\subseteq$.
 
 It is important to note that falsifiability does not depend on $\allleadsto$: whether falsifiability holds can be determined analytically, meaning, by considering only the content of the claim, without considering the behavior of individuals.
 
@@ -275,6 +273,12 @@ falsifiability guarantees that a claim holds if, and only if, it is not rejectab
   The reverse implication is proven by \cref{th:ex-post}.
 \end{proof}
 
+\begin{definition}
+  A claim is \emph{unfalsifiable} iff $\exists {\allleadstog} \notin C \suchthat \Theta \cap \powerset{\allleadstog} \wsub C^\wsub$.
+\end{definition} 
+\begin{definition}
+  A non-trivial claim is \emph{strongly unfalsifiable} iff $\Theta \wsub C^\wsub$.
+\end{definition} 
 
 \begin{example}[Big disjunct, not falsifiable]
   \label{ex:bigor}
@@ -1465,6 +1469,9 @@ Escaping?
 Assume that we know that 50\% are J and 50\% are K.
 
 \section{Technical notes about falsification}
+A claim $C$ is \emph{falsifiable} iff $\forall {\allleadstog} \notin C: \exists θ \subseteq {\allleadstog} \suchthat \theta \notin C^\subseteq$,
+equivalently iff $\exists {\allleadstog} \notin C \suchthat \forall \theta \in \Theta, \theta \subseteq {\allleadstog}: \theta \in C^\subseteq$.
+
 \begin{remark}
   Any relation $\allleadstog$ is equivalent to $\cup \set{\restr{\allleadstog}{O} \suchthat O \in \cup_{J \subseteq_\finite I} (\allhists)^J}$.
 \end{remark}
