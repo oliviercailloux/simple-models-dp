@@ -248,13 +248,12 @@ It follows that non-rejection cannot be a sufficient condition for validating a 
   \Cref{ex:threeFs} provides an example where, similarly, the claim may fail to hold but still be not rejectable; but where rejection depends on ${\allleadsto}$.
 \end{remark}
 
-\Cref{def:fals} fills the gap to obtain that $C$ holds iff it is not rejectable.
+\Cref{def:falsw} fills the gap to obtain that $C$ holds iff it is not rejectable.
 The property demands that whatever the attitude of individuals, if the attitude is not according to the claim, then it is possible to observe that it is not.
 \begin{definition}
-  \label{def:fals}
-  A claim $C$ is \emph{falsifiable} iff
+  \label{def:falsw}
+  A claim $C$ is \emph{falsifiable or trivial} iff
   $\forall {\allleadstog} \notin C: \exists θ \in \Theta \cap \powerset{\allleadstog} \suchthat \theta \notin C^\wsub$.
-  %Actually we need to exclude trivial claims with an exists in supplement to forall; so that trivial claims are not falsifiable. Then the property that we seek is trivial-or-falsifiable.
 \end{definition}
 
 It is important to note that falsifiability does not depend on $\allleadsto$: whether falsifiability holds can be determined analytically, meaning, by considering only the content of the claim, without considering the behavior of individuals.
@@ -263,21 +262,19 @@ It is important to note that falsifiability does not depend on $\allleadsto$: wh
 falsifiability guarantees that a claim holds if, and only if, it is not rejectable.
 \begin{theorem}
   \label{th:holdsiff}
-  For any falsifiable claim $C$: $C \ni {\allleadsto}$ iff $\Theta \cap \powerset{\allleadsto} \wsub C^\wsub$.
+  For any falsifiable or trivial claim $C$: $C \ni {\allleadsto}$ iff $\Theta \cap \powerset{\allleadsto} \wsub C^\wsub$.
 \end{theorem}
 \begin{proof}
   Consider any falsifiable $C$.
-  Using the contrapositive of the definition of falsifiability, $\forall {\allleadstog} \in \allleadstos: \nexists θ \in \Theta \cap \powerset{\allleadstog} \suchthat \theta \notin C^\wsub \implies {\allleadstog} \in C$.
+  Using the contrapositive of \cref{def:fals}, $\forall {\allleadstog} \in \allleadstos: \nexists θ \in \Theta \cap \powerset{\allleadstog} \suchthat \theta \notin C^\wsub \implies {\allleadstog} \in C$.
   In particular,
   $\nexists θ \in \Theta \cap \powerset{\allleadsto} \suchthat \theta \notin C^\wsub \implies {\allleadsto} \in C$.
   The reverse implication is proven by \cref{th:ex-post}.
 \end{proof}
 
 \begin{definition}
-  A claim is \emph{unfalsifiable} iff $\exists {\allleadstog} \notin C \suchthat \Theta \cap \powerset{\allleadstog} \wsub C^\wsub$.
-\end{definition}
-\begin{definition}
-  A non-trivial claim is \emph{strongly unfalsifiable} iff $\Theta \wsub C^\wsub$.
+  A claim is \emph{strongly unfalsifiable} iff 
+  $\Theta \wsub C^\wsub$.
 \end{definition}
 
 \begin{example}[Big disjunct, strongly unfalsifiable]
@@ -1473,8 +1470,21 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   Assume that we know that 50\% are J and 50\% are K.
 
 \section{Technical notes about falsification}
+\begin{definition}
+  \label{def:fals}
+  A claim $C$ is \emph{falsifiable} iff
+  $C \neq {\allleadstos} \land
+  \forall {\allleadstog} \notin C: \exists θ \in \Theta \cap \powerset{\allleadstog} \suchthat \theta \notin C^\wsub$.
+\end{definition}
+\begin{definition}
+  A claim is \emph{unfalsifiable} iff 
+  $C = {\allleadstos} \lor
+  \exists {\allleadstog} \notin C \suchthat \Theta \cap \powerset{\allleadstog} \wsub C^\wsub$.
+\end{definition}
+
 A claim $C$ is \emph{falsifiable} iff $\forall {\allleadstog} \notin C: \exists θ \subseteq {\allleadstog} \suchthat \theta \notin C^\subseteq$,
 equivalently iff $\exists {\allleadstog} \notin C \suchthat \forall \theta \in \Theta, \theta \subseteq {\allleadstog}: \theta \in C^\subseteq$.
+(To be corrected for the trivial claims.)
 
 \begin{remark}
   Any relation $\allleadstog$ is equivalent to $\cup \set{\restr{\allleadstog}{O} \suchthat O \in \cup_{J \subseteq_\finite I} (\allhists)^J}$.
