@@ -178,9 +178,7 @@ Note that $C^\subseteq$ is downwards closed, meaning that $\forall c \in C^\subs
 
 Given a pair $(I, \allargs)$, an observation $θ \in \Theta$ is a right unique finite subset of $(I × \allhists) × P$ such that $\forall i \in I, (i, \hist, p), (i, \histp, q) \in θ: \card{\hist} ≤ \card{\hist'} \implies \hist \subseteq \hist'$.
 The set $\Theta$ contains the a priori possible observations, that is, those that can be considered possible when nothing is known about $\allleadsto$.
-% Let $S_θ = \set{{\allleadstog} \in \allleadstos \suchthat θ \subseteq {\allleadstog}}$ denote the possibilities for $\allleadsto$ compatible with the observations.
 We say that an observation $\theta$ is compatible with a claim $C$ iff
-% $S_θ \cap C ≠ \emptyset$, equivalently, iff 
 $\theta \in C^\subseteq$, equivalently, iff
 $\theta \in \cup_{{\allleadstog} \in C} \powerset{\allleadstog}$.
 Thus, given ${\allleadstog} \in \allleadstos$, the set $\Theta \cap \powerset{\allleadstog}$ is the set of observations compatible with ${\allleadstog}$.
@@ -194,7 +192,6 @@ Let also $\max\incr(\allhists) = \set{A \in \incr(\allhists) \suchthat \nexists 
 
 Let the \emph{simple a priori observations} be defined as $\cup_{J \subseteq_\finite I} (\allhists)^J$, equivalently, as the right-unique finite relations over $I × \allhists$.
 Given a simple a priori observation $O: J \mapsto \allhists$, we can define the a priori observation $O_O = \set{(i, \hist) \in J × \allhists \suchthat \forall i \in J: \hist \subseteq O(i)}$ as the completion of $O$ to all sub-paths in $O$.
-Given $O$ and ${\allleadstog}$, it follows that $S_{\restr{\allleadstog}{O_O}}$ denotes the “leads to” relations that complete $O_O$ using $\allleadstog$.
 
 Similarly, we can view an observation $\theta$ as a function $\theta: I \mapsto \cup_{A \in \incr(\allhists)} P^A$ and thus $\Theta = \finite((\cup_{A \in \incr(\allhists)} P^A)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
 Note that $(\cup_{A \in \max \incr(\allhists)}P^A)^I$ is the set of functions that associate to each $I$ a maximal increasing sequence of paths, together with values from $P$.
@@ -210,7 +207,6 @@ Given an exposure protocol $\allleadsto$, we say that a claim $C$ \emph{holds} i
 At our disposal is the procedure of empirical rejection, that consists in directly invalidating a claim by observing something that contradicts it.
 \begin{definition}
   Given an exposure protocol $\allleadsto$, we say that $C$ is \emph{rejectable} iff
-  % $\exists θ \in \Theta \cap \powerset{\allleadsto} \suchthat θ \notin C^\wsub$.
   $\Theta \cap \powerset{\allleadsto} \nsubseteq C^\wsub$.
 \end{definition}
 
@@ -218,14 +214,10 @@ The following theorem verifies that when $C$ holds, it is not rejectable.
 \begin{theorem}
   \label{th:ex-post}
   $\forall C \ni {\allleadsto}:
-    % \nexists θ \in \Theta \suchthat \theta \subseteq {\allleadsto} \land θ \notin C^\wsub$.
     \Theta \cap \powerset{\allleadsto} \subseteq C^\wsub$.
 \end{theorem}
 \begin{proof}
   This holds by definition of $C^\wsub = \cup_{{\allleadstog} \in C} \powerset{\allleadstog}$.
-  % Consider any claim $C$ with ${\allleadsto} \in C$.
-  % Consider any $\theta \in \Theta$ with $\theta \wsub {\allleadsto}$.
-  % We have $θ \subseteq {\allleadsto} \in C$, thus $θ \in C^\wsub$.
 \end{proof}
 
 The converse, however, does not hold.
@@ -234,9 +226,7 @@ The converse, however, does not hold.
   Given $\ar \neq \ar' \in \allargs$,
   the claim $\forall i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$ is not rejectable.
   In fact,
-  % $\nexists \theta \in \Theta \suchthat \theta \notin C^\wsub$.
   $\Theta \wsub C^\wsub$.
-  % Consider any ${\allleadstog} \notin C$, thus satisfying, for some $i$, $(\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$.
   Consider any $θ \in \Theta$ and let us prove that $\theta \in \cup_{{\allleadstog} \in C} \powerset{\allleadstog}$.
   By definition of $\Theta$, $\theta^{-1}(P)$ may not contain both $((\ar), i)$ and $((\ar'), i)$, thus letting $t$ denote one of these pairs not in $\theta^{-1}(P)$ and defining $r = (t, \phi)$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} \land t \in {\allleadstog'}$. We have $\theta \in \powerset{\allleadstog'}$ and ${\allleadstog'} \in C$.
 \end{example}
@@ -285,7 +275,6 @@ falsifiability guarantees that a claim holds if, and only if, it is not rejectab
   is strongly unfalsifiable.
 
   Given any $θ \in \Theta$, define $l = \max_{\hist \suchthat \exists i \in I, p \in P \suchthat (i, \hist, p) \in θ} \card{\hist} + 1$ if $\exists p \in P \suchthat (i, \hist, p) \in θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have
-  % ${\allleadstog} \in S_θ \cap C ≠ \emptyset$.
   $\theta \in \powerset{\allleadstog}$ and ${\allleadstog} \in C$, thus, $\theta \in C^\wsub$.
 \end{example}
 \begin{example}[Disjunct with incompatible paths, not falsifiable]
@@ -296,7 +285,6 @@ falsifiability guarantees that a claim holds if, and only if, it is not rejectab
   Consider any $θ \subseteq {\allleadstog}$ and let us prove that $\theta \in C^\wsub$.
   By definition of a general observation, $θ$ may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $θ$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} \land t \in {\allleadstog'}$. We have 
   $\theta \in \powerset{\allleadstog'}$ and ${\allleadstog'} \in C$, thus, $\theta \in C^\wsub$.
-  % ${\allleadstog'} \in S_θ \cap C ≠ \emptyset$.
 \end{example}
 \begin{example}[Partly falsifiable is still unfalsifiable]
   \label{ex:partlyU}
@@ -319,6 +307,8 @@ falsifiability guarantees that a claim holds if, and only if, it is not rejectab
 \begin{remark}
   The claim “For each glass, it will not break on a monday or not break on a tuesday, whatever happens to it.” is not falsifiable. But one can make it stronger and falsify it, by giving a general theory of how glasses break, proving that it holds, and that it is not compatible with the claim. I should think about this.
 \end{remark}
+Let $S_θ = \set{{\allleadstog} \in \allleadstos \suchthat θ \subseteq {\allleadstog}}$ denote the possibilities for $\allleadsto$ compatible with the observations.
+Given $O$ and ${\allleadstog}$, it follows that $S_{\restr{\allleadstog}{O_O}}$ denotes the “leads to” relations that complete $O_O$ using $\allleadstog$.
 \begin{remark}
   To be falsifiable, I need each time I exclude some relation $R$ to also exclude a subset $Cbar$ such that some $O \subseteq R$ satisfies $S_O$ is entirely in $Cbar$.
 \end{remark}
