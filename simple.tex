@@ -140,138 +140,50 @@ The following toy example is inspired by an argument from \citet[p.~59]{railton_
   If the prediction described in the quote applies to $i$, the relation $\ileadsto$ is as follows, $\forall k \in \N^*$ (recall that for $\args \subseteq \allargs$, $\args^k$ represents the set of sequences of length $k$ using arguments from $\args$): $\forall \hist \in \set{a_e}^k, \hist \ileadsto \prop_2$; $\forall \hist \in \set{a_1, a_2}^k, \hist \ileadsto \prop_1$; $\forall \hist \in \set{a_1, a_e}^k \suchthat a_e \in \histend, \hist \ileadsto \prop_2$; $\forall \hist \in \set{a_2, a_e}^k \suchthat a_e \in \histend, \hist \ileadsto \prop_2$; $\forall \hist \in \allargs^k \suchthat a_e \in \histend, \hist \ileadsto \prop_2$. The values of ${\allleadsto}(i, \hist)$ for $\hist = \emptyset$ and for $\hist \in \allargs^k \suchthat a_e \notin \histend$ are undetermined by the prediction, but whatever they are, $a_e$ is a decisive argument for $\prop_2$, hence, $i$’s deliberated choice is $\prop_2$.
 \end{example}
 
-That the deliberated choice of any individual $i$ is well-defined may be doubtful, as it involves counterfactuals.
-To see this, let $\hist = (a_1, a_2, a_e)$ designate the argumentative path where the arguments are shown in the order they are described in \cref{ex:tutor}, and let $\hist' = (a_e, a_2, a_1)$ designate the reverse order.
-The deliberated choice concept is defined so as to not depend on the order of the arguments shown to $i$: for having $\prop \in P_i$, it must be that directing to $i$ the path $\hist$ or the path $\hist'$ both lead $i$ to choose $\prop$.
-However, once we have shown $\hist$ to $i$, we cannot show to her $\hist'$ (unless assuming $i$ forgets arguments after a while and waiting for sufficiently long, which would create practical and theoretical difficulties).
+Now that deliberated choices are defined, we need to explore what one can learn about deliberated choices using our empirically available data.
+This requires to define claims about deliberated choices and to explore how to validate claims.
 
-This difficulty is resolved using falsifiable general theories, applicable to $I$ and not solely to a given $i$, so that $\hist$ can be tested on $i$ and $\hist'$ on some $i' ≠ i$. Indeed, we need a way to empirically test claims such as the one concluding \cref{ex:tutor}, according to which $a_e$ is a decisive argument. This is achieved in the next section thanks to theories of deliberated choice.
+\section{Claims about deliberated choice}
+Given an exposure protocol $(I, \allargs, {\allleadsto})$, consider a claim about $\allleadsto$, such as “every individuals in $I$ choose deliberately $\phi$”, or, in \cref{ex:tutor}, “$a_e$ is a decisive argument for $i$ in favor of $\phi_2$”.
+Validating claims about deliberated choice is no trivial matter, for two reasons.
+
+First,
+such claims must entail an infinity of constraints about $\allleadsto$:
+in order to deduce that $p \in P_i$ for some $p \in P, i \in I$, the claim must constrain $\ileadsto$ on every possible paths $\alpha \in \allhists$.
+It follows that a claim cannot be validated empirically exhaustively by observing the value of $\allleadsto$ on every points that it constraints.
+
+Second,
+our observations are limited in important ways: once we have shown some arguments to a given individual $i$, we cannot undo the effects of this action on $i$ and show to her a different argument as if starting from scratch (unless assuming $i$ forgets arguments after a while and waiting for sufficiently long, which would create practical and theoretical difficulties).
+In other words, once we have shown a path $\hist$ to $i$, we can only continue the protocol with $i$ by showing paths $\histp$ that are suffixes of $\hist$.
+
+To illustrate this point with \cref{ex:tutor}, let $\hist = (a_1, a_2, a_e)$ designate the argumentative path where the arguments are shown in the order they are described in \cref{ex:tutor}, and let $\hist' = (a_e, a_2, a_1)$ designate the reverse order.
+The deliberated choice concept is defined so as to not depend on the order of the arguments shown to $i$: for having $\prop \in P_i$, it must be that directing to $i$ the path $\hist$ or the path $\hist'$ both lead $i$ to choose $\prop$.
+But it is impossible to observe both the value of ${\allleadsto}(i, \hist)$ and the value of ${\allleadsto}(i, \hist')$.
+
+The first difficulty is familiar as it occurs in any endeavor to validate general claims in science: claims that cover a large (or infinite) spectrum cannot be validated by observing the system exhaustively. One must rather develop a falsification protocol, that is, a way to invalidate the claim, and then observe that the claim is not invalidated. This is the approach taken in the next section.
+
+This approach also permits to tackle the second difficulty, by letting us study theoretically the needs and limits of falsification given our observable basis.
 % Such theories contain an observable claim and a conclusion claim, so as to satisfy two properties. First, such a theory must be falsifiable in principle, meaning that it must be possible, using our observational basis (propositions of the sort $\alpha \ileadsto \phi$), to invalidate the observable claim of the theory. As a counter-example, using \cref{ex:tutor}, a theory that claims that $\forall i \in I: \alpha_{123} \ileadsto \prop_1 \lor \alpha_{321} \ileadsto \prop_1$ is not falsifiable in principle, as, whatever the real $\ileadsto$ relation, with a given $i$, one can never show that $\alpha_{123} \nileadsto \prop_1 \land \alpha_{123} \nileadsto \prop_1$. Second, such a theory must be so that if its observable claim holds, then some given alternative is in the deliberated judgment of the individuals in $I$.
 
-\section{Theories of deliberated choice}
-This section assumes that an exposure protocol $(I, \allargs, {\allleadsto})$ is defined, and defines theories of deliberated choice associated with that exposure protocol. We will start with very simple theories (\cref{sec:static}) in order to build an intuition about the conditions required on theories of deliberated choice, then justify the need for more complex theories (\cref{sec:lichtenstein}) and finally define more general theories of deliberated choice (\cref{sec:dynamic}).
-
-\subsection{Theories using a static decisive argument}
-\label{sec:static}
-\Cref{ex:tutor} suggests a simple form for theories of deliberated choice: suffice to determine an argument $\ar \in \allargs$ and a preference $p \in P$ such that the theory claims that $\forall i \in I: \ar \ileadstost p$ and that $\forall i \in I: p \in P_i$.
-
-\begin{definition}[Static theory]
-  \label{def:static}
-  A static theory is a pair $(p, \ar)$ for some $p \in P$ and some $\ar \in \allargs$.
-\end{definition}
-A static theory $(p, \ar)$ is said to be truthful iff $\forall i \in I: \ar \ileadstost p$, and to be correct iff $\forall i \in I: p \in P_i$.
-We can then deduce that such theories are valid, meaning that their truthfulness implies their correctness. Let us make this (very simple) result stand out as a theorem, because a parallel will be usefully made with more complicated theories.
-%Note that this result immediately follows from \cref{ax:decisive}.
-\begin{theorem}[Static theories are valid]
-  Any truthful static theory is correct.
-\end{theorem}
-\begin{proof}
-  This follows immediately from \cref{def:decisive}.
-\end{proof}
-Importantly, truthfulness can indeed be checked using our observational basis, that is, if $\exists i \in I \suchthat \ar \nileadstost p$, then it is possible to exhibit this fact experimentally.
-
-Such theories have the merit of simplicity, but there is a need to design more adaptive theories: in many interesting cases, no single argument will be considered decisive by all individuals in $I$. We then need theories that argue with individuals by reacting to what they consider good arguments. The following section illustrates this need.
-
-\subsection{Some decision problems with no single decisive argument}
-\label{sec:lichtenstein}
-One ambition of the theories to be proposed here is to permit exhibiting the existence of a deliberated consensus among a large set of persons about issues that involve numerous arguments and counter-arguments.
-
-In many decision problems, individuals will not be attracted by the same set of arguments and counter-arguments, even though they may finally settle to the same preference. Imagine that some individual $i_1$ considers an argument $a_1$ for $\nprop$ relevant and some individual $i_2$ considers an argument $a_2$ for $\nprop$ relevant, but $i_1$ does not consider $a_2$ relevant and $i_2$ does not consider $a_1$ relevant (for example, because they already have some counter-arguments in mind to those arguments). Imagine further that there is some counter-argument $a'_1$ that can be given to $i_1$ to rebut $a_1$, and a different counter-argument $a'_2$ that can be given to $i_2$ to rebut $a_2$, so that they both have $\prop$ in their deliberated judgment when considering all these arguments.
-In such situation, static theories as defined in \cref{sec:static} are ill suited: these theories need to present the same argument to all individuals and would thus need to define a bigger argument $a$ containing both $a'_1$ and $a'_2$. Such an argument could be too long to be convincing to $i_1$ or $i_2$, as it needlessly spends efforts countering an argument that the individual considers irrelevant to start with. This  will become an important problem if there are not only two but many a priori possible arguments $a_k$ for $\nprop$, a small subset of which is considered relevant by any given individual, each with their own counter-argument $a'_k$ for $\prop$.
-This section is devoted to describing two examples to illustrate that point. Bear in mind that these examples may look somehow naïve on the aspect of the hypothesis they make about what convinces individuals. Real-world complex decision situations will require complex theories that do not fit the purpose of simple illustrative examples. Their goal is to argue that non-static theories are required, but not to fully describe such theories.
-
-%For a partial illustration about an ambitious setting, consider a decision to be taken about the relevance of some concrete action to help cope with climate change, and let $I$ be a set of citizens interested in the climate issue. The complete set of all arguments that will be considered relevant by at least one individual may well be very large. It may also be that, for each individual who considers relevant some arguments $A$ against the proposed concrete action, it is possible to give counter-arguments $A'$ that will convince the individual to opt for the proposal.
-One of the settings discussed by \citet{thaler_nudge_2009} permits such an illustration. %to illustrate this point more concretely.
-Let $I$ be a set of workers interested in establishing a savings plan.
-The authors claim that workers tend to not save enough because of psychological biases.
-It is therefore tempting to conjecture that the deliberated choice of those workers is to save more, in the sense defined here, than what their natural choice (the one revealed in absence of arguments) leads to.
-A difficulty related to this decision problem is that the complete set of all arguments that will be considered relevant by at least one individual for such a complex issue may well be very large. It may also be that, for each individual who considers relevant some arguments $A$ for saving not much (i.e., spending more in the short term), it is possible to give counter-arguments $A'$ that will convince the individual to opt for saving more.
-But no single argument could be decisive for each $i \in I$: it could be that only counter-arguments built specifically according to what a given individual considers relevant could convince her, given the complexity of the issue.
-This illustrates that the deliberated choice of each individuals in $I$ may be to save more even though no static theory (\cref{def:static}) may achieve showing it, as it could be that no such theory is truthful.
-
-%The above setting illustrates the ambition of this research program, but at the price of rendering impossible in the confines of this article to define fully the set of arguments and giving a complete account of a concrete theory of deliberated choice in such a complex setting, an endeavor of its own.
-
-The following example illustrates this same point in a constrained setting which permits a complete definition of $\allargs$ and $\allleadsto$.%, which permits defining the setting completely at the price of a reduced realism.
-\begin{example}[A decision problem about two lotteries]
-  \label{ex:lichtenstein}
-  In a famous article about preference reversals, \citet{lichtenstein_reversals_2006} discuss an example involving two lotteries. The lottery $L_P$ lets the subject win four dollars with 99\% chance and lose ten cents with 1\% chance; in summary, $L_P = (.99, +\$4; .01, −\$0.1)$. The lottery $L_D$ is, using the same notations: $(.33, +\$16; .67, −\$2)$. The letter $P$ stands for probability: one salient aspect of $L_P$ is the very high chance of winning. The letter $D$ stands for dollar: one salient aspect of $L_D$ is the high gain it gives (compared to $P$) in dollar amount if the subject is lucky.
-
-  This example is interesting because when asked to bid for lotteries, the theory discussed by the authors predicts, and their experiments confirm, that subjects tend to bid more for $L_D$ than for $L_P$, because the bidding question tend to make individuals focus on dollar amounts; whereas when asked to choose one lottery, the lotteries being presented in pairs, subjects tend to choose $L_P$ among the pair $\set{L_P, L_D}$, giving greater attention to probabilities.
-
-  Define $P = \set{L_P, L_D, 0}$.
-
-  Define $\ar_e$ as a text arguing that the choice between $L_P$ and $L_D$ should be determined by their expected revenue, namely, $\$3.959$ for $L_P$ and $\$4$ for $L_D$.%
-  \footnote{Here is a possible text for $\ar_e$. “Imagine you play $L_P$ 100 times. On average, you would win 99 times and lose once, which means gaining 99 × \$4 = \$396 and losing 1 × \$0.10 = \$0.10, hence a total net gain of \$395.90. Thus, your average net gain for the $L_P$ bet would be \$3.9590. [Similar text for $L_D$.] Therefore, we suggest you choose $L_D$ for a higher expected revenue.”}
-  Define $\ar_u$ as a text arguing that the utility of money should matter, not the revenue, and arguing that a loss hurts more than a gain.% 
-  \footnote{Here is a possible text for $\ar_u$. “$L_D$ is better than $L_P$ in terms of expected gain, but it is in general absurd to reason in terms of expected gain. For example, consider a choice between winning $10^6$ dollars with probability $0.8$ and winning $2 × 10^6$ dollars with probability $0.4$. These two lotteries have the same expected gain, but the first one is clearly preferrable. Therefore, we recommend to rather pick $L_P$ as it presents a much better chance of earning money”.}
-  Define a counter-argument $\ar_l$ to $\ar_u$, indicating that for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.%
-  \footnote{Here is a possible text for $\ar_l$. “The lottery $L_D$ has a higher expected revenue, and thus, a higher utility than $L_P$, because for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.”}
-  Define $\ar$ so as to include the contents of $\ar_e$, $\ar_u$ and $\ar_l$.%
-  \footnote{Here is a possible text for $\ar$. [Text of $\ar_e$] “Note that one could say that the utility of money should matter, but for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.”}
-  Define $\allargs = \set{\ar_e, \ar_u, \ar_l, \ar}$.
-
-  Define $I$ as a set of individuals facing a choice between $L_P$ and $L_D$ in a laboratory experiment.
-  Define $\ileadsto$ as exposing $i$ to $\alpha$ and observing the resulting choice by asking $i$ to indicate which lottery she prefers playing, or declare being indifferent.
-  %Given an argumentative path $\hist$, $\hist \ileadsto (P ≥ D)$ iff, in a situation of $i$ having been exposed, in order, to the arguments in $\hist$, letting $i$ choose between $P$ and $D$ or declare indifference leads $i$ to choose $P$, or declare indifference. Here is a possible text presented to $i$ to ask for a choice: “Considering these arguments, would you please choose either to play $P$, or play $D$, or declare to be indifferent (in which case one will be picked randomly for you)”. 
-  %Similarly, define $\hist \ileadsto (P > D)$ iff showing the arguments in $\hist$ to $i$ and letting $i$ choose between $P$ and $D$ or declare indifference leads $i$ to choose $P$ and not $D$. 
-  %Define similarly $\hist \ileadsto \prop$ for $\prop \in \set{D ≥ P, D > P}$.
-
-  Assume that some individuals $i \in I$ do not see the point of argument $\ar_u$ and some do but are convinced by the counter-argument $\ar_l$. Accordingly, define $\ileadsto[e]$, representing the first kind of individuals, as follows. $\forall \hist \in \allhists: \hist \ileadsto[e] L_D ⇔ [\ar_e \in R(\hist)]$, and $\hist \ileadsto[e] L_P$ otherwise. Note that in particular, if $\hist$ contains $\ar$ but not $\ar_e$, $\ar \ileadsto[e] L_P$, as we assume such individuals are confused by the longer argument $\ar$ referring to abstract notions and therefore opt for $L_P$, falling back to the common psychological bias.
-  The second kind of individuals is represented by $\ileadsto[u]$ defined as $\forall \hist \in \allhists: \hist \ileadsto[u] L_D ⇔ [\ar_u \notin R(\hist) \lor \ar \in R(\hist) \lor \set{\ar_u, \ar_l} \subseteq R(\hist)]$, and $\hist \ileadsto[u] L_P$ otherwise.
-  We assume here that such individuals think about $\ar_u$ as a correct argument in favor of $L_P$ until shown the rebuttal $\ar_l$ (or $\ar$, which contains a similar rebuttal).
-  Assuming finally $\allleadsto$ as equal to $\ileadsto[e]$ for individuals of the first kind and $\ileadsto[u]$ otherwise concludes the definition of the exposure protocol $(I, \allargs, {\allleadsto})$.
-
-  It follows from this definition that $\forall i \in I: L_D \in P_i$, and that no static theory of that exposure protocol is truthful: only $\ar_e$ is a decisive argument for $L_D$ for the first kind of individuals whereas for the second kind, only $\ar$ is.
-\end{example}
-This example illustrates the need for theories that are able to react to arguments depending on what a given individual considers relevant. This is the object of the next section.
-
-\subsection{Form of theories (draft)}
-Given an exposure protocol $(I, \allargs, {\allleadsto})$, we want to phrase some claims under the form of a logical sentence $C$ such that:
-if $C$ holds, then it implies something about the dj of some $i$;
-if $C$ fails, it is possible to falsify it.
-
-We can observe set $O$ that forms a function $f(i) = \set{\alpha \ileadsto \phi, \alpha' \ileadsto ¬\phi, …}$, with $\alpha \subset \alpha \subset …$ and with finite $O$.
-Our second condition is that $¬C \implies \exists θ \suchthat θ \implies ¬C$.
-For example, if $C$ is $\alpha \ileadsto \phi \lor \beta \allleadsto[j] \phi$, $O$ is $\alpha \ileadsto ¬\phi \land \beta \allleadsto ¬\phi$, then $O$ implies $¬C$.
-As another example, $C$ being $\exists \alpha \suchthat \alpha \ileadsto \phi$ is unfalsifiable, as its negation is $\forall \alpha: \alpha \nileadsto \phi$, which requires infinite $O$.
-
-Consider $\allleadsto$ such that $\exists \ar, \phi \suchthat \forall i: \ar \ileadsto \phi$.
-Then some suitable $C$ exists.
-It is $\forall i: \ar \ileadstost \phi$.
-If false, it is falsifiable.
-Even though it is not provable by any $O$.
-
-Now consider $\allleadsto$ such that $\exists J, K \subset I \suchthat \ar \ileadstost[j] \phi, \ar' \ileadstost[k] \phi$.
-Then no suitable $C$ exists?
-
-If $C$ has the form, whenever $a$ fails, $a'$ is then decisive, it is falsifiable, but does not lead to a decisive argument.
-Want to show: $j \ileadstost \phi$. Need to show: $ar$ or $ar'$ is decisive.
-Assume we know who is a $j$. Then we can!
-Claim: $\ar \ileadsto \phi$.
-Now assume that our claim has to be anonymous.
-Also, assume the formulas involve one $i$ at a time (not needed, probably, but not much restrictive so okay for now).
-So it is of the form $(i, \alpha, \phi) \lor (i, \alpha, \phi') \land (i, \alpha', \phi)…$ implies something decisive.
-So it must be of the form: all $\alpha$ ending with $\ar$ do $\ileadsto \phi$. Or must imply this.
-Let’s make it very strong, as much as possible, thus equal to $\ileadsto \cap \ileadsto[j]$.
-That’s not strong enough!
-
-Escaping?
-Assume that we know that 50\% are J and 50\% are K.
-
-\subsection{Form of theories}
-Given an exposure protocol $(I, \allargs, {\allleadsto})$, recall that ${\allleadsto} \in \allleadstos$.
+\subsection{Claims and observable basis}
+% Such a deduction should use, as much as possible, the observational basis, that is, the propositions of the form $\alpha \ileadsto p$ that can be obtained experimentally.
+Note first that given a relation ${\allleadstog} \in \allleadstos$, $\powerset{\allleadstog}$ denotes the set of relations over $(I × \allhists) × P$ that refine $\allleadstog$ (thus, each element $f \in \powerset{\allleadstog}$ is right-unique but non necessarily total, meaning that it does not necessarily cover $(I × \allhists)$).
 
 Given a pair $(I, \allargs)$, a claim $C$ is a set of possibilities for $\allleadsto$, thus, $C \subseteq \allleadstos$.
 Given a formula $\psi$, let the corresponding claim be $C_\psi = \set{{\allleadstog} \in \allleadstos \suchthat {\allleadstog} \text{ satisfies } \psi}$.
 A claim is trivial iff it is the trivial claim, defined as $C = \allleadstos$.
 A claim is finite iff its cardinal is finite (meaning that it is compatible with a finite number of possibilities).
-Let $C^\subseteq = \set{c \subseteq (I × \allhists) × P \suchthat \exists {\allleadstog} \in C \suchthat c \subseteq {\allleadstog}}$ denote the set of non necessarily complete possibilities compatible with $C$ (thus, each element $c \in C^\subseteq$ is right-unique but non necessarily total, meaning that it does not necessarily cover $(I × \allhists)$).
+Let $C^\wsub = \cup_{{\allleadstog} \in C} \powerset{\allleadstog} = \set{c \subseteq (I × \allhists) × P \suchthat \exists {\allleadstog} \in C \suchthat c \in \powerset{\allleadstog}}$ denote the set of non necessarily complete possibilities compatible with $C$ (thus, each element $c \in C^\subseteq$ is right-unique but non necessarily total, meaning that it does not necessarily cover $(I × \allhists)$).
 Note that $C^\subseteq$ is downwards closed, meaning that $\forall c \in C^\subseteq: c' \subseteq c \implies c' \in C^\subseteq$.
 
 Given a pair $(I, \allargs)$, an observation $θ \in \Theta$ is a right unique finite subset of $(I × \allhists) × P$ such that $\forall i \in I, (i, \hist, p), (i, \histp, q) \in θ: \card{\hist} ≤ \card{\hist'} \implies \hist \subseteq \hist'$.
 The set $\Theta$ contains the a priori possible observations, that is, those that can be considered possible when nothing is known about $\allleadsto$.
-Let $S_θ = \set{{\allleadstog} \in \allleadstos \suchthat θ \subseteq {\allleadstog}}$ denote the possibilities for $\allleadsto$ compatible with the observations.
-We say that an observation $\theta$ is compatible with a claim $C$ iff $S_\theta \cap C ≠ \emptyset$, equivalently, iff $\theta \in C^\subseteq$.
+% Let $S_θ = \set{{\allleadstog} \in \allleadstos \suchthat θ \subseteq {\allleadstog}}$ denote the possibilities for $\allleadsto$ compatible with the observations.
+We say that an observation $\theta$ is compatible with a claim $C$ iff
+% $S_\theta \cap C ≠ \emptyset$, equivalently, iff 
+$\theta \in C^\subseteq$, equivalently, iff
+$\theta \in \cup_{{\allleadstog} \in C} \powerset{\allleadstog}$.
+Thus, given ${\allleadstog} \in \allleadstos$, the set $\Theta \cap \powerset{\allleadstog}$ is the set of observations compatible with ${\allleadstog}$.
 
 Given an observation $\theta$, let $\theta^{-1}(P) \subseteq I × \allhists$ denote the pairs $(i, \hist)$ in $\theta$.
 Let $\incr(\allhists) = \set{\emptyset} \cup \cup_{\emptyset \neq N \subseteq \N} \set{A(N) \suchthat A \in (\allhists)^N \land [\card{A_i} = i] \land [i < j \implies A_i \subsetneq A_j]} \subseteq \powerset{\allhists}$ denote the possibly empty embedded sequences of paths.
@@ -290,43 +202,96 @@ Note that $(\cup_{A \in \max \incr(\allhists)}P^A)^I$ is the set of functions th
 Given a claim $C$, we can also define the set $\Theta \cap C^\subseteq$ of possibilities for increasing sequences corresponding to the claim.
 This set is downwards-closed, as both $\Theta$ and $C^\subseteq$ are.
 
-\begin{remark}
-  Any relation $\allleadstog$ is equivalent to $\cup \set{\restr{\allleadstog}{O} \suchthat O \in \cup_{J \subseteq_\finite I} (\allhists)^J}$.
-\end{remark}
+\subsection{Rejection and falsification}
+Given an exposure protocol $(I, \allargs, {\allleadsto})$, and a claim about ${\allleadsto}$, we develop here a procedure to deduce that the claim is correct.
 
+Given an exposure protocol $\allleadsto$, we say that a claim $C$ \emph{holds} iff $C \ni {\allleadsto}$.
+
+At our disposal is the procedure of empirical rejection, that consists in directly invalidating a claim by observing something that contradicts it.
 \begin{definition}
-  We say that $C$ is \emph{syntactically falsifiable}, or just falsifiable, iff
-  %$\forall {\allleadstog} \in \allleadstos: ¬C({\allleadstog}) \implies \exists θ \subseteq {\allleadstog} \suchthat θ \implies ¬C$, meaning that
-  $\forall {\allleadstog} \notin C: \exists θ \subseteq {\allleadstog} \suchthat S_θ \cap C = \emptyset$.
+  Given an exposure protocol $\allleadsto$, we say that $C$ is \emph{rejectable} iff
+  % $\exists θ \in \Theta \cap \powerset{\allleadsto} \suchthat θ \notin C^\wsub$.
+  $\Theta \cap \powerset{\allleadsto} \nsubseteq C^\wsub$.
 \end{definition}
-Equivalently, iff $\forall {\allleadstog} \notin C: \exists θ \subseteq {\allleadstog} \suchthat \theta \notin C^\subseteq$.
-Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \suchthat \forall \theta \in \Theta, \theta \subseteq {\allleadstog}: \theta \in C^\subseteq$.
+
+The following theorem verifies that when $C$ holds, it is not rejectable.
+\begin{theorem}
+  \label{th:ex-post}
+  $\forall C \ni {\allleadsto}:
+    % \nexists θ \in \Theta \suchthat \theta \subseteq {\allleadsto} \land θ \notin C^\wsub$.
+  \Theta \cap \powerset{\allleadsto} \subseteq C^\wsub$.
+\end{theorem}
+\begin{proof}
+  This holds by definition of $C^\wsub = \cup_{{\allleadstog} \in C} \powerset{\allleadstog}$.
+  % Consider any claim $C$ with ${\allleadsto} \in C$.
+  % Consider any $\theta \in \Theta$ with $\theta \wsub {\allleadsto}$.
+  % We have $θ \subseteq {\allleadsto} \in C$, thus $θ \in C^\wsub$.
+\end{proof}
+
+The converse, however, does not hold.
+\begin{example}[Disjunct with incompatible paths, not rejectable]
+  \label{ex:disjR}
+  Given $\ar \neq \ar' \in \allargs$,
+  the claim $\forall i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$ is not rejectable.
+  In fact, 
+  % $\nexists \theta \in \Theta \suchthat \theta \notin C^\wsub$.
+  $\Theta \wsub C^\wsub$.
+  % Consider any ${\allleadstog} \notin C$, thus satisfying, for some $i$, $(\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$.
+  Consider any $θ \in \Theta$ and let us prove that $\theta \in \cup_{{\allleadstog} \in C} \powerset{\allleadstog}$.
+  By definition of $\Theta$, $\theta^{-1}(P)$ may not contain both $((\ar), i)$ and $((\ar'), i)$, thus letting $t$ denote one of these pairs not in $\theta^{-1}(P)$ and defining $r = (t, \phi)$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} \land t \in {\allleadstog'}$. We have $\theta \in \powerset{\allleadstog'}$ and ${\allleadstog'} \in C$.
+\end{example}
+\Cref{ex:disjR} shows a claim that is not rejectable, irrespective of the exposure protocol.
+In particular, the example applies when $C$ does not hold (that is, when ${\allleadsto} \notin C$). We conclude that a claim may fail to hold but still be not rejectable.
+It follows that non-rejection cannot be a sufficient condition for validating a claim.
 
 \begin{remark}
-  Any relation $\allleadstog$ is equivalent to $\cup \set{\restr{\allleadstog}{O} \suchthat O \in (\finite(\incr(\allhists))^I)}$.
-  Conversely, any set $S$ of observations such that $\set{\theta^{-1}(P) \suchthat \theta \in S} = \incr(\allhists)^I$ and $\cup S$ is right-unique corresponds to a unique relation $\cup S = {\allleadstog}$.
-  Thus, there is a bijection between the set $\mathcal{S}$ of such sets $S$ and the set of leads to relations.
-
-  This is the intuitive reason that, as we will see,
-  a claim $C$ is falsifiable iff $\forall S \in \mathcal{S}: S \subseteq C^\subseteq \implies \cup S \in C$.
+  \Cref{ex:threeFs} provides an example where, similarly, the claim may fail to hold but still be not rejectable; but where rejection depends on ${\allleadsto}$.
 \end{remark}
 
-\begin{example}
+\Cref{def:fals} fills the gap to obtain that $C$ holds iff it is not rejectable.
+The property demands that whatever the attitude of individuals, if the attitude is not according to the claim, then it is possible to observe that it is not.
+\begin{definition}
+  \label{def:fals}
+  A claim $C$ is \emph{falsifiable} iff
+  %$\forall {\allleadstog} \in \allleadstos: ¬C({\allleadstog}) \implies \exists θ \subseteq {\allleadstog} \suchthat θ \implies ¬C$, meaning that
+  $\forall {\allleadstog} \notin C: \exists θ \in \Theta \cap \powerset{\allleadstog} \suchthat \theta \notin C^\wsub$.
+\end{definition}
+% A claim $C$ is \emph{falsifiable} iff $\forall {\allleadstog} \notin C: \exists θ \subseteq {\allleadstog} \suchthat \theta \notin C^\subseteq$,
+% equivalently iff $\exists {\allleadstog} \notin C \suchthat \forall \theta \in \Theta, \theta \subseteq {\allleadstog}: \theta \in C^\subseteq$.
+
+It is important to note that falsifiability does not depend on $\allleadsto$: whether falsifiability holds can be determined analytically, meaning, by considering only the content of the claim, without considering the behavior of individuals.
+
+\Cref{th:holdsiff} shows that falsifiability indeed fills that gap:
+falsifiability guarantees that a claim holds if, and only if, it is not rejectable.
+\begin{theorem}
+  \label{th:holdsiff}
+  For any falsifiable claim $C$: $C \ni {\allleadsto}$ iff $\Theta \cap \powerset{\allleadsto} \wsub C^\wsub$.
+\end{theorem}
+\begin{proof}
+  Consider any falsifiable $C$.
+  Using the contrapositive of the definition of falsifiability, $\forall {\allleadstog} \in \allleadstos: \nexists θ \in \Theta \cap \powerset{\allleadstog} \suchthat \theta \notin C^\wsub \implies {\allleadstog} \in C$.
+  In particular,
+  $\nexists θ \in \Theta \cap \powerset{\allleadsto} \suchthat \theta \notin C^\wsub \implies {\allleadsto} \in C$.
+  The reverse implication is proven by \cref{th:ex-post}.
+\end{proof}
+
+
+\begin{example}[Big disjunct, not falsifiable]
   \label{ex:bigor}
   $[\forall i: (\ar) \ileadstog \phi] \lor [\forall i: (\ar, \ar) \ileadstog \phi] \lor …$ is not falsifiable.
   Here, $C = \set{{\allleadstog} \suchthat \exists n \in \N^* \suchthat \forall i: (a)^n \ileadstog \phi}$.
 
-  Given any $θ$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in θ} \card{\hist} + 1$ if $\exists p \in P \suchthat (i, \hist, p) \in θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in S_θ \cap C ≠ \emptyset$.
+  Given any $θ$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in θ} \card{\hist} + 1$ if $\exists p \in P \suchthat (i, \hist, p) \in θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in \theta \in C^\wsub$.
 \end{example}
-\begin{example}
+\begin{example}[Disjunct with incompatible paths, not falsifiable]
   \label{ex:disj}
-  Given $\ar \neq \ar' \in \allargs$,
-  $\forall i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$ is not falsifiable.
+  Given $\ar \neq \ar' \in \allargs$, the claim appearing in \cref{ex:disjR}, namely,
+  $\forall i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$, is not falsifiable.
   Consider any ${\allleadstog} \notin C$, thus satisfying, for some $i$, $(\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$.
-  Consider any $θ \subseteq {\allleadstog}$ and let us prove that $S_θ \cap C ≠ \emptyset$.
-  By definition of a general observation, $θ$ may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $θ$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} \land t \in {\allleadstog'}$. We have ${\allleadstog'} \in S_θ \cap C ≠ \emptyset$.
+  Consider any $θ \subseteq {\allleadstog}$ and let us prove that $\theta \in C^\wsub$.
+  By definition of a general observation, $θ$ may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $θ$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} \land t \in {\allleadstog'}$. We have ${\allleadstog'} \in \theta \in C^\wsub$.
 \end{example}
-\begin{example}
+\begin{example}[Partly falsifiable is still unfalsifiable]
   \label{ex:partlyU}
   Given $j \in I$, $\hist \in \allhists$ and $\ar \neq \ar' \in \allargs$,
   $\hist \ileadstog[j] \phi \land \forall i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$ is not falsifiable.
@@ -341,7 +306,7 @@ Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \sucht
 \begin{example}
   \label{ex:existsParticular}
   Given an infinite $I$, the claim $\exists i \suchthat \ar \ileadstostg \phi$ is not falsifiable.
-  Given any ${\allleadstog} \notin C$, thus such that $\forall i: \ar \nileadstostg \phi$, any $θ \subseteq {\allleadstog}$ only has finitely many $(i, \hist, p ≠ \phi)$ thus $S_θ \cap C ≠ \emptyset$.
+  Given any ${\allleadstog} \notin C$, thus such that $\forall i: \ar \nileadstostg \phi$, any $θ \subseteq {\allleadstog}$ only has finitely many $(i, \hist, p ≠ \phi)$ thus $\theta \in C^\wsub$.
 \end{example}
 
 \begin{remark}
@@ -372,7 +337,7 @@ Equivalently, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \sucht
   \[\set{\restr{\allleadstog}{O} \suchthat O \in \allpriobss} \subseteq C^\subseteq \implies {\allleadstog} \in C.\]
 \end{theorem}
 \begin{proof}
-  By definition, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \suchthat \forall θ \subseteq {\allleadstog}: S_θ \cap C \neq \emptyset$;
+  By definition, $C$ is not falsifiable iff $\exists {\allleadstog} \notin C \suchthat \forall θ \subseteq {\allleadstog}: \theta \in C^\wsub$;
   equivalently, iff $\exists {\allleadstog} \notin C \suchthat \forall θ \subseteq {\allleadstog}: θ \in C^\subseteq$;
   equivalently, iff $\exists {\allleadstog} \notin C \suchthat \set{θ \subseteq {\allleadstog}} \subseteq C^\subseteq$.
 
@@ -440,7 +405,7 @@ Then, the relations observably in $C$ are exactly those obs-compatible with $C^\
   Note that $R \subseteq R_1$.
   We know that $C$ is falsifiable iff $R \subseteq C$. Thus, $C$ is not falsifiable implies $C \subsetneq R \subseteq R_1$ thus $C \subsetneq R_1$. But we do not have that $C \subsetneq R_1$ implies $C$ not falsifiable: could have $C \subsetneq R_1$ but still $R = C$.
 \end{remark}
-\begin{example}
+\begin{example}[Come back]
   Considering again \cref{ex:bigor}, by \cref{th:veryunfals}, we see that $C = \set{{\allleadstog} \suchthat \exists n \in \N^* \suchthat \forall i: (a)^n \ileadstog \phi}$ is not falsifiable.
 
   Similarly, considering again \cref{ex:disj}, given $\ar \neq \ar' \in \allargs$,
@@ -790,6 +755,7 @@ Any relation ${\allleadstog} \in \allleadstos$ can then be viewed as a forest as
   $f_3(o_2) = \phi$,
   $f_3(o_3) = \phi$.
   Define $C = \set{f \cup g \suchthat f \in \set{f_1, f_2, f_3} \land g \in P^{(I × \allhists) \setminus R}}$.
+  This is the claim of \cref{ex:threeFs}.
 
   Note that $R$ is covered by $O_1 = \set{o_1}, O_2 = \set{o_2}, O_3 = \set{o_3}$.
   Note that $C$ is determined on $R$.
@@ -832,6 +798,24 @@ Any relation ${\allleadstog} \in \allleadstos$ can then be viewed as a forest as
     \end{aligned}\right\}.
   \end{equation}
 
+  Note that the complement is as follows.
+  \begin{equation}
+    \overline{C^\wsub \cap \Theta} = \left\{\theta \in \Theta \suchthat
+    \begin{aligned}
+       & \theta(o_2) = 0 \lor \mbox{}                                                                                \\
+       & \theta(o_2) = ¬\phi \land (\theta(o_1) \in \set{¬\phi, 0} \lor \theta(o_3) \in \set{¬\phi, 0}) \lor \mbox{} \\
+       & \theta(o_1) \in \set{¬\phi, 0} \land \theta(o_3) \neq ¬\phi \lor \mbox{}                                    \\
+       & \theta(o_1) = \emptyset \lor \mbox{}                                                                        \\
+       & \theta(o_3) = \emptyset \lor \mbox{}                                                                        \\
+       & \theta(o_3) \in \set{¬\phi, 0} \land \theta(o_1) \neq ¬\phi
+    \end{aligned}\right\}.
+  \end{equation}
+  This seems incorrect: if $\theta = \emptyset$, then it belongs, even though it satisfies $\theta(o_1) = \emptyset$.
+
+  The relations that are obs-compatible with $C^\wsub \cap \Theta$ are the ones that, for $(o_1, o_2, o_3)$, include two $\phi$ and one $¬\phi$, the one that equals all $\phi$, and the one that assigns $o_1$ and $o_3$ to $¬\phi$ and $o_2$ to $\phi$.
+
+  It follows that the relations that are obs-compatible with $C^\wsub \cap \Theta$ and that are in $C^\wsub \cap \Theta$ are the ones that, for $(o_1, o_2, o_3)$, include two $\phi$ and one $¬\phi$; and the relations that are obs-compatible with $C^\wsub \cap \Theta$ and that are not in $C^\wsub \cap \Theta$ are the one that equals all $\phi$ and the one that assign $o_1$ and $o_3$ to $\emptyset$ and $o_2$ to $\phi$.
+
   Pick any $g \in P^{(I × \allhists) \setminus R}$ and define ${\allleadstog} = \set{(\emptyset, i, \phi), ((a), i, \phi), ((b), i, \phi)} \cup g$.
   This relation is obs-compatible with $C^\wsub \cap \Theta$, but ${\allleadstog} \notin C$.
 \end{example}
@@ -868,14 +852,14 @@ Any relation ${\allleadstog} \in \allleadstos$ can then be viewed as a forest as
   Consider $R \subseteq I × \allhists$, $F \subseteq P^R$ and $C = \set{f \cup g \suchthat f \in F \land g \in P^{(I × \allhists) \setminus R}}$.
   The claim $C$ is unfalsifiable iff $\exists {\allleadstog} \in \allleadstos \suchthat \bigcap_{O \in Z_R} {\sim_O}(f) \cap C = \emptyset$.
 
-    % Given $k \in \N$ and a family $(O_l)_{l \in \intvl{1, k}}$, consider $\exists f \in C \suchthat 
-    Say that $R$ is coverable iff $\exists k \in \N, (O_l)_{l \in \intvl{1, k}}, (o_l)_{l \in \intvl{1, k}} \suchthat
-  \cup_{l \in \intvl{1, k}} O_l = R \land
-  \forall l \in \intvl{1, k}: o_l \in O_l \land
-  \forall o \in O_l: \set{o_l, o} \in \allpriobss \land
-  \forall l \in \intvl{1, k - 1}: \set{o_l, o_{l + 1}} \in \allpriobss$.
+  % Given $k \in \N$ and a family $(O_l)_{l \in \intvl{1, k}}$, consider $\exists f \in C \suchthat 
+  Say that $R$ is coverable iff $\exists k \in \N, (O_l)_{l \in \intvl{1, k}}, (o_l)_{l \in \intvl{1, k}} \suchthat
+    \cup_{l \in \intvl{1, k}} O_l = R \land
+    \forall l \in \intvl{1, k}: o_l \in O_l \land
+    \forall o \in O_l: \set{o_l, o} \in \allpriobss \land
+    \forall l \in \intvl{1, k - 1}: \set{o_l, o_{l + 1}} \in \allpriobss$.
 
-    If $\exists R \subseteq I × \allhists$ coverable and such that $C$ is determined on $R$, then $C$ is falsifiable.
+  If $\exists R \subseteq I × \allhists$ coverable and such that $C$ is determined on $R$, then $C$ is falsifiable.
 \end{conjecture}
 TODO extend this so as to cover eg $C$ containing $f_1$ and $f_2$ constant functions as in example; but not covering when the domain is not suitable!
 Use proof similar to \cref{ex:for}, getting started with observing that any obs-compatible $\allleadstog$ failing every element but one of $C$ at least at one point must then satisfy the last element of $C$ at some point (?).
@@ -902,8 +886,8 @@ Any claim containing two relations that differ only on incompatible observations
 \end{theorem}
 \begin{proof}
   Consider any $θ \subset {\allleadstog}$.
-  If $θ$ is fully compatible with ${\allleadstog^1}$, then ${\allleadstog^1} \in S_θ \cap C ≠ \emptyset$.
-  Otherwise, $θ$ contains some element $(i, \hist, {\allleadstog^2}(i, \hist))$ with ${\allleadstog^2}(i, \hist) ≠ {\allleadstog^1}(i, \hist)$. Then, ${\allleadstog^2} \in S_θ \cap C ≠ \emptyset$, for otherwise, for at least one other element $(i', \histp)$, $θ$ contains $(i', \histp, {\allleadstog^1}(i', \histp))$ with ${\allleadstog^1}(i', \histp) ≠ {\allleadstog^2}(i', \histp)$, which violates the hypothesis.
+  If $θ$ is fully compatible with ${\allleadstog^1}$, then ${\allleadstog^1} \in \theta \in C^\wsub$.
+  Otherwise, $θ$ contains some element $(i, \hist, {\allleadstog^2}(i, \hist))$ with ${\allleadstog^2}(i, \hist) ≠ {\allleadstog^1}(i, \hist)$. Then, ${\allleadstog^2} \in \theta \in C^\wsub$, for otherwise, for at least one other element $(i', \histp)$, $θ$ contains $(i', \histp, {\allleadstog^1}(i', \histp))$ with ${\allleadstog^1}(i', \histp) ≠ {\allleadstog^2}(i', \histp)$, which violates the hypothesis.
 \end{proof}
 \Cref{ex:cardPart} illustrates the need for the condition about the combination in the theorem.
 
@@ -922,30 +906,6 @@ Any claim containing two relations that differ only on incompatible observations
 \end{conjecture}
 \begin{proof}
   This fails. Could have $one$, $two$, $three$, each sending everything to $p$, $¬p$ and $0$, respectively, and any combination of two of these in $C$, but no comb of three in $C$. Then $four$ a combination of the three ($i, a, p, i, b, ¬p, i, c, 0$), but $C$ not falsifiable. Actually, even if we can observe two among the three (using $i, a, p, i, aa, ¬p, i, b, 0$), we can’t falsifiy $four$.
-\end{proof}
-
-Given an exposure protocol $\allleadsto$, we say that a claim $C$ \emph{holds} iff $C \ni {\allleadsto}$.
-We say that $C$ is \emph{empirically falsifiable} iff $\exists θ \subseteq {\allleadsto} \suchthat S_θ \cap C = \emptyset$.
-
-The following theorem verifies that when $C$ holds, it is not empirically falsifiable (though it may be syntactically falsifiable).
-\begin{theorem}
-  \label{th:ex-post}
-  $\forall C \ni {\allleadsto}: \nexists θ \subseteq {\allleadsto} \suchthat S_θ \cap C = \emptyset$.
-\end{theorem}
-\begin{proof}
-  We have, $\forall C \suchthat C \ni {\allleadsto}, \forall θ \subseteq {\allleadsto}$: $θ \subseteq {\allleadsto} \in C$, equivalently, ${\allleadsto} \in S_θ \cap C$, thus $S_θ \cap C ≠ \emptyset$.
-\end{proof}
-Therefore, synctactic falsifiability guarantees that a claim holds if, and only if, it is not empirically falsifiable.
-\begin{theorem}
-  \label{th:holdsiff}
-  For all syntactically falsifiable $C$: ${\allleadsto} \in C$ iff $\nexists θ \subseteq {\allleadsto} \suchthat S_θ \cap C = \emptyset$.
-\end{theorem}
-\begin{proof}
-  Consider any syntactically falsifiable $C$.
-  By definition of falsifiability, $\forall {\allleadstog}: \nexists θ \subseteq {\allleadstog} \suchthat S_θ \cap C = \emptyset \implies {\allleadstog} \in C$.
-  In particular,
-  $\nexists θ \subseteq {\allleadsto} \suchthat S_θ \cap C = \emptyset \implies {\allleadsto} \in C$.
-  The reverse implication is proven by \cref{th:ex-post}.
 \end{proof}
 
 Given an exposure protocol $\allleadsto$, deliberated choices are represented by an element $\pi({\allleadsto}) \subseteq I × P$ which is right unique (meaning that $\forall i \in I: \card{\pi({\allleadsto})(i)} ≤ 1$).
@@ -1011,7 +971,7 @@ Given ${\ileadstog}$, $p \in P$, $s \in \allargs$ and $S \subseteq \allargs$, no
 \end{theorem}
 \begin{proof}
   %	Intuitively, because it might require (with $\hist = (\ar_1)$) to observe that for a given $i$, $(a_1) \nileadsto p \land (\ar_1, \ar_2) \ileadsto p$ and also $(\ar_2) \nileadsto p \land (\ar_2, \ar_1) \ileadsto p$.
-  We need to exhibit some ${\allleadstog} \notin C$ such that $\forall θ \subseteq {\allleadstog}: S_θ \cap C ≠ \emptyset$.
+  We need to exhibit some ${\allleadstog} \notin C$ such that $\forall θ \subseteq {\allleadstog}: \theta \in C^\wsub$.
   Define $\allleadstog$ as, $\forall i \in I$, $(\ar_k) \nileadstog p, (\ar_l) \nileadstog p, \forall \hist \in \allhists \setminus \set{(\ar_k), (\ar_l)}: \hist \ileadstog p$.
   It follows that $\ar_k \nileadstostg p \land \ar_l \nileadstostg p$. Thus, ${\allleadstog} \notin C$.
   Now pick any $θ \subseteq {\allleadstog}$.
@@ -1107,16 +1067,16 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   And: is the part with $\nexists \ar$ a falsifiable claim?
 
   \subsection{Alternative definition of syntactic falsifiability}
-  A claim $C$ is attempt-falsifiable iff $\exists θ \suchthat θ \implies ¬C$, by which I mean $S_θ \cap C = \emptyset$.
+  A claim $C$ is attempt-falsifiable iff $\exists θ \suchthat θ \implies ¬C$, by which I mean $\theta \notin C^\wsub$.
   \begin{example}
     $(\ar) \ileadstog \phi \lor (\ar, \ar) \ileadstog \phi \lor …$ is not falsifiable.
     %	Its negation is $\forall k: (\ar^k) \nileadsto \phi$.
     %	The claim represents the set $\set{{\allleadsto} \in \allleadstos \suchthat (\ar) \ileadsto \phi \lor  (\ar, \ar) \ileadsto \phi \lor …}$.
-    Given any $O$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in O} \card{\hist} + 1$. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in S_θ \cap C ≠ \emptyset$.
+    Given any $O$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in O} \card{\hist} + 1$. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in \theta \in C^\wsub$.
   \end{example}
   \begin{example}
     $(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi$ is not falsifiable.
-    Given any $O$, it may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $O$, pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land t \in {\allleadstog}$. We have ${\allleadstog} \in S_θ \cap C ≠ \emptyset$.
+    Given any $O$, it may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $O$, pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land t \in {\allleadstog}$. We have ${\allleadstog} \in \theta \in C^\wsub$.
   \end{example}
   \begin{example}[Fals. but shouldn’t]
     \label{ex:fbs}
@@ -1348,32 +1308,175 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   This is called an axiom because it cannot be falsified using observables. It has to be accepted on the basis of the rest of the observations and on the contents of the defending arguments. As \cref{ex:lichtenstein} suggests, theories can be built so as to make this axiom plausible by embedding within defending arguments the content of the defended argument.
 
   An argumentative theory is said to be correct iff $\forall i \in I: \pga \in \iprops$.
-As previously, it is said to be valid iff its truthfulness leads to its correctness, except that the above axiom needs now be included as a price for the added flexibility of the theory.
-\begin{theorem}[Validity]
-  If an argumentative theory is truthful, then \cref{ax:omitting} implies that the theory is correct.
-\end{theorem}
-\begin{proof}[Sketch of proof]
-  Assume, to start with, that the theory is of depth 2, more precisely, $\arga$ is not decisive because $\hist \nileadsto \pga, \arga \in \histend$ and $\dgi(\arga) = \ar_2$ with no further hist against it.
+  As previously, it is said to be valid iff its truthfulness leads to its correctness, except that the above axiom needs now be included as a price for the added flexibility of the theory.
+  \begin{theorem}[Validity]
+    If an argumentative theory is truthful, then \cref{ax:omitting} implies that the theory is correct.
+  \end{theorem}
+  \begin{proof}[Sketch of proof]
+    Assume, to start with, that the theory is of depth 2, more precisely, $\arga$ is not decisive because $\hist \nileadsto \pga, \arga \in \histend$ and $\dgi(\arga) = \ar_2$ with no further hist against it.
 
-  Consider any $i \in I$.
-  Assume $\arga$ is not decisive.
-  Consider any $\hist \suchthat \ar_2 \in \histend$. We want to show that $\hist \ileadsto \pga$.
+    Consider any $i \in I$.
+    Assume $\arga$ is not decisive.
+    Consider any $\hist \suchthat \ar_2 \in \histend$. We want to show that $\hist \ileadsto \pga$.
 
-  IF $\hist$ contains $\arga$ before $\ar_2$, done by TF.
-  Otherwise, define $hist'$ which has a1 just before a2.
-  Apply TF on hist' then apply axiom.
+    IF $\hist$ contains $\arga$ before $\ar_2$, done by TF.
+    Otherwise, define $hist'$ which has a1 just before a2.
+    Apply TF on hist' then apply axiom.
 
-  Consider now a theory of depth 3.
-  Consider any $i \in I$.
-  Assume $\arga$ not decisive, $\ar_2$ not decisive.
-  Consider any $\hist \suchthat \ar_3 \in \histend$. We want to show that $\hist \ileadsto \pga$.
+    Consider now a theory of depth 3.
+    Consider any $i \in I$.
+    Assume $\arga$ not decisive, $\ar_2$ not decisive.
+    Consider any $\hist \suchthat \ar_3 \in \histend$. We want to show that $\hist \ileadsto \pga$.
 
-  If it includes a1 then a2, ok thanks to truthfulness.
-  Otherwise, build hist3 that has a1 then a2 just before a3.
-  That’s ok thanks to TF.
-  By axiom, hist2 with only a2 just before a3 is thus ok.
-  By axiom, hist is thus ok.
-\end{proof}
+    If it includes a1 then a2, ok thanks to truthfulness.
+    Otherwise, build hist3 that has a1 then a2 just before a3.
+    That’s ok thanks to TF.
+    By axiom, hist2 with only a2 just before a3 is thus ok.
+    By axiom, hist is thus ok.
+  \end{proof}
+
+  \appendix
+  \section{Supplementary material}
+  \label{sec:supplementary}
+  \begin{example}[Three functions, may be rejectable]
+    \label{ex:threeFs}
+    Consider $i \in I$, $ar \neq ar' \in \allargs$ and the three paths $\hists = \set{\emptyset, (\ar), (\ar')}$.
+    The claim “Exactly two of the three paths in $\hists$ lead $i$ to $\phi$ and the remaining one leads $i$ to $¬\phi$” is not rejectable iff ${\ileadsto}$ associates, in order, $(\emptyset, (\ar), (\ar'))$ to either
+    $(¬\phi, \phi, \phi)$,
+    $(\phi, ¬\phi, \phi)$,
+    $(\phi, \phi, ¬\phi)$,
+    $(\phi, \phi, \phi)$ or
+    $(\phi, ¬\phi, ¬\phi)$.
+
+    Indeed, if ${\ileadsto}$ satisfies this, then either it holds and by \cref{th:ex-post} it is not rejectable, or it associates this triplet to $(\phi, \phi, \phi)$ or
+    $(\phi, ¬\phi, ¬\phi)$ in which case, as $(\ar)$ and $(\ar')$ cannot be together in $\theta$, any $\theta \in \Theta$ with $\theta \sub {\allleadsto}$ satisfy $\theta \in C^\wsub$.
+
+    Conversely, if $C$ is not rejectable, then for any $\theta_1$ containing $\emptyset$ and $(\ar)$ and $\theta_2$ containing $\emptyset$ and $(\ar')$, with $\theta_1, \theta_2 \sub {\allleadsto}$, we have $\theta_1, \theta_2 \in C^\wsub$, which requires that ${\ileadsto}$ associates $(\emptyset, (\ar))$ to $(¬\phi, \phi)$, $(\phi, ¬\phi)$ or $(\phi, \phi)$ and $(\emptyset, (\ar'))$ to $(¬\phi, \phi)$, $(\phi, \phi)$ or $(\phi, ¬\phi)$.
+  \end{example}
+
+  \section{Theories of deliberated choice}
+  This section assumes that an exposure protocol $(I, \allargs, {\allleadsto})$ is defined, and defines theories of deliberated choice associated with that exposure protocol. We will start with very simple theories (\cref{sec:static}) in order to build an intuition about the conditions required on theories of deliberated choice, then justify the need for more complex theories (\cref{sec:lichtenstein}) and finally define more general theories of deliberated choice (\cref{sec:dynamic}).
+
+  \subsection{Theories using a static decisive argument}
+  \label{sec:static}
+  \Cref{ex:tutor} suggests a simple form for theories of deliberated choice: suffice to determine an argument $\ar \in \allargs$ and a preference $p \in P$ such that the theory claims that $\forall i \in I: \ar \ileadstost p$ and that $\forall i \in I: p \in P_i$.
+
+  \begin{definition}[Static theory]
+    \label{def:static}
+    A static theory is a pair $(p, \ar)$ for some $p \in P$ and some $\ar \in \allargs$.
+  \end{definition}
+  A static theory $(p, \ar)$ is said to be truthful iff $\forall i \in I: \ar \ileadstost p$, and to be correct iff $\forall i \in I: p \in P_i$.
+  We can then deduce that such theories are valid, meaning that their truthfulness implies their correctness. Let us make this (very simple) result stand out as a theorem, because a parallel will be usefully made with more complicated theories.
+  %Note that this result immediately follows from \cref{ax:decisive}.
+  \begin{theorem}[Static theories are valid]
+    Any truthful static theory is correct.
+  \end{theorem}
+  \begin{proof}
+    This follows immediately from \cref{def:decisive}.
+  \end{proof}
+  Importantly, truthfulness can indeed be checked using our observational basis, that is, if $\exists i \in I \suchthat \ar \nileadstost p$, then it is possible to exhibit this fact experimentally.
+
+  Such theories have the merit of simplicity, but there is a need to design more adaptive theories: in many interesting cases, no single argument will be considered decisive by all individuals in $I$. We then need theories that argue with individuals by reacting to what they consider good arguments. The following section illustrates this need.
+
+  \subsection{Some decision problems with no single decisive argument}
+  \label{sec:lichtenstein}
+  One ambition of the theories to be proposed here is to permit exhibiting the existence of a deliberated consensus among a large set of persons about issues that involve numerous arguments and counter-arguments.
+
+  In many decision problems, individuals will not be attracted by the same set of arguments and counter-arguments, even though they may finally settle to the same preference. Imagine that some individual $i_1$ considers an argument $a_1$ for $\nprop$ relevant and some individual $i_2$ considers an argument $a_2$ for $\nprop$ relevant, but $i_1$ does not consider $a_2$ relevant and $i_2$ does not consider $a_1$ relevant (for example, because they already have some counter-arguments in mind to those arguments). Imagine further that there is some counter-argument $a'_1$ that can be given to $i_1$ to rebut $a_1$, and a different counter-argument $a'_2$ that can be given to $i_2$ to rebut $a_2$, so that they both have $\prop$ in their deliberated judgment when considering all these arguments.
+  In such situation, static theories as defined in \cref{sec:static} are ill suited: these theories need to present the same argument to all individuals and would thus need to define a bigger argument $a$ containing both $a'_1$ and $a'_2$. Such an argument could be too long to be convincing to $i_1$ or $i_2$, as it needlessly spends efforts countering an argument that the individual considers irrelevant to start with. This  will become an important problem if there are not only two but many a priori possible arguments $a_k$ for $\nprop$, a small subset of which is considered relevant by any given individual, each with their own counter-argument $a'_k$ for $\prop$.
+  This section is devoted to describing two examples to illustrate that point. Bear in mind that these examples may look somehow naïve on the aspect of the hypothesis they make about what convinces individuals. Real-world complex decision situations will require complex theories that do not fit the purpose of simple illustrative examples. Their goal is to argue that non-static theories are required, but not to fully describe such theories.
+
+  %For a partial illustration about an ambitious setting, consider a decision to be taken about the relevance of some concrete action to help cope with climate change, and let $I$ be a set of citizens interested in the climate issue. The complete set of all arguments that will be considered relevant by at least one individual may well be very large. It may also be that, for each individual who considers relevant some arguments $A$ against the proposed concrete action, it is possible to give counter-arguments $A'$ that will convince the individual to opt for the proposal.
+  One of the settings discussed by \citet{thaler_nudge_2009} permits such an illustration. %to illustrate this point more concretely.
+  Let $I$ be a set of workers interested in establishing a savings plan.
+  The authors claim that workers tend to not save enough because of psychological biases.
+  It is therefore tempting to conjecture that the deliberated choice of those workers is to save more, in the sense defined here, than what their natural choice (the one revealed in absence of arguments) leads to.
+  A difficulty related to this decision problem is that the complete set of all arguments that will be considered relevant by at least one individual for such a complex issue may well be very large. It may also be that, for each individual who considers relevant some arguments $A$ for saving not much (i.e., spending more in the short term), it is possible to give counter-arguments $A'$ that will convince the individual to opt for saving more.
+  But no single argument could be decisive for each $i \in I$: it could be that only counter-arguments built specifically according to what a given individual considers relevant could convince her, given the complexity of the issue.
+  This illustrates that the deliberated choice of each individuals in $I$ may be to save more even though no static theory (\cref{def:static}) may achieve showing it, as it could be that no such theory is truthful.
+
+  %The above setting illustrates the ambition of this research program, but at the price of rendering impossible in the confines of this article to define fully the set of arguments and giving a complete account of a concrete theory of deliberated choice in such a complex setting, an endeavor of its own.
+
+  The following example illustrates this same point in a constrained setting which permits a complete definition of $\allargs$ and $\allleadsto$.%, which permits defining the setting completely at the price of a reduced realism.
+  \begin{example}[A decision problem about two lotteries]
+    \label{ex:lichtenstein}
+    In a famous article about preference reversals, \citet{lichtenstein_reversals_2006} discuss an example involving two lotteries. The lottery $L_P$ lets the subject win four dollars with 99\% chance and lose ten cents with 1\% chance; in summary, $L_P = (.99, +\$4; .01, −\$0.1)$. The lottery $L_D$ is, using the same notations: $(.33, +\$16; .67, −\$2)$. The letter $P$ stands for probability: one salient aspect of $L_P$ is the very high chance of winning. The letter $D$ stands for dollar: one salient aspect of $L_D$ is the high gain it gives (compared to $P$) in dollar amount if the subject is lucky.
+
+    This example is interesting because when asked to bid for lotteries, the theory discussed by the authors predicts, and their experiments confirm, that subjects tend to bid more for $L_D$ than for $L_P$, because the bidding question tend to make individuals focus on dollar amounts; whereas when asked to choose one lottery, the lotteries being presented in pairs, subjects tend to choose $L_P$ among the pair $\set{L_P, L_D}$, giving greater attention to probabilities.
+
+    Define $P = \set{L_P, L_D, 0}$.
+
+    Define $\ar_e$ as a text arguing that the choice between $L_P$ and $L_D$ should be determined by their expected revenue, namely, $\$3.959$ for $L_P$ and $\$4$ for $L_D$.%
+    \footnote{Here is a possible text for $\ar_e$. “Imagine you play $L_P$ 100 times. On average, you would win 99 times and lose once, which means gaining 99 × \$4 = \$396 and losing 1 × \$0.10 = \$0.10, hence a total net gain of \$395.90. Thus, your average net gain for the $L_P$ bet would be \$3.9590. [Similar text for $L_D$.] Therefore, we suggest you choose $L_D$ for a higher expected revenue.”}
+    Define $\ar_u$ as a text arguing that the utility of money should matter, not the revenue, and arguing that a loss hurts more than a gain.% 
+    \footnote{Here is a possible text for $\ar_u$. “$L_D$ is better than $L_P$ in terms of expected gain, but it is in general absurd to reason in terms of expected gain. For example, consider a choice between winning $10^6$ dollars with probability $0.8$ and winning $2 × 10^6$ dollars with probability $0.4$. These two lotteries have the same expected gain, but the first one is clearly preferrable. Therefore, we recommend to rather pick $L_P$ as it presents a much better chance of earning money”.}
+    Define a counter-argument $\ar_l$ to $\ar_u$, indicating that for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.%
+    \footnote{Here is a possible text for $\ar_l$. “The lottery $L_D$ has a higher expected revenue, and thus, a higher utility than $L_P$, because for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.”}
+    Define $\ar$ so as to include the contents of $\ar_e$, $\ar_u$ and $\ar_l$.%
+    \footnote{Here is a possible text for $\ar$. [Text of $\ar_e$] “Note that one could say that the utility of money should matter, but for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.”}
+    Define $\allargs = \set{\ar_e, \ar_u, \ar_l, \ar}$.
+
+    Define $I$ as a set of individuals facing a choice between $L_P$ and $L_D$ in a laboratory experiment.
+    Define $\ileadsto$ as exposing $i$ to $\alpha$ and observing the resulting choice by asking $i$ to indicate which lottery she prefers playing, or declare being indifferent.
+    %Given an argumentative path $\hist$, $\hist \ileadsto (P ≥ D)$ iff, in a situation of $i$ having been exposed, in order, to the arguments in $\hist$, letting $i$ choose between $P$ and $D$ or declare indifference leads $i$ to choose $P$, or declare indifference. Here is a possible text presented to $i$ to ask for a choice: “Considering these arguments, would you please choose either to play $P$, or play $D$, or declare to be indifferent (in which case one will be picked randomly for you)”. 
+    %Similarly, define $\hist \ileadsto (P > D)$ iff showing the arguments in $\hist$ to $i$ and letting $i$ choose between $P$ and $D$ or declare indifference leads $i$ to choose $P$ and not $D$. 
+    %Define similarly $\hist \ileadsto \prop$ for $\prop \in \set{D ≥ P, D > P}$.
+
+    Assume that some individuals $i \in I$ do not see the point of argument $\ar_u$ and some do but are convinced by the counter-argument $\ar_l$. Accordingly, define $\ileadsto[e]$, representing the first kind of individuals, as follows. $\forall \hist \in \allhists: \hist \ileadsto[e] L_D ⇔ [\ar_e \in R(\hist)]$, and $\hist \ileadsto[e] L_P$ otherwise. Note that in particular, if $\hist$ contains $\ar$ but not $\ar_e$, $\ar \ileadsto[e] L_P$, as we assume such individuals are confused by the longer argument $\ar$ referring to abstract notions and therefore opt for $L_P$, falling back to the common psychological bias.
+    The second kind of individuals is represented by $\ileadsto[u]$ defined as $\forall \hist \in \allhists: \hist \ileadsto[u] L_D ⇔ [\ar_u \notin R(\hist) \lor \ar \in R(\hist) \lor \set{\ar_u, \ar_l} \subseteq R(\hist)]$, and $\hist \ileadsto[u] L_P$ otherwise.
+    We assume here that such individuals think about $\ar_u$ as a correct argument in favor of $L_P$ until shown the rebuttal $\ar_l$ (or $\ar$, which contains a similar rebuttal).
+    Assuming finally $\allleadsto$ as equal to $\ileadsto[e]$ for individuals of the first kind and $\ileadsto[u]$ otherwise concludes the definition of the exposure protocol $(I, \allargs, {\allleadsto})$.
+
+    It follows from this definition that $\forall i \in I: L_D \in P_i$, and that no static theory of that exposure protocol is truthful: only $\ar_e$ is a decisive argument for $L_D$ for the first kind of individuals whereas for the second kind, only $\ar$ is.
+  \end{example}
+  This example illustrates the need for theories that are able to react to arguments depending on what a given individual considers relevant. This is the object of the next section.
+
+  \subsection{Form of theories (draft)}
+  Given an exposure protocol $(I, \allargs, {\allleadsto})$, we want to phrase some claims under the form of a logical sentence $C$ such that:
+  if $C$ holds, then it implies something about the dj of some $i$;
+  if $C$ fails, it is possible to falsify it.
+
+  We can observe set $O$ that forms a function $f(i) = \set{\alpha \ileadsto \phi, \alpha' \ileadsto ¬\phi, …}$, with $\alpha \subset \alpha \subset …$ and with finite $O$.
+  Our second condition is that $¬C \implies \exists θ \suchthat θ \implies ¬C$.
+  For example, if $C$ is $\alpha \ileadsto \phi \lor \beta \allleadsto[j] \phi$, $O$ is $\alpha \ileadsto ¬\phi \land \beta \allleadsto ¬\phi$, then $O$ implies $¬C$.
+  As another example, $C$ being $\exists \alpha \suchthat \alpha \ileadsto \phi$ is unfalsifiable, as its negation is $\forall \alpha: \alpha \nileadsto \phi$, which requires infinite $O$.
+
+  Consider $\allleadsto$ such that $\exists \ar, \phi \suchthat \forall i: \ar \ileadsto \phi$.
+  Then some suitable $C$ exists.
+  It is $\forall i: \ar \ileadstost \phi$.
+  If false, it is falsifiable.
+  Even though it is not provable by any $O$.
+
+  Now consider $\allleadsto$ such that $\exists J, K \subset I \suchthat \ar \ileadstost[j] \phi, \ar' \ileadstost[k] \phi$.
+  Then no suitable $C$ exists?
+
+  If $C$ has the form, whenever $a$ fails, $a'$ is then decisive, it is falsifiable, but does not lead to a decisive argument.
+  Want to show: $j \ileadstost \phi$. Need to show: $ar$ or $ar'$ is decisive.
+  Assume we know who is a $j$. Then we can!
+  Claim: $\ar \ileadsto \phi$.
+  Now assume that our claim has to be anonymous.
+  Also, assume the formulas involve one $i$ at a time (not needed, probably, but not much restrictive so okay for now).
+  So it is of the form $(i, \alpha, \phi) \lor (i, \alpha, \phi') \land (i, \alpha', \phi)…$ implies something decisive.
+  So it must be of the form: all $\alpha$ ending with $\ar$ do $\ileadsto \phi$. Or must imply this.
+  Let’s make it very strong, as much as possible, thus equal to $\ileadsto \cap \ileadsto[j]$.
+That’s not strong enough!
+
+Escaping?
+Assume that we know that 50\% are J and 50\% are K.
+
+\section{Technical notes about falsification}
+\begin{remark}
+  Any relation $\allleadstog$ is equivalent to $\cup \set{\restr{\allleadstog}{O} \suchthat O \in \cup_{J \subseteq_\finite I} (\allhists)^J}$.
+\end{remark}
+
+\begin{remark}
+  Any relation $\allleadstog$ is equivalent to $\cup \set{\restr{\allleadstog}{O} \suchthat O \in (\finite(\incr(\allhists))^I)}$.
+  Conversely, any set $S$ of observations such that $\set{\theta^{-1}(P) \suchthat \theta \in S} = \incr(\allhists)^I$ and $\cup S$ is right-unique corresponds to a unique relation $\cup S = {\allleadstog}$.
+  Thus, there is a bijection between the set $\mathcal{S}$ of such sets $S$ and the set of leads to relations.
+
+  This is the intuitive reason that, as we will see,
+  a claim $C$ is falsifiable iff $\forall S \in \mathcal{S}: S \subseteq C^\subseteq \implies \cup S \in C$.
+\end{remark}
 
 \hbadness=10000
 \bibliography{simple}
