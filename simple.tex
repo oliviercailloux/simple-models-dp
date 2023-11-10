@@ -180,7 +180,7 @@ Given a pair $(I, \allargs)$, an observation $θ \in \Theta$ is a right unique f
 The set $\Theta$ contains the a priori possible observations, that is, those that can be considered possible when nothing is known about $\allleadsto$.
 % Let $S_θ = \set{{\allleadstog} \in \allleadstos \suchthat θ \subseteq {\allleadstog}}$ denote the possibilities for $\allleadsto$ compatible with the observations.
 We say that an observation $\theta$ is compatible with a claim $C$ iff
-% $S_\theta \cap C ≠ \emptyset$, equivalently, iff 
+% $S_θ \cap C ≠ \emptyset$, equivalently, iff 
 $\theta \in C^\subseteq$, equivalently, iff
 $\theta \in \cup_{{\allleadstog} \in C} \powerset{\allleadstog}$.
 Thus, given ${\allleadstog} \in \allleadstos$, the set $\Theta \cap \powerset{\allleadstog}$ is the set of observations compatible with ${\allleadstog}$.
@@ -273,7 +273,7 @@ falsifiability guarantees that a claim holds if, and only if, it is not rejectab
 \end{proof}
 
 \begin{definition}
-  A claim is \emph{strongly unfalsifiable} iff 
+  A claim is \emph{strongly unfalsifiable} iff
   $\Theta \wsub C^\wsub$.
 \end{definition}
 
@@ -294,7 +294,9 @@ falsifiability guarantees that a claim holds if, and only if, it is not rejectab
   $\forall i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$, is not falsifiable.
   Consider any ${\allleadstog} \notin C$, thus satisfying, for some $i$, $(\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$.
   Consider any $θ \subseteq {\allleadstog}$ and let us prove that $\theta \in C^\wsub$.
-  By definition of a general observation, $θ$ may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $θ$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} \land t \in {\allleadstog'}$. We have ${\allleadstog'} \in S_θ \cap C ≠ \emptyset$.
+  By definition of a general observation, $θ$ may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $θ$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} \land t \in {\allleadstog'}$. We have 
+  $\theta \in \powerset{\allleadstog'}$ and ${\allleadstog'} \in C$, thus, $\theta \in C^\wsub$.
+  % ${\allleadstog'} \in S_θ \cap C ≠ \emptyset$.
 \end{example}
 \begin{example}[Partly falsifiable is still unfalsifiable]
   \label{ex:partlyU}
@@ -322,7 +324,7 @@ falsifiability guarantees that a claim holds if, and only if, it is not rejectab
 \end{remark}
 \begin{theorem}
   A claim $C$ is falsifiable iff its complement $\Cbar = \allleadstos \setminus C$ satisfies:
-  $\forall {\allleadstog} \in \Cbar, \exists \theta \subseteq {\allleadstog} \suchthat S_\theta \subseteq \Cbar$, or equivalently:
+  $\forall {\allleadstog} \in \Cbar, \exists \theta \subseteq {\allleadstog} \suchthat S_θ \subseteq \Cbar$, or equivalently:
   $\forall {\allleadstog} \in \Cbar, \exists O \in (\allhists)^I \suchthat S_{\restr{\allleadstog}{O_O}} \subseteq \Cbar$.
 \end{theorem}
 \begin{proof}
@@ -332,8 +334,8 @@ falsifiability guarantees that a claim holds if, and only if, it is not rejectab
   Let us prove that the first phrasing implies the second one.
   Given $\theta$, define $O = \set{(i, \argmax_{\hist \in (\theta(i) \cup \emptyset)} \card{\hist})}$ as associating to each $i$ the longest corresponding $\hist$ from $\theta$, or the empty sequence if $\theta(i)$ is empty.
   It follows that $\theta \subseteq \restr{\allleadstog}{O_O}$.
-  Thus, $S_{\restr{\allleadstog}{O_O}} \subseteq S_\theta$.
-  As $S_\theta \subseteq \Cbar$, we obtain $S_{\restr{\allleadstog}{O_O}} \subseteq \Cbar$.
+  Thus, $S_{\restr{\allleadstog}{O_O}} \subseteq S_θ$.
+  As $S_θ \subseteq \Cbar$, we obtain $S_{\restr{\allleadstog}{O_O}} \subseteq \Cbar$.
 \end{proof}
 
 \begin{theorem}
@@ -1469,21 +1471,21 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   Escaping?
   Assume that we know that 50\% are J and 50\% are K.
 
-\section{Technical notes about falsification}
-\begin{definition}
-  \label{def:fals}
-  A claim $C$ is \emph{falsifiable} iff
-  $C \neq {\allleadstos} \land
-  \forall {\allleadstog} \notin C: \exists θ \in \Theta \cap \powerset{\allleadstog} \suchthat \theta \notin C^\wsub$.
-\end{definition}
-\begin{definition}
-  A claim is \emph{unfalsifiable} iff 
-  $C = {\allleadstos} \lor
-  \exists {\allleadstog} \notin C \suchthat \Theta \cap \powerset{\allleadstog} \wsub C^\wsub$.
-\end{definition}
+  \section{Technical notes about falsification}
+  \begin{definition}
+    \label{def:fals}
+    A claim $C$ is \emph{falsifiable} iff
+    $C \neq {\allleadstos} \land
+      \forall {\allleadstog} \notin C: \exists θ \in \Theta \cap \powerset{\allleadstog} \suchthat \theta \notin C^\wsub$.
+  \end{definition}
+  \begin{definition}
+    A claim is \emph{unfalsifiable} iff
+    $C = {\allleadstos} \lor
+      \exists {\allleadstog} \notin C \suchthat \Theta \cap \powerset{\allleadstog} \wsub C^\wsub$.
+  \end{definition}
 
-A claim $C$ is \emph{falsifiable} iff $\forall {\allleadstog} \notin C: \exists θ \subseteq {\allleadstog} \suchthat \theta \notin C^\subseteq$,
-equivalently iff $\exists {\allleadstog} \notin C \suchthat \forall \theta \in \Theta, \theta \subseteq {\allleadstog}: \theta \in C^\subseteq$.
+  A claim $C$ is \emph{falsifiable} iff $\forall {\allleadstog} \notin C: \exists θ \subseteq {\allleadstog} \suchthat \theta \notin C^\subseteq$,
+  equivalently iff $\exists {\allleadstog} \notin C \suchthat \forall \theta \in \Theta, \theta \subseteq {\allleadstog}: \theta \in C^\subseteq$.
 (To be corrected for the trivial claims.)
 
 \begin{remark}
