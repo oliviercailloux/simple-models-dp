@@ -285,7 +285,7 @@ falsifiability guarantees that a claim holds if, and only if, it is not rejectab
   $[\forall i: (\ar) \ileadstog \phi] \lor [\forall i: (\ar, \ar) \ileadstog \phi] \lor …$ is not falsifiable.
   Here, $C = \set{{\allleadstog} \suchthat \exists n \in \N^* \suchthat \forall i: (a)^n \ileadstog \phi}$.
 
-  Given any $θ$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in θ} \card{\hist} + 1$ if $\exists p \in P \suchthat (i, \hist, p) \in θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in \theta \in C^\wsub$.
+  Given any $θ$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in θ} \card{\hist} + 1$ if $\exists p \in P \suchthat (i, \hist, p) \in θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in S_θ \cap C ≠ \emptyset$.
 \end{example}
 \begin{example}[Disjunct with incompatible paths, not falsifiable]
   \label{ex:disj}
@@ -890,8 +890,8 @@ Any claim containing two relations that differ only on incompatible observations
 \end{theorem}
 \begin{proof}
   Consider any $θ \subset {\allleadstog}$.
-  If $θ$ is fully compatible with ${\allleadstog^1}$, then ${\allleadstog^1} \in \theta \in C^\wsub$.
-  Otherwise, $θ$ contains some element $(i, \hist, {\allleadstog^2}(i, \hist))$ with ${\allleadstog^2}(i, \hist) ≠ {\allleadstog^1}(i, \hist)$. Then, ${\allleadstog^2} \in \theta \in C^\wsub$, for otherwise, for at least one other element $(i', \histp)$, $θ$ contains $(i', \histp, {\allleadstog^1}(i', \histp))$ with ${\allleadstog^1}(i', \histp) ≠ {\allleadstog^2}(i', \histp)$, which violates the hypothesis.
+  If $θ$ is fully compatible with ${\allleadstog^1}$, then ${\allleadstog^1} \in S_θ \cap C ≠ \emptyset$.
+  Otherwise, $θ$ contains some element $(i, \hist, {\allleadstog^2}(i, \hist))$ with ${\allleadstog^2}(i, \hist) ≠ {\allleadstog^1}(i, \hist)$. Then, ${\allleadstog^2} \in S_θ \cap C ≠ \emptyset$, for otherwise, for at least one other element $(i', \histp)$, $θ$ contains $(i', \histp, {\allleadstog^1}(i', \histp))$ with ${\allleadstog^1}(i', \histp) ≠ {\allleadstog^2}(i', \histp)$, which violates the hypothesis.
 \end{proof}
 \Cref{ex:cardPart} illustrates the need for the condition about the combination in the theorem.
 
@@ -1076,11 +1076,11 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
     $(\ar) \ileadstog \phi \lor (\ar, \ar) \ileadstog \phi \lor …$ is not falsifiable.
     %	Its negation is $\forall k: (\ar^k) \nileadsto \phi$.
     %	The claim represents the set $\set{{\allleadsto} \in \allleadstos \suchthat (\ar) \ileadsto \phi \lor  (\ar, \ar) \ileadsto \phi \lor …}$.
-    Given any $O$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in O} \card{\hist} + 1$. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in \theta \in C^\wsub$.
+    Given any $O$, define $l = \max_{\hist \suchthat \exists p \in P \suchthat (i, \hist, p) \in O} \card{\hist} + 1$. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have ${\allleadstog} \in S_θ \cap C ≠ \emptyset$.
   \end{example}
   \begin{example}
     $(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi$ is not falsifiable.
-    Given any $O$, it may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $O$, pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land t \in {\allleadstog}$. We have ${\allleadstog} \in \theta \in C^\wsub$.
+    Given any $O$, it may not contain both $((\ar), i, \phi)$ and $((\ar'), i, \phi)$, thus letting $t$ denote one of these triples not in $O$, pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land t \in {\allleadstog}$. We have ${\allleadstog} \in S_θ \cap C ≠ \emptyset$.
   \end{example}
   \begin{example}[Fals. but shouldn’t]
     \label{ex:fbs}
