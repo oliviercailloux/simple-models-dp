@@ -539,30 +539,6 @@ What about anonymous and holds?
 
 \begin{theorem}
   Assume that $I = \set{i_1, i_2, i_3}$ and that $P_{i_1} = \phi$ and $P_{i_2} = P_{i_3} = ¬\phi$.
-  Assume that all paths lead either to $\phi$ or to $¬\phi$.
-  Define $H_2$ as the set of paths that lead $i_2$ to $¬\phi$ and similarly $H_3$ for $i_3$.
-  In other words,
-  $\forall \hist \in \allhists \setminus H_2: \hist \ileadsto[i_2] \phi$,
-  $\forall \hist \in \allhists \setminus H_3: \hist \ileadsto[i_3] \phi$,
-  $\forall \hist \in H_2: \hist \ileadsto[i_2] ¬\phi$,
-  $\forall \hist \in H_3: \hist \ileadsto[i_3] ¬\phi$.
-  Also, define $H_{12}$ as the set of paths on which $i_1$ and $i_2$ differ.
-  Similarly for $H_{13}$.
-  We want small such sets, so let us assume that $i_1$ goes often to $¬\phi$ and only on some $H_1$ including all paths that ends with $a_1$ does it go to $\phi$.
-  We need to have suffix compatible observations from $H_{12}$ and $H_{13}$.
-  How to make none such?
-  Impossible: consider $(a_1, a_2)$ and $(a_1, a_2, a_1, a_3)$.
-
-  Thus with $H_2$ including all paths that ends with some $a_2$ decisive for $i_2$.
-  Thus, the path $(a_2, a_3)$ is in both $H_2$ and $H_3$.
-
-  Then, there exists a claim that holds and is anonymous and indicative?
-
-  But maybe $i_2$ always goes to $\phi$ except for the paths $H_2$, and $i_3$ always goes to $\phi$ except for the paths $H^3$ incompatible (not suffix or prefix) with $H_2$.
-  Then we can’t observe both that $i$ is not $i_2$ and not $i_3$: whatever $O$, if we fall upon $i_1$, this will leave $i_1$ and some other $i$ as possibilities.
-\end{theorem}
-\begin{theorem}
-  Assume that $I = \set{i_1, i_2, i_3}$ and that $P_{i_1} = \phi$ and $P_{i_2} = P_{i_3} = ¬\phi$.
 
   Then, there exists a claim that holds and is anonymous and indicative.
 \end{theorem}
@@ -585,16 +561,21 @@ What about anonymous and holds?
 \end{proof}
 
 \begin{theorem}
-  Assume that $P_{i_1} = \phi$ and $\forall i \in I \setminus \set{i_1}: P_i = ¬\phi$.
+  Assume that $I$ is finite and $P_{i_1} = \phi$ and $\forall i \in I \setminus \set{i_1}: P_i = ¬\phi$.
 
   Then, there exists a claim that holds and is anonymous and indicative.
 \end{theorem}
 \begin{proof}
-  From $P_{i_1} = \phi$ we know that some $a_1$ is a decisive argument in favor of $\phi$ for $i_1$.
-  For $i_1 \neq i \in I$, from $P_i = ¬\phi$ we know that for some $\hist^i \in \allhists \suchthat a_1 \in \histend[i]$, $\hist^i \nileadsto \phi$ whereas $\hist^i \ileadsto[i_1] \phi$.
-  If $I$ is finite, define $O = \set{(\hist^i, i_1) \suchthat i_1 \neq i \in I}$.
-  TODO this fails because $O$ might not be an a priori observation.
-  Define the claim as $\forall i \in I: {\ileadstog} \in \set{{\ileadsto} \suchthat i \in I}$.
+  Define the claim as $\forall i \in I: {\ileadstog} \in \set{{\ileadsto[j]} \suchthat j \in I}$.
+    
+  Define $a_1$ as an argument decisive in favor of $\phi$ for $i_1$ and $a_i$ as arguments decisive in favor of $¬\phi$ for $i \in I \setminus \set{i_1}$.
+  
+  Assume (wlog) that $I = \set{i_1, …, i_{\card{I}}}$.
+  Define $\hist_1 = \emptyset$ and for $i \in \intvl{2, \card{I}}$, $\hist_i = (\hist_{i - 1}, a_1, a_i)$.
+  We know that, $\forall i \in \intvl{2, \card{I}}$: $\hist_i \ileadsto[i_1] \phi$ and $\hist_i \ileadsto[i] ¬\phi$.
+  Define $\theta = \set{(\hist_i, i_1, \phi) \suchthat i \in \intvl{2, \card{I}}}$.
+  
+  Finally, the attitudes in $C$ compatible with $\theta$ are only $\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C = \set{{\allleadstog} \suchthat {\ileadstog[i_1]} = {\ileadsto[i_1]}}$, and $\pi(\set{{\allleadstog} \suchthat {\ileadstog[i_1]} = {\ileadsto[i_1]}})(i_1) = \phi$.
 \end{proof} 
 
 \begin{theorem}
