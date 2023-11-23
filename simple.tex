@@ -579,6 +579,24 @@ What about anonymous and holds?
 \end{proof} 
 
 \begin{theorem}
+  Assume that for some $I_1 \wsub I$, $\forall i_1 \in I_1: P_{i_1} = \phi$ and, defining $I_2 = I \setminus I_1$, that $I_2$ is finite and $\forall i_2 \in I_2: P_{i_2} = ¬\phi$.
+
+  Then, there exists a claim that holds and is anonymous and indicative.
+\end{theorem}
+\begin{proof}
+  Define the claim as $\forall i \in I: {\ileadstog} \in \set{{\ileadsto[j]} \suchthat j \in I}$.
+    
+  Pick any $i_1 \in I_1$, define $a_1$ as an argument decisive in favor of $\phi$ for $i_1$ and $a_i$ as arguments decisive in favor of $¬\phi$ for $i \in I_2$.
+  
+  Assume (wlog) that $I_2 = \set{2, …, \card{I_2} + 1}$.
+  Define $\hist_1 = \emptyset$ and for $i \in \intvl{2, \card{I_2} + 1}$, $\hist_i = (\hist_{i - 1}, a_1, a_i)$.
+  We know that, $\forall i \in \intvl{2, \card{I_2} + 1}$: $\hist_i \ileadsto[i_1] \phi$ and $\hist_i \ileadsto[i] ¬\phi$.
+  Define $\theta = \set{(\hist_i, i_1, \phi) \suchthat i \in \intvl{2, \card{I_2} + 1}}$.
+  
+  Finally, the attitudes in $C$ compatible with $\theta$ are only $\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C \wsub \set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat j \in I_1}}$, and $\pi(\set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat j \in I_1}})(i_1) = \phi$.
+\end{proof}
+
+\begin{theorem}
   \label{th:HAinformativeness}
   Given any $Q \wsub P \cup \set{\emptyset}$,
   the following two conditions on $\allleadsto$ are equivalent:
