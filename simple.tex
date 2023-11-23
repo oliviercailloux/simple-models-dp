@@ -486,6 +486,11 @@ A claim $C$ is \emph{indicative} iff $\exists i \in I, \theta \in \Theta \cap (\
   Note also that informativeness beyond counting implies informativeness.
   \Cref{th:infoBeyonCKO} (and extensions, \cref{th:infoBeyonCKOext,th:strinfoBeyonCKO}) shows that informativeness beyond counting (and variants) is too demanding if one wants to investigate situations where individuals have differing deliberate preferences.
 \end{remark}
+\begin{remark}
+  We could weaken indicativeness by allowing for disjuncts: observing either that $\hist \ileadsto \phi$ or that $\hist \ileadsto \psi$ permits to deduce something about $P_i$.
+  (Or more complex formulas under the form of a set of possible functions in $P^H$?)
+  (Actually I am not sure that this really weakens the condition.)
+\end{remark}
 
 \begin{definition}[Anonymity]
   Given a permutation $\sigma$ over $I$ and any ${\allleadstog} \in \allleadstos$, let ${\allleadstog} \circ \sigma$ denote $\set{(i, \hist, \phi) \suchthat (\sigma(i), \hist, \phi) \in {\allleadstog}}$ and let $C \circ \sigma$ denote $\set{{\allleadstog} \circ \sigma \suchthat {\allleadstog} \in C}$.
@@ -561,24 +566,6 @@ What about anonymous and holds?
 \end{proof}
 
 \begin{theorem}
-  Assume that $I$ is finite and $P_{i_1} = \phi$ and $\forall i \in I \setminus \set{i_1}: P_i = ¬\phi$.
-
-  Then, there exists a claim that holds and is anonymous and indicative.
-\end{theorem}
-\begin{proof}
-  Define the claim as $\forall i \in I: {\ileadstog} \in \set{{\ileadsto[j]} \suchthat j \in I}$.
-    
-  Define $a_1$ as an argument decisive in favor of $\phi$ for $i_1$ and $a_i$ as arguments decisive in favor of $¬\phi$ for $i \in I \setminus \set{i_1}$.
-  
-  Assume (wlog) that $I = \set{i_1, …, i_{\card{I}}}$.
-  Define $\hist_1 = \emptyset$ and for $i \in \intvl{2, \card{I}}$, $\hist_i = (\hist_{i - 1}, a_1, a_i)$.
-  We know that, $\forall i \in \intvl{2, \card{I}}$: $\hist_i \ileadsto[i_1] \phi$ and $\hist_i \ileadsto[i] ¬\phi$.
-  Define $\theta = \set{(\hist_i, i_1, \phi) \suchthat i \in \intvl{2, \card{I}}}$.
-  
-  Finally, the attitudes in $C$ compatible with $\theta$ are only $\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C = \set{{\allleadstog} \suchthat {\ileadstog[i_1]} = {\ileadsto[i_1]}}$, and $\pi(\set{{\allleadstog} \suchthat {\ileadstog[i_1]} = {\ileadsto[i_1]}})(i_1) = \phi$.
-\end{proof} 
-
-\begin{theorem}
   Assume that for some $I_1 \wsub I$, $\forall i_1 \in I_1: P_{i_1} = \phi$ and, defining $I_2 = I \setminus I_1$, that $I_2$ is finite and $\forall i_2 \in I_2: P_{i_2} = ¬\phi$.
 
   Then, there exists a claim that holds and is anonymous and indicative.
@@ -593,7 +580,33 @@ What about anonymous and holds?
   We know that, $\forall i \in \intvl{2, \card{I_2} + 1}$: $\hist_i \ileadsto[i_1] \phi$ and $\hist_i \ileadsto[i] ¬\phi$.
   Define $\theta = \set{(\hist_i, i_1, \phi) \suchthat i \in \intvl{2, \card{I_2} + 1}}$.
   
-  Finally, the attitudes in $C$ compatible with $\theta$ are only $\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C \wsub \set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat j \in I_1}}$, and $\pi(\set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat j \in I_1}})(i_1) = \phi$.
+  Finally, the attitudes in $C$ compatible with $\theta$ are $\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C \wsub \set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat j \in I_1}}$, and $\pi(\set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat j \in I_1}})(i_1) = \phi$.
+\end{proof}
+
+\begin{theorem}
+  \label{th:suffIndic}
+  Define $I_1 = \set{i \in I \suchthat P_i = \phi}$ and $I_2 = \set{i \in I \suchthat P_i = ¬\phi}$. Assume that $I = I_1 \cup I_2$.
+  % Assume that for some $H \in \finite(\incr(\allhists)): [\exists i_1 \in I_1 \suchthat \forall \hist \in H: \hist \ileadsto[i_1] \phi] \land [\forall i \in I_2: \exists \hist \in H \suchthat \hist \ileadsto ¬\phi]$.
+  Assume that for some $H \in \finite(\incr(\allhists))$ and $i_1 \in I_1$, we have $\forall i \in I_2$ that $\exists \hist \in H \suchthat {\allleadsto}(\hist, i_1) \neq {\allleadsto}(\hist, i_2)$.
+  Then, there exists a claim that holds and is anonymous and indicative.
+  \commentOC{In fact $I_2$ must include all those whose dj is not $\phi$.}
+\end{theorem}
+\begin{proof}
+  Define the claim as $\forall i \in I: {\ileadstog} \in \set{{\ileadsto[j]} \suchthat j \in I}$
+  and let us show that the claim is indicative for $i = i_1$ and $\theta = \set{(\hist, i_1, {\allleadsto}(\hist, i_1)) \suchthat \hist \in H}$.
+  
+  Finally, the attitudes in $C$ compatible with $\theta$ are $\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C \wsub \set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat j \in I_1}}$, and $\pi(\set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat j \in I_1}})(i_1) = \phi$.
+\end{proof}
+\begin{corollary}
+  Define $I_1 = \set{i \in I \suchthat P_i = \phi}$ and $I_2 = \set{i \in I \suchthat P_i = ¬\phi}$. Assume that $I = I_1 \cup I_2$.
+  If $\exists A \in \finite(\allargs) \suchthat \forall i \in I_2, \exists a \in A \suchthat a \ileadstost ¬\phi$, then there exists a claim that holds and is anonymous and indicative.
+\end{corollary}
+\begin{proof}
+  We know that $i_1$ has some decisive argument $a_1$ in favor of $\phi$.
+  Assume (wlog) that $A = \set{2, …, \card{A} + 1}$.
+  Define $\hist_1 = \emptyset$ and for $i \in \intvl{2, \card{A} + 1}$, $\hist_i = (\hist_{i - 1}, a_1, i)$.
+  Define $H = \set{\hist_i \suchthat i \in \intvl{2, \card{A} + 1}}$.
+  Apply \cref{th:suffIndic}.
 \end{proof}
 
 \begin{theorem}
