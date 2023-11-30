@@ -35,7 +35,7 @@
 \maketitle
 
 \begin{abstract}
-  TODO: abstract
+  To be written.
 \end{abstract}
 
 \section{Introduction}
@@ -484,7 +484,6 @@ A claim $C$ is \emph{indicative} iff $\exists i \in I, \theta \in \Theta \cap (\
   Informativeness may be a desirable property (rather than informativeness beyond counting) as one may want to know whether a given proposition is believed by a majority of individuals, or whether a given proposition is believed by nobody.
   Note also that strong informativeness beyond counting implies informativeness beyond counting and indicativeness.
   Note also that informativeness beyond counting implies informativeness.
-  \Cref{th:infoBeyonCKO} (and extensions, \cref{th:infoBeyonCKOext,th:strinfoBeyonCKO}) shows that informativeness beyond counting (and variants) is too demanding if one wants to investigate situations where individuals have differing deliberate preferences.
 \end{remark}
 \begin{remark}
   We could weaken indicativeness by allowing for disjuncts: observing either that $\hist \ileadsto \phi$ or that $\hist \ileadsto \psi$ permits to deduce something about $P_i$.
@@ -496,178 +495,49 @@ A claim $C$ is \emph{indicative} iff $\exists i \in I, \theta \in \Theta \cap (\
   Given a permutation $\sigma$ over $I$ and any ${\allleadstog} \in \allleadstos$, let ${\allleadstog} \circ \sigma$ denote $\set{(i, \hist, \phi) \suchthat (\sigma(i), \hist, \phi) \in {\allleadstog}}$ and let $C \circ \sigma$ denote $\set{{\allleadstog} \circ \sigma \suchthat {\allleadstog} \in C}$.
   A claim $C$ is \emph{anonymous} iff $\forall \sigma: C = C \circ \sigma$.
 \end{definition}
-\begin{example}
-  Given $\ar$ and $\phi$, the claim $\ar \ileadstog \phi$ is not anonymous iff $\card{I} ≥ 2$. Indeed, pick any $j ≠ i$ and define $\sigma(i) = j$, $\sigma(j) = i$ and $\forall k \in I \setminus \set{i, j}: \sigma(k) = k$, then $C = \set{{\allleadstog} \suchthat {\allleadstog}(i, \ar) = \phi}$, which contains in particular ${\allleadsto}$ defined as $\forall \hist: [\forall k \in I \setminus \set{j}, {\allleadsto}(k, \hist) = \phi \land {\allleadsto}(j, \hist) = ¬\phi$; while $C \circ \sigma = \set{{\allleadstog} \suchthat {\allleadstog}(j, \ar) = \phi}$ which does not contain ${\allleadsto}$.
-\end{example}
+\Cref{ex:anon} illustrates.
 
-\begin{theorem}
-  For all exposure protocols, there exists a claim that holds and is strongly informative beyond counting and falsifiable iff $\exists i \suchthat P_i \neq \emptyset$.
-\end{theorem}
-\begin{proof}
-  Define $C = \set{\allleadsto}$.
-\end{proof}
-\begin{theorem}
-  For all exposure protocols, there exists a claim that holds and is informative beyond counting and falsifiable.
-\end{theorem}
-\begin{proof}
-  Define $C = \set{\allleadsto}$.
-\end{proof}
-\begin{theorem}
-  For all exposure protocols, there exists a claim that is anonymous, strongly informative beyond counting and falsifiable.
-\end{theorem}
-\begin{proof}
-  Define the claim as $\forall i \in I, \hist \in \allhists: \hist \ileadstog \phi$.
-\end{proof}
+We are now interested in the interplay between properties of holding, anonymity, (strong) informativeness beyond counting, and falsifiability.
+\Cref{th:hsif,th:hif,th:asif} show their compatibility when one of holding or anonymity is not required (except that informativeness beyond counting cannot be made strong in the edge case where $\forall i \in I: P_i = \emptyset$).
 
-What about anonymous and holds?
-\begin{theorem}
-  For all exposure protocols, there exists a claim that holds and is anonymous.
-\end{theorem}
-\begin{proof}
-  Define the claim as $\forall i \in I: {\ileadstog} \in \set{{\ileadsto[j]} \suchthat j \in I}$.
-\end{proof}
+We thus turn to requiring both anonymous and holding.
+They are always satisfiable when only these two are required (\cref{th:ha}).
+\Cref{th:infoBeyonCKO} (and extensions, \cref{th:infoBeyonCKOext,th:strinfoBeyonCKO}) shows that informativeness beyond counting (and variants) is too demanding if one wants to investigate situations where individuals have differing deliberate preferences.
 
-\begin{theorem}
-  Assume that $I = \set{i_1, i_2}$ and that $P_{i_1} = \phi$ and $P_{i_2} = ¬\phi$.
-
-  Then, there exists a claim that holds and is anonymous and indicative.
-\end{theorem}
-\begin{proof}
-  From $P_{i_1} = \phi$ we know that some $a_1$ is a decisive argument in favor of $\phi$ for $i_1$.
-  From $P_{i_2} = ¬\phi$ we know that for some $\hist \in \allhists \suchthat a_1 \in \histend$, $\hist \nileadsto[i_2] \phi$ whereas $\hist \ileadsto[i_1] \phi$.
-  Define $O = \set{(\hist, i_1)}$.
-  Define 
-  ${\allleadstog^1} = \set{(i_1, \ileadsto[i_1]), (i_2, \ileadsto[i_2])}$ and
-  ${\allleadstog^2} = \set{(i_1, \ileadsto[i_2]), (i_2, \ileadsto[i_1])}$.
-  Define the claim as $C = \set{{\allleadstog^1}, {\allleadstog^2}}$.
-\end{proof}
-
-\begin{theorem}
-  Assume that $I = \set{i_1, i_2, i_3}$ and that $P_{i_1} = \phi$ and $P_{i_2} = P_{i_3} = ¬\phi$.
-
-  Then, there exists a claim that holds and is anonymous and indicative.
-\end{theorem}
-\begin{proof}
-  Define the claim as $\forall i \in I: {\ileadstog} \in \set{{\ileadsto[j]} \suchthat j \in I}$.
-  In other words, for $k, l \in \intvl{1, 3}$, define
-  ${\allleadstog^{k, l}} = \set{(i_k, \ileadsto[i_1]), (i_l, \ileadsto[i_2]), (i_{\intvl{1, 3} \setminus \set{k, l}}, \ileadsto[i_3])}$.
-  Define the claim as $C = \set{{\allleadstog^{1, 2}}, {\allleadstog^{1, 3}}, {\allleadstog^{2, 1}}, {\allleadstog^{2, 3}}, {\allleadstog^{3, 1}}, {\allleadstog^{3, 2}}}$.
+It is possible under reasonable conditions of regularity to satisfy anonymous and holding together with indicativeness. This happens for example when everybody has a deliberate judgment and a finite set of decisive arguments suffices to lead everybody to their deliberate judgment (\cref{th:suffIndicDec}).
   
-  Define $a_1$ as an argument decisive in favor of $\phi$ for $i_1$ and $a_2, a_3$ as arguments decisive in favor of $¬\phi$ for $i_2, i_3$.
+\begin{theorem}
+  \label{th:suffFals}
+  Assume that $\forall {\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}: \exists H \in \finite(\incr(\allhists)) \suchthat \forall j \in I: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadsto[j]}(\hist)$.
+  Then, there exists a claim that holds and is anonymous and falsifiable.
+\end{theorem}
+\begin{proof}
+  Define $C = \set{{\allleadstog} \suchthat \forall i \in I: {\ileadstog} \in \set{{\ileadsto[j]} \suchthat j \in I}}$. It holds and is anonymous.
+  Pick any ${\allleadstog} \notin C$.
+  Then, $\exists i \in I \suchthat {{\ileadstog}} \notin \set{{\ileadsto[k]} \suchthat k \in I}$.
+  Pick any such $i$ and any $H$ such that $\forall j \in I: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadsto[j]}(\hist)$.
+  Define $\theta = \set{(\hist, i, {\ileadstog}(\hist)) \suchthat \hist \in H} \in \Theta \cap \powerset{\allleadstog}$.
+  Then, $\theta \notin C^\wsub$, because $\forall j \in I: \theta \nsubseteq {\ileadsto[j]}$. 
   
-  Define $\hist_{12} = (a_1, a_2)$ and $\hist_{13} = (\hist_{12}, a_1, a_3)$.
-  We know that 
-  $\hist_{12} \ileadsto[i_1] \phi$, 
-  $\hist_{12} \ileadsto[i_2] ¬\phi$, 
-  $\hist_{13} \ileadsto[i_1] \phi$, 
-  $\hist_{13} \ileadsto[i_3] ¬\phi$.
-  Define $\theta = \set{(\hist_{12}, i_1, \phi), (\hist_{13}, i_1, \phi)}$.
-  Finally, the attitudes in $C$ compatible with $\theta$ are only $\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C = \set{{\allleadstog^{1, 2}}, {\allleadstog^{1, 3}}}$, and $\pi(\set{{\allleadstog^{1, 2}}, {\allleadstog^{1, 3}}})(i_1) = \phi$.
+  For another proof, note that $C^\wsub \cap \Theta = \set{\theta \in \Theta \suchthat \forall i \in I: \exists j \in I \suchthat \theta \cap (\allhists × \set{i} × P) \wsub {\ileadsto[j]}}$.
+  Pick any ${\allleadstog} \in E(C^\wsub \cap \Theta)$ and let us show that ${\allleadstog} \in C$.
+  Note that ${\allleadstog} \notin C \iff \exists i \in I \suchthat {\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}$, in which case the consequent in the theorem holds.
+  We need to show that $\nexists i \in I, H \in \finite(\incr(\allhists)) \suchthat \forall j \in I: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadsto[j]}(\hist)$.
+  In other words, given any $i \in I$, we need to show that $\forall H \in \finite(\incr(\allhists)): \exists j \in I \suchthat \forall \hist \in H: {\ileadstog}(\hist) = {\ileadsto[j]}(\hist)$.
 \end{proof}
 
+\begin{remark}
+  The opposite of \cref{th:suffFals} is NOT $\forall {\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}: \exists H \in \finite(\incr(\allhists)) \suchthat \forall j \in I: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadsto[j]}(\hist)$.
+  Thus, for some ${\allleadstog} \in \allleadstos$ and some $i \in I$ with ${\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}$, we have that $\forall H \in \finite(\incr(\allhists)): \exists j \in I \suchthat \forall \hist \in H: {\ileadstog}(\hist) = {\ileadsto[j]}(\hist)$.
+
+  For example, $\allargs = \set{\ar_1, \ar_2}$ and ${\ileadstog}$ is $\phi$ when the path starts with $\ar_1$ (or is empty) and is $¬\phi$ when the path starts with $\ar_2$ and the attitude contains only people constant to $\phi$ (except that they map $\emptyset$ to anything) and people constant to $¬\phi$ (except that they map $\emptyset$ to anything).
+\end{remark}
 \begin{theorem}
-  Assume that for some $I_1 \wsub I$, $\forall i_1 \in I_1: P_{i_1} = \phi$ and, defining $I_2 = I \setminus I_1$, that $I_2$ is finite and $\forall i_2 \in I_2: P_{i_2} = ¬\phi$.
-
-  Then, there exists a claim that holds and is anonymous and indicative.
+  Consider the attitude above. Is there a claim that holds and is anonymous and falsifiable?
+  Check \cref{ex:falsAnonIfBig}.
 \end{theorem}
-\begin{proof}
-  Define the claim as $\forall i \in I: {\ileadstog} \in \set{{\ileadsto[j]} \suchthat j \in I}$.
-    
-  Pick any $i_1 \in I_1$, define $a_1$ as an argument decisive in favor of $\phi$ for $i_1$ and $a_i$ as arguments decisive in favor of $¬\phi$ for $i \in I_2$.
-  
-  Assume (wlog) that $I_2 = \set{2, …, \card{I_2} + 1}$.
-  Define $\hist_1 = \emptyset$ and for $i \in \intvl{2, \card{I_2} + 1}$, $\hist_i = (\hist_{i - 1}, a_1, a_i)$.
-  We know that, $\forall i \in \intvl{2, \card{I_2} + 1}$: $\hist_i \ileadsto[i_1] \phi$ and $\hist_i \ileadsto[i] ¬\phi$.
-  Define $\theta = \set{(\hist_i, i_1, \phi) \suchthat i \in \intvl{2, \card{I_2} + 1}}$.
-  
-  Finally, the attitudes in $C$ compatible with $\theta$ are $\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C \wsub \set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat j \in I_1}}$, and $\pi(\set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat j \in I_1}})(i_1) = \phi$.
-\end{proof}
 
-\begin{theorem}
-  \label{th:suffIndic}
-  Define $I_1 = \set{i \in I \suchthat P_i = \phi}$ and $I_2 = \set{i \in I \suchthat P_i = ¬\phi}$. Assume that $I = I_1 \cup I_2$.
-  % Assume that for some $H \in \finite(\incr(\allhists)): [\exists i_1 \in I_1 \suchthat \forall \hist \in H: \hist \ileadsto[i_1] \phi] \land [\forall i \in I_2: \exists \hist \in H \suchthat \hist \ileadsto ¬\phi]$.
-  Assume that for some $H \in \finite(\incr(\allhists))$ and $i_1 \in I_1$, we have $\forall i \in I_2$ that $\exists \hist \in H \suchthat {\allleadsto}(\hist, i_1) \neq {\allleadsto}(\hist, i_2)$.
-  Then, there exists a claim that holds and is anonymous and indicative.
-  \commentOC{In fact $I_2$ must include all those whose dj is not $\phi$.}
-\end{theorem}
-\begin{proof}
-  Define the claim as $\forall i \in I: {\ileadstog} \in \set{{\ileadsto[j]} \suchthat j \in I}$
-  and let us show that the claim is indicative for $i = i_1$ and $\theta = \set{(\hist, i_1, {\allleadsto}(\hist, i_1)) \suchthat \hist \in H}$.
-  
-  Finally, the attitudes in $C$ compatible with $\theta$ are $\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C \wsub \set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat j \in I_1}}$, and $\pi(\set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat j \in I_1}})(i_1) = \phi$.
-\end{proof}
-\begin{corollary}
-  Define $I_1 = \set{i \in I \suchthat P_i = \phi}$ and $I_2 = \set{i \in I \suchthat P_i = ¬\phi}$. Assume that $I = I_1 \cup I_2$.
-  If $\exists A \in \finite(\allargs) \suchthat \forall i \in I_2, \exists a \in A \suchthat a \ileadstost ¬\phi$, then there exists a claim that holds and is anonymous and indicative.
-\end{corollary}
-\begin{proof}
-  We know that $i_1$ has some decisive argument $a_1$ in favor of $\phi$.
-  Assume (wlog) that $A = \set{2, …, \card{A} + 1}$.
-  Define $\hist_1 = \emptyset$ and for $i \in \intvl{2, \card{A} + 1}$, $\hist_i = (\hist_{i - 1}, a_1, i)$.
-  Define $H = \set{\hist_i \suchthat i \in \intvl{2, \card{A} + 1}}$.
-  Apply \cref{th:suffIndic}.
-\end{proof}
-
-\begin{theorem}
-  \label{th:HAinformativeness}
-  Given any $Q \wsub P \cup \set{\emptyset}$,
-  the following two conditions on $\allleadsto$ are equivalent:
-  there exists a claim that holds and is anonymous and satisfies 
-  $\exists j \in I \suchthat \pi(C)(j) \ssub Q$;
-  and 
-  $\set{P_i, i \in I} \ssub Q$.
-\end{theorem}
-\begin{proof}
-  Consider any claim $C$ that holds and is anonymous, pick any $j \in I$, and let us show that $\set{P_i, i \in I} \wsub \pi(C)(j)$.
-  Pick any $p \in \set{P_i, i \in I}$. 
-  Pick any $i \in I$ such that $\pi({\allleadsto})(i) = p$.
-  Define $\sigma$ as the permutation exchanging $i$ and $j$.
-  As $C$ holds, it contains $\allleadsto$, and by anonymity, it contains ${\allleadsto} \circ \sigma$. Observing that $\pi({\allleadsto} \circ \sigma)(j) = \pi({\allleadsto})(i) = p$, we obtain $p \in \pi(C)(j)$.
-  
-  It follows that for any claim $C$ that holds and is anonymous, if $\exists j \in I \suchthat \pi(C)(j) \ssub Q$ then $\set{P_i, i \in I} \wsub \pi(C)(j) \ssub Q$ thus $\set{P_i, i \in I} \ssub Q$.
-
-  Turning to the other direction, if $\set{P_i, i \in I} \ssub Q$, then pick any $p \in Q \setminus \set{P_i, i \in I}$; the claim $\forall i \in I: P_i \neq p$ satisfies the desired properties.
-\end{proof}
-
-\begin{theorem}
-  \label{th:infoBeyonCKO}
-  There exists a claim that holds and is anonymous and informative beyond counting iff $\set{P_i, i \in I} \neq P \cup \set{\emptyset}$.
-\end{theorem}
-\begin{proof}
-  From \cref{th:HAinformativeness} with $Q = P \cup \set{\emptyset}$, we have that 
-  there exists a claim that holds and is anonymous and satisfies 
-  $\exists j \in I \suchthat \pi(C)(j) \ssub P \cup \set{\emptyset}$ iff
-  $\set{P_i, i \in I} \ssub P \cup \set{\emptyset}$.
-\end{proof}
-
-\begin{theorem}
-  \label{th:strinfoBeyonCKO}
-  There exists a claim that holds and is anonymous and strongly informative beyond counting iff $\set{P_i, i \in I} \ssub P$.
-\end{theorem}
-\begin{proof}
-  From \cref{th:HAinformativeness} with $Q = P$, we have that 
-  there exists a claim that holds and is anonymous and satisfies 
-  $\exists j \in I \suchthat \pi(C)(j) \ssub P$ iff
-  $\set{P_i, i \in I} \ssub P$.
-\end{proof}
-
-\begin{theorem}
-  \label{th:infoBeyonCKOext}
-  Given $Q = \set{\phi, ¬\phi}$,
-  the following two conditions on $\allleadsto$ are equivalent:
-  there exists a claim that holds and is anonymous and satisfies 
-  $\exists j \in I \suchthat \pi(C)(j) \ssub Q$;
-  and 
-  $\set{P_i, i \in I} \ssub Q$.
-\end{theorem}
-\begin{proof}
-  From \cref{th:HAinformativeness} with $Q = \set{\phi, ¬\phi}$, we have that 
-  there exists a claim that holds and is anonymous and satisfies 
-  $\exists j \in I \suchthat \pi(C)(j) \ssub \set{\phi, ¬\phi}$ iff
-  $\set{P_i, i \in I} \ssub \set{\phi, ¬\phi}$.
-\end{proof}
-
+\subsection{Ideas for no suitable}
 $C$ is \emph{suitable} iff it holds and is anonymous, informative and falsifiable.
 \begin{example}
   Assume that $\exists \ar, \phi \suchthat \forall i: \ar \ileadstost \phi$.
@@ -680,11 +550,6 @@ Our goal now is to find an exposure protocol $\allleadsto$ with no suitable clai
 Could we have that if it holds then it is not informative?
 $i_1$ thinks $p$ and $i_2$ thinks $¬p$.
 
-\subsection{Ideas for no suitable (new)}
-$C$ must contain the real one.
-Also, all the anonymously real ones.
-
-\subsection{Ideas for no suitable}
 Given $\histk \in \allhists$ and $\ar_l \in \allargs$, let $(\histk, …, \ar_l, ?)$ denote the set
 $\set{\histl \suchthat \histk \subset \histl \land \ar_l \in \histlend}$.
 Given $\hist \in \allhists$, ${\ileadstog}$ and $\ar_k, \ar_l \in \allargs$, let $(\hist, \ar_k, ?, \nileadstog \phi, …, \ar_l, ?)$ denote the set
@@ -1049,7 +914,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
     %	Assume, to start with, that the theory is of depth 2, more precisely, $\arga$ is not decisive because $\hist \nileadsto \pga, \arga \in \histend$ and $\dgi(\arga) = \ar_2$ with no further hist against it.
   \end{proof}
 
-  This definition of truthfulness is adopted because of our goal of distinguishing empirical claims. Truthfulness, so defined, can be falsified empirically: if it does not hold, it is possible to prove this empirically by exhibiting a counter-example in the form of a tuple $i, k, (a_j)_{j \in \intvl{1, k}}, \alpha$ such that TODO.
+  This definition of truthfulness is adopted because of our goal of distinguishing empirical claims. Truthfulness, so defined, can be falsified empirically: if it does not hold, it is possible to prove this empirically by exhibiting a counter-example in the form of a tuple $i, k, (a_j)_{j \in \intvl{1, k}}, \alpha$ such that … (to be completed).
 
   Note that a static theory $(p, \ar)$ can be considered as an argumentative theory $(p, \ar, \emptyset)$, and $(p, \ar)$ is truthful in the sense of \cref{sec:static} iff $(p, \ar, \emptyset)$ is truthful in the sense of \cref{def:truth}.
 
@@ -1137,6 +1002,314 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
     $\theta \in \powerset{\allleadstog'}$ and ${\allleadstog'} \in C$, thus, $\theta \in C^\wsub$.
   \end{example}
 
+  \begin{example}
+    \label{ex:anon}
+    Given $\ar$ and $\phi$, the claim $\ar \ileadstog \phi$ is not anonymous iff $\card{I} ≥ 2$. Indeed, pick any $j ≠ i$ and define $\sigma(i) = j$, $\sigma(j) = i$ and $\forall k \in I \setminus \set{i, j}: \sigma(k) = k$, then $C = \set{{\allleadstog} \suchthat {\allleadstog}(i, \ar) = \phi}$, which contains in particular ${\allleadsto}$ defined as $\forall \hist: [\forall k \in I \setminus \set{j}, {\allleadsto}(k, \hist) = \phi \land {\allleadsto}(j, \hist) = ¬\phi$; while $C \circ \sigma = \set{{\allleadstog} \suchthat {\allleadstog}(j, \ar) = \phi}$ which does not contain ${\allleadsto}$.
+  \end{example}
+
+  \begin{example}
+    Consider $I = \set{i}$ and $\ar_1 \neq \ar_2 \in \allargs$.
+    The claim $C = \set{{\allleadstog} \in \allleadstos \suchthat (\forall \hist \neq \emptyset: \hist \ileadstog \phi) \lor (\forall \hist \neq \emptyset: \hist \ileadstog ¬\phi)}$ is not falsifiable.
+
+    Consider ${\allleadstog}$ defined as $\hist \ileadstog \phi$ iff $\hist = \emptyset \lor \hist_1 = \ar_1$ and $\hist \ileadstog ¬\phi$ otherwise.
+    We have ${\allleadstog} \notin C$.
+    But any $θ \subseteq {\allleadstog}$ satisfies $\theta \in C^\wsub$.
+  \end{example}
+
+  \begin{example}
+    \label{ex:falsAnonIfBig}
+    Consider $I = \set{i_1, i_2}$ and $\ar_1 \neq \ar_2 \in \allargs$.
+    Given $p_0, p, p'_0, p' \in P$,
+    define ${\allleadstog^{i_1 \mapsto (p_0, p); i_2 \mapsto (p'_0, p')}}$ as $\emptyset \ileadstog[i_1] p_0 \land \emptyset \ileadstog[i_2] p'_0 \land \forall \hist \in \allhists \setminus \set{\emptyset}: \hist \ileadstog[i_1] p \land \hist \ileadstog[i_2] p'$.
+
+    The claim $C = \set{{\allleadstog^{i_1 \mapsto (p_0, p); i_2 \mapsto (p'_0, p')}} \suchthat p_0, p, p'_0, p' \in \set{\phi, ¬\phi}}$ is not falsifiable.
+    Consider ${\allleadstog}$ defined as, $\forall i \in I$, $\hist \ileadstog \phi$ iff $\hist = \emptyset \lor \hist_1 = \ar_1$ and $\hist \ileadstog ¬\phi$ otherwise.
+    We have ${\allleadstog} \notin C$.
+    
+    Consider now any bigger claim $C'$, thus with $C \wsub C'$.
+    I believe that $C'$ is falsifiable iff it includes all relations that are constant on all paths starting with a given argument (thus all $\allleadstog$ such that $\forall \hist, \histp \in \allhists: \hist_1 = \histp_1 \implies {\ileadstog}(\hist) = {\ileadstog}(\histp)$).
+  \end{example}
+
+  \begin{example}
+    Consider $I = \set{i_{p_0, p} \suchthat p_0, p \in \set{\phi, ¬\phi}}$ (thus $\card{I} = 4$).
+    Given $p_0, p \in P$,
+    define $R^{(p_0, p)} = R^{\emptyset \mapsto p_0; p}: \allhists \rightarrow P$ as $R(\emptyset) = p_0 \land \forall \hist \in \allhists \setminus \set{\emptyset}: R(\hist) = p$.
+
+    Define ${\allleadsto}$ as $\forall p_0, p \in \set{\phi, ¬\phi}: {\ileadsto[i_{p_0, p}]} = R^{\emptyset \mapsto p_0; p}$.
+
+    Given $f: I \rightarrow \set{\phi, ¬\phi}^2$,
+    define ${\allleadstog^f}$ as $\forall i \in I: {\allleadstog^f_i} = R^{f(i)}$.
+    Note that any $f \in (\set{\phi, ¬\phi}^2)^I$ can be seen as a permutation $\sigma$ over $I$ and that ${\allleadstog^f} = {\allleadsto} \circ \sigma$.
+
+    The claim $C = \set{{\allleadstog^f} \suchthat f \in (\set{\phi, ¬\phi}^2)^I}$ is falsifiable: consider any ${\allleadstog}$ observably compatible with $C$; if there is $\hist^1, \hist^2, \hist^3 \in \allhists \setminus \set{\emptyset}$ and $i_1 \neq i_2 \neq i_3 \neq i_1 \in I$ with $\forall k \in \intvl{1, 3}: \hist^k \ileadstog[i_k] \phi$, then ${\allleadstog}$ is not observably compatible with $C$, so there must be at most 2 individuals mapping some non empty path to $\phi$ (thus at least 2 mapping all non empty paths to $¬\phi$) and for the same reason, at least 2 individuals mapping all non empty paths to $\phi$; thus (together with noting that two individuals mapping every paths to $\phi$ is not observably compatible with $C$ and adding the missing bits), ${\allleadstog} \in C$.
+  \end{example}
+
+  \begin{example}
+    Consider $I = \cup_{p_0, p \in \set{\phi, ¬\phi}} I_{p_0, p}$, with each $I_{p_0, p}$ infinite, and $\ar_1 \neq \ar_2 \in \allargs$.
+    Given $p_0, p \in P$,
+    define $R^{(p_0, p)} = R^{\emptyset \mapsto p_0; p}: \allhists \rightarrow P$ as $R(\emptyset) = p_0 \land \forall \hist \in \allhists \setminus \set{\emptyset}: R(\hist) = p$.
+    Define ${\allleadsto}$ as $\forall p_0, p \in \set{\phi, ¬\phi}, i \in I_{p_0, p}: {\ileadsto} = R^{\emptyset \mapsto p_0; p}$.
+
+    The claim $C = \set{{\allleadsto} \circ \sigma \suchthat \sigma: I \leftrightarrow I}$ is not falsifiable:
+    consider ${\allleadstog}$ defined as, $\forall i \in I$, $\hist \ileadstog \phi$ iff $\hist = \emptyset \lor \hist_1 = \ar_1$ and $\hist \ileadstog ¬\phi$ otherwise; we have ${\allleadstog} \notin C$
+    but any $θ \in \Theta, \theta \subseteq {\allleadstog}$ satisfies $\theta \in C^\wsub$.
+
+    Now consider $C' = \set{{\allleadstog} \suchthat \forall i \in I, \hist, \histp \in \allhists: \hist_1 = \histp_1 \implies {\ileadstog}(\hist) = {\ileadstog}(\histp)}$. (Thus $C \wsub C'$.)
+    This one is falsifiable: if ${\allleadstog} \notin C$, then $\exists i \in I, \hist, \histp \suchthat \hist_1 = \histp_1 \land {\ileadstog}(\hist) ≠ {\ileadstog}(\histp)$, now define $\histpp$ as the common prefix to $\hist$ and $\histp$; as ${\ileadstog}(\hist) ≠ {\ileadstog}(\histp)$, we have at least one of ${\ileadstog}(\hist) ≠ {\ileadstog}(\histpp)$ or ${\ileadstog}(\histp) ≠ {\ileadstog}(\histpp)$, and as $\histpp$ satisfies $\histpp_1 = \hist_1$ and $\histpp_1 = \histp_1$, observing the corresponding pair of paths for $i$ falsifies $C$.
+  \end{example}
+
+  \begin{example}
+    Imagine that the real relation is composed of individuals who map $(a_1, a_2)$ to $\phi$ and $(a_1, a_3)$ to $¬\phi$ and individuals converse (with both, say, mapping everything else to $0$).
+    Then the claim $C = \set{{\allleadstog} \suchthat \forall i \in I: {\ileadstog}(\ar_1, \ar_2) \in \set{\phi, ¬\phi} \land {\ileadstog}(\ar_1, \ar_3) \in \set{\phi, ¬\phi}}$ is falsifiable.
+    
+    Imagine that the real relation is composed of individuals who map $(a_1, a_2)$ to $\phi$ and $(a_1, a_3)$ to $¬\phi$ and individuals converse (with both, say, mapping everything else to $0$) and individuals who map $(a_4, a_5)$ to $\phi$ and $(a_6)$ to $¬\phi$ and individuals converse, with both mapping everything else to $0$.
+    Then the claim $C = \set{{\allleadstog} \suchthat \forall i \in I: [{\ileadstog}(\ar_1, \ar_2) \in \set{\phi, ¬\phi} \land {\ileadstog}(\ar_1, \ar_3) \in \set{\phi, ¬\phi} \land {\ileadstog}(H) = 0] \lor [{\ileadstog}(\ar_4, \ar_5) \in \set{\phi, ¬\phi} \land {\ileadstog}(\ar_6) \in \set{\phi, ¬\phi} \land {\ileadstog}(H) = 0]}$, where $H$ designates all “other” paths (abusing notation), is falsifiable.
+    
+    Imagine that the real relation is composed of individuals who map $(a_1, a_2)$ to $\phi$ and $(a_1, a_3)$ to $¬\phi$ and individuals converse (with both, say, mapping everything else to $0$) and individuals who map $(a_1, a_4)$ to $\phi$ and $(a_6)$ to $¬\phi$ and individuals converse, with both mapping everything else to $0$.
+    Then the claim $C = \set{{\allleadstog} \suchthat \forall i \in I: [{\ileadstog}(\ar_1, \ar_2) \in \set{\phi, ¬\phi} \land {\ileadstog}(\ar_1, \ar_3) \in \set{\phi, ¬\phi} \land {\ileadstog}(H) = 0] \lor [{\ileadstog}(\ar_1, \ar_4) \in \set{\phi, ¬\phi} \land {\ileadstog}(\ar_6) \in \set{\phi, ¬\phi} \land {\ileadstog}(H) = 0]}$, where $H$ designates all “other” paths (abusing notation), is falsifiable: could have an individual mapping both $(\ar_1, \ar_2)$ and $(\ar_1, \ar_4)$ to $0$ but then if she maps $\ar_6$ to $0$, observe both $(\ar_1, \ar_2)$ and $\ar_6$ and falsify $C$; if she maps $\ar_6$ in $\set{\phi, ¬\phi}$, both $(\ar_1, \ar_4)$ and $\ar_6$ and falsify $C$ (here assuming falsely in the whole example that $\ar_6$ can be observed together with $(\ar_1, .)$, so we probably should replace $\ar_6$ by $\emptyset$).
+  \end{example}
+
+  \subsection{More examples}
+  \begin{example}[Partly falsifiable is still unfalsifiable]
+    \label{ex:partlyU}
+    Given $j \in I$, $\hist \in \allhists$ and $\ar \neq \ar' \in \allargs$,
+    the claim
+    $C = \set{{\allleadstog} \in \allleadstos \suchthat \hist \ileadstog[j] \phi \land \forall i \in I: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]}$ is unfalsifiable but not strongly unfalsifiable.
+  
+    Define
+    $C_1 = \set{{\allleadstog} \in \allleadstos \suchthat \forall i \in I: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]}$ and
+    $C_2 = \set{{\allleadstog} \in \allleadstos \suchthat \hist \ileadstog[j] \phi}$,
+    so that $C = C_1 \cap C_2$.
+    Observe that $C_1$ is the claim of \cref{ex:disj} and $C_2$ is falsifiable and coverable. 
+    \Cref{th:strongUToStrictU} concludes.
+  \end{example}
+  
+  \begin{example}[Partly again]
+    Considering again \cref{ex:partlyU},
+    given $j \in I$, $\hist \in \allhists$ and $\ar \neq \ar' \in \allargs$,
+    $C = \set{{\allleadstog} \suchthat \hist \ileadstog[j] \phi \land \forall i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]}$ is not falsifiable but \cref{th:veryunfals} is not applicable.
+    Observe that
+    $C^\subseteq = \set{R \in I × \allhists × P \suchthat [(j, \hist) \in R^{-1}(P) \implies (j, \hist, \phi) \in R] \land \forall i: [(i, (\ar)) \in R^{-1}(P) \land (i, (\ar')) \in R^{-1}(P)] \implies [(i, (\ar), \phi) \in R \land (i, (\ar'), \phi) \in R]}$ and 
+    $C^\subseteq \cap \Theta = \set{\theta \in \Theta \suchthat (j, \hist) \in \theta^{-1}(P) \implies (j, \hist, \phi) \in \theta}$.
+    % Pick any $\allleadstog$ satisfying $\hist \ileadstog[j] \phi$ and $\exists i \suchthat (\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$.
+    % The definition of non-falsifiability applies: pick any $\theta \subseteq {\allleadstog}$, we have $\theta \in C^\subseteq$ as $(j, \hist, \phi)$ is compatible with $\theta$ and the other condition excludes nothing in $\Theta$.
+    % We can apply Thm 4 similarly: given any $O$, we have $\restr{\allleadstog}{O} \in C^\subseteq$.
+    % We should be able to apply a corollary similarly.
+    The relations obs-compatible with $C^\subseteq \cap \Theta$ are those satisfying $\hist \ileadstog[j] \phi$.
+    We conclude that $C$ is not falsifiable as $C$ is smaller than that set.
+  \end{example}
+  
+  \begin{example}[Come back]
+    In \cref{ex:allParticular} we considered a given $\ar$ and $\phi$ and defined the falsifiable claim $C = \set{{\allleadstog} \suchthat \forall i: \ar \ileadstostg \phi}$.
+    Observe that $C^\subseteq \cap \Theta = \set{\theta \in \Theta \suchthat \forall \hist \suchthat \ar \in \histend: \theta(i, \hist) = \emptyset \lor \theta(i, \hist) = \phi}$.
+    The relations obs-compatible with $C^\subseteq \cap \Theta$ are exactly those in $C$.
+  
+    \Cref{ex:existsParticular} assumed an infinite $I$, in which case the claim $\exists i \suchthat \ar \ileadstostg \phi$ is not falsifiable.
+    Observe that $C^\subseteq \cap \Theta = \set{\theta \in \Theta \suchthat \exists i \suchthat \forall \hist \suchthat \ar \in \histend: \theta(i, \hist) = \emptyset \lor \theta(i, \hist) = \phi}$.
+    Any relation ${\allleadstog}$ is obs-compatible with that set as $C^\subseteq \cap \Theta = \Theta$: given any $\theta \in \Theta$, there is an $i$ such that $\forall \hist: \theta(i, \hist) = \emptyset$ as $\theta$ must have a finite support.
+  \end{example}
+  
+  \begin{example}
+    \label{ex:cardPart}
+    Pick $i \in I$, $p ≠ p' \in P$ and $\hist, \histp \in \allhists$ with $\hist$ and $\histp$ non prefix related.
+    The claim $\psi = (\hist \ileadstog p \lor \hist \ileadstog p') \land (\histp \ileadstog p \lor \histp \ileadstog p') \land (\forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p)$ is falsifiable.
+  
+    Given $q, q' \in P$, let ${\allleadstog^{q, q'}}$ be defined as $\hist \ileadstog^{q, q'} q$, $\histp \ileadstog^{q, q'} q'$ and $\forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j]^{q, q'} p$.
+    Note that $C_\psi = \set{{\allleadstog^{p, p}}, {\allleadstog^{p, p'}}, {\allleadstog^{p', p}}, {\allleadstog^{p', p'}}}$.
+  
+    Then, $C_\psi^\wsub \cap \Theta =
+      \set{\theta \in \Theta \suchthat \theta(\hist, i) \in \set{\emptyset, p, p'} \land \theta(\histp, i) \in \set{\emptyset, p, p'} \land \forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \theta(\histpp, j) \in \set{\emptyset, p}}$.
+    % and we see that $C_\psi^\wsub \cap \Theta =
+    % \set{\theta \in \Theta \suchthat [\theta(\hist, i) = \theta(\histp, i) = \emptyset \lor \theta(\hist, i) \in \set{p, p'} \lor \theta(\histp, i) \in \set{p, p'}] \land \forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \theta(\histpp, j) \in \set{\emptyset, p}}$.
+  
+    Any obs-compatible relation has to satisfy $\forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p$.
+    It also must satisfy ${\allleadstog}(\hist, i) \in \set{p, p'}$, for otherwise, with $\theta = \set{(\hist, i, {\allleadstog}(\hist, i))}$, we get $({\allleadstog} \cap \theta) \notin C_\psi^\wsub \cap \Theta$.
+    Similarly, it must satisfy ${\allleadstog}(\histp, i) \in \set{p, p'}$.
+    % are $\set{{\allleadstog} \in \allleadstos \suchthat [{\allleadstog}(\hist, i) \in \set{p, p'} \lor {\allleadstog}(\histp, i) \in \set{p, p'}] \land \forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p}$, which, given $p \neq p^{\prime\prime} \neq p'$, contains ${\allleadstog^{p, p^{\prime\prime}}}$, contrary to $C_\psi$.
+  \end{example}
+  
+  \begin{example}
+    Consider any $i$, $\ar_1 ≠ \ar_2 \in \allargs$, $p, p' \in P$.
+    The claim $C = \set{{\allleadstog} \suchthat (\ar_1) \ileadstog p \land (\ar_2) \ileadstog p'}$ is falsifiable.
+  
+    We have $C^\subseteq \cap \Theta = \set{\theta \suchthat (\theta((\ar_1), i) = \emptyset \lor \theta((\ar_1), i) = p) \land (\theta((\ar_2), i) = \emptyset \lor \theta((\ar_2), i) = p')}$.
+    The obs-compatible relations are $\set{{\allleadstog} \suchthat (\ar_1) \ileadstog p \land (\ar_2) \ileadstog p'}$.
+  \end{example}
+  \begin{example}
+    \label{ex:consti2}
+    Assume that $\card{I} ≥ 2$.
+    Consider any $p, p' \in P$ and the constant functions ${\allleadstog^p}$ to $p$ and ${\allleadstog^{p'}}$ to $p'$ and the claim $C = \set{{\allleadstog^p}, {\allleadstog^{p'}}}$.
+    We have $C^\wsub \cap \Theta = \set{\theta \suchthat \theta(\theta^{-1}(P)) = \set{p} \lor \theta(\theta^{-1}(P)) = \set{p'}}$.
+    Consider any relation $\allleadstog$ that is obs-compatible with $C^\wsub \cap \Theta$. Assume that for some $\hist, i$, $\hist \ileadstog p$. Then, pick any $j \neq i$, and observe that by obs-compatibility, for any $\hist'$, $\hist' \ileadstog[j] p$.
+    It follows, still by obs-compatibility, that for any $\hist'$, $\hist' \ileadstog p$ (otherwise pick $\theta$ including $(\hist', i)$ and any $(\hist^{\prime\prime}, j)$). Conclude that $\allleadstog$ is constant to $p$.
+    It follows that the obs-compatible relations are $\set{{\allleadstog^p}, {\allleadstog^{p'}}}$, thus, $C$ is falsifiable.
+  \end{example}
+  \begin{example}
+    \label{ex:consti1}
+    Assume that $\card{I} = 1$.
+    Consider any $p, p' \in P$ and the constant functions ${\allleadstog^p}$ to $p$ and ${\allleadstog^{p'}}$ to $p'$ and the claim $C = \set{{\allleadstog^p}, {\allleadstog^{p'}}}$.
+    We have $C^\wsub \cap \Theta = \set{\theta \suchthat \theta(\theta^{-1}(P)) = \set{p} \lor \theta(\theta^{-1}(P)) = \set{p'}}$.
+    Consider any relation $\allleadstog$ that is obs-compatible with $C^\wsub \cap \Theta$. Assume that for some $\hist, i$, $\hist \ileadstog p$. Observe that by obs-compatibility, $\emptyset \ileadstog p$.
+    It follows, still by obs-compatibility, that for any $\hist'$, $\hist' \ileadstog p$ (otherwise pick $\theta$ including $(\hist', i)$ and $(\emptyset, i)$). Conclude that $\allleadstog$ is constant to $p$.
+    It follows that the obs-compatible relations are $\set{{\allleadstog^p}, {\allleadstog^{p'}}}$, thus, $C$ is falsifiable.
+  \end{example}
+  \begin{example}
+    \label{ex:constwout0}
+    Consider any $p, p' \in P$ and the claim $C = \set{{\allleadstog} \suchthat (\forall \hist \neq \emptyset, i \in I: \hist \ileadstog p) \lor (\forall \hist \neq \emptyset, i \in I: \hist \ileadstog p')}$. That claim is falsifiable iff $\card I ≥ 2$ or $\card \allargs = 1$. The proof if so is similar to \cref{ex:consti2}; otherwise, pick any $\ar \in \allargs$ and note that any relation satisfying $(a.*) \ileadstog p$ and $\forall b \neq a: (b.*) \ileadstog p'$ is obs-compatible with $C^\wsub \cap \Theta$ but is not in $C$.
+  \end{example}
+  \begin{example}
+    \label{ex:unfor}
+    Consider any $i$, $\hist, \histp \in \allhists$, $p, p' \in P$ where $\hist$ and $\histp$ are not prefix related.
+    The claim $C = \set{{\allleadstog} \suchthat \hist \ileadstog p \lor \histp \ileadstog p'}$ is unfalsifiable.
+  
+    We have $C^\wsub \cap \Theta = \set{\theta \suchthat (\theta(\hist, i) = \emptyset \lor \theta(\hist, i) = p) \lor (\theta(\histp, i) = \emptyset \lor \theta(\histp, i) = p')}$.
+    Observe that any $\theta \in \Theta$ satisfy $\theta(\hist, i) = \emptyset \lor \theta(\histp, i) = \emptyset$, thus, $C^\wsub \cap \Theta = \Theta$.
+    It follows that the obs-compatible relations are $\allleadstos$, which is bigger than $C$.
+  \end{example}
+  \begin{example}
+    Consider any $i$, $\ar \neq \ar' \in \allargs$, $p, p' \in P$.
+    The claim $C = \set{{\allleadstog} \suchthat (\ar) \ileadstog p \lor (\ar') \ileadstog p'}$ is unfalsifiable (per \cref{ex:unfor}).
+  
+    Now consider the smaller claim $C' = \set{{\allleadstog} \suchthat (\ar_1) \ileadstog p}$ (thus $C' \ssub C$).
+    It yields a smaller set ${C'}^\wsub \cap \Theta = \set{\theta \suchthat (\theta((\ar_1), i) = \emptyset \lor \theta((\ar_1), i) = p)}$.
+    The obs-compatible relations are the smaller set $\set{{\allleadstog} \suchthat (\ar_1) \ileadstog p}$.
+    Thus, $C'$ is falsifiable.
+  
+    Note that any claim $C^{\prime\prime}$ bigger than $C$ is unfalsifiable as well, unless trivial:
+    from $C \wsub C^{\prime\prime}$, we deduce $\Theta = C^\wsub \cap \Theta \wsub {C^{\prime\prime}}^\wsub \cap \Theta$, thus ${C^{\prime\prime}}^\wsub \cap \Theta = \Theta$ and the obs-compatible relations are $\allleadstos$, which equals $C^{\prime\prime}$ only if $C^{\prime\prime}$ is trivial.
+  
+    Now consider the alternative smaller claim of \cref{ex:consti2}, $C^{(2)} = \set{{\allleadstog^p}, {\allleadstog^{p'}}}$ (thus $C^{(2)} \ssub C$).
+    It yields a smaller set ${C^{(2)}}^\wsub \cap \Theta$.
+  \end{example}
+  \begin{example}
+    \label{ex:for}
+    Consider any $i$ and $p, p' \in P$.
+    The claim $C = \set{{\allleadstog} \suchthat (\forall \hist: \card{\hist} \in 2\N \implies \hist \ileadstog p) \lor (\forall \hist: (\card{\hist} \in 2\N + 1 \lor \hist = \emptyset) \implies \hist \ileadstog p')}$, namely, all paths of even lengths lead $i$ to $p$ OR all paths of odd lengths or empty lead $i$ to $p'$, is falsifiable.
+  
+    Note that $C^\wsub \cap \Theta = \set{\theta \in \Theta \suchthat (\forall \hist: \card{\hist} \in 2\N \implies \theta(\hist) \in \set{\emptyset, p}) \lor (\forall \hist: (\card{\hist} \in 2\N + 1 \lor \hist = \emptyset) \implies \theta(\hist) \in \set{\emptyset, p'})}$.
+    Consider any obs-compatible ${\allleadstog}$.
+    Assume that $\exists \hist \suchthat \card{\hist} \in 2\N \land \hist \nileadstog p$.
+    Pick $\theta = \set{(\emptyset, i, {\ileadstog}(\emptyset)), (\hist, i, {\ileadstog}(\hist))}$. We have $({\allleadstog} \cap \theta) \in C^\wsub \cap \Theta$, and ${\allleadstog} \cap \theta = \theta$, and from $\theta \in C^\wsub \cap \Theta$ we obtain ${\ileadstog}(\emptyset) = p'$.
+    Similarly, using $\theta = \set{(\emptyset, i, {\ileadstog}(\emptyset)), (\histp, j, {\ileadstog[j]}(\histp))}$, we obtain that $\allleadsto$ conforms to the relation in $C$.
+  \end{example}
+  
+  \begin{remark}
+    Intuition (to be explored) is that when $C^\wsub \cap \Theta$ has the covering property, then the obs-compatible relations are easily deduced from the set (something like, just consider compatibility point per point, one singleton observation at a time). Covering is what is used above, something like $\exists i, \hist, \histp$ such that $\forall \hist^{\prime\prime}: [\forall j \neq i: \set{(\hist, i, .), (\histp, j, .)} \in C^\wsub \cap \Theta] \land [\exists j \neq i \suchthat \set{(\hist', i, .), (\hist^{\prime\prime}, j, .)} \in C^\wsub \cap \Theta]$.
+  \end{remark}
+  
+  \subsection{Compatibility of claim properties}
+  \begin{theorem}
+    \label{th:hsif}
+    For all exposure protocols, there exists a claim that holds and is strongly informative beyond counting and falsifiable iff $\exists i \suchthat P_i \neq \emptyset$.
+  \end{theorem}
+  \begin{proof}
+    Define $C = \set{\allleadsto}$.
+  \end{proof}
+  \begin{theorem}
+    \label{th:hif}
+    For all exposure protocols, there exists a claim that holds and is informative beyond counting and falsifiable.
+  \end{theorem}
+  \begin{proof}
+    Define $C = \set{\allleadsto}$.
+  \end{proof}
+  \begin{theorem}
+    \label{th:asif}
+    For all exposure protocols, there exists a claim that is anonymous, strongly informative beyond counting and falsifiable.
+  \end{theorem}
+  \begin{proof}
+    Define the claim as $\forall i \in I, \hist \in \allhists: \hist \ileadstog \phi$.
+  \end{proof}
+
+  \begin{theorem}
+    \label{th:ha}
+    For all exposure protocols, there exists a claim that holds and is anonymous.
+  \end{theorem}
+  \begin{proof}
+    Define the claim as $\forall i \in I: {\ileadstog} \in \set{{\ileadsto[j]} \suchthat j \in I}$.
+  \end{proof}
+  
+  \begin{theorem}
+    \label{th:HAinformativeness}
+    Given any $Q \wsub P \cup \set{\emptyset}$,
+    the following two conditions on $\allleadsto$ are equivalent:
+    there exists a claim that holds and is anonymous and satisfies 
+    $\exists j \in I \suchthat \pi(C)(j) \ssub Q$;
+    and 
+    $\set{P_i, i \in I} \ssub Q$.
+  \end{theorem}
+  \begin{proof}
+    Consider any claim $C$ that holds and is anonymous, pick any $j \in I$, and let us show that $\set{P_i, i \in I} \wsub \pi(C)(j)$.
+    Pick any $p \in \set{P_i, i \in I}$. 
+    Pick any $i \in I$ such that $\pi({\allleadsto})(i) = p$.
+    Define $\sigma$ as the permutation exchanging $i$ and $j$.
+    As $C$ holds, it contains $\allleadsto$, and by anonymity, it contains ${\allleadsto} \circ \sigma$. Observing that $\pi({\allleadsto} \circ \sigma)(j) = \pi({\allleadsto})(i) = p$, we obtain $p \in \pi(C)(j)$.
+    
+    It follows that for any claim $C$ that holds and is anonymous, if $\exists j \in I \suchthat \pi(C)(j) \ssub Q$ then $\set{P_i, i \in I} \wsub \pi(C)(j) \ssub Q$ thus $\set{P_i, i \in I} \ssub Q$.
+  
+    Turning to the other direction, if $\set{P_i, i \in I} \ssub Q$, then pick any $p \in Q \setminus \set{P_i, i \in I}$; the claim $\forall i \in I: P_i \neq p$ satisfies the desired properties.
+  \end{proof}
+  
+  \begin{theorem}
+    \label{th:infoBeyonCKO}
+    There exists a claim that holds and is anonymous and informative beyond counting iff $\set{P_i, i \in I} \neq P \cup \set{\emptyset}$.
+  \end{theorem}
+  \begin{proof}
+    From \cref{th:HAinformativeness} with $Q = P \cup \set{\emptyset}$, we have that 
+    there exists a claim that holds and is anonymous and satisfies 
+    $\exists j \in I \suchthat \pi(C)(j) \ssub P \cup \set{\emptyset}$ iff
+    $\set{P_i, i \in I} \ssub P \cup \set{\emptyset}$.
+  \end{proof}
+  
+  \begin{theorem}
+    \label{th:strinfoBeyonCKO}
+    There exists a claim that holds and is anonymous and strongly informative beyond counting iff $\set{P_i, i \in I} \ssub P$.
+  \end{theorem}
+  \begin{proof}
+    From \cref{th:HAinformativeness} with $Q = P$, we have that 
+    there exists a claim that holds and is anonymous and satisfies 
+    $\exists j \in I \suchthat \pi(C)(j) \ssub P$ iff
+    $\set{P_i, i \in I} \ssub P$.
+  \end{proof}
+  
+  \begin{theorem}
+    \label{th:infoBeyonCKOext}
+    Given $Q = \set{\phi, ¬\phi}$,
+    the following two conditions on $\allleadsto$ are equivalent:
+    there exists a claim that holds and is anonymous and satisfies 
+    $\exists j \in I \suchthat \pi(C)(j) \ssub Q$;
+    and 
+    $\set{P_i, i \in I} \ssub Q$.
+  \end{theorem}
+  \begin{proof}
+    From \cref{th:HAinformativeness} with $Q = \set{\phi, ¬\phi}$, we have that 
+    there exists a claim that holds and is anonymous and satisfies 
+    $\exists j \in I \suchthat \pi(C)(j) \ssub \set{\phi, ¬\phi}$ iff
+    $\set{P_i, i \in I} \ssub \set{\phi, ¬\phi}$.
+  \end{proof}
+  
+  \begin{theorem}
+    \label{th:suffIndic}
+    Assume that for some $H \in \finite(\incr(\allhists))$ and $i_1 \in I \suchthat P_{i_1} \in P$, we have $\forall i_2 \suchthat P_{i_2} \neq P_{i_1}$ that $\exists \hist \in H \suchthat {\allleadsto}(\hist, i_1) \neq {\allleadsto}(\hist, i_2)$.
+    Then, there exists a claim that holds and is anonymous and indicative.
+  \end{theorem}
+  \begin{proof}
+    Define $p = P_{i_1}$.
+    Define the claim as $\forall i \in I: {\ileadstog} \in \set{{\ileadsto[j]} \suchthat j \in I}$.
+    The claim is indicative for $i = i_1$ and $\theta = \set{(\hist, i_1, {\allleadsto}(\hist, i_1)) \suchthat \hist \in H}$ for the following reason.
+    The attitudes in $C$ compatible with $\theta$ are $\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C \wsub \set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat P_j = p}}$, and $\pi(\set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat P_j = p}})(i_1) = p$.
+  \end{proof}
+  \begin{corollary}
+    \label{th:suffIndicDec}
+    Assume that for some $p \in P$, we have $\exists i \in I \suchthat P_i = p$ and $\forall i_2 \suchthat P_{i_2} \neq p$ we have that $\exists A \in \finite(\allargs) \suchthat \forall i \in I \suchthat P_i \neq p, \exists a \in A \suchthat {\ileadstost}(a) \in P \setminus \set{p}$, then there exists a claim that holds and is anonymous and indicative.
+  \end{corollary}
+  \begin{proof}
+    We know that $i_1$ has some decisive argument $a_1$ in favor of $p$.
+    Assume (wlog) that $A = \set{2, …, \card{A} + 1}$.
+    Define $\hist_1 = \emptyset$ and for $i \in \intvl{2, \card{A} + 1}$, $\hist_i = (\hist_{i - 1}, a_1, i)$.
+    Define $H = \set{\hist_i \suchthat i \in \intvl{2, \card{A} + 1}}$.
+    Apply \cref{th:suffIndic}.
+  \end{proof}
+  
   \section{Theories of deliberated choice}
   This section assumes that an exposure protocol $(I, \allargs, {\allleadsto})$ is defined, and defines theories of deliberated choice associated with that exposure protocol. We will start with very simple theories (\cref{sec:static}) in order to build an intuition about the conditions required on theories of deliberated choice, then justify the need for more complex theories (\cref{sec:lichtenstein}) and finally define more general theories of deliberated choice (\cref{sec:dynamic}).
 
@@ -1354,134 +1527,6 @@ A claim $C$ is not coverable because of the empty set iff $\forall \theta \in \T
   \Cref{th:partlyU} concludes.
 \end{proof}
 
-\subsection{More examples}
-\begin{example}[Partly falsifiable is still unfalsifiable]
-  \label{ex:partlyU}
-  Given $j \in I$, $\hist \in \allhists$ and $\ar \neq \ar' \in \allargs$,
-  the claim
-  $C = \set{{\allleadstog} \in \allleadstos \suchthat \hist \ileadstog[j] \phi \land \forall i \in I: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]}$ is unfalsifiable but not strongly unfalsifiable.
-
-  Define
-  $C_1 = \set{{\allleadstog} \in \allleadstos \suchthat \forall i \in I: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]}$ and
-  $C_2 = \set{{\allleadstog} \in \allleadstos \suchthat \hist \ileadstog[j] \phi}$,
-  so that $C = C_1 \cap C_2$.
-  Observe that $C_1$ is the claim of \cref{ex:disj} and $C_2$ is falsifiable and coverable. 
-  \Cref{th:strongUToStrictU} concludes.
-\end{example}
-
-\begin{example}[Partly again]
-  Considering again \cref{ex:partlyU},
-  given $j \in I$, $\hist \in \allhists$ and $\ar \neq \ar' \in \allargs$,
-  $C = \set{{\allleadstog} \suchthat \hist \ileadstog[j] \phi \land \forall i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]}$ is not falsifiable but \cref{th:veryunfals} is not applicable.
-  Observe that
-  $C^\subseteq = \set{R \in I × \allhists × P \suchthat [(j, \hist) \in R^{-1}(P) \implies (j, \hist, \phi) \in R] \land \forall i: [(i, (\ar)) \in R^{-1}(P) \land (i, (\ar')) \in R^{-1}(P)] \implies [(i, (\ar), \phi) \in R \land (i, (\ar'), \phi) \in R]}$ and 
-  $C^\subseteq \cap \Theta = \set{\theta \in \Theta \suchthat (j, \hist) \in \theta^{-1}(P) \implies (j, \hist, \phi) \in \theta}$.
-  % Pick any $\allleadstog$ satisfying $\hist \ileadstog[j] \phi$ and $\exists i \suchthat (\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$.
-  % The definition of non-falsifiability applies: pick any $\theta \subseteq {\allleadstog}$, we have $\theta \in C^\subseteq$ as $(j, \hist, \phi)$ is compatible with $\theta$ and the other condition excludes nothing in $\Theta$.
-  % We can apply Thm 4 similarly: given any $O$, we have $\restr{\allleadstog}{O} \in C^\subseteq$.
-  % We should be able to apply a corollary similarly.
-  The relations obs-compatible with $C^\subseteq \cap \Theta$ are those satisfying $\hist \ileadstog[j] \phi$.
-  We conclude that $C$ is not falsifiable as $C$ is smaller than that set.
-\end{example}
-
-\begin{example}[Come back]
-  In \cref{ex:allParticular} we considered a given $\ar$ and $\phi$ and defined the falsifiable claim $C = \set{{\allleadstog} \suchthat \forall i: \ar \ileadstostg \phi}$.
-  Observe that $C^\subseteq \cap \Theta = \set{\theta \in \Theta \suchthat \forall \hist \suchthat \ar \in \histend: \theta(i, \hist) = \emptyset \lor \theta(i, \hist) = \phi}$.
-  The relations obs-compatible with $C^\subseteq \cap \Theta$ are exactly those in $C$.
-
-  \Cref{ex:existsParticular} assumed an infinite $I$, in which case the claim $\exists i \suchthat \ar \ileadstostg \phi$ is not falsifiable.
-  Observe that $C^\subseteq \cap \Theta = \set{\theta \in \Theta \suchthat \exists i \suchthat \forall \hist \suchthat \ar \in \histend: \theta(i, \hist) = \emptyset \lor \theta(i, \hist) = \phi}$.
-  Any relation ${\allleadstog}$ is obs-compatible with that set as $C^\subseteq \cap \Theta = \Theta$: given any $\theta \in \Theta$, there is an $i$ such that $\forall \hist: \theta(i, \hist) = \emptyset$ as $\theta$ must have a finite support.
-\end{example}
-
-\begin{example}
-  \label{ex:cardPart}
-  Pick $i \in I$, $p ≠ p' \in P$ and $\hist, \histp \in \allhists$ with $\hist$ and $\histp$ non prefix related.
-  The claim $\psi = (\hist \ileadstog p \lor \hist \ileadstog p') \land (\histp \ileadstog p \lor \histp \ileadstog p') \land (\forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p)$ is falsifiable.
-
-  Given $q, q' \in P$, let ${\allleadstog^{q, q'}}$ be defined as $\hist \ileadstog^{q, q'} q$, $\histp \ileadstog^{q, q'} q'$ and $\forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j]^{q, q'} p$.
-  Note that $C_\psi = \set{{\allleadstog^{p, p}}, {\allleadstog^{p, p'}}, {\allleadstog^{p', p}}, {\allleadstog^{p', p'}}}$.
-
-  Then, $C_\psi^\wsub \cap \Theta =
-    \set{\theta \in \Theta \suchthat \theta(\hist, i) \in \set{\emptyset, p, p'} \land \theta(\histp, i) \in \set{\emptyset, p, p'} \land \forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \theta(\histpp, j) \in \set{\emptyset, p}}$.
-  % and we see that $C_\psi^\wsub \cap \Theta =
-  % \set{\theta \in \Theta \suchthat [\theta(\hist, i) = \theta(\histp, i) = \emptyset \lor \theta(\hist, i) \in \set{p, p'} \lor \theta(\histp, i) \in \set{p, p'}] \land \forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \theta(\histpp, j) \in \set{\emptyset, p}}$.
-
-  Any obs-compatible relation has to satisfy $\forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p$.
-  It also must satisfy ${\allleadstog}(\hist, i) \in \set{p, p'}$, for otherwise, with $\theta = \set{(\hist, i, {\allleadstog}(\hist, i))}$, we get $({\allleadstog} \cap \theta) \notin C_\psi^\wsub \cap \Theta$.
-  Similarly, it must satisfy ${\allleadstog}(\histp, i) \in \set{p, p'}$.
-  % are $\set{{\allleadstog} \in \allleadstos \suchthat [{\allleadstog}(\hist, i) \in \set{p, p'} \lor {\allleadstog}(\histp, i) \in \set{p, p'}] \land \forall (j, \histpp) \in (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p}$, which, given $p \neq p^{\prime\prime} \neq p'$, contains ${\allleadstog^{p, p^{\prime\prime}}}$, contrary to $C_\psi$.
-\end{example}
-
-\begin{example}
-  Consider any $i$, $\ar_1 ≠ \ar_2 \in \allargs$, $p, p' \in P$.
-  The claim $C = \set{{\allleadstog} \suchthat (\ar_1) \ileadstog p \land (\ar_2) \ileadstog p'}$ is falsifiable.
-
-  We have $C^\subseteq \cap \Theta = \set{\theta \suchthat (\theta((\ar_1), i) = \emptyset \lor \theta((\ar_1), i) = p) \land (\theta((\ar_2), i) = \emptyset \lor \theta((\ar_2), i) = p')}$.
-  The obs-compatible relations are $\set{{\allleadstog} \suchthat (\ar_1) \ileadstog p \land (\ar_2) \ileadstog p'}$.
-\end{example}
-\begin{example}
-  \label{ex:consti2}
-  Assume that $\card{I} ≥ 2$.
-  Consider any $p, p' \in P$ and the constant functions ${\allleadstog^p}$ to $p$ and ${\allleadstog^{p'}}$ to $p'$ and the claim $C = \set{{\allleadstog^p}, {\allleadstog^{p'}}}$.
-  We have $C^\wsub \cap \Theta = \set{\theta \suchthat \theta(\theta^{-1}(P)) = \set{p} \lor \theta(\theta^{-1}(P)) = \set{p'}}$.
-  Consider any relation $\allleadstog$ that is obs-compatible with $C^\wsub \cap \Theta$. Assume that for some $\hist, i$, $\hist \ileadstog p$. Then, pick any $j \neq i$, and observe that by obs-compatibility, for any $\hist'$, $\hist' \ileadstog[j] p$.
-  It follows, still by obs-compatibility, that for any $\hist'$, $\hist' \ileadstog p$ (otherwise pick $\theta$ including $(\hist', i)$ and any $(\hist^{\prime\prime}, j)$). Conclude that $\allleadstog$ is constant to $p$.
-  It follows that the obs-compatible relations are $\set{{\allleadstog^p}, {\allleadstog^{p'}}}$, thus, $C$ is falsifiable.
-\end{example}
-\begin{example}
-  \label{ex:consti1}
-  Assume that $\card{I} = 1$.
-  Consider any $p, p' \in P$ and the constant functions ${\allleadstog^p}$ to $p$ and ${\allleadstog^{p'}}$ to $p'$ and the claim $C = \set{{\allleadstog^p}, {\allleadstog^{p'}}}$.
-  We have $C^\wsub \cap \Theta = \set{\theta \suchthat \theta(\theta^{-1}(P)) = \set{p} \lor \theta(\theta^{-1}(P)) = \set{p'}}$.
-  Consider any relation $\allleadstog$ that is obs-compatible with $C^\wsub \cap \Theta$. Assume that for some $\hist, i$, $\hist \ileadstog p$. Observe that by obs-compatibility, $\emptyset \ileadstog p$.
-  It follows, still by obs-compatibility, that for any $\hist'$, $\hist' \ileadstog p$ (otherwise pick $\theta$ including $(\hist', i)$ and $(\emptyset, i)$). Conclude that $\allleadstog$ is constant to $p$.
-  It follows that the obs-compatible relations are $\set{{\allleadstog^p}, {\allleadstog^{p'}}}$, thus, $C$ is falsifiable.
-\end{example}
-\begin{example}
-  \label{ex:constwout0}
-  Consider any $p, p' \in P$ and the claim $C = \set{{\allleadstog} \suchthat (\forall \hist \neq \emptyset, i \in I: \hist \ileadstog p) \lor (\forall \hist \neq \emptyset, i \in I: \hist \ileadstog p')}$. That claim is falsifiable iff $\card I ≥ 2$ or $\card \allargs = 1$. The proof if so is similar to \cref{ex:consti2}; otherwise, pick any $\ar \in \allargs$ and note that any relation satisfying $(a.*) \ileadstog p$ and $\forall b \neq a: (b.*) \ileadstog p'$ is obs-compatible with $C^\wsub \cap \Theta$ but is not in $C$.
-\end{example}
-\begin{example}
-  \label{ex:unfor}
-  Consider any $i$, $\hist, \histp \in \allhists$, $p, p' \in P$ where $\hist$ and $\histp$ are not prefix related.
-  The claim $C = \set{{\allleadstog} \suchthat \hist \ileadstog p \lor \histp \ileadstog p'}$ is unfalsifiable.
-
-  We have $C^\wsub \cap \Theta = \set{\theta \suchthat (\theta(\hist, i) = \emptyset \lor \theta(\hist, i) = p) \lor (\theta(\histp, i) = \emptyset \lor \theta(\histp, i) = p')}$.
-  Observe that any $\theta \in \Theta$ satisfy $\theta(\hist, i) = \emptyset \lor \theta(\histp, i) = \emptyset$, thus, $C^\wsub \cap \Theta = \Theta$.
-  It follows that the obs-compatible relations are $\allleadstos$, which is bigger than $C$.
-\end{example}
-\begin{example}
-  Consider any $i$, $\ar \neq \ar' \in \allargs$, $p, p' \in P$.
-  The claim $C = \set{{\allleadstog} \suchthat (\ar) \ileadstog p \lor (\ar') \ileadstog p'}$ is unfalsifiable (per \cref{ex:unfor}).
-
-  Now consider the smaller claim $C' = \set{{\allleadstog} \suchthat (\ar_1) \ileadstog p}$ (thus $C' \ssub C$).
-  It yields a smaller set ${C'}^\wsub \cap \Theta = \set{\theta \suchthat (\theta((\ar_1), i) = \emptyset \lor \theta((\ar_1), i) = p)}$.
-  The obs-compatible relations are the smaller set $\set{{\allleadstog} \suchthat (\ar_1) \ileadstog p}$.
-  Thus, $C'$ is falsifiable.
-
-  Note that any claim $C^{\prime\prime}$ bigger than $C$ is unfalsifiable as well, unless trivial:
-  from $C \wsub C^{\prime\prime}$, we deduce $\Theta = C^\wsub \cap \Theta \wsub {C^{\prime\prime}}^\wsub \cap \Theta$, thus ${C^{\prime\prime}}^\wsub \cap \Theta = \Theta$ and the obs-compatible relations are $\allleadstos$, which equals $C^{\prime\prime}$ only if $C^{\prime\prime}$ is trivial.
-
-  Now consider the alternative smaller claim of \cref{ex:consti2}, $C^{(2)} = \set{{\allleadstog^p}, {\allleadstog^{p'}}}$ (thus $C^{(2)} \ssub C$).
-  It yields a smaller set ${C^{(2)}}^\wsub \cap \Theta$.
-\end{example}
-\begin{example}
-  \label{ex:for}
-  Consider any $i$ and $p, p' \in P$.
-  The claim $C = \set{{\allleadstog} \suchthat (\forall \hist: \card{\hist} \in 2\N \implies \hist \ileadstog p) \lor (\forall \hist: (\card{\hist} \in 2\N + 1 \lor \hist = \emptyset) \implies \hist \ileadstog p')}$, namely, all paths of even lengths lead $i$ to $p$ OR all paths of odd lengths or empty lead $i$ to $p'$, is falsifiable.
-
-  Note that $C^\wsub \cap \Theta = \set{\theta \in \Theta \suchthat (\forall \hist: \card{\hist} \in 2\N \implies \theta(\hist) \in \set{\emptyset, p}) \lor (\forall \hist: (\card{\hist} \in 2\N + 1 \lor \hist = \emptyset) \implies \theta(\hist) \in \set{\emptyset, p'})}$.
-  Consider any obs-compatible ${\allleadstog}$.
-  Assume that $\exists \hist \suchthat \card{\hist} \in 2\N \land \hist \nileadstog p$.
-  Pick $\theta = \set{(\emptyset, i, {\ileadstog}(\emptyset)), (\hist, i, {\ileadstog}(\hist))}$. We have $({\allleadstog} \cap \theta) \in C^\wsub \cap \Theta$, and ${\allleadstog} \cap \theta = \theta$, and from $\theta \in C^\wsub \cap \Theta$ we obtain ${\ileadstog}(\emptyset) = p'$.
-  Similarly, using $\theta = \set{(\emptyset, i, {\ileadstog}(\emptyset)), (\histp, j, {\ileadstog[j]}(\histp))}$, we obtain that $\allleadsto$ conforms to the relation in $C$.
-\end{example}
-
-\begin{remark}
-  Intuition (to be explored) is that when $C^\wsub \cap \Theta$ has the covering property, then the obs-compatible relations are easily deduced from the set (something like, just consider compatibility point per point, one singleton observation at a time). Covering is what is used above, something like $\exists i, \hist, \histp$ such that $\forall \hist^{\prime\prime}: [\forall j \neq i: \set{(\hist, i, .), (\histp, j, .)} \in C^\wsub \cap \Theta] \land [\exists j \neq i \suchthat \set{(\hist', i, .), (\hist^{\prime\prime}, j, .)} \in C^\wsub \cap \Theta]$.
-\end{remark}
-
 \subsection{Draft material about falsification}
 \begin{remark}
   Any relation $\allleadstog$ is equivalent to $\cup \set{\restr{\allleadstog}{O} \suchthat O \in \cup_{J \subseteq_\finite I} (\allhists)^J}$.
@@ -1547,7 +1592,7 @@ Can I make a strictly unfalsifiable claim more precise and obtain a strongly unf
   This seems incorrect; need to be able to build a union relation!
   Prove that it is false with claim "i goes to phi OR i goes to not phi except for empty set going to phi"?
   Actually I need to be able to merge two relations that agree on everything but some part of the tree, in such a way that all paths crossing the boundary must be in $C$, but not the merge.
-  TODO caract with singleton $I$.
+  TOo be done: caract with singleton $I$.
   % Given a claim $C$, define $S = C^\wsub \cap \Theta$.
   % We have: $\set{\cup_i(\theta_i) \in \allleadstos \suchthat (\theta_i) \in s_S} = \set{{\allleadstog} \in \allleadstos \suchthat \forall \theta \in \Theta: ({\allleadstog} \cap \theta) \in S}$.
 \end{conjecture}
@@ -1730,7 +1775,7 @@ Can I make a strictly unfalsifiable claim more precise and obtain a strongly unf
 
   If $\exists R \subseteq I × \allhists$ coverable and such that $C$ is determined on $R$, then $C$ is falsifiable.
 \end{conjecture}
-TODO extend this so as to cover eg $C$ containing $f_1$ and $f_2$ constant functions as in example; but not covering when the domain is not suitable!
+Consider: extend this so as to cover eg $C$ containing $f_1$ and $f_2$ constant functions as in example; but not covering when the domain is not suitable!
 Use proof similar to \cref{ex:for}, getting started with observing that any obs-compatible $\allleadstog$ failing every element but one of $C$ at least at one point must then satisfy the last element of $C$ at some point (?).
 \begin{conjecture}
   If $\forall {\allleadstog} \in C: \exists R \suchthat {\allleadstog} = f \cup g$ with $f \in P^R, g \in P^{(I × \allhists) \setminus R}$ and $R$ converable, then $C$ is falsifiable.
@@ -1746,7 +1791,7 @@ Use proof similar to \cref{ex:for}, getting started with observing that any obs-
   Consider the claim $C = \set{{\allleadstog^1}, {\allleadstog^2}}$. When is it falsifiable considering these two relations?
 \end{example}
 
-TODO investigate claims that are non falsifiable but with $C^\wsub \cap \Theta \neq \Theta$.
+Consider: investigate claims that are non falsifiable but with $C^\wsub \cap \Theta \neq \Theta$.
 Then exhibit a claim such that a smaller one is not the same status and a bigger one is not the same status.
 
 Any claim containing two relations that differ only on incompatible observations is not falsifiable.
