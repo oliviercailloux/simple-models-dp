@@ -1287,6 +1287,17 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
     $\set{P_i, i \in I} \ssub \set{\phi, ¬\phi}$.
   \end{proof}
   
+  Define the claim $C^\text{HA} = \set{{\allleadsto} \circ \sigma \suchthat \sigma: I \Leftrightarrow I}$, or equivalently, $C^\text{HA} = \set{{\allleadstog} \in \allleadstos \suchthat \forall f \in P^{\allhists}: \card({\allleadstoginv}(f)) = \card({\allleadstoinv}(f))}$.
+  Under anonymity, requesting that a claim holds is the same as requesting that it includes $C^\text{HA}$.
+  \begin{theorem}
+    \label{th:claim_ha}
+    A claim holds and is anonymous iff it includes $C^\text{HA}$ and is anonymous.
+    In particular, $C^\text{HA}$ holds and is anonymous.
+  \end{theorem}
+\begin{remark}
+  Define $C^\text{A} = \set{{\allleadstog} \in \allleadstos \suchthat {\allleadstog}(I) \wsub {\allleadsto}(I)}$. Observe that $C^\text{A}$ is anonymous, that $C^\text{HA} \wsub C^\text{A}$, and that $C^\text{HA} \neq C^\text{A}$ iff $\forall i, j \in I: {\ileadsto} \neq {\ileadsto[j]}$.
+\end{remark}
+
   \begin{theorem}
     \label{th:suffIndic}
     Assume that for some $H \in \finite(\incr(\allhists))$ and $i_1 \in I \suchthat P_{i_1} \in P$, we have $\forall i_2 \suchthat P_{i_2} \neq P_{i_1}$ that $\exists \hist \in H \suchthat {\allleadsto}(\hist, i_1) \neq {\allleadsto}(\hist, i_2)$.
@@ -1294,7 +1305,8 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   \end{theorem}
   \begin{proof}
     Define $p = P_{i_1}$.
-    Define the claim as $\forall i \in I: {\ileadstog} \in \set{{\ileadsto[j]} \suchthat j \in I}$.
+    Consider any claim $C$ such that $C^\text{HA} \wsub C \wsub C^\text{A}$ and $C$ is anonymous.
+    % Define the claim $C$ as $\set{{\allleadstog} \in \allleadstos \suchthat \forall i \in I: {\ileadstog} \in \set{{\ileadsto[j]} \suchthat j \in I}}$ (or as anything included in it that includes $C^\text{HA}$ and is anonymous).
     The claim is indicative for $i = i_1$ and $\theta = \set{(\hist, i_1, {\allleadsto}(\hist, i_1)) \suchthat \hist \in H}$ for the following reason.
     The attitudes in $C$ compatible with $\theta$ are $\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C \wsub \set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat P_j = p}}$, and $\pi(\set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat P_j = p}})(i_1) = p$.
   \end{proof}
@@ -1310,6 +1322,20 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
     Apply \cref{th:suffIndic}.
   \end{proof}
   
+\begin{conjecture}
+  The converse of \cref{th:suffIndic} holds.
+\end{conjecture}
+\begin{proof}
+  HA requires that the claim includes at least $C^\text{HA}$.
+  Indicativenes requires a $\theta$ that keeps a single type $i_1$ and rejects all $i_2$ (those with a deliberated judgment different from $i_1$).
+  Can we build a suitable $H$ with that $\theta$?
+  The question is: can we have $\theta$ about two individuals but still single out a single type?
+  Yes: claim is that all individuals reason in the same way about a given $\hist$.
+  In such a case, the observations about $i_2$, $i_3$ permit to know that the world is such that my observations about $i_1$ (if any) permit to single it out. 
+  In such a case, I conjecture that as the claim holds, adding those observations about $i_2$, $i_3$, we obtain a set of possible worlds which contain the real one; out of this we can build $H$ using the observations in $\theta$.
+  In other words, from $\theta$, consider only the observations about $i_1$ and define $H$ using those. Prove that this singles out $i_1$, from the fact that the world conforms to the remaining observations (about $i_2$, $i_3$) in $\theta$.
+\end{proof}
+
   \section{Theories of deliberated choice}
   This section assumes that an exposure protocol $(I, \allargs, {\allleadsto})$ is defined, and defines theories of deliberated choice associated with that exposure protocol. We will start with very simple theories (\cref{sec:static}) in order to build an intuition about the conditions required on theories of deliberated choice, then justify the need for more complex theories (\cref{sec:lichtenstein}) and finally define more general theories of deliberated choice (\cref{sec:dynamic}).
 
