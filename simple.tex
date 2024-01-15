@@ -1300,15 +1300,23 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 
   \begin{theorem}
     \label{th:suffIndic}
-    Assume that for some $H \in \finite(\incr(\allhists))$ and $i_1 \in I \suchthat P_{i_1} \in P$, we have $\forall i_2 \suchthat P_{i_2} \neq P_{i_1}$ that $\exists \hist \in H \suchthat {\allleadsto}(\hist, i_1) \neq {\allleadsto}(\hist, i_2)$.
-    Then, there exists a claim that holds and is anonymous and indicative.
+    The following two conditions on $\allleadsto$ are equivalent:
+    \begin{enumerate}
+      \item \label{it:condHAI} for some $H \in \finite(\incr(\allhists))$ and $i_1 \in I \suchthat P_{i_1} \in P$, we have $\forall i_2 \suchthat P_{i_2} \neq P_{i_1}$ that $\exists \hist \in H \suchthat {\allleadsto}(\hist, i_1) \neq {\allleadsto}(\hist, i_2)$;
+      \item \label{it:HAI} there exists a claim that holds and is anonymous and indicative.
+    \end{enumerate}
   \end{theorem}
   \begin{proof}
-    Define $p = P_{i_1}$.
+    For \cref{it:condHAI} $\implies$ \cref{it:HAI},
+    define $p = P_{i_1}$.
     Consider any claim $C$ such that $C^\text{HA} \wsub C \wsub C^\text{A}$ and $C$ is anonymous.
     % Define the claim $C$ as $\set{{\allleadstog} \in \allleadstos \suchthat \forall i \in I: {\ileadstog} \in \set{{\ileadsto[j]} \suchthat j \in I}}$ (or as anything included in it that includes $C^\text{HA}$ and is anonymous).
     The claim is indicative for $i = i_1$ and $\theta = \set{(\hist, i_1, {\allleadsto}(\hist, i_1)) \suchthat \hist \in H}$ for the following reason.
     The attitudes in $C$ compatible with $\theta$ are $\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C \wsub \set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat P_j = p}}$, and $\pi(\set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat P_j = p}})(i_1) = p$.
+
+    For \cref{it:HAI} $\implies$ \cref{it:condHAI},
+    pick an indicative claim $C$ and consider $i \in I$ and $\theta \in \Theta \cap (\allhists × \set{i} × P) \cap C^\wsub$ such that $\pi(\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C)(i) \ssub P$.
+    Define $H = \theta^{-1}(i, P)$.
   \end{proof}
   \begin{corollary}
     \label{th:suffIndicDec}
@@ -1322,6 +1330,15 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
     Apply \cref{th:suffIndic}.
   \end{proof}
   
+  \begin{remark}
+    If there are only two types each with a DJ not empty, then the condition of \cref{it:condHAI} is satisfied. More formally, if ${\allleadsto}(I) = \set{{\ileadsto[i_1]}, {\ileadsto[i_2]}}$ and $\emptyset \notin \pi({\allleadsto})(I)$, then \cref{it:condHAI} is satisfied: define $\ar_1, \ar_2$ as some decisive arguments for $i_1, i_2$, respectively, and define $H = \set{(\ar_1, \ar_2)}$.
+  \end{remark}
+
+\begin{remark}
+  Given $p \in P$, define $I_p = \set{i \in I \suchthat \pi(i) = p}$.
+  If $I \setminus I_p$ all have $\ar$ as a decisive argument, then \cref{it:condHAI} is satisfied: if $I_p \neq \emptyset$, pick $i \in I_p$, let $\ar'$ be a decisive argument for $i$, and define $H = \set{(\ar, \ar')}$; otherwise, define $H = \set{(\ar)}$.
+\end{remark}
+
   \section{Theories of deliberated choice}
   This section assumes that an exposure protocol $(I, \allargs, {\allleadsto})$ is defined, and defines theories of deliberated choice associated with that exposure protocol. We will start with very simple theories (\cref{sec:static}) in order to build an intuition about the conditions required on theories of deliberated choice, then justify the need for more complex theories (\cref{sec:lichtenstein}) and finally define more general theories of deliberated choice (\cref{sec:dynamic}).
 
