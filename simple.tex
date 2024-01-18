@@ -76,7 +76,7 @@ While $I$ and $\allargs$ are fundamental sets whose elements are considered elem
 Throughout the article, $\N$ includes zero and $\N^* = \N \setminus \set{0}$.
 Given $j, l \in \N$, the notation $\intvl{j, l}$ represents $\set{k \in \N \suchthat j ≤ k ≤ l}$ (thus $\forall j \in \N^*: \intvl{j, 0} = \emptyset$).
 Define $\allhists = \bigcup_{k \in \N} \allargs^{\intvl{1, k}}$ as the finite sequences of arguments, including the empty sequence.
-A generic element of $\allhists$ (a sequence of arguments) is denoted by $\hist$ and called an argumentative path, or simply a path. Its length is denoted by $\card{\hist} \in \N$ and its elements, $\hist(k)$ or $\hist_k$.
+A generic element of $\allhists$ (a possibly empty finite sequence of arguments) is denoted by $\hist$ and called an argumentative path, or simply a path. Its length is denoted by $\card{\hist} \in \N$ and its elements, $\hist(k)$ or $\hist_k$.
 Thus, given an argumentative path $\hist \in \allhists$, $\forall k \in \intvl{1, \card{\hist}}: \hist(k) = \hist_k \in \allargs$, and $\hist = \emptyset ⇔ \card{\hist} = 0$. A path $\hist$ is a sub-path of another path $\histp$ whenever $\hist \subseteq \histp$, thus, $\forall k \in \intvl{1, \card{\hist}}: \hist_k = \histp_k$.
 
 The function ${\allleadsto}: I × \allhists → P$ associates to each individual and path an element of $P$, ${\allleadsto}(i, \alpha)$ representing the choice of $i$ following exposure to the arguments of $\alpha$, in order. That is, ${\allleadsto}(i, \alpha) = \phi$ denotes that $i$ chooses the first act after exposure to $\alpha$, ${\allleadsto}(i, \alpha) = ¬\phi$ denotes $i$ choosing the second act and ${\allleadsto}(i, \alpha) = 0$ is used to represent indifference of $i$.
@@ -1301,17 +1301,17 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   \begin{theorem}
     \label{th:suffIndic}
     The following two conditions on $\allleadsto$ are equivalent:
-    \begin{enumerate}
-      \item \label{it:condHAI} for some $H \in \finite(\incr(\allhists))$ and $i_1 \in I \suchthat P_{i_1} \in P$, we have $\forall i_2 \suchthat P_{i_2} \neq P_{i_1}$ that $\exists \hist \in H \suchthat {\allleadsto}(\hist, i_1) \neq {\allleadsto}(\hist, i_2)$;
+    \begin{enumerate}[label=T\ref{th:suffIndic}-{\arabic*}]
+      \item \label{it:condHAI} for some $H \in \finite(\incr(\allhists))$ and $i_1 \in I \suchthat P_{i_1} \in P$, we have $\forall i_2 \suchthat P_{i_2} \neq P_{i_1}$ that $\exists \hist \in H \suchthat {\ileadsto[i_1]}(\hist) \neq {\ileadsto[i_2]}(\hist)$;
       \item \label{it:HAI} there exists a claim that holds and is anonymous and indicative.
     \end{enumerate}
   \end{theorem}
   \begin{proof}
-    For \cref{it:condHAI} $\implies$ \cref{it:HAI},
+    For \ref{it:condHAI} $\implies$ \ref{it:HAI},
     define $p = P_{i_1}$.
     Consider any claim $C$ such that $C^\text{HA} \wsub C \wsub C^\text{A}$ and $C$ is anonymous.
     % Define the claim $C$ as $\set{{\allleadstog} \in \allleadstos \suchthat \forall i \in I: {\ileadstog} \in \set{{\ileadsto[j]} \suchthat j \in I}}$ (or as anything included in it that includes $C^\text{HA}$ and is anonymous).
-    The claim is indicative for $i = i_1$ and $\theta = \set{(\hist, i_1, {\allleadsto}(\hist, i_1)) \suchthat \hist \in H}$ for the following reason.
+    The claim is indicative for $i = i_1$ and $\theta = \set{(\hist, i_1, {\ileadsto[i_1]}(\hist)) \suchthat \hist \in H}$ for the following reason.
     The attitudes in $C$ compatible with $\theta$ are $\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C \wsub \set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat P_j = p}}$, and $\pi(\set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat P_j = p}})(i_1) = p$.
 
     For \cref{it:HAI} $\implies$ \cref{it:condHAI},
@@ -1329,10 +1329,80 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
     Define $H = \set{\hist_i \suchthat i \in \intvl{2, \card{A} + 1}}$.
     Apply \cref{th:suffIndic}.
   \end{proof}
+\begin{example}
+  Consider $I_p$ such that $\forall i \in I_p$: $i$ constantly says $p$.
+  Consider $J = I \setminus I_p$ whose DJ is $p' \neq p$, and such that each $j \in J$ has a single decisive argument $\ar_j$ for $p'$, and when $\ar_j$ is not in $\hist$, $\hist \ileadsto[j] p$.
+  Then, the condition is not satisfied.
+\end{example}
+\begin{conjecture}
+  \label{th:caractNotIndicWrong}
+  The following two conditions on $\allleadsto$ are equivalent:
+  \begin{enumerate}[label=T\ref{th:caractNotIndic}-{\arabic*}]
+    \item \label{it:NotHAIWrong} there exists no claim that holds and is anonymous and indicative;
+    \item \label{it:condNotHAIWrong} either all individuals have an empty deliberated preference, or all paths are such that at least two individuals with different deliberated judgements behave identically on the whole path (formally: either $\pi(I) = \emptyset$ or $\forall \hist \in \allhists, \exists i_1, i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)$);
+    \item \label{it:condNotHAIInfWrong} [To be adjusted for the zero case] all paths are such that infinitely many individuals with different deliberated judgements behave identically on the whole path (formally: $\forall \hist \in \allhists, \exists I_1 \wsub I, i_2 \in I \suchthat \card{I_1} = \infty \land \forall i_1 \in I_1: \pi(i_1) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)$).
+  \end{enumerate}
 
+  This is WRONG because could have $i$ that says $\phi$ on $H$ and has $\phi$ as DJ, and $i$ can be isolated (nobody with DJ different than $\phi$ says $\phi$ on $H$) but still some $i_1, i_2$ with different DJ behave identically on $H$, say they both say $¬\phi$ on $H$.
+\end{conjecture}
+\begin{proof}
+  Let us show that NOT \ref{it:condNotHAIWrong} implies \ref{it:condHAI}.
+  Consider: at least one individual $i$ has a non-empty DP, and some path is such that
+  $\forall i_1, i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2): \exists \histp \wsub \hist \suchthat {\ileadsto[i_1]}(\histp) \neq {\ileadsto[i_2]}(\histp)$.
+  Define $H = \set{\histp \wsub \hist}$ and $i_1 = i$.
+  
+  Conversely, \ref{it:condHAI} implies NOT \ref{it:condNotHAIWrong}.
+  Consider: for some $H \in \finite(\incr(\allhists))$ and $i \in I \suchthat P_{i} \in P$, we have $\forall i_2 \suchthat P_{i_2} \neq P_i$ that $\exists \histp \in H \suchthat {\ileadsto}(\histp) \neq {\ileadsto[i_2]}(\histp)$.
+  Define $\hist$ as the maximal path (in cardinal) in $H$.
+  Consider any $i_1, i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2)$.
+  Remains to show that for some $\histp \wsub \hist$: ${\ileadsto[i_1]}(\histp) \neq {\ileadsto[i_2]}(\histp)$.
+  Assume, on the contrary, that for all $\histp \wsub \hist$: ${\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)$.
+\end{proof}
+\begin{conjecture}
+  \label{th:caractNotIndic}
+  The following conditions on $\allleadsto$ are equivalent:
+  \begin{enumerate}[label=T\ref{th:caractNotIndic}-{\arabic*}]
+    \item \label{it:NotHAI} there exists no claim that holds and is anonymous and indicative;
+    \item \label{it:condNotHAI} all paths are such that for all $i_1$ having a DJ, there is an $i_2$ with another deliberated judgement that behaves identically on the whole path (formally: $\forall \hist \in \allhists, i_1 \in I \suchthat \pi(i_1) \neq \emptyset: \exists i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)$);
+    % \item \label{it:condNotHAIAll} either all individuals have an empty deliberated preference, or all paths are such that for all $i_1$, there is an $i_2$ with another deliberated judgement that behaves identically on the whole path (formally: either $\pi(I) = \emptyset$ or $\forall \hist \in \allhists, i_1 \in I: \exists i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)$).
+    \item \label{it:condNotHAIInf} all paths are such that for all $i_1$, either at least one individual without a DJ, or infinitely many individuals $i_2$ with another deliberated judgement than $i_1$, behave identically to $i_1$ on the whole path (formally: $\forall \hist \in \allhists, i_1 \in I: [\exists i_2 \in I \suchthat \pi(i_2) = \emptyset \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)] \lor [\card(\set{i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)}) = \infty]$)
+  \end{enumerate}
+\end{conjecture}
+\begin{proof}
+  Let us show that NOT \ref{it:condNotHAI} implies \ref{it:condHAI}.
+  Consider: some individual $i$ and some path $\hist$ are such that $\pi(i) \neq \emptyset$ and
+  $\forall i_2 \in I \suchthat \pi(i) \neq \pi(i_2): \exists \histp \wsub \hist \suchthat {\ileadsto[i]}(\histp) \neq {\ileadsto[i_2]}(\histp)$.
+  Define $H = \set{\histp \wsub \hist}$ and $i_1 = i$.
+  
+  Conversely, \ref{it:condHAI} implies NOT \ref{it:condNotHAI}.
+  Consider: for some $H \in \finite(\incr(\allhists))$ and $i \in I \suchthat P_{i} \in P$, we have $\forall i_2 \suchthat P_{i_2} \neq P_i$ that $\exists \histp \in H \suchthat {\ileadsto}(\histp) \neq {\ileadsto[i_2]}(\histp)$.
+  Define $\hist$ as the maximal path (in cardinal) in $H$.
+
+  % Let us show that \ref{it:condNotHAI} implies \ref{it:condNotHAIAll}.
+  % Assume that at least one individual $i$ has a non-empty deliberated preference (otherwise, the first disjunct of \ref{it:condNotHAIAll} holds).
+  % Consider any path $\hist$ and $i_1$ with $\pi(i_1) = \emptyset$.
+  % Apply \ref{it:condNotHAI} on $i$, obtaining that $\exists i_2 \in I \suchthat \emptyset \neq \pi(i) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)$.
+  % NOPE, that’s wrong.
+
+  TODO prove that \ref{it:condNotHAI} implies \ref{it:condNotHAIInf}.
+\end{proof}
+\begin{example}
+  I believe that we can’t remove the $\pi(i_1) \neq \emptyset$ in \ref{it:condNotHAI}.
+  We could have \ref{it:condNotHAI} satisfied, but not the part with $\pi(i_1) \neq \emptyset$.
+  Consider $i_1$ with empty DJ on some path has only individuals with identical behavior on the path that have an empty DJ (though for normal $i$’s, the condition is satisfied, thus there are collisions, meaning some individuals with different DJ having identical behavior on the path).
+  TODO check.
+\end{example}
 \begin{remark}
-  Given $p \in P$, define $I_p = \set{i \in I \suchthat \pi(i) = p}$.
-  If $I \setminus I_p$ all have $\ar$ as a decisive argument, then \cref{it:condHAI} is satisfied: if $I_p \neq \emptyset$, pick $i \in I_p$, let $\ar'$ be a decisive argument for $i$, and define $H = \set{(\ar, \ar')}$; otherwise, define $H = \set{(\ar)}$.
+  Given $J \wsub I$, say that a set of paths discriminates $J$ iff some function associating each path to an answer is compatible with some $j \in J$ (meaning that $f \wsub {\ileadsto[j]}$) and is compatible with no $i \notin J$.
+  The condition says that there must be some $p$ and some increasing set of paths $H$ such that $H$ discriminates $J = \pi^{-1}(p)$.
+\end{remark}
+\begin{remark}
+  For failing the condition, I need an infinity of $j$’s (and at least one $i$) who agree on any branch of the history tree? (Meaning relations $\ileadsto[j]$, we don’t care about individuals.)
+  No: on any finite branch in the tree, I need that remains one $j$ and one $i$ such that infinite prolongation of the branch will never discriminate them.
+
+  That’s it: any finite branch of the tree (meaning, any $H$) is compatible with two DJs, meaning at least one relation having a given DJ and at least one relation having another DJ.
+
+  That means (still mandating that everybody has a DJ), that the condition mandates that any finite branch of the tree be compatible with infinitely many different relations having one DJ and at least one having another DJ. (Otherwise when there’s only finitely many we can just exclude them by testing all decisive arguments.)
 \end{remark}
 
   \section{Theories of deliberated choice}
