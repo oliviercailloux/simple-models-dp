@@ -1335,30 +1335,6 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   Then, the condition is not satisfied.
 \end{example}
 \begin{conjecture}
-  \label{th:caractNotIndicWrong}
-  The following two conditions on $\allleadsto$ are equivalent:
-  \begin{enumerate}[label=T\ref{th:caractNotIndic}-{\arabic*}]
-    \item \label{it:NotHAIWrong} there exists no claim that holds and is anonymous and indicative;
-    \item \label{it:condNotHAIWrong} either all individuals have an empty deliberated preference, or all paths are such that at least two individuals with different deliberated judgements behave identically on the whole path (formally: either $\pi(I) = \emptyset$ or $\forall \hist \in \allhists, \exists i_1, i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)$);
-    \item \label{it:condNotHAIInfWrong} [To be adjusted for the zero case] all paths are such that infinitely many individuals with different deliberated judgements behave identically on the whole path (formally: $\forall \hist \in \allhists, \exists I_1 \wsub I, i_2 \in I \suchthat \card{I_1} = \infty \land \forall i_1 \in I_1: \pi(i_1) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)$).
-  \end{enumerate}
-
-  This is WRONG because could have $i$ that says $\phi$ on $H$ and has $\phi$ as DJ, and $i$ can be isolated (nobody with DJ different than $\phi$ says $\phi$ on $H$) but still some $i_1, i_2$ with different DJ behave identically on $H$, say they both say $¬\phi$ on $H$.
-\end{conjecture}
-\begin{proof}
-  Let us show that NOT \ref{it:condNotHAIWrong} implies \ref{it:condHAI}.
-  Consider: at least one individual $i$ has a non-empty DP, and some path is such that
-  $\forall i_1, i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2): \exists \histp \wsub \hist \suchthat {\ileadsto[i_1]}(\histp) \neq {\ileadsto[i_2]}(\histp)$.
-  Define $H = \set{\histp \wsub \hist}$ and $i_1 = i$.
-  
-  Conversely, \ref{it:condHAI} implies NOT \ref{it:condNotHAIWrong}.
-  Consider: for some $H \in \finite(\incr(\allhists))$ and $i \in I \suchthat P_{i} \in P$, we have $\forall i_2 \suchthat P_{i_2} \neq P_i$ that $\exists \histp \in H \suchthat {\ileadsto}(\histp) \neq {\ileadsto[i_2]}(\histp)$.
-  Define $\hist$ as the maximal path (in cardinal) in $H$.
-  Consider any $i_1, i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2)$.
-  Remains to show that for some $\histp \wsub \hist$: ${\ileadsto[i_1]}(\histp) \neq {\ileadsto[i_2]}(\histp)$.
-  Assume, on the contrary, that for all $\histp \wsub \hist$: ${\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)$.
-\end{proof}
-\begin{conjecture}
   \label{th:caractNotIndic}
   The following conditions on $\allleadsto$ are equivalent:
   \begin{enumerate}[label=T\ref{th:caractNotIndic}-{\arabic*}]
