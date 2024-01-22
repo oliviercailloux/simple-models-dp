@@ -1364,7 +1364,6 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   \begin{enumerate}[label=T\ref{th:caractNotIndic}-{\arabic*}]
     \item \label{it:NotHAI} there exists no claim that holds and is anonymous and indicative;
     \item \label{it:condNotHAI} all paths are such that for all $i_1$ having a DJ, there is an $i_2$ with another deliberated judgement that behaves identically on the whole path (formally: $\forall \hist \in \allhists, i_1 \in I \suchthat \pi(i_1) \neq \emptyset: \exists i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)$);
-    % \item \label{it:condNotHAIAll} either all individuals have an empty deliberated preference, or all paths are such that for all $i_1$, there is an $i_2$ with another deliberated judgement that behaves identically on the whole path (formally: either $\pi(I) = \emptyset$ or $\forall \hist \in \allhists, i_1 \in I: \exists i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)$).
     \item \label{it:condNotHAIInf} all paths are such that for all $i_1$, either at least one individual without a DJ, or infinitely many individuals $i_2$ with another deliberated judgement than $i_1$, behave identically to $i_1$ on the whole path (formally: $\forall \hist \in \allhists, i_1 \in I: [\exists i_2 \in I \suchthat \pi(i_2) = \emptyset \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)] \lor [\card(\set{i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)}) = \infty]$)
   \end{enumerate}
 \end{conjecture}
@@ -1378,17 +1377,37 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   Consider: for some $H \in \finite(\incr(\allhists))$ and $i \in I \suchthat P_{i} \in P$, we have $\forall i_2 \suchthat P_{i_2} \neq P_i$ that $\exists \histp \in H \suchthat {\ileadsto}(\histp) \neq {\ileadsto[i_2]}(\histp)$.
   Define $\hist$ as the maximal path (in cardinal) in $H$.
 
-  % Let us show that \ref{it:condNotHAI} implies \ref{it:condNotHAIAll}.
-  % Assume that at least one individual $i$ has a non-empty deliberated preference (otherwise, the first disjunct of \ref{it:condNotHAIAll} holds).
-  % Consider any path $\hist$ and $i_1$ with $\pi(i_1) = \emptyset$.
-  % Apply \ref{it:condNotHAI} on $i$, obtaining that $\exists i_2 \in I \suchthat \emptyset \neq \pi(i) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)$.
-  % NOPE, that’s wrong.
-
-  TODO prove that \ref{it:condNotHAI} implies \ref{it:condNotHAIInf}.
+  Let us now prove that \ref{it:condNotHAI} implies \ref{it:condNotHAIInf}.
+  Consider any $\hist \in \allhists, i_1 \in I$.
+  Define $J = \set{i_2 \in I \suchthat \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)}$.
+  Assume that $\forall i_2 \in J: \pi(i_2) \neq \emptyset$ (otherwise, the first disjunct of \ref{it:condNotHAIInf} holds), and let us show that $\card\set{i_2 \in J \suchthat \pi(i_1) \neq \pi(i_2)} = \infty$.
+  From $\forall i_2 \in J: \pi(i_2) \neq \emptyset$, we obtain $\pi(i_1) \neq \emptyset$, thus, $\exists a_{i_1} \in \allargs \suchthat a_{i_1} \ileadstost[i_1] \pi(i_1)$.
+  Apply \ref{it:condNotHAI} to obtain some $i_2 \in J$ such that $\pi(i_1) \neq \pi(i_2)$.
+  Also, by our assumption, $\pi(i_2) \neq \emptyset$, thus, $\exists a_{i_2} \in \allargs \suchthat a_{i_2} \ileadstost[i_2] \pi(i_2)$.
+  Consider the path $\histp = (\hist, a_{i_1}, a_{i_2})$. We have $\histp \ileadsto[i_1] \pi(i_1) \neq \histp \ileadsto[i_2] \pi(i_2)$, thus ${\ileadsto[i_1]}(\histp) \neq {\ileadsto[i_2]}(\histp)$. 
+  Apply \ref{it:condNotHAI} on $\histp, i_1$. We obtain some $i_3 \in I$ such that $\pi(i_1) \neq \pi(i_3)$ and $\forall \histpp \wsub \histp: {\ileadsto[i_1]}(\histpp) = {\ileadsto[i_3]}(\histpp)$.
+  In particular, ${\ileadsto[i_1]}(\histp) = {\ileadsto[i_3]}(\histp)$, thus, $i_3 \neq i_2$.
+  Also, $i_3 \in J$.
+  Iterating this process, we obtain an infinite sequence of distinct individuals in $J$.
+  In other words, we have shown that if some $i_2 \in J, \hist^{(2)} \in \allhists$ with $\pi(i_2) \neq \emptyset$ and $i_1$ and $i_2$ agree everywhere on $\hist^{(2)}$, then there exists $i_3 \in J, \hist^{(3)} \in \allhists$ with $\pi(i_3) \neq \emptyset$ and $\hist^{(2)} \ssub \hist^{(3)}$ and $i_1$ and $i_2$ disagree somewhere on $\hist^{(3)}$ and $i_1$ and $i_2$ agree everywhere on $\hist^{(3)}$. (Should check this summary.)
+  Could also use the following probably simpler proof. Consider any finite subset of $j$ individuals, build a $H'$ with all the test paths containing decisive arguments, namely $\hist^{(2)} = (\hist, a_1, a_2)$, $\hist^{(3)} = (\hist^{(2)}, a_1, a_3)$, …, and show that there’s another $j$ in fact.
 \end{proof}
 \begin{example}
-  I believe that we can’t remove the $\pi(i_1) \neq \emptyset$ in \ref{it:condNotHAI}.
-  We could have \ref{it:condNotHAI} satisfied, but not the part with $\pi(i_1) \neq \emptyset$.
+  TODO find example where Per \cref{th:caractNotIndic}, there is no claim that holds and is anonymous and indicative.
+
+  % Given $\ar \in \allargs$ and $p, p' \in P$, define ${\ileadsto[i^{(\ar, p, p')}]}$ as $\hist \ileadsto[i^{(\ar, p, p')}] p$ iff $\ar \in \histend$ and $\hist \ileadsto[i^{(\ar, p, p')}] p'$ otherwise.
+  % It follows that $\pi(i^{(\ar, p, p')}) = p$.
+
+  % Pick any two $p \neq p' \in P$ and consider infinitely many arguments $\allargs = \set{\ar_1, …, }$ and infinitely many individuals $I = \set{i^{(\ar, p, p')} \suchthat \ar \in \allargs} \cup \set{i^{(\ar, p', p)} \suchthat \ar \in \allargs}$.
+  % Per \cref{th:caractNotIndic}, there is no claim that holds and is anonymous and indicative:
+  % consider any $\hist, i_1$, if $\ar_1$. NOPE, that’s wrong, I think.
+
+  % Define ${\ileadsto[i^{(\ar, \phi)}]}$ as $\hist \ileadsto[i^{(\ar, \phi)}] \phi$ iff $\hist_0 = \ar$ and $\hist \ileadsto[i^{(\ar, \phi)}] ¬\phi$ otherwise.
+  % It follows that $\pi(i^{(\ar, \phi)}) = \emptyset$.
+
+  The condition $\pi(i_1) \neq \emptyset$ in \ref{it:condNotHAI} is required, as seen by this example where \ref{it:condNotHAI} is satisfied, even though
+  $[\forall \hist \in \allhists, i_1 \in I: \exists i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)]$ is not.
+We could have \ref{it:condNotHAI} satisfied, but not the part with $\pi(i_1) \neq \emptyset$.
   Consider $i_1$ with empty DJ on some path has only individuals with identical behavior on the path that have an empty DJ (though for normal $i$’s, the condition is satisfied, thus there are collisions, meaning some individuals with different DJ having identical behavior on the path).
   TODO check.
 \end{example}
