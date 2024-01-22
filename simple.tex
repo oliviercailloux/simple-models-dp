@@ -1334,7 +1334,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   Consider $J = I \setminus I_p$ whose DJ is $p' \neq p$, and such that each $j \in J$ has a single decisive argument $\ar_j$ for $p'$, and when $\ar_j$ is not in $\hist$, $\hist \ileadsto[j] p$.
   Then, the condition is not satisfied.
 \end{example}
-\begin{conjecture}
+\begin{theorem}
   \label{th:caractNotIndic}
   The following conditions on $\allleadsto$ are equivalent:
   \begin{enumerate}[label=T\ref{th:caractNotIndic}-{\arabic*}]
@@ -1342,7 +1342,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
     \item \label{it:condNotHAI} all paths are such that for all $i_1$ having a DJ, there is an $i_2$ with another deliberated judgement that behaves identically on the whole path (formally: $\forall \hist \in \allhists, i_1 \in I \suchthat \pi(i_1) \neq \emptyset: \exists i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)$);
     \item \label{it:condNotHAIInf} all paths are such that for all $i_1$, either at least one individual without a DJ, or infinitely many individuals $i_2$ with another deliberated judgement than $i_1$, behave identically to $i_1$ on the whole path (formally: $\forall \hist \in \allhists, i_1 \in I: [\exists i_2 \in I \suchthat \pi(i_2) = \emptyset \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)] \lor [\card(\set{i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)}) = \infty]$)
   \end{enumerate}
-\end{conjecture}
+\end{theorem}
 \begin{proof}
   Let us show that NOT \ref{it:condNotHAI} implies \ref{it:condHAI}.
   Consider: some individual $i$ and some path $\hist$ are such that $\pi(i) \neq \emptyset$ and
@@ -1385,7 +1385,6 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   $[\forall \hist \in \allhists, i_1 \in I: \exists i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)]$ is not.
 We could have \ref{it:condNotHAI} satisfied, but not the part with $\pi(i_1) \neq \emptyset$.
   Consider $i_1$ with empty DJ on some path has only individuals with identical behavior on the path that have an empty DJ (though for normal $i$’s, the condition is satisfied, thus there are collisions, meaning some individuals with different DJ having identical behavior on the path).
-  TODO check.
 \end{example}
 \begin{remark}
   Given $J \wsub I$, say that a set of paths discriminates $J$ iff some function associating each path to an answer is compatible with some $j \in J$ (meaning that $f \wsub {\ileadsto[j]}$) and is compatible with no $i \notin J$.
