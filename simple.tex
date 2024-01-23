@@ -1368,54 +1368,18 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   In other words, we have shown that if some $i_2 \in J, \hist^{(2)} \in \allhists$ with $\pi(i_2) \neq \emptyset$ and $i_1$ and $i_2$ agree everywhere on $\hist^{(2)}$, then there exists $i_3 \in J, \hist^{(3)} \in \allhists$ with $\pi(i_3) \neq \emptyset$ and $\hist^{(2)} \ssub \hist^{(3)}$ and $i_1$ and $i_2$ disagree somewhere on $\hist^{(3)}$ and $i_1$ and $i_2$ agree everywhere on $\hist^{(3)}$. (Should check this summary.)
   Could also use the following probably simpler proof. Consider any finite subset of $j$ individuals, build a $H'$ with all the test paths containing decisive arguments, namely $\hist^{(2)} = (\hist, a_1, a_2)$, $\hist^{(3)} = (\hist^{(2)}, a_1, a_3)$, …, and show that there’s another $j$ in fact.
 \end{proof}
-\begin{example}
-  Given $\hist \in \allhists$, $\ar \in \allargs$ and $p \in P$, define ${\ileadsto[i^{(\hist, p)}]}$ as $\histp \ileadsto[i^{(\hist, p)}] \phi$ if $\histp \wsub \hist$ and $\histp \ileadsto[i^{(\hist, p)}] p$ otherwise.
-  It follows that $\forall \ar \notin \hist(\N)$, then $\ar \ileadstost[i^{(\hist, \ar)}] p$.
-
-  Given any infinite set $\allargs$, define $I = \set{i^{(\hist, p)} \suchthat \hist \in \allhists, p \in P}$.
-  Considering any $\hist \in \finite(\allhists)$ and $i^{(\histp, p)} \in I$, pick any $p' \neq p$ and consider $j = i^{(\histp, p')}$.
-  
-  NOPE
-  
-  Given $H_\phi$, $H_{¬\phi}$ and $p \in P$ with $H_\phi \cap H_{¬\phi} = \emptyset$, define ${\ileadsto[i^{(H_\phi, H_{¬\phi}, p)}]}$ as $\hist \ileadsto[i^{(H_\phi, H_{¬\phi}, p)}] \phi$ if $\hist \in H_\phi$, $\hist \ileadsto[i^{(H_\phi, H_{¬\phi}, p)}] ¬\phi$ if $\hist \in H_{¬\phi}$ and $\hist \ileadsto[i^{(H_\phi, H_{¬\phi}, p)}] p$ if $\hist \notin H_\phi \cup H_{¬\phi}$.
-  
-  Given any infinite set $\allargs$, define $I = \set{i^{(H_\phi, H_{¬\phi}, p)} \suchthat H_\phi \cap H_{¬\phi} = \emptyset, p \in P}$.
-  Considering any $\hist \in \finite(\allhists)$ and $i^{(H_\phi, H_{¬\phi}, p)} \in I$, pick any $p' \neq p$ and consider $j = i^{(\histp, p')}$.
-  
-  NOPE
-
+\begin{example}[no HAI]
   Given any infinite set $\allargs$, define $I = \set{f \in P^{\allhists} \suchthat \pi(f) \neq \emptyset}$ and $\forall i \in I: {\ileadsto} = i$.
   Considering any $\hist \in \finite(\allhists)$ and ${\ileadsto} \in I$, pick another relation that coincides on $\hist$ but with another DJ than ${\ileadsto}$. This is possible because $\hist$ is finite, thus there is an argument that is not involved in any of its elements, which can serve as decisive one.
-
-  SEEMS OKAY!
-  
-  $p' \neq p$ and consider $j = i^{(\histp, p')}$.
-  
-  TODO find example where Per \cref{th:caractNotIndic}, there is no claim that holds and is anonymous and indicative.
-  For each path we need two individuals $i^{(\hist, \ar, p)}$ and $i^{(\hist, \ar, p')}$ that have the same behavior all along $\hist$ but different DJs.
-  Defining individuals systematically in such a way should produce a suitable situation.
+  Per \cref{th:caractNotIndic}, there is no claim that holds and is anonymous and indicative.
 
   If using empty DJs, it’s easier. Define $.* \ileadsto[i_1] \phi$, $\emptyset \ileadsto[i_2] \phi$, $a.* \ileadsto[i_2] \phi$, $b.* \ileadsto[i_2] ¬\phi$, $\emptyset \ileadsto[i_3] \phi$, $a.* \ileadsto[i_3] ¬\phi$, $b.* \ileadsto[i_3] \phi$. 
   Then $\pi(i_1) = \phi$ and $\pi(i_2) = \pi(i_3) = \emptyset$.
   Also, for any path, if it is only $\emptyset$, everybody agree; if it starts with $a$ then $i_1$ and $i_2$ agree on it; if it starts with $b$ then $i_1$ and $i_3$ agree on it.
 
-  % All individuals always go to $\phi$ except for their own decisive argument, leading them, for $i_1, …$, to $\phi$, and for $j_1, …$, to $¬\phi$.
-  % So that when observing someone going always to $\phi$ except for a given argument, 
-
-  % Given $\ar \in \allargs$ and $p, p' \in P$, define ${\ileadsto[i^{(\ar, p, p')}]}$ as $\hist \ileadsto[i^{(\ar, p, p')}] p$ iff $\ar \in \histend$ and $\hist \ileadsto[i^{(\ar, p, p')}] p'$ otherwise.
-  % It follows that $\pi(i^{(\ar, p, p')}) = p$.
-
-  % Pick any two $p \neq p' \in P$ and consider infinitely many arguments $\allargs = \set{\ar_1, …, }$ and infinitely many individuals $I = \set{i^{(\ar, p, p')} \suchthat \ar \in \allargs} \cup \set{i^{(\ar, p', p)} \suchthat \ar \in \allargs}$.
-  % Per \cref{th:caractNotIndic}, there is no claim that holds and is anonymous and indicative:
-  % consider any $\hist, i_1$, if $\ar_1$. NOPE, that’s wrong, I think.
-
-  % Define ${\ileadsto[i^{(\ar, \phi)}]}$ as $\hist \ileadsto[i^{(\ar, \phi)}] \phi$ iff $\hist_0 = \ar$ and $\hist \ileadsto[i^{(\ar, \phi)}] ¬\phi$ otherwise.
-  % It follows that $\pi(i^{(\ar, \phi)}) = \emptyset$.
-
   The condition $\pi(i_1) \neq \emptyset$ in \ref{it:condNotHAI} is required, as seen by this example where \ref{it:condNotHAI} is satisfied, even though
   $[\forall \hist \in \allhists, i_1 \in I: \exists i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)]$ is not.
-We could have \ref{it:condNotHAI} satisfied, but not the part with $\pi(i_1) \neq \emptyset$.
-  Consider $i_1$ with empty DJ on some path has only individuals with identical behavior on the path that have an empty DJ (though for normal $i$’s, the condition is satisfied, thus there are collisions, meaning some individuals with different DJ having identical behavior on the path).
+  TODO reuse the example here above to satisfy the condition, but add some $i_1$ with empty DJ who on some path has only individuals with identical behavior on the path that have an empty DJ.
 \end{example}
 \begin{remark}
   Given $J \wsub I$, say that a set of paths discriminates $J$ iff some function associating each path to an answer is compatible with some $j \in J$ (meaning that $f \wsub {\ileadsto[j]}$) and is compatible with no $i \notin J$.
