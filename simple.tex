@@ -1369,7 +1369,38 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   Could also use the following probably simpler proof. Consider any finite subset of $j$ individuals, build a $H'$ with all the test paths containing decisive arguments, namely $\hist^{(2)} = (\hist, a_1, a_2)$, $\hist^{(3)} = (\hist^{(2)}, a_1, a_3)$, …, and show that there’s another $j$ in fact.
 \end{proof}
 \begin{example}
+  Given $\hist \in \allhists$, $\ar \in \allargs$ and $p \in P$, define ${\ileadsto[i^{(\hist, p)}]}$ as $\histp \ileadsto[i^{(\hist, p)}] \phi$ if $\histp \wsub \hist$ and $\histp \ileadsto[i^{(\hist, p)}] p$ otherwise.
+  It follows that $\forall \ar \notin \hist(\N)$, then $\ar \ileadstost[i^{(\hist, \ar)}] p$.
+
+  Given any infinite set $\allargs$, define $I = \set{i^{(\hist, p)} \suchthat \hist \in \allhists, p \in P}$.
+  Considering any $\hist \in \finite(\allhists)$ and $i^{(\histp, p)} \in I$, pick any $p' \neq p$ and consider $j = i^{(\histp, p')}$.
+  
+  NOPE
+  
+  Given $H_\phi$, $H_{¬\phi}$ and $p \in P$ with $H_\phi \cap H_{¬\phi} = \emptyset$, define ${\ileadsto[i^{(H_\phi, H_{¬\phi}, p)}]}$ as $\hist \ileadsto[i^{(H_\phi, H_{¬\phi}, p)}] \phi$ if $\hist \in H_\phi$, $\hist \ileadsto[i^{(H_\phi, H_{¬\phi}, p)}] ¬\phi$ if $\hist \in H_{¬\phi}$ and $\hist \ileadsto[i^{(H_\phi, H_{¬\phi}, p)}] p$ if $\hist \notin H_\phi \cup H_{¬\phi}$.
+  
+  Given any infinite set $\allargs$, define $I = \set{i^{(H_\phi, H_{¬\phi}, p)} \suchthat H_\phi \cap H_{¬\phi} = \emptyset, p \in P}$.
+  Considering any $\hist \in \finite(\allhists)$ and $i^{(H_\phi, H_{¬\phi}, p)} \in I$, pick any $p' \neq p$ and consider $j = i^{(\histp, p')}$.
+  
+  NOPE
+
+  Given any infinite set $\allargs$, define $I = \set{f \in P^{\allhists} \suchthat \pi(f) \neq \emptyset}$ and $\forall i \in I: {\ileadsto} = i$.
+  Considering any $\hist \in \finite(\allhists)$ and ${\ileadsto} \in I$, pick another relation that coincides on $\hist$ but with another DJ than ${\ileadsto}$. This is possible because $\hist$ is finite, thus there is an argument that is not involved in any of its elements, which can serve as decisive one.
+
+  SEEMS OKAY!
+  
+  $p' \neq p$ and consider $j = i^{(\histp, p')}$.
+  
   TODO find example where Per \cref{th:caractNotIndic}, there is no claim that holds and is anonymous and indicative.
+  For each path we need two individuals $i^{(\hist, \ar, p)}$ and $i^{(\hist, \ar, p')}$ that have the same behavior all along $\hist$ but different DJs.
+  Defining individuals systematically in such a way should produce a suitable situation.
+
+  If using empty DJs, it’s easier. Define $.* \ileadsto[i_1] \phi$, $\emptyset \ileadsto[i_2] \phi$, $a.* \ileadsto[i_2] \phi$, $b.* \ileadsto[i_2] ¬\phi$, $\emptyset \ileadsto[i_3] \phi$, $a.* \ileadsto[i_3] ¬\phi$, $b.* \ileadsto[i_3] \phi$. 
+  Then $\pi(i_1) = \phi$ and $\pi(i_2) = \pi(i_3) = \emptyset$.
+  Also, for any path, if it is only $\emptyset$, everybody agree; if it starts with $a$ then $i_1$ and $i_2$ agree on it; if it starts with $b$ then $i_1$ and $i_3$ agree on it.
+
+  % All individuals always go to $\phi$ except for their own decisive argument, leading them, for $i_1, …$, to $\phi$, and for $j_1, …$, to $¬\phi$.
+  % So that when observing someone going always to $\phi$ except for a given argument, 
 
   % Given $\ar \in \allargs$ and $p, p' \in P$, define ${\ileadsto[i^{(\ar, p, p')}]}$ as $\hist \ileadsto[i^{(\ar, p, p')}] p$ iff $\ar \in \histend$ and $\hist \ileadsto[i^{(\ar, p, p')}] p'$ otherwise.
   % It follows that $\pi(i^{(\ar, p, p')}) = p$.
