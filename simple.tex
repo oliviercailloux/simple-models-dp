@@ -1325,8 +1325,8 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   \begin{proof}
     We know that $i_1$ has some decisive argument $a_1$ in favor of $p$.
     Assume (wlog) that $A = \set{2, …, \card{A} + 1}$.
-    Define $\hist_1 = \emptyset$ and for $i \in \intvl{2, \card{A} + 1}$, $\hist_i = (\hist_{i - 1}, a_1, i)$.
-    Define $H = \set{\hist_i \suchthat i \in \intvl{2, \card{A} + 1}}$.
+    Define $\hist_1 = \emptyset$ and for $i \in \intvl{2, \card{A} + 1}$, $\hist^{(i)} = (\hist_{i - 1}, a_1, i)$.
+    Define $H = \set{\hist^{(i)} \suchthat i \in \intvl{2, \card{A} + 1}}$.
     Apply \cref{th:suffIndic}.
   \end{proof}
 \begin{example}
