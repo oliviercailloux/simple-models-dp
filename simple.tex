@@ -1382,16 +1382,18 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   Then $\pi(i_1) = \phi$ and $\pi(i_2) = \pi(i_3) = \emptyset$.
   This satisfies \ref{it:condNotHAI}: considering any $\hist \in \allhists$, if $(1, a) \in \hist$, then $i_2$ collides with $i_1$ on $\hist$, and otherwise, $i_3$ does.
 \end{example}  
-\begin{remark}[no HAI thanks to condition]
-  Whether the condition $\pi(i_1) \neq \emptyset$ in \ref{it:condNotHAI} is required remains an open question. Showing that it is required requires an example where,
-  defining $Q(\hist, i_1)$ as $\exists i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)$,
-  the condition
-  $\forall \hist \in \allhists, i_1 \in I \suchthat \pi(i_1) \neq \emptyset: Q(\hist, i_1)$ is satisfied, even though
-  $[\forall \hist \in \allhists, i_1 \in I: Q(\hist, i_1)]$ is not, thus satisfying $\exists \hist, i_0 \suchthat \pi(i_0) = \emptyset \land ¬Q(\hist, i_0)$.
+\begin{remark}[no HAI condition required]
+  The condition $\pi(i_1) \neq \emptyset$ in \ref{it:condNotHAI} is required:
+  the following example satisfies \ref{it:condNotHAI} but fails the extended version of that condition without that condition.
+  In other words, defining $Q(\hist, i_1)$ as $\exists i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)$,
+  the example satisfies
+  $\forall \hist \in \allhists, i_1 \in I \suchthat \pi(i_1) \neq \emptyset: Q(\hist, i_1)$,
+  but does not satisfy
+  $[\forall \hist \in \allhists, i_1 \in I: Q(\hist, i_1)]$, thus, satisfies 
+  $\exists \hist, i_0 \suchthat \pi(i_0) = \emptyset \land ¬Q(\hist, i_0)$.
   
-  Define $I = \set{i_1, …, i_5}$, $\ileadsto[i_1], \ileadsto[i_2], \ileadsto[i_3]$ as in \cref{ex:noHAI} and $\ileadsto[i_4]$ and $\ileadsto[i_5]$ as: $.* \ileadsto[i_4] ¬\phi$, $\emptyset \ileadsto[i_4] ¬\phi$, $a.* \ileadsto[i_4] \phi$, $b.* \ileadsto[i_4] ¬\phi$, $\emptyset \ileadsto[i_5] ¬\phi$, $a.* \ileadsto[i_5] ¬\phi$, $b.* \ileadsto[i_5] \phi$. 
+  Define $I = \set{i_1, …, i_4}$, $\ileadsto[i_1], \ileadsto[i_2], \ileadsto[i_3]$ as in \cref{ex:noHAI} and $\ileadsto[i_4]$ as: $.* \ileadsto[i_4] ¬\phi$, $\emptyset \ileadsto[i_4] ¬\phi$, $a.* \ileadsto[i_4] \phi$, $b.* \ileadsto[i_4] ¬\phi$. 
   This satisfies \ref{it:condNotHAI} for the reason given in \cref{ex:noHAI}, and fails $Q(\emptyset, i_4)$.
-  This is not possible by starting from \cref{ex:noHAIwithDJ}: given any infinite set $\allargs$, defining some adequate $J = \set{i_0, …}$ and $I = I^\text{DJ} \cup J$ and $\forall i \in I: {\ileadsto} = i$, we get that $i_0$ conflicts on every paths with some individuals in $I^\text{DJ}$.
 \end{remark}
 \begin{remark}
   Given $J \wsub I$, say that a set of paths discriminates $J$ iff some function associating each path to an answer is compatible with some $j \in J$ (meaning that $f \wsub {\ileadsto[j]}$) and is compatible with no $i \notin J$.
