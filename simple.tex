@@ -1368,19 +1368,31 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   In other words, we have shown that if some $i_2 \in J, \hist^{(2)} \in \allhists$ with $\pi(i_2) \neq \emptyset$ and $i_1$ and $i_2$ agree everywhere on $\hist^{(2)}$, then there exists $i_3 \in J, \hist^{(3)} \in \allhists$ with $\pi(i_3) \neq \emptyset$ and $\hist^{(2)} \ssub \hist^{(3)}$ and $i_1$ and $i_2$ disagree somewhere on $\hist^{(3)}$ and $i_1$ and $i_2$ agree everywhere on $\hist^{(3)}$. (Should check this summary.)
   Could also use the following probably simpler proof. Consider any finite subset of $j$ individuals, build a $H'$ with all the test paths containing decisive arguments, namely $\hist^{(2)} = (\hist, a_1, a_2)$, $\hist^{(3)} = (\hist^{(2)}, a_1, a_3)$, …, and show that there’s another $j$ in fact.
 \end{proof}
-\begin{example}[no HAI]
-  Given any infinite set $\allargs$, define $I = \set{f \in P^{\allhists} \suchthat \pi(f) \neq \emptyset}$ and $\forall i \in I: {\ileadsto} = i$.
+\begin{example}[no HAI, with DJ]
+  \label{ex:noHAIwithDJ}
+  The following situation illustrates \cref{th:caractNotIndic} and involve only individuals with a DJ.
+  
+  Given any infinite set $\allargs$, define $I = I^\text{DJ} = \set{f \in P^{\allhists} \suchthat \pi(f) \neq \emptyset}$ and $\forall i \in I: {\ileadsto} = i$.
   Considering any $\hist \in \finite(\allhists)$ and ${\ileadsto} \in I$, pick another relation that coincides on $\hist$ but with another DJ than ${\ileadsto}$. This is possible because $\hist$ is finite, thus there is an argument that is not involved in any of its elements, which can serve as decisive one.
   Per \cref{th:caractNotIndic}, there is no claim that holds and is anonymous and indicative.
-
-  If using empty DJs, it’s easier. Define $.* \ileadsto[i_1] \phi$, $\emptyset \ileadsto[i_2] \phi$, $a.* \ileadsto[i_2] \phi$, $b.* \ileadsto[i_2] ¬\phi$, $\emptyset \ileadsto[i_3] \phi$, $a.* \ileadsto[i_3] ¬\phi$, $b.* \ileadsto[i_3] \phi$. 
+\end{example}  
+\begin{example}[no HAI]
+  \label{ex:noHAI}
+  Define $I = \set{i_1, i_2, i_3}$ and $\allleadsto$ as follows: $.* \ileadsto[i_1] \phi$, $\emptyset \ileadsto[i_2] \phi$, $a.* \ileadsto[i_2] \phi$, $b.* \ileadsto[i_2] ¬\phi$, $\emptyset \ileadsto[i_3] \phi$, $a.* \ileadsto[i_3] ¬\phi$, $b.* \ileadsto[i_3] \phi$. 
   Then $\pi(i_1) = \phi$ and $\pi(i_2) = \pi(i_3) = \emptyset$.
-  Also, for any path, if it is only $\emptyset$, everybody agree; if it starts with $a$ then $i_1$ and $i_2$ agree on it; if it starts with $b$ then $i_1$ and $i_3$ agree on it.
-
-  The condition $\pi(i_1) \neq \emptyset$ in \ref{it:condNotHAI} is required, as seen by this example where \ref{it:condNotHAI} is satisfied, even though
-  $[\forall \hist \in \allhists, i_1 \in I: \exists i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)]$ is not.
-  TODO reuse the example here above to satisfy the condition, but add some $i_1$ with empty DJ who on some path has only individuals with identical behavior on the path that have an empty DJ.
-\end{example}
+  This satisfies \ref{it:condNotHAI}: considering any $\hist \in \allhists$, if $(1, a) \in \hist$, then $i_2$ collides with $i_1$ on $\hist$, and otherwise, $i_3$ does.
+\end{example}  
+\begin{remark}[no HAI thanks to condition]
+  Whether the condition $\pi(i_1) \neq \emptyset$ in \ref{it:condNotHAI} is required remains an open question. Showing that it is required requires an example where,
+  defining $Q(\hist, i_1)$ as $\exists i_2 \in I \suchthat \pi(i_1) \neq \pi(i_2) \land \forall \histp \wsub \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)$,
+  the condition
+  $\forall \hist \in \allhists, i_1 \in I \suchthat \pi(i_1) \neq \emptyset: Q(\hist, i_1)$ is satisfied, even though
+  $[\forall \hist \in \allhists, i_1 \in I: Q(\hist, i_1)]$ is not, thus satisfying $\exists \hist, i_0 \suchthat \pi(i_0) = \emptyset \land ¬Q(\hist, i_0)$.
+  
+  Define $I = \set{i_1, …, i_5}$, $\ileadsto[i_1], \ileadsto[i_2], \ileadsto[i_3]$ as in \cref{ex:noHAI} and $\ileadsto[i_4]$ and $\ileadsto[i_5]$ as: $.* \ileadsto[i_4] ¬\phi$, $\emptyset \ileadsto[i_4] ¬\phi$, $a.* \ileadsto[i_4] \phi$, $b.* \ileadsto[i_4] ¬\phi$, $\emptyset \ileadsto[i_5] ¬\phi$, $a.* \ileadsto[i_5] ¬\phi$, $b.* \ileadsto[i_5] \phi$. 
+  This satisfies \ref{it:condNotHAI} for the reason given in \cref{ex:noHAI}, and fails $Q(\emptyset, i_4)$.
+  This is not possible by starting from \cref{ex:noHAIwithDJ}: given any infinite set $\allargs$, defining some adequate $J = \set{i_0, …}$ and $I = I^\text{DJ} \cup J$ and $\forall i \in I: {\ileadsto} = i$, we get that $i_0$ conflicts on every paths with some individuals in $I^\text{DJ}$.
+\end{remark}
 \begin{remark}
   Given $J \wsub I$, say that a set of paths discriminates $J$ iff some function associating each path to an answer is compatible with some $j \in J$ (meaning that $f \wsub {\ileadsto[j]}$) and is compatible with no $i \notin J$.
   The condition says that there must be some $p$ and some increasing set of paths $H$ such that $H$ discriminates $J = \pi^{-1}(p)$.
