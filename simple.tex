@@ -505,37 +505,6 @@ They are always satisfiable when only these two are required (\cref{th:ha}).
 \Cref{th:infoBeyonCKO} (and extensions, \cref{th:infoBeyonCKOext,th:strinfoBeyonCKO}) shows that informativeness beyond counting (and variants) is too demanding if one wants to investigate situations where individuals have differing deliberate preferences.
 
 It is possible under reasonable conditions of regularity to satisfy anonymous and holding together with indicativeness. This happens for example when everybody has a deliberate judgment and a finite set of decisive arguments suffices to lead everybody to their deliberate judgment (\cref{th:suffIndicDec}).
-  
-\begin{theorem}
-  \label{th:suffFals}
-  Assume that $\forall {\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}: \exists H \in \finite(\incr(\allhists)) \suchthat \forall j \in I: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadsto[j]}(\hist)$.
-  Then, there exists a claim that holds and is anonymous and falsifiable.
-\end{theorem}
-\begin{proof}
-  Define $C = \set{{\allleadstog} \suchthat \forall i \in I: {\ileadstog} \in \set{{\ileadsto[j]} \suchthat j \in I}}$. It holds and is anonymous.
-  Pick any ${\allleadstog} \notin C$.
-  Then, $\exists i \in I \suchthat {{\ileadstog}} \notin \set{{\ileadsto[k]} \suchthat k \in I}$.
-  Pick any such $i$ and any $H$ such that $\forall j \in I: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadsto[j]}(\hist)$.
-  Define $\theta = \set{(\hist, i, {\ileadstog}(\hist)) \suchthat \hist \in H} \in \Theta \cap \powerset{\allleadstog}$.
-  Then, $\theta \notin C^\wsub$, because $\forall j \in I: \theta \nsubseteq {\ileadsto[j]}$. 
-  
-  For another proof, note that $C^\wsub \cap \Theta = \set{\theta \in \Theta \suchthat \forall i \in I: \exists j \in I \suchthat \theta \cap (\allhists × \set{i} × P) \wsub {\ileadsto[j]}}$.
-  Pick any ${\allleadstog} \in E(C^\wsub \cap \Theta)$ and let us show that ${\allleadstog} \in C$.
-  Note that ${\allleadstog} \notin C \iff \exists i \in I \suchthat {\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}$, in which case the consequent in the theorem holds.
-  We need to show that $\nexists i \in I, H \in \finite(\incr(\allhists)) \suchthat \forall j \in I: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadsto[j]}(\hist)$.
-  In other words, given any $i \in I$, we need to show that $\forall H \in \finite(\incr(\allhists)): \exists j \in I \suchthat \forall \hist \in H: {\ileadstog}(\hist) = {\ileadsto[j]}(\hist)$.
-\end{proof}
-
-\begin{remark}
-  The opposite of \cref{th:suffFals} is NOT $\forall {\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}: \exists H \in \finite(\incr(\allhists)) \suchthat \forall j \in I: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadsto[j]}(\hist)$.
-  Thus, for some ${\allleadstog} \in \allleadstos$ and some $i \in I$ with ${\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}$, we have that $\forall H \in \finite(\incr(\allhists)): \exists j \in I \suchthat \forall \hist \in H: {\ileadstog}(\hist) = {\ileadsto[j]}(\hist)$.
-
-  For example, $\allargs = \set{\ar_1, \ar_2}$ and ${\ileadstog}$ is $\phi$ when the path starts with $\ar_1$ (or is empty) and is $¬\phi$ when the path starts with $\ar_2$ and the attitude contains only people constant to $\phi$ (except that they map $\emptyset$ to anything) and people constant to $¬\phi$ (except that they map $\emptyset$ to anything).
-\end{remark}
-\begin{theorem}
-  Consider the attitude above. Is there a claim that holds and is anonymous and falsifiable?
-  Check \cref{ex:falsAnonIfBig}.
-\end{theorem}
 
 \subsection{Ideas for no suitable}
 $C$ is \emph{suitable} iff it holds and is anonymous, informative and falsifiable.
@@ -1395,18 +1364,67 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   Define $I = \set{i_1, …, i_4}$, $\ileadsto[i_1], \ileadsto[i_2], \ileadsto[i_3]$ as in \cref{ex:noHAI} and $\ileadsto[i_4]$ as: $.* \ileadsto[i_4] ¬\phi$, $\emptyset \ileadsto[i_4] ¬\phi$, $a.* \ileadsto[i_4] \phi$, $b.* \ileadsto[i_4] ¬\phi$. 
   This satisfies \ref{it:condNotHAI} for the reason given in \cref{ex:noHAI}, and fails $Q(\emptyset, i_4)$.
 \end{remark}
-\begin{remark}
-  Given $J \wsub I$, say that a set of paths discriminates $J$ iff some function associating each path to an answer is compatible with some $j \in J$ (meaning that $f \wsub {\ileadsto[j]}$) and is compatible with no $i \notin J$.
-  The condition says that there must be some $p$ and some increasing set of paths $H$ such that $H$ discriminates $J = \pi^{-1}(p)$.
-\end{remark}
-\begin{remark}
-  For failing the condition, I need an infinity of $j$’s (and at least one $i$) who agree on any branch of the history tree? (Meaning relations $\ileadsto[j]$, we don’t care about individuals.)
-  No: on any finite branch in the tree, I need that remains one $j$ and one $i$ such that infinite prolongation of the branch will never discriminate them.
 
-  That’s it: any finite branch of the tree (meaning, any $H$) is compatible with two DJs, meaning at least one relation having a given DJ and at least one relation having another DJ.
+A claim about types of individuals is a set $C^\text{types} \wsub P^{\allhists}$. Given such a set, define the associated claim $C \wsub \allleadstos$ as $C = \set{{\allleadstog} \in \allleadstos \suchthat \forall i \in I: {\ileadstog} \in C^\text{types}}$.
+\begin{lemma}
+  \label{th:typesfalsifiable}
+  A claim about types of individuals $C^\text{types} \wsub P^{\allhists}$ 
+  satisfies $\forall {\ileadstog} \in P^{\allhists} \setminus C^\text{types}: \exists H \in \finite(\incr(\allhists)) \suchthat \forall {\ileadstog[j]} \in C^\text{types}: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadstog[j]}(\hist)$,
+  iff its associated claim is falsifiable or trivial.
+\end{lemma}
+\begin{proof}
+  Pick any ${\allleadstog} \notin C$.
+  By definition of $C$,
+  $\exists i \in I \suchthat {{\ileadstog}} \notin C^\text{types}$.
+  As $C$ holds, ${\ileadstog} \notin \set{{\ileadsto[j]} \suchthat j \in I}$ (\cref{th:typesholds}).
+  Pick any $H$ such that $\forall {\ileadstog[j]} \in C^\text{types}: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadstog[j]}(\hist)$.
+  Define $\theta = \set{(\hist, i, {\ileadstog}(\hist)) \suchthat \hist \in H} \in \Theta \cap \powerset{\allleadstog}$.
+  Then, $\theta \notin C^\wsub$, because $\forall {\ileadstog[j]} \in C^\text{types}: \theta \nsubseteq {\ileadstog[j]}$. 
 
-  That means (still mandating that everybody has a DJ), that the condition mandates that any finite branch of the tree be compatible with infinitely many different relations having one DJ and at least one having another DJ. (Otherwise when there’s only finitely many we can just exclude them by testing all decisive arguments.)
+  Conversely, assume that for some ${\ileadstog} \in P^{\allhists} \setminus C^\text{types}$, no $H \in \finite(\incr(\allhists))$ satisfies the indicated condition.
+  Define ${\allleadstog}$ as including ${\ileadstog}$ and for all other individiduals, relations from $C^\text{types}$.
+  Then, ${\allleadstog} \notin C$, but any observation will be in $C$, thus the claim is not falsifiable and not trivial.
+\end{proof}
+\begin{lemma}
+  \label{th:typesholds}
+  Consider a claim about types of individuals $C^\text{types} \wsub P^{\allhists}$. Its associated claim holds iff $\set{{\ileadsto[j]} \suchthat j \in I} \wsub C^\text{types}$.
+\end{lemma}
+\begin{lemma}
+  \label{th:typesanonymous}
+  Given any claim about types of individuals $C^\text{types} \wsub P^{\allhists}$, its associated claim is anonymous.
+\end{lemma}
+The following result follows from \cref{th:typesfalsifiable,th:typesholds,th:typesanonymous}.
+\begin{theorem}
+  \label{th:suffFals}
+  Assume that $\forall {\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}: \exists H \in \finite(\incr(\allhists)) \suchthat \forall j \in I: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadsto[j]}(\hist)$.
+  Then, the claim $C$ associated to the claim about types of individuals $C^\text{types} = \set{{\ileadsto[j]} \suchthat j \in I}$ holds and is anonymous and falsifiable.
+\end{theorem}
+\begin{proof}
+  For another proof, note that $C^\wsub \cap \Theta = \set{\theta \in \Theta \suchthat \forall i \in I: \exists j \in I \suchthat \theta \cap (\allhists × \set{i} × P) \wsub {\ileadsto[j]}}$.
+  Pick any ${\allleadstog} \in E(C^\wsub \cap \Theta)$ and let us show that ${\allleadstog} \in C$.
+  Note that ${\allleadstog} \notin C \iff \exists i \in I \suchthat {\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}$, in which case the consequent in the theorem holds.
+  We need to show that $\nexists i \in I, H \in \finite(\incr(\allhists)) \suchthat \forall j \in I: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadsto[j]}(\hist)$.
+  In other words, given any $i \in I$, we need to show that $\forall H \in \finite(\incr(\allhists)): \exists j \in I \suchthat \forall \hist \in H: {\ileadstog}(\hist) = {\ileadsto[j]}(\hist)$.
+\end{proof}
+
+\begin{remark}
+  The opposite of \cref{th:suffFals} is the negation of $\forall {\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}: \exists H \in \finite(\incr(\allhists)) \suchthat \forall j \in I: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadsto[j]}(\hist)$.
+  Thus, for some ${\allleadstog} \in \allleadstos$ and some $i \in I$ with ${\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}$, we have that $\forall H \in \finite(\incr(\allhists)): \exists j \in I \suchthat \forall \hist \in H: {\ileadstog}(\hist) = {\ileadsto[j]}(\hist)$.
+
+  For example, $\allargs = \set{\ar_1, \ar_2}$ and ${\ileadstog}$ is $\phi$ when the path starts with $\ar_1$ (or is empty) and is $¬\phi$ when the path starts with $\ar_2$ and the attitude contains only people constant to $\phi$ (except that they map $\emptyset$ to anything) and people constant to $¬\phi$ (except that they map $\emptyset$ to anything).
+
+  TODO
+  In that case, if restricting our focus to claims about types of individuals, we need to include the real types, then close under suitable indistinguishability relation, so as to include for example $i$.
+
+  Define $S$ as the relations in the claim. Define $R(S)$ as the adequate closure: those that we can’t reject.
+  Does $S$ include $R(S)$? If so, it is falsifiable. Otherwise, there is in $R(S)$ a relation that we can’t reject.
+  Let $Impl$ be all impliciations in $S$, of the form: if $\hist$ goes to $p$, then $\hist'$ goes to $p'$ (in the above example: if $a$ goes to $\phi$ then $aa$ goes to $\phi$). Any relation that breaks one of these implications is rejectable. For example, sending $a$ to $\phi$ and $ab$ to $¬\phi$ is rejectable.We need to include all relations that break no implication.
+  TODO check all this. 
 \end{remark}
+\begin{theorem}
+  Consider the attitude above. Is there a claim that holds and is anonymous and falsifiable?
+  Check \cref{ex:falsAnonIfBig}.
+\end{theorem}
 
   \section{Theories of deliberated choice}
   This section assumes that an exposure protocol $(I, \allargs, {\allleadsto})$ is defined, and defines theories of deliberated choice associated with that exposure protocol. We will start with very simple theories (\cref{sec:static}) in order to build an intuition about the conditions required on theories of deliberated choice, then justify the need for more complex theories (\cref{sec:lichtenstein}) and finally define more general theories of deliberated choice (\cref{sec:dynamic}).
