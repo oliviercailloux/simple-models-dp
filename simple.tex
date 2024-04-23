@@ -49,9 +49,9 @@ While numerous articles have discussed the concept of deliberation in the last d
 
 While the concept of deliberation in the deliberative democracy literature usually refers to multiple individuals debating, this article considers deliberation as related to a single individual: an individual deliberates (in the sense of: carefully weights) the stance she considers most appropriate while being confronted to arguments. The deliberated judgment of an individual is thus defined with no requirement that the arguments be uttered by peers in a debate; they can be given by an automaton, for example. In this sense, deliberated judgments come close to what \citet{rawls_theory_1999} calls reflective equilibrium (referring to an idea of \citet{goodman_fact_1983}), a concept that has much inspired the present proposal.
 
-To define deliberated judgments, one needs to start with the set of arguments under consideration, and the way the subject gets to know them, called hereafter the “exposure protocol”. As a result, we need always talk about the deliberated judgment \emph{given some exposure protocol}. The notion of argument invoked here is an extremely large one, including texts, images, sounds, experiences (a hiking trip), and so on: anything that can be transmitted to a subject qualifies as a possible argument. In particular, such an “argument” need not have the logical structure of what is considered a proper argument in argumentation theory. This important feature of this proposal permits to avoid taking a position on what is a correct argument, and permits to study wide enough conceptions of deliberated judgment, including those involving no paternalism \citep{cailloux_formal_2020}: anything that influences the judgment of a subject, as judged by the subject herself and not by any external standard, may a priori be considered worth including in at least some conceptions of deliberated judgment, thus including whatever some could consider as “incorrect reasoning” or “bad reasons”.
+To define deliberated judgments, one needs to start with the set of arguments under consideration, and the way the subject gets to know them, called hereafter the “exposure protocol”. As a result, we need always talk about the deliberated judgment \emph{given some exposure protocol}. The notion of argument invoked here is an extremely large one, including texts, images, sounds, experiences (a hiking trip), and so on: anything that can be transmitted to a subject qualifies as a possible argument. In particular, such an “argument” need not have the logical structure of what is considered a proper argument in argumentation theory. This important feature of this proposal permits to avoid taking a position on what is a correct argument, and permits to study wide enough conceptions of deliberated judgment, including those involving no paternalism \citep{cailloux_formal_2020}: anything that influences the judgment of a subject, as judged by the subject herself and not by any external standard, may a priori be considered worth including in at least some conceptions of deliberated judgment, thus including whatever some could consider as “incorrect reasoning”, “fallacies” or “bad reasons”.
 
-The dependence of the deliberated judgment concept on the exposure protocol yields a first qualification about the concept of deliberated judgments when one desires to use it normatively: it is only as reasonable to call the resulting judgments “deliberate” in a normative sense as the exposure protocol is normatively relevant to deliberation. A sufficiently restricted, or even purposefully chosen, set of arguments may yield judgments that are only deliberate in the technical sense used here, but that pertain more to brain-washing than to reflective judgments. While it is indeed a long-term goal of this research program to yield a normatively relevant conception of preference (appropriate, for example, for recommendation), it is not a claim of this article that anything that corresponds to deliberated judgments as defined here qualify as being appropriate for any normative use: much depends on the chosen exposure protocol. The goal of this article is one of a conceptual and practical clarification. It proposes a sharp distinction between the empirical content and the normative content of the concept of deliberated judgments: the definition proposed here transfers the full normative weight on the choice of the exposure protocol; and leaves the rest of the disagreements to empirical settling. This is methodologically akin, mutatis mutandis, to the axiomatic study of justice such as done in social choice, only complementing mathematical deduction with empirical claims. In social choice, the choice of axioms bears the full normative weight; once axioms are chosen, it is a matter of logic which social choice rules (if any) correspond to that choice. In our case, once an exposure protocol is chosen, it is an empirical matter which deliberated judgments result.
+The dependence of the deliberated judgment concept on the exposure protocol yields a first qualification about the concept of deliberated judgments when one desires to use it normatively: it is only as reasonable to call the resulting judgments “deliberate” in a normative sense as the exposure protocol is normatively relevant to deliberation. A sufficiently restricted, or even purposefully chosen, set of arguments may yield judgments that are only deliberate in the technical sense used here, but that pertain more to brain-washing than to reflective judgments. While it is indeed a long-term goal of this research program to yield a normatively relevant conception of preference (appropriate, for example, for recommendation), it is not a claim of this article that anything that corresponds to deliberated judgments as defined here qualify as being appropriate for any normative use: much depends on the chosen exposure protocol. The goal of this article is rather one of a conceptual and practical clarification. It proposes a sharp distinction between the empirical content and the normative content of the concept of deliberated judgments: the definition proposed here transfers the full normative weight on the choice of the exposure protocol; and leaves the rest of the disagreements to empirical settling. This is methodologically akin, mutatis mutandis, to the axiomatic study of justice such as done in social choice, only complementing mathematical deduction with empirical claims. In social choice, the choice of axioms bears the full normative weight; once axioms are chosen, it is a matter of logic which social choice rules (if any) correspond to that choice. In our case, once an exposure protocol is chosen, it is an empirical matter which deliberated judgments result.
 In supplement to a possibly helpful conceptual clarification, such a sharp separation may reveal practically useful for separation of concern as it permits to study deliberated judgments empirically under various exposure protocols independently of possible disagreements about which norms are more appropriate for deliberation in which circumstances.
 
 The deliberated judgment of a subject is said to depend on the exposure protocol, that is, on the set of arguments and the way they are submitted to the subject, and not only on the set of arguments, because the very way that they are transmitted to the individual may affect her judgment differently. For example, reading an image description and showing an image to a subject may impress them differently \citep{railton_facts_2003}.
@@ -1365,7 +1365,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   This satisfies \ref{it:condNotHAI} for the reason given in \cref{ex:noHAI}, and fails $Q(\emptyset, i_4)$.
 \end{remark}
 
-A claim about types of individuals is a set $C^\text{types} \wsub P^{\allhists}$. Given such a set, define the associated claim $C \wsub \allleadstos$ as $C = \set{{\allleadstog} \in \allleadstos \suchthat \forall i \in I: {\ileadstog} \in C^\text{types}}$.
+A claim about types of individuals is a set $C^\text{types} \wsub P^{\allhists}$. Given such a set, define the associated claim $C \wsub \allleadstos$ as $C = (C^\text{types})^I = \set{{\allleadstog} \in \allleadstos \suchthat \forall i \in I: {\ileadstog} \in C^\text{types}}$.
 \begin{lemma}
   \label{th:typesfalsifiable}
   A claim about types of individuals $C^\text{types} \wsub P^{\allhists}$ 
@@ -1382,7 +1382,7 @@ A claim about types of individuals is a set $C^\text{types} \wsub P^{\allhists}$
   Then, $\theta \notin C^\wsub$, because $\forall {\ileadstog[j]} \in C^\text{types}: \theta \nsubseteq {\ileadstog[j]}$. 
 
   Conversely, assume that for some ${\ileadstog} \in P^{\allhists} \setminus C^\text{types}$, no $H \in \finite(\incr(\allhists))$ satisfies the indicated condition.
-  Define ${\allleadstog}$ as including ${\ileadstog}$ and for all other individiduals, relations from $C^\text{types}$.
+  Define ${\allleadstog}$ as including ${\ileadstog}$ and for all other individuals, relations from $C^\text{types}$.
   Then, ${\allleadstog} \notin C$, but any observation will be in $C$, thus the claim is not falsifiable and not trivial.
 \end{proof}
 \begin{lemma}
@@ -1397,7 +1397,7 @@ The following result follows from \cref{th:typesfalsifiable,th:typesholds,th:typ
 \begin{theorem}
   \label{th:suffFals}
   Assume that $\forall {\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}: \exists H \in \finite(\incr(\allhists)) \suchthat \forall j \in I: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadsto[j]}(\hist)$.
-  Then, the claim $C$ associated to the claim about types of individuals $C^\text{types} = \set{{\ileadsto[j]} \suchthat j \in I}$ holds and is anonymous and falsifiable.
+  Then, the claim $C$ associated to the claim about types of individuals $C^\text{types} = \set{{\ileadsto[j]} \suchthat j \in I}$ holds, is anonymous, and is falsifiable or trivial.
 \end{theorem}
 \begin{proof}
   For another proof, note that $C^\wsub \cap \Theta = \set{\theta \in \Theta \suchthat \forall i \in I: \exists j \in I \suchthat \theta \cap (\allhists × \set{i} × P) \wsub {\ileadsto[j]}}$.
@@ -1421,6 +1421,40 @@ The following result follows from \cref{th:typesfalsifiable,th:typesholds,th:typ
   Let $Impl$ be all impliciations in $S$, of the form: if $\hist$ goes to $p$, then $\hist'$ goes to $p'$ (in the above example: if $a$ goes to $\phi$ then $aa$ goes to $\phi$). Any relation that breaks one of these implications is rejectable. For example, sending $a$ to $\phi$ and $ab$ to $¬\phi$ is rejectable.We need to include all relations that break no implication.
   TODO check all this. 
 \end{remark}
+\begin{definition}
+  Say that an attitude $g \in P^{\allhists}$ is indistinguishable from a set of attitudes $S \wsub P^{\allhists}$ iff $\forall H \in \finite(\incr(\allhists)): \exists f \in S \suchthat \restr{g}{H} = \restr{f}{H}$.
+
+  Define the extension of a claim about types $C^\text{types} \wsub P^{\allhists}$ to its indistiguishible attitudes as the the claim about types $R(C^\text{types}) = \set{g \in P^{\allhists} \suchthat \forall H \in \finite(\incr(\allhists)): \exists f \in C^\text{types} \suchthat \restr{g}{H} = \restr{f}{H}}$.
+  Note that $C^\text{types} \wsub R(C^\text{types})$. 
+  Also note that $S_1 \wsub S_2 \implies R(S_1) \wsub R(S_2)$.
+
+  Define the closure under indistinguishability of a claim about types $C^\text{types}$ as $R^\infty(C^\text{types})$, equivalently, as the smallest set $C^\text{types}_\text{ind}$ such that $R(C^\text{types}_\text{ind}) \wsub C^\text{types}_\text{ind}$.
+\end{definition}
+The following result follows from \cref{th:typesfalsifiable}.
+\begin{theorem}
+  If a claim about types of individuals $C^\text{types} \wsub P^{\allhists}$ is not closed under indistinguishability, then it is not falsifiable and not trivial.
+\end{theorem}
+\begin{theorem}
+  Given any situation, if the claim related to the claim about types of individuals $R^\infty({\allleadsto}(I))$ is trivial, then there exists no claim related to a claim about types of individuals that holds and is falsifiable.
+\end{theorem}
+\begin{proof}
+  Consider a claim related to a claim about types of individuals $S$ that holds and that is falsifiable or trivial.
+  For it to hold, we need ${\allleadsto}(I) \wsub S$.
+  From \cref{th:typesfalsifiable}, for it to be falsifiable or trivial, we need that $\forall g \in P^{\allhists} \setminus S: \exists H \in \finite(\incr(\allhists)) \suchthat \forall f \in S: \restr{g}{H} \neq \restr{f}{H}$. In other words, all $g$ must be distinguishable from $S$. In other words, $S$ must be closed under indistinguishability. Thus, we need $R^\infty(S) \wsub S$.
+  Also, because $S_1 \wsub S_2 \implies R(S_1) \wsub R(S_2)$, we need
+  $R^\infty({\allleadsto}(I)) \wsub R^\infty(S) \wsub S$.
+  It follows that $S$ is trivial.
+\end{proof}
+
+\begin{conjecture}
+  Given any situation, the claim about types of individuals $R^\infty({\allleadsto}(I))$ holds, is anonymous, and is falsifiable or trivial.
+\end{conjecture}
+
+\begin{theorem}[To be deleted, probably]
+  Consider the attitude where all individuals are either constant to $\phi$ except that they map $\emptyset$ to anything, or constant to $¬\phi$ except that they map $\emptyset$ to anything, say, $(\phi, \phi)$, $(¬\phi, \phi)$, $(\phi, ¬\phi)$, $(¬\phi, ¬\phi)$.
+  Consider a claim about types of individuals containing all those ones. Assume that for some attitude $i$ not in the claim, no $H$ permit to distinguish $i$ from the claim. Then from the lemma above, the claim is not falsifiable. So, we need to include all attitudes that no $H$ permit to distinguish from the claim. Iterating, this is the closure under the indistinguishability relation.
+  So, the claim about types must include the real ones and be closed under the indistinguishability relation.
+\end{theorem}
 \begin{theorem}
   Consider the attitude above. Is there a claim that holds and is anonymous and falsifiable?
   Check \cref{ex:falsAnonIfBig}.
