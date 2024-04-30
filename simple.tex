@@ -1386,11 +1386,11 @@ A claim about types of individuals is a set $C^\text{types} \wsub P^{\allhists}$
   Say that a function $l: \allhists \to \powerset{P^{\allhists}}$ is an $S$-sequence-labeling function iff $\forall \hist \in \allhists: l(\hist) \in S / =_{\intvl{\hist}}$.
 \end{remark}
 Let $\intvl{\hist} = (\hist_i)_{i \in \intvl{0, \card{\hist}}} \in \finite(\incr(\allhists))$ denote the increasing sequence of paths from $\emptyset$ to $\hist$.
-\begin{conjecture}
+\begin{theorem}
   The $S$-labeling function associated to an attitude $f \in P^{\allhists}$ is the function $l^S_f: \allhists \to \powerset{P^{\allhists}}$ defined as $l^S_f(\hist) = \set{g \in S \suchthat g(\hist) = f(\hist)}$.
 
-  An attitude is observably included in a set of attitudes $S$ iff $\forall \hist \in \allhists: \cap_{\histp \wsub \hist} l^S_f(\histp) \neq \emptyset$.
-\end{conjecture}
+  An attitude $f$ is observably included in a set of attitudes $S$ iff $\forall \hist \in \allhists: \cap_{\histp \wsub \hist} l^S_f(\histp) \neq \emptyset$.
+\end{theorem}
 \begin{proof}
   Consider $f$ with $\forall \hist \in \allhists: \cap_{\histp \wsub \hist} l^S_f(\histp) \neq \emptyset$.
   Consider any $H \in \finite(\incr(\allhists))$.
@@ -1405,20 +1405,7 @@ Let $\intvl{\hist} = (\hist_i)_{i \in \intvl{0, \card{\hist}}} \in \finite(\incr
 
   Conversely, if $\forall H \in \finite(\incr(\allhists)): \set{g \in S \suchthat \forall \histp \in H: g(\histp) = f(\histp)} \neq \emptyset$, then $\forall \hist \in \allhists$, defining $H = \intvl{\hist}$, we have that $\cap_{\histp \wsub \hist} l^S_f(\histp) \neq \emptyset$.
 \end{proof}
-\begin{remark}
-  The opposite of \cref{th:suffFals} is the negation of $\forall {\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}: \exists H \in \finite(\incr(\allhists)) \suchthat \forall j \in I: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadsto[j]}(\hist)$.
-  Thus, for some ${\allleadstog} \in \allleadstos$ and some $i \in I$ with ${\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}$, we have that $\forall H \in \finite(\incr(\allhists)): \exists j \in I \suchthat \forall \hist \in H: {\ileadstog}(\hist) = {\ileadsto[j]}(\hist)$.
 
-  For example, $\allargs = \set{\ar_1, \ar_2}$ and ${\ileadstog}$ is $\phi$ when the path starts with $\ar_1$ (or is empty) and is $¬\phi$ when the path starts with $\ar_2$ and the attitude contains only people constant to $\phi$ (except that they map $\emptyset$ to anything) and people constant to $¬\phi$ (except that they map $\emptyset$ to anything).
-
-  TODO
-  In that case, if restricting our focus to claims about types of individuals, we need to include the real types, then close under suitable indistinguishability relation (observable inclusion), so as to include for example $i$.
-
-  Define $S$ as the relations in the claim. Define $R(S)$ as the adequate closure: those that we can’t reject.
-  Does $S$ include $R(S)$? If so, it is falsifiable. Otherwise, there is in $R(S)$ a relation that we can’t reject.
-  Let $Impl$ be all impliciations in $S$, of the form: if $\hist$ goes to $p$, then $\hist'$ goes to $p'$ (in the above example: if $a$ goes to $\phi$ then $aa$ goes to $\phi$). Any relation that breaks one of these implications is rejectable. For example, sending $a$ to $\phi$ and $ab$ to $¬\phi$ is rejectable.We need to include all relations that break no implication.
-  TODO check all this. 
-\end{remark}
 \begin{lemma}
   \label{th:typesfalsifiable}
   A claim about types of individuals $C^\text{types} \wsub P^{\allhists}$ 
@@ -1479,11 +1466,20 @@ The following result follows from \cref{th:typesfalsifiable}.
   Given any situation, the claim about types of individuals $R^\infty({\allleadsto}(I))$ holds, is anonymous, and is falsifiable or trivial.
 \end{theorem}
 
-\begin{theorem}[To be deleted, probably]
-  Consider the attitude where all individuals are either constant to $\phi$ except that they map $\emptyset$ to anything, or constant to $¬\phi$ except that they map $\emptyset$ to anything, say, $(\phi, \phi)$, $(¬\phi, \phi)$, $(\phi, ¬\phi)$, $(¬\phi, ¬\phi)$.
-  Consider a claim about types of individuals containing all those ones. Assume that for some attitude $i$ not in the claim, no $H$ permit to observably exclude $i$ from the claim. Then from the lemma above, the claim is not falsifiable. So, we need to include all attitudes that no $H$ permit to observably exclude from the claim. Iterating, this is the closure under the observable inclusion relation.
-  So, the claim about types must include the real ones and be closed under observable inclusion.
-\end{theorem}
+\begin{remark}
+  The opposite of \cref{th:suffFals} is the negation of $\forall {\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}: \exists H \in \finite(\incr(\allhists)) \suchthat \forall j \in I: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadsto[j]}(\hist)$.
+  Thus, for some ${\allleadstog} \in \allleadstos$ and some $i \in I$ with ${\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}$, we have that $\forall H \in \finite(\incr(\allhists)): \exists j \in I \suchthat \forall \hist \in H: {\ileadstog}(\hist) = {\ileadsto[j]}(\hist)$.
+
+  For example, $\allargs = \set{\ar_1, \ar_2}$ and ${\ileadstog}$ is $\phi$ when the path starts with $\ar_1$ (or is empty) and is $¬\phi$ when the path starts with $\ar_2$ and the attitude contains only people constant to $\phi$ (except that they map $\emptyset$ to anything) and people constant to $¬\phi$ (except that they map $\emptyset$ to anything), say, $(\phi, \phi)$, $(¬\phi, \phi)$, $(\phi, ¬\phi)$, $(¬\phi, ¬\phi)$.
+
+  In that case, if restricting our focus to claims about types of individuals, we need to include the real types, then close under suitable indistinguishability relation (observable inclusion), so as to include for example $i$.
+
+  Define $S$ as the relations in the claim. Define $R(S)$ as the adequate closure: those that we can’t reject.
+  Does $S$ include $R(S)$? If so, it is falsifiable. Otherwise, there is in $R(S)$ a relation that we can’t reject.
+  Let $Impl$ be all impliciations in $S$, of the form: if $\hist$ goes to $p$, then $\hist'$ goes to $p'$ (in the above example: if $a$ goes to $\phi$ then $aa$ goes to $\phi$). Any relation that breaks one of these implications is rejectable. For example, sending $a$ to $\phi$ and $ab$ to $¬\phi$ is rejectable.We need to include all relations that break no implication.
+  TODO check all this. 
+\end{remark}
+
 \begin{theorem}
   Consider the attitude above. Is there a claim that holds and is anonymous and falsifiable?
   Check \cref{ex:falsAnonIfBig}.
