@@ -1365,15 +1365,16 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   This satisfies \ref{it:condNotHAI} for the reason given in \cref{ex:noHAI}, and fails $Q(\emptyset, i_4)$.
 \end{remark}
 
-A claim about types of individuals is a set $C^\text{types} \wsub P^{\allhists}$. Given such a set, define the associated claim $C \wsub \allleadstos$ as $C = (C^\text{types})^I = \set{{\allleadstog} \in \allleadstos \suchthat \forall i \in I: {\ileadstog} \in C^\text{types}}$.
+Given a set of attitudes $S \wsub P^{\allhists}$, the claim associated to it designates the claim $S^I = \set{{\allleadstog} \in \allleadstos \suchthat \forall i \in I: {\ileadstog} \in S}$.
+Say that a claim $C$ is a claim about types iff $\exists S \wsub P^{\allhists} \suchthat C = S^I$.
 \begin{definition}
   Say that an attitude $g \in P^{\allhists}$ is observably included in a set of attitudes $S \wsub P^{\allhists}$ iff $\forall H \in \finite(\incr(\allhists)): \exists f \in S \suchthat \restr{g}{H} = \restr{f}{H}$.
 
-  Define the extension of a claim about types $C^\text{types} \wsub P^{\allhists}$ to its observably included attitudes as the the claim about types $R(C^\text{types}) = \set{g \in P^{\allhists} \suchthat \forall H \in \finite(\incr(\allhists)): \exists f \in C^\text{types} \suchthat \restr{g}{H} = \restr{f}{H}}$.
-  Note that $C^\text{types} \wsub R(C^\text{types})$. 
+  Define the extension of a set of attitudes $S \wsub P^{\allhists}$ to its observably included attitudes as the set of attitudes $R(S) = \set{g \in P^{\allhists} \suchthat \forall H \in \finite(\incr(\allhists)): \exists f \in S \suchthat \restr{g}{H} = \restr{f}{H}}$.
+  Note that $S \wsub R(S)$. 
   Also note that $S_1 \wsub S_2 \implies R(S_1) \wsub R(S_2)$.
 
-  Define the closure under observable inclusion of a claim about types $C^\text{types}$ as $R^\infty(C^\text{types})$, equivalently, as the smallest set $C^\text{types}_\text{ind}$ such that $R(C^\text{types}_\text{ind}) \wsub C^\text{types}_\text{ind}$.
+  Define the closure under observable inclusion of a claim about types $S$ as $R^\infty(S)$, equivalently, as the smallest set $S_\text{ind}$ such that $R(S_\text{ind}) \wsub S_\text{ind}$.
 
   Given a set of attitudes $S$ and $\hist \in \allhists$, define the equivalence relation $=_\hist$ on $S$ as $f =_\hist g$ iff $f(\hist) = g(\hist)$. This also defines the quotient set $S / =_\hist$. (For the readers used to that terminology: if defining $\beta_\hist \in P^S$ as $\beta_\hist(f) = f(\hist)$, then $=_\hist$ is the equivalence kernel of $\beta_\hist$ and $S / =_\hist$ is the coimage of $\beta_\hist$.)
   Similarly, given $S$ and $H \in \finite(\incr(\allhists))$, define the equivalence relation $=_H$ on $S$ as $f =_H g$ iff $\restr{f}{H} = \restr{g}{H}$. This also defines the quotient set $S / =_H$.
@@ -1408,36 +1409,36 @@ Let $\intvl{\hist} = (\hist_i)_{i \in \intvl{0, \card{\hist}}} \in \finite(\incr
 
 \begin{lemma}
   \label{th:typesfalsifiable}
-  A claim about types of individuals $C^\text{types} \wsub P^{\allhists}$ 
-  satisfies $\forall g \in P^{\allhists} \setminus C^\text{types}: \exists H \in \finite(\incr(\allhists)) \suchthat \forall f \in C^\text{types}: \restr{g}{H} \neq \restr{f}{H}$,
+  A set of attitudes $S \wsub P^{\allhists}$ 
+  satisfies $\forall g \in P^{\allhists} \setminus S: \exists H \in \finite(\incr(\allhists)) \suchthat \forall f \in S: \restr{g}{H} \neq \restr{f}{H}$,
   iff its associated claim is falsifiable or trivial.
 \end{lemma}
 \begin{proof}
   Pick any ${\allleadstog} \notin C$.
   By definition of $C$,
-  $\exists i \in I \suchthat {{\ileadstog}} \notin C^\text{types}$.
+  $\exists i \in I \suchthat {{\ileadstog}} \notin S$.
   As $C$ holds, ${\ileadstog} \notin \set{{\ileadsto[j]} \suchthat j \in I}$ (\cref{th:typesholds}).
-  Pick any $H$ such that $\forall {\ileadstog[j]} \in C^\text{types}: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadstog[j]}(\hist)$.
+  Pick any $H$ such that $\forall {\ileadstog[j]} \in S: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadstog[j]}(\hist)$.
   Define $\theta = \set{(\hist, i, {\ileadstog}(\hist)) \suchthat \hist \in H} \in \Theta \cap \powerset{\allleadstog}$.
-  Then, $\theta \notin C^\wsub$, because $\forall {\ileadstog[j]} \in C^\text{types}: \theta \nsubseteq {\ileadstog[j]}$. 
+  Then, $\theta \notin C^\wsub$, because $\forall {\ileadstog[j]} \in S: \theta \nsubseteq {\ileadstog[j]}$. 
 
-  Conversely, assume that for some ${\ileadstog} \in P^{\allhists} \setminus C^\text{types}$, no $H \in \finite(\incr(\allhists))$ satisfies the indicated condition.
-  Define ${\allleadstog}$ as including ${\ileadstog}$ and for all other individuals, relations from $C^\text{types}$.
+  Conversely, assume that for some ${\ileadstog} \in P^{\allhists} \setminus S$, no $H \in \finite(\incr(\allhists))$ satisfies the indicated condition.
+  Define ${\allleadstog}$ as including ${\ileadstog}$ and for all other individuals, relations from $S$.
   Then, ${\allleadstog} \notin C$, but any observation will be in $C$, thus the claim is not falsifiable and not trivial.
 \end{proof}
 \begin{lemma}
   \label{th:typesholds}
-  Consider a claim about types of individuals $C^\text{types} \wsub P^{\allhists}$. Its associated claim holds iff $\set{{\ileadsto[j]} \suchthat j \in I} \wsub C^\text{types}$.
+  Consider a set of attitudes $S \wsub P^{\allhists}$. Its associated claim holds iff $\set{{\ileadsto[j]} \suchthat j \in I} \wsub S$.
 \end{lemma}
 \begin{lemma}
   \label{th:typesanonymous}
-  Given any claim about types of individuals $C^\text{types} \wsub P^{\allhists}$, its associated claim is anonymous.
+  Given any set of attitudes $S \wsub P^{\allhists}$, its associated claim is anonymous.
 \end{lemma}
 The following result follows from \cref{th:typesfalsifiable,th:typesholds,th:typesanonymous}.
 \begin{theorem}
   \label{th:suffFals}
   Assume that $\forall {\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}: \exists H \in \finite(\incr(\allhists)) \suchthat \forall j \in I: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadsto[j]}(\hist)$.
-  Then, the claim $C$ associated to the claim about types of individuals $C^\text{types} = \set{{\ileadsto[j]} \suchthat j \in I}$ holds, is anonymous, and is falsifiable or trivial.
+  Then, the claim $C$ associated to the set of attitudes $S = \set{{\ileadsto[j]} \suchthat j \in I}$ holds, is anonymous, and is falsifiable or trivial.
 \end{theorem}
 \begin{proof}
   For another proof, note that $C^\wsub \cap \Theta = \set{\theta \in \Theta \suchthat \forall i \in I: \exists j \in I \suchthat \theta \cap (\allhists × \set{i} × P) \wsub {\ileadsto[j]}}$.
@@ -1449,13 +1450,13 @@ The following result follows from \cref{th:typesfalsifiable,th:typesholds,th:typ
 
 The following result follows from \cref{th:typesfalsifiable}.
 \begin{theorem}
-  If a claim about types of individuals $C^\text{types} \wsub P^{\allhists}$ is not closed under observable inclusion, then it is not falsifiable and not trivial.
+  If a set of attitudes $S \wsub P^{\allhists}$ is not closed under observable inclusion, then it is not falsifiable and not trivial.
 \end{theorem}
 \begin{theorem}
-  Given any situation, if the claim related to the claim about types of individuals $R^\infty({\allleadsto}(I))$ is trivial, then there exists no claim related to a claim about types of individuals that holds and is falsifiable.
+  Given any situation, if the claim associated to the set of attitudes $R^\infty({\allleadsto}(I))$ is trivial, then there exists no claim associated to a set of attitudes that holds and is falsifiable.
 \end{theorem}
 \begin{proof}
-  Consider a claim related to a claim about types of individuals $S$ that holds and that is falsifiable or trivial.
+  Consider a claim related to a set of attitudes $S$ that holds and that is falsifiable or trivial.
   For it to hold, we need ${\allleadsto}(I) \wsub S$.
   From \cref{th:typesfalsifiable}, for it to be falsifiable or trivial, we need that $\forall g \in P^{\allhists} \setminus S: \exists H \in \finite(\incr(\allhists)) \suchthat \forall f \in S: \restr{g}{H} \neq \restr{f}{H}$. In other words, all $g$ must be observably excludable from $S$. In other words, $S$ must be closed under observable inclusion. Thus, we need $R^\infty(S) \wsub S$.
   Also, because $S_1 \wsub S_2 \implies R(S_1) \wsub R(S_2)$, we need
@@ -1463,7 +1464,7 @@ The following result follows from \cref{th:typesfalsifiable}.
   It follows that $S$ is trivial.
 \end{proof}
 \begin{theorem}
-  Given any situation, the claim about types of individuals $R^\infty({\allleadsto}(I))$ holds, is anonymous, and is falsifiable or trivial.
+  Given any situation, the claim associated to the set of attitudes $R^\infty({\allleadsto}(I))$ holds, is anonymous, and is falsifiable or trivial.
 \end{theorem}
 
 \begin{remark}
