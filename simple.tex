@@ -1373,14 +1373,26 @@ Say that a claim $C$ is a claim about types iff $\exists S \wsub P^{\allhists} \
   Define the extension of a set of attitudes $S \wsub P^{\allhists}$ to its observably included attitudes as the set of attitudes $R(S) = \set{g \in P^{\allhists} \suchthat \forall H \in \finite(\incr(\allhists)): \exists f \in S \suchthat \restr{g}{H} = \restr{f}{H}}$.
   Note that $S \wsub R(S)$. 
   Also note that $S_1 \wsub S_2 \implies R(S_1) \wsub R(S_2)$.
-
-  Define the closure under observable inclusion of a claim about types $S$ as $R^\infty(S)$, equivalently, as the smallest set $S_\text{ind}$ such that $R(S_\text{ind}) \wsub S_\text{ind}$.
+\end{definition}
+\begin{theorem}
+  \label{th:RR}
+  $\forall S \wsub P^{\allhists}: R(R(S)) \wsub R(S)$.
+\end{theorem}
+\begin{proof}
+  Consider any $g \in R(R(S))$.
+  Consider any $H \in \finite(\incr(\allhists))$.
+  There exists $f \in R(S)$ such that $\restr{g}{H} = \restr{f}{H}$.
+  There exists $f' \in S$ such that $\restr{f}{H} = \restr{f'}{H}$.
+  Thus, $\restr{g}{H} = \restr{f'}{H}$.
+  Thus, $g \in R(S)$.
+\end{proof}
+Define the closure under observable inclusion of a claim about types $S$ as $R^\infty(S)$, equivalently, as the smallest set $S'$ such that $S \wsub S'$ and $R(S') \wsub S'$, equivalently, as indicated by \cref{th:RR}, as $R(S)$.
+\begin{remark}
+  A few more, maybe not useful, definitions.
 
   Given a set of attitudes $S$ and $\hist \in \allhists$, define the equivalence relation $=_\hist$ on $S$ as $f =_\hist g$ iff $f(\hist) = g(\hist)$. This also defines the quotient set $S / =_\hist$. (For the readers used to that terminology: if defining $\beta_\hist \in P^S$ as $\beta_\hist(f) = f(\hist)$, then $=_\hist$ is the equivalence kernel of $\beta_\hist$ and $S / =_\hist$ is the coimage of $\beta_\hist$.)
   Similarly, given $S$ and $H \in \finite(\incr(\allhists))$, define the equivalence relation $=_H$ on $S$ as $f =_H g$ iff $\restr{f}{H} = \restr{g}{H}$. This also defines the quotient set $S / =_H$.
-\end{definition}
-\begin{remark}
-  A few more, maybe not useful, definitions.
+
   A function $l: \allhists \to \powerset{P^{\allhists}}$ is decreasing iff $\forall \hist \wsub \histp: l(\histp) \wsub l(\hist)$.
   Let $S \wsub P^{\allhists}$ be a set of attitudes.
   Say that a function $l: \allhists \to \powerset{P^{\allhists}}$ is an $S$-point-labeling function iff $\forall \hist \in \allhists: l(\hist) \in S / =_\hist$.
