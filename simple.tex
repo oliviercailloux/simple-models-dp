@@ -1505,18 +1505,12 @@ The following result follows from \cref{th:typesfalsifiable}.
   Say that a function $l: \allhists \to \powerset{P^{\allhists}}$ is an $S$-sequence-labeling function iff $\forall \hist \in \allhists: l(\hist) \in S / =_{\intvl{\hist}}$.
 \end{remark}
 \begin{conjecture}
-  Given a non empty set of attitudes $S \wsub P^{\allhists}$, the claim associated to $R(S)$ is not trivial iff [there exists some $H \in \finite(\incr(\allhists))$ such that some non empty equivalence class $S_H \in S / =_H$ on $S$ over $H$ does not permit all continuations, meaning that $\exists \ar, p \suchthat \forall f \in S_H: f(\max H, \ar) ≠ p$]; or $\exists p \suchthat \forall f \in S: f(\emptyset) ≠ p$.
+  Given a non empty set of attitudes $S \wsub P^{\allhists}$, the claim associated to $R(S)$ is not trivial iff $\exists \hist \in \allhists, f \in P^{\intvl{\hist}} \suchthat \forall g \in S: \restr{g}{\intvl{hist}} ≠ f$.
 \end{conjecture}
 \begin{proof}
-  We want to show that $\exists f \in P^{\allhists}, \hist \in \allhists \suchthat \cap_{\histp \wsub \hist} l^S_f(\histp) = \emptyset$ is equivalent to the stated consequent.
-
-  Assuming that the consequent holds, consider any $f$ such that $\restr{f}{H} = \restr{g}{H}$ for some (equivalently, for all) $g \in S$ and such that $f(\max H, \ar) = p$ (or pick $H = \ar = \emptyset$).
-  We have $\cap_{\histp \wsub (\max H, \ar)} l^S_f(\histp) = \emptyset$.
-
-  Consider any $f, \hist \suchthat \cap_{\histp \wsub \hist} l^S_f(\histp) = \emptyset$ and let’s prove that the consequent holds.
-  As $S ≠ \emptyset$, $l^S_f(\hist) ≠ \emptyset$.
-  Consider the longest subsequence of $\hist$ such that $l^S_f(\histp) ≠ \emptyset$.
+  This follows from the equivalence of the antecedent with $\exists f \in P^{\allhists}, \hist \in \allhists \suchthat \cap_{\histp \wsub \hist} l^S_f(\histp) = \emptyset$.
 \end{proof}
+Thus, a situation $S$ does not admit falsifiable theories (meaning that $R(S)$ is associated to the trivial claim) iff $\forall \hist, f, \exists g \in S \suchthat \restr{g}{\intvl{\hist}} = f$.
 
 Generally,
 define $S^p = \set{f \in P^{\allhists} \suchthat f(\emptyset) = p}$.
