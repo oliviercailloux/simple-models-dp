@@ -1386,23 +1386,14 @@ Say that a claim $C$ is a claim about types iff $\exists S \wsub P^{\allhists} \
   Thus, $\restr{g}{H} = \restr{f'}{H}$.
   Thus, $g \in R(S)$.
 \end{proof}
-Define the closure under observable inclusion of a claim about types $S$ as $R^\infty(S)$, equivalently, as the smallest set $S'$ such that $S \wsub S'$ and $R(S') \wsub S'$, equivalently, as indicated by \cref{th:RR}, as $R(S)$.
-\begin{remark}
-  A few more, maybe not useful, definitions.
+Define the closure under observable inclusion of a claim about types $S$ as $R^\infty(S)$, equivalently, as the smallest set $S'$ such that $S \wsub S' = R(S')$, equivalently, as indicated by \cref{th:RR}, as $R(S)$.
 
-  Given a set of attitudes $S$ and $\hist \in \allhists$, define the equivalence relation $=_\hist$ on $S$ as $f =_\hist g$ iff $f(\hist) = g(\hist)$. This also defines the quotient set $S / =_\hist$. (For the readers used to that terminology: if defining $\beta_\hist \in P^S$ as $\beta_\hist(f) = f(\hist)$, then $=_\hist$ is the equivalence kernel of $\beta_\hist$ and $S / =_\hist$ is the coimage of $\beta_\hist$.)
-  Similarly, given $S$ and $H \in \finite(\incr(\allhists))$, define the equivalence relation $=_H$ on $S$ as $f =_H g$ iff $\restr{f}{H} = \restr{g}{H}$. This also defines the quotient set $S / =_H$.
-
-  A function $l: \allhists \to \powerset{P^{\allhists}}$ is decreasing iff $\forall \hist \wsub \histp: l(\histp) \wsub l(\hist)$.
-  Let $S \wsub P^{\allhists}$ be a set of attitudes.
-  Say that a function $l: \allhists \to \powerset{P^{\allhists}}$ is an $S$-point-labeling function iff $\forall \hist \in \allhists: l(\hist) \in S / =_\hist$.
-  Say that a function $l: \allhists \to \powerset{P^{\allhists}}$ is an $S$-sequence-labeling function iff $\forall \hist \in \allhists: l(\hist) \in S / =_{\intvl{\hist}}$.
-\end{remark}
 Let $\intvl{\hist} = (\hist_i)_{i \in \intvl{0, \card{\hist}}} \in \finite(\incr(\allhists))$ denote the increasing sequence of paths from $\emptyset$ to $\hist$.
 \begin{theorem}
+  \label{th:caractR}
   The $S$-labeling function associated to an attitude $f \in P^{\allhists}$ is the function $l^S_f: \allhists \to \powerset{P^{\allhists}}$ defined as $l^S_f(\hist) = \set{g \in S \suchthat g(\hist) = f(\hist)}$.
 
-  An attitude $f$ is observably included in a set of attitudes $S$ iff $\forall \hist \in \allhists: \cap_{\histp \wsub \hist} l^S_f(\histp) \neq \emptyset$.
+  We have: $R(S) = \set{f \suchthat \forall \hist \in \allhists: \cap_{\histp \wsub \hist} l^S_f(\histp) \neq \emptyset}$.
 \end{theorem}
 \begin{proof}
   Consider $f$ with $\forall \hist \in \allhists: \cap_{\histp \wsub \hist} l^S_f(\histp) \neq \emptyset$.
@@ -1465,25 +1456,78 @@ The following result follows from \cref{th:typesfalsifiable}.
   If a set of attitudes $S \wsub P^{\allhists}$ is not closed under observable inclusion, then it is not falsifiable and not trivial.
 \end{theorem}
 \begin{theorem}
-  Given any situation, if the claim associated to the set of attitudes $R^\infty({\allleadsto}(I))$ is trivial, then there exists no claim associated to a set of attitudes that holds and is falsifiable.
+  Given any situation, if the claim associated to the set of attitudes $R({\allleadsto}(I))$ is trivial, then there exists no claim associated to a set of attitudes that holds and is falsifiable.
 \end{theorem}
 \begin{proof}
   Consider a claim related to a set of attitudes $S$ that holds and that is falsifiable or trivial.
   For it to hold, we need ${\allleadsto}(I) \wsub S$.
-  From \cref{th:typesfalsifiable}, for it to be falsifiable or trivial, we need that $\forall g \in P^{\allhists} \setminus S: \exists H \in \finite(\incr(\allhists)) \suchthat \forall f \in S: \restr{g}{H} \neq \restr{f}{H}$. In other words, all $g$ must be observably excludable from $S$. In other words, $S$ must be closed under observable inclusion. Thus, we need $R^\infty(S) \wsub S$.
+  From \cref{th:typesfalsifiable}, for it to be falsifiable or trivial, we need that $\forall g \in P^{\allhists} \setminus S: \exists H \in \finite(\incr(\allhists)) \suchthat \forall f \in S: \restr{g}{H} \neq \restr{f}{H}$. In other words, all $g$ must be observably excludable from $S$. In other words, $S$ must be closed under observable inclusion. Thus, we need $R(S) \wsub S$.
   Also, because $S_1 \wsub S_2 \implies R(S_1) \wsub R(S_2)$, we need
-  $R^\infty({\allleadsto}(I)) \wsub R^\infty(S) \wsub S$.
+  $R({\allleadsto}(I)) \wsub R(S) \wsub S$.
   It follows that $S$ is trivial.
 \end{proof}
 \begin{theorem}
-  Given any situation, the claim associated to the set of attitudes $R^\infty({\allleadsto}(I))$ holds, is anonymous, and is falsifiable or trivial.
+  Given any situation, the claim associated to the set of attitudes $R({\allleadsto}(I))$ holds, is anonymous, and is falsifiable or trivial.
 \end{theorem}
+\begin{example}
+  Define $f^{(p, p')} \in P^{\allhists}$ as follows: $f^{(p, p')}(\emptyset) = p$ and $\forall \hist \in \allhists: \hist ≠ \emptyset \implies f^{(p, p')}(\hist) = p'$.
+
+  Consider a situation such that ${\allleadsto}(I) = \set{f^{(p, p')} \suchthat p, p' \in \set{\phi, ¬\phi}}$, thus, containing only people constant to $\phi$ and people constant to $¬\phi$, except that they map $\emptyset$ to anything in $\set{\phi, ¬\phi}$.
+  Define $F^p = \set{f^{(p, p')} \suchthat p' \in \set{\phi, ¬\phi}}$.
+
+  \Cref{th:caractR} indicates that $R({\allleadsto}(I)) = \set{f \suchthat l^S_f(\emptyset) \in \set{F^\phi, F^{¬\phi}} \land \forall \ar \in \allargs: [\forall \hist \suchthat \hist_1 = \ar: l^S_f(\hist) \in l^S_f(\emptyset)] \land [\forall \hist, \histp \suchthat \hist_1 = \histp_1 = \ar: l^S_f(\hist) = l^S_f(\histp)]}$.
+
+  Thus, $R({\allleadsto}(I))$ contains, for each mapping $m: \allargs \rightarrow \set{\phi, ¬\phi}$, the two functions $f_m^\phi, f_m^{¬\phi}$ defined as $f_m^\phi(\emptyset) = \phi$ and $\forall \ar \in \allargs: f_m^\phi((\ar, …)) = m(\ar)$, and similarly for $f_m^{¬\phi}$.
+
+  The claim associated to $R({\allleadsto}(I))$ is not trivial: $\forall f \suchthat [\exists \hist, \histp ≠ \emptyset \suchthat \hist_1 = \histp_1 \land f(\hist) ≠ f(\histp)]: f \notin R({\allleadsto}(I))$.
+\end{example}
+\begin{example}
+  Consider $\allargs = \set{\ar_1, \ar_2}$ and ${\allleadsto}(I) = \set{f \suchthat f(\ar_1) ≠ \phi \lor f(\ar_2) ≠ \phi}$, thus, $f \notin {\allleadsto}(I)$ iff $f(\ar_1) = f(\ar_2) = \phi$.
+  
+  Consider any $f \notin {\allleadsto}(I)$.
+  We have $f \in R({\allleadsto}(I))$.
+  Indeed, define $g_1 \in P^{\allhists}$ as $g_1 = f$ except that $g_1(\ar_2) = ¬\phi$, and $g_2 \in P^{\allhists}$ as $g_2 = f$ except that $g_2(\ar_1) = ¬\phi$.
+  Then, $g_1, g_2 \in {\allleadsto}(I)$.
+  Now consider any $H \in \finite(\incr(\allhists))$.
+  If $(\ar_2) \notin H$, then $\restr{f}{H} = \restr{g_1}{H}$; otherwise, $\restr{f}{H} = \restr{g_2}{H}$.
+
+  It follows that the claim associated to $R({\allleadsto}(I))$ is trivial.
+\end{example}
+\begin{remark}
+  A few more, maybe not useful, definitions.
+
+  Given a set of attitudes $S$ and $\hist \in \allhists$, define the equivalence relation $=_\hist$ on $S$ as $f =_\hist g$ iff $f(\hist) = g(\hist)$. This also defines the quotient set $S / =_\hist$. (For the readers used to that terminology: if defining $\beta_\hist \in P^S$ as $\beta_\hist(f) = f(\hist)$, then $=_\hist$ is the equivalence kernel of $\beta_\hist$ and $S / =_\hist$ is the coimage of $\beta_\hist$.)
+  Similarly, given $S$ and $H \in \finite(\incr(\allhists))$, define the equivalence relation $=_H$ on $S$ as $f =_H g$ iff $\restr{f}{H} = \restr{g}{H}$. This also defines the quotient set $S / =_H$.
+
+  A function $l: \allhists \to \powerset{P^{\allhists}}$ is decreasing iff $\forall \hist \wsub \histp: l(\histp) \wsub l(\hist)$.
+  Let $S \wsub P^{\allhists}$ be a set of attitudes.
+  Say that a function $l: \allhists \to \powerset{P^{\allhists}}$ is an $S$-point-labeling function iff $\forall \hist \in \allhists: l(\hist) \in S / =_\hist$.
+  Say that a function $l: \allhists \to \powerset{P^{\allhists}}$ is an $S$-sequence-labeling function iff $\forall \hist \in \allhists: l(\hist) \in S / =_{\intvl{\hist}}$.
+\end{remark}
+\begin{conjecture}
+  Given a non empty set of attitudes $S \wsub P^{\allhists}$, the claim associated to $R(S)$ is not trivial iff [there exists some $H \in \finite(\incr(\allhists))$ such that some non empty equivalence class $S_H \in S / =_H$ on $S$ over $H$ does not permit all continuations, meaning that $\exists \ar, p \suchthat \forall f \in S_H: f(\max H, \ar) ≠ p$]; or $\exists p \suchthat \forall f \in S: f(\emptyset) ≠ p$.
+\end{conjecture}
+\begin{proof}
+  We want to show that $\exists f \in P^{\allhists}, \hist \in \allhists \suchthat \cap_{\histp \wsub \hist} l^S_f(\histp) = \emptyset$ is equivalent to the stated consequent.
+
+  Assuming that the consequent holds, consider any $f$ such that $\restr{f}{H} = \restr{g}{H}$ for some (equivalently, for all) $g \in S$ and such that $f(\max H, \ar) = p$ (or pick $H = \ar = \emptyset$).
+  We have $\cap_{\histp \wsub (\max H, \ar)} l^S_f(\histp) = \emptyset$.
+
+  Consider any $f, \hist \suchthat \cap_{\histp \wsub \hist} l^S_f(\histp) = \emptyset$ and let’s prove that the consequent holds.
+  As $S ≠ \emptyset$, $l^S_f(\hist) ≠ \emptyset$.
+  Consider the longest subsequence of $\hist$ such that $l^S_f(\histp) ≠ \emptyset$.
+\end{proof}
+
+Generally,
+define $S^p = \set{f \in P^{\allhists} \suchthat f(\emptyset) = p}$.
+Then \cref{th:caractR} indicates that $R({\allleadsto}(I)) = \set{f \suchthat l^S_f(\emptyset) \in \set{S^p \suchthat p \in P} \land \forall \ar \in \allargs: [\forall \hist \suchthat \hist_1 = \ar: l^S_f(\hist) \in l^S_f(\emptyset)] \land [\forall \hist, \histp \suchthat \hist_1 = \histp_1 = \ar: l^S_f(\hist) = l^S_f(\histp)]}$.
+TODO correct this.
 
 \begin{remark}
   The opposite of \cref{th:suffFals} is the negation of $\forall {\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}: \exists H \in \finite(\incr(\allhists)) \suchthat \forall j \in I: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadsto[j]}(\hist)$.
   Thus, for some ${\allleadstog} \in \allleadstos$ and some $i \in I$ with ${\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}$, we have that $\forall H \in \finite(\incr(\allhists)): \exists j \in I \suchthat \forall \hist \in H: {\ileadstog}(\hist) = {\ileadsto[j]}(\hist)$.
 
-  For example, $\allargs = \set{\ar_1, \ar_2}$ and ${\ileadstog}$ is $\phi$ when the path starts with $\ar_1$ (or is empty) and is $¬\phi$ when the path starts with $\ar_2$ and the attitude contains only people constant to $\phi$ (except that they map $\emptyset$ to anything) and people constant to $¬\phi$ (except that they map $\emptyset$ to anything), say, $(\phi, \phi)$, $(¬\phi, \phi)$, $(\phi, ¬\phi)$, $(¬\phi, ¬\phi)$.
+  For example,  and ${\ileadstog}$ is $\phi$ when the path starts with $\ar_1$ (or is empty) and is $¬\phi$ when the path starts with $\ar_2$ and 
 
   In that case, if restricting our focus to claims about types of individuals, we need to include the real types, then close under suitable indistinguishability relation (observable inclusion), so as to include for example $i$.
 
