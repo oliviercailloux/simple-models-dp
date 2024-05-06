@@ -1367,6 +1367,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 
 Given a set of attitudes $S \wsub P^{\allhists}$, the claim associated to it designates the claim $S^I = \set{{\allleadstog} \in \allleadstos \suchthat \forall i \in I: {\ileadstog} \in S}$.
 Say that a claim $C$ is a claim about types iff $\exists S \wsub P^{\allhists} \suchthat C = S^I$.
+Informally, such a claim claims that the set of attitudes in $I$ is contained in $S$ (though might be a strict subset of $S$), or equivalently, that no attitude out of $S$ exists among $I$.
 \begin{definition}
   Say that an attitude $g \in P^{\allhists}$ is observably included in a set of attitudes $S \wsub P^{\allhists}$ iff $\forall H \in \finite(\incr(\allhists)): \exists f \in S \suchthat \restr{g}{H} = \restr{f}{H}$.
 
@@ -1479,7 +1480,7 @@ The following result follows from \cref{th:typesfalsifiable}.
 
   Thus, $R({\allleadsto}(I))$ contains, for each mapping $m: \allargs \rightarrow \set{\phi, ¬\phi}$, the two functions $f_m^\phi, f_m^{¬\phi}$ defined as $f_m^\phi(\emptyset) = \phi$ and $\forall \ar \in \allargs: f_m^\phi((\ar, …)) = m(\ar)$, and similarly for $f_m^{¬\phi}$.
 
-  The claim associated to $R({\allleadsto}(I))$ is not trivial: $\forall f \suchthat [\exists \hist, \histp ≠ \emptyset \suchthat \hist_1 = \histp_1 \land f(\hist) ≠ f(\histp)]: f \notin R({\allleadsto}(I))$.
+  The claim associated to $R({\allleadsto}(I))$ is not trivial: $\forall f \suchthat [\exists \hist, \histp \ssub \hist \suchthat f(\histp) ≠ f(\hist)]: f \notin R({\allleadsto}(I))$.
 \end{example}
 \begin{example}
   Consider $\allargs = \set{\ar_1, \ar_2}$ and ${\allleadsto}(I) = \set{f \suchthat f(\ar_1) ≠ \phi \lor f(\ar_2) ≠ \phi}$, thus, $f \notin {\allleadsto}(I)$ iff $f(\ar_1) = f(\ar_2) = \phi$.
@@ -1504,33 +1505,72 @@ The following result follows from \cref{th:typesfalsifiable}.
   Say that a function $l: \allhists \to \powerset{P^{\allhists}}$ is an $S$-point-labeling function iff $\forall \hist \in \allhists: l(\hist) \in S / =_\hist$.
   Say that a function $l: \allhists \to \powerset{P^{\allhists}}$ is an $S$-sequence-labeling function iff $\forall \hist \in \allhists: l(\hist) \in S / =_{\intvl{\hist}}$.
 \end{remark}
+\begin{theorem}
+  Given $\hist \in \allhists$, define $\restr{S}{\intvl{\hist}} = \set{\restr{f}{\intvl{\hist}} \suchthat f \in S}$.
+  Given a non empty set of attitudes $S \wsub P^{\allhists}$, the following statements are equivalent.
+  \begin{itemize}
+    \item The claim associated to $R(S)$ is not trivial 
+    \item $R(S) ≠ P^{\allhists}$
+    \item $\exists \hist \in \allhists, f \in P^{\intvl{\hist}} \suchthat \forall g \in S: \restr{g}{\intvl{hist}} ≠ f$
+    \item $\exists \hist, f \in P^{\intvl{\hist}} \suchthat f \notin \restr{S}{\intvl{\hist}}$
+    \item $\exists \hist \suchthat P^{\intvl{\hist}} \not\wsub \restr{S}{\intvl{\hist}}$.
+  \end{itemize}
+  Also, the following statements are equivalent.
+  \begin{itemize}
+    \item The claim associated to $R(S)$ is trivial
+    \item $R(S) = P^{\allhists}$
+    \item $\forall \hist, f, \exists g \in S \suchthat \restr{g}{\intvl{\hist}} = f$
+    \item $\forall \hist: P^{\intvl{\hist}} \wsub \restr{S}{\intvl{\hist}}$.
+  \end{itemize}
+  Furthermore, $\forall \hist: P^{\intvl{\hist}} \wsub \restr{S}{\intvl{\hist}} \implies \card{S} \notin \N$.
+\end{theorem}
+\begin{proof}
+  This follows from $R(S) ≠ P^{\allhists} \iff \exists f \in P^{\allhists}, \hist \in \allhists \suchthat \cap_{\histp \wsub \hist} l^S_f(\histp) = \emptyset$.
+\end{proof}
+
+To recap, we now know that with $S = {\allleadsto}(I)$, when $R(S) ≠ P^{\allhists}$, there is a claim that holds and is anonymous and falsifiable.
+This includes all situations with finite behaviors ($\card{S} \in \N$), thus includes all situations with finite $I$.
+Consider now situations such that $R({\allleadsto}(I)) = P^{\allhists}$.
+
+Define $I = P^\N$ and ${\ileadsto} = i \circ \card$, so that $S = {\allleadsto}(I) = \set{l \circ \card \in P^{\allhists} \suchthat l \in P^\N}$.
+We have $R(S) = P^{\allhists}$.
+The function $f(\ar) ≠ f(\ar')$, for example, is not in $S$.
+
 \begin{conjecture}
-  Given a non empty set of attitudes $S \wsub P^{\allhists}$, the claim associated to $R(S)$ is not trivial iff $\exists \hist \in \allhists, f \in P^{\intvl{\hist}} \suchthat \forall g \in S: \restr{g}{\intvl{hist}} ≠ f$.
+  Consider a mapping ${\allleadstog} \in (P^{\allhists})^I$. Define $E$ as the equivalence classes in $I$ that considers as equivalent all $i$ mapped to the same element of $P^{\allhists}$.
+  A wide-shuffling over $I$ is a mapping $\sigma_{\allleadstog} \in I^I$ that reaches any equivalence class in $E$, thus $\forall e \in E: \exists i \suchthat \sigma_{\allleadstog}(i) \in e$.
+  The bijections over $I^I$ are a subset of the wide-shufflings (those that also are bijections per $e \in E$, thus $\forall e \in E: \restr{\sigma_{\allleadstog}}{e}$ bijects with its image).
+
+  A claim $C$ is not about types iff $\exists {\allleadstog} \in C$ and $\sigma_{\allleadstog}$, a wide-shuffling, such that $({\allleadstog} \circ \sigma_{\allleadstog}) \notin C$.
 \end{conjecture}
 \begin{proof}
-  This follows from the equivalence of the antecedent with $\exists f \in P^{\allhists}, \hist \in \allhists \suchthat \cap_{\histp \wsub \hist} l^S_f(\histp) = \emptyset$.
+  % Consider that $\exists {\allleadstog} \in C$ and $\sigma_{\allleadstog}$, a wide-shuffling, such that $({\allleadstog} \circ \sigma_{\allleadstog}) \notin C$.
+  Consider a claim $C$ about types $S$.
+  Consider any ${\allleadstog} \in C$ and $\sigma_{\allleadstog}$, a wide-shuffling.
+  As ${\allleadstog} \in C$, we have ${\allleadstog}(I) \wsub S$.
+  Also, ${\allleadstog}(\sigma_{\allleadstog}(I)) = {\allleadstog}(I)$. 
+  Thus, ${\allleadstog}(\sigma_{\allleadstog}(I)) \wsub S$.
+  Thus, $({\allleadstog} \circ \sigma_{\allleadstog}) \in C$.
+
+  About the converse, given $C$, 
+  define $S = \bigcup_{{\allleadstog} \in C}({\allleadstog}(I))$,
+  and assuming that 
+  $[\forall {\allleadstog} \in C, \sigma_{\allleadstog}: ({\allleadstog} \circ \sigma_{\allleadstog}) \in C]$, let us show that 
+  $C = S^I$, equivalently, that $C = \set{{\allleadstog} \in (P^{\allhists})^I \suchthat {\allleadstog}(I) \wsub S}$.
+  First, considering any ${\allleadstog} \in C$, we have ${\allleadstog}(I) \wsub S$ by definition of $S$.
+  Second, considering any ${\allleadstog} \notin C$, 
 \end{proof}
-Thus, a situation $S$ does not admit falsifiable theories (meaning that $R(S)$ is associated to the trivial claim) iff $\forall \hist, f, \exists g \in S \suchthat \restr{g}{\intvl{\hist}} = f$.
+\begin{conjecture}
+  Consider a claim that is not about types but is anonymous. What’s that?
+  Example: the claim “everyone has the same behavior”.
 
-Generally,
-define $S^p = \set{f \in P^{\allhists} \suchthat f(\emptyset) = p}$.
-Then \cref{th:caractR} indicates that $R({\allleadsto}(I)) = \set{f \suchthat l^S_f(\emptyset) \in \set{S^p \suchthat p \in P} \land \forall \ar \in \allargs: [\forall \hist \suchthat \hist_1 = \ar: l^S_f(\hist) \in l^S_f(\emptyset)] \land [\forall \hist, \histp \suchthat \hist_1 = \histp_1 = \ar: l^S_f(\hist) = l^S_f(\histp)]}$.
-TODO correct this.
+  Example 2, with $\card{I} = 3$: “exactly two individuals have behavior 1”.
 
-\begin{remark}
-  The opposite of \cref{th:suffFals} is the negation of $\forall {\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}: \exists H \in \finite(\incr(\allhists)) \suchthat \forall j \in I: \exists \hist \in H \suchthat {\ileadstog}(\hist) \neq {\ileadsto[j]}(\hist)$.
-  Thus, for some ${\allleadstog} \in \allleadstos$ and some $i \in I$ with ${\ileadstog} \in P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k \in I}$, we have that $\forall H \in \finite(\incr(\allhists)): \exists j \in I \suchthat \forall \hist \in H: {\ileadstog}(\hist) = {\ileadsto[j]}(\hist)$.
+  Is there an example with infinitely many behaviors?
+  The claim must be not about types. If non empty, the claim includes some mapping in $(P^{\allhists})^I$. If not about types, some such mapping has not all correspondances shuffling $I$ in any number but keeping the same range?
 
-  For example,  and ${\ileadstog}$ is $\phi$ when the path starts with $\ar_1$ (or is empty) and is $¬\phi$ when the path starts with $\ar_2$ and 
-
-  In that case, if restricting our focus to claims about types of individuals, we need to include the real types, then close under suitable indistinguishability relation (observable inclusion), so as to include for example $i$.
-
-  Define $S$ as the relations in the claim. Define $R(S)$ as the adequate closure: those that we can’t reject.
-  Does $S$ include $R(S)$? If so, it is falsifiable. Otherwise, there is in $R(S)$ a relation that we can’t reject.
-  Let $Impl$ be all impliciations in $S$, of the form: if $\hist$ goes to $p$, then $\hist'$ goes to $p'$ (in the above example: if $a$ goes to $\phi$ then $aa$ goes to $\phi$). Any relation that breaks one of these implications is rejectable. For example, sending $a$ to $\phi$ and $ab$ to $¬\phi$ is rejectable.We need to include all relations that break no implication.
-  TODO check all this. 
-\end{remark}
-
+  Is it that if there is a claim anonymous, holding, and fals., then there is a claim about types that is anonymous, holds, and fals?
+\end{conjecture}
 \begin{theorem}
   Consider the attitude above. Is there a claim that holds and is anonymous and falsifiable?
   Check \cref{ex:falsAnonIfBig}.
