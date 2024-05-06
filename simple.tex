@@ -1537,28 +1537,30 @@ We have $R(S) = P^{\allhists}$.
 The function $f(\ar) ≠ f(\ar')$, for example, is not in $S$.
 
 \begin{conjecture}
-  Consider a mapping ${\allleadstog} \in (P^{\allhists})^I$. Define $E$ as the equivalence classes in $I$ that considers as equivalent all $i$ mapped to the same element of $P^{\allhists}$.
-  A wide-shuffling over $I$ is a mapping $\sigma_{\allleadstog} \in I^I$ that reaches any equivalence class in $E$, thus $\forall e \in E: \exists i \suchthat \sigma_{\allleadstog}(i) \in e$.
-  The bijections over $I^I$ are a subset of the wide-shufflings (those that also are bijections per $e \in E$, thus $\forall e \in E: \restr{\sigma_{\allleadstog}}{e}$ bijects with its image).
+  Consider a mapping ${\allleadstog} \in (P^{\allhists})^I$. 
+  Define $E$ as the equivalence classes in $I$ that considers as equivalent all $i$ mapped to the same element of $P^{\allhists}$.
+  Recall that the bijections over $I$ are the subset of $I^I$ that are bijections per $e \in E$, thus $s \in I^I$ is a bijection over $I$ iff $\forall e \in E: \restr{s}{e}$ bijects with its image.
 
-  A claim $C$ is not about types iff $\exists {\allleadstog} \in C$ and $\sigma_{\allleadstog}$, a wide-shuffling, such that $({\allleadstog} \circ \sigma_{\allleadstog}) \notin C$.
+  A claim $C$ is not about types iff $\exists {\allleadstog} \in C, s \in I^I \suchthat ({\allleadstog} \circ s) \notin C$.
 \end{conjecture}
 \begin{proof}
-  % Consider that $\exists {\allleadstog} \in C$ and $\sigma_{\allleadstog}$, a wide-shuffling, such that $({\allleadstog} \circ \sigma_{\allleadstog}) \notin C$.
-  Consider a claim $C$ about types $S$.
-  Consider any ${\allleadstog} \in C$ and $\sigma_{\allleadstog}$, a wide-shuffling.
+  Consider a claim $C$ about types $S$,
+  thus,
+  $C = S^I = \set{{\allleadstog} \in (P^{\allhists})^I \suchthat {\allleadstog}(I) \wsub S}$.
+  Consider any ${\allleadstog} \in C$ and $s \in I^I$.
   As ${\allleadstog} \in C$, we have ${\allleadstog}(I) \wsub S$.
-  Also, ${\allleadstog}(\sigma_{\allleadstog}(I)) = {\allleadstog}(I)$. 
-  Thus, ${\allleadstog}(\sigma_{\allleadstog}(I)) \wsub S$.
-  Thus, $({\allleadstog} \circ \sigma_{\allleadstog}) \in C$.
+  Also, ${\allleadstog}(s(I)) \wsub {\allleadstog}(I)$. 
+  Thus, ${\allleadstog}(s(I)) \wsub S$.
+  Thus, $({\allleadstog} \circ s) \in C$.
 
   About the converse, given $C$, 
   define $S = \bigcup_{{\allleadstog} \in C}({\allleadstog}(I))$,
   and assuming that 
-  $[\forall {\allleadstog} \in C, \sigma_{\allleadstog}: ({\allleadstog} \circ \sigma_{\allleadstog}) \in C]$, let us show that 
-  $C = S^I$, equivalently, that $C = \set{{\allleadstog} \in (P^{\allhists})^I \suchthat {\allleadstog}(I) \wsub S}$.
+  $[\forall {\allleadstog} \in C, s: ({\allleadstog} \circ s) \in C]$, let us show that 
+  $C = \set{{\allleadstog} \in (P^{\allhists})^I \suchthat {\allleadstog}(I) \wsub S}$.
   First, considering any ${\allleadstog} \in C$, we have ${\allleadstog}(I) \wsub S$ by definition of $S$.
-  Second, considering any ${\allleadstog} \notin C$, 
+  Second, considering any ${\allleadstog} \in (P^{\allhists})^I \suchthat {\allleadstog}(I) \in S$,
+  
 \end{proof}
 \begin{conjecture}
   Consider a claim that is not about types but is anonymous. What’s that?
