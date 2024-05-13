@@ -1568,9 +1568,13 @@ The function $f(\ar) ≠ f(\ar')$, for example, is not in $S$.
   For a counter-example, we need a situation such that the closure for falsifiability of $\set{{\allleadsto} \circ \sigma}$ is not the whole of $\allleadstos$ and $R({\allleadsto}(I)) = P^{\allhists}$.
   Equivalently, we need a situation such that the closure for falsifiability of $\set{{\allleadsto} \circ \sigma}$ is not the whole of $\allleadstos$ and $\forall \hist \in \allhists: P^{\intvl{\hist}} \wsub \restr{{\allleadsto}(I)}{\intvl{\hist}}$.
   
-  A counter-example could be a situation where exactly one individual given $\emptyset$ chooses $\phi$, with the claim: “there is at most one individual who given $\emptyset$ chooses $\phi$”.
-  Nope, this seems to admit a claim about types, as then there is finitely many individuals satisfying $\emptyset$ to $\phi$ and hence some of these functions can be excluded.
-  
+  In other words, we look for, given $\allleadsto$ satisfying $\forall \hist \in \allhists: P^{\intvl{\hist}} \wsub \restr{{\allleadsto}(I)}{\intvl{\hist}}$, a possible observable that is not compatible with any ${\allleadsto} \circ \sigma$.
+
+  To prove the conjecture, given $\allleadsto$ satisfying $\forall \hist \in \allhists: P^{\intvl{\hist}} \wsub \restr{{\allleadsto}(I)}{\intvl{\hist}}$, consider any observable whatsoever, $O \in \allpriobss$, and let us show that for some bijection $\sigma$ over $I$, $O \wsub ({\allleadsto} \circ \sigma)$.
+
+  A counter-example could be a situation “at most one of each possible behavior”.
+  Nope: if there’s twice the same behavior, we cannot observe it for sure.
+
   The interesting case is a situation including infinitely many behaviors (not necessarily all), otherwise a claim about types exists.
   In such a case, can we find a true claim that is anonymous and fals but not about types?
 
