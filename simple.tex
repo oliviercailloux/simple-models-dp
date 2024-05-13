@@ -1536,52 +1536,62 @@ Define $I = P^\N$ and ${\ileadsto} = i \circ \card$, so that $S = {\allleadsto}(
 We have $R(S) = P^{\allhists}$.
 The function $f(\ar) ≠ f(\ar')$, for example, is not in $S$.
 
-\begin{conjecture}
-  Consider a mapping ${\allleadstog} \in (P^{\allhists})^I$. 
-  Define $E$ as the equivalence classes in $I$ that considers as equivalent all $i$ mapped to the same element of $P^{\allhists}$.
-  Recall that the bijections over $I$ are the subset of $I^I$ that are bijections per $e \in E$, thus $s \in I^I$ is a bijection over $I$ iff $\forall e \in E: \restr{s}{e}$ bijects with its image.
+\begin{theorem}
+  Given a claim $C$, define $S_C \wsub P^{\allhists}$ as $S_C = \bigcup_{{\allleadstog} \in C}({\allleadstog}(I))$.
+  A claim $C$ is about types iff $C = (S_C)^I$.
+\end{theorem}
+\begin{proof}
+  If the consequent holds, then $C$ is about types, by definition.
+  If a claim is about types $S$, then consider any $f \in S$, we have $C = S^I$ thus for ${\allleadstog}$ defined as ${\allleadstog}(I) = \set{f}$ we have ${\allleadstog} \in C$, thus $f \in S_C$; and consider any $f \in S_C$, consider any ${\allleadstog} \in C \suchthat f \in {\allleadstog}(I)$, we have ${\allleadstog} \in S^I$, thus $f \in S$.
+\end{proof}
 
-  A claim $C$ is not about types iff $\exists {\allleadstog} \in C, s \in I^I \suchthat ({\allleadstog} \circ s) \notin C$.
+\begin{theorem}
+  Consider a falsifiable and anonymous claim $C$ such that $\exists {\allleadstog} \in C, f_1, f_2 \suchthat {\allleadstog}(I) = \set{f_1, f_2} \land \card{\set{i \in I \suchthat {\allleadstog}(i) = f_1}} \notin \N \land \card{\set{i \in I \suchthat {\allleadstog}(i) = f_2}} \notin \N$.
+  Then, $\forall {\allleadstog} \suchthat {\allleadstog}(I) \wsub \set{f_1, f_2}: {\allleadstog} \in C$.
+\end{theorem}
+\begin{proof}
+  Consider any anonymous claim $C$ satisfying the antecedent and any ${\allleadstog'} \suchthat {\allleadstog'}(I) \wsub \set{f_1, f_2} \land {\allleadstog'} \notin C$. 
+  To show that $C$ is not falsifiable,
+  consider any observable subset of $\allleadstog'$ and let us show that it is completable in $C$.
+
+  From the antecedent we see that $I$ is infinite.
+  Define $I_k$ as the individuals that the observable interrogates and satisfying ${\allleadstog'}(i) = f_k$.
+  Consider sets of same sizes $I'_1$ and $I'_2$ among the non observed individuals (meaning those in $I \setminus I_1 \setminus I_2$) and with corresponding types in ${\allleadstog}$ (so that $\forall i \in I'_k: {\allleadstog}(i) = f_k$).
+  Define a bijection $\sigma$ that sends $I_1$ to $I'_1$ and $I_2$ to $I'_2$, and conversely, and that sends the elements of $I \setminus (\cup_k I_k) \setminus (\cup_k I'_k)$ to themselves.
+  The resulting relation ${\allleadstog} \circ \sigma$ is in $C$ and is compatible with the observable.
+\end{proof}
+
+\begin{conjecture}
+  If there is a claim anonymous, holding, and fals., then there is a claim about types that holds and is falsifiable.
 \end{conjecture}
 \begin{proof}
-  Consider a claim $C$ about types $S$,
-  thus,
-  $C = S^I = \set{{\allleadstog} \in (P^{\allhists})^I \suchthat {\allleadstog}(I) \wsub S}$.
-  Consider any ${\allleadstog} \in C$ and $s \in I^I$.
-  As ${\allleadstog} \in C$, we have ${\allleadstog}(I) \wsub S$.
-  Also, ${\allleadstog}(s(I)) \wsub {\allleadstog}(I)$. 
-  Thus, ${\allleadstog}(s(I)) \wsub S$.
-  Thus, $({\allleadstog} \circ s) \in C$.
+  For a counter-example, we need a situation such that the closure for falsifiability of $\set{{\allleadsto} \circ \sigma}$ is not the whole of $\allleadstos$ and $R({\allleadsto}(I)) = P^{\allhists}$.
+  Equivalently, we need a situation such that the closure for falsifiability of $\set{{\allleadsto} \circ \sigma}$ is not the whole of $\allleadstos$ and $\forall \hist \in \allhists: P^{\intvl{\hist}} \wsub \restr{{\allleadsto}(I)}{\intvl{\hist}}$.
+  
+  A counter-example could be a situation where exactly one individual given $\emptyset$ chooses $\phi$, with the claim: “there is at most one individual who given $\emptyset$ chooses $\phi$”.
+  Nope, this seems to admit a claim about types, as then there is finitely many individuals satisfying $\emptyset$ to $\phi$ and hence some of these functions can be excluded.
+  
+  The interesting case is a situation including infinitely many behaviors (not necessarily all), otherwise a claim about types exists.
+  In such a case, can we find a true claim that is anonymous and fals but not about types?
 
-  About the converse, given $C$, 
-  define $S = \bigcup_{{\allleadstog} \in C}({\allleadstog}(I))$,
-  and assuming that 
-  $[\forall {\allleadstog} \in C, s: ({\allleadstog} \circ s) \in C]$, let us show that 
-  $C = \set{{\allleadstog} \in (P^{\allhists})^I \suchthat {\allleadstog}(I) \wsub S}$.
-  First, considering any ${\allleadstog} \in C$, we have ${\allleadstog}(I) \wsub S$ by definition of $S$.
-  Second, considering any ${\allleadstog} \in (P^{\allhists})^I \suchthat {\allleadstog}(I) \in S$,
+  Consider a true claim $C$. It contains the true situation, thus involving $f_1, …$. Say it includes infinitely many $f_1$ and exactly one $f_2$.
+  A hypothetical situation with infinitely many $f_1$ and exactly two $f_2$ can be distinguished.
+  
+  Consider the claim “there is exactly one behavior of each kind”. That is not fals because excludes the possibility that $f_1$ is not there (and if it’s not, impossible to observe). Even if $C$ admits that any finite number of behaviors may miss, it’s still not fals: if all odd $f$ miss (we have all even $f$ and no more), we will never prove it.
+  In fact, if an infinite subset of the support is there, it is not empirically distinguishable from all the subset is there; thus the claim must admit for all infinite strict subsets as well.
+  Thus, the claim could be “there is at most one behavior of each kind”.
+  “Kind” here must be: satisfying a given function in $P^{\intvl{\hist}}$ (more is not counter-observable).
 
-  There’s a problem Houston.
-  Consider the claim containing ${\allleadstog}(I) = f$ and ${\allleadstog'}(I) = g$.
-  We need instead to allow for shufflings $s$ that map each $i$ to some ${\ileadstog} \in C(I)$.
+  Thus, consider the claim that $\forall \hist, f \in P^{\intvl{\hist}}: $ there is at one one behavior satisfying $f$. Well, that is self-contradicting.
+
+  The claim must be not about types. If non empty, the claim includes some mapping in $(P^{\allhists})^I$. If not about types, some such mapping has not all correspondances picking from various elements in $C$. But it is also not simply a bijection over $I$: either it picks from multiple elements of $C$, or it picks in different numbers.
+
+  In fact, if an anonymous and falsifiable claim includes a relation that includes an infinite number of $f_1$ and an infinite number of $f_2$ and so on, then I believe that the claim must also include the relations that include any finite number of $f_1$, because that case is impossible to distinguish empirically.
+
+  Check also \cref{ex:falsAnonIfBig}.
 \end{proof}
-\begin{conjecture}
-  Consider a claim that is not about types but is anonymous. What’s that?
-  Example: the claim “everyone has the same behavior”.
 
-  Example 2, with $\card{I} = 3$: “exactly two individuals have behavior 1”.
-
-  Is there an example with infinitely many behaviors?
-  The claim must be not about types. If non empty, the claim includes some mapping in $(P^{\allhists})^I$. If not about types, some such mapping has not all correspondances shuffling $I$ in any number but keeping the same range?
-
-  Is it that if there is a claim anonymous, holding, and fals., then there is a claim about types that is anonymous, holds, and fals?
-\end{conjecture}
-\begin{theorem}
-  Consider the attitude above. Is there a claim that holds and is anonymous and falsifiable?
-  Check \cref{ex:falsAnonIfBig}.
-\end{theorem}
-
-  \section{Theories of deliberated choice}
+\section{Theories of deliberated choice}
   This section assumes that an exposure protocol $(I, \allargs, {\allleadsto})$ is defined, and defines theories of deliberated choice associated with that exposure protocol. We will start with very simple theories (\cref{sec:static}) in order to build an intuition about the conditions required on theories of deliberated choice, then justify the need for more complex theories (\cref{sec:lichtenstein}) and finally define more general theories of deliberated choice (\cref{sec:dynamic}).
 
   \subsection{Theories using a static decisive argument}
