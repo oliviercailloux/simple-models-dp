@@ -1561,6 +1561,26 @@ The function $f(\ar) ≠ f(\ar')$, for example, is not in $S$.
   The resulting relation ${\allleadstog} \circ \sigma$ is in $C$ and is compatible with the observable.
 \end{proof}
 
+\begin{theorem}
+  The two following statements are equivalent. 
+  \begin{itemize}
+    \item $\forall \hist: P^{\intvl{\hist}} \wsub \restr{{\allleadsto}(I)}{\intvl{\hist}}$
+    \item There exists no anonymous claim that holds and is falsifiable.
+  \end{itemize}
+\end{theorem}
+\begin{proof}
+  If the first one is false, then the claim $R({\allleadsto}(I))$ is not trivial, thus is falsifiable.
+
+  If the first one holds, let us show that starting from $C^\text{HA}$ and integrating all relations that are not observably distinguishable, we obtain the trivial claim.
+
+  Consider any observable whatsoever, $O \in \allpriobss$, and let us show that for some bijection $\sigma$ over $I$, $O \wsub ({\allleadsto} \circ \sigma)$.
+
+  For each of the (finitely many) individuals that $O$ contains, we can find a different behavior $f_i$ that is in $\restr{{\allleadsto}(I)}{\intvl{\hist}}$, thus, with some $j_i \in I \suchthat {\allleadsto}(j_i) = f_i$, and that is compatible with what $O$ sees of $i$. We define $\sigma$ so that it maps each of those individuals $i$ to the individual $j_i$ with the corresponding behavior.
+  The resulting relation ${\allleadsto} \circ \sigma$ is compatible with the observable.
+
+  It follows that if the claim is not trivial, it is not falsifiable: pick any relation missing in the claim; it cannot be rejected by any observable.
+\end{proof}
+  
 \begin{conjecture}
   If there is a claim anonymous, holding, and fals., then there is a claim about types that holds and is falsifiable.
 \end{conjecture}
