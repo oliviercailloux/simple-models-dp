@@ -294,10 +294,7 @@ falsifiability guarantees that a claim holds if, and only if, it is not rejectab
 A claim $C$ is \emph{informative} iff $\pi(C) = \set{\pi(\allleadstog) \suchthat {\allleadstog} \in C} ≠ (P \cup \set{\emptyset})^I$.
 A claim $C$ is \emph{informative beyond counting} iff $\exists i \in I \suchthat \pi(C)(i) ≠ P \cup \set{\emptyset}$.
 A claim $C$ is \emph{strongly informative beyond counting} iff $\exists i \in I \suchthat \pi(C)(i) \ssub P$.
-% A claim $C$ is \emph{indicative} iff $\exists H \in \finite(\incr(\allhists)), i \in I \suchthat \pi(\set{{\allleadstog} \suchthat H \wsub \ileadstoinvg(P)} \cap C)(i) \ssub P$. Indicativity mandates that when knowing a finite number of observations about a given $i$, $C$ permits to deduce something (different than $\emptyset$) about $P_i$.
-A claim $C$ is \emph{indicative} iff $\exists i \in I, \theta \in \Theta \cap (\allhists × \set{i} × P) \cap C^\wsub \suchthat \emptyset ≠ \pi(\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C)(i) \ssub P$. Indicativity mandates that when knowing a finite number of observations about a given $i$ compatible with any (possibly counter-factual) world in $C$, $C$ permits to deduce something (different than $\emptyset$) about $P_i$.
-A claim $C$ is \emph{truly indicative} iff $\exists i \in I, \theta \in \Theta \cap (\allhists × \set{i} × P) \wsub {\allleadsto} \suchthat \emptyset ≠ \pi(\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C)(i) \ssub P$.
-A claim $C$ is \emph{newly indicative} iff $\forall {\allleadstog} \in C: \exists i \in I, \theta \in \Theta \cap (\allhists × \set{i} × P) \wsub {\allleadstog} \suchthat \emptyset ≠ \pi(\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C)(i) \ssub P$. Indicativity mandates that when knowing a finite number of observations about a given $i$ compatible with any (possibly counter-factual) world in $C$, $C$ permits to deduce something (different than $\emptyset$) about $P_i$.
+A claim $C$ is \emph{indicative} iff $\forall {\allleadstog} \in C: \exists i \in I, \theta \in \Theta \cap (\allhists × \set{i} × P) \wsub {\allleadstog} \suchthat \emptyset ≠ \pi(\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C)(i) \ssub P$. Indicativity mandates that for each (possibly counter-factual) world in $C$, when knowing a finite number of observations about a given $i$ compatible with, $C$ permits to deduce something (different than $\emptyset$) about $P_i$.
 
 \begin{remark}
   Informativeness permits mere counting: the claim that exactly two persons deliberately believe $\phi$ is informative.
@@ -1243,6 +1240,8 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
     \end{enumerate}
   \end{theorem}
   \begin{proof}
+    TODO check this, there is a problem with the definition and use of CA.
+
     For \ref{it:condHAI} $\implies$ \ref{it:HAI},
     define $p = P_{i_1}$.
     Consider any claim $C$ such that $C^\text{HA} \wsub C \wsub C^\text{A}$ and $C$ is anonymous.
@@ -1825,44 +1824,20 @@ The function $f(\ar) ≠ f(\ar')$, for example, is not in $S$.
 \end{proof}
 
 \subsection{Indicativeness}
-\begin{theorem}
-  Indicativeness does not imply true indicativeness, even when considering only anonymous and falsifiable claims that hold.
-\end{theorem}
-\begin{proof}
-  Consider the situation where everybody is constant to $\phi$ except that emptyset to $¬\phi$.
-  The claim “C HA or everybody is constant to $\phi$” is anonymous and falsifiable and indicative and holds, but is not truly indicative.
-  Thus, the claim is “(everybody satisfies emptyset to $\phi$ or everybody satisfies emptyset to $¬\phi$) and (everybody satisfies every path but emptyset to $\phi$)”.
-  It is falsifiable: any behavior function not in the claim satisfies “(somebody fails emptyset to $\phi$ and somebody fails emptyset to $¬\phi$) or (somebody fails every path but emptyset to $\phi$)”, which is observable in either case.
-  It is indicative, as the behavior function “everybody constant to $\phi$” is what remains in the claim if assuming observing someone sending $\emptyset$ to $\phi$.
-  
-  But it is not truly indicative: this would require some truthful observation that leaves only a subset of the claim with no $\pi({\allleadstog})(i) = \emptyset$, which requires excluding “everybody satisfies emptyset to $¬\phi$”.
-\end{proof}
-
-Let us determine which situations admit anonymous and falsifiable claims that hold and are truly indicative (or other?).
+Let us determine which situations admit anonymous and falsifiable claims that hold and are indicative.
 
 From \cref{th:suffIndic} we know that we require at least
 for some $H \in \finite(\incr(\allhists))$ and $i_1 \in I \suchthat P_{i_1} \in P$, we have $\forall i_2 \suchthat P_{i_2} \neq P_{i_1}$ that $\exists \hist \in H \suchthat {\ileadsto[i_1]}(\hist) \neq {\ileadsto[i_2]}(\hist)$.
-
-\begin{theorem}
-  If an anonymous claim holds and is truly indicative, then $\exists i \in I \suchthat P_i ≠ \emptyset$.
-\end{theorem}
-\begin{proof}
-  By anon and holding, we have $C^\text{HA} \wsub C$.
-  By true indicativeness, for some $i$ and $\hist$ and $f \wsub {\ileadsto}$ on that $\intvl{\hist}$, all and some completion of $f$ in $C$ lead to $\pi({\allleadstog})(i) ≠ \emptyset$, thus, in particular, 
-  ${\allleadsto}$ leads to $\pi({\allleadsto})(i) ≠ \emptyset$, 
-  whence 
-  $\exists i \in I \suchthat P_i ≠ \emptyset$.
-\end{proof}
 
 TODO: consider condition $\exists H \in \incr(\allhists), f \in P^H, \ar, p \suchthat \forall i: \restr{\ileadsto}{H} = f \implies \ar \ileadstost p$ (and someone satisfies the antecedent).
 Maybe this is equivalent to indicative claim exists?
 And implies the rest?
 
 \begin{conjecture}
-  If $P_{i_1} = \phi$ with a single decisive argument $\ar \ileadstost \phi$ and $i_2$ satisfies ${\ileadsto[i_2]} = {\ileadsto[i_1]}$ except that $(\ar) \ileadsto[i_2] ¬\phi$, then there is no anonymous and truly indicative claim that holds.
+  If $P_{i_1} = \phi$ with a single decisive argument $\ar \ileadstost \phi$ and $i_2$ satisfies ${\ileadsto[i_2]} = {\ileadsto[i_1]}$ except that $(\ar) \ileadsto[i_2] ¬\phi$, then there is no anonymous and indicative claim that holds.
 \end{conjecture}
 \begin{proof}
-  True indicativeness requires that
+  Indicativeness requires that
   $\exists i \in I, \theta \in \Theta \cap (\allhists × \set{i} × P) \wsub {\allleadsto} \suchthat \emptyset ≠ \pi(\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C)(i) \ssub P$.
   If $\theta$ observes $(\ar_1, \ar)$
 \end{proof}
