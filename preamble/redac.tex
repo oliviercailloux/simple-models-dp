@@ -1,11 +1,10 @@
-%Requires package xcolor.
+%Requires package xcolor and soul.
 %\definecolor{ao(english)}{rgb}{0.0, 0.5, 0.0}
 %I observed that two braces around \small are required to make it local.
-\NewDocumentCommand{\commentOC}{m}{\textcolor{blue}{{\small$\big[$OC: #1$\big]$}}}
+\NewDocumentCommand{\commentOC}{O{}m}{\ifx&#1&\else\hl{#1} \fi\textcolor{blue}{{\small$\big[$OC: #2$\big]$}}}
 %Requires package babel and option [french]. According to babel doc, need two braces around \selectlanguage to make the changes really local.
-\NewDocumentCommand{\commentOCf}{m}{\textcolor{blue}{{\small\selectlanguage{french}$\big[$OC : #1$\big]$}}}
-\NewDocumentCommand{\commentYM}{m}{\textcolor{red}{{\small$\big[$YM: #1$\big]$}}}
-\NewDocumentCommand{\commentYMf}{m}{\textcolor{red}{{\small\selectlanguage{french}$\big[$YM : #1$\big]$}}}
+\NewDocumentCommand{\commentOCf}{O{}m}{\ifx&#1&\else\hl{#1} \fi\textcolor{blue}{{\small\selectlanguage{french}$\big[$OC : #2$\big]$}}}
+\NewDocumentCommand{\commentYM}{O{}m}{\ifx&#1&\else\hl{#1} \fi\textcolor{red}{{\small$\big[$YM: #2$\big]$}}}
 \NewDocumentCommand{\TODO}{m}{\textcolor{blue}{\small$\big[$TODO: #1$\big]$}}
 
 \bibliographystyle{abbrvnat}
@@ -101,6 +100,7 @@
 \newunicodechar{ℚ}{\mathbb{Q}}
 %211D Double-Struck Capital R
 \newunicodechar{ℝ}{\mathbb{R}}
+\newunicodechar{ℤ}{\mathbb{Z}}
 %2194 
 \newunicodechar{↔}{\leftrightarrow}
 %21CF Rightwards Double Arrow with Stroke
@@ -221,6 +221,6 @@
 %× Multiplication Sign
 \DeclareUnicodeCharacter{00D7}{\ifmmode\times\else\texttimes\fi}
 %Permits to really obtain a straight quote when typing a straight quote; potentially dangerous, see https://tex.stackexchange.com/a/521999
-\catcode`\'=\active
-\DeclareUnicodeCharacter{0027}{\ifmmode^\prime\else\textquotesingle\fi}
+% \catcode`\'=\active
+% \DeclareUnicodeCharacter{0027}{\ifmmode^\prime\else\textquotesingle\fi}
 

@@ -1,4 +1,7 @@
+%Reading the answers to https://math.stackexchange.com/questions/1220760/what-is-the-difference-between-natural-numbers-and-positive-integers/, I get that it seems (more or less) consensual that Z^+ = 1, … designates the “positive integers”, also known as the “counting numbers”; and that Z designates the “integers”, also known as the “whole numbers”. The notation ℕ designates the “natural numbers”, and it is ambiguous whether it includes zero.
 \NewDocumentCommand{\N}{}{ℕ}
+\NewDocumentCommand{\Z}{}{ℤ}
+\NewDocumentCommand{\Zp}{}{ℤ^+}
 \NewDocumentCommand{\Q}{}{ℚ}
 \NewDocumentCommand{\R}{}{ℝ}
 %\mathscr is rounder than \mathcal.
@@ -7,7 +10,7 @@
 \NewDocumentCommand{\powersetz}{m}{\mathscr{P}^*(#1)}
 %https://tex.stackexchange.com/a/45732, works within both \set and \set*, same spacing than \mid (https://tex.stackexchange.com/a/52905).
 \NewDocumentCommand{\suchthat}{}{\;\ifnum\currentgrouptype=16 \middle\fi|\;}
-\NewDocumentCommand{\st}{}{\text{ s.\ t.\ }}
+% \NewDocumentCommand{\st}{}{\text{ s.\ t.\ }}
 \NewDocumentCommand{\knowing}{}{\;\ifnum\currentgrouptype=16 \middle\fi|\;}
 %Integer interval.
 \NewDocumentCommand{\intvl}{m}{⟦#1⟧}
@@ -26,7 +29,7 @@
 % Semantic relations: strict subset (included in and not equal) and weak subset (included in and possibly equal)
 \NewDocumentCommand{\ssub}{}{\subsetneq}
 \NewDocumentCommand{\wsub}{}{\subseteq}
-\NewDocumentCommand{\sub}{}{\subseteq}
+\NewDocumentCommand{\fsub}{}{\subset_\text{fin}}
 
 %UTR #25: Unicode support for mathematics recommend to use the straight form of phi (by default, given by \phi) rather than the curly one (by default, given by \varphi), and thus use \phi for the mathematical symbol and not \varphi. I however prefer the curly form because the straight form is too easy to mix up with the symbol for empty set.
 \let\phi\varphi
