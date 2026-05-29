@@ -1,5 +1,5 @@
 \RequirePackage[l2tabu, orthodox]{nag}
-\documentclass[version=last, pagesize, twoside=off, bibliography=totoc, DIV=calc, fontsize=12pt, a4paper, french, english]{scrartcl}
+\documentclass[version=last, pagesize, twoside=off, bibliography=totoc, fontsize=12pt, a4paper, french, english]{scrartcl}
 \input{preamble/packages}
 \input{preamble/math_basics}
 \input{preamble/math_mine}
@@ -103,6 +103,7 @@ The deliberated choice of $i$ is then considered as the set of propositions supp
 
 It follows from the consideration of “end” as the last \emph{two} arguments that decisive arguments can argue for at most one proposition, thus, that the deliberated choice cannot hold more than one proposition.
 \begin{theorem}[Deliberated choice singularity]
+  \label{th:sing}
   $\forall i \in I: \card{P_i} ≤ 1$.
 \end{theorem}
 \begin{proof}
@@ -115,7 +116,7 @@ The intended semantics is that $P_i$ represents the preference of $i$ over the p
 This latter possibility may look unpleasant, but it is a fact that facing some difficult problems, individuals sometimes are undecided, and it is an a priori empirical possibility that the individual remains undecided (or even, \emph{becomes} undecided) when considering multiple arguments.
 Being undecided is not the same state as being decidedly indifferent about two issues, and those states can be distinguished empirically, as we will see.
   
-Given an behavior function $\allleadstog$, deliberated choices are represented by an element $\pi({\allleadstog}) \subseteq I × P$ (thus with $\pi({\allleadsto})(i) = P_i$) which is right unique (meaning that $\forall i \in I: \card{\pi({\allleadstog})(i)} ≤ 1$).
+Given an behavior function $\allleadstog$, deliberated choices are represented by an element $\pi({\allleadstog}) \subseteq I × P$ defined as $\pi({\allleadstog})(i) = P_i$. \Cref{th:sing} shows that $\pi({\allleadstog})$ is right unique (meaning that $\forall i \in I: \card{\pi({\allleadstog})(i)} ≤ 1$).
 Equivalently, let $(P \cup \set{\emptyset})^I$ denote the right unique relations over $I × P$; and then the deliberated choices are an element $\pi({\allleadstog}) \in (P \cup \set{\emptyset})^I$.
 
 \subsection{An example and a discussion about observability}
@@ -139,7 +140,7 @@ The following toy example is inspired by the following argument from \citet[p.~5
   Let ${\allleadsto}(i, a_2)$ represent $i$ being shown a test of candidate $m_2$ wherein $m_2$ answers 45\% of the first half of questions correctly, then 75\% of the other half correctly.
   %	Let ${\allleadsto}(i, a_e)$ represent $i$ being given an explanation about the psychological phenomenon described in the quote above.
   Let ${\allleadsto}(i, a_e)$ represent $i$ being given the following argument. “When tested, $m_1$ answers 70\% of the first half of questions correctly but then only 40\% of the other half correctly; whereas $m_2$ answers 45\% of the first half of questions correctly, then 75\% of the other half correctly. It follows than $m_1$ answers on average less well than $m_2$. Observing the candidates take the tests may yield a contrary impression; this is a well-known psychological phenomenon depending on the order of the questions that the candidates answer correctly.”
-  Let $\prop_1$ represent the choice of $m_1$ and $\prop_2$ that of $m_2$.
+  Let $\prop_1$ represent choosing $m_1$ and $\prop_2$ choosing $m_2$.
 
   If the prediction described in the quote applies to $i$, the relation $\ileadsto$ is as follows, $\forall k \in \Zp$ (recall that for $\args \subseteq \allargs$, $\args^k$ represents the set of sequences of length $k$ using arguments from $\args$): $\forall \hist \in \set{a_e}^k, \hist \ileadsto \prop_2$; $\forall \hist \in \set{a_1, a_2}^k, \hist \ileadsto \prop_1$; $\forall \hist \in \set{a_1, a_e}^k \suchthat a_e \in \histend, \hist \ileadsto \prop_2$; $\forall \hist \in \set{a_2, a_e}^k \suchthat a_e \in \histend, \hist \ileadsto \prop_2$; $\forall \hist \in \allargs^k \suchthat a_e \in \histend, \hist \ileadsto \prop_2$. The values of ${\allleadsto}(i, \hist)$ for $\hist = \emptyset$ and for $\hist \in \allargs^k \suchthat a_e \notin \histend$ are undetermined by the prediction, but whatever they are, $a_e$ is a decisive argument for $\prop_2$, hence, $i$’s deliberated choice is $\prop_2$.
 \end{example}
@@ -194,7 +195,7 @@ Given an observation $\theta$, let $\theta^{-1}(P) \in \allpriobss$ denote the q
 Similarly, we can view an observation $\theta$ as a function $\theta: I \mapsto \cup_{H \in \incr(\allhists)} P^H$ and thus $\Theta = \finite((\cup_{H \in \incr(\allhists)} P^H)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
 \commentOC[Note that $(\cup_{H \in \max \incr(\allhists)}P^H)^I$ is the set of functions that associate to each $I$ a maximal increasing sequence of paths, together with values from $P$.]{To be deleted.}
 
-\commentOC[Let also $\max\incr(\allhists) = \set{A \in \incr(\allhists) \suchthat \nexists A' \in \incr(\allhists) \suchthat A \subset A'}$ being equal to $\set{A \in \incr(\allhists) \cap (\allhists)^\Z}$ denote the maximal elements of $\incr(\allhists)$, in the sense of containing sequences that are not a subsequence of another sequence; equivalently, containing those sequences whose sequence of cardinals of their elements equals $\Z$.]{To be deleted.}
+\commentOC[Let also $\max\incr(\allhists) = \set{A \in \incr(\allhists) \suchthat \nexists A' \in \incr(\allhists) \suchthat A \subset A'}$ being set equal to $\set{A \in \incr(\allhists) \cap (\allhists)^\Z}$ denote the maximal elements of $\incr(\allhists)$, in the sense of containing sequences that are not a subsequence of another sequence; equivalently, containing those sequences whose sequence of cardinals of their elements equals $\Z$.]{To be deleted.}
 
 We say that an observation $\theta$ is compatible with a behavior ${\allleadstog} \in \allleadstos$ iff $\theta \subseteq \powerset{\allleadstog}$, that is, $\forall (i, \hist, p) \in \theta: (i, \hist, p) \in \powerset{\allleadstog}$.
 Thus, given ${\allleadstog} \in \allleadstos$, the set $\Theta \cap \powerset{\allleadstog}$ is the set of observations compatible with ${\allleadstog}$.
@@ -209,12 +210,46 @@ This set is downwards-closed, as both $\Theta$ and $C^\subseteq$ are.
 
 It is important to realize that $\Theta$ is the set of \emph{a priori} possible observations, meaning, those that are conceivable, possibly counter-factually. The set of observations that can result from actually observing the behavior ${\allleadsto}$ is 
 $\Theta \cap \powerset{\allleadsto} = \set*{\restr{{\allleadsto}}{Q} \suchthat Q \in \allpriobss}$.
+Such an observation $\theta \in \Theta \cap \powerset{\allleadsto}$ is called a feasible observation.
+
+\subsection{Verifiability}
+Given an exposure protocol $(I, \allargs, {\allleadsto})$, we say that a claim $C$ \emph{holds} iff $C \ni {\allleadsto}$. We are interested in procedures to determine whether a claim holds.
+
+Verifiability mandates that some feasible observation proves the claim (makes sure that it holds), thus, $C$ is verifiable iff $\exists \theta \in \Theta \cap \powerset{\allleadsto} \suchthat \forall \theta \wsub {\allleadstog}: {\allleadstog} \in C$.
+
+Some sufficiently simple claims, such as the claim $C = \set{{\allleadstog} \suchthat (\ar) \ileadstog \phi}$ that some given path leads some given individual to some given proposition, are verifiable, but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
+
+A claim $C$ is \emph{informative} iff $\pi(C) = \set{\pi(\allleadstog) \suchthat {\allleadstog} \in C} ≠ (P \cup \set{\emptyset})^I$.
+% A claim $C$ is \emph{informative} iff $∃ i \suchthat \pi(C)(i) ≠ P \cup \set{\emptyset}$, where $\pi(C) = \set{\pi(\allleadstog) \suchthat {\allleadstog} \in C}$.
+A claim $C$ is \emph{informative beyond counting} iff $\exists i \in I \suchthat \pi(C)(i) ≠ P \cup \set{\emptyset}$.
+A claim $C$ is \emph{strongly informative beyond counting} iff $\exists i \in I \suchthat \pi(C)(i) \ssub P$.
+A claim $C$ is \emph{indicative} iff $∃ i \in I, \theta \in \Theta \cap \powerset{\allleadsto} \suchthat \emptyset ≠ \pi(\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C)(i) \ssub P$. Indicativity mandates that some feasible observation permits to deduce something (different than $\emptyset$) about some individual’s DJ.
+
+\begin{remark}
+  Informativeness permits mere counting: the claim that exactly two persons deliberately believe $\phi$ is informative.
+  Informativeness may be a desirable property (rather than informativeness beyond counting) as one may, for example, want to know whether a given proposition is believed by a majority of individuals.
+  Note also that 
+  strong informativeness beyond counting implies informativeness beyond counting and indicativeness; 
+  and that informativeness beyond counting implies informativeness.
+\end{remark}
+\begin{remark}
+  A claim $C$ is \emph{possibly indicative} iff $\forall {\allleadstog} \in C: ∃ i \in I, \theta \in \Theta \cap (\allhists × \set{i} × P) \wsub {\allleadstog} \suchthat \emptyset ≠ \pi(\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C)(i) \ssub P$.
+  Possible indicativity mandates that for each (possibly counter-factual) world in $C$, when knowing a finite number of observations about a given $i$ compatible with it, $C$ permits to deduce something (different than $\emptyset$) about $P_i$.
+  The claim $C = \set{\suchthat (a) \ileadsto φ ∨ ¬φ \in π(\allleadstog)(i)}$ (that if path $(a)$ does not lead a given $i$ to $φ$, then $¬φ \in P_i$) is possibly indicative, and if actually $(a) \nileadsto φ$ (thus $C$ holds), then the claim is not effectively indicative, as it does not entail that $¬φ \in P_i$: it is only counterfactually indicative, as it would entail that $¬φ \in P_i$ if $(a) \ileadsto φ$. And it is verifiable: checking that path $(a)$ leads $i$ to $φ$ proves that the implication holds vacuously.
+\end{remark}
+
+\begin{theorem}
+  An indicative claim is not verifiable.
+\end{theorem}
+\begin{proof}
+  Consider any $θ \wsub {\allleadsto}$.
+  By indicativeness, $∃ i \in I, \theta' \in \Theta \cap \powerset{\allleadsto} \suchthat \emptyset ≠ P' = \pi(\set{{\allleadstog} \suchthat \theta' \wsub {\allleadstog}} \cap C)(i) \ssub P$.
+  Pick any $p ∉ P'$ and any ${\allleadstog}$ that extends both $θ$ and $θ'$ and such that $∀ α \suchthat k < \card{α}: α \ileadsto p$.
+  It follows that ${\allleadstog} ∉ C$, which contradicts verifiability.
+\end{proof}
+The fundamental reason that this theorem holds is that we can, given any (combined) feasible observation, still build a completion that contradicts any conclusion that indicativeness mandates.
 
 \subsection{Rejection and falsification}
-Given an exposure protocol $(I, \allargs, {\allleadsto})$, and a claim about ${\allleadsto}$, we develop here a procedure to deduce that the claim is correct.
-
-Given an exposure protocol $\allleadsto$, we say that a claim $C$ \emph{holds} iff $C \ni {\allleadsto}$.
-
 At our disposal is the procedure of empirical rejection, that consists in directly invalidating a claim by observing something that contradicts it.
 \begin{definition}
   Given a behavior $\allleadsto$, we say that $C$ is \emph{rejectable} iff
@@ -269,7 +304,7 @@ falsifiability guarantees that a claim holds if, and only if, it is not rejectab
 \end{theorem}
 \begin{proof}
   Consider any falsifiable claim $C$, thus, 
-  $\forall {\allleadstog} \notin C: \exists θ \in \Theta \cap \powerset{\allleadstog} \suchthat \theta \notin C^\wsub$.
+  $\forall {\allleadstog} \notin C: ∃ θ \in \Theta \cap \powerset{\allleadstog} \suchthat \theta \notin C^\wsub$.
   Using the contrapositive, $\forall {\allleadstog} \in \allleadstos: \nexists θ \in \Theta \cap \powerset{\allleadstog} \suchthat \theta \notin C^\wsub \implies {\allleadstog} \in C$.
   In particular,
   $\nexists θ \in \Theta \cap \powerset{\allleadsto} \suchthat \theta \notin C^\wsub \implies {\allleadsto} \in C$.
@@ -291,18 +326,6 @@ falsifiability guarantees that a claim holds if, and only if, it is not rejectab
 \end{remark}
 
 \subsection{More properties}
-A claim $C$ is \emph{informative} iff $\pi(C) = \set{\pi(\allleadstog) \suchthat {\allleadstog} \in C} ≠ (P \cup \set{\emptyset})^I$.
-A claim $C$ is \emph{informative beyond counting} iff $\exists i \in I \suchthat \pi(C)(i) ≠ P \cup \set{\emptyset}$.
-A claim $C$ is \emph{strongly informative beyond counting} iff $\exists i \in I \suchthat \pi(C)(i) \ssub P$.
-A claim $C$ is \emph{indicative} iff $\forall {\allleadstog} \in C: \exists i \in I, \theta \in \Theta \cap (\allhists × \set{i} × P) \wsub {\allleadstog} \suchthat \emptyset ≠ \pi(\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C)(i) \ssub P$. Indicativity mandates that for each (possibly counter-factual) world in $C$, when knowing a finite number of observations about a given $i$ compatible with, $C$ permits to deduce something (different than $\emptyset$) about $P_i$.
-
-\begin{remark}
-  Informativeness permits mere counting: the claim that exactly two persons deliberately believe $\phi$ is informative.
-  Informativeness may be a desirable property (rather than informativeness beyond counting) as one may, for example, want to know whether a given proposition is believed by a majority of individuals.
-  Note also that strong informativeness beyond counting implies informativeness beyond counting and indicativeness; and
-  that informativeness beyond counting implies informativeness.
-\end{remark}
-
 \begin{definition}[Anonymity]
   Given a permutation $\sigma$ over $I$ and any ${\allleadstog} \in \allleadstos$, let ${\allleadstog} \circ \sigma$ denote $\set{(i, \hist, \phi) \suchthat (\sigma(i), \hist, \phi) \in {\allleadstog}}$ and let $C \circ \sigma$ denote $\set{{\allleadstog} \circ \sigma \suchthat {\allleadstog} \in C}$.
   A claim $C$ is \emph{anonymous} iff $\forall \sigma: C = C \circ \sigma$.
@@ -316,7 +339,7 @@ Let us determine which situations admit anonymous and falsifiable claims that ho
 \subsection{Ideas for no suitable}
 $C$ is \emph{suitable} iff it holds and is anonymous, informative and falsifiable.
 \begin{example}
-  Assume that $\exists \ar, \phi \suchthat \forall i: \ar \ileadstost \phi$.
+  Assume that $∃ \ar, \phi \suchthat \forall i: \ar \ileadstost \phi$.
   Then $\forall i: \ar \ileadstostg \phi$ is suitable.
   Note that it is falsifiable but not verifiable (that is, no $O$ implies $C$).
 \end{example}
@@ -329,12 +352,12 @@ $i_1$ thinks $p$ and $i_2$ thinks $¬p$.
 Given $\histk \in \allhists$ and $\ar_l \in \allargs$, let $(\histk, …, \ar_l, ?)$ denote the set
 $\set{\histl \suchthat \histk \subset \histl \land \ar_l \in \histlend}$.
 Given $\hist \in \allhists$, ${\ileadstog}$ and $\ar_k, \ar_l \in \allargs$, let $(\hist, \ar_k, ?, \nileadstog \phi, …, \ar_l, ?)$ denote the set
-$\set{\histl \suchthat \exists \histk \suchthat \hist \subset \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadstog \phi \land \ar_l \in \histlend}$.
+$\set{\histl \suchthat ∃ \histk \suchthat \hist \subset \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadstog \phi \land \ar_l \in \histlend}$.
 Given $\ar_k, \ar_l \in \allargs$, let
 $(…, \ar_k, ?, \nileadstog \phi, …, \ar_l, ?)$ denote the set
 $\cup_{\hist \in \allhists} (\hist, \ar_k, ?, \nileadstog \phi, …, \ar_l, ?) =
-  \set{\histl \suchthat \exists \hist, \histk \suchthat \hist \subset \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadstog \phi \land \ar_l \in \histlend} =
-  \set{\histl \suchthat \exists \histk \suchthat \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadstog \phi \land \ar_l \in \histlend}$.
+  \set{\histl \suchthat ∃ \hist, \histk \suchthat \hist \subset \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadstog \phi \land \ar_l \in \histlend} =
+  \set{\histl \suchthat ∃ \histk \suchthat \histk \subset \histl \land \ar_k \in \histkend \land \histk \nileadstog \phi \land \ar_l \in \histlend}$.
 Given ${\ileadstog}$, $p \in P$, $s \in \allargs$ and $S \subseteq \allargs$, note that $s \in \ileadstoinvg(p)$ stand for $s \ileadstog p$ and $S \subseteq \ileadstoinvg(p)$ stand for $\forall s \in S: s \ileadstog p$.
 
 \begin{theorem}
@@ -346,17 +369,17 @@ Given ${\ileadstog}$, $p \in P$, $s \in \allargs$ and $S \subseteq \allargs$, no
     (\hist, …, \ar_2, ?) \subseteq \ileadstoinvg(p).
   \end{multline}
   Assume that ${\allleadsto} \in C$. Then
-  $\exists i \in I \suchthat [\ar_k \nileadstost p \land \ar_l \nileadstost p]$
+  $∃ i \in I \suchthat [\ar_k \nileadstost p \land \ar_l \nileadstost p]$
   is equivalent to:
   \begin{multline}
     \label{eq:cln}
-    \exists i \in I \suchthat \forall \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l}:\\
-    \exists \hist \in (…, \ar_1, ?) \cap \nileadstoinv(p) \suchthat
+    ∃ i \in I \suchthat \forall \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l}:\\
+    ∃ \hist \in (…, \ar_1, ?) \cap \nileadstoinv(p) \suchthat
     (\hist, …, \ar_2, ?) \subseteq \ileadstoinv(p).
   \end{multline}
 \end{theorem}
 \begin{proof}
-  $\ar_k \nileadstost p$ iff $\exists \hist \suchthat \ar_k \in \histend \land \hist \nileadsto p$.
+  $\ar_k \nileadstost p$ iff $∃ \hist \suchthat \ar_k \in \histend \land \hist \nileadsto p$.
 \end{proof}
 \begin{remark}
   Idea.
@@ -391,7 +414,7 @@ Given ${\ileadstog}$, $p \in P$, $s \in \allargs$ and $S \subseteq \allargs$, no
   Pick any $p \in P$ and $\ar_k ≠ \ar_l \in \allargs$ and assume that $\allleadsto$ fails \cref{eq:cln}, that is, satisfies:
   \begin{multline}
     \label{eq:answerable}
-    \forall i \in I, \exists \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l} \suchthat
+    \forall i \in I, ∃ \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l} \suchthat
     \forall \hist \in (…, \ar_1, ?) \cap \nileadstoinv(p): \\
     (\hist, …, \ar_2, ?) \cap \ileadstoinv(p) ≠ \emptyset.
   \end{multline}
@@ -1220,7 +1243,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
     $\set{P_i, i \in I} \ssub \set{\phi, ¬\phi}$.
   \end{proof}
 
-  Define the claim $C^\text{HA} = \set{{\allleadsto} \circ \sigma \suchthat \sigma: I \Leftrightarrow I}$, or equivalently, $C^\text{HA} = \set{{\allleadstog} \in \allleadstos \suchthat \forall f \in P^{\allhists}: \card({\allleadstoginv}(f)) = \card({\allleadstoinv}(f))}$.
+  Define the claim $C^\text{HA} = \set{{\allleadsto} \circ \sigma \suchthat \sigma: I \Leftrightarrow I}$.
   Under anonymity, requesting that a claim holds is the same as requesting that it includes $C^\text{HA}$.
   \begin{theorem}
     \label{th:claim_ha}
@@ -1228,7 +1251,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
     In particular, $C^\text{HA}$ holds and is anonymous.
   \end{theorem}
   \begin{remark}
-    Define $C^\text{A} = \set{{\allleadstog} \in \allleadstos \suchthat {\allleadstog}(I) \wsub {\allleadsto}(I)}$. Observe that $C^\text{A}$ is anonymous, that $C^\text{HA} \wsub C^\text{A}$, and that $C^\text{HA} \neq C^\text{A}$ iff $\forall i, j \in I: {\ileadsto} \neq {\ileadsto[j]}$.
+    Define $C^\text{A} = \set{{\allleadstog} \in \allleadstos \suchthat {\allleadstog}(I) = {\allleadsto}(I)}$. Observe that $C^\text{A}$ is anonymous, that $C^\text{HA} \wsub C^\text{A}$, and that $C^\text{HA} \neq C^\text{A}$ iff $\exists i, j \in I: {\ileadsto} \neq {\ileadsto[j]}$ (to be checked).
   \end{remark}
 
   \begin{theorem}
@@ -1240,11 +1263,9 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
     \end{enumerate}
   \end{theorem}
   \begin{proof}
-    TODO check this, there is a problem with the definition and use of CA.
-
     For \ref{it:condHAI} $\implies$ \ref{it:HAI},
     define $p = P_{i_1}$.
-    Consider any claim $C$ such that $C^\text{HA} \wsub C \wsub C^\text{A}$ and $C$ is anonymous.
+    Consider any claim $C$ such that $C \wsub \set{{\allleadstog} \in \allleadstos \suchthat {\ileadsto[i_1]} \in {\allleadstog}(I) \wsub {\allleadsto}(I)}$ and $C$ is anonymous (for example, $C^\text{HA}$ is suitable).
     % Define the claim $C$ as $\set{{\allleadstog} \in \allleadstos \suchthat \forall i \in I: {\ileadstog} \in \set{{\ileadsto[j]} \suchthat j \in I}}$ (or as anything included in it that includes $C^\text{HA}$ and is anonymous).
     The claim is indicative for $i = i_1$ and $\theta = \set{(\hist, i_1, {\ileadsto[i_1]}(\hist)) \suchthat \hist \in H}$ for the following reason.
     The attitudes in $C$ compatible with $\theta$ are $\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C \wsub \set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat P_j = p}}$, and $\pi(\set{{\allleadstog} \suchthat {\ileadstog[i_1]} \in \set{{\ileadsto[j]} \suchthat P_j = p}})(i_1) = p$.
@@ -1579,16 +1600,18 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
 Given a set of attitudes $S \wsub P^{\allhists}$, the claim associated to it designates the claim $S^I = \set{{\allleadstog} \in \allleadstos \suchthat \forall i \in I: {\ileadstog} \in S}$.
 Say that a claim $C$ is a claim about types iff $\exists S \wsub P^{\allhists} \suchthat C = S^I$.
 Informally, such a claim claims that the set of attitudes in $I$ is contained in $S$ (though might be a strict subset of $S$), or equivalently, that no attitude out of $S$ exists among $I$.
-\begin{definition}
-  Say that an attitude $g \in P^{\allhists}$ is observably included in a set of attitudes $S \wsub P^{\allhists}$ iff $\forall H \in \finite(\incr(\allhists)): \exists f \in S \suchthat \restr{g}{H} = \restr{f}{H}$.
 
-  Define the extension of a set of attitudes $S \wsub P^{\allhists}$ to its observably included attitudes as the set of attitudes $R(S) = \set{g \in P^{\allhists} \suchthat \forall H \in \finite(\incr(\allhists)): \exists f \in S \suchthat \restr{g}{H} = \restr{f}{H}}$.
+The following definition assumes a set $B \wsub P^{\allhists}$ of behaviors. We take $B = P^{\allhists}$ if nothing is specified about $B$.
+\begin{definition}
+  Say that an attitude $g \in B$ is observably included in a set of attitudes $S \wsub B$ iff $\forall H \in \finite(\incr(\allhists)): \exists f \in S \suchthat \restr{g}{H} = \restr{f}{H}$.
+
+  Define the extension of a set of attitudes $S \wsub B$ to its observably included attitudes as the set of attitudes $R(S) = \set{g \in B \suchthat \forall H \in \finite(\incr(\allhists)): \exists f \in S \suchthat \restr{g}{H} = \restr{f}{H}}$.
   Note that $S \wsub R(S)$.
   Also note that $S_1 \wsub S_2 \implies R(S_1) \wsub R(S_2)$.
 \end{definition}
 \begin{theorem}
   \label{th:RR}
-  $\forall S \wsub P^{\allhists}: R(R(S)) \wsub R(S)$.
+  $\forall S \wsub B: R(R(S)) \wsub R(S)$.
 \end{theorem}
 \begin{proof}
   Consider any $g \in R(R(S))$.
@@ -1757,19 +1780,26 @@ The function $f(\ar) ≠ f(\ar')$, for example, is not in $S$.
 \end{proof}
 
 \begin{theorem}
-  Consider a falsifiable and anonymous claim $C$ such that $\exists {\allleadstog} \in C, f_1, f_2 \suchthat {\allleadstog}(I) = \set{f_1, f_2} \land \card{\set{i \in I \suchthat {\allleadstog}(i) = f_1}} \notin \Z \land \card{\set{i \in I \suchthat {\allleadstog}(i) = f_2}} \notin \Z$.
-  Then, $\forall {\allleadstog} \suchthat {\allleadstog}(I) \wsub \set{f_1, f_2}: {\allleadstog} \in C$.
+  \label{th:falsclosed}
+  Under any $B \wsub P^{\allhists}$ (thus recall $R(S) \wsub B$), for any anonymous claim $C \wsub B^I$ that is falsifiable or trivial, 
+  $\forall {\allleadstog} \in C, F \wsub {\allleadstog}(I) \suchthat [\forall f \in F: \card{({\allleadstoginv}(f))} \notin \Z]: R(F)^I \wsub C$.
+
+  $\exists {\allleadstog} \in C, \emptyset ≠ F \wsub {\allleadstog}(I) \suchthat \forall f \in F: \card{({\allleadstoginv}(f))} \notin \Z$.
+  Then, $R(F)^I \wsub C$.
 \end{theorem}
 \begin{proof}
-  Consider any anonymous claim $C$ satisfying the antecedent and any ${\allleadstog'} \suchthat {\allleadstog'}(I) \wsub \set{f_1, f_2} \land {\allleadstog'} \notin C$.
+  Consider any anonymous claim $C$, any ${\allleadstog} \in C, F \wsub {\allleadstog}(I) \suchthat [\forall f \in F: \card{({\allleadstoginv}(f))} \notin \Z]$ and any ${\allleadstog'} \in R(F)^I \setminus C$.
   To show that $C$ is not falsifiable,
-  consider any observable subset of $\allleadstog'$ and let us show that it is completable in $C$.
-
+  consider any observable $\theta \wsub {\allleadstog'}$ and let us show that it is completable in $C$. Let $\theta(P^{\allhists})$ denote the (finite) set of individuals that $\theta$ interrogates.
+  
   From the antecedent we see that $I$ is infinite.
-  Define $I_k$ as the individuals that the observable interrogates and satisfying ${\allleadstog'}(i) = f_k$.
-  Consider sets of same sizes $I'_1$ and $I'_2$ among the non observed individuals (meaning those in $I \setminus I_1 \setminus I_2$) and with corresponding types in ${\allleadstog}$ (so that $\forall i \in I'_k: {\allleadstog}(i) = f_k$).
-  Define a bijection $\sigma$ that sends $I_1$ to $I'_1$ and $I_2$ to $I'_2$, and conversely, and that sends the elements of $I \setminus (\cup_k I_k) \setminus (\cup_k I'_k)$ to themselves.
-  The resulting relation ${\allleadstog} \circ \sigma$ is in $C$ and is compatible with the observable.
+  We know that $\forall i \in \theta(P^{\allhists}): \exists g \in R(F) \suchthat \theta(i) \wsub g$, thus, by definition of $R$, $\exists f \in F \suchthat \theta(i) \wsub f$.
+  Define $\gamma: \theta(P^{\allhists}) \to F$ that picks one such $f$ for each $i$.
+  Thus, $(\gamma^{-1}(f), f \in F)$ is a partition of $\theta(P^{\allhists})$ such that $\forall i \in \gamma^{-1}(f): \theta(i) \wsub f$.
+
+  Consider sets of same sizes $I'_f$ among the non observed individuals (meaning those in $I \setminus \theta(P^{\allhists})$) and with corresponding types in ${\allleadstog}$ (so that $\forall f \in F, i \in I'_f: {\ileadstog} = f$).
+  Define a bijection $\sigma$ that for each $f \in F$ bijects $I_f$ to $I'_f$ and that sends the elements of $I \setminus (\cup_f I_f \cup I'_f)$ to themselves.
+  The relation ${\allleadstog} \circ \sigma$ is in $C$ and is compatible with the observable.
 \end{proof}
 
 \begin{theorem}
@@ -1829,17 +1859,73 @@ Let us determine which situations admit anonymous and falsifiable claims that ho
 From \cref{th:suffIndic} we know that we require at least
 for some $H \in \finite(\incr(\allhists))$ and $i_1 \in I \suchthat P_{i_1} \in P$, we have $\forall i_2 \suchthat P_{i_2} \neq P_{i_1}$ that $\exists \hist \in H \suchthat {\ileadsto[i_1]}(\hist) \neq {\ileadsto[i_2]}(\hist)$.
 
-TODO: consider condition $\exists H \in \incr(\allhists), f \in P^H, \ar, p \suchthat \forall i: \restr{\ileadsto}{H} = f \implies \ar \ileadstost p$ (and someone satisfies the antecedent).
-Maybe this is equivalent to indicative claim exists?
-And implies the rest?
+\begin{theorem}
+  Assume that for some $H \in \finite(\incr(\allhists))$ and $i_1 \in I \suchthat p = P_{i_1} \in P$, we have $\forall i_2 \suchthat P_{i_2} \neq P_{i_1}$ that $\exists \hist \in H \suchthat {\ileadsto[i_1]}(\hist) \neq {\ileadsto[i_2]}(\hist)$.
+
+  Then $\forall H' \in \incr(\allhists), P^{H'} \wsub \restr{{\allleadsto}(I)}{H'}$ iff $\forall H \wsub H', f \in P^{H'}$: $\exists i \in I \suchthat f \wsub {\ileadsto} \land [\restr{f}{H} = \restr{\ileadsto[i_1]}{H} \implies \exists \ar \in \allargs \suchthat \ar \ileadstost p]$.
+\end{theorem}
+\begin{proof}
+  Not exactly correct, should be corrected and proven but does not seem crucial fow now. Anyway, it seems possible (see below).
+\end{proof}
+Note that this is possible iff $\allargs$ is infinite. If so, suffices to take systematically $\ar \notin H'$. If not, then some $H'$ exhausts all arguments and with $f$ constant to $p' ≠ p$, there is no $\ar$ satisfying $\ar \ileadstost p$.
+
+\begin{theorem}
+  \label{th:noindic}
+  If $a_1 \ileadstost[f_1] \phi$ and $a_2 \ileadstost[f_2] ¬\phi$ with $\ar_1 ≠ \ar_2$ and $f_1(\emptyset) = f_2(\emptyset)$ and $\forall f \in \set{f_1, f_2}: \card{{\allleadstoinv}(f)} \notin \N$, then there is no anonymous, falsifiable and indicative about $i_1$ claim that holds (here, considering indicativeness as mandating to know that $P_{i_1} = \phi$).
+\end{theorem}
+\begin{proof}
+  Any claim that holds must include $\allleadsto$.
+  Define $F = \set{f_1, f_2}$.
+  
+  From indicativeness about $i_1$, $\exists \theta \in \Theta \cap (\allhists × \set{i_1} × P) \wsub {\allleadsto} \suchthat \emptyset ≠ \pi(\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C)(i_1) = \phi$.
+  Define $H \in \incr(\allhists)$ as the query corresponding to $\theta$, thus $H = \theta(i_1, P)$.
+
+  Define $g \in P^{\allhists}$ as $g = \set{(\hist, f_1(\hist)) \suchthat \exists \emptyset ≠ \histp \in \intvl{\hist} \cap H} \cup \set{(\hist, f_2(\hist)) \suchthat \intvl{\hist} \cap H \wsub \set{\emptyset}}$.
+  Then, $g \in R(F)$. To show this, we need to show that $\forall H' \in \finite(\incr(\allhists)): \exists f \in F \suchthat \restr{g}{H'} = \restr{f}{H'}$.
+  If $\intvl{\max H'} \cap H \wsub \set{\emptyset}$, then $f_2$ satisfies the condition (consider any $\hist \in H'$, we have $\intvl{\hist} \cap H \wsub \set{\emptyset}$); otherwise (thus $\emptyset ≠ \hist' \in \intvl{\max H'} \cap H$), $f_1$ does (consider any $\hist' \in H'$).
+
+  Now let us show that $P_g ≠ \phi$.
+  That is because at least one of $\hist = (\ar_2, \ar_1)$ or $\hist = (\ar_1, \ar_2)$ satisfies $\intvl{\hist} \cap H \wsub \set{\emptyset}$ and in both cases, $\hist \ileadsto[f_2] ¬\phi$, thus, $g(\hist) = ¬\phi$.
+  
+  Define ${\allleadstog'}$ as $\forall i \in I: {\ileadstog'} = g$.
+  By \cref{th:falsclosed}, any claim that is anonymous and falsifiable must include ${\allleadstog'}$.
+  
+  Also, $g$ is compatible with $\theta$.
+  It follows that $\pi(\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C)(i_1) ≠ \phi$.
+\end{proof}
+
+I need some restriction on the set of a priori possible behaviors.
+Define $B \wsub P^{\allhists}$ as the set of a priori possible behaviors.
+For example, define $B_1$ as the set of behaviors such that $\forall \ar_1, \ar_2, \hist: (\hist, \ar_1, \ar_2) = (\hist, \ar_2, \ar_1)$ (where equality, abusing notation, means that they lead to the same result).
+Let $\overline{B} = P^{\allhists} \setminus B$ denote the set of behaviors that fail the condition.
+
+Then the a priori possible situations are only $B^I$. A claim is falsifiable iff the situations in $B^I$ not in $C$ are rejectable. 
+The other properties (holds, indicativeness, anonymity) do not change.
+We used to consider also situations $\overline{S} = \set{{\allleadstog} \suchthat \exists i \in I \suchthat {\ileadstog} \in \overline{B}}$ where some $i$ is in $\overline{B}$.
+
+Using $B_1$ alone does not solve the problem, as we can still show that $P_g ≠ \phi$ by using $\hist = (\ar_3, \ar_2, \ar_1)$, assuming that $H$ does not start with $\ar_3$.
+
+I might need something like the following. $\ar$ is apparently innocuous iff $\forall \hist, {\allleadstog}: {\allleadstog}(\hist, \ar) = {\allleadstog}(\hist)$. And $\ar$ is innocuous iff $\forall \hist, \histp: \hist, \ar, \histp = \hist, \histp$. The required hypothesis might be $B_2$: if $\ar$ is apparently innocuous, then it is innocuous.
+
+\begin{theorem}
+  Under some $B$, 
+  if $a_1 \ileadstost[f_1] \phi$ and $a_2 \ileadstost[f_2] ¬\phi$ and ${\ileadsto[f_1]}(\emptyset) = {\ileadsto[f_2]}(\emptyset)$ and infinitely many individuals have behavior $f_1$ and infinitely many have behavior $f_2$, then there is an anonymous, falsifiable and indicative about $i_1$ claim that holds (here, considering indicativeness as mandating to know that $P_{i_1} = \phi$).
+\end{theorem}
+\begin{proof}
+  Pick $B = \set{{\ileadsto[i_1]}, {\ileadsto[i_2]}}$ and $C = C^\text{HA}$.
+\end{proof}
 
 \begin{conjecture}
-  If $P_{i_1} = \phi$ with a single decisive argument $\ar \ileadstost \phi$ and $i_2$ satisfies ${\ileadsto[i_2]} = {\ileadsto[i_1]}$ except that $(\ar) \ileadsto[i_2] ¬\phi$, then there is no anonymous and indicative claim that holds.
+  Assume $\allargs = \set{\ar_1, \ar_2}$. Write them $a$ and $b$.
+  Let us find some $B$ where \cref{th:noindic} fails.
 \end{conjecture}
 \begin{proof}
-  Indicativeness requires that
-  $\exists i \in I, \theta \in \Theta \cap (\allhists × \set{i} × P) \wsub {\allleadsto} \suchthat \emptyset ≠ \pi(\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C)(i) \ssub P$.
-  If $\theta$ observes $(\ar_1, \ar)$
+  To block the proof of \cref{th:noindic}, we need to ensure that $P_g = \phi$.
+  Say $H = \set{\emptyset, a, ab, aba}$.
+  Define a non intersecting path (meaning not intersecting $H$) as any path such as $ba$.
+  We want $B$ such that we may not include $f_2$ on some non intersecting path with $a$ failing.
+  For example, $ba$ may not be $f_2$.
+  For this, we need $B$ of the form: $f(a) = f(ab) = f(aba) = \phi$ implies $f(ba.*) = \phi$, where $ba.*$ represents some completion of $ba$.
 \end{proof}
 
 \subsection{Extensions}
