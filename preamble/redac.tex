@@ -8,8 +8,10 @@
 \NewDocumentCommand{\TODO}{m}{\textcolor{blue}{\small$\big[$TODO: #1$\big]$}}
 
 \bibliographystyle{abbrvnat}
+%https://tex.stackexchange.com/questions/125690
 \NewDocumentCommand{\possessivecite}{O{}m}{\citeauthor{#2}’s \citeyearpar[#1]{#2}}
 \NewDocumentCommand{\Possessivecite}{O{}m}{\Citeauthor{#2}’s \citeyearpar[#1]{#2}}
+\NewDocumentCommand{\email}{m}{\href{mailto:#1}{\nolinkurl{#1}}}
 
 \declaretheorem{theorem}
 \declaretheorem{lemma}
@@ -23,9 +25,10 @@
 \declaretheorem{property}
 \declaretheorem{procedure}
 %Possibly: qed=\scalebox{1.2}{$\hexagon$} (and \usepackage{wasysym}, after amssymb). But probably not useful as most definitions are one § only. Might also consider: circledast, circledcirc, circleddash; black triangle or black circle; diamond…
-\declaretheorem[style=definition]{definition}
-\declaretheorem[style=remark, qed=$\triangle$]{example}
-\declaretheorem[style=remark, qed=$\triangle$]{remark}
+  \declaretheorem[style=definition]{definition}
+  \declaretheorem[style=remark, qed=$\triangle$]{example}
+  \declaretheorem[style=remark, qed=$\triangle$]{remark}
+}
 
 %https://tex.stackexchange.com/a/467188, https://tex.stackexchange.com/a/36088 - uncomment if one of those symbols is used.
 %\DeclareFontFamily{U} {MnSymbolD}{}
@@ -76,24 +79,106 @@
 %%Rightwards wave arrow: ↝. Alternative: \rightsquigarrow from amssymb, but it’s uglier
 %\DeclareMathSymbol{\rightlsquigarrow}{\mathrel}{MnSyA}{160}
 
+%0391 Greek Capital Letter Alpha
+\newunicodechar{Α}{\Alpha}
+%0392 Greek Capital Letter Beta
+\newunicodechar{Β}{\Beta}
+%0393 Greek Capital Letter Gamma
+\newunicodechar{Γ}{\Gamma}
+%0394 Greek Capital Letter Delta
+\newunicodechar{Δ}{\Delta}
+%0395 Greek Capital Letter Epsilon
+\newunicodechar{Ε}{\Epsilon}
+%0396 Greek Capital Letter Zeta
+\newunicodechar{Ζ}{\Zeta}
+%0397 Greek Capital Letter Eta
+\newunicodechar{Η}{\Eta}
+%0398 Greek Capital Letter Theta
+\newunicodechar{Θ}{\Theta}
+%0399 Greek Capital Letter Iota
+\newunicodechar{Ι}{\Iota}
+%039A Greek Capital Letter Kappa
+\newunicodechar{Κ}{\Kappa}
+%039B Greek Capital Letter Lambda
+\newunicodechar{Λ}{\Lambda}
+%039C Greek Capital Letter Mu
+\newunicodechar{Μ}{\Mu}
+%039D Greek Capital Letter Nu
+\newunicodechar{Ν}{\Nu}
+%039E Greek Capital Letter Xi
+\newunicodechar{Ξ}{\Xi}
+%039F Greek Capital Letter Omicron
+\newunicodechar{Ο}{\Omicron}
+%03A0 Greek Capital Letter Pi
+\newunicodechar{Π}{\Pi}
+%03A1 Greek Capital Letter Rho
+\newunicodechar{Ρ}{\Rho}
+%03A3 Greek Capital Letter Sigma
+\newunicodechar{Σ}{\Sigma}
+%03A4 Greek Capital Letter Tau
+\newunicodechar{Τ}{\Tau}
+%03A5 Greek Capital Letter Upsilon
+\newunicodechar{Υ}{\Upsilon}
+%03A6 Greek Capital Letter Phi
+\newunicodechar{Φ}{\Phi}
+%03A7 Greek Capital Letter Chi
+\newunicodechar{Χ}{\Chi}
+%03A8 Greek Capital Letter Psi
+\newunicodechar{Ψ}{\Psi}
+%03A9 Greek Capital Letter Omega
+\newunicodechar{Ω}{\Omega}
 %03B1 Greek Small Letter Alpha
 \newunicodechar{α}{\alpha}
+%03B2 Greek Small Letter Beta
 \newunicodechar{β}{\beta}
 %03B3 Greek Small Letter Gamma
 \newunicodechar{γ}{\gamma}
 %03B4 Greek Small Letter Delta
 \newunicodechar{δ}{\delta}
+%03B5 Greek Small Letter Epsilon
+\newunicodechar{ε}{\epsilon}
+%03B6 Greek Small Letter Zeta
+\newunicodechar{ζ}{\zeta}
+%03B7 Greek Small Letter Eta
+\newunicodechar{η}{\eta}
+%03B8 Greek Small Letter Theta
 \newunicodechar{θ}{\theta}
+%03B9 Greek Small Letter Iota
+\newunicodechar{ι}{\iota}
+%03BA Greek Small Letter Kappa
+\newunicodechar{κ}{\kappa}
+%03BB Greek Small Letter Lambda
+\newunicodechar{λ}{\lambda}
+%03BC Greek Small Letter Mu
 \newunicodechar{μ}{\mu}
+%03BD Greek Small Letter Nu
 \newunicodechar{ν}{\nu}
-%03C6 Greek Small Letter Phi (“the ordinary Greek letter, showing considerable glyph variation; in mathematical contexts, the loopy glyph is preferred, to contrast with 03D5 φ” – The Unicode Standard 13.0, https://www.unicode.org/charts/PDF/U0370.pdf)
+%03BE Greek Small Letter Xi
+\newunicodechar{ξ}{\xi}
+%03BF Greek Small Letter Omicron
+\newunicodechar{ο}{o}
+%03C0 Greek Small Letter Pi
+\newunicodechar{π}{\pi}
+%03C1 Greek Small Letter Rho
+\newunicodechar{ρ}{\rho}
+%03C2 Greek Small Letter Final Sigma
+\newunicodechar{ς}{\varsigma}
+%03C3 Greek Small Letter Sigma
+\newunicodechar{σ}{\sigma}
+%03C4 Greek Small Letter Tau
+\newunicodechar{τ}{\tau}
+%03C5 Greek Small Letter Upsilon
+\newunicodechar{υ}{\upsilon}
+%03C6 Greek Small Letter Phi (“the ordinary Greek letter, showing considerable glyph variation; in mathematical contexts, the loopy glyph is preferred, to contrast with 03D5 φ” – The Unicode Standard 13.0, U+0370–U+03FF, https://www.unicode.org/charts/PDF/U0370.pdf)
 \newunicodechar{φ}{\phi}
-%03D5 Greek Phi symbol (“used as a technical symbol, with a stroked glyph” – The Unicode Standard 13.0, https://www.unicode.org/charts/PDF/U0370.pdf)
+%03C7 Greek Small Letter Chi
+\newunicodechar{χ}{\chi}
+%03C8 Greek Small Letter Psi
+\newunicodechar{ψ}{\psi}
+%03C9 Greek Small Letter Omega
+\newunicodechar{ω}{\omega}
+%03D5 Greek Phi Symbol (“used as a technical symbol, with a stroked glyph” – The Unicode Standard 13.0)
 \newunicodechar{ϕ}{\varphi}
-%03A6 Φ Greek Capital Letter Phi
-\newunicodechar{Φ}{\Phi}
-%03A8 Φ Greek Capital Letter Psi
-\newunicodechar{Ψ}{\Psi}
 %2115 Double-Struck Capital N
 \newunicodechar{ℕ}{\mathbb{N}}
 %211A Double-Struck Capital Q
@@ -113,8 +198,20 @@
 \newunicodechar{⇔}{\Leftrightarrow}
 %21DD Rightwards Squiggle Arrow
 \newunicodechar{⇝}{\rightsquigarrow}
+%2200
+\newunicodechar{∀}{\forall}
+%2202
+\newunicodechar{∂}{\partial}
+%2203
+\newunicodechar{∃}{\exists}
+%2204
+\newunicodechar{∄}{\nexists}
 %2205 Empty Set
 \newunicodechar{∅}{\emptyset}
+%2208
+\newunicodechar{∈}{\in}
+%2209
+\newunicodechar{∉}{\notin}
 %2212 Minus Sign
 \newunicodechar{−}{\ifmmode{-}\else\textminus\fi}
 %221E Infinity
@@ -127,6 +224,8 @@
 \newunicodechar{∩}{\cap}
 %222A Union
 \newunicodechar{∪}{\cup}
+%2248
+\newunicodechar{≈}{\ensuremath{\approx}}
 %2260 Not Equal To (handy also as text in informal writing)
 \newunicodechar{≠}{\ensuremath{\neq}}
 %2264 Less-Than or Equal To
@@ -165,6 +264,8 @@
 \newunicodechar{⊁}{\nsucc}
 %2286
 \newunicodechar{⊆}{\subseteq}
+%228A
+\newunicodechar{⊊}{\subsetneq}
 %22A2
 \newunicodechar{⊢}{\vdash}
 %22A5 Up Tack
@@ -191,10 +292,11 @@
 \newunicodechar{⋭}{\ntrianglerighteq}
 %25A1 White Square
 \newunicodechar{□}{\Box}
-%2713 Check Mark
-\newunicodechar{✓}{\ifmmode\text{\ding{51}}\else\ding{51}\fi}
+%2713 Check Mark – amssymb \checkmark; bbding \Checkmark \CheckmarkBold; pifont \ding{51} \ding{52}; dingbat \checkmark; thanks to https://tex.stackexchange.com/a/132785 and https://tex.stackexchange.com/questions/132783#comment299869_132789
+\newunicodechar{✓}{\checkmark}
+%\newunicodechar{✓}{\ifmmode\text{\ding{51}}\else\ding{51}\fi}
 %2717 Ballot X
-\newunicodechar{✗}{\ifmmode\text{\ding{55}}\else\ding{55}\fi}
+%\newunicodechar{✗}{\ifmmode\text{\ding{55}}\else\ding{55}\fi}
 %27E6 Mathematical Left White Square Bracket – requires stmaryrd (alternative: \text{\textlbrackdbl}, but ugly if used in an italicized text such as a theorem)
 \newunicodechar{⟦}{\llbracket}
 %27E7 Mathematical Right White Square Bracket
@@ -207,20 +309,35 @@
 \newunicodechar{〚}{\textlbrackdbl}
 %301B Right White Square Bracket
 \newunicodechar{〛}{\textrbrackdbl}
-%00B1 Plus-Minus Sign ±
-\DeclareUnicodeCharacter{00B1}{\pm}
-%← Leftwards Arrow
-\DeclareUnicodeCharacter{2190}{\ifmmode\leftarrow\else\textleftarrow\fi}
-%→ is defined by default as \textrightarrow, which is invalid in math mode. Same thing for the three other commands. Using \DeclareUnicodeCharacter instead of \newunicodechar because the latter warns about the previous definition.
-%→ Rightwards Arrow
-\DeclareUnicodeCharacter{2192}{\ifmmode\rightarrow\else\textrightarrow\fi}
+
+%Using \DeclareUnicodeCharacter instead of \newunicodechar because the latter warns about the previous definition.
 %¬ Not Sign
 \DeclareUnicodeCharacter{00AC}{\ifmmode\lnot\else\textlnot\fi}
-%… Horizontal Ellipsis
-\DeclareUnicodeCharacter{2026}{\ifmmode\dots\else\textellipsis\fi}
+%®
+\DeclareUnicodeCharacter{00AE}{\textsuperscript{\textregistered}}
+%00B1 Plus-Minus Sign ±
+\DeclareUnicodeCharacter{00B1}{\pm}
 %× Multiplication Sign
 \DeclareUnicodeCharacter{00D7}{\ifmmode\times\else\texttimes\fi}
-%Permits to really obtain a straight quote when typing a straight quote; potentially dangerous, see https://tex.stackexchange.com/a/521999
-% \catcode`\'=\active
-% \DeclareUnicodeCharacter{0027}{\ifmmode^\prime\else\textquotesingle\fi}
+%… Horizontal Ellipsis
+\DeclareUnicodeCharacter{2026}{\ifmmode\dots\else\textellipsis\fi}
+%← Leftwards Arrow
+\DeclareUnicodeCharacter{2190}{\ifmmode\leftarrow\else\textleftarrow\fi}
+%→ is defined by default as \textrightarrow, which is invalid in math mode. Same thing for the three other commands. 
+%→ Rightwards Arrow
+\DeclareUnicodeCharacter{2192}{\ifmmode\rightarrow\else\textrightarrow\fi}
+%→ Rightwards Double Arrow
+\DeclareUnicodeCharacter{21D2}{\Rightarrow}
+%Permits to really obtain a straight quote when typing a straight quote; potentially dangerous, see https://tex.stackexchange.com/a/521999, and prevents using double primes (x''). Better then use U+2032 for prime [as recommended in Unicode ® Technical Report #25 UNICODE SUPPORT FOR MATHEMATICS], U+2033 for double prime, U+2034 for triple prime and define the appropriate commands. But arguably that’s for purists.
+%\catcode`\'=\active
+%\DeclareUnicodeCharacter{0027}{\ifmmode^\prime\else\textquotesingle\fi}
 
+%I find these settings useful in draft mode. Should be removed for final versions.
+  %Which line breaks are chosen: accept worse lines, therefore reducing risk of overfull lines. Default = 200.
+  \tolerance=2000
+  %Accept overfull hbox up to...
+    \hfuzz=2cm
+  %Reduces verbosity about the bad line breaks.
+    \hbadness 5000
+  %Reduces verbosity about the underful vboxes.
+    \vbadness=1300
