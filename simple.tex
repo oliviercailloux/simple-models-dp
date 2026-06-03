@@ -217,35 +217,17 @@ Given an exposure protocol $(I, \allargs, {\allleadsto})$, we say that a claim $
 
 Verifiability mandates that some (possibly counter-factual) observation proves the claim (makes sure that it holds), thus, $C$ is verifiable iff $\exists \theta \in \Theta \suchthat \forall \theta \wsub {\allleadstog}: {\allleadstog} \in C$.
 
-$θ$-verifiability mandates that some (possibly counter-factual) observation at least as strong as $θ$ proves the claim (makes sure that it holds), thus, $C$ is $θ$-verifiable iff $\exists θ ⊆ θ' \in \Theta \suchthat \forall θ' \wsub {\allleadstog}: {\allleadstog} \in C$.
-
-Factual verifiability mandates that some feasible observation proves the claim (makes sure that it holds), thus, $C$ is factually verifiable iff $\exists \theta \in \Theta \cap \powerset{\allleadsto} \suchthat \forall \theta \wsub {\allleadstog}: {\allleadstog} \in C$.
-
 Some sufficiently simple claims, such as the claim $C = \set{{\allleadstog} \suchthat (\ar) \ileadstog \phi}$ that some given path leads some given individual to some given proposition, are verifiable, but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
 
 A claim $C$ is \emph{informative} iff $\pi(C) = \set{\pi(\allleadstog) \suchthat {\allleadstog} \in C} ≠ (P \cup \set{\emptyset})^I$.
 % A claim $C$ is \emph{informative} iff $∃ i \suchthat \pi(C)(i) ≠ P \cup \set{\emptyset}$, where $\pi(C) = \set{\pi(\allleadstog) \suchthat {\allleadstog} \in C}$.
 A claim $C$ is \emph{informative beyond counting} iff $\exists i \in I \suchthat \pi(C)(i) ≠ P \cup \set{\emptyset}$.
-A claim $C$ is \emph{strongly informative beyond counting} iff $\exists i \in I \suchthat \pi(C)(i) \ssub P$.
-Given $\theta \in \Theta$, a claim $C$ is $θ$-\emph{indicative} iff $∃ i \in I \cap \powerset{\allleadsto} \suchthat \pi(\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C) ≠ (P \cup \set{\emptyset})^I$. 
-A claim is \emph{indicative} iff $\exists \theta \in \Theta$ such that $C$ is $\theta$-indicative.
-Indicativity mandates that some feasible observation permits to deduce something about DJ’s.
 
 \begin{remark}
-  Informativeness, and indicativeness, permit mere counting: the claim that exactly two persons deliberately believe $\phi$ is informative.
+  Informativeness permits mere counting: the claim that exactly two persons deliberately believe $\phi$ is informative. Also, the claim $C = \set{∃ i \suchthat (a) \nileadstog φ ∧ [(a) \nileadstog φ ⇒ ¬φ \in π(\allleadstog)(i)]}$ is informative.
   Informativeness may be a desirable property (rather than informativeness beyond counting) as one may, for example, want to know whether a given proposition is believed by a majority of individuals.
-  Note also that 
-  strong informativeness beyond counting implies informativeness beyond counting and indicativeness; 
-  and that informativeness beyond counting implies informativeness.
-\end{remark}
-\begin{remark}
-  A claim $C$ is \emph{possibly indicative} iff $\forall {\allleadstog} \in C: ∃ i \in I, \theta \in \Theta \cap (\allhists × \set{i} × P) \wsub {\allleadstog} \suchthat \emptyset ≠ \pi(\set{{\allleadstog} \suchthat \theta \wsub {\allleadstog}} \cap C)(i) \ssub P$.
-  Possible indicativity mandates that for each (possibly counter-factual) world in $C$, when knowing a finite number of observations about a given $i$ compatible with it, $C$ permits to deduce something (different than $\emptyset$) about $P_i$.
-  The claim $C = \set{\suchthat (a) \ileadsto φ ∨ ¬φ \in π(\allleadstog)(i)}$ (that if path $(a)$ does not lead a given $i$ to $φ$, then $¬φ \in P_i$) is possibly indicative, and if actually $(a) \nileadsto φ$ (thus $C$ holds), then the claim is not effectively indicative, as it does not entail that $¬φ \in P_i$: it is only counterfactually indicative, as it would entail that $¬φ \in P_i$ if $(a) \ileadsto φ$. And it is verifiable: checking that path $(a)$ leads $i$ to $φ$ proves that the implication holds vacuously.
-\end{remark}
-\begin{remark}
-  All of this is more complicated than required.
-  Informativeness suffices, as the claim $C = \set{∃ i \suchthat (a) \nileadstog φ ∧ [(a) \nileadstog φ ⇒ ¬φ \in π(\allleadstog)(i)]}$ is informative.
+  Note that 
+  informativeness beyond counting implies informativeness.
 \end{remark}
 
 \begin{lemma}
@@ -259,7 +241,6 @@ Indicativity mandates that some feasible observation permits to deduce something
   Define $f' = θ ∪_{i \suchthat f(i) ∈ P, α \suchthat a_i ∈ \histend} \set{(i, \hist, f(i))} ∪_{i \suchthat f(i) = \emptyset, p ∈ P, \ar \in \allargs} \set{(i, (k_i^p, a), p)}$.
   Define ${\allleadstog}$ as any completion of $f'$ to a total function in $\allleadstos$.
 \end{proof}
-
 \begin{theorem}
   If $\card{\allargs} ∉ ℕ$, any informative claim is not verifiable.
 \end{theorem}
@@ -271,31 +252,7 @@ Indicativity mandates that some feasible observation permits to deduce something
   thus ${\allleadstog} ∉ C$, 
   therefore, the claim is not verifiable.
 \end{proof}
-
-\begin{theorem}
-  If $\card{\allargs} ∉ ℕ$, any indicative claim is not factually verifiable.
-\end{theorem}
-\begin{proof}
-  Consider any $θ ∈ Θ \cap \powerset{\allleadsto}$.
-  By indicativeness, $∃ \theta' \in \Theta \cap \powerset{\allleadsto}, f: I \rightarrow (P \cup \set{\emptyset}) \suchthat f ∉ \pi(\set{{\allleadstog} \suchthat \theta' \wsub {\allleadstog}} \cap C)$.
-  
-  Apply the lemma to $θ ∪ θ'$.
-
-  It follows that $π({\allleadstog}) = f$, thus ${\allleadstog} ∉ C$, which contradicts factual verifiability.
-\end{proof}
-
-\begin{theorem}
-  If $\card{\allargs} ∉ ℕ$, any $θ$-indicative claim is not $θ$-verifiable.
-\end{theorem}
-\begin{proof}
-  
-\end{proof}
-
-The fundamental reason that this theorem holds is that any (combined) feasible observation can be completed in a way that contradicts any conclusion that indicativeness mandates.
-
-\begin{remark}
-  The theorem ceases to hold if $(P \cup \set{\emptyset})^I$ replaces $P^I$ in the definition of indicativeness, but is restaured under infiniteness of $\allargs$.
-\end{remark}
+The fundamental reason that this theorem holds is that any observation can be completed in a way that contradicts any conclusion that informativeness mandates.
 
 It is now natural to wonder: which prior do we need to verify claims?
 Something like: if it works up to length $k$, then it works for all lengths.
