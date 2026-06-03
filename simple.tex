@@ -249,7 +249,8 @@ Indicativity mandates that some feasible observation permits to deduce something
 \end{remark}
 
 \begin{lemma}
-  Given any $θ ∈ Θ$, $f: I \rightarrow (P \cup \set{\emptyset})$, $∃ {\allleadstog} \in \allleadstos \suchthat θ \wsub {\allleadstog} \land \pi({\allleadstog}) = f$.
+  \label{th:completable}
+  If $\card{\allargs} ∉ ℕ$, given any $θ ∈ Θ$ and $f: I \rightarrow (P \cup \set{\emptyset})$, $∃ {\allleadstog} \in \allleadstos \suchthat θ \wsub {\allleadstog} \land \pi({\allleadstog}) = f$.
 \end{lemma}
 \begin{proof}
   For each $i \suchthat f(i) ∈ P$, define $a_i ∉ (θ^{-1}(P))(i)(ℕ)$ as an argument not used for $i$;
@@ -257,6 +258,18 @@ Indicativity mandates that some feasible observation permits to deduce something
 
   Define $f' = θ ∪_{i \suchthat f(i) ∈ P, α \suchthat a_i ∈ \histend} \set{(i, \hist, f(i))} ∪_{i \suchthat f(i) = \emptyset, p ∈ P, \ar \in \allargs} \set{(i, (k_i^p, a), p)}$.
   Define ${\allleadstog}$ as any completion of $f'$ to a total function in $\allleadstos$.
+\end{proof}
+
+\begin{theorem}
+  If $\card{\allargs} ∉ ℕ$, any informative claim is not verifiable.
+\end{theorem}
+\begin{proof}
+  Consider any $θ ∈ Θ$.
+  By informativeness, $∃ f: I \rightarrow (P \cup \set{\emptyset}) \suchthat f ∉ \pi(C)$.
+  By \cref{th:completable}, some ${\allleadstog}$ completes $θ$, 
+  and $π(\allleadstog) = f$
+  thus ${\allleadstog} ∉ C$, 
+  therefore, the claim is not verifiable.
 \end{proof}
 
 \begin{theorem}
