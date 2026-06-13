@@ -213,7 +213,7 @@ $\Theta \cap \powerset{\allleadsto} = \set*{\restr{{\allleadsto}}{Q} \suchthat Q
 Such an observation $\theta \in \Theta \cap \powerset{\allleadsto}$ is called a feasible observation.
 
 \subsection{Verifiability}
-Given an exposure protocol $(I, \allargs, {\allleadsto})$, we say that a claim $C$ \emph{holds} iff $C \ni {\allleadsto}$. We are interested in procedures to determine whether a claim holds.
+Given an exposure protocol $(I, \allargs, {\allleadsto})$, we say that a claim $C$ \emph{holds} iff ${\allleadsto} ∈ C$. We are interested in procedures to determine whether a claim holds.
 
 Verifiability mandates that some (possibly counter-factual) observation proves the claim (makes sure that it holds), thus, $C$ is verifiable iff $\exists \theta \in \Theta \suchthat \forall \theta \wsub {\allleadstog}: {\allleadstog} \in C$.
 
@@ -254,14 +254,89 @@ A claim $C$ is \emph{informative beyond counting} iff $\exists i \in I \suchthat
 \end{proof}
 The fundamental reason that this theorem holds is that any observation can be completed in a way that contradicts any conclusion that informativeness mandates.
 
+Given $C, D ⊆ {\allleadstog}$, a claim $C$ is verifiable under prior $D$ iff 
+$\exists \theta \in \Theta \cap D^⊆ \suchthat \forall \theta \wsub {\allleadstog} \in D: {\allleadstog} \in C$.
+
+$S ⊆ P^{\allhists × I}$ is observationally excludable iff 
+$∃ θ ∈ Θ \suchthat θ ∉ S^⊆$.
+$D$ is observationally completeable to $E$ iff $D \setminus E$ is observationally excludable.
+
+\begin{theorem}
+  If a claim $C ⊆ P^{\allhists × I}$ is verifiable under prior $D ⊆ P^{\allhists × I}$,
+  then 
+  $D$ is observationally completeable to $C$.
+\end{theorem}
+\begin{proof}
+  That claim $C$ is verifiable under prior $D$, in other words, that $\exists \theta \in \Theta \cap D^⊆ \suchthat \forall \theta \wsub {\allleadstog} \in D: {\allleadstog} \in C$, implies that $D \setminus C$ is obs exc, equivalently, that $∃ θ ∈ Θ \suchthat θ ∉ (D \setminus C)^⊆$.
+\end{proof}
+
+\subsection{Drafty}
 It is now natural to wonder: which prior do we need to verify claims?
 Something like: if it works up to length $k$, then it works for all lengths.
 Consider a prior $D$: we know that ${\allleadsto} \in D$.
-A claim is $D$-verifiable iff $\exists \theta \in \Theta \cap \powerset{\allleadsto} \suchthat \forall \theta \wsub {\allleadstog} \in D: {\allleadstog} \in C$.
 We want to find $D$ such that a claim is $D$-verifiable iff it holds.
 \begin{theorem}
   If a claim $C$ is verifiable, then it holds?
 \end{theorem}
+
+\begin{theorem}[approximative]
+  If $\card{\allargs} ∉ ℕ$, a claim that is “at least some emptyset” informative (it excludes all f leading nobody to emptyset) is verifiable under prior D iff:
+  D is observationally completeable to E which contains only worlds containing for some function from (a, i) to p, {a => p and ¬(a => p), a in allargs}
+\end{theorem}
+
+\begin{theorem}
+  Given $D ⊆ P^{\allhists × I}$,
+  if $\card{\allargs} ∉ ℕ$, 
+  if $D$ is not observationally excludable,
+  if
+  $∃ E ⊆ D \suchthat$
+  $D$ is observationally completeable to $E$ and
+  $∀ {\allleadstog} ∈ E, i ∈ I, \ar ∈ \allargs, ∃ p_1 ≠ p_2 ∈ P, \hist^1, \hist^2 ∈ \allhists \suchthat \ar ∈ \histend[1] ∩ \histend[2] ∧ \hist^1 \ileadstog p_1 ∧ \hist^2 \ileadstog p_2$,
+  then 
+  the claim $C = \set{{\allleadstog} \suchthat π(\allleadstog)(I) = \set{\emptyset}}$ is verifiable under prior $D$.
+\end{theorem}
+\begin{proof}
+  Consider $θ ∈ Θ \suchthat θ ∉ (D - E)^⊆$.
+  By hyp, $θ$ is compatible with $D$.
+  And, any completion of $θ$ in D is also in E, therefore, is in C.
+\end{proof}
+\begin{remark}
+  The condition $D$ is not observationally excludable is required. Otherwise, 
+  consider $D$ is “(a) leads i to $φ$”.
+  E is “D and nothing is decisive”
+  D is obs excl., thus also D minus E, thus D is obs compl.
+  But C is not verifiable under prior D because everything that observationally excludes D minus E also observationally excludes D.
+\end{remark}
+\begin{remark}
+  In general, the condition that $E$ is not obs excl is stronger (it implies that any superset, thus D, is not obs excl), but in the context of this theorem, it is equivalent, as we can prove that if D is not obs excl, then E is also not: contrapositively, if $θ$ observationally excludes $E$, then (using its exclusion of D minus E) it observationally excludes $D$. To be checked carefully.
+\end{remark}
+
+\begin{theorem}
+  Given $D ⊆ P^{\allhists × I}$,
+  if $\card{\allargs} ∉ ℕ$, 
+  if $D$ is not observationally excludable,
+  if
+  the claim $C = \set{{\allleadstog} \suchthat π(\allleadstog)(I) = \set{\emptyset}}$ is verifiable under prior $D$,
+  then 
+  $∃ E ⊆ D \suchthat$
+  $D$ is observationally completeable to $E$ and
+  $∀ {\allleadstog} ∈ E, i ∈ I, \ar ∈ \allargs, ∃ p_1 ≠ p_2 ∈ P, \hist^1, \hist^2 ∈ \allhists \suchthat \ar ∈ \histend[1] ∩ \histend[2] ∧ \hist^1 \ileadstog p_1 ∧ \hist^2 \ileadstog p_2$.
+\end{theorem}
+\begin{proof}
+  Assume that all sets $E$ to which $D$ is observationally completeable have some $\allleadstog$ contradicting “no decisive arguments”. Let’s show that $C$ is not verifiable under $D$.
+  …?
+\end{proof}
+
+The verification approach requires a prior, which we want minimal, thus we may suppose that the prior is a superset of $C$: if $C$ is vup $D$, it is also vup $D ∪ C$.
+Thus, wlog, $D = E ∪ C$ disjoint, and $E$ is obs excl.
+
+Conjecture.
+This requires that $E$ has the form of a finite union of $S_k$ which each is a conjuction of triples of the form $α \nileadsto φ$ such that exists observable collection of pairs that has one pair in each of the conjuctions. 
+Example: $E$ is [(a) and (c) lead i to φ] OR [(a, b) and (c, b) lead i to φ].
+Example: $E$ is [(a) lead i to φ and (b) leads j to φ] OR [(c) lead i to φ and (d) leads j to φ].
+Counter-example: $E$ is [(a) lead i to φ and (b) leads j to φ] OR [(c) lead i to φ and (d) leads j to φ] OR [(e) lead i to φ and (f) leads j to φ].
+I also think that the $S_k$ could be forced to be disjoint.
+Note that if E says [(a ≠ b) ∨ (a ∧ c)], it is equivalent to [(a ≠ b) ∨ (b ∧ c)], thus there is no unique minimal DNF.
 
 \subsection{Rejection and falsification}
 At our disposal is the procedure of empirical rejection, that consists in directly invalidating a claim by observing something that contradicts it.
