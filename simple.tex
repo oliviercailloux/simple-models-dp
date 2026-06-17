@@ -273,11 +273,13 @@ $∃ θ ∈ Θ \suchthat θ ∉ S^⊆$.
 $D$ is observationally completeable to $E$ iff $D ∖ E$ is observationally excludable.
 
 \begin{theorem}
-  If a claim $C ⊆ \allleadstos$ is verifiable under prior $D ⊆ \allleadstos$,
+  Given a claim $C ⊆ \allleadstos$,
+  if some claim $C' ⊆ C$ is verifiable under prior $D ⊆ \allleadstos$,
   then 
   $D$ is observationally completeable to $C$.
 \end{theorem}
 \begin{proof}
+  If $C'$ is verifiable under prior $D$, then $C$ is verifiable under prior $D$.
   That claim $C$ is verifiable under prior $D$, in other words, that $∃ θ ∈ θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$, implies that $D ∖ C$ is obs exc, equivalently, that $∃ θ ∈ Θ \suchthat θ ∉ (D ∖ C)^⊆$.
 \end{proof}
 
@@ -320,16 +322,6 @@ $D$ is observationally completeable to $E$ iff $D ∖ E$ is observationally excl
   (wlog, pick $t_1 = ((a_1), i, p_1 ≠ φ)$, then for observeability we need to pick $t_2 = ((a'_2), j, .)$ and there is no choice left for $t_3$).
 \end{example}
 
-\begin{theorem}
-  Given claims $C$ and $D$,
-  if some claim $C' ⊆ C$ is verifiable under prior $D$,
-  then
-  $D$ is observationally completeable to $C$.
-\end{theorem}
-\begin{proof}
-  If $C'$ is verifiable under prior $D$, then $C$ is verifiable under prior $D$?
-  Then apply above theorem.
-\end{proof}
 Then also prove that $C' ⊆ D$.
 
 This is first direction of the intuitive theorem as suffice to take $D' = D$ to prove existence and $E = D ∖ C'$.
