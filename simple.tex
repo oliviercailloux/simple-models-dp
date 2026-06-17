@@ -213,9 +213,10 @@ $θ ∩ \powerset{\allleadsto} = \set*{\restr{{\allleadsto}}{Q} \suchthat Q ∈ 
 Such an observation $θ ∈ θ ∩ \powerset{\allleadsto}$ is called a feasible observation.
 
 \subsection{Verifiability}
-Given an exposure protocol $(I, \allargs, {\allleadsto})$, we say that a claim $C$ \emph{holds} iff ${\allleadsto} ∈ C$. We are interested in procedures to determine whether a claim holds.
+Given an exposure protocol $(I, \allargs, {\allleadsto})$, we say that a claim $C$ \emph{holds} iff ${\allleadsto} ∈ C$. We are interested in criteria to determine whether a claim holds.
+Such a criterion must be sound, meaning that it must imply, when successful, that $C$ holds, and must be realizeable, meaning that if $C$ holds, the criterion must be satisfiable using feasible observations only (or something like that). Note that such criterion also offers a way to show that $C$ fails (does not hold), equivalently, that $P^{\allargs × I} ∖ C$ holds.
 
-Verifiability mandates that some (possibly counter-factual) observation proves the claim (makes sure that it holds), thus, $C$ is verifiable iff $∃ θ ∈ θ \suchthat ∀ θ ⊆ {\allleadstog}: {\allleadstog} ∈ C$.
+Verifiability mandates that some (possibly counter-factual) observation proves the claim (makes sure that it holds), thus, $C$ is verifiable iff $∃ θ ∈ θ \suchthat ∀ θ ⊆ {\allleadstog}: {\allleadstog} ∈ C$. Verifiability is sound, but as we will see, it is satisfiable for no useful claim.
 
 Some sufficiently simple claims, such as the claim $C = \set{{\allleadstog} \suchthat (\ar) \ileadstog \phi}$ that some given path leads some given individual to some given proposition, are verifiable, but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
 
@@ -254,21 +255,84 @@ A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π(
 \end{proof}
 The fundamental reason that this theorem holds is that any observation can be completed in a way that contradicts any conclusion that informativeness mandates.
 
-Given $C, D ⊆ {\allleadstog}$, a claim $C$ is verifiable under prior $D$ iff 
+That verifiability is not realizeable may seem disappointing, but is merely the adaptation to our context of the famous observation by Popper that proving general claims in science require more than verification.
+
+To obtain realizeability in at least some interesting cases, we must relax soundness. We will be content that the criterion guarantees, when satisfied, that $C$ holds, when assuming some prior knowledge. We will look for the minimal required prior (for obtaining satisfiability) and then will study (partial) grounding of this prior thanks to falsifiability. (We write satisfiability of the criterion for short to mean satisfiability when $C$ holds.)
+
+Given $C, D ⊆ \allleadstos$, a claim $C$ is verifiable under prior $D$ iff 
 $∃ θ ∈ θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$.
 
-$S ⊆ P^{\allhists × I}$ is observationally excludable iff 
+We now try to reach a theorem of the sort: if $D$ is too weak, any $C$ that is interesting is not verifiable under $D$.
+Intermediately: if $C$ (interesting and holding) is $D$ verif, $D$ must have property $P_C$.
+Then: if $D$ lacks $P_C$ for all $C$ interesting, then it is too weak!
+% Perhaps: exists C verifiable under D, C' ⊆ C, iff D = D' ∪ E with D' ⊆ C' and E observationally excludable.
+As we want a minimal D, we can take D' = C'.
+
+$S ⊆ \allleadstos$ is observationally excludable iff 
 $∃ θ ∈ Θ \suchthat θ ∉ S^⊆$.
 $D$ is observationally completeable to $E$ iff $D ∖ E$ is observationally excludable.
 
 \begin{theorem}
-  If a claim $C ⊆ P^{\allhists × I}$ is verifiable under prior $D ⊆ P^{\allhists × I}$,
+  If a claim $C ⊆ \allleadstos$ is verifiable under prior $D ⊆ \allleadstos$,
   then 
   $D$ is observationally completeable to $C$.
 \end{theorem}
 \begin{proof}
   That claim $C$ is verifiable under prior $D$, in other words, that $∃ θ ∈ θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$, implies that $D ∖ C$ is obs exc, equivalently, that $∃ θ ∈ Θ \suchthat θ ∉ (D ∖ C)^⊆$.
 \end{proof}
+
+\begin{theorem}
+  If $D$ is observationally completeable to $C ⊆ D$,
+  then
+  $∃ θ ∈ Θ$ and a finite disjoint partition $\set{S_k}$ of $E = D ∖ C$ such that $∀k, ∃t ∈ θ \suchthat \set{t} ∉ S_k^⊆$ (equivalently, $t ∉ ⋃S_k$).
+\end{theorem}
+\begin{proof}
+  Take any $θ$ such that $θ ∉ E^⊆$.
+  Given any $t ∈ θ$, define $S_t = \set{{\allleadstog} \suchthat t ∉ {\allleadstog}} ∩ E$.
+  Define $S = ⋃_{t ∈ θ} S_t$.
+
+  Consider any ${\allleadstog} ∈ E$. As $θ ⊈ {\allleadstog}$, $∃ t ∈ θ \suchthat t ∉ {\allleadstog}$, thus, ${\allleadstog} ∈ S$.
+  It follows that $S = E$.
+
+  As $θ$ is finite, we can finitely enumerate $t ∈ θ$, and define $S_1 = S_{t_1}$ and for any $2 ≤ k ≤ \card{θ}$, $S_k = S_{t_k} ∖ ⋃_{1 ≤ k' < k} S_{t_{k'}}$. We obtain $E = S = ⋃_{1 ≤ k ≤ \card{θ}} S_k$, thus it is a disjoint partition of $E$, and as $\set{t_k} ∉ S_{t_k}^⊆$ by construction of $S_{t_k}$, also $\set{t_k} ∉ S_k^⊆$.
+\end{proof}
+
+\begin{theorem}
+  Given any $E$,
+  any $f ⊆ (\allhists × I) × P \suchthat f ∉ E^⊆$ 
+  and a cover $\mathcal{S}$ of $E$ (a set of non-empty sets whose union contains $E$), 
+  if $∀ S ∈ \mathcal{S}, ∃ f_S ⊆ (\allhists × I) × P \suchthat S = \mathop{\uparrow} f_S$ with $f_S$ right unique,
+  then $∀ S ∈ \mathcal{S}, ∃ t ∈ f \suchthat \set{t} ∉ S^⊆$.
+\end{theorem}
+\begin{proof}
+  Pick any $S ∈ \mathcal{S}$ and $f_S \suchthat S = \mathop{\uparrow} f_S$.
+  Given any $p ∈ f_S$, define $S_p = \mathop{\uparrow} \set{p}$, obtaining $S = ⋂_{p ∈ f_S} S_p$.
+  Thus $f ∪ f_S$ is not completeable to a function (if $f ∪ f_S$ is completeable to a function, that function is in $S$, thus in $E$, thus $f$ compatible with $E$).
+  It follows that $f ∪ f_S$ is not right unique,
+  thus, that some $t ∈ f$ contradicts $f_S$.
+\end{proof}
+\begin{example}
+  Considering six different arguments $a_1, a'_1, a_2, a'_2, a_3, a'_3 ∈ \allargs$, we see that $E = \set{{\allleadstog} \suchthat [(a_1) \ileadsto φ ∧ (a'_1) \ileadsto[j] φ] ∨ [(a_2) \ileadsto φ ∧ (a'_2) \ileadsto[j] φ] ∨ [(a_3) \ileadsto φ ∧ (a'_3) \ileadsto[j] φ]}$ is not observationally excludable:
+  $∀ 1 ≤ k ≤ 3$, define $S_k = \set{{\allleadstog} \suchthat [(a_k) \ileadsto φ ∧ (a'_k) \ileadsto[j] φ]}$, define $\mathcal{S} = \set{S_1, S_2, S_3}$,
+  consider any $f ⊆ (\allhists × I) × P \suchthat f ∉ E^⊆$,
+  we have $∀ 1 ≤ k ≤ 3, ∃t_k ∈ f \suchthat \set{t_k} ∉ {S_k}^⊆$,
+  thus $f ∉ Θ$
+  (wlog, pick $t_1 = ((a_1), i, p_1 ≠ φ)$, then for observeability we need to pick $t_2 = ((a'_2), j, .)$ and there is no choice left for $t_3$).
+\end{example}
+
+\begin{theorem}
+  Given claims $C$ and $D$,
+  if some claim $C' ⊆ C$ is verifiable under prior $D$,
+  then
+  $D$ is observationally completeable to $C$.
+\end{theorem}
+\begin{proof}
+  If $C'$ is verifiable under prior $D$, then $C$ is verifiable under prior $D$?
+  Then apply above theorem.
+\end{proof}
+Then also prove that $C' ⊆ D$.
+
+This is first direction of the intuitive theorem as suffice to take $D' = D$ to prove existence and $E = D ∖ C'$.
 
 \subsection{Drafty}
 It is now natural to wonder: which prior do we need to verify claims?
@@ -285,7 +349,7 @@ We want to find $D$ such that a claim is $D$-verifiable iff it holds.
 \end{theorem}
 
 \begin{theorem}
-  Given $D ⊆ P^{\allhists × I}$,
+  Given $D ⊆ \allleadstos$,
   if $\card{\allargs} ∉ ℕ$, 
   if $D$ is not observationally excludable,
   if
@@ -312,7 +376,7 @@ We want to find $D$ such that a claim is $D$-verifiable iff it holds.
 \end{remark}
 
 \begin{theorem}
-  Given $D ⊆ P^{\allhists × I}$,
+  Given $D ⊆ \allleadstos$,
   if $\card{\allargs} ∉ ℕ$, 
   if $D$ is not observationally excludable,
   if
@@ -334,7 +398,7 @@ Thus, wlog, $D = E ∪ C$ disjoint, and $E$ is obs excl.
 % This requires that $E$ has the form of a finite union of $S_k$ which each is a conjuction of triples of the form $α \nileadsto φ$ such that exists observable collection of pairs that has one pair in each of the conjuctions. 
 % Example: $E$ is [(a) and (c) lead i to φ] OR [(a, b) and (c, b) lead i to φ].
 % Example: $E$ is [(a) lead i to φ and (b) leads j to φ] OR [(c) lead i to φ and (d) leads j to φ].
-% Counter-example: $E$ is [(a) lead i to φ and (b) leads j to φ] OR [(c) lead i to φ and (d) leads j to φ] OR [(e) lead i to φ and (f) leads j to φ].
+% 
 % I also think that the $S_k$ could be forced to be disjoint.
 % Note that if E says [(a ≠ b) ∨ (a ∧ c)], it is equivalent to [(a ≠ b) ∨ (b ∧ c)], thus there is no unique minimal DNF.
 
