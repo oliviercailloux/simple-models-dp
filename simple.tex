@@ -216,7 +216,7 @@ Such an observation $θ ∈ θ ∩ \powerset{\allleadsto}$ is called a feasible 
 Given an exposure protocol $(I, \allargs, {\allleadsto})$, we say that a claim $C$ \emph{holds} iff ${\allleadsto} ∈ C$. We are interested in criteria to determine whether a claim holds.
 Such a criterion must be sound, meaning that it must imply, when successful, that $C$ holds, and must be realizeable, meaning that if $C$ holds, the criterion must be satisfiable using feasible observations only (or something like that). Note that such criterion also offers a way to show that $C$ fails (does not hold), equivalently, that $P^{\allargs × I} ∖ C$ holds.
 
-Verifiability mandates that some (possibly counter-factual) observation proves the claim (makes sure that it holds), thus, $C$ is verifiable iff $∃ θ ∈ θ \suchthat ∀ θ ⊆ {\allleadstog}: {\allleadstog} ∈ C$. Verifiability is sound, but as we will see, it is satisfiable for no useful claim.
+Verifiability mandates that some (possibly counter-factual) observation proves the claim (makes sure that it holds), thus, $C$ is verifiable iff $∃ θ ∈ θ \suchthat ∀ θ ⊆ {\allleadstog}: {\allleadstog} ∈ C$. Verifiability is sound, but as we will see, it is too demanding for many claims.
 
 Some sufficiently simple claims, such as the claim $C = \set{{\allleadstog} \suchthat (\ar) \ileadstog \phi}$ that some given path leads some given individual to some given proposition, are verifiable, but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
 
@@ -264,15 +264,7 @@ $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadsto
 Also, $C$ is verified under prior $D$ iff
 $∃ θ ∈ Θ ∩ \powerset{\allleadsto} ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$.
 
-\begin{theorem}
-  Given a claim $D$ such that ${\allleadsto} ∈ D$, if a claim $C$ is verified under prior $D$, then $C$ holds.
-\end{theorem}
-\begin{proof}
-  Consider any $θ$ that satisfies verifiedness under $D$. 
-  We have $θ ⊆ {\allleadsto}$.
-  By hypothesis, ${\allleadsto} ∈ D$.
-  Therefore, by verifiedness, ${\allleadsto} ∈ C$.
-\end{proof}
+\Cref{th:vudImpliesHolds} proves that provided the prior is true, verifiability under a prior suffices for holding.
 
 We now try to reach a theorem of the sort: if $D$ is too weak, any $C$ that is interesting is not verifiable under $D$.
 Intermediately: if $C$ (interesting and holding) is $D$ verif, $D$ must have property $P_C$.
@@ -284,77 +276,11 @@ $S ⊆ \allleadstos$ is observationally excludable iff
 $∃ θ ∈ Θ \suchthat θ ∉ S^⊆$.
 $D$ is observationally completeable to $E$ iff $D ∖ E$ is observationally excludable.
 
-% I have some suspicion that we want that C compl inter D be decomposeable by S_k that are excludable.
-% Any completion of θ are NOT in C compl inter D.
-% Any compl of θ are either in C or not in D
-% Any compl of θ also in D are in C
-
-{
-  \crefname{enumi}{property}{properties}
-  \Crefname{enumi}{Property}{Properties}
-  \begin{theorem}
-    For any $θ ∈ Θ$ and claims $C, D$, 
-    these properties are equivalent:
-    \begin{enumerate}
-      \item \label{it:unverifD} $∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$,
-      \item \label{it:nocomplD} $D ∩ \set{{\allleadstog} \suchthat θ ⊆ {\allleadstog}} ⊆ C$,
-      \item \label{it:notcomplE} $θ ∉ (D ∖ C)^⊆$,
-      \item \label{it:obscovers} there exists a finite disjoint partition $\set{S_k}$ of $D ∖ C$ such that $∀k, ∃t ∈ θ \suchthat \set{t} ∉ S_k^⊆$ (equivalently, $t ∉ ⋃S_k$).
-    \end{enumerate}
-  \end{theorem}
-  \begin{proof}
-    \Cref{it:unverifD,it:nocomplD} assert that 
-    $∀ θ ⊆ {\allleadstog}: {\allleadstog} ∈ D ⇒ {\allleadstog} ∈ C$, 
-    % equivalently, 
-    % $∀ θ ⊆ {\allleadstog}: {\allleadstog} ∉ D ∨ {\allleadstog} ∈ C$,
-    equivalently, 
-    $∄ θ ⊆ {\allleadstog} \suchthat {\allleadstog} ∈ D ∧ {\allleadstog} ∉ C$, which is \cref{it:notcomplE}.
-
-    To establish that \cref{it:notcomplE} implies \cref{it:obscovers}, consider any claim $E$ and $θ ∉ E^⊆$.
-    Given any $t ∈ θ$, define $S_t = \set{{\allleadstog} \suchthat t ∉ {\allleadstog}} ∩ E$.
-    Define $S = ⋃_{t ∈ θ} S_t$.
-
-    Consider any ${\allleadstog} ∈ E$. As $θ ⊈ {\allleadstog}$, $∃ t ∈ θ \suchthat t ∉ {\allleadstog}$, thus, ${\allleadstog} ∈ S$.
-    It follows that $S = E$.
-
-    As $θ$ is finite, we can finitely enumerate $t ∈ θ$, and define $S_1 = S_{t_1}$ and for any $2 ≤ k ≤ \card{θ}$, $S_k = S_{t_k} ∖ ⋃_{1 ≤ k' < k} S_{t_{k'}}$. We obtain $E = S = ⋃_{1 ≤ k ≤ \card{θ}} S_k$, thus it is a disjoint partition of $E$, and as $\set{t_k} ∉ S_{t_k}^⊆$ by construction of $S_{t_k}$, also $\set{t_k} ∉ S_k^⊆$.
-
-    Finally, negating \cref{it:notcomplE}, if $θ$ is completeable to some set covered by $\set{S_k}$, then $θ$ is completeable to some set $S_k$, which contradicts \cref{it:obscovers}.
-  \end{proof}
-}
-
-\begin{theorem}
-  The claim $C$ that there is no decisive argument is not verifiable under prior $\allleadsto$.
-\end{theorem}
-\begin{proof}
-  That it is is equivalent to finding a finite disjoint partition of “there is some decisive argument” with a finite set of triples that each is incompatible with a set.
-\end{proof}
-In fact, we need D to say at least something like “there is no decisive argument inside the infinite set of arguments … and the other ones may be decisive only for some finite set of individuals …”? TODO
-
-\begin{theorem}
-  Given any claims $C, D ⊆ \allleadstos$,
-  if some claim $C' ⊆ C$ is verifiable under prior $D$,
-  then 
-  $D ∩ C ≠ ∅ ∧ ∃θ ∈ Θ \suchthat θ ∉ (D ∖ C)^⊆$.
-\end{theorem}
-\begin{proof}
-  As some $θ$ is completeable in $D$ and in $C'$, we see that $D$ intersects $C'$, hence, $C$.
-
-  By hypothesis, $D ∖ C'$ is observationally excludable.
-  Therefore, $D ∖ C$, a smaller set, is as well.
-\end{proof}
-
-We should now be able to state:
-% if $C$ is strong enough to say “no decisive arg”, then we need some $D$ containing some finite observable implies exists i and φ ∈ P_i (or no dec arg).
-\begin{theorem}
-  If $C$ is such that $π(C) ≠ (P ∪ \set{∅})^I$ and is verifiable under $D$, then 
-  $∃D ⊆ D', θ ∈ Θ, f ∈ (P ∪ \set{∅})^I \suchthat D' = \set{\allleadstog \suchthat θ ⊆ {\allleadstog} ⇒ π(\allleadstog) ≠ f}$
-  % $D$ is a subset of a claim of the form (for some (Q_j) and i): [some obs and Q_i1 = P_i1 and Q_i2 = P_i2 and …] implies Q_i ≠ P_i.
-\end{theorem}
-TODO prove this.
-% We know that f not in π(C). Thus C proves: ¬(Q_1 = P_1 and Q_2 = P_2 and etc.).
-
-% It follows that an informative claim is not verifiable (as the no prior D is bigger than the indicated upper bound set).
+\Cref{th:toStricterClaims} shows that impossibilities propagate to stricter claims.
+Together with \cref{th:minimalPriorForInformativeness}, it shows that no informative claim is verifiable, and that the prior required must be at least as strong as claiming that if some observable holds, then some configuration of DJs is excluded.
+\begin{remark}
+  Suffices that the prior states something like: if almost all individuals deliberately believe $φ$, then everybody deliberately believe $φ$. This innocuous enough prior suffices because we request only informativeness, and indeed it only permits to restrict possibilities, not to determine anybody’s DJ.
+\end{remark}
 
 \begin{theorem}
   Given a claim $C ⊆ \allleadstos$,
@@ -1019,7 +945,83 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
     By axiom, hist is thus ok.
   \end{proof}
 
-  \appendix
+\appendix
+\section{Proofs}
+\begin{theorem}
+  \label{th:vudImpliesHolds}
+  Given a claim $D$ such that ${\allleadsto} ∈ D$, if a claim $C$ is verified under prior $D$, then $C$ holds.
+\end{theorem}
+\begin{proof}
+  Consider any $θ$ that satisfies verifiedness under $D$. 
+  We have $θ ⊆ {\allleadsto}$.
+  By hypothesis, ${\allleadsto} ∈ D$.
+  Therefore, by verifiedness, ${\allleadsto} ∈ C$.
+\end{proof}
+
+{
+  \crefname{enumi}{property}{properties}
+  \Crefname{enumi}{Property}{Properties}
+  \begin{theorem}
+    \label{th:vud}
+    For any $θ ∈ Θ$ and claims $C, D$, 
+    these properties are equivalent:
+    \begin{enumerate}
+      \item \label{it:unverifD} $∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$,
+      \item \label{it:nocomplD} $D ∩ \set{{\allleadstog} \suchthat θ ⊆ {\allleadstog}} ⊆ C$,
+      \item \label{it:notcomplE} $θ ∉ (D ∖ C)^⊆$,
+      \item \label{it:obscovers} there exists a finite disjoint partition $\set{S_k}$ of $D ∖ C$ such that $∀k, ∃t ∈ θ \suchthat \set{t} ∉ S_k^⊆$ (equivalently, $t ∉ ⋃S_k$).
+    \end{enumerate}
+  \end{theorem}
+  \begin{proof}
+    \Cref{it:unverifD,it:nocomplD} assert that 
+    $∀ θ ⊆ {\allleadstog}: {\allleadstog} ∈ D ⇒ {\allleadstog} ∈ C$, 
+    % equivalently, 
+    % $∀ θ ⊆ {\allleadstog}: {\allleadstog} ∉ D ∨ {\allleadstog} ∈ C$,
+    equivalently, 
+    $∄ θ ⊆ {\allleadstog} \suchthat {\allleadstog} ∈ D ∧ {\allleadstog} ∉ C$, which is \cref{it:notcomplE}.
+
+    To establish that \cref{it:notcomplE} implies \cref{it:obscovers}, consider any claim $E$ and $θ ∉ E^⊆$.
+    Given any $t ∈ θ$, define $S_t = \set{{\allleadstog} \suchthat t ∉ {\allleadstog}} ∩ E$.
+    Define $S = ⋃_{t ∈ θ} S_t$.
+
+    Consider any ${\allleadstog} ∈ E$. As $θ ⊈ {\allleadstog}$, $∃ t ∈ θ \suchthat t ∉ {\allleadstog}$, thus, ${\allleadstog} ∈ S$.
+    It follows that $S = E$.
+
+    As $θ$ is finite, we can finitely enumerate $t ∈ θ$, and define $S_1 = S_{t_1}$ and for any $2 ≤ k ≤ \card{θ}$, $S_k = S_{t_k} ∖ ⋃_{1 ≤ k' < k} S_{t_{k'}}$. We obtain $E = S = ⋃_{1 ≤ k ≤ \card{θ}} S_k$, thus it is a disjoint partition of $E$, and as $\set{t_k} ∉ S_{t_k}^⊆$ by construction of $S_{t_k}$, also $\set{t_k} ∉ S_k^⊆$.
+
+    Finally, negating \cref{it:notcomplE}, if $θ$ is completeable to some set covered by $\set{S_k}$, then $θ$ is completeable to some set $S_k$, which contradicts \cref{it:obscovers}.
+  \end{proof}
+}
+
+\begin{theorem}
+  \label{th:toStricterClaims}
+  Given any claims $C, D ⊆ \allleadstos$,
+  if some claim $C' ⊆ C$ is verifiable under prior $D$,
+  then 
+  $D ∩ C ≠ ∅ ∧ ∃θ ∈ Θ \suchthat θ ∉ (D ∖ C)^⊆$.
+\end{theorem}
+\begin{proof}
+  As some $θ$ is completeable in $D$ and in $C'$, we see that $D$ intersects $C'$, hence, $C$.
+
+  By hypothesis, $D ∖ C'$ is observationally excludable.
+  Therefore, $D ∖ C$, a smaller set, is as well.
+\end{proof}
+
+\begin{theorem}
+  \label{th:minimalPriorForInformativeness}
+  If $C$ is such that $π(C) ≠ (P ∪ \set{∅})^I$ and is verifiable under $D$, then
+  \begin{itemize}
+    \item 
+    $∃θ ∈ Θ, f ∈ (P ∪ \set{∅})^I \suchthat ∀{\allleadstog} ∈ D: [θ ⊆ {\allleadstog} ⇒ π(\allleadstog) ≠ f]$;
+    \item if $\card{\allargs} ∉ ℕ$, $D$ is not trivial.
+  \end{itemize}
+\end{theorem}
+\begin{proof}
+  By \cref{th:vud}, $D ∩ \set{{\allleadstog} \suchthat θ ⊆ {\allleadstog}} ⊆ C$, and for some $f$, ${\allleadstog} ∈ C ⇒ π(\allleadstog) ≠ f$.
+
+  Also, $D ≠ \allleadstos$, as $∃ θ ⊆ {\allleadstog} \suchthat π(\allleadstog) = f$ (by \cref{th:completable}), thus ${\allleadstog} ∉ D$.
+\end{proof}
+
   \section{Supplementary material}
   \label{sec:supplementary}
   The following example presents a situation where non rejection is due to finiteness of observations.
