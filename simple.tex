@@ -275,33 +275,9 @@ As we want a minimal D, we can take D' = C'.
 
 $S ⊆ \allleadstos$ is observationally excludable iff 
 $∃ θ ∈ Θ \suchthat θ ∉ S^⊆$.
-$D$ is observationally completeable to $E$ iff 
-$E ⊆ D ∧ ∃ θ ∈ (Θ ∩ E^⊆) \suchthat θ ∉ (D ∖ E)^⊆$.
-% $D ∖ E$ is observationally excludable.
-\begin{remark}
-  TODO we should perhaps add that $θ$ that is not in D minus E must be compatible with E, otherwise we get that D is obs completeable to anything that is … TODO??
-
-  The spirit of this is to obtain: if $D$ is obs comp to $C$, then $C$ is v u $D$. But this is false.
-  Consider $θ ∉ D ∖ C ⇒ θ ∉ C$.
-\end{remark}
-\begin{corollary}
-  Given any claim $C$,
-  verifiability under prior $D$, that is, 
-  $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$,
-  is equivalent to 
-  $D$ being observationally completeable to $C$, that is,
-  $∃ θ ∈ (Θ ∩ C^⊆) \suchthat θ ∉ (D ∖ C)^⊆$.
-\end{corollary}
-\begin{proof}
-  TODO I think that this is false: only one direction holds.
-
-  We could have
-  $∃ θ ∈ (Θ ∩ C^⊆) \suchthat θ ∉ (D ∖ C)^⊆$
-  yet
-  $C$ only intersects $D$
-  and
-  $θ$ is completeable in $C$ but not in $D$.
-\end{proof}
+$D$ is observationally completeable to $C$ iff 
+$∃ θ ∈ (Θ ∩ D^⊆) \suchthat θ ∉ (D ∖ C)^⊆$.
+\Cref{th:obsComp} shows the equivalence with verifiability under prior $D$.
 
 \Cref{th:toStricterClaims} shows that impossibilities propagate to stricter claims.
 Together with \cref{th:minimalPriorForInformativeness}, it shows that no informative claim is verifiable, and that the prior required must be at least as strong as claiming that if some observable holds, then some configuration of DJs is excluded.
@@ -932,6 +908,15 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
     Finally, negating \cref{it:notcomplE}, if $θ$ is completeable to some set covered by $\set{S_k}$, then $θ$ is completeable to some set $S_k$, which contradicts \cref{it:obscovers}.
   \end{proof}
 }
+\begin{corollary}
+  \label{th:obsComp}
+  Given any claim $C$,
+  verifiability under prior $D$, that is, 
+  $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$,
+  is equivalent to 
+  $D$ being observationally completeable to $C$, that is,
+  $∃ θ ∈ Θ ∩ D^⊆ \suchthat θ ∉ (D ∖ C)^⊆$.
+\end{corollary}
 
 \begin{theorem}
   \label{th:toStricterClaims}
