@@ -232,29 +232,8 @@ A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π(
   informativeness beyond counting implies informativeness.
 \end{remark}
 
-\begin{lemma}
-  \label{th:completable}
-  If $\card{\allargs} ∉ ℕ$, given any $θ ∈ Θ$ and $f: I \rightarrow (P ∪ \set{∅})$, $∃ {\allleadstog} ∈ \allleadstos \suchthat θ ⊆ {\allleadstog} \land π({\allleadstog}) = f$.
-\end{lemma}
-\begin{proof}
-  For each $i \suchthat f(i) ∈ P$, define $a_i ∉ (θ^{-1}(P))(i)(ℕ)$ as an argument not used for $i$;
-  for each $i \suchthat f(i) = ∅$, for each $p ∈ P$, define $k_i^p ∉ (θ^{-1}(P))(i)$ as a path not used for $i$, with all $k_i^p$ different from each other ($∀ p, p' ∈ P, k_i^p ≠ k_i^{p'}$).
-
-  Define $f' = θ ∪_{i \suchthat f(i) ∈ P, α \suchthat a_i ∈ \histend} \set{(i, \hist, f(i))} ∪_{i \suchthat f(i) = ∅, p ∈ P, \ar ∈ \allargs} \set{(i, (k_i^p, a), p)}$.
-  Define ${\allleadstog}$ as any completion of $f'$ to a total function in $\allleadstos$.
-\end{proof}
-\begin{theorem}
-  If $\card{\allargs} ∉ ℕ$, any informative claim is not verifiable.
-\end{theorem}
-\begin{proof}
-  Consider any $θ ∈ Θ$.
-  By informativeness, $∃ f: I \rightarrow (P ∪ \set{∅}) \suchthat f ∉ π(C)$.
-  By \cref{th:completable}, some ${\allleadstog}$ completes $θ$, 
-  and $π(\allleadstog) = f$
-  thus ${\allleadstog} ∉ C$, 
-  therefore, the claim is not verifiable.
-\end{proof}
-The fundamental reason that this theorem holds is that any observation can be completed in a way that contradicts any conclusion that informativeness mandates.
+\Cref{th:infoNotVerif} shows that any informative claim is not verifiable.
+The fundamental reason is that any observation can be completed in a way that contradicts any conclusion that informativeness mandates (\cref{th:completable}).
 
 That verifiability is not realizeable may seem disappointing, but is merely the adaptation to our context of the famous observation by Popper that proving general claims in science require more than verification.
 
@@ -285,6 +264,8 @@ Together with \cref{th:minimalPriorForInformativeness}, it shows that no informa
   Suffices that the prior states something like: if almost all individuals deliberately believe $φ$, then everybody deliberately believe $φ$. This innocuous enough prior suffices because we request only informativeness, and indeed it only permits to restrict possibilities, not to determine anybody’s DJ.
 \end{remark}
 
+\Cref{th:noDecArgi,ex:noDecArg} illustrate about no decisive arguments.
+
 Converting a claim to disjunctive normal form is useful to characterize its compatible observations, as \cref{th:dnf} indicates.
 \begin{example}
   Consider six different arguments $a_1, a'_1, a_2, a'_2, a_3, a'_3 ∈ \allargs$
@@ -294,67 +275,12 @@ Converting a claim to disjunctive normal form is useful to characterize its comp
   Indeed,
   we see that $E = \set{{\allleadstog} \suchthat [(a_1) \ileadstog φ ∧ (a'_1) \ileadstog[j] φ] ∨ [(a_2) \ileadstog φ ∧ (a'_2) \ileadstog[j] φ] ∨ [(a_3) \ileadstog φ ∧ (a'_3) \ileadstog[j] φ]}$,
   and
-  $∀ 1 ≤ k ≤ 3$, define $S_k = \set{{\allleadstog} \suchthat [(a_k) \ileadstog φ ∧ (a'_k) \ileadstog[j] φ]}$, define $\mathcal{S} = \set{S_1, S_2, S_3}$,
+  $∀ 1 ≤ k ≤ 3$, define $S_k = \set{\allleadstogo \suchthat [(a_k) \ileadstog φ ∧ (a'_k) \ileadstog[j] φ]}$, define $\mathcal{S} = \set{S_1, S_2, S_3}$,
   consider any $f ⊆ (\allhists × I) × P \suchthat f ∉ E^⊆$,
   we have $∀ 1 ≤ k ≤ 3, ∃t_k ∈ f \suchthat \set{t_k} ∉ {S_k}^⊆$,
   thus $f ∉ Θ$
   (wlog, pick $t_1 = ((a_1), i, p_1 ≠ φ)$, then for observeability we need to pick $t_2 = ((a'_2), j, .)$ and there is no choice left for $t_3$).
 \end{example}
-
-\subsection{Drafty}
-\begin{theorem}
-  Given $D ⊆ \allleadstos$,
-  if $\card{\allargs} ∉ ℕ$, 
-  if $D$ is not observationally excludable,
-  if
-  $∃ E ⊆ D \suchthat$
-  $D$ is observationally completeable to $E$ and
-  $∀ {\allleadstog} ∈ E, i ∈ I, \ar ∈ \allargs, ∃ p_1 ≠ p_2 ∈ P, \hist^1, \hist^2 ∈ \allhists \suchthat \ar ∈ \histend[1] ∩ \histend[2] ∧ \hist^1 \ileadstog p_1 ∧ \hist^2 \ileadstog p_2$,
-  then 
-  the claim $C = \set{{\allleadstog} \suchthat π(\allleadstog)(I) = \set{∅}}$ is verifiable under prior $D$.
-\end{theorem}
-\begin{proof}
-  Consider $θ ∈ Θ \suchthat θ ∉ (D - E)^⊆$.
-  By hyp, $θ$ is compatible with $D$.
-  And, any completion of $θ$ in D is also in E, therefore, is in C.
-\end{proof}
-\begin{remark}
-  The condition $D$ is not observationally excludable is required. Otherwise, 
-  consider $D$ is “(a) leads i to $φ$”.
-  E is “D and nothing is decisive”
-  D is obs excl., thus also D minus E, thus D is obs compl.
-  But C is not verifiable under prior D because everything that observationally excludes D minus E also observationally excludes D.
-\end{remark}
-\begin{remark}
-  In general, the condition that $E$ is not obs excl is stronger (it implies that any superset, thus D, is not obs excl), but in the context of this theorem, it is equivalent, as we can prove that if D is not obs excl, then E is also not: contrapositively, if $θ$ observationally excludes $E$, then (using its exclusion of D minus E) it observationally excludes $D$. To be checked carefully.
-\end{remark}
-
-\begin{theorem}
-  Given $D ⊆ \allleadstos$,
-  if $\card{\allargs} ∉ ℕ$, 
-  if $D$ is not observationally excludable,
-  if
-  the claim $C = \set{{\allleadstog} \suchthat π(\allleadstog)(I) = \set{∅}}$ is verifiable under prior $D$,
-  then 
-  $∃ E ⊆ D \suchthat$
-  $D$ is observationally completeable to $E$ and
-  $∀ {\allleadstog} ∈ E, i ∈ I, \ar ∈ \allargs, ∃ p_1 ≠ p_2 ∈ P, \hist^1, \hist^2 ∈ \allhists \suchthat \ar ∈ \histend[1] ∩ \histend[2] ∧ \hist^1 \ileadstog p_1 ∧ \hist^2 \ileadstog p_2$.
-\end{theorem}
-\begin{proof}
-  Assume that all sets $E$ to which $D$ is observationally completeable have some $\allleadstog$ contradicting “no decisive arguments”. Let’s show that $C$ is not verifiable under $D$.
-  …?
-\end{proof}
-
-The verification approach requires a prior, which we want minimal, thus we may suppose that the prior is a superset of $C$: if $C$ is vup $D$, it is also vup $D ∪ C$.
-Thus, wlog, $D = E ∪ C$ disjoint, and $E$ is obs excl.
-
-% Conjecture.
-% This requires that $E$ has the form of a finite union of $S_k$ which each is a conjuction of triples of the form $α \nileadsto φ$ such that exists observable collection of pairs that has one pair in each of the conjuctions. 
-% Example: $E$ is [(a) and (c) lead i to φ] OR [(a, b) and (c, b) lead i to φ].
-% Example: $E$ is [(a) lead i to φ and (b) leads j to φ] OR [(c) lead i to φ and (d) leads j to φ].
-% 
-% I also think that the $S_k$ could be forced to be disjoint.
-% Note that if E says [(a ≠ b) ∨ (a ∧ c)], it is equivalent to [(a ≠ b) ∨ (b ∧ c)], thus there is no unique minimal DNF.
 
 \subsection{Rejection and falsification}
 At our disposal is the procedure of empirical rejection, that consists in directly invalidating a claim by observing something that contradicts it.
@@ -910,7 +836,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 }
 \begin{corollary}
   \label{th:obsComp}
-  Given any claim $C$,
+  Given any claims $C, D ⊆ \allleadstos$,
   verifiability under prior $D$, that is, 
   $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$,
   is equivalent to 
@@ -918,20 +844,27 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   $∃ θ ∈ Θ ∩ D^⊆ \suchthat θ ∉ (D ∖ C)^⊆$.
 \end{corollary}
 
-\begin{theorem}
+\begin{corollary}
   \label{th:toStricterClaims}
   Given any claims $C, D ⊆ \allleadstos$,
-  if some claim $C' ⊆ C$ is verifiable under prior $D$,
+  if some claim $C' ⊆ C$ is verifiable under prior $D$, that is, 
+  $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C'$,
   then 
-  $D ∩ C ≠ ∅ ∧ ∃θ ∈ Θ \suchthat θ ∉ (D ∖ C)^⊆$.
-\end{theorem}
+  $D$ being observationally completeable to $C$, that is,
+  $∃ θ ∈ Θ ∩ D^⊆ \suchthat θ ∉ (D ∖ C)^⊆$.
+\end{corollary}
+
+\begin{lemma}
+  \label{th:completable}
+  If $\card{\allargs} ∉ ℕ$, given any $θ ∈ Θ$ and $f: I \rightarrow (P ∪ \set{∅})$, $∃ {\allleadstog} ∈ \allleadstos \suchthat θ ⊆ {\allleadstog} \land π({\allleadstog}) = f$.
+\end{lemma}
 \begin{proof}
-  As some $θ$ is completeable in $D$ and in $C'$, we see that $D$ intersects $C'$, hence, $C$.
+  For each $i \suchthat f(i) ∈ P$, define $a_i ∉ (θ^{-1}(P))(i)(ℕ)$ as an argument not used for $i$;
+  for each $i \suchthat f(i) = ∅$, for each $p ∈ P$, define $k_i^p ∉ (θ^{-1}(P))(i)$ as a path not used for $i$, with all $k_i^p$ different from each other ($∀ p, p' ∈ P, k_i^p ≠ k_i^{p'}$).
 
-  By hypothesis, $D ∖ C'$ is observationally excludable.
-  Therefore, $D ∖ C$, a smaller set, is as well.
+  Define $f' = θ ∪_{i \suchthat f(i) ∈ P, α \suchthat a_i ∈ \histend} \set{(i, \hist, f(i))} ∪_{i \suchthat f(i) = ∅, p ∈ P, \ar ∈ \allargs} \set{(i, (k_i^p, a), p)}$.
+  Define ${\allleadstog}$ as any completion of $f'$ to a total function in $\allleadstos$.
 \end{proof}
-
 \begin{theorem}
   \label{th:minimalPriorForInformativeness}
   If $C$ is such that $π(C) ≠ (P ∪ \set{∅})^I$ and is verifiable under $D$, then
@@ -946,6 +879,22 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 
   Also, $D ≠ \allleadstos$, as $∃ θ ⊆ {\allleadstog} \suchthat π(\allleadstog) = f$ (by \cref{th:completable}), thus ${\allleadstog} ∉ D$.
 \end{proof}
+
+\begin{corollary}
+  \label{th:infoNotVerif}
+  If $\card{\allargs} ∉ ℕ$, any informative claim is not verifiable.
+\end{corollary}
+
+This (to be proven) captures the claim “there is no decisive argument for $i$”.
+\begin{theorem}
+  \label{th:noDecArgi}
+  Given any $\allleadstogo ∈ \allleadstos$:
+  $π(\allleadstogo)(i) = \set{∅} ⇔ ∀ \ar ∈ \allargs, ∃ p_1 ≠ p_2 ∈ P, \hist^1, \hist^2 ∈ \allhists \suchthat \ar ∈ \histend[1] ∩ \histend[2] ∧ \hist^1 \ileadstog p_1 ∧ \hist^2 \ileadstog p_2$.
+\end{theorem}
+\begin{example}[No decisive argument]
+  \label{ex:noDecArg}
+  The claim $C = \set{{\allleadstog} \suchthat π(\allleadstogo)(I) = \set{∅}}$ is verifiable under prior $D$ iff $D$ is observationally completeable to $\set{\allleadstogo \suchthat π(\allleadstogo)(I) = \set{∅}}$.
+\end{example}
 
 \begin{theorem}
   \label{th:dnf}
@@ -964,6 +913,9 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   It follows that $f ∪ f_S$ is not right unique,
   thus, that some $t ∈ f$ contradicts $f_S$.
 \end{proof}
+\begin{remark}
+  $(a ≠ b) ∨ (a ∧ c)$ is equivalent to $(a ≠ b) ∨ (b ∧ c)$, thus there is no unique minimal DNF.
+\end{remark}
 
   \section{Supplementary material}
   \label{sec:supplementary}
