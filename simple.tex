@@ -291,6 +291,26 @@ One such is $C$-scrutiny, which mandates that if truth is observably out of $C$,
 Equivalently, perhaps: if $C$ is still observably falsifiable after any amount of observation, then no feasible observation would falsify it.
 The caveat applies for example to $C$ is $(a) \ileadsto φ ∧ (b) \ileadsto φ$ for a given $i$: we cannot assume that non-observation of falsification implies truth, because it might also be due to observing that $(a) \ileadsto φ$ even though $(b) \nileadsto φ$.
 
+We propose for “there is some prefix observation that prevents us to see it”:
+P1 = $∃\allleadstogo \suchthat [∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ C^⊆] ∧ [∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstogo}: θ' ∈ C^⊆]$.
+Another candidate is:
+P2 = $∀\allleadstogo: [∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ C^⊆] ⇒ [∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstogo}: θ' ∈ C^⊆]$.
+Another candidate is:
+P3 = $[∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat θ ∉ C^⊆] ∧ [∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆]$.
+
+We want “there is some prefix observation that prevents us to see it” to be satisfied for
+C1: $(a) \ileadsto φ ∧ (b) \ileadsto φ$
+and
+$C_2 = \set{\allleadstogo \suchthat ∀i: (b) \ileadstog φ ∧ (a) \ileadstog[j] φ}$
+but not for
+C3: $∀i: (a) \ileadsto φ$, under some assumption like that infinitely many i behave similarly…
+
+P1: C1 satisfies (ok), C2 satisfies (ok), C3 does not satisfy (ok).
+P2: C1 satisfies (ok), C2 NOPE
+
+I think the best prior would be that for each hypothetical world that is observably out of C, there is some prefix observation that prevents us to see it:
+$∀\allleadstogo: [∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ C^⊆] ⇒ [∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstogo}: θ' ∈ C^⊆]$.
+
 \begin{remark}
   Formalizing the requirement “there is some prefix observation that prevents us to see it”
   as $∃θ ∈ Θ \suchthat ∀θ ⊆ θ' ∈ Θ: θ' ∈ C^⊆$
@@ -311,13 +331,21 @@ The caveat applies for example to $C$ is $(a) \ileadsto φ ∧ (b) \ileadsto φ$
   
   Therefore, we try
   $∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆$.
-  But this is not satisfied for a reasonable $C$ such as $∀i: (a) \ileadsto φ$.
+  But this is satisfied for a reasonable $C$ such as $∀i: (a) \ileadsto φ$.
+  This formula is satisfied because any claim that holds satisfies it, and not because specifically this $θ$ is possibly hiding a failure of $C$.
+  We need the formula to apply in a counter-factual world where $C$ fails. In such a world, we want that if failure can be seen, it can be whatever the prefix.
+
+  % Let’s try this for an observably false $\allleadstogo$.
+  % $∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstogo}: θ' ∈ C^⊆$.
+  Therefore, we try
+  $\allleadstoo ∉ C ∧ ∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆$.
+  % But this is not satisfied for a reasonable $C$ such as $∀i: (a) \ileadsto φ$.
 \end{remark}
 
 \begin{theorem}
   Given any claim $C ⊆ \allleadstos$, the following statements are equivalent.
   \begin{enumerate}
-    \item ${\allleadsto} ∉ C ⇒ ∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆$;
+    \item $\allleadstoo ∉ C ⇒ ∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆$;
     \item $∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆$;
     \item $[∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat θ ∉ C^⊆] ⇒ [∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆]$;
     \item $[∀θ ∈ Θ ∩ \powerset{\allleadsto}, ∃θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto} \suchthat θ' ∉ C^⊆] ⇒ Θ ∩ \powerset{\allleadsto} ⊆ C^⊆$.
