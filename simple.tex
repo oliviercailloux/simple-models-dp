@@ -274,10 +274,151 @@ Converting a claim to disjunctive normal form is useful to characterize its comp
   consider any $f ⊆ (\allhists × I) × P \suchthat f ∉ E^⊆$,
   we have $∀ 1 ≤ k ≤ 3, ∃t_k ∈ f \suchthat \set{t_k} ∉ {S_k}^⊆$,
   thus $f ∉ Θ$
-  (wlog, pick $t_1 = ((a_1), i, p_1 ≠ φ)$, then for observeability we need to pick $t_2 = ((a'_2), j, .)$ and there is no choice left for $t_3$).
+  (wlog, pick $t_1 = ((a_1), i, p_1 ≠ φ)$, then for observability we need to pick $t_2 = ((a'_2), j, .)$ and there is no choice left for $t_3$).
 \end{example}
 
+\begin{remark}
+  No general prior is reasonable.
+  A prior $D$ that states something general and reasonable such as “falsifiability implies correctness” and would be strong enough to allow determining that some substantial claim $C$ holds would mean that later rejecting $C$ would require rejecting the general prior. We want to keep the option of later rejecting $C$ (because one cannot be sure), and we want this to happen without having to reject a general claim such as the correctness of the method of falsifiability, rather just a particular claim about over-generalization.
+
+  The prior must say that we can generalize this particular claim, which allow for later rejection.
+  % To prove that no general prior is reasonable, we might assume that two contradictory theories, C ((a) leads everyone to φ) and C' ((a) leads everyone to φ except if (a, b) does not), can be validated under the prior, considering some observations at some point. If under the prior, some obs proves C, then no further obs can prove C' under the same prior, so the prior must say something that is contradicted by the further obs, compatible with C', so the prior contradicts C'. So if the prior allows to validate C, then it contradicts C'. To be checked…
+\end{remark}
+\newpage
 \subsection{Rejection and falsification}
+According to the above remark, the prior must depend on the claim.
+One such is $C$-scrutiny, which mandates that if truth is observably out of $C$, then there is some prefix observation that prevents us to see it.
+Equivalently, perhaps: if $C$ is still observably falsifiable after any amount of observation, then no feasible observation would falsify it.
+The caveat applies for example to $C$ is $(a) \ileadsto φ ∧ (b) \ileadsto φ$ for a given $i$: we cannot assume that non-observation of falsification implies truth, because it might also be due to observing that $(a) \ileadsto φ$ even though $(b) \nileadsto φ$.
+
+\begin{remark}
+  Formalizing the requirement “there is some prefix observation that prevents us to see it”
+  as $∃θ ∈ Θ \suchthat ∀θ ⊆ θ' ∈ Θ: θ' ∈ C^⊆$
+  fails:
+  with (for some given $j$) $C = \set{\allleadstogo \suchthat ∀i: (b) \ileadstog φ ∧ (a) \ileadstog[j] φ}$,
+  if $C$ fails because $(a) \nileadsto[j] φ$ (while $∀i: (b) \ileadsto φ$), 
+  we want $θ = \set{(b) \ileadstog[j] φ}$
+  to be such prefix observation; but
+  $θ$ does not satisfy
+  $∀θ ⊆ θ' ∈ Θ: θ' ∈ C^⊆$.
+  Note that if $C$ fails because both $(a) \nileadsto[j] φ$ and, for some $i$, $(b) \nileadsto φ$,
+  then $θ$ is no such prefix observation and this is what we want.
+
+  This leads to attempt $∃θ ∈ Θ \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆$.
+  But this condition is always satisfied: pick any infeasible observation, $θ ∈ Θ$ and $θ ∉ \powerset{\allleadsto}$.
+
+  We want that when C holds, for some reasonable C, the condition fails.
+  
+  Therefore, we try
+  $∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆$.
+  But this is not satisfied for a reasonable $C$ such as $∀i: (a) \ileadsto φ$.
+\end{remark}
+
+\begin{theorem}
+  Given any claim $C ⊆ \allleadstos$, the following statements are equivalent.
+  \begin{enumerate}
+    \item ${\allleadsto} ∉ C ⇒ ∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆$;
+    \item $∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆$;
+    \item $[∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat θ ∉ C^⊆] ⇒ [∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆]$;
+    \item $[∀θ ∈ Θ ∩ \powerset{\allleadsto}, ∃θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto} \suchthat θ' ∉ C^⊆] ⇒ Θ ∩ \powerset{\allleadsto} ⊆ C^⊆$.
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  Counter-example.
+  \begin{itemize}
+    \item $I = ∞$
+    \item $C = \set{\allleadstogo \suchthat ∀i: ((b, c) \ileadstog φ) ∧ ((a) \ileadstog[j] φ)}$
+    \item $∀i: ((b, c) \ileadsto φ)$ and $((a) \ileadsto[j] ¬φ)$ and $((b) \ileadsto[j] φ)$
+    \item $θ = \set{(b \ileadstog[j] φ)}$ sat item 2
+    \item Item 4 antecedent is satisfied: whatever obs, add $((b, c) \ileadstog[i_\text{new}] ¬φ)$; but consequent fails. We want Item 4 antecedent to fail: our prior should not apply to $C$.
+    Equivalently, we want Item 3 consequent to succeed.
+  \end{itemize}
+  Assume item 2 and consider $θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat θ ∉ C^⊆$. 
+
+  % Truth is observably out of C, but for some prefix, it is no more observably out of C.
+  % Prove: it is also not counterfactually obs out of C.
+  % If the prefix is completeable out of C but not truthfully completeable out of C, then C must contain the truth.
+  % From hyps: all my completions of the prefix out of C are false. Therefore, there is no truthful obs that falsify C.
+
+  % Search for some C satisfying (should be impossible):
+  % - some obs prefix has all true compl in C
+  % - some obs falsifies C
+  % (C is of kind (a) to φ and (b) to φ where the latter is false)
+  % - all prefixes can be completed out of C
+
+  % (1) is because C is true OR because the prefix hides its falsity.
+  % (2) prevents truth, thus remains: the prefix hides its falsity.
+  % Any false point such as (b) does in fact not lead to φ is hidden.
+  % From the two first points, the observed pairs leading to the falsification of C are incompatible with the first point prefix.
+
+  % Falsification is thanks to observation of (arg, i) pairs.
+  % These pairs are incompatible with the prefix P pairs.
+  % P together with pair p1 counter-factual leads out of C.
+  % The pair p1 is compatible with P but actually that one is okay with C.
+  
+  % (a, i) to φ': falsification
+  % (b, c, i): C says φ, it is φ.
+  % P = (b, i): prefix incompatible with falsification
+  % (b, i) compatible with (b, c, i)
+
+  % Effective compl are compat C but some hyp compl (of effective prefix) are incompat C.
+  % (a) 
+  % Consider any feasible observation, $θ ∈ Θ ∩ \powerset{\allleadsto}$.
+  % We have to show that $θ$ is compatible with $C$.
+  % If $C$ contains the truth, it holds.
+  % Otherwise, some prefix $g$ makes every completion compatible with the truth.
+
+\end{proof}
+% \begin{remark}
+%   This is reasonable only if $C$ treats infinitely many individuals identically, so that we do not lack opportunities for attempts of rejection.
+%   Assume $C$ is $(a) \ileadsto φ ∧ (b) \ileadsto φ$ for a given $i$.
+%   If attempts to falsify first claim but this one turns correct, we cannot attempt to falsify the second one.
+%   $C$ scrutiny is unreasonable.
+
+%   However, if this claim is for all $i$, then scrutiny is reasonable.
+  
+%   We should restrict scrutiny to extensions from finite validation to infinite theories in some way.
+
+%   A more reasonable one is: if $C$ says something about some $i$, it also says the same about infinitely many $i$’s, then $Θ ∩ \powerset{\allleadsto} ⊆ C^⊆$.
+
+%   Insufficient: C claims that infinitely many individuals (but not all) satisfy $(a) \lieadsto φ$. Unfalsifiable! So actually that’s okay.
+
+%   We really want to ensure that even after having observed a few things, there is still possibility of falsifying the claim if it was falsifiable to start with. So whatever $θ$, there is a completion of $θ$ to $θ'$ that falsifies it. So we mean that there exists an infinite sequence of increasing observations, that is always completeable however we want, and that is compatible with $C$.
+
+%    implies C-scrutiny.
+  
+%   Anything that contradicts $C$ and that we can still observe is not real.
+
+%   all leadsto which for all prefixes is still falsifiable is not real
+
+  
+
+%   Poss (b) does not, but there exists $θ$ (about (a)) which makes it impossible to observe.
+%   We want to exclude this.
+%   If some obs is incompatible with C, then whatever the prefix, it is still available?
+%   for all i (a) leads to phi.
+%   Poss i1 fails but this becomes inobservable.
+%   But we assume that if i1 fails, others fail.
+
+%   Prior: claims that can be falsified whatever the $θ$ are correct.
+
+%   The world is not such that you can observe (a) \ileads to φ plenty of times and yet for some i it fails. Thus, t s such that f (a) \ileadsto φ many times, then (a) \ileadsto φ for all i. If for some i, (a) not leads to φ, then it is the case for all i.
+%   All leadsto satisfy: for each ileadsto inside, there’s infinitely many ileadsto.
+
+%   The world allows some patterns of the kind: α implies β. If (a) ileadsto φ, then (b) ileadsto φ.
+%   C says: ∀i, (a) →i θ. 
+%   Prior: if for some i, (a) nileadsto φ, then we know it. If all feasible obs are st ∀i, …, then really ∀i, ….
+%   But also, if for all feas obs some pattern about arguments, then for all arguments…
+
+%   [∀θ ∈ Θ ∩ P(→): ∀i, p(i)] ⇒ ∀i, p(i).
+
+%   If C is false, then some other falsifiable theory proves it.
+
+%   Such a prior is impossible to find.
+%   If some reasonable prior, of the form “falsifiability of C and current non-falsified status implies C holds”, existed, then there would be no more defeasibility.
+%   The prior must say: current non-falsified status implies forever non-falsified status. But then it is contradictory, as multiple contradictory theories may be currently non-falsified.
+% \end{remark}
+
 At our disposal is the procedure of empirical rejection, that consists in directly invalidating a claim by observing something that contradicts it.
 \begin{definition}
   Given a behavior $\allleadsto$, we say that $C$ is \emph{rejectable} iff
