@@ -288,201 +288,84 @@ Converting a claim to disjunctive normal form is useful to characterize its comp
 
 \subsection{Rejection and falsification}
 Given $\allleadstogo$ and $C$, say that $C$ is
-\begin{description}
-  \item[Continuously Observably False (COF) in $\allleadstogo$] iff $∀θ ∈ Θ ∩ \powerset{\allleadstogo}, ∃θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ' ∉ C^⊆$;
-  \item[Observably False (OF) in $\allleadstogo$] iff $[∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ C^⊆]$;
-  \item[false in $\allleadstogo$] iff $\allleadstogo ∉ C$.
+\begin{description}[font=\normalfont]
+  \item[Continuously Observably False in $\allleadstogo$ ($\COF(\allleadstogo)$)] iff $∀θ ∈ Θ ∩ \powerset{\allleadstogo}, ∃θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ' ∉ C^⊆$;
+  \item[Observably False (OF) in $\allleadstogo$ ($\OF(\allleadstogo)$)] iff $[∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ C^⊆]$, equivalently, $Θ ∩ \powerset{\allleadstogo} \nsubseteq C^⊆$;
+  \item[False in $\allleadstogo$ ($\F(\allleadstogo)$)] iff $\allleadstogo ∉ C$.
 \end{description}
-Note that in a given world, COF implies OF implies falsity.
-Not COF and OF happens when some prefix prevents us to observe the falsity of $C$ even though it is observable when no prefix is involved.
-$C$ has no visibility issues iff OF implies COF, equivalently, iff (OF iff COF).
+We also used to say that $C$ is \emph{rejectable} iff $\text{OF}(\allleadstoo)$.
+
+Note that $∀C, \allleadstogo: \COF(\allleadstogo) ⇒ \OF(\allleadstogo) ⇒ \F(\allleadstogo)$.
+$C$ is said to suffer visibility issues in $\allleadstogo$ iff $¬\COF(\allleadstogo) ∧ \OF(\allleadstogo)$, which happens when some prefix hides the falsity of $C$ even though its falsity is observable when no prefix is involved.
+$C$ suffers no visibility issues iff $\OF(\allleadstogo) ⇒ \COF(\allleadstogo)$, equivalently, iff $\OF(\allleadstogo) ⇔ \COF(\allleadstogo)$.
 
 According to \cref{th:noGeneral}, the prior must depend on the claim.
-One such is $C$-scrutiny, which mandates that either not OF, or both not COF and OF.
-This is technically equivalent to mandating not COF.
+One such is $C$-scrutiny, which mandates that $¬\OF(\allleadstoo) ∨ (¬\COF(\allleadstoo) ∧ \OF(\allleadstoo))$.
+This is technically equivalent to mandating $¬\COF(\allleadstoo)$.
 
 \begin{remark}
   Another way to describe $C$-scrutiny is that
-  for each hypothetical world that is observably out of C, there is some prefix observation that prevents us to see it (OF implies OF and not COF).
+  if the world is observably out of $C$, there is some prefix observation that hides this fact (formally: $\OF(\allleadstoo) ⇒ \OF(\allleadstoo) ∧ ¬\COF(\allleadstoo)$).
   
   Equivalently, 
-  for each hypothetical world, if $C$ is still observably falsifiable after any amount of observation, then no feasible observation would falsify it (COF implies not OF).
+  if $C$ is still observably falsifiable after any amount of observation, then no feasible observation would falsify it ($\COF(\allleadstoo) ⇒ ¬\OF(\allleadstoo)$).
   
   This corresponds to the prior $D 
-  = \set{\allleadstogo \suchthat ∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstogo}: θ' ∈ C^⊆}
+  = \set{\allleadstoo \suchthat ∃θ ∈ Θ ∩ \powerset{\allleadstoo} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstoo}: θ' ∈ C^⊆}
   $.
 
-  Assuming, as the prior does, “not COF”, leaves two possibilities: either there are visibility issues (OF and not COF), or the claim is not observably false (thus is true, or false but inobservably so).
+  Assuming, as the prior does, $¬\COF(\allleadstoo)$, leaves two possibilities: either there are visibility issues ($\OF(\allleadstoo) ∧ ¬\COF(\allleadstoo)$), or the claim is not observably false (thus is true, or false but inobservably so).
 
-  When considering a claim $C$ with no visibility issues, this prior states: not OF.
+  When considering a claim $C$ with no visibility issues, this prior states $¬\OF(\allleadstoo)$.
 
-  The reason for adopting the prior “not COF” instead of “not OF” is illustrated with
-  $C_1$ is $(a) \ileadsto φ ∧ (b) \ileadsto φ$ for a given $i$: in some world (for example, where $(a) \ileadsto φ$ even though $(b) \nileadsto φ$), “not COF and OF”, thus we cannot assume that non-observation of falsification implies not OF, because it might also be due to observing that $(a) \ileadsto φ$.
-  It also applies to $C_2 = \set{\allleadstogo \suchthat ∀i: (b) \ileadstog φ ∧ (a) \ileadstog[j] φ}$, which in a world satisfying $(a) \nileadsto[j] φ$ and $∀i: (b) \ileadsto φ$ is not COF and OF. 
-\end{remark}
+  The reason for adopting the prior $¬\COF(\allleadstoo)$ instead of $¬\OF(\allleadstoo)$ is illustrated with
+  $C_1$ is $(a) \ileadsto φ ∧ (b) \ileadsto φ$ for a given $i$: in some world (for example, where $(a) \ileadstog φ$ even though $(b) \nileadstog φ$), $¬\COF(\allleadstoo) ∧ \OF(\allleadstoo)$, thus we cannot assume that non-observation of falsification implies not OF, because it might also be due to observing that $(a) \ileadstog φ$.
+  It also applies to $C_2 = \set{\allleadstoo \suchthat ∀i: (b) \ileadsto φ ∧ (a) \ileadsto[j] φ}$ for a given $j$, which in a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (b) \ileadstog φ$ is $¬\COF(\allleadstogo)$ (consider the prefix $θ = \set{(b) \ileadstog[j] φ}$) and $\OF(\allleadstogo)$.
+  (Note that if $C_2$ fails because, for some $i$, $(b) \nileadstog φ$,
+  then $θ$ is not a hiding prefix observation and this is what we want.)
+
+  With this example (considering again a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (b) \ileadstog φ$), we see that formalizing $¬\COF$, independently of $\allleadstogo$,
+  as $∃θ ∈ Θ \suchthat ∀θ ⊆ θ' ∈ Θ: θ' ∈ C^⊆$,
+  fails, as this prevents the prefix $θ = \set{(b) \ileadstog[j] φ}$ from bringing not COF.
+  The condition $∃θ ∈ Θ \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstog}: θ' ∈ C^⊆$ is also not suitable, as it is always satisfied: pick any $θ ∈ Θ$ such that $θ ∉ \powerset{\allleadstog}$.
+
+  The following alternative prior, which might be considered for its apparent proximity with the chosen one, is also inadequate:
+  $∀\allleadstogo, θ ∈ Θ ∩ \powerset{\allleadstogo}, [∃θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ' ∉ C^⊆] ⇒ [θ ∈ C^⊆]$.
+  Consider again $C_1$ and $\allleadstogo$ such that $(a) \ileadstog φ ∧ (b) \nileadstog φ$.
+  The chosen prior ($\COF(\allleadstogo) ⇒ ¬\OF(\allleadstogo)$) holds, as intuition commands, as the antecedent fails for the reason given above. The alternative prior however fails as $θ = \set{(b) \ileadstog φ}$ is completable only out of $C$.
   
-\begin{remark}[TODO]
-  Now the problem is that intuitively we want COF for the claim $∀i: (a) \ileadsto φ$, under some assumption like that infinitely many i behave similarly…
-  
-  Take any claim that is false for some finite reason (there exists some finite set of pairs that when removed make the claim true).
-  Then the claim might be not COF: consider some maximal compatible set of pairs, if there are for each some incompatible pair about which $C$ is not incorrect, then it is not COF.
-  
-\end{remark}
-
-Technically, we want to write a simpler equivalent expression, namely, to exclude, for some $\allleadstogo$, that
-$[∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ C^⊆] ∧ ¬[∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstogo}: θ' ∈ C^⊆]$.
-
-\begin{remark}
-  Formalizing the requirement “there is some prefix observation that prevents us to see it”
-  as $∃θ ∈ Θ \suchthat ∀θ ⊆ θ' ∈ Θ: θ' ∈ C^⊆$
-  fails:
-  with (for some given $j$) $C = \set{\allleadstogo \suchthat ∀i: (b) \ileadstog φ ∧ (a) \ileadstog[j] φ}$,
-  if $C$ fails because $(a) \nileadsto[j] φ$ (while $∀i: (b) \ileadsto φ$), 
-  we want $θ = \set{(b) \ileadstog[j] φ}$
-  to be such prefix observation; but
-  $θ$ does not satisfy
-  $∀θ ⊆ θ' ∈ Θ: θ' ∈ C^⊆$.
-  Note that if $C$ fails because both $(a) \nileadsto[j] φ$ and, for some $i$, $(b) \nileadsto φ$,
-  then $θ$ is no such prefix observation and this is what we want.
-
-  This leads to attempt $∃θ ∈ Θ \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆$.
-  But this condition is always satisfied: pick any infeasible observation, $θ ∈ Θ$ and $θ ∉ \powerset{\allleadsto}$.
-  
-  Therefore, we try
-  $∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆$.
-  
-    We want that when C holds, for some reasonable C, the condition fails.
-  But this is satisfied for a reasonable $C$ such as $∀i: (a) \ileadsto φ$.
-  This formula is satisfied because any claim that holds satisfies it, and not because specifically this $θ$ is possibly hiding a failure of $C$.
-
-  Also inadequate is the expression 
-  $∀\allleadstogo, θ ∈ Θ ∩ \powerset{\allleadstogo}: [∃θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ' ∉ C^⊆] ⇒ [θ ∈ C^⊆]$.
-  Consider $C$ is $(a) \ileadsto φ ∧ (b) \ileadsto φ$ and $\allleadstogo$ such that $(a) \ileadstog φ ∧ (b) \nileadstog φ$.
-  The chosen expression ($∀\allleadstogo: [∀θ ∈ Θ ∩ \powerset{\allleadstogo}, ∃θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ' ∉ C^⊆] ⇒ [∀θ ∈ Θ ∩ \powerset{\allleadstogo}, θ ∈ C^⊆]$) holds as the antecedent fails: the prefix $θ = \set{(a) \ileadstog φ}$ is completable only in $C$. The candidate expression fails as $θ = \set{(b) \ileadstog φ}$ is completable only out of $C$.
-
   Alternatively, we could apply the prior only for the claims which have no visibility issues, by stating the following.
   $[∀\allleadstogo, ¬[∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstogo}: θ' ∈ C^⊆]] ⇒ [∀\allleadstogo, ∀θ ∈ Θ ∩ \powerset{\allleadstogo}: θ ∈ C^⊆]$.
   Consider $C_1$ is $(a) \ileadsto φ ∧ (b) \ileadsto φ$ for a given $i$ and a world st $(a) \ileadsto^1 φ ∧ (b) \nileadsto^1 φ$. This world has visibility issues. Consider a world st $(a) \ileadsto^2 φ ∧ (b) \ileadsto^2 φ$. This world has no visibility issues.
   The alternative prior does not say anything about $C$ (all worlds are possible).
   The original prior excludes the world 2.
 \end{remark}
-
-\begin{theorem}
-  Given any claim $C ⊆ \allleadstos$, the following statements are equivalent.
-  \begin{enumerate}
-    \item $\allleadstoo ∉ C ⇒ ∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆$;
-    \item $∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆$;
-    \item $[∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat θ ∉ C^⊆] ⇒ [∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆]$;
-    \item $[∀θ ∈ Θ ∩ \powerset{\allleadsto}, ∃θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadsto} \suchthat θ' ∉ C^⊆] ⇒ Θ ∩ \powerset{\allleadsto} ⊆ C^⊆$.
-  \end{enumerate}
-\end{theorem}
-\begin{proof}
-  Counter-example.
-  \begin{itemize}
-    \item $I = ∞$
-    \item $C = \set{\allleadstogo \suchthat ∀i: ((b, c) \ileadstog φ) ∧ ((a) \ileadstog[j] φ)}$
-    \item $∀i: ((b, c) \ileadsto φ)$ and $((a) \ileadsto[j] ¬φ)$ and $((b) \ileadsto[j] φ)$
-    \item $θ = \set{(b \ileadstog[j] φ)}$ sat item 2
-    \item Item 4 antecedent is satisfied: whatever obs, add $((b, c) \ileadstog[i_\text{new}] ¬φ)$; but consequent fails. We want Item 4 antecedent to fail: our prior should not apply to $C$.
-    Equivalently, we want Item 3 consequent to succeed.
-  \end{itemize}
-  Assume item 2 and consider $θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat θ ∉ C^⊆$. 
-
-  % Truth is observably out of C, but for some prefix, it is no more observably out of C.
-  % Prove: it is also not counterfactually obs out of C.
-  % If the prefix is completeable out of C but not truthfully completeable out of C, then C must contain the truth.
-  % From hyps: all my completions of the prefix out of C are false. Therefore, there is no truthful obs that falsify C.
-
-  % Search for some C satisfying (should be impossible):
-  % - some obs prefix has all true compl in C
-  % - some obs falsifies C
-  % (C is of kind (a) to φ and (b) to φ where the latter is false)
-  % - all prefixes can be completed out of C
-
-  % (1) is because C is true OR because the prefix hides its falsity.
-  % (2) prevents truth, thus remains: the prefix hides its falsity.
-  % Any false point such as (b) does in fact not lead to φ is hidden.
-  % From the two first points, the observed pairs leading to the falsification of C are incompatible with the first point prefix.
-
-  % Falsification is thanks to observation of (arg, i) pairs.
-  % These pairs are incompatible with the prefix P pairs.
-  % P together with pair p1 counter-factual leads out of C.
-  % The pair p1 is compatible with P but actually that one is okay with C.
   
-  % (a, i) to φ': falsification
-  % (b, c, i): C says φ, it is φ.
-  % P = (b, i): prefix incompatible with falsification
-  % (b, i) compatible with (b, c, i)
+\begin{remark}[TODO]
+  Intuitively, the prior should apply to claims that treat infinitely many individuals identically, and assuming that the world does contain infinitely many identical individuals (perhaps only one of these is required), so that we do not lack opportunities for attempts of rejection.
 
-  % Effective compl are compat C but some hyp compl (of effective prefix) are incompat C.
-  % (a) 
-  % Consider any feasible observation, $θ ∈ Θ ∩ \powerset{\allleadsto}$.
-  % We have to show that $θ$ is compatible with $C$.
-  % If $C$ contains the truth, it holds.
-  % Otherwise, some prefix $g$ makes every completion compatible with the truth.
-
-\end{proof}
-% \begin{remark}
-%   This is reasonable only if $C$ treats infinitely many individuals identically, so that we do not lack opportunities for attempts of rejection.
-%   Assume $C$ is $(a) \ileadsto φ ∧ (b) \ileadsto φ$ for a given $i$.
-%   If attempts to falsify first claim but this one turns correct, we cannot attempt to falsify the second one.
-%   $C$ scrutiny is unreasonable.
-
-%   However, if this claim is for all $i$, then scrutiny is reasonable.
+  As an illustration, we want a prior to apply for the claim $∀i: (a) \ileadsto φ$, under some assumption like that infinitely many i behave similarly.
   
-%   We should restrict scrutiny to extensions from finite validation to infinite theories in some way.
-
-%   A more reasonable one is: if $C$ says something about some $i$, it also says the same about infinitely many $i$’s, then $Θ ∩ \powerset{\allleadsto} ⊆ C^⊆$.
-
-%   Insufficient: C claims that infinitely many individuals (but not all) satisfy $(a) \lieadsto φ$. Unfalsifiable! So actually that’s okay.
-
-%   We really want to ensure that even after having observed a few things, there is still possibility of falsifying the claim if it was falsifiable to start with. So whatever $θ$, there is a completion of $θ$ to $θ'$ that falsifies it. So we mean that there exists an infinite sequence of increasing observations, that is always completeable however we want, and that is compatible with $C$.
-
-%    implies C-scrutiny.
+  Take any claim that is false for some finite reason (there exists some finite set of pairs that when removed make the claim true).
+  Then the claim might be not COF: consider some maximal compatible set of pairs, if there are for each some incompatible pair about which $C$ is not incorrect, then it is not COF.
   
-%   Anything that contradicts $C$ and that we can still observe is not real.
-
-%   all leadsto which for all prefixes is still falsifiable is not real
-
-  
-
-%   Poss (b) does not, but there exists $θ$ (about (a)) which makes it impossible to observe.
-%   We want to exclude this.
-%   If some obs is incompatible with C, then whatever the prefix, it is still available?
-%   for all i (a) leads to phi.
-%   Poss i1 fails but this becomes inobservable.
-%   But we assume that if i1 fails, others fail.
-
-%   Prior: claims that can be falsified whatever the $θ$ are correct.
-
-%   The world is not such that you can observe (a) \ileads to φ plenty of times and yet for some i it fails. Thus, t s such that f (a) \ileadsto φ many times, then (a) \ileadsto φ for all i. If for some i, (a) not leads to φ, then it is the case for all i.
-%   All leadsto satisfy: for each ileadsto inside, there’s infinitely many ileadsto.
-
-%   The world allows some patterns of the kind: α implies β. If (a) ileadsto φ, then (b) ileadsto φ.
-%   C says: ∀i, (a) →i θ. 
-%   Prior: if for some i, (a) nileadsto φ, then we know it. If all feasible obs are st ∀i, …, then really ∀i, ….
-%   But also, if for all feas obs some pattern about arguments, then for all arguments…
-
-%   [∀θ ∈ Θ ∩ P(→): ∀i, p(i)] ⇒ ∀i, p(i).
-
-%   If C is false, then some other falsifiable theory proves it.
-
-%   Such a prior is impossible to find.
-%   If some reasonable prior, of the form “falsifiability of C and current non-falsified status implies C holds”, existed, then there would be no more defeasibility.
-%   The prior must say: current non-falsified status implies forever non-falsified status. But then it is contradictory, as multiple contradictory theories may be currently non-falsified.
-% \end{remark}
+  We might attempt something like this: if whenever $C$ says something about some $i$, it also says the same about infinitely many $i$’s, then not OF.
+  Or: All leadsto satisfy: for each ileadsto inside, there’s infinitely many ileadsto.
+\end{remark}
 
 At our disposal is the procedure of empirical rejection, that consists in directly invalidating a claim by observing something that contradicts it.
 \begin{definition}
   Given a behavior $\allleadsto$, we say that $C$ is \emph{rejectable} iff
-  $θ ∩ \powerset{\allleadsto} \nsubseteq C^⊆$.
+  $\text{OF}(\allleadstoo)$, thus,
+  $Θ ∩ \powerset{\allleadsto} \nsubseteq C^⊆$.
 \end{definition}
 
 The following theorem verifies that when $C$ holds, it is not rejectable.
+More generally, OF implies falsity.
 \begin{theorem}
   \label{th:ex-post}
   $∀ C \ni {\allleadsto}:
-    θ ∩ \powerset{\allleadsto} \subseteq C^⊆$.
+    Θ ∩ \powerset{\allleadsto} \subseteq C^⊆$.
 \end{theorem}
 \begin{proof}
   This holds by definition of $C^⊆ = ∪_{{\allleadstog} ∈ C} \powerset{\allleadstog}$.
@@ -494,8 +377,8 @@ The converse, however, does not hold.
   Given $\ar \neq \ar' ∈ \allargs$,
   the claim $∀ i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$ is not rejectable.
   In fact,
-  $θ ⊆ C^⊆$.
-  Consider any $θ ∈ θ$ and let us prove that $θ ∈ ∪_{{\allleadstog} ∈ C} \powerset{\allleadstog}$.
+  $Θ ⊆ C^⊆$.
+  Consider any $θ ∈ Θ$ and let us prove that $θ ∈ ∪_{{\allleadstog} ∈ C} \powerset{\allleadstog}$.
   By definition of $θ$, $θ^{-1}(P)$ may not contain both $((\ar), i)$ and $((\ar'), i)$, thus letting $t$ denote one of these pairs not in $θ^{-1}(P)$ and defining $r = (t, \phi)$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} \land t ∈ {\allleadstog'}$. We have $θ ∈ \powerset{\allleadstog'}$ and ${\allleadstog'} ∈ C$.
 \end{example}
 \Cref{ex:disjR} shows a claim that is not rejectable, irrespective of the exposure protocol.
@@ -515,6 +398,10 @@ The property demands that whatever the behavior of individuals, if their behavio
   A claim $C$ is \emph{falsifiable} iff $C \neq {\allleadstos} \land
   ∀ {\allleadstog} \notin C: θ ∩ \powerset{\allleadstog} \nsubseteq C^⊆$.
 \end{definition}
+
+Thus, $C$ is falsifiable iff $C \neq {\allleadstos}$ and falsity implies OF.
+Thus, $C$ is falsifiable or trivial iff falsity implies OF.
+It follows that under falsity implies OF, we obtain equivalence, in the real world, between OF and falsity.
 
 It is important to note that falsifiability does not depend on $\allleadsto$: whether falsifiability holds can be determined analytically, meaning, by considering only the content of the claim, without considering the behavior of individuals.
 
@@ -546,6 +433,26 @@ falsifiability guarantees that a claim holds if, and only if, it is not rejectab
  But we can make it falsifiable again by making it even more precise (picking any single relation).
  (See \cref{rq:precise}.)
 \end{remark}
+
+To simplify, let’s consider for now the prior not OF.
+\begin{theorem}
+  A claim is verifiable under prior not OF iff it satisfies F implies OF iff it is falsifiable or trivial.
+\end{theorem}
+\begin{proof}
+  Consider a claim that satisfies F implies OF.
+  Any world in the prior satisfies not OF, thus, is in C.
+
+  Now consider a claim with a world not in C but not OF in that world.
+  By definition of not OF in that world, all prefixes in D can be completed by a world in D not in C, which is what we have to show.
+\end{proof}
+
+% Consider a claim that in some world satisfies F but not COF.
+% Then, it is not verifiable under prior not COF, unless precisely that world can be excluded by an observation.
+% This is a modeling problem as we want COF precisely to avoid this.
+% Thus, our study should focus on those claims that satisfy F implies COF.
+% We want to satisfy OF implies COF, thus, not suffer visibility issues, thus, not (OF and not COF), thus, the claim must exclude the worlds in which some obs is incompatible with C and some prefix is entirely completeable in C.
+% This if C says that α leads i to φ, it must also say something about all paths incompatible with α about i.
+% Mhh this does not seem sufficient: even the claim all paths and i are lead to φ seems OF and not COF for a world where some path fails.
 
 \subsection{More properties}
 \begin{definition}[Anonymity]
