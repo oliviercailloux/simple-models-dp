@@ -220,6 +220,11 @@ Given an exposure protocol $(I, \allargs, {\allleadsto})$, we say that a claim $
 Such a criterion must be sound, meaning that it must imply, when successful, that $C$ holds, and must be realizeable, meaning that if $C$ holds, the criterion must be satisfiable using feasible observations only (or something like that). Note that such criterion also offers a way to show that $C$ fails (does not hold), equivalently, that $P^{\allargs × I} ∖ C$ holds.
 
 Verifiability mandates that some (possibly counter-factual) observation proves the claim (makes sure that it holds), thus, $C$ is verifiable iff $∃ θ ∈ Θ \suchthat ∀ θ ⊆ {\allleadstog}: {\allleadstog} ∈ C$. Verifiability is sound, but as we will see, it is too demanding for many claims.
+\begin{example}
+  Consider $C$ being $[∀i: (a) \ileadsto φ] ∨ (b) \ileadsto φ$.
+  Then $C$ is verifiable.
+  But $C$ may fail to hold.
+\end{example}
 
 Some sufficiently simple claims, such as the claim $C = \set{{\allleadstog} \suchthat (\ar) \ileadstog \phi}$ that some given path leads some given individual to some given proposition, are verifiable, but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
 
@@ -243,6 +248,17 @@ To obtain realizeability in at least some interesting cases, we must relax sound
 
 Given $C, D ⊆ \allleadstos$, a claim $C$ is verifiable under prior $D$ iff 
 $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$.
+\begin{theorem}
+  a claim $C$ is verifiable under prior $D$ iff 
+$∀\allleadstogo ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀ θ ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$.
+\end{theorem}
+\begin{proof}
+  Assume LHS.
+  Consider any $\allleadstogo ∈ C ∩ D$.
+  Define $θ' = θ ∩ \allleadstogo$.
+  If some extension of $θ'$ is not in C, then that extension also extends $θ$?
+  Assume that it does not extend $θ$.
+\end{proof}
 Also, $C$ is verified under prior $D$ iff
 $∃ θ ∈ Θ ∩ \powerset{\allleadsto} ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$.
 
@@ -423,7 +439,7 @@ It turns out that provability is strictly stronger than verifiability: some clai
   $∃\allleadstogo, θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ¬\OF(\allleadstogo) ∧ ∀ θ ⊆ \allleadstogo': \allleadstogo' ∉ C ⇒ \OF(\allleadstog')$.
 
   Consider any false world and $T ∉ C^⊆$ with infinite cardinal.
-  
+
   This excludes the claim $[∃i: (a) \ileadsto φ]$, because some false worlds permit to complete any observations compatibly with $C$.
   We should now exclude $T$ infinity.
 
