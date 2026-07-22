@@ -219,14 +219,19 @@ Given a right unique $τ ⊆ (\allhists × I) × P$, we let $\mathop{\uparrow} �
 Given an exposure protocol $(I, \allargs, {\allleadsto})$, we say that a claim $C$ \emph{holds} iff ${\allleadsto} ∈ C$. We are interested in criteria to determine whether a claim holds.
 Such a criterion must be sound, meaning that it must imply, when successful, that $C$ holds, and must be realizeable, meaning that if $C$ holds, the criterion must be satisfiable using feasible observations only (or something like that). Note that such criterion also offers a way to show that $C$ fails (does not hold), equivalently, that $P^{\allargs × I} ∖ C$ holds.
 
-Verifiability mandates that some (possibly counter-factual) observation proves the claim (makes sure that it holds), thus, $C$ is verifiable iff $∃ θ ∈ Θ \suchthat ∀ θ ⊆ {\allleadstog}: {\allleadstog} ∈ C$. Verifiability is sound, but as we will see, it is too demanding for many claims.
+The claim $C$ is verifiable in the world $\allleadstogo$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀ θ ⊆ {\allleadstog}: {\allleadstog} ∈ C$. 
+Possible verifiability mandates that some (possibly counter-factual) observation proves the claim (makes sure that it holds), thus, $C$ is possibly verifiable iff it is verifiable in some world; formally, iff $∃ θ ∈ Θ \suchthat ∀ θ ⊆ {\allleadstog}: {\allleadstog} ∈ C$. 
+Established verifiability mandates verifiability in all compatible worlds; formally, 
+$∀\allleadstogo ∈ C: ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀ θ ⊆ {\allleadstog'}: {\allleadstog'} ∈ C$. 
 \begin{example}
-  Consider $C$ being $[∀i: (a) \ileadsto φ] ∨ (b) \ileadsto φ$.
-  Then $C$ is verifiable.
-  But $C$ may fail to hold.
+  The claim $C$ being $[∀i: (a) \ileadsto φ] ∨ (b) \ileadsto φ$
+  is possibly verifiable but fails established verifiability.
 \end{example}
-
-Some sufficiently simple claims, such as the claim $C = \set{{\allleadstog} \suchthat (\ar) \ileadstog \phi}$ that some given path leads some given individual to some given proposition, are verifiable, but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
+Verifiedness mandates verifiability in the actual world; formally, $∃ θ ∈ Θ ∩ \powerset{\allleadstoo} \suchthat ∀ θ ⊆ {\allleadstog}: {\allleadstog} ∈ C$.
+Verifiedness
+is sound (\cref{th:vImpliesHolds}), but even the weaker possible verifiability property is too demanding for many claims.
+Indeed,
+some sufficiently simple claims, such as the claim $C = \set{{\allleadstog} \suchthat (\ar) \ileadstog \phi}$ that some given path leads some given individual to some given proposition, are possibly verifiable, but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
 
 A claim $C$ is \emph{informative} iff $π(C) = \set{π(\allleadstog) \suchthat {\allleadstog} ∈ C} ≠ (P ∪ \set{∅})^I$.
 % A claim $C$ is \emph{informative} iff $∃ i \suchthat π(C)(i) ≠ P ∪ \set{∅}$, where $π(C) = \set{π(\allleadstog) \suchthat {\allleadstog} ∈ C}$.
@@ -239,17 +244,17 @@ A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π(
   informativeness beyond counting implies informativeness.
 \end{remark}
 
-\Cref{th:infoNotVerif} shows that any informative claim is not verifiable.
+\Cref{th:infoNotVerif} shows that any informative claim is not possibly verifiable.
 The fundamental reason is that any observation can be completed in a way that contradicts any conclusion that informativeness mandates (\cref{th:completable}).
 
 That verifiability is not realizeable may seem disappointing, but is merely the adaptation to our context of the famous observation by Popper that proving general claims in science require more than verification.
 
 To obtain realizeability in at least some interesting cases, we must relax soundness. We will be content that the criterion guarantees, when satisfied, that $C$ holds, when assuming some prior knowledge. We will look for the minimal required prior (for obtaining satisfiability when $C$ holds) and then will study (partial) grounding of this prior thanks to falsifiability.
 
-Given $C, D ⊆ \allleadstos$, a claim $C$ is verifiable under prior $D$ iff 
+Given $C, D ⊆ \allleadstos$, a claim $C$ is possibly verifiable under prior $D$ iff 
 $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$.
 Also, $C$ is verified under prior $D$ iff
-$∃ θ ∈ Θ ∩ \powerset{\allleadsto} ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$.
+$∃ θ ∈ Θ ∩ \powerset{\allleadsto} ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$; and is verified iff it is verified under the trivial prior.
 
 \Cref{th:vudImpliesHolds} proves that provided the prior is true, verifiability under a prior suffices for holding.
 
@@ -261,7 +266,8 @@ $∃ θ ∈ (Θ ∩ D^⊆) \suchthat θ ∉ (D ∖ C)^⊆$.
 \Cref{th:obsComp} shows the equivalence with verifiability under prior $D$.
 
 \Cref{th:toStricterClaims} shows that impossibilities propagate to stricter claims.
-Together with \cref{th:minimalPriorForInformativeness}, it shows that no informative claim is verifiable, and that the prior required must be at least as strong as claiming that if some observable holds, then some configuration of DJs is excluded.
+Together with \cref{th:minimalPriorForInformativeness}, it shows that 
+the prior required must be at least as strong as claiming that if some observable holds, then some configuration of DJs is excluded.
 \begin{remark}
   Suffices that the prior states something like: if almost all individuals deliberately believe $φ$, then everybody deliberately believe $φ$. This innocuous enough prior suffices because we request only informativeness, and indeed it only permits to restrict possibilities, not to determine anybody’s DJ.
 \end{remark}
@@ -1022,6 +1028,11 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   By hypothesis, ${\allleadsto} ∈ D$.
   Therefore, by verifiedness, ${\allleadsto} ∈ C$.
 \end{proof}
+Using the trivial prior $D = \allleadstos$, we obtain this corollary.
+\begin{corollary}
+  \label{th:vImpliesHolds}
+  If a claim is verified, it holds.
+\end{corollary}
 
 {
   \crefname{enumi}{property}{properties}
@@ -1060,7 +1071,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 \begin{corollary}
   \label{th:obsComp}
   Given any claims $C, D ⊆ \allleadstos$,
-  verifiability under prior $D$, that is, 
+  possible verifiability under prior $D$, that is, 
   $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$,
   is equivalent to 
   $D$ being observationally completable to $C$, that is,
@@ -1070,10 +1081,10 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 \begin{corollary}
   \label{th:toStricterClaims}
   Given any claims $C, D ⊆ \allleadstos$,
-  if some claim $C' ⊆ C$ is verifiable under prior $D$, that is, 
+  if some claim $C' ⊆ C$ is possibly verifiable under prior $D$, that is, 
   $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C'$,
   then 
-  $D$ being observationally completable to $C$, that is,
+  $D$ is observationally completable to $C$, that is,
   $∃ θ ∈ Θ ∩ D^⊆ \suchthat θ ∉ (D ∖ C)^⊆$.
 \end{corollary}
 
@@ -1090,7 +1101,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 \end{proof}
 \begin{theorem}
   \label{th:minimalPriorForInformativeness}
-  If $C$ is such that $π(C) ≠ (P ∪ \set{∅})^I$ and is verifiable under $D$, then
+  If $C$ is such that $π(C) ≠ (P ∪ \set{∅})^I$ and is possibly verifiable under $D$, then
   \begin{itemize}
     \item 
     $∃θ ∈ Θ, f ∈ (P ∪ \set{∅})^I \suchthat ∀{\allleadstog} ∈ D: [θ ⊆ {\allleadstog} ⇒ π(\allleadstog) ≠ f]$;
@@ -1105,7 +1116,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 
 \begin{corollary}
   \label{th:infoNotVerif}
-  If $\card{\allargs} ∉ ℕ$, any informative claim is not verifiable.
+  If $\card{\allargs} ∉ ℕ$, any informative claim is not possibly verifiable.
 \end{corollary}
 
 This (to be proven) captures the claim “there is no decisive argument for $i$”.
@@ -1116,7 +1127,7 @@ This (to be proven) captures the claim “there is no decisive argument for $i$�
 \end{theorem}
 \begin{example}[No decisive argument]
   \label{ex:noDecArg}
-  The claim $C = \set{{\allleadstog} \suchthat π(\allleadstogo)(I) = \set{∅}}$ is verifiable under prior $D$ iff $D$ is observationally completable to $\set{\allleadstogo \suchthat π(\allleadstogo)(I) = \set{∅}}$.
+  The claim $C = \set{{\allleadstog} \suchthat π(\allleadstogo)(I) = \set{∅}}$ is possibly verifiable under prior $D$ iff $D$ is observationally completable to $\set{\allleadstogo \suchthat π(\allleadstogo)(I) = \set{∅}}$.
 \end{example}
 
 \begin{theorem}
