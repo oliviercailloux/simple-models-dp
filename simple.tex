@@ -256,7 +256,7 @@ $∃ θ ∈ Θ ∩ \powerset{\allleadsto} ∩ D^⊆ \suchthat ∀ θ ⊆ {\allle
 $S ⊆ \allleadstos$ is observationally excludable iff 
 $∃ θ ∈ Θ \suchthat θ ∉ S^⊆$
 (in other words, iff $Θ ⊈ S^⊆$).
-$D$ is observationally completeable to $C$ iff 
+$D$ is observationally completable to $C$ iff 
 $∃ θ ∈ (Θ ∩ D^⊆) \suchthat θ ∉ (D ∖ C)^⊆$.
 \Cref{th:obsComp} shows the equivalence with verifiability under prior $D$.
 
@@ -577,7 +577,7 @@ To simplify, let’s consider for now the prior not OF.
 % Then, it is not verifiable under prior not COF, unless precisely that world can be excluded by an observation.
 % This is a modeling problem as we want COF precisely to avoid this.
 % Thus, our study should focus on those claims that satisfy F implies COF.
-% We want to satisfy OF implies COF, thus, not suffer visibility issues, thus, not (OF and not COF), thus, the claim must exclude the worlds in which some obs is incompatible with C and some prefix is entirely completeable in C.
+% We want to satisfy OF implies COF, thus, not suffer visibility issues, thus, not (OF and not COF), thus, the claim must exclude the worlds in which some obs is incompatible with C and some prefix is entirely completable in C.
 % This if C says that α leads i to φ, it must also say something about all paths incompatible with α about i.
 % Mhh this does not seem sufficient: even the claim all paths and i are lead to φ seems OF and not COF for a world where some path fails.
 
@@ -1054,7 +1054,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 
     As $θ$ is finite, we can finitely enumerate $t ∈ θ$, and define $S_1 = S_{t_1}$ and for any $2 ≤ k ≤ \card{θ}$, $S_k = S_{t_k} ∖ ⋃_{1 ≤ k' < k} S_{t_{k'}}$. We obtain $E = S = ⋃_{1 ≤ k ≤ \card{θ}} S_k$, thus it is a disjoint partition of $E$, and as $\set{t_k} ∉ S_{t_k}^⊆$ by construction of $S_{t_k}$, also $\set{t_k} ∉ S_k^⊆$.
 
-    Finally, negating \cref{it:notcomplE}, if $θ$ is completeable to some set covered by $\set{S_k}$, then $θ$ is completeable to some set $S_k$, which contradicts \cref{it:obscovers}.
+    Finally, negating \cref{it:notcomplE}, if $θ$ is completable to some set covered by $\set{S_k}$, then $θ$ is completable to some set $S_k$, which contradicts \cref{it:obscovers}.
   \end{proof}
 }
 \begin{corollary}
@@ -1063,7 +1063,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   verifiability under prior $D$, that is, 
   $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$,
   is equivalent to 
-  $D$ being observationally completeable to $C$, that is,
+  $D$ being observationally completable to $C$, that is,
   $∃ θ ∈ Θ ∩ D^⊆ \suchthat θ ∉ (D ∖ C)^⊆$.
 \end{corollary}
 
@@ -1073,7 +1073,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   if some claim $C' ⊆ C$ is verifiable under prior $D$, that is, 
   $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C'$,
   then 
-  $D$ being observationally completeable to $C$, that is,
+  $D$ being observationally completable to $C$, that is,
   $∃ θ ∈ Θ ∩ D^⊆ \suchthat θ ∉ (D ∖ C)^⊆$.
 \end{corollary}
 
@@ -1116,7 +1116,7 @@ This (to be proven) captures the claim “there is no decisive argument for $i$�
 \end{theorem}
 \begin{example}[No decisive argument]
   \label{ex:noDecArg}
-  The claim $C = \set{{\allleadstog} \suchthat π(\allleadstogo)(I) = \set{∅}}$ is verifiable under prior $D$ iff $D$ is observationally completeable to $\set{\allleadstogo \suchthat π(\allleadstogo)(I) = \set{∅}}$.
+  The claim $C = \set{{\allleadstog} \suchthat π(\allleadstogo)(I) = \set{∅}}$ is verifiable under prior $D$ iff $D$ is observationally completable to $\set{\allleadstogo \suchthat π(\allleadstogo)(I) = \set{∅}}$.
 \end{example}
 
 \begin{theorem}
@@ -1132,7 +1132,7 @@ This (to be proven) captures the claim “there is no decisive argument for $i$�
 \begin{proof}
   Pick any $S ∈ \mathcal{S}$ and $f_S \suchthat S = \mathop{\uparrow} f_S$.
   Given any $p ∈ f_S$, define $S_p = \mathop{\uparrow} \set{p}$, obtaining $S = ⋂_{p ∈ f_S} S_p$.
-  Thus $f ∪ f_S$ is not completeable to a function (if $f ∪ f_S$ is completeable to a function, that function is in $S$, thus in $E$, thus $f$ compatible with $E$).
+  Thus $f ∪ f_S$ is not completable to a function (if $f ∪ f_S$ is completable to a function, that function is in $S$, thus in $E$, thus $f$ compatible with $E$).
   It follows that $f ∪ f_S$ is not right unique,
   thus, that some $t ∈ f$ contradicts $f_S$.
 \end{proof}
