@@ -189,8 +189,8 @@ Let $\finite(\incr(\allhists)^I)$ denote the functions $f: I \mapsto \incr(\allh
 An element $Q ∈ \allpriobss$ \commentOC{previously denoted $O$ and called a priori observation} is called a query.
 \commentOC[Note that $\incr(\allhists)^I$ and $\allpriobss$ are downwards closed, meaning that $∀ O ∈ \incr(\allhists)^I: \set{O' \subseteq O} ⊆ \incr(\allhists)^I$ and $∀ O ∈ \allpriobss: \set{O' \subseteq O} ⊆ \allpriobss$.]{To be deleted.}
 
-An observation associates to a query an element of $P$ per queried element, thus, the set of possible observations is $θ = ∪_{Q ∈ \allpriobss} P^Q$.
-In other words, an observation $θ ∈ θ$ is a right unique finite subset of $(I × \allhists) × P$ such that $∀ i ∈ I, (i, \hist, p), (i, \histp, q) ∈ θ: \card{\hist} ≤ \card{\hist'} \implies \hist \subseteq \hist'$.
+An observation associates to a query an element of $P$ per queried element, thus, the set of possible observations is $Θ = ∪_{Q ∈ \allpriobss} P^Q$.
+In other words, an observation $θ ∈ Θ$ is a right unique finite subset of $(I × \allhists) × P$ such that $∀ i ∈ I, (i, \hist, p), (i, \histp, q) ∈ θ: \card{\hist} ≤ \card{\hist'} \implies \hist \subseteq \hist'$.
 Given an observation $θ$, let $θ^{-1}(P) ∈ \allpriobss$ denote the queried elements in $θ$, which can also be considered as $θ^{-1}(P) \subseteq I × \allhists$, the pairs $(i, \hist)$ in $θ$.
 Similarly, we can view an observation $θ$ as a function $θ: I \mapsto ∪_{H ∈ \incr(\allhists)} P^H$ and thus $θ = \finite((∪_{H ∈ \incr(\allhists)} P^H)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
 \commentOC[Note that $(∪_{H ∈ \max \incr(\allhists)}P^H)^I$ is the set of functions that associate to each $I$ a maximal increasing sequence of paths, together with values from $P$.]{To be deleted.}
@@ -208,16 +208,18 @@ This set is downwards-closed, as both $θ$ and $C^\subseteq$ are.
 \commentOC[Let the \emph{simple a priori observations} be defined as $∪_{J \subseteq_\finite I} (\allhists)^J$, equivalently, as the right-unique finite relations over $I × \allhists$.
   Given a simple a priori observation $O: J \mapsto \allhists$, we can define the a priori observation $O_O = \set{(i, \hist) ∈ J × \allhists \suchthat ∀ i ∈ J: \hist \subseteq O(i)}$ as the completion of $O$ to all sub-paths in $O$.]{To be deleted.}
 
+A subset of triples $T ⊆ \allhists × I × P$ is unobservable iff it cannot be observed together, that is, iff $T ∉ Θ$. If $\card{T} ∉ ℕ$, $T$ is unobservable. A finite subset of triples $T$ is unobservable iff some subset $T' ⊆ T$ with $\card{T'} = 2$ is unobservable (unobservability comes from a given individual’s observations, for that one, the paths are not increasing, and as the subset relation is transitive, two elements suffice to determine this fact).
+
 It is important to realize that $θ$ is the set of \emph{a priori} possible observations, meaning, those that are conceivable, possibly counter-factually. The set of observations that can result from actually observing the behavior ${\allleadsto}$ is 
 $θ ∩ \powerset{\allleadsto} = \set*{\restr{{\allleadsto}}{Q} \suchthat Q ∈ \allpriobss}$.
-Such an observation $θ ∈ θ ∩ \powerset{\allleadsto}$ is called a feasible observation.
+Such an observation $θ ∈ Θ ∩ \powerset{\allleadsto}$ is called a feasible observation.
 Given a right unique $τ ⊆ (\allhists × I) × P$, we let $\mathop{\uparrow} τ = \set{{\allleadstog} ∈ \allleadstos \suchthat τ ⊆ {\allleadstog}}$ denote the set of “leads to” relations that complete $τ$ (thus $\mathop{\uparrow} ∅ = {\allleadstos}$).
 
 \subsection{Verifiability}
 Given an exposure protocol $(I, \allargs, {\allleadsto})$, we say that a claim $C$ \emph{holds} iff ${\allleadsto} ∈ C$. We are interested in criteria to determine whether a claim holds.
 Such a criterion must be sound, meaning that it must imply, when successful, that $C$ holds, and must be realizeable, meaning that if $C$ holds, the criterion must be satisfiable using feasible observations only (or something like that). Note that such criterion also offers a way to show that $C$ fails (does not hold), equivalently, that $P^{\allargs × I} ∖ C$ holds.
 
-Verifiability mandates that some (possibly counter-factual) observation proves the claim (makes sure that it holds), thus, $C$ is verifiable iff $∃ θ ∈ θ \suchthat ∀ θ ⊆ {\allleadstog}: {\allleadstog} ∈ C$. Verifiability is sound, but as we will see, it is too demanding for many claims.
+Verifiability mandates that some (possibly counter-factual) observation proves the claim (makes sure that it holds), thus, $C$ is verifiable iff $∃ θ ∈ Θ \suchthat ∀ θ ⊆ {\allleadstog}: {\allleadstog} ∈ C$. Verifiability is sound, but as we will see, it is too demanding for many claims.
 
 Some sufficiently simple claims, such as the claim $C = \set{{\allleadstog} \suchthat (\ar) \ileadstog \phi}$ that some given path leads some given individual to some given proposition, are verifiable, but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
 
@@ -286,18 +288,37 @@ Converting a claim to disjunctive normal form is useful to characterize its comp
   To prove that no general prior is reasonable, we might assume that two contradictory theories, $C$ ($(a)$ leads everyone to $φ$) and $C'$ ($(a)$ leads everyone to $φ$ except if $(a, b)$ does not), can be validated under the prior, considering some observations at some point. If under the prior, some obs proves C, then no further obs can prove C' under the same prior, so the prior must say something that is contradicted by the further obs, compatible with C', so the prior contradicts C'. So if the prior allows to validate C, then it contradicts C'. To be checked…
 \end{remark}
 
-\subsection{Rejection and falsification}
+\subsection{Which prior?}
 Given $\allleadstogo$ and $C$, say that $C$ is
 \begin{description}[font=\normalfont]
   \item[Continuously Observably False in $\allleadstogo$ ($\COF(\allleadstogo)$)] iff $∀θ ∈ Θ ∩ \powerset{\allleadstogo}, ∃θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ' ∉ C^⊆$;
   \item[Observably False (OF) in $\allleadstogo$ ($\OF(\allleadstogo)$)] iff $[∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ C^⊆]$, equivalently, $Θ ∩ \powerset{\allleadstogo} \nsubseteq C^⊆$;
   \item[False in $\allleadstogo$ ($\F(\allleadstogo)$)] iff $\allleadstogo ∉ C$.
 \end{description}
-We also used to say that $C$ is \emph{rejectable} iff $\text{OF}(\allleadstoo)$.
+We also used to say that $C$ is \emph{rejectable} iff $\OF(\allleadstoo)$.
 
-Note that $∀C, \allleadstogo: \COF(\allleadstogo) ⇒ \OF(\allleadstogo) ⇒ \F(\allleadstogo)$.
+Note that $∀C, \allleadstogo: \COF(\allleadstogo) ⇒ \OF(\allleadstogo) ⇒ \F(\allleadstogo)$ (\cref{th:ex-post} proves the second implication).
 $C$ is said to suffer visibility issues in $\allleadstogo$ iff $¬\COF(\allleadstogo) ∧ \OF(\allleadstogo)$, which happens when some prefix hides the falsity of $C$ even though its falsity is observable when no prefix is involved.
-$C$ suffers no visibility issues iff $\OF(\allleadstogo) ⇒ \COF(\allleadstogo)$, equivalently, iff $\OF(\allleadstogo) ⇔ \COF(\allleadstogo)$.
+$C$ suffers visibility issues iff $∃\allleadstogo \suchthat ¬\COF(\allleadstogo) ∧ \OF(\allleadstogo)$.
+$C$ suffers no visibility issues in $\allleadstogo$ iff $\OF(\allleadstogo) ⇒ \COF(\allleadstogo)$, equivalently, iff $\OF(\allleadstogo) ⇔ \COF(\allleadstogo)$, and suffers no visibility issues iff $∀\allleadstogo: \OF(\allleadstogo) ⇒ \COF(\allleadstogo)$.
+
+Given a claim, the converse implication $\F(\allleadstogo) ⇒ \OF(\allleadstogo)$ fails whenever $∃\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$. (Intuitively, we want to study these claims to avoid them as they cannot be seen to hold.) 
+
+When $∀\allleadstogo ∉ C, ¬\OF(\allleadstogo)$ (for example, $C$ is $∃i \suchthat (a) \ileadsto φ$), negating $C$ requires incompatible triples: the triples completable only out of C are all unobservable, $∀T ∉ C^⊆: T ∉ Θ$.
+\begin{theorem}
+  For any claim $C$, 
+  $∀\allleadstogo ∉ C, ¬\OF(\allleadstogo)$
+  iff
+  $∀\allleadstogo, ¬\OF(\allleadstogo)$
+  iff
+  $∀T ∉ C^⊆: T ∉ Θ$
+  iff
+  $Θ ⊆ C^⊆$.
+\end{theorem}
+\begin{proof}
+  Equivalent to $¬\OF(\allleadstogo)$ is $Θ ∩ \powerset{\allleadstogo} ⊆ C^⊆$.
+  And $T ∈ Θ^⊆$ iff $∃\allleadstogo \suchthat T ∈ Θ ∩ \powerset{\allleadstogo}$.
+\end{proof}
 
 According to \cref{th:noGeneral}, the prior must depend on the claim.
 One such is $C$-scrutiny, which mandates that $¬\OF(\allleadstoo) ∨ (¬\COF(\allleadstoo) ∧ \OF(\allleadstoo))$.
@@ -340,7 +361,11 @@ This is technically equivalent to mandating $¬\COF(\allleadstoo)$.
   The alternative prior does not say anything about $C$ (all worlds are possible).
   The original prior excludes the world 2.
 \end{remark}
-  
+
+\begin{remark}[TODO]
+  This prior seems unsatisfactorily not primitive enough. We should obtain as a result that the reasonable prior is, if no visibility issues, then not OF, by assuming that we have observed everything we could ever dream of.
+\end{remark}
+
 \begin{remark}[TODO]
   Intuitively, the prior should apply to claims that treat infinitely many individuals identically, and assuming that the world does contain infinitely many identical individuals (perhaps only one of these is required), so that we do not lack opportunities for attempts of rejection.
 
@@ -353,25 +378,122 @@ This is technically equivalent to mandating $¬\COF(\allleadstoo)$.
   Or: All leadsto satisfy: for each ileadsto inside, there’s infinitely many ileadsto.
 \end{remark}
 
-At our disposal is the procedure of empirical rejection, that consists in directly invalidating a claim by observing something that contradicts it.
-\begin{definition}
-  Given a behavior $\allleadsto$, we say that $C$ is \emph{rejectable} iff
-  $\text{OF}(\allleadstoo)$, thus,
-  $Θ ∩ \powerset{\allleadsto} \nsubseteq C^⊆$.
-\end{definition}
+\subsection{Stronger prior}
+We neglect temporarily the unconvincingness that arises when not COF and OF.
+Thus, our prior becomes not OF. We consider it suitable even for claims satisfying not COF and OF for some worlds.
 
-The following theorem verifies that when $C$ holds, it is not rejectable.
-More generally, OF implies falsity.
+We say that a prior $D$ proves a claim $C$ iff $D ⊆ C$. 
 \begin{theorem}
-  \label{th:ex-post}
-  $∀ C \ni {\allleadsto}:
-    Θ ∩ \powerset{\allleadsto} \subseteq C^⊆$.
+  Set $D$ as $¬\OF(\allleadstoo)$.
+  $∀C$: $D$ proves $C$ iff 
+  $C$ satisfies $∀\allleadstogo: \F(\allleadstogo) ⇒ \OF(\allleadstogo)$.
 \end{theorem}
 \begin{proof}
-  This holds by definition of $C^⊆ = ∪_{{\allleadstog} ∈ C} \powerset{\allleadstog}$.
+  $D$ proves $C$ means, by definition, $∀\allleadstogo: ¬\OF(\allleadstogo) ⇒ ¬\F(\allleadstogo)$.
+\end{proof}
+Also, provability by $¬\OF(\allleadstoo)$ implies verifiability under $¬\OF(\allleadstoo)$ (just use verification $∅$).
+It turns out that provability is strictly stronger than verifiability: some claims are verifiable under $¬\OF(\allleadstoo)$ but not provable by $¬\OF(\allleadstoo)$.
+
+\begin{example}
+  Assume infinitely many individuals.
+  Consider $C_1$ being $∀i: (b) \ileadsto φ$.
+  Consider $C_2$ being $(c) \ileadsto[j] φ ∨ (d) \ileadsto[j] φ$.
+  Consider $C = C_1 ∩ C_2$.
+  
+  $¬OF$ does not prove $C$ because $¬OF$ does not prove $C_2$, as any world contradicting $C_2$ contains incompatible triples, thus some worlds contradicting $C$ contain incompatible triples, thus satisfy not OF and F.
+  Yet, $C$ is verifiable under prior $¬OF$: $C_1$ is because any world contradicting $C$ is observably false, and observing $(a) \nileadsto φ$ and $(c) \ileadsto[j] φ$ verifies $C_2$.
+  
+  (Also, $C$ is not verifiable because $C_1$ is not because all observations (being finite) are completable out of $C_1$ (thus, out of $C$).)
+\end{example}
+
+\begin{theorem}
+  A claim $C$ is verifiable under $¬\OF(\allleadstoo)$ but not provable by $¬\OF(\allleadstoo)$ 
+  iff $∃\allleadstogo \suchthat OF(\allleadstogo) ∧ ¬\COF(\allleadstogo)$.
+\end{theorem}
+\begin{proof}
+  That $¬\OF(\allleadstoo)$ does not prove $C$ is equivalent to $∃\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$, equivalently, $∃\allleadstogo ∉ C \suchthat Θ ∩ \powerset{\allleadstogo} ⊆ C^⊆$. 
+  Could be $C$ is $[∃i: (a) \ileadsto φ]$, or $C$ is $[(b) \ileadsto[j] φ ∨ (c) \ileadsto[j] φ]$.
+  In this world, $∀T ⊆ \allleadstogo$, if $T ∉ C^⊆$, then $T ∉ Θ$. This could be, as indicated above, because it has infinite cardinal, or because of incompatibility.
+  % When $∃\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$ and $∃\allleadstogo ∉ C \suchthat \OF(\allleadstogo)$ (for example, $C$ is $[∃i \suchthat (a) \ileadsto φ] ∧ [(b) \ileadsto[j] φ]$), then what?
+
+  That $C$ is verifiable under $¬\OF(\allleadstoo)$ is equivalent to
+  hide all worlds
+  $\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$.
+  Formally:
+  $∃\allleadstogo, θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ¬\OF(\allleadstogo) ∧ ∀ θ ⊆ \allleadstogo': \allleadstogo' ∉ C ⇒ \OF(\allleadstog')$.
+
+  Consider any false world and $T ∉ C^⊆$ with infinite cardinal.
+  
+  This excludes the claim $[∃i: (a) \ileadsto φ]$, because some false worlds permit to complete any observations compatibly with $C$.
+  We should now exclude $T$ infinity.
+
+  Thus, pick any world $\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$.
+  We should obtain $¬\COF$.
+  Thus, we should modify the statement: False and not COF.
+  However, in our examples above, we also have OF!
+  
+  some world contradicting $C$ contain incompatible triples, thus satisfy not OF and F.
+  Because satisfying not OF and F means that to determine that the world is out of $C$ requires observations that cannot be seen together. TODO establish this.
+
+  LHS: some prefix leads to C (given not OF) and some world is not OF but not in C.
+  Thus, C says something st not OF is not enough to prove it. It also requires some obs. All completions not OF are in C. And some world not OF is out of C.
+  
+  Take the world negating some of $θ$ and apart from that, satisfying C.
+  It is OF because some triples of $θ$ negated contradict C, otherwise the emptyset given not OF leads to C.
+  It is ¬COF because there is some other obs in this world, compatible with $C$, that hides the one in $θ$, otherwise notOF would suffice to prove C.
+
+  Verifiability under $¬\OF(\allleadstoo)$ means that
+  $∃ θ ∈ Θ ∩ \set{\allleadstogo \suchthat ¬\OF(\allleadstogo)}^⊆ \suchthat \set{θ ⊆ \allleadstogo \suchthat ¬\OF(\allleadstogo)} ⊆ C$.
+
+  Non provability by $¬\OF(\allleadstoo)$ means that
+  % $∃\allleadstogo ∉ C \suchthat ¬OF(\allleadstogo)$.
+  $\set{\allleadstogo \suchthat ¬\OF(\allleadstogo)} ⊈ C$.
+
+  First point: take a world $\allleadstogo ∈ C$.
+  
+  Thus, negating $θ$ should lead to a world that is OF and not in C?
 \end{proof}
 
-The converse, however, does not hold.
+Provability corresponds to verifiability under $D$ in the case the observation giving verifiability $θ$ is $∅$. We do not need any other observation, as our prior is supposed to be convincing when enough observations have taken place, and this is left aside our modeling: it is the problem of induction.
+
+We could have that $C$ is unfalsifiable (in some world, F though not OF) while some observation proves $C$: consider $C_1$ being $∃i \suchthat (a) \ileadsto φ$ and $θ = \set{(a) \ileadsto φ}$ (with infinitely many individuals), or $C_2$ being $(a) \ileadsto φ ∨ (b) \ileadsto φ$ and $θ = \set{(a) \ileadsto φ}$.
+In such a case, $C$ is verifiable and unfalsifiable (any world not in $C$ is false but not observably so).
+Also, consider $C_3$ being $∀j: (c) \ileadsto[j] φ$ (with infinitely many individuals), $C_4$ being $(d) \ileadsto[j] φ ∧ (e) \ileadsto[j] φ$ and $C$ being $C_1$ or $C_2$ together with $C_3$ or $C_4$ (assuming infinitely many individuals if using $C_1$ or $C_3$).
+Then, $C$ is unverifiable (due to $C_3$ or $C_4$) and $¬OF$ does not prove $C$ (due to $C_1$ or $C_2$, as shown above), but $C$ is verifiable under prior $¬OF$ (with verification $(a) \ileadsto φ$).
+
+However, as we know, any informative $C$ is not verifiable. Are there some claims that are unfalsifiable and unverifiable and verifiable under prior not OF?
+Verifiability under D is that for some obs compatible with notOF and C, not OF implies not F.
+D proves C is that not OF implies not F.
+Thus shit happens iff after some obs, not OF implies not F, but also for some other obs, not OF and F is possible.
+% Example: C is if (a) \ileadsto φ implies some claim OF implies not F; and otherwise, some claim not OF and F possible. Example, first claim is all j sat (a) \ileadsto[j] φ, second is (a) \ileadsto[j] φ ∨ (b) \ileadsto[j] φ
+
+\begin{theorem}
+  Set $D$ as $¬\OF(\allleadstogo)$.
+  $∀C$ that is unverifiable: 
+  if $C$ is verifiable under prior $D$, 
+  then $D$ proves $C$.
+\end{theorem}
+\begin{proof}
+  
+\end{proof}
+
+% Consider $C$ $(\ar) \ileadstog φ \lor (\ar') \ileadstog φ$ for a given $i$. It is not falsifiable. But after observing one part, it is falsifiable!
+% Consider world st (a) \nileadstog φ$. Then 
+% $C$ is verif under prior notOF?
+% Consider $(a) \ileadstog φ$. Then any completion that is not OF is in C?
+
+% We here want to study whether we still need verifiability once we have this prior, or whether we could relax it, together with verifiability.
+
+% Consider any C and the prior not OF.
+
+% \subsection{Rejection and falsification}
+% Instead of insisting on verifiability of the claim under some prior specific to the claim, we might request directly something that we can check about the claim and that somehow suggests (though less surely) its truth. Thus, the criterion we seek here is:
+
+% At our disposal is the procedure of empirical rejection, that consists in directly invalidating a claim by observing something that contradicts it.
+
+% \Cref{th:ex-post} verifies that when $C$ holds, it is not rejectable.
+
+% The converse, however, does not hold.
 \begin{example}[Disjunct with incompatible paths, not rejectable]
   \label{ex:disjR}
   Given $\ar \neq \ar' ∈ \allargs$,
@@ -1012,6 +1134,15 @@ This (to be proven) captures the claim “there is no decisive argument for $i$�
 \begin{remark}
   $(a ≠ b) ∨ (a ∧ c)$ is equivalent to $(a ≠ b) ∨ (b ∧ c)$, thus there is no unique minimal DNF.
 \end{remark}
+
+\begin{theorem}
+  \label{th:ex-post}
+  $∀ C, \allleadstogo ∈ C:
+    Θ ∩ \powerset{\allleadstogo} \subseteq C^⊆$.
+\end{theorem}
+\begin{proof}
+  This holds by definition of $C^⊆ = ∪_{{\allleadstog} ∈ C} \powerset{\allleadstog}$.
+\end{proof}
 
   \section{Supplementary material}
   \label{sec:supplementary}
