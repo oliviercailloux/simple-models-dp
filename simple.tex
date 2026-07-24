@@ -255,15 +255,10 @@ Given $C, D ⊆ \allleadstos$, a claim $C$ is possibly verifiable under prior $D
 $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$.
 Also, $C$ is verified under prior $D$ iff
 $∃ θ ∈ Θ ∩ \powerset{\allleadsto} ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$; and is verified iff it is verified under the trivial prior.
+Finally, $C$ satisfies established verifiability under prior $D$ iff
+$∀\allleadstogo ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀ θ ⊆ {\allleadstogo'} ∈ D: {\allleadstogo'} ∈ C$.
 
 \Cref{th:vudImpliesHolds} proves that provided the prior is true, verifiability under a prior suffices for holding.
-
-$S ⊆ \allleadstos$ is observationally excludable iff 
-$∃ θ ∈ Θ \suchthat θ ∉ S^⊆$
-(in other words, iff $Θ ⊈ S^⊆$).
-$D$ is observationally completable to $C$ iff 
-$∃ θ ∈ (Θ ∩ D^⊆) \suchthat θ ∉ (D ∖ C)^⊆$.
-\Cref{th:obsComp} shows the equivalence with verifiability under prior $D$.
 
 \Cref{th:toStricterClaims} shows that impossibilities propagate to stricter claims.
 Together with \cref{th:minimalPriorForInformativeness}, it shows that 
@@ -273,22 +268,6 @@ the prior required must be at least as strong as claiming that if some observabl
 \end{remark}
 
 \Cref{th:noDecArgi,ex:noDecArg} illustrate about no decisive arguments.
-
-Converting a claim to disjunctive normal form is useful to characterize its compatible observations, as \cref{th:dnf} indicates.
-\begin{example}
-  Consider six different arguments $a_1, a'_1, a_2, a'_2, a_3, a'_3 ∈ \allargs$
-  and the following claim $E$:
-  if any two arguments $a_k, a_{k'}$ fail to convince $i$ or $a'_k, a'_{k'}$ fail to convince $j$, then the third argument $a_{k''}$ convinces $i$ and $a'_{k''}$ convinces $j$.
-  The claim is not observationally excludable.
-  Indeed,
-  we see that $E = \set{{\allleadstog} \suchthat [(a_1) \ileadstog φ ∧ (a'_1) \ileadstog[j] φ] ∨ [(a_2) \ileadstog φ ∧ (a'_2) \ileadstog[j] φ] ∨ [(a_3) \ileadstog φ ∧ (a'_3) \ileadstog[j] φ]}$,
-  and
-  $∀ 1 ≤ k ≤ 3$, define $S_k = \set{\allleadstogo \suchthat [(a_k) \ileadstog φ ∧ (a'_k) \ileadstog[j] φ]}$, define $\mathcal{S} = \set{S_1, S_2, S_3}$,
-  consider any $f ⊆ (\allhists × I) × P \suchthat f ∉ E^⊆$,
-  we have $∀ 1 ≤ k ≤ 3, ∃t_k ∈ f \suchthat \set{t_k} ∉ {S_k}^⊆$,
-  thus $f ∉ Θ$
-  (wlog, pick $t_1 = ((a_1), i, p_1 ≠ φ)$, then for observability we need to pick $t_2 = ((a'_2), j, .)$ and there is no choice left for $t_3$).
-\end{example}
 
 \begin{remark}
   \label{th:noGeneral}
@@ -306,30 +285,12 @@ Given $\allleadstogo$ and $C$, say that $C$ is
   \item[Observably False (OF) in $\allleadstogo$ ($\OF(\allleadstogo)$)] iff $[∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ C^⊆]$, equivalently, $Θ ∩ \powerset{\allleadstogo} \nsubseteq C^⊆$;
   \item[False in $\allleadstogo$ ($\F(\allleadstogo)$)] iff $\allleadstogo ∉ C$.
 \end{description}
-We also used to say that $C$ is \emph{rejectable} iff $\OF(\allleadstoo)$.
+We also say that $C$ is \emph{rejectable} iff $\OF(\allleadstoo)$.
 
 Note that $∀C, \allleadstogo: \COF(\allleadstogo) ⇒ \OF(\allleadstogo) ⇒ \F(\allleadstogo)$ (\cref{th:ex-post} proves the second implication).
 $C$ is said to suffer visibility issues in $\allleadstogo$ iff $¬\COF(\allleadstogo) ∧ \OF(\allleadstogo)$, which happens when some prefix hides the falsity of $C$ even though its falsity is observable when no prefix is involved.
 $C$ suffers visibility issues iff $∃\allleadstogo \suchthat ¬\COF(\allleadstogo) ∧ \OF(\allleadstogo)$.
 $C$ suffers no visibility issues in $\allleadstogo$ iff $\OF(\allleadstogo) ⇒ \COF(\allleadstogo)$, equivalently, iff $\OF(\allleadstogo) ⇔ \COF(\allleadstogo)$, and suffers no visibility issues iff $∀\allleadstogo: \OF(\allleadstogo) ⇒ \COF(\allleadstogo)$.
-
-Given a claim, the converse implication $\F(\allleadstogo) ⇒ \OF(\allleadstogo)$ fails whenever $∃\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$. (Intuitively, we want to study these claims to avoid them as they cannot be seen to hold.) 
-
-When $∀\allleadstogo ∉ C, ¬\OF(\allleadstogo)$ (for example, $C$ is $∃i \suchthat (a) \ileadsto φ$), negating $C$ requires incompatible triples: the triples completable only out of C are all unobservable, $∀T ∉ C^⊆: T ∉ Θ$.
-\begin{theorem}
-  For any claim $C$, 
-  $∀\allleadstogo ∉ C, ¬\OF(\allleadstogo)$
-  iff
-  $∀\allleadstogo, ¬\OF(\allleadstogo)$
-  iff
-  $∀T ∉ C^⊆: T ∉ Θ$
-  iff
-  $Θ ⊆ C^⊆$.
-\end{theorem}
-\begin{proof}
-  Equivalent to $¬\OF(\allleadstogo)$ is $Θ ∩ \powerset{\allleadstogo} ⊆ C^⊆$.
-  And $T ∈ Θ^⊆$ iff $∃\allleadstogo \suchthat T ∈ Θ ∩ \powerset{\allleadstogo}$.
-\end{proof}
 
 According to \cref{th:noGeneral}, the prior must depend on the claim.
 One such is $C$-scrutiny, which mandates that $¬\OF(\allleadstoo) ∨ (¬\COF(\allleadstoo) ∧ \OF(\allleadstoo))$.
@@ -389,49 +350,213 @@ This is technically equivalent to mandating $¬\COF(\allleadstoo)$.
   Or: All leadsto satisfy: for each ileadsto inside, there’s infinitely many ileadsto.
 \end{remark}
 
-\subsection{Stronger prior}
+\subsection{Falsifiability}
 We neglect temporarily the unconvincingness that arises when not COF and OF.
-Thus, our prior becomes not OF. We consider it suitable even for claims satisfying not COF and OF for some worlds.
+Thus, this section studies the prior $¬\OF(\allleadstoo)$. 
+We consider it suitable even for claims satisfying not COF and OF for some worlds.
+
+\begin{example}[Disjunct with incompatible paths, not rejectable]
+  \label{ex:disjR}
+  Given $\ar \neq \ar' ∈ \allargs$,
+  the claim $∀ i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$ is not rejectable.
+  In fact,
+  $Θ ⊆ C^⊆$.
+  Consider any $θ ∈ Θ$ and let us prove that $θ ∈ ∪_{{\allleadstog} ∈ C} \powerset{\allleadstog}$.
+  By definition of $θ$, $θ^{-1}(P)$ may not contain both $((\ar), i)$ and $((\ar'), i)$, thus letting $t$ denote one of these pairs not in $θ^{-1}(P)$ and defining $r = (t, \phi)$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} \land t ∈ {\allleadstog'}$. We have $θ ∈ \powerset{\allleadstog'}$ and ${\allleadstog'} ∈ C$.
+\end{example}
+\Cref{ex:disjR} shows a claim that is not rejectable, irrespective of the exposure protocol.
+In particular, the example applies when $C$ does not hold (that is, when ${\allleadsto} \notin C$). We conclude that a claim may fail to hold but still be not rejectable.
+It follows that non-rejection cannot be a sufficient condition for validating a claim.
+
+\begin{remark}
+  \Cref{ex:bigor,ex:threeFs} present situations where, similarly, the claim may fail to hold but still be not rejectable.
+  In \cref{ex:bigor}, non rejection is due to finiteness of observations.
+  In \cref{ex:threeFs}, rejection depends on ${\allleadsto}$.
+\end{remark}
+
+\Cref{def:fals} fills the gap by defining a condition that ensures that $C$ holds iff it is not rejectable.
+The property demands that whatever the behavior of individuals, if their behavior is not compatible with the claim, then it is possible to observe that it is not.
+\begin{definition}
+  \label{def:fals}
+  A claim $C$ is \emph{falsifiable} iff $C \neq {\allleadstos} \land
+  ∀\allleadstogo \notin C: θ ∩ \powerset{\allleadstog} \nsubseteq C^⊆$.
+\end{definition}
+
+Any claim $C$ satisfies exactly one of these:
+\begin{description}
+  \item[falsifiable or trivial] iff $∀\allleadstogo ∉ C: \OF(\allleadstogo)$, 
+    equivalently, iff $∀\allleadstogo: \F(\allleadstogo) ⇒ \OF(\allleadstogo)$,
+    still equivalently, iff $∀\allleadstogo: \F(\allleadstogo) ⇔ \OF(\allleadstogo)$;
+  \item[never falsifiable and not trivial] iff $∀\allleadstogo ∉ C: ¬\OF(\allleadstogo)$ and $∃\allleadstogo ∉ C$;
+  \item[with mixed falsifiability] iff $∃\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$ and $∃\allleadstogo ∉ C \suchthat \OF(\allleadstogo)$.
+\end{description}
+Indeed, second implies $∃\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$ which negates first, and the negation of the conjunction of the first two is $∃\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo) ∧ (∃\allleadstogo ∉ C \suchthat \OF(\allleadstogo) ∨ ∄\allleadstogo ∉ C)$, equivalent to the third.
+
+Any claim $C$ satisfies exactly one of these:
+\begin{description}
+  \item[falsifiable] iff $∀\allleadstogo ∉ C: \OF(\allleadstogo)$ and $∃\allleadstogo ∉ C$;
+  \item[never falsifiable] iff $∀\allleadstogo ∉ C: ¬\OF(\allleadstogo)$;
+  \item[with mixed falsifiability] iff $∃\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$ and $∃\allleadstogo ∉ C \suchthat \OF(\allleadstogo)$.
+\end{description}
+Indeed, first implies $∃\allleadstogo ∉ C \suchthat \OF(\allleadstogo)$ which negates second, and the negation of the conjunction of the first two is $(∃\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo) ∨ ∄\allleadstogo ∉ C) ∧ (∃\allleadstogo ∉ C \suchthat \OF(\allleadstogo))$, equivalent to the third.
+
+It is important to note that falsifiability does not depend on $\allleadsto$: whether falsifiability holds can be determined analytically, meaning, by considering only the content of the claim, without considering the behavior of individuals.
+
+\Cref{th:holdsiff} shows that falsifiability indeed fills that gap:
+falsifiability guarantees that a non trivial claim holds if, and only if, it is not rejectable.
+
+\begin{example}
+  \label{ex:allParticular}
+  Consider any $\ar$ and $\phi$. The claim $∀ i: \ar \ileadstostg \phi$ is falsifiable:
+  given any ${\allleadstog} \notin C$, consider any $i \suchthat \ar \nileadstostg \phi$ and any $\hist \suchthat \hist \nileadstog \phi \land \ar ∈ \histend$, and define $θ = \set{(i, \hist, {\allleadstog}(i, \hist) ≠ \phi)}$.
+\end{example}
+
+\begin{remark}
+  Making a claim more precise (meaning going from a claim $C$ to $C' \ssub C$) can make it falsifiable, or conversely, can make it unfalsifiable.
+  Given $\hist, i$, consider the claim $C_2 = \hist \ileadstog \phi$. It is falsifiable.
+  Now consider the claim $C = C_1 ∩ C_2$ with $C_1$ being the claim “every individual chooses $\phi$ after seeing solely either $\ar$ or $\ar'$”. It is more precise but unfalsifiable.
+ But we can make it falsifiable again by making it even more precise (picking any single relation).
+ (See \cref{rq:precise}.)
+\end{remark}
 
 We say that a prior $D$ proves a claim $C$ iff $D ⊆ C$. 
+
 \begin{theorem}
-  Set $D$ as $¬\OF(\allleadstoo)$.
-  $∀C$: $D$ proves $C$ iff 
+  Given any claim $C$,
+  the prior $¬\OF(\allleadstoo)$ proves $C$ iff 
   $C$ satisfies $∀\allleadstogo: \F(\allleadstogo) ⇒ \OF(\allleadstogo)$.
 \end{theorem}
 \begin{proof}
   $D$ proves $C$ means, by definition, $∀\allleadstogo: ¬\OF(\allleadstogo) ⇒ ¬\F(\allleadstogo)$.
 \end{proof}
-Also, provability by $¬\OF(\allleadstoo)$ implies verifiability under $¬\OF(\allleadstoo)$ (just use verification $∅$).
-It turns out that provability is strictly stronger than verifiability: some claims are verifiable under $¬\OF(\allleadstoo)$ but not provable by $¬\OF(\allleadstoo)$.
+
+Provability by $D$ implies established verifiability under $D$ (just use verification $∅$).
+For some priors, provability by $D$ is strictly stronger than established verifiability under $D$ (considering the trivial prior $D$, the claim $C$ being $(a) \ileadsto φ$ is not provable by $D$ though it satisfies established verifiability).
+
+Conjecture (TODO). It turns out that provability is strictly stronger than established verifiability: some claims satisfy established verifiability under $¬\OF(\allleadstoo)$ but are not provable by $¬\OF(\allleadstoo)$.
+
+A claim is not falsifiable and not trivial iff $∃\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$, that is, whenever the implication $\F(\allleadstogo) ⇒ \OF(\allleadstogo)$ fails. (Intuitively, we want to study these claims to avoid them as they cannot be seen to hold.) 
+A claim is said to be never falsifiable iff , which implies that it is not falsifiable.
+Never fals: not fals ($∃\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$ or trivial) and not $∃\allleadstogo ∉ C \suchthat \OF(\allleadstogo)$?
+Never fals: $∃\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$ or trivial AND $∀\allleadstogo ∉ C: ¬\OF()$.
+
+When $∀\allleadstogo ∉ C, ¬\OF(\allleadstogo)$ (for example, $C$ is $∃i \suchthat (a) \ileadsto φ$), negating $C$ requires incompatible triples: the triples completable only out of C are all unobservable, $∀T ∉ C^⊆: T ∉ Θ$.
+\begin{theorem}
+  For any claim $C$, 
+  $∀\allleadstogo ∉ C, ¬\OF(\allleadstogo)$
+  iff
+  $∀\allleadstogo, ¬\OF(\allleadstogo)$
+  iff
+  $∀T ∉ C^⊆: T ∉ Θ$
+  iff
+  $Θ ⊆ C^⊆$.
+\end{theorem}
+\begin{proof}
+  Equivalent to $¬\OF(\allleadstogo)$ is $Θ ∩ \powerset{\allleadstogo} ⊆ C^⊆$.
+  And $T ∈ Θ^⊆$ iff $∃\allleadstogo \suchthat T ∈ Θ ∩ \powerset{\allleadstogo}$.
+\end{proof}
+
+$S ⊆ \allleadstos$ is observationally excludable iff 
+$∃ θ ∈ Θ \suchthat θ ∉ S^⊆$
+(in other words, iff $Θ ⊈ S^⊆$).
+Equivalently,
+iff $∃ \allleadstogo ∉ S \suchthat Θ ∩ \powerset{\allleadstogo} ⊈ S^⊆$.
+Equivalently,
+iff $∃ \allleadstogo ∉ S \suchthat \OF(\allleadstogo)$.
+Inversely,
+iff $∀\allleadstogo ∉ S: ¬\OF()$.
+This implies not (fals or triv), which is $∃\allleadstogo ∉ S \suchthat ¬\OF()$.
+(Note that fals or triv iff $∀ \allleadstogo ∉ S: \OF(\allleadstogo)$.)
+
+$D$ is observationally completable to $C$ iff 
+$∃ θ ∈ (Θ ∩ D^⊆) \suchthat θ ∉ (D ∖ C)^⊆$.
+\Cref{th:obsComp} shows the equivalence with verifiability under prior $D$.
+
+  established verifiability under prior $D$, that is, 
+  $∀\allleadstogo ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀ θ ⊆ {\allleadstogo'} ∈ D: {\allleadstogo'} ∈ C$,
+  % $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$,
+  is equivalent to 
+  $∀\allleadstogo ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ (D ∖ C)^⊆$.
+
+Converting a claim to disjunctive normal form is useful to characterize its compatible observations, as \cref{th:dnf} indicates.
+\begin{example}
+  Consider six different arguments $a_1, a'_1, a_2, a'_2, a_3, a'_3 ∈ \allargs$
+  and the following claim $E$:
+  if any two arguments $a_k, a_{k'}$ fail to convince $i$ or $a'_k, a'_{k'}$ fail to convince $j$, then the third argument $a_{k''}$ convinces $i$ and $a'_{k''}$ convinces $j$.
+  The claim is not observationally excludable.
+  Indeed,
+  we see that $E = \set{{\allleadstog} \suchthat [(a_1) \ileadstog φ ∧ (a'_1) \ileadstog[j] φ] ∨ [(a_2) \ileadstog φ ∧ (a'_2) \ileadstog[j] φ] ∨ [(a_3) \ileadstog φ ∧ (a'_3) \ileadstog[j] φ]}$,
+  and
+  $∀ 1 ≤ k ≤ 3$, define $S_k = \set{\allleadstogo \suchthat [(a_k) \ileadstog φ ∧ (a'_k) \ileadstog[j] φ]}$, define $\mathcal{S} = \set{S_1, S_2, S_3}$,
+  consider any $f ⊆ (\allhists × I) × P \suchthat f ∉ E^⊆$,
+  we have $∀ 1 ≤ k ≤ 3, ∃t_k ∈ f \suchthat \set{t_k} ∉ {S_k}^⊆$,
+  thus $f ∉ Θ$
+  (wlog, pick $t_1 = ((a_1), i, p_1 ≠ φ)$, then for observability we need to pick $t_2 = ((a'_2), j, .)$ and there is no choice left for $t_3$).
+\end{example}
+
+\begin{theorem}
+  A claim $C$ fails established verifiability under prior $D$ iff
+  $∃\allleadstogo ∈ C ∩ D \suchthat ∀θ ∈ Θ ∩ \powerset{\allleadstogo}: ∃θ ⊆ {\allleadstogo'} ∈ D \suchthat \allleadstogo' ∉ C$.
+\end{theorem}
+\begin{theorem}
+  A claim $C$ fails established verifiability under prior $¬\OF(\allleadstoo)$ iff
+  $∃\allleadstogo ∈ C \suchthat ¬\OF(\allleadstogo) ∧ ∀θ ∈ Θ ∩ \powerset{\allleadstogo}: ∃θ ⊆ {\allleadstogo'} \suchthat ¬\OF(\allleadstogo') ∧ \allleadstogo' ∉ C$.
+
+  If $C$ is falsifiable (falsity implies of), then not of implies in C, thus is provable, thus succeeds established verifiability.
+  Define $\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$.
+
+  Let’s consider a non falsifiable claim such as
+  $(a) \ileadsto φ ∨ (b) \ileadsto φ$.
+  Not provable as some false world is not OF: $(a) \nileadstog φ ∧ (b) \nileadstog φ$.
+  This fails EV.
+  Consider $\allleadstogo ∈ C \suchthat (a) \ileadstog φ ∧ (b) \ileadstog φ$.
+  Any prefix $θ$ misses at least one of these clauses.
+  
+    Let’s consider a non falsifiable claim such as
+    $∃i \suchthat (a) \ileadsto φ$.
+  Consider in $C$: $∀i, (a) \ileadsto φ$. Any prefix misses at least one $i$.
+\end{theorem}
+
+some world sat C and D has all obses that can be somehow completed in D but not in C.
 
 \begin{example}
   Assume infinitely many individuals.
+
   Consider $C_1$ being $∀i: (b) \ileadsto φ$.
   Consider $C_2$ being $(c) \ileadsto[j] φ ∨ (d) \ileadsto[j] φ$.
   Consider $C = C_1 ∩ C_2$.
   
   $¬OF$ does not prove $C$ because $¬OF$ does not prove $C_2$, as any world contradicting $C_2$ contains incompatible triples, thus some worlds contradicting $C$ contain incompatible triples, thus satisfy not OF and F.
   Yet, $C$ is verifiable under prior $¬OF$: $C_1$ is because any world contradicting $C$ is observably false, and observing $(a) \nileadsto φ$ and $(c) \ileadsto[j] φ$ verifies $C_2$.
+  More precisely, take any world satisfying $C_1$ and $C_2$, observe $(c) \ileadsto[j] φ$ or $(d) \ileadsto[j] φ$, and any completion of this that contradict $C$ is OF.
   
   (Also, $C$ is not verifiable because $C_1$ is not because all observations (being finite) are completable out of $C_1$ (thus, out of $C$).)
+
+  Now, consider $C_3$ being $∃i \suchthat (a) \ileadsto φ$.
+  $¬OF$ does not prove $C_3$.
+  Also, $C_3$ is verifiable under prior $¬OF$
 \end{example}
+Let’s search for a claim that is NOT verifiable under not OF.
+Such a claim must be not provable by not OF.
+Thus such a claim must satisfy: exists not OF and F.
+For example, $∃i \suchthat (a) \ileadsto φ$.
 
 \begin{theorem}
-  A claim $C$ is verifiable under $¬\OF(\allleadstoo)$ but not provable by $¬\OF(\allleadstoo)$ 
-  iff $∃\allleadstogo \suchthat OF(\allleadstogo) ∧ ¬\COF(\allleadstogo)$.
+  A claim $C$ 
+  satisfies established verifiability under $¬\OF(\allleadstoo)$ but is not provable by $¬\OF(\allleadstoo)$ 
+  iff $∃\allleadstogo \suchthat \F(\allleadstogo) ∧ ¬\COF(\allleadstogo)$.
 \end{theorem}
 \begin{proof}
   That $¬\OF(\allleadstoo)$ does not prove $C$ is equivalent to $∃\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$, equivalently, $∃\allleadstogo ∉ C \suchthat Θ ∩ \powerset{\allleadstogo} ⊆ C^⊆$. 
-  Could be $C$ is $[∃i: (a) \ileadsto φ]$, or $C$ is $[(b) \ileadsto[j] φ ∨ (c) \ileadsto[j] φ]$.
+  Could be $C$ is $[∃i \suchthat (a) \ileadsto φ]$, or $C$ is $[(b) \ileadsto[j] φ ∨ (c) \ileadsto[j] φ]$.
   In this world, $∀T ⊆ \allleadstogo$, if $T ∉ C^⊆$, then $T ∉ Θ$. This could be, as indicated above, because it has infinite cardinal, or because of incompatibility.
   % When $∃\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$ and $∃\allleadstogo ∉ C \suchthat \OF(\allleadstogo)$ (for example, $C$ is $[∃i \suchthat (a) \ileadsto φ] ∧ [(b) \ileadsto[j] φ]$), then what?
 
-  That $C$ is verifiable under $¬\OF(\allleadstoo)$ is equivalent to
+  That $C$ satisfies established verifiability under $¬\OF(\allleadstoo)$ is equivalent to
   hide all worlds
   $\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$.
   Formally:
-  $∃\allleadstogo, θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ¬\OF(\allleadstogo) ∧ ∀ θ ⊆ \allleadstogo': \allleadstogo' ∉ C ⇒ \OF(\allleadstog')$.
+  $∀\allleadstogo ∈ C, ∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ¬\OF(\allleadstogo) ⇒ ∀ θ ⊆ \allleadstogo': \allleadstogo' ∉ C ⇒ \OF(\allleadstog')$.
 
   Consider any false world and $T ∉ C^⊆$ with infinite cardinal.
 
@@ -505,68 +630,6 @@ Thus shit happens iff after some obs, not OF implies not F, but also for some ot
 % \Cref{th:ex-post} verifies that when $C$ holds, it is not rejectable.
 
 % The converse, however, does not hold.
-\begin{example}[Disjunct with incompatible paths, not rejectable]
-  \label{ex:disjR}
-  Given $\ar \neq \ar' ∈ \allargs$,
-  the claim $∀ i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$ is not rejectable.
-  In fact,
-  $Θ ⊆ C^⊆$.
-  Consider any $θ ∈ Θ$ and let us prove that $θ ∈ ∪_{{\allleadstog} ∈ C} \powerset{\allleadstog}$.
-  By definition of $θ$, $θ^{-1}(P)$ may not contain both $((\ar), i)$ and $((\ar'), i)$, thus letting $t$ denote one of these pairs not in $θ^{-1}(P)$ and defining $r = (t, \phi)$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} \land t ∈ {\allleadstog'}$. We have $θ ∈ \powerset{\allleadstog'}$ and ${\allleadstog'} ∈ C$.
-\end{example}
-\Cref{ex:disjR} shows a claim that is not rejectable, irrespective of the exposure protocol.
-In particular, the example applies when $C$ does not hold (that is, when ${\allleadsto} \notin C$). We conclude that a claim may fail to hold but still be not rejectable.
-It follows that non-rejection cannot be a sufficient condition for validating a claim.
-
-\begin{remark}
-  \Cref{ex:bigor,ex:threeFs} present situations where, similarly, the claim may fail to hold but still be not rejectable.
-  In \cref{ex:bigor}, non rejection is due to finiteness of observations.
-  In \cref{ex:threeFs}, rejection depends on ${\allleadsto}$.
-\end{remark}
-
-\Cref{def:fals} fills the gap by defining a condition that ensures that $C$ holds iff it is not rejectable.
-The property demands that whatever the behavior of individuals, if their behavior is not compatible with the claim, then it is possible to observe that it is not.
-\begin{definition}
-  \label{def:fals}
-  A claim $C$ is \emph{falsifiable} iff $C \neq {\allleadstos} \land
-  ∀ {\allleadstog} \notin C: θ ∩ \powerset{\allleadstog} \nsubseteq C^⊆$.
-\end{definition}
-
-Thus, $C$ is falsifiable iff $C \neq {\allleadstos}$ and falsity implies OF.
-Thus, $C$ is falsifiable or trivial iff falsity implies OF.
-It follows that under falsity implies OF, we obtain equivalence, in the real world, between OF and falsity.
-
-It is important to note that falsifiability does not depend on $\allleadsto$: whether falsifiability holds can be determined analytically, meaning, by considering only the content of the claim, without considering the behavior of individuals.
-
-\Cref{th:holdsiff} shows that falsifiability indeed fills that gap:
-falsifiability guarantees that a claim holds if, and only if, it is not rejectable.
-\begin{theorem}
-  \label{th:holdsiff}
-  For any falsifiable or trivial claim $C$: $C \ni {\allleadsto}$ iff $θ ∩ \powerset{\allleadsto} ⊆ C^⊆$.
-\end{theorem}
-\begin{proof}
-  Consider any falsifiable claim $C$, thus, 
-  $∀ {\allleadstog} \notin C: ∃ θ ∈ θ ∩ \powerset{\allleadstog} \suchthat θ \notin C^⊆$.
-  Using the contrapositive, $∀ {\allleadstog} ∈ \allleadstos: \nexists θ ∈ θ ∩ \powerset{\allleadstog} \suchthat θ \notin C^⊆ \implies {\allleadstog} ∈ C$.
-  In particular,
-  $\nexists θ ∈ θ ∩ \powerset{\allleadsto} \suchthat θ \notin C^⊆ \implies {\allleadsto} ∈ C$.
-  The reverse implication is proven by \cref{th:ex-post}.
-\end{proof}
-
-\begin{example}
-  \label{ex:allParticular}
-  Consider any $\ar$ and $\phi$. The claim $∀ i: \ar \ileadstostg \phi$ is falsifiable:
-  given any ${\allleadstog} \notin C$, consider any $i \suchthat \ar \nileadstostg \phi$ and any $\hist \suchthat \hist \nileadstog \phi \land \ar ∈ \histend$, and define $θ = \set{(i, \hist, {\allleadstog}(i, \hist) ≠ \phi)}$.
-\end{example}
-
-\begin{remark}
-  Making a claim more precise (meaning going from a claim $C$ to $C' \ssub C$) can make it falsifiable, or conversely, can make it unfalsifiable.
-  Given $\hist, i$, consider the claim $C_2 = \hist \ileadstog \phi$. It is falsifiable.
-  Now consider the claim $C = C_1 ∩ C_2$ with $C_1$ being the claim “every individual chooses $\phi$ after seeing solely either $\ar$ or $\ar'$”. It is more precise but unfalsifiable.
- But we can make it falsifiable again by making it even more precise (picking any single relation).
- (See \cref{rq:precise}.)
-\end{remark}
-
 To simplify, let’s consider for now the prior not OF.
 \begin{theorem}
   A claim is verifiable under prior not OF iff it satisfies F implies OF iff it is falsifiable or trivial.
@@ -1077,6 +1140,15 @@ Using the trivial prior $D = \allleadstos$, we obtain this corollary.
   $D$ being observationally completable to $C$, that is,
   $∃ θ ∈ Θ ∩ D^⊆ \suchthat θ ∉ (D ∖ C)^⊆$.
 \end{corollary}
+\begin{corollary}
+  \label{th:obsCompEst}
+  Given any claims $C, D ⊆ \allleadstos$,
+  established verifiability under prior $D$, that is, 
+  $∀\allleadstogo ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀ θ ⊆ {\allleadstogo'} ∈ D: {\allleadstogo'} ∈ C$,
+  % $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$,
+  is equivalent to 
+  $∀\allleadstogo ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ (D ∖ C)^⊆$.
+\end{corollary}
 
 \begin{corollary}
   \label{th:toStricterClaims}
@@ -1159,6 +1231,11 @@ This (to be proven) captures the claim “there is no decisive argument for $i$�
 \begin{proof}
   This holds by definition of $C^⊆ = ∪_{{\allleadstog} ∈ C} \powerset{\allleadstog}$.
 \end{proof}
+
+\begin{theorem}
+  \label{th:holdsiff}
+  For any falsifiable or trivial claim $C$: $\allleadstoo ∈ C$ iff $¬\OF(\allleadstoo)$.
+\end{theorem}
 
   \section{Supplementary material}
   \label{sec:supplementary}
