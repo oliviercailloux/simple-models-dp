@@ -390,6 +390,10 @@ Any claim $C$ satisfies exactly one of these:
 \end{description}
 Indeed, first implies $∃\allleadstogo ∉ C \suchthat \OF(\allleadstogo)$ which negates second, and the negation of the conjunction of the first two is $(∃\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo) ∨ ∄\allleadstogo ∉ C) ∧ (∃\allleadstogo ∉ C \suchthat \OF(\allleadstogo))$, equivalent to the third.
 
+We also say that $C$ is falsifiable or trivial iff $∀\allleadstogo ∉ C: \OF(\allleadstogo)$, 
+equivalently, iff $∀\allleadstogo: \F(\allleadstogo) ⇒ \OF(\allleadstogo)$,
+still equivalently, iff $∀\allleadstogo: \F(\allleadstogo) ⇔ \OF(\allleadstogo)$.
+
 It is important to note that falsifiability does not depend on $\allleadsto$: whether falsifiability holds can be determined analytically, meaning, by considering only the content of the claim, without considering the behavior of individuals.
 
 \Cref{th:holdsiff} shows that falsifiability indeed fills that gap:
