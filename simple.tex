@@ -66,9 +66,9 @@ For conceptual clarity, I will focus on the case of a single binary decision to 
 
 \section{Exposure protocol and deliberated choice}
 I assume given two antagonistic acts, constituting the decision at stake, such as “buy this object for the price of \$15” and “do not buy this object for the price of \$15”, or “take this job offer” and “decline this job offer”.
-%The letter $\phi$ will be used to denote a generic act (one of these two), and given an act $\phi$, $¬\phi$ denotes the other act.
-Let the set $P = \set{\phi, ¬\phi, 0}$ denote the set of possible preferences, where $\phi$ denote a strict preference for the first act against the other one, $¬\phi$ conversely, and $0$ denotes indifference (both acts are considered equally worth).
-\commentClaude{$\phi$ is here an atomic element of the 3-element set $P$, and $¬\phi$ is a second, distinct atomic element merely suggestively named using the negation symbol $¬$ (there is no operation of which $¬\phi$ is the image of $\phi$: $P$ is not given as, e.g., a Boolean algebra, and $0$ is not "$¬(¬\phi)$" or similar). Since $¬$ is also used throughout the article as an actual logical negation (on formulas, on the relation $\ileadsto$, etc.), using it here as a bare label for an element of $P$ risks being read as asserting some logical relationship between the elements $\phi$ and $¬\phi$ of $P$ beyond mere labeling. Separately, $\phi$ is later also used generically for an arbitrary proposition/element of $P$ (e.g.\ in Section~3 below, "every individuals in $I$ choose deliberately $\phi$"), and the macro $\prop$ (used with subscripts as $\prop_1,\prop_2$ in \cref{ex:tutor}) renders as the very same glyph $φ$ despite denoting unrelated propositions specific to that example. It should be clarified whether $\phi$ (this section), generic $\phi$ (Section~3 below), and $\prop$ are meant to be the same notion at different levels of genericity, or are independent, unrelated uses of the same glyph.}
+%The letter $\phi$ will be used to denote a generic act (one of these two), and given an act $\phi$, $\phi'$ denotes the other act.
+Let the set $P = \set{\phi, \phi', 0}$ denote the set of possible preferences, where $\phi$ denote a strict preference for the first act against the other one, $\phi'$ conversely, and $0$ denotes indifference (both acts are considered equally worth).
+\commentClaude{$\phi$ is later also used generically for an arbitrary proposition/element of $P$ (e.g.\ in Section~3 below, "every individuals in $I$ choose deliberately $\phi$"), and the macro $\prop$ (used with subscripts as $\prop_1,\prop_2$ in \cref{ex:tutor}) renders as the very same glyph $φ$ despite denoting unrelated propositions specific to that example. It should be clarified whether $\phi$ (this section), generic $\phi$ (Section~3 below), and $\prop$ are meant to be the same notion at different levels of genericity, or are independent, unrelated uses of the same glyph.}
 
 \subsection{Exposure protocol}
 An exposure protocol is a tuple $(I, \allargs, {\allleadsto})$, where $I$ is a set of individuals, $\allargs$ is a set of arguments, and ${\allleadsto}$, “leads to”, is the behavior of the individuals as a function of the arguments they have been exposed to.
@@ -84,7 +84,7 @@ Thus, given an argumentative path $\hist ∈ \allhists$, $∀ k ∈ \intvl{1, \c
 \commentClaude{The relation $\subseteq$ is being applied here to sequences (elements of $\allhists$), not to sets, and is silently reused later on sets of paths in $\incr(\allhists)$ with (presumably) its ordinary set-theoretic meaning. This works if a sequence $\hist$ is identified with its graph $\set{(k,\hist_k)}$, but that identification is never stated explicitly; as written, "$\hist\subseteq\histp$" is introduced as if it were already a known relation on $\allhists$ ("whenever $\hist\subseteq\histp$"), with the actual defining condition only following as a "thus"-consequence rather than as the definition itself.}
 Given any $\hist ∈ \allhists$, $\intvl{\hist} = \set{\restr{\hist}{\intvl{1, k}} \suchthat k ∈ \intvl{0, \card{\hist}}}$ denotes the set of prefixes of $\hist$.
 
-The function ${\allleadsto}: I × \allhists → P$ associates to each individual and path an element of $P$, ${\allleadsto}(i, \alpha)$ representing the choice of $i$ following exposure to the arguments of $\alpha$, in order. That is, ${\allleadsto}(i, \alpha) = \phi$ denotes that $i$ chooses the first act after exposure to $\alpha$, ${\allleadsto}(i, \alpha) = ¬\phi$ denotes $i$ choosing the second act and ${\allleadsto}(i, \alpha) = 0$ is used to represent indifference of $i$.
+The function ${\allleadsto}: I × \allhists → P$ associates to each individual and path an element of $P$, ${\allleadsto}(i, \alpha)$ representing the choice of $i$ following exposure to the arguments of $\alpha$, in order. That is, ${\allleadsto}(i, \alpha) = \phi$ denotes that $i$ chooses the first act after exposure to $\alpha$, ${\allleadsto}(i, \alpha) = \phi'$ denotes $i$ choosing the second act and ${\allleadsto}(i, \alpha) = 0$ is used to represent indifference of $i$.
 The notation $\alpha \ileadsto p$, pronounced “$\alpha$ leads $i$ to $p$”, will be used to mean ${\allleadsto}(i, \alpha) = p$, considering ${\ileadsto} \subseteq \allhists × P$ as a binary relation.
 As usual with binary relations, $\hist \nileadsto p$ means ${\allleadsto}(i, \alpha) ≠ p$ or equivalently ${\allleadsto}(i, \alpha) ∈ P \setminus \set{p}$.
 
@@ -117,7 +117,7 @@ It follows from the consideration of “end” as the last \emph{two} arguments 
   Since $\ar \ileadstost p$, $(\ar, \ar') \ileadsto p$, and since $\ar' \ileadstost p'$, $(\ar, \ar') \ileadsto p'$, hence $p' = p$.
 \end{proof}
 
-The intended semantics is that $P_i$ represents the preference of $i$ over the proposed set of two acts, after deliberation, given the exposure protocol. In other words, if $P_i = \set{\phi}$, the individual considers the first act strictly better than the second one, after deliberation (and conversely for $P_i = \set{¬\phi}$); if $P_i = \set{0}$, the deliberated judgment of $i$ is that both acts are equally worth; and if $P_i = ∅$, no act is deliberately strictly better than the other one and they are also not deliberately exactly equivalent to each other.
+The intended semantics is that $P_i$ represents the preference of $i$ over the proposed set of two acts, after deliberation, given the exposure protocol. In other words, if $P_i = \set{\phi}$, the individual considers the first act strictly better than the second one, after deliberation (and conversely for $P_i = \set{\phi'}$); if $P_i = \set{0}$, the deliberated judgment of $i$ is that both acts are equally worth; and if $P_i = ∅$, no act is deliberately strictly better than the other one and they are also not deliberately exactly equivalent to each other.
 
 This latter possibility may look unpleasant, but it is a fact that facing some difficult problems, individuals sometimes are undecided, and it is an a priori empirical possibility that the individual remains undecided (or even, \emph{becomes} undecided) when considering multiple arguments.
 Being undecided is not the same state as being decidedly indifferent about two issues, and those states can be distinguished empirically, as we will see.
@@ -148,7 +148,7 @@ The following toy example is inspired by the following argument from \citet[p.~5
   %	Let ${\allleadsto}(i, a_e)$ represent $i$ being given an explanation about the psychological phenomenon described in the quote above.
   Let ${\allleadsto}(i, a_e)$ represent $i$ being given the following argument. “When tested, $m_1$ answers 70\% of the first half of questions correctly but then only 40\% of the other half correctly; whereas $m_2$ answers 45\% of the first half of questions correctly, then 75\% of the other half correctly. It follows than $m_1$ answers on average less well than $m_2$. Observing the candidates take the tests may yield a contrary impression; this is a well-known psychological phenomenon depending on the order of the questions that the candidates answer correctly.”
   Let $\prop_1$ represent choosing $m_1$ and $\prop_2$ choosing $m_2$.
-\commentClaude{The general framework fixes $P=\set{\phi,¬\phi,0}$ as the set of possible outcomes for \emph{the} binary decision under study (\cref{def:decisive} quantifies $p$ over this specific $P$). Here, $\prop_1,\prop_2$ are introduced as two new, seemingly unrelated propositions (choosing $m_1$ vs.\ $m_2$), and the rest of the example writes $\hist\ileadsto\prop_2$ etc.\ exactly as \cref{def:decisive} writes $\hist\ileadsto p$ for $p\in P$. It is left implicit whether $\prop_1=\phi$ and $\prop_2=¬\phi$ under this example's instantiation (in which case, what does $0$, indifference between $m_1$ and $m_2$, correspond to, and why is it never mentioned?), or whether the example is silently using a different, 2-element outcome space than the $P$ set up in Section~2 above. Either way this identification should be stated.}
+\commentClaude{The general framework fixes $P=\set{\phi,\phi',0}$ as the set of possible outcomes for \emph{the} binary decision under study (\cref{def:decisive} quantifies $p$ over this specific $P$). Here, $\prop_1,\prop_2$ are introduced as two new, seemingly unrelated propositions (choosing $m_1$ vs.\ $m_2$), and the rest of the example writes $\hist\ileadsto\prop_2$ etc.\ exactly as \cref{def:decisive} writes $\hist\ileadsto p$ for $p\in P$. It is left implicit whether $\prop_1=\phi$ and $\prop_2=\phi'$ under this example's instantiation (in which case, what does $0$, indifference between $m_1$ and $m_2$, correspond to, and why is it never mentioned?), or whether the example is silently using a different, 2-element outcome space than the $P$ set up in Section~2 above. Either way this identification should be stated.}
 
   If the prediction described in the quote applies to $i$, the relation $\ileadsto$ is as follows, $∀ k ∈ \Zp$ (recall that for $\args \subseteq \allargs$, $\args^k$ represents the set of sequences of length $k$ using arguments from $\args$): $∀ \hist ∈ \set{a_e}^k, \hist \ileadsto \prop_2$; $∀ \hist ∈ \set{a_1, a_2}^k, \hist \ileadsto \prop_1$; $∀ \hist ∈ \set{a_1, a_e}^k \suchthat a_e ∈ \histend, \hist \ileadsto \prop_2$; $∀ \hist ∈ \set{a_2, a_e}^k \suchthat a_e ∈ \histend, \hist \ileadsto \prop_2$; $∀ \hist ∈ \allargs^k \suchthat a_e ∈ \histend, \hist \ileadsto \prop_2$. The values of ${\allleadsto}(i, \hist)$ for $\hist = ∅$ and for $\hist ∈ \allargs^k \suchthat a_e \notin \histend$ are undetermined by the prediction, but whatever they are, $a_e$ is a decisive argument for $\prop_2$, hence, $i$’s deliberated choice is $\prop_2$.
 \commentClaude{Of the five bullet points describing $\ileadsto$, the last one ("$∀\hist∈\allargs^k$ such that $a_e∈\histend$, $\hist\ileadsto\prop_2$") already logically subsumes the first, third and fourth bullets (all of which describe special cases of histories, drawn from subsets of $\allargs$, that have $a_e\in\histend$). Only the second bullet (histories in $\set{a_1,a_2}^k$, with no $a_e$ at all) is logically independent from the last. This redundancy is harmless but makes it harder to see that the whole prediction reduces to just these two conditions, which are exactly what is needed (and sufficient) to conclude that $a_e$ is decisive for $\prop_2$.}
@@ -255,7 +255,7 @@ A claim $C$ is \emph{informative} iff $π(C) = \set{π(\allleadstog) \suchthat {
 A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π(C)(i) ≠ P ∪ \set{∅}$.
 
 \begin{remark}
-  Informativeness permits mere counting: the claim that exactly two persons deliberately believe $\phi$ is informative. Also, the claim $C = \set{∃ i \suchthat (a) \nileadstog φ ∧ [(a) \nileadstog φ ⇒ ¬φ ∈ π(\allleadstog)(i)]}$ is informative.
+  Informativeness permits mere counting: the claim that exactly two persons deliberately believe $\phi$ is informative. Also, the claim $C = \set{∃ i \suchthat (a) \nileadstog φ ∧ [(a) \nileadstog φ ⇒ φ' ∈ π(\allleadstog)(i)]}$ is informative.
   Informativeness may be a desirable property (rather than informativeness beyond counting) as one may, for example, want to know whether a given proposition is believed by a majority of individuals.
   Note that 
   informativeness beyond counting implies informativeness.
@@ -425,7 +425,7 @@ Here are typical examples.
   \item[Never falsifiable] $[∃i \suchthat (a) \ileadsto φ]$ which satisfies established verifiability; $[∀i: [(\ar) \ileadsto \phi \lor (\ar') \ileadsto \phi]]$ (\cref{ex:disjR}) which fails possible verifiability; $[(\ar) \ileadsto \phi \lor (\ar') \ileadsto \phi]$ which satisfies established verifiability; $[∀ i: (\ar) \ileadstog \phi] \lor [∀ i: (\ar, \ar) \ileadstog \phi] \lor …$ (\cref{ex:bigor}) which fails possible verifiability.
   \item[With mixed falsifiability] $[∃i \suchthat (a) \ileadsto φ] ∧ (b) \ileadsto φ$ (proof:  $∀\allleadstogo ∉ C: \OF(\allleadstogo) ⇔ (b) \nileadstog φ$) (satisfies established verifiability);
     $[∃i \suchthat (a) \ileadsto φ] ∧ [∀i: (b) \ileadsto φ]$ (proof: $∀\allleadstogo ∉ C: \OF(\allleadstogo) ⇔ [∃i \suchthat (b) \nileadstog φ]$) (fails possible verifiability);
-    “Exactly two of the three paths in $\set{∅, (\ar), (\ar')}$ lead $i$ to $\phi$ and the remaining one leads $i$ to $¬\phi$” (\cref{ex:threeFs}) which fails possible verifiability.
+    “Exactly two of the three paths in $\set{∅, (\ar), (\ar')}$ lead $i$ to $\phi$ and the remaining one leads $i$ to $\phi'$” (\cref{ex:threeFs}) which fails possible verifiability.
 \end{description}
 
 It is important to note that falsifiability does not depend on $\allleadsto$: whether falsifiability holds can be determined analytically, meaning, by considering only the content of the claim, without considering the behavior of individuals.
@@ -682,11 +682,11 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   \begin{example}[Fals. but shouldn’t]
     \label{ex:fbs}
     $\hist \ileadstog[j] \phi \land [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]$ is falsifiable.
-    Consider $θ = \set{(j, \hist, ¬\phi)}$.
+    Consider $θ = \set{(j, \hist, \phi')}$.
   \end{example}
   \begin{example}
     $∀ i: \ar \ileadstostg \phi$ is falsifiable.
-    Consider any $i ∈ I$ and $θ = \set{(i, (\ar), ¬\phi)}$.
+    Consider any $i ∈ I$ and $θ = \set{(i, (\ar), \phi')}$.
   \end{example}
   \Cref{ex:fbs} shows that this definition of falsifiability is wrong.
 
@@ -1146,17 +1146,17 @@ The following example presents a situation where non rejection is due to finiten
 \begin{example}[Three functions, may be rejectable]
   \label{ex:threeFs}
   Consider $i ∈ I$, $ar \neq ar' ∈ \allargs$ and the three paths $\hists = \set{∅, (\ar), (\ar')}$.
-  The claim “Exactly two of the three paths in $\hists$ lead $i$ to $\phi$ and the remaining one leads $i$ to $¬\phi$” is not rejectable iff ${\ileadsto}$ associates, in order, $(∅, (\ar), (\ar'))$ to either
-  $(¬\phi, \phi, \phi)$,
-  $(\phi, ¬\phi, \phi)$,
-  $(\phi, \phi, ¬\phi)$,
+  The claim “Exactly two of the three paths in $\hists$ lead $i$ to $\phi$ and the remaining one leads $i$ to $\phi'$” is not rejectable iff ${\ileadsto}$ associates, in order, $(∅, (\ar), (\ar'))$ to either
+  $(\phi', \phi, \phi)$,
+  $(\phi, \phi', \phi)$,
+  $(\phi, \phi, \phi')$,
   $(\phi, \phi, \phi)$ or
-  $(\phi, ¬\phi, ¬\phi)$.
+  $(\phi, \phi', \phi')$.
 
   Indeed, if ${\ileadsto}$ satisfies this, then either it holds and by \cref{th:ex-post} it is not rejectable, or it associates this triplet to $(\phi, \phi, \phi)$ or
-  $(\phi, ¬\phi, ¬\phi)$ in which case, as $(\ar)$ and $(\ar')$ cannot be together in $θ$, any $θ ∈ Θ$ with $θ ⊆ {\allleadsto}$ satisfy $θ ∈ C^⊆$.
+  $(\phi, \phi', \phi')$ in which case, as $(\ar)$ and $(\ar')$ cannot be together in $θ$, any $θ ∈ Θ$ with $θ ⊆ {\allleadsto}$ satisfy $θ ∈ C^⊆$.
 
-  Conversely, if $C$ is not rejectable, then for any $θ_1$ containing $∅$ and $(\ar)$ and $θ_2$ containing $∅$ and $(\ar')$, with $θ_1, θ_2 ⊆ {\allleadsto}$, we have $θ_1, θ_2 ∈ C^⊆$, which requires that ${\ileadsto}$ associates $(∅, (\ar))$ to $(¬\phi, \phi)$, $(\phi, ¬\phi)$ or $(\phi, \phi)$ and $(∅, (\ar'))$ to $(¬\phi, \phi)$, $(\phi, \phi)$ or $(\phi, ¬\phi)$.
+  Conversely, if $C$ is not rejectable, then for any $θ_1$ containing $∅$ and $(\ar)$ and $θ_2$ containing $∅$ and $(\ar')$, with $θ_1, θ_2 ⊆ {\allleadsto}$, we have $θ_1, θ_2 ∈ C^⊆$, which requires that ${\ileadsto}$ associates $(∅, (\ar))$ to $(\phi', \phi)$, $(\phi, \phi')$ or $(\phi, \phi)$ and $(∅, (\ar'))$ to $(\phi', \phi)$, $(\phi, \phi)$ or $(\phi, \phi')$.
 \end{example}
 
 \begin{theorem}
@@ -1229,14 +1229,14 @@ The following example presents a situation where non rejection is due to finiten
 
   \begin{example}
     \label{ex:anon}
-    Given $\ar$ and $\phi$, the claim $\ar \ileadstog \phi$ is not anonymous iff $\card{I} ≥ 2$. Indeed, pick any $j ≠ i$ and define $\sigma(i) = j$, $\sigma(j) = i$ and $∀ k ∈ I \setminus \set{i, j}: \sigma(k) = k$, then $C = \set{{\allleadstog} \suchthat {\allleadstog}(i, \ar) = \phi}$, which contains in particular ${\allleadsto}$ defined as $∀ \hist: [∀ k ∈ I \setminus \set{j}, {\allleadsto}(k, \hist) = \phi \land {\allleadsto}(j, \hist) = ¬\phi$; while $C \circ \sigma = \set{{\allleadstog} \suchthat {\allleadstog}(j, \ar) = \phi}$ which does not contain ${\allleadsto}$.
+    Given $\ar$ and $\phi$, the claim $\ar \ileadstog \phi$ is not anonymous iff $\card{I} ≥ 2$. Indeed, pick any $j ≠ i$ and define $\sigma(i) = j$, $\sigma(j) = i$ and $∀ k ∈ I \setminus \set{i, j}: \sigma(k) = k$, then $C = \set{{\allleadstog} \suchthat {\allleadstog}(i, \ar) = \phi}$, which contains in particular ${\allleadsto}$ defined as $∀ \hist: [∀ k ∈ I \setminus \set{j}, {\allleadsto}(k, \hist) = \phi \land {\allleadsto}(j, \hist) = \phi'$; while $C \circ \sigma = \set{{\allleadstog} \suchthat {\allleadstog}(j, \ar) = \phi}$ which does not contain ${\allleadsto}$.
   \end{example}
 
   \begin{example}
     Consider $I = \set{i}$ and $\ar_1 \neq \ar_2 ∈ \allargs$.
-    The claim $C = \set{{\allleadstog} ∈ \allleadstos \suchthat (∀ \hist \neq ∅: \hist \ileadstog \phi) \lor (∀ \hist \neq ∅: \hist \ileadstog ¬\phi)}$ is not falsifiable.
+    The claim $C = \set{{\allleadstog} ∈ \allleadstos \suchthat (∀ \hist \neq ∅: \hist \ileadstog \phi) \lor (∀ \hist \neq ∅: \hist \ileadstog \phi')}$ is not falsifiable.
 
-    Consider ${\allleadstog}$ defined as $\hist \ileadstog \phi$ iff $\hist = ∅ \lor \hist_1 = \ar_1$ and $\hist \ileadstog ¬\phi$ otherwise.
+    Consider ${\allleadstog}$ defined as $\hist \ileadstog \phi$ iff $\hist = ∅ \lor \hist_1 = \ar_1$ and $\hist \ileadstog \phi'$ otherwise.
     We have ${\allleadstog} \notin C$.
     But any $θ \subseteq {\allleadstog}$ satisfies $θ ∈ C^⊆$.
   \end{example}
@@ -1247,8 +1247,8 @@ The following example presents a situation where non rejection is due to finiten
     Given $p_0, p, p'_0, p' ∈ P$,
     define ${\allleadstog^{i_1 \mapsto (p_0, p); i_2 \mapsto (p'_0, p')}}$ as $∅ \ileadstog[i_1] p_0 \land ∅ \ileadstog[i_2] p'_0 \land ∀ \hist ∈ \allhists \setminus \set{∅}: \hist \ileadstog[i_1] p \land \hist \ileadstog[i_2] p'$.
 
-    The claim $C = \set{{\allleadstog^{i_1 \mapsto (p_0, p); i_2 \mapsto (p'_0, p')}} \suchthat p_0, p, p'_0, p' ∈ \set{\phi, ¬\phi}}$ is not falsifiable.
-    Consider ${\allleadstog}$ defined as, $∀ i ∈ I$, $\hist \ileadstog \phi$ iff $\hist = ∅ \lor \hist_1 = \ar_1$ and $\hist \ileadstog ¬\phi$ otherwise.
+    The claim $C = \set{{\allleadstog^{i_1 \mapsto (p_0, p); i_2 \mapsto (p'_0, p')}} \suchthat p_0, p, p'_0, p' ∈ \set{\phi, \phi'}}$ is not falsifiable.
+    Consider ${\allleadstog}$ defined as, $∀ i ∈ I$, $\hist \ileadstog \phi$ iff $\hist = ∅ \lor \hist_1 = \ar_1$ and $\hist \ileadstog \phi'$ otherwise.
     We have ${\allleadstog} \notin C$.
 
     Consider now any bigger claim $C'$, thus with $C ⊆ C'$.
@@ -1256,27 +1256,27 @@ The following example presents a situation where non rejection is due to finiten
   \end{example}
 
   \begin{example}
-    Consider $I = \set{i_{p_0, p} \suchthat p_0, p ∈ \set{\phi, ¬\phi}}$ (thus $\card{I} = 4$).
+    Consider $I = \set{i_{p_0, p} \suchthat p_0, p ∈ \set{\phi, \phi'}}$ (thus $\card{I} = 4$).
     Given $p_0, p ∈ P$,
     define $R^{(p_0, p)} = R^{∅ \mapsto p_0; p}: \allhists \rightarrow P$ as $R(∅) = p_0 \land ∀ \hist ∈ \allhists \setminus \set{∅}: R(\hist) = p$.
 
-    Define ${\allleadsto}$ as $∀ p_0, p ∈ \set{\phi, ¬\phi}: {\ileadsto[i_{p_0, p}]} = R^{∅ \mapsto p_0; p}$.
+    Define ${\allleadsto}$ as $∀ p_0, p ∈ \set{\phi, \phi'}: {\ileadsto[i_{p_0, p}]} = R^{∅ \mapsto p_0; p}$.
 
-    Given $f: I \rightarrow \set{\phi, ¬\phi}^2$,
+    Given $f: I \rightarrow \set{\phi, \phi'}^2$,
     define ${\allleadstog^f}$ as $∀ i ∈ I: {\allleadstog^f_i} = R^{f(i)}$.
-    Note that any $f ∈ (\set{\phi, ¬\phi}^2)^I$ can be seen as a permutation $\sigma$ over $I$ and that ${\allleadstog^f} = {\allleadsto} \circ \sigma$.
+    Note that any $f ∈ (\set{\phi, \phi'}^2)^I$ can be seen as a permutation $\sigma$ over $I$ and that ${\allleadstog^f} = {\allleadsto} \circ \sigma$.
 
-    The claim $C = \set{{\allleadstog^f} \suchthat f ∈ (\set{\phi, ¬\phi}^2)^I}$ is falsifiable: consider any ${\allleadstog}$ observably compatible with $C$; if there is $\hist^1, \hist^2, \hist^3 ∈ \allhists \setminus \set{∅}$ and $i_1 \neq i_2 \neq i_3 \neq i_1 ∈ I$ with $∀ k ∈ \intvl{1, 3}: \hist^k \ileadstog[i_k] \phi$, then ${\allleadstog}$ is not observably compatible with $C$, so there must be at most 2 individuals mapping some non empty path to $\phi$ (thus at least 2 mapping all non empty paths to $¬\phi$) and for the same reason, at least 2 individuals mapping all non empty paths to $\phi$; thus (together with noting that two individuals mapping every paths to $\phi$ is not observably compatible with $C$ and adding the missing bits), ${\allleadstog} ∈ C$.
+    The claim $C = \set{{\allleadstog^f} \suchthat f ∈ (\set{\phi, \phi'}^2)^I}$ is falsifiable: consider any ${\allleadstog}$ observably compatible with $C$; if there is $\hist^1, \hist^2, \hist^3 ∈ \allhists \setminus \set{∅}$ and $i_1 \neq i_2 \neq i_3 \neq i_1 ∈ I$ with $∀ k ∈ \intvl{1, 3}: \hist^k \ileadstog[i_k] \phi$, then ${\allleadstog}$ is not observably compatible with $C$, so there must be at most 2 individuals mapping some non empty path to $\phi$ (thus at least 2 mapping all non empty paths to $\phi'$) and for the same reason, at least 2 individuals mapping all non empty paths to $\phi$; thus (together with noting that two individuals mapping every paths to $\phi$ is not observably compatible with $C$ and adding the missing bits), ${\allleadstog} ∈ C$.
   \end{example}
 
   \begin{example}
-    Consider $I = ∪_{p_0, p ∈ \set{\phi, ¬\phi}} I_{p_0, p}$, with each $I_{p_0, p}$ infinite, and $\ar_1 \neq \ar_2 ∈ \allargs$.
+    Consider $I = ∪_{p_0, p ∈ \set{\phi, \phi'}} I_{p_0, p}$, with each $I_{p_0, p}$ infinite, and $\ar_1 \neq \ar_2 ∈ \allargs$.
     Given $p_0, p ∈ P$,
     define $R^{(p_0, p)} = R^{∅ \mapsto p_0; p}: \allhists \rightarrow P$ as $R(∅) = p_0 \land ∀ \hist ∈ \allhists \setminus \set{∅}: R(\hist) = p$.
-    Define ${\allleadsto}$ as $∀ p_0, p ∈ \set{\phi, ¬\phi}, i ∈ I_{p_0, p}: {\ileadsto} = R^{∅ \mapsto p_0; p}$.
+    Define ${\allleadsto}$ as $∀ p_0, p ∈ \set{\phi, \phi'}, i ∈ I_{p_0, p}: {\ileadsto} = R^{∅ \mapsto p_0; p}$.
 
     The claim $C = \set{{\allleadsto} \circ \sigma \suchthat \sigma: I \leftrightarrow I}$ is not falsifiable:
-    consider ${\allleadstog}$ defined as, $∀ i ∈ I$, $\hist \ileadstog \phi$ iff $\hist = ∅ \lor \hist_1 = \ar_1$ and $\hist \ileadstog ¬\phi$ otherwise; we have ${\allleadstog} \notin C$
+    consider ${\allleadstog}$ defined as, $∀ i ∈ I$, $\hist \ileadstog \phi$ iff $\hist = ∅ \lor \hist_1 = \ar_1$ and $\hist \ileadstog \phi'$ otherwise; we have ${\allleadstog} \notin C$
     but any $θ ∈ Θ, θ \subseteq {\allleadstog}$ satisfies $θ ∈ C^⊆$.
 
     Now consider $C' = \set{{\allleadstog} \suchthat ∀ i ∈ I, \hist, \histp ∈ \allhists: \hist_1 = \histp_1 \implies {\ileadstog}(\hist) = {\ileadstog}(\histp)}$. (Thus $C ⊆ C'$.)
@@ -1284,14 +1284,14 @@ The following example presents a situation where non rejection is due to finiten
   \end{example}
 
   \begin{example}
-    Imagine that the real relation is composed of individuals who map $(a_1, a_2)$ to $\phi$ and $(a_1, a_3)$ to $¬\phi$ and individuals converse (with both, say, mapping everything else to $0$).
-    Then the claim $C = \set{{\allleadstog} \suchthat ∀ i ∈ I: {\ileadstog}(\ar_1, \ar_2) ∈ \set{\phi, ¬\phi} \land {\ileadstog}(\ar_1, \ar_3) ∈ \set{\phi, ¬\phi}}$ is falsifiable.
+    Imagine that the real relation is composed of individuals who map $(a_1, a_2)$ to $\phi$ and $(a_1, a_3)$ to $\phi'$ and individuals converse (with both, say, mapping everything else to $0$).
+    Then the claim $C = \set{{\allleadstog} \suchthat ∀ i ∈ I: {\ileadstog}(\ar_1, \ar_2) ∈ \set{\phi, \phi'} \land {\ileadstog}(\ar_1, \ar_3) ∈ \set{\phi, \phi'}}$ is falsifiable.
 
-    Imagine that the real relation is composed of individuals who map $(a_1, a_2)$ to $\phi$ and $(a_1, a_3)$ to $¬\phi$ and individuals converse (with both, say, mapping everything else to $0$) and individuals who map $(a_4, a_5)$ to $\phi$ and $(a_6)$ to $¬\phi$ and individuals converse, with both mapping everything else to $0$.
-    Then the claim $C = \set{{\allleadstog} \suchthat ∀ i ∈ I: [{\ileadstog}(\ar_1, \ar_2) ∈ \set{\phi, ¬\phi} \land {\ileadstog}(\ar_1, \ar_3) ∈ \set{\phi, ¬\phi} \land {\ileadstog}(H) = 0] \lor [{\ileadstog}(\ar_4, \ar_5) ∈ \set{\phi, ¬\phi} \land {\ileadstog}(\ar_6) ∈ \set{\phi, ¬\phi} \land {\ileadstog}(H) = 0]}$, where $H$ designates all “other” paths (abusing notation), is falsifiable.
+    Imagine that the real relation is composed of individuals who map $(a_1, a_2)$ to $\phi$ and $(a_1, a_3)$ to $\phi'$ and individuals converse (with both, say, mapping everything else to $0$) and individuals who map $(a_4, a_5)$ to $\phi$ and $(a_6)$ to $\phi'$ and individuals converse, with both mapping everything else to $0$.
+    Then the claim $C = \set{{\allleadstog} \suchthat ∀ i ∈ I: [{\ileadstog}(\ar_1, \ar_2) ∈ \set{\phi, \phi'} \land {\ileadstog}(\ar_1, \ar_3) ∈ \set{\phi, \phi'} \land {\ileadstog}(H) = 0] \lor [{\ileadstog}(\ar_4, \ar_5) ∈ \set{\phi, \phi'} \land {\ileadstog}(\ar_6) ∈ \set{\phi, \phi'} \land {\ileadstog}(H) = 0]}$, where $H$ designates all “other” paths (abusing notation), is falsifiable.
 
-    Imagine that the real relation is composed of individuals who map $(a_1, a_2)$ to $\phi$ and $(a_1, a_3)$ to $¬\phi$ and individuals converse (with both, say, mapping everything else to $0$) and individuals who map $(a_1, a_4)$ to $\phi$ and $(a_6)$ to $¬\phi$ and individuals converse, with both mapping everything else to $0$.
-    Then the claim $C = \set{{\allleadstog} \suchthat ∀ i ∈ I: [{\ileadstog}(\ar_1, \ar_2) ∈ \set{\phi, ¬\phi} \land {\ileadstog}(\ar_1, \ar_3) ∈ \set{\phi, ¬\phi} \land {\ileadstog}(H) = 0] \lor [{\ileadstog}(\ar_1, \ar_4) ∈ \set{\phi, ¬\phi} \land {\ileadstog}(\ar_6) ∈ \set{\phi, ¬\phi} \land {\ileadstog}(H) = 0]}$, where $H$ designates all “other” paths (abusing notation), is falsifiable: could have an individual mapping both $(\ar_1, \ar_2)$ and $(\ar_1, \ar_4)$ to $0$ but then if she maps $\ar_6$ to $0$, observe both $(\ar_1, \ar_2)$ and $\ar_6$ and falsify $C$; if she maps $\ar_6$ in $\set{\phi, ¬\phi}$, both $(\ar_1, \ar_4)$ and $\ar_6$ and falsify $C$ (here assuming falsely in the whole example that $\ar_6$ can be observed together with $(\ar_1, .)$, so we probably should replace $\ar_6$ by $∅$).
+    Imagine that the real relation is composed of individuals who map $(a_1, a_2)$ to $\phi$ and $(a_1, a_3)$ to $\phi'$ and individuals converse (with both, say, mapping everything else to $0$) and individuals who map $(a_1, a_4)$ to $\phi$ and $(a_6)$ to $\phi'$ and individuals converse, with both mapping everything else to $0$.
+    Then the claim $C = \set{{\allleadstog} \suchthat ∀ i ∈ I: [{\ileadstog}(\ar_1, \ar_2) ∈ \set{\phi, \phi'} \land {\ileadstog}(\ar_1, \ar_3) ∈ \set{\phi, \phi'} \land {\ileadstog}(H) = 0] \lor [{\ileadstog}(\ar_1, \ar_4) ∈ \set{\phi, \phi'} \land {\ileadstog}(\ar_6) ∈ \set{\phi, \phi'} \land {\ileadstog}(H) = 0]}$, where $H$ designates all “other” paths (abusing notation), is falsifiable: could have an individual mapping both $(\ar_1, \ar_2)$ and $(\ar_1, \ar_4)$ to $0$ but then if she maps $\ar_6$ to $0$, observe both $(\ar_1, \ar_2)$ and $\ar_6$ and falsify $C$; if she maps $\ar_6$ in $\set{\phi, \phi'}$, both $(\ar_1, \ar_4)$ and $\ar_6$ and falsify $C$ (here assuming falsely in the whole example that $\ar_6$ can be observed together with $(\ar_1, .)$, so we probably should replace $\ar_6$ by $∅$).
   \end{example}
 
   \subsection{More examples}
@@ -1655,7 +1655,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
 
   \begin{theorem}
     \label{th:infoBeyonCKOext}
-    Given $Q = \set{\phi, ¬\phi}$,
+    Given $Q = \set{\phi, \phi'}$,
     the following two conditions on $\allleadsto$ are equivalent:
     there exists a claim that holds and is anonymous and satisfies
     $∃ j ∈ I \suchthat π(C)(j) \ssub Q$;
@@ -1663,10 +1663,10 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
     $\set{P_i, i ∈ I} \ssub Q$.
   \end{theorem}
   \begin{proof}
-    From \cref{th:HAinformativeness} with $Q = \set{\phi, ¬\phi}$, we have that
+    From \cref{th:HAinformativeness} with $Q = \set{\phi, \phi'}$, we have that
     there exists a claim that holds and is anonymous and satisfies
-    $∃ j ∈ I \suchthat π(C)(j) \ssub \set{\phi, ¬\phi}$ iff
-    $\set{P_i, i ∈ I} \ssub \set{\phi, ¬\phi}$.
+    $∃ j ∈ I \suchthat π(C)(j) \ssub \set{\phi, \phi'}$ iff
+    $\set{P_i, i ∈ I} \ssub \set{\phi, \phi'}$.
   \end{proof}
 
   Define the claim $C^\text{HA} = \set{{\allleadsto} \circ \sigma \suchthat \sigma: I \Leftrightarrow I}$.
@@ -1760,7 +1760,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
   \end{example}
   \begin{example}[no HAI]
     \label{ex:noHAI}
-    Define $I = \set{i_1, i_2, i_3}$ and $\allleadsto$ as follows: $.* \ileadsto[i_1] \phi$, $∅ \ileadsto[i_2] \phi$, $a.* \ileadsto[i_2] \phi$, $b.* \ileadsto[i_2] ¬\phi$, $∅ \ileadsto[i_3] \phi$, $a.* \ileadsto[i_3] ¬\phi$, $b.* \ileadsto[i_3] \phi$.
+    Define $I = \set{i_1, i_2, i_3}$ and $\allleadsto$ as follows: $.* \ileadsto[i_1] \phi$, $∅ \ileadsto[i_2] \phi$, $a.* \ileadsto[i_2] \phi$, $b.* \ileadsto[i_2] \phi'$, $∅ \ileadsto[i_3] \phi$, $a.* \ileadsto[i_3] \phi'$, $b.* \ileadsto[i_3] \phi$.
     Then $π(i_1) = \phi$ and $π(i_2) = π(i_3) = ∅$.
     This satisfies \ref{it:condNotHAI}: considering any $\hist ∈ \allhists$, if $(1, a) ∈ \hist$, then $i_2$ collides with $i_1$ on $\hist$, and otherwise, $i_3$ does.
   \end{example}
@@ -1774,7 +1774,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
     $[∀ \hist ∈ \allhists, i_1 ∈ I: Q(\hist, i_1)]$, thus, satisfies
     $∃ \hist, i_0 \suchthat π(i_0) = ∅ \land ¬Q(\hist, i_0)$.
 
-    Define $I = \set{i_1, …, i_4}$, $\ileadsto[i_1], \ileadsto[i_2], \ileadsto[i_3]$ as in \cref{ex:noHAI} and $\ileadsto[i_4]$ as: $.* \ileadsto[i_4] ¬\phi$, $∅ \ileadsto[i_4] ¬\phi$, $a.* \ileadsto[i_4] \phi$, $b.* \ileadsto[i_4] ¬\phi$.
+    Define $I = \set{i_1, …, i_4}$, $\ileadsto[i_1], \ileadsto[i_2], \ileadsto[i_3]$ as in \cref{ex:noHAI} and $\ileadsto[i_4]$ as: $.* \ileadsto[i_4] \phi'$, $∅ \ileadsto[i_4] \phi'$, $a.* \ileadsto[i_4] \phi$, $b.* \ileadsto[i_4] \phi'$.
     This satisfies \ref{it:condNotHAI} for the reason given in \cref{ex:noHAI}, and fails $Q(∅, i_4)$.
   \end{remark}
 
@@ -1815,8 +1815,8 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
   \label{sec:lichtenstein}
   One ambition of the theories to be proposed here is to permit exhibiting the existence of a deliberated consensus among a large set of persons about issues that involve numerous arguments and counter-arguments.
 
-  In many decision problems, individuals will not be attracted by the same set of arguments and counter-arguments, even though they may finally settle to the same preference. Imagine that some individual $i_1$ considers an argument $a_1$ for $\nprop$ relevant and some individual $i_2$ considers an argument $a_2$ for $\nprop$ relevant, but $i_1$ does not consider $a_2$ relevant and $i_2$ does not consider $a_1$ relevant (for example, because they already have some counter-arguments in mind to those arguments). Imagine further that there is some counter-argument $a'_1$ that can be given to $i_1$ to rebut $a_1$, and a different counter-argument $a'_2$ that can be given to $i_2$ to rebut $a_2$, so that they both have $\prop$ in their deliberated judgment when considering all these arguments.
-  In such situation, static theories as defined in \cref{sec:static} are ill suited: these theories need to present the same argument to all individuals and would thus need to define a bigger argument $a$ containing both $a'_1$ and $a'_2$. Such an argument could be too long to be convincing to $i_1$ or $i_2$, as it needlessly spends efforts countering an argument that the individual considers irrelevant to start with. This  will become an important problem if there are not only two but many a priori possible arguments $a_k$ for $\nprop$, a small subset of which is considered relevant by any given individual, each with their own counter-argument $a'_k$ for $\prop$.
+  In many decision problems, individuals will not be attracted by the same set of arguments and counter-arguments, even though they may finally settle to the same preference. Imagine that some individual $i_1$ considers an argument $a_1$ for $\phi'$ relevant and some individual $i_2$ considers an argument $a_2$ for $\phi'$ relevant, but $i_1$ does not consider $a_2$ relevant and $i_2$ does not consider $a_1$ relevant (for example, because they already have some counter-arguments in mind to those arguments). Imagine further that there is some counter-argument $a'_1$ that can be given to $i_1$ to rebut $a_1$, and a different counter-argument $a'_2$ that can be given to $i_2$ to rebut $a_2$, so that they both have $\prop$ in their deliberated judgment when considering all these arguments.
+  In such situation, static theories as defined in \cref{sec:static} are ill suited: these theories need to present the same argument to all individuals and would thus need to define a bigger argument $a$ containing both $a'_1$ and $a'_2$. Such an argument could be too long to be convincing to $i_1$ or $i_2$, as it needlessly spends efforts countering an argument that the individual considers irrelevant to start with. This  will become an important problem if there are not only two but many a priori possible arguments $a_k$ for $\phi'$, a small subset of which is considered relevant by any given individual, each with their own counter-argument $a'_k$ for $\prop$.
   This section is devoted to describing two examples to illustrate that point. Bear in mind that these examples may look somehow naïve on the aspect of the hypothesis they make about what convinces individuals. Real-world complex decision situations will require complex theories that do not fit the purpose of simple illustrative examples. Their goal is to argue that non-static theories are required, but not to fully describe such theories.
 
   %For a partial illustration about an ambitious setting, consider a decision to be taken about the relevance of some concrete action to help cope with climate change, and let $I$ be a set of citizens interested in the climate issue. The complete set of all arguments that will be considered relevant by at least one individual may well be very large. It may also be that, for each individual who considers relevant some arguments $A$ against the proposed concrete action, it is possible to give counter-arguments $A'$ that will convince the individual to opt for the proposal.
@@ -1869,9 +1869,9 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
   if $C$ holds, then it implies something about the dj of some $i$;
   if $C$ fails, it is possible to falsify it.
 
-  We can observe set $O$ that forms a function $f(i) = \set{\alpha \ileadsto \phi, \alpha' \ileadsto ¬\phi, …}$, with $\alpha \subset \alpha \subset …$ and with finite $O$.
+  We can observe set $O$ that forms a function $f(i) = \set{\alpha \ileadsto \phi, \alpha' \ileadsto \phi', …}$, with $\alpha \subset \alpha \subset …$ and with finite $O$.
   Our second condition is that $¬C \implies ∃ θ \suchthat θ \implies ¬C$.
-  For example, if $C$ is $\alpha \ileadsto \phi \lor \beta \allleadsto[j] \phi$, $O$ is $\alpha \ileadsto ¬\phi \land \beta \allleadsto ¬\phi$, then $O$ implies $¬C$.
+  For example, if $C$ is $\alpha \ileadsto \phi \lor \beta \allleadsto[j] \phi$, $O$ is $\alpha \ileadsto \phi' \land \beta \allleadsto \phi'$, then $O$ implies $¬C$.
   As another example, $C$ being $∃ \alpha \suchthat \alpha \ileadsto \phi$ is unfalsifiable, as its negation is $∀ \alpha: \alpha \nileadsto \phi$, which requires infinite $O$.
 
   Consider $\allleadsto$ such that $∃ \ar, \phi \suchthat ∀ i: \ar \ileadsto \phi$.
@@ -2133,12 +2133,12 @@ The following result follows from \cref{th:typesfalsifiable}.
 \begin{example}
   Define $f^{(p, p')} ∈ P^{\allhists}$ as follows: $f^{(p, p')}(∅) = p$ and $∀ \hist ∈ \allhists: \hist ≠ ∅ \implies f^{(p, p')}(\hist) = p'$.
 
-  Consider a situation such that ${\allleadsto}(I) = \set{f^{(p, p')} \suchthat p, p' ∈ \set{\phi, ¬\phi}}$, thus, containing only people constant to $\phi$ and people constant to $¬\phi$, except that they map $∅$ to anything in $\set{\phi, ¬\phi}$.
-  Define $F^p = \set{f^{(p, p')} \suchthat p' ∈ \set{\phi, ¬\phi}}$.
+  Consider a situation such that ${\allleadsto}(I) = \set{f^{(p, p')} \suchthat p, p' ∈ \set{\phi, \phi'}}$, thus, containing only people constant to $\phi$ and people constant to $\phi'$, except that they map $∅$ to anything in $\set{\phi, \phi'}$.
+  Define $F^p = \set{f^{(p, p')} \suchthat p' ∈ \set{\phi, \phi'}}$.
 
-  \Cref{th:caractR} indicates that $R({\allleadsto}(I)) = \set{f \suchthat l^S_f(∅) ∈ \set{F^\phi, F^{¬\phi}} \land ∀ \ar ∈ \allargs: [∀ \hist \suchthat \hist_1 = \ar: l^S_f(\hist) ∈ l^S_f(∅)] \land [∀ \hist, \histp \suchthat \hist_1 = \histp_1 = \ar: l^S_f(\hist) = l^S_f(\histp)]}$.
+  \Cref{th:caractR} indicates that $R({\allleadsto}(I)) = \set{f \suchthat l^S_f(∅) ∈ \set{F^\phi, F^{\phi'}} \land ∀ \ar ∈ \allargs: [∀ \hist \suchthat \hist_1 = \ar: l^S_f(\hist) ∈ l^S_f(∅)] \land [∀ \hist, \histp \suchthat \hist_1 = \histp_1 = \ar: l^S_f(\hist) = l^S_f(\histp)]}$.
 
-  Thus, $R({\allleadsto}(I))$ contains, for each mapping $m: \allargs \rightarrow \set{\phi, ¬\phi}$, the two functions $f_m^\phi, f_m^{¬\phi}$ defined as $f_m^\phi(∅) = \phi$ and $∀ \ar ∈ \allargs: f_m^\phi((\ar, …)) = m(\ar)$, and similarly for $f_m^{¬\phi}$.
+  Thus, $R({\allleadsto}(I))$ contains, for each mapping $m: \allargs \rightarrow \set{\phi, \phi'}$, the two functions $f_m^\phi, f_m^{\phi'}$ defined as $f_m^\phi(∅) = \phi$ and $∀ \ar ∈ \allargs: f_m^\phi((\ar, …)) = m(\ar)$, and similarly for $f_m^{\phi'}$.
 
   The claim associated to $R({\allleadsto}(I))$ is not trivial: $∀ f \suchthat [∃ \hist, \histp \ssub \hist \suchthat f(\histp) ≠ f(\hist)]: f \notin R({\allleadsto}(I))$.
 \end{example}
@@ -2147,7 +2147,7 @@ The following result follows from \cref{th:typesfalsifiable}.
 
   Consider any $f \notin {\allleadsto}(I)$.
   We have $f ∈ R({\allleadsto}(I))$.
-  Indeed, define $g_1 ∈ P^{\allhists}$ as $g_1 = f$ except that $g_1(\ar_2) = ¬\phi$, and $g_2 ∈ P^{\allhists}$ as $g_2 = f$ except that $g_2(\ar_1) = ¬\phi$.
+  Indeed, define $g_1 ∈ P^{\allhists}$ as $g_1 = f$ except that $g_1(\ar_2) = \phi'$, and $g_2 ∈ P^{\allhists}$ as $g_2 = f$ except that $g_2(\ar_1) = \phi'$.
   Then, $g_1, g_2 ∈ {\allleadsto}(I)$.
   Now consider any $H ∈ \finite(\incr(\allhists))$.
   If $(\ar_2) \notin H$, then $\restr{f}{H} = \restr{g_1}{H}$; otherwise, $\restr{f}{H} = \restr{g_2}{H}$.
@@ -2297,7 +2297,7 @@ Note that this is possible iff $\allargs$ is infinite. If so, suffices to take s
 
 \begin{theorem}
   \label{th:noindic}
-  If $a_1 \ileadstost[f_1] \phi$ and $a_2 \ileadstost[f_2] ¬\phi$ with $\ar_1 ≠ \ar_2$ and $f_1(∅) = f_2(∅)$ and $∀ f ∈ \set{f_1, f_2}: \card{{\allleadstoinv}(f)} \notin \N$, then there is no anonymous, falsifiable and indicative about $i_1$ claim that holds (here, considering indicativeness as mandating to know that $P_{i_1} = \phi$).
+  If $a_1 \ileadstost[f_1] \phi$ and $a_2 \ileadstost[f_2] \phi'$ with $\ar_1 ≠ \ar_2$ and $f_1(∅) = f_2(∅)$ and $∀ f ∈ \set{f_1, f_2}: \card{{\allleadstoinv}(f)} \notin \N$, then there is no anonymous, falsifiable and indicative about $i_1$ claim that holds (here, considering indicativeness as mandating to know that $P_{i_1} = \phi$).
 \end{theorem}
 \begin{proof}
   Any claim that holds must include $\allleadsto$.
@@ -2311,7 +2311,7 @@ Note that this is possible iff $\allargs$ is infinite. If so, suffices to take s
   If $\intvl{\max H'} ∩ H ⊆ \set{∅}$, then $f_2$ satisfies the condition (consider any $\hist ∈ H'$, we have $\intvl{\hist} ∩ H ⊆ \set{∅}$); otherwise (thus $∅ ≠ \hist' ∈ \intvl{\max H'} ∩ H$), $f_1$ does (consider any $\hist' ∈ H'$).
 
   Now let us show that $P_g ≠ \phi$.
-  That is because at least one of $\hist = (\ar_2, \ar_1)$ or $\hist = (\ar_1, \ar_2)$ satisfies $\intvl{\hist} ∩ H ⊆ \set{∅}$ and in both cases, $\hist \ileadsto[f_2] ¬\phi$, thus, $g(\hist) = ¬\phi$.
+  That is because at least one of $\hist = (\ar_2, \ar_1)$ or $\hist = (\ar_1, \ar_2)$ satisfies $\intvl{\hist} ∩ H ⊆ \set{∅}$ and in both cases, $\hist \ileadsto[f_2] \phi'$, thus, $g(\hist) = \phi'$.
   
   Define ${\allleadstog'}$ as $∀ i ∈ I: {\ileadstog'} = g$.
   By \cref{th:falsclosed}, any claim that is anonymous and falsifiable must include ${\allleadstog'}$.
@@ -2335,7 +2335,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
 
 \begin{theorem}
   Under some $B$, 
-  if $a_1 \ileadstost[f_1] \phi$ and $a_2 \ileadstost[f_2] ¬\phi$ and ${\ileadsto[f_1]}(∅) = {\ileadsto[f_2]}(∅)$ and infinitely many individuals have behavior $f_1$ and infinitely many have behavior $f_2$, then there is an anonymous, falsifiable and indicative about $i_1$ claim that holds (here, considering indicativeness as mandating to know that $P_{i_1} = \phi$).
+  if $a_1 \ileadstost[f_1] \phi$ and $a_2 \ileadstost[f_2] \phi'$ and ${\ileadsto[f_1]}(∅) = {\ileadsto[f_2]}(∅)$ and infinitely many individuals have behavior $f_1$ and infinitely many have behavior $f_2$, then there is an anonymous, falsifiable and indicative about $i_1$ claim that holds (here, considering indicativeness as mandating to know that $P_{i_1} = \phi$).
 \end{theorem}
 \begin{proof}
   Pick $B = \set{{\ileadsto[i_1]}, {\ileadsto[i_2]}}$ and $C = C^\text{HA}$.
@@ -2520,12 +2520,12 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     Define $R = \set{o_1, o_2, o_3}$.
     Define $f_1, f_2, f_3 ∈ P^R$ as follows.
     $f_1(o_1) = \phi$,
-    $f_1(o_2) = ¬\phi$,
+    $f_1(o_2) = \phi'$,
     $f_1(o_3) = \phi$.
     $f_2(o_1) = \phi$,
     $f_2(o_2) = \phi$,
-    $f_2(o_3) = ¬\phi$.
-    $f_3(o_1) = ¬\phi$,
+    $f_2(o_3) = \phi'$.
+    $f_3(o_1) = \phi'$,
     $f_3(o_2) = \phi$,
     $f_3(o_3) = \phi$.
     Define $C = \set{f ∪ g \suchthat f ∈ \set{f_1, f_2, f_3} \land g ∈ P^{(I × \allhists) \setminus R}}$.
@@ -2539,9 +2539,9 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     \begin{equation}
       C^⊆ ∩ Θ = \left\{θ ∈ Θ \suchthat
       \begin{aligned}
-         & (θ(o_1) ∈ \set{∅, \phi} \land θ(o_2) ∈ \set{∅, ¬\phi} \land θ(o_3) ∈ \set{∅, \phi}) \lor \mbox{} \\
-         & (θ(o_1) ∈ \set{∅, \phi} \land θ(o_2) ∈ \set{∅, \phi} \land θ(o_3) ∈ \set{∅, ¬\phi}) \lor \mbox{} \\
-         & (θ(o_1) ∈ \set{∅, ¬\phi} \land θ(o_2) ∈ \set{∅, \phi} \land θ(o_3) ∈ \set{∅, \phi})
+         & (θ(o_1) ∈ \set{∅, \phi} \land θ(o_2) ∈ \set{∅, \phi'} \land θ(o_3) ∈ \set{∅, \phi}) \lor \mbox{} \\
+         & (θ(o_1) ∈ \set{∅, \phi} \land θ(o_2) ∈ \set{∅, \phi} \land θ(o_3) ∈ \set{∅, \phi'}) \lor \mbox{} \\
+         & (θ(o_1) ∈ \set{∅, \phi'} \land θ(o_2) ∈ \set{∅, \phi} \land θ(o_3) ∈ \set{∅, \phi})
       \end{aligned}\right\}.
     \end{equation}
     Also, $θ(o_1) \neq ∅ \implies θ(o_3) = ∅$ (and equivalently, $θ(o_3) \neq ∅ \implies θ(o_1) = ∅$),
@@ -2549,14 +2549,14 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     \begin{equation}
       C^⊆ ∩ Θ = \left\{θ ∈ Θ \suchthat
       \begin{aligned}
-         & (θ(o_1) = θ(o_3) = ∅ \land θ(o_2) ∈ \set{∅, ¬\phi}) \lor \mbox{} \\
-         & (θ(o_1) = \phi \land θ(o_2) ∈ \set{∅, ¬\phi}) \lor \mbox{}                    \\
-         & (θ(o_3) = \phi \land θ(o_2) ∈ \set{∅, ¬\phi}) \lor \mbox{}                    \\
+         & (θ(o_1) = θ(o_3) = ∅ \land θ(o_2) ∈ \set{∅, \phi'}) \lor \mbox{} \\
+         & (θ(o_1) = \phi \land θ(o_2) ∈ \set{∅, \phi'}) \lor \mbox{}                    \\
+         & (θ(o_3) = \phi \land θ(o_2) ∈ \set{∅, \phi'}) \lor \mbox{}                    \\
          & (θ(o_1) = θ(o_3) = ∅ \land θ(o_2) ∈ \set{∅, \phi}) \lor \mbox{}  \\
          & (θ(o_1) = \phi \land θ(o_2) ∈ \set{∅, \phi}) \lor \mbox{}                     \\
-         & (θ(o_3) = ¬\phi \land θ(o_2) ∈ \set{∅, \phi}) \lor \mbox{}                    \\
+         & (θ(o_3) = \phi' \land θ(o_2) ∈ \set{∅, \phi}) \lor \mbox{}                    \\
          & (θ(o_1) = θ(o_3) = ∅ \land θ(o_2) ∈ \set{∅, \phi}) \lor \mbox{}  \\
-         & (θ(o_1) = ¬\phi \land θ(o_2) ∈ \set{∅, \phi}) \lor \mbox{}                    \\
+         & (θ(o_1) = \phi' \land θ(o_2) ∈ \set{∅, \phi}) \lor \mbox{}                    \\
          & (θ(o_3) = \phi \land θ(o_2) ∈ \set{∅, \phi})
       \end{aligned}\right\}.
     \end{equation}
@@ -2564,11 +2564,11 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     \begin{equation}
       C^⊆ ∩ Θ = \left\{θ ∈ Θ \suchthat
       \begin{aligned}
-         & (θ(o_1) = θ(o_3) = ∅ \land θ(o_2) ∈ \set{∅, \phi, ¬\phi})) \lor \mbox{} \\
-         & (θ(o_1) = \phi \land θ(o_2) ∈ \set{∅, \phi, ¬\phi}) \lor \mbox{}                     \\
-         & (θ(o_3) = \phi \land θ(o_2) ∈ \set{∅, \phi, ¬\phi}) \lor \mbox{}                     \\
-         & (θ(o_3) = ¬\phi \land θ(o_2) ∈ \set{∅, \phi}) \lor \mbox{}                           \\
-         & (θ(o_1) = ¬\phi \land θ(o_2) ∈ \set{∅, \phi})
+         & (θ(o_1) = θ(o_3) = ∅ \land θ(o_2) ∈ \set{∅, \phi, \phi'})) \lor \mbox{} \\
+         & (θ(o_1) = \phi \land θ(o_2) ∈ \set{∅, \phi, \phi'}) \lor \mbox{}                     \\
+         & (θ(o_3) = \phi \land θ(o_2) ∈ \set{∅, \phi, \phi'}) \lor \mbox{}                     \\
+         & (θ(o_3) = \phi' \land θ(o_2) ∈ \set{∅, \phi}) \lor \mbox{}                           \\
+         & (θ(o_1) = \phi' \land θ(o_2) ∈ \set{∅, \phi})
       \end{aligned}\right\}.
     \end{equation}
 
@@ -2577,18 +2577,18 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
       \overline{C^⊆ ∩ Θ} = \left\{θ ∈ Θ \suchthat
       \begin{aligned}
          & θ(o_2) = 0 \lor \mbox{}                                                                                \\
-         & θ(o_2) = ¬\phi \land (θ(o_1) ∈ \set{¬\phi, 0} \lor θ(o_3) ∈ \set{¬\phi, 0}) \lor \mbox{} \\
-         & θ(o_1) ∈ \set{¬\phi, 0} \land θ(o_3) \neq ¬\phi \lor \mbox{}                                    \\
+         & θ(o_2) = \phi' \land (θ(o_1) ∈ \set{\phi', 0} \lor θ(o_3) ∈ \set{\phi', 0}) \lor \mbox{} \\
+         & θ(o_1) ∈ \set{\phi', 0} \land θ(o_3) \neq \phi' \lor \mbox{}                                    \\
          & θ(o_1) = ∅ \lor \mbox{}                                                                        \\
          & θ(o_3) = ∅ \lor \mbox{}                                                                        \\
-         & θ(o_3) ∈ \set{¬\phi, 0} \land θ(o_1) \neq ¬\phi
+         & θ(o_3) ∈ \set{\phi', 0} \land θ(o_1) \neq \phi'
       \end{aligned}\right\}.
     \end{equation}
     This seems incorrect: if $θ = ∅$, then it belongs, even though it satisfies $θ(o_1) = ∅$.
 
-    The relations that are obs-compatible with $C^⊆ ∩ Θ$ are the ones that, for $(o_1, o_2, o_3)$, include two $\phi$ and one $¬\phi$, the one that equals all $\phi$, and the one that assigns $o_1$ and $o_3$ to $¬\phi$ and $o_2$ to $\phi$.
+    The relations that are obs-compatible with $C^⊆ ∩ Θ$ are the ones that, for $(o_1, o_2, o_3)$, include two $\phi$ and one $\phi'$, the one that equals all $\phi$, and the one that assigns $o_1$ and $o_3$ to $\phi'$ and $o_2$ to $\phi$.
 
-    It follows that the relations that are obs-compatible with $C^⊆ ∩ Θ$ and that are in $C^⊆ ∩ Θ$ are the ones that, for $(o_1, o_2, o_3)$, include two $\phi$ and one $¬\phi$; and the relations that are obs-compatible with $C^⊆ ∩ Θ$ and that are not in $C^⊆ ∩ Θ$ are the one that equals all $\phi$ and the one that assign $o_1$ and $o_3$ to $∅$ and $o_2$ to $\phi$.
+    It follows that the relations that are obs-compatible with $C^⊆ ∩ Θ$ and that are in $C^⊆ ∩ Θ$ are the ones that, for $(o_1, o_2, o_3)$, include two $\phi$ and one $\phi'$; and the relations that are obs-compatible with $C^⊆ ∩ Θ$ and that are not in $C^⊆ ∩ Θ$ are the one that equals all $\phi$ and the one that assign $o_1$ and $o_3$ to $∅$ and $o_2$ to $\phi$.
 
     Pick any $g ∈ P^{(I × \allhists) \setminus R}$ and define ${\allleadstog} = \set{(∅, i, \phi), ((a), i, \phi), ((b), i, \phi)} ∪ g$.
     This relation is obs-compatible with $C^⊆ ∩ Θ$, but ${\allleadstog} \notin C$.
