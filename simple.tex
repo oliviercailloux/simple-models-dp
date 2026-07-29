@@ -288,16 +288,16 @@ the prior required must be at least as strong as claiming that if some observabl
 \subsection{Which prior?}
 Given $\allleadstogo$ and $C$, say that $C$ is
 \begin{description}[font=\normalfont]
-  \item[Continuously Observably False in $\allleadstogo$ ($\COF(\allleadstogo)$)] iff $∀θ ∈ Θ ∩ \powerset{\allleadstogo}, ∃θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ' ∉ C^⊆$;
+  \item[Persistently Observably False in $\allleadstogo$ ($\POF(\allleadstogo)$)] iff $∀θ ∈ Θ ∩ \powerset{\allleadstogo}, ∃θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ' ∉ C^⊆$;
   \item[Observably False (OF) in $\allleadstogo$ ($\OF(\allleadstogo)$)] iff $[∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ C^⊆]$, equivalently, $Θ ∩ \powerset{\allleadstogo} \nsubseteq C^⊆$;
   \item[False in $\allleadstogo$ ($\F(\allleadstogo)$)] iff $\allleadstogo ∉ C$.
 \end{description}
 We also say that $C$ is \emph{rejectable} iff $\OF(\allleadstoo)$.
 
-Note that $∀C, \allleadstogo: \COF(\allleadstogo) ⇒ \OF(\allleadstogo) ⇒ \F(\allleadstogo)$ (\cref{th:ex-post} proves the second implication).
-$C$ is said to suffer visibility issues in $\allleadstogo$ iff $¬\COF(\allleadstogo) ∧ \OF(\allleadstogo)$, which happens when some prefix hides the falsity of $C$ even though its falsity is observable when no prefix is involved.
-$C$ suffers visibility issues iff $∃\allleadstogo \suchthat ¬\COF(\allleadstogo) ∧ \OF(\allleadstogo)$.
-$C$ suffers no visibility issues in $\allleadstogo$ iff $\OF(\allleadstogo) ⇒ \COF(\allleadstogo)$, equivalently, iff $\OF(\allleadstogo) ⇔ \COF(\allleadstogo)$, and suffers no visibility issues iff $∀\allleadstogo: \OF(\allleadstogo) ⇒ \COF(\allleadstogo)$.
+Note that $∀C, \allleadstogo: \POF(\allleadstogo) ⇒ \OF(\allleadstogo) ⇒ \F(\allleadstogo)$ (\cref{th:ex-post} proves the second implication).
+$C$ is said to suffer visibility issues in $\allleadstogo$ iff $¬\POF(\allleadstogo) ∧ \OF(\allleadstogo)$, which happens when some prefix hides the falsity of $C$ even though its falsity is observable when no prefix is involved.
+$C$ suffers visibility issues iff $∃\allleadstogo \suchthat ¬\POF(\allleadstogo) ∧ \OF(\allleadstogo)$.
+$C$ suffers no visibility issues in $\allleadstogo$ iff $\OF(\allleadstogo) ⇒ \POF(\allleadstogo)$, equivalently, iff $\OF(\allleadstogo) ⇔ \POF(\allleadstogo)$, and suffers no visibility issues iff $∀\allleadstogo: \OF(\allleadstogo) ⇒ \POF(\allleadstogo)$.
 
 \begin{remark}
   \label{rk:dual}
@@ -310,31 +310,31 @@ We say that $C$ is \emph{falsifiable} iff $C \neq {\allleadstos} \land
 \F(\allleadstogo) ⇒ \OF(\allleadstogo)$.
 
 According to \cref{th:noGeneral}, the prior must depend on the claim.
-One such is $C$-scrutiny, which mandates that $¬\OF(\allleadstoo) ∨ (¬\COF(\allleadstoo) ∧ \OF(\allleadstoo))$.
-This is technically equivalent to mandating $¬\COF(\allleadstoo)$.
+One such is $C$-scrutiny, which mandates that $¬\OF(\allleadstoo) ∨ (¬\POF(\allleadstoo) ∧ \OF(\allleadstoo))$.
+This is technically equivalent to mandating $¬\POF(\allleadstoo)$.
 
 \begin{remark}
   Another way to describe $C$-scrutiny is that
-  if the world is observably out of $C$, there is some prefix observation that hides this fact (formally: $\OF(\allleadstoo) ⇒ \OF(\allleadstoo) ∧ ¬\COF(\allleadstoo)$).
+  if the world is observably out of $C$, there is some prefix observation that hides this fact (formally: $\OF(\allleadstoo) ⇒ \OF(\allleadstoo) ∧ ¬\POF(\allleadstoo)$).
   
   Equivalently, 
-  if $C$ is still observably falsifiable after any amount of observation, then no feasible observation would falsify it ($\COF(\allleadstoo) ⇒ ¬\OF(\allleadstoo)$).
+  if $C$ is still observably falsifiable after any amount of observation, then no feasible observation would falsify it ($\POF(\allleadstoo) ⇒ ¬\OF(\allleadstoo)$).
   
   This corresponds to the prior $D 
   = \set{\allleadstoo \suchthat ∃θ ∈ Θ ∩ \powerset{\allleadstoo} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstoo}: θ' ∈ C^⊆}
   $.
 
-  Assuming, as the prior does, $¬\COF(\allleadstoo)$, leaves two possibilities: either there are visibility issues ($\OF(\allleadstoo) ∧ ¬\COF(\allleadstoo)$), or the claim is not observably false (thus is true, or false but inobservably so).
+  Assuming, as the prior does, $¬\POF(\allleadstoo)$, leaves two possibilities: either there are visibility issues ($\OF(\allleadstoo) ∧ ¬\POF(\allleadstoo)$), or the claim is not observably false (thus is true, or false but inobservably so).
 
   When considering a claim $C$ with no visibility issues, this prior states $¬\OF(\allleadstoo)$.
 
-  The reason for adopting the prior $¬\COF(\allleadstoo)$ instead of $¬\OF(\allleadstoo)$ is illustrated with
-  $C_1$ is $(a) \ileadsto φ ∧ (b) \ileadsto φ$ for a given $i$: in some world (for example, where $(a) \ileadstog φ$ even though $(b) \nileadstog φ$), $¬\COF(\allleadstoo) ∧ \OF(\allleadstoo)$, thus we cannot assume that non-observation of falsification implies not OF, because it might also be due to observing that $(a) \ileadstog φ$.
-  It also applies to $C_2 = \set{\allleadstoo \suchthat ∀i: (b) \ileadsto φ ∧ (a) \ileadsto[j] φ}$ for a given $j$, which in a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (b) \ileadstog φ$ is $¬\COF(\allleadstogo)$ (consider the prefix $θ = \set{(b) \ileadstog[j] φ}$) and $\OF(\allleadstogo)$.
+  The reason for adopting the prior $¬\POF(\allleadstoo)$ instead of $¬\OF(\allleadstoo)$ is illustrated with
+  $C_1$ is $(a) \ileadsto φ ∧ (b) \ileadsto φ$ for a given $i$: in some world (for example, where $(a) \ileadstog φ$ even though $(b) \nileadstog φ$), $¬\POF(\allleadstoo) ∧ \OF(\allleadstoo)$, thus we cannot assume that non-observation of falsification implies not OF, because it might also be due to observing that $(a) \ileadstog φ$.
+  It also applies to $C_2 = \set{\allleadstoo \suchthat ∀i: (b) \ileadsto φ ∧ (a) \ileadsto[j] φ}$ for a given $j$, which in a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (b) \ileadstog φ$ is $¬\POF(\allleadstogo)$ (consider the prefix $θ = \set{(b) \ileadstog[j] φ}$) and $\OF(\allleadstogo)$.
   (Note that if $C_2$ fails because, for some $i$, $(b) \nileadstog φ$,
   then $θ$ is not a hiding prefix observation and this is what we want.)
 
-  With this example (considering again a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (b) \ileadstog φ$), we see that formalizing $¬\COF$, independently of $\allleadstogo$,
+  With this example (considering again a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (b) \ileadstog φ$), we see that formalizing $¬\POF$, independently of $\allleadstogo$,
   as $∃θ ∈ Θ \suchthat ∀θ ⊆ θ' ∈ Θ: θ' ∈ C^⊆$,
   fails, as this prevents the prefix $θ = \set{(b) \ileadstog[j] φ}$ from bringing not COF.
   The condition $∃θ ∈ Θ \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstog}: θ' ∈ C^⊆$ is also not suitable, as it is always satisfied: pick any $θ ∈ Θ$ such that $θ ∉ \powerset{\allleadstog}$.
@@ -342,7 +342,7 @@ This is technically equivalent to mandating $¬\COF(\allleadstoo)$.
   The following alternative prior, which might be considered for its apparent proximity with the chosen one, is also inadequate:
   $∀\allleadstogo, θ ∈ Θ ∩ \powerset{\allleadstogo}, [∃θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ' ∉ C^⊆] ⇒ [θ ∈ C^⊆]$.
   Consider again $C_1$ and $\allleadstogo$ such that $(a) \ileadstog φ ∧ (b) \nileadstog φ$.
-  The chosen prior ($\COF(\allleadstogo) ⇒ ¬\OF(\allleadstogo)$) holds, as intuition commands, as the antecedent fails for the reason given above. The alternative prior however fails as $θ = \set{(b) \ileadstog φ}$ is completable only out of $C$.
+  The chosen prior ($\POF(\allleadstogo) ⇒ ¬\OF(\allleadstogo)$) holds, as intuition commands, as the antecedent fails for the reason given above. The alternative prior however fails as $θ = \set{(b) \ileadstog φ}$ is completable only out of $C$.
   
   Alternatively, we could apply the prior only for the claims which have no visibility issues, by stating the following.
   $[∀\allleadstogo, ¬[∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstogo}: θ' ∈ C^⊆]] ⇒ [∀\allleadstogo, ∀θ ∈ Θ ∩ \powerset{\allleadstogo}: θ ∈ C^⊆]$.
