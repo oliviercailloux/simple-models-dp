@@ -198,7 +198,7 @@ Define the increasing sets of paths as the set $\incr(\allhists) = \set{H \fsub 
 Note that $\incr(\allhists)$ includes both the empty set of paths $∅$ and the set of paths $\set{∅}$ containing only the empty path.
 A non empty set of paths $H ∈ \incr(\allhists)$ has a unique maximal element $\set{\max H} = \set{\hist ∈ H \suchthat ∀ \histp ∈ H: \histp ⊆ \hist}$.
 A non empty set of paths $H ∈ \incr(\allhists)$ contains all its prefixes (meaning, $∀ \hist ∈ H: \set{\histp ⊆ \hist} ⊆ H$) iff $H = \intvl{\max H}$.
-Let $\finite(\incr(\allhists)^I)$ denote the functions $f: I \mapsto \incr(\allhists)$ with finite support, thus, satisfying $\card{f^{-1}(\incr(\allhists) ∖ ∅)} ∈ \N$.
+Let $\finite(\incr(\allhists)^I)$ denote the functions $f: I ↦ \incr(\allhists)$ with finite support, thus, satisfying $\card{f^{-1}(\incr(\allhists) ∖ ∅)} ∈ \N$.
 An element $Q ∈ \allpriobss$ \commentOC{previously denoted $O$ and called a priori observation} is called a query.
 \commentOC[Note that $\incr(\allhists)^I$ and $\allpriobss$ are downwards closed, meaning that $∀ O ∈ \incr(\allhists)^I: \set{O' ⊆ O} ⊆ \incr(\allhists)^I$ and $∀ O ∈ \allpriobss: \set{O' ⊆ O} ⊆ \allpriobss$.]{To be deleted.}
 
@@ -207,7 +207,7 @@ An observation associates to a query an element of $P$ per queried element, thus
 In other words, an observation $θ ∈ Θ$ is a right unique finite subset of $(I × \allhists) × P$ such that $∀ i ∈ I, (i, \hist, p), (i, \histp, q) ∈ θ: \card{\hist} ≤ \card{\hist'} ⇒ \hist ⊆ \hist'$.
 \commentClaude{As stated, this condition only constrains pairs of \emph{distinct} queried histories $\hist≠\histp$ for the same $i$ to be prefix-comparable; it says nothing preventing $(i,\hist,p)$ and $(i,\hist,q)$ from both belonging to $θ$ with $p≠ q$ (taking $\histp=\hist$ trivially satisfies the displayed implication regardless of $p,q$). So the displayed formula alone does not entail right-uniqueness of $θ$, contrary to what "is a right unique ... subset ... such that [this formula]" suggests. If right-uniqueness is meant as a separate, independently assumed condition (with the displayed formula only adding the chain/nestedness requirement), that should be stated explicitly.}
 Given an observation $θ$, let $θ^{-1}(P) ∈ \allpriobss$ denote the queried elements in $θ$, which can also be considered as $θ^{-1}(P) ⊆ I × \allhists$, the pairs $(i, \hist)$ in $θ$.
-Similarly, we can view an observation $θ$ as a function $θ: I \mapsto ∪_{H ∈ \incr(\allhists)} P^H$ and thus $Θ = \finite((∪_{H ∈ \incr(\allhists)} P^H)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
+Similarly, we can view an observation $θ$ as a function $θ: I ↦ ∪_{H ∈ \incr(\allhists)} P^H$ and thus $Θ = \finite((∪_{H ∈ \incr(\allhists)} P^H)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
 \commentOC[Note that $(∪_{H ∈ \max \incr(\allhists)}P^H)^I$ is the set of functions that associate to each $I$ a maximal increasing sequence of paths, together with values from $P$.]{To be deleted.}
 
 \commentOC[Let also $\max\incr(\allhists) = \set{A ∈ \incr(\allhists) \suchthat ∄ A' ∈ \incr(\allhists) \suchthat A \subset A'}$ being set equal to $\set{A ∈ \incr(\allhists) ∩ (\allhists)^\Z}$ denote the maximal elements of $\incr(\allhists)$, in the sense of containing sequences that are not a subsequence of another sequence; equivalently, containing those sequences whose sequence of cardinals of their elements equals $\Z$.]{To be deleted.}
@@ -223,14 +223,14 @@ The set $Θ ∩ C^⊆$ is the set of observations compatible with the claim.
 This set is downwards-closed, as both $Θ$ and $C^⊆$ are.
 
 \commentOC[Let the \emph{simple a priori observations} be defined as $∪_{J ⊆_\finite I} (\allhists)^J$, equivalently, as the right-unique finite relations over $I × \allhists$.
-  Given a simple a priori observation $O: J \mapsto \allhists$, we can define the a priori observation $O_O = \set{(i, \hist) ∈ J × \allhists \suchthat ∀ i ∈ J: \hist ⊆ O(i)}$ as the completion of $O$ to all sub-paths in $O$.]{To be deleted.}
+  Given a simple a priori observation $O: J ↦ \allhists$, we can define the a priori observation $O_O = \set{(i, \hist) ∈ J × \allhists \suchthat ∀ i ∈ J: \hist ⊆ O(i)}$ as the completion of $O$ to all sub-paths in $O$.]{To be deleted.}
 
 A subset of triples $T ⊆ \allhists × I × P$ is unobservable iff it cannot be observed together, that is, iff $T ∉ Θ$. If $\card{T} ∉ ℕ$, $T$ is unobservable. A finite subset of triples $T$ is unobservable iff some subset $T' ⊆ T$ with $\card{T'} = 2$ is unobservable (unobservability comes from a given individual’s observations, for that one, the paths are not increasing, and as the subset relation is transitive, two elements suffice to determine this fact).
 
 It is important to realize that $Θ$ is the set of \emph{a priori} possible observations, meaning, those that are conceivable, possibly counter-factually. The set of observations that can result from actually observing the behavior ${\allleadsto}$ is 
 $θ ∩ \powerset{\allleadsto} = \set*{\restr{{\allleadsto}}{Q} \suchthat Q ∈ \allpriobss}$.
 Such an observation $θ ∈ Θ ∩ \powerset{\allleadsto}$ is called a feasible observation.
-Given a right unique $τ ⊆ (\allhists × I) × P$, we let $\mathop{\uparrow} τ = \set{{\allleadstog} ∈ \allleadstos \suchthat τ ⊆ {\allleadstog}}$ denote the set of “leads to” relations that complete $τ$ (thus $\mathop{\uparrow} ∅ = {\allleadstos}$).
+Given a right unique $τ ⊆ (\allhists × I) × P$, we let $\mathop{↑} τ = \set{{\allleadstog} ∈ \allleadstos \suchthat τ ⊆ {\allleadstog}}$ denote the set of “leads to” relations that complete $τ$ (thus $\mathop{↑} ∅ = {\allleadstos}$).
 
 \subsection{Verifiability}
 Given an exposure protocol $(I, \allargs, {\allleadsto})$, we say that a claim $C$ \emph{holds} iff ${\allleadsto} ∈ C$. We are interested in criteria to determine whether a claim holds.
@@ -509,8 +509,8 @@ Thus, our study should focus on those claims that satisfy F implies COF.
 
 \subsection{More properties}
 \begin{definition}[Anonymity]
-  Given a permutation $σ$ over $I$ and any ${\allleadstog} ∈ \allleadstos$, let ${\allleadstog} \circ σ$ denote $\set{(i, \hist, φ) \suchthat (σ(i), \hist, φ) ∈ {\allleadstog}}$ and let $C \circ σ$ denote $\set{{\allleadstog} \circ σ \suchthat {\allleadstog} ∈ C}$.
-  A claim $C$ is \emph{anonymous} iff $∀ σ: C = C \circ σ$.
+  Given a permutation $σ$ over $I$ and any ${\allleadstog} ∈ \allleadstos$, let ${\allleadstog} ∘ σ$ denote $\set{(i, \hist, φ) \suchthat (σ(i), \hist, φ) ∈ {\allleadstog}}$ and let $C ∘ σ$ denote $\set{{\allleadstog} ∘ σ \suchthat {\allleadstog} ∈ C}$.
+  A claim $C$ is \emph{anonymous} iff $∀ σ: C = C ∘ σ$.
 \end{definition}
 \Cref{ex:anon} illustrates.
 
@@ -1068,15 +1068,15 @@ This (to be proven) captures the claim “there is no decisive argument for $i$�
   \label{th:dnf}
   Given any $E$
   and a cover $\mathcal{S}$ of $E$ (a set of non-empty sets whose union contains $E$) 
-  such that $∀ S ∈ \mathcal{S}, ∃ f_S ⊆ (\allhists × I) × P \suchthat S = \mathop{\uparrow} f_S$ with $f_S$ right unique,
+  such that $∀ S ∈ \mathcal{S}, ∃ f_S ⊆ (\allhists × I) × P \suchthat S = \mathop{↑} f_S$ with $f_S$ right unique,
   given any $f ⊆ (\allhists × I) × P$: 
   $f ∉ E^⊆$ 
   is equivalent to 
   $∀ S ∈ \mathcal{S}, ∃ t ∈ f \suchthat \set{t} ∉ S^⊆$.
 \end{theorem}
 \begin{proof}
-  Pick any $S ∈ \mathcal{S}$ and $f_S \suchthat S = \mathop{\uparrow} f_S$.
-  Given any $p ∈ f_S$, define $S_p = \mathop{\uparrow} \set{p}$, obtaining $S = ⋂_{p ∈ f_S} S_p$.
+  Pick any $S ∈ \mathcal{S}$ and $f_S \suchthat S = \mathop{↑} f_S$.
+  Given any $p ∈ f_S$, define $S_p = \mathop{↑} \set{p}$, obtaining $S = ⋂_{p ∈ f_S} S_p$.
   Thus $f ∪ f_S$ is not completable to a function (if $f ∪ f_S$ is completable to a function, that function is in $S$, thus in $E$, thus $f$ compatible with $E$).
   It follows that $f ∪ f_S$ is not right unique,
   thus, that some $t ∈ f$ contradicts $f_S$.
@@ -1229,7 +1229,7 @@ The following example presents a situation where non rejection is due to finiten
 
   \begin{example}
     \label{ex:anon}
-    Given $\ar$ and $φ$, the claim $\ar \ileadstog φ$ is not anonymous iff $\card{I} ≥ 2$. Indeed, pick any $j ≠ i$ and define $σ(i) = j$, $σ(j) = i$ and $∀ k ∈ I ∖ \set{i, j}: σ(k) = k$, then $C = \set{{\allleadstog} \suchthat {\allleadstog}(i, \ar) = φ}$, which contains in particular ${\allleadsto}$ defined as $∀ \hist: [∀ k ∈ I ∖ \set{j}, {\allleadsto}(k, \hist) = φ ∧ {\allleadsto}(j, \hist) = φ'$; while $C \circ σ = \set{{\allleadstog} \suchthat {\allleadstog}(j, \ar) = φ}$ which does not contain ${\allleadsto}$.
+    Given $\ar$ and $φ$, the claim $\ar \ileadstog φ$ is not anonymous iff $\card{I} ≥ 2$. Indeed, pick any $j ≠ i$ and define $σ(i) = j$, $σ(j) = i$ and $∀ k ∈ I ∖ \set{i, j}: σ(k) = k$, then $C = \set{{\allleadstog} \suchthat {\allleadstog}(i, \ar) = φ}$, which contains in particular ${\allleadsto}$ defined as $∀ \hist: [∀ k ∈ I ∖ \set{j}, {\allleadsto}(k, \hist) = φ ∧ {\allleadsto}(j, \hist) = φ'$; while $C ∘ σ = \set{{\allleadstog} \suchthat {\allleadstog}(j, \ar) = φ}$ which does not contain ${\allleadsto}$.
   \end{example}
 
   \begin{example}
@@ -1245,9 +1245,9 @@ The following example presents a situation where non rejection is due to finiten
     \label{ex:falsAnonIfBig}
     Consider $I = \set{i_1, i_2}$ and $\ar_1 ≠ \ar_2 ∈ \allargs$.
     Given $p_0, p, p'_0, p' ∈ P$,
-    define ${\allleadstog^{i_1 \mapsto (p_0, p); i_2 \mapsto (p'_0, p')}}$ as $∅ \ileadstog[i_1] p_0 ∧ ∅ \ileadstog[i_2] p'_0 ∧ ∀ \hist ∈ \allhists ∖ \set{∅}: \hist \ileadstog[i_1] p ∧ \hist \ileadstog[i_2] p'$.
+    define ${\allleadstog^{i_1 ↦ (p_0, p); i_2 ↦ (p'_0, p')}}$ as $∅ \ileadstog[i_1] p_0 ∧ ∅ \ileadstog[i_2] p'_0 ∧ ∀ \hist ∈ \allhists ∖ \set{∅}: \hist \ileadstog[i_1] p ∧ \hist \ileadstog[i_2] p'$.
 
-    The claim $C = \set{{\allleadstog^{i_1 \mapsto (p_0, p); i_2 \mapsto (p'_0, p')}} \suchthat p_0, p, p'_0, p' ∈ \set{φ, φ'}}$ is not falsifiable.
+    The claim $C = \set{{\allleadstog^{i_1 ↦ (p_0, p); i_2 ↦ (p'_0, p')}} \suchthat p_0, p, p'_0, p' ∈ \set{φ, φ'}}$ is not falsifiable.
     Consider ${\allleadstog}$ defined as, $∀ i ∈ I$, $\hist \ileadstog φ$ iff $\hist = ∅ ∨ \hist_1 = \ar_1$ and $\hist \ileadstog φ'$ otherwise.
     We have ${\allleadstog} ∉ C$.
 
@@ -1258,13 +1258,13 @@ The following example presents a situation where non rejection is due to finiten
   \begin{example}
     Consider $I = \set{i_{p_0, p} \suchthat p_0, p ∈ \set{φ, φ'}}$ (thus $\card{I} = 4$).
     Given $p_0, p ∈ P$,
-    define $R^{(p_0, p)} = R^{∅ \mapsto p_0; p}: \allhists → P$ as $R(∅) = p_0 ∧ ∀ \hist ∈ \allhists ∖ \set{∅}: R(\hist) = p$.
+    define $R^{(p_0, p)} = R^{∅ ↦ p_0; p}: \allhists → P$ as $R(∅) = p_0 ∧ ∀ \hist ∈ \allhists ∖ \set{∅}: R(\hist) = p$.
 
-    Define ${\allleadsto}$ as $∀ p_0, p ∈ \set{φ, φ'}: {\ileadsto[i_{p_0, p}]} = R^{∅ \mapsto p_0; p}$.
+    Define ${\allleadsto}$ as $∀ p_0, p ∈ \set{φ, φ'}: {\ileadsto[i_{p_0, p}]} = R^{∅ ↦ p_0; p}$.
 
     Given $f: I → \set{φ, φ'}^2$,
     define ${\allleadstog^f}$ as $∀ i ∈ I: {\allleadstog^f_i} = R^{f(i)}$.
-    Note that any $f ∈ (\set{φ, φ'}^2)^I$ can be seen as a permutation $σ$ over $I$ and that ${\allleadstog^f} = {\allleadsto} \circ σ$.
+    Note that any $f ∈ (\set{φ, φ'}^2)^I$ can be seen as a permutation $σ$ over $I$ and that ${\allleadstog^f} = {\allleadsto} ∘ σ$.
 
     The claim $C = \set{{\allleadstog^f} \suchthat f ∈ (\set{φ, φ'}^2)^I}$ is falsifiable: consider any ${\allleadstog}$ observably compatible with $C$; if there is $\hist^1, \hist^2, \hist^3 ∈ \allhists ∖ \set{∅}$ and $i_1 ≠ i_2 ≠ i_3 ≠ i_1 ∈ I$ with $∀ k ∈ \intvl{1, 3}: \hist^k \ileadstog[i_k] φ$, then ${\allleadstog}$ is not observably compatible with $C$, so there must be at most 2 individuals mapping some non empty path to $φ$ (thus at least 2 mapping all non empty paths to $φ'$) and for the same reason, at least 2 individuals mapping all non empty paths to $φ$; thus (together with noting that two individuals mapping every paths to $φ$ is not observably compatible with $C$ and adding the missing bits), ${\allleadstog} ∈ C$.
   \end{example}
@@ -1272,10 +1272,10 @@ The following example presents a situation where non rejection is due to finiten
   \begin{example}
     Consider $I = ∪_{p_0, p ∈ \set{φ, φ'}} I_{p_0, p}$, with each $I_{p_0, p}$ infinite, and $\ar_1 ≠ \ar_2 ∈ \allargs$.
     Given $p_0, p ∈ P$,
-    define $R^{(p_0, p)} = R^{∅ \mapsto p_0; p}: \allhists → P$ as $R(∅) = p_0 ∧ ∀ \hist ∈ \allhists ∖ \set{∅}: R(\hist) = p$.
-    Define ${\allleadsto}$ as $∀ p_0, p ∈ \set{φ, φ'}, i ∈ I_{p_0, p}: {\ileadsto} = R^{∅ \mapsto p_0; p}$.
+    define $R^{(p_0, p)} = R^{∅ ↦ p_0; p}: \allhists → P$ as $R(∅) = p_0 ∧ ∀ \hist ∈ \allhists ∖ \set{∅}: R(\hist) = p$.
+    Define ${\allleadsto}$ as $∀ p_0, p ∈ \set{φ, φ'}, i ∈ I_{p_0, p}: {\ileadsto} = R^{∅ ↦ p_0; p}$.
 
-    The claim $C = \set{{\allleadsto} \circ σ \suchthat σ: I ↔ I}$ is not falsifiable:
+    The claim $C = \set{{\allleadsto} ∘ σ \suchthat σ: I ↔ I}$ is not falsifiable:
     consider ${\allleadstog}$ defined as, $∀ i ∈ I$, $\hist \ileadstog φ$ iff $\hist = ∅ ∨ \hist_1 = \ar_1$ and $\hist \ileadstog φ'$ otherwise; we have ${\allleadstog} ∉ C$
     but any $θ ∈ Θ, θ ⊆ {\allleadstog}$ satisfies $θ ∈ C^⊆$.
 
@@ -1426,7 +1426,7 @@ The following example presents a situation where non rejection is due to finiten
   Define the \emph{suffix} relation $R = \set{(\hist, \histp) ∈ \allhists × \allhists \suchthat \histp = (\hist, .)}$ as the (infinite) tree whose set of nodes is $\allhists$ and which links  argumentative paths to all of their direct suffixes.
   Note that a path in such a tree (an increasing sequence of elements in $\allhists$) corresponds to an argumentative path, that is, to an element of $\allhists$.
   
-  Any function ${\ileadstog}: \allhists \mapsto P$ can be considered as having this tree as a domain.
+  Any function ${\ileadstog}: \allhists ↦ P$ can be considered as having this tree as a domain.
   % Define a forest as an association of each $i ∈ I$ to such a tree.
   Any relation ${\allleadstog} ∈ \allleadstos$ can then be viewed as a forest associating each $i ∈ I$ to a tree labeled by the function ${\ileadstog}$ (see \cref{fig:forest}).
   
@@ -1494,15 +1494,15 @@ The following example presents a situation where non rejection is due to finiten
             }
           ;
           \begin{scope}[style=treelabel]
-            \path (root.east) node {\mapsto p};
-            \path (a.east) node {\mapsto p'};
-            \path (b.east) node {\mapsto p};
+            \path (root.east) node {↦ p};
+            \path (a.east) node {↦ p'};
+            \path (b.east) node {↦ p};
           \end{scope}
           \begin{scope}[style=bottomlabel]
-            \path (aa.east) node {\mapsto p'};
-            \path (ab.east) node {\mapsto p'};
-            \path (ba.east) node {\mapsto p'};
-            \path (bb.east) node {\mapsto p};
+            \path (aa.east) node {↦ p'};
+            \path (ab.east) node {↦ p'};
+            \path (ba.east) node {↦ p'};
+            \path (bb.east) node {↦ p};
           \end{scope}
         \end{tikzpicture}};
       \path[->] (all) edge node[midway, above] {$i_1$} (tree1.north);
@@ -1553,15 +1553,15 @@ The following example presents a situation where non rejection is due to finiten
             }
           ;
           \begin{scope}[style=treelabel]
-            \path (root.east) node {\mapsto p};
-            \path (a.east) node {\mapsto p};
-            \path (b.east) node {\mapsto p'};
+            \path (root.east) node {↦ p};
+            \path (a.east) node {↦ p};
+            \path (b.east) node {↦ p'};
           \end{scope}
           \begin{scope}[style=bottomlabel]
-            \path (aa.east) node {\mapsto p};
-            \path (ab.east) node {\mapsto p'};
-            \path (ba.east) node {\mapsto p'};
-            \path (bb.east) node {\mapsto p};
+            \path (aa.east) node {↦ p};
+            \path (ab.east) node {↦ p'};
+            \path (ba.east) node {↦ p'};
+            \path (bb.east) node {↦ p};
           \end{scope}
         \end{tikzpicture}};
       \path[->] (all) edge node[midway, above] {$i_2$} (tree2.north);
@@ -1624,7 +1624,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
     Pick any $p ∈ \set{P_i, i ∈ I}$.
     Pick any $i ∈ I$ such that $π({\allleadsto})(i) = p$.
     Define $σ$ as the permutation exchanging $i$ and $j$.
-    As $C$ holds, it contains $\allleadsto$, and by anonymity, it contains ${\allleadsto} \circ σ$. Observing that $π({\allleadsto} \circ σ)(j) = π({\allleadsto})(i) = p$, we obtain $p ∈ π(C)(j)$.
+    As $C$ holds, it contains $\allleadsto$, and by anonymity, it contains ${\allleadsto} ∘ σ$. Observing that $π({\allleadsto} ∘ σ)(j) = π({\allleadsto})(i) = p$, we obtain $p ∈ π(C)(j)$.
 
     It follows that for any claim $C$ that holds and is anonymous, if $∃ j ∈ I \suchthat π(C)(j) \ssub Q$ then $\set{P_i, i ∈ I} ⊆ π(C)(j) \ssub Q$ thus $\set{P_i, i ∈ I} \ssub Q$.
 
@@ -1669,7 +1669,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
     $\set{P_i, i ∈ I} \ssub \set{φ, φ'}$.
   \end{proof}
 
-  Define the claim $C^\text{HA} = \set{{\allleadsto} \circ σ \suchthat σ: I ⇔ I}$.
+  Define the claim $C^\text{HA} = \set{{\allleadsto} ∘ σ \suchthat σ: I ⇔ I}$.
   Under anonymity, requesting that a claim holds is the same as requesting that it includes $C^\text{HA}$.
   \begin{theorem}
     \label{th:claim_ha}
@@ -2192,7 +2192,7 @@ To recap, we now know that with $S = {\allleadsto}(I)$, when $R(S) ≠ P^{\allhi
 This includes all situations with finite behaviors ($\card{S} ∈ \Z$), thus includes all situations with finite $I$.
 Consider now situations such that $R({\allleadsto}(I)) = P^{\allhists}$.
 
-Define $I = P^\Z$ and ${\ileadsto} = i \circ \card$, so that $S = {\allleadsto}(I) = \set{l \circ \card ∈ P^{\allhists} \suchthat l ∈ P^\Z}$.
+Define $I = P^\Z$ and ${\ileadsto} = i ∘ \card$, so that $S = {\allleadsto}(I) = \set{l ∘ \card ∈ P^{\allhists} \suchthat l ∈ P^\Z}$.
 We have $R(S) = P^{\allhists}$.
 The function $f(\ar) ≠ f(\ar')$, for example, is not in $S$.
 
@@ -2225,7 +2225,7 @@ The function $f(\ar) ≠ f(\ar')$, for example, is not in $S$.
 
   Consider sets of same sizes $I'_f$ among the non observed individuals (meaning those in $I ∖ θ(P^{\allhists})$) and with corresponding types in ${\allleadstog}$ (so that $∀ f ∈ F, i ∈ I'_f: {\ileadstog} = f$).
   Define a bijection $σ$ that for each $f ∈ F$ bijects $I_f$ to $I'_f$ and that sends the elements of $I ∖ (∪_f I_f ∪ I'_f)$ to themselves.
-  The relation ${\allleadstog} \circ σ$ is in $C$ and is compatible with the observable.
+  The relation ${\allleadstog} ∘ σ$ is in $C$ and is compatible with the observable.
 \end{proof}
 
 \begin{theorem}
@@ -2241,10 +2241,10 @@ The function $f(\ar) ≠ f(\ar')$, for example, is not in $S$.
 
   If the first one holds, let us show that starting from $C^\text{HA}$ and integrating all relations that are not observably distinguishable, we obtain the trivial claim.
 
-  Consider any observable whatsoever, $O ∈ \allpriobss$, and let us show that for some bijection $σ$ over $I$, $O ⊆ ({\allleadsto} \circ σ)$.
+  Consider any observable whatsoever, $O ∈ \allpriobss$, and let us show that for some bijection $σ$ over $I$, $O ⊆ ({\allleadsto} ∘ σ)$.
 
   For each of the (finitely many) individuals that $O$ contains, we can find a different behavior $f_i$ that is in $\restr{{\allleadsto}(I)}{\intvl{\hist}}$, thus, with some $j_i ∈ I \suchthat {\allleadsto}(j_i) = f_i$, and that is compatible with what $O$ sees of $i$. We define $σ$ so that it maps each of those individuals $i$ to the individual $j_i$ with the corresponding behavior.
-  The resulting relation ${\allleadsto} \circ σ$ is compatible with the observable.
+  The resulting relation ${\allleadsto} ∘ σ$ is compatible with the observable.
 
   It follows that if the claim is not trivial, it is not falsifiable: pick any relation missing in the claim; it cannot be rejected by any observable.
 \end{proof}
@@ -2276,7 +2276,7 @@ The function $f(\ar) ≠ f(\ar')$, for example, is not in $S$.
   For each of the (finitely many) individuals that $θ$ contains, we can find a different behavior $f_i$ that is in $\restr{{\allleadsto}(I)}{\intvl{\hist}}$, thus, with some $j_i ∈ I \suchthat {\allleadsto}(j_i) = f_i$, and that is compatible with what $θ$ sees of $i$. 
   We define $σ$ so that it maps each of those individuals $i$ to the individual $j_i$ with the corresponding behavior.
 
-  The resulting relation ${\allleadsto} \circ σ$ is compatible with the observable.
+  The resulting relation ${\allleadsto} ∘ σ$ is compatible with the observable.
 \end{proof}
 
 \subsection{Indicativeness}
@@ -2357,7 +2357,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
 \subsection{Extensions}
   \begin{theorem}
     \label{th:struExt}
-    If $C$ is strongly unfalsifiable, then any wider claim $C' \supseteq C$ is strongly unfalsifiable.
+    If $C$ is strongly unfalsifiable, then any wider claim $C' ⊇ C$ is strongly unfalsifiable.
   \end{theorem}
   \begin{proof}
     $Θ ⊆ C^⊆ ⊆ {C'}^⊆$.
@@ -2618,13 +2618,13 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     We obtain that $∀ o ∈ R: {\allleadstog}(o) = f(o)$, therefore, ${\allleadstog} ∈ C$.
   \end{proof}
   \begin{conjecture}
-    Given $R ⊆ I × \allhists$, define ${\sim _R} ⊆ \allleadstos × \allleadstos$ as $f \sim _R f'$ iff $\restr{f}{R} = \restr{f'}{R}$. This is an equivalence relation.
-    Given $f ∈ \allleadstos$, define the equivalence class of $f$ for ${\sim _R}$ as ${\sim _R}(f) = \set{f' ∈ \allleadstos \suchthat f \sim _R f'} = \set{f' ∈ P^{(I × \allhists)} \suchthat \restr{f}{R} = \restr{f'}{R}}$.
+    Given $R ⊆ I × \allhists$, define ${∼ _R} ⊆ \allleadstos × \allleadstos$ as $f ∼ _R f'$ iff $\restr{f}{R} = \restr{f'}{R}$. This is an equivalence relation.
+    Given $f ∈ \allleadstos$, define the equivalence class of $f$ for ${∼ _R}$ as ${∼ _R}(f) = \set{f' ∈ \allleadstos \suchthat f ∼ _R f'} = \set{f' ∈ P^{(I × \allhists)} \suchthat \restr{f}{R} = \restr{f'}{R}}$.
 
     Given $R ⊆ I × \allhists$, define the a priori observable subsets of $R$ as $Z_R = \allpriobss ∩ \powerset{R}$.
 
     Consider $R ⊆ I × \allhists$, $F ⊆ P^R$ and $C = \set{f ∪ g \suchthat f ∈ F ∧ g ∈ P^{(I × \allhists) ∖ R}}$.
-    The claim $C$ is unfalsifiable iff $∃ {\allleadstog} ∈ \allleadstos \suchthat ⋂_{O ∈ Z_R} {\sim _O}(f) ∩ C = ∅$.
+    The claim $C$ is unfalsifiable iff $∃ {\allleadstog} ∈ \allleadstos \suchthat ⋂_{O ∈ Z_R} {∼ _O}(f) ∩ C = ∅$.
 
     % Given $k ∈ \Z$ and a family $(O_l)_{l ∈ \intvl{1, k}}$, consider $∃ f ∈ C \suchthat 
     Say that $R$ is coverable iff $∃ k ∈ \Z, (O_l)_{l ∈ \intvl{1, k}}, (o_l)_{l ∈ \intvl{1, k}} \suchthat
