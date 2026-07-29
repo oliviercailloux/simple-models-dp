@@ -60,8 +60,6 @@ The exposure protocol defines a set of argument and, importantly, how arguments 
 
 The deliberated judgment of a subject is defined as a function of the exposure protocol, as accepting every claims that resists every counter-arguments. The notion of resistance is itself defined according to the exposure protocol.
 
-\commentClaude{This informal characterization ("accepting every claim that resists every counter-argument", "resistance") does not obviously match the formal \Cref{def:decisive} given later, which characterizes $P_i$ via the existence of a "decisive argument" $\ar$ such that every history ending (in the last-two sense) with $\ar$ leads to $p$. Nothing in that definition is phrased in terms of a claim "resisting" anything, nor is "counter-argument" given a technical meaning anywhere. The connection between this introductory gloss and the actual formal apparatus should be made explicit, or the gloss should be adjusted to match.}
-
 Studying judgments resulting from exposure to arguments includes a difficulty that is not present with natural choice experiments: exposing an individual to arguments may change the individual’s stance, an effect that cannot be erased in order to submit the individual to an unrelated sequence of arguments. The observer thus cannot in general assume that multiple unrelated sequences of arguments can be tested on a given individual. This difficulty will be worked around by considering general theories of deliberated judgments, that apply to sets of individuals. This is methodologically similar to defining theories of how objects break. One can break a given (unrepairable) object only once, so such theories must apply to sets of objects if one wants to be able to test multiple ways of falsifying the theories.
 
 For conceptual clarity, I will focus on the case of a single binary decision to take, akin to a choice situation facing a bundle of two courses of action, exactly one of which must be adopted.
@@ -99,6 +97,7 @@ Let $\histend = \hist(\intvl{\max(1, \card{\hist} - 1), \card{\hist}})$ denote t
 
 Given $i ∈ I, p ∈ P, \ar ∈ \allargs$, define $\ar \ileadstost p$, pronounced “$a$ leads definitely $i$ to $p$”, iff $∀ \hist ∈ \allhists \suchthat \ar ∈ \histend: \hist \ileadsto p$.
 When $\ar \ileadstost p$, $\ar$ is said to be a decisive argument for $\prop$ from $i$’s point of view given the exposure protocol.
+Another interpretation of this definition is that $\ar$ then resists every counter-arguments, in the sense that no argument $\ar'$ given at the end of any sequence of arguments, in presence of $\ar$, leads the individual to $p' ≠ p$ (formally, $∄\ar' ∈ \allargs, \hist ∈ \allhists \suchthat \ar, \ar' ∈ \histend ∧ \hist \nileadsto p$).
 
 The deliberated choice of $i$ is then considered as the set of propositions supported by decisive arguments.
 \begin{definition}[Deliberated choice]
