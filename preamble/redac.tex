@@ -186,8 +186,6 @@
 %211D Double-Struck Capital R
 \newunicodechar{ℝ}{\mathbb{R}}
 \newunicodechar{ℤ}{\mathbb{Z}}
-%2191 Upwards Arrow
-\newunicodechar{↑}{\uparrow}
 %2194
 \newunicodechar{↔}{\leftrightarrow}
 %21A6 Rightwards Arrow From Bar
@@ -341,11 +339,13 @@
 \DeclareUnicodeCharacter{2026}{\ifmmode\dots\else\textellipsis\fi}
 %← Leftwards Arrow
 \DeclareUnicodeCharacter{2190}{\ifmmode\leftarrow\else\textleftarrow\fi}
-%→ is defined by default as \textrightarrow, which is invalid in math mode. Same thing for the three other commands. 
+%→ is defined by default as \textrightarrow, which is invalid in math mode. Same thing for other commands. 
 %→ Rightwards Arrow
 \DeclareUnicodeCharacter{2192}{\ifmmode\rightarrow\else\textrightarrow\fi}
 %→ Rightwards Double Arrow
 \DeclareUnicodeCharacter{21D2}{\Rightarrow}
+%↑ Upwards Arrow
+\DeclareUnicodeCharacter{2191}{\ifmmode\uparrow\else\textuparrow\fi}
 %Permits to really obtain a straight quote when typing a straight quote; potentially dangerous, see https://tex.stackexchange.com/a/521999, and prevents using double primes (x''). Better then use U+2032 for prime [as recommended in Unicode ® Technical Report #25 UNICODE SUPPORT FOR MATHEMATICS], U+2033 for double prime, U+2034 for triple prime and define the appropriate commands. But arguably that’s for purists.
 %\catcode`\'=\active
 %\DeclareUnicodeCharacter{0027}{\ifmmode^\prime\else\textquotesingle\fi}
