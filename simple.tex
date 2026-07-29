@@ -208,27 +208,27 @@ An observation associates to a query an element of $P$ per queried element, thus
 In other words, an observation $θ ∈ Θ$ is a right unique finite subset of $(I × \allhists) × P$ such that $∀ i ∈ I, (i, \hist, p), (i, \histp, q) ∈ θ: \card{\hist} ≤ \card{\hist'} \implies \hist \subseteq \hist'$.
 \commentClaude{As stated, this condition only constrains pairs of \emph{distinct} queried histories $\hist\ne\histp$ for the same $i$ to be prefix-comparable; it says nothing preventing $(i,\hist,p)$ and $(i,\hist,q)$ from both belonging to $θ$ with $p\ne q$ (taking $\histp=\hist$ trivially satisfies the displayed implication regardless of $p,q$). So the displayed formula alone does not entail right-uniqueness of $θ$, contrary to what "is a right unique ... subset ... such that [this formula]" suggests. If right-uniqueness is meant as a separate, independently assumed condition (with the displayed formula only adding the chain/nestedness requirement), that should be stated explicitly.}
 Given an observation $θ$, let $θ^{-1}(P) ∈ \allpriobss$ denote the queried elements in $θ$, which can also be considered as $θ^{-1}(P) \subseteq I × \allhists$, the pairs $(i, \hist)$ in $θ$.
-Similarly, we can view an observation $θ$ as a function $θ: I \mapsto ∪_{H ∈ \incr(\allhists)} P^H$ and thus $θ = \finite((∪_{H ∈ \incr(\allhists)} P^H)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
+Similarly, we can view an observation $θ$ as a function $θ: I \mapsto ∪_{H ∈ \incr(\allhists)} P^H$ and thus $Θ = \finite((∪_{H ∈ \incr(\allhists)} P^H)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
 \commentOC[Note that $(∪_{H ∈ \max \incr(\allhists)}P^H)^I$ is the set of functions that associate to each $I$ a maximal increasing sequence of paths, together with values from $P$.]{To be deleted.}
 
 \commentOC[Let also $\max\incr(\allhists) = \set{A ∈ \incr(\allhists) \suchthat \nexists A' ∈ \incr(\allhists) \suchthat A \subset A'}$ being set equal to $\set{A ∈ \incr(\allhists) ∩ (\allhists)^\Z}$ denote the maximal elements of $\incr(\allhists)$, in the sense of containing sequences that are not a subsequence of another sequence; equivalently, containing those sequences whose sequence of cardinals of their elements equals $\Z$.]{To be deleted.}
 
 We say that an observation $θ$ is compatible with a behavior ${\allleadstog} ∈ \allleadstos$ iff $θ \subseteq \powerset{\allleadstog}$, that is, $∀ (i, \hist, p) ∈ θ: (i, \hist, p) ∈ \powerset{\allleadstog}$.
 \commentClaude{$θ$ is a set of triples, while $\powerset{\allleadstog}$ (as defined just above) is a set of \emph{relations}, i.e.\ a set of sets of triples; so "$θ⊆\powerset{\allleadstog}$" and, spelled out, "$(i,\hist,p)∈\powerset{\allleadstog}$" both have a type mismatch (a single triple cannot be a member of a set of relations). The natural condition, matching the "compatible with a claim $C$" definition given two paragraphs below (which correctly uses "$θ∈∪_{⇝∈C}\powerset{⇝}$"), should be $θ∈\powerset{\allleadstog}$, i.e.\ $θ⊆{\allleadstog}$ directly (as sets of triples), dropping the extra $\powerset{}$ on the right-hand side.}
-Thus, given ${\allleadstog} ∈ \allleadstos$, the set $θ ∩ \powerset{\allleadstog}$ is the set of observations compatible with ${\allleadstog}$.
+Thus, given ${\allleadstog} ∈ \allleadstos$, the set $Θ ∩ \powerset{\allleadstog}$ is the set of observations compatible with ${\allleadstog}$.
 \commentClaude{Here "the set ... is the set of observations [plural]" strongly suggests the left operand should be $Θ$ (the whole space of a priori observations, itself a set of relations, hence a set commensurable with $\powerset{\allleadstog}$), not a single observation $θ$ (a set of triples): $θ∩\powerset{\allleadstog}$, with $θ$ as introduced above, is again a type mismatch. The same $θ/Θ$ mix-up recurs below ("$θ∩C^\subseteq$ is the set of observations compatible with the claim", "as both $θ$ and $C^\subseteq$ are" downwards-closed — a single observation cannot be "downwards-closed", only a family of observations can) and in the "feasible observation" paragraph further down, where the displayed equation "$θ∩\powerset{\allleadsto}=\ldots$" is immediately followed by "$θ∈Θ∩\powerset{\allleadsto}$", which only makes sense if the equation itself had $Θ$ (capital) on the left.}
 Similarly, an observation $θ$ is compatible with a claim $C$ iff
 $θ ∈ ∪_{{\allleadstog} ∈ C} \powerset{\allleadstog}$, equivalently, iff
 $θ ∈ C^\subseteq$.
-The set $θ ∩ C^\subseteq$ is the set of observations compatible with the claim.
-This set is downwards-closed, as both $θ$ and $C^\subseteq$ are.
+The set $Θ ∩ C^\subseteq$ is the set of observations compatible with the claim.
+This set is downwards-closed, as both $Θ$ and $C^\subseteq$ are.
 
 \commentOC[Let the \emph{simple a priori observations} be defined as $∪_{J \subseteq_\finite I} (\allhists)^J$, equivalently, as the right-unique finite relations over $I × \allhists$.
   Given a simple a priori observation $O: J \mapsto \allhists$, we can define the a priori observation $O_O = \set{(i, \hist) ∈ J × \allhists \suchthat ∀ i ∈ J: \hist \subseteq O(i)}$ as the completion of $O$ to all sub-paths in $O$.]{To be deleted.}
 
 A subset of triples $T ⊆ \allhists × I × P$ is unobservable iff it cannot be observed together, that is, iff $T ∉ Θ$. If $\card{T} ∉ ℕ$, $T$ is unobservable. A finite subset of triples $T$ is unobservable iff some subset $T' ⊆ T$ with $\card{T'} = 2$ is unobservable (unobservability comes from a given individual’s observations, for that one, the paths are not increasing, and as the subset relation is transitive, two elements suffice to determine this fact).
 
-It is important to realize that $θ$ is the set of \emph{a priori} possible observations, meaning, those that are conceivable, possibly counter-factually. The set of observations that can result from actually observing the behavior ${\allleadsto}$ is 
+It is important to realize that $Θ$ is the set of \emph{a priori} possible observations, meaning, those that are conceivable, possibly counter-factually. The set of observations that can result from actually observing the behavior ${\allleadsto}$ is 
 $θ ∩ \powerset{\allleadsto} = \set*{\restr{{\allleadsto}}{Q} \suchthat Q ∈ \allpriobss}$.
 Such an observation $θ ∈ Θ ∩ \powerset{\allleadsto}$ is called a feasible observation.
 Given a right unique $τ ⊆ (\allhists × I) × P$, we let $\mathop{\uparrow} τ = \set{{\allleadstog} ∈ \allleadstos \suchthat τ ⊆ {\allleadstog}}$ denote the set of “leads to” relations that complete $τ$ (thus $\mathop{\uparrow} ∅ = {\allleadstos}$).
@@ -1108,7 +1108,7 @@ This (to be proven) captures the claim “there is no decisive argument for $i$�
   In fact,
   $Θ ⊆ C^⊆$.
   Consider any $θ ∈ Θ$ and let us prove that $θ ∈ ∪_{{\allleadstog} ∈ C} \powerset{\allleadstog}$.
-  By definition of $θ$, $θ^{-1}(P)$ may not contain both $((\ar), i)$ and $((\ar'), i)$, thus letting $t$ denote one of these pairs not in $θ^{-1}(P)$ and defining $r = (t, \phi)$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} \land t ∈ {\allleadstog'}$. We have $θ ∈ \powerset{\allleadstog'}$ and ${\allleadstog'} ∈ C$.
+  By definition of $Θ$, $θ^{-1}(P)$ may not contain both $((\ar), i)$ and $((\ar'), i)$, thus letting $t$ denote one of these pairs not in $θ^{-1}(P)$ and defining $r = (t, \phi)$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} \land t ∈ {\allleadstog'}$. We have $θ ∈ \powerset{\allleadstog'}$ and ${\allleadstog'} ∈ C$.
 \end{example}
 \Cref{ex:disjR} shows a claim that is not rejectable, irrespective of the exposure protocol.
 In particular, the example applies when $C$ does not hold (that is, when ${\allleadsto} \notin C$). We conclude that a claim may fail to hold but still be not rejectable.
@@ -1133,14 +1133,14 @@ The following example presents a situation where non rejection is due to finiten
   Consider $\ar ∈ \allargs$.
   The claim $[∀ i: (\ar) \ileadstog \phi] \lor [∀ i: (\ar, \ar) \ileadstog \phi] \lor …$,
   thus, $C = \set{{\allleadstog} \suchthat ∃ n ∈ \Zp \suchthat ∀ i: (a)^n \ileadstog \phi}$,
-  is non rejectable: $θ ⊆ C^⊆$.
+  is non rejectable: $Θ ⊆ C^⊆$.
 
-  Given any $θ ∈ θ$, define $l = \max_{\hist \suchthat ∃ i ∈ I, p ∈ P \suchthat (i, \hist, p) ∈ θ} \card{\hist} + 1$ if $∃ p ∈ P \suchthat (i, \hist, p) ∈ θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have
+  Given any $θ ∈ Θ$, define $l = \max_{\hist \suchthat ∃ i ∈ I, p ∈ P \suchthat (i, \hist, p) ∈ θ} \card{\hist} + 1$ if $∃ p ∈ P \suchthat (i, \hist, p) ∈ θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have
   $θ ∈ \powerset{\allleadstog}$ and ${\allleadstog} ∈ C$, thus, $θ ∈ C^⊆$.
 \end{example}
 \begin{example}[Big disjunct unfals iff infinite]
   \label{ex:existsParticular}
-  Given any $\ar ∈ \allargs$ and an infinite $I$, the claim $∃ i \suchthat \ar \ileadstostg \phi$ is strongly unfalsifiable: any $θ ∈ θ$ only has finitely many $i$ in its triples, thus, some $i$ is not reached by $θ$, thus $θ ∈ C^⊆$.
+  Given any $\ar ∈ \allargs$ and an infinite $I$, the claim $∃ i \suchthat \ar \ileadstostg \phi$ is strongly unfalsifiable: any $θ ∈ Θ$ only has finitely many $i$ in its triples, thus, some $i$ is not reached by $θ$, thus $θ ∈ C^⊆$.
   If $I$ is finite, then the claim is falsifiable: if it is wrong, observe for each $i$ some adequate triple $(i, \hist_i, p ≠ \phi)$.
 \end{example}
 
@@ -1155,7 +1155,7 @@ The following example presents a situation where non rejection is due to finiten
   $(\phi, ¬\phi, ¬\phi)$.
 
   Indeed, if ${\ileadsto}$ satisfies this, then either it holds and by \cref{th:ex-post} it is not rejectable, or it associates this triplet to $(\phi, \phi, \phi)$ or
-  $(\phi, ¬\phi, ¬\phi)$ in which case, as $(\ar)$ and $(\ar')$ cannot be together in $θ$, any $θ ∈ θ$ with $θ ⊆ {\allleadsto}$ satisfy $θ ∈ C^⊆$.
+  $(\phi, ¬\phi, ¬\phi)$ in which case, as $(\ar)$ and $(\ar')$ cannot be together in $θ$, any $θ ∈ Θ$ with $θ ⊆ {\allleadsto}$ satisfy $θ ∈ C^⊆$.
 
   Conversely, if $C$ is not rejectable, then for any $θ_1$ containing $∅$ and $(\ar)$ and $θ_2$ containing $∅$ and $(\ar')$, with $θ_1, θ_2 ⊆ {\allleadsto}$, we have $θ_1, θ_2 ∈ C^⊆$, which requires that ${\ileadsto}$ associates $(∅, (\ar))$ to $(¬\phi, \phi)$, $(\phi, ¬\phi)$ or $(\phi, \phi)$ and $(∅, (\ar'))$ to $(¬\phi, \phi)$, $(\phi, \phi)$ or $(\phi, ¬\phi)$.
 \end{example}
@@ -1316,23 +1316,23 @@ The following example presents a situation where non rejection is due to finiten
     $C = \set{{\allleadstog} \suchthat \hist \ileadstog[j] \phi \land ∀ i: [(\ar) \ileadstog \phi \lor (\ar') \ileadstog \phi]}$ is not falsifiable but \cref{th:veryunfals} is not applicable.
     Observe that
     $C^\subseteq = \set{R ∈ I × \allhists × P \suchthat [(j, \hist) ∈ R^{-1}(P) \implies (j, \hist, \phi) ∈ R] \land ∀ i: [(i, (\ar)) ∈ R^{-1}(P) \land (i, (\ar')) ∈ R^{-1}(P)] \implies [(i, (\ar), \phi) ∈ R \land (i, (\ar'), \phi) ∈ R]}$ and
-    $C^\subseteq ∩ θ = \set{θ ∈ θ \suchthat (j, \hist) ∈ θ^{-1}(P) \implies (j, \hist, \phi) ∈ θ}$.
+    $C^\subseteq ∩ Θ = \set{θ ∈ Θ \suchthat (j, \hist) ∈ θ^{-1}(P) \implies (j, \hist, \phi) ∈ θ}$.
     % Pick any $\allleadstog$ satisfying $\hist \ileadstog[j] \phi$ and $∃ i \suchthat (\ar) \nileadstog \phi \land (\ar') \nileadstog \phi$.
-    % The definition of non-falsifiability applies: pick any $θ \subseteq {\allleadstog}$, we have $θ ∈ C^\subseteq$ as $(j, \hist, \phi)$ is compatible with $θ$ and the other condition excludes nothing in $θ$.
+    % The definition of non-falsifiability applies: pick any $θ \subseteq {\allleadstog}$, we have $θ ∈ C^\subseteq$ as $(j, \hist, \phi)$ is compatible with $θ$ and the other condition excludes nothing in $Θ$.
     % We can apply Thm 4 similarly: given any $O$, we have $\restr{\allleadstog}{O} ∈ C^\subseteq$.
     % We should be able to apply a corollary similarly.
-    The relations obs-compatible with $C^\subseteq ∩ θ$ are those satisfying $\hist \ileadstog[j] \phi$.
+    The relations obs-compatible with $C^\subseteq ∩ Θ$ are those satisfying $\hist \ileadstog[j] \phi$.
     We conclude that $C$ is not falsifiable as $C$ is smaller than that set.
   \end{example}
 
   \begin{example}[Come back]
     In \cref{ex:allParticular} we considered a given $\ar$ and $\phi$ and defined the falsifiable claim $C = \set{{\allleadstog} \suchthat ∀ i: \ar \ileadstostg \phi}$.
-    Observe that $C^\subseteq ∩ θ = \set{θ ∈ θ \suchthat ∀ \hist \suchthat \ar ∈ \histend: θ(i, \hist) = ∅ \lor θ(i, \hist) = \phi}$.
-    The relations obs-compatible with $C^\subseteq ∩ θ$ are exactly those in $C$.
+    Observe that $C^\subseteq ∩ Θ = \set{θ ∈ Θ \suchthat ∀ \hist \suchthat \ar ∈ \histend: θ(i, \hist) = ∅ \lor θ(i, \hist) = \phi}$.
+    The relations obs-compatible with $C^\subseteq ∩ Θ$ are exactly those in $C$.
 
     \Cref{ex:existsParticular} assumed an infinite $I$, in which case the claim $∃ i \suchthat \ar \ileadstostg \phi$ is not falsifiable.
-    Observe that $C^\subseteq ∩ θ = \set{θ ∈ θ \suchthat ∃ i \suchthat ∀ \hist \suchthat \ar ∈ \histend: θ(i, \hist) = ∅ \lor θ(i, \hist) = \phi}$.
-    Any relation ${\allleadstog}$ is obs-compatible with that set as $C^\subseteq ∩ θ = θ$: given any $θ ∈ θ$, there is an $i$ such that $∀ \hist: θ(i, \hist) = ∅$ as $θ$ must have a finite support.
+    Observe that $C^\subseteq ∩ Θ = \set{θ ∈ Θ \suchthat ∃ i \suchthat ∀ \hist \suchthat \ar ∈ \histend: θ(i, \hist) = ∅ \lor θ(i, \hist) = \phi}$.
+    Any relation ${\allleadstog}$ is obs-compatible with that set as $C^\subseteq ∩ Θ = Θ$: given any $θ ∈ Θ$, there is an $i$ such that $∀ \hist: θ(i, \hist) = ∅$ as $θ$ must have a finite support.
   \end{example}
 
   \begin{example}
@@ -1343,13 +1343,13 @@ The following example presents a situation where non rejection is due to finiten
     Given $q, q' ∈ P$, let ${\allleadstog^{q, q'}}$ be defined as $\hist \ileadstog^{q, q'} q$, $\histp \ileadstog^{q, q'} q'$ and $∀ (j, \histpp) ∈ (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j]^{q, q'} p$.
     Note that $C_\psi = \set{{\allleadstog^{p, p}}, {\allleadstog^{p, p'}}, {\allleadstog^{p', p}}, {\allleadstog^{p', p'}}}$.
 
-    Then, $C_\psi^⊆ ∩ θ =
-      \set{θ ∈ θ \suchthat θ(\hist, i) ∈ \set{∅, p, p'} \land θ(\histp, i) ∈ \set{∅, p, p'} \land ∀ (j, \histpp) ∈ (I × h) \setminus \set{(i, \hist), (i, \histp)}: θ(\histpp, j) ∈ \set{∅, p}}$.
-    % and we see that $C_\psi^⊆ ∩ θ =
-    % \set{θ ∈ θ \suchthat [θ(\hist, i) = θ(\histp, i) = ∅ \lor θ(\hist, i) ∈ \set{p, p'} \lor θ(\histp, i) ∈ \set{p, p'}] \land ∀ (j, \histpp) ∈ (I × h) \setminus \set{(i, \hist), (i, \histp)}: θ(\histpp, j) ∈ \set{∅, p}}$.
+    Then, $C_\psi^⊆ ∩ Θ =
+      \set{θ ∈ Θ \suchthat θ(\hist, i) ∈ \set{∅, p, p'} \land θ(\histp, i) ∈ \set{∅, p, p'} \land ∀ (j, \histpp) ∈ (I × h) \setminus \set{(i, \hist), (i, \histp)}: θ(\histpp, j) ∈ \set{∅, p}}$.
+    % and we see that $C_\psi^⊆ ∩ Θ =
+    % \set{θ ∈ Θ \suchthat [θ(\hist, i) = θ(\histp, i) = ∅ \lor θ(\hist, i) ∈ \set{p, p'} \lor θ(\histp, i) ∈ \set{p, p'}] \land ∀ (j, \histpp) ∈ (I × h) \setminus \set{(i, \hist), (i, \histp)}: θ(\histpp, j) ∈ \set{∅, p}}$.
 
     Any obs-compatible relation has to satisfy $∀ (j, \histpp) ∈ (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p$.
-    It also must satisfy ${\allleadstog}(\hist, i) ∈ \set{p, p'}$, for otherwise, with $θ = \set{(\hist, i, {\allleadstog}(\hist, i))}$, we get $({\allleadstog} ∩ θ) \notin C_\psi^⊆ ∩ θ$.
+    It also must satisfy ${\allleadstog}(\hist, i) ∈ \set{p, p'}$, for otherwise, with $θ = \set{(\hist, i, {\allleadstog}(\hist, i))}$, we get $({\allleadstog} ∩ θ) \notin C_\psi^⊆ ∩ Θ$.
     Similarly, it must satisfy ${\allleadstog}(\histp, i) ∈ \set{p, p'}$.
     % are $\set{{\allleadstog} ∈ \allleadstos \suchthat [{\allleadstog}(\hist, i) ∈ \set{p, p'} \lor {\allleadstog}(\histp, i) ∈ \set{p, p'}] \land ∀ (j, \histpp) ∈ (I × h) \setminus \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p}$, which, given $p \neq p^{\prime\prime} \neq p'$, contains ${\allleadstog^{p, p^{\prime\prime}}}$, contrary to $C_\psi$.
   \end{example}
@@ -1358,15 +1358,15 @@ The following example presents a situation where non rejection is due to finiten
     Consider any $i$, $\ar_1 ≠ \ar_2 ∈ \allargs$, $p, p' ∈ P$.
     The claim $C = \set{{\allleadstog} \suchthat (\ar_1) \ileadstog p \land (\ar_2) \ileadstog p'}$ is falsifiable.
 
-    We have $C^\subseteq ∩ θ = \set{θ \suchthat (θ((\ar_1), i) = ∅ \lor θ((\ar_1), i) = p) \land (θ((\ar_2), i) = ∅ \lor θ((\ar_2), i) = p')}$.
+    We have $C^\subseteq ∩ Θ = \set{θ \suchthat (θ((\ar_1), i) = ∅ \lor θ((\ar_1), i) = p) \land (θ((\ar_2), i) = ∅ \lor θ((\ar_2), i) = p')}$.
     The obs-compatible relations are $\set{{\allleadstog} \suchthat (\ar_1) \ileadstog p \land (\ar_2) \ileadstog p'}$.
   \end{example}
   \begin{example}
     \label{ex:consti2}
     Assume that $\card{I} ≥ 2$.
     Consider any $p, p' ∈ P$ and the constant functions ${\allleadstog^p}$ to $p$ and ${\allleadstog^{p'}}$ to $p'$ and the claim $C = \set{{\allleadstog^p}, {\allleadstog^{p'}}}$.
-    We have $C^⊆ ∩ θ = \set{θ \suchthat θ(θ^{-1}(P)) = \set{p} \lor θ(θ^{-1}(P)) = \set{p'}}$.
-    Consider any relation $\allleadstog$ that is obs-compatible with $C^⊆ ∩ θ$. Assume that for some $\hist, i$, $\hist \ileadstog p$. Then, pick any $j \neq i$, and observe that by obs-compatibility, for any $\hist'$, $\hist' \ileadstog[j] p$.
+    We have $C^⊆ ∩ Θ = \set{θ \suchthat θ(θ^{-1}(P)) = \set{p} \lor θ(θ^{-1}(P)) = \set{p'}}$.
+    Consider any relation $\allleadstog$ that is obs-compatible with $C^⊆ ∩ Θ$. Assume that for some $\hist, i$, $\hist \ileadstog p$. Then, pick any $j \neq i$, and observe that by obs-compatibility, for any $\hist'$, $\hist' \ileadstog[j] p$.
     It follows, still by obs-compatibility, that for any $\hist'$, $\hist' \ileadstog p$ (otherwise pick $θ$ including $(\hist', i)$ and any $(\hist^{\prime\prime}, j)$). Conclude that $\allleadstog$ is constant to $p$.
     It follows that the obs-compatible relations are $\set{{\allleadstog^p}, {\allleadstog^{p'}}}$, thus, $C$ is falsifiable.
   \end{example}
@@ -1375,13 +1375,13 @@ The following example presents a situation where non rejection is due to finiten
     Assume that $\card{I} = 1$.
     Consider any $p, p' ∈ P$ and the constant functions ${\allleadstog^p}$ to $p$ and ${\allleadstog^{p'}}$ to $p'$ and the claim $C = \set{{\allleadstog^p}, {\allleadstog^{p'}}}$.
     We have $C^⊆ ∩ θ = \set{θ \suchthat θ(θ^{-1}(P)) = \set{p} \lor θ(θ^{-1}(P)) = \set{p'}}$.
-    Consider any relation $\allleadstog$ that is obs-compatible with $C^⊆ ∩ θ$. Assume that for some $\hist, i$, $\hist \ileadstog p$. Observe that by obs-compatibility, $∅ \ileadstog p$.
+    Consider any relation $\allleadstog$ that is obs-compatible with $C^⊆ ∩ Θ$. Assume that for some $\hist, i$, $\hist \ileadstog p$. Observe that by obs-compatibility, $∅ \ileadstog p$.
     It follows, still by obs-compatibility, that for any $\hist'$, $\hist' \ileadstog p$ (otherwise pick $θ$ including $(\hist', i)$ and $(∅, i)$). Conclude that $\allleadstog$ is constant to $p$.
     It follows that the obs-compatible relations are $\set{{\allleadstog^p}, {\allleadstog^{p'}}}$, thus, $C$ is falsifiable.
   \end{example}
   \begin{example}
     \label{ex:constwout0}
-    Consider any $p, p' ∈ P$ and the claim $C = \set{{\allleadstog} \suchthat (∀ \hist \neq ∅, i ∈ I: \hist \ileadstog p) \lor (∀ \hist \neq ∅, i ∈ I: \hist \ileadstog p')}$. That claim is falsifiable iff $\card I ≥ 2$ or $\card \allargs = 1$. The proof if so is similar to \cref{ex:consti2}; otherwise, pick any $\ar ∈ \allargs$ and note that any relation satisfying $(a.*) \ileadstog p$ and $∀ b \neq a: (b.*) \ileadstog p'$ is obs-compatible with $C^⊆ ∩ θ$ but is not in $C$.
+    Consider any $p, p' ∈ P$ and the claim $C = \set{{\allleadstog} \suchthat (∀ \hist \neq ∅, i ∈ I: \hist \ileadstog p) \lor (∀ \hist \neq ∅, i ∈ I: \hist \ileadstog p')}$. That claim is falsifiable iff $\card I ≥ 2$ or $\card \allargs = 1$. The proof if so is similar to \cref{ex:consti2}; otherwise, pick any $\ar ∈ \allargs$ and note that any relation satisfying $(a.*) \ileadstog p$ and $∀ b \neq a: (b.*) \ileadstog p'$ is obs-compatible with $C^⊆ ∩ Θ$ but is not in $C$.
   \end{example}
   \begin{example}
     \label{ex:unfor}
@@ -1389,7 +1389,7 @@ The following example presents a situation where non rejection is due to finiten
     The claim $C = \set{{\allleadstog} \suchthat \hist \ileadstog p \lor \histp \ileadstog p'}$ is unfalsifiable.
 
     We have $C^⊆ ∩ θ = \set{θ \suchthat (θ(\hist, i) = ∅ \lor θ(\hist, i) = p) \lor (θ(\histp, i) = ∅ \lor θ(\histp, i) = p')}$.
-    Observe that any $θ ∈ θ$ satisfy $θ(\hist, i) = ∅ \lor θ(\histp, i) = ∅$, thus, $C^⊆ ∩ θ = θ$.
+    Observe that any $θ ∈ Θ$ satisfy $θ(\hist, i) = ∅ \lor θ(\histp, i) = ∅$, thus, $C^⊆ ∩ Θ = Θ$.
     It follows that the obs-compatible relations are $\allleadstos$, which is bigger than $C$.
   \end{example}
   \begin{example}
@@ -1397,30 +1397,30 @@ The following example presents a situation where non rejection is due to finiten
     The claim $C = \set{{\allleadstog} \suchthat (\ar) \ileadstog p \lor (\ar') \ileadstog p'}$ is unfalsifiable (per \cref{ex:unfor}).
 
     Now consider the smaller claim $C' = \set{{\allleadstog} \suchthat (\ar_1) \ileadstog p}$ (thus $C' \ssub C$).
-    It yields a smaller set ${C'}^⊆ ∩ θ = \set{θ \suchthat (θ((\ar_1), i) = ∅ \lor θ((\ar_1), i) = p)}$.
+    It yields a smaller set ${C'}^⊆ ∩ Θ = \set{θ \suchthat (θ((\ar_1), i) = ∅ \lor θ((\ar_1), i) = p)}$.
     The obs-compatible relations are the smaller set $\set{{\allleadstog} \suchthat (\ar_1) \ileadstog p}$.
     Thus, $C'$ is falsifiable.
 
     Note that any claim $C^{\prime\prime}$ bigger than $C$ is unfalsifiable as well, unless trivial:
-    from $C ⊆ C^{\prime\prime}$, we deduce $θ = C^⊆ ∩ θ ⊆ {C^{\prime\prime}}^⊆ ∩ θ$, thus ${C^{\prime\prime}}^⊆ ∩ θ = θ$ and the obs-compatible relations are $\allleadstos$, which equals $C^{\prime\prime}$ only if $C^{\prime\prime}$ is trivial.
+    from $C ⊆ C^{\prime\prime}$, we deduce $Θ = C^⊆ ∩ Θ ⊆ {C^{\prime\prime}}^⊆ ∩ Θ$, thus ${C^{\prime\prime}}^⊆ ∩ Θ = Θ$ and the obs-compatible relations are $\allleadstos$, which equals $C^{\prime\prime}$ only if $C^{\prime\prime}$ is trivial.
 
     Now consider the alternative smaller claim of \cref{ex:consti2}, $C^{(2)} = \set{{\allleadstog^p}, {\allleadstog^{p'}}}$ (thus $C^{(2)} \ssub C$).
-    It yields a smaller set ${C^{(2)}}^⊆ ∩ θ$.
+    It yields a smaller set ${C^{(2)}}^⊆ ∩ Θ$.
   \end{example}
   \begin{example}
     \label{ex:for}
     Consider any $i$ and $p, p' ∈ P$.
     The claim $C = \set{{\allleadstog} \suchthat (∀ \hist: \card{\hist} ∈ 2\Z \implies \hist \ileadstog p) \lor (∀ \hist: (\card{\hist} ∈ 2\Z + 1 \lor \hist = ∅) \implies \hist \ileadstog p')}$, namely, all paths of even lengths lead $i$ to $p$ OR all paths of odd lengths or empty lead $i$ to $p'$, is falsifiable.
 
-    Note that $C^⊆ ∩ θ = \set{θ ∈ θ \suchthat (∀ \hist: \card{\hist} ∈ 2\Z \implies θ(\hist) ∈ \set{∅, p}) \lor (∀ \hist: (\card{\hist} ∈ 2\Z + 1 \lor \hist = ∅) \implies θ(\hist) ∈ \set{∅, p'})}$.
+    Note that $C^⊆ ∩ Θ = \set{θ ∈ Θ \suchthat (∀ \hist: \card{\hist} ∈ 2\Z \implies θ(\hist) ∈ \set{∅, p}) \lor (∀ \hist: (\card{\hist} ∈ 2\Z + 1 \lor \hist = ∅) \implies θ(\hist) ∈ \set{∅, p'})}$.
     Consider any obs-compatible ${\allleadstog}$.
     Assume that $∃ \hist \suchthat \card{\hist} ∈ 2\Z \land \hist \nileadstog p$.
-    Pick $θ = \set{(∅, i, {\ileadstog}(∅)), (\hist, i, {\ileadstog}(\hist))}$. We have $({\allleadstog} ∩ θ) ∈ C^⊆ ∩ θ$, and ${\allleadstog} ∩ θ = θ$, and from $θ ∈ C^⊆ ∩ θ$ we obtain ${\ileadstog}(∅) = p'$.
+    Pick $θ = \set{(∅, i, {\ileadstog}(∅)), (\hist, i, {\ileadstog}(\hist))}$. We have $({\allleadstog} ∩ θ) ∈ C^⊆ ∩ Θ$, and ${\allleadstog} ∩ θ = θ$, and from $θ ∈ C^⊆ ∩ Θ$ we obtain ${\ileadstog}(∅) = p'$.
     Similarly, using $θ = \set{(∅, i, {\ileadstog}(∅)), (\histp, j, {\ileadstog[j]}(\histp))}$, we obtain that $\allleadsto$ conforms to the relation in $C$.
   \end{example}
 
   \begin{remark}
-    Intuition (to be explored) is that when $C^⊆ ∩ θ$ has the covering property, then the obs-compatible relations are easily deduced from the set (something like, just consider compatibility point per point, one singleton observation at a time). Covering is what is used above, something like $∃ i, \hist, \histp$ such that $∀ \hist^{\prime\prime}: [∀ j \neq i: \set{(\hist, i, .), (\histp, j, .)} ∈ C^⊆ ∩ θ] \land [∃ j \neq i \suchthat \set{(\hist', i, .), (\hist^{\prime\prime}, j, .)} ∈ C^⊆ ∩ θ]$.
+    Intuition (to be explored) is that when $C^⊆ ∩ Θ$ has the covering property, then the obs-compatible relations are easily deduced from the set (something like, just consider compatibility point per point, one singleton observation at a time). Covering is what is used above, something like $∃ i, \hist, \histp$ such that $∀ \hist^{\prime\prime}: [∀ j \neq i: \set{(\hist, i, .), (\histp, j, .)} ∈ C^⊆ ∩ Θ] \land [∃ j \neq i \suchthat \set{(\hist', i, .), (\hist^{\prime\prime}, j, .)} ∈ C^⊆ ∩ Θ]$.
   \end{remark}
 
   \subsection{Behavior function as a forest}
@@ -1698,7 +1698,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
     The attitudes in $C$ compatible with $θ$ are $\set{{\allleadstog} \suchthat θ ⊆ {\allleadstog}} ∩ C ⊆ \set{{\allleadstog} \suchthat {\ileadstog[i_1]} ∈ \set{{\ileadsto[j]} \suchthat P_j = p}}$, and $π(\set{{\allleadstog} \suchthat {\ileadstog[i_1]} ∈ \set{{\ileadsto[j]} \suchthat P_j = p}})(i_1) = p$.
 
     For \cref{it:HAI} $\implies$ \cref{it:condHAI},
-    pick an indicative claim $C$ and consider $i ∈ I$ and $θ ∈ θ ∩ (\allhists × \set{i} × P) ∩ C^⊆$ such that $π(\set{{\allleadstog} \suchthat θ ⊆ {\allleadstog}} ∩ C)(i) \ssub P$.
+    pick an indicative claim $C$ and consider $i ∈ I$ and $θ ∈ Θ ∩ (\allhists × \set{i} × P) ∩ C^⊆$ such that $π(\set{{\allleadstog} \suchthat θ ⊆ {\allleadstog}} ∩ C)(i) \ssub P$.
     Define $H = θ^{-1}(i, P)$.
   \end{proof}
   \begin{corollary}
@@ -1907,7 +1907,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
   \end{definition}
 
   A claim $C$ is \emph{falsifiable} iff $∀ {\allleadstog} \notin C: ∃ θ \subseteq {\allleadstog} \suchthat θ \notin C^\subseteq$,
-  equivalently iff $∃ {\allleadstog} \notin C \suchthat ∀ θ ∈ θ, θ \subseteq {\allleadstog}: θ ∈ C^\subseteq$.
+  equivalently iff $∃ {\allleadstog} \notin C \suchthat ∀ θ ∈ Θ, θ \subseteq {\allleadstog}: θ ∈ C^\subseteq$.
   (To be corrected for the trivial claims.)
 
   \subsection{Comparison with rejection}
@@ -1950,26 +1950,26 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
 \subsection{Coverability}
   \begin{definition}
     \label{def:covr}
-    A claim $C$ is \emph{coverable} iff $∀ θ ∈ θ ∩ C^⊆: ∃ θ' ∈ θ ∩ C^⊆ \suchthat θ ⊆ θ' \land \set{{\allleadstog} ∈ \allleadstos \suchthat θ' ∈ \powerset{\allleadstog}} ⊆ C$.
+    A claim $C$ is \emph{coverable} iff $∀ θ ∈ Θ ∩ C^⊆: ∃ θ' ∈ Θ ∩ C^⊆ \suchthat θ ⊆ θ' \land \set{{\allleadstog} ∈ \allleadstos \suchthat θ' ∈ \powerset{\allleadstog}} ⊆ C$.
   \end{definition}
 
   \begin{theorem}
     \label{th:extStronglyU}
     For any coverable claim $C$ and strongly unfalsifiable claim $C'$:
-    $θ ∩ C^⊆ ⊆ (C' ∩ C)^⊆$.
+    $Θ ∩ C^⊆ ⊆ (C' ∩ C)^⊆$.
   \end{theorem}
   \begin{proof}
-    Consider any $θ ∈ θ ∩ C^⊆$.
+    Consider any $θ ∈ Θ ∩ C^⊆$.
     Let us show that $θ ∈ ∪_{{\allleadstog} ∈ (C' ∩ C)} \powerset{\allleadstog}$.
 
-    Consider any $θ' ∈ θ ∩ C^⊆ \suchthat θ ⊆ θ' \land \set{{\allleadstog} ∈ \allleadstos \suchthat θ' ∈ \powerset{\allleadstog}} ⊆ C$.
-    As $θ ⊆ {C'}^⊆$, we have $θ' ∈ ∪_{{\allleadstog} ∈ C'} \powerset{\allleadstog}$.
+    Consider any $θ' ∈ Θ ∩ C^⊆ \suchthat θ ⊆ θ' \land \set{{\allleadstog} ∈ \allleadstos \suchthat θ' ∈ \powerset{\allleadstog}} ⊆ C$.
+    As $Θ ⊆ {C'}^⊆$, we have $θ' ∈ ∪_{{\allleadstog} ∈ C'} \powerset{\allleadstog}$.
     Pick any such $\allleadstog$ (thus with $θ' ∈ \powerset{\allleadstog}$ and ${\allleadstog} ∈ C'$). Thus, $θ ∈ \powerset{\allleadstog}$.
     Also, as $\set{{\allleadstog} ∈ \allleadstos \suchthat θ' ∈ \powerset{\allleadstog}} ⊆ C$, we have ${\allleadstog} ∈ C$.
   \end{proof}
-  A claim $C$ is not coverable iff $∃ θ ∈ θ ∩ C^⊆ \suchthat ∀ θ' ∈ θ ∩ C^⊆, θ ⊆ θ': ∃ {\allleadstog} \notin C \suchthat θ' ∈ \powerset{\allleadstog}$.
+  A claim $C$ is not coverable iff $∃ θ ∈ Θ ∩ C^⊆ \suchthat ∀ θ' ∈ Θ ∩ C^⊆, θ ⊆ θ': ∃ {\allleadstog} \notin C \suchthat θ' ∈ \powerset{\allleadstog}$.
 
-  A claim $C$ is not coverable because of the empty set iff $∀ θ ∈ θ ∩ C^⊆: ∃ {\allleadstog} \notin C \suchthat θ ∈ \powerset{\allleadstog}$.
+  A claim $C$ is not coverable because of the empty set iff $∀ θ ∈ Θ ∩ C^⊆: ∃ {\allleadstog} \notin C \suchthat θ ∈ \powerset{\allleadstog}$.
 
   \begin{remark}
     We do not have that when $C_1 ∩ C_2 \neq ∅$, then $θ ∈ C_1^⊆ \land θ ∈ C_2^⊆ \implies θ ∈ (C_1 ∩ C_2)^⊆$.
@@ -1988,8 +1988,8 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
 
   \subsection{Closure under undistinguishability}
   The following procedure permits to determine whether a claim is falsifiable.
-  Given a set of observations $S ⊆ θ$, define the relations that are observation-compatible with $S$ as $E(S) = \set{{\allleadstog} ∈ \allleadstos \suchthat ∀ θ ∈ θ: {\allleadstog} ∩ θ ∈ S}$.
-  Given a claim $C$, define the set of its observation-compatible relations as $E(C) = E(C^⊆ ∩ θ)$ (reusing the letter $E$ by abuse of notation).
+  Given a set of observations $S ⊆ Θ$, define the relations that are observation-compatible with $S$ as $E(S) = \set{{\allleadstog} ∈ \allleadstos \suchthat ∀ θ ∈ Θ: {\allleadstog} ∩ θ ∈ S}$.
+  Given a claim $C$, define the set of its observation-compatible relations as $E(C) = E(C^⊆ ∩ Θ)$ (reusing the letter $E$ by abuse of notation).
   Note that this set extends $C$, in the sense that $C ⊆ E(C)$.
   The claim $C$ is falsifiable iff it is closed under extension to observation-compatible relations, that is, iff $E(C) \subseteq C$.
   \begin{theorem}
@@ -2000,27 +2000,27 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
   \end{theorem}
   \begin{proof}
     Note that
-    $E(C) = E(C^⊆ ∩ θ) = \set{{\allleadstog} ∈ \allleadstos \suchthat ∀ O ∈ \allpriobss: \restr{\allleadstog}{O} ∈ C^⊆}$.
+    $E(C) = E(C^⊆ ∩ Θ) = \set{{\allleadstog} ∈ \allleadstos \suchthat ∀ O ∈ \allpriobss: \restr{\allleadstog}{O} ∈ C^⊆}$.
   
     The condition $E(C) ⊆ C$ is equivalent to
     $∀ {\allleadstog} ∈ \allleadstos: ({\allleadstog} ∈ E(C) \implies {\allleadstog} ∈ C)$.
     Note that ${\allleadstog} ∈ E(C) \Leftrightarrow \set{\restr{\allleadstog}{O} \suchthat O ∈ \allpriobss} \subseteq C^\subseteq$.
   
-    By definition, $C$ is not falsifiable iff $∃ {\allleadstog} \notin C \suchthat θ ∩ \powerset{\allleadstog} ⊆ C^⊆$;
+    By definition, $C$ is not falsifiable iff $∃ {\allleadstog} \notin C \suchthat Θ ∩ \powerset{\allleadstog} ⊆ C^⊆$;
     equivalently, iff $∃ {\allleadstog} \notin C \suchthat \set{θ \subseteq {\allleadstog}} \subseteq C^\subseteq$.
     And, $∀ {\allleadstog} ∈ \allleadstos$: $\set{\restr{\allleadstog}{O} \suchthat O ∈ \allpriobss} = \set{θ \subseteq {\allleadstog}}$.
   \end{proof}
   
   Let $S_θ = \set{{\allleadstog} ∈ \allleadstos \suchthat θ \subseteq {\allleadstog}}$ denote the possibilities for $\allleadsto$ compatible with the observations.
   Given $O$ and ${\allleadstog}$, it follows that $S_{\restr{\allleadstog}{O_O}}$ denotes the “leads to” relations that complete $O_O$ using $\allleadstog$.
-  Define that a relation ${\allleadstog} ∈ {\allleadstos}$ is \emph{obs-compatible} with a set $S$ iff $∀ θ ∈ θ: ({\allleadstog} ∩ θ) ∈ S$.
+  Define that a relation ${\allleadstog} ∈ {\allleadstos}$ is \emph{obs-compatible} with a set $S$ iff $∀ θ ∈ Θ: ({\allleadstog} ∩ θ) ∈ S$.
   
   \begin{remark}
     \label{rq:closedcomb}
-    Define the closure under combinations of $C$ as the relations that can be formed by picking parts of relations in $C$, formally, $(∪_{S ∈ C^⊆ ∩ θ} S) ∩ \allleadstos$.
-    We have $E(C) ⊆ (∪_{S ∈ C^⊆ ∩ θ} S) ∩ \allleadstos$.
+    Define the closure under combinations of $C$ as the relations that can be formed by picking parts of relations in $C$, formally, $(∪_{S ∈ C^⊆ ∩ Θ} S) ∩ \allleadstos$.
+    We have $E(C) ⊆ (∪_{S ∈ C^⊆ ∩ Θ} S) ∩ \allleadstos$.
   
-    Being closed under combinations is sufficient to be falsifiable, but not necessary, as seen with \cref{ex:consti2} (in other words, for some claims, $(∪_{S ∈ C^⊆ ∩ θ} S) ∩ \allleadstos ⊆ E(C)$ does not hold).
+    Being closed under combinations is sufficient to be falsifiable, but not necessary, as seen with \cref{ex:consti2} (in other words, for some claims, $(∪_{S ∈ C^⊆ ∩ Θ} S) ∩ \allleadstos ⊆ E(C)$ does not hold).
   \end{remark}
 
 \subsection{Another closure}
@@ -2084,7 +2084,7 @@ Let $\intvl{\hist} = (\hist_i)_{i ∈ \intvl{0, \card{\hist}}} ∈ \finite(\incr
   $∃ i ∈ I \suchthat {{\ileadstog}} \notin S$.
   As $C$ holds, ${\ileadstog} \notin \set{{\ileadsto[j]} \suchthat j ∈ I}$ (\cref{th:typesholds}).
   Pick any $H$ such that $∀ {\ileadstog[j]} ∈ S: ∃ \hist ∈ H \suchthat {\ileadstog}(\hist) \neq {\ileadstog[j]}(\hist)$.
-  Define $θ = \set{(\hist, i, {\ileadstog}(\hist)) \suchthat \hist ∈ H} ∈ θ ∩ \powerset{\allleadstog}$.
+  Define $θ = \set{(\hist, i, {\ileadstog}(\hist)) \suchthat \hist ∈ H} ∈ Θ ∩ \powerset{\allleadstog}$.
   Then, $θ \notin C^⊆$, because $∀ {\ileadstog[j]} ∈ S: θ \nsubseteq {\ileadstog[j]}$.
 
   Conversely, assume that for some ${\ileadstog} ∈ P^{\allhists} \setminus S$, no $H ∈ \finite(\incr(\allhists))$ satisfies the indicated condition.
@@ -2106,8 +2106,8 @@ The following result follows from \cref{th:typesfalsifiable,th:typesholds,th:typ
   Then, the claim $C$ associated to the set of attitudes $S = \set{{\ileadsto[j]} \suchthat j ∈ I}$ holds, is anonymous, and is falsifiable or trivial.
 \end{theorem}
 \begin{proof}
-  For another proof, note that $C^⊆ ∩ θ = \set{θ ∈ θ \suchthat ∀ i ∈ I: ∃ j ∈ I \suchthat θ ∩ (\allhists × \set{i} × P) ⊆ {\ileadsto[j]}}$.
-  Pick any ${\allleadstog} ∈ E(C^⊆ ∩ θ)$ and let us show that ${\allleadstog} ∈ C$.
+  For another proof, note that $C^⊆ ∩ Θ = \set{θ ∈ Θ \suchthat ∀ i ∈ I: ∃ j ∈ I \suchthat θ ∩ (\allhists × \set{i} × P) ⊆ {\ileadsto[j]}}$.
+  Pick any ${\allleadstog} ∈ E(C^⊆ ∩ Θ)$ and let us show that ${\allleadstog} ∈ C$.
   Note that ${\allleadstog} \notin C \iff ∃ i ∈ I \suchthat {\ileadstog} ∈ P^{\allhists} \setminus \set{{\ileadsto[k]} \suchthat k ∈ I}$, in which case the consequent in the theorem holds.
   We need to show that $\nexists i ∈ I, H ∈ \finite(\incr(\allhists)) \suchthat ∀ j ∈ I: ∃ \hist ∈ H \suchthat {\ileadstog}(\hist) \neq {\ileadsto[j]}(\hist)$.
   In other words, given any $i ∈ I$, we need to show that $∀ H ∈ \finite(\incr(\allhists)): ∃ j ∈ I \suchthat ∀ \hist ∈ H: {\ileadstog}(\hist) = {\ileadsto[j]}(\hist)$.
@@ -2270,8 +2270,8 @@ The function $f(\ar) ≠ f(\ar')$, for example, is not in $S$.
 \end{theorem}
 \begin{proof}
   To hold and be anonymous, we need $C$ includes $C^\text{HA}$ (\cref{th:claim_ha}).
-  Pick any such non trivial $C$ and let us show that $θ ⊆ C^⊆$.
-  Pick any $θ ∈ θ$.
+  Pick any such non trivial $C$ and let us show that $Θ ⊆ C^⊆$.
+  Pick any $θ ∈ Θ$.
   
   We define a bijection $\sigma$ over $I$ as follows.
   For each of the (finitely many) individuals that $θ$ contains, we can find a different behavior $f_i$ that is in $\restr{{\allleadsto}(I)}{\intvl{\hist}}$, thus, with some $j_i ∈ I \suchthat {\allleadsto}(j_i) = f_i$, and that is compatible with what $θ$ sees of $i$. 
@@ -2304,7 +2304,7 @@ Note that this is possible iff $\allargs$ is infinite. If so, suffices to take s
   Any claim that holds must include $\allleadsto$.
   Define $F = \set{f_1, f_2}$.
   
-  From indicativeness about $i_1$, $∃ θ ∈ θ ∩ (\allhists × \set{i_1} × P) ⊆ {\allleadsto} \suchthat ∅ ≠ π(\set{{\allleadstog} \suchthat θ ⊆ {\allleadstog}} ∩ C)(i_1) = \phi$.
+  From indicativeness about $i_1$, $∃ θ ∈ Θ ∩ (\allhists × \set{i_1} × P) ⊆ {\allleadsto} \suchthat ∅ ≠ π(\set{{\allleadstog} \suchthat θ ⊆ {\allleadstog}} ∩ C)(i_1) = \phi$.
   Define $H ∈ \incr(\allhists)$ as the query corresponding to $θ$, thus $H = θ(i_1, P)$.
 
   Define $g ∈ P^{\allhists}$ as $g = \set{(\hist, f_1(\hist)) \suchthat ∃ ∅ ≠ \histp ∈ \intvl{\hist} ∩ H} ∪ \set{(\hist, f_2(\hist)) \suchthat \intvl{\hist} ∩ H ⊆ \set{∅}}$.
@@ -2370,9 +2370,9 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
   \end{theorem}
   \begin{proof}
     From $C_1$ being strongly unfalsifiable and $C_2$ being coverable, we obtain
-    $θ ∩ C_2^⊆ ⊆ (C_1 ∩ C_2)^⊆$ (\cref{th:extStronglyU}).
+    $Θ ∩ C_2^⊆ ⊆ (C_1 ∩ C_2)^⊆$ (\cref{th:extStronglyU}).
 
-    Pick any ${\allleadstog} ∈ C_2$ with ${\allleadstog} \notin C_1$ (thus ${\allleadstog} \notin C$) and any $θ ∈ θ ∩ \powerset{\allleadstog}$,
+    Pick any ${\allleadstog} ∈ C_2$ with ${\allleadstog} \notin C_1$ (thus ${\allleadstog} \notin C$) and any $θ ∈ Θ ∩ \powerset{\allleadstog}$,
     and let us show that $θ ∈ C^⊆$.
 
     From $θ ⊆ {\allleadstog}$ we have $θ ∈ C_2^⊆$.
@@ -2403,7 +2403,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
   \end{remark}
 
   \begin{definition}
-    A claim $C$ is necessarily verifiable iff $∀ {\allleadstog} ∈ C$: $∃ θ ∈ θ ∩ \powerset{\allleadstog} \suchthat \set{{\allleadstog'} ∈ \allleadstos \suchthat θ ∈ \powerset{\allleadstog'}} ⊆ C$.
+    A claim $C$ is necessarily verifiable iff $∀ {\allleadstog} ∈ C$: $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat \set{{\allleadstog'} ∈ \allleadstos \suchthat θ ∈ \powerset{\allleadstog'}} ⊆ C$.
   \end{definition}
 
   \begin{example}[Bigger disjunct, strongly unfalsifiable]
@@ -2416,7 +2416,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     Let $C' = \set{{\allleadstog} \suchthat ∃ n ∈ \Zp \suchthat ∀ j: (a)^n \ileadstog[j] \phi}$ denote the claim of \cref{ex:bigor}.
     We have $C' \subseteq C$.
     It follows that ${C'}^⊆ \subseteq C^⊆$.
-    We know from \cref{ex:bigor} that $θ ⊆ {C'}^⊆$, thus, $θ ⊆ C^⊆$.
+    We know from \cref{ex:bigor} that $Θ ⊆ {C'}^⊆$, thus, $Θ ⊆ C^⊆$.
   \end{example}
 
   \begin{remark}
@@ -2427,9 +2427,9 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     Now we could have that together with $\hist_3$, this is not observable.
     And together with $\hist_3$ it could be incompatible with $C'$: we only have guaranteed compatibility with observables.
     % 
-    % From $C$ being verifiable we know that for some $θ^\mathit{cover} ∈ θ: \set{{\allleadstog} ∈ \allleadstos \suchthat θ^\mathit{cover} ∈ \powerset{\allleadstog}} ⊆ C$.
+    % From $C$ being verifiable we know that for some $θ^\mathit{cover} ∈ Θ: \set{{\allleadstog} ∈ \allleadstos \suchthat θ^\mathit{cover} ∈ \powerset{\allleadstog}} ⊆ C$.
     % 
-    % From $θ ⊆ {C'}^⊆$
+    % From $Θ ⊆ {C'}^⊆$
     % we know that
     % $θ ∈ ∪_{{\allleadstog} ∈ C'} \powerset{\allleadstog}$.
     % Pick any ${\allleadstog} ∈ C'$ such that $θ ∈ \powerset{\allleadstog}$.
@@ -2437,7 +2437,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     % If $θ^\mathit{cover} ⊆ θ$, then by $θ ∈ \powerset{\allleadstog}$, $θ^\mathit{cover} ∈ \powerset{\allleadstog}$,
     % whence ${\allleadstog} ∈ C$.
     % 
-    % If $θ ⊆ θ^\mathit{cover}$, using $θ ⊆ {C'}^⊆$ whence $θ^\mathit{cover} ∈ ∪_{{\allleadstog} ∈ C'} \powerset{\allleadstog}$, pick any ${\allleadstog} ∈ C'$ such that $θ^\mathit{cover} ∈ \powerset{\allleadstog}$ (hence $θ ∈ \powerset{\allleadstog}$) and get ${\allleadstog} ∈ C$ as previously.
+    % If $θ ⊆ θ^\mathit{cover}$, using $Θ ⊆ {C'}^⊆$ whence $θ^\mathit{cover} ∈ ∪_{{\allleadstog} ∈ C'} \powerset{\allleadstog}$, pick any ${\allleadstog} ∈ C'$ such that $θ^\mathit{cover} ∈ \powerset{\allleadstog}$ (hence $θ ∈ \powerset{\allleadstog}$) and get ${\allleadstog} ∈ C$ as previously.
     % For the missing case (no inclusion relation), I probably need $C$ to be necessarily verifiable (and anyway the very notion of verifiability only makes sense for $\allleadsto$), but even that seems insufficient.
     % Consider $C = \set{{\allleadstog} ∈ \allleadstos \suchthat \hist_1 \ileadstog p_1 \lor (…)}$. It is verifiable thanks to $θ = \set{(\hist_1, i, p_1)}$ but this does not help with an observation that is compatible with $C$ using the other disjunct.
   \end{remark}
@@ -2454,8 +2454,8 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     Prove that it is false with claim "i goes to phi OR i goes to not phi except for empty set going to phi"?
     Actually I need to be able to merge two relations that agree on everything but some part of the tree, in such a way that all paths crossing the boundary must be in $C$, but not the merge.
     TOo be done: caract with singleton $I$.
-    % Given a claim $C$, define $S = C^⊆ ∩ θ$.
-    % We have: $\set{∪_i(θ_i) ∈ \allleadstos \suchthat (θ_i) ∈ s_S} = \set{{\allleadstog} ∈ \allleadstos \suchthat ∀ θ ∈ θ: ({\allleadstog} ∩ θ) ∈ S}$.
+    % Given a claim $C$, define $S = C^⊆ ∩ Θ$.
+    % We have: $\set{∪_i(θ_i) ∈ \allleadstos \suchthat (θ_i) ∈ s_S} = \set{{\allleadstog} ∈ \allleadstos \suchthat ∀ θ ∈ Θ: ({\allleadstog} ∩ θ) ∈ S}$.
   \end{conjecture}
   \begin{remark}
     Say that $(r1, o1)$ is determined in $C$ (to $p$) iff all relations in $C$ including $r1$ agree on ${\allleadstog}(o)$ (satisfy ${\allleadstog}(o) = p$).
@@ -2480,7 +2480,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
   \begin{proof}
     Note that as $C$ is closed-under-combinations, this follows from \cref{rq:closedcomb}, but let’s design a more direct proof in hope of weakening the condition.
 
-    Consider any ${\allleadstog}$ obs-compatible with $C^⊆ ∩ θ$ and let us prove that ${\allleadstog} ∈ C$.
+    Consider any ${\allleadstog}$ obs-compatible with $C^⊆ ∩ Θ$ and let us prove that ${\allleadstog} ∈ C$.
 
     % Pick any $o_1 ∈ R$.
     % Define $r_1 = (o_1, {\allleadstog}(o_1))$, thus with $r_1 ∈ {\allleadstog}$.
@@ -2587,12 +2587,12 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     \end{equation}
     This seems incorrect: if $θ = ∅$, then it belongs, even though it satisfies $θ(o_1) = ∅$.
 
-    The relations that are obs-compatible with $C^⊆ ∩ θ$ are the ones that, for $(o_1, o_2, o_3)$, include two $\phi$ and one $¬\phi$, the one that equals all $\phi$, and the one that assigns $o_1$ and $o_3$ to $¬\phi$ and $o_2$ to $\phi$.
+    The relations that are obs-compatible with $C^⊆ ∩ Θ$ are the ones that, for $(o_1, o_2, o_3)$, include two $\phi$ and one $¬\phi$, the one that equals all $\phi$, and the one that assigns $o_1$ and $o_3$ to $¬\phi$ and $o_2$ to $\phi$.
 
-    It follows that the relations that are obs-compatible with $C^⊆ ∩ θ$ and that are in $C^⊆ ∩ θ$ are the ones that, for $(o_1, o_2, o_3)$, include two $\phi$ and one $¬\phi$; and the relations that are obs-compatible with $C^⊆ ∩ θ$ and that are not in $C^⊆ ∩ θ$ are the one that equals all $\phi$ and the one that assign $o_1$ and $o_3$ to $∅$ and $o_2$ to $\phi$.
+    It follows that the relations that are obs-compatible with $C^⊆ ∩ Θ$ and that are in $C^⊆ ∩ Θ$ are the ones that, for $(o_1, o_2, o_3)$, include two $\phi$ and one $¬\phi$; and the relations that are obs-compatible with $C^⊆ ∩ Θ$ and that are not in $C^⊆ ∩ Θ$ are the one that equals all $\phi$ and the one that assign $o_1$ and $o_3$ to $∅$ and $o_2$ to $\phi$.
 
     Pick any $g ∈ P^{(I × \allhists) \setminus R}$ and define ${\allleadstog} = \set{(∅, i, \phi), ((a), i, \phi), ((b), i, \phi)} ∪ g$.
-    This relation is obs-compatible with $C^⊆ ∩ θ$, but ${\allleadstog} \notin C$.
+    This relation is obs-compatible with $C^⊆ ∩ Θ$, but ${\allleadstog} \notin C$.
   \end{example}
   \begin{conjecture}
     Given $R \subseteq I × \allhists$, say that $C$ is determined on $R$ iff
@@ -2652,7 +2652,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     Consider the claim $C = \set{{\allleadstog^1}, {\allleadstog^2}}$. When is it falsifiable considering these two relations?
   \end{example}
 
-  Consider: investigate claims that are non falsifiable but with $C^⊆ ∩ θ \neq θ$.
+  Consider: investigate claims that are non falsifiable but with $C^⊆ ∩ Θ \neq Θ$.
   Then exhibit a claim such that a smaller one is not the same status and a bigger one is not the same status.
 
   Any claim containing two relations that differ only on incompatible observations is not falsifiable.
@@ -2737,7 +2737,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
   \end{corollary}
   \begin{corollary}
     \label{th:veryunfals}
-    Any non-trivial claim $C$ satisfying $θ \subseteq C^\subseteq$ is not falsifiable.
+    Any non-trivial claim $C$ satisfying $Θ \subseteq C^\subseteq$ is not falsifiable.
   \end{corollary}
   \begin{proof}
     Pick any ${\allleadstog} \notin C$.
@@ -2751,13 +2751,13 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     A claim $C$ is falsifiable iff $\set{{\allleadstog} ∈ \allleadstos \suchthat ∀ θ ∈ θ: ({\allleadstog} ∩ θ) ∈ (C^\subseteq ∩ θ)} = C$.
   \end{corollary}
 
-  A relation $\allleadstog$ is obs-compatible with $C$ iff $∀ O ∈ \allpriobss: \restr{\allleadstog}{O} ∈ C^\subseteq$, equivalently, iff $∀ θ ∈ θ: ({\allleadstog} ∩ θ) ∈ (C^\subseteq ∩ θ)$.
+  A relation $\allleadstog$ is obs-compatible with $C$ iff $∀ O ∈ \allpriobss: \restr{\allleadstog}{O} ∈ C^\subseteq$, equivalently, iff $∀ θ ∈ Θ: ({\allleadstog} ∩ θ) ∈ (C^\subseteq ∩ Θ)$.
 
 \begin{remark}
-  The question of falsifiability is whether the set of relations $\allleadstog$ “compatible” with $C^\subseteq ∩ θ$ equals $C$.
+  The question of falsifiability is whether the set of relations $\allleadstog$ “compatible” with $C^\subseteq ∩ Θ$ equals $C$.
   Compatibility needs to consider the observables, not a subset of it.
-  Define $θ_1 \subset θ$ as the observations that observe only one pair $(i, \hist)$.
-  Define $R_1 = \set{{\allleadstog} ∈ \allleadstos \suchthat ∀ θ ∈ θ_1: ({\allleadstog} ∩ θ) ∈ (C^\subseteq ∩ θ)}$.
+  Define $Θ_1 \subset Θ$ as the observations that observe only one pair $(i, \hist)$.
+  Define $R_1 = \set{{\allleadstog} ∈ \allleadstos \suchthat ∀ θ ∈ Θ_1: ({\allleadstog} ∩ θ) ∈ (C^\subseteq ∩ Θ)}$.
   Note that $R \subseteq R_1$.
   We know that $C$ is falsifiable iff $R \subseteq C$. Thus, $C$ is not falsifiable implies $C \subsetneq R \subseteq R_1$ thus $C \subsetneq R_1$. But we do not have that $C \subsetneq R_1$ implies $C$ not falsifiable: could have $C \subsetneq R_1$ but still $R = C$.
 \end{remark}
