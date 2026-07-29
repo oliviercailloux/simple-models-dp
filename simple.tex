@@ -257,6 +257,7 @@ Also, $C$ is verified under prior $D$ iff
 $∃ θ ∈ Θ ∩ \powerset{\allleadsto} ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$; and is verified iff it is verified under the trivial prior.
 Finally, $C$ satisfies established verifiability under prior $D$ iff
 $∀\allleadstogo ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀ θ ⊆ {\allleadstogo'} ∈ D: {\allleadstogo'} ∈ C$.
+If $D ⊆ D'$, then established verifiability under prior $D'$ implies established verifiability under prior $D$.
 
 \Cref{th:vudImpliesHolds} proves that provided the prior is true, verifiability under a prior suffices for holding.
 
@@ -409,8 +410,8 @@ falsifiability guarantees that a non trivial claim holds if, and only if, it is 
   Making a claim more precise (meaning going from a claim $C$ to $C' \ssub C$) can make it falsifiable, or conversely, can make it unfalsifiable.
   Given $\hist, i$, consider the claim $C_2 = \hist \ileadstog \phi$. It is falsifiable.
   Now consider the claim $C = C_1 ∩ C_2$ with $C_1$ being the claim “every individual chooses $\phi$ after seeing solely either $\ar$ or $\ar'$”. It is more precise but unfalsifiable.
- But we can make it falsifiable again by making it even more precise (picking any single relation).
- (See \cref{rq:precise}.)
+  But we can make it falsifiable again by making it even more precise (picking any single relation).
+  (See \cref{rq:precise}.)
 \end{remark}
 
 We say that a prior $D$ proves a claim $C$ iff $D ⊆ C$. 
@@ -424,14 +425,60 @@ We say that a prior $D$ proves a claim $C$ iff $D ⊆ C$.
   $D$ proves $C$ means, by definition, $∀\allleadstogo: ¬\OF(\allleadstogo) ⇒ ¬\F(\allleadstogo)$.
 \end{proof}
 
+We know that EV implies EV under $¬\OF(\allleadstoo)$. Does the converse hold?
+
+Let’s recap what we know about EV.
+$∀\allleadstogo ∈ C: ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀ θ ⊆ {\allleadstog'}: {\allleadstog'} ∈ C$. 
+Following Example 4, EV while C is unfalsifiable
+EV is equivalent to $∀\allleadstogo ∈ C: ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ \overline{C}^⊆$.
+EV equivalent to $∀\allleadstogo ∈ C: OF_{\overline{C}}$
+EV equivalent to $\overline{C}$ is falsifiable.
+
+EV under prior D being NOT OF.
+$∀\allleadstogo ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀ θ ⊆ {\allleadstogo'} ∈ D: {\allleadstogo'} ∈ C$.
+Provability by D is strictly stronger than EV under D.
+EV under D is equivalent to 
+$∀\allleadstogo ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ (D ∖ C)^⊆$.
+EV under D is equivalent to $∀\allleadstogo ∈ C ∩ D: OF_{D ∖ C}$
+EV under D is equivalent to D ∖ C is falsifiable.
+
+Thus P1 is EV under D
+P2 is EV
+
+Equivalently
+D ∩ \overline{C} is falsifiable
+\overline{C} is falsifiable
+
+Take C = (a) \nileadsto φ.
+Thus, Cbar is falsifiable.
+Now, NOT OF_C ∩ Cbar = empty because a world in Cbar (thus (a) \ileadsto φ) is OF_C. (Because C is falsifiable.)
+Thus, D ∩ Cbar is empty. Is it fals?
+
+Take C = ∃i (a) \nileadsto φ.
+Thus, Cbar is fals.
+some world in Cbar is NOT OF_C. (Because C is not always fals.)
+Thus, D ∩ Cbar is …?
+
+If Cbar is fals, any world in C is OF_Cbar.
+
+D ∩ \overline{C} is NOT falsifiable
+iff ∃⇒ ∉ D ∨ ⇒ ∈ C st ¬OF_D∖C
+iff ∃⇒ ∈ C st ¬OF_D∖C
+
 Provability by $D$ implies established verifiability under $D$ (just use verification $∅$).
 For some priors, provability by $D$ is strictly stronger than established verifiability under $D$ (the claim $C$ being $(a) \ileadsto φ$ satisfies established verifiability under the trivial prior $D$ but is not provable by it).
 
 Also, provability by $¬\OF(\allleadstoo)$ (equivalently, falsifiability or triviality) is strictly stronger than established verifiability under $¬\OF(\allleadstoo)$.
 
 \begin{example}
-  The claim $[∃i \suchthat (a) \ileadsto φ]$ satisfies established verifiability under $¬\OF(\allleadstoo)$ but is not provable by $¬\OF(\allleadstoo)$.
+  The claim $C_1 = \set{∃i \suchthat (a) \ileadsto φ}$, with infinitely many individuals, satisfies established verifiability (consider $θ = \set{(a) \ileadsto φ}$), hence, established verifiability under $¬\OF(\allleadstoo)$, but is not provable by $¬\OF(\allleadstoo)$.
+  Similarly for $C_2 = \set{(a) \ileadsto φ ∨ (b) \ileadsto φ}$ and $θ = \set{(a) \ileadsto φ}$.
+  
+  Also, consider $C_3$ being $∀j: (c) \ileadsto[j] φ$, $C_4$ being $(d) \ileadsto[j] φ ∧ (e) \ileadsto[j] φ$ and $C$ being $C_1$ or $C_2$ together with $C_3$ or $C_4$ (assuming infinitely many individuals if using $C_1$ or $C_3$).
+  Then, $C$ is fails established verifiability (due to $C_3$ or $C_4$) and $¬\OF(\allleadstoo)$ does not prove $C$ (due to $C_1$ or $C_2$), but $C$ satisfies established verifiability under prior $¬\OF(\allleadstoo)$ (with verification $(a) \ileadsto φ$).
 \end{example}
+  
+Note that if a claim is not provable by $¬\OF(\allleadstoo)$ (equivalently, some world is out of $C$ and NOT OF), then some world is out of $C$ and NOT COF.
 
 It is probably useful to remember that $¬\OF(\allleadstogo)$ states that 
 negating $C$, in that world, requires incompatible, or infinitely many, triples: 
@@ -519,41 +566,8 @@ $∃\allleadstogo ∉ D \suchthat ¬\OF_{D ∖ C}(\allleadstogo)$.
   Considering a claim $C$ and prior $D$ being $¬\OF_C(\allleadstoo)$,
   $D ∖ C$ is falsifiable iff $C$ satisfies established verifiability under prior $¬\OF_C(\allleadstogo)$.
 \end{corollary}
-% Note that OF_S implies OF_S' with a smaller S'.
-% Note that if $\overline{C ∩ D}$ is falsifiable, thus if all worlds out of $\overline{C ∩ D}$ satisfy $\OF_{\overline{C ∩ D}}(\allleadstogo)$, then, all worlds out of $\overline{C ∩ D}$ satisfy $\OF_{D ∖ C}(\allleadstogo)$ (because $D ∖ C = \overline{C ∩ D} ∩ D ⊆ \overline{C ∩ D}$).
 
-% We obtain:
-% $\overline{C ∩ D}$ is falsifiable
-% implies
-% $∀\allleadstogo ∉ \overline{C ∩ D}: \OF_{D ∖ C}(\allleadstogo)$
-
-% And:
-% $\overline{C ∩ D} ∩ D$ is falsifiable
-% implies
-% $∀\allleadstogo ∉ \overline{C ∩ D}: \OF_{D ∖ C}(\allleadstogo)$
-
-% Example: $∃i \suchthat (a) \ileadsto φ$.
-% \begin{theorem}
-%   $\allleadstos ∖ C$ is falsifiable iff $C$ satisfies established verifiability.
-% \end{theorem}
-% \begin{proof}
-%   Assume LHS: $∀\allleadstogo ∈ C: \OF(\allleadstogo)$.
-%   Consider any $\allleadstogo ∈ C ∩ D$. We know that $\OF(\allleadstogo)$.
-%   Some obs is not completable in C.
-%   Can it be completable in D without C?
-
-%   RHS: $∀\allleadstogo ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ (D ∖ C)^⊆$.
-% \end{proof}
-
-Consider $D = \allleadstos ∖ E$.
-Pick $C$ that satisfies established verifiability.
-Let’s try with $C ⊆ D$.
-Pick LHS that fails: $D ∖ C$ is not falsifiable. Some world in $E$ fails $\OF_{D ∖ C}(\allleadstogo)$.
-Thanks to some world in $E$ where $\F_{D ∖ C}(\allleadstogo) ∧ ¬\OF_{D ∖ C}(\allleadstogo)$.
-Thus, $Θ ∩ \powerset{\allleadstogo} ⊆ (D ∖ C)^⊆$.
-Some obs completable in $E$ and also out of $E$ and out of $C$.
-
-\subsubsection{Observable exclusions}
+\subsection{Observable exclusions}
 Converting a claim to disjunctive normal form is useful to characterize its compatible observations, as \cref{th:dnf} indicates.
 \begin{example}
   Consider six different arguments $a_1, a'_1, a_2, a'_2, a_3, a'_3 ∈ \allargs$
@@ -569,67 +583,8 @@ Converting a claim to disjunctive normal form is useful to characterize its comp
   thus $f ∉ Θ$
   (wlog, pick $t_1 = ((a_1), i, p_1 ≠ φ)$, then for observability we need to pick $t_2 = ((a'_2), j, .)$ and there is no choice left for $t_3$).
 \end{example}
-TODO
-Let’s search for a claim that is NOT verifiable under not OF.
-Such a claim must be not provable by not OF.
-Thus such a claim must satisfy: exists not OF and F.
-For example, $∃i \suchthat (a) \ileadsto φ$.
-
-\begin{theorem}
-  A claim $C$ 
-  satisfies established verifiability under $¬\OF(\allleadstoo)$ but is not provable by $¬\OF(\allleadstoo)$ 
-  iff $∃\allleadstogo \suchthat \F(\allleadstogo) ∧ ¬\COF(\allleadstogo)$.
-\end{theorem}
-\begin{proof}
-  That $¬\OF(\allleadstoo)$ does not prove $C$ is equivalent to $∃\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$, equivalently, $∃\allleadstogo ∉ C \suchthat Θ ∩ \powerset{\allleadstogo} ⊆ C^⊆$. 
-  Could be $C$ is $[∃i \suchthat (a) \ileadsto φ]$, or $C$ is $[(b) \ileadsto[j] φ ∨ (c) \ileadsto[j] φ]$.
-  In this world, $∀T ⊆ \allleadstogo$, if $T ∉ C^⊆$, then $T ∉ Θ$. This could be, as indicated above, because it has infinite cardinal, or because of incompatibility.
-  % When $∃\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$ and $∃\allleadstogo ∉ C \suchthat \OF(\allleadstogo)$ (for example, $C$ is $[∃i \suchthat (a) \ileadsto φ] ∧ [(b) \ileadsto[j] φ]$), then what?
-
-  That $C$ satisfies established verifiability under $¬\OF(\allleadstoo)$ is equivalent to
-  hide all worlds
-  $\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$.
-  Formally:
-  $∀\allleadstogo ∈ C, ∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ¬\OF(\allleadstogo) ⇒ ∀ θ ⊆ \allleadstogo': \allleadstogo' ∉ C ⇒ \OF(\allleadstog')$.
-
-  Consider any false world and $T ∉ C^⊆$ with infinite cardinal.
-
-  This excludes the claim $[∃i: (a) \ileadsto φ]$, because some false worlds permit to complete any observations compatibly with $C$.
-  We should now exclude $T$ infinity.
-
-  Thus, pick any world $\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$.
-  We should obtain $¬\COF$.
-  Thus, we should modify the statement: False and not COF.
-  However, in our examples above, we also have OF!
-  
-  some world contradicting $C$ contain incompatible triples, thus satisfy not OF and F.
-  Because satisfying not OF and F means that to determine that the world is out of $C$ requires observations that cannot be seen together. TODO establish this.
-
-  LHS: some prefix leads to C (given not OF) and some world is not OF but not in C.
-  Thus, C says something st not OF is not enough to prove it. It also requires some obs. All completions not OF are in C. And some world not OF is out of C.
-  
-  Take the world negating some of $θ$ and apart from that, satisfying C.
-  It is OF because some triples of $θ$ negated contradict C, otherwise the emptyset given not OF leads to C.
-  It is ¬COF because there is some other obs in this world, compatible with $C$, that hides the one in $θ$, otherwise notOF would suffice to prove C.
-
-  Verifiability under $¬\OF(\allleadstoo)$ means that
-  $∃ θ ∈ Θ ∩ \set{\allleadstogo \suchthat ¬\OF(\allleadstogo)}^⊆ \suchthat \set{θ ⊆ \allleadstogo \suchthat ¬\OF(\allleadstogo)} ⊆ C$.
-
-  Non provability by $¬\OF(\allleadstoo)$ means that
-  % $∃\allleadstogo ∉ C \suchthat ¬OF(\allleadstogo)$.
-  $\set{\allleadstogo \suchthat ¬\OF(\allleadstogo)} ⊈ C$.
-
-  First point: take a world $\allleadstogo ∈ C$.
-  
-  Thus, negating $θ$ should lead to a world that is OF and not in C?
-\end{proof}
 
 Provability corresponds to verifiability under $D$ in the case the observation giving verifiability $θ$ is $∅$. We do not need any other observation, as our prior is supposed to be convincing when enough observations have taken place, and this is left aside our modeling: it is the problem of induction.
-
-We could have that $C$ is unfalsifiable (in some world, F though not OF) while some observation proves $C$: consider $C_1$ being $∃i \suchthat (a) \ileadsto φ$ and $θ = \set{(a) \ileadsto φ}$ (with infinitely many individuals), or $C_2$ being $(a) \ileadsto φ ∨ (b) \ileadsto φ$ and $θ = \set{(a) \ileadsto φ}$.
-In such a case, $C$ is verifiable and unfalsifiable (any world not in $C$ is false but not observably so).
-Also, consider $C_3$ being $∀j: (c) \ileadsto[j] φ$ (with infinitely many individuals), $C_4$ being $(d) \ileadsto[j] φ ∧ (e) \ileadsto[j] φ$ and $C$ being $C_1$ or $C_2$ together with $C_3$ or $C_4$ (assuming infinitely many individuals if using $C_1$ or $C_3$).
-Then, $C$ is unverifiable (due to $C_3$ or $C_4$) and $¬OF$ does not prove $C$ (due to $C_1$ or $C_2$, as shown above), but $C$ is verifiable under prior $¬OF$ (with verification $(a) \ileadsto φ$).
 
 However, as we know, any informative $C$ is not verifiable. Are there some claims that are unfalsifiable and unverifiable and verifiable under prior not OF?
 Verifiability under D is that for some obs compatible with notOF and C, not OF implies not F.
