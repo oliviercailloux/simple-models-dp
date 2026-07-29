@@ -1277,7 +1277,7 @@ The following example presents a situation where non rejection is due to finiten
 
     The claim $C = \set{{\allleadsto} \circ \sigma \suchthat \sigma: I \leftrightarrow I}$ is not falsifiable:
     consider ${\allleadstog}$ defined as, $∀ i ∈ I$, $\hist \ileadstog \phi$ iff $\hist = ∅ \lor \hist_1 = \ar_1$ and $\hist \ileadstog ¬\phi$ otherwise; we have ${\allleadstog} \notin C$
-    but any $θ ∈ θ, θ \subseteq {\allleadstog}$ satisfies $θ ∈ C^⊆$.
+    but any $θ ∈ Θ, θ \subseteq {\allleadstog}$ satisfies $θ ∈ C^⊆$.
 
     Now consider $C' = \set{{\allleadstog} \suchthat ∀ i ∈ I, \hist, \histp ∈ \allhists: \hist_1 = \histp_1 \implies {\ileadstog}(\hist) = {\ileadstog}(\histp)}$. (Thus $C ⊆ C'$.)
     This one is falsifiable: if ${\allleadstog} \notin C$, then $∃ i ∈ I, \hist, \histp \suchthat \hist_1 = \histp_1 \land {\ileadstog}(\hist) ≠ {\ileadstog}(\histp)$, now define $\histpp$ as the common prefix to $\hist$ and $\histp$; as ${\ileadstog}(\hist) ≠ {\ileadstog}(\histp)$, we have at least one of ${\ileadstog}(\hist) ≠ {\ileadstog}(\histpp)$ or ${\ileadstog}(\histp) ≠ {\ileadstog}(\histpp)$, and as $\histpp$ satisfies $\histpp_1 = \hist_1$ and $\histpp_1 = \histp_1$, observing the corresponding pair of paths for $i$ falsifies $C$.
@@ -1373,7 +1373,7 @@ The following example presents a situation where non rejection is due to finiten
     \label{ex:consti1}
     Assume that $\card{I} = 1$.
     Consider any $p, p' ∈ P$ and the constant functions ${\allleadstog^p}$ to $p$ and ${\allleadstog^{p'}}$ to $p'$ and the claim $C = \set{{\allleadstog^p}, {\allleadstog^{p'}}}$.
-    We have $C^⊆ ∩ θ = \set{θ \suchthat θ(θ^{-1}(P)) = \set{p} \lor θ(θ^{-1}(P)) = \set{p'}}$.
+    We have $C^⊆ ∩ Θ = \set{θ \suchthat θ(θ^{-1}(P)) = \set{p} \lor θ(θ^{-1}(P)) = \set{p'}}$.
     Consider any relation $\allleadstog$ that is obs-compatible with $C^⊆ ∩ Θ$. Assume that for some $\hist, i$, $\hist \ileadstog p$. Observe that by obs-compatibility, $∅ \ileadstog p$.
     It follows, still by obs-compatibility, that for any $\hist'$, $\hist' \ileadstog p$ (otherwise pick $θ$ including $(\hist', i)$ and $(∅, i)$). Conclude that $\allleadstog$ is constant to $p$.
     It follows that the obs-compatible relations are $\set{{\allleadstog^p}, {\allleadstog^{p'}}}$, thus, $C$ is falsifiable.
@@ -1387,7 +1387,7 @@ The following example presents a situation where non rejection is due to finiten
     Consider any $i$, $\hist, \histp ∈ \allhists$, $p, p' ∈ P$ where $\hist$ and $\histp$ are not prefix related.
     The claim $C = \set{{\allleadstog} \suchthat \hist \ileadstog p \lor \histp \ileadstog p'}$ is unfalsifiable.
 
-    We have $C^⊆ ∩ θ = \set{θ \suchthat (θ(\hist, i) = ∅ \lor θ(\hist, i) = p) \lor (θ(\histp, i) = ∅ \lor θ(\histp, i) = p')}$.
+    We have $C^⊆ ∩ Θ = \set{θ \suchthat (θ(\hist, i) = ∅ \lor θ(\hist, i) = p) \lor (θ(\histp, i) = ∅ \lor θ(\histp, i) = p')}$.
     Observe that any $θ ∈ Θ$ satisfy $θ(\hist, i) = ∅ \lor θ(\histp, i) = ∅$, thus, $C^⊆ ∩ Θ = Θ$.
     It follows that the obs-compatible relations are $\allleadstos$, which is bigger than $C$.
   \end{example}
@@ -1902,7 +1902,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
     \label{def:unfals}
     A claim is \emph{unfalsifiable} iff
     $C = {\allleadstos} \lor
-      ∃ {\allleadstog} \notin C \suchthat θ ∩ \powerset{\allleadstog} ⊆ C^⊆$.
+      ∃ {\allleadstog} \notin C \suchthat Θ ∩ \powerset{\allleadstog} ⊆ C^⊆$.
   \end{definition}
 
   A claim $C$ is \emph{falsifiable} iff $∀ {\allleadstog} \notin C: ∃ θ \subseteq {\allleadstog} \suchthat θ \notin C^\subseteq$,
@@ -1929,7 +1929,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
 \subsection{Kinds}
 \begin{definition}
   A claim is \emph{strongly unfalsifiable} iff
-  $θ ⊆ C^⊆$.
+  $Θ ⊆ C^⊆$.
 \end{definition}
 \Cref{ex:disjR,ex:bigor} illustrate, as well as \cref{ex:existsParticular} when $I$ is infinite.
 \begin{definition}
@@ -2360,7 +2360,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     If $C$ is strongly unfalsifiable, then any wider claim $C' \supseteq C$ is strongly unfalsifiable.
   \end{theorem}
   \begin{proof}
-    $θ ⊆ C^⊆ ⊆ {C'}^⊆$.
+    $Θ ⊆ C^⊆ ⊆ {C'}^⊆$.
   \end{proof}
 
   \begin{theorem}
@@ -2501,7 +2501,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     If $∃ R \subseteq I × \allhists$ coverable and such that $C$ is determined on $R$, then $C$ is falsifiable.
   \end{conjecture}
   \begin{proof}
-    Consider any ${\allleadstog}$ obs-compatible with $C^⊆ ∩ θ$ and let us prove that ${\allleadstog} ∈ C$.
+    Consider any ${\allleadstog}$ obs-compatible with $C^⊆ ∩ Θ$ and let us prove that ${\allleadstog} ∈ C$.
 
     Pick some $o_1 ∈ R$ as in the hypothesis.
     Consider any $o ∈ O_1 ∪ \set{o_2}$.
@@ -2537,7 +2537,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
 
     Note that
     \begin{equation}
-      C^⊆ ∩ θ = \left\{θ ∈ θ \suchthat
+      C^⊆ ∩ Θ = \left\{θ ∈ Θ \suchthat
       \begin{aligned}
          & (θ(o_1) ∈ \set{∅, \phi} \land θ(o_2) ∈ \set{∅, ¬\phi} \land θ(o_3) ∈ \set{∅, \phi}) \lor \mbox{} \\
          & (θ(o_1) ∈ \set{∅, \phi} \land θ(o_2) ∈ \set{∅, \phi} \land θ(o_3) ∈ \set{∅, ¬\phi}) \lor \mbox{} \\
@@ -2547,7 +2547,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     Also, $θ(o_1) \neq ∅ \implies θ(o_3) = ∅$ (and equivalently, $θ(o_3) \neq ∅ \implies θ(o_1) = ∅$),
     whence:
     \begin{equation}
-      C^⊆ ∩ θ = \left\{θ ∈ θ \suchthat
+      C^⊆ ∩ Θ = \left\{θ ∈ Θ \suchthat
       \begin{aligned}
          & (θ(o_1) = θ(o_3) = ∅ \land θ(o_2) ∈ \set{∅, ¬\phi}) \lor \mbox{} \\
          & (θ(o_1) = \phi \land θ(o_2) ∈ \set{∅, ¬\phi}) \lor \mbox{}                    \\
@@ -2562,7 +2562,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     \end{equation}
     Factorizing:
     \begin{equation}
-      C^⊆ ∩ θ = \left\{θ ∈ θ \suchthat
+      C^⊆ ∩ Θ = \left\{θ ∈ Θ \suchthat
       \begin{aligned}
          & (θ(o_1) = θ(o_3) = ∅ \land θ(o_2) ∈ \set{∅, \phi, ¬\phi})) \lor \mbox{} \\
          & (θ(o_1) = \phi \land θ(o_2) ∈ \set{∅, \phi, ¬\phi}) \lor \mbox{}                     \\
@@ -2574,7 +2574,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
 
     Note that the complement is as follows.
     \begin{equation}
-      \overline{C^⊆ ∩ θ} = \left\{θ ∈ θ \suchthat
+      \overline{C^⊆ ∩ Θ} = \left\{θ ∈ Θ \suchthat
       \begin{aligned}
          & θ(o_2) = 0 \lor \mbox{}                                                                                \\
          & θ(o_2) = ¬\phi \land (θ(o_1) ∈ \set{¬\phi, 0} \lor θ(o_3) ∈ \set{¬\phi, 0}) \lor \mbox{} \\
@@ -2605,7 +2605,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     If $∃ R \subseteq I × \allhists$ coverable and such that $C$ is determined on $R$, then $C$ is falsifiable.
   \end{conjecture}
   \begin{proof}
-    Consider any ${\allleadstog}$ obs-compatible with $C^⊆ ∩ θ$ and let us prove that ${\allleadstog} ∈ C$.
+    Consider any ${\allleadstog}$ obs-compatible with $C^⊆ ∩ Θ$ and let us prove that ${\allleadstog} ∈ C$.
 
     Pick some $k ∈ \Z, (O_l)_{l ∈ \intvl{1, k}}, (o_l)_{l ∈ \intvl{1, k}}$ as in the hypothesis.
     Consider any $l ∈ \intvl{1, k - 1}$
@@ -2747,7 +2747,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
   \end{proof}
 
   \begin{corollary}
-    A claim $C$ is falsifiable iff $\set{{\allleadstog} ∈ \allleadstos \suchthat ∀ θ ∈ θ: ({\allleadstog} ∩ θ) ∈ (C^\subseteq ∩ θ)} = C$.
+    A claim $C$ is falsifiable iff $\set{{\allleadstog} ∈ \allleadstos \suchthat ∀ θ ∈ Θ: ({\allleadstog} ∩ θ) ∈ (C^\subseteq ∩ Θ)} = C$.
   \end{corollary}
 
   A relation $\allleadstog$ is obs-compatible with $C$ iff $∀ O ∈ \allpriobss: \restr{\allleadstog}{O} ∈ C^\subseteq$, equivalently, iff $∀ θ ∈ Θ: ({\allleadstog} ∩ θ) ∈ (C^\subseteq ∩ Θ)$.
