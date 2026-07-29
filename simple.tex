@@ -257,9 +257,15 @@ Also, $C$ is verified under prior $D$ iff
 $∃ θ ∈ Θ ∩ \powerset{\allleadsto} ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$; and is verified iff it is verified under the trivial prior.
 Finally, $C$ satisfies established verifiability under prior $D$ iff
 $∀\allleadstogo ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀ θ ⊆ {\allleadstogo'} ∈ D: {\allleadstogo'} ∈ C$.
+
 If $D ⊆ D'$, then established verifiability under prior $D'$ implies established verifiability under prior $D$.
 
 \Cref{th:vudImpliesHolds} proves that provided the prior is true, verifiability under a prior suffices for holding.
+
+We say that a prior $D$ proves a claim $C$ iff $D ⊆ C$. 
+
+Provability by $D$ implies established verifiability under $D$ (just use verification $∅$).
+For some priors, provability by $D$ is strictly stronger than established verifiability under $D$ (the claim $C$ being $(a) \ileadsto φ$ satisfies established verifiability under the trivial prior $D$ but is not provable by it). (TODO: for all priors?)
 
 \Cref{th:toStricterClaims} shows that impossibilities propagate to stricter claims.
 Together with \cref{th:minimalPriorForInformativeness}, it shows that 
@@ -292,6 +298,16 @@ Note that $∀C, \allleadstogo: \COF(\allleadstogo) ⇒ \OF(\allleadstogo) ⇒ \
 $C$ is said to suffer visibility issues in $\allleadstogo$ iff $¬\COF(\allleadstogo) ∧ \OF(\allleadstogo)$, which happens when some prefix hides the falsity of $C$ even though its falsity is observable when no prefix is involved.
 $C$ suffers visibility issues iff $∃\allleadstogo \suchthat ¬\COF(\allleadstogo) ∧ \OF(\allleadstogo)$.
 $C$ suffers no visibility issues in $\allleadstogo$ iff $\OF(\allleadstogo) ⇒ \COF(\allleadstogo)$, equivalently, iff $\OF(\allleadstogo) ⇔ \COF(\allleadstogo)$, and suffers no visibility issues iff $∀\allleadstogo: \OF(\allleadstogo) ⇒ \COF(\allleadstogo)$.
+
+\begin{remark}
+  \label{rk:dual}
+  Verifiability and observable falsity have a dual character as
+  $C$ satisfies established verifiability under prior $D$ iff 
+  $∀\allleadstogo ∈ C ∩ D, \OF_{D ∖ C}(\allleadstogo)$ (\cref{th:dual}).
+\end{remark}
+
+We say that $C$ is \emph{falsifiable} iff $C \neq {\allleadstos} \land
+\F(\allleadstogo) ⇒ \OF(\allleadstogo)$.
 
 According to \cref{th:noGeneral}, the prior must depend on the claim.
 One such is $C$-scrutiny, which mandates that $¬\OF(\allleadstoo) ∨ (¬\COF(\allleadstoo) ∧ \OF(\allleadstoo))$.
@@ -388,7 +404,7 @@ Indeed, second implies $∃\allleadstogo ∉ C \suchthat ¬\OF(\allleadstogo)$ w
 Here are typical examples.
 \begin{description}
   \item[Falsifiable] $(a) \ileadsto φ$ (satisfies established verifiability); 
-    $∀i: (a) \ileadsto φ$ (fails possible verifiability).
+    $∀i: (a) \ileadsto φ$ (fails possible verifiability); $∀i: \ar \ileadstostg \phi$ (fails possible verifiability) (\cref{ex:allParticular}).
   \item[Never falsifiable] $[∃i \suchthat (a) \ileadsto φ]$ which satisfies established verifiability; $[∀i: [(\ar) \ileadsto \phi \lor (\ar') \ileadsto \phi]]$ (\cref{ex:disjR}) which fails possible verifiability; $[(\ar) \ileadsto \phi \lor (\ar') \ileadsto \phi]$ which satisfies established verifiability; $[∀ i: (\ar) \ileadstog \phi] \lor [∀ i: (\ar, \ar) \ileadstog \phi] \lor …$ (\cref{ex:bigor}) which fails possible verifiability.
   \item[With mixed falsifiability] $[∃i \suchthat (a) \ileadsto φ] ∧ (b) \ileadsto φ$ (proof:  $∀\allleadstogo ∉ C: \OF(\allleadstogo) ⇔ (b) \nileadstog φ$) (satisfies established verifiability);
     $[∃i \suchthat (a) \ileadsto φ] ∧ [∀i: (b) \ileadsto φ]$ (proof: $∀\allleadstogo ∉ C: \OF(\allleadstogo) ⇔ [∃i \suchthat (b) \nileadstog φ]$) (fails possible verifiability);
@@ -400,12 +416,6 @@ It is important to note that falsifiability does not depend on $\allleadsto$: wh
 \Cref{th:holdsiff} shows that falsifiability indeed fills the mentioned gap:
 falsifiability guarantees that a non trivial claim holds if, and only if, it is not rejectable.
 
-\begin{example}
-  \label{ex:allParticular}
-  Consider any $\ar$ and $\phi$. The claim $∀ i: \ar \ileadstostg \phi$ is falsifiable:
-  given any ${\allleadstog} \notin C$, consider any $i \suchthat \ar \nileadstostg \phi$ and any $\hist \suchthat \hist \nileadstog \phi \land \ar ∈ \histend$, and define $θ = \set{(i, \hist, {\allleadstog}(i, \hist) ≠ \phi)}$.
-\end{example}
-
 \begin{remark}
   Making a claim more precise (meaning going from a claim $C$ to $C' \ssub C$) can make it falsifiable, or conversely, can make it unfalsifiable.
   Given $\hist, i$, consider the claim $C_2 = \hist \ileadstog \phi$. It is falsifiable.
@@ -413,8 +423,6 @@ falsifiability guarantees that a non trivial claim holds if, and only if, it is 
   But we can make it falsifiable again by making it even more precise (picking any single relation).
   (See \cref{rq:precise}.)
 \end{remark}
-
-We say that a prior $D$ proves a claim $C$ iff $D ⊆ C$. 
 
 \begin{theorem}
   Given any claim $C$,
@@ -425,10 +433,7 @@ We say that a prior $D$ proves a claim $C$ iff $D ⊆ C$.
   $D$ proves $C$ means, by definition, $∀\allleadstogo: ¬\OF(\allleadstogo) ⇒ ¬\F(\allleadstogo)$.
 \end{proof}
 
-Provability by $D$ implies established verifiability under $D$ (just use verification $∅$).
-For some priors, provability by $D$ is strictly stronger than established verifiability under $D$ (the claim $C$ being $(a) \ileadsto φ$ satisfies established verifiability under the trivial prior $D$ but is not provable by it).
-
-Also, provability by $¬\OF(\allleadstoo)$ (equivalently, falsifiability or triviality) is strictly stronger than established verifiability under $¬\OF(\allleadstoo)$.
+Provability by $¬\OF(\allleadstoo)$ (equivalently, falsifiability or triviality) is strictly stronger than established verifiability under $¬\OF(\allleadstoo)$; and established verifiability is strictly stronger than established verifiability under $¬\OF(\allleadstoo)$. (TODO: with any $D ⊆ D'$, EV under $D'$ is strictly stronger than EV under $D$?)
 
 \begin{example}
   The claim $C_1 = \set{∃i \suchthat (a) \ileadsto φ}$, with infinitely many individuals, satisfies established verifiability (consider $θ = \set{(a) \ileadsto φ}$), hence, established verifiability under $¬\OF(\allleadstoo)$, but is not provable by $¬\OF(\allleadstoo)$.
@@ -446,7 +451,7 @@ the triples completable only out of C are all unobservable.
 Indeed, $Θ ∩ \powerset{\allleadstogo} ⊆ C^⊆$ is equivalent to $∀T ∈ \powerset{\allleadstogo}, T ∉ C^⊆ ⇒ T ∉ Θ$.
 When a claim is never falsifiable, thus $∀\allleadstogo, ¬\OF(\allleadstogo)$, we obtain $Θ ⊆ C^⊆$.
 
-\subsection{Observationally others}
+\subsection{Observational exclusion and completion}
 $S ⊆ \allleadstos$ is observationally excludable iff 
 $∃ θ ∈ Θ \suchthat θ ∉ S^⊆$,
 equivalently, iff $Θ ⊈ S^⊆$,
@@ -457,77 +462,7 @@ equivalently, iff $S$ is NOT never falsifiable.
 $D$ is observationally completable to $C$ iff 
 $∃ θ ∈ (Θ ∩ D^⊆) \suchthat θ ∉ (D ∖ C)^⊆$.
 \Cref{th:obsComp} shows the equivalence with possible verifiability under prior $D$.
-Also possibly useful is that
-established verifiability under prior $D$, that is, 
-$∀\allleadstogo ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀ θ ⊆ {\allleadstogo'} ∈ D: {\allleadstogo'} ∈ C$,
-% $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$,
-is equivalent to 
-$∀\allleadstogo ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ (D ∖ C)^⊆$.
-\begin{theorem}
-  $C$ satisfies established verifiability under prior $D$
-  iff $∀\allleadstogo ∉ \overline{C ∩ D}: \OF_{D ∖ C}(\allleadstogo)$.
-\end{theorem}
-\begin{proof}
-  $C$ satisfies established verifiability under prior $D$ iff 
-  $∀\allleadstogo ∈ C ∩ D, \OF_{D ∖ C}(\allleadstogo)$.
-\end{proof}
-Note that
-$D ∖ C$ is falsifiable iff 
-$∀\allleadstogo ∉ (\overline{C ∩ D} ∩ D): \OF_{D ∖ C}(\allleadstogo)$
-(because $D ∖ C = \overline{C ∩ D} ∩ D$).
-This implies the claim of the theorem.
-The converse fails (thus $∀\allleadstogo ∉ \overline{C ∩ D}: \OF_{D ∖ C}(\allleadstogo)$ but $¬[∀\allleadstogo ∉ (\overline{C ∩ D} ∩ D): \OF_{D ∖ C}(\allleadstogo)]$)
-exactly when 
-$∃\allleadstogo ∉ D \suchthat ¬\OF_{D ∖ C}(\allleadstogo)$.
 
-\begin{theorem}
-  $D ∖ C$ is falsifiable iff ($C$ satisfies established verifiability under prior $D$ AND
-  $∀\allleadstogo ∉ D: \OF_{D ∖ C}(\allleadstogo)$).
-\end{theorem}
-\begin{proof}
-  Write (1) for the LHS.
-  Write (2) for EV.
-  Write (3) for $∃\allleadstogo ∉ D \suchthat ¬\OF_{D ∖ C}(\allleadstogo)$.
-
-  We know that $(1) ⇒ (2)$.
-
-  We know that $((2) \not⇒ (1)) ⇔ (3)$,
-  in other words, $(2) ∧ ¬(1) ⇔ (3)$,
-  from which follows, using the forward direction, $(2) ∧ ¬(3) ⇒ (1)$,
-  and using the negation, $(1) ⇒ ¬(3)$, which together with $(1) ⇒ (2)$ yields $(1) ⇒ (2) ∧ ¬(3)$.
-\end{proof}
-\begin{corollary}
-  $\allleadstos ∖ C$ is falsifiable iff $C$ satisfies established verifiability.
-\end{corollary}
-\begin{theorem}
-  For any $θ ∈ Θ$, the following statements are equivalent.
-  \begin{itemize}
-    \item $θ ∉ C^⊆$,
-    \item $∀θ ⊆ \allleadstogo, \allleadstogo ∉ C$,
-    \item $∀θ ⊆ \allleadstogo: \OF(\allleadstogo)$,
-    \item $θ ∉ (¬\OF_C(\allleadstoo))^⊆$.
-  \end{itemize}
-\end{theorem}
-\begin{proof}
-  1 and 2 are equivalent by definition.
-  From 1 to 3, that’s because for any such $\allleadstogo$, we have indeed $θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ C^⊆$.
-\end{proof}
-\begin{theorem}
-  For any claim $C$, with $D$ being $¬\OF_C(\allleadstoo)$,
-  $∀\allleadstogo: \OF_C(\allleadstogo) ⇔ \OF_D(\allleadstogo) ⇒ \OF_{D ∖ C}(\allleadstogo)$.
-\end{theorem}
-\begin{proof}
-  $\OF_C(\allleadstogo) ⇔ ∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ C^⊆ ⇔ ∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ (¬\OF_C(\allleadstoo))^⊆ ⇔ \OF_D(\allleadstogo) ⇒ \OF_{D ∖ C}(\allleadstogo)$.
-\end{proof}
-% \begin{conjecture}
-%   Maybe for any claims $A, B$, $\OF_{A ∖ B}(\allleadstogo) ∧ \OF_B(\allleadstogo) ⇒ \OF_A(\allleadstogo)$?
-% \end{conjecture}
-\begin{corollary}
-  Considering a claim $C$ and prior $D$ being $¬\OF_C(\allleadstoo)$,
-  $D ∖ C$ is falsifiable iff $C$ satisfies established verifiability under prior $¬\OF_C(\allleadstogo)$.
-\end{corollary}
-
-\subsection{Observable exclusions}
 Converting a claim to disjunctive normal form is useful to characterize its compatible observations, as \cref{th:dnf} indicates.
 \begin{example}
   Consider six different arguments $a_1, a'_1, a_2, a'_2, a_3, a'_3 ∈ \allargs$
@@ -544,57 +479,13 @@ Converting a claim to disjunctive normal form is useful to characterize its comp
   (wlog, pick $t_1 = ((a_1), i, p_1 ≠ φ)$, then for observability we need to pick $t_2 = ((a'_2), j, .)$ and there is no choice left for $t_3$).
 \end{example}
 
-Provability corresponds to verifiability under $D$ in the case the observation giving verifiability $θ$ is $∅$. We do not need any other observation, as our prior is supposed to be convincing when enough observations have taken place, and this is left aside our modeling: it is the problem of induction.
+\subsection{Persistent falsifiability}
+We should call COF persistent rather than continuous!
 
-However, as we know, any informative $C$ is not verifiable. Are there some claims that are unfalsifiable and unverifiable and verifiable under prior not OF?
-Verifiability under D is that for some obs compatible with notOF and C, not OF implies not F.
-D proves C is that not OF implies not F.
-Thus shit happens iff after some obs, not OF implies not F, but also for some other obs, not OF and F is possible.
-% Example: C is if (a) \ileadsto φ implies some claim OF implies not F; and otherwise, some claim not OF and F possible. Example, first claim is all j sat (a) \ileadsto[j] φ, second is (a) \ileadsto[j] φ ∨ (b) \ileadsto[j] φ
-
-\begin{theorem}
-  Set $D$ as $¬\OF(\allleadstogo)$.
-  $∀C$ that is unverifiable: 
-  if $C$ is verifiable under prior $D$, 
-  then $D$ proves $C$.
-\end{theorem}
-\begin{proof}
-  
-\end{proof}
-
-% Consider $C$ $(\ar) \ileadstog φ \lor (\ar') \ileadstog φ$ for a given $i$. It is not falsifiable. But after observing one part, it is falsifiable!
-% Consider world st (a) \nileadstog φ$. Then 
-% $C$ is verif under prior notOF?
-% Consider $(a) \ileadstog φ$. Then any completion that is not OF is in C?
-
-% We here want to study whether we still need verifiability once we have this prior, or whether we could relax it, together with verifiability.
-
-% Consider any C and the prior not OF.
-
-% \subsection{Rejection and falsification}
-% Instead of insisting on verifiability of the claim under some prior specific to the claim, we might request directly something that we can check about the claim and that somehow suggests (though less surely) its truth. Thus, the criterion we seek here is:
-
-% At our disposal is the procedure of empirical rejection, that consists in directly invalidating a claim by observing something that contradicts it.
-
-% \Cref{th:ex-post} verifies that when $C$ holds, it is not rejectable.
-
-% The converse, however, does not hold.
-To simplify, let’s consider for now the prior not OF.
-\begin{theorem}
-  A claim is verifiable under prior not OF iff it satisfies F implies OF iff it is falsifiable or trivial.
-\end{theorem}
-\begin{proof}
-  Consider a claim that satisfies F implies OF.
-  Any world in the prior satisfies not OF, thus, is in C.
-
-  Now consider a claim with a world not in C but not OF in that world.
-  By definition of not OF in that world, all prefixes in D can be completed by a world in D not in C, which is what we have to show.
-\end{proof}
-
-% Consider a claim that in some world satisfies F but not COF.
-% Then, it is not verifiable under prior not COF, unless precisely that world can be excluded by an observation.
-% This is a modeling problem as we want COF precisely to avoid this.
-% Thus, our study should focus on those claims that satisfy F implies COF.
+Consider a claim that in some world satisfies F but not COF.
+Then, it is not verifiable under prior not COF, unless precisely that world can be excluded by an observation.
+This is a modeling problem as we want COF precisely to avoid this.
+Thus, our study should focus on those claims that satisfy F implies COF.
 % We want to satisfy OF implies COF, thus, not suffer visibility issues, thus, not (OF and not COF), thus, the claim must exclude the worlds in which some obs is incompatible with C and some prefix is entirely completable in C.
 % This if C says that α leads i to φ, it must also say something about all paths incompatible with α about i.
 % Mhh this does not seem sufficient: even the claim all paths and i are lead to φ seems OF and not COF for a world where some path fails.
@@ -1098,6 +989,11 @@ Using the trivial prior $D = \allleadstos$, we obtain this corollary.
   is equivalent to 
   $∀\allleadstogo ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ (D ∖ C)^⊆$.
 \end{corollary}
+\begin{corollary}
+  \label{th:dual}
+  $C$ satisfies established verifiability under prior $D$
+  iff $∀\allleadstogo ∈ C ∩ D: \OF_{D ∖ C}(\allleadstogo)$.
+\end{corollary}
 
 \begin{corollary}
   \label{th:toStricterClaims}
@@ -1181,6 +1077,7 @@ This (to be proven) captures the claim “there is no decisive argument for $i$�
   This holds by definition of $C^⊆ = ∪_{{\allleadstog} ∈ C} \powerset{\allleadstog}$.
 \end{proof}
 
+\subsection{Falsifiability}
 \begin{theorem}
   \label{th:holdsiff}
   For any falsifiable or trivial claim $C$: $\allleadstoo ∈ C$ iff $¬\OF(\allleadstoo)$.
@@ -1205,49 +1102,103 @@ It follows that non-rejection cannot be a sufficient condition for validating a 
   In \cref{ex:threeFs}, rejection depends on ${\allleadsto}$.
 \end{remark}
 
-\Cref{def:fals} fills the gap by defining a condition that ensures that $C$ holds iff it is not rejectable.
-The property demands that whatever the behavior of individuals, if their behavior is not compatible with the claim, then it is possible to observe that it is not.
-\begin{definition}
-  \label{def:fals}
-  A claim $C$ is \emph{falsifiable} iff $C \neq {\allleadstos} \land
-  ∀\allleadstogo \notin C: θ ∩ \powerset{\allleadstog} \nsubseteq C^⊆$.
-\end{definition}
+\begin{example}
+  \label{ex:allParticular}
+  Consider any $\ar$ and $\phi$. The claim $∀i: \ar \ileadstostg \phi$ is falsifiable:
+  given any ${\allleadstog} \notin C$, consider any $i \suchthat \ar \nileadstostg \phi$ and any $\hist \suchthat \hist \nileadstog \phi \land \ar ∈ \histend$, and define $θ = \set{(i, \hist, {\allleadstog}(i, \hist) ≠ \phi)}$.
+\end{example}
 
-  \section{Supplementary material}
-  \label{sec:supplementary}
-  The following example presents a situation where non rejection is due to finiteness of observations.
-  \begin{example}[Big disjunct, non rejectable]
-    \label{ex:bigor}
-    Consider $\ar ∈ \allargs$.
-    The claim $[∀ i: (\ar) \ileadstog \phi] \lor [∀ i: (\ar, \ar) \ileadstog \phi] \lor …$,
-    thus, $C = \set{{\allleadstog} \suchthat ∃ n ∈ \Zp \suchthat ∀ i: (a)^n \ileadstog \phi}$,
-    is non rejectable: $θ ⊆ C^⊆$.
+\label{sec:supplementary}
+The following example presents a situation where non rejection is due to finiteness of observations.
+\begin{example}[Big disjunct, non rejectable]
+  \label{ex:bigor}
+  Consider $\ar ∈ \allargs$.
+  The claim $[∀ i: (\ar) \ileadstog \phi] \lor [∀ i: (\ar, \ar) \ileadstog \phi] \lor …$,
+  thus, $C = \set{{\allleadstog} \suchthat ∃ n ∈ \Zp \suchthat ∀ i: (a)^n \ileadstog \phi}$,
+  is non rejectable: $θ ⊆ C^⊆$.
 
-    Given any $θ ∈ θ$, define $l = \max_{\hist \suchthat ∃ i ∈ I, p ∈ P \suchthat (i, \hist, p) ∈ θ} \card{\hist} + 1$ if $∃ p ∈ P \suchthat (i, \hist, p) ∈ θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have
-    $θ ∈ \powerset{\allleadstog}$ and ${\allleadstog} ∈ C$, thus, $θ ∈ C^⊆$.
-  \end{example}
-  \begin{example}[Big disjunct unfals iff infinite]
-    \label{ex:existsParticular}
-    Given any $\ar ∈ \allargs$ and an infinite $I$, the claim $∃ i \suchthat \ar \ileadstostg \phi$ is strongly unfalsifiable: any $θ ∈ θ$ only has finitely many $i$ in its triples, thus, some $i$ is not reached by $θ$, thus $θ ∈ C^⊆$.
-    If $I$ is finite, then the claim is falsifiable: if it is wrong, observe for each $i$ some adequate triple $(i, \hist_i, p ≠ \phi)$.
-  \end{example}
+  Given any $θ ∈ θ$, define $l = \max_{\hist \suchthat ∃ i ∈ I, p ∈ P \suchthat (i, \hist, p) ∈ θ} \card{\hist} + 1$ if $∃ p ∈ P \suchthat (i, \hist, p) ∈ θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} \land (\ar)^l \ileadstog \phi$. We have
+  $θ ∈ \powerset{\allleadstog}$ and ${\allleadstog} ∈ C$, thus, $θ ∈ C^⊆$.
+\end{example}
+\begin{example}[Big disjunct unfals iff infinite]
+  \label{ex:existsParticular}
+  Given any $\ar ∈ \allargs$ and an infinite $I$, the claim $∃ i \suchthat \ar \ileadstostg \phi$ is strongly unfalsifiable: any $θ ∈ θ$ only has finitely many $i$ in its triples, thus, some $i$ is not reached by $θ$, thus $θ ∈ C^⊆$.
+  If $I$ is finite, then the claim is falsifiable: if it is wrong, observe for each $i$ some adequate triple $(i, \hist_i, p ≠ \phi)$.
+\end{example}
 
-  \begin{example}[Three functions, may be rejectable]
-    \label{ex:threeFs}
-    Consider $i ∈ I$, $ar \neq ar' ∈ \allargs$ and the three paths $\hists = \set{∅, (\ar), (\ar')}$.
-    The claim “Exactly two of the three paths in $\hists$ lead $i$ to $\phi$ and the remaining one leads $i$ to $¬\phi$” is not rejectable iff ${\ileadsto}$ associates, in order, $(∅, (\ar), (\ar'))$ to either
-    $(¬\phi, \phi, \phi)$,
-    $(\phi, ¬\phi, \phi)$,
-    $(\phi, \phi, ¬\phi)$,
-    $(\phi, \phi, \phi)$ or
-    $(\phi, ¬\phi, ¬\phi)$.
+\begin{example}[Three functions, may be rejectable]
+  \label{ex:threeFs}
+  Consider $i ∈ I$, $ar \neq ar' ∈ \allargs$ and the three paths $\hists = \set{∅, (\ar), (\ar')}$.
+  The claim “Exactly two of the three paths in $\hists$ lead $i$ to $\phi$ and the remaining one leads $i$ to $¬\phi$” is not rejectable iff ${\ileadsto}$ associates, in order, $(∅, (\ar), (\ar'))$ to either
+  $(¬\phi, \phi, \phi)$,
+  $(\phi, ¬\phi, \phi)$,
+  $(\phi, \phi, ¬\phi)$,
+  $(\phi, \phi, \phi)$ or
+  $(\phi, ¬\phi, ¬\phi)$.
 
-    Indeed, if ${\ileadsto}$ satisfies this, then either it holds and by \cref{th:ex-post} it is not rejectable, or it associates this triplet to $(\phi, \phi, \phi)$ or
-    $(\phi, ¬\phi, ¬\phi)$ in which case, as $(\ar)$ and $(\ar')$ cannot be together in $θ$, any $θ ∈ θ$ with $θ ⊆ {\allleadsto}$ satisfy $θ ∈ C^⊆$.
+  Indeed, if ${\ileadsto}$ satisfies this, then either it holds and by \cref{th:ex-post} it is not rejectable, or it associates this triplet to $(\phi, \phi, \phi)$ or
+  $(\phi, ¬\phi, ¬\phi)$ in which case, as $(\ar)$ and $(\ar')$ cannot be together in $θ$, any $θ ∈ θ$ with $θ ⊆ {\allleadsto}$ satisfy $θ ∈ C^⊆$.
 
-    Conversely, if $C$ is not rejectable, then for any $θ_1$ containing $∅$ and $(\ar)$ and $θ_2$ containing $∅$ and $(\ar')$, with $θ_1, θ_2 ⊆ {\allleadsto}$, we have $θ_1, θ_2 ∈ C^⊆$, which requires that ${\ileadsto}$ associates $(∅, (\ar))$ to $(¬\phi, \phi)$, $(\phi, ¬\phi)$ or $(\phi, \phi)$ and $(∅, (\ar'))$ to $(¬\phi, \phi)$, $(\phi, \phi)$ or $(\phi, ¬\phi)$.
-  \end{example}
+  Conversely, if $C$ is not rejectable, then for any $θ_1$ containing $∅$ and $(\ar)$ and $θ_2$ containing $∅$ and $(\ar')$, with $θ_1, θ_2 ⊆ {\allleadsto}$, we have $θ_1, θ_2 ∈ C^⊆$, which requires that ${\ileadsto}$ associates $(∅, (\ar))$ to $(¬\phi, \phi)$, $(\phi, ¬\phi)$ or $(\phi, \phi)$ and $(∅, (\ar'))$ to $(¬\phi, \phi)$, $(\phi, \phi)$ or $(\phi, ¬\phi)$.
+\end{example}
 
+\begin{theorem}
+  $D ∖ C$ is falsifiable iff ($C$ satisfies established verifiability under prior $D$ AND
+  $∀\allleadstogo ∉ D: \OF_{D ∖ C}(\allleadstogo)$).
+\end{theorem}
+\begin{proof}
+  \Cref{th:dual} shows that
+  $C$ satisfies established verifiability under prior $D$
+  iff $∀\allleadstogo ∉ \overline{C ∩ D}: \OF_{D ∖ C}(\allleadstogo)$.
+  Note that
+  $D ∖ C$ is falsifiable iff 
+  $∀\allleadstogo ∉ (\overline{C ∩ D} ∩ D): \OF_{D ∖ C}(\allleadstogo)$
+  (because $D ∖ C = \overline{C ∩ D} ∩ D$).
+  This implies established verifiability under prior $D$.
+  The converse fails (thus $∀\allleadstogo ∉ \overline{C ∩ D}: \OF_{D ∖ C}(\allleadstogo)$ but $¬[∀\allleadstogo ∉ (\overline{C ∩ D} ∩ D): \OF_{D ∖ C}(\allleadstogo)]$)
+  exactly when 
+  $∃\allleadstogo ∉ D \suchthat ¬\OF_{D ∖ C}(\allleadstogo)$.
+
+  Write (1) for the LHS.
+  Write (2) for EV.
+  Write (3) for $∃\allleadstogo ∉ D \suchthat ¬\OF_{D ∖ C}(\allleadstogo)$.
+
+  We know that $(1) ⇒ (2)$.
+
+  We know that $((2) \not⇒ (1)) ⇔ (3)$,
+  in other words, $(2) ∧ ¬(1) ⇔ (3)$,
+  from which follows, using the forward direction, $(2) ∧ ¬(3) ⇒ (1)$,
+  and using the negation, $(1) ⇒ ¬(3)$, which together with $(1) ⇒ (2)$ yields $(1) ⇒ (2) ∧ ¬(3)$.
+\end{proof}
+\begin{corollary}
+  $\allleadstos ∖ C$ is falsifiable iff $C$ satisfies established verifiability.
+\end{corollary}
+\begin{theorem}
+  For any $θ ∈ Θ$, the following statements are equivalent.
+  \begin{itemize}
+    \item $θ ∉ C^⊆$,
+    \item $∀θ ⊆ \allleadstogo, \allleadstogo ∉ C$,
+    \item $∀θ ⊆ \allleadstogo: \OF(\allleadstogo)$,
+    \item $θ ∉ (¬\OF_C(\allleadstoo))^⊆$.
+  \end{itemize}
+\end{theorem}
+\begin{proof}
+  1 and 2 are equivalent by definition.
+  From 1 to 3, that’s because for any such $\allleadstogo$, we have indeed $θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ C^⊆$.
+\end{proof}
+\begin{theorem}
+  For any claim $C$, with $D$ being $¬\OF_C(\allleadstoo)$,
+  $∀\allleadstogo: \OF_C(\allleadstogo) ⇔ \OF_D(\allleadstogo) ⇒ \OF_{D ∖ C}(\allleadstogo)$.
+\end{theorem}
+\begin{proof}
+  $\OF_C(\allleadstogo) ⇔ ∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ C^⊆ ⇔ ∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ (¬\OF_C(\allleadstoo))^⊆ ⇔ \OF_D(\allleadstogo) ⇒ \OF_{D ∖ C}(\allleadstogo)$.
+\end{proof}
+\begin{corollary}
+  Considering a claim $C$ and prior $D$ being $¬\OF_C(\allleadstoo)$,
+  $D ∖ C$ is falsifiable iff $C$ satisfies established verifiability under prior $¬\OF_C(\allleadstogo)$.
+\end{corollary}
+
+\section{Supplementary material}
   \begin{example}[Disjunct with incompatible paths, not falsifiable, to be deleted]
     \label{ex:disj}
     Given $\ar \neq \ar' ∈ \allargs$, the claim appearing in \cref{ex:disjR}, namely,
