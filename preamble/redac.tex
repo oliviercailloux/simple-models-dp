@@ -5,6 +5,7 @@
 %Requires package babel and option [french]. According to babel doc, need two braces around \selectlanguage to make the changes really local.
 \NewDocumentCommand{\commentOCf}{O{}m}{\ifx&#1&\else\hl{#1} \fi\textcolor{blue}{{\small\selectlanguage{french}$\big[$OC : #2$\big]$}}}
 \NewDocumentCommand{\commentYM}{O{}m}{\ifx&#1&\else\hl{#1} \fi\textcolor{red}{{\small$\big[$YM: #2$\big]$}}}
+\NewDocumentCommand{\commentClaude}{O{}m}{\ifx&#1&\else\hl{#1} \fi\textcolor{teal}{{\small$\big[$Claude: #2$\big]$}}}
 \NewDocumentCommand{\TODO}{m}{\textcolor{blue}{\small$\big[$TODO: #1$\big]$}}
 
 \bibliographystyle{abbrvnat}
