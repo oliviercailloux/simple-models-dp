@@ -89,7 +89,8 @@ The notation $α \ileadsto p$, pronounced “$α$ leads $i$ to $p$”, will be u
 As usual with binary relations, $\hist \nileadsto p$ means ${\allleadsto}(i, α) ≠ p$ or equivalently ${\allleadsto}(i, α) ∈ P ∖ \set{p}$.
 
 \subsection{Deliberated choice}
-The deliberated choice of $i$ given the exposure protocol $(I, \allargs, {\allleadsto})$ is denoted $P_i \subset P$.
+The deliberated choice of $i$ given the exposure protocol $(I, \allargs, {\allleadsto})$ is denoted $P_i ⊊ P$.
+\commentClaude{$\subset$ was changed to $⊊$ here, but this is the very definition/introduction of $P_i$, at a point where nothing yet asserts or requires properness (properness only follows later, from \Cref{th:sing}, $\card{P_i}\le 1 < \card{P}=3$). The original $\subset$ may simply have been used as a generic "is included in" symbol (matching the widespread French convention where $\subset$ means $\subseteq$), rather than to deliberately signal strictness at this point.}
 Its formal definition requires the notion of decisive argument.
 
 Given $\hist ∈ \allhists$, $\range(\hist) = \hist(\intvl{1, \card{\hist}})$ denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$.
@@ -210,7 +211,7 @@ Given an observation $θ$, let $θ^{-1}(P) ∈ \allpriobss$ denote the queried e
 Similarly, we can view an observation $θ$ as a function $θ: I ↦ ∪_{H ∈ \incr(\allhists)} P^H$ and thus $Θ = \finite((∪_{H ∈ \incr(\allhists)} P^H)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
 \commentOC[Note that $(∪_{H ∈ \max \incr(\allhists)}P^H)^I$ is the set of functions that associate to each $I$ a maximal increasing sequence of paths, together with values from $P$.]{To be deleted.}
 
-\commentOC[Let also $\max\incr(\allhists) = \set{A ∈ \incr(\allhists) \suchthat ∄ A' ∈ \incr(\allhists) \suchthat A \subset A'}$ being set equal to $\set{A ∈ \incr(\allhists) ∩ (\allhists)^\Z}$ denote the maximal elements of $\incr(\allhists)$, in the sense of containing sequences that are not a subsequence of another sequence; equivalently, containing those sequences whose sequence of cardinals of their elements equals $\Z$.]{To be deleted.}
+\commentOC[Let also $\max\incr(\allhists) = \set{A ∈ \incr(\allhists) \suchthat ∄ A' ∈ \incr(\allhists) \suchthat A ⊊ A'}$ being set equal to $\set{A ∈ \incr(\allhists) ∩ (\allhists)^\Z}$ denote the maximal elements of $\incr(\allhists)$, in the sense of containing sequences that are not a subsequence of another sequence; equivalently, containing those sequences whose sequence of cardinals of their elements equals $\Z$.]{To be deleted.}
 
 We say that an observation $θ$ is compatible with a behavior ${\allleadstog} ∈ \allleadstos$ iff $θ ⊆ \powerset{\allleadstog}$, that is, $∀ (i, \hist, p) ∈ θ: (i, \hist, p) ∈ \powerset{\allleadstog}$.
 \commentClaude{$θ$ is a set of triples, while $\powerset{\allleadstog}$ (as defined just above) is a set of \emph{relations}, i.e.\ a set of sets of triples; so "$θ⊆\powerset{\allleadstog}$" and, spelled out, "$(i,\hist,p)∈\powerset{\allleadstog}$" both have a type mismatch (a single triple cannot be a member of a set of relations). The natural condition, matching the "compatible with a claim $C$" definition given two paragraphs below (which correctly uses "$θ∈∪_{⇝∈C}\powerset{⇝}$"), should be $θ∈\powerset{\allleadstog}$, i.e.\ $θ⊆{\allleadstog}$ directly (as sets of triples), dropping the extra $\powerset{}$ on the right-hand side.}
@@ -532,14 +533,14 @@ Could we have that if it holds then it is not informative?
 $i_1$ thinks $p$ and $i_2$ thinks $¬p$.
 
 Given $\histk ∈ \allhists$ and $\ar_l ∈ \allargs$, let $(\histk, …, \ar_l, ?)$ denote the set
-$\set{\histl \suchthat \histk \subset \histl ∧ \ar_l ∈ \histlend}$.
+$\set{\histl \suchthat \histk ⊊ \histl ∧ \ar_l ∈ \histlend}$.
 Given $\hist ∈ \allhists$, ${\ileadstog}$ and $\ar_k, \ar_l ∈ \allargs$, let $(\hist, \ar_k, ?, \nileadstog φ, …, \ar_l, ?)$ denote the set
-$\set{\histl \suchthat ∃ \histk \suchthat \hist \subset \histk \subset \histl ∧ \ar_k ∈ \histkend ∧ \histk \nileadstog φ ∧ \ar_l ∈ \histlend}$.
+$\set{\histl \suchthat ∃ \histk \suchthat \hist ⊊ \histk ⊊ \histl ∧ \ar_k ∈ \histkend ∧ \histk \nileadstog φ ∧ \ar_l ∈ \histlend}$.
 Given $\ar_k, \ar_l ∈ \allargs$, let
 $(…, \ar_k, ?, \nileadstog φ, …, \ar_l, ?)$ denote the set
 $∪_{\hist ∈ \allhists} (\hist, \ar_k, ?, \nileadstog φ, …, \ar_l, ?) =
-  \set{\histl \suchthat ∃ \hist, \histk \suchthat \hist \subset \histk \subset \histl ∧ \ar_k ∈ \histkend ∧ \histk \nileadstog φ ∧ \ar_l ∈ \histlend} =
-  \set{\histl \suchthat ∃ \histk \suchthat \histk \subset \histl ∧ \ar_k ∈ \histkend ∧ \histk \nileadstog φ ∧ \ar_l ∈ \histlend}$.
+  \set{\histl \suchthat ∃ \hist, \histk \suchthat \hist ⊊ \histk ⊊ \histl ∧ \ar_k ∈ \histkend ∧ \histk \nileadstog φ ∧ \ar_l ∈ \histlend} =
+  \set{\histl \suchthat ∃ \histk \suchthat \histk ⊊ \histl ∧ \ar_k ∈ \histkend ∧ \histk \nileadstog φ ∧ \ar_l ∈ \histlend}$.
 Given ${\ileadstog}$, $p ∈ P$, $s ∈ \allargs$ and $S ⊆ \allargs$, note that $s ∈ \ileadstoinvg(p)$ stand for $s \ileadstog p$ and $S ⊆ \ileadstoinvg(p)$ stand for $∀ s ∈ S: s \ileadstog p$.
 
 \begin{theorem}
@@ -610,7 +611,7 @@ Given ${\ileadstog}$, $p ∈ P$, $s ∈ \allargs$ and $S ⊆ \allargs$, note tha
 
   Assume the claim is just \eqref{eq:cl} $∧$ \eqref{eq:answerable}. Then if is not fals.
 
-  If the claim is sufficiently stronger (to be falsifiable) than this (thus with $C' \subset C$, thus with ${\allleadstog} ∉ C'$ as defined above), then it may be false.
+  If the claim is sufficiently stronger (to be falsifiable) than this (thus with $C' ⊊ C$, thus with ${\allleadstog} ∉ C'$ as defined above), then it may be false.
   Indeed, to be falsifiable, we need ${\allleadstog'} ∉ C'$.
   Now we need $C'$ to hold so it must contain ${\allleadsto}$ but not contain ${\allleadstog'}$. It does not contain ${\allleadstog'}$ iff it implies $¬(∧_{\hist ∈ \allhists ∖ \set{(\ar_l)}} \hist \ileadstog' p ∧ (\ar_l) \ileadstog' p')$.
   %So it must claim that $\ar_l$ is not decisive. Or something like, for some $\hist_1$: if $\ar_l \ileadstog' p'$, then $\hist_1 \ileadstog' ¬p$.
@@ -652,7 +653,8 @@ Given ${\ileadstog}$, $p ∈ P$, $s ∈ \allargs$ and $S ⊆ \allargs$, note tha
 \end{remark}
 
 \begin{example}[To be completed]
-  Assume that $∃ \ar_j ≠ \ar_k, J, K \subset I \suchthat J ∪ K = I ∧ \card{J} ∉ \Z ∧ \card{K} ∉ \Z ∧ ∀ j ∈ J: \ar_j \ileadstost[j] φ ∧ ∀ k ∈ K: \ar_k \ileadstost[k] φ ∧ ∀ \ar ∈ \allargs ∖ \set{\ar_j, \ar_k}, i ∈ I: \ar \nileadstost φ$.
+  Assume that $∃ \ar_j ≠ \ar_k, J, K ⊊ I \suchthat J ∪ K = I ∧ \card{J} ∉ \Z ∧ \card{K} ∉ \Z ∧ ∀ j ∈ J: \ar_j \ileadstost[j] φ ∧ ∀ k ∈ K: \ar_k \ileadstost[k] φ ∧ ∀ \ar ∈ \allargs ∖ \set{\ar_j, \ar_k}, i ∈ I: \ar \nileadstost φ$.
+\commentClaude{$\subset$ was changed to $⊊$ here, but nothing in the stated hypothesis ($J∪K=I$, both infinite) rules out $J=I$ (with $K$ also some infinite subset of $I$): the sentence never says that $J,K$ partition $I$ disjointly, so properness of $J$ and $K$ relative to $I$ is not obviously required or intended.}
   Then no suitable $C$ exists?
 
   Let’s find some suitable $C$ that shows that $φ ∈ P_i$.
@@ -673,11 +675,11 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
     $(\ar) \ileadstog φ ∨ (\ar, \ar) \ileadstog φ ∨ …$ is not falsifiable.
     %	Its negation is $∀ k: (\ar^k) \nileadsto φ$.
     %	The claim represents the set $\set{{\allleadsto} ∈ \allleadstos \suchthat (\ar) \ileadsto φ ∨  (\ar, \ar) \ileadsto φ ∨ …}$.
-    Given any $O$, define $l = \max_{\hist \suchthat ∃ p ∈ P \suchthat (i, \hist, p) ∈ O} \card{\hist} + 1$. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} ∧ (\ar)^l \ileadstog φ$. We have ${\allleadstog} ∈ S_θ ∩ C ≠ ∅$.
+    Given any $O$, define $l = \max_{\hist \suchthat ∃ p ∈ P \suchthat (i, \hist, p) ∈ O} \card{\hist} + 1$. Pick any $\allleadstog$ such that $θ ⊆ {\allleadstog} ∧ (\ar)^l \ileadstog φ$. We have ${\allleadstog} ∈ S_θ ∩ C ≠ ∅$.
   \end{example}
   \begin{example}
     $(\ar) \ileadstog φ ∨ (\ar') \ileadstog φ$ is not falsifiable.
-    Given any $O$, it may not contain both $((\ar), i, φ)$ and $((\ar'), i, φ)$, thus letting $t$ denote one of these triples not in $O$, pick any $\allleadstog$ such that $θ \subset {\allleadstog} ∧ t ∈ {\allleadstog}$. We have ${\allleadstog} ∈ S_θ ∩ C ≠ ∅$.
+    Given any $O$, it may not contain both $((\ar), i, φ)$ and $((\ar'), i, φ)$, thus letting $t$ denote one of these triples not in $O$, pick any $\allleadstog$ such that $θ ⊆ {\allleadstog} ∧ t ∈ {\allleadstog}$. We have ${\allleadstog} ∈ S_θ ∩ C ≠ ∅$.
   \end{example}
   \begin{example}[Fals. but shouldn’t]
     \label{ex:fbs}
@@ -1107,7 +1109,7 @@ This (to be proven) captures the claim “there is no decisive argument for $i$�
   In fact,
   $Θ ⊆ C^⊆$.
   Consider any $θ ∈ Θ$ and let us prove that $θ ∈ ∪_{{\allleadstog} ∈ C} \powerset{\allleadstog}$.
-  By definition of $Θ$, $θ^{-1}(P)$ may not contain both $((\ar), i)$ and $((\ar'), i)$, thus letting $t$ denote one of these pairs not in $θ^{-1}(P)$ and defining $r = (t, φ)$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} ∧ t ∈ {\allleadstog'}$. We have $θ ∈ \powerset{\allleadstog'}$ and ${\allleadstog'} ∈ C$.
+  By definition of $Θ$, $θ^{-1}(P)$ may not contain both $((\ar), i)$ and $((\ar'), i)$, thus letting $t$ denote one of these pairs not in $θ^{-1}(P)$ and defining $r = (t, φ)$, pick any ${\allleadstog'}$ such that $θ ⊆ {\allleadstog'} ∧ t ∈ {\allleadstog'}$. We have $θ ∈ \powerset{\allleadstog'}$ and ${\allleadstog'} ∈ C$.
 \end{example}
 \Cref{ex:disjR} shows a claim that is not rejectable, irrespective of the exposure protocol.
 In particular, the example applies when $C$ does not hold (that is, when ${\allleadsto} ∉ C$). We conclude that a claim may fail to hold but still be not rejectable.
@@ -1134,7 +1136,7 @@ The following example presents a situation where non rejection is due to finiten
   thus, $C = \set{{\allleadstog} \suchthat ∃ n ∈ \Zp \suchthat ∀ i: (a)^n \ileadstog φ}$,
   is non rejectable: $Θ ⊆ C^⊆$.
 
-  Given any $θ ∈ Θ$, define $l = \max_{\hist \suchthat ∃ i ∈ I, p ∈ P \suchthat (i, \hist, p) ∈ θ} \card{\hist} + 1$ if $∃ p ∈ P \suchthat (i, \hist, p) ∈ θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ \subset {\allleadstog} ∧ (\ar)^l \ileadstog φ$. We have
+  Given any $θ ∈ Θ$, define $l = \max_{\hist \suchthat ∃ i ∈ I, p ∈ P \suchthat (i, \hist, p) ∈ θ} \card{\hist} + 1$ if $∃ p ∈ P \suchthat (i, \hist, p) ∈ θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ ⊆ {\allleadstog} ∧ (\ar)^l \ileadstog φ$. We have
   $θ ∈ \powerset{\allleadstog}$ and ${\allleadstog} ∈ C$, thus, $θ ∈ C^⊆$.
 \end{example}
 \begin{example}[Big disjunct unfals iff infinite]
@@ -1223,7 +1225,7 @@ The following example presents a situation where non rejection is due to finiten
     Consider any ${\allleadstog} ∉ C$, thus satisfying, for some $i$, $(\ar) \nileadstog φ ∧ (\ar') \nileadstog φ$.
     Consider any $θ ⊆ {\allleadstog}$ and let us prove that $θ ∈ C^⊆$.
     (This is a consequence of \cref{ex:disjR} so this proof should not be useful.)
-    By definition of a general observation, $θ$ may not contain both $((\ar), i, φ)$ and $((\ar'), i, φ)$, thus letting $t$ denote one of these triples not in $θ$, pick any ${\allleadstog'}$ such that $θ \subset {\allleadstog'} ∧ t ∈ {\allleadstog'}$. We have
+    By definition of a general observation, $θ$ may not contain both $((\ar), i, φ)$ and $((\ar'), i, φ)$, thus letting $t$ denote one of these triples not in $θ$, pick any ${\allleadstog'}$ such that $θ ⊆ {\allleadstog'} ∧ t ∈ {\allleadstog'}$. We have
     $θ ∈ \powerset{\allleadstog'}$ and ${\allleadstog'} ∈ C$, thus, $θ ∈ C^⊆$.
   \end{example}
 
@@ -1869,7 +1871,8 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
   if $C$ holds, then it implies something about the dj of some $i$;
   if $C$ fails, it is possible to falsify it.
 
-  We can observe set $O$ that forms a function $f(i) = \set{α \ileadsto φ, α' \ileadsto φ', …}$, with $α \subset α \subset …$ and with finite $O$.
+  We can observe set $O$ that forms a function $f(i) = \set{α \ileadsto φ, α' \ileadsto φ', …}$, with $α ⊊ α ⊊ …$ and with finite $O$.
+\commentClaude{$\subset$ was changed to $⊊$ here, but this now literally reads "$α ⊊ α$", which is impossible for any sequence/set (nothing is a proper subset of itself). This looks like a pre-existing typo: given the surrounding "…", a strictly increasing chain of \emph{distinct} paths (e.g.\ $α ⊊ α' ⊊ α'' ⊊ …$) was presumably intended, so it is unclear what the two sides of each $⊊$ are even meant to be.}
   Our second condition is that $¬C ⇒ ∃ θ \suchthat θ ⇒ ¬C$.
   For example, if $C$ is $α \ileadsto φ ∨ β \allleadsto[j] φ$, $O$ is $α \ileadsto φ' ∧ β \allleadsto φ'$, then $O$ implies $¬C$.
   As another example, $C$ being $∃ α \suchthat α \ileadsto φ$ is unfalsifiable, as its negation is $∀ α: α \nileadsto φ$, which requires infinite $O$.
@@ -1880,7 +1883,8 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
   If false, it is falsifiable.
   Even though it is not provable by any $O$.
 
-  Now consider $\allleadsto$ such that $∃ J, K \subset I \suchthat \ar \ileadstost[j] φ, \ar' \ileadstost[k] φ$.
+  Now consider $\allleadsto$ such that $∃ J, K ⊊ I \suchthat \ar \ileadstost[j] φ, \ar' \ileadstost[k] φ$.
+\commentClaude{$\subset$ was changed to $⊊$ here too, for the same reason as the similar "$J, K \subset I$" phrasing noted earlier in the "Ideas for no suitable" section above: nothing here rules out $J=I$ or $K=I$, so properness may not be intended.}
   Then no suitable $C$ exists?
 
   If $C$ has the form, whenever $a$ fails, $a'$ is then decisive, it is falsifiable, but does not lead to a decisive argument.
@@ -2659,7 +2663,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     Any $C$ such that $∃ {\allleadstog^1}, {\allleadstog^2} ∈ C \suchthat$ some combination of them ${\allleadstog} ∉ C$ (meaning that ${\allleadstog} ⊆ {\allleadstog^1} ∪ {\allleadstog^2}$) and the set over which they differ, $\set{(i, \hist) \suchthat {\allleadstog^1}(i, \hist) ≠ {\allleadstog^2}(i, \hist)}$, does not contain two elements that are simultaneously observable (meaning that no $θ$ contains more than one of these elements), is not falsifiable.
   \end{theorem}
   \begin{proof}
-    Consider any $θ \subset {\allleadstog}$.
+    Consider any $θ ⊆ {\allleadstog}$.
     If $θ$ is fully compatible with ${\allleadstog^1}$, then ${\allleadstog^1} ∈ S_θ ∩ C ≠ ∅$.
     Otherwise, $θ$ contains some element $(i, \hist, {\allleadstog^2}(i, \hist))$ with ${\allleadstog^2}(i, \hist) ≠ {\allleadstog^1}(i, \hist)$. Then, ${\allleadstog^2} ∈ S_θ ∩ C ≠ ∅$, for otherwise, for at least one other element $(i', \histp)$, $θ$ contains $(i', \histp, {\allleadstog^1}(i', \histp))$ with ${\allleadstog^1}(i', \histp) ≠ {\allleadstog^2}(i', \histp)$, which violates the hypothesis.
   \end{proof}
@@ -2755,7 +2759,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
 \begin{remark}
   The question of falsifiability is whether the set of relations $\allleadstog$ “compatible” with $C^⊆ ∩ Θ$ equals $C$.
   Compatibility needs to consider the observables, not a subset of it.
-  Define $Θ_1 \subset Θ$ as the observations that observe only one pair $(i, \hist)$.
+  Define $Θ_1 ⊊ Θ$ as the observations that observe only one pair $(i, \hist)$.
   Define $R_1 = \set{{\allleadstog} ∈ \allleadstos \suchthat ∀ θ ∈ Θ_1: ({\allleadstog} ∩ θ) ∈ (C^⊆ ∩ Θ)}$.
   Note that $R ⊆ R_1$.
   We know that $C$ is falsifiable iff $R ⊆ C$. Thus, $C$ is not falsifiable implies $C ⊊ R ⊆ R_1$ thus $C ⊊ R_1$. But we do not have that $C ⊊ R_1$ implies $C$ not falsifiable: could have $C ⊊ R_1$ but still $R = C$.
