@@ -73,12 +73,10 @@ Let the set $P = \set{φ, φ', 0}$ denote the set of possible preferences, where
 An exposure protocol is a tuple $(I, \allargs, {\allleadsto})$, where $I$ is a set of individuals, $\allargs$ is a set of arguments, and ${\allleadsto}$, “leads to”, is the behavior of the individuals as a function of the arguments they have been exposed to.
 
 While $I$ and $\allargs$ are fundamental sets whose elements are considered elementary, a few notations and concepts are required to define ${\allleadsto}$.
-Throughout the article, $\Z$ designates the integers (including $0$) and $\Zp = \Z ∖ \set{0}$ designates the positive numbers.
-\commentClaude{$\Z ∖ \set{0}$ is the set of \emph{nonzero} integers, including all negative integers, not "the positive numbers". If positive integers are meant (as suggested by the following parenthetical, $∀j∈\Zp: \intvl{j,0}=∅$, which indeed requires $j>0$), this should presumably be $\set{k ∈ \Z \suchthat k > 0}$ or $\N ∖ \set{0}$. Note also that \texttt{preamble/math\_basics.tex} already defines \textbackslash Zp globally as $\Z^+$ (i.e.\ as the standard positive integers), so this local redefinition in prose is at best redundant and at worst contradicts the macro's actual meaning.}
-Given $j, l ∈ \Z$, the notation $\intvl{j, l}$ represents $\set{k ∈ \Z \suchthat j ≤ k ≤ l}$ (thus $∀ j ∈ \Zp: \intvl{j, 0} = ∅$).
-Define $\allhists = ⋃_{k ∈ \Z} \allargs^{\intvl{1, k}}$ as the finite sequences of arguments, including the empty sequence.
-A generic element of $\allhists$ (a possibly empty finite sequence of arguments) is denoted by $\hist$ and called an argumentative path, or simply a path. Its length is denoted by $\card{\hist} ∈ \Z$ and its elements, $\hist(k)$ or $\hist_k$.
-\commentClaude{The length of a finite sequence is a nonnegative integer; stating $\card{\hist} ∈ \Z$ (rather than $\N$) is imprecise, allowing for negative lengths that never occur.}
+Throughout the article, $ℕ$ designates the natural numbers (including $0$) and $\Np = ℕ ∖ \set{0}$ designates the positive numbers.
+Given $j, l ∈ ℤ$, the notation $\intvl{j, l}$ represents $\set{k ∈ ℤ \suchthat j ≤ k ≤ l}$ (thus $∀ j ∈ \Np: \intvl{j, 0} = ∅$).
+Define $\allhists = ⋃_{k ∈ ℕ} \allargs^{\intvl{1, k}}$ as the finite sequences of arguments, including the empty sequence.
+A generic element of $\allhists$ (a possibly empty finite sequence of arguments) is denoted by $\hist$ and called an argumentative path, or simply a path. Its length is denoted by $\card{\hist} ∈ ℕ$ and its elements, $\hist(k)$ or $\hist_k$.
 Thus, given an argumentative path $\hist ∈ \allhists$, $∀ k ∈ \intvl{1, \card{\hist}}: \hist(k) = \hist_k ∈ \allargs$, and $\hist = ∅ ⇔ \card{\hist} = 0$. A path $\hist ∈ \allhists$ is a prefix of a path $\histp ∈ \allhists$ whenever $\hist ⊆ \histp$, thus, $∀ k ∈ \intvl{1, \card{\hist}}: \hist_k = \histp_k$.
 \commentClaude{The relation $⊆$ is being applied here to sequences (elements of $\allhists$), not to sets, and is silently reused later on sets of paths in $\incr(\allhists)$ with (presumably) its ordinary set-theoretic meaning. This works if a sequence $\hist$ is identified with its graph $\set{(k,\hist_k)}$, but that identification is never stated explicitly; as written, "$\hist⊆\histp$" is introduced as if it were already a known relation on $\allhists$ ("whenever $\hist⊆\histp$"), with the actual defining condition only following as a "thus"-consequence rather than as the definition itself.}
 Given any $\hist ∈ \allhists$, $\intvl{\hist} = \set{\restr{\hist}{\intvl{1, k}} \suchthat k ∈ \intvl{0, \card{\hist}}}$ denotes the set of prefixes of $\hist$.
@@ -149,7 +147,7 @@ The following toy example is inspired by the following argument from \citet[p.~5
   Let ${\allleadsto}(i, a_e)$ represent $i$ being given the following argument. “When tested, $m_1$ answers 70\% of the first half of questions correctly but then only 40\% of the other half correctly; whereas $m_2$ answers 45\% of the first half of questions correctly, then 75\% of the other half correctly. It follows than $m_1$ answers on average less well than $m_2$. Observing the candidates take the tests may yield a contrary impression; this is a well-known psychological phenomenon depending on the order of the questions that the candidates answer correctly.”
   Let $φ_1$ represent choosing $m_1$ and $φ_2$ choosing $m_2$ (for this example we use $P = \set{φ_1, φ_2, 0}$).
 
-  If the prediction described in the quote applies to $i$, the relation $\ileadsto$ is as follows, $∀ k ∈ \Zp$ (recall that for $\args ⊆ \allargs$, $\args^k$ represents the set of sequences of length $k$ using arguments from $\args$): $∀ \hist ∈ \set{a_e}^k, \hist \ileadsto φ_2$; $∀ \hist ∈ \set{a_1, a_2}^k, \hist \ileadsto φ_1$; $∀ \hist ∈ \set{a_1, a_e}^k \suchthat a_e ∈ \histend, \hist \ileadsto φ_2$; $∀ \hist ∈ \set{a_2, a_e}^k \suchthat a_e ∈ \histend, \hist \ileadsto φ_2$; $∀ \hist ∈ \allargs^k \suchthat a_e ∈ \histend, \hist \ileadsto φ_2$. The values of ${\allleadsto}(i, \hist)$ for $\hist = ∅$ and for $\hist ∈ \allargs^k \suchthat a_e ∉ \histend$ are undetermined by the prediction, but whatever they are, $a_e$ is a decisive argument for $φ_2$, hence, $i$’s deliberated choice is $φ_2$.
+  If the prediction described in the quote applies to $i$, the relation $\ileadsto$ is as follows, $∀ k ∈ \Np$ (recall that for $\args ⊆ \allargs$, $\args^k$ represents the set of sequences of length $k$ using arguments from $\args$): $∀ \hist ∈ \set{a_e}^k, \hist \ileadsto φ_2$; $∀ \hist ∈ \set{a_1, a_2}^k, \hist \ileadsto φ_1$; $∀ \hist ∈ \set{a_1, a_e}^k \suchthat a_e ∈ \histend, \hist \ileadsto φ_2$; $∀ \hist ∈ \set{a_2, a_e}^k \suchthat a_e ∈ \histend, \hist \ileadsto φ_2$; $∀ \hist ∈ \allargs^k \suchthat a_e ∈ \histend, \hist \ileadsto φ_2$. The values of ${\allleadsto}(i, \hist)$ for $\hist = ∅$ and for $\hist ∈ \allargs^k \suchthat a_e ∉ \histend$ are undetermined by the prediction, but whatever they are, $a_e$ is a decisive argument for $φ_2$, hence, $i$’s deliberated choice is $φ_2$.
 \commentClaude{Of the five bullet points describing $\ileadsto$, the last one ("$∀\hist∈\allargs^k$ such that $a_e∈\histend$, $\hist\ileadsto φ_2$") already logically subsumes the first, third and fourth bullets (all of which describe special cases of histories, drawn from subsets of $\allargs$, that have $a_e∈\histend$). Only the second bullet (histories in $\set{a_1,a_2}^k$, with no $a_e$ at all) is logically independent from the last. This redundancy is harmless but makes it harder to see that the whole prediction reduces to just these two conditions, which are exactly what is needed (and sufficient) to conclude that $a_e$ is decisive for $φ_2$.}
 \end{example}
 
@@ -197,7 +195,7 @@ Define the increasing sets of paths as the set $\incr(\allhists) = \set{H \fsub 
 Note that $\incr(\allhists)$ includes both the empty set of paths $∅$ and the set of paths $\set{∅}$ containing only the empty path.
 A non empty set of paths $H ∈ \incr(\allhists)$ has a unique maximal element $\set{\max H} = \set{\hist ∈ H \suchthat ∀ \histp ∈ H: \histp ⊆ \hist}$.
 A non empty set of paths $H ∈ \incr(\allhists)$ contains all its prefixes (meaning, $∀ \hist ∈ H: \set{\histp ⊆ \hist} ⊆ H$) iff $H = \intvl{\max H}$.
-Let $\finite(\incr(\allhists)^I)$ denote the functions $f: I ↦ \incr(\allhists)$ with finite support, thus, satisfying $\card{f^{-1}(\incr(\allhists) ∖ ∅)} ∈ \N$.
+Let $\finite(\incr(\allhists)^I)$ denote the functions $f: I ↦ \incr(\allhists)$ with finite support, thus, satisfying $\card{f^{-1}(\incr(\allhists) ∖ ∅)} ∈ ℕ$.
 An element $Q ∈ \allpriobss$ \commentOC{previously denoted $O$ and called a priori observation} is called a query.
 \commentOC[Note that $\incr(\allhists)^I$ and $\allpriobss$ are downwards closed, meaning that $∀ O ∈ \incr(\allhists)^I: \set{O' ⊆ O} ⊆ \incr(\allhists)^I$ and $∀ O ∈ \allpriobss: \set{O' ⊆ O} ⊆ \allpriobss$.]{To be deleted.}
 
@@ -209,7 +207,7 @@ Given an observation $θ$, let $θ^{-1}(P) ∈ \allpriobss$ denote the queried e
 Similarly, we can view an observation $θ$ as a function $θ: I ↦ ∪_{H ∈ \incr(\allhists)} P^H$ and thus $Θ = \finite((∪_{H ∈ \incr(\allhists)} P^H)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
 \commentOC[Note that $(∪_{H ∈ \max \incr(\allhists)}P^H)^I$ is the set of functions that associate to each $I$ a maximal increasing sequence of paths, together with values from $P$.]{To be deleted.}
 
-\commentOC[Let also $\max\incr(\allhists) = \set{A ∈ \incr(\allhists) \suchthat ∄ A' ∈ \incr(\allhists) \suchthat A ⊊ A'}$ being set equal to $\set{A ∈ \incr(\allhists) ∩ (\allhists)^\Z}$ denote the maximal elements of $\incr(\allhists)$, in the sense of containing sequences that are not a subsequence of another sequence; equivalently, containing those sequences whose sequence of cardinals of their elements equals $\Z$.]{To be deleted.}
+\commentOC[Let also $\max\incr(\allhists) = \set{A ∈ \incr(\allhists) \suchthat ∄ A' ∈ \incr(\allhists) \suchthat A ⊊ A'}$ being set equal to $\set{A ∈ \incr(\allhists) ∩ (\allhists)^ℕ}$ denote the maximal elements of $\incr(\allhists)$, in the sense of containing sequences that are not a subsequence of another sequence; equivalently, containing those sequences whose sequence of cardinals of their elements equals $ℕ$.]{To be deleted.}
 
 We say that an observation $θ$ is compatible with a behavior ${\allleadstog} ∈ \allleadstos$ iff $θ ⊆ \powerset{\allleadstog}$, that is, $∀ (i, \hist, p) ∈ θ: (i, \hist, p) ∈ \powerset{\allleadstog}$.
 \commentClaude{$θ$ is a set of triples, while $\powerset{\allleadstog}$ (as defined just above) is a set of \emph{relations}, i.e.\ a set of sets of triples; so "$θ⊆\powerset{\allleadstog}$" and, spelled out, "$(i,\hist,p)∈\powerset{\allleadstog}$" both have a type mismatch (a single triple cannot be a member of a set of relations). The natural condition, matching the "compatible with a claim $C$" definition given two paragraphs below (which correctly uses "$θ∈∪_{⇝∈C}\powerset{⇝}$"), should be $θ∈\powerset{\allleadstog}$, i.e.\ $θ⊆{\allleadstog}$ directly (as sets of triples), dropping the extra $\powerset{}$ on the right-hand side.}
@@ -651,7 +649,7 @@ Given ${\ileadstog}$, $p ∈ P$, $s ∈ \allargs$ and $S ⊆ \allargs$, note tha
 \end{remark}
 
 \begin{example}[To be completed]
-  Assume that $∃ \ar_j ≠ \ar_k, J, K ⊊ I \suchthat J ∪ K = I ∧ \card{J} ∉ \Z ∧ \card{K} ∉ \Z ∧ ∀ j ∈ J: \ar_j \ileadstost[j] φ ∧ ∀ k ∈ K: \ar_k \ileadstost[k] φ ∧ ∀ \ar ∈ \allargs ∖ \set{\ar_j, \ar_k}, i ∈ I: \ar \nileadstost φ$.
+  Assume that $∃ \ar_j ≠ \ar_k, J, K ⊊ I \suchthat J ∪ K = I ∧ \card{J} ∉ ℕ ∧ \card{K} ∉ ℕ ∧ ∀ j ∈ J: \ar_j \ileadstost[j] φ ∧ ∀ k ∈ K: \ar_k \ileadstost[k] φ ∧ ∀ \ar ∈ \allargs ∖ \set{\ar_j, \ar_k}, i ∈ I: \ar \nileadstost φ$.
 \commentClaude{$\subset$ was changed to $⊊$ here, but nothing in the stated hypothesis ($J∪K=I$, both infinite) rules out $J=I$ (with $K$ also some infinite subset of $I$): the sentence never says that $J,K$ partition $I$ disjointly, so properness of $J$ and $K$ relative to $I$ is not obviously required or intended.}
   Then no suitable $C$ exists?
 
@@ -704,9 +702,9 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   iff $\ar_0 ∈ R(\dg^{-1}(\ar_1))$, equivalently,
   iff $\ar_1 ∈ \dg(\set{\hist \suchthat \ar_0 ∈ R(\hist)})$.
 
-  Say that $γ$ has depth at least $k ∈ \Zp$ iff $∃ (α_i, 1 ≤ i ≤ k) \suchthat ∀ 1 ≤ i ≤ k, \dg(\set{α_j \suchthat 1 ≤ j ≤ i - 1}) ⊊ \dg(\set{α_j \suchthat 1 ≤ j ≤ i}) ∧ ∀ 1 ≤ i ≤ k - 1, α_i ∪ \dg(α_i) ⊆ α_{i + 1}$.
-  The bounded depth condition on the defense relation imposes that for some $k ∈ \Zp$, $γ$ does not have depth at least $k$.
-  The depth of a theory is defined as the smallest value $k ∈ \Z$ such that it does not have depth at least $k + 1$.
+  Say that $γ$ has depth at least $k ∈ \Np$ iff $∃ (α_i, 1 ≤ i ≤ k) \suchthat ∀ 1 ≤ i ≤ k, \dg(\set{α_j \suchthat 1 ≤ j ≤ i - 1}) ⊊ \dg(\set{α_j \suchthat 1 ≤ j ≤ i}) ∧ ∀ 1 ≤ i ≤ k - 1, α_i ∪ \dg(α_i) ⊆ α_{i + 1}$.
+  The bounded depth condition on the defense relation imposes that for some $k ∈ \Np$, $γ$ does not have depth at least $k$.
+  The depth of a theory is defined as the smallest value $k ∈ ℕ$ such that it does not have depth at least $k + 1$.
   For example, $γ$ has depth $0$ iff $\dg = ∅$; and $γ$ has depth $1$ iff $[∃ α_1 \suchthat \dg(α_1) ≠ ∅] ∧ [∀ α_1, α_2 \suchthat \dg(α_1) ≠ ∅ ∧ α_1 ∪ \dg(α_1) ⊆ α_2: \dg(α_2) ⊆ \dg(α_1)]$.
 
   \commentOC{Intuition. Invoke $\dg$ at $α$ only when $α$ fails. Permit to invoke a previous defense again as maybe the counter was too long to perform when summarized. If $a_2$ fails, we must invoke $\dg(…, a_2, x)$; failures of $\dg(…, a_2, …, x)$ should not count. We should invoke $\dg$ only when $α$ fails with some defense produced by $\dg()$ belongs to $\histend$.}
@@ -720,7 +718,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 
   To define this formally, note that either $\arga$ is a decisive argument for $\pga$, or some paths challenge this claim, namely those $\hist ∈ \allhists$ such that $[\arga ∈ \histend ∧ \hist \nileadsto \pga]$.
   Generalizing this observation, given $i ∈ I$, define $\dgi(\ar) = \set{\dg(\ar, \hist) \suchthat \ar ∈ \histend ∧ \hist \nileadsto \pga} ⊆ \dg(\ar)$ as the subset of defenders of $\ar$ required for convincing $i$ of choosing $\pga$.
-  Define $\gargsi ⊆ \allargs$ as the transitive closure of $\arga$ under $\dgi$: $\gargsi = ∪_{k ∈ \Z} (\dgi)^k(\arga)$. The set $\gargsi$ is the set of arguments required to convince $i$ of choosing $\pga$.
+  Define $\gargsi ⊆ \allargs$ as the transitive closure of $\arga$ under $\dgi$: $\gargsi = ∪_{k ∈ ℕ} (\dgi)^k(\arga)$. The set $\gargsi$ is the set of arguments required to convince $i$ of choosing $\pga$.
 
   An argumentative theory claims that whenever some of its arguments fail to convince $i$ of choosing $\pga$, it can argue something else.
   It is said to be truthful iff this claim is correct.
@@ -734,7 +732,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   \begin{definition}[Truthfulness]
     \label{def:truth}
     An argumentative theory $(\pga, \arga, \dg)$ for the exposure protocol $(I, \allargs, {\allleadsto})$ is \emph{truthful} iff
-    $∀ i ∈ I, \hist ∈ \allhists, n ∈ \Z, k ∈ \intvl{1, \card \hist}^n, \ar ∈ \allargs^n$:
+    $∀ i ∈ I, \hist ∈ \allhists, n ∈ ℕ, k ∈ \intvl{1, \card \hist}^n, \ar ∈ \allargs^n$:
     \begin{equation}
       \left.\begin{aligned}
          & \ar_1 = \arga                                                                            \\
@@ -845,7 +843,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
     Consider $a_1$ not decisive because of $a$ and then $(a_1, a, a_2) \ileadsto p$. But still $a_2$ not decisive: $a2 \nileadsto p$.
   \end{example}
 
-  A path can be shortened to its first $k ∈ \intvl{0, \card{\hist}}$ elements, which is denoted by $\restr{\hist}{\intvl{1, k}}$, and “shortening” a path beyond its length yields the same path again, thus given $k ∈ \Z$, $\restr{\hist}{\intvl{1, k}} = \restr{\hist}{\intvl{1, \min\set{\card{\hist}, k}}}$.
+  A path can be shortened to its first $k ∈ \intvl{0, \card{\hist}}$ elements, which is denoted by $\restr{\hist}{\intvl{1, k}}$, and “shortening” a path beyond its length yields the same path again, thus given $k ∈ ℤ$, $\restr{\hist}{\intvl{1, k}} = \restr{\hist}{\intvl{1, \min\set{\card{\hist}, k}}}$.
   Define a path as being decisive for $p$, $\hist \ileadstost p$, iff $\hist \ileadsto p ∧ ∀ \ar ∈ \allargs: (\hist, \ar) \ileadsto p$, or equivalently, iff $∀ \hist' \suchthat \card{\hist} ≤ \card{\hist'} ≤ \card{\hist} + 1 ∧ \restr{\hist'}{\intvl{1, \card{\hist}}} = \hist: \hist' \ileadsto p$. Thus, $\hist \nileadstost p ⇔ ∃ \ar ∈ \allargs \suchthat (\hist, \ar) \nileadsto p$ (or…?).
 
   \begin{axiom}[Self-sufficiency of positive arguments]
@@ -903,7 +901,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 
   \begin{axiom}[Omitting defended arguments]
     \label{ax:omitting}
-    If the theory is truthful, then $∀ i ∈ I, k ∈ \Zp, l ∈ \intvl{2, k}, (\ar_j)_{j ∈ \intvl{1, k}} ∈ \allargs^k, \hist, β ∈ \allhists \suchthat [\ar_k ∈ \histend ∧ ∀ j ∈ \intvl{2, k}: \ar_j ∈ \dgi(\ar_{j - 1})]:
+    If the theory is truthful, then $∀ i ∈ I, k ∈ \Np, l ∈ \intvl{2, k}, (\ar_j)_{j ∈ \intvl{1, k}} ∈ \allargs^k, \hist, β ∈ \allhists \suchthat [\ar_k ∈ \histend ∧ ∀ j ∈ \intvl{2, k}: \ar_j ∈ \dgi(\ar_{j - 1})]:
       (β, \ar_{l - 1}, \ar_l, \hist) \ileadsto \pga ⇒ (β, \ar_l, \hist) \ileadsto \pga$.
   \end{axiom}
   This is called an axiom because it cannot be falsified using observables. It has to be accepted on the basis of the rest of the observations and on the contents of the defending arguments. As \cref{ex:lichtenstein} suggests, theories can be built so as to make this axiom plausible by embedding within defending arguments the content of the defended argument.
@@ -1131,7 +1129,7 @@ The following example presents a situation where non rejection is due to finiten
   \label{ex:bigor}
   Consider $\ar ∈ \allargs$.
   The claim $[∀ i: (\ar) \ileadstog φ] ∨ [∀ i: (\ar, \ar) \ileadstog φ] ∨ …$,
-  thus, $C = \set{{\allleadstog} \suchthat ∃ n ∈ \Zp \suchthat ∀ i: (a)^n \ileadstog φ}$,
+  thus, $C = \set{{\allleadstog} \suchthat ∃ n ∈ \Np \suchthat ∀ i: (a)^n \ileadstog φ}$,
   is non rejectable: $Θ ⊆ C^⊆$.
 
   Given any $θ ∈ Θ$, define $l = \max_{\hist \suchthat ∃ i ∈ I, p ∈ P \suchthat (i, \hist, p) ∈ θ} \card{\hist} + 1$ if $∃ p ∈ P \suchthat (i, \hist, p) ∈ θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ ⊆ {\allleadstog} ∧ (\ar)^l \ileadstog φ$. We have
@@ -1409,11 +1407,11 @@ The following example presents a situation where non rejection is due to finiten
   \begin{example}
     \label{ex:for}
     Consider any $i$ and $p, p' ∈ P$.
-    The claim $C = \set{{\allleadstog} \suchthat (∀ \hist: \card{\hist} ∈ 2\Z ⇒ \hist \ileadstog p) ∨ (∀ \hist: (\card{\hist} ∈ 2\Z + 1 ∨ \hist = ∅) ⇒ \hist \ileadstog p')}$, namely, all paths of even lengths lead $i$ to $p$ OR all paths of odd lengths or empty lead $i$ to $p'$, is falsifiable.
+    The claim $C = \set{{\allleadstog} \suchthat (∀ \hist: \card{\hist} ∈ 2ℕ ⇒ \hist \ileadstog p) ∨ (∀ \hist: (\card{\hist} ∈ 2ℕ + 1 ∨ \hist = ∅) ⇒ \hist \ileadstog p')}$, namely, all paths of even lengths lead $i$ to $p$ OR all paths of odd lengths or empty lead $i$ to $p'$, is falsifiable.
 
-    Note that $C^⊆ ∩ Θ = \set{θ ∈ Θ \suchthat (∀ \hist: \card{\hist} ∈ 2\Z ⇒ θ(\hist) ∈ \set{∅, p}) ∨ (∀ \hist: (\card{\hist} ∈ 2\Z + 1 ∨ \hist = ∅) ⇒ θ(\hist) ∈ \set{∅, p'})}$.
+    Note that $C^⊆ ∩ Θ = \set{θ ∈ Θ \suchthat (∀ \hist: \card{\hist} ∈ 2ℕ ⇒ θ(\hist) ∈ \set{∅, p}) ∨ (∀ \hist: (\card{\hist} ∈ 2ℕ + 1 ∨ \hist = ∅) ⇒ θ(\hist) ∈ \set{∅, p'})}$.
     Consider any obs-compatible ${\allleadstog}$.
-    Assume that $∃ \hist \suchthat \card{\hist} ∈ 2\Z ∧ \hist \nileadstog p$.
+    Assume that $∃ \hist \suchthat \card{\hist} ∈ 2ℕ ∧ \hist \nileadstog p$.
     Pick $θ = \set{(∅, i, {\ileadstog}(∅)), (\hist, i, {\ileadstog}(\hist))}$. We have $({\allleadstog} ∩ θ) ∈ C^⊆ ∩ Θ$, and ${\allleadstog} ∩ θ = θ$, and from $θ ∈ C^⊆ ∩ Θ$ we obtain ${\ileadstog}(∅) = p'$.
     Similarly, using $θ = \set{(∅, i, {\ileadstog}(∅)), (\histp, j, {\ileadstog[j]}(\histp))}$, we obtain that $\allleadsto$ conforms to the relation in $C$.
   \end{example}
@@ -2184,17 +2182,17 @@ The following result follows from \cref{th:typesfalsifiable}.
     \item $∀ \hist, f, ∃ g ∈ S \suchthat \restr{g}{\intvl{\hist}} = f$
     \item $∀ \hist: P^{\intvl{\hist}} ⊆ \restr{S}{\intvl{\hist}}$.
   \end{itemize}
-  Furthermore, $∀ \hist: P^{\intvl{\hist}} ⊆ \restr{S}{\intvl{\hist}} ⇒ \card{S} ∉ \Z$.
+  Furthermore, $∀ \hist: P^{\intvl{\hist}} ⊆ \restr{S}{\intvl{\hist}} ⇒ \card{S} ∉ ℕ$.
 \end{theorem}
 \begin{proof}
   This follows from $R(S) ≠ P^{\allhists} ⇔ ∃ f ∈ P^{\allhists}, \hist ∈ \allhists \suchthat ∩_{\histp ⊆ \hist} l^S_f(\histp) = ∅$.
 \end{proof}
 
 To recap, we now know that with $S = {\allleadsto}(I)$, when $R(S) ≠ P^{\allhists}$, there is a claim that holds and is anonymous and falsifiable.
-This includes all situations with finite behaviors ($\card{S} ∈ \Z$), thus includes all situations with finite $I$.
+This includes all situations with finite behaviors ($\card{S} ∈ ℕ$), thus includes all situations with finite $I$.
 Consider now situations such that $R({\allleadsto}(I)) = P^{\allhists}$.
 
-Define $I = P^\Z$ and ${\ileadsto} = i ∘ \card$, so that $S = {\allleadsto}(I) = \set{l ∘ \card ∈ P^{\allhists} \suchthat l ∈ P^\Z}$.
+Define $I = P^ℤ$ and ${\ileadsto} = i ∘ \card$, so that $S = {\allleadsto}(I) = \set{l ∘ \card ∈ P^{\allhists} \suchthat l ∈ P^ℤ}$.
 We have $R(S) = P^{\allhists}$.
 The function $f(\ar) ≠ f(\ar')$, for example, is not in $S$.
 
@@ -2210,13 +2208,13 @@ The function $f(\ar) ≠ f(\ar')$, for example, is not in $S$.
 \begin{theorem}
   \label{th:falsclosed}
   Under any $B ⊆ P^{\allhists}$ (thus recall $R(S) ⊆ B$), for any anonymous claim $C ⊆ B^I$ that is falsifiable or trivial, 
-  $∀ {\allleadstog} ∈ C, F ⊆ {\allleadstog}(I) \suchthat [∀ f ∈ F: \card{({\allleadstoginv}(f))} ∉ \Z]: R(F)^I ⊆ C$.
+  $∀ {\allleadstog} ∈ C, F ⊆ {\allleadstog}(I) \suchthat [∀ f ∈ F: \card{({\allleadstoginv}(f))} ∉ ℕ]: R(F)^I ⊆ C$.
 
-  $∃ {\allleadstog} ∈ C, ∅ ≠ F ⊆ {\allleadstog}(I) \suchthat ∀ f ∈ F: \card{({\allleadstoginv}(f))} ∉ \Z$.
+  $∃ {\allleadstog} ∈ C, ∅ ≠ F ⊆ {\allleadstog}(I) \suchthat ∀ f ∈ F: \card{({\allleadstoginv}(f))} ∉ ℕ$.
   Then, $R(F)^I ⊆ C$.
 \end{theorem}
 \begin{proof}
-  Consider any anonymous claim $C$, any ${\allleadstog} ∈ C, F ⊆ {\allleadstog}(I) \suchthat [∀ f ∈ F: \card{({\allleadstoginv}(f))} ∉ \Z]$ and any ${\allleadstog'} ∈ R(F)^I ∖ C$.
+  Consider any anonymous claim $C$, any ${\allleadstog} ∈ C, F ⊆ {\allleadstog}(I) \suchthat [∀ f ∈ F: \card{({\allleadstoginv}(f))} ∉ ℕ]$ and any ${\allleadstog'} ∈ R(F)^I ∖ C$.
   To show that $C$ is not falsifiable,
   consider any observable $θ ⊆ {\allleadstog'}$ and let us show that it is completable in $C$. Let $θ(P^{\allhists})$ denote the (finite) set of individuals that $θ$ interrogates.
   
@@ -2299,7 +2297,7 @@ Note that this is possible iff $\allargs$ is infinite. If so, suffices to take s
 
 \begin{theorem}
   \label{th:noindic}
-  If $a_1 \ileadstost[f_1] φ$ and $a_2 \ileadstost[f_2] φ'$ with $\ar_1 ≠ \ar_2$ and $f_1(∅) = f_2(∅)$ and $∀ f ∈ \set{f_1, f_2}: \card{{\allleadstoinv}(f)} ∉ \N$, then there is no anonymous, falsifiable and indicative about $i_1$ claim that holds (here, considering indicativeness as mandating to know that $P_{i_1} = φ$).
+  If $a_1 \ileadstost[f_1] φ$ and $a_2 \ileadstost[f_2] φ'$ with $\ar_1 ≠ \ar_2$ and $f_1(∅) = f_2(∅)$ and $∀ f ∈ \set{f_1, f_2}: \card{{\allleadstoinv}(f)} ∉ ℕ$, then there is no anonymous, falsifiable and indicative about $i_1$ claim that holds (here, considering indicativeness as mandating to know that $P_{i_1} = φ$).
 \end{theorem}
 \begin{proof}
   Any claim that holds must include $\allleadsto$.
@@ -2411,10 +2409,10 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     \label{ex:biggeror}
     Pick any $i ∈ I$ and $\ar ∈ \allargs$.
     The claim $[(\ar) \ileadstog φ] ∨ [(\ar, \ar) \ileadstog φ] ∨ …$,
-    thus, $C = \set{{\allleadstog} \suchthat ∃ n ∈ \Zp \suchthat (a)^n \ileadstog φ}$,
+    thus, $C = \set{{\allleadstog} \suchthat ∃ n ∈ \Np \suchthat (a)^n \ileadstog φ}$,
     is strongly unfalsifiable.
 
-    Let $C' = \set{{\allleadstog} \suchthat ∃ n ∈ \Zp \suchthat ∀ j: (a)^n \ileadstog[j] φ}$ denote the claim of \cref{ex:bigor}.
+    Let $C' = \set{{\allleadstog} \suchthat ∃ n ∈ \Np \suchthat ∀ j: (a)^n \ileadstog[j] φ}$ denote the claim of \cref{ex:bigor}.
     We have $C' ⊆ C$.
     It follows that ${C'}^⊆ ⊆ C^⊆$.
     We know from \cref{ex:bigor} that $Θ ⊆ {C'}^⊆$, thus, $Θ ⊆ C^⊆$.
@@ -2598,7 +2596,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
   \begin{conjecture}
     Given $R ⊆ I × \allhists$, say that $C$ is determined on $R$ iff
     $∃ f ∈ P^R \suchthat C = \set{f ∪ g \suchthat g ∈ P^{(I × \allhists) ∖ R}}$.
-    Say that $R$ is coverable iff $∃ k ∈ \Z, (O_l)_{l ∈ \intvl{1, k}}, (o_l)_{l ∈ \intvl{1, k}} \suchthat
+    Say that $R$ is coverable iff $∃ k ∈ ℕ, (O_l)_{l ∈ \intvl{1, k}}, (o_l)_{l ∈ \intvl{1, k}} \suchthat
       ∪_{l ∈ \intvl{1, k}} O_l = R ∧
       ∀ l ∈ \intvl{1, k}: o_l ∈ O_l ∧
       ∀ o ∈ O_l: \set{o_l, o} ∈ \allpriobss ∧
@@ -2609,7 +2607,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
   \begin{proof}
     Consider any ${\allleadstog}$ obs-compatible with $C^⊆ ∩ Θ$ and let us prove that ${\allleadstog} ∈ C$.
 
-    Pick some $k ∈ \Z, (O_l)_{l ∈ \intvl{1, k}}, (o_l)_{l ∈ \intvl{1, k}}$ as in the hypothesis.
+    Pick some $k ∈ ℕ, (O_l)_{l ∈ \intvl{1, k}}, (o_l)_{l ∈ \intvl{1, k}}$ as in the hypothesis.
     Consider any $l ∈ \intvl{1, k - 1}$
     and any $o ∈ O_l ∪ \set{o_{l + 1}}$.
     As $\set{o_l, o} ∈ \allpriobss$ and ${\allleadstog}$ being obs-compatible, we have
@@ -2628,8 +2626,8 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     Consider $R ⊆ I × \allhists$, $F ⊆ P^R$ and $C = \set{f ∪ g \suchthat f ∈ F ∧ g ∈ P^{(I × \allhists) ∖ R}}$.
     The claim $C$ is unfalsifiable iff $∃ {\allleadstog} ∈ \allleadstos \suchthat ⋂_{O ∈ Z_R} {∼ _O}(f) ∩ C = ∅$.
 
-    % Given $k ∈ \Z$ and a family $(O_l)_{l ∈ \intvl{1, k}}$, consider $∃ f ∈ C \suchthat 
-    Say that $R$ is coverable iff $∃ k ∈ \Z, (O_l)_{l ∈ \intvl{1, k}}, (o_l)_{l ∈ \intvl{1, k}} \suchthat
+    % Given $k ∈ ℕ$ and a family $(O_l)_{l ∈ \intvl{1, k}}$, consider $∃ f ∈ C \suchthat 
+    Say that $R$ is coverable iff $∃ k ∈ ℕ, (O_l)_{l ∈ \intvl{1, k}}, (o_l)_{l ∈ \intvl{1, k}} \suchthat
       ∪_{l ∈ \intvl{1, k}} O_l = R ∧
       ∀ l ∈ \intvl{1, k}: o_l ∈ O_l ∧
       ∀ o ∈ O_l: \set{o_l, o} ∈ \allpriobss ∧
