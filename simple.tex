@@ -1173,11 +1173,18 @@ The following example presents a situation where non rejection is due to finiten
   From 1 to 3, that’s because for any such $\allleadstogo$, we have indeed $θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ C^⊆$.
 \end{proof}
 \begin{theorem}
+  \label{th:ofMonotonous}
+  Given any claims $C ⊆ C'$ and any $\allleadstogo$: $\OF_{C'}(\allleadstogo) ⇒ \OF_C(\allleadstogo)$.
+\end{theorem}
+\begin{proof}
+  By definition, $¬\OF_C(\allleadstogo)$ means $Θ ∩ \powerset{\allleadstogo} ⊆ C^⊆$, thus the contrapositive is proven by observing that $C^⊆ ⊆ {C'}^⊆$.
+\end{proof}
+\begin{theorem}
   \label{th:ofRelations}
   For any claim $C$, with $D$ being $¬\OF_C(\allleadstoo)$,
   given any $\allleadstogo$: 
   $\OF_C(\allleadstogo) ⇔ \OF_D(\allleadstogo)$;
-  and $\OF_D(\allleadstogo) ⇒ \OF_{D ∖ C}(\allleadstogo)$.
+  and $\OF_D(\allleadstogo) ⇒ \OF_{D ∖ C}(\allleadstogo)$ (using \cref{th:ofMonotonous}).
 \end{theorem}
 \begin{proof}
   $\OF_C(\allleadstogo) ⇔ ∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ C^⊆ ⇔ ∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ (¬\OF_C(\allleadstoo))^⊆ ⇔ \OF_D(\allleadstogo) ⇒ \OF_{D ∖ C}(\allleadstogo)$.
