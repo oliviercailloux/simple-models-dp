@@ -77,8 +77,9 @@ Throughout the article, $ℕ$ designates the natural numbers (including $0$) and
 Given $j, l ∈ ℤ$, the notation $\intvl{j, l}$ represents $\set{k ∈ ℤ \suchthat j ≤ k ≤ l}$ (thus $∀ j ∈ \Np: \intvl{j, 0} = ∅$).
 Define $\allhists = ⋃_{k ∈ ℕ} \allargs^{\intvl{1, k}}$ as the finite sequences of arguments, including the empty sequence.
 A generic element of $\allhists$ (a possibly empty finite sequence of arguments) is denoted by $\hist$ and called an argumentative path, or simply a path. Its length is denoted by $\card{\hist} ∈ ℕ$ and its elements, $\hist(k)$ or $\hist_k$.
-Thus, given an argumentative path $\hist ∈ \allhists$, $∀ k ∈ \intvl{1, \card{\hist}}: \hist(k) = \hist_k ∈ \allargs$, and $\hist = ∅ ⇔ \card{\hist} = 0$. A path $\hist ∈ \allhists$ is a prefix of a path $\histp ∈ \allhists$ whenever $\hist ⊆ \histp$, thus, $∀ k ∈ \intvl{1, \card{\hist}}: \hist_k = \histp_k$.
-\commentClaude{The relation $⊆$ is being applied here to sequences (elements of $\allhists$), not to sets, and is silently reused later on sets of paths in $\incr(\allhists)$ with (presumably) its ordinary set-theoretic meaning. This works if a sequence $\hist$ is identified with its graph $\set{(k,\hist_k)}$, but that identification is never stated explicitly; as written, "$\hist⊆\histp$" is introduced as if it were already a known relation on $\allhists$ ("whenever $\hist⊆\histp$"), with the actual defining condition only following as a "thus"-consequence rather than as the definition itself.}
+Thus, given an argumentative path $\hist ∈ \allhists$, $∀ k ∈ \intvl{1, \card{\hist}}: \hist(k) = \hist_k ∈ \allargs$, and $\hist = ∅ ⇔ \card{\hist} = 0$. 
+Throughout the text, functions are set-theoretically considered as sets of pairs (identified with their graph), so that for example a path is seen as a subset of $ℕ × \allargs$.
+A path $\hist ∈ \allhists$ is a prefix of a path $\histp ∈ \allhists$ whenever $\hist ⊆ \histp$, thus, $∀ k ∈ \intvl{1, \card{\hist}}: \hist_k = \histp_k$.
 Given any $\hist ∈ \allhists$, $\intvl{\hist} = \set{\restr{\hist}{\intvl{1, k}} \suchthat k ∈ \intvl{0, \card{\hist}}}$ denotes the set of prefixes of $\hist$.
 
 The function ${\allleadsto}: I × \allhists → P$ associates to each individual and path an element of $P$, ${\allleadsto}(i, α)$ representing the choice of $i$ following exposure to the arguments of $α$, in order. That is, ${\allleadsto}(i, α) = φ$ denotes that $i$ chooses the first act after exposure to $α$, ${\allleadsto}(i, α) = φ'$ denotes $i$ choosing the second act and ${\allleadsto}(i, α) = 0$ is used to represent indifference of $i$.
@@ -86,8 +87,7 @@ The notation $α \ileadsto p$, pronounced “$α$ leads $i$ to $p$”, will be u
 As usual with binary relations, $\hist \nileadsto p$ means ${\allleadsto}(i, α) ≠ p$ or equivalently ${\allleadsto}(i, α) ∈ P ∖ \set{p}$.
 
 \subsection{Deliberated choice}
-The deliberated choice of $i$ given the exposure protocol $(I, \allargs, {\allleadsto})$ is denoted $P_i ⊊ P$.
-\commentClaude{$\subset$ was changed to $⊊$ here, but this is the very definition/introduction of $P_i$, at a point where nothing yet asserts or requires properness (properness only follows later, from \Cref{th:sing}, $\card{P_i}\le 1 < \card{P}=3$). The original $\subset$ may simply have been used as a generic "is included in" symbol (matching the widespread French convention where $\subset$ means $\subseteq$), rather than to deliberately signal strictness at this point.}
+The deliberated choice of $i$ given the exposure protocol $(I, \allargs, {\allleadsto})$ is denoted $P_i ⊆ P$.
 Its formal definition requires the notion of decisive argument.
 
 Given $\hist ∈ \allhists$, $\range(\hist) = \hist(\intvl{1, \card{\hist}})$ denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$.
@@ -104,8 +104,7 @@ The deliberated choice of $i$ is then considered as the set of propositions supp
     p ∈ P_i ⇔ [∃ \ar ∈ \allargs \suchthat \ar \ileadstost p].$
 \end{definition}
 
-It follows from the consideration of “end” as the last \emph{two} arguments that decisive arguments can argue for at most one proposition, thus, that the deliberated choice cannot hold more than one proposition.
-\commentClaude{This sentence is ambiguous between two readings. (1) "a given decisive argument $\ar$ can be decisive for at most one $p$" — true, but this is immediate from $\allleadsto$ being a function (single-valued), and has nothing to do with "end" being the last \emph{one} or \emph{two} arguments: it would hold even if $\histend$ were defined as just the last argument. (2) "two \emph{different} arguments cannot be decisive for two different propositions" — this is the substantive claim actually needed for, and proved in, \cref{th:sing}, and it genuinely depends on $\histend$ containing the last \emph{two} arguments (the proof relies on a length-2 history $(\ar,\ar')$ having both $\ar$ and $\ar'$ in its $\histend$ simultaneously). As written the sentence reads as (1), which is the trivial, convention-independent fact, while attributing it to the two-argument convention; the actual content that depends on the convention is closer to (2) and should be stated as such.}
+It follows from the consideration of “end” as the last \emph{two} arguments that the whole set of decisive arguments can argue for at most a single proposition, thus, that the deliberated choice cannot hold more than one proposition.
 \begin{theorem}[Deliberated choice singularity]
   \label{th:sing}
   $∀ i ∈ I: \card{P_i} ≤ 1$.
@@ -121,8 +120,7 @@ This latter possibility may look unpleasant, but it is a fact that facing some d
 Being undecided is not the same state as being decidedly indifferent about two issues, and those states can be distinguished empirically, as we will see.
   
 Given an behavior function $\allleadstog$, deliberated choices are represented by an element $π({\allleadstog}) ⊆ I × P$ defined as $π({\allleadstog})(i) = P_i$. \Cref{th:sing} shows that $π({\allleadstog})$ is right unique (meaning that $∀ i ∈ I: \card{π({\allleadstog})(i)} ≤ 1$).
-Equivalently, let $(P ∪ \set{∅})^I$ denote the right unique relations over $I × P$; and then the deliberated choices are an element $π({\allleadstog}) ∈ (P ∪ \set{∅})^I$.
-\commentClaude{Ordinarily $(P ∪ \set{∅})^I$ would denote the set of \emph{total} functions from $I$ to $P ∪ \set{∅}$ (using $∅$ as an added sentinel value distinct from $P$'s elements). Such functions are indeed in natural bijection with the right-unique (possibly partial) relations over $I×P$, but the text instead \emph{redefines} the notation $(P∪\set{∅})^I$ to directly \emph{mean} "the right unique relations over $I×P$" — conflating the bijection's two sides. This also overloads $∅$: here as an adjoined dummy value of the codomain, elsewhere (e.g.\ $P_i=∅$, two paragraphs above) as the literal empty subset of $P$ denoting an undecided individual. Worth stating the intended bijection explicitly rather than asserting the two things are simply equal.}
+Equivalently, note that $(P ∪ \set{∅})^I$, where $\set{∅}$ is used as a sentinel value for individuals with no deliberated judgment, can be interpreted as the right unique relations over $I × P$ (discarding those individuals with no deliberated judgment); and then the deliberated choices are an element $π({\allleadstog}) ∈ (P ∪ \set{∅})^I$.
 
 \subsection{An example and a discussion about observability}
 The following toy example is inspired by the following argument from \citet[p.~59]{railton_facts_2003}.
@@ -147,8 +145,14 @@ The following toy example is inspired by the following argument from \citet[p.~5
   Let ${\allleadsto}(i, a_e)$ represent $i$ being given the following argument. “When tested, $m_1$ answers 70\% of the first half of questions correctly but then only 40\% of the other half correctly; whereas $m_2$ answers 45\% of the first half of questions correctly, then 75\% of the other half correctly. It follows than $m_1$ answers on average less well than $m_2$. Observing the candidates take the tests may yield a contrary impression; this is a well-known psychological phenomenon depending on the order of the questions that the candidates answer correctly.”
   Let $φ_1$ represent choosing $m_1$ and $φ_2$ choosing $m_2$ (for this example we use $P = \set{φ_1, φ_2, 0}$).
 
-  If the prediction described in the quote applies to $i$, the relation $\ileadsto$ is as follows, $∀ k ∈ \Np$ (recall that for $\args ⊆ \allargs$, $\args^k$ represents the set of sequences of length $k$ using arguments from $\args$): $∀ \hist ∈ \set{a_e}^k, \hist \ileadsto φ_2$; $∀ \hist ∈ \set{a_1, a_2}^k, \hist \ileadsto φ_1$; $∀ \hist ∈ \set{a_1, a_e}^k \suchthat a_e ∈ \histend, \hist \ileadsto φ_2$; $∀ \hist ∈ \set{a_2, a_e}^k \suchthat a_e ∈ \histend, \hist \ileadsto φ_2$; $∀ \hist ∈ \allargs^k \suchthat a_e ∈ \histend, \hist \ileadsto φ_2$. The values of ${\allleadsto}(i, \hist)$ for $\hist = ∅$ and for $\hist ∈ \allargs^k \suchthat a_e ∉ \histend$ are undetermined by the prediction, but whatever they are, $a_e$ is a decisive argument for $φ_2$, hence, $i$’s deliberated choice is $φ_2$.
-\commentClaude{Of the five bullet points describing $\ileadsto$, the last one ("$∀\hist∈\allargs^k$ such that $a_e∈\histend$, $\hist\ileadsto φ_2$") already logically subsumes the first, third and fourth bullets (all of which describe special cases of histories, drawn from subsets of $\allargs$, that have $a_e∈\histend$). Only the second bullet (histories in $\set{a_1,a_2}^k$, with no $a_e$ at all) is logically independent from the last. This redundancy is harmless but makes it harder to see that the whole prediction reduces to just these two conditions, which are exactly what is needed (and sufficient) to conclude that $a_e$ is decisive for $φ_2$.}
+  If the prediction described in the quote applies to $i$, the relation $\ileadsto$ satisfies, $∀ k ∈ \Np$ (recall that for $\args ⊆ \allargs$, $\args^k$ represents the set of sequences of length $k$ using arguments from $\args$): 
+  $∀ \hist ∈ \set{a_1, a_2}^k, \hist \ileadsto φ_1$ and
+  $∀ \hist ∈ \allargs^k \suchthat a_e ∈ \histend, \hist \ileadsto φ_2$.
+  The latter in particular implies:
+  $∀ \hist ∈ \set{a_e}^k, \hist \ileadsto φ_2$; 
+  $∀ \hist ∈ \set{a_1, a_e}^k \suchthat a_e ∈ \histend, \hist \ileadsto φ_2$; 
+  $∀ \hist ∈ \set{a_2, a_e}^k \suchthat a_e ∈ \histend, \hist \ileadsto φ_2$.
+  The values of ${\allleadsto}(i, \hist)$ for $\hist = ∅$ and for $\hist ∈ \allargs^k \suchthat a_e ∉ \histend$ are undetermined by the prediction, but whatever they are, $a_e$ is a decisive argument for $φ_2$, hence, $i$’s deliberated choice is $φ_2$.
 \end{example}
 
 Now that deliberated choices are defined, we need to explore what one can learn about deliberated choices using our empirically available data.
@@ -165,14 +169,11 @@ It follows that a claim cannot be validated empirically exhaustively by observin
 
 Second,
 our observations are limited in important ways: once we have shown some arguments to a given individual $i$, we cannot undo the effects of this action on $i$ and show to her a different argument as if starting from scratch (unless assuming $i$ forgets arguments after a while and waiting for sufficiently long, which would create practical and theoretical difficulties).
-In other words, once we have shown a path $\hist$ to $i$, we can only continue the protocol with $i$ by showing paths $\histp$ that are suffixes of $\hist$.
-\commentClaude{This seems backwards: continuing the protocol means \emph{extending} $\hist$ with further arguments, so $\histp$ should have $\hist$ as a \emph{prefix} (i.e.\ $\hist⊆\histp$, in the prefix sense defined in Section~2.1 above), not be a suffix of $\hist$. A suffix of $\hist$ is shorter than (or as long as) $\hist$ and drawn from its tail end, the opposite of what continuing the protocol produces.}
+In other words, once we have shown a path $\hist$ to $i$, we can only continue the protocol with $i$ by showing paths $\histp$ that extend $\hist$.
 
-To illustrate this point with \cref{ex:tutor}, let $\hist = (a_1, a_2, a_e)$ designate the argumentative path where the arguments are shown in the order they are described in \cref{ex:tutor}, and let $\hist' = (a_e, a_2, a_1)$ designate the reverse order.
-The deliberated choice concept is defined so as to not depend on the order of the arguments shown to $i$: for having $p ∈ P_i$, it must be that directing to $i$ the path $\hist$ or the path $\hist'$ both lead $i$ to choose $p$.
+To illustrate this point with \cref{ex:tutor}, let $\hist = (a_1, a_e, a_2)$ designate the argumentative path where the arguments are shown in the order they are described in \cref{ex:tutor}, and let $\hist' = (a_2, a_e, a_1)$ designate the reverse order.
+The deliberated choice concept is defined so as to not depend on the order of the arguments shown to $i$, as long as the end of the path features a decisive argument: for having $p ∈ P_i$, it must be that directing to $i$ the path $\hist$ or the path $\hist'$ both lead $i$ to choose $p$.
 But it is impossible to observe both the value of ${\allleadsto}(i, \hist)$ and the value of ${\allleadsto}(i, \hist')$.
-\commentClaude{Two issues here. First, this specific illustration does not actually match \cref{def:decisive}: with $\hist=(a_1,a_2,a_e)$, $\histend(\hist)=\set{a_2,a_e}$, so $a_e$'s decisiveness for $φ_2$ constrains $\hist$; but with $\hist'=(a_e,a_2,a_1)$, $\histend(\hist')=\set{a_2,a_1}$, so $a_e∉\histend(\hist')$ and $a_e$'s decisiveness says \emph{nothing} about $\allleadsto(i,\hist')$ — establishing $φ_2∈ P_i$ via $a_e$ does not require ${\allleadsto}(i,\hist')$ to equal $φ_2$, or indeed anything about it at all. So this pair $(\hist,\hist')$ does not illustrate a genuine case of needing two incompatible observations to conclude $p∈ P_i$.
-Second and more broadly, the general claim that "the deliberated choice concept is defined so as to not depend on the order of the arguments" is in tension with \cref{def:decisive} itself, which is built entirely around $\histend$, the \emph{last two} arguments: the very Math tutor example shows that the same set of arguments in different order/position (last vs.\ not-last) yields different, indeed opposite, conclusions. If "not depending on order" is meant in some more restricted sense (e.g.\ independence from what precedes the decisive argument, as long as it remains within the last two positions), that sense should be spelled out, since as stated the claim reads as contradicting the recency-sensitive design of \cref{def:decisive}.}
 
 The first difficulty is familiar as it occurs in any endeavor to validate general claims in science: claims that cover a large (or infinite) spectrum cannot be validated by observing the system exhaustively. One must rather develop a falsification protocol, that is, a way to invalidate the claim, and then observe that the claim is not invalidated. This is the approach taken in the next section.
 
@@ -190,29 +191,24 @@ A claim is finite iff its cardinal is finite (meaning that it is compatible with
 Let $C^⊆ = ∪_{{\allleadstog} ∈ C} \powerset{\allleadstog} = \set{c ⊆ (I × \allhists) × P \suchthat ∃ {\allleadstog} ∈ C \suchthat c ∈ \powerset{\allleadstog}}$ denote the set of non necessarily complete possibilities compatible with $C$ (thus, each element $c ∈ C^⊆$ is right-unique but non necessarily total, meaning that it does not necessarily cover $(I × \allhists)$).
 Note that $C^⊆$ is downwards closed, meaning that $∀ c ∈ C^⊆: c' ⊆ c ⇒ c' ∈ C^⊆$.
 
-Define the increasing sets of paths as the set $\incr(\allhists) = \set{H \fsub \allhists \suchthat \card(H) ≤ \card(H') ⇒ H ⊆ H'} ⊆ \powerset{\allhists}$.
-\commentClaude{This formula does not type-check as written: $H'$ is free (never bound by a quantifier or otherwise introduced), and even granting some implicit universal quantification, comparing $\card(H)$ (a cardinality of a \emph{set of paths}) to $\card(H')$ and then concluding $H⊆ H'$ (again sets of paths) does not match the intended notion, confirmed by the following sentences ("$H$ can be strictly ordered by the lengths of the paths in $H$", "has a unique maximal element", "contains all its prefixes"): namely, that $H$ is a \emph{chain} of nested paths, i.e.\ any two paths in $H$ are comparable by the prefix order, with the shorter one a prefix of the longer. This would be more like $∀\hist,\histp∈H: \card{\hist}≤\card{\histp} ⇒ \hist⊆\histp$ (a condition on \emph{pairs of paths within $H$}, using lower-case, single-path variables), rather than a condition relating $H$ to some other set $H'$.} A set of paths $H ∈ \incr(\allhists)$ can be strictly ordered by the lengths of the paths in $H$ and can thus also be considered as a sequence of paths.
+Define the increasing sets of paths as the set $\incr(\allhists) = \set{H \fsub \allhists \suchthat ∀\hist, \histp ∈ H: \card{\hist} ≤ \card{\histp} ⇒ \hist ⊆ \histp} ⊆ \powerset{\allhists}$. A set of paths $H ∈ \incr(\allhists)$ can be strictly ordered by the lengths of the paths in $H$ and can thus also be considered as a sequence of paths.
 Note that $\incr(\allhists)$ includes both the empty set of paths $∅$ and the set of paths $\set{∅}$ containing only the empty path.
 A non empty set of paths $H ∈ \incr(\allhists)$ has a unique maximal element $\set{\max H} = \set{\hist ∈ H \suchthat ∀ \histp ∈ H: \histp ⊆ \hist}$.
 A non empty set of paths $H ∈ \incr(\allhists)$ contains all its prefixes (meaning, $∀ \hist ∈ H: \set{\histp ⊆ \hist} ⊆ H$) iff $H = \intvl{\max H}$.
 Let $\finite(\incr(\allhists)^I)$ denote the functions $f: I ↦ \incr(\allhists)$ with finite support, thus, satisfying $\card{f^{-1}(\incr(\allhists) ∖ ∅)} ∈ ℕ$.
-An element $Q ∈ \allpriobss$ \commentOC{previously denoted $O$ and called a priori observation} is called a query.
 \commentOC[Note that $\incr(\allhists)^I$ and $\allpriobss$ are downwards closed, meaning that $∀ O ∈ \incr(\allhists)^I: \set{O' ⊆ O} ⊆ \incr(\allhists)^I$ and $∀ O ∈ \allpriobss: \set{O' ⊆ O} ⊆ \allpriobss$.]{To be deleted.}
-
+An element $Q ⊆ I × \allhists$ \commentOC{previously denoted $O$ and called a priori observation} is called a query iff $∀i ∈ I: Q(i) = \set{\hist ∈ \allhists \suchthat (i, \hist) ∈ Q} ∈ \incr(\allhists)$ and $\card{Q} ∈ ℕ$.
+Abusing notations, we also view $Q$ as an element of $\allpriobss$.
 An observation associates to a query an element of $P$ per queried element, thus, the set of possible observations is $Θ = ∪_{Q ∈ \allpriobss} P^Q$.
-\commentClaude{$Q∈\allpriobss$ is officially a function $I→\incr(\allhists)$ (with finite support), not a set; writing $P^Q$ (exponentiation over a set) implicitly requires viewing $Q$ as its graph, a subset of $I×\allhists$. This dual view is only made explicit two sentences later ("$θ^{-1}(P)⊆I×\allhists$, the pairs $(i,\hist)$ in $θ$"); stating it before using $P^Q$ would avoid the forward reference.}
-In other words, an observation $θ ∈ Θ$ is a right unique finite subset of $(I × \allhists) × P$ such that $∀ i ∈ I, (i, \hist, p), (i, \histp, q) ∈ θ: \card{\hist} ≤ \card{\hist'} ⇒ \hist ⊆ \hist'$.
-\commentClaude{As stated, this condition only constrains pairs of \emph{distinct} queried histories $\hist≠\histp$ for the same $i$ to be prefix-comparable; it says nothing preventing $(i,\hist,p)$ and $(i,\hist,q)$ from both belonging to $θ$ with $p≠ q$ (taking $\histp=\hist$ trivially satisfies the displayed implication regardless of $p,q$). So the displayed formula alone does not entail right-uniqueness of $θ$, contrary to what "is a right unique ... subset ... such that [this formula]" suggests. If right-uniqueness is meant as a separate, independently assumed condition (with the displayed formula only adding the chain/nestedness requirement), that should be stated explicitly.}
+In other words, an observation $θ ∈ Θ$ is a right unique finite subset of $(I × \allhists) × P$ satisfying $∀ i ∈ I, (i, \hist, p), (i, \histp, q) ∈ θ: \card{\hist} ≤ \card{\hist'} ⇒ \hist ⊆ \hist'$.
 Given an observation $θ$, let $θ^{-1}(P) ∈ \allpriobss$ denote the queried elements in $θ$, which can also be considered as $θ^{-1}(P) ⊆ I × \allhists$, the pairs $(i, \hist)$ in $θ$.
 Similarly, we can view an observation $θ$ as a function $θ: I ↦ ∪_{H ∈ \incr(\allhists)} P^H$ and thus $Θ = \finite((∪_{H ∈ \incr(\allhists)} P^H)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
 \commentOC[Note that $(∪_{H ∈ \max \incr(\allhists)}P^H)^I$ is the set of functions that associate to each $I$ a maximal increasing sequence of paths, together with values from $P$.]{To be deleted.}
 
 \commentOC[Let also $\max\incr(\allhists) = \set{A ∈ \incr(\allhists) \suchthat ∄ A' ∈ \incr(\allhists) \suchthat A ⊊ A'}$ being set equal to $\set{A ∈ \incr(\allhists) ∩ (\allhists)^ℕ}$ denote the maximal elements of $\incr(\allhists)$, in the sense of containing sequences that are not a subsequence of another sequence; equivalently, containing those sequences whose sequence of cardinals of their elements equals $ℕ$.]{To be deleted.}
 
-We say that an observation $θ$ is compatible with a behavior ${\allleadstog} ∈ \allleadstos$ iff $θ ⊆ \powerset{\allleadstog}$, that is, $∀ (i, \hist, p) ∈ θ: (i, \hist, p) ∈ \powerset{\allleadstog}$.
-\commentClaude{$θ$ is a set of triples, while $\powerset{\allleadstog}$ (as defined just above) is a set of \emph{relations}, i.e.\ a set of sets of triples; so "$θ⊆\powerset{\allleadstog}$" and, spelled out, "$(i,\hist,p)∈\powerset{\allleadstog}$" both have a type mismatch (a single triple cannot be a member of a set of relations). The natural condition, matching the "compatible with a claim $C$" definition given two paragraphs below (which correctly uses "$θ∈∪_{⇝∈C}\powerset{⇝}$"), should be $θ∈\powerset{\allleadstog}$, i.e.\ $θ⊆{\allleadstog}$ directly (as sets of triples), dropping the extra $\powerset{}$ on the right-hand side.}
+We say that an observation $θ$ is compatible with a behavior ${\allleadstog} ∈ \allleadstos$ iff $θ ⊆ \allleadstogo$ (seeing the behavior as a set of triples).
 Thus, given ${\allleadstog} ∈ \allleadstos$, the set $Θ ∩ \powerset{\allleadstog}$ is the set of observations compatible with ${\allleadstog}$.
-\commentClaude{Here "the set ... is the set of observations [plural]" strongly suggests the left operand should be $Θ$ (the whole space of a priori observations, itself a set of relations, hence a set commensurable with $\powerset{\allleadstog}$), not a single observation $θ$ (a set of triples): $θ∩\powerset{\allleadstog}$, with $θ$ as introduced above, is again a type mismatch. The same $θ/Θ$ mix-up recurs below ("$θ∩C^⊆$ is the set of observations compatible with the claim", "as both $θ$ and $C^⊆$ are" downwards-closed — a single observation cannot be "downwards-closed", only a family of observations can) and in the "feasible observation" paragraph further down, where the displayed equation "$θ∩\powerset{\allleadsto}=…$" is immediately followed by "$θ∈Θ∩\powerset{\allleadsto}$", which only makes sense if the equation itself had $Θ$ (capital) on the left.}
 Similarly, an observation $θ$ is compatible with a claim $C$ iff
 $θ ∈ ∪_{{\allleadstog} ∈ C} \powerset{\allleadstog}$, equivalently, iff
 $θ ∈ C^⊆$.
@@ -225,7 +221,7 @@ This set is downwards-closed, as both $Θ$ and $C^⊆$ are.
 A subset of triples $T ⊆ \allhists × I × P$ is unobservable iff it cannot be observed together, that is, iff $T ∉ Θ$. If $\card{T} ∉ ℕ$, $T$ is unobservable. A finite subset of triples $T$ is unobservable iff some subset $T' ⊆ T$ with $\card{T'} = 2$ is unobservable (unobservability comes from a given individual’s observations, for that one, the paths are not increasing, and as the subset relation is transitive, two elements suffice to determine this fact).
 
 It is important to realize that $Θ$ is the set of \emph{a priori} possible observations, meaning, those that are conceivable, possibly counter-factually. The set of observations that can result from actually observing the behavior ${\allleadsto}$ is 
-$θ ∩ \powerset{\allleadsto} = \set*{\restr{{\allleadsto}}{Q} \suchthat Q ∈ \allpriobss}$.
+$Θ ∩ \powerset{\allleadsto} = \set*{\restr{{\allleadsto}}{Q} \suchthat Q ∈ \allpriobss}$.
 Such an observation $θ ∈ Θ ∩ \powerset{\allleadsto}$ is called a feasible observation.
 Given a right unique $τ ⊆ (\allhists × I) × P$, we let $\mathop{↑} τ = \set{{\allleadstog} ∈ \allleadstos \suchthat τ ⊆ {\allleadstog}}$ denote the set of “leads to” relations that complete $τ$ (thus $\mathop{↑} ∅ = {\allleadstos}$).
 
@@ -650,7 +646,6 @@ Given ${\ileadstog}$, $p ∈ P$, $s ∈ \allargs$ and $S ⊆ \allargs$, note tha
 
 \begin{example}[To be completed]
   Assume that $∃ \ar_j ≠ \ar_k, J, K ⊊ I \suchthat J ∪ K = I ∧ \card{J} ∉ ℕ ∧ \card{K} ∉ ℕ ∧ ∀ j ∈ J: \ar_j \ileadstost[j] φ ∧ ∀ k ∈ K: \ar_k \ileadstost[k] φ ∧ ∀ \ar ∈ \allargs ∖ \set{\ar_j, \ar_k}, i ∈ I: \ar \nileadstost φ$.
-\commentClaude{$\subset$ was changed to $⊊$ here, but nothing in the stated hypothesis ($J∪K=I$, both infinite) rules out $J=I$ (with $K$ also some infinite subset of $I$): the sentence never says that $J,K$ partition $I$ disjointly, so properness of $J$ and $K$ relative to $I$ is not obviously required or intended.}
   Then no suitable $C$ exists?
 
   Let’s find some suitable $C$ that shows that $φ ∈ P_i$.
@@ -1867,8 +1862,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
   if $C$ holds, then it implies something about the dj of some $i$;
   if $C$ fails, it is possible to falsify it.
 
-  We can observe set $O$ that forms a function $f(i) = \set{α \ileadsto φ, α' \ileadsto φ', …}$, with $α ⊊ α ⊊ …$ and with finite $O$.
-\commentClaude{$\subset$ was changed to $⊊$ here, but this now literally reads "$α ⊊ α$", which is impossible for any sequence/set (nothing is a proper subset of itself). This looks like a pre-existing typo: given the surrounding "…", a strictly increasing chain of \emph{distinct} paths (e.g.\ $α ⊊ α' ⊊ α'' ⊊ …$) was presumably intended, so it is unclear what the two sides of each $⊊$ are even meant to be.}
+  We can observe set $O$ that forms a function $f(i) = \set{α \ileadsto φ, α' \ileadsto φ', …}$, with $α ⊊ α' ⊊ …$ and with finite $O$.
   Our second condition is that $¬C ⇒ ∃ θ \suchthat θ ⇒ ¬C$.
   For example, if $C$ is $α \ileadsto φ ∨ β \allleadsto[j] φ$, $O$ is $α \ileadsto φ' ∧ β \allleadsto φ'$, then $O$ implies $¬C$.
   As another example, $C$ being $∃ α \suchthat α \ileadsto φ$ is unfalsifiable, as its negation is $∀ α: α \nileadsto φ$, which requires infinite $O$.
@@ -1880,7 +1874,6 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
   Even though it is not provable by any $O$.
 
   Now consider $\allleadsto$ such that $∃ J, K ⊊ I \suchthat \ar \ileadstost[j] φ, \ar' \ileadstost[k] φ$.
-\commentClaude{$\subset$ was changed to $⊊$ here too, for the same reason as the similar "$J, K \subset I$" phrasing noted earlier in the "Ideas for no suitable" section above: nothing here rules out $J=I$ or $K=I$, so properness may not be intended.}
   Then no suitable $C$ exists?
 
   If $C$ has the form, whenever $a$ fails, $a'$ is then decisive, it is falsifiable, but does not lead to a decisive argument.
