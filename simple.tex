@@ -317,7 +317,7 @@ $C$ suffers no visibility issues in $\allleadstogo$ iff $\OF(\allleadstogo) ⇒ 
 \end{remark}
 
 We say that $C$ is \emph{falsifiable} iff $C ≠ {\allleadstos} ∧
-\F(\allleadstogo) ⇒ \OF(\allleadstogo)$.
+[\F(\allleadstogo) ⇒ \OF(\allleadstogo)]$.
 
 According to \cref{th:noGeneral}, the prior must depend on the claim.
 One such is $C$-scrutiny, which mandates that $¬\OF(\allleadstoo) ∨ (¬\POF(\allleadstoo) ∧ \OF(\allleadstoo))$.
@@ -346,7 +346,7 @@ This is technically equivalent to mandating $¬\POF(\allleadstoo)$.
 
   With this example (considering again a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (b) \ileadstog φ$), we see that formalizing $¬\POF$, independently of $\allleadstogo$,
   as $∃θ ∈ Θ \suchthat ∀θ ⊆ θ' ∈ Θ: θ' ∈ C^⊆$,
-  fails, as this prevents the prefix $θ = \set{(b) \ileadstog[j] φ}$ from bringing not COF.
+  fails, as this prevents the prefix $θ = \set{(b) \ileadstog[j] φ}$ from bringing not POF.
   The condition $∃θ ∈ Θ \suchthat ∀θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstog}: θ' ∈ C^⊆$ is also not suitable, as it is always satisfied: pick any $θ ∈ Θ$ such that $θ ∉ \powerset{\allleadstog}$.
 
   The following alternative prior, which might be considered for its apparent proximity with the chosen one, is also inadequate:
@@ -371,16 +371,16 @@ This is technically equivalent to mandating $¬\POF(\allleadstoo)$.
   As an illustration, we want a prior to apply for the claim $∀i: (a) \ileadsto φ$, under some assumption like that infinitely many i behave similarly.
   
   Take any claim that is false for some finite reason (there exists some finite set of pairs that when removed make the claim true).
-  Then the claim might be not COF: consider some maximal compatible set of pairs, if there are for each some incompatible pair about which $C$ is not incorrect, then it is not COF.
+  Then the claim might be not POF: consider some maximal compatible set of pairs, if there are for each some incompatible pair about which $C$ is not incorrect, then it is not POF.
   
   We might attempt something like this: if whenever $C$ says something about some $i$, it also says the same about infinitely many $i$’s, then not OF.
   Or: All leadsto satisfy: for each ileadsto inside, there’s infinitely many ileadsto.
 \end{remark}
 
 \subsection{Falsifiability}
-We neglect temporarily the unconvincingness that arises when not COF and OF.
+We neglect temporarily the unconvincingness that arises when not POF and OF.
 Thus, this section studies the prior $¬\OF(\allleadstoo)$. 
-We consider it suitable even for claims satisfying not COF and OF for some worlds.
+We consider it suitable even for claims satisfying not POF and OF for some worlds.
 
 Any claim $C$ satisfies exactly one of these:
 \begin{description}
@@ -453,7 +453,7 @@ Provability by $¬\OF(\allleadstoo)$ (equivalently, falsifiability or triviality
   Then, $C$ is fails established verifiability (due to $C_3$ or $C_4$) and $¬\OF(\allleadstoo)$ does not prove $C$ (due to $C_1$ or $C_2$), but $C$ satisfies established verifiability under prior $¬\OF(\allleadstoo)$ (with verification $(a) \ileadsto φ$).
 \end{example}
   
-Note that if a claim is not provable by $¬\OF(\allleadstoo)$ (equivalently, some world is out of $C$ and NOT OF), then some world is out of $C$ and NOT COF.
+Note that if a claim is not provable by $¬\OF(\allleadstoo)$ (equivalently, some world is out of $C$ and NOT OF), then some world is out of $C$ and NOT POF.
 
 It is probably useful to remember that $¬\OF(\allleadstogo)$ states that 
 negating $C$, in that world, requires incompatible, or infinitely many, triples: 
@@ -490,15 +490,13 @@ Converting a claim to disjunctive normal form is useful to characterize its comp
 \end{example}
 
 \subsection{Persistent falsifiability}
-We should call COF persistent rather than continuous!
-
-Consider a claim that in some world satisfies F but not COF.
-Then, it is not verifiable under prior not COF, unless precisely that world can be excluded by an observation.
-This is a modeling problem as we want COF precisely to avoid this.
-Thus, our study should focus on those claims that satisfy F implies COF.
-% We want to satisfy OF implies COF, thus, not suffer visibility issues, thus, not (OF and not COF), thus, the claim must exclude the worlds in which some obs is incompatible with C and some prefix is entirely completable in C.
+Consider a claim that in some world satisfies F but not POF.
+Then, it is not verifiable under prior not POF, unless precisely that world can be excluded by an observation.
+This is a modeling problem as we want POF precisely to avoid this.
+Thus, our study should focus on those claims that satisfy F implies POF.
+% We want to satisfy OF implies POF, thus, not suffer visibility issues, thus, not (OF and not POF), thus, the claim must exclude the worlds in which some obs is incompatible with C and some prefix is entirely completable in C.
 % This if C says that α leads i to φ, it must also say something about all paths incompatible with α about i.
-% Mhh this does not seem sufficient: even the claim all paths and i are lead to φ seems OF and not COF for a world where some path fails.
+% Mhh this does not seem sufficient: even the claim all paths and i are lead to φ seems OF and not POF for a world where some path fails.
 
 \subsection{More properties}
 \begin{definition}[Anonymity]
@@ -1153,7 +1151,7 @@ The following example presents a situation where non rejection is due to finiten
 \end{example}
 
 \begin{theorem}
-  $D ∖ C$ is falsifiable iff ($C$ satisfies established verifiability under prior $D$ AND
+  $D ∖ C$ is falsifiable or trivial iff ($C$ satisfies established verifiability under prior $D$ AND
   $∀\allleadstogo ∉ D: \OF_{D ∖ C}(\allleadstogo)$).
 \end{theorem}
 \begin{proof}
@@ -1161,7 +1159,7 @@ The following example presents a situation where non rejection is due to finiten
   $C$ satisfies established verifiability under prior $D$
   iff $∀\allleadstogo ∉ \overline{C ∩ D}: \OF_{D ∖ C}(\allleadstogo)$.
   Note that
-  $D ∖ C$ is falsifiable iff 
+  $D ∖ C$ is falsifiable or trivial iff 
   $∀\allleadstogo ∉ (\overline{C ∩ D} ∩ D): \OF_{D ∖ C}(\allleadstogo)$
   (because $D ∖ C = \overline{C ∩ D} ∩ D$).
   This implies established verifiability under prior $D$.
@@ -1181,7 +1179,7 @@ The following example presents a situation where non rejection is due to finiten
   and using the negation, $(1) ⇒ ¬(3)$, which together with $(1) ⇒ (2)$ yields $(1) ⇒ (2) ∧ ¬(3)$.
 \end{proof}
 \begin{corollary}
-  $\allleadstos ∖ C$ is falsifiable iff $C$ satisfies established verifiability.
+  $\allleadstos ∖ C$ is falsifiable or trivial iff $C$ satisfies established verifiability.
 \end{corollary}
 \begin{theorem}
   For any $θ ∈ Θ$, the following statements are equivalent.
