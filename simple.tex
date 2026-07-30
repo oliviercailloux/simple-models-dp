@@ -440,9 +440,7 @@ falsifiability guarantees that a non trivial claim holds if, and only if, it is 
   $D$ proves $C$ means, by definition, $∀\allleadstogo: ¬\OF(\allleadstogo) ⇒ ¬\F(\allleadstogo)$.
 \end{proof}
 
-Provability by $¬\OF(\allleadstoo)$ (equivalently, falsifiability or triviality) is strictly stronger than established verifiability under $¬\OF(\allleadstoo)$; and established verifiability is strictly stronger than established verifiability under $¬\OF(\allleadstoo)$. (TODO: with any $D ⊆ D'$, EV under $D'$ is strictly stronger than EV under $D$?)
-
-\begin{example}
+Provability by $¬\OF(\allleadstoo)$ (equivalently, falsifiability or triviality) is strictly stronger than established verifiability under $¬\OF(\allleadstoo)$; and established verifiability is strictly stronger than established verifiability under $¬\OF(\allleadstoo)$. \begin{example}
   The claim $C_1 = \set{∃i \suchthat (a) \ileadsto φ}$, with infinitely many individuals, satisfies established verifiability (consider $θ = \set{(a) \ileadsto φ}$), hence, established verifiability under $¬\OF(\allleadstoo)$, but is not provable by $¬\OF(\allleadstoo)$.
   Similarly for $C_2 = \set{(a) \ileadsto φ ∨ (b) \ileadsto φ}$ and $θ = \set{(a) \ileadsto φ}$.
   
@@ -450,6 +448,19 @@ Provability by $¬\OF(\allleadstoo)$ (equivalently, falsifiability or triviality
   Then, $C$ is fails established verifiability (due to $C_3$ or $C_4$) and $¬\OF(\allleadstoo)$ does not prove $C$ (due to $C_1$ or $C_2$), but $C$ satisfies established verifiability under prior $¬\OF(\allleadstoo)$ (with verification $(a) \ileadsto φ$).
 \end{example}
   
+\begin{conjecture}
+  Given priors $D ⊆ D'$, established verifiability under $D'$ is strictly stronger than established verifiability under $D$. In other words, some claim satisfies established verifiability under $D$ but not established verifiability under $D'$.
+\end{conjecture}
+
+\begin{example}
+  The conjecture is false as stated for arbitrary priors $D ⊆ D'$: established verifiability under $D$ and under $D'$ can coincide for \emph{every} claim.
+  Pick any ${\allleadstog}_1 ∈ \allleadstos$ and, using $\card P ≥ 2$, let ${\allleadstog}_0 ∈ \allleadstos$ disagree with ${\allleadstog}_1$ on every pair (${\allleadstog}_0(i, \hist) ≠ {\allleadstog}_1(i, \hist)$ for all $i, \hist$).
+  Set $D = \set{{\allleadstog}_1} ⊊ D' = \set{{\allleadstog}_1, {\allleadstog}_0}$.
+  Established verifiability under $D$ holds for every claim $C$: if ${\allleadstog}_1 ∈ C$, $θ = ∅$ witnesses it, as the only element of $D$ is ${\allleadstog}_1 ∈ C$; otherwise $C ∩ D = ∅$ and the property holds vacuously.
+  Established verifiability under $D'$ also holds for every claim $C$: given $\allleadstogo ∈ C ∩ D'$, the singleton observation $θ = \set{(i, \hist, \allleadstogo(i, \hist))} ∈ Θ$, for any $(i, \hist)$, already excludes the other element of $D'$ as a completion, since ${\allleadstog}_0$ and ${\allleadstog}_1$ disagree everywhere; thus $θ ⊆ \allleadstog' ∈ D' ⇒ \allleadstog' = \allleadstogo ∈ C$.
+  So the intuition behind the example preceding the conjecture, which relies on the prior $¬\OF(\allleadstoo)$ excluding infinitely many worlds tailored to the claim at hand, does not extend to arbitrary priors $D ⊆ D'$: it breaks down whenever $D$ and $D' ∖ D$ happen to already be pairwise distinguishable by single observations, as above.
+\end{example}
+
 Note that if a claim is not provable by $¬\OF(\allleadstoo)$ (equivalently, some world is out of $C$ and NOT OF), then some world is out of $C$ and NOT POF.
 
 It is probably useful to remember that $¬\OF(\allleadstogo)$ states that 
