@@ -118,8 +118,8 @@ The intended semantics is that $P_i$ represents the preference of $i$ over the p
 
 This latter possibility may look unpleasant, but it is a fact that facing some difficult problems, individuals sometimes are undecided, and it is an a priori empirical possibility that the individual remains undecided (or even, \emph{becomes} undecided) when considering multiple arguments.
 Being undecided is not the same state as being decidedly indifferent about two issues, and those states can be distinguished empirically, as we will see.
-  
-Given an behavior function $\allleadstog$, deliberated choices are represented by an element $π({\allleadstog}) ⊆ I × P$ defined as $π({\allleadstog})(i) = P_i$. \Cref{th:sing} shows that $π({\allleadstog})$ is right unique (meaning that $∀ i ∈ I: \card{π({\allleadstog})(i)} ≤ 1$).
+
+Given an behavior function $\allleadstog$, deliberated choices are represented by an element $π({\allleadstog}) ⊆ I × P$ defined as $π_i(\allleadstog) = π({\allleadstog})(i) = P_i$. \Cref{th:sing} shows that $π({\allleadstog})$ is right unique (meaning that $∀ i ∈ I: \card{π({\allleadstog})(i)} ≤ 1$).
 Equivalently, note that $(P ∪ \set{∅})^I$, where $\set{∅}$ is used as a sentinel value for individuals with no deliberated judgment, can be interpreted as the right unique relations over $I × P$ (discarding those individuals with no deliberated judgment); and then the deliberated choices are an element $π({\allleadstog}) ∈ (P ∪ \set{∅})^I$.
 
 \subsection{An example and a discussion about observability}
@@ -227,7 +227,7 @@ Given a right unique $τ ⊆ (\allhists × I) × P$, we let $\mathop{↑} τ = \
 
 \subsection{Verifiability}
 Given an exposure protocol $(I, \allargs, {\allleadsto})$, we say that a claim $C$ \emph{holds} iff ${\allleadsto} ∈ C$. We are interested in criteria to determine whether a claim holds.
-Such a criterion must be sound, meaning that it must imply, when successful, that $C$ holds, and must be realizeable, meaning that if $C$ holds, the criterion must be satisfiable using feasible observations only (or something like that). Note that such criterion also offers a way to show that $C$ fails (does not hold), equivalently, that $P^{\allargs × I} ∖ C$ holds.
+Such a criterion must be sound, meaning that it must imply, when successful, that $C$ holds, and must be realizeable, meaning that if $C$ holds, the criterion must be satisfiable using feasible observations only (or something like that). Note that such criterion also offers a way to show that $C$ fails (does not hold), equivalently, that $\allleadstos ∖ C$ holds.
 
 The claim $C$ is verifiable in the world $\allleadstogo$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀ θ ⊆ {\allleadstog}: {\allleadstog} ∈ C$. 
 Possible verifiability mandates that some (possibly counter-factual) observation proves the claim (makes sure that it holds), thus, $C$ is possibly verifiable iff it is verifiable in some world; formally, iff $∃ θ ∈ Θ \suchthat ∀ θ ⊆ {\allleadstog}: {\allleadstog} ∈ C$. 
@@ -245,10 +245,10 @@ some sufficiently simple claims, such as the claim $C = \set{{\allleadstog} \suc
 
 A claim $C$ is \emph{informative} iff $π(C) = \set{π(\allleadstog) \suchthat {\allleadstog} ∈ C} ≠ (P ∪ \set{∅})^I$.
 % A claim $C$ is \emph{informative} iff $∃ i \suchthat π(C)(i) ≠ P ∪ \set{∅}$, where $π(C) = \set{π(\allleadstog) \suchthat {\allleadstog} ∈ C}$.
-A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π(C)(i) ≠ P ∪ \set{∅}$.
+A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π_i(C) = \set{π_i(\allleadstog) \suchthat {\allleadstog} ∈ C} ≠ P ∪ \set{∅}$.
 
 \begin{remark}
-  Informativeness permits mere counting: the claim that exactly two persons deliberately believe $φ$ is informative. Also, the claim $C = \set{∃ i \suchthat (a) \nileadstog φ ∧ [(a) \nileadstog φ ⇒ φ' ∈ π(\allleadstog)(i)]}$ is informative.
+  Informativeness permits mere counting: the claim that exactly two persons deliberately believe $φ$ is informative. Also, the claim $C = \set{[∃ i \suchthat (a) \nileadstog φ] ∧ [∀i: (a) \nileadstog φ ⇒ φ' ∈ π_i(\allleadstog)]}$ is informative.
   Informativeness may be a desirable property (rather than informativeness beyond counting) as one may, for example, want to know whether a given proposition is believed by a majority of individuals.
   Note that 
   informativeness beyond counting implies informativeness.
@@ -270,7 +270,7 @@ $∀\allleadstogo ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \sucht
 
 If $D ⊆ D'$, then established verifiability under prior $D'$ implies established verifiability under prior $D$.
 
-\Cref{th:vudImpliesHolds} proves that provided the prior is true, verifiability under a prior suffices for holding.
+\Cref{th:vudImpliesHolds} proves that provided the prior is true, being verified under a prior suffices for holding.
 
 We say that a prior $D$ proves a claim $C$ iff $D ⊆ C$. 
 
