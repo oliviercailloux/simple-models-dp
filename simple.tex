@@ -206,6 +206,7 @@ Similarly, we can view an observation $θ$ as a function $θ: I ↦ ∪_{H ∈ \
 \commentOC[Note that $(∪_{H ∈ \max \incr(\allhists)}P^H)^I$ is the set of functions that associate to each $I$ a maximal increasing sequence of paths, together with values from $P$.]{To be deleted.}
 
 \commentOC[Let also $\max\incr(\allhists) = \set{A ∈ \incr(\allhists) \suchthat ∄ A' ∈ \incr(\allhists) \suchthat A ⊊ A'}$ being set equal to $\set{A ∈ \incr(\allhists) ∩ (\allhists)^ℕ}$ denote the maximal elements of $\incr(\allhists)$, in the sense of containing sequences that are not a subsequence of another sequence; equivalently, containing those sequences whose sequence of cardinals of their elements equals $ℕ$.]{To be deleted.}
+\commentClaude{These two draft notes (both already marked "to be deleted") describe $\max\incr(\allhists)$ as containing \emph{infinite} chains (cardinals spanning all of $ℕ$, i.e.\ $A ∈ (\allhists)^ℕ$). But $\incr(\allhists)$ is defined with $\fsub$, i.e.\ restricted to \emph{finite} $H$; a finite chain always has a maximal element (as stated a couple of lines above, for any nonempty $H∈\incr(\allhists)$), so there is no room in $\incr(\allhists)$ for the infinite, no-maximal-element chains these notes describe. If a notion of "complete/infinite exposure history" is wanted, it needs a separate set (e.g.\ $(\allhists)^ℕ$ directly, disjoint from $\incr(\allhists)$), not a "$\max$" of $\incr(\allhists)$ itself.}
 
 We say that an observation $θ$ is compatible with a behavior ${\allleadstog} ∈ \allleadstos$ iff $θ ⊆ \allleadstogo$ (seeing the behavior as a set of triples).
 Thus, given ${\allleadstog} ∈ \allleadstos$, the set $Θ ∩ \powerset{\allleadstog}$ is the set of observations compatible with ${\allleadstog}$.
@@ -1058,11 +1059,11 @@ This (to be proven) captures the claim “there is no decisive argument for $i$�
 \begin{theorem}
   \label{th:dnf}
   Given any $E$
-  and a cover $\mathcal{S}$ of $E$ (a set of non-empty sets whose union contains $E$) 
+  and a cover $\mathcal{S}$ of $E$ (a set of non-empty subsets whose union equals $E$) 
   such that $∀ S ∈ \mathcal{S}, ∃ f_S ⊆ (\allhists × I) × P \suchthat S = \mathop{↑} f_S$ with $f_S$ right unique,
   given any $f ⊆ (\allhists × I) × P$: 
   $f ∉ E^⊆$ 
-  is equivalent to 
+  is equivalent to
   $∀ S ∈ \mathcal{S}, ∃ t ∈ f \suchthat \set{t} ∉ S^⊆$.
 \end{theorem}
 \begin{proof}
@@ -1151,32 +1152,13 @@ The following example presents a situation where non rejection is due to finiten
 \end{example}
 
 \begin{theorem}
+  \label{th:complFals}
   $D ∖ C$ is falsifiable or trivial iff ($C$ satisfies established verifiability under prior $D$ AND
   $∀\allleadstogo ∉ D: \OF_{D ∖ C}(\allleadstogo)$).
 \end{theorem}
 \begin{proof}
-  \Cref{th:dual} shows that
-  $C$ satisfies established verifiability under prior $D$
-  iff $∀\allleadstogo ∉ \overline{C ∩ D}: \OF_{D ∖ C}(\allleadstogo)$.
-  Note that
-  $D ∖ C$ is falsifiable or trivial iff 
-  $∀\allleadstogo ∉ (\overline{C ∩ D} ∩ D): \OF_{D ∖ C}(\allleadstogo)$
-  (because $D ∖ C = \overline{C ∩ D} ∩ D$).
-  This implies established verifiability under prior $D$.
-  The converse fails (thus $∀\allleadstogo ∉ \overline{C ∩ D}: \OF_{D ∖ C}(\allleadstogo)$ but $¬[∀\allleadstogo ∉ (\overline{C ∩ D} ∩ D): \OF_{D ∖ C}(\allleadstogo)]$)
-  exactly when 
-  $∃\allleadstogo ∉ D \suchthat ¬\OF_{D ∖ C}(\allleadstogo)$.
-
-  Write (1) for the LHS.
-  Write (2) for EV.
-  Write (3) for $∃\allleadstogo ∉ D \suchthat ¬\OF_{D ∖ C}(\allleadstogo)$.
-
-  We know that $(1) ⇒ (2)$.
-
-  We know that $((2) \not⇒ (1)) ⇔ (3)$,
-  in other words, $(2) ∧ ¬(1) ⇔ (3)$,
-  from which follows, using the forward direction, $(2) ∧ ¬(3) ⇒ (1)$,
-  and using the negation, $(1) ⇒ ¬(3)$, which together with $(1) ⇒ (2)$ yields $(1) ⇒ (2) ∧ ¬(3)$.
+  $D ∖ C$ is falsifiable or trivial iff $∀\allleadstogo ∉ (D ∖ C): \OF_{D ∖ C}(\allleadstogo)$, equivalently (as ${\allleadstogo} ∉ D ∖ C ⇔ {\allleadstogo} ∉ D ∨ {\allleadstogo} ∈ C$), iff $[∀\allleadstogo ∉ D: \OF_{D ∖ C}(\allleadstogo)] ∧ [∀\allleadstogo ∈ C: \OF_{D ∖ C}(\allleadstogo)]$.
+  As $C ∖ D ⊆ \overline D$, the second conjunct is already implied on $C ∖ D$ by the first, so it reduces to $∀\allleadstogo ∈ C ∩ D: \OF_{D ∖ C}(\allleadstogo)$, that is, by \cref{th:dual}, to established verifiability under prior $D$.
 \end{proof}
 \begin{corollary}
   $\allleadstos ∖ C$ is falsifiable or trivial iff $C$ satisfies established verifiability.
@@ -1195,16 +1177,22 @@ The following example presents a situation where non rejection is due to finiten
   From 1 to 3, that’s because for any such $\allleadstogo$, we have indeed $θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ C^⊆$.
 \end{proof}
 \begin{theorem}
+  \label{th:ofRelations}
   For any claim $C$, with $D$ being $¬\OF_C(\allleadstoo)$,
-  $∀\allleadstogo: \OF_C(\allleadstogo) ⇔ \OF_D(\allleadstogo) ⇒ \OF_{D ∖ C}(\allleadstogo)$.
+  given any $\allleadstogo$: 
+  $\OF_C(\allleadstogo) ⇔ \OF_D(\allleadstogo)$;
+  and $\OF_D(\allleadstogo) ⇒ \OF_{D ∖ C}(\allleadstogo)$.
 \end{theorem}
 \begin{proof}
   $\OF_C(\allleadstogo) ⇔ ∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ C^⊆ ⇔ ∃θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ (¬\OF_C(\allleadstoo))^⊆ ⇔ \OF_D(\allleadstogo) ⇒ \OF_{D ∖ C}(\allleadstogo)$.
 \end{proof}
-\begin{corollary}
+\begin{theorem}
   Considering a claim $C$ and prior $D$ being $¬\OF_C(\allleadstoo)$,
-  $D ∖ C$ is falsifiable iff $C$ satisfies established verifiability under prior $¬\OF_C(\allleadstogo)$.
-\end{corollary}
+  $D ∖ C$ is falsifiable or trivial iff $C$ satisfies established verifiability under prior $¬\OF_C(\allleadstogo)$.
+\end{theorem}
+\begin{proof}
+  Using \cref{th:complFals}, it is sufficient to prove that for any $C$, considering any $\allleadstogo ∉ D$ (thus, $\OF_C(\allleadstogo)$), $\OF_{D ∖ C}(\allleadstogo)$ holds. This is given by \cref{th:ofRelations}.
+\end{proof}
 
 \section{Supplementary material}
   \begin{example}[Disjunct with incompatible paths, not falsifiable, to be deleted]
