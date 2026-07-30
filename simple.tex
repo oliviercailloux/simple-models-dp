@@ -461,6 +461,32 @@ Provability by $¬\OF(\allleadstoo)$ (equivalently, falsifiability or triviality
   So the intuition behind the example preceding the conjecture, which relies on the prior $¬\OF(\allleadstoo)$ excluding infinitely many worlds tailored to the claim at hand, does not extend to arbitrary priors $D ⊆ D'$: it breaks down whenever $D$ and $D' ∖ D$ happen to already be pairwise distinguishable by single observations, as above.
 \end{example}
 
+\begin{theorem}[Sufficient conditions for strictness or for collapse]
+  \label{th:evStrictOrCollapse}
+  Given priors $D ⊆ D'$, let $R = D' ∖ D$.
+  \begin{enumerate}
+    \item If $∃\allleadstogo ∈ D \suchthat ¬\OF_R(\allleadstogo)$, established verifiability under $D'$ is strictly stronger than established verifiability under $D$: the claim $C = \allleadstos ∖ R$ satisfies established verifiability under $D$ but not under $D'$.
+    \item If $∃(i_0, \hist_0) ∈ I × \allhists \suchthat [\allleadstogo ↦ \allleadstogo(i_0, \hist_0)]$ is injective on $D'$ (in particular, this requires $\card{D'} ≤ \card P$), then established verifiability under $D$ and under $D'$ coincide, and in fact both hold, for every claim.
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  (1) By \cref{th:dual}, for any prior $D''$, established verifiability under $D''$ holds for the claim $C = \allleadstos ∖ R$ iff $∀\allleadstogo ∈ C ∩ D'': \OF_{D'' ∖ C}(\allleadstogo)$.
+  Taking $D'' = D$: since $D ∩ R = ∅$, $C ∩ D = D$ and $D ∖ C = D ∩ R = ∅$; as $∅ ∈ Θ ∩ \powerset{\allleadstogo}$ and $∅^⊆ = ∅$, $\OF_∅(\allleadstogo)$ holds for every $\allleadstogo$, so established verifiability under $D$ holds for $C$.
+  Taking $D'' = D'$: $C ∩ D' = D' ∖ R = D$ and $D' ∖ C = D' ∩ R = R$, so established verifiability under $D'$ holds for $C$ iff $∀\allleadstogo ∈ D: \OF_R(\allleadstogo)$, which fails by hypothesis.
+
+  (2) Write $ι(\allleadstogo) = \allleadstogo(i_0, \hist_0)$, injective on $D'$. For $\allleadstogo ∈ D'$, the singleton $θ_{\allleadstogo} = \set{(i_0, \hist_0, ι(\allleadstogo))}$ trivially satisfies the increasing-chain condition (only one pair is queried, and only for $i_0$), so $θ_{\allleadstogo} ∈ Θ ∩ \powerset{\allleadstogo}$.
+  For any $\allleadstogo' ∈ D'$, $θ_{\allleadstogo} ⊆ \allleadstogo'$ iff $ι(\allleadstogo') = ι(\allleadstogo)$, iff $\allleadstogo' = \allleadstogo$, by injectivity.
+  Hence, for any $D'' ⊆ D'$ (injectivity of $ι$ on $D''$ following from injectivity on $D'$) and any claim $C$: given $\allleadstogo ∈ C ∩ D''$, $θ_{\allleadstogo}$ witnesses established verifiability under $D''$, since $∀\allleadstogo' ∈ D'': θ_{\allleadstogo} ⊆ \allleadstogo' ⇒ \allleadstogo' = \allleadstogo ∈ C$.
+  Taking $D'' = D$ and $D'' = D'$ in turn, established verifiability under $D$ and under $D'$ both hold, for every claim.
+\end{proof}
+
+\begin{remark}
+  \Cref{th:evStrictOrCollapse} does not amount to an exact characterization, and closing the gap between its two parts seems delicate.
+  The obstruction is that $Θ$ only allows, for each individual, a single chain of increasingly long queried paths, so an established-verifiability witness and a separate observation distinguishing $D$ from $R$ cannot always be merged into one observation when they query the same individual along incomparable paths.
+  Part~1 sidesteps this by picking a claim ($\allleadstos ∖ R$) whose established-verifiability witness under $D$ is already $∅$, so nothing needs merging; part~2 sidesteps this by using a single shared coordinate that alone witnesses established verifiability under any subset of $D'$, for any claim, again with nothing to merge.
+  Between these extremes, that is, when $D$ is separated from $R$ only pointwise ($∀\allleadstogo ∈ D: \OF_R(\allleadstogo)$, so part~1 does not apply) yet without a coordinate as in part~2, whether established verifiability under $D$ and under $D'$ still coincide for every claim, or whether some more elaborate claim (combining several individuals, as in the example preceding the conjecture) always re-establishes strictness, is left open.
+\end{remark}
+
 Note that if a claim is not provable by $¬\OF(\allleadstoo)$ (equivalently, some world is out of $C$ and NOT OF), then some world is out of $C$ and NOT POF.
 
 It is probably useful to remember that $¬\OF(\allleadstogo)$ states that 
