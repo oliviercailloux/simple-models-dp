@@ -476,7 +476,7 @@ $∃ θ ∈ (Θ ∩ D^⊆) \suchthat θ ∉ (D ∖ C)^⊆$.
 
 $D$ is necessarily observationally completable to $C$ iff 
 $∀\allleadstog ∈ D, \OF_{D ∖ C}(\allleadstog)$.
-\Cref{th:necObsComp} shows the equivalence with established verifiability under prior $D$.
+\Cref{rk:necObsComp} shows the lack of equivalence with established verifiability under prior $D$.
 
 Converting a claim to disjunctive normal form is useful to characterize its compatible observations, as \cref{th:dnf} indicates.
 \begin{example}
@@ -1277,15 +1277,18 @@ The following example presents a situation where non rejection is due to finiten
   $D$ being observationally completable to $C$, that is,
   $∃ θ ∈ Θ ∩ D^⊆ \suchthat θ ∉ (D ∖ C)^⊆$.
 \end{corollary}
-\begin{corollary}
-  \label{th:necObsComp}
+\begin{remark}
+  \label{rk:necObsComp}
   Given any claims $C, D ⊆ \allleadstos$,
-  $C$ satisfies established verifiability under prior $D$ 
+  [$C$ satisfies established verifiability under prior $D$
   ($∀\allleadstog ∈ C ∩ D, \OF_{D ∖ C}(\allleadstog)$)
-  iff
+  is equivalent to
   $D$ is necessarily observationally completable to $C$
-  ($∀\allleadstog ∈ D, \OF_{D ∖ C}(\allleadstog)$).
-\end{corollary}
+  ($∀\allleadstog ∈ D, \OF_{D ∖ C}(\allleadstog)$)]
+  iff
+  $D ∖ C = ∅$.
+  Indeed, assume EV under $D$ and consider $\allleadstog ∈ D ∩ \overline{C}$, we have $¬\F_{D ∖ C}(\allleadstog)$, thus $¬\OF_{D ∖ C}(\allleadstog)$.
+\end{remark}
 
 \begin{corollary}
   \label{th:toStricterClaims}
