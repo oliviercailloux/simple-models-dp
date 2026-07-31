@@ -531,6 +531,55 @@ So, should observation happen to proceed along $θ_1$ rather than toward $θ_0$,
 This is exactly the fragility that motivated preferring $¬\POF$ over $¬\OF$ as the prior in the first place, now reappearing on the verification side rather than the falsification side.
 So the right adequacy criterion is that $C$ satisfies PEV under $¬\POF_C$, not merely established verifiability under $¬\POF_C$: only PEV guarantees that $C$ stays provable after arbitrary observations.
 
+\subsection{Right permanent established verifiability}
+Realistic protocols cannot revisit a shorter exposure once a longer, or merely different, one has been shown to an individual.
+$\RPOF$ already captures this by restricting the persistence witness to extensions that, for each individual, only lengthen what is already there, rather than any comparable extension.
+Applying the same restriction to PEV in place of $\POF$ gives a stricter analogue.
+
+Given $C, D ⊆ \allleadstos$ and $\allleadstogo ∈ C ∩ D$, $C$ is \emph{right permanently established-verifiable} (RPEV) under $D$ at $\allleadstogo$ iff
+$∀θ ∈ Θ ∩ \powerset{\allleadstogo}, ∃θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstogo}$, where $θ'$, for each $i$, adds to $θ$ only longer sequences, such that $∀θ' ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$.
+$C$ satisfies RPEV under prior $D$ iff this holds $∀\allleadstogo ∈ C ∩ D$.
+
+\begin{theorem}[RPEV as $\RPOF_{D ∖ C}$]
+  \label{th:rpevChar}
+  Given $C, D ⊆ \allleadstos$ and $\allleadstogo ∈ C ∩ D$: $C$ is RPEV under $D$ at $\allleadstogo$ iff $\RPOF_{D ∖ C}(\allleadstogo)$.
+  Consequently, $C$ satisfies RPEV under prior $D$ iff $∀\allleadstogo ∈ C ∩ D: \RPOF_{D ∖ C}(\allleadstogo)$.
+\end{theorem}
+\begin{proof}
+  Identical to \cref{th:pevChar}: \cref{th:vud} characterizes, for a fixed $θ'$, whether $θ'$ proves $C$ under $D$, independently of which $θ'$ are under consideration; restricting to rightward $θ'$ throughout the substitution turns the proof of \cref{th:pevChar} into this statement.
+\end{proof}
+
+\begin{corollary}
+  \label{th:rpevChain}
+  Given $C, D ⊆ \allleadstos$: RPEV under $D$ implies PEV under $D$; and provability of $C$ by $D$ implies RPEV under $D$.
+\end{corollary}
+\begin{proof}
+  $\RPOF_S(\allleadstogo) ⇒ \POF_S(\allleadstogo)$ for any $S, \allleadstogo$ (a rightward witness is in particular a witness), giving the first implication via \cref{th:rpevChar,th:pevChar}.
+  If $D ⊆ C$, then $D ∖ C = ∅$, so $\RPOF_∅(\allleadstogo)$ holds trivially (as for $\POF_∅$), giving RPEV under $D$ by \cref{th:rpevChar}.
+\end{proof}
+
+\begin{conjecture}
+  \label{cnj:rpevProv}
+  Given a claim $C$, with $D = ¬\RPOF_C$: $C$ satisfies RPEV under $D$ iff $C$ is provable by $D$.
+\end{conjecture}
+
+By \cref{th:rpevChain}, only the forward implication is open.
+
+\begin{lemma}[Escaping RPEV witnesses must diverge]
+  \label{th:rpevDiverge}
+  Suppose $C$ satisfies RPEV under $D = ¬\RPOF_C$, and suppose $D ∖ C ≠ ∅$; let $\allleadstog_0 ∈ D ∖ C$ be arbitrary.
+  As $\allleadstog_0 ∈ D = ¬\RPOF_C$, some $θ_1 ∈ Θ ∩ \powerset{\allleadstog_0}$ witnesses $¬\RPOF_C(\allleadstog_0)$: every rightward $θ_1 ⊆ θ' ⊆ \allleadstog_0$ satisfies $θ' ∈ C^⊆$.
+  In particular, the trivial case $θ' = θ_1$ gives $θ_1 ∈ C^⊆$: pick any completion $θ_1 ⊆ \allleadstogo$, $\allleadstogo ∈ C$.
+  Now $\allleadstogo ∈ C ∩ D$, so this is where the RPEV hypothesis is actually used: testing it at $\allleadstogo$ for the prefix $θ_1$ gives a rightward extension $θ_1 ⊆ θ_1' ⊆ \allleadstogo$, with $θ_1' ∉ (D ∖ C)^⊆$.
+  This $θ_1'$ satisfies $θ_1' ⊈ \allleadstog_0$.
+\end{lemma}
+\begin{proof}
+  If $θ_1' ⊆ \allleadstog_0$, then $\allleadstog_0$ is a completion of $θ_1'$ lying in $D ∖ C$, contradicting $θ_1' ∉ (D ∖ C)^⊆$.
+\end{proof}
+
+\Cref{th:rpevDiverge} rules out the most direct route to \cref{cnj:rpevProv}: an RPEV witness escaping $D ∖ C$ cannot simply reproduce $\allleadstog_0$’s stuck pattern, it must actively diverge from it.
+Two routes to settling \cref{cnj:rpevProv} remain open: a compactness argument, iterating the construction of \cref{th:rpevDiverge} along an increasing sequence of prefixes agreeing with $\allleadstog_0$ further and further, to show the required divergence cannot be sustained indefinitely (this needs the branching underlying $Θ$ to be tame enough for a König-type argument, not verified here); and a direct counterexample, a claim $C$ for which $D ∖ C$ is spread across many, individually escapable, worlds rather than concentrated in one $\allleadstog_0$, so that every world in $C$ can use a private, ever-available escape route.
+
 \subsection{Persistent falsifiability}
 Consider a claim that in some world satisfies F but not POF.
 Then, it is not verifiable under prior not POF, unless precisely that world can be excluded by an observation.
