@@ -215,6 +215,7 @@ This set is downwards-closed, as both $Θ$ and $C^⊆$ are.
 \commentOC[Let the \emph{simple a priori observations} be defined as $∪_{J ⊆_\finite I} (\allhists)^J$, equivalently, as the right-unique finite relations over $I × \allhists$.
   Given a simple a priori observation $O: J ↦ \allhists$, we can define the a priori observation $O_O = \set{(i, \hist) ∈ J × \allhists \suchthat ∀ i ∈ J: \hist ⊆ O(i)}$ as the completion of $O$ to all sub-paths in $O$.]{To be deleted.}
 
+\label{def:unobservable}
 A subset of triples $T ⊆ \allhists × I × P$ is unobservable iff it cannot be observed together, that is, iff $T ∉ Θ$. If $\card{T} ∉ ℕ$, $T$ is unobservable. A finite subset of triples $T$ is unobservable iff some subset $T' ⊆ T$ with $\card{T'} = 2$ is unobservable (unobservability comes from a given individual’s observations, for that one, the paths are not increasing, and as the subset relation is transitive, two elements suffice to determine this fact).
 
 It is important to realize that $Θ$ is the set of \emph{a priori} possible observations, meaning, those that are conceivable, possibly counter-factually. The set of observations that can result from actually observing the behavior ${\allleadsto}$ is 
@@ -475,10 +476,6 @@ $∃ θ ∈ (Θ ∩ D^⊆) \suchthat θ ∉ (D ∖ C)^⊆$.
 $D$ is necessarily observationally completable to $C$ iff 
 $∀\allleadstogo ∈ D, \OF_{D ∖ C}(\allleadstogo)$.
 \Cref{th:necObsComp} shows the equivalence with established verifiability under prior $D$.
-
-TODO define necessary observationally completable
-so as to obtain equivalence with established verifiability under $D$.
-Make our search a search for noc under D' iff noc under D, thus always observationally excludable D' without D?
 
 Converting a claim to disjunctive normal form is useful to characterize its compatible observations, as \cref{th:dnf} indicates.
 \begin{example}
@@ -997,20 +994,10 @@ Using the trivial prior $D = \allleadstos$, we obtain this corollary.
   $\OF_{D ∖ C}(\allleadstogo) ⇒ \allleadstogo ∈ C ∪ \overline{D}$.
 \end{proof}
 \begin{corollary}
-  \label{th:obsComp}
-  Given any claims $C, D ⊆ \allleadstos$,
-  possible verifiability under prior $D$, that is, 
-  $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$,
-  is equivalent to 
-  $D$ being observationally completable to $C$, that is,
-  $∃ θ ∈ Θ ∩ D^⊆ \suchthat θ ∉ (D ∖ C)^⊆$.
-\end{corollary}
-\begin{corollary}
   \label{th:obsCompEst}
   Given any claims $C, D ⊆ \allleadstos$,
   established verifiability under prior $D$, that is, 
   $∀\allleadstogo ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀ θ ⊆ {\allleadstogo'} ∈ D: {\allleadstogo'} ∈ C$,
-  % $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$,
   is equivalent to 
   $∀\allleadstogo ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ (D ∖ C)^⊆$.
 \end{corollary}
@@ -1018,25 +1005,6 @@ Using the trivial prior $D = \allleadstos$, we obtain this corollary.
   \label{th:dual}
   $C$ satisfies established verifiability under prior $D$
   iff $∀\allleadstogo ∈ C ∩ D: \OF_{D ∖ C}(\allleadstogo)$.
-\end{corollary}
-\begin{corollary}
-  \label{th:necObsComp}
-  Given any claims $C, D ⊆ \allleadstos$,
-  $C$ satisfies established verifiability under prior $D$ 
-  ($∀\allleadstogo ∈ C ∩ D, \OF_{D ∖ C}(\allleadstogo)$)
-  iff
-  $D$ is necessarily observationally completable to $C$
-  ($∀\allleadstogo ∈ D, \OF_{D ∖ C}(\allleadstogo)$).
-\end{corollary}
-
-\begin{corollary}
-  \label{th:toStricterClaims}
-  Given any claims $C, D ⊆ \allleadstos$,
-  if some claim $C' ⊆ C$ is possibly verifiable under prior $D$, that is, 
-  $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C'$,
-  then 
-  $D$ is observationally completable to $C$, that is,
-  $∃ θ ∈ Θ ∩ D^⊆ \suchthat θ ∉ (D ∖ C)^⊆$.
 \end{corollary}
 
 \begin{lemma}
@@ -1080,43 +1048,6 @@ This (to be proven) captures the claim “there is no decisive argument for $i$�
   \label{ex:noDecArg}
   The claim $C = \set{{\allleadstog} \suchthat π(\allleadstogo)(I) = \set{∅}}$ is possibly verifiable under prior $D$ iff $D$ is observationally completable to $\set{\allleadstogo \suchthat π(\allleadstogo)(I) = \set{∅}}$.
 \end{example}
-
-\begin{theorem}
-  \label{th:dnf}
-  Given any $E$
-  and a cover $\mathcal{S}$ of $E$ (a set of non-empty subsets whose union equals $E$) 
-  such that $∀ S ∈ \mathcal{S}, ∃ f_S ⊆ (\allhists × I) × P \suchthat S = \mathop{↑} f_S$ with $f_S$ right unique,
-  given any $f ⊆ (\allhists × I) × P$: 
-  $f ∉ E^⊆$ 
-  is equivalent to
-  $∀ S ∈ \mathcal{S}, ∃ t ∈ f \suchthat \set{t} ∉ S^⊆$.
-\end{theorem}
-\begin{proof}
-  Pick any $S ∈ \mathcal{S}$ and $f_S \suchthat S = \mathop{↑} f_S$.
-  Given any $p ∈ f_S$, define $S_p = \mathop{↑} \set{p}$, obtaining $S = ⋂_{p ∈ f_S} S_p$.
-  Thus $f ∪ f_S$ is not completable to a function (if $f ∪ f_S$ is completable to a function, that function is in $S$, thus in $E$, thus $f$ compatible with $E$).
-  It follows that $f ∪ f_S$ is not right unique,
-  thus, that some $t ∈ f$ contradicts $f_S$.
-
-  Conversely, if $f ∈ E^⊆$, then $f ⊆ \allleadstogo$ for some $\allleadstogo ∈ E$.
-  As $\mathcal{S}$ covers $E$, $\allleadstogo ∈ S$ for some $S ∈ \mathcal{S}$.
-  Then $∀ t ∈ f$: $\set{t} ⊆ \allleadstogo ∈ S$, thus $\set{t} ∈ S^⊆$.
-  Thus, for this $S$, no $t ∈ f$ satisfies $\set{t} ∉ S^⊆$.
-\end{proof}
-\begin{remark}
-  $(a ≠ b) ∨ (a ∧ c)$ is equivalent to $(a ≠ b) ∨ (b ∧ c)$, thus there is no unique minimal DNF.
-\end{remark}
-
-\begin{theorem}
-  \label{th:ofCover}
-  Given $C, D$, define $E = D ∖ C$, consider a finite cover $\mathcal{S}$ of $E$ (cover is understood as above).
-  The world $\allleadstogo$ satisfies $\OF_E(\allleadstogo)$ iff
-  $∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀ S ∈ \mathcal{S}, ∃ t ∈ θ \suchthat \set{t} ∉ S^⊆$.
-\end{theorem}
-\begin{proof}
-  By definition, $\OF_E(\allleadstogo)$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ E^⊆$.
-  By \cref{th:dnf}, applied to $f = θ$, $θ ∉ E^⊆$ iff $∀ S ∈ \mathcal{S}, ∃ t ∈ θ \suchthat \set{t} ∉ S^⊆$.
-\end{proof}
 
 \begin{theorem}
   \label{th:ex-post}
@@ -1240,6 +1171,75 @@ The following example presents a situation where non rejection is due to finiten
 \end{theorem}
 \begin{proof}
   Using \cref{th:complFals}, it is sufficient to prove that for any $C$, considering any $\allleadstogo ∉ D$ (thus, $\OF_C(\allleadstogo)$), $\OF_{D ∖ C}(\allleadstogo)$ holds. This is given by \cref{th:ofRelations}.
+\end{proof}
+
+\subsection{Observational completion}
+\begin{corollary}
+  \label{th:obsComp}
+  Given any claims $C, D ⊆ \allleadstos$,
+  possible verifiability under prior $D$, that is, 
+  $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$,
+  is equivalent to 
+  $D$ being observationally completable to $C$, that is,
+  $∃ θ ∈ Θ ∩ D^⊆ \suchthat θ ∉ (D ∖ C)^⊆$.
+\end{corollary}
+\begin{corollary}
+  \label{th:necObsComp}
+  Given any claims $C, D ⊆ \allleadstos$,
+  $C$ satisfies established verifiability under prior $D$ 
+  ($∀\allleadstogo ∈ C ∩ D, \OF_{D ∖ C}(\allleadstogo)$)
+  iff
+  $D$ is necessarily observationally completable to $C$
+  ($∀\allleadstogo ∈ D, \OF_{D ∖ C}(\allleadstogo)$).
+\end{corollary}
+
+\begin{corollary}
+  \label{th:toStricterClaims}
+  Given any claims $C, D ⊆ \allleadstos$,
+  if some claim $C' ⊆ C$ is possibly verifiable under prior $D$, that is, 
+  $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C'$,
+  then 
+  $D$ is observationally completable to $C$, that is,
+  $∃ θ ∈ Θ ∩ D^⊆ \suchthat θ ∉ (D ∖ C)^⊆$.
+\end{corollary}
+
+\begin{theorem}
+  \label{th:dnf}
+  Given any $E$
+  and a cover $\mathcal{S}$ of $E$ (a set of non-empty subsets whose union equals $E$) 
+  such that $∀ S ∈ \mathcal{S}, ∃ f_S ⊆ (\allhists × I) × P \suchthat S = \mathop{↑} f_S$ with $f_S$ right unique,
+  given any $f ⊆ (\allhists × I) × P$: 
+  $f ∉ E^⊆$ 
+  is equivalent to
+  $∀ S ∈ \mathcal{S}, ∃ t ∈ f \suchthat \set{t} ∉ S^⊆$.
+\end{theorem}
+\begin{proof}
+  Pick any $S ∈ \mathcal{S}$ and $f_S \suchthat S = \mathop{↑} f_S$.
+  Given any $p ∈ f_S$, define $S_p = \mathop{↑} \set{p}$, obtaining $S = ⋂_{p ∈ f_S} S_p$.
+  Thus $f ∪ f_S$ is not completable to a function (if $f ∪ f_S$ is completable to a function, that function is in $S$, thus in $E$, thus $f$ compatible with $E$).
+  It follows that $f ∪ f_S$ is not right unique,
+  thus, that some $t ∈ f$ contradicts $f_S$.
+
+  Conversely, if $f ∈ E^⊆$, then $f ⊆ \allleadstogo$ for some $\allleadstogo ∈ E$.
+  As $\mathcal{S}$ covers $E$, $\allleadstogo ∈ S$ for some $S ∈ \mathcal{S}$.
+  Then $∀ t ∈ f$: $\set{t} ⊆ \allleadstogo ∈ S$, thus $\set{t} ∈ S^⊆$.
+  Thus, for this $S$, no $t ∈ f$ satisfies $\set{t} ∉ S^⊆$.
+\end{proof}
+\begin{remark}
+  $(a ≠ b) ∨ (a ∧ c)$ is equivalent to $(a ≠ b) ∨ (b ∧ c)$, thus there is no unique minimal DNF.
+\end{remark}
+
+The following result indicates that, given a finite cover of $D ∖C$, $\OF_{D ∖C}(\allleadstogo)$ requires some set of triple $T$ that, for each $S$, contains a triple incompatible with $S$; thus $\OF_{D ∖C}(\allleadstogo)$ holds iff such a $T$ is observable in the world.
+
+\begin{theorem}
+  \label{th:ofCover}
+  Given $C, D$, define $E = D ∖ C$, consider a finite cover $\mathcal{S}$ of $E$ (cover is understood as above).
+  The world $\allleadstogo$ satisfies $\OF_E(\allleadstogo)$ iff
+  $∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀ S ∈ \mathcal{S}, ∃ t ∈ θ \suchthat \set{t} ∉ S^⊆$.
+\end{theorem}
+\begin{proof}
+  By definition, $\OF_E(\allleadstogo)$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ E^⊆$.
+  By \cref{th:dnf}, applied to $f = θ$, $θ ∉ E^⊆$ iff $∀ S ∈ \mathcal{S}, ∃ t ∈ θ \suchthat \set{t} ∉ S^⊆$.
 \end{proof}
 
 \section{Supplementary material}
@@ -2825,7 +2825,6 @@ Established verifiability under a prior $D$, for a claim $C$, is equivalent (\cr
 \Cref{prop:evExactReduction} settles the question in principle, but the search over $T ⊆ D'$ it requires is not, by itself, informative: the rest of this appendix develops external, checkable conditions covering many — but provably not all — cases.
 
 \subsection{Sufficient conditions for strictness}
-
 Given $D ⊆ D'$, let $R = D' ∖ D$. Restricting \cref{prop:evExactReduction} to $T ⊆ D$ (so $T ∩ D = T$) gives a first, directly checkable, family of witnesses.
 
 \begin{corollary}[Finite subset isolation criterion]
@@ -2835,6 +2834,27 @@ Given $D ⊆ D'$, let $R = D' ∖ D$. Restricting \cref{prop:evExactReduction} t
 \begin{proof}
   Immediate from \cref{prop:evExactReduction}, since $T ⊆ D$ gives $T ∩ D = T$.
 \end{proof}
+
+\begin{corollary}[Triple-obstruction form of the isolation criterion]
+  \label{th:subsetIsolationCriterionTriples}
+  Given priors $D ⊆ D'$, $C ⊆ D$, and finite covers $\mathcal S$ of $D ∖ C$, $\mathcal S'$ of $D' ∖ C$ (as in \cref{th:ofCover}), if
+  \begin{itemize}
+    \item every $\allleadstogo ∈ C$ observes some finite $U ⊆ \allleadstogo$, $U ∈ Θ$, with $∀S ∈ \mathcal S, ∃u ∈ U: \set{u} ∉ S^⊆$, and
+    \item some $\allleadstogo ∈ C$ observes no finite $U ⊆ \allleadstogo$, $U ∈ Θ$, with $∀S' ∈ \mathcal S', ∃u ∈ U: \set{u} ∉ {S'}^⊆$,
+  \end{itemize}
+  then $C$ satisfies established verifiability under $D$ but not under $D'$.
+\end{corollary}
+\begin{proof}
+  By \cref{th:ofCover}, the first bullet is $∀\allleadstogo ∈ C: \OF_{D ∖ C}(\allleadstogo)$ and the second is $∃\allleadstogo ∈ C: ¬\OF_{D' ∖ C}(\allleadstogo)$; conclude by \cref{th:subsetIsolationCriterion} (with $T = C$).
+\end{proof}
+
+\begin{remark}
+  The finite covers required by \cref{th:subsetIsolationCriterionTriples} need not exist: even $¬\OF_C$ itself, for a claim $C$, is not always finitely coverable.
+  For instance, fix infinitely many individuals $i_1, i_2, … ∈ I$, and let $C = \set{\allleadstog \suchthat ∀n ≥ 1: \allleadstog(i_n, ∅) ∈ \set{φ, φ'}}$.
+  By \cref{th:ex-post}, $C ⊆ ¬\OF_C$; conversely, if $\allleadstog ∉ C$, some $n_0$ has $\allleadstog(i_{n_0}, ∅) = 0$, and $θ = \set{(i_{n_0}, ∅, 0)} ⊆ \allleadstog$ satisfies $θ ∉ C^⊆$ (no completion of $θ$ can avoid $0$ at $i_{n_0}$), so $\OF_C(\allleadstog)$.
+  Hence $¬\OF_C = C$.
+  Yet $C$ has no countable $\mathop{↑}f_S$-cover: $\mathop{↑}f_S ⊆ C$ forces $f_S$ to fix \emph{every} $(i_n, ∅)$ to a value in $\set{φ, φ'}$ (leaving any $i_{n_0}$ unconstrained lets a completion set $0$ there), so distinct valid $f_S$ correspond to distinct elements of $\set{φ, φ'}^ℕ$, giving continuum-many pairwise disjoint pieces, none of which a countable subfamily can cover.
+\end{remark}
 
 For $\allleadstogo ∈ S ⊆ \allleadstos$, say $\allleadstogo$ is \emph{isolated in $S$} iff $\OF_{S ∖ \set{\allleadstogo}}(\allleadstogo)$, that is, iff some single observation excludes every other element of $S$ at once (so, by \cref{th:ofMonotonous}, $S ⊆ S'$ and $\allleadstogo$ isolated in $S'$ implies $\allleadstogo$ isolated in $S$).
 The case $\card T = 1$ of \cref{th:subsetIsolationCriterion} already gives strictness whenever some $\allleadstogo ∈ D$ is isolated in $D$ but not in $D'$ — no shared coordinate for all of $D'$ is needed, only a single point losing its isolation.
