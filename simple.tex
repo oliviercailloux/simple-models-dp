@@ -259,9 +259,9 @@ That verifiability is not realizeable may seem disappointing, but is merely the 
 To obtain realizeability in at least some interesting cases, we must relax soundness. We will be content that the criterion guarantees, when satisfied, that $C$ holds, when assuming some prior knowledge. We will look for the minimal required prior (for obtaining satisfiability when $C$ holds) and then will study (partial) grounding of this prior thanks to falsifiability.
 
 Given $C, D ⊆ \allleadstos$, a claim $C$ is possibly verifiable under prior $D$ iff 
-$∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$.
+$∃ θ ∈ Θ ∩ (C ∩ D)^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$.
 Also, $C$ is verified under prior $D$ iff
-$∃ θ ∈ Θ ∩ \powerset{\allleadsto} ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$; and is verified iff it is verified under the trivial prior.
+$∃ θ ∈ Θ ∩ \powerset{\allleadstoo} ∩ D^⊆ \suchthat ∀ θ ⊆ {\allleadstog} ∈ D: {\allleadstog} ∈ C$ (TODO should consider $C ∩ D$ rather than $D$); and is verified iff it is verified under the trivial prior.
 Finally, $C$ satisfies established verifiability under prior $D$ iff
 $∀\allleadstogo ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀ θ ⊆ {\allleadstogo'} ∈ D: {\allleadstogo'} ∈ C$.
 
@@ -448,265 +448,9 @@ Provability by $¬\OF(\allleadstoo)$ (equivalently, falsifiability or triviality
   Then, $C$ is fails established verifiability (due to $C_3$ or $C_4$) and $¬\OF(\allleadstoo)$ does not prove $C$ (due to $C_1$ or $C_2$), but $C$ satisfies established verifiability under prior $¬\OF(\allleadstoo)$ (with verification $(a) \ileadsto φ$).
 \end{example}
   
-\begin{conjecture}
-  Given priors $D ⊆ D'$, established verifiability under $D'$ is strictly stronger than established verifiability under $D$. In other words, some claim satisfies established verifiability under $D$ but not established verifiability under $D'$.
-\end{conjecture}
+This suggests conjecturing that established verifiability under $D'$ is always strictly stronger than established verifiability under $D$, for any priors $D ⊆ D'$.
+This is not the case in general; \cref{app:evStrictNested} investigates the question and reports the current state of its characterization.
 
-\begin{example}
-  The conjecture is false as stated for arbitrary priors $D ⊆ D'$: established verifiability under $D$ and under $D'$ can coincide for \emph{every} claim.
-  Pick any ${\allleadstog}_1 ∈ \allleadstos$ and, using $\card P ≥ 2$, let ${\allleadstog}_0 ∈ \allleadstos$ disagree with ${\allleadstog}_1$ on every pair (${\allleadstog}_0(i, \hist) ≠ {\allleadstog}_1(i, \hist)$ for all $i, \hist$).
-  Set $D = \set{{\allleadstog}_1} ⊊ D' = \set{{\allleadstog}_1, {\allleadstog}_0}$.
-  Established verifiability under $D$ holds for every claim $C$: if ${\allleadstog}_1 ∈ C$, $θ = ∅$ witnesses it, as the only element of $D$ is ${\allleadstog}_1 ∈ C$; otherwise $C ∩ D = ∅$ and the property holds vacuously.
-  Established verifiability under $D'$ also holds for every claim $C$: given $\allleadstogo ∈ C ∩ D'$, the singleton observation $θ = \set{(i, \hist, \allleadstogo(i, \hist))} ∈ Θ$, for any $(i, \hist)$, already excludes the other element of $D'$ as a completion, since ${\allleadstog}_0$ and ${\allleadstog}_1$ disagree everywhere; thus $θ ⊆ \allleadstog' ∈ D' ⇒ \allleadstog' = \allleadstogo ∈ C$.
-  So the intuition behind the example preceding the conjecture, which relies on the prior $¬\OF(\allleadstoo)$ excluding infinitely many worlds tailored to the claim at hand, does not extend to arbitrary priors $D ⊆ D'$: it breaks down whenever $D$ and $D' ∖ D$ happen to already be pairwise distinguishable by single observations, as above.
-\end{example}
-
-\begin{theorem}[Sufficient conditions for strictness or for collapse]
-  \label{th:evStrictOrCollapse}
-  Given priors $D ⊆ D'$, let $R = D' ∖ D$.
-  \begin{enumerate}
-    \item If $∃\allleadstogo ∈ D \suchthat ¬\OF_R(\allleadstogo)$, established verifiability under $D'$ is strictly stronger than established verifiability under $D$: the claim $C = \allleadstos ∖ R$ satisfies established verifiability under $D$ but not under $D'$.
-    \item If $∃(i_0, \hist_0) ∈ I × \allhists \suchthat [\allleadstogo ↦ \allleadstogo(i_0, \hist_0)]$ is injective on $D'$ (in particular, this requires $\card{D'} ≤ \card P$), then established verifiability under $D$ and under $D'$ coincide, and in fact both hold, for every claim.
-  \end{enumerate}
-\end{theorem}
-\begin{proof}
-  (1) By \cref{th:dual}, for any prior $D''$, established verifiability under $D''$ holds for the claim $C = \allleadstos ∖ R$ iff $∀\allleadstogo ∈ C ∩ D'': \OF_{D'' ∖ C}(\allleadstogo)$.
-  Taking $D'' = D$: since $D ∩ R = ∅$, $C ∩ D = D$ and $D ∖ C = D ∩ R = ∅$; as $∅ ∈ Θ ∩ \powerset{\allleadstogo}$ and $∅^⊆ = ∅$, $\OF_∅(\allleadstogo)$ holds for every $\allleadstogo$, so established verifiability under $D$ holds for $C$.
-  Taking $D'' = D'$: $C ∩ D' = D' ∖ R = D$ and $D' ∖ C = D' ∩ R = R$, so established verifiability under $D'$ holds for $C$ iff $∀\allleadstogo ∈ D: \OF_R(\allleadstogo)$, which fails by hypothesis.
-
-  (2) Write $ι(\allleadstogo) = \allleadstogo(i_0, \hist_0)$, injective on $D'$. For $\allleadstogo ∈ D'$, the singleton $θ_{\allleadstogo} = \set{(i_0, \hist_0, ι(\allleadstogo))}$ trivially satisfies the increasing-chain condition (only one pair is queried, and only for $i_0$), so $θ_{\allleadstogo} ∈ Θ ∩ \powerset{\allleadstogo}$.
-  For any $\allleadstogo' ∈ D'$, $θ_{\allleadstogo} ⊆ \allleadstogo'$ iff $ι(\allleadstogo') = ι(\allleadstogo)$, iff $\allleadstogo' = \allleadstogo$, by injectivity.
-  Hence, for any $D'' ⊆ D'$ (injectivity of $ι$ on $D''$ following from injectivity on $D'$) and any claim $C$: given $\allleadstogo ∈ C ∩ D''$, $θ_{\allleadstogo}$ witnesses established verifiability under $D''$, since $∀\allleadstogo' ∈ D'': θ_{\allleadstogo} ⊆ \allleadstogo' ⇒ \allleadstogo' = \allleadstogo ∈ C$.
-  Taking $D'' = D$ and $D'' = D'$ in turn, established verifiability under $D$ and under $D'$ both hold, for every claim.
-\end{proof}
-
-\begin{remark}
-  \Cref{th:evStrictOrCollapse} does not amount to an exact characterization, and closing the gap between its two parts seems delicate.
-  The obstruction is that $Θ$ only allows, for each individual, a single chain of increasingly long queried paths, so an established-verifiability witness and a separate observation distinguishing $D$ from $R$ cannot always be merged into one observation when they query the same individual along incomparable paths.
-  Part~1 sidesteps this by picking a claim ($\allleadstos ∖ R$) whose established-verifiability witness under $D$ is already $∅$, so nothing needs merging; part~2 sidesteps this by using a single shared coordinate that alone witnesses established verifiability under any subset of $D'$, for any claim, again with nothing to merge.
-  Between these extremes, that is, when $D$ is separated from $R$ only pointwise ($∀\allleadstogo ∈ D: \OF_R(\allleadstogo)$, so part~1 does not apply) yet without a coordinate as in part~2, whether established verifiability under $D$ and under $D'$ still coincide for every claim, or whether some more elaborate claim (combining several individuals, as in the example preceding the conjecture) always re-establishes strictness, is left open.
-\end{remark}
-
-For $\allleadstogo ∈ S ⊆ \allleadstos$, say $\allleadstogo$ is \emph{isolated in $S$} iff $\OF_{S ∖ \set{\allleadstogo}}(\allleadstogo)$, that is, iff some single observation excludes every other element of $S$ at once.
-As $S ∖ \set{\allleadstogo} ⊆ S' ∖ \set{\allleadstogo}$ whenever $S ⊆ S'$ and $\allleadstogo ∈ S$, \cref{th:ofMonotonous} gives: $\allleadstogo$ isolated in $S'$ implies $\allleadstogo$ isolated in $S$.
-The next theorem shows that a strict failure of the converse already settles the gap left open above, for singleton claims, without needing a shared coordinate for all of $D'$ at once.
-
-\begin{theorem}[Isolation criterion for strictness]
-  \label{th:isolationCriterion}
-  Given priors $D ⊆ D'$, if some $\allleadstogo ∈ D$ is isolated in $D$ but not isolated in $D'$, established verifiability under $D'$ is strictly stronger than established verifiability under $D$: the singleton claim $C = \set{\allleadstogo}$ satisfies established verifiability under $D$ but not under $D'$.
-\end{theorem}
-\begin{proof}
-  As $\allleadstogo ∈ D ⊆ D'$, $C ∩ D = \set{\allleadstogo} = C ∩ D'$.
-  By \cref{th:dual}, established verifiability under $D$ for $C$ is exactly $\OF_{D ∖ \set{\allleadstogo}}(\allleadstogo)$, that is, $\allleadstogo$ isolated in $D$, which holds by hypothesis; established verifiability under $D'$ for $C$ is exactly $\OF_{D' ∖ \set{\allleadstogo}}(\allleadstogo)$, that is, $\allleadstogo$ isolated in $D'$, which fails by hypothesis.
-\end{proof}
-
-\begin{example}
-  \Cref{th:isolationCriterion} already settles part of the gap left open after \cref{th:evStrictOrCollapse}: it can give strictness even where $D$ is separated from $R = D' ∖ D$ only pointwise and $D'$ has no injective coordinate.
-  Fix one individual $i$, two arguments $a ≠ b$ (so the one-step histories $(a)$ and $(b)$ are incomparable), and, using $\card P ≥ 2$, two values $p ≠ q ∈ P$.
-  Let $\allleadstog_1 ∈ \allleadstos$ take value $p$ everywhere; let $\allleadstog_2$ agree with $\allleadstog_1$ except $\allleadstog_2(i, (b)) = q$; let $\allleadstog_0$ agree with $\allleadstog_1$ except $\allleadstog_0(i, (a)) = q$.
-  Set $D = \set{\allleadstog_1, \allleadstog_2} ⊊ D' = \set{\allleadstog_1, \allleadstog_2, \allleadstog_0}$, so $R = \set{\allleadstog_0}$.
-
-  Both $\allleadstog_1$ and $\allleadstog_2$ are separated from $R$ by $θ = \set{(i, (a), \allleadstog_1(i,(a)))} = \set{(i,(a),p)}$ (as $\allleadstog_0(i,(a)) = q$), so \cref{th:evStrictOrCollapse}(1) does not apply.
-  No coordinate is injective on $D'$: $\allleadstog_1, \allleadstog_2$ agree at $(i,(a))$ and everywhere but $(i,(b))$; $\allleadstog_1, \allleadstog_0$ agree at $(i,(b))$ and everywhere but $(i,(a))$; so every coordinate has a collision, and \cref{th:evStrictOrCollapse}(2) does not apply either.
-
-  Yet $\allleadstog_1$ is isolated in $D$, via $θ = \set{(i,(b),p)}$, which excludes the only other element $\allleadstog_2$ of $D$.
-  It is not isolated in $D'$: excluding $\allleadstog_2$ from a completion of some $θ ⊆ \allleadstog_1$ requires $(i,(b),p) ∈ θ$ (the only coordinate where $\allleadstog_1, \allleadstog_2$ differ), and excluding $\allleadstog_0$ requires $(i,(a),p) ∈ θ$ (the only coordinate where $\allleadstog_1, \allleadstog_0$ differ); no single $θ ∈ Θ$ contains both, as $(a)$ and $(b)$ are incomparable.
-  By \cref{th:isolationCriterion}, $C = \set{\allleadstog_1}$ satisfies established verifiability under $D$ but not under $D'$.
-\end{example}
-
-\Cref{th:evStrictOrCollapse}(2) demands a coordinate injective on all of $D'$, which is restrictive as soon as $D$ is not small (it forces $\card{D'} ≤ \card P$).
-The following weakens it: instead of separating every element of $D'$ from every other at one shared coordinate, it suffices that this coordinate separates $D$ from $R$ only, provided it is otherwise idle on $D$ (so that whatever a claim needs to trap within $D$ never conflicts with it).
-
-\begin{theorem}[Collapse via one otherwise idle coordinate]
-  \label{th:evCollapseFreshIndividual}
-  Given priors $D ⊆ D'$ and $R = D' ∖ D$, suppose there is $(i_0, \hist_0) ∈ I × \allhists$ such that
-  \begin{enumerate}
-    \item $D'$ is constant in $i_0$ away from $\hist_0$: $∀\hist ≠ \hist_0, ∀\allleadstogo, \allleadstogo' ∈ D': \allleadstogo(i_0, \hist) = \allleadstogo'(i_0, \hist)$;
-    \item $\allleadstogo ↦ \allleadstogo(i_0, \hist_0)$ is constant, equal to some $v$, on $D$, and injective on $R$, with $v$ not in its range.
-  \end{enumerate}
-  Then established verifiability under $D$ and under $D'$ coincide, for every claim.
-\end{theorem}
-\begin{proof}
-  Established verifiability under $D'$ always implies established verifiability under $D$; we show the converse.
-  Let $C$ be a claim satisfying established verifiability under $D$.
-
-  Given $\allleadstogo ∈ C ∩ D$, let $θ ∈ Θ ∩ \powerset{\allleadstogo}$ witness $\OF_{D ∖ C}(\allleadstogo)$.
-  Let $θ_0 = θ ∖ \set{(i_0, \hist, p) ∈ θ \suchthat \hist ≠ \hist_0}$: by (1), applied to $D ⊆ D'$, every dropped pair is satisfied by every element of $D$, so $∀\allleadstogo' ∈ D: θ_0 ⊆ \allleadstogo' ⇔ θ ⊆ \allleadstogo'$; hence $θ_0 ∈ Θ ∩ \powerset{\allleadstogo}$ still witnesses $\OF_{D ∖ C}(\allleadstogo)$, and it contains no pair for $i_0$ other than possibly at $\hist_0$.
-  Let $θ_0' = θ_0 ∪ \set{(i_0, \hist_0, \allleadstogo(i_0, \hist_0))}$; this adds at most one pair, at a history not otherwise present for $i_0$, so $θ_0' ∈ Θ ∩ \powerset{\allleadstogo}$, and, as $θ_0' ⊇ θ_0$, still $θ_0' ∉ (D ∖ C)^⊆$.
-  By (2), $\allleadstogo(i_0, \hist_0) = v$ and no $r ∈ R$ has $r(i_0, \hist_0) = v$, so $θ_0' ⊄ r$ for every $r ∈ R$, that is, $θ_0' ∉ R^⊆$.
-  As $D' ∖ C ⊆ (D ∖ C) ∪ R$, $(D' ∖ C)^⊆ ⊆ (D ∖ C)^⊆ ∪ R^⊆$, so $θ_0' ∉ (D' ∖ C)^⊆$: $θ_0'$ witnesses $\OF_{D' ∖ C}(\allleadstogo)$.
-
-  Given $\allleadstogo ∈ C ∩ R$, let $θ = \set{(i_0, \hist_0, \allleadstogo(i_0, \hist_0))} ∈ Θ ∩ \powerset{\allleadstogo}$.
-  By (2), $\allleadstogo(i_0, \hist_0) ≠ v$, so $θ ⊄ d$ for every $d ∈ D$ (as $d(i_0, \hist_0) = v$); and, by injectivity on $R$, $θ ⊆ r'$ for $r' ∈ R$ forces $r' = \allleadstogo$.
-  So $θ ∉ (D' ∖ \set{\allleadstogo})^⊆$, and, as $\allleadstogo ∈ C$, $D' ∖ C ⊆ D' ∖ \set{\allleadstogo}$, hence $θ ∉ (D' ∖ C)^⊆$: $θ$ witnesses $\OF_{D' ∖ C}(\allleadstogo)$.
-
-  Either way, established verifiability under $D'$ holds for $C$.
-\end{proof}
-
-\begin{proposition}[Exact reduction]
-  \label{prop:evExactReduction}
-  Given priors $D ⊆ D'$, established verifiability under $D'$ is strictly stronger than established verifiability under $D$ iff there is $T ⊆ D'$ such that $∀\allleadstogo ∈ T ∩ D: \OF_{D ∖ T}(\allleadstogo)$ and $∃\allleadstogo ∈ T: ¬\OF_{D' ∖ T}(\allleadstogo)$.
-\end{proposition}
-\begin{proof}
-  ($⟸$) Take $C = T$; as $T ⊆ D'$, $C ∩ D = T ∩ D$ and $C ∩ D' = T$, so by \cref{th:dual} the two displayed conditions are exactly established verifiability under $D$ for $C$, and its failure under $D'$.
-  ($⟹$) Given a claim $C$ satisfying established verifiability under $D$ but not under $D'$, let $T = C ∩ D'$; as $D ⊆ D'$, $C ∩ D = T ∩ D$, and $C ∩ D' = T$, so \cref{th:dual} turns the two hypotheses on $C$ into the two displayed conditions on $T$.
-\end{proof}
-
-\begin{corollary}[Finite subset isolation criterion]
-  \label{th:subsetIsolationCriterion}
-  Given priors $D ⊆ D'$ and $T ⊆ D$, if $∀\allleadstogo ∈ T: \OF_{D ∖ T}(\allleadstogo)$ but $∃\allleadstogo ∈ T: ¬\OF_{D' ∖ T}(\allleadstogo)$, then $C = T$ satisfies established verifiability under $D$ but not under $D'$.
-  (\Cref{th:isolationCriterion} is the case $\card T = 1$.)
-\end{corollary}
-\begin{proof}
-  Immediate from \cref{prop:evExactReduction}, since $T ⊆ D$ gives $T ∩ D = T$.
-\end{proof}
-
-\begin{example}
-  This example resists \cref{th:evStrictOrCollapse,th:evCollapseFreshIndividual,th:isolationCriterion} altogether, yet \cref{th:subsetIsolationCriterion} still settles it: the residual gap is not always collapse either.
-
-  Fix one individual $i$, three pairwise distinct arguments $a, b, c$ (so $(a), (b), (c)$ are pairwise incomparable), and, using $\card P ≥ 2$, two values $p ≠ q ∈ P$.
-  Let $\allleadstog_1, …, \allleadstog_5 ∈ \allleadstos$ take value $p$ everywhere except: $\allleadstog_2(i,(a)) = q$; $\allleadstog_3(i,(a)) = \allleadstog_3(i,(b)) = q$; $\allleadstog_4(i,(b)) = q$; $\allleadstog_5(i,(c)) = q$.
-  Set $D = \set{\allleadstog_1, \allleadstog_2, \allleadstog_3, \allleadstog_4}$ (a “square”: $\allleadstog_1, \allleadstog_3$ and $\allleadstog_2, \allleadstog_4$ are its two diagonals, differing at both $(a)$ and $(b)$; the remaining pairs differ at $(a)$ or $(b)$ only), $R = \set{\allleadstog_5}$, $D' = D ∪ R$.
-
-  All of $D$ shares value $p$ at $(i,(c))$, unlike $\allleadstog_5$, so $θ = \set{(i,(c),p)}$ witnesses \cref{th:evStrictOrCollapse}(1)'s failure to apply (every element of $D$ is separated from $R$).
-  Each of $(a), (b), (c)$ takes the same value on at least two elements of $D'$, so no coordinate is injective and \cref{th:evStrictOrCollapse}(2) does not apply.
-  As $D$ itself varies at both $(a)$ and $(b)$ (on the single individual $i$ used throughout), no coordinate is constant on $D$ away from another, so \cref{th:evCollapseFreshIndividual} does not apply either.
-  No element of $D$ is isolated in $D$: excluding, from $\allleadstog_1$ say, its two neighbours $\allleadstog_2$ (differing only at $(a)$) and $\allleadstog_4$ (differing only at $(b)$) at once would need both $(i,(a),p)$ and $(i,(b),p)$ in the same observation, impossible as $(a), (b)$ are incomparable; symmetrically for $\allleadstog_2, \allleadstog_3, \allleadstog_4$; so \cref{th:isolationCriterion} does not apply.
-
-  Yet, for $T = \set{\allleadstog_1, \allleadstog_2}$: $D ∖ T = \set{\allleadstog_3, \allleadstog_4}$, both of which have value $q$ at $(i,(b))$, unlike $\allleadstog_1, \allleadstog_2$; so $θ = \set{(i,(b),p)}$ witnesses $\OF_{D ∖ T}(\allleadstog_1)$ and $\OF_{D ∖ T}(\allleadstog_2)$, giving established verifiability under $D$ for $C = T$.
-  But $D' ∖ T = \set{\allleadstog_3, \allleadstog_4, \allleadstog_5}$, and excluding all three from a completion of some $θ ⊆ \allleadstog_1$ would need both $(i,(b),p)$ (against $\allleadstog_3, \allleadstog_4$) and $(i,(c),p)$ (against $\allleadstog_5$, the only coordinate where $\allleadstog_1, \allleadstog_5$ differ), impossible as $(b), (c)$ are incomparable; so $¬\OF_{D' ∖ T}(\allleadstog_1)$, and established verifiability under $D'$ fails for $C = T$, by \cref{th:subsetIsolationCriterion}.
-\end{example}
-
-The previous example is an instance of a reusable mechanism: whatever excludes $\allleadstog_1$'s neighbour inside $D$ and whatever excludes it from $R$ turned out to need incomparable coordinates.
-The next lemma isolates when a single observation is \emph{forced} to use a given coordinate, letting this mechanism be stated once and for all.
-
-\begin{lemma}[Unique differing coordinate]
-  \label{th:uniqueDiffCoordinate}
-  If $\allleadstogo, \allleadstogo' ∈ \allleadstos$ differ at exactly one pair $(i_0, \hist_0)$ (that is, $\allleadstogo(i_0,\hist_0) ≠ \allleadstogo'(i_0,\hist_0)$, and $\allleadstogo, \allleadstogo'$ agree elsewhere), every $θ ∈ Θ ∩ \powerset{\allleadstogo}$ with $θ ⊄ \allleadstogo'$ contains $(i_0, \hist_0, \allleadstogo(i_0,\hist_0))$.
-\end{lemma}
-\begin{proof}
-  If $θ$ did not contain that pair, every pair of $θ$ would agree with $\allleadstogo'$ too (as $\allleadstogo, \allleadstogo'$ agree away from $(i_0,\hist_0)$), giving $θ ⊆ \allleadstogo'$.
-\end{proof}
-
-\begin{theorem}[Coordinate-conflict criterion for strictness]
-  \label{th:coordinateConflict}
-  Given priors $D ⊆ D'$, $R = D' ∖ D$, and $T ⊆ D$ satisfying established verifiability under $D$.
-  If some $\allleadstog_0 ∈ T$ has a neighbour $v_1 ∈ D ∖ T$ differing from $\allleadstog_0$ at exactly one pair $(i_0,x)$, and a neighbour $v_2 ∈ R$ differing from $\allleadstog_0$ at exactly one pair $(i_0,y)$, with $(i_0,x)$ and $(i_0,y)$ incomparable, then established verifiability under $D'$ fails for $C = T$: $T$ witnesses that the conjecture holds for $(D,D')$.
-\end{theorem}
-\begin{proof}
-  Suppose $θ ∈ Θ ∩ \powerset{\allleadstog_0}$ witnessed $\OF_{D' ∖ T}(\allleadstog_0)$, so $θ ⊄ v_1$ and $θ ⊄ v_2$ (as $v_1, v_2 ∈ D' ∖ T$).
-  By \cref{th:uniqueDiffCoordinate}, $θ$ would contain both $(i_0,x,\allleadstog_0(i_0,x))$ and $(i_0,y,\allleadstog_0(i_0,y))$; as $θ ∈ Θ$, its pairs for $i_0$ must form an increasing chain, contradicting $(i_0,x), (i_0,y)$ incomparable.
-  So no such $θ$ exists: $¬\OF_{D' ∖ T}(\allleadstog_0)$.
-  As $\allleadstog_0 ∈ T = C ∩ D'$ (using $T ⊆ D ⊆ D'$), \cref{th:dual} gives that established verifiability under $D'$ fails for $C = T$, while it holds under $D$ by hypothesis.
-\end{proof}
-
-\begin{remark}
-  \Cref{th:coordinateConflict} recovers both examples above at once (there, $T = \set{\allleadstog_1,\allleadstog_2}$ or $\set{\allleadstog_1}$, $v_1$ a $D$-neighbour of $\allleadstog_0 = \allleadstog_1$, $v_2$ its $R$-neighbour).
-  It also resists strengthening: replacing the single point $R = \set{\allleadstog_5}$ by a second full square $R = \set{\allleadstog_5,\allleadstog_6,\allleadstog_7,\allleadstog_8}$ on fresh one-step arguments $d, e$ (so that $D ∪ R$ forms a cube on $(a),(b)$ and $(d),(e)$, sharing individual $i$ throughout, with $\allleadstog_5$ agreeing with $\allleadstog_1$ on $(a),(b)$) changes nothing: $\allleadstog_4$ is still the unique $(i,(b))$-neighbour of $\allleadstog_1$ in $D ∖ T$, and $\allleadstog_5$ is still a unique-coordinate neighbour of $\allleadstog_1$ in $R$ (differing only at $(i,(d))$, say), so \cref{th:coordinateConflict} applies unchanged and $T = \set{\allleadstog_1,\allleadstog_2}$ again witnesses strictness, however large or internally structured $R$ becomes, as long as its separation from $\allleadstog_1$ still runs through a single coordinate incomparable to $(b)$.
-  This suggests that, on a single individual, strictness is hard to avoid once $D$ has any non-isolated point: collapse seems to demand either that every point of $D$ already be isolated in $D$ (\cref{th:isolationCriterion} then never even gets a foothold), or that $R$'s separation from $D$ route through another individual altogether, as in \cref{th:evCollapseFreshIndividual}.
-  Turning this observation into an exact converse — a clean necessary condition matching \cref{th:coordinateConflict}, rather than one more example that happens to confirm it — is where the characterization stands open; repeated attempts to build a genuine collapsing counterexample in the single-individual, non-isolated regime have instead reproduced the same conflict.
-\end{remark}
-
-The guess closing the previous remark turns out to be too pessimistic: $D$ having a non-isolated point, on a single individual, does \emph{not} by itself force strictness. What matters is not whether $D$ is internally complex, but whether $D$ and $R$ overlap in the values they use — and, recursively, whether $R$ itself is simple.
-
-\begin{theorem}[Disjoint-range decomposition]
-  \label{th:evDisjointRanges}
-  Given priors $D ⊆ D'$ and $R = D' ∖ D$, suppose there are $i_0 ∈ I$ and $\hist_0 ∈ \allhists$ such that $D, R$ have disjoint ranges at $(i_0,\hist_0)$ (that is, $\set{\allleadstogo(i_0,\hist_0) \suchthat \allleadstogo ∈ D} ∩ \set{\allleadstogo(i_0,\hist_0) \suchthat \allleadstogo ∈ R} = ∅$), and that this also holds at every other $\hist ≠ \hist_0$ at which $D$ is not constant (some two elements of $D$ differ there).
-  Then, for every claim $C$: established verifiability under $D'$ holds for $C$ iff established verifiability under $D$ holds for $C$ and established verifiability under $R$ holds for $C$.
-\end{theorem}
-\begin{proof}
-  ($⟹$) If $θ$ traps some $\allleadstogo ∈ C ∩ D'$ within $D'$, restricting the universal quantifier in $∀\allleadstogo' ∈ D': θ ⊆ \allleadstogo' ⇒ \allleadstogo' ∈ C$ to $D ⊆ D'$ (if $\allleadstogo ∈ D$) or to $R ⊆ D'$ (if $\allleadstogo ∈ R$) shows $θ$ traps it within $D$, respectively within $R$; so established verifiability under $D$, respectively under $R$, holds for $C$.
-
-  ($⟸$) Take $\allleadstogo ∈ C ∩ D$ (the case $\allleadstogo ∈ C ∩ R$ is symmetric, exchanging $D$ and $R$); let $θ$ witness established verifiability under $D$ at $\allleadstogo$.
-  Let $θ_0 = θ ∖ \set{(i_0,\hist,v) ∈ θ \suchthat \hist ≠ \hist_0 \text{ and } D \text{ is constant at } \hist}$: every dropped pair is satisfied by every element of $D$, so, as in the proof of \cref{th:evCollapseFreshIndividual}, $θ_0 ∈ Θ ∩ \powerset{\allleadstogo}$ still traps $\allleadstogo$ within $D$, and its remaining pairs for $i_0$ are only at $\hist_0$ or at histories where $D$ is not constant.
-  If $θ_0$ contains some pair $(i_0,\hist,v)$: as $\allleadstogo ∈ D$, $v$ lies in $D$'s range at $\hist$, disjoint from $R$'s range there by hypothesis (whether $\hist = \hist_0$ or $\hist ≠ \hist_0$ with $D$ non-constant), so $θ_0 ⊄ r$ for every $r ∈ R$: $θ_0$ already excludes all of $R$.
-  Otherwise $θ_0$ has no pair for $i_0$; let $θ_0' = θ_0 ∪ \set{(i_0,\hist_0,\allleadstogo(i_0,\hist_0))}$, still in $Θ ∩ \powerset{\allleadstogo}$ (a single new pair for $i_0$), still trapping within $D$ (enlarging preserves this), and excluding all of $R$ as above.
-  Either way, some $θ'' ∈ Θ ∩ \powerset{\allleadstogo}$ traps $\allleadstogo$ within $D$ and excludes all of $R$, hence traps it within $D'$.
-\end{proof}
-
-\begin{corollary}
-  \label{th:evDisjointRangesCollapse}
-  Under the hypothesis of \cref{th:evDisjointRanges}, if moreover every $\allleadstogo ∈ R$ is isolated in $R$ (\cref{th:isolationCriterion}'s notion, with $R$ playing the role of the ambient set), established verifiability under $D$ and under $D'$ coincide for every claim.
-\end{corollary}
-\begin{proof}
-  If every point of $R$ is isolated in $R$, established verifiability under $R$ holds for every claim: given $\allleadstogo ∈ C ∩ R$, the witness isolating $\allleadstogo$ in $R$ excludes every other element of $R$, hence traps $\allleadstogo$ within $R$ trivially.
-  By \cref{th:evDisjointRanges}, established verifiability under $D'$ for $C$ then reduces to established verifiability under $D$ for $C$, for every claim $C$.
-\end{proof}
-
-\begin{example}
-  Reusing the square from the example after \cref{th:subsetIsolationCriterion} ($D = \set{\allleadstog_1,\allleadstog_2,\allleadstog_3,\allleadstog_4}$ on $(a),(b)$, none of its points isolated in $D$), replace the singleton $R$ by one point $\allleadstog_5$ chosen so that $\allleadstog_5(i,(a)) = \allleadstog_5(i,(b)) = s$ for a third value $s ∉ \set{p,q}$ (using $\card P ≥ 3$), agreeing with the constant $p$ elsewhere.
-  At $(i,(a))$, $D$'s range is $\set{p,q}$ and $R$'s is $\set{s}$: disjoint; likewise at $(i,(b))$; $D$ is constant elsewhere, so \cref{th:evDisjointRanges} applies (with $\hist_0 = (a)$, say).
-  As $R$ is a singleton, it is trivially isolated in itself, so \cref{th:evDisjointRangesCollapse} gives established verifiability under $D$ and under $D' = D ∪ \set{\allleadstog_5}$ coinciding for \emph{every} claim — even though $D$ itself is exactly the same non-isolated “square” that, against a different singleton $R$ (one differing from $D$ at a fresh coordinate $(i,(c))$, as in the example after \cref{th:subsetIsolationCriterion}), gave strictness.
-  So a non-isolated $D$ is compatible with collapse after all: what mattered there was not $D$'s internal complexity, but that $R$'s point happened to \emph{agree} with $D$'s points on the very coordinate, $(i,(c))$, at which $D$ was otherwise constant (so no conflict arose from $(a),(b)$) while nonetheless being reachable via that idle coordinate; here, forcing $R$ off both of $D$'s active coordinates at once removes the conflict entirely.
-\end{example}
-
-\begin{remark}
-  \Cref{th:evDisjointRangesCollapse} also clarifies the residual difficulty: once $D, R$ are disjoint-range separated, collapse reduces \emph{exactly} to whether $R$, taken as its own ambient set, is itself collapse-trivial (every claim satisfies established verifiability under prior $R$) — which \cref{th:isolationCriterion} shows holds whenever every point of $R$ is isolated in $R$, but can fail otherwise, recursively, exactly as it can for $D$.
-  So the difficulty in fully characterizing \cref{conjecture} does not lie in $D$'s complexity as such, nor in whether $D$ and $R$ share an individual, but specifically in whether $D$ and $R$ can be told apart without contention (\cref{th:evStrictOrCollapse,th:evCollapseFreshIndividual,th:evDisjointRanges} give three increasingly general ways this can happen) combined with $R$ itself being simple enough once told apart. Nesting \cref{th:evDisjointRangesCollapse} (with $R$ itself split into a disjoint-range-separated sub-pair, recursively) against nesting \cref{th:coordinateConflict}-style conflicts is, as far as this investigation has reached, the frontier of what is settled.
-\end{remark}
-
-Pushing on that frontier: is \cref{th:evDisjointRangesCollapse} versus \cref{th:coordinateConflict} already a complete dichotomy, at least when $R$ is a same-individual singleton and $D$ is a full “hypercube” of the kind used throughout the examples above? Testing this on a three-coordinate case shows \cref{th:coordinateConflict} itself is not quite enough — but a short generalization of it is.
-
-\begin{lemma}[Differing-set necessity]
-  \label{th:diffSetNecessity}
-  If $\allleadstogo, \allleadstogo' ∈ \allleadstos$ differ exactly on a set $Z ⊆ I × \allhists$ (that is, $\allleadstogo(i,\hist) ≠ \allleadstogo'(i,\hist)$ for $(i,\hist) ∈ Z$, and they agree elsewhere), every $θ ∈ Θ ∩ \powerset{\allleadstogo}$ with $θ ⊄ \allleadstogo'$ contains some pair $(i,\hist,\allleadstogo(i,\hist))$ with $(i,\hist) ∈ Z$.
-  (\Cref{th:uniqueDiffCoordinate} is the case $\card Z = 1$.)
-\end{lemma}
-\begin{proof}
-  If $θ$ contained no such pair, every pair of $θ$ would sit at some $(i,\hist) ∉ Z$, where $\allleadstogo, \allleadstogo'$ agree, giving $θ ⊆ \allleadstogo'$.
-\end{proof}
-
-\begin{theorem}[Generalized coordinate-conflict criterion]
-  \label{th:coordinateConflictGeneral}
-  Given priors $D ⊆ D'$, $R = D' ∖ D$, and $T ⊆ D$ satisfying established verifiability under $D$.
-  Suppose some $\allleadstog_0 ∈ T$ has a neighbour $v_1 ∈ D ∖ T$ differing from $\allleadstog_0$ at exactly one pair $(i_0,x)$, and some $v_2 ∈ R$ differing from $\allleadstog_0$ exactly on a set $Z_2 ⊆ \set{i_0} × \allhists$ with every $z ∈ Z_2$ incomparable to $x$.
-  Then established verifiability under $D'$ fails for $C = T$.
-\end{theorem}
-\begin{proof}
-  Suppose $θ ∈ Θ ∩ \powerset{\allleadstog_0}$ witnessed $\OF_{D' ∖ T}(\allleadstog_0)$, so $θ ⊄ v_1$ and $θ ⊄ v_2$.
-  By \cref{th:diffSetNecessity} (with $Z = \set{(i_0,x)}$), $θ$ contains $(i_0,x,\allleadstog_0(i_0,x))$.
-  By \cref{th:diffSetNecessity} again (with $Z = Z_2$), $θ$ contains some pair $(i_0,z,\allleadstog_0(i_0,z))$ with $z ∈ Z_2$.
-  As $θ ∈ Θ$, its pairs for $i_0$ form an increasing chain, so $x, z$ would have to be comparable, contradicting the hypothesis.
-  So no such $θ$ exists, and established verifiability under $D'$ fails for $C = T$ while holding under $D$.
-  (\Cref{th:coordinateConflict} is the case $\card{Z_2} = 1$.)
-\end{proof}
-
-\begin{theorem}[Complete dichotomy: a hypercube against a same-individual singleton]
-  \label{th:hypercubeDichotomy}
-  Fix an individual $i$, a finite set $H ⊆ \allhists$ of pairwise incomparable one-step histories with $\card H ≥ 2$, values $p ≠ q ∈ P$, and a baseline $\allleadstog_{\mathrm{base}} ∈ \allleadstos$.
-  Let $D = \set{\allleadstogo ∈ \allleadstos \suchthat \allleadstogo = \allleadstog_{\mathrm{base}} \text{ off } \set{i} × H, \text{ and } \allleadstogo(i,\hist) ∈ \set{p,q} \, ∀\hist ∈ H}$ (so $\card D = 2^{\card H}$), and $R = \set{r}$ for some $r$ agreeing with $\allleadstog_{\mathrm{base}}$ off $\set{i} × H$, $r ∉ D$.
-  \begin{enumerate}
-    \item If $r(i,\hist) ∉ \set{p,q}$ for every $\hist ∈ H$, established verifiability under $D$ and under $D ∪ R$ coincide for every claim.
-    \item Otherwise (some $\hist ∈ H$ has $r(i,\hist) ∈ \set{p,q}$), established verifiability under $D ∪ R$ is strictly stronger than under $D$.
-  \end{enumerate}
-\end{theorem}
-\begin{proof}
-  (1) $D, R$ have disjoint ranges at $(i,\hist)$ for every $\hist ∈ H$ ($D$'s range there is $\set{p,q}$, and $r(i,\hist) ∉ \set{p,q}$), and $D$ is constant off $\set{i} × H$; \cref{th:evDisjointRanges} applies (with $i_0 = i$ and any $\hist_0 ∈ H$ as the pivot); as $R$ is a singleton, trivially isolated in itself, \cref{th:evDisjointRangesCollapse} gives the conclusion.
-
-  (2) Let $z^* ∈ H$ with $r(i,z^*) ∈ \set{p,q}$.
-  Let $\allleadstog_0 ∈ D$ agree with $r$ at every $\hist ∈ H$ with $r(i,\hist) ∈ \set{p,q}$ (in particular at $z^*$), taking either value in $\set{p,q}$ at the remaining histories of $H$.
-  Let $v_1 ∈ D$ differ from $\allleadstog_0$ exactly at $(i,z^*)$, and let $T = \set{\allleadstogo ∈ D \suchthat \allleadstogo(i,z^*) = \allleadstog_0(i,z^*)}$ (so $\allleadstog_0 ∈ T$, $v_1 ∈ D ∖ T$).
-  As $D ∖ T$ is exactly the elements of $D$ disagreeing with $\allleadstog_0$ at $(i,z^*)$, the single pair $\set{(i,z^*,\allleadstog_0(i,z^*))}$ excludes all of $D ∖ T$ from every $\allleadstogo ∈ T$: established verifiability under $D$ holds for $C = T$.
-  By construction, $\allleadstog_0$ and $r$ differ exactly on $Z_2 = \set{i} × \set{\hist ∈ H \suchthat r(i,\hist) ∉ \set{p,q}}$ — nonempty, as $r ∉ D$ forces $r$ off-range somewhere — which does not contain $z^*$; as $H$ is pairwise incomparable, every $z ∈ Z_2$ is incomparable to $z^*$.
-  \Cref{th:coordinateConflictGeneral} (with $x = z^*$, $v_2 = r$) then gives that established verifiability under $D ∪ R$ fails for $C = T$, while it holds under $D$.
-\end{proof}
-
-\begin{remark}
-  \Cref{th:hypercubeDichotomy} fully settles \cref{conjecture} for this entire family of examples — a full hypercube $D$ against any same-individual singleton $R$ — leaving no residual gap there: exactly one of the two clauses holds for any such $(D,R)$, since “some $\hist ∈ H$ has $r(i,\hist) ∈ \set{p,q}$” is the plain negation of clause~1's hypothesis.
-  The three worked examples in this section are instances: the collapse example just above is case~1 (with $\card H = 2$); the very first square example (against $R$ differing only at a fresh coordinate $(i,(c))$) and the cube-extension remark are both case~2, with $z^*$ any coordinate of $H$ and $Z_2 = \set{(i,(c))}$, a singleton, recovering \cref{th:coordinateConflict} itself rather than needing the fuller \cref{th:coordinateConflictGeneral}.
-  What remains genuinely open is what happens once $R$ itself is not a singleton — the recursive question raised in the previous remark — and once $D$ is not a full hypercube (some “rows” missing, so that not every combination of $\set{p,q}$-values on $H$ is present); both directions seem approachable by the same toolkit, but neither has been carried out.
-\end{remark}
-
-Testing the second direction (partial hypercubes) against several small non-full $D$ (three of a square's four corners, an isolated pair, and others) kept reproducing case~2 of \cref{th:hypercubeDichotomy}: whenever $r$ shares $D$'s range at some $\hist ∈ H$, some conflict of the form in \cref{th:coordinateConflictGeneral} still appeared, even when $r$'s aligned point was already isolated in $D$ (the conflict then pits $r$'s exclusion against that very isolation witness).
-This suggested, briefly, that “$r$ on-range somewhere” might force strictness unconditionally, regardless of how sparse $D$ is — but the following shows this is specific to $H$ being pairwise \emph{incomparable}, not a general fact about sharing a value.
-
-\begin{example}
-  Let $D = \set{\allleadstog_1,\allleadstog_4}$, agreeing on the baseline $p$ except $\allleadstog_1(i,(b)) = p$, $\allleadstog_4(i,(b)) = q$ (so $D$ is an isolated pair, differing only at $(i,(b))$), and let $r$ agree with $\allleadstog_1$ at $(i,(b))$ (so $r(i,(b)) = p$, matching $D$'s range there) but differ at the longer, \emph{comparable} history $(i,(b,c))$: $r(i,(b,c)) = q ≠ p = \allleadstog_1(i,(b,c))$.
-  Established verifiability under $D$ for $T = \set{\allleadstog_1}$ is witnessed by $θ = \set{(i,(b),p),(i,(b,c),p)}$ — a valid observation, as $(b) ⊆ (b,c)$ form an increasing chain — and this same $θ$ excludes both $\allleadstog_4$ (differing at $(b)$) and $r$ (differing at $(b,c)$) at once: established verifiability under $D ∪ \set{r}$ holds for $T$ too, despite $r$ sharing $D$'s value at $(i,(b))$.
-  So sharing a value with $D$ at an active coordinate does not, by itself, force strictness: what mattered throughout \cref{th:hypercubeDichotomy} is specifically that $H$ consists of \emph{pairwise incomparable} histories, making every “extra” coordinate $r$ might need incomparable to every coordinate $D$ might need. Once $R$'s point can reach past $D$'s coordinates along an extension of the same chain, the conflict simply does not arise, and no amount of value-sharing forces strictness.
-\end{example}
-
-Whether \cref{th:hypercubeDichotomy} extends to arbitrary (not-necessarily-full, not-necessarily-incomparable-coordinate) finite $D$ therefore depends on tracking the prefix structure of whichever coordinates a witness would need, not merely on value overlap; this looks like a different, more delicate bookkeeping problem than anything solved so far, and is left for further work.
 
 Note that if a claim is not provable by $¬\OF(\allleadstoo)$ (equivalently, some world is out of $C$ and NOT OF), then some world is out of $C$ and NOT POF.
 
@@ -720,13 +464,21 @@ When a claim is never falsifiable, thus $∀\allleadstogo, ¬\OF(\allleadstogo)$
 $S ⊆ \allleadstos$ is observationally excludable iff 
 $∃ θ ∈ Θ \suchthat θ ∉ S^⊆$,
 equivalently, iff $Θ ⊈ S^⊆$,
-equivalently, iff $∃\allleadstogo ∉ S \suchthat \OF(\allleadstogo)$,
-equivalently, iff $∃\allleadstogo \suchthat \OF(\allleadstogo)$,
+equivalently, iff $∃\allleadstogo ∉ S \suchthat \OF_S(\allleadstogo)$,
+equivalently, iff $∃\allleadstogo \suchthat \OF_S(\allleadstogo)$,
 equivalently, iff $S$ is NOT never falsifiable.
 
 $D$ is observationally completable to $C$ iff 
 $∃ θ ∈ (Θ ∩ D^⊆) \suchthat θ ∉ (D ∖ C)^⊆$.
 \Cref{th:obsComp} shows the equivalence with possible verifiability under prior $D$.
+
+$D$ is necessarily observationally completable to $C$ iff 
+$∀\allleadstogo ∈ D, \OF_{D ∖ C}(\allleadstogo)$.
+\Cref{th:necObsComp} shows the equivalence with established verifiability under prior $D$.
+
+TODO define necessary observationally completable
+so as to obtain equivalence with established verifiability under $D$.
+Make our search a search for noc under D' iff noc under D, thus always observationally excludable D' without D?
 
 Converting a claim to disjunctive normal form is useful to characterize its compatible observations, as \cref{th:dnf} indicates.
 \begin{example}
@@ -1234,6 +986,16 @@ Using the trivial prior $D = \allleadstos$, we obtain this corollary.
     Finally, negating \cref{it:notcomplE}, if $θ$ is completable to some set covered by $\set{S_k}$, then $θ$ is completable to some set $S_k$, which contradicts \cref{it:obscovers}.
   \end{proof}
 }
+\begin{theorem}
+  Given any claims $C, D ⊆ \allleadstos$,
+  $[\allleadstogo ∈ D ∧ \OF_{D ∖ C}(\allleadstogo)] ⇔ [\allleadstogo ∈ C ∩ D ∧ \OF_{D ∖ C}(\allleadstogo)]$.
+\end{theorem}
+\begin{proof}
+  Given any $\allleadstogo$,
+  $\OF_{D ∖ C}(\allleadstogo) ⇒ \allleadstogo ∉ D ∖ C$;
+  equivalently,
+  $\OF_{D ∖ C}(\allleadstogo) ⇒ \allleadstogo ∈ C ∪ \overline{D}$.
+\end{proof}
 \begin{corollary}
   \label{th:obsComp}
   Given any claims $C, D ⊆ \allleadstos$,
@@ -1256,6 +1018,15 @@ Using the trivial prior $D = \allleadstos$, we obtain this corollary.
   \label{th:dual}
   $C$ satisfies established verifiability under prior $D$
   iff $∀\allleadstogo ∈ C ∩ D: \OF_{D ∖ C}(\allleadstogo)$.
+\end{corollary}
+\begin{corollary}
+  \label{th:necObsComp}
+  Given any claims $C, D ⊆ \allleadstos$,
+  $C$ satisfies established verifiability under prior $D$ 
+  ($∀\allleadstogo ∈ C ∩ D, \OF_{D ∖ C}(\allleadstogo)$)
+  iff
+  $D$ is necessarily observationally completable to $C$
+  ($∀\allleadstogo ∈ D, \OF_{D ∖ C}(\allleadstogo)$).
 \end{corollary}
 
 \begin{corollary}
@@ -3000,6 +2771,179 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
   Note that $R ⊆ R_1$.
   We know that $C$ is falsifiable iff $R ⊆ C$. Thus, $C$ is not falsifiable implies $C ⊊ R ⊆ R_1$ thus $C ⊊ R_1$. But we do not have that $C ⊊ R_1$ implies $C$ not falsifiable: could have $C ⊊ R_1$ but still $R = C$.
 \end{remark}
+
+\section{Strictness of established verifiability across nested priors}
+\label{app:evStrictNested}
+\subsection{The question}
+Given priors $D ⊆ D'$ (that is, $D, D' ⊆ \allleadstos$), established verifiability under $D'$ always implies established verifiability under $D$: restricting, in the witness required for a world $\allleadstogo ∈ C ∩ D'$, the universal quantifier over $D'$ to the subset $D$, already gives a witness relative to $D$.
+This suggested the following conjecture.
+
+\begin{conjecture}
+  \label{cnj:evStrict}
+  Given priors $D ⊆ D'$, established verifiability under $D'$ is strictly stronger than established verifiability under $D$. In other words, some claim satisfies established verifiability under $D$ but not established verifiability under $D'$.
+\end{conjecture}
+
+This appendix reports the current state of \cref{cnj:evStrict}: it is false in general, but an exact (if not externally simple) reduction is available; several increasingly general sufficient conditions are known for both possible outcomes — strictness, and its failure, which we call \emph{collapse}; one natural family of priors is completely characterized; and the reasons further generalizations fail are identified precisely, without the general question being settled.
+
+\subsection{The conjecture fails, and an exact reduction}
+
+\begin{example}
+  \label{ex:evCollapseTwoPoints}
+  Pick any $\allleadstog_1 ∈ \allleadstos$ and, using $\card P ≥ 2$, let $\allleadstog_0 ∈ \allleadstos$ disagree with $\allleadstog_1$ on every pair.
+  Set $D = \set{\allleadstog_1} ⊊ D' = \set{\allleadstog_1, \allleadstog_0}$.
+  Established verifiability under $D$ holds for every claim $C$ (witness $∅$ if $\allleadstog_1 ∈ C$, vacuously otherwise); established verifiability under $D'$ also holds for every claim $C$: given $\allleadstogo ∈ C ∩ D'$, the singleton observation $θ = \set{(i,\hist,\allleadstogo(i,\hist))}$, for any $(i,\hist)$, already excludes the other element of $D'$, since $\allleadstog_0, \allleadstog_1$ disagree everywhere.
+  So established verifiability under $D$ and under $D'$ coincide for \emph{every} claim: \cref{cnj:evStrict} is false as stated.
+\end{example}
+
+Established verifiability under a prior $D$, for a claim $C$, is equivalent (\cref{th:dual}) to $∀\allleadstogo ∈ C∩D: \OF_{D∖C}(\allleadstogo)$. This gives an exact, if self-referential, reduction of \cref{cnj:evStrict}.
+
+\begin{proposition}[Exact reduction]
+  \label{prop:evExactReduction}
+  Given priors $D ⊆ D'$, established verifiability under $D'$ is strictly stronger than established verifiability under $D$ iff there is $T ⊆ D'$ such that $∀\allleadstogo ∈ T ∩ D: \OF_{D ∖ T}(\allleadstogo)$ and $∃\allleadstogo ∈ T: ¬\OF_{D' ∖ T}(\allleadstogo)$.
+\end{proposition}
+\begin{proof}
+  ($⇐$) Take $C = T$; as $T ⊆ D'$, $C ∩ D = T ∩ D$ and $C ∩ D' = T$, so by \cref{th:dual} the two displayed conditions are exactly established verifiability under $D$ for $C$, and its failure under $D'$.
+  ($⇒$) Given a claim $C$ satisfying established verifiability under $D$ but not under $D'$, let $T = C ∩ D'$; as $D ⊆ D'$, $C ∩ D = T ∩ D$, and $C ∩ D' = T$, so \cref{th:dual} turns the two hypotheses on $C$ into the two displayed conditions on $T$.
+\end{proof}
+
+\Cref{prop:evExactReduction} settles the question in principle, but the search over $T ⊆ D'$ it requires is not, by itself, informative: the rest of this appendix develops external, checkable conditions covering many — but provably not all — cases.
+
+\subsection{Sufficient conditions for strictness}
+
+Given $D ⊆ D'$, let $R = D' ∖ D$. Restricting \cref{prop:evExactReduction} to $T ⊆ D$ (so $T ∩ D = T$) gives a first, directly checkable, family of witnesses.
+
+\begin{corollary}[Finite subset isolation criterion]
+  \label{th:subsetIsolationCriterion}
+  Given priors $D ⊆ D'$ and $T ⊆ D$, if $∀\allleadstogo ∈ T: \OF_{D ∖ T}(\allleadstogo)$ but $∃\allleadstogo ∈ T: ¬\OF_{D' ∖ T}(\allleadstogo)$, then $C = T$ satisfies established verifiability under $D$ but not under $D'$.
+\end{corollary}
+\begin{proof}
+  Immediate from \cref{prop:evExactReduction}, since $T ⊆ D$ gives $T ∩ D = T$.
+\end{proof}
+
+For $\allleadstogo ∈ S ⊆ \allleadstos$, say $\allleadstogo$ is \emph{isolated in $S$} iff $\OF_{S ∖ \set{\allleadstogo}}(\allleadstogo)$, that is, iff some single observation excludes every other element of $S$ at once (so, by \cref{th:ofMonotonous}, $S ⊆ S'$ and $\allleadstogo$ isolated in $S'$ implies $\allleadstogo$ isolated in $S$).
+The case $\card T = 1$ of \cref{th:subsetIsolationCriterion} already gives strictness whenever some $\allleadstogo ∈ D$ is isolated in $D$ but not in $D'$ — no shared coordinate for all of $D'$ is needed, only a single point losing its isolation.
+
+The next example needs the full strength of \cref{th:subsetIsolationCriterion}: no single point of $D$ is isolated in $D$ at all, yet a pair of points is.
+
+\begin{example}
+  \label{ex:evSquareVsC}
+  Fix one individual $i$, three pairwise distinct arguments $a, b, c$ (so $(a), (b), (c)$ are pairwise incomparable), and, using $\card P ≥ 2$, two values $p ≠ q ∈ P$.
+  Let $\allleadstog_1, …, \allleadstog_5 ∈ \allleadstos$ take value $p$ everywhere except: $\allleadstog_2(i,(a)) = q$; $\allleadstog_3(i,(a)) = \allleadstog_3(i,(b)) = q$; $\allleadstog_4(i,(b)) = q$; $\allleadstog_5(i,(c)) = q$.
+  Set $D = \set{\allleadstog_1, \allleadstog_2, \allleadstog_3, \allleadstog_4}$ (a “square”: $\allleadstog_1, \allleadstog_3$ and $\allleadstog_2, \allleadstog_4$ are its two diagonals, differing at both $(a)$ and $(b)$; the remaining pairs differ at $(a)$ or $(b)$ only), $R = \set{\allleadstog_5}$, $D' = D ∪ R$.
+  No element of $D$ is isolated in $D$: excluding, from $\allleadstog_1$ say, its two neighbours $\allleadstog_2$ (differing only at $(a)$) and $\allleadstog_4$ (differing only at $(b)$) at once would need both $(i,(a),p)$ and $(i,(b),p)$ in the same observation, impossible as $(a), (b)$ are incomparable; symmetrically for $\allleadstog_2, \allleadstog_3, \allleadstog_4$.
+  Yet, for $T = \set{\allleadstog_1, \allleadstog_2}$: $D ∖ T = \set{\allleadstog_3, \allleadstog_4}$, both of which have value $q$ at $(i,(b))$, unlike $\allleadstog_1, \allleadstog_2$; so $θ = \set{(i,(b),p)}$ witnesses $\OF_{D∖T}(\allleadstog_1)$ and $\OF_{D∖T}(\allleadstog_2)$: established verifiability under $D$ holds for $C = T$.
+  But $D' ∖ T = \set{\allleadstog_3, \allleadstog_4, \allleadstog_5}$, and excluding all three from a completion of some $θ ⊆ \allleadstog_1$ would need both $(i,(b),p)$ (against $\allleadstog_3, \allleadstog_4$) and $(i,(c),p)$ (against $\allleadstog_5$, the only coordinate where $\allleadstog_1, \allleadstog_5$ differ) — by \cref{th:dnf}, using the cover of $D' ∖ T$ by the two single-coordinate constraints $(i,(b),q)$ and $(i,(c),q)$ — impossible as $(b), (c)$ are incomparable; so established verifiability under $D'$ fails for $C = T$, by \cref{th:subsetIsolationCriterion}.
+\end{example}
+
+The obstruction throughout \cref{ex:evSquareVsC} is that $Θ$ only allows, for each individual, a single chain of increasingly long queried paths, so two exclusion requirements can conflict when they need incomparable histories of the same individual. The next lemma and theorem isolate and generalize this mechanism.
+
+\begin{lemma}[Differing-set necessity]
+  \label{th:diffSetNecessity}
+  If $\allleadstogo, \allleadstogo' ∈ \allleadstos$ differ exactly on a set $Z ⊆ I × \allhists$ (that is, $\allleadstogo(i,\hist) ≠ \allleadstogo'(i,\hist)$ for $(i,\hist) ∈ Z$, and they agree elsewhere), every $θ ∈ Θ ∩ \powerset{\allleadstogo}$ with $θ ⊈ \allleadstogo'$ contains some pair $(i,\hist,\allleadstogo(i,\hist))$ with $(i,\hist) ∈ Z$.
+\end{lemma}
+\begin{proof}
+  This is \cref{th:dnf} for the singleton cover $\set{\set{\allleadstogo'}}$ of $\set{\allleadstogo'}$: if $θ$ contained no such pair, every pair of $θ$ would sit at some $(i,\hist) ∉ Z$, where $\allleadstogo, \allleadstogo'$ agree, giving $θ ⊆ \allleadstogo'$.
+\end{proof}
+
+\begin{theorem}[Coordinate-conflict criterion for strictness]
+  \label{th:coordinateConflictGeneral}
+  Given priors $D ⊆ D'$, $R = D' ∖ D$, and $T ⊆ D$ satisfying established verifiability under $D$.
+  Suppose some $\allleadstog_0 ∈ T$ has a neighbour $v_1 ∈ D ∖ T$ differing from $\allleadstog_0$ at exactly one pair $(i_0,x)$, and some $v_2 ∈ R$ differing from $\allleadstog_0$ exactly on a set $Z_2 ⊆ \set{i_0} × \allhists$ with every $z ∈ Z_2$ incomparable to $x$.
+  Then established verifiability under $D'$ fails for $C = T$.
+\end{theorem}
+\begin{proof}
+  Suppose $θ ∈ Θ ∩ \powerset{\allleadstog_0}$ witnessed $\OF_{D' ∖ T}(\allleadstog_0)$, so $θ ⊈ v_1$ and $θ ⊈ v_2$.
+  By \cref{th:diffSetNecessity} (with $Z = \set{(i_0,x)}$), $θ$ contains $(i_0,x,\allleadstog_0(i_0,x))$; applied again (with $Z = Z_2$), $θ$ contains some pair $(i_0,z,\allleadstog_0(i_0,z))$ with $z ∈ Z_2$.
+  As $θ ∈ Θ$, its pairs for $i_0$ form an increasing chain, so $x, z$ would have to be comparable, contradicting the hypothesis.
+  So no such $θ$ exists, and established verifiability under $D'$ fails for $C = T$ while holding under $D$.
+\end{proof}
+
+\Cref{ex:evSquareVsC} is the case $\card{Z_2}=1$ ($\allleadstog_0=\allleadstog_1$, $v_1=\allleadstog_4$, $v_2=\allleadstog_5$).
+
+\subsection{Sufficient conditions for collapse}
+
+The simplest collapse mechanism uses one coordinate shared by, and injective on, all of $D'$.
+
+\begin{theorem}[Collapse via one coordinate injective on all of $D'$]
+  \label{th:evStrictOrCollapse}
+  Given priors $D ⊆ D'$, if $∃(i_0, \hist_0) ∈ I × \allhists \suchthat [\allleadstogo ↦ \allleadstogo(i_0, \hist_0)]$ is injective on $D'$ (in particular, this requires $\card{D'} ≤ \card P$), then established verifiability under $D$ and under $D'$ coincide, and in fact both hold, for every claim.
+\end{theorem}
+\begin{proof}
+  Write $ι(\allleadstogo) = \allleadstogo(i_0, \hist_0)$, injective on $D'$. For $\allleadstogo ∈ D'$, the singleton $θ_{\allleadstogo} = \set{(i_0, \hist_0, ι(\allleadstogo))}$ trivially satisfies the increasing-chain condition, so $θ_{\allleadstogo} ∈ Θ ∩ \powerset{\allleadstogo}$.
+  For any $\allleadstogo' ∈ D'$, $θ_{\allleadstogo} ⊆ \allleadstogo'$ iff $ι(\allleadstogo') = ι(\allleadstogo)$, iff $\allleadstogo' = \allleadstogo$, by injectivity.
+  Hence, for any $D'' ⊆ D'$ (injectivity of $ι$ on $D''$ following from injectivity on $D'$) and any claim $C$: given $\allleadstogo ∈ C ∩ D''$, $θ_{\allleadstogo}$ witnesses established verifiability under $D''$.
+  Taking $D'' = D$ and $D'' = D'$ in turn, established verifiability under $D$ and under $D'$ both hold, for every claim.
+\end{proof}
+
+This is exactly what happens in \cref{ex:evCollapseTwoPoints} ($\allleadstog_1, \allleadstog_0$ disagree everywhere, so any coordinate is injective on $D'$), but it is restrictive as soon as $D$ is not small (it forces $\card{D'} ≤ \card P$). The next result weakens it: the shared coordinate need only separate $D$ from $R$, not every element of $D'$ from every other, provided it tracks every other coordinate at which $D$ actually varies.
+
+\begin{theorem}[Disjoint-range decomposition]
+  \label{th:evDisjointRanges}
+  Given priors $D ⊆ D'$ and $R = D' ∖ D$, suppose there are $i_0 ∈ I$ and $\hist_0 ∈ \allhists$ such that $D, R$ have disjoint ranges at $(i_0,\hist_0)$ (that is, $\set{\allleadstogo(i_0,\hist_0) \suchthat \allleadstogo ∈ D} ∩ \set{\allleadstogo(i_0,\hist_0) \suchthat \allleadstogo ∈ R} = ∅$), and that this also holds at every other $\hist ≠ \hist_0$ at which $D$ is not constant (some two elements of $D$ differ there).
+  Then, for every claim $C$: established verifiability under $D'$ holds for $C$ iff established verifiability under $D$ holds for $C$ and established verifiability under $R$ holds for $C$.
+\end{theorem}
+\begin{proof}
+  ($⇒$) If $θ$ traps some $\allleadstogo ∈ C ∩ D'$ within $D'$, restricting the universal quantifier to $D ⊆ D'$ (if $\allleadstogo ∈ D$) or to $R ⊆ D'$ (if $\allleadstogo ∈ R$) shows $θ$ traps it within $D$, respectively within $R$.
+
+  ($⇐$) Take $\allleadstogo ∈ C ∩ D$ (the case $\allleadstogo ∈ C ∩ R$ is symmetric); let $θ$ witness established verifiability under $D$ at $\allleadstogo$.
+  Let $θ_0 = θ ∖ \set{(i_0,\hist,v) ∈ θ \suchthat \hist ≠ \hist_0 \text{ and } D \text{ is constant at } \hist}$: every dropped pair is satisfied by every element of $D$ (as $D$ is constant there), so $θ_0 ⊆ \allleadstogo' ⇔ θ ⊆ \allleadstogo'$ for every $\allleadstogo' ∈ D$; hence $θ_0 ∈ Θ ∩ \powerset{\allleadstogo}$ still traps $\allleadstogo$ within $D$, and its remaining pairs for $i_0$ are only at $\hist_0$ or at histories where $D$ is not constant.
+  If $θ_0$ contains some pair $(i_0,\hist,v)$: as $\allleadstogo ∈ D$, $v$ lies in $D$'s range at $\hist$, disjoint from $R$'s range there by hypothesis, so $θ_0$ already excludes all of $R$.
+  Otherwise, $θ_0' = θ_0 ∪ \set{(i_0,\hist_0,\allleadstogo(i_0,\hist_0))}$ is still in $Θ ∩ \powerset{\allleadstogo}$, still traps within $D$, and excludes all of $R$ as above.
+  Either way, some $θ'' ∈ Θ ∩ \powerset{\allleadstogo}$ traps $\allleadstogo$ within $D$ and excludes all of $R$, hence traps it within $D'$.
+\end{proof}
+
+\begin{corollary}
+  \label{th:evDisjointRangesCollapse}
+  Under the hypothesis of \cref{th:evDisjointRanges}, if moreover every $\allleadstogo ∈ R$ is isolated in $R$, established verifiability under $D$ and under $D'$ coincide for every claim.
+\end{corollary}
+\begin{proof}
+  If every point of $R$ is isolated in $R$, established verifiability under $R$ holds for every claim; by \cref{th:evDisjointRanges}, established verifiability under $D'$ for $C$ then reduces to established verifiability under $D$ for $C$, for every claim $C$.
+\end{proof}
+
+\begin{example}
+  \label{ex:evSquareVsThird}
+  Reusing the square $D$ from \cref{ex:evSquareVsC}, replace the singleton $R$ by one point $\allleadstog_5$ chosen so that $\allleadstog_5(i,(a)) = \allleadstog_5(i,(b)) = s$ for a third value $s ∉ \set{p,q}$ (using $\card P ≥ 3$), agreeing with the constant $p$ elsewhere.
+  $D, R$ have disjoint ranges at $(i,(a))$ ($\set{p,q}$ versus $\set{s}$) and at $(i,(b))$, and $D$ is constant elsewhere, so \cref{th:evDisjointRanges} applies; as $R$ is a singleton, trivially isolated in itself, \cref{th:evDisjointRangesCollapse} gives established verifiability under $D$ and under $D ∪ \set{\allleadstog_5}$ coinciding for \emph{every} claim — even though $D$ is the very same non-isolated square that, against the singleton $R = \set{\allleadstog_5}$ of \cref{ex:evSquareVsC}, gave strictness.
+  So $D$'s internal complexity is not what matters: what matters is whether $D, R$ overlap in the values they use, and, recursively, whether $R$ itself is simple.
+\end{example}
+
+This locates exactly where the difficulty in \cref{cnj:evStrict} lies: once $D, R$ are told apart (via \cref{th:evStrictOrCollapse} or the more general \cref{th:evDisjointRanges}), collapse reduces exactly to whether $R$, taken as its own ambient set, is itself collapse-trivial — which can fail recursively, exactly as it can for $D$. Whether this recursion can be unwound into an external condition covering every $R$ is open.
+
+\subsection{A fully resolved case, and why it resists generalization}
+
+For a full hypercube $D$ against a same-individual singleton $R$, the tools above combine into a complete dichotomy.
+
+\begin{theorem}[Complete dichotomy: a hypercube against a same-individual singleton]
+  \label{th:hypercubeDichotomy}
+  Fix an individual $i$, a finite set $H ⊆ \allhists$ of pairwise incomparable one-step histories with $\card H ≥ 2$, values $p ≠ q ∈ P$, and a baseline $\allleadstog_{\mathrm{base}} ∈ \allleadstos$.
+  Let $D = \set{\allleadstogo ∈ \allleadstos \suchthat \allleadstogo = \allleadstog_{\mathrm{base}} \text{ off } \set{i} × H, \text{ and } \allleadstogo(i,\hist) ∈ \set{p,q} \, ∀\hist ∈ H}$ (so $\card D = 2^{\card H}$), and $R = \set{r}$ for some $r$ agreeing with $\allleadstog_{\mathrm{base}}$ off $\set{i} × H$, $r ∉ D$.
+  \begin{enumerate}
+    \item If $r(i,\hist) ∉ \set{p,q}$ for every $\hist ∈ H$, established verifiability under $D$ and under $D ∪ R$ coincide for every claim.
+    \item Otherwise (some $\hist ∈ H$ has $r(i,\hist) ∈ \set{p,q}$), established verifiability under $D ∪ R$ is strictly stronger than under $D$.
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  (1) $D, R$ have disjoint ranges at $(i,\hist)$ for every $\hist ∈ H$, and $D$ is constant off $\set{i} × H$; \cref{th:evDisjointRanges} applies (with $i_0 = i$ and any $\hist_0 ∈ H$ as the pivot); as $R$ is a singleton, \cref{th:evDisjointRangesCollapse} gives the conclusion.
+
+  (2) Let $z^* ∈ H$ with $r(i,z^*) ∈ \set{p,q}$.
+  Let $\allleadstog_0 ∈ D$ agree with $r$ at every $\hist ∈ H$ with $r(i,\hist) ∈ \set{p,q}$ (in particular at $z^*$), taking either value in $\set{p,q}$ at the remaining histories of $H$.
+  Let $v_1 ∈ D$ differ from $\allleadstog_0$ exactly at $(i,z^*)$, and let $T = \set{\allleadstogo ∈ D \suchthat \allleadstogo(i,z^*) = \allleadstog_0(i,z^*)}$ (so $\allleadstog_0 ∈ T$, $v_1 ∈ D ∖ T$).
+  The single pair $\set{(i,z^*,\allleadstog_0(i,z^*))}$ excludes all of $D ∖ T$ from every $\allleadstogo ∈ T$: established verifiability under $D$ holds for $C = T$.
+  By construction, $\allleadstog_0$ and $r$ differ exactly on $Z_2 = \set{i} × \set{\hist ∈ H \suchthat r(i,\hist) ∉ \set{p,q}}$ — nonempty, as $r ∉ D$ — which does not contain $z^*$; as $H$ is pairwise incomparable, every $z ∈ Z_2$ is incomparable to $z^*$.
+  \Cref{th:coordinateConflictGeneral} (with $x = z^*$, $v_2 = r$) then gives that established verifiability under $D ∪ R$ fails for $C = T$, while it holds under $D$.
+\end{proof}
+
+\Cref{th:hypercubeDichotomy} fully settles \cref{cnj:evStrict} for this entire family: a full hypercube against any same-individual singleton, with no residual gap (clause~2 is the plain negation of clause~1's hypothesis). \Cref{ex:evSquareVsThird} is an instance of clause~1; \cref{ex:evSquareVsC} is an instance of clause~2, with $Z_2$ a singleton.
+
+What remains open is what happens once $R$ is not a singleton (the recursive question above) and once $D$ is not a full hypercube. The following example shows the second direction is not a routine extension: the dichotomy is special to $H$ being \emph{pairwise incomparable}, not to $D, R$ merely sharing or not sharing values.
+
+\begin{example}
+  Let $D = \set{\allleadstog_1,\allleadstog_4}$, agreeing on the baseline $p$ except $\allleadstog_1(i,(b)) = p$, $\allleadstog_4(i,(b)) = q$, and let $r$ agree with $\allleadstog_1$ at $(i,(b))$ (so $r(i,(b)) = p$, matching $D$'s range there) but differ at the longer, \emph{comparable} history $(i,(b,c))$: $r(i,(b,c)) = q ≠ p = \allleadstog_1(i,(b,c))$.
+  Established verifiability under $D$ for $T = \set{\allleadstog_1}$ is witnessed by $θ = \set{(i,(b),p),(i,(b,c),p)}$ — a valid observation, as $(b) ⊆ (b,c)$ form an increasing chain — and this same $θ$ excludes both $\allleadstog_4$ (differing at $(b)$) and $r$ (differing at $(b,c)$) at once: established verifiability under $D ∪ \set{r}$ holds for $T$ too, despite $r$ sharing $D$'s value at $(i,(b))$.
+\end{example}
+
+So sharing a value with $D$ at an active coordinate does not, by itself, force strictness: what made \cref{th:hypercubeDichotomy} work is specifically that every "extra" coordinate $r$ might need is incomparable to every coordinate $D$ might need. Once $R$'s point can reach past $D$'s coordinates along an extension of the same chain, no amount of value-sharing forces strictness.
+Extending \cref{th:hypercubeDichotomy} to arbitrary finite $D$ therefore requires tracking the prefix structure of whichever coordinates a witness would need, not merely value overlap — a different, more delicate bookkeeping problem than any solved above, left open together with the case of a non-singleton $R$.
 
 \hbadness=10000
 \bibliography{simple}
