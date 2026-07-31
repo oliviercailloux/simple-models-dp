@@ -1097,10 +1097,26 @@ This (to be proven) captures the claim “there is no decisive argument for $i$�
   Thus $f ∪ f_S$ is not completable to a function (if $f ∪ f_S$ is completable to a function, that function is in $S$, thus in $E$, thus $f$ compatible with $E$).
   It follows that $f ∪ f_S$ is not right unique,
   thus, that some $t ∈ f$ contradicts $f_S$.
+
+  Conversely, if $f ∈ E^⊆$, then $f ⊆ \allleadstogo$ for some $\allleadstogo ∈ E$.
+  As $\mathcal{S}$ covers $E$, $\allleadstogo ∈ S$ for some $S ∈ \mathcal{S}$.
+  Then $∀ t ∈ f$: $\set{t} ⊆ \allleadstogo ∈ S$, thus $\set{t} ∈ S^⊆$.
+  Thus, for this $S$, no $t ∈ f$ satisfies $\set{t} ∉ S^⊆$.
 \end{proof}
 \begin{remark}
   $(a ≠ b) ∨ (a ∧ c)$ is equivalent to $(a ≠ b) ∨ (b ∧ c)$, thus there is no unique minimal DNF.
 \end{remark}
+
+\begin{theorem}
+  \label{th:ofCover}
+  Given $C, D$, define $E = D ∖ C$, consider a finite cover $\mathcal{S}$ of $E$ (cover is understood as above).
+  The world $\allleadstogo$ satisfies $\OF_E(\allleadstogo)$ iff
+  $∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat ∀ S ∈ \mathcal{S}, ∃ t ∈ θ \suchthat \set{t} ∉ S^⊆$.
+\end{theorem}
+\begin{proof}
+  By definition, $\OF_E(\allleadstogo)$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstogo} \suchthat θ ∉ E^⊆$.
+  By \cref{th:dnf}, applied to $f = θ$, $θ ∉ E^⊆$ iff $∀ S ∈ \mathcal{S}, ∃ t ∈ θ \suchthat \set{t} ∉ S^⊆$.
+\end{proof}
 
 \begin{theorem}
   \label{th:ex-post}
