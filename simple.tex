@@ -528,6 +528,8 @@ Consider a claim that in some world satisfies F but not POF.
 Then, it is not verifiable under prior not POF, unless precisely that world can be excluded by an observation.
 This is a modeling problem as we want POF precisely to avoid this.
 Thus, our study should focus on those claims that satisfy F implies POF.
+
+We say that $C$ is \emph{persistently falsifiable} (PF) iff $C ≠ {\allleadstos} ∧ [∀\allleadstog: \F(\allleadstog) ⇒ \POF(\allleadstog)]$.
 % We want to satisfy OF implies POF, thus, not suffer visibility issues, thus, not (OF and not POF), thus, the claim must exclude the worlds in which some obs is incompatible with C and some prefix is entirely completable in C.
 % This if C says that α leads i to φ, it must also say something about all paths incompatible with α about i.
 % Mhh this does not seem sufficient: even the claim all paths and i are lead to φ seems OF and not POF for a world where some path fails.
@@ -1281,6 +1283,70 @@ The following result indicates that, given a finite cover of $D ∖C$, $\OF_{D �
   By definition, $\OF_E(\allleadstog)$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ E^⊆$.
   By \cref{th:dnf}, applied to $f = θ$, $θ ∉ E^⊆$ iff $∀ S ∈ \mathcal{S}, ∃ t ∈ θ \suchthat \set{t} ∉ S^⊆$.
 \end{proof}
+
+\subsection{Interplay}
+We are here interested in the interplay between properties of holding, anonymity, informativeness and permanent falsifiability.
+
+\begin{theorem}
+  \label{th:singletonNotPF}
+  Given a claim $C$ such that $\card{C} = 1$, $C$ is not persistently falsifiable.
+\end{theorem}
+\begin{proof}
+  Let $C = \set{\allleadstog_0}$, fix $i_0 ∈ I$, $\ar_0 ∈ \allargs$, and $p ≠ \allleadstog_0(i_0, ∅)$.
+  Define $\allleadstog$ to agree with $\allleadstog_0$ everywhere except $\allleadstog(i_0, ∅) = p$, so $\allleadstog ∉ C$, that is, $\F(\allleadstog)$.
+  Let $θ = \set{(i_0, (\ar_0), \allleadstog(i_0, (\ar_0)))} ∈ Θ ∩ \powerset{\allleadstog}$; note $θ$ does not touch $(i_0, ∅)$.
+  Consider any $θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}$.
+  As $θ$ already fixes $i_0$ at $(\ar_0)$, a rightward extension can never add $(i_0, ∅, \cdot)$, this being shorter than $(\ar_0)$; so $θ'$ never touches $(i_0, ∅)$, the only point where $\allleadstog$ and $\allleadstog_0$ differ, giving $θ' ⊆ \allleadstog_0$, thus $θ' ∈ C^⊆$.
+  So $θ$ admits no rightward extension outside $C^⊆$, that is, $¬\POF(\allleadstog)$.
+  Hence $\F(\allleadstog) ∧ ¬\POF(\allleadstog)$, so $C$ is not persistently falsifiable.
+\end{proof}
+
+\begin{theorem}
+  \label{th:onlyEmptyPF}
+  A claim $C$ is persistently falsifiable iff $C = ∅$.
+\end{theorem}
+\begin{proof}
+  If $C = ∅$, then $C^⊆ = ∅$, so $∀\allleadstog, θ' ∈ Θ: θ' ∉ C^⊆$, giving $\POF(\allleadstog)$ trivially for every $\allleadstog$, while $\F(\allleadstog)$ also holds for every $\allleadstog$; as $∅ ≠ \allleadstos$, $C$ is persistently falsifiable.
+
+  Conversely, suppose $C$ is persistently falsifiable and $C ≠ ∅$; we derive a contradiction.
+  Say $C$ is \emph{closed under finite modification} iff, for every $\allleadstog ∈ C$ and every $\allleadstog'$ differing from $\allleadstog$ at only finitely many pairs $(i, \hist)$, $\allleadstog' ∈ C$.
+
+  If $C$ is closed under finite modification: fix $\allleadstog_0 ∈ C$ (exists, as $C ≠ ∅$).
+  Given any $\allleadstog$ and any $θ ∈ Θ ∩ \powerset{\allleadstog}$, let $\allleadstog'$ agree with $θ$ on $θ^{-1}(P)$ and with $\allleadstog_0$ elsewhere; then $\allleadstog'$ differs from $\allleadstog_0$ at only the finitely many pairs in $θ^{-1}(P)$, so $\allleadstog' ∈ C$, and $θ ⊆ \allleadstog'$, giving $θ ∈ C^⊆$.
+  As $θ$ was arbitrary, $Θ ⊆ C^⊆$, so $\OF(\allleadstog)$ — hence $\POF(\allleadstog)$ — fails for \emph{every} $\allleadstog$.
+  Since $C ≠ \allleadstos$ (persistent falsifiability requires this), some $\allleadstog^* ∉ C$ exists, giving $\F(\allleadstog^*) ∧ ¬\POF(\allleadstog^*)$, contradicting persistent falsifiability.
+
+  If $C$ is not closed under finite modification: some $\allleadstog_0 ∈ C$ and $\allleadstog^*$, differing from $\allleadstog_0$ at finitely many pairs, have $\allleadstog^* ∉ C$.
+  Flipping these pairs one at a time from $\allleadstog_0$ towards $\allleadstog^*$ gives a finite chain $\allleadstog_0 = τ_0, τ_1, …, τ_k = \allleadstog^*$ of consecutive single-pair flips; as $τ_0 ∈ C$ and $τ_k ∉ C$, some $τ_{m-1} ∈ C$, $τ_m ∉ C$ differ at exactly one pair $(i^*, \hist^*)$.
+  Let $θ ∈ Θ ∩ \powerset{τ_m}$ touch $i^*$ at some history $β$ incomparable with $\hist^*$ (or, if $\hist^* = ∅$, at any non-empty $β$), available once $\allargs$ has at least two elements.
+  Then $θ$ does not touch $(i^*, \hist^*)$, and no $θ' ⊇ θ$ in $Θ$ can either: if $\hist^* ≠ ∅$, $\hist^*$ and $β$ are incomparable, so $Θ$'s requirement that the histories queried at $i^*$ be pairwise comparable forbids ever recording both; if $\hist^* = ∅$, any $θ ⊑ θ'$ can only add, at $i^*$, histories longer than $β$, and $∅$ is shorter than $β$.
+  Every $θ ⊑ θ' ∈ Θ ∩ \powerset{τ_m}$ therefore agrees with $τ_m$, hence with $τ_{m-1}$ (they differ only at $(i^*, \hist^*)$, which $θ'$ never touches), everywhere it is defined, so $θ' ⊆ τ_{m-1} ∈ C$, giving $θ' ∈ C^⊆$.
+  So $¬\POF(τ_m)$, while $\F(τ_m)$, again contradicting persistent falsifiability.
+
+  Either way we reach a contradiction, so $C = ∅$.
+\end{proof}
+
+% \begin{theorem}
+%   \label{th:hsip}
+%   For all exposure protocols, there exists a claim that holds and is strongly informative beyond counting and falsifiable iff $∃ i \suchthat P_i ≠ ∅$.
+% \end{theorem}
+% \begin{proof}
+%   Define $C = \set{\allleadsto}$.
+% \end{proof}
+% \begin{theorem}
+%   \label{th:hip}
+%   For all exposure protocols, there exists a claim that holds and is informative beyond counting and falsifiable.
+% \end{theorem}
+% \begin{proof}
+%   Define $C = \set{\allleadsto}$.
+% \end{proof}
+% \begin{theorem}
+%   \label{th:asip}
+%   For all exposure protocols, there exists a claim that is anonymous, strongly informative beyond counting and falsifiable.
+% \end{theorem}
+% \begin{proof}
+%   Define the claim as $∀ i ∈ I, \hist ∈ \allhists: \hist \ileadstog φ$.
+% \end{proof}
 
 \section{Supplementary material}
   \begin{example}[Disjunct with incompatible paths, not falsifiable, to be deleted]
