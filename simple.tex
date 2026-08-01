@@ -1232,6 +1232,28 @@ Being closed under finite modification and non-empty does not entail triviality.
   let $\allleadstog$ agree with $θ$ on $θ^{-1}(P)$ and with $\allleadstog_0$ elsewhere; then $\allleadstog \simfin \allleadstog_0$, as they differ only on the finite set $θ^{-1}(P)$, so $\allleadstog ∈ C$, and $θ ⊆ \allleadstog$, giving $θ ∈ C^⊆$.
 \end{proof}
 
+\begin{theorem}
+  \label{th:flatDisjNeverFals}
+  Given a right-unique $X ⊆ (I × \allhists) × P$, let $D_X = \set{\allleadstog ∈ \allleadstos \suchthat ∃(i, \hist, p) ∈ X, \allleadstog(i, \hist) = p}$.
+  $D_X$ is never falsifiable iff $X ∉ Θ$.
+\end{theorem}
+\begin{proof}
+  Suppose $X ∈ Θ$.
+  Pick, for each $(i, \hist, p) ∈ X$, some $p' ≠ p$ (available as $\card{P} ≥ 2$), and let $θ = \set{(i, \hist, p') \suchthat (i, \hist, p) ∈ X}$; as $X ∈ Θ$, so is $θ$, which has the same domain.
+  No completion of $θ$ lies in $D_X$, since $θ$ witnesses $\allleadstog(i, \hist) ≠ p$ for every $(i, \hist, p) ∈ X$; so $θ ∉ D_X^⊆$, giving $\OF(\allleadstog)$ for any $\allleadstog ⊇ θ$, and $D_X$ is not never falsifiable.
+
+  Suppose $X ∉ Θ$; we show $Θ ⊆ D_X^⊆$.
+  Given any $θ ∈ Θ$: if $X$ is infinite, then, as $θ$ is finite, some $(i, \hist, p) ∈ X$ has $(i, \hist) ∉ θ^{-1}(P)$; otherwise $X$ is finite but not comparable at some individual, that is, some $(i, \hist_1, p_1), (i, \hist_2, p_2) ∈ X$ have $\hist_1, \hist_2$ incomparable, and, as $θ ∈ Θ$ cannot record both, some $(i, \hist, p) ∈ \set{(i, \hist_1, p_1), (i, \hist_2, p_2)}$ has $(i, \hist) ∉ θ^{-1}(P)$.
+  Either way, some $(i, \hist, p) ∈ X$ has $(i, \hist) ∉ θ^{-1}(P)$; let $\allleadstog$ agree with $θ$ on $θ^{-1}(P)$, with $p$ at $(i, \hist)$, and arbitrarily elsewhere.
+  Then $θ ⊆ \allleadstog$ and $\allleadstog ∈ D_X$, so $θ ∈ D_X^⊆$.
+  As $θ$ was arbitrary, $Θ ⊆ D_X^⊆$, that is, $D_X$ is never falsifiable.
+\end{proof}
+\begin{remark}
+  \Cref{ex:existsParticular} (for infinite $I$) is $D_X$ for $X = \set{(i, ∅, φ) \suchthat i ∈ I}$, infinite, hence not in $Θ$.
+  \Cref{ex:disjR} is not itself of this flat-disjunction form — it is a conjunction, over every $i$, of a copy $D_{X_i}$ with $X_i = \set{(i, (\ar), φ), (i, (\ar'), φ)}$, each finite but incomparable, hence individually never falsifiable by \cref{th:flatDisjNeverFals}.
+  This does not, by itself, give that the conjunction is never falsifiable, since compatibility with each conjunct need not entail compatibility with their intersection; \cref{ex:disjR}’s own proof supplies the extra step, showing that these per-individual escapes can always be made simultaneously, one untouched branch per individual, without interfering with one another.
+\end{remark}
+
 \begin{remark}
   The converse of \cref{th:cufmNeverFals} fails: \cref{ex:disjR} is never falsifiable ($Θ ⊆ C^⊆$) yet is not closed under finite modification, as flipping a single individual’s two values (making it satisfy neither disjunct) already leaves $C$.
 \end{remark}
