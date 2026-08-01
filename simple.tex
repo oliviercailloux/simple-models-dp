@@ -353,12 +353,6 @@ This is technically equivalent to mandating $¬\POF(\allleadstoo)$.
   $∀\allleadstog, θ ∈ Θ ∩ \powerset{\allleadstog}, [∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆] ⇒ [θ ∈ C^⊆]$.
   Consider again $C_1$ and $\allleadstog$ such that $(a) \ileadstog φ ∧ (b) \nileadstog φ$.
   The chosen prior ($\POF(\allleadstog) ⇒ ¬\OF(\allleadstog)$) holds, as intuition commands, as the antecedent fails for the reason given above. The alternative prior however fails as $θ = \set{(b) \ileadstog φ}$ is completable only out of $C$.
-  
-  Alternatively, we could apply the prior only for the claims which have no visibility issues, by stating the following.
-  $[∀\allleadstog, ¬[∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}: θ' ∈ C^⊆]] ⇒ [∀\allleadstog, ∀θ ∈ Θ ∩ \powerset{\allleadstog}: θ ∈ C^⊆]$.
-  Consider $C_1$ is $(a) \ileadsto φ ∧ (b) \ileadsto φ$ for a given $i$ and a world st $(a) \ileadsto^1 φ ∧ (b) \nileadsto^1 φ$. This world has visibility issues. Consider a world st $(a) \ileadsto^2 φ ∧ (b) \ileadsto^2 φ$. This world has no visibility issues.
-  The alternative prior does not say anything about $C$ (all worlds are possible).
-  \commentClaude[The original prior excludes the world 2.]{This seems incorrect. $\POF(\allleadstog) ⇒ \OF(\allleadstog) ⇒ \F(\allleadstog)$ (established above), so by contraposition $¬\F(\allleadstog) ⇒ ¬\OF(\allleadstog) ⇒ ¬\POF(\allleadstog)$: any world actually in $C$ automatically satisfies $¬\POF$, hence belongs to $D = ¬\POF$. World 2 satisfies both $(a) \ileadsto^2 φ$ and $(b) \ileadsto^2 φ$, so it is in $C_1$, so it should be included in $D$, not excluded. The intended contrast (original prior informative, alternative prior not) does not seem to survive with this witness; a different pair of worlds, or a different argument, seems needed.}
 \end{remark}
 
 \begin{remark}[TODO]
