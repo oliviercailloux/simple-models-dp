@@ -497,8 +497,7 @@ Converting a claim to disjunctive normal form is useful to characterize its comp
 \end{example}
 
 \subsection{Permanent established verifiability}
-Established verifiability only requires \emph{some} proving observation to exist at each $\allleadstog ∈ C ∩ D$; nothing prevents that witness from being unusable once further, still compatible, observation occurs (if some extension of it is again completable into $D ∖ C$).
-Mirroring how $\POF$ strengthens $\OF$ (\cref{th:ex-post}) by requiring that \emph{every} prefix admit a falsifying extension, we ask instead that every prefix admit an extension that still proves $C$.
+The following records the comparable-extension analogue of what follows, kept only because \cref{rk:pevGap} relies on it; it plays no further role below, which is stated directly in terms of $\RPOF$.
 
 Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{permanently established-verifiable} (PEV) under $D$ at $\allleadstog$ iff
 $∀ θ ∈ Θ ∩ \powerset{\allleadstog}, ∃ θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ' ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$.
@@ -523,20 +522,9 @@ $C$ satisfies \emph{permanent established verifiability} under prior $D$ iff thi
   If $D ⊆ C$, then $D ∖ C = ∅$, so $(D ∖ C)^⊆ = ∅$ and $\POF_∅(\allleadstog)$ holds trivially (any $θ' ∈ Θ ∩ \powerset{\allleadstog}$, in particular $θ' = ∅$, already satisfies $θ' ∉ ∅$), giving PEV under $D$ at every $\allleadstog ∈ C ∩ D$ by \cref{th:pevChar}.
 \end{proof}
 
-Under $D = ¬\POF$, provability is strictly stronger than PEV.
-\begin{example}
-  With $D = ¬\POF_{C'}$ for $C' = \set{∃i \suchthat ∅ \ileadstog φ}$ (never falsifiable, for the same reason as $C_1$, so $\POF_{C'}$ never holds and $D = \allleadstos$), $C'$ is not provable by $D$, yet $C'$ satisfies PEV under $D$: given $\allleadstog ∈ C'$ with witness $i_0$ (so $\allleadstog(i_0, ∅) = φ$), any prefix $θ ⊆ \allleadstog$ extends to $θ ∪ \set{(i_0, ∅, φ)} ⊆ \allleadstog$ — valid because $∅$ prefixes every history, hence is comparable to whatever $θ$ already contains for $i_0$, unlike a fixed argument such as $(a)$ — which alone forces membership in $C'$.
-\end{example}
-
-Taking $D = ¬\POF_C$ in \cref{rk:pevGap}, whenever $(¬\POF_C) ∖ C$ suffers POF-visibility issues, some world $\allleadstog ∈ C$ has a proving observation $θ_0 ⊆ \allleadstog$ (so $∀θ_0 ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$) while some \emph{other}, incomparable observation $θ_1 ⊆ \allleadstog$, $θ_1 ∈ Θ$, admits no proving extension at all: every $θ_1 ⊆ θ' ∈ Θ ∩ \powerset{\allleadstog}$ still has a completion in $D ∖ C$ (proving is monotone under extension of the \emph{same} observation, so this could not happen to $θ_0$ itself, only to an unrelated branch).
-So, should observation happen to proceed along $θ_1$ rather than toward $θ_0$, $C$ can never be proven, purely because of which truthful observations occurred, even though $\allleadstog$ never left $C$ and a proof was available along a different route.
-This is exactly the fragility that motivated preferring $¬\POF$ over $¬\OF$ as the prior in the first place, now reappearing on the verification side rather than the falsification side.
-So the right adequacy criterion is that $C$ satisfies PEV under $¬\POF_C$, not merely established verifiability under $¬\POF_C$: only PEV guarantees that $C$ stays provable after arbitrary observations.
-
 \subsection{Right permanent established verifiability}
-Realistic protocols cannot revisit a shorter exposure once a longer, or merely different, one has been shown to an individual.
-$\RPOF$ already captures this by restricting the persistence witness to extensions that, for each individual, only lengthen what is already there, rather than any comparable extension.
-Applying the same restriction to PEV in place of $\POF$ gives a stricter analogue.
+Established verifiability only requires \emph{some} proving observation to exist at each $\allleadstog ∈ C ∩ D$; nothing prevents that witness from being unusable once further, still compatible, observation occurs (if some extension of it is again completable into $D ∖ C$).
+Realistic protocols cannot revisit a shorter exposure once a longer, or merely different, one has been shown to an individual, so, mirroring how $\RPOF$ strengthens $\OF$ (\cref{th:ex-post}) by requiring that \emph{every} prefix admit a rightward falsifying extension, we ask instead that every prefix admit a rightward extension that still proves $C$.
 
 Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{right permanently established-verifiable} (RPEV) under $D$ at $\allleadstog$ iff
 $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀θ' ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$.
@@ -548,17 +536,23 @@ $C$ satisfies RPEV under prior $D$ iff this holds $∀\allleadstog ∈ C ∩ D$.
   Consequently, $C$ satisfies RPEV under prior $D$ iff $∀\allleadstog ∈ C ∩ D: \RPOF_{D ∖ C}(\allleadstog)$.
 \end{theorem}
 \begin{proof}
-  Identical to \cref{th:pevChar}: \cref{th:vud} characterizes, for a fixed $θ'$, whether $θ'$ proves $C$ under $D$, independently of which $θ'$ are under consideration; restricting to rightward $θ'$ throughout the substitution turns the proof of \cref{th:pevChar} into this statement.
+  By \cref{th:vud} (\cref{it:unverifD,it:notcomplE}), for any $θ' ∈ Θ ∩ \powerset{\allleadstog}$: $θ'$ proves $C$ under $D$ (that is, $∀θ' ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$) iff $θ' ∉ (D ∖ C)^⊆$.
+  Substituting into the definition of RPEV at $\allleadstog$ gives $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}: θ' ∉ (D ∖ C)^⊆$, which is exactly $\RPOF_{D ∖ C}(\allleadstog)$.
 \end{proof}
 
 \begin{corollary}
   \label{th:rpevChain}
-  Given $C, D ⊆ \allleadstos$: RPEV under $D$ implies PEV under $D$; and provability of $C$ by $D$ implies RPEV under $D$.
+  Given $C, D ⊆ \allleadstos$: provability of $C$ by $D$ implies RPEV under $D$.
 \end{corollary}
 \begin{proof}
-  $\RPOF_S(\allleadstog) ⇒ \POF_S(\allleadstog)$ for any $S, \allleadstog$ (a rightward witness is in particular a witness), giving the first implication via \cref{th:rpevChar,th:pevChar}.
-  If $D ⊆ C$, then $D ∖ C = ∅$, so $\RPOF_∅(\allleadstog)$ holds trivially (as for $\POF_∅$), giving RPEV under $D$ by \cref{th:rpevChar}.
+  If $D ⊆ C$, then $D ∖ C = ∅$, so $(D ∖ C)^⊆ = ∅$ and $\RPOF_∅(\allleadstog)$ holds trivially (any $θ' ∈ Θ ∩ \powerset{\allleadstog}$, in particular $θ' = ∅$, already satisfies $θ' ∉ ∅$), giving RPEV under $D$ at every $\allleadstog ∈ C ∩ D$ by \cref{th:rpevChar}.
 \end{proof}
+
+By \cref{th:rpevChar} together with \cref{th:dual}, $\allleadstog ∈ C ∩ D$ satisfies established verifiability but not RPEV under $D$ iff $\OF_{D ∖ C}(\allleadstog) ∧ ¬\RPOF_{D ∖ C}(\allleadstog)$, that is, iff $D ∖ C$ suffers visibility issues at $\allleadstog$.
+Taking $D = ¬\RPOF_C$, whenever $(¬\RPOF_C) ∖ C$ suffers visibility issues, some world $\allleadstog ∈ C$ has a proving observation $θ_0 ⊆ \allleadstog$ (so $∀θ_0 ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$) while some \emph{other}, incomparable observation $θ_1 ⊆ \allleadstog$, $θ_1 ∈ Θ$, admits no proving rightward extension at all: every $θ_1 ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}$ still has a completion in $D ∖ C$ (proving is monotone under extension of the \emph{same} observation, so this could not happen to $θ_0$ itself, only to an unrelated branch).
+So, should observation happen to proceed along $θ_1$ rather than toward $θ_0$, $C$ can never be proven, purely because of which truthful observations occurred, even though $\allleadstog$ never left $C$ and a proof was available along a different route.
+This is exactly the fragility that motivated preferring $¬\RPOF$ over $¬\OF$ as the prior in the first place, now reappearing on the verification side rather than the falsification side.
+So the right adequacy criterion is that $C$ satisfies RPEV under $¬\RPOF_C$, not merely established verifiability under $¬\RPOF_C$: only RPEV guarantees that $C$ stays provable after arbitrary observations.
 
 The not-stronger demand that $C$ satisfies RPEV under $D = ¬\RPOF_C$ is arguably the one that should be enforced, though \cref{cnj:rpevProv} suggests that it might make no difference so we might as well study provability by $D$ in what follows.
 
