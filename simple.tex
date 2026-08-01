@@ -497,32 +497,6 @@ Converting a claim to disjunctive normal form is useful to characterize its comp
 \end{example}
 
 \subsection{Permanent established verifiability}
-The following records the comparable-extension analogue of what follows, kept only because \cref{rk:pevGap} relies on it; it plays no further role below, which is stated directly in terms of $\RPOF$.
-
-Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{permanently established-verifiable} (PEV) under $D$ at $\allleadstog$ iff
-$∀ θ ∈ Θ ∩ \powerset{\allleadstog}, ∃ θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ' ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$.
-$C$ satisfies \emph{permanent established verifiability} under prior $D$ iff this holds $∀\allleadstog ∈ C ∩ D$.
-
-\begin{theorem}[PEV as $\POF_{D ∖ C}$]
-  \label{th:pevChar}
-  Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$: $C$ is PEV under $D$ at $\allleadstog$ iff $\POF_{D ∖ C}(\allleadstog)$.
-  Consequently, $C$ satisfies PEV under prior $D$ iff $∀\allleadstog ∈ C ∩ D: \POF_{D ∖ C}(\allleadstog)$.
-\end{theorem}
-\begin{proof}
-  By \cref{th:vud} (\cref{it:unverifD,it:notcomplE}), for any $θ' ∈ Θ ∩ \powerset{\allleadstog}$: $θ'$ proves $C$ under $D$ (that is, $∀θ' ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$) iff $θ' ∉ (D ∖ C)^⊆$.
-  Substituting into the definition of PEV at $\allleadstog$ gives $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊆ θ' ∈ Θ ∩ \powerset{\allleadstog}: θ' ∉ (D ∖ C)^⊆$, which is exactly $\POF_{D ∖ C}(\allleadstog)$.
-\end{proof}
-
-\begin{corollary}
-  \label{th:pevChain}
-  Given $C, D ⊆ \allleadstos$: PEV under $D$ implies established verifiability under $D$; and provability of $C$ by $D$ implies PEV under $D$.
-\end{corollary}
-\begin{proof}
-  $\POF_S(\allleadstog) ⇒ \OF_S(\allleadstog)$ for any $S, \allleadstog$ (taking $θ = ∅$ in the definition of $\POF_S$ already gives the witness required by $\OF_S$), so \cref{th:pevChar} together with \cref{th:dual} gives the first implication.
-  If $D ⊆ C$, then $D ∖ C = ∅$, so $(D ∖ C)^⊆ = ∅$ and $\POF_∅(\allleadstog)$ holds trivially (any $θ' ∈ Θ ∩ \powerset{\allleadstog}$, in particular $θ' = ∅$, already satisfies $θ' ∉ ∅$), giving PEV under $D$ at every $\allleadstog ∈ C ∩ D$ by \cref{th:pevChar}.
-\end{proof}
-
-\subsection{Right permanent established verifiability}
 Established verifiability only requires \emph{some} proving observation to exist at each $\allleadstog ∈ C ∩ D$; nothing prevents that witness from being unusable once further, still compatible, observation occurs (if some extension of it is again completable into $D ∖ C$).
 Realistic protocols cannot revisit a shorter exposure once a longer, or merely different, one has been shown to an individual, so, mirroring how $\RPOF$ strengthens $\OF$ (\cref{th:ex-post}) by requiring that \emph{every} prefix admit a rightward falsifying extension, we ask instead that every prefix admit a rightward extension that still proves $C$.
 
@@ -542,14 +516,14 @@ $C$ satisfies RPEV under prior $D$ iff this holds $∀\allleadstog ∈ C ∩ D$.
 
 \begin{corollary}
   \label{th:rpevChain}
-  Given $C, D ⊆ \allleadstos$: provability of $C$ by $D$ implies RPEV under $D$.
+  Given $C, D ⊆ \allleadstos$: RPEV under $D$ implies established verifiability under $D$; and provability of $C$ by $D$ implies RPEV under $D$.
 \end{corollary}
 \begin{proof}
+  $\RPOF_S(\allleadstog) ⇒ \OF_S(\allleadstog)$ for any $S, \allleadstog$ (taking $θ = ∅$ in the definition of $\RPOF_S$ already gives the witness required by $\OF_S$), so \cref{th:rpevChar} together with \cref{th:dual} gives the first implication.
   If $D ⊆ C$, then $D ∖ C = ∅$, so $(D ∖ C)^⊆ = ∅$ and $\RPOF_∅(\allleadstog)$ holds trivially (any $θ' ∈ Θ ∩ \powerset{\allleadstog}$, in particular $θ' = ∅$, already satisfies $θ' ∉ ∅$), giving RPEV under $D$ at every $\allleadstog ∈ C ∩ D$ by \cref{th:rpevChar}.
 \end{proof}
 
-By \cref{th:rpevChar} together with \cref{th:dual}, $\allleadstog ∈ C ∩ D$ satisfies established verifiability but not RPEV under $D$ iff $\OF_{D ∖ C}(\allleadstog) ∧ ¬\RPOF_{D ∖ C}(\allleadstog)$, that is, iff $D ∖ C$ suffers visibility issues at $\allleadstog$.
-Taking $D = ¬\RPOF_C$, whenever $(¬\RPOF_C) ∖ C$ suffers visibility issues, some world $\allleadstog ∈ C$ has a proving observation $θ_0 ⊆ \allleadstog$ (so $∀θ_0 ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$) while some \emph{other}, incomparable observation $θ_1 ⊆ \allleadstog$, $θ_1 ∈ Θ$, admits no proving rightward extension at all: every $θ_1 ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}$ still has a completion in $D ∖ C$ (proving is monotone under extension of the \emph{same} observation, so this could not happen to $θ_0$ itself, only to an unrelated branch).
+Taking $D = ¬\RPOF_C$ in \cref{rk:pevGap}, whenever $(¬\RPOF_C) ∖ C$ suffers visibility issues, some world $\allleadstog ∈ C$ has a proving observation $θ_0 ⊆ \allleadstog$ (so $∀θ_0 ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$) while some \emph{other}, incomparable observation $θ_1 ⊆ \allleadstog$, $θ_1 ∈ Θ$, admits no proving rightward extension at all: every $θ_1 ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}$ still has a completion in $D ∖ C$ (proving is monotone under extension of the \emph{same} observation, so this could not happen to $θ_0$ itself, only to an unrelated branch).
 So, should observation happen to proceed along $θ_1$ rather than toward $θ_0$, $C$ can never be proven, purely because of which truthful observations occurred, even though $\allleadstog$ never left $C$ and a proof was available along a different route.
 This is exactly the fragility that motivated preferring $¬\RPOF$ over $¬\OF$ as the prior in the first place, now reappearing on the verification side rather than the falsification side.
 So the right adequacy criterion is that $C$ satisfies RPEV under $¬\RPOF_C$, not merely established verifiability under $¬\RPOF_C$: only RPEV guarantees that $C$ stays provable after arbitrary observations.
@@ -1236,11 +1210,11 @@ The following example presents a situation where non rejection is due to finiten
   Using \cref{th:complFals}, it is sufficient to prove that for any $C$, considering any $\allleadstog ∉ D$ (thus, $\OF_C(\allleadstog)$), $\OF_{D ∖ C}(\allleadstog)$ holds. This is given by \cref{th:ofRelations}.
 \end{proof}
 
-\subsection{POF}
+\subsection{RPOF}
 \begin{remark}
   \label{rk:pevGap}
-  By \cref{th:pevChar}, $\allleadstog ∈ C ∩ D$ satisfies established verifiability but not PEV under $D$ iff $\OF_{D ∖ C}(\allleadstog) ∧ ¬\POF_{D ∖ C}(\allleadstog)$, that is, iff $D ∖ C$ suffers \emph{POF-visibility issues} at $\allleadstog$ (the $\POF$-based analogue of the visibility issues defined earlier, using $\POF$ in place of $\RPOF$).
-  So, for a given claim and prior, the gap between established verifiability and PEV is precisely governed by POF-visibility issues of $D ∖ C$: no such gap arises wherever $D ∖ C$ suffers no POF-visibility issues.
+  By \cref{th:rpevChar}, $\allleadstog ∈ C ∩ D$ satisfies established verifiability but not RPEV under $D$ iff $\OF_{D ∖ C}(\allleadstog) ∧ ¬\RPOF_{D ∖ C}(\allleadstog)$, that is, iff $D ∖ C$ suffers visibility issues at $\allleadstog$.
+  So, for a given claim and prior, the gap between established verifiability and RPEV is precisely governed by visibility issues of $D ∖ C$: no such gap arises wherever $D ∖ C$ suffers no visibility issues.
 \end{remark}
 
 \subsection{Observational completion}
