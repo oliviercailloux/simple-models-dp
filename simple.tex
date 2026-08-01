@@ -1228,7 +1228,6 @@ Being closed under finite modification and non-empty does not entail triviality.
 \begin{proof}
   Fix $\allleadstog[0] ∈ C$ and let us show that $Θ ⊆ C^⊆$.
   Given any $θ ∈ Θ$, 
-  % Given any $\allleadstog$ and any $θ ∈ Θ ∩ \powerset{\allleadstog}$, 
   let $\allleadstog$ agree with $θ$ on $θ^{-1}(P)$ and with $\allleadstog[0]$ elsewhere; then $\allleadstog \simfin \allleadstog[0]$, as they differ only on the finite set $θ^{-1}(P)$, so $\allleadstog ∈ C$, and $θ ⊆ \allleadstog$, giving $θ ∈ C^⊆$.
 \end{proof}
 
@@ -1242,6 +1241,27 @@ Being closed under finite modification and non-empty does not entail triviality.
   By \cref{th:rpevChar}, $\allleadstog ∈ C ∩ D$ satisfies established verifiability but not PEV under $D$ iff $\OF_{D ∖ C}(\allleadstog) ∧ ¬\POF_{D ∖ C}(\allleadstog)$, that is, iff $D ∖ C$ suffers visibility issues at $\allleadstog$.
   So, for a given claim and prior, the gap between established verifiability and PEV is precisely governed by visibility issues of $D ∖ C$: no such gap arises wherever $D ∖ C$ suffers no visibility issues.
 \end{remark}
+
+\begin{theorem}
+  \label{th:onlyEmptyPF}
+  A claim $C$ is persistently falsifiable iff $C = ∅$.
+  Equivalently,
+  a claim $C$ is provable by $¬\POF$ iff $C = ∅ ∨ C = \allleadstos$.
+\end{theorem}
+\begin{proof}
+  If $C = ∅$, then $∀θ ∈ Θ: θ ∉ C^⊆$, thus $∀\allleadstog: \POF(\allleadstog)$.
+
+  Conversely, suppose $\allleadstos ≠ C ≠ ∅$; we show $∃\allleadstog ∉ C \suchthat ¬\POF(\allleadstog)$.
+
+  If $C$ is closed under finite modification (\cref{def:cufm}), by \cref{th:cufmNeverFals}, $∀\allleadstog: ¬\OF(\allleadstog)$, thus $¬\POF(\allleadstog)$; suffices to pick any $\allleadstog ∉ C$.
+
+  If $C$ is not closed under finite modification: some $\allleadstog[0] ∈ C$ and $\allleadstog^*$, differing from $\allleadstog[0]$ at finitely many pairs, have $\allleadstog^* ∉ C$.
+  Flipping these pairs one at a time from $\allleadstog[0]$ towards $\allleadstog^*$ gives a finite chain $\allleadstog[0] = τ_0, τ_1, …, τ_k = \allleadstog^*$ of consecutive single-pair flips; as $τ_0 ∈ C$ and $τ_k ∉ C$, some $τ_{m-1} ∈ C$, $τ_m ∉ C$ differ at exactly one pair $(i^*, \hist^*)$.
+  Let $θ ∈ Θ ∩ \powerset{τ_m}$ touch $i^*$ at some history $β$ incomparable with $\hist^*$ (or, if $\hist^* = ∅$, at any non-empty $β$), available once $\allargs$ has at least two elements.
+  Then $θ$ does not touch $(i^*, \hist^*)$, and no $θ' ⊇ θ$ in $Θ$ can either: if $\hist^* ≠ ∅$, $\hist^*$ and $β$ are incomparable, so $Θ$'s requirement that the histories queried at $i^*$ be pairwise comparable forbids ever recording both; if $\hist^* = ∅$, any $θ ⊑ θ'$ can only add, at $i^*$, histories longer than $β$, and $∅$ is shorter than $β$.
+  Every $θ ⊑ θ' ∈ Θ ∩ \powerset{τ_m}$ therefore agrees with $τ_m$, hence with $τ_{m-1}$ (they differ only at $(i^*, \hist^*)$, which $θ'$ never touches), everywhere it is defined, so $θ' ⊆ τ_{m-1} ∈ C$, giving $θ' ∈ C^⊆$.
+  So $¬\POF(τ_m)$, while $\F(τ_m)$, so $C$ is not persistently falsifiable.
+\end{proof}
 
 \subsection{Observational completion}
 \begin{corollary}
@@ -1330,27 +1350,6 @@ We are here interested in the interplay between properties of holding, anonymity
   As $θ$ already fixes $i_0$ at $(\ar_0)$, a rightward extension can never add $(i_0, ∅, \cdot)$, this being shorter than $(\ar_0)$; so $θ'$ never touches $(i_0, ∅)$, the only point where $\allleadstog$ and $\allleadstog[0]$ differ, giving $θ' ⊆ \allleadstog[0]$, thus $θ' ∈ C^⊆$.
   So $θ$ admits no rightward extension outside $C^⊆$, that is, $¬\POF(\allleadstog)$.
   Hence $\F(\allleadstog) ∧ ¬\POF(\allleadstog)$, so $C$ is not persistently falsifiable.
-\end{proof}
-
-\begin{theorem}
-  \label{th:onlyEmptyPF}
-  A claim $C$ is persistently falsifiable iff $C = ∅$.
-\end{theorem}
-\begin{proof}
-  If $C = ∅$, then $C^⊆ = ∅$, so $∀\allleadstog, θ' ∈ Θ: θ' ∉ C^⊆$, giving $\POF(\allleadstog)$ trivially for every $\allleadstog$, while $\F(\allleadstog)$ also holds for every $\allleadstog$; as $∅ ≠ \allleadstos$, $C$ is persistently falsifiable.
-
-  Conversely, suppose $C ≠ ∅$; we show $C$ is not persistently falsifiable.
-
-  If $C$ is closed under finite modification (\cref{def:cufm}): by \cref{th:cufmNeverFals}, $C$ is never falsifiable, so $\OF(\allleadstog)$ — hence $\POF(\allleadstog)$ — fails for \emph{every} $\allleadstog$.
-  If $C = \allleadstos$, $C$ is not persistently falsifiable by definition.
-  Otherwise, some $\allleadstog^* ∉ C$ exists, and $\F(\allleadstog^*) ∧ ¬\POF(\allleadstog^*)$ shows $C$ is not persistently falsifiable.
-
-  If $C$ is not closed under finite modification: some $\allleadstog[0] ∈ C$ and $\allleadstog^*$, differing from $\allleadstog[0]$ at finitely many pairs, have $\allleadstog^* ∉ C$.
-  Flipping these pairs one at a time from $\allleadstog[0]$ towards $\allleadstog^*$ gives a finite chain $\allleadstog[0] = τ_0, τ_1, …, τ_k = \allleadstog^*$ of consecutive single-pair flips; as $τ_0 ∈ C$ and $τ_k ∉ C$, some $τ_{m-1} ∈ C$, $τ_m ∉ C$ differ at exactly one pair $(i^*, \hist^*)$.
-  Let $θ ∈ Θ ∩ \powerset{τ_m}$ touch $i^*$ at some history $β$ incomparable with $\hist^*$ (or, if $\hist^* = ∅$, at any non-empty $β$), available once $\allargs$ has at least two elements.
-  Then $θ$ does not touch $(i^*, \hist^*)$, and no $θ' ⊇ θ$ in $Θ$ can either: if $\hist^* ≠ ∅$, $\hist^*$ and $β$ are incomparable, so $Θ$'s requirement that the histories queried at $i^*$ be pairwise comparable forbids ever recording both; if $\hist^* = ∅$, any $θ ⊑ θ'$ can only add, at $i^*$, histories longer than $β$, and $∅$ is shorter than $β$.
-  Every $θ ⊑ θ' ∈ Θ ∩ \powerset{τ_m}$ therefore agrees with $τ_m$, hence with $τ_{m-1}$ (they differ only at $(i^*, \hist^*)$, which $θ'$ never touches), everywhere it is defined, so $θ' ⊆ τ_{m-1} ∈ C$, giving $θ' ∈ C^⊆$.
-  So $¬\POF(τ_m)$, while $\F(τ_m)$, so $C$ is not persistently falsifiable.
 \end{proof}
 
 % \begin{theorem}
