@@ -380,7 +380,8 @@ Any claim $C$ satisfies exactly one of these:
 \begin{description}
   \item[falsifiable] iff $∀\allleadstog ∉ C: \OF(\allleadstog)$ and $∃\allleadstog ∉ C$;
   \item[never falsifiable] iff $∀\allleadstog ∉ C: ¬\OF(\allleadstog)$, 
-equivalently, iff $∀\allleadstog: ¬\OF(\allleadstog)$;
+    equivalently, iff $∀\allleadstog: ¬\OF(\allleadstog)$, 
+    equivalently, iff $Θ ⊆ C^⊆$;
   \item[with mixed falsifiability] iff $∃\allleadstog ∉ C \suchthat ¬\OF(\allleadstog)$ and $∃\allleadstog ∉ C \suchthat \OF(\allleadstog)$.
 \end{description}
 Indeed, first implies $∃\allleadstog ∉ C \suchthat \OF(\allleadstog)$ which negates second, and the negation of the conjunction of the first two is $(∃\allleadstog ∉ C \suchthat ¬\OF(\allleadstog) ∨ ∄\allleadstog ∉ C) ∧ (∃\allleadstog ∉ C \suchthat \OF(\allleadstog))$, equivalent to the third.
@@ -1205,6 +1206,35 @@ The following example presents a situation where non rejection is due to finiten
   Using \cref{th:complFals}, it is sufficient to prove that for any $C$, considering any $\allleadstog ∉ D$ (thus, $\OF_C(\allleadstog)$), $\OF_{D ∖ C}(\allleadstog)$ holds. This is given by \cref{th:ofRelations}.
 \end{proof}
 
+Given $\allleadstog, \allleadstog' ∈ \allleadstos$, say $\allleadstog \simfin \allleadstog'$ iff $\allleadstog$ and $\allleadstog'$ differ at only finitely many pairs $(i, \hist)$, that is, iff $\card{\set{(i, \hist) ∈ I × \allhists \suchthat \allleadstog(i, \hist) ≠ \allleadstog'(i, \hist)}} ∈ ℕ$.
+$\simfin$ is an equivalence relation on $\allleadstos$: reflexivity and symmetry are immediate, and transitivity holds because, if $\allleadstog \simfin \allleadstog' \simfin \allleadstog''$, the pairs where $\allleadstog$ and $\allleadstog''$ differ are among those where $\allleadstog$ differs from $\allleadstog'$ or $\allleadstog'$ differs from $\allleadstog''$, a finite union of two finite sets.
+
+\begin{definition}[Closed under finite modification]
+  \label{def:cufm}
+  A claim $C$ is \emph{closed under finite modification} iff $∀\allleadstog ∈ C, \allleadstog' ∈ \allleadstos: \allleadstog \simfin \allleadstog' ⇒ \allleadstog' ∈ C$.
+\end{definition}
+
+Being closed under finite modification and non-empty does not entail triviality.
+\begin{example}[Closed under finite modification, yet non-trivial]
+  \label{ex:cufmNonTrivial}
+  Fix any $\allleadstog_0 ∈ \allleadstos$ and let $C = \set{\allleadstog \suchthat \allleadstog \simfin \allleadstog_0}$, the $\simfin$-equivalence class of $\allleadstog_0$.
+  $C$ is closed under finite modification, by transitivity of $\simfin$, and $\allleadstog_0 ∈ C$, yet $C ≠ \allleadstos$ (the world differing from $\allleadstog_0$ at every pair, say, is excluded).
+\end{example}
+
+\begin{theorem}
+  \label{th:cufmNeverFals}
+  If $C ≠ ∅$ is closed under finite modification, then $C$ is never falsifiable.
+\end{theorem}
+\begin{proof}
+  Fix $\allleadstog_0 ∈ C$.
+  Given any $\allleadstog$ and any $θ ∈ Θ ∩ \powerset{\allleadstog}$, let $\allleadstog'$ agree with $θ$ on $θ^{-1}(P)$ and with $\allleadstog_0$ elsewhere; then $\allleadstog' \simfin \allleadstog_0$, as they differ only on the finite set $θ^{-1}(P)$, so $\allleadstog' ∈ C$, and $θ ⊆ \allleadstog'$, giving $θ ∈ C^⊆$.
+  As $\allleadstog$ and $θ$ were arbitrary, $Θ ⊆ C^⊆$, so $\OF(\allleadstog)$ fails for every $\allleadstog$, that is, $C$ is never falsifiable.
+\end{proof}
+
+\begin{remark}
+  The converse of \cref{th:cufmNeverFals} fails: \cref{ex:disjR} is never falsifiable ($Θ ⊆ C^⊆$) yet is not closed under finite modification, as flipping a single individual’s two values (making it satisfy neither disjunct) already leaves $C$.
+\end{remark}
+
 \subsection{POF}
 \begin{remark}
   \label{rk:rpevGap}
@@ -1308,22 +1338,18 @@ We are here interested in the interplay between properties of holding, anonymity
 \begin{proof}
   If $C = ∅$, then $C^⊆ = ∅$, so $∀\allleadstog, θ' ∈ Θ: θ' ∉ C^⊆$, giving $\POF(\allleadstog)$ trivially for every $\allleadstog$, while $\F(\allleadstog)$ also holds for every $\allleadstog$; as $∅ ≠ \allleadstos$, $C$ is persistently falsifiable.
 
-  Conversely, suppose $C$ is persistently falsifiable and $C ≠ ∅$; we derive a contradiction.
-  Say $C$ is \emph{closed under finite modification} iff, for every $\allleadstog ∈ C$ and every $\allleadstog'$ differing from $\allleadstog$ at only finitely many pairs $(i, \hist)$, $\allleadstog' ∈ C$.
+  Conversely, suppose $C ≠ ∅$; we show $C$ is not persistently falsifiable.
 
-  If $C$ is closed under finite modification: fix $\allleadstog_0 ∈ C$ (exists, as $C ≠ ∅$).
-  Given any $\allleadstog$ and any $θ ∈ Θ ∩ \powerset{\allleadstog}$, let $\allleadstog'$ agree with $θ$ on $θ^{-1}(P)$ and with $\allleadstog_0$ elsewhere; then $\allleadstog'$ differs from $\allleadstog_0$ at only the finitely many pairs in $θ^{-1}(P)$, so $\allleadstog' ∈ C$, and $θ ⊆ \allleadstog'$, giving $θ ∈ C^⊆$.
-  As $θ$ was arbitrary, $Θ ⊆ C^⊆$, so $\OF(\allleadstog)$ — hence $\POF(\allleadstog)$ — fails for \emph{every} $\allleadstog$.
-  Since $C ≠ \allleadstos$ (persistent falsifiability requires this), some $\allleadstog^* ∉ C$ exists, giving $\F(\allleadstog^*) ∧ ¬\POF(\allleadstog^*)$, contradicting persistent falsifiability.
+  If $C$ is closed under finite modification (\cref{def:cufm}): by \cref{th:cufmNeverFals}, $C$ is never falsifiable, so $\OF(\allleadstog)$ — hence $\POF(\allleadstog)$ — fails for \emph{every} $\allleadstog$.
+  If $C = \allleadstos$, $C$ is not persistently falsifiable by definition.
+  Otherwise, some $\allleadstog^* ∉ C$ exists, and $\F(\allleadstog^*) ∧ ¬\POF(\allleadstog^*)$ shows $C$ is not persistently falsifiable.
 
   If $C$ is not closed under finite modification: some $\allleadstog_0 ∈ C$ and $\allleadstog^*$, differing from $\allleadstog_0$ at finitely many pairs, have $\allleadstog^* ∉ C$.
   Flipping these pairs one at a time from $\allleadstog_0$ towards $\allleadstog^*$ gives a finite chain $\allleadstog_0 = τ_0, τ_1, …, τ_k = \allleadstog^*$ of consecutive single-pair flips; as $τ_0 ∈ C$ and $τ_k ∉ C$, some $τ_{m-1} ∈ C$, $τ_m ∉ C$ differ at exactly one pair $(i^*, \hist^*)$.
   Let $θ ∈ Θ ∩ \powerset{τ_m}$ touch $i^*$ at some history $β$ incomparable with $\hist^*$ (or, if $\hist^* = ∅$, at any non-empty $β$), available once $\allargs$ has at least two elements.
   Then $θ$ does not touch $(i^*, \hist^*)$, and no $θ' ⊇ θ$ in $Θ$ can either: if $\hist^* ≠ ∅$, $\hist^*$ and $β$ are incomparable, so $Θ$'s requirement that the histories queried at $i^*$ be pairwise comparable forbids ever recording both; if $\hist^* = ∅$, any $θ ⊑ θ'$ can only add, at $i^*$, histories longer than $β$, and $∅$ is shorter than $β$.
   Every $θ ⊑ θ' ∈ Θ ∩ \powerset{τ_m}$ therefore agrees with $τ_m$, hence with $τ_{m-1}$ (they differ only at $(i^*, \hist^*)$, which $θ'$ never touches), everywhere it is defined, so $θ' ⊆ τ_{m-1} ∈ C$, giving $θ' ∈ C^⊆$.
-  So $¬\POF(τ_m)$, while $\F(τ_m)$, again contradicting persistent falsifiability.
-
-  Either way we reach a contradiction, so $C = ∅$.
+  So $¬\POF(τ_m)$, while $\F(τ_m)$, so $C$ is not persistently falsifiable.
 \end{proof}
 
 % \begin{theorem}
