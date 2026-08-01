@@ -108,7 +108,13 @@
 
 %%i
 \NewDocumentCommand{\iprops}{}{\Phi_i}
-\NewDocumentCommand{\allleadstog}{}{\mathord{⇝}}
+\NewDocumentCommand{\allleadstog}{o}{%
+  \IfValueTF{#1}{%
+    \mathord{⇝}^{(#1)}%
+  }{%
+    \mathord{⇝}%
+  }%
+}
 \NewDocumentCommand{\allleadstoginv}{}{\mathord{⇝}^{-1}}
 \NewDocumentCommand{\allpriobss}{}{\finite(\incr(\allhists)^I)}
 \NewDocumentCommand{\allleadstos}{}{P^{I × \allhists}}

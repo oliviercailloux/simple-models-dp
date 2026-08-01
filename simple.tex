@@ -1217,8 +1217,8 @@ $\simfin$ is an equivalence relation on $\allleadstos$: reflexivity and symmetry
 Being closed under finite modification and non-empty does not entail triviality.
 \begin{example}[Closed under finite modification, yet non-trivial]
   \label{ex:cufmNonTrivial}
-  Fix any $\allleadstog_0 ∈ \allleadstos$ and let $C = \set{\allleadstog \suchthat \allleadstog \simfin \allleadstog_0}$, the $\simfin$-equivalence class of $\allleadstog_0$.
-  $C$ is closed under finite modification, by transitivity of $\simfin$, and $\allleadstog_0 ∈ C$, yet $C ≠ \allleadstos$ (the world differing from $\allleadstog_0$ at every pair, say, is excluded).
+  Fix any $\allleadstog[0] ∈ \allleadstos$ and let $C = \set{\allleadstog \suchthat \allleadstog \simfin \allleadstog[0]}$, the $\simfin$-equivalence class of $\allleadstog[0]$.
+  $C$ is closed under finite modification, by transitivity of $\simfin$, and $\allleadstog[0] ∈ C$, yet $C ≠ \allleadstos$ (the world differing from $\allleadstog[0]$ at every pair, say, is excluded).
 \end{example}
 
 \begin{theorem}
@@ -1226,10 +1226,10 @@ Being closed under finite modification and non-empty does not entail triviality.
   If $C ≠ ∅$ is closed under finite modification, then $C$ is never falsifiable.
 \end{theorem}
 \begin{proof}
-  Fix $\allleadstog_0 ∈ C$ and let us show that $Θ ⊆ C^⊆$.
+  Fix $\allleadstog[0] ∈ C$ and let us show that $Θ ⊆ C^⊆$.
   Given any $θ ∈ Θ$, 
   % Given any $\allleadstog$ and any $θ ∈ Θ ∩ \powerset{\allleadstog}$, 
-  let $\allleadstog$ agree with $θ$ on $θ^{-1}(P)$ and with $\allleadstog_0$ elsewhere; then $\allleadstog \simfin \allleadstog_0$, as they differ only on the finite set $θ^{-1}(P)$, so $\allleadstog ∈ C$, and $θ ⊆ \allleadstog$, giving $θ ∈ C^⊆$.
+  let $\allleadstog$ agree with $θ$ on $θ^{-1}(P)$ and with $\allleadstog[0]$ elsewhere; then $\allleadstog \simfin \allleadstog[0]$, as they differ only on the finite set $θ^{-1}(P)$, so $\allleadstog ∈ C$, and $θ ⊆ \allleadstog$, giving $θ ∈ C^⊆$.
 \end{proof}
 
 \begin{theorem}
@@ -1345,11 +1345,11 @@ We are here interested in the interplay between properties of holding, anonymity
   Given a claim $C$ such that $\card{C} = 1$, $C$ is not persistently falsifiable.
 \end{theorem}
 \begin{proof}
-  Let $C = \set{\allleadstog_0}$, fix $i_0 ∈ I$, $\ar_0 ∈ \allargs$, and $p ≠ \allleadstog_0(i_0, ∅)$.
-  Define $\allleadstog$ to agree with $\allleadstog_0$ everywhere except $\allleadstog(i_0, ∅) = p$, so $\allleadstog ∉ C$, that is, $\F(\allleadstog)$.
+  Let $C = \set{\allleadstog[0]}$, fix $i_0 ∈ I$, $\ar_0 ∈ \allargs$, and $p ≠ \allleadstog[0](i_0, ∅)$.
+  Define $\allleadstog$ to agree with $\allleadstog[0]$ everywhere except $\allleadstog(i_0, ∅) = p$, so $\allleadstog ∉ C$, that is, $\F(\allleadstog)$.
   Let $θ = \set{(i_0, (\ar_0), \allleadstog(i_0, (\ar_0)))} ∈ Θ ∩ \powerset{\allleadstog}$; note $θ$ does not touch $(i_0, ∅)$.
   Consider any $θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}$.
-  As $θ$ already fixes $i_0$ at $(\ar_0)$, a rightward extension can never add $(i_0, ∅, \cdot)$, this being shorter than $(\ar_0)$; so $θ'$ never touches $(i_0, ∅)$, the only point where $\allleadstog$ and $\allleadstog_0$ differ, giving $θ' ⊆ \allleadstog_0$, thus $θ' ∈ C^⊆$.
+  As $θ$ already fixes $i_0$ at $(\ar_0)$, a rightward extension can never add $(i_0, ∅, \cdot)$, this being shorter than $(\ar_0)$; so $θ'$ never touches $(i_0, ∅)$, the only point where $\allleadstog$ and $\allleadstog[0]$ differ, giving $θ' ⊆ \allleadstog[0]$, thus $θ' ∈ C^⊆$.
   So $θ$ admits no rightward extension outside $C^⊆$, that is, $¬\POF(\allleadstog)$.
   Hence $\F(\allleadstog) ∧ ¬\POF(\allleadstog)$, so $C$ is not persistently falsifiable.
 \end{proof}
@@ -1367,8 +1367,8 @@ We are here interested in the interplay between properties of holding, anonymity
   If $C = \allleadstos$, $C$ is not persistently falsifiable by definition.
   Otherwise, some $\allleadstog^* ∉ C$ exists, and $\F(\allleadstog^*) ∧ ¬\POF(\allleadstog^*)$ shows $C$ is not persistently falsifiable.
 
-  If $C$ is not closed under finite modification: some $\allleadstog_0 ∈ C$ and $\allleadstog^*$, differing from $\allleadstog_0$ at finitely many pairs, have $\allleadstog^* ∉ C$.
-  Flipping these pairs one at a time from $\allleadstog_0$ towards $\allleadstog^*$ gives a finite chain $\allleadstog_0 = τ_0, τ_1, …, τ_k = \allleadstog^*$ of consecutive single-pair flips; as $τ_0 ∈ C$ and $τ_k ∉ C$, some $τ_{m-1} ∈ C$, $τ_m ∉ C$ differ at exactly one pair $(i^*, \hist^*)$.
+  If $C$ is not closed under finite modification: some $\allleadstog[0] ∈ C$ and $\allleadstog^*$, differing from $\allleadstog[0]$ at finitely many pairs, have $\allleadstog^* ∉ C$.
+  Flipping these pairs one at a time from $\allleadstog[0]$ towards $\allleadstog^*$ gives a finite chain $\allleadstog[0] = τ_0, τ_1, …, τ_k = \allleadstog^*$ of consecutive single-pair flips; as $τ_0 ∈ C$ and $τ_k ∉ C$, some $τ_{m-1} ∈ C$, $τ_m ∉ C$ differ at exactly one pair $(i^*, \hist^*)$.
   Let $θ ∈ Θ ∩ \powerset{τ_m}$ touch $i^*$ at some history $β$ incomparable with $\hist^*$ (or, if $\hist^* = ∅$, at any non-empty $β$), available once $\allargs$ has at least two elements.
   Then $θ$ does not touch $(i^*, \hist^*)$, and no $θ' ⊇ θ$ in $Θ$ can either: if $\hist^* ≠ ∅$, $\hist^*$ and $β$ are incomparable, so $Θ$'s requirement that the histories queried at $i^*$ be pairwise comparable forbids ever recording both; if $\hist^* = ∅$, any $θ ⊑ θ'$ can only add, at $i^*$, histories longer than $β$, and $∅$ is shorter than $β$.
   Every $θ ⊑ θ' ∈ Θ ∩ \powerset{τ_m}$ therefore agrees with $τ_m$, hence with $τ_{m-1}$ (they differ only at $(i^*, \hist^*)$, which $θ'$ never touches), everywhere it is defined, so $θ' ⊆ τ_{m-1} ∈ C$, giving $θ' ∈ C^⊆$.
@@ -2960,9 +2960,9 @@ This appendix reports the current state of \cref{cnj:evStrict}: it is false in g
 
 \begin{example}
   \label{ex:evCollapseTwoPoints}
-  Pick any $\allleadstog_1 ∈ \allleadstos$ and, using $\card P ≥ 2$, let $\allleadstog_0 ∈ \allleadstos$ disagree with $\allleadstog_1$ on every pair.
-  Set $D = \set{\allleadstog_1} ⊊ D' = \set{\allleadstog_1, \allleadstog_0}$.
-  Established verifiability under $D$ holds for every claim $C$ (witness $∅$ if $\allleadstog_1 ∈ C$, vacuously otherwise); established verifiability under $D'$ also holds for every claim $C$: given $\allleadstog ∈ C ∩ D'$, the singleton observation $θ = \set{(i,\hist,\allleadstog(i,\hist))}$, for any $(i,\hist)$, already excludes the other element of $D'$, since $\allleadstog_0, \allleadstog_1$ disagree everywhere.
+  Pick any $\allleadstog[1] ∈ \allleadstos$ and, using $\card P ≥ 2$, let $\allleadstog[0] ∈ \allleadstos$ disagree with $\allleadstog[1]$ on every pair.
+  Set $D = \set{\allleadstog[1]} ⊊ D' = \set{\allleadstog[1], \allleadstog[0]}$.
+  Established verifiability under $D$ holds for every claim $C$ (witness $∅$ if $\allleadstog[1] ∈ C$, vacuously otherwise); established verifiability under $D'$ also holds for every claim $C$: given $\allleadstog ∈ C ∩ D'$, the singleton observation $θ = \set{(i,\hist,\allleadstog(i,\hist))}$, for any $(i,\hist)$, already excludes the other element of $D'$, since $\allleadstog[0], \allleadstog[1]$ disagree everywhere.
   So established verifiability under $D$ and under $D'$ coincide for \emph{every} claim: \cref{cnj:evStrict} is false as stated.
 \end{example}
 
@@ -3019,11 +3019,11 @@ The next example needs the full strength of \cref{th:subsetIsolationCriterion}: 
 \begin{example}
   \label{ex:evSquareVsC}
   Fix one individual $i$, three pairwise distinct arguments $a, b, c$ (so $(a), (b), (c)$ are pairwise incomparable), and, using $\card P ≥ 2$, two values $p ≠ q ∈ P$.
-  Let $\allleadstog_1, …, \allleadstog_5 ∈ \allleadstos$ take value $p$ everywhere except: $\allleadstog_2(i,(a)) = q$; $\allleadstog_3(i,(a)) = \allleadstog_3(i,(b)) = q$; $\allleadstog_4(i,(b)) = q$; $\allleadstog_5(i,(c)) = q$.
-  Set $D = \set{\allleadstog_1, \allleadstog_2, \allleadstog_3, \allleadstog_4}$ (a “square”: $\allleadstog_1, \allleadstog_3$ and $\allleadstog_2, \allleadstog_4$ are its two diagonals, differing at both $(a)$ and $(b)$; the remaining pairs differ at $(a)$ or $(b)$ only), $R = \set{\allleadstog_5}$, $D' = D ∪ R$.
-  No element of $D$ is isolated in $D$: excluding, from $\allleadstog_1$ say, its two neighbours $\allleadstog_2$ (differing only at $(a)$) and $\allleadstog_4$ (differing only at $(b)$) at once would need both $(i,(a),p)$ and $(i,(b),p)$ in the same observation, impossible as $(a), (b)$ are incomparable; symmetrically for $\allleadstog_2, \allleadstog_3, \allleadstog_4$.
-  Yet, for $T = \set{\allleadstog_1, \allleadstog_2}$: $D ∖ T = \set{\allleadstog_3, \allleadstog_4}$, both of which have value $q$ at $(i,(b))$, unlike $\allleadstog_1, \allleadstog_2$; so $θ = \set{(i,(b),p)}$ witnesses $\OF_{D∖T}(\allleadstog_1)$ and $\OF_{D∖T}(\allleadstog_2)$: established verifiability under $D$ holds for $C = T$.
-  But $D' ∖ T = \set{\allleadstog_3, \allleadstog_4, \allleadstog_5}$, and excluding all three from a completion of some $θ ⊆ \allleadstog_1$ would need both $(i,(b),p)$ (against $\allleadstog_3, \allleadstog_4$) and $(i,(c),p)$ (against $\allleadstog_5$, the only coordinate where $\allleadstog_1, \allleadstog_5$ differ) — by \cref{th:dnf}, using the cover of $D' ∖ T$ by the two single-coordinate constraints $(i,(b),q)$ and $(i,(c),q)$ — impossible as $(b), (c)$ are incomparable; so established verifiability under $D'$ fails for $C = T$, by \cref{th:subsetIsolationCriterion}.
+  Let $\allleadstog[1], …, \allleadstog[5] ∈ \allleadstos$ take value $p$ everywhere except: $\allleadstog[2](i,(a)) = q$; $\allleadstog[3](i,(a)) = \allleadstog[3](i,(b)) = q$; $\allleadstog[4](i,(b)) = q$; $\allleadstog[5](i,(c)) = q$.
+  Set $D = \set{\allleadstog[1], \allleadstog[2], \allleadstog[3], \allleadstog[4]}$ (a “square”: $\allleadstog[1], \allleadstog[3]$ and $\allleadstog[2], \allleadstog[4]$ are its two diagonals, differing at both $(a)$ and $(b)$; the remaining pairs differ at $(a)$ or $(b)$ only), $R = \set{\allleadstog[5]}$, $D' = D ∪ R$.
+  No element of $D$ is isolated in $D$: excluding, from $\allleadstog[1]$ say, its two neighbours $\allleadstog[2]$ (differing only at $(a)$) and $\allleadstog[4]$ (differing only at $(b)$) at once would need both $(i,(a),p)$ and $(i,(b),p)$ in the same observation, impossible as $(a), (b)$ are incomparable; symmetrically for $\allleadstog[2], \allleadstog[3], \allleadstog[4]$.
+  Yet, for $T = \set{\allleadstog[1], \allleadstog[2]}$: $D ∖ T = \set{\allleadstog[3], \allleadstog[4]}$, both of which have value $q$ at $(i,(b))$, unlike $\allleadstog[1], \allleadstog[2]$; so $θ = \set{(i,(b),p)}$ witnesses $\OF_{D∖T}(\allleadstog[1])$ and $\OF_{D∖T}(\allleadstog[2])$: established verifiability under $D$ holds for $C = T$.
+  But $D' ∖ T = \set{\allleadstog[3], \allleadstog[4], \allleadstog[5]}$, and excluding all three from a completion of some $θ ⊆ \allleadstog[1]$ would need both $(i,(b),p)$ (against $\allleadstog[3], \allleadstog[4]$) and $(i,(c),p)$ (against $\allleadstog[5]$, the only coordinate where $\allleadstog[1], \allleadstog[5]$ differ) — by \cref{th:dnf}, using the cover of $D' ∖ T$ by the two single-coordinate constraints $(i,(b),q)$ and $(i,(c),q)$ — impossible as $(b), (c)$ are incomparable; so established verifiability under $D'$ fails for $C = T$, by \cref{th:subsetIsolationCriterion}.
 \end{example}
 
 The obstruction throughout \cref{ex:evSquareVsC} is that $Θ$ only allows, for each individual, a single chain of increasingly long queried paths, so two exclusion requirements can conflict when they need incomparable histories of the same individual. The next lemma and theorem isolate and generalize this mechanism.
@@ -3039,17 +3039,17 @@ The obstruction throughout \cref{ex:evSquareVsC} is that $Θ$ only allows, for e
 \begin{theorem}[Coordinate-conflict criterion for strictness]
   \label{th:coordinateConflictGeneral}
   Given priors $D ⊆ D'$, $R = D' ∖ D$, and $T ⊆ D$ satisfying established verifiability under $D$.
-  Suppose some $\allleadstog_0 ∈ T$ has a neighbour $v_1 ∈ D ∖ T$ differing from $\allleadstog_0$ at exactly one pair $(i_0,x)$, and some $v_2 ∈ R$ differing from $\allleadstog_0$ exactly on a set $Z_2 ⊆ \set{i_0} × \allhists$ with every $z ∈ Z_2$ incomparable to $x$.
+  Suppose some $\allleadstog[0] ∈ T$ has a neighbour $v_1 ∈ D ∖ T$ differing from $\allleadstog[0]$ at exactly one pair $(i_0,x)$, and some $v_2 ∈ R$ differing from $\allleadstog[0]$ exactly on a set $Z_2 ⊆ \set{i_0} × \allhists$ with every $z ∈ Z_2$ incomparable to $x$.
   Then established verifiability under $D'$ fails for $C = T$.
 \end{theorem}
 \begin{proof}
-  Suppose $θ ∈ Θ ∩ \powerset{\allleadstog_0}$ witnessed $\OF_{D' ∖ T}(\allleadstog_0)$, so $θ ⊈ v_1$ and $θ ⊈ v_2$.
-  By \cref{th:diffSetNecessity} (with $Z = \set{(i_0,x)}$), $θ$ contains $(i_0,x,\allleadstog_0(i_0,x))$; applied again (with $Z = Z_2$), $θ$ contains some pair $(i_0,z,\allleadstog_0(i_0,z))$ with $z ∈ Z_2$.
+  Suppose $θ ∈ Θ ∩ \powerset{\allleadstog[0]}$ witnessed $\OF_{D' ∖ T}(\allleadstog[0])$, so $θ ⊈ v_1$ and $θ ⊈ v_2$.
+  By \cref{th:diffSetNecessity} (with $Z = \set{(i_0,x)}$), $θ$ contains $(i_0,x,\allleadstog[0](i_0,x))$; applied again (with $Z = Z_2$), $θ$ contains some pair $(i_0,z,\allleadstog[0](i_0,z))$ with $z ∈ Z_2$.
   As $θ ∈ Θ$, its pairs for $i_0$ form an increasing chain, so $x, z$ would have to be comparable, contradicting the hypothesis.
   So no such $θ$ exists, and established verifiability under $D'$ fails for $C = T$ while holding under $D$.
 \end{proof}
 
-\Cref{ex:evSquareVsC} is the case $\card{Z_2}=1$ ($\allleadstog_0=\allleadstog_1$, $v_1=\allleadstog_4$, $v_2=\allleadstog_5$).
+\Cref{ex:evSquareVsC} is the case $\card{Z_2}=1$ ($\allleadstog[0]=\allleadstog[1]$, $v_1=\allleadstog[4]$, $v_2=\allleadstog[5]$).
 
 \subsection{Sufficient conditions for collapse}
 
@@ -3066,7 +3066,7 @@ The simplest collapse mechanism uses one coordinate shared by, and injective on,
   Taking $D'' = D$ and $D'' = D'$ in turn, established verifiability under $D$ and under $D'$ both hold, for every claim.
 \end{proof}
 
-This is exactly what happens in \cref{ex:evCollapseTwoPoints} ($\allleadstog_1, \allleadstog_0$ disagree everywhere, so any coordinate is injective on $D'$), but it is restrictive as soon as $D$ is not small (it forces $\card{D'} ≤ \card P$). The next result weakens it: the shared coordinate need only separate $D$ from $R$, not every element of $D'$ from every other, provided it tracks every other coordinate at which $D$ actually varies.
+This is exactly what happens in \cref{ex:evCollapseTwoPoints} ($\allleadstog[1], \allleadstog[0]$ disagree everywhere, so any coordinate is injective on $D'$), but it is restrictive as soon as $D$ is not small (it forces $\card{D'} ≤ \card P$). The next result weakens it: the shared coordinate need only separate $D$ from $R$, not every element of $D'$ from every other, provided it tracks every other coordinate at which $D$ actually varies.
 
 \begin{theorem}[Disjoint-range decomposition]
   \label{th:evDisjointRanges}
@@ -3093,8 +3093,8 @@ This is exactly what happens in \cref{ex:evCollapseTwoPoints} ($\allleadstog_1, 
 
 \begin{example}
   \label{ex:evSquareVsThird}
-  Reusing the square $D$ from \cref{ex:evSquareVsC}, replace the singleton $R$ by one point $\allleadstog_5$ chosen so that $\allleadstog_5(i,(a)) = \allleadstog_5(i,(b)) = s$ for a third value $s ∉ \set{p,q}$ (using $\card P ≥ 3$), agreeing with the constant $p$ elsewhere.
-  $D, R$ have disjoint ranges at $(i,(a))$ ($\set{p,q}$ versus $\set{s}$) and at $(i,(b))$, and $D$ is constant elsewhere, so \cref{th:evDisjointRanges} applies; as $R$ is a singleton, trivially isolated in itself, \cref{th:evDisjointRangesCollapse} gives established verifiability under $D$ and under $D ∪ \set{\allleadstog_5}$ coinciding for \emph{every} claim — even though $D$ is the very same non-isolated square that, against the singleton $R = \set{\allleadstog_5}$ of \cref{ex:evSquareVsC}, gave strictness.
+  Reusing the square $D$ from \cref{ex:evSquareVsC}, replace the singleton $R$ by one point $\allleadstog[5]$ chosen so that $\allleadstog[5](i,(a)) = \allleadstog[5](i,(b)) = s$ for a third value $s ∉ \set{p,q}$ (using $\card P ≥ 3$), agreeing with the constant $p$ elsewhere.
+  $D, R$ have disjoint ranges at $(i,(a))$ ($\set{p,q}$ versus $\set{s}$) and at $(i,(b))$, and $D$ is constant elsewhere, so \cref{th:evDisjointRanges} applies; as $R$ is a singleton, trivially isolated in itself, \cref{th:evDisjointRangesCollapse} gives established verifiability under $D$ and under $D ∪ \set{\allleadstog[5]}$ coinciding for \emph{every} claim — even though $D$ is the very same non-isolated square that, against the singleton $R = \set{\allleadstog[5]}$ of \cref{ex:evSquareVsC}, gave strictness.
   So $D$'s internal complexity is not what matters: what matters is whether $D, R$ overlap in the values they use, and, recursively, whether $R$ itself is simple.
 \end{example}
 
@@ -3106,8 +3106,8 @@ For a full hypercube $D$ against a same-individual singleton $R$, the tools abov
 
 \begin{theorem}[Complete dichotomy: a hypercube against a same-individual singleton]
   \label{th:hypercubeDichotomy}
-  Fix an individual $i$, a finite set $H ⊆ \allhists$ of pairwise incomparable one-step histories with $\card H ≥ 2$, values $p ≠ q ∈ P$, and a baseline $\allleadstog_{\mathrm{base}} ∈ \allleadstos$.
-  Let $D = \set{\allleadstog ∈ \allleadstos \suchthat \allleadstog = \allleadstog_{\mathrm{base}} \text{ off } \set{i} × H, \text{ and } \allleadstog(i,\hist) ∈ \set{p,q} \, ∀\hist ∈ H}$ (so $\card D = 2^{\card H}$), and $R = \set{r}$ for some $r$ agreeing with $\allleadstog_{\mathrm{base}}$ off $\set{i} × H$, $r ∉ D$.
+  Fix an individual $i$, a finite set $H ⊆ \allhists$ of pairwise incomparable one-step histories with $\card H ≥ 2$, values $p ≠ q ∈ P$, and a baseline $\allleadstog[\mathrm{base}] ∈ \allleadstos$.
+  Let $D = \set{\allleadstog ∈ \allleadstos \suchthat \allleadstog = \allleadstog[\mathrm{base}] \text{ off } \set{i} × H, \text{ and } \allleadstog(i,\hist) ∈ \set{p,q} \, ∀\hist ∈ H}$ (so $\card D = 2^{\card H}$), and $R = \set{r}$ for some $r$ agreeing with $\allleadstog[\mathrm{base}]$ off $\set{i} × H$, $r ∉ D$.
   \begin{enumerate}
     \item If $r(i,\hist) ∉ \set{p,q}$ for every $\hist ∈ H$, established verifiability under $D$ and under $D ∪ R$ coincide for every claim.
     \item Otherwise (some $\hist ∈ H$ has $r(i,\hist) ∈ \set{p,q}$), established verifiability under $D ∪ R$ is strictly stronger than under $D$.
@@ -3117,10 +3117,10 @@ For a full hypercube $D$ against a same-individual singleton $R$, the tools abov
   (1) $D, R$ have disjoint ranges at $(i,\hist)$ for every $\hist ∈ H$, and $D$ is constant off $\set{i} × H$; \cref{th:evDisjointRanges} applies (with $i_0 = i$ and any $\hist_0 ∈ H$ as the pivot); as $R$ is a singleton, \cref{th:evDisjointRangesCollapse} gives the conclusion.
 
   (2) Let $z^* ∈ H$ with $r(i,z^*) ∈ \set{p,q}$.
-  Let $\allleadstog_0 ∈ D$ agree with $r$ at every $\hist ∈ H$ with $r(i,\hist) ∈ \set{p,q}$ (in particular at $z^*$), taking either value in $\set{p,q}$ at the remaining histories of $H$.
-  Let $v_1 ∈ D$ differ from $\allleadstog_0$ exactly at $(i,z^*)$, and let $T = \set{\allleadstog ∈ D \suchthat \allleadstog(i,z^*) = \allleadstog_0(i,z^*)}$ (so $\allleadstog_0 ∈ T$, $v_1 ∈ D ∖ T$).
-  The single pair $\set{(i,z^*,\allleadstog_0(i,z^*))}$ excludes all of $D ∖ T$ from every $\allleadstog ∈ T$: established verifiability under $D$ holds for $C = T$.
-  By construction, $\allleadstog_0$ and $r$ differ exactly on $Z_2 = \set{i} × \set{\hist ∈ H \suchthat r(i,\hist) ∉ \set{p,q}}$ — nonempty, as $r ∉ D$ — which does not contain $z^*$; as $H$ is pairwise incomparable, every $z ∈ Z_2$ is incomparable to $z^*$.
+  Let $\allleadstog[0] ∈ D$ agree with $r$ at every $\hist ∈ H$ with $r(i,\hist) ∈ \set{p,q}$ (in particular at $z^*$), taking either value in $\set{p,q}$ at the remaining histories of $H$.
+  Let $v_1 ∈ D$ differ from $\allleadstog[0]$ exactly at $(i,z^*)$, and let $T = \set{\allleadstog ∈ D \suchthat \allleadstog(i,z^*) = \allleadstog[0](i,z^*)}$ (so $\allleadstog[0] ∈ T$, $v_1 ∈ D ∖ T$).
+  The single pair $\set{(i,z^*,\allleadstog[0](i,z^*))}$ excludes all of $D ∖ T$ from every $\allleadstog ∈ T$: established verifiability under $D$ holds for $C = T$.
+  By construction, $\allleadstog[0]$ and $r$ differ exactly on $Z_2 = \set{i} × \set{\hist ∈ H \suchthat r(i,\hist) ∉ \set{p,q}}$ — nonempty, as $r ∉ D$ — which does not contain $z^*$; as $H$ is pairwise incomparable, every $z ∈ Z_2$ is incomparable to $z^*$.
   \Cref{th:coordinateConflictGeneral} (with $x = z^*$, $v_2 = r$) then gives that established verifiability under $D ∪ R$ fails for $C = T$, while it holds under $D$.
 \end{proof}
 
@@ -3129,8 +3129,8 @@ For a full hypercube $D$ against a same-individual singleton $R$, the tools abov
 What remains open is what happens once $R$ is not a singleton (the recursive question above) and once $D$ is not a full hypercube. The following example shows the second direction is not a routine extension: the dichotomy is special to $H$ being \emph{pairwise incomparable}, not to $D, R$ merely sharing or not sharing values.
 
 \begin{example}
-  Let $D = \set{\allleadstog_1,\allleadstog_4}$, agreeing on the baseline $p$ except $\allleadstog_1(i,(b)) = p$, $\allleadstog_4(i,(b)) = q$, and let $r$ agree with $\allleadstog_1$ at $(i,(b))$ (so $r(i,(b)) = p$, matching $D$'s range there) but differ at the longer, \emph{comparable} history $(i,(b,c))$: $r(i,(b,c)) = q ≠ p = \allleadstog_1(i,(b,c))$.
-  Established verifiability under $D$ for $T = \set{\allleadstog_1}$ is witnessed by $θ = \set{(i,(b),p),(i,(b,c),p)}$ — a valid observation, as $(b) ⊆ (b,c)$ form an increasing chain — and this same $θ$ excludes both $\allleadstog_4$ (differing at $(b)$) and $r$ (differing at $(b,c)$) at once: established verifiability under $D ∪ \set{r}$ holds for $T$ too, despite $r$ sharing $D$'s value at $(i,(b))$.
+  Let $D = \set{\allleadstog[1],\allleadstog[4]}$, agreeing on the baseline $p$ except $\allleadstog[1](i,(b)) = p$, $\allleadstog[4](i,(b)) = q$, and let $r$ agree with $\allleadstog[1]$ at $(i,(b))$ (so $r(i,(b)) = p$, matching $D$'s range there) but differ at the longer, \emph{comparable} history $(i,(b,c))$: $r(i,(b,c)) = q ≠ p = \allleadstog[1](i,(b,c))$.
+  Established verifiability under $D$ for $T = \set{\allleadstog[1]}$ is witnessed by $θ = \set{(i,(b),p),(i,(b,c),p)}$ — a valid observation, as $(b) ⊆ (b,c)$ form an increasing chain — and this same $θ$ excludes both $\allleadstog[4]$ (differing at $(b)$) and $r$ (differing at $(b,c)$) at once: established verifiability under $D ∪ \set{r}$ holds for $T$ too, despite $r$ sharing $D$'s value at $(i,(b))$.
 \end{example}
 
 So sharing a value with $D$ at an active coordinate does not, by itself, force strictness: what made \cref{th:hypercubeDichotomy} work is specifically that every "extra" coordinate $r$ might need is incomparable to every coordinate $D$ might need. Once $R$'s point can reach past $D$'s coordinates along an extension of the same chain, no amount of value-sharing forces strictness.
@@ -3153,29 +3153,29 @@ This hands us an actual escaping witness to reason about — one guaranteed to e
 
 \begin{lemma}[Escaping PEV witnesses must diverge]
   \label{th:rpevDiverge}
-  Suppose $C$ satisfies PEV under $D = ¬\POF_C$, and suppose $D ∖ C ≠ ∅$; let $\allleadstog_0 ∈ D ∖ C$ be arbitrary.
-  As $\allleadstog_0 ∈ D = ¬\POF_C$, some $θ_1 ∈ Θ ∩ \powerset{\allleadstog_0}$ witnesses $¬\POF_C(\allleadstog_0)$ (a \emph{hiding} prefix, echoing the visibility-issues terminology above): every rightward $θ_1 ⊆ θ' ⊆ \allleadstog_0$ satisfies $θ' ∈ C^⊆$.
+  Suppose $C$ satisfies PEV under $D = ¬\POF_C$, and suppose $D ∖ C ≠ ∅$; let $\allleadstog[0] ∈ D ∖ C$ be arbitrary.
+  As $\allleadstog[0] ∈ D = ¬\POF_C$, some $θ_1 ∈ Θ ∩ \powerset{\allleadstog[0]}$ witnesses $¬\POF_C(\allleadstog[0])$ (a \emph{hiding} prefix, echoing the visibility-issues terminology above): every rightward $θ_1 ⊆ θ' ⊆ \allleadstog[0]$ satisfies $θ' ∈ C^⊆$.
   In particular, the trivial case $θ' = θ_1$ gives $θ_1 ∈ C^⊆$: pick any completion $θ_1 ⊆ \allleadstog$, $\allleadstog ∈ C$.
   Now $\allleadstog ∈ C ∩ D$, so this is where the PEV hypothesis is actually used: testing it at $\allleadstog$ for the prefix $θ_1$ gives a rightward extension $θ_1 ⊆ θ_1' ⊆ \allleadstog$, with $θ_1' ∉ (D ∖ C)^⊆$.
-  This $θ_1'$ satisfies $θ_1' ⊈ \allleadstog_0$.
+  This $θ_1'$ satisfies $θ_1' ⊈ \allleadstog[0]$.
 \end{lemma}
 \begin{proof}
-  If $θ_1' ⊆ \allleadstog_0$, then $\allleadstog_0$ is a completion of $θ_1'$ lying in $D ∖ C$, contradicting $θ_1' ∉ (D ∖ C)^⊆$.
+  If $θ_1' ⊆ \allleadstog[0]$, then $\allleadstog[0]$ is a completion of $θ_1'$ lying in $D ∖ C$, contradicting $θ_1' ∉ (D ∖ C)^⊆$.
 \end{proof}
 
 The most direct route to \cref{cnj:rpevProv} would go as follows.
-$\allleadstog_0$ is one specific witness of how bad $D ∖ C$ is: whatever finite amount of $\allleadstog_0$’s own values, beyond $θ_1$, an observer is shown, this always remains compatible with $C$ — that is exactly what makes $θ_1$ a \emph{hiding} prefix for $\allleadstog_0$.
-So a natural hope would be that PEV’s own escaping witness, tested at some $\allleadstog ∈ C$ extending $θ_1$, could simply be built by tracking $\allleadstog_0$’s pattern itself: reveal more and more of what $\allleadstog_0$ would say beyond $θ_1$, and hope this eventually excludes $D ∖ C$.
+$\allleadstog[0]$ is one specific witness of how bad $D ∖ C$ is: whatever finite amount of $\allleadstog[0]$’s own values, beyond $θ_1$, an observer is shown, this always remains compatible with $C$ — that is exactly what makes $θ_1$ a \emph{hiding} prefix for $\allleadstog[0]$.
+So a natural hope would be that PEV’s own escaping witness, tested at some $\allleadstog ∈ C$ extending $θ_1$, could simply be built by tracking $\allleadstog[0]$’s pattern itself: reveal more and more of what $\allleadstog[0]$ would say beyond $θ_1$, and hope this eventually excludes $D ∖ C$.
 
 \Cref{th:rpevDiverge} rules this hope out directly.
-If the escaping witness $θ_1'$ merely reproduced $\allleadstog_0$’s own values beyond $θ_1$ (that is, $θ_1' ⊆ \allleadstog_0$), then $\allleadstog_0$ itself would be a completion of $θ_1'$; as $\allleadstog_0 ∈ D ∖ C$, this would mean $θ_1'$ fails to exclude $D ∖ C$ — contradicting the very thing $θ_1'$ was supposed to achieve.
-So the escaping witness cannot simply reproduce what $\allleadstog_0$ hides behind $θ_1$: at some point beyond $θ_1$, it must show a value genuinely different from what $\allleadstog_0$ would show there, actively diverging from it rather than passively following it.
+If the escaping witness $θ_1'$ merely reproduced $\allleadstog[0]$’s own values beyond $θ_1$ (that is, $θ_1' ⊆ \allleadstog[0]$), then $\allleadstog[0]$ itself would be a completion of $θ_1'$; as $\allleadstog[0] ∈ D ∖ C$, this would mean $θ_1'$ fails to exclude $D ∖ C$ — contradicting the very thing $θ_1'$ was supposed to achieve.
+So the escaping witness cannot simply reproduce what $\allleadstog[0]$ hides behind $θ_1$: at some point beyond $θ_1$, it must show a value genuinely different from what $\allleadstog[0]$ would show there, actively diverging from it rather than passively following it.
 
-Two routes to settling \cref{cnj:rpevProv} remain open: a compactness argument, iterating the construction of \cref{th:rpevDiverge} along an increasing sequence of prefixes agreeing with $\allleadstog_0$ further and further, to show the required divergence cannot be sustained indefinitely; and a direct counterexample, a claim $C$ for which $D ∖ C$ is spread across many, individually escapable, worlds rather than concentrated in one $\allleadstog_0$, so that every world in $C$ can use a private, ever-available escape route.
+Two routes to settling \cref{cnj:rpevProv} remain open: a compactness argument, iterating the construction of \cref{th:rpevDiverge} along an increasing sequence of prefixes agreeing with $\allleadstog[0]$ further and further, to show the required divergence cannot be sustained indefinitely; and a direct counterexample, a claim $C$ for which $D ∖ C$ is spread across many, individually escapable, worlds rather than concentrated in one $\allleadstog[0]$, so that every world in $C$ can use a private, ever-available escape route.
 A König-type argument for the first route does not directly apply: the tree of rightward extensions is not finitely branching whenever $I$ is infinite, since introducing a fresh individual is itself an unbounded branching choice; a compactness argument here would need a different tool, such as an ultrafilter construction over $I$.
 Even that alternative is not straightforward, and for a sharper reason than branching: $\allleadstos = P^{I × \allhists}$ is compact (Tychonoff, as $P$ is finite), but standard compactness arguments — net convergence, or the finite intersection property for closed families — require the family of test extensions to be \emph{directed}, meaning any two admit a common refinement.
-For a fixed $\allleadstog_0$, two valid rightward extensions of the same prefix, both in $Θ ∩ \powerset{\allleadstog_0}$, can commit to different, incomparable branches for the same individual (extending, say, $(\ar)$ to $(\ar, \ar)$ in one and to $(\ar, \ar')$ in the other); their union is not chain-respecting, hence not itself in $Θ$.
-So the family of $Θ$-valid rightward extensions of a prefix is not directed, even restricted to a single fixed $\allleadstog_0$, and restricting $\allargs$ to be finite does not repair this: the non-directedness comes from any two incomparable branches existing at all, not from unboundedly many of them.
+For a fixed $\allleadstog[0]$, two valid rightward extensions of the same prefix, both in $Θ ∩ \powerset{\allleadstog[0]}$, can commit to different, incomparable branches for the same individual (extending, say, $(\ar)$ to $(\ar, \ar)$ in one and to $(\ar, \ar')$ in the other); their union is not chain-respecting, hence not itself in $Θ$.
+So the family of $Θ$-valid rightward extensions of a prefix is not directed, even restricted to a single fixed $\allleadstog[0]$, and restricting $\allargs$ to be finite does not repair this: the non-directedness comes from any two incomparable branches existing at all, not from unboundedly many of them.
 This means $¬\POF_S$ is not literally a topological closure condition to begin with, since it tests strictly fewer, non-directed extensions than compactness arguments assume — precisely because $Θ$ encodes that incomparable branches cannot be probed simultaneously, the realistic-protocol constraint the whole framework is built on.
 A genuine compactness proof of \cref{cnj:rpevProv}, if one exists, would need a substitute for both König's lemma and standard filter or net arguments.
 
@@ -3201,42 +3201,42 @@ A genuine compactness proof of \cref{cnj:rpevProv}, if one exists, would need a 
 
 \begin{remark}[The singleton case]
   \label{rk:rpevSingleton}
-  A tractable test: could $D ∖ C$ ever be a single point $\set{\allleadstog_0}$?
-  $\POF_{\set{\allleadstog_0}}(\allleadstog)$, for $\allleadstog ∈ C$, only requires every prefix to be rightward-extendable to some disagreement with $\allleadstog_0$.
-  If $\allleadstog$ differs from $\allleadstog_0$ at only finitely many points, an adversarial prefix can permanently block each of them (touching, for each differing individual, some other history first — always available once $\allargs$ has at least two elements, even for a difference located at the root $∅$).
-  So PEV can only survive at an $\allleadstog ∈ C$ that differs from $\allleadstog_0$ at infinitely many independent individuals, mirroring the “fresh reserve” move used in the proof of \cref{th:rpevDiverge} — and PEV under $D$ requires this of \emph{every} $\allleadstog ∈ C$, not just one.
+  A tractable test: could $D ∖ C$ ever be a single point $\set{\allleadstog[0]}$?
+  $\POF_{\set{\allleadstog[0]}}(\allleadstog)$, for $\allleadstog ∈ C$, only requires every prefix to be rightward-extendable to some disagreement with $\allleadstog[0]$.
+  If $\allleadstog$ differs from $\allleadstog[0]$ at only finitely many points, an adversarial prefix can permanently block each of them (touching, for each differing individual, some other history first — always available once $\allargs$ has at least two elements, even for a difference located at the root $∅$).
+  So PEV can only survive at an $\allleadstog ∈ C$ that differs from $\allleadstog[0]$ at infinitely many independent individuals, mirroring the “fresh reserve” move used in the proof of \cref{th:rpevDiverge} — and PEV under $D$ requires this of \emph{every} $\allleadstog ∈ C$, not just one.
 
-  This looks structurally difficult to arrange: $D ∖ C = \set{\allleadstog_0}$ means $C$ excludes only one point, which typically leaves plenty of “near misses” inside $C$ — worlds differing from $\allleadstog_0$ at only finitely many coordinates, such as a single flipped coordinate — exactly the worlds at which PEV was just shown to fail.
+  This looks structurally difficult to arrange: $D ∖ C = \set{\allleadstog[0]}$ means $C$ excludes only one point, which typically leaves plenty of “near misses” inside $C$ — worlds differing from $\allleadstog[0]$ at only finitely many coordinates, such as a single flipped coordinate — exactly the worlds at which PEV was just shown to fail.
   So a singleton $D ∖ C$ seems to force the very structural conflict described by \cref{rk:rpevDuality}: the infinite redundancy PEV needs everywhere is in tension with $D ∖ C$ being minimal.
   This is not yet a proof that $D ∖ C$ cannot be a singleton under \cref{cnj:rpevProv}’s hypothesis, only a further, structurally distinct, piece of evidence for it.
 \end{remark}
 
 \begin{lemma}[Near misses force the escape witness through the flip]
   \label{th:rpevNearMiss}
-  Suppose $D = ¬\POF_C$ and $D ∖ C = \set{\allleadstog_0}$ exactly, with hiding prefix $θ_1 ⊆ \allleadstog_0$.
-  Given a fresh individual $i^* ∈ I$ (untouched by $θ_1$), a history $h^*$, and a value $v ≠ \allleadstog_0(i^*, h^*)$, let $\allleadstog^*$ agree with $\allleadstog_0$ everywhere except $\allleadstog^*(i^*, h^*) = v$.
-  If $\allleadstog^* ∉ C$ (hence $\allleadstog^* ≠ \allleadstog_0$ forces $\POF_C(\allleadstog^*)$, as $D ∖ C$ has no second element), then any rightward $ψ ⊇ θ_1$, $ψ ⊆ \allleadstog^*$, witnessing $\POF_C(\allleadstog^*)$ (that is, $ψ ∉ C^⊆$) must touch $(i^*, h^*)$.
+  Suppose $D = ¬\POF_C$ and $D ∖ C = \set{\allleadstog[0]}$ exactly, with hiding prefix $θ_1 ⊆ \allleadstog[0]$.
+  Given a fresh individual $i^* ∈ I$ (untouched by $θ_1$), a history $h^*$, and a value $v ≠ \allleadstog[0](i^*, h^*)$, let $\allleadstog^*$ agree with $\allleadstog[0]$ everywhere except $\allleadstog^*(i^*, h^*) = v$.
+  If $\allleadstog^* ∉ C$ (hence $\allleadstog^* ≠ \allleadstog[0]$ forces $\POF_C(\allleadstog^*)$, as $D ∖ C$ has no second element), then any rightward $ψ ⊇ θ_1$, $ψ ⊆ \allleadstog^*$, witnessing $\POF_C(\allleadstog^*)$ (that is, $ψ ∉ C^⊆$) must touch $(i^*, h^*)$.
 \end{lemma}
 \begin{proof}
   As $(i^*, h^*) ∉ θ_1^{-1}(P)$, $θ_1 ⊆ \allleadstog^*$.
-  If $ψ$ did not touch $(i^*, h^*)$, then $ψ ⊆ \allleadstog_0$ (it would agree with $\allleadstog^*$ everywhere it does touch, and $\allleadstog^*$ agrees with $\allleadstog_0$ off $(i^*, h^*)$), and $ψ$ is a rightward extension of $θ_1$ within $\allleadstog_0$; the hiding-prefix property then gives $ψ ∈ C^⊆$, contradicting $ψ ∉ C^⊆$.
+  If $ψ$ did not touch $(i^*, h^*)$, then $ψ ⊆ \allleadstog[0]$ (it would agree with $\allleadstog^*$ everywhere it does touch, and $\allleadstog^*$ agrees with $\allleadstog[0]$ off $(i^*, h^*)$), and $ψ$ is a rightward extension of $θ_1$ within $\allleadstog[0]$; the hiding-prefix property then gives $ψ ∈ C^⊆$, contradicting $ψ ∉ C^⊆$.
 \end{proof}
 
-\Cref{th:rpevNearMiss} pins down where the escape witness for each near miss must go, but not yet an outright contradiction: reverting $ψ$’s value at $(i^*, h^*)$ back to $\allleadstog_0$’s gives a different finite specification, one already known to lie in $C^⊆$ via $\allleadstog_0$ itself, and $C$ remains free to be sensitive to that single coordinate — so this alone does not rule out the singleton case.
+\Cref{th:rpevNearMiss} pins down where the escape witness for each near miss must go, but not yet an outright contradiction: reverting $ψ$’s value at $(i^*, h^*)$ back to $\allleadstog[0]$’s gives a different finite specification, one already known to lie in $C^⊆$ via $\allleadstog[0]$ itself, and $C$ remains free to be sensitive to that single coordinate — so this alone does not rule out the singleton case.
 Closing this gap, or exhibiting a genuine counterexample instead, remains open; three independent attempts at the latter (\cref{rk:rpevDuality}’s pattern, an OR-cell conjunction across individuals, and an infinitely-often tail claim) have all instead made $C$ itself unfalsifiable, collapsing $D$ to $\allleadstos$ before the intended tension could be set up — a third instance of the same failure mode, and further indirect evidence for \cref{cnj:rpevProv}.
 
 \begin{lemma}[Excluding a finite set needs individually-unblockable disagreement]
   \label{th:rpevFiniteS}
-  Given a finite $S = \set{\allleadstog_0, …, \allleadstog_{k-1}} ⊆ \allleadstos$ and $\allleadstog ∉ S$: if $\POF_S(\allleadstog)$ holds, then for each $j$, $\allleadstog$ differs from $\allleadstog_j$ at infinitely many distinct individuals.
+  Given a finite $S = \set{\allleadstog[0], …, \allleadstog[k-1]} ⊆ \allleadstos$ and $\allleadstog ∉ S$: if $\POF_S(\allleadstog)$ holds, then for each $j$, $\allleadstog$ differs from $\allleadstog[j]$ at infinitely many distinct individuals.
 \end{lemma}
 \begin{proof}
-  Fix $j$, and suppose instead $\allleadstog$ differs from $\allleadstog_j$ at only finitely many individuals.
-  An adversarial prefix can, for each such individual, touch it on a branch other than the one carrying its disagreement with $\allleadstog_j$ there, permanently blocking recovery of that disagreement (available as soon as $\card{\allargs} ≥ 2$, even for a disagreement located at the root $∅$).
-  After this prefix, $\allleadstog_j$ remains a valid completion of every further rightward extension, so no such extension can exclude $\allleadstog_j$, hence none can exclude $S$.
+  Fix $j$, and suppose instead $\allleadstog$ differs from $\allleadstog[j]$ at only finitely many individuals.
+  An adversarial prefix can, for each such individual, touch it on a branch other than the one carrying its disagreement with $\allleadstog[j]$ there, permanently blocking recovery of that disagreement (available as soon as $\card{\allargs} ≥ 2$, even for a disagreement located at the root $∅$).
+  After this prefix, $\allleadstog[j]$ remains a valid completion of every further rightward extension, so no such extension can exclude $\allleadstog[j]$, hence none can exclude $S$.
 \end{proof}
 
 \Cref{th:rpevFiniteS} generalizes the single-point mechanism behind \cref{rk:rpevSingleton} to any finite target: whenever $D ∖ C$ is finite, PEV can only hold by requiring every world in $C$ to differ from \emph{every} point of $D ∖ C$ at infinitely many individuals at once — a demand no construction tried so far can reconcile with $D ∖ C$ actually being finite.
-Two further, structurally distinct attempts to isolate a single hiding point — the complement of a single point, $C = \allleadstos ∖ \set{\allleadstog_0}$, and the claim “differs from $\allleadstog_0$ at exactly one coordinate” — both collapse instead of isolating $\allleadstog_0$.
+Two further, structurally distinct attempts to isolate a single hiding point — the complement of a single point, $C = \allleadstos ∖ \set{\allleadstog[0]}$, and the claim “differs from $\allleadstog[0]$ at exactly one coordinate” — both collapse instead of isolating $\allleadstog[0]$.
 The latter yields a clean bonus characterization: exclusion of a single point by a cover of “exactly $n$ differences”-style claims holds exactly when the disagreement spans infinitely many individuals, turning \cref{th:rpevFiniteS}’s necessary condition into an iff in that case — but $D ∖ C$ still comes out rich rather than a singleton, and PEV collapses on it just as in \cref{ex:rpevNonDegenerate}.
 Five independent constructions now confirm \cref{cnj:rpevProv} without exception; a general proof or a genuine counterexample both remain open.
 
