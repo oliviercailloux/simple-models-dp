@@ -494,13 +494,13 @@ Converting a claim to disjunctive normal form is useful to characterize its comp
 Established verifiability only requires \emph{some} proving observation to exist at each $\allleadstog ∈ C ∩ D$; nothing prevents that witness from being unusable once further, still compatible, observation occurs (if some extension of it is again completable into $D ∖ C$).
 Realistic protocols cannot revisit a shorter exposure once a longer, or merely different, one has been shown to an individual, so, mirroring how $\POF$ strengthens $\OF$ (\cref{th:ex-post}) by requiring that \emph{every} prefix admit a rightward falsifying extension, we ask instead that every prefix admit a rightward extension that still proves $C$.
 
-Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{permanently established-verifiable} (PEV) under $D$ at $\allleadstog$ iff
+Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{permanently verifiable} (PV) under $D$ at $\allleadstog$ iff
 $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀θ' ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$.
 $C$ satisfies PEV under prior $D$ iff this holds $∀\allleadstog ∈ C ∩ D$.
 
 \begin{theorem}[PEV as $\POF_{D ∖ C}$]
   \label{th:rpevChar}
-  Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$: $C$ is PEV under $D$ at $\allleadstog$ iff $\POF_{D ∖ C}(\allleadstog)$.
+  Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$: $C$ is PV under $D$ at $\allleadstog$ iff $\POF_{D ∖ C}(\allleadstog)$.
   Consequently, $C$ satisfies PEV under prior $D$ iff $∀\allleadstog ∈ C ∩ D: \POF_{D ∖ C}(\allleadstog)$.
 \end{theorem}
 \begin{proof}
@@ -522,7 +522,7 @@ So, should observation happen to proceed along $θ_1$ rather than toward $θ_0$,
 This is exactly the fragility that motivated preferring $¬\POF$ over $¬\OF$ as the prior in the first place, now reappearing on the verification side rather than the falsification side.
 So the right adequacy criterion is that $C$ satisfies PEV under $¬\POF_C$, not merely established verifiability under $¬\POF_C$: only PEV guarantees that $C$ stays provable after arbitrary observations.
 
-The not-stronger demand that $C$ satisfies PEV under $D = ¬\POF_C$ is arguably the one that should be enforced, though \cref{cnj:rpevProv} suggests that it might make no difference so we might as well study provability by $D$ in what follows.
+The not-stronger demand that $C$ satisfies PEV under $D = ¬\POF_C$ is arguably the one that should be enforced, though \cref{cnj:rpevProv} suggests that it might make no difference.
 
 \subsection{Persistent falsifiability}
 Consider a claim that in some world satisfies F but not POF.
@@ -1232,6 +1232,7 @@ Being closed under finite modification and non-empty does not entail triviality.
 \end{proof}
 
 \begin{remark}
+  \label{rk:cufmConverseFails}
   The converse of \cref{th:cufmNeverFals} fails: \cref{ex:disjR} is never falsifiable ($Θ ⊆ C^⊆$) yet is not closed under finite modification, as flipping a single individual’s two values (making it satisfy neither disjunct) already leaves $C$.
 \end{remark}
 
@@ -1265,6 +1266,42 @@ A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\POF
   Indeed, $(i, α, .) ∉ θ'$, because $θ'$ observing $i$ must use only extensions of $α'$, itself longer than $α$; thus,
   $θ' ⊆ \allleadstog[j - 1]$, as $\allleadstog[j - 1]$ agrees with $\allleadstog[j]$ on every other pair than $(i, α)$.
 \end{proof}
+
+\begin{theorem}
+  A claim $C$ is PEV under $D = ¬\POF$ iff $C = ∅ ∨ C = \allleadstos$.
+\end{theorem}
+\begin{proof}
+  If $C = ∅$, then $∀θ ∈ Θ: θ ∉ C^⊆$, thus $∀\allleadstog: \POF(\allleadstog)$.
+
+  Conversely, suppose $\allleadstos ≠ C ≠ ∅$; we show $∃\allleadstog ∈ C \suchthat ¬\POF(\allleadstog)$.
+
+  PEV demands that all worlds in $C$ satisfy PV:
+  $∀θ, ∃θ ⊑ θ' ∉ (D ∖ C)^⊆$.
+  In other words, that $\POF_{D ∖ C}(\allleadstog)$.
+  
+  We show $∃\allleadstog ∈ C \suchthat$ for some prefix $θ$, all completions $θ'$ are completable in $D ∖ C$.
+
+  If $C$ is closed under finite modification (\cref{def:cufm}), by \cref{th:cufmNeverFals}, $∀\allleadstog: ¬\OF(\allleadstog)$, thus $¬\POF(\allleadstog)$,
+  thus $D ∖ C = \overline{C}$.
+  As $\simfin$ is an equivalence relation,
+  $C$ is closed under finite modification iff
+  $\overline{C}$ is closed under finite modification.
+  Therefore, by \cref{th:cufmNeverFals} again, $∀\allleadstog: ¬\POF_{\overline{C}}(\allleadstog)$.
+
+  If $C$ is not closed under finite modification, for some $n ∈ ℕ$, some two worlds $\allleadstog[0] ∈ C, \allleadstog[n] ∉ C$ differ at exactly $n$ pairs.
+  We can build a sequence of worlds $(\allleadstog[k])_{1 ≤ k ≤ n - 1}$, by flipping one pair at a time, such that $∀1 ≤ k ≤ n$, each $\allleadstog[k]$ differs from $\allleadstog[k - 1]$ at exactly one pair. Taking $j = \min \set{1 ≤ k ≤ n \suchthat \allleadstog[k] ∉ C}$, we obtain worlds $\allleadstog[j - 1] ∈ C$, $\allleadstog[j] ∉ C$ that differ at exactly one pair $(i, α)$.
+  Pick any $α'$ satisfying $\card{α} < \card{α'}$,
+  define $θ = \set{(i, α', \allleadstog[j - 1](i, α'))}$,
+  pick any
+  $θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog[j - 1]}$,
+  and let us show that $θ' ∈ (D ∖ C)^⊆$.
+  Indeed, $(i, α, .) ∉ θ'$, because $θ'$ observing $i$ must use only extensions of $α'$, itself longer than $α$. Thus,
+  $θ' ⊆ \allleadstog[j]$, as $\allleadstog[j]$ agrees with $\allleadstog[j - 1]$ on every other pair than $(i, α)$.
+  Furthermore, $¬\POF_C(\allleadstog[j])$ because $θ ⊆ \allleadstog[j]$ and $θ' ⊆ \allleadstog[j - 1] ∈ C$.
+\end{proof}
+\begin{remark}
+  I believe that we’re basically finding a prefix $θ$ such that$∀θ ⊑ θ': θ' ⊆ \allleadstog[j - 1] ∈ C ∧ θ' ⊆ \allleadstog[j] ∉ C$. Also, perhaps, existence of such a prefix is equivalent to the statement of the theorem. This may perhaps bring some better understanding. To be checked.
+\end{remark}
 
 \subsection{Observational completion}
 \begin{corollary}
@@ -3102,24 +3139,41 @@ What remains open is what happens once $R$ is not a singleton (the recursive que
 So sharing a value with $D$ at an active coordinate does not, by itself, force strictness: what made \cref{th:hypercubeDichotomy} work is specifically that every "extra" coordinate $r$ might need is incomparable to every coordinate $D$ might need. Once $R$'s point can reach past $D$'s coordinates along an extension of the same chain, no amount of value-sharing forces strictness.
 Extending \cref{th:hypercubeDichotomy} to arbitrary finite $D$ therefore requires tracking the prefix structure of whichever coordinates a witness would need, not merely value overlap — a different, more delicate bookkeeping problem than any solved above, left open together with the case of a non-singleton $R$.
 
-\section{Equivalence of PEV and provability}
-\begin{conjecture}
+\section{Satisfiability of PEV under \texorpdfstring{$¬\POF$}{not POF}}
+\begin{theorem}[Cufm claims fail PEV under $¬\POF$]
+  \label{th:cufmFailsPEV}
+  If $∅ ≠ C ≠ \allleadstos$ is closed under finite modification, then $C$ does not satisfy PEV under $D = ¬\POF_C$.
+\end{theorem}
+\begin{proof}
+  PEV demands that all worlds in $C$ satisfy PV:
+  $∀θ, ∃θ ⊑ θ' ∉ (D ∩ \overline{C})^⊆$.
+  In other words, that $\POF_{D ∩ \overline{C}}(\allleadstog)$.
+  By \cref{th:cufmNeverFals}, $∀\allleadstog: ¬\POF_C(\allleadstog)$,
+  thus $D ∩ \overline{C} = \overline{C}$.
+
+  As $\simfin$ is an equivalence relation,
+  $C$ is closed under finite modification iff
+  $\overline{C}$ is closed under finite modification.
+  Therefore, by \cref{th:cufmNeverFals} again, $∀\allleadstog: ¬\POF_{\overline{C}}(\allleadstog)$.
+\end{proof}
+
+\begin{conjecture}[PEV outside the trivial cases]
   \label{cnj:rpevProv}
-  Given a claim $C$, with $D = ¬\POF_C$: $C$ satisfies PEV under $D$ iff $C$ is provable by $D$.
+  If $C$ is not closed under finite modification, then $C$ does not satisfy PEV under $D = ¬\POF_C$.
 \end{conjecture}
 
-By \cref{th:rpevChain}, only the forward implication is open.
+Both $∅$ and $\allleadstos$ are, trivially, closed under finite modification (\cref{def:cufm} holds of them vacuously), so \cref{cnj:rpevProv}'s hypothesis already excludes them: by \cref{th:onlyEmptyPF}, $C$ is provable by $¬\POF_C$ iff $C ∈ \set{∅, \allleadstos}$, and provability by $D$ already implies PEV under $D$ (\cref{th:rpevChain}); so whenever $C$ is not closed under finite modification, $C$ is in particular nontrivial, hence not provable by $¬\POF_C$ either. \Cref{cnj:rpevProv} asks whether PEV can nonetheless survive where provability cannot.
 
-Proving it directly is awkward, since “$C$ fails PEV” unpacks to a $\exists \allleadstog, \exists θ, \forall θ'$ statement: ruling out \emph{every} rightward extension $θ'$, for some world and some prefix, is hard to attack head-on.
-We instead argue by contraposition, and, within that, by a nested reductio.
-The outer move is the contrapositive itself: assume $D ∖ C ≠ ∅$, and aim to show $C$ fails PEV under $D$.
-The inner move is what actually establishes this: rather than directly constructing a prefix that defeats every extension, assume, for contradiction, that PEV \emph{does} hold (on top of $D ∖ C ≠ ∅$).
+A single hypothesis, “$C$ not closed under finite modification,” already rules out the two known dead ends at once: it excludes triviality directly (both trivial claims are cufm, as just noted), and it excludes the case where $C$ is nonempty and cufm, which forces $D = \allleadstos$ by \cref{th:cufmNeverFals} (since $C$ is then never even falsifiable, hence never $\POF$). It does not, however, rule out \emph{every} route to $D = \allleadstos$: \cref{ex:disjR} is never falsifiable without being closed under finite modification (\cref{rk:cufmConverseFails} — flipping a single individual's two values already leaves $C$), so such claims remain within \cref{cnj:rpevProv}'s scope. PEV is expected to fail there for the same underlying reason as the cufm case: no finite prefix can ever force membership in $C$.
+
+Proving the conjecture directly is awkward, since “$C$ fails PEV” unpacks to a $\exists \allleadstog, \exists θ, \forall θ'$ statement: ruling out \emph{every} rightward extension $θ'$, for some world and some prefix, is hard to attack head-on.
+We instead argue by contradiction: fix $C$ not closed under finite modification (so $C ∉ \set{∅, \allleadstos}$, hence $D ∖ C ≠ ∅$ by \cref{th:onlyEmptyPF}), assume toward contradiction that $C$ satisfies PEV under $D$, and aim for an outright impossibility.
 This hands us an actual escaping witness to reason about — one guaranteed to exist by the assumption — rather than requiring an upfront construction ruling out all of them.
-\Cref{th:rpevDiverge} extracts the first consequence forced on this witness; settling \cref{cnj:rpevProv} means either pushing that consequence to an outright impossibility, completing the reductio, or finding a case where it can be consistently satisfied after all, which would refute the conjecture instead.
+\Cref{th:rpevDiverge} extracts the first consequence forced on this witness; settling \cref{cnj:rpevProv} means either pushing that consequence to an outright impossibility, completing the reductio, or finding a case where it can be consistently satisfied after all — producing a genuine example of a non-cufm claim satisfying PEV, and refuting the conjecture instead.
 
 \begin{lemma}[Escaping PEV witnesses must diverge]
   \label{th:rpevDiverge}
-  Suppose $C$ satisfies PEV under $D = ¬\POF_C$, and suppose $D ∖ C ≠ ∅$; let $\allleadstog[0] ∈ D ∖ C$ be arbitrary.
+  Suppose $C$ is not closed under finite modification and satisfies PEV under $D = ¬\POF_C$; let $\allleadstog[0] ∈ D ∖ C$ be arbitrary ($D ∖ C ≠ ∅$, since $C$ not cufm gives $C ∉ \set{∅, \allleadstos}$, hence $D ∖ C ≠ ∅$ by \cref{th:onlyEmptyPF}).
   As $\allleadstog[0] ∈ D = ¬\POF_C$, some $θ_1 ∈ Θ ∩ \powerset{\allleadstog[0]}$ witnesses $¬\POF_C(\allleadstog[0])$ (a \emph{hiding} prefix, echoing the visibility-issues terminology above): every rightward $θ_1 ⊆ θ' ⊆ \allleadstog[0]$ satisfies $θ' ∈ C^⊆$.
   In particular, the trivial case $θ' = θ_1$ gives $θ_1 ∈ C^⊆$: pick any completion $θ_1 ⊆ \allleadstog$, $\allleadstog ∈ C$.
   Now $\allleadstog ∈ C ∩ D$, so this is where the PEV hypothesis is actually used: testing it at $\allleadstog$ for the prefix $θ_1$ gives a rightward extension $θ_1 ⊆ θ_1' ⊆ \allleadstog$, with $θ_1' ∉ (D ∖ C)^⊆$.
@@ -3137,7 +3191,7 @@ So a natural hope would be that PEV’s own escaping witness, tested at some $\a
 If the escaping witness $θ_1'$ merely reproduced $\allleadstog[0]$’s own values beyond $θ_1$ (that is, $θ_1' ⊆ \allleadstog[0]$), then $\allleadstog[0]$ itself would be a completion of $θ_1'$; as $\allleadstog[0] ∈ D ∖ C$, this would mean $θ_1'$ fails to exclude $D ∖ C$ — contradicting the very thing $θ_1'$ was supposed to achieve.
 So the escaping witness cannot simply reproduce what $\allleadstog[0]$ hides behind $θ_1$: at some point beyond $θ_1$, it must show a value genuinely different from what $\allleadstog[0]$ would show there, actively diverging from it rather than passively following it.
 
-Two routes to settling \cref{cnj:rpevProv} remain open: a compactness argument, iterating the construction of \cref{th:rpevDiverge} along an increasing sequence of prefixes agreeing with $\allleadstog[0]$ further and further, to show the required divergence cannot be sustained indefinitely; and a direct counterexample, a claim $C$ for which $D ∖ C$ is spread across many, individually escapable, worlds rather than concentrated in one $\allleadstog[0]$, so that every world in $C$ can use a private, ever-available escape route.
+Two routes to settling \cref{cnj:rpevProv} remain open: a compactness argument, iterating the construction of \cref{th:rpevDiverge} along an increasing sequence of prefixes agreeing with $\allleadstog[0]$ further and further, to show the required divergence cannot be sustained indefinitely; and a direct construction, a claim $C$, not closed under finite modification, for which $D ∖ C$ is spread across many, individually escapable, worlds rather than concentrated in one $\allleadstog[0]$, so that every world in $C$ can use a private, ever-available escape route.
 A König-type argument for the first route does not directly apply: the tree of rightward extensions is not finitely branching whenever $I$ is infinite, since introducing a fresh individual is itself an unbounded branching choice; a compactness argument here would need a different tool, such as an ultrafilter construction over $I$.
 Even that alternative is not straightforward, and for a sharper reason than branching: $\allleadstos = P^{I × \allhists}$ is compact (Tychonoff, as $P$ is finite), but standard compactness arguments — net convergence, or the finite intersection property for closed families — require the family of test extensions to be \emph{directed}, meaning any two admit a common refinement.
 For a fixed $\allleadstog[0]$, two valid rightward extensions of the same prefix, both in $Θ ∩ \powerset{\allleadstog[0]}$, can commit to different, incomparable branches for the same individual (extending, say, $(\ar)$ to $(\ar, \ar)$ in one and to $(\ar, \ar')$ in the other); their union is not chain-respecting, hence not itself in $Θ$.
@@ -3145,23 +3199,23 @@ So the family of $Θ$-valid rightward extensions of a prefix is not directed, ev
 This means $¬\POF_S$ is not literally a topological closure condition to begin with, since it tests strictly fewer, non-directed extensions than compactness arguments assume — precisely because $Θ$ encodes that incomparable branches cannot be probed simultaneously, the realistic-protocol constraint the whole framework is built on.
 A genuine compactness proof of \cref{cnj:rpevProv}, if one exists, would need a substitute for both König's lemma and standard filter or net arguments.
 
-\begin{example}[A non-degenerate $D$]
+\begin{example}[A non-degenerate $D ∖ C$]
   \label{ex:rpevNonDegenerate}
-  Every example checked so far collapsed $D$ to either $C$ itself (provable) or $\allleadstos$ ($\POF_C$ never holding anywhere); this one does not.
-  Fix infinitely many individuals $i_1, i_2, … ∈ I$ and let $C = \set{\allleadstog \suchthat ∀n: \allleadstog(i_n, ∅) = φ}$ (falsifiable or trivial, so $¬\OF_C = C$).
+  Every example checked so far was closed under finite modification, hence excluded by \cref{cnj:rpevProv}'s hypothesis outright (trivially so for $∅$ and $\allleadstos$ themselves, giving $D = C$; nontrivially so otherwise, giving $D = \allleadstos$ by \cref{th:cufmNeverFals}); this one is not.
+  Fix infinitely many individuals $i_1, i_2, … ∈ I$ and let $C = \set{\allleadstog \suchthat ∀n: \allleadstog(i_n, ∅) = φ}$: not closed under finite modification (flipping a single $\allleadstog(i_n, ∅)$ already leaves $C$), yet still falsifiable or trivial ($¬\OF_C = C$).
   For $\allleadstog ∉ C$ failing at only finitely many individuals, an adversarial prefix can touch each failing individual at some other argument first, blocking recovery of its $∅$-value at each, and $\allleadstog$ offers no other route: $\POF_C(\allleadstog)$ fails.
   For $\allleadstog ∉ C$ failing at infinitely many individuals, no finite prefix can touch them all, so some failing individual always remains fresh and reachable: $\POF_C(\allleadstog)$ holds.
-  Hence $D = ¬\POF_C = C ∪ \set{\allleadstog \suchthat \allleadstog \text{ fails } C \text{ at finitely many, at least one, individuals}}$, a proper, non-trivial superset of $C$.
+  Hence $D = ¬\POF_C = C ∪ \set{\allleadstog \suchthat \allleadstog \text{ fails } C \text{ at finitely many, at least one, individuals}}$, genuinely strictly between $C$ and $\allleadstos$.
 
   Yet PEV (already EV) collapses on this $D$: $D ∖ C$ is exactly “fails at finitely many individuals,” and any finite $θ'$ only constrains finitely many of them, so a completion matching $θ'$ exactly and failing at one further, untouched individual always exists — $θ' ∈ (D ∖ C)^⊆$ regardless of $θ'$.
-  So $\OF_{D∖C}(\allleadstog)$ already fails at every $\allleadstog ∈ C$, confirming \cref{cnj:rpevProv} again, this time through a genuinely non-degenerate $D$.
+  So $\OF_{D∖C}(\allleadstog)$ already fails at every $\allleadstog ∈ C$: PEV fails here too, confirming \cref{cnj:rpevProv} through a genuinely non-degenerate $D ∖ C$.
 \end{example}
 
 \begin{remark}[A duality behind the recurring collapse]
   \label{rk:rpevDuality}
   A pattern underlies every example checked: $\POF_C$ is hard to satisfy off $C$ precisely when $\overline C$ offers no witness that stays redundantly available no matter how a prefix is spent — and that same difficulty is what makes $D ∖ C = (¬\POF_C) ∖ C$ rich, since it collects exactly what escaped robust exclusion.
   A set that is rich in that sense is, symmetrically, hard for any finite $θ'$ to exclude.
-  So the same mechanism — finite information cannot pin down infinitely many independent possibilities — appears to defeat both directions at once: it is what makes $D ∖ C$ non-empty (breaking provability) and simultaneously what stops it from ever being excludable (breaking PEV).
+  So the same mechanism — finite information cannot pin down infinitely many independent possibilities — cuts both ways: it is what keeps $D ∖ C$ non-empty whenever $C$ is nontrivial (\cref{th:onlyEmptyPF}), and, on the same worlds, what stops that same $D ∖ C$ from ever being excludable by a finite prefix (breaking PEV).
   Making this duality precise, rather than case by case, would settle \cref{cnj:rpevProv}.
 \end{remark}
 
@@ -3174,7 +3228,7 @@ A genuine compactness proof of \cref{cnj:rpevProv}, if one exists, would need a 
 
   This looks structurally difficult to arrange: $D ∖ C = \set{\allleadstog[0]}$ means $C$ excludes only one point, which typically leaves plenty of “near misses” inside $C$ — worlds differing from $\allleadstog[0]$ at only finitely many coordinates, such as a single flipped coordinate — exactly the worlds at which PEV was just shown to fail.
   So a singleton $D ∖ C$ seems to force the very structural conflict described by \cref{rk:rpevDuality}: the infinite redundancy PEV needs everywhere is in tension with $D ∖ C$ being minimal.
-  This is not yet a proof that $D ∖ C$ cannot be a singleton under \cref{cnj:rpevProv}’s hypothesis, only a further, structurally distinct, piece of evidence for it.
+  This is not yet a proof that $D ∖ C$ cannot be a singleton for a $C$ not closed under finite modification, only a further, structurally distinct, piece of evidence for it.
 \end{remark}
 
 \begin{lemma}[Near misses force the escape witness through the flip]
@@ -3189,7 +3243,7 @@ A genuine compactness proof of \cref{cnj:rpevProv}, if one exists, would need a 
 \end{proof}
 
 \Cref{th:rpevNearMiss} pins down where the escape witness for each near miss must go, but not yet an outright contradiction: reverting $ψ$’s value at $(i^*, h^*)$ back to $\allleadstog[0]$’s gives a different finite specification, one already known to lie in $C^⊆$ via $\allleadstog[0]$ itself, and $C$ remains free to be sensitive to that single coordinate — so this alone does not rule out the singleton case.
-Closing this gap, or exhibiting a genuine counterexample instead, remains open; three independent attempts at the latter (\cref{rk:rpevDuality}’s pattern, an OR-cell conjunction across individuals, and an infinitely-often tail claim) have all instead made $C$ itself unfalsifiable, collapsing $D$ to $\allleadstos$ before the intended tension could be set up — a third instance of the same failure mode, and further indirect evidence for \cref{cnj:rpevProv}.
+Closing this gap, or exhibiting a genuine example of a claim, not closed under finite modification, that satisfies PEV instead, remains open; three independent attempts at the latter (\cref{rk:rpevDuality}’s pattern, an OR-cell conjunction across individuals, and an infinitely-often tail claim) have all instead made $C$ itself unfalsifiable, collapsing $D$ to $\allleadstos$ before the intended tension could be set up — the same kind of collapse discussed above, whether or not $C$ happened to be cufm this time (\cref{th:cufmNeverFals,rk:cufmConverseFails}) — a third instance of the same failure mode, and further indirect evidence for \cref{cnj:rpevProv}.
 
 \begin{lemma}[Excluding a finite set needs individually-unblockable disagreement]
   \label{th:rpevFiniteS}
@@ -3204,7 +3258,7 @@ Closing this gap, or exhibiting a genuine counterexample instead, remains open; 
 \Cref{th:rpevFiniteS} generalizes the single-point mechanism behind \cref{rk:rpevSingleton} to any finite target: whenever $D ∖ C$ is finite, PEV can only hold by requiring every world in $C$ to differ from \emph{every} point of $D ∖ C$ at infinitely many individuals at once — a demand no construction tried so far can reconcile with $D ∖ C$ actually being finite.
 Two further, structurally distinct attempts to isolate a single hiding point — the complement of a single point, $C = \allleadstos ∖ \set{\allleadstog[0]}$, and the claim “differs from $\allleadstog[0]$ at exactly one coordinate” — both collapse instead of isolating $\allleadstog[0]$.
 The latter yields a clean bonus characterization: exclusion of a single point by a cover of “exactly $n$ differences”-style claims holds exactly when the disagreement spans infinitely many individuals, turning \cref{th:rpevFiniteS}’s necessary condition into an iff in that case — but $D ∖ C$ still comes out rich rather than a singleton, and PEV collapses on it just as in \cref{ex:rpevNonDegenerate}.
-Five independent constructions now confirm \cref{cnj:rpevProv} without exception; a general proof or a genuine counterexample both remain open.
+Five independent constructions now confirm \cref{cnj:rpevProv} without exception: not one claim, not closed under finite modification, has been found to satisfy PEV under $¬\POF$; a general proof or a genuine example satisfying PEV both remain open.
 
 \hbadness=10000
 \bibliography{simple}
