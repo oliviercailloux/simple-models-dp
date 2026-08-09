@@ -563,7 +563,7 @@ $(¬\POF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no vi
   As $C = C ∘ σ$: any $w ⊇ θ$, $w ∈ C$ gives $w ∘ σ ⊇ θ ∘ σ$, $w ∘ σ ∈ C ∘ σ = C$, so $θ ∈ C^⊆ ⇒ θ ∘ σ ∈ C^⊆$; applying this with $σ$ in place of $σ^{-1} = σ$ gives the converse, so $θ ∈ C^⊆ ⇔ θ ∘ σ ∈ C^⊆$. As $θ ∉ C^⊆$, $θ ∘ σ ∉ C^⊆$.
   As $C^⊆$ is downwards closed and $θ ∘ σ ⊆ τ'$, $τ' ∉ C^⊆$.
 \end{proof}
-This subsumes \cref{th:coordinatewiseNoVI} below: anonymity alone forces no visibility issues in $E$, with no need for $C$ to decompose coordinatewise into the same per-individual condition.
+This already covers the visibility-in-$E$ half of \cref{th:coordinatewiseNoVI} below, and more generally: anonymity alone forces no visibility issues in $E$, with no need for $C$ to decompose coordinatewise into the same per-individual condition; \cref{th:coordinatewiseNoVI} additionally isolates when such a $C$ is falsifiable outright.
 
 The converse fails: no visibility issues in $E$ does not imply anonymity.
 \begin{example}[A non-anonymous claim with no visibility issues in $E$]
@@ -582,7 +582,7 @@ So anonymity is sufficient but not necessary for no visibility issues in $E$; th
   If $C$ is not closed under finite modification, $C$ is anonymous iff $C$ suffers no visibility issues in $E$.
 \end{conjecture}
 
-This reduces the first question above to: does $E$ (\cref{def:repeatable}) guarantee that no claim suffers visibility issues within it? \Cref{ex:repeatableConfirm} confirms it for exactly the motivating case \cref{def:repeatable} was designed for.
+This reduces the first question above to: does $E$ (\cref{def:repeatable}) guarantee that no claim suffers visibility issues within it? \Cref{th:anonNoVI} already answers this whenever $C$ is anonymous; \cref{ex:repeatableConfirm} confirms it concretely for exactly the motivating case \cref{def:repeatable} was designed for.
 
 \begin{example}[$E$ removes visibility issues, for a coordinatewise claim]
   \label{ex:repeatableConfirm}
@@ -590,42 +590,31 @@ This reduces the first question above to: does $E$ (\cref{def:repeatable}) guara
 
   $¬\OF_C = C$: if $\allleadstog ∉ C$, some $i_0$ has $\allleadstog(i_0, \ar) ≠ φ$, and $θ = \set{(i_0, \ar, \allleadstog(i_0, \ar))} ⊆ \allleadstog$ already satisfies $θ ∉ C^⊆$, giving $\OF_C(\allleadstog)$; conversely, if $\allleadstog ∈ C$, every $θ ⊆ \allleadstog$ is a sub-observation of the completion $\allleadstog$ itself, lying in $C$, so $θ ∈ C^⊆$ for every such $θ$, giving $¬\OF_C(\allleadstog)$.
 
-  $\POF_C$ holds throughout $E ∖ C$: given $\allleadstog ∈ E ∖ C$, some $i_0$ has $\allleadstog(i_0, \ar) ≠ φ$; as $\allleadstog ∈ E$, infinitely many $j$ share $i_0$’s full relation, in particular also with $\allleadstog(j, \ar) ≠ φ$, so infinitely many individuals violate $C$ at $\allleadstog$. Given any $θ ⊆ \allleadstog$, $θ$ touches only finitely many individuals, so some violator $i_1$ remains entirely untouched by $θ$; then $θ' = θ ∪ \set{(i_1, \ar, \allleadstog(i_1, \ar))}$ is a valid rightward extension (no comparability conflict, as $i_1$ is fresh) with $θ' ∉ C^⊆$, since $θ'$ already records a violation. So no $θ ⊆ \allleadstog$ can hide every violator, giving $\POF_C(\allleadstog)$.
-
-  So $(¬\POF_C) ∩ E ⊆ C ∩ E$ (no world of $E ∖ C$ is $¬\POF_C$); combined with $C ⊆ ¬\POF_C$, which always holds, $(¬\POF_C) ∩ E = C ∩ E = (¬\OF_C) ∩ E$ exactly — the two priors coincide on $E$, so $C$ suffers no visibility issues in $E$, and \cref{th:provGapVisibility} gives a positive answer to the first question, for this $C$.
+  As $C$ is anonymous, \cref{th:anonNoVI} gives that $C$ suffers no visibility issues in $E$, that is, $(¬\POF_C) ∩ E = (¬\OF_C) ∩ E$; combined with $¬\OF_C = C$, this is $(¬\POF_C) ∩ E = (¬\OF_C) ∩ E = C ∩ E$ exactly, and \cref{th:provGapVisibility} gives a positive answer to the first question, for this $C$.
 \end{example}
 
 Since $(¬\POF_C) ∩ E = (¬\OF_C) ∩ E = C ∩ E$ exactly for this $C$, the two priors compared in the second question are literally identical here too: PEV under $(¬\POF_C) ∩ E$ and EV under $(¬\OF_C) ∩ E$ are the same question under the same prior $C ∩ E$, so they trivially coincide — a positive answer to the second question as well, for this $C$.
 
-\Cref{ex:repeatableConfirm} is one instance of a general pattern: nothing in its proof used $R = \set{φ}$ specifically, only that a violation of $R$ is always witnessed by some finite, comparable amount of an individual's profile — an individual's condition can be arbitrarily complex, as long as \emph{failing} it is finitely witnessable.
+\Cref{ex:repeatableConfirm} is one instance of a general pattern: nothing in its proof of $¬\OF_C = C$ used $R = \set{φ}$ specifically, only that a violation of $R$ is always witnessed by some finite, comparable amount of an individual's profile — an individual's condition can be arbitrarily complex, as long as \emph{failing} it is finitely witnessable.
 
-\begin{theorem}[Coordinatewise claims: $E$ removes visibility issues]
+\begin{theorem}[Coordinatewise claims are falsifiable]
   \label{th:coordinatewiseNoVI}
   Say $R ⊆ P^{\allhists}$ is \emph{finitely refutable} iff $∀r ∈ P^{\allhists} ∖ R, ∃Q ∈ \incr(\allhists)$ finite \suchthat no $r' ∈ P^{\allhists}$ agreeing with $r$ on $Q$ lies in $R$.
   Given such an $R$, let $C = \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: \ileadstog[i] ∈ R}$.
-  If $I$ is infinite, $C$ suffers no visibility issues in $E$ (\cref{def:repeatable}); consequently (\cref{th:provGapVisibility}), $(¬\POF_C) ∩ E = (¬\OF_C) ∩ E$.
+  Then $¬\OF_C = C$. As $C$ is anonymous, \cref{th:anonNoVI} again gives $(¬\POF_C) ∩ E = (¬\OF_C) ∩ E = C ∩ E$.
 \end{theorem}
 \begin{proof}
-  $¬\OF_C = C$: if $\allleadstog ∈ C$, every $θ ⊆ \allleadstog$ is a sub-observation of the completion $\allleadstog$ itself, giving $θ ∈ C^⊆$, so $¬\OF_C(\allleadstog)$.
+  If $\allleadstog ∈ C$, every $θ ⊆ \allleadstog$ is a sub-observation of the completion $\allleadstog$ itself, giving $θ ∈ C^⊆$, so $¬\OF_C(\allleadstog)$.
   If $\allleadstog ∉ C$, some $i_0$ has $\ileadstog[i_0] ∉ R$; by finite refutability, some finite $Q ∈ \incr(\allhists)$ witnesses this, so $θ = \set{(i_0, \hist, \allleadstog(i_0, \hist)) \suchthat \hist ∈ Q} ⊆ \allleadstog$ satisfies $θ ∉ C^⊆$ (no completion can have $i_0 ∈ R$), giving $\OF_C(\allleadstog)$.
-
-  $\POF_C$ holds throughout $E ∖ C$: given $\allleadstog ∈ E ∖ C$, some $i_0$ has $\ileadstog[i_0] ∉ R$; as $\allleadstog ∈ E$, infinitely many $j$ share $i_0$'s exact profile, so infinitely many individuals violate $C$ at $\allleadstog$.
-  Given any $θ ⊆ \allleadstog$, touching only finitely many individuals, some violator $i_1$ remains entirely untouched; applying finite refutability to $i_1$'s profile as above gives $θ' ⊇ θ$, $θ' ⊆ \allleadstog$, $θ' ∉ C^⊆$.
-  So no $θ$ hides every violator, giving $\POF_C(\allleadstog)$.
-
-  Hence $(¬\POF_C) ∩ E ⊆ C ∩ E$; combined with $C ⊆ ¬\POF_C$, which always holds, $(¬\POF_C) ∩ E = C ∩ E = (¬\OF_C) ∩ E$: no visibility issues in $E$.
 \end{proof}
 
 \Cref{ex:repeatableConfirm} is the case $R = \set{r ∈ P^{\allhists} \suchthat r(\ar) = φ}$, finitely refutable via $Q = \set{\ar}$. The same argument covers, for instance, $R = \set{r \suchthat r((a)) = φ ∧ r((b)) = φ}$ even when $(a), (b)$ are incomparable: a profile failing $R$ fails at $(a)$ or at $(b)$ alone, each a valid singleton witness $Q$, so $R$ is finitely refutable even though \emph{confirming} $r ∈ R$ would need both.
 
 \begin{remark}[Naming an individual breaks it]
   \label{rk:coordinatewiseNeeded}
-  \Cref{th:coordinatewiseNoVI} needs $C$ to impose the \emph{same} condition on every individual, not merely to be anonymous by accident: $C_1$ (\cref{rk:cScrutinyC1}), which fixes a single individual $i^*$, keeps its visibility issue even within $E$.
+  \Cref{th:anonNoVI} needs $C$ anonymous: $C_1$ (\cref{rk:cScrutinyC1}), which fixes a single individual $i^*$, is not anonymous, and indeed keeps its visibility issue even within $E$.
   At a world where $i^*$ satisfies $(a)$ but not $(b)$, the hiding prefix $θ = \set{(i^*, (a), φ)}$ still blocks $\POF_{C_1}$ regardless of $E$: $E$ guarantees clones of $i^*$ exist, but $C_1$ is entirely indifferent to them, so observing a clone violate never makes any extension of $θ$ escape $C_1^⊆$ — a completion can always still set $i^*$'s own, permanently unobserved, $(b)$-value to $φ$.
-  What makes \cref{th:coordinatewiseNoVI} work is that $C$'s truth is a conjunction \emph{over all individuals} of the \emph{same} local condition, so that any one violator, wherever it is found, suffices to falsify $C$ outright — a structure $C_1$ deliberately lacks, since it is not just about \emph{some} individual but about $i^*$ specifically.
 \end{remark}
-
-\Cref{th:anonNoVI} in fact settles every such claim: anonymity alone, without decomposing coordinatewise, already suffices — for instance, for claims comparing different individuals to each other, or depending on the number or pattern of violators rather than on each individual's own profile alone.
 
 \subsection{Persistent falsifiability}
 Consider a claim that in some world satisfies F but not POF.
