@@ -552,28 +552,6 @@ and $¬\OF_{C ∩ E} ⊆ ¬\OF_C$.)
   $θ' ∈ (C ∩ E)^⊆$.
 \end{example}
 
-\begin{theorem}
-  Assume $¬\OF_C ∩ E ⊆ C$. Then, $¬\POF_{C ∩ E} ∩ E ⊆ C$.
-\end{theorem}
-\begin{proof}
-  Consider $\allleadstog ∈ E, \allleadstog ∉ C$. We know it is $\OF_C$. We show that it is $\POF_{C ∩ E}$.
-
-  Need to show:
-  $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ (C ∩ E)^⊆$;
-  
-  This is FALSE.
-
-
-  % Given any $J ⊆ I$ with $\card{J} ∈ ℕ$, let $r_J: J → I ∖ J$ be any injective function that replaces any individual in $J$ by an individual not in $J$.
-  % Given any $θ ∈ Θ ∩ \powerset{\allleadstog}$ with $θ ∉ C^⊆$, define $J_θ = \set{i ∈ I \suchthat ∃(α, i, p) ∈ θ}$,
-  % define $θ' = \set{(α, r_{J_θ}(i), p) \suchthat (α, i, p) ∈ θ}$.
-  % Consider any $θ' ∈ \allleadstog' ∈ C ∩ E$.
-  % Then $θ
-  % We have $θ'$ not compl in $C ∩ E$?
-  % Assume $w'$ completes $θ'$ in $C ∩ E$.
-  % Then $w$ also does!
-\end{proof}
-
 \begin{theorem}[Provability gap under a restriction reduces to visibility issues]
   \label{th:provGapVisibility}
   Given $C, E ⊆ \allleadstos$: $(¬\POF_C) ∩ E$ proves $C$ iff $(¬\OF_C) ∩ E$ proves $C$ and $C$ suffers no visibility issues in $E$ (that is, $∀\allleadstog ∈ E: \OF_C(\allleadstog) ⇒ \POF_C(\allleadstog)$).
