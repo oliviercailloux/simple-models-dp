@@ -324,6 +324,7 @@ One such is $C$-scrutiny, which mandates that $¬\OF(\allleadstoo) ∨ (¬\POF(\
 This is technically equivalent to mandating $¬\POF(\allleadstoo)$.
 
 \begin{remark}
+  \label{rk:cScrutinyC1}
   Another way to describe $C$-scrutiny is that
   if the world is observably out of $C$, there is some prefix observation that hides this fact (formally: $\OF(\allleadstoo) ⇒ \OF(\allleadstoo) ∧ ¬\POF(\allleadstoo)$).
 
@@ -498,14 +499,14 @@ Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{perma
 $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀θ' ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$.
 $C$ satisfies PEV under prior $D$ iff this holds $∀\allleadstog ∈ C ∩ D$.
 
-\begin{theorem}[PEV as $\POF_{D ∖ C}$]
+\begin{theorem}[PV as $\POF_{D ∖ C}$]
   \label{th:rpevChar}
   Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$: $C$ is PV under $D$ at $\allleadstog$ iff $\POF_{D ∖ C}(\allleadstog)$.
   Consequently, $C$ satisfies PEV under prior $D$ iff $∀\allleadstog ∈ C ∩ D: \POF_{D ∖ C}(\allleadstog)$.
 \end{theorem}
 \begin{proof}
   By \cref{th:vud} (\cref{it:unverifD,it:notcomplE}), for any $θ' ∈ Θ ∩ \powerset{\allleadstog}$: $θ'$ proves $C$ under $D$ (that is, $∀θ' ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$) iff $θ' ∉ (D ∖ C)^⊆$.
-  Substituting into the definition of PEV at $\allleadstog$ gives $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}: θ' ∉ (D ∖ C)^⊆$, which is exactly $\POF_{D ∖ C}(\allleadstog)$.
+  Substituting into the definition of PV at $\allleadstog$ gives $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}: θ' ∉ (D ∖ C)^⊆$, which is exactly $\POF_{D ∖ C}(\allleadstog)$.
 \end{proof}
 
 \begin{corollary}
@@ -514,7 +515,7 @@ $C$ satisfies PEV under prior $D$ iff this holds $∀\allleadstog ∈ C ∩ D$.
 \end{corollary}
 \begin{proof}
   $\POF_S(\allleadstog) ⇒ \OF_S(\allleadstog)$ for any $S, \allleadstog$ (taking $θ = ∅$ in the definition of $\POF_S$ already gives the witness required by $\OF_S$), so \cref{th:rpevChar} together with \cref{th:dual} gives the first implication.
-  If $D ⊆ C$, then $D ∖ C = ∅$, so $(D ∖ C)^⊆ = ∅$ and $\POF_∅(\allleadstog)$ holds trivially (any $θ' ∈ Θ ∩ \powerset{\allleadstog}$, in particular $θ' = ∅$, already satisfies $θ' ∉ ∅$), giving PEV under $D$ at every $\allleadstog ∈ C ∩ D$ by \cref{th:rpevChar}.
+  If $D ⊆ C$, then $D ∖ C = ∅$, so $(D ∖ C)^⊆ = ∅$ and $\POF_∅(\allleadstog)$ holds trivially (any $θ' ∈ Θ ∩ \powerset{\allleadstog}$, in particular $θ' = ∅$, already satisfies $θ' ∉ ∅$), giving PV under $D$ at every $\allleadstog ∈ C ∩ D$ by \cref{th:rpevChar}.
 \end{proof}
 
 Taking $D = ¬\POF_C$ in \cref{rk:rpevGap}, whenever $(¬\POF_C) ∖ C$ suffers visibility issues, some world $\allleadstog ∈ C$ has a proving observation $θ_0 ⊆ \allleadstog$ (so $∀θ_0 ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$) while some \emph{other}, incomparable observation $θ_1 ⊆ \allleadstog$, $θ_1 ∈ Θ$, admits no proving rightward extension at all: every $θ_1 ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}$ still has a completion in $D ∖ C$ (proving is monotone under extension of the \emph{same} observation, so this could not happen to $θ_0$ itself, only to an unrelated branch).
@@ -523,6 +524,110 @@ This is exactly the fragility that motivated preferring $¬\POF$ over $¬\OF$ as
 So the right adequacy criterion is that $C$ satisfies PEV under $¬\POF_C$, not merely established verifiability under $¬\POF_C$: only PEV guarantees that $C$ stays provable after arbitrary observations.
 
 The not-stronger demand that $C$ satisfies PEV under $D = ¬\POF_C$ is arguably the one that should be enforced, though \cref{cnj:rpevProv} suggests that it might make no difference.
+
+\subsection{Repeatable world}
+\begin{definition}[Repeatable world]
+  \label{def:repeatable}
+  Let $E = \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: \card{\set{j ∈ I \suchthat {\ileadstog[j]} = {\ileadstog}}} ∉ ℕ}$, the claim that every individual's behavior is shared by infinitely many others.
+  Given $C ⊆ \allleadstos$, write $F_C = (¬\POF_C) ∩ E$.
+\end{definition}
+
+We can have that a claim is provable by $¬\OF_C$ (thus, is provable by $¬\OF_{C ∩ E} ∩ E$) yet is not provable under $¬\POF_{C ∩ E} ∩ E$ (thus, also not provable under $¬\POF_C ∩ E$).
+(Recall that $¬\POF_{C ∩ E} ⊆ ¬\POF_C$ 
+and $¬\OF_{C ∩ E} ⊆ ¬\OF_C$.)
+
+\begin{example}
+  Define $C = α \ileadsto φ$ for a given $α$ and $i$.
+  
+  We have $¬\OF_C ⊆ C$, as visible by observing that $α \nileadstog φ ⇒ \OF(\allleadstog)$.
+
+  Define $\allleadstog$ such that $∀α', j: α' \ileadstog[j] ¬φ$ (thus $\allleadstog ∈ E$ and $\allleadstog ∉ C$)
+  and let us show that $¬\POF_{C ∩ E}(\allleadstog)$.
+  Pick any $\card{α} < \card{α'}$ and
+  define $θ = (α', i, ¬φ) ∈ Θ ∩ \powerset{\allleadstog}$.
+  Consider any $θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}$. 
+  Define an infinitely numerous subset $J$ among the individuals for which $α$ was not observed in $θ'$ such that $i ∈ J$, leaving another infinitely numerous subset $I ∖ J$,
+  and define $\allleadstog'$ such that $∀j ∈ J: α \ileadstog[j]' φ ∧ ∀α'' ≠ α, α'' \ileadstog[j]' ¬φ$, and $∀ j ∈ I ∖ J, α'': α'' \ileadstog[j]' ¬φ$.
+  We have $θ' ⊆ \allleadstog' ∈ C ∩ E$, thus,
+  $θ' ∈ (C ∩ E)^⊆$.
+\end{example}
+
+\begin{theorem}
+  Assume $¬\OF_C ∩ E ⊆ C$. Then, $¬\POF_{C ∩ E} ∩ E ⊆ C$.
+\end{theorem}
+\begin{proof}
+  Consider $\allleadstog ∈ E, \allleadstog ∉ C$. We know it is $\OF_C$. We show that it is $\POF_{C ∩ E}$.
+
+  Need to show:
+  $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ (C ∩ E)^⊆$;
+  
+  This is FALSE.
+
+
+  % Given any $J ⊆ I$ with $\card{J} ∈ ℕ$, let $r_J: J → I ∖ J$ be any injective function that replaces any individual in $J$ by an individual not in $J$.
+  % Given any $θ ∈ Θ ∩ \powerset{\allleadstog}$ with $θ ∉ C^⊆$, define $J_θ = \set{i ∈ I \suchthat ∃(α, i, p) ∈ θ}$,
+  % define $θ' = \set{(α, r_{J_θ}(i), p) \suchthat (α, i, p) ∈ θ}$.
+  % Consider any $θ' ∈ \allleadstog' ∈ C ∩ E$.
+  % Then $θ
+  % We have $θ'$ not compl in $C ∩ E$?
+  % Assume $w'$ completes $θ'$ in $C ∩ E$.
+  % Then $w$ also does!
+\end{proof}
+
+\begin{theorem}[Provability gap under a restriction reduces to visibility issues]
+  \label{th:provGapVisibility}
+  Given $C, E ⊆ \allleadstos$: $(¬\POF_C) ∩ E$ proves $C$ iff $(¬\OF_C) ∩ E$ proves $C$ and $C$ suffers no visibility issues in $E$ (that is, $∀\allleadstog ∈ E: \OF_C(\allleadstog) ⇒ \POF_C(\allleadstog)$).
+\end{theorem}
+\begin{proof}
+  Since $\POF_C ⇒ \OF_C$, we have $¬\OF_C ⊆ ¬\POF_C$, so $(¬\POF_C) ∩ E = [(¬\OF_C) ∩ E] ∪ [((¬\POF_C) ∖ (¬\OF_C)) ∩ E]$, a disjoint union.
+  As "$D$ proves $C$" means $D ⊆ C$, $(¬\POF_C) ∩ E ⊆ C$ iff both $(¬\OF_C) ∩ E ⊆ C$ and $[(¬\POF_C) ∖ (¬\OF_C)] ∩ E ⊆ C$.
+  Now $(¬\POF_C) ∖ (¬\OF_C) = \set{\allleadstog \suchthat ¬\POF_C(\allleadstog) ∧ \OF_C(\allleadstog)}$, exactly the worlds where $C$ suffers visibility issues; since $\OF_C(\allleadstog) ⇒ \F_C(\allleadstog) ⇒ \allleadstog ∉ C$, this set is disjoint from $C$, so its intersection with $E$ is $⊆ C$ iff it is empty, that is, iff $C$ suffers no visibility issues in $E$.
+\end{proof}
+
+This reduces the first question above to: does $E$ (\cref{def:repeatable}) guarantee that no claim suffers visibility issues within it? \Cref{ex:repeatableConfirm} confirms it for exactly the motivating case \cref{def:repeatable} was designed for.
+
+\begin{example}[$E$ removes visibility issues, for a coordinatewise claim]
+  \label{ex:repeatableConfirm}
+  Assume $I$ infinite, fix $\ar ∈ \allargs, φ ∈ P$, and let $C = \set{\allleadstog \suchthat ∀i ∈ I: \allleadstog(i, \ar) = φ}$ — anonymous, and exactly the motivating case for \cref{def:repeatable}. (Worlds of $E ∖ C$ exist: split $I$ into infinitely many infinite classes, each internally uniform, one of them violating $C$ at $\ar$.)
+
+  $¬\OF_C = C$: if $\allleadstog ∉ C$, some $i_0$ has $\allleadstog(i_0, \ar) ≠ φ$, and $θ = \set{(i_0, \ar, \allleadstog(i_0, \ar))} ⊆ \allleadstog$ already satisfies $θ ∉ C^⊆$, giving $\OF_C(\allleadstog)$; conversely, if $\allleadstog ∈ C$, every $θ ⊆ \allleadstog$ is a sub-observation of the completion $\allleadstog$ itself, lying in $C$, so $θ ∈ C^⊆$ for every such $θ$, giving $¬\OF_C(\allleadstog)$.
+
+  $\POF_C$ holds throughout $E ∖ C$: given $\allleadstog ∈ E ∖ C$, some $i_0$ has $\allleadstog(i_0, \ar) ≠ φ$; as $\allleadstog ∈ E$, infinitely many $j$ share $i_0$’s full relation, in particular also with $\allleadstog(j, \ar) ≠ φ$, so infinitely many individuals violate $C$ at $\allleadstog$. Given any $θ ⊆ \allleadstog$, $θ$ touches only finitely many individuals, so some violator $i_1$ remains entirely untouched by $θ$; then $θ' = θ ∪ \set{(i_1, \ar, \allleadstog(i_1, \ar))}$ is a valid rightward extension (no comparability conflict, as $i_1$ is fresh) with $θ' ∉ C^⊆$, since $θ'$ already records a violation. So no $θ ⊆ \allleadstog$ can hide every violator, giving $\POF_C(\allleadstog)$.
+
+  So $(¬\POF_C) ∩ E ⊆ C ∩ E$ (no world of $E ∖ C$ is $¬\POF_C$); combined with $C ⊆ ¬\POF_C$, which always holds, $(¬\POF_C) ∩ E = C ∩ E = (¬\OF_C) ∩ E$ exactly — the two priors coincide on $E$, so $C$ suffers no visibility issues in $E$, and \cref{th:provGapVisibility} gives a positive answer to the first question, for this $C$.
+\end{example}
+
+Since $(¬\POF_C) ∩ E = (¬\OF_C) ∩ E = C ∩ E$ exactly for this $C$, the two priors compared in the second question are literally identical here too: PEV under $(¬\POF_C) ∩ E$ and EV under $(¬\OF_C) ∩ E$ are the same question under the same prior $C ∩ E$, so they trivially coincide — a positive answer to the second question as well, for this $C$.
+
+\Cref{ex:repeatableConfirm} is one instance of a general pattern: nothing in its proof used $R = \set{φ}$ specifically, only that a violation of $R$ is always witnessed by some finite, comparable amount of an individual's profile — an individual's condition can be arbitrarily complex, as long as \emph{failing} it is finitely witnessable.
+
+\begin{theorem}[Coordinatewise claims: $E$ removes visibility issues]
+  \label{th:coordinatewiseNoVI}
+  Say $R ⊆ P^{\allhists}$ is \emph{finitely refutable} iff $∀r ∈ P^{\allhists} ∖ R, ∃Q ∈ \incr(\allhists)$ finite \suchthat no $r' ∈ P^{\allhists}$ agreeing with $r$ on $Q$ lies in $R$.
+  Given such an $R$, let $C = \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: \ileadstog[i] ∈ R}$.
+  If $I$ is infinite, $C$ suffers no visibility issues in $E$ (\cref{def:repeatable}); consequently (\cref{th:provGapVisibility}), $(¬\POF_C) ∩ E = (¬\OF_C) ∩ E$.
+\end{theorem}
+\begin{proof}
+  $¬\OF_C = C$: if $\allleadstog ∈ C$, every $θ ⊆ \allleadstog$ is a sub-observation of the completion $\allleadstog$ itself, giving $θ ∈ C^⊆$, so $¬\OF_C(\allleadstog)$.
+  If $\allleadstog ∉ C$, some $i_0$ has $\ileadstog[i_0] ∉ R$; by finite refutability, some finite $Q ∈ \incr(\allhists)$ witnesses this, so $θ = \set{(i_0, \hist, \allleadstog(i_0, \hist)) \suchthat \hist ∈ Q} ⊆ \allleadstog$ satisfies $θ ∉ C^⊆$ (no completion can have $i_0 ∈ R$), giving $\OF_C(\allleadstog)$.
+
+  $\POF_C$ holds throughout $E ∖ C$: given $\allleadstog ∈ E ∖ C$, some $i_0$ has $\ileadstog[i_0] ∉ R$; as $\allleadstog ∈ E$, infinitely many $j$ share $i_0$'s exact profile, so infinitely many individuals violate $C$ at $\allleadstog$.
+  Given any $θ ⊆ \allleadstog$, touching only finitely many individuals, some violator $i_1$ remains entirely untouched; applying finite refutability to $i_1$'s profile as above gives $θ' ⊇ θ$, $θ' ⊆ \allleadstog$, $θ' ∉ C^⊆$.
+  So no $θ$ hides every violator, giving $\POF_C(\allleadstog)$.
+
+  Hence $(¬\POF_C) ∩ E ⊆ C ∩ E$; combined with $C ⊆ ¬\POF_C$, which always holds, $(¬\POF_C) ∩ E = C ∩ E = (¬\OF_C) ∩ E$: no visibility issues in $E$.
+\end{proof}
+
+\Cref{ex:repeatableConfirm} is the case $R = \set{r ∈ P^{\allhists} \suchthat r(\ar) = φ}$, finitely refutable via $Q = \set{\ar}$. The same argument covers, for instance, $R = \set{r \suchthat r((a)) = φ ∧ r((b)) = φ}$ even when $(a), (b)$ are incomparable: a profile failing $R$ fails at $(a)$ or at $(b)$ alone, each a valid singleton witness $Q$, so $R$ is finitely refutable even though \emph{confirming} $r ∈ R$ would need both.
+
+\begin{remark}[Naming an individual breaks it]
+  \label{rk:coordinatewiseNeeded}
+  \Cref{th:coordinatewiseNoVI} needs $C$ to impose the \emph{same} condition on every individual, not merely to be anonymous by accident: $C_1$ (\cref{rk:cScrutinyC1}), which fixes a single individual $i^*$, keeps its visibility issue even within $E$.
+  At a world where $i^*$ satisfies $(a)$ but not $(b)$, the hiding prefix $θ = \set{(i^*, (a), φ)}$ still blocks $\POF_{C_1}$ regardless of $E$: $E$ guarantees clones of $i^*$ exist, but $C_1$ is entirely indifferent to them, so observing a clone violate never makes any extension of $θ$ escape $C_1^⊆$ — a completion can always still set $i^*$'s own, permanently unobserved, $(b)$-value to $φ$.
+  What makes \cref{th:coordinatewiseNoVI} work is that $C$'s truth is a conjunction \emph{over all individuals} of the \emph{same} local condition, so that any one violator, wherever it is found, suffices to falsify $C$ outright — a structure $C_1$ deliberately lacks, since it is not just about \emph{some} individual but about $i^*$ specifically.
+\end{remark}
+
+This leaves genuinely open only claims that are anonymous yet not coordinatewise in this sense — for instance, ones comparing different individuals to each other, or depending on the number or pattern of violators rather than on each individual's own profile alone.
 
 \subsection{Persistent falsifiability}
 Consider a claim that in some world satisfies F but not POF.
@@ -1239,8 +1344,8 @@ Being closed under finite modification and non-empty does not entail triviality.
 \subsection{POF}
 \begin{remark}
   \label{rk:rpevGap}
-  By \cref{th:rpevChar}, $\allleadstog ∈ C ∩ D$ satisfies established verifiability but not PEV under $D$ iff $\OF_{D ∖ C}(\allleadstog) ∧ ¬\POF_{D ∖ C}(\allleadstog)$, that is, iff $D ∖ C$ suffers visibility issues at $\allleadstog$.
-  So, for a given claim and prior, the gap between established verifiability and PEV is precisely governed by visibility issues of $D ∖ C$: no such gap arises wherever $D ∖ C$ suffers no visibility issues.
+  By \cref{th:rpevChar}, $\allleadstog ∈ C ∩ D$ satisfies established verifiability but not PV under $D$ iff $\OF_{D ∖ C}(\allleadstog) ∧ ¬\POF_{D ∖ C}(\allleadstog)$, that is, iff $D ∖ C$ suffers visibility issues at $\allleadstog$.
+  So, for a given claim and prior, the gap between established verifiability and PV is precisely governed by visibility issues of $D ∖ C$: no such gap arises wherever $D ∖ C$ suffers no visibility issues.
 \end{remark}
 
 A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\POF$.
@@ -3224,9 +3329,9 @@ A genuine compactness proof of \cref{cnj:rpevProv}, if one exists, would need a 
   A tractable test: could $D ∖ C$ ever be a single point $\set{\allleadstog[0]}$?
   $\POF_{\set{\allleadstog[0]}}(\allleadstog)$, for $\allleadstog ∈ C$, only requires every prefix to be rightward-extendable to some disagreement with $\allleadstog[0]$.
   If $\allleadstog$ differs from $\allleadstog[0]$ at only finitely many points, an adversarial prefix can permanently block each of them (touching, for each differing individual, some other history first — always available once $\allargs$ has at least two elements, even for a difference located at the root $∅$).
-  So PEV can only survive at an $\allleadstog ∈ C$ that differs from $\allleadstog[0]$ at infinitely many independent individuals, mirroring the “fresh reserve” move used in the proof of \cref{th:rpevDiverge} — and PEV under $D$ requires this of \emph{every} $\allleadstog ∈ C$, not just one.
+  So PV can only survive at an $\allleadstog ∈ C$ that differs from $\allleadstog[0]$ at infinitely many independent individuals, mirroring the “fresh reserve” move used in the proof of \cref{th:rpevDiverge} — and PEV under $D$ requires this of \emph{every} $\allleadstog ∈ C$, not just one.
 
-  This looks structurally difficult to arrange: $D ∖ C = \set{\allleadstog[0]}$ means $C$ excludes only one point, which typically leaves plenty of “near misses” inside $C$ — worlds differing from $\allleadstog[0]$ at only finitely many coordinates, such as a single flipped coordinate — exactly the worlds at which PEV was just shown to fail.
+  This looks structurally difficult to arrange: $D ∖ C = \set{\allleadstog[0]}$ means $C$ excludes only one point, which typically leaves plenty of “near misses” inside $C$ — worlds differing from $\allleadstog[0]$ at only finitely many coordinates, such as a single flipped coordinate — exactly the worlds at which PV was just shown to fail.
   So a singleton $D ∖ C$ seems to force the very structural conflict described by \cref{rk:rpevDuality}: the infinite redundancy PEV needs everywhere is in tension with $D ∖ C$ being minimal.
   This is not yet a proof that $D ∖ C$ cannot be a singleton for a $C$ not closed under finite modification, only a further, structurally distinct, piece of evidence for it.
 \end{remark}
