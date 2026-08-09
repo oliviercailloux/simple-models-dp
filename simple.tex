@@ -552,15 +552,19 @@ and $¬\OF_{C ∩ E} ⊆ ¬\OF_C$.)
   $θ' ∈ (C ∩ E)^⊆$.
 \end{example}
 
-\begin{theorem}[Provability gap under a restriction reduces to visibility issues]
+\begin{theorem}
   \label{th:provGapVisibility}
-  Given $C, E ⊆ \allleadstos$: $(¬\POF_C) ∩ E$ proves $C$ iff $(¬\OF_C) ∩ E$ proves $C$ and $C$ suffers no visibility issues in $E$ (that is, $∀\allleadstog ∈ E: \OF_C(\allleadstog) ⇒ \POF_C(\allleadstog)$).
+  Given $C, E ⊆ \allleadstos$: $(¬\POF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no visibility issues in $E$ (that is, $∀\allleadstog ∈ E: \OF(\allleadstog) ⇒ \POF(\allleadstog)$).
 \end{theorem}
 \begin{proof}
-  Since $\POF_C ⇒ \OF_C$, we have $¬\OF_C ⊆ ¬\POF_C$, so $(¬\POF_C) ∩ E = [(¬\OF_C) ∩ E] ∪ [((¬\POF_C) ∖ (¬\OF_C)) ∩ E]$, a disjoint union.
-  As "$D$ proves $C$" means $D ⊆ C$, $(¬\POF_C) ∩ E ⊆ C$ iff both $(¬\OF_C) ∩ E ⊆ C$ and $[(¬\POF_C) ∖ (¬\OF_C)] ∩ E ⊆ C$.
-  Now $(¬\POF_C) ∖ (¬\OF_C) = \set{\allleadstog \suchthat ¬\POF_C(\allleadstog) ∧ \OF_C(\allleadstog)}$, exactly the worlds where $C$ suffers visibility issues; since $\OF_C(\allleadstog) ⇒ \F_C(\allleadstog) ⇒ \allleadstog ∉ C$, this set is disjoint from $C$, so its intersection with $E$ is $⊆ C$ iff it is empty, that is, iff $C$ suffers no visibility issues in $E$.
+  The claim is equivalent to
+  $[∀\allleadstog ∉ C, \allleadstog ∈ E: \POF(\allleadstog)] ⇔ [∀\allleadstog ∉ C, \allleadstog ∈ E: \OF(\allleadstog) ∧ ∀\allleadstog ∉ C, \allleadstog ∈ E: \OF(\allleadstog) ⇒ \POF(\allleadstog)]$, because $∀\allleadstog ∈ C, ¬\OF(\allleadstog)$.
 \end{proof}
+
+Now we could perhaps use the concept of cufm, and perhaps T26, to prove this.
+\begin{conjecture}
+  A claim is anonymous iff it suffers no visibility issues in $E$.
+\end{conjecture}
 
 This reduces the first question above to: does $E$ (\cref{def:repeatable}) guarantee that no claim suffers visibility issues within it? \Cref{ex:repeatableConfirm} confirms it for exactly the motivating case \cref{def:repeatable} was designed for.
 
