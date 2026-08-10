@@ -548,20 +548,29 @@ $(¬\POF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no vi
 \end{definition}
 \Cref{ex:anon} illustrates.
 
+\begin{theorem}[Delegation suffices for no visibility issues]
+  \label{th:delegationNoVI}
+  Given any claim $C$ and world $\allleadstog$: if, for every finite $T ⊆ I$, some $θ ∈ Θ ∩ \powerset{\allleadstog}$ satisfies $θ ∉ C^⊆$ and touches only individuals outside $T$, then $\POF_C(\allleadstog)$ (taking $T = ∅$ already gives $\OF_C(\allleadstog)$, so this is indeed a case of no visibility issues at $\allleadstog$).
+\end{theorem}
+\begin{proof}
+  Fix $τ ∈ Θ ∩ \powerset{\allleadstog}$; let $T ⊆ I$ be its (finite) individuals, and pick, by hypothesis, $θ ∈ Θ ∩ \powerset{\allleadstog}$, $θ ∉ C^⊆$, touching only individuals outside $T$.
+  As $τ, θ$ touch disjoint individuals, $τ' = τ ∪ θ ∈ Θ ∩ \powerset{\allleadstog}$ and $τ ⊑ τ'$ (no point is added for any individual already in $τ$'s domain).
+  As $C^⊆$ is downwards closed and $θ ⊆ τ'$, $τ' ∉ C^⊆$.
+  As $τ$ was arbitrary, $\POF_C(\allleadstog)$ holds.
+\end{proof}
+\Cref{th:anonNoVI,th:finiteExceptAnon} both work by exhibiting, for every finite set of already-touched individuals, an escape witness avoiding them entirely — a \emph{delegate}.
+
 \begin{theorem}[Anonymous claims suffer no visibility issues in $E$]
   \label{th:anonNoVI}
   If $C$ is anonymous (\cref{def:anonymous}), $C$ suffers no visibility issues in $E$.
 \end{theorem}
 \begin{proof}
-  Let $\allleadstog ∈ E$ with $\OF_C(\allleadstog)$, witnessed by $θ ∈ Θ ∩ \powerset{\allleadstog}, θ ∉ C^⊆$; let us show $\POF_C(\allleadstog)$.
-  Fix any $τ ∈ Θ ∩ \powerset{\allleadstog}$; we build $τ ⊑ τ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat τ' ∉ C^⊆$.
-  Let $J, T ⊆ I$ be the (finite) individuals occurring in $θ, τ$ respectively.
-  As $\allleadstog ∈ E$, choose, for each $i ∈ J$, a distinct $i^* ∉ J ∪ T$ (and distinct from the other chosen $i'^*$) sharing $i$'s exact relation ($\ileadstog[i^*] = \ileadstog[i]$) — possible since each $i$'s relation is shared by infinitely many individuals and only finitely many are excluded at each step.
+  Let $\allleadstog ∈ E$ with $\OF_C(\allleadstog)$, witnessed by $θ ∈ Θ ∩ \powerset{\allleadstog}, θ ∉ C^⊆$; let $J ⊆ I$ be the (finite) individuals occurring in $θ$.
+  Given any finite $T ⊆ I$, choose, for each $i ∈ J$, a distinct $i^* ∉ J ∪ T$ (and distinct from the other chosen $i'^*$) sharing $i$'s exact relation ($\ileadstog[i^*] = \ileadstog[i]$) — possible since each $i$'s relation is shared by infinitely many individuals and only finitely many are excluded at each step.
   Let $σ$ be the permutation of $I$ swapping each $i ∈ J$ with its chosen $i^*$ (identity elsewhere); as these transpositions involve pairwise disjoint pairs, $σ$ is well defined, and $σ = σ^{-1}$.
   Since every $i ∈ J$ and $σ(i)$ share the same relation in $\allleadstog$, $θ ∘ σ ⊆ \allleadstog$, and $θ ∘ σ$ touches only individuals in $σ(J)$, disjoint from $T$.
-  So $τ' = τ ∪ (θ ∘ σ) ∈ Θ ∩ \powerset{\allleadstog}$ (the two parts touch disjoint individuals), and $τ ⊑ τ'$ (no point is added for any individual already in $τ$'s domain).
   As $C = C ∘ σ$: any $w ⊇ θ$, $w ∈ C$ gives $w ∘ σ ⊇ θ ∘ σ$, $w ∘ σ ∈ C ∘ σ = C$, so $θ ∈ C^⊆ ⇒ θ ∘ σ ∈ C^⊆$; applying this with $σ$ in place of $σ^{-1} = σ$ gives the converse, so $θ ∈ C^⊆ ⇔ θ ∘ σ ∈ C^⊆$. As $θ ∉ C^⊆$, $θ ∘ σ ∉ C^⊆$.
-  As $C^⊆$ is downwards closed and $θ ∘ σ ⊆ τ'$, $τ' ∉ C^⊆$.
+  So $θ ∘ σ$ is a delegate for $T$; as $T$ was arbitrary, \cref{th:delegationNoVI} gives $\POF_C(\allleadstog)$.
 \end{proof}
 This already covers the visibility-in-$E$ half of \cref{th:coordinatewiseNoVI} below, and more generally: anonymity alone forces no visibility issues in $E$, with no need for $C$ to decompose coordinatewise into the same per-individual condition; \cref{th:coordinatewiseNoVI} additionally isolates when such a $C$ is falsifiable outright.
 
@@ -576,11 +585,47 @@ The converse fails: no visibility issues in $E$ does not imply anonymity.
   Since $\allleadstog[0] ∈ C∘σ$ would require $\allleadstog[0] ∘ σ ∈ C$ (as $σ = σ^{-1}$), while $\allleadstog[0] ∈ C$ trivially, $C ∘ σ ≠ C$.
 \end{example}
 
-So anonymity is sufficient but not necessary for no visibility issues in $E$; the obstruction to the converse is exactly the never-falsifiable claims (\cref{th:cufmNeverFals}: every non-empty claim closed under finite modification is one of these), which trivially suffer no visibility issues anywhere, with no reason to be anonymous.
-\begin{conjecture}
-  \label{cnj:anonNoVI}
-  If $C$ is not closed under finite modification, $C$ is anonymous iff $C$ suffers no visibility issues in $E$.
-\end{conjecture}
+So anonymity is sufficient but not necessary for no visibility issues in $E$. Never-falsifiable claims are one source of the gap (\cref{th:cufmNeverFals}: every non-empty claim closed under finite modification is one of these), but not the only one, as the next example shows.
+
+\begin{theorem}[Finitely many exceptions to an anonymous claim do not register in $E$]
+  \label{th:finiteExceptAnon}
+  If $C_0$ is anonymous and $F ⊆ \allleadstos$ is finite, $C = C_0 ∪ F$ suffers no visibility issues in $E$.
+\end{theorem}
+\begin{proof}
+  Let $\allleadstog ∈ E$ with $\OF_C(\allleadstog)$, witnessed by $θ ∈ Θ ∩ \powerset{\allleadstog}, θ ∉ C^⊆$. As $C_0 ⊆ C$, $C_0^⊆ ⊆ C^⊆$, so $θ ∉ C_0^⊆$ too; and $\allleadstog ∉ C ⊇ F$, so $\allleadstog ∉ F$.
+  Fix $τ ∈ Θ ∩ \powerset{\allleadstog}$; exactly as in \cref{th:anonNoVI}'s proof (using only $\allleadstog ∈ E$, $C_0$ anonymous, and $θ$), build $θ ∘ σ ⊆ \allleadstog$, disjoint from $τ$'s domain, with $θ ∘ σ ∉ C_0^⊆$.
+  For each $w ∈ F$, $w ≠ \allleadstog$, so pick a point $p_w$ where $\allleadstog, w$ disagree; let $F' = \set{(p_w, \allleadstog(p_w)) \suchthat w ∈ F}$, finitely many further points, all true values of $\allleadstog$, hence $F' ⊆ \allleadstog$.
+  Let $τ' = τ ∪ (θ ∘ σ) ∪ F' ∈ Θ ∩ \powerset{\allleadstog}$ (finitely many points, all compatible with $\allleadstog$); then $τ ⊑ τ'$.
+  As $C_0^⊆$ is downwards closed and $θ ∘ σ ⊆ τ'$, $τ' ∉ C_0^⊆$. And $τ' ∉ \powerset{w}$ for every $w ∈ F$, since $τ'$ disagrees with $w$ at $p_w$.
+  So $τ' ∉ C_0^⊆ ∪ F^⊆ = C^⊆$, giving $\POF_C(\allleadstog)$.
+\end{proof}
+
+\begin{example}[Instance: a single named exception]
+  \label{ex:finiteExceptionNotAnon}
+  Let $C_0 = \set{\allleadstog \suchthat ∀i ∈ I: \allleadstog(i, \ar) = φ}$ (\cref{ex:repeatableConfirm}'s claim, anonymous), fix $i^* ∈ I$, and let $\allleadstog[0]$ agree with $φ$ everywhere except $\allleadstog[0](i^*, \ar) = φ'$. By \cref{th:finiteExceptAnon} (with $F = \set{\allleadstog[0]}$), $C = C_0 ∪ \set{\allleadstog[0]}$ suffers no visibility issues in $E$.
+
+  Yet $C$ is neither anonymous (swapping $i^*$ with any other $j$ moves the exception to $(j, \ar)$, landing neither in $C_0$ nor back on $\allleadstog[0]$) nor closed under finite modification (flipping $\allleadstog[0]$ at a second individual's $\ar$-value produces a two-violator world, outside both $C_0$ and $\set{\allleadstog[0]}$) nor never-falsifiable (any world with two violators, neither $i^*$, already escapes $C^⊆$, as no completion of either $C_0$ or $\set{\allleadstog[0]}$ has two).
+\end{example}
+
+Why does a single exception never register in $E$, while $C_1$'s single named individual (\cref{rk:coordinatewiseNeeded}) genuinely does? The following fact, general to $\POF$ and independent of $E$ or anonymity, pins down the mechanism exactly.
+
+\begin{lemma}[A hiding prefix immunizes every compatible observation]
+  \label{lem:hidingForcesCompletable}
+  Given any claim $C$ and world $\allleadstog$: if $τ ∈ Θ ∩ \powerset{\allleadstog}$ witnesses $¬\POF_C(\allleadstog)$ (that is, $∀τ ⊑ τ' ∈ Θ ∩ \powerset{\allleadstog}: τ' ∈ C^⊆$), then every $θ ⊆ \allleadstog$ with $τ ⊑ τ ∪ θ ∈ Θ$ satisfies $θ ∈ C^⊆$.
+\end{lemma}
+\begin{proof}
+  By hypothesis on $τ$, $τ ∪ θ ∈ C^⊆$; as $C^⊆$ is downwards closed and $θ ⊆ τ ∪ θ$, $θ ∈ C^⊆$.
+\end{proof}
+
+So an escape witness can never be "fresh": whenever $C$ suffers a visibility issue at $\allleadstog$ — a hiding prefix $τ$, naming individuals $K$, coexisting with an escaping $θ$ — $θ$ must, for some individual in $K$, name a path \emph{not} extending $τ$'s path for that individual (else $τ ⊑ τ ∪ θ$, and \cref{lem:hidingForcesCompletable} forces $θ ∈ C^⊆$, contradicting $θ$ escaping). Any $θ$ using only individuals outside $K$, or only extending $K$'s paths forward, is automatically futile against $τ$. This is exactly why fresh clones defeat any candidate hiding prefix in \cref{th:anonNoVI,th:finiteExceptAnon}, and exactly why $C_1$ (\cref{rk:coordinatewiseNeeded}) resists them: its hiding prefix $θ = \set{(i^*, (a), φ)}$ survives only because escaping it requires revisiting $i^*$ along the \emph{incomparable} path $(b)$ — no fresh individual, however many clones $E$ supplies, can substitute for that.
+
+\begin{remark}[Locking one individual is not enough]
+  A stronger attempt at hiding in \cref{ex:finiteExceptionNotAnon} still fails: take $τ = \set{(i^*, (\ar, \ar), φ)}$, querying $i^*$ at the length-two path $(\ar, \ar)$ rather than $(\ar)$ itself. Since $(\ar) ⊆ (\ar, \ar)$ but not conversely, no rightward extension of $τ$ can ever separately query $i^*$ at $(\ar)$ again: $\allleadstog(i^*, \ar)$, the only point $C_0$ and $\allleadstog[0]$ care about, becomes permanently unobservable from $τ$ on — a genuine $C_1$-style lock, since $\allleadstog(i^*, (\ar, \ar))$ and $\allleadstog(i^*, \ar)$ are logically unrelated, so querying one reveals nothing about the other.
+  Yet $τ$ still fails to hide $C$: any $\allleadstog ∈ E ∖ C$ has infinitely many violators at $\ar$ (\cref{th:finiteExceptAnon}'s proof), each sharing its violator's full relation with infinitely many others; as $τ$ names only $i^*$, infinitely many violators remain untouched, and revealing any one of them, $j ≠ i^*$, at $\ar$ escapes $C^⊆$ regardless of what happened to $i^*$.
+  Locking $i^*$ costs nothing here because $C$'s truth was never essentially about $i^*$: unlike $C_1$, which depends on $i^*$ and nothing else, $C_0$ is coordinatewise, so a disjoint escape route through some untouched individual is always on offer, and a finite $τ$ can only ever lock finitely many of them.
+\end{remark}
+
+This narrows the gap without fully closing it: by \cref{th:delegationNoVI}, no visibility issues in $E$ is guaranteed whenever falsification can always be delegated to individuals untouched by any candidate hiding prefix (anonymity, or anonymity up to finitely many exceptions), and is genuinely at risk only when $C$'s truth can hinge on revisiting some bounded set of individuals along incomparable paths. A fully general syntactic iff — one covering, say, infinite but still $E$-avoiding exception sets, where \cref{th:finiteExceptAnon}'s technique breaks down since finitely many disagreement points can no longer defeat infinitely many candidate exceptions at once — remains open.
 
 This reduces the first question above to: does $E$ (\cref{def:repeatable}) guarantee that no claim suffers visibility issues within it? \Cref{th:anonNoVI} already answers this whenever $C$ is anonymous; \cref{ex:repeatableConfirm} confirms it concretely for exactly the motivating case \cref{def:repeatable} was designed for.
 
@@ -615,6 +660,29 @@ Since $(¬\POF_C) ∩ E = (¬\OF_C) ∩ E = C ∩ E$ exactly for this $C$, the t
   \Cref{th:anonNoVI} needs $C$ anonymous: $C_1$ (\cref{rk:cScrutinyC1}), which fixes a single individual $i^*$, is not anonymous, and indeed keeps its visibility issue even within $E$.
   At a world where $i^*$ satisfies $(a)$ but not $(b)$, the hiding prefix $θ = \set{(i^*, (a), φ)}$ still blocks $\POF_{C_1}$ regardless of $E$: $E$ guarantees clones of $i^*$ exist, but $C_1$ is entirely indifferent to them, so observing a clone violate never makes any extension of $θ$ escape $C_1^⊆$ — a completion can always still set $i^*$'s own, permanently unobserved, $(b)$-value to $φ$.
 \end{remark}
+
+The two known obstructions to the converse — never-falsifiable claims (\cref{ex:cufmNotAnon}) and finite exceptions to an anonymous claim (\cref{ex:finiteExceptionNotAnon}) — both escape $E$ itself: a non-empty claim closed under finite modification generically leaves $E$ under a single-point flip (an individual's newly-flipped relation is generically shared by no one), and $\allleadstog[0]$, the exceptional world of \cref{ex:finiteExceptionNotAnon}, is not in $E$ at all (its one distinguished individual has no clones). This suggests that restricting to $C ⊆ E$ closes the gap.
+
+\begin{conjecture}[Among subsets of $E$, the gap closes]
+  \label{cnj:anonNoVISubE}
+  Among $C ⊆ E$: $C$ is anonymous or $C$ is never falsifiable iff $C$ suffers no visibility issues in $E$.
+\end{conjecture}
+
+The "or" direction is immediate ($\Rightarrow$: \cref{th:anonNoVI}, and the vacuous case), so only the converse is at stake. Every attempt at a counterexample, restricted to $C ⊆ E$, has instead confirmed the claim — including several designed to resist it: naming a single individual (as $C_1$ does, \cref{rk:coordinatewiseNeeded}) but intersected with $E$; naming an infinite, proper, permutation-non-invariant $K ⊊ I$ and constraining only $K$; requiring two named individuals to agree; even permanently locking the relevant individual's short path via the $(\ar,\ar)$ trick of the previous remark. Each time, the same mechanism produces a visibility issue: lock the finitely many named individuals along paths that hide the relevant values for good, then note that everything else — anything $C$ does not depend on, or already satisfies at the tested world — remains freely revisable, and in particular offers an untouched, fully compliant repair. The following theorem isolates and proves exactly this mechanism, in general.
+
+\begin{theorem}[A finite repair defeats any candidate obstruction]
+  \label{th:finiteRepairInE}
+  Let $C ⊆ E$ and $\allleadstog, \allleadstog' ∈ E$ be such that $Δ = \set{(i,\hist) ∈ I × \allhists \suchthat \allleadstog(i,\hist) ≠ \allleadstog'(i,\hist)}$ is finite. If $\allleadstog' ∈ C$ and $\OF_C(\allleadstog)$, then $C$ suffers a visibility issue at $\allleadstog$.
+\end{theorem}
+\begin{proof}
+  Let $K = \set{i ∈ I \suchthat ∃\hist: (i,\hist) ∈ Δ}$, finite since $Δ$ is. For each $i ∈ K$, let $β_i ∈ \allhists$ satisfy $\card{β_i} > \max\set{\card{\hist} \suchthat (i,\hist) ∈ Δ}$, and let $τ = \set{(i,β_i,\allleadstog(i,β_i)) \suchthat i ∈ K} ⊆ \allleadstog$.
+  Fix $τ ⊑ τ' ∈ Θ ∩ \powerset{\allleadstog}$. For $i ∈ K$, every point of $τ'$ concerning $i$ has a path $\histp$ with $β_i ⊆ \histp$, so $\card{\histp} ≥ \card{β_i} > \card{\hist}$ for every $(i,\hist) ∈ Δ$, so $\histp ≠ \hist$: no point of $τ'$ lies in $Δ$. For $i ∉ K$, no point of $τ'$ concerning $i$ lies in $Δ$ either, as $Δ ⊆ K × \allhists$. So $τ'$ is disjoint from $Δ$, meaning every point of $τ'$ (drawn from $\allleadstog$) agrees with $\allleadstog'$ too: $τ' ⊆ \allleadstog'$. As $\allleadstog' ∈ C$, $τ' ∈ \powerset{\allleadstog'} ⊆ C^⊆$.
+  This holds for every $τ ⊑ τ'$, giving $\POF_C(\allleadstog)$, which together with $\OF_C(\allleadstog)$ is a visibility issue.
+\end{proof}
+
+Every counterexample attempt above instantiates \cref{th:finiteRepairInE} directly, with $Δ$ exactly the finite repair at the named individuals. Notice, too, why this can never apply to an anonymous, coordinatewise $C_0$ (\cref{th:coordinatewiseNoVI}): if $\allleadstog ∈ E ∖ C_0$, its violator's \emph{entire} relation is shared by infinitely many others (\cref{def:repeatable}), so any world $\allleadstog'$ agreeing with $\allleadstog$ outside a finite $Δ$ still carries infinitely many of them, hence $\allleadstog' ∉ C_0$ too: for such $C_0$, genuine violations are never finitely repairable, which is exactly why they have no visibility issues at all rather than merely evading this particular theorem.
+
+This is not yet \cref{cnj:anonNoVISubE}: it shows \emph{whenever} a finite repair pair $(\allleadstog,\allleadstog')$ exists, $C$ has a visibility issue — not that non-anonymous, falsifiable $C ⊆ E$ always admits one. Falsifiability alone already gives two separate ingredients: some $\allleadstog ∈ E ∖ C$ with $\OF_C(\allleadstog)$ (complete a finite witness within $E$, using that $E$ itself is never falsifiable), and — since falsifiable, non-empty claims are never closed under finite modification (\cref{th:cufmNeverFals}'s contrapositive) — via the flip-one-point-at-a-time argument of \cref{th:onlyEmptyPF}'s proof, a pair differing at exactly one point, one member in $C$ and one not. But nothing forces these two ingredients to coincide, or even to be related: the world witnessing $\OF_C$ and the single-point-flip pair could sit in entirely different, unrelated parts of $E$, and the flipped world need not itself lie in $E$ (as the coordinatewise case just illustrated, a single flipped point generically stays uncloned) nor carry any $\OF_C$ witness of its own. What non-anonymity should buy — forcing falsifiability and the flip to cohabit a single, finite, $E$-compatible repair — is precisely what \cref{cnj:anonNoVISubE} still needs and what this note has not established.
 
 \subsection{Persistent falsifiability}
 Consider a claim that in some world satisfies F but not POF.
