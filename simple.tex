@@ -202,7 +202,7 @@ Abusing notations, we also view $Q$ as an element of $\allpriobss$.
 An observation associates to a query an element of $P$ per queried element, thus, the set of possible observations is $Θ = ∪_{Q ∈ \allpriobss} P^Q$.
 In other words, an observation $θ ∈ Θ$ is a right unique finite subset of $(I × \allhists) × P$ satisfying $∀ i ∈ I, (i, \hist, p), (i, \histp, q) ∈ θ: \card{\hist} ≤ \card{\hist'} ⇒ \hist ⊆ \hist'$.
 Given an observation $θ$, let $θ^{-1}(P) ∈ \allpriobss$ denote the queried elements in $θ$, which can also be considered as $θ^{-1}(P) ⊆ I × \allhists$, the pairs $(i, \hist)$ in $θ$.
-Similarly, we can view an observation $θ$ as a function $θ: I ↦ ∪_{H ∈ \incr(\allhists)} P^H$ and thus $Θ = \finite((∪_{H ∈ \incr(\allhists)} P^H)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
+Similarly, we can view an observation $θ$ as a function $θ: I ↦ ∪_{H ∈ \incr(\allhists)} P^H$ and thus $Θ = \finite((∪_{H ∈ \incr(\allhists)} P^H)^I)$, where $\finite$ designates the finite relations (considered as a set of triples); also, $θ^{-1}(\allhists, P)$ designates the queried individuals.
 An observation $θ'$ rightward-extends an observation $θ$, denoted $θ ⊑ θ'$, iff $θ ⊆ θ' ∧ ∀i ∈ I, (α, i, p) ∈ θ, (α', i, p') ∈ θ': α ⊆ α'$.
 
 We say that an observation $θ$ is compatible with a behavior ${\allleadstog} ∈ \allleadstos$ iff $θ ⊆ \allleadstog$ (seeing the behavior as a set of triples).
@@ -531,8 +531,8 @@ We now need to extend our prior beyond $¬\POF$.
 \begin{definition}[Repeatable world]
   \label{def:repeatable}
   Let $E = \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: \card{\set{j ∈ I \suchthat {\ileadstog[j]} = {\ileadstog}}} ∉ ℕ}$, the claim that every individual's behavior is shared by infinitely many others.
-  Given $C ⊆ \allleadstos$, write $F_C = (¬\POF_C) ∩ E$.
 \end{definition}
+Given $C ⊆ \allleadstos$, write $F_C = (¬\POF_C) ∩ E$.
 
 \Cref{ex:repeatableProvNotOfButNotNotPOF} shows that a claim can be provable by $¬\OF_C$ (thus, provable by $¬\OF_{C ∩ E} ∩ E$) yet not provable by $¬\POF_{C ∩ E} ∩ E$ (thus, also not provable by $¬\POF_C ∩ E$).
 (Recall that $¬\POF_{C ∩ E} ⊆ ¬\POF_C$ 
@@ -552,14 +552,21 @@ We ask when $C$ suffers no visibility issues in $E$, that is, $∀\allleadstog �
 
 \begin{theorem}[Delegation suffices for no visibility issues]
   \label{th:delegationNoVI}
-  Given any claim $C$ and world $\allleadstog$: if, for every finite $T ⊆ I$, some $θ ∈ Θ ∩ \powerset{\allleadstog}$ satisfies $θ ∉ C^⊆$ and touches only individuals outside $T$, then $\POF_C(\allleadstog)$ (taking $T = ∅$ already gives $\OF_C(\allleadstog)$, so this is indeed a case of no visibility issues at $\allleadstog$).
+  Given any claim $C$ and world $\allleadstog$: 
+  $[∀J \fsub I,
+  ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆] 
+  ⇒ \POF(\allleadstog)$.
 \end{theorem}
 \begin{proof}
-  Fix $τ ∈ Θ ∩ \powerset{\allleadstog}$; let $T ⊆ I$ be its (finite) individuals, and pick, by hypothesis, $θ ∈ Θ ∩ \powerset{\allleadstog}$, $θ ∉ C^⊆$, touching only individuals outside $T$.
+  Fix $τ ∈ Θ ∩ \powerset{\allleadstog}$; let $J ⊆ I$ be its (finite) individuals, and pick, by hypothesis, $θ ∈ Θ ∩ \powerset{\allleadstog}$, $θ ∉ C^⊆$, touching only individuals outside $J$.
   As $τ, θ$ touch disjoint individuals, $τ' = τ ∪ θ ∈ Θ ∩ \powerset{\allleadstog}$ and $τ ⊑ τ'$ (no point is added for any individual already in $τ$'s domain).
   As $C^⊆$ is downwards closed and $θ ⊆ τ'$, $τ' ∉ C^⊆$.
   As $τ$ was arbitrary, $\POF_C(\allleadstog)$ holds.
 \end{proof}
+In other words,
+$¬\POF(\allleadstog)$ requires some finite $J ⊆ I$ such that
+$∀θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆: ∃j ∈ J ∩ θ^{-1}(\allhists, P)$.
+
 \Cref{th:anonNoVI,th:finiteExceptAnon} both work by exhibiting, for every finite set of already-touched individuals, an escape witness avoiding them entirely — a \emph{delegate}.
 
 \begin{theorem}[Anonymous claims suffer no visibility issues in $E$]
@@ -603,6 +610,25 @@ The converse fails, in two structurally different ways — yet, tellingly, both 
 
 Both obstructions to the converse, then, live outside $E$: a non-empty claim closed under finite modification generically leaves $E$ under a single-point flip, and $\allleadstog[0]$ above has no clones at all. This suggests that restricting to $C ⊆ E$ closes the gap.
 
+Testing anonymity against every permutation of $I$ is more than falsifiability actually demands.
+\begin{theorem}[Anonymity is tested by finite-support permutations]
+  \label{th:finSuppAnon}
+  If $C$ is falsifiable, $C$ is anonymous iff $C = C ∘ σ$ for every permutation $σ$ of $I$ with finite support (that is, $σ(i) = i$ for all but finitely many $i ∈ I$).
+\end{theorem}
+\begin{proof}
+  ($⇒$) Immediate, as anonymity requires invariance under every permutation, in particular the finite-support ones.
+
+  ($⇐$) Suppose $C$ is invariant under every finite-support permutation, and, toward a contradiction, that $C ≠ C ∘ σ$ for some permutation $σ$; replacing $σ$ by $σ^{-1}$ if needed (as $\allleadstog[0] ∈ C ∖ (C∘σ)$ iff $\allleadstog[0] ∘ σ^{-1} ∈ (C∘σ^{-1}) ∖ C$), pick $\allleadstog[0] ∈ C$ with $\allleadstog[0] ∘ σ ∉ C$.
+  As $C$ is falsifiable, $\OF_C(\allleadstog[0] ∘ σ)$ holds: some $θ ∈ Θ ∩ \powerset{\allleadstog[0] ∘ σ}$ satisfies $θ ∉ C^⊆$. Let $K ⊆ I$ be the (finite) individuals occurring in $θ$.
+
+  As $σ$ is injective, $\card{σ(K)} = \card{K}$, so $K' = K ∪ σ(K)$ (finite) satisfies $\card{K' ∖ K} = \card{K' ∖ σ(K)}$; fix a bijection between these two (possibly empty) sets and combine it with $σ|_K : K → σ(K)$ to build a bijection $τ$ of $K'$ onto itself agreeing with $σ$ on $K$. Extending $τ$ by the identity outside $K'$ makes it a permutation of $I$ with finite support, agreeing with $σ$ on $K$.
+
+  Since $θ$'s domain lies in $K × \allhists$ and $τ = σ$ on $K$: $∀(i, \hist, p) ∈ θ$, $(\allleadstog[0] ∘ τ)(i, \hist) = \allleadstog[0](τ(i), \hist) = \allleadstog[0](σ(i), \hist) = (\allleadstog[0] ∘ σ)(i, \hist) = p$, so $θ ⊆ \allleadstog[0] ∘ τ$.
+  As $θ ∉ C^⊆$ and $\allleadstog[0] ∘ τ$ is a completion of $θ$, $\allleadstog[0] ∘ τ ∉ C$.
+  But $\allleadstog[0] ∈ C$ and $τ$ has finite support, so the hypothesis gives $\allleadstog[0] ∘ τ ∈ C ∘ τ = C$: a contradiction.
+\end{proof}
+So, for a falsifiable $C$, a witness of non-anonymity can always be localized: some finite $K ⊆ I$ and a permutation $τ$ fixing everything outside $K$ already separate $C$ from $C ∘ τ$, and, moreover, the very observation $θ$ certifying $\OF_C(\allleadstog[0] ∘ τ)$ can be taken to touch only individuals in $K$ — the same finite set $τ$ moves.
+
 \begin{conjecture}[Among subsets of $E$, the gap closes]
   \label{cnj:anonNoVISubE}
   Among $C ⊆ E$: $C$ is anonymous or $C$ is never falsifiable iff $C$ suffers no visibility issues in $E$.
@@ -622,7 +648,11 @@ The "or" direction is immediate (\cref{th:anonNoVI}, and the vacuous case), so o
 
 Every counterexample attempt above instantiates \cref{th:finiteRepairInE} directly, with $Δ$ exactly the finite repair at the named individuals. This never applies to an anonymous, coordinatewise $C_0$ (all individuals constrained identically): if $\allleadstog ∈ E ∖ C_0$, its violator's \emph{entire} relation is shared by infinitely many others (\cref{def:repeatable}), so no finite $Δ$ can turn a violation into a repair — consistent with \cref{th:anonNoVI}.
 
-This is not yet \cref{cnj:anonNoVISubE}: it shows \emph{whenever} a finite repair pair $(\allleadstog,\allleadstog')$ exists, $C$ has a visibility issue — not that every non-anonymous, falsifiable $C ⊆ E$ admits one. Falsifiability alone already gives two separate ingredients: some $\allleadstog ∈ E ∖ C$ with $\OF_C(\allleadstog)$ (complete a finite witness within $E$, using that $E$ itself is never falsifiable), and — since falsifiable, non-empty claims are never closed under finite modification (\cref{th:cufmNeverFals}'s contrapositive) — via the flip-one-point-at-a-time argument of \cref{th:onlyEmptyPF}'s proof, a pair differing at exactly one point, one member in $C$ and one not. But nothing forces these two ingredients to coincide: the world witnessing $\OF_C$ and the single-point-flip pair could sit in entirely different, unrelated parts of $E$, and the flipped world need not itself lie in $E$ nor carry any $\OF_C$ witness of its own. What non-anonymity should buy — forcing falsifiability and the flip to cohabit a single, finite, $E$-compatible repair — is precisely what \cref{cnj:anonNoVISubE} still needs.
+This is not yet \cref{cnj:anonNoVISubE}: it shows \emph{whenever} a finite repair pair $(\allleadstog,\allleadstog')$ exists, $C$ has a visibility issue — not that every non-anonymous, falsifiable $C ⊆ E$ admits one.
+
+\Cref{th:finSuppAnon} already does better than the generic ingredients falsifiability alone provides (some $\allleadstog ∈ E ∖ C$ with $\OF_C(\allleadstog)$, and, separately, some pair differing at exactly one point via \cref{th:onlyEmptyPF}'s flip-one-point-at-a-time argument — two ingredients with no reason to coincide): non-anonymity of a falsifiable $C$ yields a single finite $K ⊆ I$ and a permutation $τ$, fixing everything outside $K$, together with a finite observation $θ$ — touching only individuals in $K$ — witnessing $\OF_C(\allleadstog[0] ∘ τ)$ for some $\allleadstog[0] ∈ C$. The two ingredients now genuinely cohabit, both living on the same finite $K$.
+
+What still stands between this and \cref{th:finiteRepairInE}'s hypothesis is that $\allleadstog[0] ∘ τ$ and $\allleadstog[0]$, while agreeing outside $K$, generally disagree on all of $K × \allhists$ — infinitely many points, not finitely many — since $τ$ relabels each $i ∈ K$'s \emph{entire} profile. Truncating this disagreement to a finite window (matching $\allleadstog[0] ∘ τ$ up to some length and $\allleadstog[0]$ beyond it) does yield a finite-$Δ$ pair, but the resulting hybrid profile on $K$ generally belongs to no infinite class of the truncated world, which then escapes $E$ — the same obstruction \cref{ex:finiteExceptionNotAnon} illustrates. Closing this remaining, purely local gap — repairing $K$'s profiles within a bounded window \emph{while staying in $E$} — is precisely what \cref{cnj:anonNoVISubE} still needs.
 
 Even a proof of \cref{cnj:anonNoVISubE} would only be a first step: it characterizes no-visibility-issues-in-$E$ among subsets of $E$, not among arbitrary claims. The more elegant target is a single syntactic condition, applicable to every $C$, of which anonymity (\cref{th:anonNoVI}), the finite-exception route (\cref{th:finiteExceptAnon}), and the never-falsifiable route (\cref{ex:cufmNotAnon}) would all be instances. \Cref{th:delegationNoVI} already suggests its shape — some guarantee of delegation to individuals untouched by any candidate hiding prefix — but turning this into an iff for arbitrary $C$ remains entirely open.
 
