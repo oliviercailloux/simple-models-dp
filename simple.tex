@@ -183,6 +183,7 @@ This approach also permits to tackle the second difficulty, by letting us study 
 \subsection{Claims and observable basis}
 % Such a deduction should use, as much as possible, the observational basis, that is, the propositions of the form $α \ileadsto p$ that can be obtained experimentally.
 Note first that given a relation ${\allleadstog} ∈ \allleadstos$, $\powerset{\allleadstog}$ denotes the set of relations over $(I × \allhists) × P$ that refine $\allleadstog$ (thus, each element $f ∈ \powerset{\allleadstog}$ is right-unique but non necessarily total, meaning that it does not necessarily cover $I × \allhists$).
+Given sets $A$ and $B$, $A \fsub B$ denotes that $A$ is a finite subset of $B$, thus $A \fsub B$ iff $A ⊆ B$ and $A$ is finite.
 
 Given a pair $(I, \allargs)$, a claim $C$ is a set of possibilities for $\allleadsto$, thus, $C ⊆ \allleadstos$.
 Given a formula $ψ$, let the corresponding claim be $C_ψ = \set{{\allleadstog} ∈ \allleadstos \suchthat {\allleadstog} \text{ satisfies } ψ}$.
@@ -550,14 +551,14 @@ $(¬\POF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no vi
 
 We ask when $C$ suffers no visibility issues in $E$, that is, $∀\allleadstog ∈ E: \OF_C(\allleadstog) ⇒ \POF_C(\allleadstog)$ — aiming, ultimately, at a syntactic characterization covering \emph{every} claim $C$, not only $C ⊆ E$.
 
-\begin{theorem}[Delegation suffices for no visibility issues]
+\begin{theorem}
   \label{th:delegationNoVI}
   Given any claim $C$ and world $\allleadstog$: 
   $[∀J \fsub I,
   ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆] 
   ⇒ \POF(\allleadstog)$.
 \end{theorem}
-\begin{proof}
+\begin{proof}[Claude proof]
   Fix $τ ∈ Θ ∩ \powerset{\allleadstog}$; let $J ⊆ I$ be its (finite) individuals, and pick, by hypothesis, $θ ∈ Θ ∩ \powerset{\allleadstog}$, $θ ∉ C^⊆$, touching only individuals outside $J$.
   As $τ, θ$ touch disjoint individuals, $τ' = τ ∪ θ ∈ Θ ∩ \powerset{\allleadstog}$ and $τ ⊑ τ'$ (no point is added for any individual already in $τ$'s domain).
   As $C^⊆$ is downwards closed and $θ ⊆ τ'$, $τ' ∉ C^⊆$.
@@ -567,6 +568,15 @@ In other words,
 $¬\POF(\allleadstog)$ requires some finite $J ⊆ I$ such that
 $∀θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆: ∃j ∈ J ∩ θ^{-1}(\allhists, P)$.
 
+\begin{lemma}
+  Given any anonymous $C$ and 
+  any world $\allleadstog ∈ E$ such that $\OF(\allleadstog)$: 
+  $∀J \fsub I,
+  ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆$.
+\end{lemma}
+\begin{proof}
+  
+\end{proof}
 \Cref{th:anonNoVI,th:finiteExceptAnon} both work by exhibiting, for every finite set of already-touched individuals, an escape witness avoiding them entirely — a \emph{delegate}.
 
 \begin{theorem}[Anonymous claims suffer no visibility issues in $E$]
@@ -652,9 +662,32 @@ This is not yet \cref{cnj:anonNoVISubE}: it shows \emph{whenever} a finite repai
 
 \Cref{th:finSuppAnon} already does better than the generic ingredients falsifiability alone provides (some $\allleadstog ∈ E ∖ C$ with $\OF_C(\allleadstog)$, and, separately, some pair differing at exactly one point via \cref{th:onlyEmptyPF}'s flip-one-point-at-a-time argument — two ingredients with no reason to coincide): non-anonymity of a falsifiable $C$ yields a single finite $K ⊆ I$ and a permutation $τ$, fixing everything outside $K$, together with a finite observation $θ$ — touching only individuals in $K$ — witnessing $\OF_C(\allleadstog[0] ∘ τ)$ for some $\allleadstog[0] ∈ C$. The two ingredients now genuinely cohabit, both living on the same finite $K$.
 
-What still stands between this and \cref{th:finiteRepairInE}'s hypothesis is that $\allleadstog[0] ∘ τ$ and $\allleadstog[0]$, while agreeing outside $K$, generally disagree on all of $K × \allhists$ — infinitely many points, not finitely many — since $τ$ relabels each $i ∈ K$'s \emph{entire} profile. Truncating this disagreement to a finite window (matching $\allleadstog[0] ∘ τ$ up to some length and $\allleadstog[0]$ beyond it) does yield a finite-$Δ$ pair, but the resulting hybrid profile on $K$ generally belongs to no infinite class of the truncated world, which then escapes $E$ — the same obstruction \cref{ex:finiteExceptionNotAnon} illustrates. Closing this remaining, purely local gap — repairing $K$'s profiles within a bounded window \emph{while staying in $E$} — is precisely what \cref{cnj:anonNoVISubE} still needs.
+What still stands between this and \cref{th:finiteRepairInE}'s hypothesis is that $\allleadstog[0] ∘ τ$ and $\allleadstog[0]$, while agreeing outside $K$, generally disagree on all of $K × \allhists$ — infinitely many points, not finitely many — since $τ$ relabels each $i ∈ K$'s \emph{entire} profile. Truncating this disagreement to a finite window (matching $\allleadstog[0] ∘ τ$ up to some length and $\allleadstog[0]$ beyond it) does yield a finite-$Δ$ pair, but the resulting hybrid profile on $K$ generally belongs to no infinite class of the truncated world, which then escapes $E$ — the same obstruction \cref{ex:finiteExceptionNotAnon} illustrates. This local gap does not close in general: \cref{cnj:anonNoVISubE} is false.
 
-Even a proof of \cref{cnj:anonNoVISubE} would only be a first step: it characterizes no-visibility-issues-in-$E$ among subsets of $E$, not among arbitrary claims. The more elegant target is a single syntactic condition, applicable to every $C$, of which anonymity (\cref{th:anonNoVI}), the finite-exception route (\cref{th:finiteExceptAnon}), and the never-falsifiable route (\cref{ex:cufmNotAnon}) would all be instances. \Cref{th:delegationNoVI} already suggests its shape — some guarantee of delegation to individuals untouched by any candidate hiding prefix — but turning this into an iff for arbitrary $C$ remains entirely open.
+\begin{theorem}[A rigid claim with no escape]
+  \label{th:refuteAnonNoVISubE}
+  Split $I$ into two infinite subsets $J, I ∖ J$, fix $φ ≠ φ' ∈ P$, and let $\allleadstog[0](i, \hist) = φ$ for $i ∈ J$ and $\allleadstog[0](i, \hist) = φ'$ for $i ∈ I ∖ J$, for every $\hist$. Then $C = \set{\allleadstog[0]}$ satisfies $C ⊆ E$, is falsifiable, is not anonymous, and yet suffers no visibility issue in $E$ — refuting \cref{cnj:anonNoVISubE}.
+\end{theorem}
+\begin{proof}
+  As $J, I ∖ J$ are infinite, $\allleadstog[0] ∈ E$, so $C ⊆ E$.
+  $C$ is falsifiable: for $\allleadstog ≠ \allleadstog[0]$, any single point where they differ already lies outside $C^⊆ = \powerset{\allleadstog[0]}$, giving $\OF_C(\allleadstog)$, and $∃\allleadstog ∉ C$ trivially.
+  $C$ is not anonymous: swapping some $i ∈ J$ with some $j ∈ I ∖ J$ sends $\allleadstog[0]$ to a world where $i$ now gives $φ'$, disagreeing with $\allleadstog[0]$.
+
+  For the last claim, $¬\OF_C(\allleadstog[0])$ (any $θ ⊆ \allleadstog[0]$ trivially lies in $C^⊆$), so fix $\allleadstog ∈ E, \allleadstog ≠ \allleadstog[0]$, giving $\OF_C(\allleadstog)$ as shown, and suppose toward a contradiction that some $τ ∈ Θ ∩ \powerset{\allleadstog}$ witnesses $¬\POF_C(\allleadstog)$: every $τ ⊑ τ' ∈ Θ ∩ \powerset{\allleadstog}$ satisfies $τ' ⊆ \allleadstog[0]$.
+
+  Taking $τ' = τ$ gives $τ ⊆ \allleadstog[0]$.
+  Let $K = \set{i ∈ I \suchthat ∃\hist ∈ \allhists: \allleadstog(i, \hist) ≠ \allleadstog[0](i, \hist)}$.
+  If some $i ∈ K$ is not queried by $τ$, adjoining a single point where $\allleadstog, \allleadstog[0]$ disagree at $i$ legally extends $τ$ (within $Θ ∩ \powerset{\allleadstog}$) outside $\powerset{\allleadstog[0]}$ — contradiction; so $K$, touched only by the finite $τ$, is finite.
+  For $i ∈ K$, let $\hist_i$ be the longest path queried for $i$ in $τ$; if $\allleadstog(i, \hist) ≠ \allleadstog[0](i, \hist)$ for some $\hist_i ⊊ \hist$, adjoining $(i, \hist, \allleadstog(i, \hist))$ again legally extends $τ$ outside $\powerset{\allleadstog[0]}$ — contradiction. So $\allleadstog(i, \hist) = \allleadstog[0](i, \hist)$ for every $\hist_i ⊆ \hist$, and in particular for $\hist = \hist_i$ itself.
+
+  As $\allleadstog = \allleadstog[0]$ outside $K$ (by definition of $K$) and $K$ is finite, $J ∖ K$ and $(I ∖ J) ∖ K$ remain infinite, still constantly $φ$, respectively $φ'$, under $\allleadstog$ — the only infinite classes $\allleadstog$ can offer the finitely many individuals of $K$. So, for $\allleadstog ∈ E$, each $i ∈ K$ must have $\allleadstog(i, \cdot)$ constantly $φ$ or constantly $φ'$; as $\allleadstog(i, \cdot) = \allleadstog[0](i, \cdot)$ would put $i ∉ K$, it must be the \emph{other} constant, disagreeing with $\allleadstog[0](i, \cdot)$ at \emph{every} $\hist$ — including $\hist_i$. This contradicts the agreement at $\hist_i$ just shown.
+\end{proof}
+
+\Cref{th:refuteAnonNoVISubE} pinpoints exactly where \cref{th:finSuppAnon}'s localization stalls: repairing $K$'s profile forces each $i ∈ K$ onto some \emph{other}, already-existing infinite class of the untouched part of the world — and here the only two classes on offer disagree \emph{everywhere}, so landing on the other one reopens every point that would need to stay frozen, including the very path $τ$ just locked in. $C$ is also maximally rigid — a single world, with no room to satisfy $C$ other than by matching $\allleadstog[0]$ exactly — unlike the "named individual" attempts (\cref{rk:cScrutinyC1} and its relatives) that all left $C$ some freedom elsewhere.
+
+This suggests a repaired question rather than an abandoned one: does the gap close once $C$ is required to have some slack — for instance, whenever $C$ is not a singleton, or whenever the individuals a finite witness leaves untouched offer more than two mutually disagreeing classes to fall back on? The characterization sought in \cref{cnj:anonNoVISubE} is still worth having, in some corrected form; only its stated form is now settled, negatively.
+
+Even a corrected version of \cref{cnj:anonNoVISubE} would only be a first step: it would characterize no-visibility-issues-in-$E$ among subsets of $E$, not among arbitrary claims. The more elegant target is a single syntactic condition, applicable to every $C$, of which anonymity (\cref{th:anonNoVI}), the finite-exception route (\cref{th:finiteExceptAnon}), and the never-falsifiable route (\cref{ex:cufmNotAnon}) would all be instances. \Cref{th:delegationNoVI} already suggests its shape — some guarantee of delegation to individuals untouched by any candidate hiding prefix — but turning this into an iff for arbitrary $C$ remains entirely open.
 
 \subsection{Persistent falsifiability}
 Consider a claim that in some world satisfies F but not POF.
