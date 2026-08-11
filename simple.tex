@@ -554,7 +554,7 @@ We ask when $C$ suffers no visibility issues in $E$, that is, $∀\allleadstog �
 \begin{theorem}
   \label{th:delegationNoVisibilityIssues}
   Given any claim $C$ and world $\allleadstog$: 
-  $[∀J \fsub I,
+  $[∃K \suchthat ∀J \fsub I ∖ K,
   ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆] 
   ⇒ \POF(\allleadstog)$.
 \end{theorem}
@@ -577,22 +577,84 @@ $∀θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆: ∃j ∈ J ∩
 \end{lemma}
 \begin{proof}
   \NewDocumentCommand{\wJ}{}{\allleadstog_{\mkern-2mu J}}
-  As $\OF_C(\allleadstog)$, some $θ ∈ Θ ∩ \powerset{\allleadstog}$ satisfies $θ ∉ C^⊆$.
+  As $\OF_C(\allleadstog)$, some $θ^{(0)} ∈ Θ ∩ \powerset{\allleadstog}$ satisfies $θ^{(0)} ∉ C^⊆$.
+  Define $J^{(0)} = {θ^{(0)}}^{-1}(\allhists × P)$ as the individuals queried by $θ^{(0)}$.
+
   Given any $J \fsub I$,
-  define $r_J$ as an injection from $θ^{-1}(\allhists × P)$ to $I ∖ (J ∪ θ^{-1}(\allhists × P))$ such that $\ileadstogo[r(i)] = \ileadstogo[i]$ (which exists because $\allleadstog ∈ E$),
-  define $J' = r_J(θ^{-1}(\allhists × P))$ (thus $r_J$ is a bijection from $θ^{-1}(\allhists × P)$ to $J'$ disjoint from both $J$ and $θ^{-1}(\allhists × P)$),
-  complete $r_J$ to the self-inverse permutation $σ_J = r_J ∪ (r_J)^{-1} ∪ \set{(i, i) \suchthat i ∉ θ^{-1}(\allhists × P) ∪ J'}$ over $I$,
-  and define $θ_J = \set{(α, r(i), p) \suchthat (α, i, p) ∈ θ}$ as $θ$ where individuals from $θ^{-1}(\allhists × P)$ are replaced by individuals determined by $r$.
-  If there exists $θ_J ⊆ \wJ ∈ C$, then also $θ ⊆ \wJ \circ (σ_J)^{-1} ∈ C$ (by anonymity of $C$); as $θ ∉ C^⊆$, we obtain $θ_J ∉ C^⊆$.
+  define $r$ as an injection from $J^{(0)}$ to $I ∖ (J ∪ J^{(0)})$ such that $\ileadstogo[r(i)] = \ileadstogo[i]$ (which exists because $\allleadstog ∈ E$),
+  define $J' = r(J^{(0)})$ (thus $r$ is a bijection from $J^{(0)}$ to $J'$ disjoint from both $J$ and $J^{(0)}$),
+  complete $r$ to the self-inverse permutation $σ = r ∪ r^{-1} ∪ \set{(i, i) \suchthat i ∉ J^{(0)} ∪ J'}$ over $I$,
+  and define $θ = \set{(α, r(i), p) \suchthat (α, i, p) ∈ θ^{(0)}}$ as $θ^{(0)}$ where individuals from $J^{(0)}$ are replaced by individuals determined by $r$.
+  We observe that $θ ⊆ \allleadstog$ (by construction of $r$) and that $θ^{-1}(\allhists, P) = J' ⊆ I ∖ (J ∪ J^{(0)}) ⊆ I ∖ J$.
+  Finally, if there exists $θ ⊆ \wJ ∈ C$, then also $θ^{(0)} ⊆ \wJ \circ σ^{-1} ∈ C$ (by anonymity of $C$); as $θ^{(0)} ∉ C^⊆$, we obtain $θ ∉ C^⊆$.
 \end{proof}
 
-\Cref{th:anonNoVisibilityIssues,th:finiteExceptAnon} both work by exhibiting, for every finite set of already-touched individuals, an escape witness avoiding them entirely — a \emph{delegate}.
+TODO
+% Even when considering only claims C ⊆ E, requiring anonymity is stronger than strictly required for obtaining no visibility issues in E.
+% The claim of T9 is not anonymous and is within E but still suffers no vis issues in E.
+
+\begin{lemma}
+  \label{th:anonFiniteThusAlmostPof}
+  Given any anonymous $C_0$, finite $F ⊆ \allleadstos$, $C = C_0 ∪ F$, and any world $\allleadstog ∈ E$ such that $\OF_C(\allleadstog)$:
+  $∃K \fsub I \suchthat ∀J \fsub I,
+  ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ (I ∖ J) ∪ K ∧ θ ∉ C^⊆$.
+\end{lemma}
+\begin{proof}
+  \NewDocumentCommand{\wJ}{}{\allleadstog_{\mkern-2mu J}}
+  As $\OF_C(\allleadstog)$, some $θ^{(0)} ∈ Θ ∩ \powerset{\allleadstog}$ satisfies $θ^{(0)} ∉ C^⊆$.
+  Define $K = {θ^{(0)}}^{-1}(\allhists × P)$ as the individuals queried by $θ^{(0)}$; as $C_0, F ⊆ C$, $θ^{(0)} ∉ C_0^⊆$ and $θ^{(0)} ∉ F^⊆$, the latter meaning $∀w ∈ F: θ^{(0)} ⊈ w$.
+
+  Given any $J \fsub I$,
+  define $r$ as an injection from $K$ to $I ∖ (J ∪ K)$ such that $\ileadstogo[r(i)] = \ileadstogo[i]$ (which exists because $\allleadstog ∈ E$),
+  define $J' = r(K)$ (thus $r$ is a bijection from $K$ to $J'$ disjoint from both $J$ and $K$),
+  complete $r$ to the self-inverse permutation $σ = r ∪ r^{-1} ∪ \set{(i, i) \suchthat i ∉ K ∪ J'}$ over $I$,
+  define $θ' = \set{(α, r(i), p) \suchthat (α, i, p) ∈ θ^{(0)}}$ as $θ^{(0)}$ where individuals from $K$ are replaced by individuals determined by $r$,
+  and let $θ = θ^{(0)} ∪ θ'$.
+  We observe that $θ ⊆ \allleadstog$ ($θ^{(0)} ⊆ \allleadstog$ by hypothesis, $θ' ⊆ \allleadstog$ by construction of $r$) and that $θ^{-1}(\allhists, P) = K ∪ J' ⊆ K ∪ (I ∖ J)$.
+  Finally, if there exists $θ' ⊆ \wJ ∈ C_0$, then also $θ^{(0)} ⊆ \wJ \circ σ^{-1} ∈ C_0$ (by anonymity of $C_0$); as $θ^{(0)} ∉ C_0^⊆$, we obtain $θ' ∉ C_0^⊆$, so, as $C_0^⊆$ is downwards closed and $θ' ⊆ θ$, $θ ∉ C_0^⊆$.
+  And, as $θ^{(0)} ⊆ θ$ and $θ^{(0)} ⊈ w$ for every $w ∈ F$, also $θ ⊈ w$ for every $w ∈ F$, so $θ ∉ F^⊆$.
+  So $θ ∉ C_0^⊆ ∪ F^⊆ = C^⊆$.
+\end{proof}
 
 This follows from \cref{th:delegationNoVisibilityIssues,th:anonThusAlmostPof}.
 \begin{theorem}
   \label{th:anonNoVisibilityIssues}
   If $C$ is anonymous (\cref{def:anonymous}), $C$ suffers no visibility issues in $E$.
 \end{theorem}
+
+\begin{theorem}
+  \label{th:finiteExceptAnon}
+  If $C_0$ is anonymous and $F ⊆ \allleadstos$ is finite, $C = C_0 ∪ F$ suffers no visibility issues in $E$.
+\end{theorem}
+\begin{proof}[TODO]
+  \NewDocumentCommand{\wJ}{}{\allleadstog_{\mkern-2mu J}}
+  Pick any world $\allleadstog ∈ E$ such that $\OF(\allleadstog)$, 
+  thus with some $θ^{(0)} ∈ Θ ∩ \powerset{\allleadstog}$ satisfying $θ^{(0)} ∉ C^⊆$.
+  Define $J^{(0)} = {θ^{(0)}}^{-1}(\allhists × P)$ as the individuals queried by $θ^{(0)}$.
+  
+  Pick any $θ ∈ Θ ∩ \powerset{\allleadstog}$,
+  and let us build $θ'$ to show $\POF(\allleadstog)$.
+  
+  Define $J = θ^{-1}(\allhists × P)$ as the individuals queried by $θ$.
+  Define $r$ as an injection from $J^{(0)}$ to $I ∖ (J ∪ J^{(0)})$ such that $\ileadstogo[r(i)] = \ileadstogo[i]$ (which exists because $\allleadstog ∈ E$),
+  define $J^{(1)} = r(J^{(0)})$ (thus $r$ is a bijection from $J^{(0)}$ to $J^{(1)}$ disjoint from both $J$ and $J^{(0)}$),
+  complete $r$ to the self-inverse permutation $σ = r ∪ r^{-1} ∪ \set{(i, i) \suchthat i ∉ J^{(0)} ∪ J^{(1)}}$ over $I$,
+  define $θ^{(1)} = \set{(α, r(i), p) \suchthat (α, i, p) ∈ θ^{(0)}}$ as $θ^{(0)}$ where individuals from $J^{(0)}$ are replaced by individuals determined by $r$,
+  and let $θ' = θ^{(0)} ∪ θ^{(1)}$.
+  We observe that $θ' ⊆ \allleadstog$ ($θ^{(0)} ⊆ \allleadstog$ by hypothesis, $θ^{(1)} ⊆ \allleadstog$ by construction of $r$) and that $θ'^{-1}(\allhists, P) = J^{(0)} ∪ J^{(1)}$.
+  Finally, if there exists $θ^{(1)} ⊆ \wJ ∈ C_0$, then also $θ^{(0)} ⊆ \wJ \circ σ^{-1} ∈ C_0$ (by anonymity of $C_0$); as $θ^{(0)} ∉ C_0^⊆$, we obtain $θ^{(1)} ∉ C_0^⊆$.
+  As $C_0^⊆$ is downwards closed and $θ^{(1)} ⊆ θ'$, $θ' ∉ C_0^⊆$.
+  And, as $θ^{(0)} ⊆ θ'$ and $θ^{(0)} ⊈ w$ for every $w ∈ F$, also $θ' ⊈ w$ for every $w ∈ F$, so $θ' ∉ F^⊆$.
+  So $θ' ∉ C_0^⊆ ∪ F^⊆ = C^⊆$.
+
+  let $θ'' := θ ∪ θ'$; then $θ'' ∈ Θ∩\powerset{\allleadstog}$ (finitely many points, all compatible with $⇝$), and $θ⊑θ''$.
+
+  As $C^⊆$ is downwards closed and $θ' ⊆ θ''$, $θ'' ∉ C^⊆$.
+  Thus, $\POF_C(\allleadstog)$.
+\end{proof}
+
+\Cref{th:anonNoVisibilityIssues,th:finiteExceptAnon} both work by exhibiting, for every finite set of already-touched individuals, an escape witness avoiding them entirely — a \emph{delegate}.
+
 The converse fails, in two structurally different ways — yet, tellingly, both known ways escape $E$ itself.
 
 \begin{example}[Never falsifiable, hence trivially no visibility issues, yet not anonymous]
@@ -602,17 +664,20 @@ The converse fails, in two structurally different ways — yet, tellingly, both 
   Yet swapping $J$ and $I ∖ J$ moves $\allleadstog[0]$ out of $C$ (it now differs from $\allleadstog[0]$ on all of $I × \set{\ar}$), so $C ∘ σ ≠ C$: $C$ is not anonymous.
 \end{example}
 
-\begin{theorem}[Finitely many exceptions to an anonymous claim do not register in $E$]
-  \label{th:finiteExceptAnon}
-  If $C_0$ is anonymous and $F ⊆ \allleadstos$ is finite, $C = C_0 ∪ F$ suffers no visibility issues in $E$.
-\end{theorem}
-\begin{proof}
+\begin{proof}[Proof of \cref{th:finiteExceptAnon}]
   Let $\allleadstog ∈ E$ with $\OF_C(\allleadstog)$, witnessed by $θ ∈ Θ ∩ \powerset{\allleadstog}, θ ∉ C^⊆$. As $C_0 ⊆ C$, $C_0^⊆ ⊆ C^⊆$, so $θ ∉ C_0^⊆$ too; and $F ⊆ C$, $\allleadstog ∉ C$, so $\allleadstog ∉ F$.
   Fix $τ ∈ Θ ∩ \powerset{\allleadstog}$; exactly as in \cref{th:anonNoVisibilityIssues}'s proof (using only $\allleadstog ∈ E$, $C_0$ anonymous, and $θ$), build $θ ∘ σ ⊆ \allleadstog$, disjoint from $τ$'s domain, with $θ ∘ σ ∉ C_0^⊆$.
   For each $w ∈ F$, $w ≠ \allleadstog$, so pick a point $p_w$ where $\allleadstog, w$ disagree; let $F' = \set{(p_w, \allleadstog(p_w)) \suchthat w ∈ F}$, finitely many further points, all true values of $\allleadstog$, hence $F' ⊆ \allleadstog$.
   Let $τ' = τ ∪ (θ ∘ σ) ∪ F' ∈ Θ ∩ \powerset{\allleadstog}$ (finitely many points, all compatible with $\allleadstog$); then $τ ⊑ τ'$.
   As $C_0^⊆$ is downwards closed and $θ ∘ σ ⊆ τ'$, $τ' ∉ C_0^⊆$. And $τ' ∉ \powerset{w}$ for every $w ∈ F$, since $τ'$ disagrees with $w$ at $p_w$.
   So $τ' ∉ C_0^⊆ ∪ F^⊆ = C^⊆$, giving $\POF_C(\allleadstog)$.
+\end{proof}
+\begin{proof}[Alternate proof, via \cref{th:anonFiniteThusAlmostPof}]
+  Let $\allleadstog ∈ E$ with $\OF_C(\allleadstog)$; \cref{th:anonFiniteThusAlmostPof} gives $K \fsub I$.
+  Fix $τ ∈ Θ ∩ \powerset{\allleadstog}$; let $J ⊆ I$ be its (finite) individuals, and pick, by \cref{th:anonFiniteThusAlmostPof}, $θ ∈ Θ ∩ \powerset{\allleadstog}$, $θ ∉ C^⊆$, with $θ^{-1}(\allhists, P) ⊆ (I ∖ J) ∪ K$.
+  Then $τ' = τ ∪ θ ∈ Θ ∩ \powerset{\allleadstog}$ (finitely many points, all compatible with $\allleadstog$), and $τ ⊑ τ'$.
+  As $C^⊆$ is downwards closed and $θ ⊆ τ'$, $τ' ∉ C^⊆$.
+  As $τ$ was arbitrary, $\POF_C(\allleadstog)$ holds.
 \end{proof}
 \begin{example}[Instance: a single named exception, escaping $E$]
   \label{ex:finiteExceptionNotAnon}
