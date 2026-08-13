@@ -770,20 +770,18 @@ Even a corrected version of \cref{cnj:anonNoVisibilityIssuesSubE} would only be 
 
 The mechanism: a delegate relabeled to any fresh clone $c ∈ S ∖ \set{i_0}$ escapes $C_0$ but not $F$, since $\allleadstog[0]$ agrees with $\allleadstog$ throughout $S ∖ \set{i_0}$ too — only the single, non-relabelable point $(i_0,\ar)$ separates $\allleadstog$ from $\allleadstog[0]$, and a prefix can lock $i_0$ onto a branch that never reaches it. The fix is to require each excluded world to differ from every tested world at infinitely many individuals, not just one:
 
-Two worlds differ for infinitely many individuals
-iff they coincide for finitely many individuals.
-A world coincide with a world in $E$ for finitely many individuals iff they coincide for no individuals.
-A world $\allleadstog$ coincide finitely with $E$ iff it coincides for finitely many individuals with each world in $E$
-iff it coincides for no individuals with each world in $E$; formally, iff $∀\allleadstog ≠ \allleadstog' ∈ E: \card{\set{i ∈ I \suchthat \ileadstogo = \ileadstogo'}} ∈ ℕ$.
+A world $\allleadstog$ differs for infinitely many individuals with $E$ iff 
+it differs for infinitely many individuals with each world in $E$; formally, iff 
+$∀\allleadstog ≠ \allleadstog' ∈ E: \card\set{i ∈ I \suchthat \ileadstogo ≠ \ileadstogo'} ∉ ℕ$.
 
-\begin{example}[A world coinciding finitely with $E$]
+\begin{example}[A world differing for infinitely many individuals with $E$]
   \label{ex:coincideFinitely}
-  Let $w^*(i, \hist) = φ'$ for all $i ∈ I$, $\hist ∈ \allhists$ (constant world). Then $w^* ∈ E$ (all individuals share the same behavior). For each $\allleadstog ∈ E ∖ \set{w^*}$: $\allleadstog ≠ w^*$ means some individual $j$ has $\allleadstog(j, \cdot) ≠$ (always $φ'$); since $\allleadstog ∈ E$, this behavior $\allleadstog(j, \cdot)$ is shared by infinitely many individuals $i$, each satisfying $\allleadstog(i, \cdot) ≠$ (always $φ'$) $= w^*(i, \cdot)$. Hence $\card{\set{i ∈ I \suchthat \allleadstog(i, \cdot) ≠ w^*(i, \cdot)}} ∉ ℕ$ for every $\allleadstog ∈ E ∖ \set{w^*}$: $w^*$ coincides finitely with $E$.
+  Let $w^*(i, \hist) = φ'$ for all $i ∈ I$, $\hist ∈ \allhists$ (constant world). Then $w^* ∈ E$ (all individuals share the same behavior). For each $\allleadstog ∈ E ∖ \set{w^*}$: $\allleadstog ≠ w^*$ means some individual $j$ has $\allleadstog(j, \cdot) ≠$ (always $φ'$); since $\allleadstog ∈ E$, this behavior $\allleadstog(j, \cdot)$ is shared by infinitely many individuals $i$, each satisfying $\allleadstog(i, \cdot) ≠$ (always $φ'$) $= w^*(i, \cdot)$. Hence $\card{\set{i ∈ I \suchthat \allleadstog(i, \cdot) ≠ w^*(i, \cdot)}} ∉ ℕ$ for every $\allleadstog ∈ E ∖ \set{w^*}$: $w^*$ differs for infinitely many individuals with $E$.
 \end{example}
 
-\begin{example}[A world not coinciding finitely with $E$]
+\begin{example}[A world not differing for infinitely many individuals with $E$]
   \label{ex:notCoincideFinitely}
-  Fix $\ar ∈ \allargs$, an infinite proper subset $S ⊊ I$ with $I ∖ S$ infinite, and $i_0 ∈ S$. Let $v ∈ E$ be the world where $v(i, (\ar)) = φ'$ for $i ∈ S$ and $v(i, \hist) = φ$ otherwise. Let $w_0$ agree with $v$ everywhere except $w_0(i_0, (\ar)) = φ$. Then $w_0 ∈ E$: individuals in $S ∖ \set{i_0}$ all share behavior "$φ'$ at $(\ar)$, $φ$ elsewhere" (infinitely many), and individuals in $\set{i_0} ∪ (I ∖ S)$ all share behavior "always $φ$" (infinitely many). The worlds $w_0$ and $v$ differ only at $i_0$, so $\card{\set{i ∈ I \suchthat w_0(i, \cdot) ≠ v(i, \cdot)}} = 1 ∈ ℕ$: $w_0$ does not coincide finitely with $v ∈ E$.
+  Fix $\ar ∈ \allargs$, an infinite proper subset $S ⊊ I$ with $I ∖ S$ infinite, and $i_0 ∈ S$. Let $v ∈ E$ be the world where $v(i, (\ar)) = φ'$ for $i ∈ S$ and $v(i, \hist) = φ$ otherwise. Let $w_0$ agree with $v$ everywhere except $w_0(i_0, (\ar)) = φ$. Then $w_0 ∈ E$: individuals in $S ∖ \set{i_0}$ all share behavior "$φ'$ at $(\ar)$, $φ$ elsewhere" (infinitely many), and individuals in $\set{i_0} ∪ (I ∖ S)$ all share behavior "always $φ$" (infinitely many). The worlds $w_0$ and $v$ differ only at $i_0$, so $\card{\set{i ∈ I \suchthat w_0(i, \cdot) ≠ v(i, \cdot)}} = 1 ∈ ℕ$: $w_0$ does not differ for infinitely many individuals with $v ∈ E$.
 \end{example}
 
 \begin{theorem}[Finitely many, individually-spread exceptions to an anonymous claim do not register in $E$]
@@ -802,20 +800,18 @@ iff it coincides for no individuals with each world in $E$; formally, iff $∀\a
   Define $r$ as an injection from $J^{(0)}$ to $I ∖ (J ∪ J^{(0)})$ such that $\ileadstogo[r(i)] = \ileadstogo[i]$ (which exists because $\allleadstog ∈ E$), define $J^{(1)} = r(J^{(0)})$ (thus $r$ is a bijection from $J^{(0)}$ to $J^{(1)}$ disjoint from both $J$ and $J^{(0)}$), complete $r$ to the self-inverse permutation $σ = r ∪ r^{-1} ∪ \set{(i, i) \suchthat i ∉ J^{(0)} ∪ J^{(1)}}$ over $I$, and define $θ^{(1)} = \set{(α, r(i), p) \suchthat (α, i, p) ∈ θ^{(0)}}$ as $θ^{(0)}$ where individuals from $J^{(0)}$ are replaced by individuals determined by $r$.
   If there exists $θ^{(1)} ⊆ \wJ ∈ C_0$, then also $θ^{(0)} ⊆ \wJ \circ σ^{-1} ∈ C_0$ (by anonymity of $C_0$); as $θ^{(0)} ∉ C_0^⊆$, we obtain $θ^{(1)} ∉ C_0^⊆$.
 
-  For each world in $F$ we pick some individual that differs from $\allleadstog$.
-
-  $J_F$ contains for each $w$ a distinct $i$ such that $w_i ≠ \ileadstog$ and $i ∉ J ∪ J^{(0)} ∪ J^{(1)}$.
-  Define $s$ an injection from $F$ to $I ∖ (J ∪ J^{(0)} ∪ J^{(1)})$ such that $w_{s(w)} ≠ \ileadstogo$, and $\hist_{s(w)}$ a path such that $w(\hist_{s(w)}, s(w)) ≠ \allleadstog(\hist_{s(w)}, s(w))$.
+  Define $s$ as an injection from $F$ to $I ∖ (J ∪ J^{(0)} ∪ J^{(1)})$ such that $w_{s(w)} ≠ \ileadstogo$, and $\hist_{s(w)}$ a path such that $w(\hist_{s(w)}, s(w)) ≠ \allleadstog(\hist_{s(w)}, s(w))$.
   Define $θ^{(F)} = \set{(s(w), \hist_{s(w)}, \allleadstog(\hist_{s(w)}, s(w))) \suchthat w ∈ F}$.
+  Let $θ' = θ ∪ θ^{(1)} ∪ θ^{(F)} ∈ Θ$.
 
-  As $F ⊆ C$ and $\allleadstog ∉ C$, $\allleadstog ≠ w$ for every $w ∈ F$; by hypothesis, $K_w = \set{i ∈ I \suchthat ∃\hist: \allleadstog(i,\hist) ≠ w(i,\hist)}$ is infinite for every $w ∈ F$. As $F$ is finite, choose, for each $w ∈ F$ in turn, $i_w ∈ K_w ∖ (J ∪ J^{(0)} ∪ J^{(1)} ∪ \set{i_{w'} \suchthat w' \text{ already chosen}})$ (possible, as $K_w$ is infinite and this excludes only finitely many individuals so far) and $\hist_w ∈ \allhists$ witnessing $\allleadstog(i_w,\hist_w) ≠ w(i_w,\hist_w)$. Let $F' = \set{(i_w, \hist_w, \allleadstog(i_w,\hist_w)) \suchthat w ∈ F}$, finite, $⊆ \allleadstog$, touching only the individuals $\set{i_w \suchthat w ∈ F}$, pairwise distinct and disjoint from $J ∪ J^{(0)} ∪ J^{(1)}$.
+  Let $θ' = θ ∪ θ^{(1)} ∪ θ^{(F)}$. 
+  As $θ$, $θ^{(1)}$ and $θ^{(F)}$ query disjoined individuals, $θ' ∈ Θ$, and $θ ⊑ θ'$. 
+  We also see that $θ' ⊆ \allleadstog$.
 
-  Let $θ' = θ ∪ θ^{(1)} ∪ F'$. As $θ^{(1)}$ and $F'$ touch only individuals outside $J$ (and outside each other's), $θ' ⊆ \allleadstog$, $θ' ∈ Θ ∩ \powerset{\allleadstog}$, and $θ ⊑ θ'$ (no point is added for any individual already in $θ$'s domain).
-
-  As $C_0^⊆$ is downwards closed and $θ^{(1)} ⊆ θ'$, $θ' ∉ C_0^⊆$. And, for each $w ∈ F$, $(i_w,\hist_w,\allleadstog(i_w,\hist_w)) ∈ F' ⊆ θ'$ disagrees with $w$ at $(i_w,\hist_w)$, so $θ' ⊈ w$; hence $θ' ∉ F^⊆$.
-  So $θ' ∉ C_0^⊆ ∪ F^⊆ = C^⊆$.
-
-  As $θ$ was arbitrary, $\POF_C(\allleadstog)$ holds.
+  Finally, as $θ^{(1)} ∉ C_0^⊆$, $θ' ∉ C_0^⊆$,
+  and as $θ^{(F)} ∉ F^⊆$, $θ' ∉ F^⊆$,
+  whereby $θ' ∉ C^⊆$
+  and $\POF_C(\allleadstog)$.
 \end{proof}
 
 \subsection{Persistent falsifiability}
