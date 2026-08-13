@@ -590,6 +590,38 @@ $∀θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆: ∃j ∈ J ∩
 \end{proof}
 
 \begin{lemma}
+  \label{th:combinePoofsoi}
+  Given any two claims $C_1$, $C_2$ and world $\allleadstog$: if $C_1$ and $C_2$ each satisfy
+  $∀J \fsub I, ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆$
+  (with $C = C_1$ and $C = C_2$ respectively), then so does $C_1 ∪ C_2$.
+\end{lemma}
+\begin{proof}
+  Given any $J \fsub I$:
+  apply the hypothesis for $C_2$ to $J$, obtaining $θ_2 ∈ Θ ∩ \powerset{\allleadstog}$ with $θ_2^{-1}(\allhists, P) ⊆ I ∖ J$ and $θ_2 ∉ C_2^⊆$;
+  let $J_2 = θ_2^{-1}(\allhists × P)$.
+  Apply the hypothesis for $C_1$ to $J ∪ J_2$, obtaining $θ_1$ with $θ_1^{-1}(\allhists, P) ⊆ I ∖ (J ∪ J_2)$ and $θ_1 ∉ C_1^⊆$.
+  Set $θ = θ_1 ∪ θ_2$: since $θ_1$ and $θ_2$ query disjoint individuals and are both consistent with $\allleadstog$, $θ ∈ Θ ∩ \powerset{\allleadstog}$ and $θ^{-1}(\allhists, P) ⊆ I ∖ J$.
+  If $θ ⊆ v$ for some $v ∈ C_1$, then $θ_1 ⊆ θ ⊆ v$, contradicting $θ_1 ∉ C_1^⊆$; so $θ ∉ C_1^⊆$.
+  Likewise $θ_2 ⊆ θ$ implies $θ ∉ C_2^⊆$.
+  Hence $θ ∉ (C_1 ∪ C_2)^⊆$.
+\end{proof}
+
+\begin{lemma}
+  \label{th:finiteFPoofsoi}
+  Given any finite $F ⊆ \allleadstos$ and world $\allleadstog$ such that $∀v ∈ F: \card{\set{i ∈ I \suchthat \ileadstogo[i] ≠ v_i}} ∉ ℕ$:
+  $∀J \fsub I,
+  ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ F^⊆$.
+\end{lemma}
+\begin{proof}
+  Given any $J \fsub I$, 
+  define $s$ as an injection from $F$ to $I ∖ J$ such that $w_{s(w)} ≠ \ileadstogo$, and $\hist_{s(w)}$ a path such that $w(\hist_{s(w)}, s(w)) ≠ \allleadstog(\hist_{s(w)}, s(w))$.
+  Define $θ = \set{(s(w), \hist_{s(w)}, \allleadstog(\hist_{s(w)}, s(w))) \suchthat w ∈ F}$.
+
+  Then $θ ∈ Θ ∩ \powerset{\allleadstog}$, $θ^{-1}(\allhists, P) = \set{i_v \suchthat v ∈ F} ⊆ I ∖ J$,
+  and for each $v' ∈ F$: $(\hist_{v'}, i_{v'}, \allleadstog(\hist_{v'}, i_{v'})) ∈ θ$ with $\allleadstog(\hist_{v'}, i_{v'}) ≠ v'(\hist_{v'}, i_{v'})$, so $θ ⊈ v'$, hence $θ ∉ F^⊆$.
+\end{proof}
+
+\begin{lemma}
   \label{th:finiteExceptSpreadAnonAlmostPof}
   Given any anonymous $C_0$, finite $F ⊆ \allleadstos$ with $∀w ∈ F, ∀v ∈ E ∖ \set{w}: \card{\set{i ∈ I \suchthat v_i ≠ w_i}} ∉ ℕ$, $C = C_0 ∪ F$, and
   any world $\allleadstog ∈ E$ such that $\OF_C(\allleadstog)$:
@@ -597,33 +629,19 @@ $∀θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆: ∃j ∈ J ∩
   ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆$.
 \end{lemma}
 \begin{proof}
-  \NewDocumentCommand{\wJ}{}{\allleadstog_{\mkern-2mu J}}
-  As $\OF_C(\allleadstog)$, some $θ^{(0)} ∈ Θ ∩ \powerset{\allleadstog}$ satisfies $θ^{(0)} ∉ C^⊆$, hence $θ^{(0)} ∉ C_0^⊆$. As $F ⊆ C$ and $\allleadstog ∉ C$, $\allleadstog ∉ F$.
-  Define $J^{(0)} = {θ^{(0)}}^{-1}(\allhists × P)$ as the individuals queried by $θ^{(0)}$.
-
-  Given any $J \fsub I$,
-  define $r$ as an injection from $J^{(0)}$ to $I ∖ (J ∪ J^{(0)})$ such that $\ileadstogo[r(i)] = \ileadstogo[i]$ (which exists because $\allleadstog ∈ E$),
-  define $J^{(1)} = r(J^{(0)})$ (thus $r$ is a bijection from $J^{(0)}$ to $J^{(1)}$ disjoint from both $J$ and $J^{(0)}$),
-  complete $r$ to the self-inverse permutation $σ = r ∪ r^{-1} ∪ \set{(i, i) \suchthat i ∉ J^{(0)} ∪ J^{(1)}}$ over $I$,
-  and define $θ^{(1)} = \set{(α, r(i), p) \suchthat (α, i, p) ∈ θ^{(0)}}$ as $θ^{(0)}$ where individuals from $J^{(0)}$ are replaced by individuals determined by $r$.
-  We observe that $θ^{(1)} ⊆ \allleadstog$ (by construction of $r$) and that ${θ^{(1)}}^{-1}(\allhists, P) = J^{(1)} ⊆ I ∖ (J ∪ J^{(0)}) ⊆ I ∖ J$.
-  If there exists $θ^{(1)} ⊆ \wJ ∈ C_0$, then also $θ^{(0)} ⊆ \wJ \circ σ^{-1} ∈ C_0$ (by anonymity of $C_0$); as $θ^{(0)} ∉ C_0^⊆$, we obtain $θ^{(1)} ∉ C_0^⊆$.
-
-  Define $s$ as an injection from $F$ to $I ∖ (J ∪ J^{(0)} ∪ J^{(1)})$ such that $w_{s(w)} ≠ \ileadstogo$, and $\hist_{s(w)}$ a path such that $w(\hist_{s(w)}, s(w)) ≠ \allleadstog(\hist_{s(w)}, s(w))$.
-  Define $θ^{(F)} = \set{(s(w), \hist_{s(w)}, \allleadstog(\hist_{s(w)}, s(w))) \suchthat w ∈ F}$.
-
-  Let $θ = θ^{(1)} ∪ θ^{(F)}$. 
-  As $θ^{(1)}$ and $θ^{(F)}$ query disjoined individuals, $θ ∈ Θ$. 
-  We also see that $θ ⊆ \allleadstog$.
-
-  Finally, as $θ^{(1)} ∉ C_0^⊆$, $θ ∉ C_0^⊆$,
-  and as $θ^{(F)} ∉ F^⊆$, $θ ∉ F^⊆$,
-  whereby $θ ∉ C^⊆$.
+  As $\OF_C(\allleadstog)$, $\allleadstog ∉ C$, so $\allleadstog ∉ F$; as $\allleadstog ∈ E$, the hypothesis on $F$ gives $∀v ∈ F: \card{\set{i ∈ I \suchthat \ileadstogo[i] ≠ v_i}} ∉ ℕ$.
+  Moreover, any $θ ∉ C^⊆$ also lies outside $C_0^⊆$ (as $C_0 ⊆ C$ implies $C_0^⊆ ⊆ C^⊆$), so $\OF_{C_0}(\allleadstog)$ holds.
+  Apply \cref{th:anonThusAlmostPof} to $C_0$, \cref{th:finiteFPoofsoi} to $F$, and \cref{th:combinePoofsoi}: $C = C_0 ∪ F$ satisfies the conclusion.
 \end{proof}
 
-TODO
-% Even when considering only claims C ⊆ E, requiring anonymity is stronger than strictly required for obtaining no visibility issues in E.
-% The claim of T9 is not anonymous and is within E but still suffers no vis issues in E.
+This follows from \cref{th:delegationNoVisibilityIssues,th:finiteExceptSpreadAnonAlmostPof}.
+\begin{theorem}[Finitely many, individually-spread exceptions to an anonymous claim do not register in $E$]
+  \label{th:finiteExceptSpreadAnon}
+  If $C_0$ is anonymous, $F ⊆ \allleadstos$ is finite, and
+  $∀w ∈ F, ∀\allleadstog ∈ E ∖ \set{w}:
+  \card{\set{i ∈ I \suchthat \ileadstogo ≠ w_i}} ∉ ℕ$,
+  then $C = C_0 ∪ F$ suffers no visibility issues in $E$.
+\end{theorem}
 
 \begin{lemma}
   \label{th:anonFiniteThusAlmostPof}
@@ -815,34 +833,6 @@ $∀\allleadstog ≠ \allleadstog' ∈ E: \card\set{i ∈ I \suchthat \ileadstog
   \label{ex:notCoincideFinitely}
   Fix $\ar ∈ \allargs$, an infinite proper subset $S ⊊ I$ with $I ∖ S$ infinite, and $i_0 ∈ S$. Let $v ∈ E$ be the world where $v(i, (\ar)) = φ'$ for $i ∈ S$ and $v(i, \hist) = φ$ otherwise. Let $w_0$ agree with $v$ everywhere except $w_0(i_0, (\ar)) = φ$. Then $w_0 ∈ E$: individuals in $S ∖ \set{i_0}$ all share behavior "$φ'$ at $(\ar)$, $φ$ elsewhere" (infinitely many), and individuals in $\set{i_0} ∪ (I ∖ S)$ all share behavior "always $φ$" (infinitely many). The worlds $w_0$ and $v$ differ only at $i_0$, so $\card{\set{i ∈ I \suchthat w_0(i, \cdot) ≠ v(i, \cdot)}} = 1 ∈ ℕ$: $w_0$ does not differ for infinitely many individuals with $v ∈ E$.
 \end{example}
-
-\begin{theorem}[Finitely many, individually-spread exceptions to an anonymous claim do not register in $E$]
-  \label{th:finiteExceptSpreadAnon}
-  If $C_0$ is anonymous, $F ⊆ \allleadstos$ is finite, and
-  $∀w ∈ F, ∀\allleadstog ∈ E ∖ \set{w}:
-  \card{\set{i ∈ I \suchthat \ileadstogo ≠ w_i}} ∉ ℕ$,
-  then $C = C_0 ∪ F$ suffers no visibility issues in $E$.
-\end{theorem}
-\begin{proof}
-  \NewDocumentCommand{\wJ}{}{\allleadstog_{\mkern-2mu J}}
-  Pick any world $\allleadstog ∈ E$ such that $\OF_C(\allleadstog)$, thus with some $θ^{(0)} ∈ Θ ∩ \powerset{\allleadstog}$ satisfying $θ^{(0)} ∉ C^⊆$, hence $θ^{(0)} ∉ C_0^⊆$. Define $J^{(0)} = {θ^{(0)}}^{-1}(\allhists × P)$ as the individuals queried by $θ^{(0)}$.
-
-  Pick any $θ ∈ Θ ∩ \powerset{\allleadstog}$, and let us build $θ'$ to show $\POF_C(\allleadstog)$. Define $J = θ^{-1}(\allhists × P)$ as the individuals queried by $θ$.
-
-  Define $r$ as an injection from $J^{(0)}$ to $I ∖ (J ∪ J^{(0)})$ such that $\ileadstogo[r(i)] = \ileadstogo[i]$ (which exists because $\allleadstog ∈ E$), define $J^{(1)} = r(J^{(0)})$ (thus $r$ is a bijection from $J^{(0)}$ to $J^{(1)}$ disjoint from both $J$ and $J^{(0)}$), complete $r$ to the self-inverse permutation $σ = r ∪ r^{-1} ∪ \set{(i, i) \suchthat i ∉ J^{(0)} ∪ J^{(1)}}$ over $I$, and define $θ^{(1)} = \set{(α, r(i), p) \suchthat (α, i, p) ∈ θ^{(0)}}$ as $θ^{(0)}$ where individuals from $J^{(0)}$ are replaced by individuals determined by $r$.
-  If there exists $θ^{(1)} ⊆ \wJ ∈ C_0$, then also $θ^{(0)} ⊆ \wJ \circ σ^{-1} ∈ C_0$ (by anonymity of $C_0$); as $θ^{(0)} ∉ C_0^⊆$, we obtain $θ^{(1)} ∉ C_0^⊆$.
-
-  Define $s$ as an injection from $F$ to $I ∖ (J ∪ J^{(0)} ∪ J^{(1)})$ such that $w_{s(w)} ≠ \ileadstogo$, and $\hist_{s(w)}$ a path such that $w(\hist_{s(w)}, s(w)) ≠ \allleadstog(\hist_{s(w)}, s(w))$.
-  Define $θ^{(F)} = \set{(s(w), \hist_{s(w)}, \allleadstog(\hist_{s(w)}, s(w))) \suchthat w ∈ F}$.
-
-  Let $θ' = θ ∪ θ^{(1)} ∪ θ^{(F)}$. 
-  As $θ$, $θ^{(1)}$ and $θ^{(F)}$ query disjoined individuals, $θ ⊑ θ'$, and $θ' ∈ Θ$. 
-  We also see that $θ' ⊆ \allleadstog$.
-
-  Finally, as $θ^{(1)} ∉ C_0^⊆$, $θ' ∉ C_0^⊆$,
-  and as $θ^{(F)} ∉ F^⊆$, $θ' ∉ F^⊆$,
-  whereby $θ' ∉ C^⊆$.
-\end{proof}
 
 \subsection{Persistent falsifiability}
 Consider a claim that in some world satisfies F but not POF.
