@@ -554,7 +554,7 @@ We ask when $C$ suffers no visibility issues in $E$, that is, $∀\allleadstog �
 \begin{theorem}
   \label{th:delegationNoVisibilityIssues}
   Given any claim $C$ and world $\allleadstog$: 
-  $[∃K \suchthat ∀J \fsub I ∖ K,
+  $[∀J \fsub I,
   ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆] 
   ⇒ \POF(\allleadstog)$.
 \end{theorem}
@@ -587,6 +587,38 @@ $∀θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆: ∃j ∈ J ∩
   and define $θ = \set{(α, r(i), p) \suchthat (α, i, p) ∈ θ^{(0)}}$ as $θ^{(0)}$ where individuals from $J^{(0)}$ are replaced by individuals determined by $r$.
   We observe that $θ ⊆ \allleadstog$ (by construction of $r$) and that $θ^{-1}(\allhists, P) = J' ⊆ I ∖ (J ∪ J^{(0)}) ⊆ I ∖ J$.
   Finally, if there exists $θ ⊆ \wJ ∈ C$, then also $θ^{(0)} ⊆ \wJ \circ σ^{-1} ∈ C$ (by anonymity of $C$); as $θ^{(0)} ∉ C^⊆$, we obtain $θ ∉ C^⊆$.
+\end{proof}
+
+\begin{lemma}
+  \label{th:finiteExceptSpreadAnonAlmostPof}
+  Given any anonymous $C_0$, finite $F ⊆ \allleadstos$ with $∀w ∈ F, ∀v ∈ E ∖ \set{w}: \card{\set{i ∈ I \suchthat v_i ≠ w_i}} ∉ ℕ$, $C = C_0 ∪ F$, and
+  any world $\allleadstog ∈ E$ such that $\OF_C(\allleadstog)$:
+  $∀J \fsub I,
+  ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆$.
+\end{lemma}
+\begin{proof}
+  \NewDocumentCommand{\wJ}{}{\allleadstog_{\mkern-2mu J}}
+  As $\OF_C(\allleadstog)$, some $θ^{(0)} ∈ Θ ∩ \powerset{\allleadstog}$ satisfies $θ^{(0)} ∉ C^⊆$, hence $θ^{(0)} ∉ C_0^⊆$. As $F ⊆ C$ and $\allleadstog ∉ C$, $\allleadstog ∉ F$.
+  Define $J^{(0)} = {θ^{(0)}}^{-1}(\allhists × P)$ as the individuals queried by $θ^{(0)}$.
+
+  Given any $J \fsub I$,
+  define $r$ as an injection from $J^{(0)}$ to $I ∖ (J ∪ J^{(0)})$ such that $\ileadstogo[r(i)] = \ileadstogo[i]$ (which exists because $\allleadstog ∈ E$),
+  define $J^{(1)} = r(J^{(0)})$ (thus $r$ is a bijection from $J^{(0)}$ to $J^{(1)}$ disjoint from both $J$ and $J^{(0)}$),
+  complete $r$ to the self-inverse permutation $σ = r ∪ r^{-1} ∪ \set{(i, i) \suchthat i ∉ J^{(0)} ∪ J^{(1)}}$ over $I$,
+  and define $θ^{(1)} = \set{(α, r(i), p) \suchthat (α, i, p) ∈ θ^{(0)}}$ as $θ^{(0)}$ where individuals from $J^{(0)}$ are replaced by individuals determined by $r$.
+  We observe that $θ^{(1)} ⊆ \allleadstog$ (by construction of $r$) and that ${θ^{(1)}}^{-1}(\allhists, P) = J^{(1)} ⊆ I ∖ (J ∪ J^{(0)}) ⊆ I ∖ J$.
+  If there exists $θ^{(1)} ⊆ \wJ ∈ C_0$, then also $θ^{(0)} ⊆ \wJ \circ σ^{-1} ∈ C_0$ (by anonymity of $C_0$); as $θ^{(0)} ∉ C_0^⊆$, we obtain $θ^{(1)} ∉ C_0^⊆$.
+
+  Define $s$ as an injection from $F$ to $I ∖ (J ∪ J^{(0)} ∪ J^{(1)})$ such that $w_{s(w)} ≠ \ileadstogo$, and $\hist_{s(w)}$ a path such that $w(\hist_{s(w)}, s(w)) ≠ \allleadstog(\hist_{s(w)}, s(w))$.
+  Define $θ^{(F)} = \set{(s(w), \hist_{s(w)}, \allleadstog(\hist_{s(w)}, s(w))) \suchthat w ∈ F}$.
+
+  Let $θ = θ^{(1)} ∪ θ^{(F)}$. 
+  As $θ^{(1)}$ and $θ^{(F)}$ query disjoined individuals, $θ ∈ Θ$. 
+  We also see that $θ ⊆ \allleadstog$.
+
+  Finally, as $θ^{(1)} ∉ C_0^⊆$, $θ ∉ C_0^⊆$,
+  and as $θ^{(F)} ∉ F^⊆$, $θ ∉ F^⊆$,
+  whereby $θ ∉ C^⊆$.
 \end{proof}
 
 TODO
