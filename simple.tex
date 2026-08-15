@@ -547,108 +547,15 @@ $(¬\POF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no vi
   Given a permutation $σ$ over $I$ and any ${\allleadstog} ∈ \allleadstos$, let ${\allleadstog} ∘ σ$ denote $\set{(i, \hist, φ) \suchthat (σ(i), \hist, φ) ∈ {\allleadstog}}$ and let $C ∘ σ$ denote $\set{{\allleadstog} ∘ σ \suchthat {\allleadstog} ∈ C}$.
   A claim $C$ is \emph{anonymous} iff $∀ σ: C = C ∘ σ$.
 \end{definition}
-\Cref{ex:anon} illustrates.
 
-We ask when $C$ suffers no visibility issues in $E$, that is, $∀\allleadstog ∈ E: \OF_C(\allleadstog) ⇒ \POF_C(\allleadstog)$ — aiming, ultimately, at a syntactic characterization covering \emph{every} claim $C$, not only $C ⊆ E$.
+\Cref{ex:anon} illustrates and \cref{th:finiteExceptSpreadAnon} shows that anonymous claims are provable by $¬\POF_{C ∩ E} ∩ E$.
 
 \begin{theorem}
-  \label{th:delegationNoVisibilityIssues}
-  Given any claim $C$ and world $\allleadstog$: 
-  $[∀J \fsub I,
-  ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆] 
-  ⇒ \POF(\allleadstog)$.
+  Given any $\allleadsto ∈ E$, there exists an anonymous claim that is provable by $¬\POF_{C ∩ E} ∩ E$.
 \end{theorem}
-\begin{proof}[Claude proof]
-  Fix $τ ∈ Θ ∩ \powerset{\allleadstog}$; let $J ⊆ I$ be its (finite) individuals, and pick, by hypothesis, $θ ∈ Θ ∩ \powerset{\allleadstog}$, $θ ∉ C^⊆$, touching only individuals outside $J$.
-  As $τ, θ$ touch disjoint individuals, $τ' = τ ∪ θ ∈ Θ ∩ \powerset{\allleadstog}$ and $τ ⊑ τ'$ (no point is added for any individual already in $τ$'s domain).
-  As $C^⊆$ is downwards closed and $θ ⊆ τ'$, $τ' ∉ C^⊆$.
-  As $τ$ was arbitrary, $\POF_C(\allleadstog)$ holds.
-\end{proof}
-In other words,
-$¬\POF(\allleadstog)$ requires some finite $J ⊆ I$ such that
-$∀θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆: ∃j ∈ J ∩ θ^{-1}(\allhists × P)$.
-
-\begin{example}[The converse of \cref{th:delegationNoVisibilityIssues} fails]
-  \label{ex:T4notIff}
-  Fix $i^* ∈ I$. Let $\allleadstog(i, \hist) = φ$ for all $i ∈ I$, $\hist ∈ \allhists$, and $C = \set{v ∈ \allleadstos \suchthat ∀\hist ∈ \allhists: v(i^*, \hist) = φ'}$.
-  Then $\allleadstog ∉ C$ and $\POF_C(\allleadstog)$: given any $τ ∈ Θ ∩ \powerset{\allleadstog}$, if $i^*$ is not queried by $τ$, extend $τ$ by one observation of $i^*$ at $∅$ to get $τ'$ with $τ ⊑ τ'$ and $τ' ∉ C^⊆$ (as $\allleadstog(i^*, ∅) = φ ≠ φ'$); if $i^*$ is already queried, $τ$ records $φ$ at some path, so no $v ∈ C$ (requiring $φ'$ everywhere for $i^*$) extends $τ$, and $τ' = τ$ works.
-  Yet poofsoi fails for $J = \set{i^*}$: any $θ ∈ Θ ∩ \powerset{\allleadstog}$ querying only in $I ∖ \set{i^*}$ lies in $C^⊆$, since setting $v(i^*, \hist) = φ'$ for all $\hist$ and $v(i, \hist) = φ$ for $i ≠ i^*$ yields $v ∈ C$ with $θ ⊆ v$.
-\end{example}
-
-\begin{lemma}
-  \label{th:anonThusAlmostPof}
-  Given any anonymous $C$ and 
-  any world $\allleadstog ∈ E$ such that $\OF(\allleadstog)$: 
-  $∀J \fsub I,
-  ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆$.
-\end{lemma}
 \begin{proof}
-  \NewDocumentCommand{\wJ}{}{\allleadstog_{\mkern-2mu J}}
-  As $\OF_C(\allleadstog)$, some $θ^{(0)} ∈ Θ ∩ \powerset{\allleadstog}$ satisfies $θ^{(0)} ∉ C^⊆$.
-  Define $J^{(0)} = {θ^{(0)}}^{-1}(\allhists × P)$ as the individuals queried by $θ^{(0)}$.
-
-  Given any $J \fsub I$,
-  define $r$ as an injection from $J^{(0)}$ to $I ∖ (J ∪ J^{(0)})$ such that $\ileadstogo[r(i)] = \ileadstogo[i]$ (which exists because $\allleadstog ∈ E$),
-  define $J' = r(J^{(0)})$ (thus $r$ is a bijection from $J^{(0)}$ to $J'$ disjoint from both $J$ and $J^{(0)}$),
-  complete $r$ to the self-inverse permutation $σ = r ∪ r^{-1} ∪ \set{(i, i) \suchthat i ∉ J^{(0)} ∪ J'}$ over $I$,
-  and define $θ = \set{(α, r(i), p) \suchthat (α, i, p) ∈ θ^{(0)}}$ as $θ^{(0)}$ where individuals from $J^{(0)}$ are replaced by individuals determined by $r$.
-  We observe that $θ ⊆ \allleadstog$ (by construction of $r$) and that $θ^{-1}(\allhists, P) = J' ⊆ I ∖ (J ∪ J^{(0)}) ⊆ I ∖ J$.
-  Finally, if there exists $θ ⊆ \wJ ∈ C$, then also $θ^{(0)} ⊆ \wJ \circ σ^{-1} ∈ C$ (by anonymity of $C$); as $θ^{(0)} ∉ C^⊆$, we obtain $θ ∉ C^⊆$.
+  TODO
 \end{proof}
-
-\begin{lemma}
-  \label{th:combinePoofsoi}
-  Given any two claims $C_1$, $C_2$ and world $\allleadstog$: if $C_1$ and $C_2$ each satisfy
-  $∀J \fsub I, ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆$
-  (with $C = C_1$ and $C = C_2$ respectively), then so does $C_1 ∪ C_2$.
-\end{lemma}
-\begin{proof}
-  Given any $J \fsub I$:
-  apply the hypothesis for $C_2$ to $J$, obtaining $θ_2 ∈ Θ ∩ \powerset{\allleadstog}$ with $θ_2^{-1}(\allhists, P) ⊆ I ∖ J$ and $θ_2 ∉ C_2^⊆$;
-  let $J_2 = θ_2^{-1}(\allhists × P)$.
-  Apply the hypothesis for $C_1$ to $J ∪ J_2$, obtaining $θ_1$ with $θ_1^{-1}(\allhists, P) ⊆ I ∖ (J ∪ J_2)$ and $θ_1 ∉ C_1^⊆$.
-  Set $θ = θ_1 ∪ θ_2$: since $θ_1$ and $θ_2$ query disjoint individuals and are both consistent with $\allleadstog$, $θ ∈ Θ ∩ \powerset{\allleadstog}$ and $θ^{-1}(\allhists, P) ⊆ I ∖ J$.
-  If $θ ⊆ v$ for some $v ∈ C_1$, then $θ_1 ⊆ θ ⊆ v$, contradicting $θ_1 ∉ C_1^⊆$; so $θ ∉ C_1^⊆$.
-  Likewise $θ_2 ⊆ θ$ implies $θ ∉ C_2^⊆$.
-  Hence $θ ∉ (C_1 ∪ C_2)^⊆$.
-\end{proof}
-
-\begin{lemma}
-  \label{th:finiteFPoofsoi}
-  Given any finite $F ⊆ \allleadstos$ and world $\allleadstog$ such that $∀v ∈ F: \card{\set{i ∈ I \suchthat \ileadstogo[i] ≠ v_i}} ∉ ℕ$:
-  $∀J \fsub I,
-  ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ F^⊆$.
-\end{lemma}
-\begin{proof}
-  Given any $J \fsub I$, 
-  define $s$ as an injection from $F$ to $I ∖ J$ such that $w_{s(w)} ≠ \ileadstogo$, and $\hist_{s(w)}$ a path such that $w(\hist_{s(w)}, s(w)) ≠ \allleadstog(\hist_{s(w)}, s(w))$.
-  Define $θ = \set{(s(w), \hist_{s(w)}, \allleadstog(\hist_{s(w)}, s(w))) \suchthat w ∈ F}$.
-
-  Then $θ ∈ Θ ∩ \powerset{\allleadstog}$, $θ^{-1}(\allhists, P) = \set{i_v \suchthat v ∈ F} ⊆ I ∖ J$,
-  and for each $v' ∈ F$: $(\hist_{v'}, i_{v'}, \allleadstog(\hist_{v'}, i_{v'})) ∈ θ$ with $\allleadstog(\hist_{v'}, i_{v'}) ≠ v'(\hist_{v'}, i_{v'})$, so $θ ⊈ v'$, hence $θ ∉ F^⊆$.
-\end{proof}
-
-\begin{lemma}
-  \label{th:finiteExceptSpreadAnonAlmostPof}
-  Given any anonymous $C_0$, finite $F ⊆ \allleadstos$ with $∀w ∈ F, ∀v ∈ E ∖ \set{w}: \card{\set{i ∈ I \suchthat v_i ≠ w_i}} ∉ ℕ$, $C = C_0 ∪ F$, and
-  any world $\allleadstog ∈ E$ such that $\OF_C(\allleadstog)$:
-  $∀J \fsub I,
-  ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆$.
-\end{lemma}
-\begin{proof}
-  As $\OF_C(\allleadstog)$, $\allleadstog ∉ C$, so $\allleadstog ∉ F$; as $\allleadstog ∈ E$, the hypothesis on $F$ gives $∀v ∈ F: \card{\set{i ∈ I \suchthat \ileadstogo[i] ≠ v_i}} ∉ ℕ$.
-  Moreover, any $θ ∉ C^⊆$ also lies outside $C_0^⊆$ (as $C_0 ⊆ C$ implies $C_0^⊆ ⊆ C^⊆$), so $\OF_{C_0}(\allleadstog)$ holds.
-  Apply \cref{th:anonThusAlmostPof} to $C_0$, \cref{th:finiteFPoofsoi} to $F$, and \cref{th:combinePoofsoi}: $C = C_0 ∪ F$ satisfies the conclusion.
-\end{proof}
-
-This follows from \cref{th:delegationNoVisibilityIssues,th:finiteExceptSpreadAnonAlmostPof}.
-\begin{theorem}[Finitely many, individually-spread exceptions to an anonymous claim do not register in $E$]
-  \label{th:finiteExceptSpreadAnon}
-  If $C_0$ is anonymous, $F ⊆ \allleadstos$ is finite, and
-  $∀w ∈ F, ∀\allleadstog ∈ E ∖ \set{w}:
-  \card{\set{i ∈ I \suchthat \ileadstogo ≠ w_i}} ∉ ℕ$,
-  then $C = C_0 ∪ F$ suffers no visibility issues in $E$.
-\end{theorem}
 
 \begin{lemma}
   \label{th:anonFiniteThusAlmostPof}
@@ -1712,6 +1619,110 @@ The following result indicates that, given a finite cover of $D ∖C$, $\OF_{D �
   We have $θ' ⊆ \allleadstog' ∈ C ∩ E$, thus,
   $θ' ∈ (C ∩ E)^⊆$.
 \end{example}
+
+Say that a world admits a proof of $¬C$ avoiding $J$ iff
+$∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆$.
+A sufficient condition for a world being POF is that any finite subset of individuals still allow for a proof of $¬C$ avoiding that subset.
+\begin{theorem}
+  \label{th:delegationNoVisibilityIssues}
+  Given any claim $C$ and world $\allleadstog$: 
+  $[∀J \fsub I,
+  ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆] 
+  ⇒ \POF(\allleadstog)$.
+\end{theorem}
+\begin{proof}[Claude proof]
+  Fix $τ ∈ Θ ∩ \powerset{\allleadstog}$; let $J ⊆ I$ be its (finite) individuals, and pick, by hypothesis, $θ ∈ Θ ∩ \powerset{\allleadstog}$, $θ ∉ C^⊆$, touching only individuals outside $J$.
+  As $τ, θ$ touch disjoint individuals, $τ' = τ ∪ θ ∈ Θ ∩ \powerset{\allleadstog}$ and $τ ⊑ τ'$ (no point is added for any individual already in $τ$'s domain).
+  As $C^⊆$ is downwards closed and $θ ⊆ τ'$, $τ' ∉ C^⊆$.
+  As $τ$ was arbitrary, $\POF_C(\allleadstog)$ holds.
+\end{proof}
+
+The converse of \cref{th:delegationNoVisibilityIssues} fails:
+when some given $i$ is non avoidable for a proof of $¬C$ but all $α$ do prove $¬C$, it does not bar POF.
+\begin{example}
+  \label{ex:T4notIff}
+  Fix $i^* ∈ I$. Let $\allleadstog(i, \hist) = φ$ for all $i ∈ I$, $\hist ∈ \allhists$, and $C = \set{v ∈ \allleadstos \suchthat ∀\hist ∈ \allhists: v(i^*, \hist) = φ'}$.
+  Then $\allleadstog ∉ C$ and $\POF_C(\allleadstog)$: given any $τ ∈ Θ ∩ \powerset{\allleadstog}$, if $i^*$ is not queried by $τ$, extend $τ$ by one observation of $i^*$ at $∅$ to get $τ'$ with $τ ⊑ τ'$ and $τ' ∉ C^⊆$ (as $\allleadstog(i^*, ∅) = φ ≠ φ'$); if $i^*$ is already queried, $τ$ records $φ$ at some path, so no $v ∈ C$ (requiring $φ'$ everywhere for $i^*$) extends $τ$, and $τ' = τ$ works.
+  Yet poofsoi fails for $J = \set{i^*}$: any $θ ∈ Θ ∩ \powerset{\allleadstog}$ querying only in $I ∖ \set{i^*}$ lies in $C^⊆$, since setting $v(i^*, \hist) = φ'$ for all $\hist$ and $v(i, \hist) = φ$ for $i ≠ i^*$ yields $v ∈ C$ with $θ ⊆ v$.
+\end{example}
+
+The necessary and sufficient condition for $(¬\POF) ∩ E$ to prove $C$ is that every world in $E$ outside $C$ is persistently falsifiable: $∀\allleadstog ∈ E ∖ C: \POF_C(\allleadstog)$.
+\Cref{th:delegationNoVisibilityIssues} gives a sufficient but not necessary condition at each such $\allleadstog$; \cref{th:provGapVisibility} reformulates the global condition as $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no visibility issues in $E$.
+
+\begin{lemma}
+  \label{th:anonThusAlmostPof}
+  Given any anonymous $C$ and
+  any world $\allleadstog ∈ E$ such that $\OF(\allleadstog)$:
+  $∀J \fsub I,
+  ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆$.
+\end{lemma}
+\begin{proof}
+  \NewDocumentCommand{\wJ}{}{\allleadstog_{\mkern-2mu J}}
+  As $\OF_C(\allleadstog)$, some $θ^{(0)} ∈ Θ ∩ \powerset{\allleadstog}$ satisfies $θ^{(0)} ∉ C^⊆$.
+  Define $J^{(0)} = {θ^{(0)}}^{-1}(\allhists × P)$ as the individuals queried by $θ^{(0)}$.
+
+  Given any $J \fsub I$,
+  define $r$ as an injection from $J^{(0)}$ to $I ∖ (J ∪ J^{(0)})$ such that $\ileadstogo[r(i)] = \ileadstogo[i]$ (which exists because $\allleadstog ∈ E$),
+  define $J' = r(J^{(0)})$ (thus $r$ is a bijection from $J^{(0)}$ to $J'$ disjoint from both $J$ and $J^{(0)}$),
+  complete $r$ to the self-inverse permutation $σ = r ∪ r^{-1} ∪ \set{(i, i) \suchthat i ∉ J^{(0)} ∪ J'}$ over $I$,
+  and define $θ = \set{(α, r(i), p) \suchthat (α, i, p) ∈ θ^{(0)}}$ as $θ^{(0)}$ where individuals from $J^{(0)}$ are replaced by individuals determined by $r$.
+  We observe that $θ ⊆ \allleadstog$ (by construction of $r$) and that $θ^{-1}(\allhists, P) = J' ⊆ I ∖ (J ∪ J^{(0)}) ⊆ I ∖ J$.
+  Finally, if there exists $θ ⊆ \wJ ∈ C$, then also $θ^{(0)} ⊆ \wJ \circ σ^{-1} ∈ C$ (by anonymity of $C$); as $θ^{(0)} ∉ C^⊆$, we obtain $θ ∉ C^⊆$.
+\end{proof}
+
+\begin{lemma}
+  \label{th:combinePoofsoi}
+  Given any two claims $C_1$, $C_2$ and world $\allleadstog$: if $C_1$ and $C_2$ each satisfy
+  $∀J \fsub I, ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆$
+  (with $C = C_1$ and $C = C_2$ respectively), then so does $C_1 ∪ C_2$.
+\end{lemma}
+\begin{proof}
+  Given any $J \fsub I$:
+  apply the hypothesis for $C_2$ to $J$, obtaining $θ_2 ∈ Θ ∩ \powerset{\allleadstog}$ with $θ_2^{-1}(\allhists, P) ⊆ I ∖ J$ and $θ_2 ∉ C_2^⊆$;
+  let $J_2 = θ_2^{-1}(\allhists × P)$.
+  Apply the hypothesis for $C_1$ to $J ∪ J_2$, obtaining $θ_1$ with $θ_1^{-1}(\allhists, P) ⊆ I ∖ (J ∪ J_2)$ and $θ_1 ∉ C_1^⊆$.
+  Set $θ = θ_1 ∪ θ_2$: since $θ_1$ and $θ_2$ query disjoint individuals and are both consistent with $\allleadstog$, $θ ∈ Θ ∩ \powerset{\allleadstog}$ and $θ^{-1}(\allhists, P) ⊆ I ∖ J$.
+  If $θ ⊆ v$ for some $v ∈ C_1$, then $θ_1 ⊆ θ ⊆ v$, contradicting $θ_1 ∉ C_1^⊆$; so $θ ∉ C_1^⊆$.
+  Likewise $θ_2 ⊆ θ$ implies $θ ∉ C_2^⊆$.
+  Hence $θ ∉ (C_1 ∪ C_2)^⊆$.
+\end{proof}
+
+\begin{lemma}
+  \label{th:finiteFPoofsoi}
+  Given any finite $F ⊆ \allleadstos$ and world $\allleadstog$ such that $∀v ∈ F: \card{\set{i ∈ I \suchthat \ileadstogo[i] ≠ v_i}} ∉ ℕ$:
+  $∀J \fsub I,
+  ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ F^⊆$.
+\end{lemma}
+\begin{proof}
+  Given any $J \fsub I$, 
+  define $s$ as an injection from $F$ to $I ∖ J$ such that $w_{s(w)} ≠ \ileadstogo$, and $\hist_{s(w)}$ a path such that $w(\hist_{s(w)}, s(w)) ≠ \allleadstog(\hist_{s(w)}, s(w))$.
+  Define $θ = \set{(s(w), \hist_{s(w)}, \allleadstog(\hist_{s(w)}, s(w))) \suchthat w ∈ F}$.
+
+  Then $θ ∈ Θ ∩ \powerset{\allleadstog}$, $θ^{-1}(\allhists, P) = \set{i_v \suchthat v ∈ F} ⊆ I ∖ J$,
+  and for each $v' ∈ F$: $(\hist_{v'}, i_{v'}, \allleadstog(\hist_{v'}, i_{v'})) ∈ θ$ with $\allleadstog(\hist_{v'}, i_{v'}) ≠ v'(\hist_{v'}, i_{v'})$, so $θ ⊈ v'$, hence $θ ∉ F^⊆$.
+\end{proof}
+
+\begin{lemma}
+  \label{th:finiteExceptSpreadAnonAlmostPof}
+  Given any anonymous $C_0$, finite $F ⊆ \allleadstos$ with $∀w ∈ F, ∀v ∈ E ∖ \set{w}: \card{\set{i ∈ I \suchthat v_i ≠ w_i}} ∉ ℕ$, $C = C_0 ∪ F$, and
+  any world $\allleadstog ∈ E$ such that $\OF_C(\allleadstog)$:
+  $∀J \fsub I,
+  ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆$.
+\end{lemma}
+\begin{proof}
+  As $\OF_C(\allleadstog)$, $\allleadstog ∉ C$, so $\allleadstog ∉ F$; as $\allleadstog ∈ E$, the hypothesis on $F$ gives $∀v ∈ F: \card{\set{i ∈ I \suchthat \ileadstogo[i] ≠ v_i}} ∉ ℕ$.
+  Moreover, any $θ ∉ C^⊆$ also lies outside $C_0^⊆$ (as $C_0 ⊆ C$ implies $C_0^⊆ ⊆ C^⊆$), so $\OF_{C_0}(\allleadstog)$ holds.
+  Apply \cref{th:anonThusAlmostPof} to $C_0$, \cref{th:finiteFPoofsoi} to $F$, and \cref{th:combinePoofsoi}: $C = C_0 ∪ F$ satisfies the conclusion.
+\end{proof}
+
+This follows from \cref{th:delegationNoVisibilityIssues,th:finiteExceptSpreadAnonAlmostPof}.
+\begin{theorem}[Finitely many, individually-spread exceptions to an anonymous claim do not register in $E$]
+  \label{th:finiteExceptSpreadAnon}
+  If $C_0$ is anonymous, $F ⊆ \allleadstos$ is finite, and
+  $∀w ∈ F, ∀\allleadstog ∈ E ∖ \set{w}:
+  \card{\set{i ∈ I \suchthat \ileadstogo ≠ w_i}} ∉ ℕ$,
+  then $C = C_0 ∪ F$ suffers no visibility issues in $E$.
+\end{theorem}
 
 \subsection{Interplay}
 We are here interested in the interplay between properties of holding, anonymity, informativeness and permanent falsifiability.
