@@ -568,6 +568,13 @@ In other words,
 $¬\POF(\allleadstog)$ requires some finite $J ⊆ I$ such that
 $∀θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆: ∃j ∈ J ∩ θ^{-1}(\allhists × P)$.
 
+\begin{example}[The converse of \cref{th:delegationNoVisibilityIssues} fails]
+  \label{ex:T4notIff}
+  Fix $i^* ∈ I$. Let $\allleadstog(i, \hist) = φ$ for all $i ∈ I$, $\hist ∈ \allhists$, and $C = \set{v ∈ \allleadstos \suchthat ∀\hist ∈ \allhists: v(i^*, \hist) = φ'}$.
+  Then $\allleadstog ∉ C$ and $\POF_C(\allleadstog)$: given any $τ ∈ Θ ∩ \powerset{\allleadstog}$, if $i^*$ is not queried by $τ$, extend $τ$ by one observation of $i^*$ at $∅$ to get $τ'$ with $τ ⊑ τ'$ and $τ' ∉ C^⊆$ (as $\allleadstog(i^*, ∅) = φ ≠ φ'$); if $i^*$ is already queried, $τ$ records $φ$ at some path, so no $v ∈ C$ (requiring $φ'$ everywhere for $i^*$) extends $τ$, and $τ' = τ$ works.
+  Yet poofsoi fails for $J = \set{i^*}$: any $θ ∈ Θ ∩ \powerset{\allleadstog}$ querying only in $I ∖ \set{i^*}$ lies in $C^⊆$, since setting $v(i^*, \hist) = φ'$ for all $\hist$ and $v(i, \hist) = φ$ for $i ≠ i^*$ yields $v ∈ C$ with $θ ⊆ v$.
+\end{example}
+
 \begin{lemma}
   \label{th:anonThusAlmostPof}
   Given any anonymous $C$ and 
