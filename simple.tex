@@ -201,8 +201,9 @@ Let $\finite(\incr(\allhists)^I)$ denote the functions $f: I ↦ \incr(\allhists
 An element $Q ⊆ I × \allhists$ \commentOC{previously denoted $O$ and called a priori observation} is called a query iff $∀i ∈ I: Q(i) = \set{\hist ∈ \allhists \suchthat (i, \hist) ∈ Q} ∈ \incr(\allhists)$ and $\card{Q} ∈ ℕ$.
 Abusing notations, we also view $Q$ as an element of $\allpriobss$.
 An observation associates to a query an element of $P$ per queried element, thus, the set of possible observations is $Θ = ∪_{Q ∈ \allpriobss} P^Q$.
-In other words, an observation $θ ∈ Θ$ is a right unique finite subset of $(I × \allhists) × P$ satisfying $∀ i ∈ I, (i, \hist, p), (i, \histp, q) ∈ θ: \card{\hist} ≤ \card{\hist'} ⇒ \hist ⊆ \hist'$.
-Given an observation $θ$, let $θ^{-1}(P) ∈ \allpriobss$ denote the queried elements in $θ$, which can also be considered as $θ^{-1}(P) ⊆ I × \allhists$, the pairs $(i, \hist)$ in $θ$.
+In other words, defining a general observation $O$ as a right unique finite subset of $(I × \allhists) × P$, an observation $θ ∈ Θ$ is a general observation satisfying $∀ i ∈ I, (i, \hist, p), (i, \histp, q) ∈ θ: \card{\hist} ≤ \card{\hist'} ⇒ \hist ⊆ \hist'$.
+Given a general observation $O$, let $O^{-1}(P) ⊆ I × \allhists$ denote the queried elements (the pairs $(i, \hist)$) in $O$.
+Note that given an observation $θ$, $θ^{-1}(P) ∈ \allpriobss$.
 Similarly, we can view an observation $θ$ as a function $θ: I ↦ ∪_{H ∈ \incr(\allhists)} P^H$ and thus $Θ = \finite((∪_{H ∈ \incr(\allhists)} P^H)^I)$, where $\finite$ designates the finite relations (considered as a set of triples); also, $θ^{-1}(\allhists, P)$ designates the queried individuals.
 An observation $θ'$ rightward-extends an observation $θ$, denoted $θ ⊑ θ'$, iff $θ ⊆ θ' ∧ ∀i ∈ I, (α, i, p) ∈ θ, (α', i, p') ∈ θ': α ⊆ α'$.
 
@@ -244,6 +245,7 @@ is sound (\cref{th:vImpliesHolds}), but even the weaker possible verifiability p
 Indeed,
 some sufficiently simple claims, such as the claim $C = \set{{\allleadstog} \suchthat (\ar) \ileadstog φ}$ that some given path leads some given individual to some given proposition, are possibly verifiable, but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
 
+Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(\set{θ ⊆ \allleadstog'} ∩ C) = \set{π(\allleadstog') \suchthat θ ⊆ \allleadstog' ∈ C} ≠ (P ∪ \set{∅})^I$.
 A claim $C$ is \emph{informative} iff $π(C) = \set{π(\allleadstog) \suchthat {\allleadstog} ∈ C} ≠ (P ∪ \set{∅})^I$.
 % A claim $C$ is \emph{informative} iff $∃ i \suchthat π(C)(i) ≠ P ∪ \set{∅}$, where $π(C) = \set{π(\allleadstog) \suchthat {\allleadstog} ∈ C}$.
 A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π_i(C) = \set{π_i(\allleadstog) \suchthat {\allleadstog} ∈ C} ≠ P ∪ \set{∅}$.
@@ -554,199 +556,73 @@ $(¬\POF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no vi
   Given any $\allleadsto ∈ E$, there exists an anonymous claim that is provable by $¬\POF_{C ∩ E} ∩ E$.
 \end{theorem}
 \begin{proof}
-  TODO
+  Take $C = E$.
+  $E$ is anonymous: for any $\allleadstog ∈ E$ and permutation $σ$, individual $j$ in $\allleadstog ∘ σ$ has the same behavior as $σ(j)$ in $\allleadstog$, so the behavior classes of $\allleadstog ∘ σ$ are those of $\allleadstog$ relabeled, each still infinite, giving $\allleadstog ∘ σ ∈ E$.
+  $\allleadsto ∈ E = C$ by hypothesis.
+  $C ∩ E = E$, so $(¬\POF_{C ∩ E}) ∩ E = (¬\POF_E) ∩ E ⊆ E = C$.
 \end{proof}
-
-\begin{lemma}
-  \label{th:anonFiniteThusAlmostPof}
-  Given any anonymous $C_0$, finite $F ⊆ \allleadstos$, $C = C_0 ∪ F$, and any world $\allleadstog ∈ E$ such that $\OF_C(\allleadstog)$:
-  $∃K \fsub I \suchthat ∀J \fsub I,
-  ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ (I ∖ J) ∪ K ∧ θ ∉ C^⊆$.
-\end{lemma}
-\begin{proof}
-  \NewDocumentCommand{\wJ}{}{\allleadstog_{\mkern-2mu J}}
-  As $\OF_C(\allleadstog)$, some $θ^{(0)} ∈ Θ ∩ \powerset{\allleadstog}$ satisfies $θ^{(0)} ∉ C^⊆$.
-  Define $K = {θ^{(0)}}^{-1}(\allhists × P)$ as the individuals queried by $θ^{(0)}$; as $C_0, F ⊆ C$, $θ^{(0)} ∉ C_0^⊆$ and $θ^{(0)} ∉ F^⊆$, the latter meaning $∀w ∈ F: θ^{(0)} ⊈ w$.
-
-  Given any $J \fsub I$,
-  define $r$ as an injection from $K$ to $I ∖ (J ∪ K)$ such that $\ileadstogo[r(i)] = \ileadstogo[i]$ (which exists because $\allleadstog ∈ E$),
-  define $J' = r(K)$ (thus $r$ is a bijection from $K$ to $J'$ disjoint from both $J$ and $K$),
-  complete $r$ to the self-inverse permutation $σ = r ∪ r^{-1} ∪ \set{(i, i) \suchthat i ∉ K ∪ J'}$ over $I$,
-  define $θ' = \set{(α, r(i), p) \suchthat (α, i, p) ∈ θ^{(0)}}$ as $θ^{(0)}$ where individuals from $K$ are replaced by individuals determined by $r$,
-  and let $θ = θ^{(0)} ∪ θ'$.
-  We observe that $θ ⊆ \allleadstog$ ($θ^{(0)} ⊆ \allleadstog$ by hypothesis, $θ' ⊆ \allleadstog$ by construction of $r$) and that $θ^{-1}(\allhists, P) = K ∪ J' ⊆ K ∪ (I ∖ J)$.
-  Finally, if there exists $θ' ⊆ \wJ ∈ C_0$, then also $θ^{(0)} ⊆ \wJ \circ σ^{-1} ∈ C_0$ (by anonymity of $C_0$); as $θ^{(0)} ∉ C_0^⊆$, we obtain $θ' ∉ C_0^⊆$, so, as $C_0^⊆$ is downwards closed and $θ' ⊆ θ$, $θ ∉ C_0^⊆$.
-  And, as $θ^{(0)} ⊆ θ$ and $θ^{(0)} ⊈ w$ for every $w ∈ F$, also $θ ⊈ w$ for every $w ∈ F$, so $θ ∉ F^⊆$.
-  So $θ ∉ C_0^⊆ ∪ F^⊆ = C^⊆$.
-\end{proof}
-
-This follows from \cref{th:delegationNoVisibilityIssues,th:anonThusAlmostPof}.
-\begin{theorem}
-  \label{th:anonNoVisibilityIssues}
-  If $C$ is anonymous (\cref{def:anonymous}), $C$ suffers no visibility issues in $E$.
-\end{theorem}
 
 \begin{theorem}
-  \label{th:finiteExceptAnon}
-  If $C_0$ is anonymous and $F ⊆ \allleadstos$ is finite, $C = C_0 ∪ F$ suffers no visibility issues in $E$.
-\end{theorem}
-\begin{proof}[TODO]
-  \NewDocumentCommand{\wJ}{}{\allleadstog_{\mkern-2mu J}}
-  Pick any world $\allleadstog ∈ E$ such that $\OF(\allleadstog)$, 
-  thus with some $θ^{(0)} ∈ Θ ∩ \powerset{\allleadstog}$ satisfying $θ^{(0)} ∉ C^⊆$.
-  Define $J^{(0)} = {θ^{(0)}}^{-1}(\allhists × P)$ as the individuals queried by $θ^{(0)}$.
-  
-  Pick any $θ ∈ Θ ∩ \powerset{\allleadstog}$,
-  and let us build $θ'$ to show $\POF(\allleadstog)$.
-  
-  Define $J = θ^{-1}(\allhists × P)$ as the individuals queried by $θ$.
-  Define $r$ as an injection from $J^{(0)}$ to $I ∖ (J ∪ J^{(0)})$ such that $\ileadstogo[r(i)] = \ileadstogo[i]$ (which exists because $\allleadstog ∈ E$),
-  define $J^{(1)} = r(J^{(0)})$ (thus $r$ is a bijection from $J^{(0)}$ to $J^{(1)}$ disjoint from both $J$ and $J^{(0)}$),
-  complete $r$ to the self-inverse permutation $σ = r ∪ r^{-1} ∪ \set{(i, i) \suchthat i ∉ J^{(0)} ∪ J^{(1)}}$ over $I$,
-  define $θ^{(1)} = \set{(α, r(i), p) \suchthat (α, i, p) ∈ θ^{(0)}}$ as $θ^{(0)}$ where individuals from $J^{(0)}$ are replaced by individuals determined by $r$,
-  and let $θ' = θ ∪ θ^{(0)} ∪ θ^{(1)}$.
-  We observe that $θ' ⊆ \allleadstog$ ($θ ⊆ \allleadstog$ and $θ^{(0)} ⊆ \allleadstog$ by hypothesis, $θ^{(1)} ⊆ \allleadstog$ by construction of $r$).% and that $θ'^{-1}(\allhists, P) = J^{(0)} ∪ J^{(1)}$
-  If there exists $θ^{(1)} ⊆ \wJ ∈ C_0$, then also $θ^{(0)} ⊆ \wJ \circ σ^{-1} ∈ C_0$ (by anonymity of $C_0$); as $θ^{(0)} ∉ C_0^⊆$, we obtain $θ^{(1)} ∉ C_0^⊆$.
-  As $C_0^⊆$ is downwards closed and $θ^{(1)} ⊆ θ'$, $θ' ∉ C_0^⊆$.
-  And, as $θ^{(0)} ⊆ θ'$ and $θ^{(0)} ⊈ w$ for every $w ∈ F$, also $θ' ⊈ w$ for every $w ∈ F$, so $θ' ∉ F^⊆$.
-  So $θ' ∉ C_0^⊆ ∪ F^⊆ = C^⊆$.
-
-  We obtain $θ' ∈ Θ∩\powerset{\allleadstog}$, and $θ⊑θ'$.
-  Thus, $\POF_C(\allleadstog)$.
-\end{proof}
-
-\Cref{th:anonNoVisibilityIssues,th:finiteExceptAnon} both work by exhibiting, for every finite set of already-touched individuals, an escape witness avoiding them entirely — a \emph{delegate}.
-
-The converse fails, in two structurally different ways — yet, tellingly, both known ways escape $E$ itself.
-
-\begin{example}[Never falsifiable, hence trivially no visibility issues, yet not anonymous]
-  \label{ex:cufmNotAnon}
-  Split $I$ into two subsets $J, I ∖ J$ of the same cardinality as $I$, fix $\ar ∈ \allargs$, and let $\allleadstog[0]$ agree with $φ'$ everywhere except $\allleadstog[0](i, \ar) = φ$ for $i ∈ J$.
-  Let $C = \set{\allleadstog \suchthat \allleadstog \simfin \allleadstog[0]}$ (\cref{ex:cufmNonTrivial}), closed under finite modification and non-empty: by \cref{th:cufmNeverFals}, $Θ ⊆ C^⊆$, so $C$ suffers no visibility issues anywhere.
-  Yet swapping $J$ and $I ∖ J$ moves $\allleadstog[0]$ out of $C$ (it now differs from $\allleadstog[0]$ on all of $I × \set{\ar}$), so $C ∘ σ ≠ C$: $C$ is not anonymous.
-\end{example}
-
-\begin{proof}[Proof of \cref{th:finiteExceptAnon}]
-  Let $\allleadstog ∈ E$ with $\OF_C(\allleadstog)$, witnessed by $θ ∈ Θ ∩ \powerset{\allleadstog}, θ ∉ C^⊆$. As $C_0 ⊆ C$, $C_0^⊆ ⊆ C^⊆$, so $θ ∉ C_0^⊆$ too; and $F ⊆ C$, $\allleadstog ∉ C$, so $\allleadstog ∉ F$.
-  Fix $τ ∈ Θ ∩ \powerset{\allleadstog}$; exactly as in \cref{th:anonNoVisibilityIssues}'s proof (using only $\allleadstog ∈ E$, $C_0$ anonymous, and $θ$), build $θ ∘ σ ⊆ \allleadstog$, disjoint from $τ$'s domain, with $θ ∘ σ ∉ C_0^⊆$.
-  For each $w ∈ F$, $w ≠ \allleadstog$, so pick a point $p_w$ where $\allleadstog, w$ disagree; let $F' = \set{(p_w, \allleadstog(p_w)) \suchthat w ∈ F}$, finitely many further points, all true values of $\allleadstog$, hence $F' ⊆ \allleadstog$.
-  Let $τ' = τ ∪ (θ ∘ σ) ∪ F' ∈ Θ ∩ \powerset{\allleadstog}$ (finitely many points, all compatible with $\allleadstog$); then $τ ⊑ τ'$.
-  As $C_0^⊆$ is downwards closed and $θ ∘ σ ⊆ τ'$, $τ' ∉ C_0^⊆$. And $τ' ∉ \powerset{w}$ for every $w ∈ F$, since $τ'$ disagrees with $w$ at $p_w$.
-  So $τ' ∉ C_0^⊆ ∪ F^⊆ = C^⊆$, giving $\POF_C(\allleadstog)$.
-\end{proof}
-\begin{proof}[Alternate proof, via \cref{th:anonFiniteThusAlmostPof}]
-  Let $\allleadstog ∈ E$ with $\OF_C(\allleadstog)$; \cref{th:anonFiniteThusAlmostPof} gives $K \fsub I$.
-  Fix $τ ∈ Θ ∩ \powerset{\allleadstog}$; let $J ⊆ I$ be its (finite) individuals, and pick, by \cref{th:anonFiniteThusAlmostPof}, $θ ∈ Θ ∩ \powerset{\allleadstog}$, $θ ∉ C^⊆$, with $θ^{-1}(\allhists, P) ⊆ (I ∖ J) ∪ K$.
-  Then $τ' = τ ∪ θ ∈ Θ ∩ \powerset{\allleadstog}$ (finitely many points, all compatible with $\allleadstog$), and $τ ⊑ τ'$.
-  As $C^⊆$ is downwards closed and $θ ⊆ τ'$, $τ' ∉ C^⊆$.
-  As $τ$ was arbitrary, $\POF_C(\allleadstog)$ holds.
-\end{proof}
-\begin{example}[Instance: a single named exception, escaping $E$]
-  \label{ex:finiteExceptionNotAnon}
-  Let $C_0 = \set{\allleadstog \suchthat ∀i ∈ I: \allleadstog(i, \ar) = φ}$ (anonymous), fix $i^* ∈ I$, and let $\allleadstog[0]$ agree with $φ$ everywhere except $\allleadstog[0](i^*, \ar) = φ'$. By \cref{th:finiteExceptAnon} (with $F = \set{\allleadstog[0]}$), $C = C_0 ∪ \set{\allleadstog[0]}$ suffers no visibility issues in $E$, yet is not anonymous (swapping $i^*$ with any other individual moves the exception away from both $C_0$ and $\allleadstog[0]$).
-  Notably, $\allleadstog[0] ∉ E$: its one distinguished individual $i^*$ has no clones.
-\end{example}
-
-Both obstructions to the converse, then, live outside $E$: a non-empty claim closed under finite modification generically leaves $E$ under a single-point flip, and $\allleadstog[0]$ above has no clones at all. This suggests that restricting to $C ⊆ E$ closes the gap.
-
-Testing anonymity against every permutation of $I$ is more than falsifiability actually demands.
-\begin{theorem}[Anonymity is tested by finite-support permutations]
-  \label{th:finSuppAnon}
-  If $C$ is falsifiable, $C$ is anonymous iff $C = C ∘ σ$ for every permutation $σ$ of $I$ with finite support (that is, $σ(i) = i$ for all but finitely many $i ∈ I$).
+  Given any $\allleadsto ∈ E$, there exists an anonymous claim that is informative and provable by $¬\POF_{C ∩ E} ∩ E$.
 \end{theorem}
 \begin{proof}
-  ($⇒$) Immediate, as anonymity requires invariance under every permutation, in particular the finite-support ones.
+  Take $C = \set{{\allleadstog} ∈ \allleadstos \suchthat ∀ i ∈ I, ∀ α ∈ \allhists: {\allleadstog}(i, α) ≠ 0}$.
 
-  ($⇐$) Suppose $C$ is invariant under every finite-support permutation, and, toward a contradiction, that $C ≠ C ∘ σ$ for some permutation $σ$; replacing $σ$ by $σ^{-1}$ if needed (as $\allleadstog[0] ∈ C ∖ (C∘σ)$ iff $\allleadstog[0] ∘ σ^{-1} ∈ (C∘σ^{-1}) ∖ C$), pick $\allleadstog[0] ∈ C$ with $\allleadstog[0] ∘ σ ∉ C$.
-  As $C$ is falsifiable, $\OF_C(\allleadstog[0] ∘ σ)$ holds: some $θ ∈ Θ ∩ \powerset{\allleadstog[0] ∘ σ}$ satisfies $θ ∉ C^⊆$. Let $K ⊆ I$ be the (finite) individuals occurring in $θ$.
+  \emph{Anonymity.} For any permutation $σ$, $({\allleadstog} ∘ σ)(i, α) = {\allleadstog}(σ(i), α)$; since the condition quantifies over all $i$, ${\allleadstog} ∘ σ ∈ C$ iff ${\allleadstog} ∈ C$.
 
-  As $σ$ is injective, $\card{σ(K)} = \card{K}$, so $K' = K ∪ σ(K)$ (finite) satisfies $\card{K' ∖ K} = \card{K' ∖ σ(K)}$; fix a bijection between these two (possibly empty) sets and combine it with $σ|_K : K → σ(K)$ to build a bijection $τ$ of $K'$ onto itself agreeing with $σ$ on $K$. Extending $τ$ by the identity outside $K'$ makes it a permutation of $I$ with finite support, agreeing with $σ$ on $K$.
+  \emph{Informativeness.} If ${\allleadstog} ∈ C$ had $\ar \ileadstost[i] 0$, some $α$ with $\ar ∈ \histend$ would satisfy ${\allleadstog}(i, α) = 0$, contradicting $C$. Hence $π_i({\allleadstog}) ≠ 0$ for all ${\allleadstog} ∈ C$ and $i ∈ I$, so the profile $(0)_{i ∈ I} ∉ π(C)$ and $C$ is informative.
 
-  Since $θ$'s domain lies in $K × \allhists$ and $τ = σ$ on $K$: $∀(i, \hist, p) ∈ θ$, $(\allleadstog[0] ∘ τ)(i, \hist) = \allleadstog[0](τ(i), \hist) = \allleadstog[0](σ(i), \hist) = (\allleadstog[0] ∘ σ)(i, \hist) = p$, so $θ ⊆ \allleadstog[0] ∘ τ$.
-  As $θ ∉ C^⊆$ and $\allleadstog[0] ∘ τ$ is a completion of $θ$, $\allleadstog[0] ∘ τ ∉ C$.
-  But $\allleadstog[0] ∈ C$ and $τ$ has finite support, so the hypothesis gives $\allleadstog[0] ∘ τ ∈ C ∘ τ = C$: a contradiction.
+  \emph{Provability.} $C ∩ E$ is anonymous: $C$ is anonymous (shown above); $E$ is anonymous since for any ${\allleadstog} ∈ E$ and permutation $σ$, individual $j$ in ${\allleadstog} ∘ σ$ behaves as $σ(j)$ in ${\allleadstog}$, so behavior classes are relabeled with each still infinite, giving ${\allleadstog} ∘ σ ∈ E$; and $(C ∩ E) ∘ σ = (C ∘ σ) ∩ (E ∘ σ) = C ∩ E$.
+  For ${\allleadstog} ∈ E ∖ C$, pick $(i_0, α_0)$ with ${\allleadstog}(i_0, α_0) = 0$.
+  The observation $θ_0 = \restr{{\allleadstog}}{\set{(i_0, α_0)}} ∈ Θ ∩ \powerset{{\allleadstog}}$ lies outside $(C ∩ E)^⊆$: any ${\allleadstog}' ∈ C ∩ E$ extending $θ_0$ would satisfy ${\allleadstog}'(i_0, α_0) = 0$, contradicting $C$.
+  Hence $\OF_{C ∩ E}({\allleadstog})$, and by \cref{th:anonThusAlmostPof,th:delegationNoVisibilityIssues}, $\POF_{C ∩ E}({\allleadstog})$.
+  Therefore $(¬\POF_{C ∩ E}) ∩ E ⊆ C$.
 \end{proof}
-So, for a falsifiable $C$, a witness of non-anonymity can always be localized: some finite $K ⊆ I$ and a permutation $τ$ fixing everything outside $K$ already separate $C$ from $C ∘ τ$, and, moreover, the very observation $θ$ certifying $\OF_C(\allleadstog[0] ∘ τ)$ can be taken to touch only individuals in $K$ — the same finite set $τ$ moves.
 
-\begin{conjecture}[Among subsets of $E$, the gap closes]
-  \label{cnj:anonNoVisibilityIssuesSubE}
-  Among $C ⊆ E$: $C$ is anonymous or $C$ is never falsifiable iff $C$ suffers no visibility issues in $E$.
-\end{conjecture}
-
-The "or" direction is immediate (\cref{th:anonNoVisibilityIssues}, and the vacuous case), so only the converse is at stake. Every attempt at a counterexample, restricted to $C ⊆ E$, has instead confirmed the conjecture: naming a single individual (as $C_1$, \cref{rk:cScrutinyC1}, does) intersected with $E$; naming an infinite, proper, permutation-non-invariant $K ⊊ I$ and constraining only $K$; requiring two named individuals to agree. Each time, the same mechanism produces a visibility issue: lock the finitely many named individuals along paths that hide the relevant values for good, and note that everything else — anything $C$ does not depend on, or already satisfies at the tested world — remains freely revisable, offering an untouched, fully compliant repair. The following theorem isolates and proves exactly this mechanism, in general.
-
-\begin{theorem}[A finite repair defeats any candidate obstruction]
-  \label{th:finiteRepairInE}
-  Let $C ⊆ E$ and $\allleadstog, \allleadstog' ∈ E$ be such that $Δ = \set{(i,\hist) ∈ I × \allhists \suchthat \allleadstog(i,\hist) ≠ \allleadstog'(i,\hist)}$ is finite. If $\allleadstog' ∈ C$ and $\OF_C(\allleadstog)$, then $C$ suffers a visibility issue at $\allleadstog$.
+\begin{theorem}
+  Given any $\allleadsto ∈ E$, there exists an anonymous claim that holds, is informative and provable by $¬\POF_{C ∩ E} ∩ E$.
 \end{theorem}
 \begin{proof}
-  Let $K = \set{i ∈ I \suchthat ∃\hist: (i,\hist) ∈ Δ}$, finite since $Δ$ is. For each $i ∈ K$, let $β_i ∈ \allhists$ satisfy $\card{β_i} > \max\set{\card{\hist} \suchthat (i,\hist) ∈ Δ}$, and let $τ = \set{(i,β_i,\allleadstog(i,β_i)) \suchthat i ∈ K} ⊆ \allleadstog$.
-  Fix $τ ⊑ τ' ∈ Θ ∩ \powerset{\allleadstog}$. For $i ∈ K$, every point of $τ'$ concerning $i$ has a path $\histp$ with $β_i ⊆ \histp$, so $\card{\histp} ≥ \card{β_i} > \card{\hist}$ for every $(i,\hist) ∈ Δ$, so $\histp ≠ \hist$: no point of $τ'$ lies in $Δ$. For $i ∉ K$, no point of $τ'$ concerning $i$ lies in $Δ$ either, as $Δ ⊆ K × \allhists$. So $τ'$ is disjoint from $Δ$, meaning every point of $τ'$ (drawn from $\allleadstog$) agrees with $\allleadstog'$ too: $τ' ⊆ \allleadstog'$. As $\allleadstog' ∈ C$, $τ' ∈ \powerset{\allleadstog'} ⊆ C^⊆$.
-  This holds for every $τ ⊑ τ'$, giving $¬\POF_C(\allleadstog)$, which together with $\OF_C(\allleadstog)$ is a visibility issue.
+  Take $C = E$.
+  $E$ is anonymous (as in the previous proof), $\allleadsto ∈ E = C$, and $(¬\POF_{C ∩ E}) ∩ E = (¬\POF_E) ∩ E ⊆ E = C$.
+  \emph{Informativeness.} For any $\allleadstog ∈ E$, each behavior class is infinite and individuals sharing a behavior share the same $π$-value, so every non-empty fiber of $π(\allleadstog)$ is infinite.
+  Hence, fixing any $i_0 ∈ I$ and $v ∈ P$, the profile assigning $v$ to $i_0$ and $∅$ to all other individuals has a $v$-fiber of size $1 ∈ ℕ$, so it lies outside $π(E)$, giving $π(E) ≠ (P ∪ \set{∅})^I$.
 \end{proof}
 
-Every counterexample attempt above instantiates \cref{th:finiteRepairInE} directly, with $Δ$ exactly the finite repair at the named individuals. This never applies to an anonymous, coordinatewise $C_0$ (all individuals constrained identically): if $\allleadstog ∈ E ∖ C_0$, its violator's \emph{entire} relation is shared by infinitely many others (\cref{def:repeatable}), so no finite $Δ$ can turn a violation into a repair — consistent with \cref{th:anonNoVisibilityIssues}.
-
-This is not yet \cref{cnj:anonNoVisibilityIssuesSubE}: it shows \emph{whenever} a finite repair pair $(\allleadstog,\allleadstog')$ exists, $C$ has a visibility issue — not that every non-anonymous, falsifiable $C ⊆ E$ admits one.
-
-\Cref{th:finSuppAnon} already does better than the generic ingredients falsifiability alone provides (some $\allleadstog ∈ E ∖ C$ with $\OF_C(\allleadstog)$, and, separately, some pair differing at exactly one point via \cref{th:onlyEmptyPF}'s flip-one-point-at-a-time argument — two ingredients with no reason to coincide): non-anonymity of a falsifiable $C$ yields a single finite $K ⊆ I$ and a permutation $τ$, fixing everything outside $K$, together with a finite observation $θ$ — touching only individuals in $K$ — witnessing $\OF_C(\allleadstog[0] ∘ τ)$ for some $\allleadstog[0] ∈ C$. The two ingredients now genuinely cohabit, both living on the same finite $K$.
-
-What still stands between this and \cref{th:finiteRepairInE}'s hypothesis is that $\allleadstog[0] ∘ τ$ and $\allleadstog[0]$, while agreeing outside $K$, generally disagree on all of $K × \allhists$ — infinitely many points, not finitely many — since $τ$ relabels each $i ∈ K$'s \emph{entire} profile. Truncating this disagreement to a finite window (matching $\allleadstog[0] ∘ τ$ up to some length and $\allleadstog[0]$ beyond it) does yield a finite-$Δ$ pair, but the resulting hybrid profile on $K$ generally belongs to no infinite class of the truncated world, which then escapes $E$ — the same obstruction \cref{ex:finiteExceptionNotAnon} illustrates. This local gap does not close in general: \cref{cnj:anonNoVisibilityIssuesSubE} is false.
-
-\begin{theorem}[A rigid claim with no escape]
-  \label{th:refuteAnonNoVisibilityIssuesSubE}
-  Split $I$ into two infinite subsets $J, I ∖ J$, fix $φ ≠ φ' ∈ P$, and let $\allleadstog[0](i, \hist) = φ$ for $i ∈ J$ and $\allleadstog[0](i, \hist) = φ'$ for $i ∈ I ∖ J$, for every $\hist$. Then $C = \set{\allleadstog[0]}$ satisfies $C ⊆ E$, is falsifiable, is not anonymous, and yet suffers no visibility issue in $E$ — refuting \cref{cnj:anonNoVisibilityIssuesSubE}.
+\begin{theorem}
+  \label{th:noAnonIBCHoldsProvable}
+  Assume $\card{\allargs} ∉ ℕ$.
+  There exists $\allleadsto ∈ E$ such that no anonymous claim that holds and is informative beyond counting is provable by $¬\POF_{C ∩ E} ∩ E$.
 \end{theorem}
 \begin{proof}
-  As $J, I ∖ J$ are infinite, $\allleadstog[0] ∈ E$, so $C ⊆ E$.
-  $C$ is falsifiable: for $\allleadstog ≠ \allleadstog[0]$, any single point where they differ already lies outside $C^⊆ = \powerset{\allleadstog[0]}$, giving $\OF_C(\allleadstog)$, and $∃\allleadstog ∉ C$ trivially.
-  $C$ is not anonymous: swapping some $i ∈ J$ with some $j ∈ I ∖ J$ sends $\allleadstog[0]$ to a world where $i$ now gives $φ'$, disagreeing with $\allleadstog[0]$.
+  Since $\card{\allargs} ∉ ℕ$, the family $\mathcal{S} = \set{(H, g) \suchthat H ∈ \finite(\incr(\allhists)),\ g: H → P}$ is countable.
+  Partition $I$ into infinite subsets $(I_{H,g})_{(H,g) ∈ \mathcal{S}}$ and define $\allleadsto$ by $\allleadsto(i, α) = g(α)$ for $i ∈ I_{H,g}$, $α ∈ H$, and $\allleadsto(i, α) = \prop$ otherwise.
+  Since all individuals in each $I_{H,g}$ share the same behavior, $\allleadsto ∈ E$.
 
-  For the last claim, $¬\OF_C(\allleadstog[0])$ (any $θ ⊆ \allleadstog[0]$ trivially lies in $C^⊆$), so fix $\allleadstog ∈ E, \allleadstog ≠ \allleadstog[0]$, giving $\OF_C(\allleadstog)$ as shown, and suppose toward a contradiction that some $τ ∈ Θ ∩ \powerset{\allleadstog}$ witnesses $¬\POF_C(\allleadstog)$: every $τ ⊑ τ' ∈ Θ ∩ \powerset{\allleadstog}$ satisfies $τ' ⊆ \allleadstog[0]$.
+  Suppose for contradiction that $C$ is anonymous, informative beyond counting, $\allleadsto ∈ C$, and $(¬\POF_{C ∩ E}) ∩ E ⊆ C$.
 
-  Taking $τ' = τ$ gives $τ ⊆ \allleadstog[0]$.
-  Let $K = \set{i ∈ I \suchthat ∃\hist ∈ \allhists: \allleadstog(i, \hist) ≠ \allleadstog[0](i, \hist)}$.
-  If some $i ∈ K$ is not queried by $τ$, adjoining a single point where $\allleadstog, \allleadstog[0]$ disagree at $i$ legally extends $τ$ (within $Θ ∩ \powerset{\allleadstog}$) outside $\powerset{\allleadstog[0]}$ — contradiction; so $K$, touched only by the finite $τ$, is finite.
-  For $i ∈ K$, let $\hist_i$ be the longest path queried for $i$ in $τ$; if $\allleadstog(i, \hist) ≠ \allleadstog[0](i, \hist)$ for some $\hist_i ⊊ \hist$, adjoining $(i, \hist, \allleadstog(i, \hist))$ again legally extends $τ$ outside $\powerset{\allleadstog[0]}$ — contradiction. So $\allleadstog(i, \hist) = \allleadstog[0](i, \hist)$ for every $\hist_i ⊆ \hist$, and in particular for $\hist = \hist_i$ itself.
+  \emph{$E ⊆ C$.}
+  Fix any $\allleadstog' ∈ E$ and $θ ∈ Θ ∩ \powerset{\allleadstog'}$, with queried individuals $i_1, …, i_m$.
+  For each $l$, let $H_l = θ^{-1}(P)(i_l) ∈ \incr(\allhists)$ and $g_l: H_l → P$ with $g_l(α) = θ(i_l, α)$.
+  Since each $I_{H_l, g_l}$ is infinite, pick mutually distinct $j_1 ∈ I_{H_1, g_1}, …, j_m ∈ I_{H_m, g_m}$, and let $σ$ be a permutation of $I$ with $σ(i_l) = j_l$ for each $l$.
+  Then $(\allleadsto ∘ σ)(i_l, α) = \allleadsto(j_l, α) = g_l(α) = θ(i_l, α)$ for all $α ∈ H_l$, so $\allleadsto ∘ σ ∈ C ∩ E$ (by anonymity of $C$ and $E$) extends $θ$; hence $θ ∈ (C ∩ E)^⊆$.
+  As $θ$ was arbitrary, $¬\OF_{C ∩ E}(\allleadstog')$, hence $¬\POF_{C ∩ E}(\allleadstog')$, so $\allleadstog' ∈ (¬\POF_{C ∩ E}) ∩ E ⊆ C$.
+  As $\allleadstog'$ was arbitrary, $E ⊆ C$.
 
-  As $\allleadstog = \allleadstog[0]$ outside $K$ (by definition of $K$) and $K$ is finite, $J ∖ K$ and $(I ∖ J) ∖ K$ remain infinite, still constantly $φ$, respectively $φ'$, under $\allleadstog$ — the only infinite classes $\allleadstog$ can offer the finitely many individuals of $K$. So, for $\allleadstog ∈ E$, each $i ∈ K$ must have $\allleadstog(i, \cdot)$ constantly $φ$ or constantly $φ'$; as $\allleadstog(i, \cdot) = \allleadstog[0](i, \cdot)$ would put $i ∉ K$, it must be the \emph{other} constant, disagreeing with $\allleadstog[0](i, \cdot)$ at \emph{every} $\hist$ — including $\hist_i$. This contradicts the agreement at $\hist_i$ just shown.
+  \emph{Contradiction.}
+  Since $C$ is informative beyond counting, $∃ i_0 ∈ I: π_{i_0}(C) ≠ P ∪ \set{∅}$.
+  But $C \supseteq E$, so $π_{i_0}(C) \supseteq π_{i_0}(E)$.
+  For each $v ∈ P$, the world $\allleadstog_v$ responding $v$ everywhere lies in $E$ (single infinite behavior class) with $π_{i_0}(\allleadstog_v) = v$; and the world $\allleadstog_∅$ cycling through $P$ as $α ↦ p(|α| \bmod 3)$ (for some surjection $p: \set{0,1,2} → P$) likewise lies in $E$ with $π_{i_0}(\allleadstog_∅) = ∅$ (histories with any argument in $\histend$ cover all residues, so no argument is decisive).
+  Hence $π_{i_0}(E) = P ∪ \set{∅}$, giving $π_{i_0}(C) = P ∪ \set{∅}$. Contradiction.
 \end{proof}
 
-\Cref{th:refuteAnonNoVisibilityIssuesSubE} pinpoints exactly where \cref{th:finSuppAnon}'s localization stalls: repairing $K$'s profile forces each $i ∈ K$ onto some \emph{other}, already-existing infinite class of the untouched part of the world — and here the only two classes on offer disagree \emph{everywhere}, so landing on the other one reopens every point that would need to stay frozen, including the very path $τ$ just locked in. $C$ is also maximally rigid — a single world, with no room to satisfy $C$ other than by matching $\allleadstog[0]$ exactly — unlike the "named individual" attempts (\cref{rk:cScrutinyC1} and its relatives) that all left $C$ some freedom elsewhere.
-
-This suggests a repaired question rather than an abandoned one: does the gap close once $C$ is required to have some slack — for instance, whenever $C$ is not a singleton, or whenever the individuals a finite witness leaves untouched offer more than two mutually disagreeing classes to fall back on? The characterization sought in \cref{cnj:anonNoVisibilityIssuesSubE} is still worth having, in some corrected form; only its stated form is now settled, negatively.
-
-Even a corrected version of \cref{cnj:anonNoVisibilityIssuesSubE} would only be a first step: it would characterize no-visibility-issues-in-$E$ among subsets of $E$, not among arbitrary claims. The more elegant target is a single syntactic condition, applicable to every $C$, of which anonymity (\cref{th:anonNoVisibilityIssues}), the finite-exception route (\cref{th:finiteExceptAnon}), and the never-falsifiable route (\cref{ex:cufmNotAnon}) would all be instances. \Cref{th:delegationNoVisibilityIssues} already suggests its shape — some guarantee of delegation to individuals untouched by any candidate hiding prefix — but turning this into an iff for arbitrary $C$ remains entirely open.
-
-\Cref{th:finiteExceptAnon} is false as stated: a finite exception can create a visibility issue, if it happens to single out one individual within an otherwise-repeated deviation.
-
-\begin{example}[\Cref{th:finiteExceptAnon} is false]
-  \label{ex:finiteExceptAnonFalse}
-  Let $C_0 = \set{\allleadstog' \suchthat ∀i ∈ I: \allleadstog'(i, \ar) = φ}$ (anonymous). Fix $i_0 ∈ I$ and split $I$ into an infinite $S$, with $i_0 ∈ S$, and an infinite $I ∖ S$; let $\allleadstog$ agree with $φ$ everywhere except $\allleadstog(i, \ar) = φ'$ for $i ∈ S$ (so $\allleadstog ∈ E$: $i_0$'s exact relation is shared by all of $S$).
-  Let $\allleadstog[0]$ agree with $\allleadstog$ everywhere except $\allleadstog[0](i_0, \ar) = φ$ — the single point where $\allleadstog[0]$ reverts $i_0$, and only $i_0$, to the $C_0$-compliant value. Let $F = \set{\allleadstog[0]}$, $C = C_0 ∪ F$.
-
-  $\OF_C(\allleadstog)$: $θ^{(0)} = \set{(i_0, \ar, φ')}$ extends into neither $C_0$ (all of $C_0$ has $φ$ at $(i_0,\ar)$) nor $\allleadstog[0]$ ($φ$ there too), so $θ^{(0)} ∉ C^⊆$.
-
-  $¬\POF_C(\allleadstog)$: fix $β ∈ \allargs ∖ \set{\ar}$ and let $τ = \set{(i_0, β, φ)} ⊆ \allleadstog$ (as $\allleadstog(i_0,β) = φ$, $β ≠ \ar$). By $⊑$, every $τ ⊑ τ' ∈ Θ ∩ \powerset{\allleadstog}$ has no point at $(i_0, \ar)$, as $\ar$ is incomparable to $β$. As $\allleadstog[0]$ agrees with $\allleadstog$ everywhere except $(i_0,\ar)$, and $τ'$ never touches that point, $τ' ⊆ \allleadstog[0]$, so $τ' ∈ C^⊆$.
-
-  So $\OF_C(\allleadstog) ∧ ¬\POF_C(\allleadstog)$: $C$ suffers a visibility issue at $\allleadstog ∈ E$.
-\end{example}
-
-The mechanism: a delegate relabeled to any fresh clone $c ∈ S ∖ \set{i_0}$ escapes $C_0$ but not $F$, since $\allleadstog[0]$ agrees with $\allleadstog$ throughout $S ∖ \set{i_0}$ too — only the single, non-relabelable point $(i_0,\ar)$ separates $\allleadstog$ from $\allleadstog[0]$, and a prefix can lock $i_0$ onto a branch that never reaches it. The fix is to require each excluded world to differ from every tested world at infinitely many individuals, not just one:
-
-A world $\allleadstog$ differs for infinitely many individuals with $E$ iff 
-it differs for infinitely many individuals with each world in $E$; formally, iff 
-$∀\allleadstog ≠ \allleadstog' ∈ E: \card\set{i ∈ I \suchthat \ileadstogo ≠ \ileadstogo'} ∉ ℕ$.
-
-\begin{example}[A world differing for infinitely many individuals with $E$]
-  \label{ex:coincideFinitely}
-  Let $w^*(i, \hist) = φ'$ for all $i ∈ I$, $\hist ∈ \allhists$ (constant world). Then $w^* ∈ E$ (all individuals share the same behavior). For each $\allleadstog ∈ E ∖ \set{w^*}$: $\allleadstog ≠ w^*$ means some individual $j$ has $\allleadstog(j, \cdot) ≠$ (always $φ'$); since $\allleadstog ∈ E$, this behavior $\allleadstog(j, \cdot)$ is shared by infinitely many individuals $i$, each satisfying $\allleadstog(i, \cdot) ≠$ (always $φ'$) $= w^*(i, \cdot)$. Hence $\card{\set{i ∈ I \suchthat \allleadstog(i, \cdot) ≠ w^*(i, \cdot)}} ∉ ℕ$ for every $\allleadstog ∈ E ∖ \set{w^*}$: $w^*$ differs for infinitely many individuals with $E$.
-\end{example}
-
-\begin{example}[A world not differing for infinitely many individuals with $E$]
-  \label{ex:notCoincideFinitely}
-  Fix $\ar ∈ \allargs$, an infinite proper subset $S ⊊ I$ with $I ∖ S$ infinite, and $i_0 ∈ S$. Let $v ∈ E$ be the world where $v(i, (\ar)) = φ'$ for $i ∈ S$ and $v(i, \hist) = φ$ otherwise. Let $w_0$ agree with $v$ everywhere except $w_0(i_0, (\ar)) = φ$. Then $w_0 ∈ E$: individuals in $S ∖ \set{i_0}$ all share behavior "$φ'$ at $(\ar)$, $φ$ elsewhere" (infinitely many), and individuals in $\set{i_0} ∪ (I ∖ S)$ all share behavior "always $φ$" (infinitely many). The worlds $w_0$ and $v$ differ only at $i_0$, so $\card{\set{i ∈ I \suchthat w_0(i, \cdot) ≠ v(i, \cdot)}} = 1 ∈ ℕ$: $w_0$ does not differ for infinitely many individuals with $v ∈ E$.
-\end{example}
+% world in E.
+% odd i have some behavior (all φ)
+% even i have another one (all φ').
+% Informative claim?
+% World w': odd i have all α to φ except for α' (incompatible) to φ'
+% If α leads to φ, then all lead to φ.
+% World α φ but α' incompatible not φ: not falsifiable
 
 \subsection{Persistent falsifiability}
 Consider a claim that in some world satisfies F but not POF.
@@ -1260,13 +1136,13 @@ Using the trivial prior $D = \allleadstos$, we obtain this corollary.
 
 \begin{lemma}
   \label{th:completable}
-  If $\card{\allargs} ∉ ℕ$, given any $θ ∈ Θ$ and $f: I → (P ∪ \set{∅})$, $∃ {\allleadstog} ∈ \allleadstos \suchthat θ ⊆ {\allleadstog} ∧ π({\allleadstog}) = f$.
+  If $\card{\allargs} ∉ ℕ$, given any general observation $O$ and $f: I → (P ∪ \set{∅})$, $∃ {\allleadstog} ∈ \allleadstos \suchthat O ⊆ {\allleadstog} ∧ π({\allleadstog}) = f$.
 \end{lemma}
 \begin{proof}
-  For each $i \suchthat f(i) ∈ P$, define $a_i ∉ (θ^{-1}(P))(i)(ℕ)$ as an argument not used for $i$;
-  for each $i \suchthat f(i) = ∅$, for each $p ∈ P$, define $k_i^p ∉ (θ^{-1}(P))(i)$ as a path not used for $i$, with all $k_i^p$ different from each other ($∀ p, p' ∈ P, k_i^p ≠ k_i^{p'}$).
+  For each $i \suchthat f(i) ∈ P$, define $a_i ∉ (O^{-1}(P))(i)(ℕ)$ as an argument not used for $i$;
+  for each $i \suchthat f(i) = ∅$, for each $p ∈ P$, define $k_i^p ∉ (O^{-1}(P))(i)$ as a path not used for $i$, with all $k_i^p$ different from each other ($∀ p, p' ∈ P, k_i^p ≠ k_i^{p'}$).
 
-  Define $f' = θ ∪_{i \suchthat f(i) ∈ P, α \suchthat a_i ∈ \histend} \set{(i, \hist, f(i))} ∪_{i \suchthat f(i) = ∅, p ∈ P, \ar ∈ \allargs} \set{(i, (k_i^p, a), p)}$.
+  Define $f' = O ∪_{i \suchthat f(i) ∈ P, α \suchthat a_i ∈ \histend} \set{(i, \hist, f(i))} ∪_{i \suchthat f(i) = ∅, p ∈ P, \ar ∈ \allargs} \set{(i, (k_i^p, a), p)}$.
   Define ${\allleadstog}$ as any completion of $f'$ to a total function in $\allleadstos$.
 \end{proof}
 \begin{theorem}
@@ -1288,6 +1164,30 @@ Using the trivial prior $D = \allleadstos$, we obtain this corollary.
   \label{th:infoNotVerif}
   If $\card{\allargs} ∉ ℕ$, any informative claim is not possibly verifiable.
 \end{corollary}
+
+\begin{theorem}
+  If $\card{\allargs} ∉ ℕ$, any claim verifiable in $\allleadstog$ is informative in $\allleadstog$ iff it is informative.
+\end{theorem}
+\begin{proof}
+  Let $θ_v ∈ Θ ∩ \powerset{\allleadstog}$ witness that $C$ is verifiable in $\allleadstog$, so that every world extending $θ_v$ lies in $C$; in particular $\allleadstog ∈ C$, hence informativeness in $\allleadstog$ is defined.
+
+  If $C$ is informative, then $∅ ∈ Θ ∩ \powerset{\allleadstog}$ witnesses that it is informative in $\allleadstog$, since $\set{∅ ⊆ \allleadstog} ∩ C = C$ and thus $π(\set{∅ ⊆ \allleadstog} ∩ C) = π(C) ≠ (P ∪ \set{∅})^I$.
+
+  Conversely, assume $C$ is not informative, that is, $π(C) = (P ∪ \set{∅})^I$; we show it is not informative in $\allleadstog$.
+  Let $θ ∈ Θ ∩ \powerset{\allleadstog}$.
+  As $θ ⊆ \allleadstog$ and $θ_v ⊆ \allleadstog$, the union $θ ∪ θ_v$ is a right unique finite subset of $(I × \allhists) × P$, hence a general observation.
+  Given any $f ∈ (P ∪ \set{∅})^I$, \cref{th:completable} yields $\allleadstog' ∈ \allleadstos$ with $θ ∪ θ_v ⊆ \allleadstog'$ and $π(\allleadstog') = f$.
+  Then $θ_v ⊆ \allleadstog'$ gives $\allleadstog' ∈ C$, and $θ ⊆ \allleadstog'$ gives $\allleadstog' ∈ \set{θ ⊆ \allleadstog}$, so $f ∈ π(\set{θ ⊆ \allleadstog} ∩ C)$.
+  As $f$ is arbitrary, $π(\set{θ ⊆ \allleadstog} ∩ C) = (P ∪ \set{∅})^I$; as $θ$ is arbitrary, $C$ is not informative in $\allleadstog$.
+\end{proof}
+\begin{remark}
+  The hypothesis $\card{\allargs} ∉ ℕ$ cannot be dropped: without it, a claim may be verifiable and informative in $\allleadstog$ yet not informative (the first implication, however, uses no such hypothesis).
+  Let $\allargs = \set{a}$ and $I = \set{i_0}$, so that every nonempty path ends in $\set{a}$ and $π(\allleadstog)(i_0) = \set{p}$ if $\allleadstog$ responds $p$ to every nonempty path and $∅$ otherwise.
+  Write $\allleadstog_p$ for the world responding $p$ everywhere, let $θ_v = \set{(i_0, (a), φ')}$, and let $C = \set{θ_v ⊆ \allleadstog} ∪ \set{\allleadstog_φ, \allleadstog_0}$.
+  Then $C$ is verifiable in $\allleadstog_{φ'}$, witnessed by $θ_v$.
+  It is also informative in $\allleadstog_{φ'}$: as $\allleadstog_φ, \allleadstog_0 ∉ \set{θ_v ⊆ \allleadstog}$, we have $\set{θ_v ⊆ \allleadstog} ∩ C = \set{θ_v ⊆ \allleadstog}$, and forcing $(a) \ileadstogo[i_0] φ'$ leaves only $π(\allleadstog)(i_0) ∈ \set{\set{φ'}, ∅}$ (reaching $\set{φ}$ or $\set{0}$ would require every nonempty path to answer $φ$, resp.\ $0$), so $π(\set{θ_v ⊆ \allleadstog} ∩ C) = \set{\set{φ'}, ∅} ≠ (P ∪ \set{∅})^I$.
+  Yet $C$ is not informative, since $\allleadstog_φ$ and $\allleadstog_0$ supply the missing profiles: $π(C) = \set{\set{φ'}, ∅, \set{φ}, \set{0}} = (P ∪ \set{∅})^I$.
+\end{remark}
 
 This (to be proven) captures the claim “there is no decisive argument for $i$”.
 \begin{theorem}
@@ -1622,7 +1522,7 @@ The following result indicates that, given a finite cover of $D ∖C$, $\OF_{D �
 
 Say that a world admits a proof of $¬C$ avoiding $J$ iff
 $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ^{-1}(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆$.
-A sufficient condition for a world being POF is that any finite subset of individuals still allow for a proof of $¬C$ avoiding that subset.
+A sufficient condition for a world being POF is that for any finite subset of individuals, some proof of $¬C$ avoids that subset.
 \begin{theorem}
   \label{th:delegationNoVisibilityIssues}
   Given any claim $C$ and world $\allleadstog$: 
@@ -1646,8 +1546,19 @@ when some given $i$ is non avoidable for a proof of $¬C$ but all $α$ do prove 
   Yet poofsoi fails for $J = \set{i^*}$: any $θ ∈ Θ ∩ \powerset{\allleadstog}$ querying only in $I ∖ \set{i^*}$ lies in $C^⊆$, since setting $v(i^*, \hist) = φ'$ for all $\hist$ and $v(i, \hist) = φ$ for $i ≠ i^*$ yields $v ∈ C$ with $θ ⊆ v$.
 \end{example}
 
-The necessary and sufficient condition for $(¬\POF) ∩ E$ to prove $C$ is that every world in $E$ outside $C$ is persistently falsifiable: $∀\allleadstog ∈ E ∖ C: \POF_C(\allleadstog)$.
-\Cref{th:delegationNoVisibilityIssues} gives a sufficient but not necessary condition at each such $\allleadstog$; \cref{th:provGapVisibility} reformulates the global condition as $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no visibility issues in $E$.
+A world $\allleadstog$ differs for infinitely many individuals with $E$ iff 
+it differs for infinitely many individuals with each world in $E$; formally, iff 
+$∀\allleadstog ≠ \allleadstog' ∈ E: \card\set{i ∈ I \suchthat \ileadstogo ≠ \ileadstogo'} ∉ ℕ$.
+
+\begin{example}[A world differing for infinitely many individuals with $E$]
+  \label{ex:coincideFinitely}
+  Let $w^*(i, \hist) = φ'$ for all $i ∈ I$, $\hist ∈ \allhists$ (constant world). Then $w^* ∈ E$ (all individuals share the same behavior). For each $\allleadstog ∈ E ∖ \set{w^*}$: $\allleadstog ≠ w^*$ means some individual $j$ has $\allleadstog(j, \cdot) ≠$ (always $φ'$); since $\allleadstog ∈ E$, this behavior $\allleadstog(j, \cdot)$ is shared by infinitely many individuals $i$, each satisfying $\allleadstog(i, \cdot) ≠$ (always $φ'$) $= w^*(i, \cdot)$. Hence $\card{\set{i ∈ I \suchthat \allleadstog(i, \cdot) ≠ w^*(i, \cdot)}} ∉ ℕ$ for every $\allleadstog ∈ E ∖ \set{w^*}$: $w^*$ differs for infinitely many individuals with $E$.
+\end{example}
+
+\begin{example}[A world not differing for infinitely many individuals with $E$]
+  \label{ex:notCoincideFinitely}
+  Fix $\ar ∈ \allargs$, an infinite proper subset $S ⊊ I$ with $I ∖ S$ infinite, and $i_0 ∈ S$. Let $v ∈ E$ be the world where $v(i, (\ar)) = φ'$ for $i ∈ S$ and $v(i, \hist) = φ$ otherwise. Let $w_0$ agree with $v$ everywhere except $w_0(i_0, (\ar)) = φ$. Then $w_0 ∈ E$: individuals in $S ∖ \set{i_0}$ all share behavior "$φ'$ at $(\ar)$, $φ$ elsewhere" (infinitely many), and individuals in $\set{i_0} ∪ (I ∖ S)$ all share behavior "always $φ$" (infinitely many). The worlds $w_0$ and $v$ differ only at $i_0$, so $\card{\set{i ∈ I \suchthat w_0(i, \cdot) ≠ v(i, \cdot)}} = 1 ∈ ℕ$: $w_0$ does not differ for infinitely many individuals with $v ∈ E$.
+\end{example}
 
 \begin{lemma}
   \label{th:anonThusAlmostPof}
@@ -1723,6 +1634,12 @@ This follows from \cref{th:delegationNoVisibilityIssues,th:finiteExceptSpreadAno
   \card{\set{i ∈ I \suchthat \ileadstogo ≠ w_i}} ∉ ℕ$,
   then $C = C_0 ∪ F$ suffers no visibility issues in $E$.
 \end{theorem}
+
+\begin{example}[Instance: a single named exception, escaping $E$]
+  \label{ex:finiteExceptionNotAnon}
+  Let $C_0 = \set{\allleadstog \suchthat ∀i ∈ I: \allleadstog(i, \ar) = φ}$ (anonymous), fix $i^* ∈ I$, and let $\allleadstog[0]$ agree with $φ$ everywhere except $\allleadstog[0](i^*, \ar) = φ'$. By \cref{th:finiteExceptSpreadAnon} (with $F = \set{\allleadstog[0]}$), $C = C_0 ∪ \set{\allleadstog[0]}$ suffers no visibility issues in $E$, yet is not anonymous (swapping $i^*$ with any other individual moves the exception away from both $C_0$ and $\allleadstog[0]$).
+  Notably, $\allleadstog[0] ∉ E$: its one distinguished individual $i^*$ has no clones.
+\end{example}
 
 \subsection{Interplay}
 We are here interested in the interplay between properties of holding, anonymity, informativeness and permanent falsifiability.
