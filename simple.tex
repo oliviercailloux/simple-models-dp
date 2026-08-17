@@ -249,6 +249,8 @@ Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informati
 A claim $C$ is \emph{informative} iff $π(C) = \set{π(\allleadstog) \suchthat {\allleadstog} ∈ C} ≠ (P ∪ \set{∅})^I$.
 % A claim $C$ is \emph{informative} iff $∃ i \suchthat π(C)(i) ≠ P ∪ \set{∅}$, where $π(C) = \set{π(\allleadstog) \suchthat {\allleadstog} ∈ C}$.
 A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π_i(C) = \set{π_i(\allleadstog) \suchthat {\allleadstog} ∈ C} ≠ P ∪ \set{∅}$.
+A claim $C$ is \emph{a posteriori informative beyond counting} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \set{π_i(\allleadstog) \suchthat θ ⊆ {\allleadstog} ∈ C} ≠ P ∪ \set{∅}$.
+A claim $C$ is \emph{a posteriori sharp} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ {\allleadstog} ∈ C} = 1$.
 
 \begin{remark}
   Informativeness permits mere counting: the claim that exactly two persons deliberately believe $φ$ is informative. Also, the claim $C = \set{[∃ i \suchthat (a) \nileadstog φ] ∧ [∀i: (a) \nileadstog φ ⇒ φ' ∈ π_i(\allleadstog)]}$ is informative.
@@ -616,13 +618,64 @@ $(¬\POF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no vi
   Hence $π_{i_0}(E) = P ∪ \set{∅}$, giving $π_{i_0}(C) = P ∪ \set{∅}$. Contradiction.
 \end{proof}
 
-% world in E.
-% odd i have some behavior (all φ)
-% even i have another one (all φ').
-% Informative claim?
-% World w': odd i have all α to φ except for α' (incompatible) to φ'
-% If α leads to φ, then all lead to φ.
-% World α φ but α' incompatible not φ: not falsifiable
+\begin{example}[A concrete world defeating informativeness beyond counting]
+  \label{ex:fourClassesNoIBC}
+  \Cref{th:noAnonIBCHoldsProvable} invokes provability only to force $E ⊆ C$; a single, concretely described world already rules out any anonymous, holding, informative-beyond-counting claim, with no provability assumption.
+  Partition $I$ into four infinite classes according to $i \bmod 4$, and let $\allleadsto$ respond, for an individual in class $r$:
+  constantly $φ$ if $r = 0$, constantly $φ'$ if $r = 1$, constantly $0$ if $r = 2$, and, if $r = 3$, $φ$ on paths of even length and $φ'$ on paths of odd length.
+  Each behavior is shared by infinitely many individuals, so $\allleadsto ∈ E$.
+  Class $r = 3$ is undecided: given any $\ar ∈ \allargs$, the paths $(\ar)$ and $(\ar, \ar)$ both have $\ar ∈ \histend$ yet answer $φ'$ (odd length) and $φ$ (even length) respectively, so no argument is decisive and its $π$-value is $∅$.
+  The four classes thus realize the $π$-values $φ$, $φ'$, $0$, and $∅$, so $π(\allleadsto)$ ranges over all of $P ∪ \set{∅}$.
+  Consequently, any anonymous $C$ with $\allleadsto ∈ C$ satisfies $π_{i_0}(C) = P ∪ \set{∅}$ for every $i_0$: for each realized value $v$, permuting an individual of $π$-value $v$ onto $i_0$ keeps the world in $C$ by anonymity and yields $π_{i_0} = v$.
+  Hence no anonymous claim that holds is informative beyond counting.
+\end{example}
+
+\begin{example}[Provability cannot conclude a decisive argument for a named value]
+  \label{ex:noProvableDecisivePhi}
+  Split $I$ into two infinite classes by parity, odd individuals answering $φ$ constantly and even ones $φ'$ constantly; then $\allleadsto ∈ E$ and every odd individual is decisive for $φ$.
+  Still, no anonymous claim $C$ that holds and satisfies $C ⊆ \set{\allleadstog \suchthat ∃ i: π_i(\allleadstog) = φ}$ is provable by $¬\POF_{C ∩ E} ∩ E$.
+  Let $v ∈ E$ answer $φ'$ everywhere; no individual is decisive for $φ$ in $v$, so $v ∉ C$.
+  But every observation of $v$ consists of $φ'$-answers and embeds into $\allleadsto ∈ C$ by permuting the queried individuals onto even ones, so $¬\OF_{C ∩ E}(v)$, hence $¬\POF_{C ∩ E}(v)$ and $v ∈ (¬\POF_{C ∩ E}) ∩ E ∖ C$: $C$ is not provable.
+  Observing an odd individual answer $φ$ refutes ``the world is $v$'' ($\OF$ of $\allleadsto$ against $\set{v}$), but never makes $v$ falsify $C$ through its own $φ'$-answers.
+  The same asymmetry defeats the local claim $C = \set{\allleadstog \suchthat ∀ i, p: (a) \ileadstogo[i] p ⇒ a \ileadstost[i] p}$, which also holds here and is anonymous: a world with an individual answering $p$ on every path except $(b, a) \ileadstogo[i] q$ (some $b ≠ a$, $q ≠ p$) has $(a) \ileadstogo[i] p$ with $a$ non-decisive, yet as $(b, a)$ is incomparable to $(a)$ no observation exhibits the violation, so it escapes $\OF_{C ∩ E}$ and $C$ is not provable.
+  By contrast, the claim that every individual answers constantly holds and is provable, concluding that everyone is decided—though not for a named value (to be checked!).
+\end{example}
+
+Given $i ∈ I$, $c, b ∈ \allargs$ distinct and $p ≠ p' ∈ P$, say a world $\allleadstog$ \emph{$(i,c,b,p,p')$-splits} iff $∀\hist ∈ \allhists$ with $\hist_1 = c$: $\hist \ileadstogo p$, and $∀\hist ∈ \allhists$ with $\hist_1 ≠ c$: $\hist \ileadstogo p'$ (recalling that a query restricted to one individual is an element of $\incr(\allhists)$, hence a $⊆$-chain sharing a single first argument, so any two histories with $\hist_1 ≠ \hist'_1$ are incomparable and cannot both be queried for the same individual).
+\begin{lemma}[Splitting kills decisiveness]
+  \label{th:splitKillsDec}
+  If $\allleadstog$ $(i,c,b,p,p')$-splits, then $π_i(\allleadstog) = ∅$.
+\end{lemma}
+\begin{proof}
+  For any $\ar ∈ \allargs$: if $\ar = c$, then $(b, c) \nileadstog p$ while $c ∈ \histend((b,c))$, so $c$ is not decisive for $p$ (nor, being the sole value $c$ ever takes at length 1, for anything else); if $\ar ≠ c$, then $(c, \ar) \ileadstogo p ≠ p'$ while $\ar ∈ \histend((c,\ar))$, so $\ar$ is not decisive for $p'$ (nor for anything else, by the same argument applied at $(c,\ar)$ versus $\ar$'s own value at length 1, which is $p'$). Hence no argument is decisive for $i$.
+\end{proof}
+
+\begin{theorem}[Anon, Prov and APS are pairwise, but not jointly, satisfiable]
+  \label{th:anonProvApsTriad}
+  Fix $φ ≠ φ' ∈ P$, partition $I$ into two infinite classes $I_1, I_2$, and let $\allleadsto$ be the world of \cref{ex:noProvableDecisivePhi}: $∀i ∈ I_1, \hist ∈ \allhists: \hist \ileadstogo φ$, and $∀i ∈ I_2, \hist ∈ \allhists: \hist \ileadstogo φ'$. For $C ⊆ \allleadstos$, say $C$ is:
+  \begin{description}
+    \item[Anon] iff $C$ is anonymous (\cref{def:anonymous});
+    \item[Prov] iff $C$ is provable by $¬\OF ∩ E$, that is, $(¬\OF_C) ∩ E ⊆ C$;
+    \item[APS] iff $C$ is \emph{a posteriori sharp}, that is, $∃θ ∈ Θ, i ∈ I \suchthat \card{π_i(\set{θ ⊆ \allleadstog} ∩ C)} = 1$.
+  \end{description}
+  Among claims $C$ with $\allleadsto ∈ C$: any two of Anon, Prov, APS are jointly satisfiable, but no $C$ satisfies all three.
+\end{theorem}
+\begin{proof}
+  Write $C_2 = \set{w ∈ \allleadstos \suchthat ∀i ∈ I: [∀\hist ∈ \allhists: w(i,\hist) = φ] ∨ [∀\hist ∈ \allhists: w(i,\hist) = φ']}$ for “every individual is constant $φ$ or constant $φ'$”, and fix $b ≠ c ∈ \allargs$ (using $\card{\allargs} ≥ 2$).
+
+  \emph{Anon $∧$ Prov, not APS.} Take $C_1 = \set{w ∈ \allleadstos \suchthat ∀i ∈ I, \hist ∈ \allhists: w(i,\hist) ∈ \set{φ,φ'}}$. It holds ($\allleadsto ∈ C_1$) and is anonymous ($∀i$-quantified). It is provable by $¬\OF$ alone (hence by $¬\OF ∩ E$): any $w ∉ C_1$ has some $(i,\hist)$ with $w(i,\hist) ∉ \set{φ,φ'}$, a single point directly refuting $C_1$, so $\OF_{C_1}(w)$ for every $w ∉ C_1$. It is not APS: given any $θ, i$, if $θ$ is not $C_1$-compatible then $\set{θ ⊆ w} ∩ C_1 = ∅$ already has cardinality $0 ≠ 1$; otherwise let $c_i$ be $θ$'s shared first argument for $i$ (or any fixed argument, if $i$ is untouched by $θ$) and $p_{c_i} ∈ \set{φ,φ'}$ the ($θ$-forced or free) value along that branch; extending $θ$ by making $i$ constant $p_{c_i}$ everywhere gives $π_i = p_{c_i}$, while extending $θ$ so that $\allleadstog$ $(i,c_i,b,p_{c_i},p'_{c_i})$-splits (writing $p'_{c_i}$ for the other element of $\set{φ,φ'}$) gives $π_i = ∅$ by \cref{th:splitKillsDec}; both completions lie in $C_1$ (all values used are in $\set{φ,φ'}$) and extend $θ$, so $\card{π_i(\set{θ⊆w}∩C_1)} ≥ 2$.
+
+  \emph{Anon $∧$ APS, not Prov.} Take $C_2$. It holds and is anonymous. Fix any $i_0 ∈ I_1$ and $θ = \set{(i_0,(c),φ)}$: any $w ∈ \set{θ⊆w} ∩ C_2$ has $i_0$ constant $φ$ or constant $φ'$, and since $w(i_0,(c)) = φ ≠ φ'$, it must be constant $φ$; so $π_{i_0}(\set{θ⊆w}∩C_2) = \set{φ}$, giving APS. It is not Prov: let $w^* $ be such that individuals in $I_1$ $(i,c,b,φ,φ')$-split and individuals in $I_2$ $(i,c,b,φ',φ)$-split. Then $w^* ∈ E$ (both classes remain infinite and internally uniform) and $w^* ∉ C_2$ (no individual is constant, by \cref{th:splitKillsDec} $π_i(w^*) = ∅ ≠ φ,φ'$ throughout — though membership in $C_2$ only needs constancy, which indeed fails). Yet $¬\OF_{C_2}(w^*)$: any finite observation of $w^*$ queries each touched individual along a single chain, hence a single first argument, hence sees a constant value ($φ$ or $φ'$ depending on whether that chain starts at $c$ or not), so it extends into some world of $C_2$ (declare every queried individual constant at its observed value, and complete the rest of $I_1, I_2$ arbitrarily to stay constant). So $w^* ∈ E ∖ C_2$ with $¬\OF_{C_2}(w^*)$: $C_2$ is not provable by $¬\OF ∩ E$.
+
+  \emph{Prov $∧$ APS, not Anon.} Fix $i_0 ∈ I_1$ and take $C_3 = \set{w ∈ \allleadstos \suchthat ∀\hist ∈ \allhists: w(i_0,\hist) = φ}$. It holds. It is provable by $¬\OF$ alone: any $w ∉ C_3$ has some $\hist^*$ with $w(i_0,\hist^*) ≠ φ$, a single point refuting $C_3$ directly (no comparison with a second point is needed, unlike \cref{ex:noProvableDecisivePhi}'s local claim, because the target $φ$ is named in advance). It is APS, indeed sharp unconditionally ($θ = ∅$): every $w ∈ C_3$ has $i_0$ constant $φ$, so every argument is decisive for $i_0$ regarding $φ$, giving $π_{i_0}(C_3) = \set{φ}$. It is not anonymous: swapping $i_0$ with any $j_0 ∈ I_2$ sends $C_3$ to $\set{w \suchthat ∀\hist ∈ \allhists: w(j_0,\hist) = φ}$, which differs from $C_3$ (as $\allleadsto$ itself witnesses: $\allleadsto ∈ C_3$ but this relabelled claim fails at $\allleadsto$, since $\allleadsto(j_0,\hist) = φ' ≠ φ$ for every $\hist$).
+
+  \emph{Not all three.} Suppose $C$ is Anon, Prov, $\allleadsto ∈ C$, and APS via $(θ,i,v)$, with $θ$ compatible with $C_2$ (i.e. $\set{θ⊆w}∩C_2 ≠ ∅$; this holds in particular whenever $θ$ only uses values from $\set{φ,φ'}$, constantly per queried individual, and always holds when $P = \set{φ,φ'}$, since then no other value is available). By anonymity and $\allleadsto ∈ C$, every relabelling $\allleadsto ∘ σ ∈ C$; as any two infinite-coinfinite bipartitions of $I$ are related by some permutation of $I$, this yields $C_2 ⊆ C$. Since $\set{θ⊆w}∩C_2 ⊆ \set{θ⊆w}∩C$ and the latter has $π_i$-image exactly $\set{v}$, so does the former (a nonempty subset of a singleton image equals it).
+  \begin{description}
+  \item[If $i$ is untouched by $θ$:] $C_2$ contains both a completion making $i$ constant $φ$ and one making it constant $φ'$ (everything else fixed as forced by $θ$, or arbitrarily), giving $\set{φ,φ'} ⊆ π_i$-image, contradicting $\set{v}$.
+  \item[If $i$ is touched by $θ$, forced constant $p_i ∈ \set{φ,φ'}$:] then $v = p_i$. Build $w^\dagger$: for $i$, and for every other individual $k$ touched by $θ$, writing $c_k$ for $k$'s $θ$-forced first argument, $p_k ∈ \set{φ,φ'}$ for $k$'s $θ$-forced constant value, and $p'_k$ for the other element of $\set{φ,φ'}$, extend $θ$ via a $(k,c_k,b,p_k,p'_k)$-split as in the second part above, each replicated across a dedicated fresh infinite class of clones; complete all untouched individuals to stay constant $φ$ or $φ'$ in infinite classes. Then $θ ⊆ w^\dagger$, $w^\dagger ∈ E$, $π_i(w^\dagger) = ∅ ≠ p_i = v$ by \cref{th:splitKillsDec}, and, exactly as in the second part above, $¬\OF_{C_2}(w^\dagger)$ hence $¬\OF_C(w^\dagger)$ (as $C_2 ⊆ C$, completability into $C_2$ implies completability into $C$). By Prov, $w^\dagger ∈ C$, so $w^\dagger ∈ \set{θ⊆w}∩C$ with $π_i(w^\dagger) ≠ v$, contradicting APS.
+  \end{description}
+  Either way, contradiction. (When $θ$ is not $C_2$-compatible — only possible if $\card P ≥ 3$ and $θ$ uses a value outside $\set{φ,φ'}$ — the argument above does not directly apply; closing this residual case is left open.)
+\end{proof}
 
 \subsection{Persistent falsifiability}
 Consider a claim that in some world satisfies F but not POF.
