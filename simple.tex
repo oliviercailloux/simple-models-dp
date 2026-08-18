@@ -705,11 +705,23 @@ Given $θ ∈ Θ$, let $θ^{\downarrow} = \set{(\hist,p) ∈ \allhists × P \suc
   \Cref{th:apsPUniform} needs neither $C$ to hold nor any constancy or single-individual restriction on $θ$: it subsumes, as a single general statement, the relabelling arguments used piecemeal in the proof of \cref{th:anonProvApsTriad} (\emph{Anon $∧$ APS, not Prov} and \emph{Not all three}). Whether every anonymous APS claim is in fact APS-P — whether the sentinel value $∅$ can always be avoided by choosing a better witness — remains open.
 \end{remark}
 
-\begin{conjecture}[Anonymous APS-P claims are uniformly sharp along a chain]
-  \label{cnj:apsPChain}
-  If $C$ is anonymous and APS-P and contains Example 6’s world, then, for some $T ∈ ∪_{H ∈ \incr(\allhists)} P^H$ — viewed as a set of pairs $\set{(\hist,p)}$, $\hist$'s ascending — writing $T^i = \set{(i,\hist,p) \suchthat (\hist,p) ∈ T}$ for its copy at $i ∈ I$, for some $p ∈ P$:
-  $C ⊆ \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: [T^i ⊆ \allleadstog ⇒ p ∈ π_i(\allleadstog)]}$.
+\begin{conjecture}
+  Fix $φ ≠ φ' ∈ P$, partition $I$ into two infinite classes $I_1, I_2$, and let $\allleadsto$ be the world: $∀i ∈ I_1, \hist ∈ \allhists: \hist \ileadstogo φ$, and $∀i ∈ I_2, \hist ∈ \allhists: [\hist = ∅ ⇒ \hist \ileadstogo φ ∧ \hist ≠ ∅ ⇒ \hist \ileadstogo φ']$. 
+  No $C$ that holds satisfies anonymity, provability by $¬\OF ∩ E$, and APS.
 \end{conjecture}
+This seems correct.
+Assume #Args ∉ ℕ. Assume that C must (by anon and aps and falsifiability) entail something like [∀i, j, …: some obs implies that a is a decisive argument for i] (a wlog, can be a finite list of candidates in general). Now take a world s very close to the one of example 6, just with a third type of individuals, (b, a) does not lead i3 to φ (everything else does lead i3 to φ). For falsifiability, this world must be observationally excludable from C: C must imply ¬θ for some θ ⊆ s. Also, C must be compatible with all θ in Example 6 world. So C must imply (b, a) ileads to φ with some observable antecedant, compatible with observing (b, a). This antecedant cannot consider only people different than i, otherwise C dosn’t hold. The antecedent, where it touches i, can be only (b) (or emptyset), thus C entails (b) ileadsto φ implies (b, a) ileadsto φ. Similarly, C must entail ∀x: (x) ileadsto φ implies (x, …) ileadsto φ (or something like this).
+
+Assume #Args ∉ ℕ. Assume that C must (by anon and aps and falsifiability) entail something like [∀i, j, …: some obs implies that a is a decisive argument for i] (a wlog, can be a finite list of candidates in general).
+Now take a world s very close to the one of example 6, just with a third type of individuals, for which (b) nileadsto φ (everything else leads to φ). 
+For falsifiability, this world must be observationally excludable from C: C must imply ¬θ for some θ ⊆ s. Also, C must be compatible with all θ in Example 6 world. So C must imply (b) ileads to φ with some observable antecedant, compatible with observing (b). This antecedant cannot consider only people different than i, otherwise C dosn’t hold. The antecedent, where it touches i, can be only ∅, thus C entails [∅ ileadsto φ implies (b) ileadsto φ].
+But this is not enough to reject the world s.
+Thus, s is not rejectable, and C is not falsifiable.
+
+\begin{remark}
+  Fix $φ ≠ φ' ∈ P$, partition $I$ into two infinite classes $I_1, I_2$, and let $\allleadsto$ be the world of \cref{ex:noProvableDecisivePhi}: $∀i ∈ I_1, \hist ∈ \allhists: \hist \ileadstogo φ$, and $∀i ∈ I_2, \hist ∈ \allhists: \hist \ileadstogo φ'$. 
+  The claim $C = \set{\allleadstog \suchthat ∀i∈I: [∅⇝_iφ ⇒ a\ileadstost_iφ]}$ holds, is anonymous, probable by $¬\OF ∩ E$, and APS.
+\end{remark}
 
 \subsection{Persistent falsifiability}
 Consider a claim that in some world satisfies F but not POF.
