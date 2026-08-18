@@ -681,6 +681,36 @@ Given $i ∈ I$, $c, b ∈ \allargs$ distinct and $p ≠ p' ∈ P$, say a world 
   It is natural to ask whether \cref{th:anonProvApsTriad}'s incompatibility extends to APS witnesses that are not constant (querying some individual a value outside $\set{φ,φ'}$, or a non-constant pattern across comparable histories). The proof above does not settle this: it is specific to $¬\OF ∩ E$-provability via $C_2 ⊆ C$'s relabellings of $\allleadsto$, and the obstruction to generalizing is one of \emph{richness} rather than of values as such. Building the analogous $w^\dagger$ for a non-constant witness needs, for each individual $θ$ queries, infinitely many further individuals independently compatible with $θ$'s pattern there, to serve as clones; $C_2 ⊆ C$ supplies such clones for free when the pattern is constant, but for a non-constant pattern the only known instance of it is the single witness $w_0 ∈ \set{θ⊆w}∩C$ exhibiting $v$, and neither anonymity (which only relabels existing individuals, so cannot manufacture new clones of $w_0$'s $i$-row) nor \cref{th:anonThusAlmostPof} (which upgrades $\OF$ to $\POF$ for worlds \emph{already} in $E$, rather than establishing $¬\OF$ in the first place) supplies the missing repetition. Whether $w_0$ can always be replaced by an $E$-compatible witness — which would close the gap — is left open.
 \end{remark}
 
+A claim can be APS via a witness whose singleton value is the sentinel $∅$ rather than a genuine element of $P$; the following variant excludes this.
+\begin{definition}[A posteriori sharp with a named value]
+  \label{def:apsP}
+  A claim $C$ is \emph{a posteriori sharp with a named value} (APS-P) iff $∃θ ∈ Θ, i ∈ I, p ∈ P \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \set{p}$.
+\end{definition}
+APS-P implies APS (\cref{th:anonProvApsTriad}), the singleton $\set{p}$ already witnessing cardinality $1$; it is strictly stronger, ruling out the witness being uniformly non-decisive ($π_i(\set{θ⊆\allleadstog}∩C) = \set{∅}$).
+
+Given $θ ∈ Θ$, let $θ^{\downarrow} = \set{(\hist,p) ∈ \allhists × P \suchthat ∃i ∈ I: (i,\hist,p) ∈ θ}$ denote $θ$ with individual labels erased, and, for $i ∈ I$, let $θ^i = \set{(i,\hist,p) \suchthat (\hist,p) ∈ θ^{\downarrow}}$ denote its copy at $i$.
+
+\begin{theorem}[Anonymous APS-P claims are uniformly sharp]
+  \label{th:apsPUniform}
+  If $C$ is anonymous and APS-P via $(θ,i_0,p)$, then
+  $$C ⊆ \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: θ^i ⊆ \allleadstog ⇒ p ∈ π_i(\allleadstog)}.$$
+\end{theorem}
+\begin{proof}
+  Let $\allleadstog ∈ C$ with $∀i ∈ I: θ^i ⊆ \allleadstog$, and fix $j ∈ I$. Let $σ$ exchange $i_0$ and $j$ (the identity if $j = i_0$), and $\allleadstog' = \allleadstog ∘ σ$. For every $x ∈ I$: $θ(x) ⊆ θ^{\downarrow}$ trivially, and $θ^{σ(x)} ⊆ \allleadstog$ by hypothesis, that is, $∀(\hist,p) ∈ θ^{\downarrow}: \allleadstog(σ(x),\hist) = p$; restricting to $(\hist,p) ∈ θ(x) ⊆ θ^{\downarrow}$ and using $\allleadstog'(x,\hist) = \allleadstog(σ(x),\hist)$ gives $θ(x) ⊆ \allleadstog'$. As this holds for every $x$, $θ ⊆ \allleadstog'$. By anonymity, $\allleadstog' = \allleadstog ∘ σ ∈ C$, so $\allleadstog' ∈ \set{θ⊆\allleadstog'} ∩ C$, and APS-P gives $π_{i_0}(\allleadstog') = p$. Decisiveness at $i_0$ in $\allleadstog'$ depends only on $\allleadstog'$'s $i_0$-row (\cref{def:decisive}), which equals $\allleadstog$'s $σ(i_0) = j$-row, so $π_{i_0}(\allleadstog') = π_j(\allleadstog)$. Hence $π_j(\allleadstog) = p$.
+\end{proof}
+
+\begin{remark}
+  $θ^{\downarrow}$ need not be right-unique, that is, may fail $∀(\hist,p),(\hist,p') ∈ θ^{\downarrow}: p = p'$ — this happens exactly when two individuals queried by $θ$ disagree about the value at some shared history. When it fails, no row of any world can satisfy $θ^i ⊆ \allleadstog$ for any $i$ (a row is a function), so $∀i ∈ I: θ^i ⊆ \allleadstog$ is then satisfied by no $\allleadstog$ at all, and \cref{th:apsPUniform}'s conclusion holds vacuously. Right-uniqueness of $θ^{\downarrow}$ is thus not a hypothesis of the theorem: it only governs whether the theorem's antecedent can ever be triggered non-vacuously.
+
+  \Cref{th:apsPUniform} needs neither $C$ to hold nor any constancy or single-individual restriction on $θ$: it subsumes, as a single general statement, the relabelling arguments used piecemeal in the proof of \cref{th:anonProvApsTriad} (\emph{Anon $∧$ APS, not Prov} and \emph{Not all three}). Whether every anonymous APS claim is in fact APS-P — whether the sentinel value $∅$ can always be avoided by choosing a better witness — remains open.
+\end{remark}
+
+\begin{conjecture}[Anonymous APS-P claims are uniformly sharp along a chain]
+  \label{cnj:apsPChain}
+  If $C$ is anonymous and APS-P and contains Example 6’s world, then, for some $T ∈ ∪_{H ∈ \incr(\allhists)} P^H$ — viewed as a set of pairs $\set{(\hist,p)}$, $\hist$'s ascending — writing $T^i = \set{(i,\hist,p) \suchthat (\hist,p) ∈ T}$ for its copy at $i ∈ I$, for some $p ∈ P$:
+  $C ⊆ \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: [T^i ⊆ \allleadstog ⇒ p ∈ π_i(\allleadstog)]}$.
+\end{conjecture}
+
 \subsection{Persistent falsifiability}
 Consider a claim that in some world satisfies F but not POF.
 Then, it is not verifiable under prior not POF, unless precisely that world can be excluded by an observation.
