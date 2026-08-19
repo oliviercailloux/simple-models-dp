@@ -251,6 +251,8 @@ A claim $C$ is \emph{informative} iff $π(C) = \set{π(\allleadstog) \suchthat {
 A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π_i(C) = \set{π_i(\allleadstog) \suchthat {\allleadstog} ∈ C} ≠ P ∪ \set{∅}$.
 A claim $C$ is \emph{a posteriori informative beyond counting} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \set{π_i(\allleadstog) \suchthat θ ⊆ {\allleadstog} ∈ C} ≠ P ∪ \set{∅}$.
 A claim $C$ is \emph{a posteriori sharp} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ {\allleadstog} ∈ C} = 1$.
+\label{def:apst}
+A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ {\allleadstog} ∈ C} = 1$.
 
 \begin{remark}
   Informativeness permits mere counting: the claim that exactly two persons deliberately believe $φ$ is informative. Also, the claim $C = \set{[∃ i \suchthat (a) \nileadstog φ] ∧ [∀i: (a) \nileadstog φ ⇒ φ' ∈ π_i(\allleadstog)]}$ is informative.
@@ -705,18 +707,45 @@ Given $θ ∈ Θ$, let $θ^{\downarrow} = \set{(\hist,p) ∈ \allhists × P \suc
   \Cref{th:apsPUniform} needs neither $C$ to hold nor any constancy or single-individual restriction on $θ$: it subsumes, as a single general statement, the relabelling arguments used piecemeal in the proof of \cref{th:anonProvApsTriad} (\emph{Anon $∧$ APS, not Prov} and \emph{Not all three}). Whether every anonymous APS claim is in fact APS-P — whether the sentinel value $∅$ can always be avoided by choosing a better witness — remains open.
 \end{remark}
 
-\begin{conjecture}
-  Fix $φ ≠ φ' ∈ P$, partition $I$ into two infinite classes $I_1, I_2$, and let $\allleadsto$ be the world: $∀i ∈ I_1, \hist ∈ \allhists: \hist \ileadstogo φ$, and $∀i ∈ I_2, \hist ∈ \allhists: [\hist = ∅ ⇒ \hist \ileadstogo φ ∧ \hist ≠ ∅ ⇒ \hist \ileadstogo φ']$. 
-  No $C$ that holds satisfies anonymity, provability by $¬\OF ∩ E$, and APS.
-\end{conjecture}
-This seems correct.
-Assume #Args ∉ ℕ. Assume that C must (by anon and aps and falsifiability) entail something like [∀i, j, …: some obs implies that a is a decisive argument for i] (a wlog, can be a finite list of candidates in general). Now take a world s very close to the one of example 6, just with a third type of individuals, (b, a) does not lead i3 to φ (everything else does lead i3 to φ). For falsifiability, this world must be observationally excludable from C: C must imply ¬θ for some θ ⊆ s. Also, C must be compatible with all θ in Example 6 world. So C must imply (b, a) ileads to φ with some observable antecedant, compatible with observing (b, a). This antecedant cannot consider only people different than i, otherwise C dosn’t hold. The antecedent, where it touches i, can be only (b) (or emptyset), thus C entails (b) ileadsto φ implies (b, a) ileadsto φ. Similarly, C must entail ∀x: (x) ileadsto φ implies (x, …) ileadsto φ (or something like this).
+\begin{definition}[A posteriori truly sharp with a named value]
+  \label{def:apstP}
+  A claim $C$ is \emph{a posteriori truly sharp with a named value} (APST-P) iff $∃θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I, p ∈ P \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \set{p}$.
+\end{definition}
+APST-P strengthens both APS-P (\cref{def:apsP}, dropping the requirement that $θ$ be feasible) and a posteriori truly sharp (\cref{def:apst}, dropping the named value): it requires a witness that is simultaneously actually observable ($θ ⊆ \allleadsto$) and pins a genuine element of $P$ rather than the sentinel $∅$.
 
-Assume #Args ∉ ℕ. Assume that C must (by anon and aps and falsifiability) entail something like [∀i, j, …: some obs implies that a is a decisive argument for i] (a wlog, can be a finite list of candidates in general).
-Now take a world s very close to the one of example 6, just with a third type of individuals, for which (b) nileadsto φ (everything else leads to φ). 
-For falsifiability, this world must be observationally excludable from C: C must imply ¬θ for some θ ⊆ s. Also, C must be compatible with all θ in Example 6 world. So C must imply (b) ileads to φ with some observable antecedant, compatible with observing (b). This antecedant cannot consider only people different than i, otherwise C dosn’t hold. The antecedent, where it touches i, can be only ∅, thus C entails [∅ ileadsto φ implies (b) ileadsto φ].
-But this is not enough to reject the world s.
-Thus, s is not rejectable, and C is not falsifiable.
+\begin{conjecture}
+  \label{cnj:decisiveArgAPSTP}
+  Fix $φ ≠ φ' ∈ P$, partition $I$ into two infinite classes $I_1, I_2$, and let $\allleadsto$ be the world: $∀i ∈ I_1, \hist ∈ \allhists: \hist \ileadstogo φ$, and $∀i ∈ I_2, \hist ∈ \allhists: [\hist = ∅ ⇒ \hist \ileadstogo φ ∧ \hist ≠ ∅ ⇒ \hist \ileadstogo φ']$. 
+  No $C$ of the form $[∀i, j$, …: some obs implies that a is a decisive argument for i]
+  that holds satisfies anonymity, provability by $¬\OF ∩ E$, and APST-P.
+\end{conjecture}
+
+\begin{remark}[A proof sketch, and where it fails]
+  Fix $a ∈ \allargs$, a finite $H ∈ \incr(\allhists)$ and $T: H → P$ (a one-individual observation template), and suppose $C ⊆ D_{a,T} := \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: [T(i) ⊆ \allleadstog ⇒ ∃p ∈ P \suchthat a \ileadstost_ip]}$, writing $T(i) = \set{(i,\hist,p) \suchthat \hist ∈ H, T(\hist) = p}$, together with $\allleadsto ∈ C$, Anon, Prov, and APST-P.
+
+  As $H ∈ \incr(\allhists)$, it has a unique maximal element $\hist^{(k)} = \max H$ (or $\hist^{(k)} = ∅$ if $H = ∅$). Suppose $T$ is compatible with constant $φ$, that is, $T(\hist) = φ$ for every $\hist ∈ H$ (an entirely analogous construction, carving $I_3$ from $I_2$ instead, handles $T$ compatible with $I_2$'s shape instead; if $T$ is compatible with neither shape, no individual of $\allleadsto$ ever satisfies the antecedent, a degenerate case not treated here). Pick $b ∈ \allargs$ distinct from $a$ and from every argument in $\range(\hist^{(k)})$ (possible since $\card{\allargs} ∉ ℕ$). Carve an infinite $I_3 ⊆ I_1$, leaving $I_1 ∖ I_3$ infinite, and let $w^*$ agree with $\allleadsto$ outside $I_3$, while every $i ∈ I_3$ answers, on $\hist ⊆ \hist^{(k)}$, $T(\hist)$ if $\hist ∈ H$ and $φ$ otherwise; and, on $\hist^{(k)} ⊊ \hist$, writing $x = \hist(\card{\hist^{(k)}} + 1)$ for the argument immediately following the shared prefix $\hist^{(k)}$, $φ$ if $x = a$ and $φ'$ if $x ≠ a$; and $φ$ on every $\hist$ incomparable with $\hist^{(k)}$.
+
+  Then $a$ is not decisive for $i ∈ I_3$: writing $\hist^{(k)}_a, \hist^{(k)}_{b,a}$ for the extensions of $\hist^{(k)}$ by $(a)$, resp.\ $(b,a)$, both have $a$ among their last two arguments (\cref{th:splitKillsDec}'s argument, rooted at $\hist^{(k)}$ instead of $∅$), yet $\hist^{(k)}_a$ answers $φ$ while $\hist^{(k)}_{b,a}$ answers $φ'$. Since $T(i) ⊆ w^*$ by construction, $w^* ∉ D_{a,T}$, hence $w^* ∉ C$. All three classes of $w^*$ ($I_1 ∖ I_3$, $I_3$, $I_2$) are infinite and internally uniform, so $w^* ∈ E$.
+
+  It remains to show $¬\OF_C(w^*)$, contradicting Prov together with $w^* ∈ E ∖ C$. Every finite $θ_0 ⊆ w^*$ must extend into some member of $C$. For individuals outside $I_3$ this is immediate, relabelling onto fresh members of $\allleadsto$'s own classes (Anon and $\allleadsto ∈ C$). For $i ∈ I_3$, since $θ_0$ restricted to $i$ is a single chain, it lies within one of the two branches past $\hist^{(k)}$, or within the shared prefix, or spans both.
+
+  \emph{This is exactly where the argument fails when $\hist^{(k)} ≠ ∅$.} An observation of $i ∈ I_3$ combining a point along the (necessarily constant-$φ$) prefix up to $\hist^{(k)}$ with a point past the split on the $b$-branch (value $φ'$) exhibits a row shaped “$φ$ along a nonempty prefix, then $φ'$ afterward” — a shape neither $I_1$ (constant $φ$ throughout) nor $I_2$ ($φ$ only at $∅$, flipping to $φ'$ everywhere else, that is, at the root) ever realizes. Every relabelling of $\allleadsto$ only reshuffles $\allleadsto$'s own two row-shapes across $I$, so none can supply it; and, unlike in the proof of \cref{th:anonProvApsTriad}, no subfamily analogous to $C_2$ is known to lie in $C$ here to supply richer rows. So $¬\OF_C(w^*)$ is not established, and the argument stalls.
+
+  When $\hist^{(k)} = ∅$ — in particular when $T = ∅$, or whenever the value-pinning APST-P witness touches its individual only at $∅$ or not at all — every observation of $i ∈ I_3$ sees either the constant-$φ$ point at $∅$ alone or the post-split value alone, each separately matching one of $\allleadsto$'s own two shapes, and the argument goes through; this is exactly what rules out the two remarks below.
+\end{remark}
+% This seems correct.
+% Assume #Args ∉ ℕ. Assume that C must (by anon and aps and falsifiability) entail something like [∀i, j, …: some obs implies that a is a decisive argument for i] (a wlog, can be a finite list of candidates in general). Now take a world s very close to the one of example 6, just with a third type of individuals, (b, a) does not lead i3 to φ (everything else does lead i3 to φ). For falsifiability, this world must be observationally excludable from C: C must imply ¬θ for some θ ⊆ s. Also, C must be compatible with all θ in Example 6 world. So C must imply (b, a) ileads to φ with some observable antecedant, compatible with observing (b, a). This antecedant cannot consider only people different than i, otherwise C dosn’t hold. The antecedent, where it touches i, can be only (b) (or emptyset), thus C entails (b) ileadsto φ implies (b, a) ileadsto φ. Similarly, C must entail ∀x: (x) ileadsto φ implies (x, …) ileadsto φ (or something like this).
+
+% Assume #Args ∉ ℕ. Assume that C must (by anon and aps and falsifiability) entail something like [∀i, j, …: some obs implies that a is a decisive argument for i] (a wlog, can be a finite list of candidates in general).
+% Now take a world s very close to the one of example 6, just with a third type of individuals, for which (b, a) nileadsto φ (everything else leads to φ). 
+% For falsifiability, this world must be observationally excludable from C: C must imply ¬θ for some θ ⊆ s. Also, C must be compatible with all θ in Example 6 world. So C must imply (b, a) ileads to φ with some observable antecedant, compatible with observing (b, a). This antecedant cannot consider only people different than i, otherwise C dosn’t hold. The antecedent, where it touches i, can be only (b), thus C entails [(b) ileadsto φ implies (b, a) ileadsto φ].
+% Now take a world s' very close to the one of example 6, just with a third type of individuals, for which (b) nileadsto φ and (b, a) nileadsto φ (everything else leads to φ). 
+% This world cannot be rejected, hence C is not falsifiable.
+
+\begin{remark}
+  Fix $φ ≠ φ' ∈ P$, partition $I$ into two infinite classes $I_1, I_2$, and let $\allleadsto$ be the world: $∀i ∈ I_1, \hist ∈ \allhists: \hist \ileadstogo φ$, and $∀i ∈ I_2, \hist ∈ \allhists: [\hist = ∅ ⇒ \hist \ileadstogo φ ∧ \hist ≠ ∅ ⇒ \hist \ileadstogo φ']$. 
+  The claim C stating that for all individuals, $(a) \ileadsto 0$ implies that $a$ is decisive holds, satisfies anonymity, provability by $¬\OF ∩ E$, and APS-P.
+\end{remark}
 
 \begin{remark}
   Fix $φ ≠ φ' ∈ P$, partition $I$ into two infinite classes $I_1, I_2$, and let $\allleadsto$ be the world of \cref{ex:noProvableDecisivePhi}: $∀i ∈ I_1, \hist ∈ \allhists: \hist \ileadstogo φ$, and $∀i ∈ I_2, \hist ∈ \allhists: \hist \ileadstogo φ'$. 
