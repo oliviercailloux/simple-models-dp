@@ -789,16 +789,33 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadstoo(I
 Strange.
 If we were in $C$ and not in $g$, we should be able to observe sometimes $(a)$ leading to $¬φ$! Thus, reject $g$.
 
-Example
--φ leads to φ
--φ' leads to φ' (except ∅)
-g: start with (a), leads to φ; don’t, leads to φ'
-then g is undistinguishable from B: if obs (a), may be i1, and otherwise, may be i2.
-Well, that’s not true! It’s not if indeed we pick our observations from g, but we pick them from the actual world.
+% Example
+% -φ leads to φ
+% -φ' leads to φ' (except ∅)
+% g: start with (a), leads to φ; don’t, leads to φ'
+% then g is undistinguishable from B: if obs (a), may be i1, and otherwise, may be i2.
+% Well, that’s not true! It’s not if indeed we pick our observations from g, but we pick them from the actual world.
 
 \Cref{th:suffIndic} caracterizes situations that admit a claim that holds and is anonymous and indicative.
 
 NB \cref{th:noindic} has the key! And I should read \cref{sec:closing}.
+
+\subsection{PEV under not POF}
+\begin{example}
+  $C = [∃i \suchthat a \ileadstost φ]$.
+  Consider any world $\allleadstog'$ where all $i$ satisfy $a \nileadstostg φ$ and each behavior is infinite.
+  It is $¬\OF$: any observation $θ ⊆ \allleadstog'$, being finite, is completable in $C$.
+  Now consider a world where a single $i$ satisfies $a \ileadstost φ$.
+  Consider $θ = ∅$ and
+  any observation $θ' ⊆ \allleadstog$. It is completed by a world $\allleadstog' ∈ (¬\POF_C) ∩ E$ but out of $C$.
+\end{example}
+\begin{example}
+  Define $\allleadsto^p$ as: empty leads to $φ$, everything else leads to $p$, for all individuals.
+  Consider $C_B$ with $B = \set{\allleadstog^φ, \allleadstog^{φ'}}$.
+  Consider $g$ as defined above.
+  Pick, wlog, $\allleadstog^φ$.
+  Let’s show, to start with, that some obs in this world proves $C$ (assuming the prior).
+\end{example}
 
 \subsection{Persistent falsifiability}
 Consider a claim that in some world satisfies F but not POF.
