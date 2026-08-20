@@ -192,7 +192,7 @@ A claim is finite iff its cardinal is finite (meaning that it is compatible with
 Let $C^⊆ = ∪_{{\allleadstog} ∈ C} \powerset{\allleadstog} = \set{c ⊆ (I × \allhists) × P \suchthat ∃ {\allleadstog} ∈ C \suchthat c ∈ \powerset{\allleadstog}}$ denote the set of non necessarily complete possibilities compatible with $C$ (thus, each element $c ∈ C^⊆$ is right-unique but non necessarily total, meaning that it does not necessarily cover $(I × \allhists)$).
 Note that $C^⊆$ is downwards closed, meaning that $∀ c ∈ C^⊆: c' ⊆ c ⇒ c' ∈ C^⊆$.
 
-Define the increasing sets of paths as the set $\incr(\allhists) = \set{H \fsub \allhists \suchthat ∀\hist, \histp ∈ H: \card{\hist} ≤ \card{\histp} ⇒ \hist ⊆ \histp} ⊆ \powerset{\allhists}$. A set of paths $H ∈ \incr(\allhists)$ can be strictly ordered by the lengths of the paths in $H$ and can thus also be considered as a sequence of paths.
+Define the increasing sets of paths as the set $\fincrhists = \set{H \fsub \allhists \suchthat ∀\hist, \histp ∈ H: \card{\hist} ≤ \card{\histp} ⇒ \hist ⊆ \histp} ⊆ \powerset{\allhists}$. A set of paths $H ∈ \incr(\allhists)$ can be strictly ordered by the lengths of the paths in $H$ and can thus also be considered as a sequence of paths.
 Note that $\incr(\allhists)$ includes both the empty set of paths $∅$ and the set of paths $\set{∅}$ containing only the empty path.
 A non empty set of paths $H ∈ \incr(\allhists)$ has a unique maximal element $\set{\max H} = \set{\hist ∈ H \suchthat ∀ \histp ∈ H: \histp ⊆ \hist}$.
 A non empty set of paths $H ∈ \incr(\allhists)$ contains all its prefixes (meaning, $∀ \hist ∈ H: \set{\histp ⊆ \hist} ⊆ H$) iff $H = \intvl{\max H}$.
@@ -282,7 +282,7 @@ If $D ⊆ D'$, then established verifiability under prior $D'$ implies establish
 We say that a prior $D$ proves a claim $C$ iff $D ⊆ C$. 
 
 Provability by $D$ implies established verifiability under $D$ (just use verification $∅$).
-For some priors, provability by $D$ is strictly stronger than established verifiability under $D$ (the claim $C$ being $(a) \ileadsto φ$ satisfies established verifiability under the trivial prior $D$ but is not provable by it). (TODO: for all priors?)
+For some priors, provability by $D$ is strictly stronger than established verifiability under $D$ (the claim $C$ being $(a) \ileadsto φ$ satisfies established verifiability under the trivial prior $D$ but is not provable by it).
 
 \Cref{th:toStricterClaims} shows that impossibilities propagate to stricter claims.
 Together with \cref{th:minimalPriorForInformativeness}, it shows that 
@@ -312,6 +312,7 @@ Given $\allleadstog$ and $C$, say that $C$ is
 We also say that $C$ is \emph{rejectable} iff $\OF(\allleadstoo)$.
 
 Note that $∀C, \allleadstog: \POF(\allleadstog) ⇒ \OF(\allleadstog) ⇒ \F(\allleadstog)$ (\cref{th:ex-post} proves the second implication).
+Also, given $C' ⊆ C$, $¬\OF_{C'} ⇒ ¬\OF_C$ and $¬\POF_{C'} ⇒ ¬\POF_C$.
 $C$ is said to suffer visibility issues in $\allleadstog$ iff $¬\POF(\allleadstog) ∧ \OF(\allleadstog)$, which happens when some prefix hides the falsity of $C$ even though its falsity is observable when no prefix is involved.
 $C$ suffers visibility issues iff $∃\allleadstog \suchthat ¬\POF(\allleadstog) ∧ \OF(\allleadstog)$.
 $C$ suffers no visibility issues in $\allleadstog$ iff $\OF(\allleadstog) ⇒ \POF(\allleadstog)$, equivalently, iff $\OF(\allleadstog) ⇔ \POF(\allleadstog)$, and suffers no visibility issues iff $∀\allleadstog: \OF(\allleadstog) ⇒ \POF(\allleadstog)$.
@@ -363,11 +364,11 @@ This is technically equivalent to mandating $¬\POF(\allleadstoo)$.
   The chosen prior ($\POF(\allleadstog) ⇒ ¬\OF(\allleadstog)$) holds, as intuition commands, as the antecedent fails for the reason given above. The alternative prior however fails as $θ = \set{(b) \ileadstog φ}$ is completable only out of $C$.
 \end{remark}
 
-\begin{remark}[TODO]
-  This prior seems unsatisfactorily not primitive enough. We should obtain as a result that the reasonable prior is, if no visibility issues, then not OF, by assuming that we have observed everything we could ever dream of.
+\begin{remark}
+  This prior seems unsatisfactorily not primitive enough (to be worked on…). We should obtain as a result that the reasonable prior is, if no visibility issues, then not OF, by assuming that we have observed everything we could ever dream of.
 \end{remark}
 
-\begin{remark}[TODO]
+\begin{remark}
   Intuitively, the prior should apply to claims that treat infinitely many individuals identically, and assuming that the world does contain infinitely many identical individuals (perhaps only one of these is required), so that we do not lack opportunities for attempts of rejection.
 
   As an illustration, we want a prior to apply for the claim $∀i: (a) \ileadsto φ$, under some assumption like that infinitely many i behave similarly.
@@ -377,6 +378,7 @@ This is technically equivalent to mandating $¬\POF(\allleadstoo)$.
   
   We might attempt something like this: if whenever $C$ says something about some $i$, it also says the same about infinitely many $i$’s, then not OF.
   Or: All leadsto satisfy: for each ileadsto inside, there’s infinitely many ileadsto.
+  To be worked on…
 \end{remark}
 
 \subsection{Falsifiability}
@@ -546,7 +548,7 @@ Given $C ⊆ \allleadstos$, write $F_C = (¬\POF_C) ∩ E$.
 and $¬\OF_{C ∩ E} ⊆ ¬\OF_C$.)
 
 \Cref{th:provGapVisibility} shows that
-$(¬\POF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no visibility issues in $E$ (that is, $∀\allleadstog ∈ E: \OF(\allleadstog) ⇒ \POF(\allleadstog)$).
+$(¬\POF_C) ∩ E$ proves $C$ iff $(¬\OF_C) ∩ E$ proves $C$ and $C$ suffers no visibility issues in $E$ (that is, $∀\allleadstog ∈ E: \OF_C(\allleadstog) ⇒ \POF_C(\allleadstog)$).
 
 \begin{definition}[Anonymity]
   \label{def:anonymous}
@@ -554,7 +556,8 @@ $(¬\POF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no vi
   A claim $C$ is \emph{anonymous} iff $∀ σ: C = C ∘ σ$.
 \end{definition}
 
-\Cref{ex:anon} illustrates and \cref{th:finiteExceptSpreadAnon} shows that anonymous claims are provable by $¬\POF_{C ∩ E} ∩ E$.
+\Cref{ex:anon} illustrates and \cref{th:finiteExceptSpreadAnon} shows that anonymous claims suffer no visibility issues in $E$.
+Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C ⊆ E$ is provable by $¬\POF_{C ∩ E} ∩ E$.
 
 \begin{theorem}
   Given any $\allleadsto ∈ E$, there exists an anonymous claim that is provable by $¬\POF_{C ∩ E} ∩ E$.
@@ -720,27 +723,36 @@ APST-P strengthens both APS-P (\cref{def:apsP}, dropping the requirement that $�
   that holds satisfies anonymity, provability by $¬\OF ∩ E$, and APST-P.
 \end{conjecture}
 
-\begin{remark}[A proof sketch, and where it fails]
-  Fix $a ∈ \allargs$, a finite $H ∈ \incr(\allhists)$ and $T: H → P$ (a one-individual observation template), and suppose $C ⊆ D_{a,T} := \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: [T(i) ⊆ \allleadstog ⇒ ∃p ∈ P \suchthat a \ileadstost_ip]}$, writing $T(i) = \set{(i,\hist,p) \suchthat \hist ∈ H, T(\hist) = p}$, together with $\allleadsto ∈ C$, Anon, Prov, and APST-P.
+\begin{remark}[A self-referential template is already excluded]
+  Fix $a ∈ \allargs$, and suppose $C ⊆ D_a := \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: [(a) \ileadstogo φ ⇒ a \ileadstostg φ]}$, together with $\allleadsto ∈ C$, Anon, Prov, and APST-P.
 
-  As $H ∈ \incr(\allhists)$, it has a unique maximal element $\hist^{(k)} = \max H$ (or $\hist^{(k)} = ∅$ if $H = ∅$). Suppose $T$ is compatible with constant $φ$, that is, $T(\hist) = φ$ for every $\hist ∈ H$ (an entirely analogous construction, carving $I_3$ from $I_2$ instead, handles $T$ compatible with $I_2$'s shape instead; if $T$ is compatible with neither shape, no individual of $\allleadsto$ ever satisfies the antecedent, a degenerate case not treated here). Pick $b ∈ \allargs$ distinct from $a$ and from every argument in $\range(\hist^{(k)})$ (possible since $\card{\allargs} ∉ ℕ$). Carve an infinite $I_3 ⊆ I_1$, leaving $I_1 ∖ I_3$ infinite, and let $w^*$ agree with $\allleadsto$ outside $I_3$, while every $i ∈ I_3$ answers, on $\hist ⊆ \hist^{(k)}$, $T(\hist)$ if $\hist ∈ H$ and $φ$ otherwise; and, on $\hist^{(k)} ⊊ \hist$, writing $x = \hist(\card{\hist^{(k)}} + 1)$ for the argument immediately following the shared prefix $\hist^{(k)}$, $φ$ if $x = a$ and $φ'$ if $x ≠ a$; and $φ$ on every $\hist$ incomparable with $\hist^{(k)}$.
+  Since $I_2$ answers $φ'$, not $φ$, at every nonempty history, $D_a$'s antecedent is satisfied by $\allleadsto$ exactly on $I_1$; there is no analogous case to treat on $I_2$'s side.
 
-  Then $a$ is not decisive for $i ∈ I_3$: writing $\hist^{(k)}_a, \hist^{(k)}_{b,a}$ for the extensions of $\hist^{(k)}$ by $(a)$, resp.\ $(b,a)$, both have $a$ among their last two arguments (\cref{th:splitKillsDec}'s argument, rooted at $\hist^{(k)}$ instead of $∅$), yet $\hist^{(k)}_a$ answers $φ$ while $\hist^{(k)}_{b,a}$ answers $φ'$. Since $T(i) ⊆ w^*$ by construction, $w^* ∉ D_{a,T}$, hence $w^* ∉ C$. All three classes of $w^*$ ($I_1 ∖ I_3$, $I_3$, $I_2$) are infinite and internally uniform, so $w^* ∈ E$.
+  Pick $b ∈ \allargs ∖ \set{a}$ (using $\card{\allargs} ≥ 2$). Carve an infinite $I_3 ⊆ I_1$, leaving $I_1 ∖ I_3$ infinite, and let $w^*$ agree with $\allleadsto$ outside $I_3$, while every $i ∈ I_3$ answers $φ'$ on every $\hist$ with $\hist_1 = b$ and $φ$ on every other $\hist$ (in particular at $∅$ and at $(a)$ itself, since $a ≠ b$).
 
-  It remains to show $¬\OF_C(w^*)$, contradicting Prov together with $w^* ∈ E ∖ C$. Every finite $θ_0 ⊆ w^*$ must extend into some member of $C$. For individuals outside $I_3$ this is immediate, relabelling onto fresh members of $\allleadsto$'s own classes (Anon and $\allleadsto ∈ C$). For $i ∈ I_3$, since $θ_0$ restricted to $i$ is a single chain, it lies within one of the two branches past $\hist^{(k)}$, or within the shared prefix, or spans both.
+  Then $a$ is not decisive for $i ∈ I_3$: $a ∈ \histend((a)) = \set{a}$, which answers $φ$, while $a ∈ \histend((b,a)) = \set{b,a}$, which answers $φ'$ (as $(b,a)_1 = b$). Since $(a) \ileadstogo φ$ holds for $i ∈ I_3$ but $a \nileadstostg φ$, $w^* ∉ D_a$, hence $w^* ∉ C$. All three classes ($I_1 ∖ I_3$, $I_3$, $I_2$) are infinite and internally uniform, so $w^* ∈ E$.
 
-  \emph{This is exactly where the argument fails when $\hist^{(k)} ≠ ∅$.} An observation of $i ∈ I_3$ combining a point along the (necessarily constant-$φ$) prefix up to $\hist^{(k)}$ with a point past the split on the $b$-branch (value $φ'$) exhibits a row shaped “$φ$ along a nonempty prefix, then $φ'$ afterward” — a shape neither $I_1$ (constant $φ$ throughout) nor $I_2$ ($φ$ only at $∅$, flipping to $φ'$ everywhere else, that is, at the root) ever realizes. Every relabelling of $\allleadsto$ only reshuffles $\allleadsto$'s own two row-shapes across $I$, so none can supply it; and, unlike in the proof of \cref{th:anonProvApsTriad}, no subfamily analogous to $C_2$ is known to lie in $C$ here to supply richer rows. So $¬\OF_C(w^*)$ is not established, and the argument stalls.
+  It remains to show $¬\OF_C(w^*)$, contradicting Prov together with $w^* ∈ E ∖ C$. Every finite $θ_0 ⊆ w^*$ must extend into some member of $C$. For individuals outside $I_3$ this is immediate, relabelling onto fresh members of $\allleadsto$'s own classes (Anon and $\allleadsto ∈ C$). For $i ∈ I_3$, $θ_0$ restricted to $i$ is a single chain, hence every queried history is a prefix of the deepest one queried; since any two comparable nonempty histories share their first argument, the whole chain either has $\hist_1 = b$ throughout its nonempty part — constant $φ'$, possibly with $φ$ at $∅$, embedding into $I_2$'s shape — or never does — constant $φ$ throughout, embedding into $I_1$'s shape. Unlike a template split \emph{past} a shared nonempty prefix, no chain can straddle both: the two histories witnessing $a$'s non-decisiveness, $(a)$ and $(b,a)$, are incomparable, so no single observation ever sees both. Hence $¬\OF_C(w^*)$ holds outright, and $w^* ∈ (¬\OF_C) ∩ E ∖ C$ contradicts Prov.
 
-  When $\hist^{(k)} = ∅$ — in particular when $T = ∅$, or whenever the value-pinning APST-P witness touches its individual only at $∅$ or not at all — every observation of $i ∈ I_3$ sees either the constant-$φ$ point at $∅$ alone or the post-split value alone, each separately matching one of $\allleadsto$'s own two shapes, and the argument goes through; this is exactly what rules out the two remarks below.
+  This settles the case of a single self-referential template: no anonymous, provable, holding claim of the form $D_a$ is APST-P. The next remark shows the same trick — routing the counterexample through a branch entirely foreign to the template, rather than splitting past a shared prefix — handles the fully general template as well.
 \end{remark}
-% This seems correct.
-% Assume #Args ∉ ℕ. Assume that C must (by anon and aps and falsifiability) entail something like [∀i, j, …: some obs implies that a is a decisive argument for i] (a wlog, can be a finite list of candidates in general). Now take a world s very close to the one of example 6, just with a third type of individuals, (b, a) does not lead i3 to φ (everything else does lead i3 to φ). For falsifiability, this world must be observationally excludable from C: C must imply ¬θ for some θ ⊆ s. Also, C must be compatible with all θ in Example 6 world. So C must imply (b, a) ileads to φ with some observable antecedant, compatible with observing (b, a). This antecedant cannot consider only people different than i, otherwise C dosn’t hold. The antecedent, where it touches i, can be only (b) (or emptyset), thus C entails (b) ileadsto φ implies (b, a) ileadsto φ. Similarly, C must entail ∀x: (x) ileadsto φ implies (x, …) ileadsto φ (or something like this).
 
-% Assume #Args ∉ ℕ. Assume that C must (by anon and aps and falsifiability) entail something like [∀i, j, …: some obs implies that a is a decisive argument for i] (a wlog, can be a finite list of candidates in general).
-% Now take a world s very close to the one of example 6, just with a third type of individuals, for which (b, a) nileadsto φ (everything else leads to φ). 
-% For falsifiability, this world must be observationally excludable from C: C must imply ¬θ for some θ ⊆ s. Also, C must be compatible with all θ in Example 6 world. So C must imply (b, a) ileads to φ with some observable antecedant, compatible with observing (b, a). This antecedant cannot consider only people different than i, otherwise C dosn’t hold. The antecedent, where it touches i, can be only (b), thus C entails [(b) ileadsto φ implies (b, a) ileadsto φ].
-% Now take a world s' very close to the one of example 6, just with a third type of individuals, for which (b) nileadsto φ and (b, a) nileadsto φ (everything else leads to φ). 
-% This world cannot be rejected, hence C is not falsifiable.
+\begin{remark}[The same trick handles the fully general template]
+  \label{rmk:generalTemplateExcluded}
+  Fix $a ∈ \allargs$, a finite $H ∈ \incr(\allhists)$, and $T: H → P$, and suppose $C ⊆ D_{a,T} := \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: [T(i) ⊆ \allleadstog ⇒ ∃p ∈ P \suchthat a \ileadstostg p]}$, writing $T(i) = \set{(i,\hist,p) \suchthat \hist ∈ H, T(\hist) = p}$, together with $\allleadsto ∈ C$ and Anon and Prov (APST-P plays no role below, so the conclusion holds without it, and for the unpinned decisiveness question rather than only at $φ$).
+
+  Write $\hist^{(k)} = \max H$ (or $∅$ if $H = ∅$), and suppose $T$ is compatible with constant $φ$ (the case of $I_2$'s shape is symmetric, carving $I_3$ from $I_2$ instead and swapping the roles of $φ, φ'$ throughout; if $T$ is compatible with neither, no individual of $\allleadsto$ ever satisfies the antecedent and the claim holds vacuously, as in the first remark below).
+
+  Pick $d ∈ \allargs ∖ \set{a, \hist^{(k)}(1)}$ if $\hist^{(k)} ≠ ∅$, or $d ∈ \allargs ∖ \set{a}$ if $\hist^{(k)} = ∅$ (possible since $\allargs$ is infinite). Carve an infinite $I_3 ⊆ I_1$, leaving $I_1 ∖ I_3$ infinite, and let $w^*$ agree with $\allleadsto$ outside $I_3$, while every $i ∈ I_3$ answers $φ'$ on every $\hist$ with $\hist_1 = d$ and $φ$ on every other $\hist$.
+
+  Since $\hist^{(k)} = ∅$ or $\hist^{(k)}(1) ≠ d$, no history in $H$ starts with $d$, so $w^*$ agrees with the constant-$φ$ prefix throughout $H$: $T(i) ⊆ w^*$ holds for $i ∈ I_3$, exactly as it did for $\allleadsto$ itself.
+
+  Then $a$ is not decisive for $i ∈ I_3$, for the same reason as in the self-referential case above and independently of $H, T$: since $a ≠ d$, $(a)$ lies outside the $d$-branch, so $a ∈ \histend((a)) = \set{a}$ answers $φ$; while $(d,a)$ lies in the $d$-branch, so $a ∈ \histend((d,a)) = \set{d,a}$ answers $φ'$. As $w^*$ only ever answers $φ$ or $φ'$, $a$ is decisive for no $p ∈ P$, so $w^* ∉ D_{a,T}$, hence $w^* ∉ C$. All three classes ($I_1 ∖ I_3$, $I_3$, $I_2$) are infinite and internally uniform, so $w^* ∈ E$.
+
+  It remains to show $¬\OF_C(w^*)$. As in the self-referential case, every finite $θ_0 ⊆ w^*$ restricted to $i ∈ I_3$ is a single chain, hence lies entirely within the $d$-branch (constant $φ'$, possibly with $φ$ at $∅$, embedding into $I_2$'s shape) or entirely outside it (constant $φ$ throughout, embedding into $I_1$'s shape) — this dichotomy never referred to $\hist^{(k)}$, $H$, or $T$, so it holds regardless of their complexity. Individuals outside $I_3$ embed by relabelling as usual (Anon, $\allleadsto ∈ C$). So $¬\OF_C(w^*)$ holds outright, and $w^* ∈ (¬\OF_C) ∩ E ∖ C$ contradicts Prov.
+
+  So no anonymous, provable, holding claim of the general form $D_{a,T}$ — for any finite one-individual observation template $(a,H,T)$ compatible with $I_1$'s or $I_2$'s shape, whatever the candidate $a$'s relation to $H$ — survives, whether or not it is additionally APST-P. (This only settles claims built from a single, uniform, one-individual template; the conjecture's own phrasing allows for claims quantifying jointly over several individuals, which is not addressed here.) The two remarks below illustrate genuine successes for weaker properties, and neither is in tension with this one: the first, using the same $\allleadsto$ fixed above, pins a value ($0$) compatible with neither shape, hence falls in the vacuous case excluded here; the second uses a different $\allleadsto$ altogether (\cref{ex:noProvableDecisivePhi}'s, where $I_2$ answers $φ'$ even at $∅$), so its APS-only conclusion is simply not addressed by this remark.
+\end{remark}
 
 \begin{remark}
   Fix $φ ≠ φ' ∈ P$, partition $I$ into two infinite classes $I_1, I_2$, and let $\allleadsto$ be the world: $∀i ∈ I_1, \hist ∈ \allhists: \hist \ileadstogo φ$, and $∀i ∈ I_2, \hist ∈ \allhists: [\hist = ∅ ⇒ \hist \ileadstogo φ ∧ \hist ≠ ∅ ⇒ \hist \ileadstogo φ']$. 
@@ -751,6 +763,42 @@ APST-P strengthens both APS-P (\cref{def:apsP}, dropping the requirement that $�
   Fix $φ ≠ φ' ∈ P$, partition $I$ into two infinite classes $I_1, I_2$, and let $\allleadsto$ be the world of \cref{ex:noProvableDecisivePhi}: $∀i ∈ I_1, \hist ∈ \allhists: \hist \ileadstogo φ$, and $∀i ∈ I_2, \hist ∈ \allhists: \hist \ileadstogo φ'$. 
   The claim $C = \set{\allleadstog \suchthat ∀i∈I: [∅⇝_iφ ⇒ a\ileadstost_iφ]}$ holds, is anonymous, probable by $¬\OF ∩ E$, and APS.
 \end{remark}
+
+Given $B ⊆ \allbs$ and $H ⊆ \allhists$, let $\restr{B}{H} = \set{\restr{f}{H} \suchthat f ∈ B}$ denote the behaviors in $B$ restricted to $H$.
+Say a behavior $g$ is undistinguishable from $B ⊆ \allbs$ iff
+$∀H ∈ \fincrhists: \restr{g}{H} ∈ \restr{B}{H}$.
+The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadstoo(I) ⊆ B]$.
+
+\begin{theorem}
+  Given any $B ⊆ \allbs$, if $C_B$ is provable by $¬\OF_{C_B ∩ E} ∩ E$, $B$ includes its undistinguishables.
+\end{theorem}
+\begin{proof}
+  Consider any $g ∈ \allbs$ undistinguishable from $B$.
+  Define $\allleadstog$ as $\allleadstog(I) = \set{g}$.
+  Note that $(¬\OF_{C_B ∩ E} ∩ E)(\allleadstog) ⇒ \allleadstog ∈ C_B ⇔ \set{g} ⊆ B$.
+  Towards showing $¬\OF_{C_B ∩ E}(\allleadstog)$ (thus $g ∈ B$, as $\allleadstog ∈ E$),
+  consider any $θ ∈ Θ ∩ \powerset{\allleadstog}$.
+  Given any $i ∈ I$, 
+  let $O = θ^{-1}(i)$ and $H = O^{-1}(P)$,
+  note that $O ⊆ g$
+  and $O = \restr{g}{H}$, 
+  and by definition of $Θ$, 
+  $H ∈ \fincrhists$,
+  thus $∃b_i ∈ B \suchthat O = \restr{g}{H} = \restr{b_i}{H} ⊆ b_i$. Thus, $θ$ is completeable in $C_B ∩ E$.
+\end{proof}
+Strange.
+If we were in $C$ and not in $g$, we should be able to observe sometimes $(a)$ leading to $¬φ$! Thus, reject $g$.
+
+Example
+-φ leads to φ
+-φ' leads to φ' (except ∅)
+g: start with (a), leads to φ; don’t, leads to φ'
+then g is undistinguishable from B: if obs (a), may be i1, and otherwise, may be i2.
+Well, that’s not true! It’s not if indeed we pick our observations from g, but we pick them from the actual world.
+
+\Cref{th:suffIndic} caracterizes situations that admit a claim that holds and is anonymous and indicative.
+
+NB \cref{th:noindic} has the key! And I should read \cref{sec:closing}.
 
 \subsection{Persistent falsifiability}
 Consider a claim that in some world satisfies F but not POF.
@@ -1624,11 +1672,11 @@ The following result indicates that, given a finite cover of $D ∖C$, $\OF_{D �
 \subsection{Repeatability}
 \begin{theorem}
   \label{th:provGapVisibility}
-  Given $C, D ⊆ \allleadstos$: $(¬\POF) ∩ D$ proves $C$ iff $(¬\OF) ∩ D$ proves $C$ and $C$ suffers no visibility issues in $D$ (that is, $∀\allleadstog ∈ D: \OF(\allleadstog) ⇒ \POF(\allleadstog)$).
+  Given $C, D ⊆ \allleadstos$: $(¬\POF_C) ∩ D$ proves $C$ iff $(¬\OF_C) ∩ D$ proves $C$ and $C$ suffers no visibility issues in $D$ (that is, $∀\allleadstog ∈ D: \OF_C(\allleadstog) ⇒ \POF_C(\allleadstog)$).
 \end{theorem}
 \begin{proof}
   The claim is equivalent to
-  $[∀\allleadstog ∉ C, \allleadstog ∈ D: \POF(\allleadstog)] ⇔ [∀\allleadstog ∉ C, \allleadstog ∈ D: \OF(\allleadstog) ∧ ∀\allleadstog ∉ C, \allleadstog ∈ D: \OF(\allleadstog) ⇒ \POF(\allleadstog)]$, because $∀\allleadstog ∈ C, ¬\OF(\allleadstog)$.
+  $[∀\allleadstog ∉ C, \allleadstog ∈ D: \POF_C(\allleadstog)] ⇔ [∀\allleadstog ∉ C, \allleadstog ∈ D: \OF_C(\allleadstog) ∧ ∀\allleadstog ∉ C, \allleadstog ∈ D: \OF_C(\allleadstog) ⇒ \POF_C(\allleadstog)]$, because $∀\allleadstog ∈ C, ¬\OF_C(\allleadstog)$.
 \end{proof}
 
 \begin{example}
@@ -2256,6 +2304,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
     In particular, $C^\text{HA}$ holds and is anonymous.
   \end{theorem}
   \begin{remark}
+    \label{rk:ca}
     Define $C^\text{A} = \set{{\allleadstog} ∈ \allleadstos \suchthat {\allleadstog}(I) = {\allleadsto}(I)}$. Observe that $C^\text{A}$ is anonymous, that $C^\text{HA} ⊆ C^\text{A}$, and that $C^\text{HA} ≠ C^\text{A}$ iff $∃ i, j ∈ I: {\ileadsto} ≠ {\ileadsto[j]}$ (to be checked).
   \end{remark}
 
@@ -2270,7 +2319,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
   \begin{proof}
     For \ref{it:condHAI} $⇒$ \ref{it:HAI},
     define $p = P_{i_1}$.
-    Consider any claim $C$ such that $C ⊆ \set{{\allleadstog} ∈ \allleadstos \suchthat {\ileadsto[i_1]} ∈ {\allleadstog}(I) ⊆ {\allleadsto}(I)}$ and $C$ is anonymous (for example, $C^\text{HA}$ is suitable).
+    Consider any claim $C$ such that $C ⊆ \set{{\allleadstog} ∈ \allleadstos \suchthat {\ileadsto[i_1]} ∈ {\allleadstog}(I) ⊆ {\allleadsto}(I)}$ and $C$ is anonymous (for example, $C^\text{HA}$ from \cref{th:claim_ha} is suitable).
     % Define the claim $C$ as $\set{{\allleadstog} ∈ \allleadstos \suchthat ∀ i ∈ I: {\ileadstog} ∈ \set{{\ileadsto[j]} \suchthat j ∈ I}}$ (or as anything included in it that includes $C^\text{HA}$ and is anonymous).
     The claim is indicative for $i = i_1$ and $θ = \set{(\hist, i_1, {\ileadsto[i_1]}(\hist)) \suchthat \hist ∈ H}$ for the following reason.
     The attitudes in $C$ compatible with $θ$ are $\set{{\allleadstog} \suchthat θ ⊆ {\allleadstog}} ∩ C ⊆ \set{{\allleadstog} \suchthat {\ileadstog[i_1]} ∈ \set{{\ileadsto[j]} \suchthat P_j = p}}$, and $π(\set{{\allleadstog} \suchthat {\ileadstog[i_1]} ∈ \set{{\ileadsto[j]} \suchthat P_j = p}})(i_1) = p$.
@@ -2602,6 +2651,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
   \end{remark}
 
 \subsection{Another closure}
+\label{sec:closing}
 Given a set of attitudes $S ⊆ P^{\allhists}$, the claim associated to it designates the claim $S^I = \set{{\allleadstog} ∈ \allleadstos \suchthat ∀ i ∈ I: {\ileadstog} ∈ S}$.
 Say that a claim $C$ is a claim about types iff $∃ S ⊆ P^{\allhists} \suchthat C = S^I$.
 Informally, such a claim claims that the set of attitudes in $I$ is contained in $S$ (though might be a strict subset of $S$), or equivalently, that no attitude out of $S$ exists among $I$.
