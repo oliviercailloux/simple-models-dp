@@ -801,13 +801,13 @@ If we were in $C$ and not in $g$, we should be able to observe sometimes $(a)$ l
 NB \cref{th:noindic} has the key! And I should read \cref{sec:closing}.
 
 \subsection{PEV under not POF}
-We introduce a weaker demand, a variant of the demand that $C ⊆ E$ satisfies PEV under $F_C = (¬\POF_C) ∩ E$.
+We now turn to claims $C ⊆ E$ satisfying PEV under $F_C = (¬\POF_C) ∩ E$.
 
-$C$ satisfies IPEV iff 
+Recall the definition.
+$C$ satisfies PEV under prior $(¬\POF_C) ∩ E$ iff 
 $∀\allleadstog ∈ C,
-\allleadstog' ∈ (¬\POF_C) ∩ E \suchthat \allleadstog' ∉ C,
-θ ∈ Θ ∩ \powerset{\allleadstog},
-∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ⊈ \allleadstog'$.
+∀θ ∈ Θ ∩ \powerset{\allleadstog}, 
+∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀θ' ⊆ {\allleadstog'} ∈ (¬\POF_C) ∩ E: {\allleadstog'} ∈ C$.
 
 \begin{example}
   $C = [∃i \suchthat a \ileadstost φ]$.
@@ -824,6 +824,16 @@ $∀\allleadstog ∈ C,
   Pick, wlog, $\allleadstog^φ$.
   Let’s show, to start with, that some obs in this world proves $C$ (assuming the prior).
 \end{example}
+
+Considering the above example where we are stuck,
+we introduce a weaker demand, a variant of the demand that $C ⊆ E$ satisfies PEV under $F_C = (¬\POF_C) ∩ E$.
+
+$C$ satisfies IPEV iff 
+$∀\allleadstog ∈ C,
+\allleadstog' ∈ (¬\POF_C) ∩ E \suchthat \allleadstog' ∉ C,
+θ ∈ Θ ∩ \powerset{\allleadstog},
+∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ⊈ \allleadstog'$.
+
 
 \subsection{Persistent falsifiability}
 Consider a claim that in some world satisfies F but not POF.
