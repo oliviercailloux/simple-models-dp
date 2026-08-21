@@ -786,8 +786,40 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadstoo(I
   $H ∈ \fincrhists$,
   thus $∃b_i ∈ B \suchthat O = \restr{g}{H} = \restr{b_i}{H} ⊆ b_i$. Thus, $θ$ is completeable in $C_B ∩ E$.
 \end{proof}
+TODO
 Strange.
 If we were in $C$ and not in $g$, we should be able to observe sometimes $(a)$ leading to $¬φ$! Thus, reject $g$.
+
+\subsection{PEV under not POF}
+We now turn to claims $C ⊆ E$ satisfying PEV under $F_C = (¬\POF_C) ∩ E$.
+
+Recall the definition.
+$C$ satisfies PEV under prior $(¬\POF_C) ∩ E$ iff 
+$∀\allleadstog ∈ C,
+∀θ ∈ Θ ∩ \powerset{\allleadstog}, 
+∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀θ' ⊆ \allleadstog' ∈ (¬\POF_C) ∩ E: \allleadstog' ∈ C$.
+\begin{theorem}
+  Given any $B ⊆ \allbs$, if $C = C_B$ satisfies PEV under $F_C$, $B$ includes its undistinguishables.
+\end{theorem}
+\begin{proof}
+  Consider any $g ∈ \allbs$ undistinguishable from $B$.
+  Consider any $\allleadstog ∈ C$ and any $\allleadstog'$ such that $\allleadstog'(I) = B ∪ \set{g}$.
+  Note that $\allleadstog' ∈ C ⇔ B ∪ \set{g} ⊆ B ⇔ g ∈ B$.
+  
+  Towards showing $¬\OF_{C ∩ E}(\allleadstog')$,
+  consider any $θ ∈ Θ ∩ \powerset{\allleadstog'}$.
+  Given any $i ∈ I$, 
+  let $O = θ^{-1}(i)$ and $H = O^{-1}(P)$,
+  note that $O ⊆ g$
+  and $O = \restr{g}{H}$, 
+  and by definition of $Θ$, 
+  $H ∈ \fincrhists$,
+  thus $∃b_i ∈ B \suchthat O = \restr{g}{H} = \restr{b_i}{H} ⊆ b_i$. Thus, $θ$ is completeable in $C ∩ E$.
+
+  Now, to obtain $\allleadstog' ∈ C$,
+  pick $θ = ∅$ and any $θ' ∈ Θ ∩ \powerset{\allleadstog}$ such that $θ' ⊆ \allleadstog' ∈ (¬\POF_C) ∩ E ⇒ \allleadstog' ∈ C$ (known to exist by hypothesis).
+  As $θ' ⊆ \allleadstog$, $θ'(I) ∈ B$, thus $θ'(I) ∈ B ∪ \set{g}$, hence, $θ' ⊆ \allleadstog'$.
+\end{proof}
 
 % Example
 % -φ leads to φ
@@ -800,15 +832,6 @@ If we were in $C$ and not in $g$, we should be able to observe sometimes $(a)$ l
 
 NB \cref{th:noindic} has the key! And I should read \cref{sec:closing}.
 
-\subsection{PEV under not POF}
-We now turn to claims $C ⊆ E$ satisfying PEV under $F_C = (¬\POF_C) ∩ E$.
-
-Recall the definition.
-$C$ satisfies PEV under prior $(¬\POF_C) ∩ E$ iff 
-$∀\allleadstog ∈ C,
-∀θ ∈ Θ ∩ \powerset{\allleadstog}, 
-∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀θ' ⊆ {\allleadstog'} ∈ (¬\POF_C) ∩ E: {\allleadstog'} ∈ C$.
-
 \begin{example}
   $C = [∃i \suchthat a \ileadstost φ]$.
   Consider any world $\allleadstog'$ where all $i$ satisfy $a \nileadstostg φ$ and each behavior is infinite.
@@ -820,13 +843,19 @@ $∀\allleadstog ∈ C,
 \begin{example}
   Define $\allleadsto^p$ as: empty leads to $φ$, everything else leads to $p$, for all individuals.
   Consider $C_B$ with $B = \set{\allleadstog^φ, \allleadstog^{φ'}}$.
-  Consider $g$ as defined above.
-  Pick, wlog, $\allleadstog^φ$.
-  Let’s show, to start with, that some obs in this world proves $C$ (assuming the prior).
+  Consider the behavior $g$ as $φ$ if path starts with $α$ or is empty, and $φ'$ otherwise,
+  and consider the world equal to $g$ for each individual.
+  We see that observing $(a) \ileadsto φ$ and $(a) \nileadsto[j] φ$ rejects successfully that world.
+  However, consider the world with three behaviors: $\allleadstog^φ, \allleadstog^{φ'}, g$.
+  Using the fact that this world must specify which individuals have which behaviors, we can observe wisely individuals mapped to $g$ to prove that they do not.
+  But this feels like cheating.
+  The opponent should perhaps be able to postulate that the world is made of these three types, and not specify the individuals!
+  We could force specifying something to discriminate, like some obs implies some behavior.
+  Though perhaps the fundamental problem is that if the world has the two postulated types of individuals, it could also have those three types of individuals!
+  % I should reject existence of such strange individuals: if i3 says φ when starting with a and ¬φ when starting with b, there must exist something like (a), (a, b), (a, b, c) where individual differs!
 \end{example}
 
-Considering the above example where we are stuck,
-we introduce a weaker demand, a variant of the demand that $C ⊆ E$ satisfies PEV under $F_C = (¬\POF_C) ∩ E$.
+We could introduce a weaker demand, a variant of the demand that $C ⊆ E$ satisfies PEV under $F_C = (¬\POF_C) ∩ E$, by inverting the order of attack and defense. However, I have some doubt that it does not improve verifiability.
 
 $C$ satisfies IPEV iff 
 $∀\allleadstog ∈ C,
