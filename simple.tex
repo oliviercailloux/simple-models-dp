@@ -764,32 +764,6 @@ APTS-P strengthens both APS-P (\cref{def:apsP}, dropping the requirement that $�
   The claim $C = \set{\allleadstog \suchthat ∀i∈I: [∅⇝_iφ ⇒ a\ileadstost_iφ]}$ holds, is anonymous, probable by $¬\OF ∩ E$, and APS.
 \end{remark}
 
-Given $B ⊆ \allbs$ and $H ⊆ \allhists$, let $\restr{B}{H} = \set{\restr{f}{H} \suchthat f ∈ B}$ denote the behaviors in $B$ restricted to $H$.
-Say a behavior $g$ is undistinguishable from $B ⊆ \allbs$ iff
-$∀H ∈ \fincrhists: \restr{g}{H} ∈ \restr{B}{H}$.
-The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadstoo(I) ⊆ B]$.
-
-\begin{theorem}
-  Given any $B ⊆ \allbs$, if $C_B$ is provable by $¬\OF_{C_B ∩ E} ∩ E$, $B$ includes its undistinguishables.
-\end{theorem}
-\begin{proof}
-  Consider any $g ∈ \allbs$ undistinguishable from $B$.
-  Define $\allleadstog$ as $\allleadstog(I) = \set{g}$.
-  Note that $(¬\OF_{C_B ∩ E} ∩ E)(\allleadstog) ⇒ \allleadstog ∈ C_B ⇔ \set{g} ⊆ B$.
-  Towards showing $¬\OF_{C_B ∩ E}(\allleadstog)$ (thus $g ∈ B$, as $\allleadstog ∈ E$),
-  consider any $θ ∈ Θ ∩ \powerset{\allleadstog}$.
-  Given any $i ∈ I$, 
-  let $O = θ^{-1}(i)$ and $H = O^{-1}(P)$,
-  note that $O ⊆ g$
-  and $O = \restr{g}{H}$, 
-  and by definition of $Θ$, 
-  $H ∈ \fincrhists$,
-  thus $∃b_i ∈ B \suchthat O = \restr{g}{H} = \restr{b_i}{H} ⊆ b_i$. Thus, $θ$ is completeable in $C_B ∩ E$.
-\end{proof}
-TODO
-Strange.
-If we were in $C$ and not in $g$, we should be able to observe sometimes $(a)$ leading to $¬φ$! Thus, reject $g$.
-
 \subsection{PEV under not POF}
 We now turn to claims $C ⊆ E$ satisfying PEV under $F_C = (¬\POF_C) ∩ E$.
 
@@ -798,12 +772,18 @@ $C$ satisfies PEV under prior $(¬\POF_C) ∩ E$ iff
 $∀\allleadstog ∈ C,
 ∀θ ∈ Θ ∩ \powerset{\allleadstog}, 
 ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀θ' ⊆ \allleadstog' ∈ (¬\POF_C) ∩ E: \allleadstog' ∈ C$.
+
+Given $B ⊆ \allbs$ and $H ⊆ \allhists$, let $\restr{B}{H} = \set{\restr{f}{H} \suchthat f ∈ B}$ denote the behaviors in $B$ restricted to $H$.
+Say a behavior $g$ is undistinguishable from $B ⊆ \allbs$ iff
+$∀H ∈ \fincrhists: \restr{g}{H} ∈ \restr{B}{H}$.
+The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadstoo(I) ⊆ B]$.
+
 \begin{theorem}
-  Given any $B ⊆ \allbs$, if $C = C_B$ satisfies PEV under $F_C$, $B$ includes its undistinguishables.
+  Given any $B ⊆ \allbs$, if $C = C_B ∩ E$ satisfies PEV under $F_C$, $B$ includes its undistinguishables.
 \end{theorem}
 \begin{proof}
   Consider any $g ∈ \allbs$ undistinguishable from $B$.
-  Consider any $\allleadstog ∈ C$ and any $\allleadstog'$ such that $\allleadstog'(I) = B ∪ \set{g}$.
+  Consider any $\allleadstog ∈ C$ and any $\allleadstog' ∈ E$ such that $\allleadstog'(I) = B ∪ \set{g}$.
   Note that $\allleadstog' ∈ C ⇔ B ∪ \set{g} ⊆ B ⇔ g ∈ B$.
   
   Towards showing $¬\OF_{C ∩ E}(\allleadstog')$,
@@ -821,12 +801,84 @@ $∀\allleadstog ∈ C,
   As $θ' ⊆ \allleadstog$, $θ'(I) ∈ B$, thus $θ'(I) ∈ B ∪ \set{g}$, hence, $θ' ⊆ \allleadstog'$.
 \end{proof}
 
-% Example
-% -φ leads to φ
-% -φ' leads to φ' (except ∅)
-% g: start with (a), leads to φ; don’t, leads to φ'
-% then g is undistinguishable from B: if obs (a), may be i1, and otherwise, may be i2.
-% Well, that’s not true! It’s not if indeed we pick our observations from g, but we pick them from the actual world.
+\begin{conjecture}
+  Partition $I$ into two infinite classes $I_1, I_2$, and define $\allleadsto$ as $\allleadsto(i_1) = \allleadsto^φ$ and $\allleadsto(i_2) = \allleadsto^{φ'}$. 
+  Any claim $C ⊆ E$ about types and entailing [$(a) \ileadsto φ$ implies that a is a decisive argument for i] that holds fails PEV under $¬\OF ∩ E$.
+\end{conjecture}
+\begin{proof}[Proof to be checked]
+  To hold, $C$ must allow for the two types in the real world.
+  The world where there is also a third type of individual that behaves as:
+  for emptyset of any argument starting with $a$, leads to $φ$, otherwise, leads to $φ'$,
+  is undistinguishable from the two types in $C$, thus must be included for satisfying PEV, but this would prevent the required entailment.
+\end{proof}
+
+Given 
+$O ⊆ \allhists × P$ with $O^{-1}(P) ∈ \fincrhists$, 
+let $O(i)$ denote the triples $\set{(α, i, p) \suchthat (α, p) ∈ O}$.
+Note that $O(i) ∈ Θ$.
+
+Given $g ∈ \allbs$,
+$O ⊆ \allhists × P$ with $O^{-1}(P) ∈ \fincrhists$, 
+$i ∈ I$,
+$a ∈ \allargs$, 
+$p ∈ P$,
+say that in $g$, $O$ leads $i$ to $(a, p)$ iff
+$O(i) ⊆ g ⇒ a \ileadstostg[g] p$.
+Say that in the world $\allleadstog$, $O$ leads $i$ to $(a, p)$ iff
+$[∀i: O(i) ⊆ \ileadstogo ⇒ a \ileadstostg p] ∧ ∃i \suchthat O(i) ⊆ \ileadstogo$.
+
+Say that the world $\allleadstog$ fails $O$ to $(a, p)$ visibly out of $B$ iff
+$∀g ∈ \allleadstog(I) ∖ B \suchthat O ⊆ g ∧ a \nileadstostg[g] p: ∃ H ∈ \fincrhists \suchthat \restr{g}{H} ∉ \restr{B}{H}$.
+
+Given $O ⊆ \allhists × P$ with $O^{-1}(P) ∈ \fincrhists$, 
+$a ∈ \allargs$, 
+$p ∈ P$,
+define $D^{O, a, p}_C$ as the prior: any behavior that fails $O$ leads $i$ to $(a, p)$ does so visibly out of $B$, the types of $C$.
+(We could relax the prior by adding $B ⊈ \allleadstog(I) ∨…$ (or $B ⊆ \allleadstog(I) ⇒ …$), because we need only verifiability when $B ⊈ \allleadstog(I)$!)
+
+\begin{conjecture}
+  Given $O ⊆ \allhists × P$ with $O^{-1}(P) ∈ \fincrhists$, 
+  $a ∈ \allargs$, 
+  $p ∈ P$,
+  if $\allleadsto$ leads $O$ to $(a, p)$,
+  then the claim $C = [∀i: O(i) ⊆ \allleadstoo ⇒ a \ileadstost p]$ holds and is anonymous and APTS-P and provable by $(¬\POF_C) ∩ E ∩ D^{O, a, p}_C$.
+\end{conjecture}
+\begin{proof}
+  Consider any world $\allleadstog ∈ E ∩ D, \allleadstog ∉ C$ and let us show $\POF$.
+  For some $i$, $O(i) ⊆ \allleadstog$ but $a \nileadstostg p$.
+  Define $g = \allleadstog(i)$, thus $O ⊆ g$.
+  As $\allleadstog ∈ D$, $g$ fails visibly out of $B$.
+  As $\allleadstog ∈ E$, whatever the prefix $θ$, some suffix $θ'$ transfers all those observations to some individual not in $θ^{-1}(\allhists, P)$, and is not completable in $C$.
+\end{proof}
+
+Here is a second, fully detailed proof of the same statement, spelling out every step, including one point the sketch above leaves implicit: why the failing behavior automatically qualifies as a witness against $D^{O,a,p}_C$.
+
+\begin{proof}[Detailed proof]
+  Throughout, write $B := S_C := ⋃_{\allleadstog' ∈ C} \allleadstog'(I) ⊆ \allbs$ for the \emph{types of $C$} — the set of behaviors (elements of $\allbs = P^{\allhists}$) occurring as some individual's row in some world satisfying $C$ — and $D := D^{O, a, p}_C$ for the prior denoted $D^{O,a,p}$ in the statement, both evaluated at the very claim $C$ defined in this conjecture. (This is not circular: $B$ and $D$ are only ever \emph{evaluated} at $C$, never used to construct it.) Unfolding the definitions, $\allleadstog ∈ D$ means:
+  $$∀h ∈ \allleadstog(I) ∖ B \suchthat O ⊆ h ∧ a \nileadstostg[h] p: ∃ H ∈ \fincrhists \suchthat \restr{h}{H} ∉ \restr{B}{H}.$$
+
+  \emph{Holds, and a witness individual.} Unfolding the definition of "in the world $\allleadstog$, $O$ leads $i$ to $(a,p)$", the hypothesis "$\allleadsto$ leads $O$ to $(a,p)$" says
+  $$[∀i ∈ I: O(i) ⊆ \allleadsto ⇒ a \ileadstost p] \ ∧ \ [∃i_0 ∈ I \suchthat O(i_0) ⊆ \allleadsto].$$
+  The first conjunct is exactly the defining condition of $C$ evaluated at $\allleadsto$, so it says $\allleadsto ∈ C$: this part of the conjecture is an immediate restatement of the hypothesis. The second conjunct fixes, once and for all, an individual $i_0 ∈ I$ with $θ_0 := O(i_0) ⊆ \allleadsto$; it is not used for "holds", but it is exactly what makes the APTS-P argument below go through with no further assumption on $O$.
+
+  \emph{Anonymous.} Fix a permutation $σ$ of $I$ and $\allleadstog ∈ \allleadstos$. By \cref{def:anonymous}, $(\allleadstog ∘ σ)(i) = \allleadstog(σ(i))$ (row $i$ of $\allleadstog ∘ σ$ equals row $σ(i)$ of $\allleadstog$). Decisiveness (\cref{def:decisive}) and the condition $O(i) ⊆ \cdot$ each depend only on the row of the individual considered, so $a \ileadstost[i] p$ holds in $\allleadstog ∘ σ$ iff $a \ileadstost[σ(i)] p$ holds in $\allleadstog$, and $O(i) ⊆ \allleadstog ∘ σ$ iff $O(σ(i)) ⊆ \allleadstog$. Hence, using that $i ↦ σ(i)$ is a bijection of $I$,
+  $$\allleadstog ∘ σ ∈ C ⇔ ∀i ∈ I: O(i) ⊆ \allleadstog ∘ σ ⇒ a \ileadstost[i] p ⇔ ∀i ∈ I: O(σ(i)) ⊆ \allleadstog ⇒ a \ileadstost[σ(i)] p ⇔ ∀j ∈ I: O(j) ⊆ \allleadstog ⇒ a \ileadstost[j] p ⇔ \allleadstog ∈ C.$$
+  As $\allleadstog, σ$ were arbitrary, $C ∘ σ = C$ for every $σ$: $C$ is anonymous.
+
+  \emph{APTS-P.} Take $θ := θ_0 = O(i_0) ∈ Θ ∩ \powerset{\allleadsto}$ (feasible, by choice of $i_0$ above), together with $i_0$ and $p$, as the witness. First, $\allleadsto ∈ \set{θ⊆\allleadstog}∩C$ (as $θ = θ_0 ⊆ \allleadsto$ and $\allleadsto ∈ C$, both from the previous paragraph), so $p ∈ π_{i_0}(\set{θ⊆\allleadstog}∩C)$. Second, for any $\allleadstog' ∈ \set{θ⊆\allleadstog}∩C$: $θ = O(i_0) ⊆ \allleadstog'$ together with $\allleadstog' ∈ C$, instantiated at $i = i_0$, gives $a \ileadstost[i_0] p$ in $\allleadstog'$, that is $p ∈ P_{i_0}(\allleadstog')$; by \cref{th:sing}, $\card{P_{i_0}(\allleadstog')} ≤ 1$, so $P_{i_0}(\allleadstog') = \set{p}$ exactly, that is $π_{i_0}(\allleadstog') = p$. Hence $π_{i_0}(\set{θ⊆\allleadstog}∩C) = \set{p}$: as $p ∈ P$ is a genuine value and $θ$ is feasible, this is APTS-P, witnessed by $(θ, i_0, p)$. (No completion of $O$ into a full behavior is needed here, unlike in an earlier attempt at this step: the witness individual $i_0$ handed to us by the hypothesis, together with $\allleadsto$ itself, already does the job.)
+
+  \emph{Provable by $(¬\POF_C) ∩ E ∩ D$.} Recall that a prior proves $C$ iff it is a subset of $C$. We show $(¬\POF_C) ∩ E ∩ D ⊆ C$ by contraposition: fix $\allleadstog ∈ E ∩ D$ with $\allleadstog ∉ C$, and show $\POF_C(\allleadstog)$, that is, $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆$.
+
+  \emph{Step 1 (a row falsifying $O$-leads-to-$(a,p)$ is never a type of $C$).} For any $h ∈ \allbs$ with $O ⊆ h$ and $a \nileadstostg[h] p$: if $h ∈ B = S_C$, some $\allleadstog'' ∈ C$ and $i'' ∈ I$ satisfy $\allleadstog''(i'') = h$; then $O ⊆ h = \allleadstog''(i'')$ gives $O(i'') ⊆ \allleadstog''$, so $\allleadstog'' ∈ C$'s defining condition at $i''$ forces $a \ileadstostg[h] p$, contradicting $a \nileadstostg[h] p$. So $h ∉ B$.
+
+  \emph{Step 2 (extracting a witness $H$).} Since $\allleadstog ∉ C$, some $i ∈ I$ has $O(i) ⊆ \allleadstog$ and $a \nileadstostg p$ at row $i$. Let $g := \allleadstog(i)$; then $O ⊆ g$ and $a \nileadstostg[g] p$ (decisiveness at $i$ depends only on row $g$), so by Step 1, $g ∉ B$. As $g ∈ \allleadstog(I)$ trivially, $g$ satisfies the antecedent of $\allleadstog ∈ D$ (at $h := g$), which yields some $H ∈ \fincrhists$ with $\restr{g}{H} ∉ \restr{B}{H}$.
+
+  \emph{Step 3 (a falsifying observation at any row-$g$ individual).} For $k ∈ I$ with $\allleadstog(k) = g$, let $θ_H^k := \set{(k, \hist, g(\hist)) \suchthat \hist ∈ H}$. Since $H ∈ \fincrhists$, $θ_H^k ∈ Θ$, and $θ_H^k ⊆ \allleadstog$. If some $\allleadstog''' ∈ C$ extended $θ_H^k$, then $f := \allleadstog'''(k)$ would satisfy $\restr{f}{H} = \restr{g}{H}$ while $f ∈ \allleadstog'''(I) ⊆ B$, giving $\restr{g}{H} ∈ \restr{B}{H}$ — contradicting Step 2. So $θ_H^k ∉ C^⊆$.
+
+  \emph{Step 4 (repeating the witness at a fresh clone).} Fix any $θ ∈ Θ ∩ \powerset{\allleadstog}$. As $\allleadstog ∈ E$, \cref{def:repeatable} applied at $i$ gives that $J_g := \set{j ∈ I \suchthat \allleadstog(j) = g}$ is infinite; as $θ$ is finite, $θ^{-1}(\allhists, P)$ is finite, so $J_g ∖ θ^{-1}(\allhists,P) ≠ ∅$. Pick $i'$ in this set and let $θ' := θ ∪ θ_H^{i'}$. Since $i'$ is untouched by $θ$, $θ' ∖ θ$ concerns only $i'$, so $θ ⊑ θ'$; $θ' ∈ Θ ∩ \powerset{\allleadstog}$ as before. Since $θ_H^{i'} ⊆ θ'$ and $C^⊆$ is downwards closed, $θ' ∈ C^⊆$ would force $θ_H^{i'} ∈ C^⊆$, contradicting Step 3; so $θ' ∉ C^⊆$.
+
+  As $θ$ was arbitrary (the same $H$ serves throughout; only the clone $i'$ depends on $θ$), $\POF_C(\allleadstog)$ holds. Hence $\allleadstog ∉ ¬\POF_C$, so no element of $E ∩ D ∖ C$ lies in $¬\POF_C$; equivalently, $(¬\POF_C) ∩ E ∩ D ⊆ C$.
+\end{proof}
 
 \Cref{th:suffIndic} caracterizes situations that admit a claim that holds and is anonymous and indicative.
 
