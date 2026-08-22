@@ -251,7 +251,7 @@ A claim $C$ is \emph{informative} iff $π(C) = \set{π(\allleadstog) \suchthat {
 A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π_i(C) = \set{π_i(\allleadstog) \suchthat {\allleadstog} ∈ C} ≠ P ∪ \set{∅}$.
 A claim $C$ is \emph{a posteriori informative beyond counting} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \set{π_i(\allleadstog) \suchthat θ ⊆ {\allleadstog} ∈ C} ≠ P ∪ \set{∅}$.
 A claim $C$ is \emph{a posteriori sharp} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ {\allleadstog} ∈ C} = 1$.
-\label{def:apst}
+\label{def:apts}
 A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ {\allleadstog} ∈ C} = 1$.
 
 \begin{remark}
@@ -711,20 +711,20 @@ Given $θ ∈ Θ$, let $θ^{\downarrow} = \set{(\hist,p) ∈ \allhists × P \suc
 \end{remark}
 
 \begin{definition}[A posteriori truly sharp with a named value]
-  \label{def:apstP}
-  A claim $C$ is \emph{a posteriori truly sharp with a named value} (APST-P) iff $∃θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I, p ∈ P \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \set{p}$.
+  \label{def:aptsP}
+  A claim $C$ is \emph{a posteriori truly sharp with a named value} (APTS-P) iff $∃θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I, p ∈ P \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \set{p}$.
 \end{definition}
-APST-P strengthens both APS-P (\cref{def:apsP}, dropping the requirement that $θ$ be feasible) and a posteriori truly sharp (\cref{def:apst}, dropping the named value): it requires a witness that is simultaneously actually observable ($θ ⊆ \allleadsto$) and pins a genuine element of $P$ rather than the sentinel $∅$.
+APTS-P strengthens both APS-P (\cref{def:apsP}, dropping the requirement that $θ$ be feasible) and a posteriori truly sharp (\cref{def:apts}, dropping the named value): it requires a witness that is simultaneously actually observable ($θ ⊆ \allleadsto$) and pins a genuine element of $P$ rather than the sentinel $∅$.
 
 \begin{conjecture}
-  \label{cnj:decisiveArgAPSTP}
+  \label{cnj:decisiveArgAPTSP}
   Fix $φ ≠ φ' ∈ P$, partition $I$ into two infinite classes $I_1, I_2$, and let $\allleadsto$ be the world: $∀i ∈ I_1, \hist ∈ \allhists: \hist \ileadstogo φ$, and $∀i ∈ I_2, \hist ∈ \allhists: [\hist = ∅ ⇒ \hist \ileadstogo φ ∧ \hist ≠ ∅ ⇒ \hist \ileadstogo φ']$. 
   No $C$ of the form $[∀i, j$, …: some obs implies that a is a decisive argument for i]
-  that holds satisfies anonymity, provability by $¬\OF ∩ E$, and APST-P.
+  that holds satisfies anonymity, provability by $¬\OF ∩ E$, and APTS-P.
 \end{conjecture}
 
 \begin{remark}[A self-referential template is already excluded]
-  Fix $a ∈ \allargs$, and suppose $C ⊆ D_a := \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: [(a) \ileadstogo φ ⇒ a \ileadstostg φ]}$, together with $\allleadsto ∈ C$, Anon, Prov, and APST-P.
+  Fix $a ∈ \allargs$, and suppose $C ⊆ D_a := \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: [(a) \ileadstogo φ ⇒ a \ileadstostg φ]}$, together with $\allleadsto ∈ C$, Anon, Prov, and APTS-P.
 
   Since $I_2$ answers $φ'$, not $φ$, at every nonempty history, $D_a$'s antecedent is satisfied by $\allleadsto$ exactly on $I_1$; there is no analogous case to treat on $I_2$'s side.
 
@@ -734,12 +734,12 @@ APST-P strengthens both APS-P (\cref{def:apsP}, dropping the requirement that $�
 
   It remains to show $¬\OF_C(w^*)$, contradicting Prov together with $w^* ∈ E ∖ C$. Every finite $θ_0 ⊆ w^*$ must extend into some member of $C$. For individuals outside $I_3$ this is immediate, relabelling onto fresh members of $\allleadsto$'s own classes (Anon and $\allleadsto ∈ C$). For $i ∈ I_3$, $θ_0$ restricted to $i$ is a single chain, hence every queried history is a prefix of the deepest one queried; since any two comparable nonempty histories share their first argument, the whole chain either has $\hist_1 = b$ throughout its nonempty part — constant $φ'$, possibly with $φ$ at $∅$, embedding into $I_2$'s shape — or never does — constant $φ$ throughout, embedding into $I_1$'s shape. Unlike a template split \emph{past} a shared nonempty prefix, no chain can straddle both: the two histories witnessing $a$'s non-decisiveness, $(a)$ and $(b,a)$, are incomparable, so no single observation ever sees both. Hence $¬\OF_C(w^*)$ holds outright, and $w^* ∈ (¬\OF_C) ∩ E ∖ C$ contradicts Prov.
 
-  This settles the case of a single self-referential template: no anonymous, provable, holding claim of the form $D_a$ is APST-P. The next remark shows the same trick — routing the counterexample through a branch entirely foreign to the template, rather than splitting past a shared prefix — handles the fully general template as well.
+  This settles the case of a single self-referential template: no anonymous, provable, holding claim of the form $D_a$ is APTS-P. The next remark shows the same trick — routing the counterexample through a branch entirely foreign to the template, rather than splitting past a shared prefix — handles the fully general template as well.
 \end{remark}
 
 \begin{remark}[The same trick handles the fully general template]
   \label{rmk:generalTemplateExcluded}
-  Fix $a ∈ \allargs$, a finite $H ∈ \incr(\allhists)$, and $T: H → P$, and suppose $C ⊆ D_{a,T} := \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: [T(i) ⊆ \allleadstog ⇒ ∃p ∈ P \suchthat a \ileadstostg p]}$, writing $T(i) = \set{(i,\hist,p) \suchthat \hist ∈ H, T(\hist) = p}$, together with $\allleadsto ∈ C$ and Anon and Prov (APST-P plays no role below, so the conclusion holds without it, and for the unpinned decisiveness question rather than only at $φ$).
+  Fix $a ∈ \allargs$, a finite $H ∈ \incr(\allhists)$, and $T: H → P$, and suppose $C ⊆ D_{a,T} := \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: [T(i) ⊆ \allleadstog ⇒ ∃p ∈ P \suchthat a \ileadstostg p]}$, writing $T(i) = \set{(i,\hist,p) \suchthat \hist ∈ H, T(\hist) = p}$, together with $\allleadsto ∈ C$ and Anon and Prov (APTS-P plays no role below, so the conclusion holds without it, and for the unpinned decisiveness question rather than only at $φ$).
 
   Write $\hist^{(k)} = \max H$ (or $∅$ if $H = ∅$), and suppose $T$ is compatible with constant $φ$ (the case of $I_2$'s shape is symmetric, carving $I_3$ from $I_2$ instead and swapping the roles of $φ, φ'$ throughout; if $T$ is compatible with neither, no individual of $\allleadsto$ ever satisfies the antecedent and the claim holds vacuously, as in the first remark below).
 
@@ -751,7 +751,7 @@ APST-P strengthens both APS-P (\cref{def:apsP}, dropping the requirement that $�
 
   It remains to show $¬\OF_C(w^*)$. As in the self-referential case, every finite $θ_0 ⊆ w^*$ restricted to $i ∈ I_3$ is a single chain, hence lies entirely within the $d$-branch (constant $φ'$, possibly with $φ$ at $∅$, embedding into $I_2$'s shape) or entirely outside it (constant $φ$ throughout, embedding into $I_1$'s shape) — this dichotomy never referred to $\hist^{(k)}$, $H$, or $T$, so it holds regardless of their complexity. Individuals outside $I_3$ embed by relabelling as usual (Anon, $\allleadsto ∈ C$). So $¬\OF_C(w^*)$ holds outright, and $w^* ∈ (¬\OF_C) ∩ E ∖ C$ contradicts Prov.
 
-  So no anonymous, provable, holding claim of the general form $D_{a,T}$ — for any finite one-individual observation template $(a,H,T)$ compatible with $I_1$'s or $I_2$'s shape, whatever the candidate $a$'s relation to $H$ — survives, whether or not it is additionally APST-P. (This only settles claims built from a single, uniform, one-individual template; the conjecture's own phrasing allows for claims quantifying jointly over several individuals, which is not addressed here.) The two remarks below illustrate genuine successes for weaker properties, and neither is in tension with this one: the first, using the same $\allleadsto$ fixed above, pins a value ($0$) compatible with neither shape, hence falls in the vacuous case excluded here; the second uses a different $\allleadsto$ altogether (\cref{ex:noProvableDecisivePhi}'s, where $I_2$ answers $φ'$ even at $∅$), so its APS-only conclusion is simply not addressed by this remark.
+  So no anonymous, provable, holding claim of the general form $D_{a,T}$ — for any finite one-individual observation template $(a,H,T)$ compatible with $I_1$'s or $I_2$'s shape, whatever the candidate $a$'s relation to $H$ — survives, whether or not it is additionally APTS-P. (This only settles claims built from a single, uniform, one-individual template; the conjecture's own phrasing allows for claims quantifying jointly over several individuals, which is not addressed here.) The two remarks below illustrate genuine successes for weaker properties, and neither is in tension with this one: the first, using the same $\allleadsto$ fixed above, pins a value ($0$) compatible with neither shape, hence falls in the vacuous case excluded here; the second uses a different $\allleadsto$ altogether (\cref{ex:noProvableDecisivePhi}'s, where $I_2$ answers $φ'$ even at $∅$), so its APS-only conclusion is simply not addressed by this remark.
 \end{remark}
 
 \begin{remark}
