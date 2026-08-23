@@ -836,13 +836,14 @@ $p ∈ P$,
 define $D^{O, a, p}_C$ as the prior: any behavior that fails $O$ leads $i$ to $(a, p)$ does so visibly out of $B$, the types of $C$.
 (We could relax the prior by adding $B ⊈ \allleadstog(I) ∨…$ (or $B ⊆ \allleadstog(I) ⇒ …$), because we need only verifiability when $B ⊈ \allleadstog(I)$!)
 
-\begin{conjecture}
-  Given $O ⊆ \allhists × P$ with $O^{-1}(P) ∈ \fincrhists$, 
-  $a ∈ \allargs$, 
+\begin{theorem}
+  \label{th:leadsToProvable}
+  Given $O ⊆ \allhists × P$ with $O^{-1}(P) ∈ \fincrhists$,
+  $a ∈ \allargs$,
   $p ∈ P$,
   if $\allleadsto$ leads $O$ to $(a, p)$,
   then the claim $C = [∀i: O(i) ⊆ \allleadstoo ⇒ a \ileadstost p]$ holds and is anonymous and APTS-P and provable by $(¬\POF_C) ∩ E ∩ D^{O, a, p}_C$.
-\end{conjecture}
+\end{theorem}
 \begin{proof}
   Consider any world $\allleadstog ∈ E ∩ D, \allleadstog ∉ C$ and let us show $\POF$.
   For some $i$, $O(i) ⊆ \allleadstog$ but $a \nileadstostg p$.
@@ -878,6 +879,74 @@ Here is a second, fully detailed proof of the same statement, spelling out every
   \emph{Step 4 (repeating the witness at a fresh clone).} Fix any $θ ∈ Θ ∩ \powerset{\allleadstog}$. As $\allleadstog ∈ E$, \cref{def:repeatable} applied at $i$ gives that $J_g := \set{j ∈ I \suchthat \allleadstog(j) = g}$ is infinite; as $θ$ is finite, $θ^{-1}(\allhists, P)$ is finite, so $J_g ∖ θ^{-1}(\allhists,P) ≠ ∅$. Pick $i'$ in this set and let $θ' := θ ∪ θ_H^{i'}$. Since $i'$ is untouched by $θ$, $θ' ∖ θ$ concerns only $i'$, so $θ ⊑ θ'$; $θ' ∈ Θ ∩ \powerset{\allleadstog}$ as before. Since $θ_H^{i'} ⊆ θ'$ and $C^⊆$ is downwards closed, $θ' ∈ C^⊆$ would force $θ_H^{i'} ∈ C^⊆$, contradicting Step 3; so $θ' ∉ C^⊆$.
 
   As $θ$ was arbitrary (the same $H$ serves throughout; only the clone $i'$ depends on $θ$), $\POF_C(\allleadstog)$ holds. Hence $\allleadstog ∉ ¬\POF_C$, so no element of $E ∩ D ∖ C$ lies in $¬\POF_C$; equivalently, $(¬\POF_C) ∩ E ∩ D ⊆ C$.
+\end{proof}
+
+To get a sense of the strength of this prior, let us examine a world not in $D$.
+It fails $O$ leads $i$ to $(a, p)$ but invisibly.
+If $O$ is $(a) \ileadsto φ$, this requires that all paths starting with $a$ and ending with $a$ lead to $φ$ (otherwise it fails visibly).
+
+Consider the world with behaviors $\ileadsto^φ, \ileadsto^{φ'}$.
+Let’s find a claim $C$ provable under our prior but such that the prior is reasonable.
+Consider $C$ that says: $(a, b) \ileadsto φ ⇒ a \ileadstost φ$ and for all prefixes $α$: $α \nileadsto φ ⇒ (α, a, b) \nileadsto φ$ and $(α, a, b) \nileadsto φ ⇒ (a, b, α) \nileadsto φ$.
+Then a behavior denying the main implication must say $(a) \ileadsto φ$ and some $c \nileadsto φ$ and $c, a, b$ as well and $a, b, c$ as well.
+
+\begin{example}
+  \label{ex:abClosure}
+  Consider $\allleadstoo(I) = \set{\ileadsto^φ, \ileadsto^{φ'}}$.
+  Define $O = \set{(a, b), φ}$.
+  The claim $C = [(a, b) \ileadsto φ ⇒ a \ileadstost φ ∧ ∀α: α \nileadsto φ ⇒ (α, a, b) \nileadsto φ]$ holds, is anonymous, APTS-P, and provable by $(¬\POF_C) ∩ E ∩ D^{O, a, p}_C$.
+
+  Also, any behavior $\ileadstog$ out of our prior $D$ (meaning, any behavior whose presence in a world makes it fail $D$) satisfies, for some $α$: $(α, a, b) \nileadstog φ$ and $(a, b, α) \ileadstog φ$. In other words, any prior that forbids all those patterns suffice to ensure provability (together with $(¬\POF_C) ∩ E$, as usual).
+\end{example}
+
+The detailed proof of \cref{th:leadsToProvable} splits, when showing provability, into worlds falsifying the template $C$ itself (handled purely from $C' ⊆ C$, visibility out of $B := S_{C'}$, and repeatability) and worlds satisfying $C$ yet failing $C'$'s extra content (not handled at all by that argument). The claim in the example just above adds exactly such extra content ($∀α: α \nileadsto φ ⇒ (α, a, b) \nileadsto φ$) to the template, so the detailed proof above does not, by itself, establish it: it only accounts for the first kind of falsifying world. The following statement isolates what the second kind additionally requires.
+
+\begin{theorem}
+  \label{th:genProvableSubclaim}
+  Given $O ⊆ \allhists × P$ with $O^{-1}(P) ∈ \fincrhists$,
+  $a ∈ \allargs$,
+  $p ∈ P$,
+  $C = [∀i: O(i) ⊆ \allleadstoo ⇒ a \ileadstost p]$,
+  $C' ⊆ C$ such that
+  $\allleadsto ∈ C'$,
+  $∃i_0 ∈ I \suchthat O(i_0) ⊆ \allleadsto$,
+  $C'$ is anonymous,
+  and $(C ∖ C') ∩ E ∩ D^{O, a, p}_{C'} ⊆ \POF_{C'}$,
+  then $C'$ holds and is APTS-P and provable by $(¬\POF_{C'}) ∩ E ∩ D^{O, a, p}_{C'}$.
+\end{theorem}
+
+Taking $C' = C$ recovers \cref{th:leadsToProvable}: $C ∖ C' = ∅$ makes the last condition vacuous, and anonymity of $C$ is then a consequence (shown in the detailed proof) rather than a hypothesis. For the example above, the last condition is exactly the (unproven) claim that every world agreeing with $\allleadsto$'s template-decisiveness at $a$ but violating the $∀α$-closure is nonetheless caught, visibly, by $D^{O,a,p}_{C'} ∩ E$.
+
+\begin{proof}[Proof of \cref{ex:abClosure}]
+  Write $O = \set{((a,b), φ)}$ (so $O^{-1}(P) = \set{(a,b)} ∈ \fincrhists$), $p := φ$, and let $C = [(a,b) \ileadsto φ ⇒ a \ileadstost φ]$ be the template of \cref{th:leadsToProvable} for this $O, a, p$, so that \cref{ex:abClosure}'s claim is $C' = C ∧ [∀α: α \nileadsto φ ⇒ (α,a,b) \nileadsto φ]$, manifestly $C' ⊆ C$. We check the hypotheses of \cref{th:genProvableSubclaim}.
+
+  \emph{$\allleadsto ∈ C'$ and a witness $i_0$.} Write $I_1, I_2 ⊆ I$ for the (infinite) classes behaving as $\ileadsto^φ, \ileadsto^{φ'}$ respectively. For $i ∈ I_1$: every history maps to $φ$, so $(a,b) \ileadstogo[i] φ$ and $a$ is trivially decisive for $φ$ — the first conjunct holds at $i$ — and, for any $α$, $α \ileadstogo[i] φ$, so the second conjunct's antecedent never fires at $i$. For $i ∈ I_2$: $(a,b) \nileadstogo[i] φ$, so the first conjunct holds vacuously at $i$; and for any $α$, $α \nileadstogo[i] φ$ while also $(α,a,b) \nileadstogo[i] φ$ (both equal $φ'$), so the second conjunct holds at $i$ too. Hence $\allleadsto ∈ C'$, and any $i_0 ∈ I_1$ satisfies $O(i_0) ⊆ \allleadsto$.
+
+  \emph{$C'$ anonymous.} Both conjuncts of $C'$ are of the form $∀i: Q(\allleadstog(i))$ for a property $Q$ of a single row (the first exactly as in \cref{th:leadsToProvable}'s \emph{Anonymous} paragraph; the second through $Q(f) := [∀α: f(α) ≠ φ ⇒ f(α,a,b) ≠ φ]$). The same relabelling computation as there, applied to each conjunct, gives $C' ∘ σ = C'$ for every permutation $σ$.
+
+  \emph{The residual condition.} We show the stronger $(C ∖ C') ∩ E ⊆ \POF_{C'}$, which contains $(C ∖ C') ∩ E ∩ D^{O,a,p}_{C'}$. Fix $\allleadstog ∈ (C ∖ C') ∩ E$. Since $\allleadstog ∈ C ∖ C'$, the failure of $C'$ lies in the second conjunct: some $i ∈ I$ and $α ∈ \allhists$ satisfy $α \nileadstogo[i] φ$ and $(α,a,b) \ileadstogo[i] φ$. Let $g := \allleadstog(i)$, so $g(α) ≠ φ$ and $g(α,a,b) = φ$, and let $H := \set{α, (α,a,b)} ∈ \fincrhists$ ($α$ prefixes $(α,a,b)$).
+
+  Fix any $θ ∈ Θ ∩ \powerset{\allleadstog}$. As $\allleadstog ∈ E$, $J_g := \set{j ∈ I \suchthat \allleadstog(j) = g}$ is infinite (\cref{def:repeatable}); as $θ$ is finite, pick $i' ∈ J_g ∖ θ^{-1}(\allhists, P)$. Let $θ_H^{i'} := \set{(i', α, g(α)), (i', (α,a,b), g(α,a,b))} ∈ Θ ∩ \powerset{\allleadstog}$ and $θ' := θ ∪ θ_H^{i'}$; since $i'$ is untouched by $θ$, $θ ⊑ θ'$ and $θ' ∈ Θ ∩ \powerset{\allleadstog}$.
+
+  Suppose some $\allleadstog''' ∈ C'$ extended $θ'$, and let $f := \allleadstog'''(i')$. Then $f(α) = g(α) ≠ φ$ and $f(α,a,b) = g(α,a,b) = φ$. But $\allleadstog''' ∈ C'$ requires its second conjunct at $i', α$: $α \nileadstogo[i'] φ ⇒ (α,a,b) \nileadstogo[i'] φ$, whose contrapositive, $(α,a,b) \ileadstogo[i'] φ ⇒ α \ileadstogo[i'] φ$, together with $f(α,a,b) = φ$ forces $f(α) = φ$ — contradicting $f(α) ≠ φ$. So no such $\allleadstog'''$ exists: $θ' ∉ (C')^⊆$.
+
+  As $θ$ was arbitrary — the same $H$ serves throughout, only the clone $i'$ depending on $θ$ — $\POF_{C'}(\allleadstog)$ holds. Hence $(C ∖ C') ∩ E ⊆ \POF_{C'}$.
+
+  All hypotheses of \cref{th:genProvableSubclaim} are met, so $C'$ holds, is anonymous, is APTS-P, and is provable by $(¬\POF_{C'}) ∩ E ∩ D^{O,a,p}_{C'}$ — exactly \cref{ex:abClosure}'s claim.
+\end{proof}
+
+\begin{proof}[Proof of the second part of \cref{ex:abClosure}]
+  As above, $B = S_{C'} = \set{g ∈ \allbs \suchthat Q(g)}$ where $Q(g) := [g(a,b) = φ ⇒ a \text{ decisive for } φ \text{ in } g] ∧ [∀γ: g(γ) ≠ φ ⇒ g(γ,a,b) ≠ φ]$: if $Q(g)$ holds, the world assigning $g$ to every individual satisfies $C'$, so $g ∈ S_{C'}$; conversely if $g ∈ S_{C'}$, some $C'$-world has $g$ as some individual's row, and $C'$'s condition at that individual gives $Q(g)$.
+
+  Let $\allleadstog$ be any world and $h ∈ \allleadstog(I) ∖ B$ a row with $O ⊆ h$ (that is, $h(a,b) = φ$) and $a \nileadstostg[h] φ$, undistinguishable from $B$ (that is, $∀H ∈ \fincrhists: \restr{h}{H} ∈ \restr{B}{H}$) — exactly the situation making $\allleadstog$ fail $D^{O,a,p}_{C'}$ at $h$. Since $a \nileadstostg[h] φ$, fix $β ∈ \allhists$ with $a ∈ \histend(β)$ and $h(β) ≠ φ$; note $β ≠ ∅$, as $\histend(∅) = ∅$.
+
+  \emph{$β$ is incomparable to $(a,b)$.} If not, $H := \set{β,(a,b)} ∈ \fincrhists$ is a chain, so some $g ∈ B$ matches $h$ on $H$: $g(β) = h(β) ≠ φ$ and $g(a,b) = h(a,b) = φ$. But $Q(g)$'s first conjunct then forces $a$ decisive for $φ$ in $g$, in particular $g(β) = φ$ (as $a ∈ \histend(β)$) — contradicting $g(β) ≠ φ$. In particular $β ≠ (a)$ (a prefix of $(a,b)$), so $\card{β} ≥ 2$ (a length-$1$ history $β$ with $a ∈ \histend(β) = β$ would force $β = (a)$).
+
+  \emph{$h(a,b,β) = φ$.} As $\card{β} ≥ 2$, $\histend(a,b,β) = \histend(β) ∋ a$ (the last two arguments of $(a,b,β)$ are $β$'s own last two, unaffected by what precedes $β$), so $(a,b,β)$ is itself an $a$-decisiveness test point, and $(a,b)$ prefixes it. Were $h(a,b,β) ≠ φ$, the same argument as above — with $H := \set{(a,b),(a,b,β)}$, forcing some $g ∈ B$ with $g(a,b) = φ$ and $g(a,b,β) = h(a,b,β) ≠ φ$, contradicting $Q(g)$'s first conjunct at the witness $(a,b,β)$ — would fail. Hence $h(a,b,β) = φ$.
+
+  \emph{$h(β,a,b) ≠ φ$.} Let $H := \set{β,(β,a,b)} ∈ \fincrhists$ ($β$ prefixes $(β,a,b)$). Were $h(β,a,b) = φ$, some $g ∈ B$ would match $h$ on $H$: $g(β) = h(β) ≠ φ$ and $g(β,a,b) = φ$. But $Q(g)$'s second conjunct at $γ := β$ gives $g(β) ≠ φ ⇒ g(β,a,b) ≠ φ$, contradicting $g(β,a,b) = φ$. Hence $h(β,a,b) ≠ φ$.
+
+  Taking $α := β$: $(α,a,b) \nileadstog[h] φ$ (previous paragraph) and $(a,b,α) \ileadstog[h] φ$ (two paragraphs above) — exactly the claimed pattern, witnessed by the very history $β$ that exhibits $a$'s non-decisiveness at $h$.
 \end{proof}
 
 \Cref{th:suffIndic} caracterizes situations that admit a claim that holds and is anonymous and indicative.
