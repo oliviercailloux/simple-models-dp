@@ -197,14 +197,13 @@ Note that $\incr(\allhists)$ includes both the empty set of paths $∅$ and the 
 A non empty set of paths $H ∈ \incr(\allhists)$ has a unique maximal element $\set{\max H} = \set{\hist ∈ H \suchthat ∀ \histp ∈ H: \histp ⊆ \hist}$.
 A non empty set of paths $H ∈ \incr(\allhists)$ contains all its prefixes (meaning, $∀ \hist ∈ H: \set{\histp ⊆ \hist} ⊆ H$) iff $H = \intvl{\max H}$.
 Let $\finite(\incr(\allhists)^I)$ denote the functions $f: I ↦ \incr(\allhists)$ with finite support, thus, satisfying $\card{f^{-1}(\incr(\allhists) ∖ ∅)} ∈ ℕ$.
-\commentOC[Note that $\incr(\allhists)^I$ and $\allpriobss$ are downwards closed, meaning that $∀ O ∈ \incr(\allhists)^I: \set{O' ⊆ O} ⊆ \incr(\allhists)^I$ and $∀ O ∈ \allpriobss: \set{O' ⊆ O} ⊆ \allpriobss$.]{To be deleted.}
 An element $Q ⊆ I × \allhists$ \commentOC{previously denoted $O$ and called a priori observation} is called a query iff $∀i ∈ I: Q(i) = \set{\hist ∈ \allhists \suchthat (i, \hist) ∈ Q} ∈ \incr(\allhists)$ and $\card{Q} ∈ ℕ$.
 Abusing notations, we also view $Q$ as an element of $\allpriobss$.
 An observation associates to a query an element of $P$ per queried element, thus, the set of possible observations is $Θ = ∪_{Q ∈ \allpriobss} P^Q$.
 In other words, defining a general observation $O$ as a right unique finite subset of $(I × \allhists) × P$, an observation $θ ∈ Θ$ is a general observation satisfying $∀ i ∈ I, (i, \hist, p), (i, \histp, q) ∈ θ: \card{\hist} ≤ \card{\hist'} ⇒ \hist ⊆ \hist'$.
-Given a general observation $O$, let $O^{-1}(P) ⊆ I × \allhists$ denote the queried elements (the pairs $(i, \hist)$) in $O$.
+Given a general observation $O$, let $O^{-1}(P) ⊆ I × \allhists$ denote the queried elements (the pairs $(i, \hist)$) in $O$ and $O^{-1}(\allhists, P)$ designate the observed individuals.
 Note that given an observation $θ$, $θ^{-1}(P) ∈ \allpriobss$.
-Similarly, we can view an observation $θ$ as a function $θ: I ↦ ∪_{H ∈ \incr(\allhists)} P^H$ and thus $Θ = \finite((∪_{H ∈ \incr(\allhists)} P^H)^I)$, where $\finite$ designates the finite relations (considered as a set of triples); also, $θ^{-1}(\allhists, P)$ designates the queried individuals.
+Similarly, we can view an observation $θ$ as a function $θ: I ↦ ∪_{H ∈ \incr(\allhists)} P^H$ and thus $Θ = \finite((∪_{H ∈ \incr(\allhists)} P^H)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
 An observation $θ'$ rightward-extends an observation $θ$, denoted $θ ⊑ θ'$, iff $θ ⊆ θ' ∧ ∀i ∈ I, (α, i, p) ∈ θ, (α', i, p') ∈ θ': α ⊆ α'$.
 
 We say that an observation $θ$ is compatible with a behavior ${\allleadstog} ∈ \allleadstos$ iff $θ ⊆ \allleadstog$ (seeing the behavior as a set of triples).
@@ -1421,6 +1420,8 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 
 \appendix
 \section{Proofs}
+Note that $\incr(\allhists)^I$ and $\allpriobss$ are downwards closed, meaning that $∀ O ∈ \incr(\allhists)^I: \set{O' ⊆ O} ⊆ \incr(\allhists)^I$ and $∀ O ∈ \allpriobss: \set{O' ⊆ O} ⊆ \allpriobss$.
+
 \begin{theorem}
   \label{th:vudImpliesHolds}
   Given a claim $D$ such that ${\allleadsto} ∈ D$, if a claim $C$ is verified under prior $D$, then $C$ holds.
