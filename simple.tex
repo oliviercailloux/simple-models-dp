@@ -93,15 +93,15 @@ Its formal definition requires the notion of decisive argument.
 Given $\hist ∈ \allhists$, $\range(\hist) = \hist(\intvl{1, \card{\hist}})$ denotes the range of $\hist$, that is, all arguments contained in the sequence $\hist$.
 Let $\histend = \hist(\intvl{\max(1, \card{\hist} - 1), \card{\hist}})$ denote the set containing the last two arguments of the sequence $\hist$ if the sequence has at least two elements; the unique argument of the sequence if it has exactly one element; and the empty set if it is empty.
 
-Given $i ∈ I, p ∈ P, \ar ∈ \allargs$, define $\ar \ileadstost p$, pronounced “$a$ leads definitely $i$ to $p$”, iff $∀ \hist ∈ \allhists \suchthat \ar ∈ \histend: \hist \ileadsto p$.
-When $\ar \ileadstost p$, $\ar$ is said to be a decisive argument for $p$ from $i$’s point of view given the exposure protocol.
-Another interpretation of this definition is that $\ar$ then resists every counter-arguments, in the sense that no argument $\ar'$ given at the end of any sequence of arguments, in presence of $\ar$, leads the individual to $p' ≠ p$ (formally, $∄\ar' ∈ \allargs, \hist ∈ \allhists \suchthat \ar, \ar' ∈ \histend ∧ \hist \nileadsto p$).
+Given $i ∈ I, p ∈ P, a ∈ \allargs$, define $a \ileadstost p$, pronounced “$a$ leads definitely $i$ to $p$”, iff $∀ \hist ∈ \allhists \suchthat a ∈ \histend: \hist \ileadsto p$.
+When $a \ileadstost p$, $a$ is said to be a decisive argument for $p$ from $i$’s point of view given the exposure protocol.
+Another interpretation of this definition is that $a$ then resists every counter-arguments, in the sense that no argument $a'$ given at the end of any sequence of arguments, in presence of $a$, leads the individual to $p' ≠ p$ (formally, $∄a' ∈ \allargs, \hist ∈ \allhists \suchthat a, a' ∈ \histend ∧ \hist \nileadsto p$).
 
 The deliberated choice of $i$ is then considered as the set of propositions supported by decisive arguments.
 \begin{definition}[Deliberated choice]
   \label{def:decisive}
   $∀ i ∈ I, p ∈ P:
-    p ∈ P_i ⇔ [∃ \ar ∈ \allargs \suchthat \ar \ileadstost p].$
+    p ∈ P_i ⇔ [∃ a ∈ \allargs \suchthat a \ileadstost p].$
 \end{definition}
 
 It follows from the consideration of “end” as the last \emph{two} arguments that the whole set of decisive arguments can argue for at most a single proposition, thus, that the deliberated choice cannot hold more than one proposition.
@@ -110,8 +110,8 @@ It follows from the consideration of “end” as the last \emph{two} arguments 
   $∀ i ∈ I: \card{P_i} ≤ 1$.
 \end{theorem}
 \begin{proof}
-  Assume that $∃ \ar, \ar' ∈ \allargs, p, p' ∈ P \suchthat \ar \ileadstost p ∧ \ar' \ileadstost p'$.
-  Since $\ar \ileadstost p$, $(\ar, \ar') \ileadsto p$, and since $\ar' \ileadstost p'$, $(\ar, \ar') \ileadsto p'$, hence $p' = p$.
+  Assume that $∃ a, a' ∈ \allargs, p, p' ∈ P \suchthat a \ileadstost p ∧ a' \ileadstost p'$.
+  Since $a \ileadstost p$, $(a, a') \ileadsto p$, and since $a' \ileadstost p'$, $(a, a') \ileadsto p'$, hence $p' = p$.
 \end{proof}
 
 The intended semantics is that $P_i$ represents the preference of $i$ over the proposed set of two acts, after deliberation, given the exposure protocol. In other words, if $P_i = \set{φ}$, the individual considers the first act strictly better than the second one, after deliberation (and conversely for $P_i = \set{φ'}$); if $P_i = \set{0}$, the deliberated judgment of $i$ is that both acts are equally worth; and if $P_i = ∅$, no act is deliberately strictly better than the other one and they are also not deliberately exactly equivalent to each other.
@@ -228,21 +228,29 @@ Given a right unique $τ ⊆ (I × \allhists) × P$, we let $\mathop{↑} τ = \
 
 \subsection{Verifiability}
 Given an exposure protocol $(I, \allargs, \allleadsto)$, we say that a claim $C$ \emph{holds} iff $\allleadsto ∈ C$. We are interested in criteria to determine whether a claim holds.
-Such a criterion must be sound, meaning that it must imply, when successful, that $C$ holds, and must be realizeable, meaning that if $C$ holds, the criterion must be satisfiable using feasible observations only (or something like that). Note that such criterion also offers a way to show that $C$ fails (does not hold), equivalently, that $\allleadstos ∖ C$ holds.
+Such a criterion may have a restricted domain of application, meaning that it may be inapplicable on some claims.
+Here are possible desideratas on such a criterion.
+It should be sound, meaning that it must imply, when successful, that $C$ holds. 
+It must be realizeable, a loose demand that intuitively requests that the criterion only depends on feasible observations. 
+Also, it should be reproducible, meaning that after an observation has occurred, it must still be realizeable using new observations.
+It is complete if it applies to every $C ⊆ \allleadstos$ (its domain of application is unrestricted).
+It is decisive if its non success implies that $C$ fails (equivalently, that $\allleadstos ∖ C$ holds).
+
+It is expected (and will soon appear) that such a wish list is too demanding to be totally satisfiable. Our goal will be to study the extent to which these demands have to be relaxed.
 
 The claim $C$ is verifiable in the world $\allleadstog$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ ⊆ \allleadstog: \allleadstog ∈ C$. 
 Possible verifiability mandates that some (possibly counter-factual) observation proves the claim (makes sure that it holds), thus, $C$ is possibly verifiable iff it is verifiable in some world; formally, iff $∃ θ ∈ Θ \suchthat ∀ θ ⊆ \allleadstog: \allleadstog ∈ C$. 
+Verifiedness mandates verifiability in the actual world; formally, $∃ θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀ θ ⊆ \allleadstog: \allleadstog ∈ C$.
 Established verifiability mandates verifiability in all compatible worlds; formally, 
-$∀\allleadstog ∈ C: ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ ⊆ {\allleadstog'}: {\allleadstog'} ∈ C$. 
+$∀\allleadstog ∈ C: ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ ⊆ {\allleadstog'}: {\allleadstog'} ∈ C$.
 \begin{example}
-  The claim $C$ being $[∀i: (a) \ileadsto φ] ∨ (b) \ileadsto φ$
+  The claim $C$ being $[∀i: (a) \ileadsto φ] ∨ (a') \ileadsto φ$
   is possibly verifiable but fails established verifiability.
 \end{example}
-Verifiedness mandates verifiability in the actual world; formally, $∃ θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀ θ ⊆ \allleadstog: \allleadstog ∈ C$.
 Verifiedness
 is sound (\cref{th:vImpliesHolds}), but even the weaker possible verifiability property is too demanding for many claims.
 Indeed,
-some sufficiently simple claims, such as the claim $C = \set{\allleadstog \suchthat (\ar) \ileadstog φ}$ that some given path leads some given individual to some given proposition, are possibly verifiable, but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
+some sufficiently simple claims, such as the claim $C = \set{\allleadstog \suchthat (a) \ileadstog φ}$ that some given path leads some given individual to some given proposition, are possibly verifiable, but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
 
 Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(\set{θ ⊆ \allleadstog'} ∩ C) = \set{π(\allleadstog') \suchthat θ ⊆ \allleadstog' ∈ C} ≠ (P ∪ \set{∅})^I$.
 A claim $C$ is \emph{informative} iff $π(C) = \set{π(\allleadstog) \suchthat \allleadstog ∈ C} ≠ (P ∪ \set{∅})^I$.
@@ -298,7 +306,7 @@ the prior required must be at least as strong as claiming that if some observabl
   A prior $D$ that states something general and reasonable such as “falsifiability implies correctness” and would be strong enough to allow determining that some substantial claim $C$ holds would mean that later rejecting $C$ would require rejecting the general prior. We want to keep the option of later rejecting $C$ (because one cannot be sure), and we want this to happen without having to reject a general claim such as the correctness of the method of falsifiability, rather just a particular claim about over-generalization.
 
   The prior must say that we can generalize this particular claim, which allow for later rejection.
-  To prove that no general prior is reasonable, we might assume that two contradictory theories, $C$ ($(a)$ leads everyone to $φ$) and $C'$ ($(a)$ leads everyone to $φ$ except if $(a, b)$ does not), can be validated under the prior, considering some observations at some point. If under the prior, some obs proves C, then no further obs can prove C' under the same prior, so the prior must say something that is contradicted by the further obs, compatible with C', so the prior contradicts C'. So if the prior allows to validate C, then it contradicts C'. To be checked…
+  To prove that no general prior is reasonable, we might assume that two contradictory theories, $C$ ($(a)$ leads everyone to $φ$) and $C'$ ($(a)$ leads everyone to $φ$ except if $(a, a')$ does not), can be validated under the prior, considering some observations at some point. If under the prior, some obs proves C, then no further obs can prove C' under the same prior, so the prior must say something that is contradicted by the further obs, compatible with C', so the prior contradicts C'. So if the prior allows to validate C, then it contradicts C'. To be checked…
 \end{remark}
 
 \subsection{Which prior?}
@@ -347,20 +355,20 @@ This is technically equivalent to mandating $¬\POF(\allleadsto)$.
   When considering a claim $C$ with no visibility issues, this prior states $¬\OF(\allleadsto)$.
 
   The reason for adopting the prior $¬\POF(\allleadsto)$ instead of $¬\OF(\allleadsto)$ is illustrated with
-  $C_1$ is $(a) \ileadsto φ ∧ (b) \ileadsto φ$ for a given $i$: in some world (for example, where $(a) \ileadstog φ$ even though $(b) \nileadstog φ$), $¬\POF(\allleadsto) ∧ \OF(\allleadsto)$, thus we cannot assume that non-observation of falsification implies not OF, because it might also be due to observing that $(a) \ileadstog φ$.
-  It also applies to $C_2 = \set{\allleadsto \suchthat ∀i: (b) \ileadsto φ ∧ (a) \ileadsto[j] φ}$ for a given $j$, which in a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (b) \ileadstog φ$ is $¬\POF(\allleadstog)$ (consider the prefix $θ = \set{(b) \ileadstog[j] φ}$) and $\OF(\allleadstog)$.
-  (Note that if $C_2$ fails because, for some $i$, $(b) \nileadstog φ$,
+  $C_1$ is $(a) \ileadsto φ ∧ (a') \ileadsto φ$ for a given $i$: in some world (for example, where $(a) \ileadstog φ$ even though $(a') \nileadstog φ$), $¬\POF(\allleadsto) ∧ \OF(\allleadsto)$, thus we cannot assume that non-observation of falsification implies not OF, because it might also be due to observing that $(a) \ileadstog φ$.
+  It also applies to $C_2 = \set{\allleadsto \suchthat ∀i: (a') \ileadsto φ ∧ (a) \ileadsto[j] φ}$ for a given $j$, which in a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (a') \ileadstog φ$ is $¬\POF(\allleadstog)$ (consider the prefix $θ = \set{(a') \ileadstog[j] φ}$) and $\OF(\allleadstog)$.
+  (Note that if $C_2$ fails because, for some $i$, $(a') \nileadstog φ$,
   then $θ$ is not a hiding prefix observation and this is what we want.)
 
-  With this example (considering again a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (b) \ileadstog φ$), we see that formalizing $¬\POF$, independently of $\allleadstog$,
+  With this example (considering again a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (a') \ileadstog φ$), we see that formalizing $¬\POF$, independently of $\allleadstog$,
   as $∃θ ∈ Θ \suchthat ∀θ ⊑ θ' ∈ Θ: θ' ∈ C^⊆$,
-  fails, as this prevents the prefix $θ = \set{(b) \ileadstog[j] φ}$ from bringing not POF.
+  fails, as this prevents the prefix $θ = \set{(a') \ileadstog[j] φ}$ from bringing not POF.
   The condition $∃θ ∈ Θ \suchthat ∀θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}: θ' ∈ C^⊆$ is also not suitable, as it is always satisfied: pick any $θ ∈ Θ$ such that $θ ∉ \powerset{\allleadstog}$.
 
   The following alternative prior, which might be considered for its apparent proximity with the chosen one, is also inadequate:
   $∀\allleadstog, θ ∈ Θ ∩ \powerset{\allleadstog}, [∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆] ⇒ [θ ∈ C^⊆]$.
-  Consider again $C_1$ and $\allleadstog$ such that $(a) \ileadstog φ ∧ (b) \nileadstog φ$.
-  The chosen prior ($\POF(\allleadstog) ⇒ ¬\OF(\allleadstog)$) holds, as intuition commands, as the antecedent fails for the reason given above. The alternative prior however fails as $θ = \set{(b) \ileadstog φ}$ is completable only out of $C$.
+  Consider again $C_1$ and $\allleadstog$ such that $(a) \ileadstog φ ∧ (a') \nileadstog φ$.
+  The chosen prior ($\POF(\allleadstog) ⇒ ¬\OF(\allleadstog)$) holds, as intuition commands, as the antecedent fails for the reason given above. The alternative prior however fails as $θ = \set{(a') \ileadstog φ}$ is completable only out of $C$.
 \end{remark}
 
 \begin{remark}
@@ -418,11 +426,11 @@ Indeed, second implies $∃\allleadstog ∉ C \suchthat ¬\OF(\allleadstog)$ whi
 Here are typical examples.
 \begin{description}
   \item[Falsifiable] $(a) \ileadsto φ$ (satisfies established verifiability); 
-    $∀i: (a) \ileadsto φ$ (fails possible verifiability); $∀i: \ar \ileadstostg φ$ (fails possible verifiability) (\cref{ex:allParticular}).
-  \item[Never falsifiable] $[∃i \suchthat (a) \ileadsto φ]$ which satisfies established verifiability; $[∀i: [(\ar) \ileadsto φ ∨ (\ar') \ileadsto φ]]$ (\cref{ex:disjR}) which fails possible verifiability; $[(\ar) \ileadsto φ ∨ (\ar') \ileadsto φ]$ which satisfies established verifiability; $[∀ i: (\ar) \ileadstog φ] ∨ [∀ i: (\ar, \ar) \ileadstog φ] ∨ …$ (\cref{ex:bigor}) which fails possible verifiability.
-  \item[With mixed falsifiability] $[∃i \suchthat (a) \ileadsto φ] ∧ (b) \ileadsto φ$ (proof:  $∀\allleadstog ∉ C: \OF(\allleadstog) ⇔ (b) \nileadstog φ$) (satisfies established verifiability);
-    $[∃i \suchthat (a) \ileadsto φ] ∧ [∀i: (b) \ileadsto φ]$ (proof: $∀\allleadstog ∉ C: \OF(\allleadstog) ⇔ [∃i \suchthat (b) \nileadstog φ]$) (fails possible verifiability);
-    “Exactly two of the three paths in $\set{∅, (\ar), (\ar')}$ lead $i$ to $φ$ and the remaining one leads $i$ to $φ'$” (\cref{ex:threeFs}) which fails possible verifiability.
+    $∀i: (a) \ileadsto φ$ (fails possible verifiability); $∀i: a \ileadstostg φ$ (fails possible verifiability) (\cref{ex:allParticular}).
+  \item[Never falsifiable] $[∃i \suchthat (a) \ileadsto φ]$ which satisfies established verifiability; $[∀i: [(a) \ileadsto φ ∨ (a') \ileadsto φ]]$ (\cref{ex:disjR}) which fails possible verifiability; $[(a) \ileadsto φ ∨ (a') \ileadsto φ]$ which satisfies established verifiability; $[∀ i: (a) \ileadstog φ] ∨ [∀ i: (a, a) \ileadstog φ] ∨ …$ (\cref{ex:bigor}) which fails possible verifiability.
+  \item[With mixed falsifiability] $[∃i \suchthat (a) \ileadsto φ] ∧ (a') \ileadsto φ$ (proof:  $∀\allleadstog ∉ C: \OF(\allleadstog) ⇔ (a') \nileadstog φ$) (satisfies established verifiability);
+    $[∃i \suchthat (a) \ileadsto φ] ∧ [∀i: (a') \ileadsto φ]$ (proof: $∀\allleadstog ∉ C: \OF(\allleadstog) ⇔ [∃i \suchthat (a') \nileadstog φ]$) (fails possible verifiability);
+    “Exactly two of the three paths in $\set{∅, (a), (a')}$ lead $i$ to $φ$ and the remaining one leads $i$ to $φ'$” (\cref{ex:threeFs}) which fails possible verifiability.
 \end{description}
 
 It is important to note that falsifiability does not depend on $\allleadsto$: whether falsifiability holds can be determined analytically, meaning, by considering only the content of the claim, without considering the behavior of individuals.
@@ -433,7 +441,7 @@ falsifiability guarantees that a non trivial claim holds if, and only if, it is 
 \begin{remark}
   Making a claim more precise (meaning going from a claim $C$ to $C' \ssub C$) can make it falsifiable, or conversely, can make it unfalsifiable.
   Given $\hist, i$, consider the claim $C_2 = \hist \ileadstog φ$. It is falsifiable.
-  Now consider the claim $C = C_1 ∩ C_2$ with $C_1$ being the claim “every individual chooses $φ$ after seeing solely either $\ar$ or $\ar'$”. It is more precise but unfalsifiable.
+  Now consider the claim $C = C_1 ∩ C_2$ with $C_1$ being the claim “every individual chooses $φ$ after seeing solely either $a$ or $a'$”. It is more precise but unfalsifiable.
   But we can make it falsifiable again by making it even more precise (picking any single relation).
   (See \cref{rq:precise}.)
 \end{remark}
@@ -576,7 +584,7 @@ Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C
 
   \emph{Anonymity.} For any permutation $σ$, $(\allleadstog ∘ σ)(i, α) = \allleadstog(σ(i), α)$; since the condition quantifies over all $i$, $\allleadstog ∘ σ ∈ C$ iff $\allleadstog ∈ C$.
 
-  \emph{Informativeness.} If $\allleadstog ∈ C$ had $\ar \ileadstost[i] 0$, some $α$ with $\ar ∈ \histend$ would satisfy $\allleadstog(i, α) = 0$, contradicting $C$. Hence $π_i(\allleadstog) ≠ 0$ for all $\allleadstog ∈ C$ and $i ∈ I$, so the profile $(0)_{i ∈ I} ∉ π(C)$ and $C$ is informative.
+  \emph{Informativeness.} If $\allleadstog ∈ C$ had $a \ileadstost[i] 0$, some $α$ with $a ∈ \histend$ would satisfy $\allleadstog(i, α) = 0$, contradicting $C$. Hence $π_i(\allleadstog) ≠ 0$ for all $\allleadstog ∈ C$ and $i ∈ I$, so the profile $(0)_{i ∈ I} ∉ π(C)$ and $C$ is informative.
 
   \emph{Provability.} $C ∩ E$ is anonymous: $C$ is anonymous (shown above); $E$ is anonymous since for any $\allleadstog ∈ E$ and permutation $σ$, individual $j$ in $\allleadstog ∘ σ$ behaves as $σ(j)$ in $\allleadstog$, so behavior classes are relabeled with each still infinite, giving $\allleadstog ∘ σ ∈ E$; and $(C ∩ E) ∘ σ = (C ∘ σ) ∩ (E ∘ σ) = C ∩ E$.
   For $\allleadstog ∈ E ∖ C$, pick $(i_0, α_0)$ with $\allleadstog(i_0, α_0) = 0$.
@@ -628,7 +636,7 @@ Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C
   Partition $I$ into four infinite classes according to $i \bmod 4$, and let $\allleadsto$ respond, for an individual in class $r$:
   constantly $φ$ if $r = 0$, constantly $φ'$ if $r = 1$, constantly $0$ if $r = 2$, and, if $r = 3$, $φ$ on paths of even length and $φ'$ on paths of odd length.
   Each behavior is shared by infinitely many individuals, so $\allleadsto ∈ E$.
-  Class $r = 3$ is undecided: given any $\ar ∈ \allargs$, the paths $(\ar)$ and $(\ar, \ar)$ both have $\ar ∈ \histend$ yet answer $φ'$ (odd length) and $φ$ (even length) respectively, so no argument is decisive and its $π$-value is $∅$.
+  Class $r = 3$ is undecided: given any $a ∈ \allargs$, the paths $(a)$ and $(a, a)$ both have $a ∈ \histend$ yet answer $φ'$ (odd length) and $φ$ (even length) respectively, so no argument is decisive and its $π$-value is $∅$.
   The four classes thus realize the $π$-values $φ$, $φ'$, $0$, and $∅$, so $π(\allleadsto)$ ranges over all of $P ∪ \set{∅}$.
   Consequently, any anonymous $C$ with $\allleadsto ∈ C$ satisfies $π_{i_0}(C) = P ∪ \set{∅}$ for every $i_0$: for each realized value $v$, permuting an individual of $π$-value $v$ onto $i_0$ keeps the world in $C$ by anonymity and yields $π_{i_0} = v$.
   Hence no anonymous claim that holds is informative beyond counting.
@@ -641,7 +649,7 @@ Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C
   Let $v ∈ E$ answer $φ'$ everywhere; no individual is decisive for $φ$ in $v$, so $v ∉ C$.
   But every observation of $v$ consists of $φ'$-answers and embeds into $\allleadsto ∈ C$ by permuting the queried individuals onto even ones, so $¬\OF_{C ∩ E}(v)$, hence $¬\POF_{C ∩ E}(v)$ and $v ∈ (¬\POF_{C ∩ E}) ∩ E ∖ C$: $C$ is not provable.
   Observing an odd individual answer $φ$ refutes ``the world is $v$'' ($\OF$ of $\allleadsto$ against $\set{v}$), but never makes $v$ falsify $C$ through its own $φ'$-answers.
-  The same asymmetry defeats the local claim $C = \set{\allleadstog \suchthat ∀ i, p: (a) \ileadstogo[i] p ⇒ a \ileadstost[i] p}$, which also holds here and is anonymous: a world with an individual answering $p$ on every path except $(b, a) \ileadstogo[i] q$ (some $b ≠ a$, $q ≠ p$) has $(a) \ileadstogo[i] p$ with $a$ non-decisive, yet as $(b, a)$ is incomparable to $(a)$ no observation exhibits the violation, so it escapes $\OF_{C ∩ E}$ and $C$ is not provable.
+  The same asymmetry defeats the local claim $C = \set{\allleadstog \suchthat ∀ i, p: (a) \ileadstogo[i] p ⇒ a \ileadstost[i] p}$, which also holds here and is anonymous: a world with an individual answering $p$ on every path except $(a', a) \ileadstogo[i] q$ (some $a' ≠ a$, $q ≠ p$) has $(a) \ileadstogo[i] p$ with $a$ non-decisive, yet as $(a', a)$ is incomparable to $(a)$ no observation exhibits the violation, so it escapes $\OF_{C ∩ E}$ and $C$ is not provable.
   By contrast, the claim that every individual answers constantly holds and is provable, concluding that everyone is decided—though not for a named value (to be checked!).
 \end{example}
 
@@ -651,7 +659,7 @@ Given $i ∈ I$, $c, b ∈ \allargs$ distinct and $p ≠ p' ∈ P$, say a world 
   If $\allleadstog$ $(i,c,b,p,p')$-splits, then $π_i(\allleadstog) = ∅$.
 \end{lemma}
 \begin{proof}
-  For any $\ar ∈ \allargs$: if $\ar = c$, then $(b, c) \nileadstog p$ while $c ∈ \histend((b,c))$, so $c$ is not decisive for $p$ (nor, being the sole value $c$ ever takes at length 1, for anything else); if $\ar ≠ c$, then $(c, \ar) \ileadstogo p ≠ p'$ while $\ar ∈ \histend((c,\ar))$, so $\ar$ is not decisive for $p'$ (nor for anything else, by the same argument applied at $(c,\ar)$ versus $\ar$'s own value at length 1, which is $p'$). Hence no argument is decisive for $i$.
+  For any $a ∈ \allargs$: if $a = c$, then $(b, c) \nileadstog p$ while $c ∈ \histend((b,c))$, so $c$ is not decisive for $p$ (nor, being the sole value $c$ ever takes at length 1, for anything else); if $a ≠ c$, then $(c, a) \ileadstogo p ≠ p'$ while $a ∈ \histend((c,a))$, so $a$ is not decisive for $p'$ (nor for anything else, by the same argument applied at $(c,a)$ versus $a$'s own value at length 1, which is $p'$). Hence no argument is decisive for $i$.
 \end{proof}
 
 \begin{theorem}[Anon, Prov and APS are pairwise, but not jointly, satisfiable]
@@ -727,11 +735,11 @@ APTS-P strengthens both APS-P (\cref{def:apsP}, dropping the requirement that $�
 
   Since $I_2$ answers $φ'$, not $φ$, at every nonempty history, $D_a$'s antecedent is satisfied by $\allleadsto$ exactly on $I_1$; there is no analogous case to treat on $I_2$'s side.
 
-  Pick $b ∈ \allargs ∖ \set{a}$ (using $\card{\allargs} ≥ 2$). Carve an infinite $I_3 ⊆ I_1$, leaving $I_1 ∖ I_3$ infinite, and let $w^*$ agree with $\allleadsto$ outside $I_3$, while every $i ∈ I_3$ answers $φ'$ on every $\hist$ with $\hist_1 = b$ and $φ$ on every other $\hist$ (in particular at $∅$ and at $(a)$ itself, since $a ≠ b$).
+  Pick $a' ∈ \allargs ∖ \set{a}$ (using $\card{\allargs} ≥ 2$). Carve an infinite $I_3 ⊆ I_1$, leaving $I_1 ∖ I_3$ infinite, and let $w^*$ agree with $\allleadsto$ outside $I_3$, while every $i ∈ I_3$ answers $φ'$ on every $\hist$ with $\hist_1 = a'$ and $φ$ on every other $\hist$ (in particular at $∅$ and at $(a)$ itself, since $a ≠ a'$).
 
-  Then $a$ is not decisive for $i ∈ I_3$: $a ∈ \histend((a)) = \set{a}$, which answers $φ$, while $a ∈ \histend((b,a)) = \set{b,a}$, which answers $φ'$ (as $(b,a)_1 = b$). Since $(a) \ileadstogo φ$ holds for $i ∈ I_3$ but $a \nileadstostg φ$, $w^* ∉ D_a$, hence $w^* ∉ C$. All three classes ($I_1 ∖ I_3$, $I_3$, $I_2$) are infinite and internally uniform, so $w^* ∈ E$.
+  Then $a$ is not decisive for $i ∈ I_3$: $a ∈ \histend((a)) = \set{a}$, which answers $φ$, while $a ∈ \histend((a',a)) = \set{a',a}$, which answers $φ'$ (as $(a',a)_1 = a'$). Since $(a) \ileadstogo φ$ holds for $i ∈ I_3$ but $a \nileadstostg φ$, $w^* ∉ D_a$, hence $w^* ∉ C$. All three classes ($I_1 ∖ I_3$, $I_3$, $I_2$) are infinite and internally uniform, so $w^* ∈ E$.
 
-  It remains to show $¬\OF_C(w^*)$, contradicting Prov together with $w^* ∈ E ∖ C$. Every finite $θ_0 ⊆ w^*$ must extend into some member of $C$. For individuals outside $I_3$ this is immediate, relabelling onto fresh members of $\allleadsto$'s own classes (Anon and $\allleadsto ∈ C$). For $i ∈ I_3$, $θ_0$ restricted to $i$ is a single chain, hence every queried history is a prefix of the deepest one queried; since any two comparable nonempty histories share their first argument, the whole chain either has $\hist_1 = b$ throughout its nonempty part — constant $φ'$, possibly with $φ$ at $∅$, embedding into $I_2$'s shape — or never does — constant $φ$ throughout, embedding into $I_1$'s shape. Unlike a template split \emph{past} a shared nonempty prefix, no chain can straddle both: the two histories witnessing $a$'s non-decisiveness, $(a)$ and $(b,a)$, are incomparable, so no single observation ever sees both. Hence $¬\OF_C(w^*)$ holds outright, and $w^* ∈ (¬\OF_C) ∩ E ∖ C$ contradicts Prov.
+  It remains to show $¬\OF_C(w^*)$, contradicting Prov together with $w^* ∈ E ∖ C$. Every finite $θ_0 ⊆ w^*$ must extend into some member of $C$. For individuals outside $I_3$ this is immediate, relabelling onto fresh members of $\allleadsto$'s own classes (Anon and $\allleadsto ∈ C$). For $i ∈ I_3$, $θ_0$ restricted to $i$ is a single chain, hence every queried history is a prefix of the deepest one queried; since any two comparable nonempty histories share their first argument, the whole chain either has $\hist_1 = a'$ throughout its nonempty part — constant $φ'$, possibly with $φ$ at $∅$, embedding into $I_2$'s shape — or never does — constant $φ$ throughout, embedding into $I_1$'s shape. Unlike a template split \emph{past} a shared nonempty prefix, no chain can straddle both: the two histories witnessing $a$'s non-decisiveness, $(a)$ and $(a',a)$, are incomparable, so no single observation ever sees both. Hence $¬\OF_C(w^*)$ holds outright, and $w^* ∈ (¬\OF_C) ∩ E ∖ C$ contradicts Prov.
 
   This settles the case of a single self-referential template: no anonymous, provable, holding claim of the form $D_a$ is APTS-P. The next remark shows the same trick — routing the counterexample through a branch entirely foreign to the template, rather than splitting past a shared prefix — handles the fully general template as well.
 \end{remark}
@@ -849,7 +857,7 @@ define $D^{\anobs, a, p}_C$ as the prior: any behavior that fails $\anobs$ leads
 Here is a second, fully detailed proof of the same statement, spelling out every step, including one point the sketch above leaves implicit: why the failing behavior automatically qualifies as a witness against $D^{\anobs,a,p}_C$.
 
 \begin{proof}[Detailed proof]
-  Throughout, write $B := S_C := ⋃_{\allleadstog' ∈ C} \allleadstog'(I) ⊆ \allbs$ for the \emph{types of $C$} — the set of behaviors (elements of $\allbs = P^\allhists$) occurring as some individual's row in some world satisfying $C$ — and $D := D^{\anobs, a, p}_C$ for the prior denoted $D^{\anobs,a,p}$ in the statement, both evaluated at the very claim $C$ defined in this conjecture. (This is not circular: $B$ and $D$ are only ever \emph{evaluated} at $C$, never used to construct it.) Unfolding the definitions, $\allleadstog ∈ D$ means:
+  Throughout, write $B := S_C := ⋃_{\allleadstog' ∈ C} \allleadstog'(I) ⊆ \allbs$ for the \emph{types of $C$} — the set of behaviors (elements of $\allbs = P^{\allhists}$) occurring as some individual's row in some world satisfying $C$ — and $D := D^{\anobs, a, p}_C$ for the prior denoted $D^{\anobs,a,p}$ in the statement, both evaluated at the very claim $C$ defined in this conjecture. (This is not circular: $B$ and $D$ are only ever \emph{evaluated} at $C$, never used to construct it.) Unfolding the definitions, $\allleadstog ∈ D$ means:
   $$∀h ∈ \allleadstog(I) ∖ B \suchthat \anobs ⊆ h ∧ a \nileadstostg[h] p: ∃ H ∈ \fincrhists \suchthat \restr{h}{H} ∉ \restr{B}{H}.$$
 
   \emph{Holds, and a witness individual.} Unfolding the definition of "in the world $\allleadstog$, $\anobs$ leads $i$ to $(a,p)$", the hypothesis "$\allleadsto$ leads $\anobs$ to $(a,p)$" says
@@ -998,8 +1006,8 @@ Let us determine which situations admit anonymous and falsifiable claims that ho
 \subsection{Ideas for no suitable}
 $C$ is \emph{suitable} iff it holds and is anonymous, informative and falsifiable.
 \begin{example}
-  Assume that $∃ \ar, φ \suchthat ∀ i: \ar \ileadstost φ$.
-  Then $∀ i: \ar \ileadstostg φ$ is suitable.
+  Assume that $∃ a, φ \suchthat ∀ i: a \ileadstost φ$.
+  Then $∀ i: a \ileadstostg φ$ is suitable.
   Note that it is falsifiable but not verifiable (that is, no $O$ implies $C$).
 \end{example}
 
@@ -1008,102 +1016,102 @@ Our goal now is to find an exposure protocol $\allleadsto$ with no suitable clai
 Could we have that if it holds then it is not informative?
 $i_1$ thinks $p$ and $i_2$ thinks $¬p$.
 
-Given $\histk ∈ \allhists$ and $\ar_l ∈ \allargs$, let $(\histk, …, \ar_l, ?)$ denote the set
-$\set{\histl \suchthat \histk ⊊ \histl ∧ \ar_l ∈ \histlend}$.
-Given $\hist ∈ \allhists$, $\ileadstogo$ and $\ar_k, \ar_l ∈ \allargs$, let $(\hist, \ar_k, ?, \nileadstog φ, …, \ar_l, ?)$ denote the set
-$\set{\histl \suchthat ∃ \histk \suchthat \hist ⊊ \histk ⊊ \histl ∧ \ar_k ∈ \histkend ∧ \histk \nileadstog φ ∧ \ar_l ∈ \histlend}$.
-Given $\ar_k, \ar_l ∈ \allargs$, let
-$(…, \ar_k, ?, \nileadstog φ, …, \ar_l, ?)$ denote the set
-$∪_{\hist ∈ \allhists} (\hist, \ar_k, ?, \nileadstog φ, …, \ar_l, ?) =
-  \set{\histl \suchthat ∃ \hist, \histk \suchthat \hist ⊊ \histk ⊊ \histl ∧ \ar_k ∈ \histkend ∧ \histk \nileadstog φ ∧ \ar_l ∈ \histlend} =
-  \set{\histl \suchthat ∃ \histk \suchthat \histk ⊊ \histl ∧ \ar_k ∈ \histkend ∧ \histk \nileadstog φ ∧ \ar_l ∈ \histlend}$.
+Given $\histk ∈ \allhists$ and $a_l ∈ \allargs$, let $(\histk, …, a_l, ?)$ denote the set
+$\set{\histl \suchthat \histk ⊊ \histl ∧ a_l ∈ \histlend}$.
+Given $\hist ∈ \allhists$, $\ileadstogo$ and $a_k, a_l ∈ \allargs$, let $(\hist, a_k, ?, \nileadstog φ, …, a_l, ?)$ denote the set
+$\set{\histl \suchthat ∃ \histk \suchthat \hist ⊊ \histk ⊊ \histl ∧ a_k ∈ \histkend ∧ \histk \nileadstog φ ∧ a_l ∈ \histlend}$.
+Given $a_k, a_l ∈ \allargs$, let
+$(…, a_k, ?, \nileadstog φ, …, a_l, ?)$ denote the set
+$∪_{\hist ∈ \allhists} (\hist, a_k, ?, \nileadstog φ, …, a_l, ?) =
+  \set{\histl \suchthat ∃ \hist, \histk \suchthat \hist ⊊ \histk ⊊ \histl ∧ a_k ∈ \histkend ∧ \histk \nileadstog φ ∧ a_l ∈ \histlend} =
+  \set{\histl \suchthat ∃ \histk \suchthat \histk ⊊ \histl ∧ a_k ∈ \histkend ∧ \histk \nileadstog φ ∧ a_l ∈ \histlend}$.
 Given $\ileadstogo$, $p ∈ P$, $s ∈ \allargs$ and $S ⊆ \allargs$, note that $s ∈ \ileadstoinvg(p)$ stand for $s \ileadstog p$ and $S ⊆ \ileadstoinvg(p)$ stand for $∀ s ∈ S: s \ileadstog p$.
 
 \begin{theorem}
-  Given any $p ∈ P, \ar_k, \ar_l ∈ \allargs$, consider the following claim $C$:
+  Given any $p ∈ P, a_k, a_l ∈ \allargs$, consider the following claim $C$:
   \begin{multline}
     \label{eq:cl}
-    ∀ i ∈ I, ∀ \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l},
-    ∀ \hist ∈ (…, \ar_1, ?) ∩ \nileadstoinvg(p): \\
-    (\hist, …, \ar_2, ?) ⊆ \ileadstoinvg(p).
+    ∀ i ∈ I, ∀ \set{a_1, a_2} \suchthat \set{a_1, a_2} = \set{a_k, a_l},
+    ∀ \hist ∈ (…, a_1, ?) ∩ \nileadstoinvg(p): \\
+    (\hist, …, a_2, ?) ⊆ \ileadstoinvg(p).
   \end{multline}
   Assume that $\allleadsto ∈ C$. Then
-  $∃ i ∈ I \suchthat [\ar_k \nileadstost p ∧ \ar_l \nileadstost p]$
+  $∃ i ∈ I \suchthat [a_k \nileadstost p ∧ a_l \nileadstost p]$
   is equivalent to:
   \begin{multline}
     \label{eq:cln}
-    ∃ i ∈ I \suchthat ∀ \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l}:\\
-    ∃ \hist ∈ (…, \ar_1, ?) ∩ \nileadstoinv(p) \suchthat
-    (\hist, …, \ar_2, ?) ⊆ \ileadstoinv(p).
+    ∃ i ∈ I \suchthat ∀ \set{a_1, a_2} \suchthat \set{a_1, a_2} = \set{a_k, a_l}:\\
+    ∃ \hist ∈ (…, a_1, ?) ∩ \nileadstoinv(p) \suchthat
+    (\hist, …, a_2, ?) ⊆ \ileadstoinv(p).
   \end{multline}
 \end{theorem}
 \begin{proof}
-  $\ar_k \nileadstost p$ iff $∃ \hist \suchthat \ar_k ∈ \histend ∧ \hist \nileadsto p$.
+  $a_k \nileadstost p$ iff $∃ \hist \suchthat a_k ∈ \histend ∧ \hist \nileadsto p$.
 \end{proof}
 \begin{remark}
   Idea.
   That consequence is unfalsifiable so we cannot include anything like this in $C$ (only something stronger, but of course a stronger statement could be false). Therefore, with no addition, we are doomed that exists some situations where no claim is suitable.
 \end{remark}
 \begin{theorem}
-  Pick any $p ∈ P$ and $\ar_k ≠ \ar_l ∈ \allargs$ and consider the claim \eqref{eq:cl} and not \eqref{eq:cln}, thus, \eqref{eq:cl} and $∀ i, \ar_k \ileadstostg p ∨ \ar_l \ileadstostg p$. It is not falsifiable.
+  Pick any $p ∈ P$ and $a_k ≠ a_l ∈ \allargs$ and consider the claim \eqref{eq:cl} and not \eqref{eq:cln}, thus, \eqref{eq:cl} and $∀ i, a_k \ileadstostg p ∨ a_l \ileadstostg p$. It is not falsifiable.
 \end{theorem}
 \begin{proof}
-  %	Intuitively, because it might require (with $\hist = (\ar_1)$) to observe that for a given $i$, $(a_1) \nileadsto p ∧ (\ar_1, \ar_2) \ileadsto p$ and also $(\ar_2) \nileadsto p ∧ (\ar_2, \ar_1) \ileadsto p$.
+  %	Intuitively, because it might require (with $\hist = (a_1)$) to observe that for a given $i$, $(a_1) \nileadsto p ∧ (a_1, a_2) \ileadsto p$ and also $(a_2) \nileadsto p ∧ (a_2, a_1) \ileadsto p$.
   We need to exhibit some $\allleadstog ∉ C$ such that $∀ θ ⊆ \allleadstog: θ ∈ C^⊆$.
-  Define $\allleadstog$ as, $∀ i ∈ I$, $(\ar_k) \nileadstog p, (\ar_l) \nileadstog p, ∀ \hist ∈ \allhists ∖ \set{(\ar_k), (\ar_l)}: \hist \ileadstog p$.
-  It follows that $\ar_k \nileadstostg p ∧ \ar_l \nileadstostg p$. Thus, $\allleadstog ∉ C$.
+  Define $\allleadstog$ as, $∀ i ∈ I$, $(a_k) \nileadstog p, (a_l) \nileadstog p, ∀ \hist ∈ \allhists ∖ \set{(a_k), (a_l)}: \hist \ileadstog p$.
+  It follows that $a_k \nileadstostg p ∧ a_l \nileadstostg p$. Thus, $\allleadstog ∉ C$.
   Now pick any $θ ⊆ \allleadstog$.
-  % The set $O$ can’t have both $(\ar_k) \nileadstog p$ and $(\ar_l) \nileadstog p$.
-  % Assume, wlog, that $(\ar_k, i, \allleadstog(\ar_k, i)) ∉ O$.
-  %	Then, intuitively, $\ar_k$ decisive is in $S_θ ∩ C$.
-  Define $\allleadstog'$ as, $∀ i ∈ I: ∀ \hist ∈ \allhists ∖ \set{(\ar_k), (\ar_l)}, \hist \ileadstog' p$
-  and $∀ \ar ∈ \set{\ar_k, \ar_l}$, $(\ar) \ileadstog' (\allleadstog(\ar, i))$ if $(\ar, i, \allleadstog(\ar, i)) ∈ O$, $(\ar) \ileadstog' p$ otherwise.
-  %Pick any $p' ≠ p$ and define $\allleadstog'$ as, $∀ i ∈ I: ∀ \hist ∈ \allhists ∖ \set{(\ar_l)}, \hist \ileadstog' p ∧ (\ar_l) \ileadstog' p' ≠ p$.
-  The set $O$ can’t have both $(\ar_k) \nileadstog p$ and $(\ar_l) \nileadstog p$, thus, ${\allleadstog'} ∈ C$.
+  % The set $O$ can’t have both $(a_k) \nileadstog p$ and $(a_l) \nileadstog p$.
+  % Assume, wlog, that $(a_k, i, \allleadstog(a_k, i)) ∉ O$.
+  %	Then, intuitively, $a_k$ decisive is in $S_θ ∩ C$.
+  Define $\allleadstog'$ as, $∀ i ∈ I: ∀ \hist ∈ \allhists ∖ \set{(a_k), (a_l)}, \hist \ileadstog' p$
+  and $∀ a ∈ \set{a_k, a_l}$, $(a) \ileadstog' (\allleadstog(a, i))$ if $(a, i, \allleadstog(a, i)) ∈ O$, $(a) \ileadstog' p$ otherwise.
+  %Pick any $p' ≠ p$ and define $\allleadstog'$ as, $∀ i ∈ I: ∀ \hist ∈ \allhists ∖ \set{(a_l)}, \hist \ileadstog' p ∧ (a_l) \ileadstog' p' ≠ p$.
+  The set $O$ can’t have both $(a_k) \nileadstog p$ and $(a_l) \nileadstog p$, thus, ${\allleadstog'} ∈ C$.
   We conclude that ${\allleadstog'} ∈ S_θ ∩ C$.
 \end{proof}
 \begin{theorem}[Informal]
   Assume that the NOT consequence holds and the claim holds.
   Prove that there is no suitable claim.
   If the claim is just the NOT cons and claim, then it is not fals.
-  If the claim is weaker, it does not permit to prove that $\ar_k$ or $\ar_l$ is decisive. (BUT does it possibly prove that some arg is decisive? But it may be false.)
+  If the claim is weaker, it does not permit to prove that $a_k$ or $a_l$ is decisive. (BUT does it possibly prove that some arg is decisive? But it may be false.)
   If the claim is stronger, it may be false.
 \end{theorem}
 \begin{theorem}[Formal]
-  Pick any $p ∈ P$ and $\ar_k ≠ \ar_l ∈ \allargs$ and assume that $\allleadsto$ fails \cref{eq:cln}, that is, satisfies:
+  Pick any $p ∈ P$ and $a_k ≠ a_l ∈ \allargs$ and assume that $\allleadsto$ fails \cref{eq:cln}, that is, satisfies:
   \begin{multline}
     \label{eq:answerable}
-    ∀ i ∈ I, ∃ \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l} \suchthat
-    ∀ \hist ∈ (…, \ar_1, ?) ∩ \nileadstoinv(p): \\
-    (\hist, …, \ar_2, ?) ∩ \ileadstoinv(p) ≠ ∅.
+    ∀ i ∈ I, ∃ \set{a_1, a_2} = \set{a_k, a_l} \suchthat
+    ∀ \hist ∈ (…, a_1, ?) ∩ \nileadstoinv(p): \\
+    (\hist, …, a_2, ?) ∩ \ileadstoinv(p) ≠ ∅.
   \end{multline}
   Assume further that $\allleadsto$ satisfies \eqref{eq:cl}, thus:
-  $∀ i ∈ I, ∀ \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l},
-    ∀ \hist ∈ (…, \ar_1, ?) ∩ \nileadstoinv(p): (\hist, …, \ar_2, ?) ⊆ \ileadstoinv(p)$.
+  $∀ i ∈ I, ∀ \set{a_1, a_2} \suchthat \set{a_1, a_2} = \set{a_k, a_l},
+    ∀ \hist ∈ (…, a_1, ?) ∩ \nileadstoinv(p): (\hist, …, a_2, ?) ⊆ \ileadstoinv(p)$.
   Then, there is no suitable claim.
 \end{theorem}
 \begin{proof}
-  Note that $\allleadsto$ satisfies, $∀ i ∈ I, ∃ \set{\ar_1, \ar_2} \suchthat \set{\ar_1, \ar_2} = \set{\ar_k, \ar_l} ∧ ∀ \hist ∈ (…, \ar_1, ?): \hist \ileadsto p$; equivalently, $\ar_k \ileadstost p ∨ \ar_l \ileadstost p$.
+  Note that $\allleadsto$ satisfies, $∀ i ∈ I, ∃ \set{a_1, a_2} \suchthat \set{a_1, a_2} = \set{a_k, a_l} ∧ ∀ \hist ∈ (…, a_1, ?): \hist \ileadsto p$; equivalently, $a_k \ileadstost p ∨ a_l \ileadstost p$.
 
   Assume the claim is just \eqref{eq:cl} $∧$ \eqref{eq:answerable}. Then if is not fals.
 
   If the claim is sufficiently stronger (to be falsifiable) than this (thus with $C' ⊊ C$, thus with $\allleadstog ∉ C'$ as defined above), then it may be false.
   Indeed, to be falsifiable, we need ${\allleadstog'} ∉ C'$.
-  Now we need $C'$ to hold so it must contain $\allleadsto$ but not contain ${\allleadstog'}$. It does not contain ${\allleadstog'}$ iff it implies $¬(∧_{\hist ∈ \allhists ∖ \set{(\ar_l)}} \hist \ileadstog' p ∧ (\ar_l) \ileadstog' p')$.
-  %So it must claim that $\ar_l$ is not decisive. Or something like, for some $\hist_1$: if $\ar_l \ileadstog' p'$, then $\hist_1 \ileadstog' ¬p$.
+  Now we need $C'$ to hold so it must contain $\allleadsto$ but not contain ${\allleadstog'}$. It does not contain ${\allleadstog'}$ iff it implies $¬(∧_{\hist ∈ \allhists ∖ \set{(a_l)}} \hist \ileadstog' p ∧ (a_l) \ileadstog' p')$.
+  %So it must claim that $a_l$ is not decisive. Or something like, for some $\hist_1$: if $a_l \ileadstog' p'$, then $\hist_1 \ileadstog' ¬p$.
 
-  Intuitively, need that when we do not observe $(\ar_k)$ for a given $i$, but only $(\ar_l)$ for that $i$, the claim says something contrary about that $(\ar_l, i)$.
+  Intuitively, need that when we do not observe $(a_k)$ for a given $i$, but only $(a_l)$ for that $i$, the claim says something contrary about that $(a_l, i)$.
 \end{proof}
 \begin{remark}
   Idea: then use contrapositive. Not cons implies some dec arg.
   Prove equivalence to establish that we need to assume not cons to make such claims informative (in such a way).
-  We could also attempt to prove that $∃ \ar \suchthat \ar \ileadstost φ$ but assuming the claim $C$ is everything we know, there is no hope in proving something about some argument that we ignore.
+  We could also attempt to prove that $∃ a \suchthat a \ileadstost φ$ but assuming the claim $C$ is everything we know, there is no hope in proving something about some argument that we ignore.
 
-  As an example, with the shortest possible paths, we get $\histk = (\ar_k)$ and $\histl = (\ar_l)$, thus:
+  As an example, with the shortest possible paths, we get $\histk = (a_k)$ and $\histl = (a_l)$, thus:
   \begin{equation}
     \left\{\begin{aligned}
-       & (\ar_k ) \nileadsto φ ∧ \set{\histp \suchthat (\ar_k) ⊆ \histp ∧ \ar_l ∈ \histpend} \ileadsto φ; \\
-       & (\ar_l) \nileadsto φ ∧ \set{\histp \suchthat (\ar_l) ⊆ \histp ∧ \ar_k ∈ \histpend} \ileadsto φ.
+       & (a_k ) \nileadsto φ ∧ \set{\histp \suchthat (a_k) ⊆ \histp ∧ a_l ∈ \histpend} \ileadsto φ; \\
+       & (a_l) \nileadsto φ ∧ \set{\histp \suchthat (a_l) ⊆ \histp ∧ a_k ∈ \histpend} \ileadsto φ.
     \end{aligned}\right.
   \end{equation}
 
@@ -1129,7 +1137,7 @@ Given $\ileadstogo$, $p ∈ P$, $s ∈ \allargs$ and $S ⊆ \allargs$, note that
 \end{remark}
 
 \begin{example}[To be completed]
-  Assume that $∃ \ar_j ≠ \ar_k, J, K ⊊ I \suchthat J ∪ K = I ∧ \card{J} ∉ ℕ ∧ \card{K} ∉ ℕ ∧ ∀ j ∈ J: \ar_j \ileadstost[j] φ ∧ ∀ k ∈ K: \ar_k \ileadstost[k] φ ∧ ∀ \ar ∈ \allargs ∖ \set{\ar_j, \ar_k}, i ∈ I: \ar \nileadstost φ$.
+  Assume that $∃ a_j ≠ a_k, J, K ⊊ I \suchthat J ∪ K = I ∧ \card{J} ∉ ℕ ∧ \card{K} ∉ ℕ ∧ ∀ j ∈ J: a_j \ileadstost[j] φ ∧ ∀ k ∈ K: a_k \ileadstost[k] φ ∧ ∀ a ∈ \allargs ∖ \set{a_j, a_k}, i ∈ I: a \nileadstost φ$.
   Then no suitable $C$ exists?
 
   Let’s find some suitable $C$ that shows that $φ ∈ P_i$.
@@ -1138,32 +1146,32 @@ Given $\ileadstogo$, $p ∈ P$, $s ∈ \allargs$ and $S ⊆ \allargs$, note that
 Intuition: if $a_j$ and afterwards $a_k$ is convincing, then either $a_j$ is unuseful in which case $a_k$ is decisive; or $a_j$ is useful in which case $a_j ∪ a_k$ is decisive. However, could also be that $a_j$ is essential as first argument; thus $a_j$ is useful but $a_j ∪ a_k$ is not decisive as $a'$ then $a_j ∪ a_k$ is not convincing. Note that the latter part can be excluded by a falsifiable claim: $∄ a' \suchthat a', a_j ∪ a_k \nileadsto φ$.
 
 The following antecedent excludes two of these three hypothesis, leaving only the one that $a_j$ is useful.
-$((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?); $∄ \ar \suchthat [(\ar, …, a_k)$ not convincing $∧(\ar, …,  a_j ∪ a_k)$ not convincing].
+$((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?); $∄ a \suchthat [(a, …, a_k)$ not convincing $∧(a, …,  a_j ∪ a_k)$ not convincing].
   The conclusion is: $a_j ∪ a_k$ decisive.
 
   Is this an axiom or is this provable?
-  And: is the part with $∄ \ar$ a falsifiable claim?
+  And: is the part with $∄ a$ a falsifiable claim?
 
   \subsection{Alternative definition of syntactic falsifiability}
   A claim $C$ is attempt-falsifiable iff $∃ θ \suchthat θ ⇒ ¬C$, by which I mean $θ ∉ C^⊆$.
   \begin{example}
-    $(\ar) \ileadstog φ ∨ (\ar, \ar) \ileadstog φ ∨ …$ is not falsifiable.
-    %	Its negation is $∀ k: (\ar^k) \nileadsto φ$.
-    %	The claim represents the set $\set{{\allleadsto} ∈ \allleadstos \suchthat (\ar) \ileadsto φ ∨  (\ar, \ar) \ileadsto φ ∨ …}$.
-    Given any $O$, define $l = \max_{\hist \suchthat ∃ p ∈ P \suchthat (i, \hist, p) ∈ O} \card{\hist} + 1$. Pick any $\allleadstog$ such that $θ ⊆ \allleadstog ∧ (\ar)^l \ileadstog φ$. We have $\allleadstog ∈ S_θ ∩ C ≠ ∅$.
+    $(a) \ileadstog φ ∨ (a, a) \ileadstog φ ∨ …$ is not falsifiable.
+    %	Its negation is $∀ k: (a^k) \nileadsto φ$.
+    %	The claim represents the set $\set{{\allleadsto} ∈ \allleadstos \suchthat (a) \ileadsto φ ∨  (a, a) \ileadsto φ ∨ …}$.
+    Given any $O$, define $l = \max_{\hist \suchthat ∃ p ∈ P \suchthat (i, \hist, p) ∈ O} \card{\hist} + 1$. Pick any $\allleadstog$ such that $θ ⊆ \allleadstog ∧ (a)^l \ileadstog φ$. We have $\allleadstog ∈ S_θ ∩ C ≠ ∅$.
   \end{example}
   \begin{example}
-    $(\ar) \ileadstog φ ∨ (\ar') \ileadstog φ$ is not falsifiable.
-    Given any $O$, it may not contain both $(i, (\ar), φ)$ and $(i, (\ar'), φ)$, thus letting $t$ denote one of these triples not in $O$, pick any $\allleadstog$ such that $θ ⊆ \allleadstog ∧ t ∈ \allleadstog$. We have $\allleadstog ∈ S_θ ∩ C ≠ ∅$.
+    $(a) \ileadstog φ ∨ (a') \ileadstog φ$ is not falsifiable.
+    Given any $O$, it may not contain both $(i, (a), φ)$ and $(i, (a'), φ)$, thus letting $t$ denote one of these triples not in $O$, pick any $\allleadstog$ such that $θ ⊆ \allleadstog ∧ t ∈ \allleadstog$. We have $\allleadstog ∈ S_θ ∩ C ≠ ∅$.
   \end{example}
   \begin{example}[Fals. but shouldn’t]
     \label{ex:fbs}
-    $\hist \ileadstog[j] φ ∧ [(\ar) \ileadstog φ ∨ (\ar') \ileadstog φ]$ is falsifiable.
+    $\hist \ileadstog[j] φ ∧ [(a) \ileadstog φ ∨ (a') \ileadstog φ]$ is falsifiable.
     Consider $θ = \set{(j, \hist, φ')}$.
   \end{example}
   \begin{example}
-    $∀ i: \ar \ileadstostg φ$ is falsifiable.
-    Consider any $i ∈ I$ and $θ = \set{(i, (\ar), φ')}$.
+    $∀ i: a \ileadstostg φ$ is falsifiable.
+    Consider any $i ∈ I$ and $θ = \set{(i, (a), φ')}$.
   \end{example}
   \Cref{ex:fbs} shows that this definition of falsifiability is wrong.
 
@@ -1173,13 +1181,13 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 
   The defense relation $\dg ⊆ \allhists × \allargs$ defines the argumentation strategy of the theory. Informally speaking, it defines the arguments that the theory claims will convince the individuals in $I$ to choose $\pga$. Assuming that some path $\hist$ challenges the theory’s intended conclusion in favor of $\pga$ (as judged by the individual), $\dg(\hist)$ is the argument that the theory plays as a counter-argument to the path $\hist$.
 
-  Formally speaking, a defense relation $\dg ⊆ \allhists × \allargs$ is a right-unique relation satisfying bounded depth (to be defined shortly). Right-unique means that given any $\hist ∈ \allhists$, $\dg(\hist) = \set{\ar ∈ \allargs \suchthat (\hist, \ar) ∈ \dg}$ is empty or is a singleton.
-  As is usual for right-unique relations, we write $\dg(\hist) = \ar$ instead of $\dg(\hist) = \set{\ar}$ when $\dg(\hist)$ is a singleton (and $\dg(\hist) = ∅$ otherwise).
+  Formally speaking, a defense relation $\dg ⊆ \allhists × \allargs$ is a right-unique relation satisfying bounded depth (to be defined shortly). Right-unique means that given any $\hist ∈ \allhists$, $\dg(\hist) = \set{a ∈ \allargs \suchthat (\hist, a) ∈ \dg}$ is empty or is a singleton.
+  As is usual for right-unique relations, we write $\dg(\hist) = a$ instead of $\dg(\hist) = \set{a}$ when $\dg(\hist)$ is a singleton (and $\dg(\hist) = ∅$ otherwise).
   Given $H ⊆ \allhists$, define $\dg(H) = \set{\dg(\hist) \suchthat α ∈ H} ⊆ \allargs$.
-  Given $\ar_0, \ar_1 ∈ \allargs$, say that $\ar_1$ defends $\ar_0$
-  iff $∃ \hist ∈ \allhists \suchthat \ar_0 ∈ R(\hist) ∧ \dg(\hist) = \ar_1$, equivalently,
-  iff $\ar_0 ∈ R(\dg^{-1}(\ar_1))$, equivalently,
-  iff $\ar_1 ∈ \dg(\set{\hist \suchthat \ar_0 ∈ R(\hist)})$.
+  Given $a_0, a_1 ∈ \allargs$, say that $a_1$ defends $a_0$
+  iff $∃ \hist ∈ \allhists \suchthat a_0 ∈ R(\hist) ∧ \dg(\hist) = a_1$, equivalently,
+  iff $a_0 ∈ R(\dg^{-1}(a_1))$, equivalently,
+  iff $a_1 ∈ \dg(\set{\hist \suchthat a_0 ∈ R(\hist)})$.
 
   Say that $γ$ has depth at least $k ∈ \Np$ iff $∃ (α_i, 1 ≤ i ≤ k) \suchthat ∀ 1 ≤ i ≤ k, \dg(\set{α_j \suchthat 1 ≤ j ≤ i - 1}) ⊊ \dg(\set{α_j \suchthat 1 ≤ j ≤ i}) ∧ ∀ 1 ≤ i ≤ k - 1, α_i ∪ \dg(α_i) ⊆ α_{i + 1}$.
   The bounded depth condition on the defense relation imposes that for some $k ∈ \Np$, $γ$ does not have depth at least $k$.
@@ -1196,13 +1204,13 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   \commentOC{Condition: $\hist \nileadsto \pga ∧ ∃ \hist' ⊆ \hist \suchthat \dg(\histp) ∈ \histend ∧ \dg(\hist)$ is not decisive ($∃ β ⊆ \hist \suchthat \dg(\hist) ∈ β_\text{end} ∧ β \ileadsto \pga$).}
 
   To define this formally, note that either $\arga$ is a decisive argument for $\pga$, or some paths challenge this claim, namely those $\hist ∈ \allhists$ such that $[\arga ∈ \histend ∧ \hist \nileadsto \pga]$.
-  Generalizing this observation, given $i ∈ I$, define $\dgi(\ar) = \set{\dg(\ar, \hist) \suchthat \ar ∈ \histend ∧ \hist \nileadsto \pga} ⊆ \dg(\ar)$ as the subset of defenders of $\ar$ required for convincing $i$ of choosing $\pga$.
+  Generalizing this observation, given $i ∈ I$, define $\dgi(a) = \set{\dg(a, \hist) \suchthat a ∈ \histend ∧ \hist \nileadsto \pga} ⊆ \dg(a)$ as the subset of defenders of $a$ required for convincing $i$ of choosing $\pga$.
   Define $\gargsi ⊆ \allargs$ as the transitive closure of $\arga$ under $\dgi$: $\gargsi = ∪_{k ∈ ℕ} (\dgi)^k(\arga)$. The set $\gargsi$ is the set of arguments required to convince $i$ of choosing $\pga$.
 
   An argumentative theory claims that whenever some of its arguments fail to convince $i$ of choosing $\pga$, it can argue something else.
   It is said to be truthful iff this claim is correct.
-  More precisely, its claims are about paths of the sort $\hist = (\arga, …, \ar_2, …, \ar_3, …)$ where $\ar_2 ∈ \dgi(\arga)$, $\ar_3 ∈ \dgi(\ar_2)$, …
-  The following definition makes this precise by mandating that whenever increasing subsequences of $\hist$, involving arguments $\ar_j$ proposed by the theory, are not convincing, then the theory is able to produce yet another argument in defense of its claim.%
+  More precisely, its claims are about paths of the sort $\hist = (\arga, …, a_2, …, a_3, …)$ where $a_2 ∈ \dgi(\arga)$, $a_3 ∈ \dgi(a_2)$, …
+  The following definition makes this precise by mandating that whenever increasing subsequences of $\hist$, involving arguments $a_j$ proposed by the theory, are not convincing, then the theory is able to produce yet another argument in defense of its claim.%
   \footnote{Intuition.
     If $a_1$, used by the theory, is not decisive, then the theory has an answer, namely, $a_2$, which works at least temporarily.
     If $a_1$ used by th is not dec, and $a_2$ used by th is not dec *in the same sequence*, then $a_3$ needs to defend *in the same sequence*.
@@ -1211,14 +1219,14 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   \begin{definition}[Truthfulness]
     \label{def:truth}
     An argumentative theory $(\pga, \arga, \dg)$ for the exposure protocol $(I, \allargs, \allleadsto)$ is \emph{truthful} iff
-    $∀ i ∈ I, \hist ∈ \allhists, n ∈ ℕ, k ∈ \intvl{1, \card \hist}^n, \ar ∈ \allargs^n$:
+    $∀ i ∈ I, \hist ∈ \allhists, n ∈ ℕ, k ∈ \intvl{1, \card \hist}^n, a ∈ \allargs^n$:
     \begin{equation}
       \left.\begin{aligned}
-         & \ar_1 = \arga                                                                            \\
-         & ∀ 1 ≤ j < n: \ar_{j + 1} = \dg(\ar_j, α_{\intvl{1, k_j}}) ∈ \histbend{k_{j + 1}} \\
+         & a_1 = \arga                                                                            \\
+         & ∀ 1 ≤ j < n: a_{j + 1} = \dg(a_j, α_{\intvl{1, k_j}}) ∈ \histbend{k_{j + 1}} \\
          & ∀ 1 ≤ j ≤ n: \restr{\hist}{\intvl{1, k_j}} \nileadsto \pga
       \end{aligned}\right\}
-      ⇒ \dg(\ar_n, \hist) ≠ ∅.
+      ⇒ \dg(a_n, \hist) ≠ ∅.
     \end{equation}
   \end{definition}
   Given the paths $α, α'$, the sequence $(α, α')$ denotes a path constituted of the arguments in $α$ followed by the arguments of $α'$.
@@ -1226,52 +1234,52 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
     $∀ …$:
     \begin{equation}
       \left.\begin{aligned}
-         & (\ar_4, \ar_2, \ar) \nileadsto \pga         \\
-         & (\ar_4, \ar_2, \ar, \ar_3) \ileadstost \pga \\
-         & (\ar_5, \ar_2, \ar) \nileadsto \pga
+         & (a_4, a_2, a) \nileadsto \pga         \\
+         & (a_4, a_2, a, a_3) \ileadstost \pga \\
+         & (a_5, a_2, a) \nileadsto \pga
       \end{aligned}\right\}
-      ⇒ (\ar_5, \ar_2, \ar, \ar_3) \ileadstost \pga.
+      ⇒ (a_5, a_2, a, a_3) \ileadstost \pga.
     \end{equation}
   \end{axiom}
   Requires excluding:
   \begin{equation}
     \left.\begin{aligned}
-       & (\ar_4, \ar_2, \ar) \nileadsto \pga               \\
-       & (\ar_4, \ar_2, \ar, \ar_3, \ar') \ileadsto \pga   \\
-       & (\ar_5, \ar_2, \ar) \nileadsto \pga               \\
-       & (\ar_5, \ar_2, \ar, \ar_3, \ar') \nileadsto \pga.
+       & (a_4, a_2, a) \nileadsto \pga               \\
+       & (a_4, a_2, a, a_3, a') \ileadsto \pga   \\
+       & (a_5, a_2, a) \nileadsto \pga               \\
+       & (a_5, a_2, a, a_3, a') \nileadsto \pga.
     \end{aligned}\right\}
   \end{equation}
 
   To exclude:
   \begin{equation}
     \left.\begin{aligned}
-       & (\ar_4, \ar_2, \ar) \nileadsto \pga         \\
-       & (\ar_4, \ar_2, \ar, \ar_3) \ileadstost \pga \\
-       & (\ar_5, \ar_2, \ar) \ileadsto \pga          \\
-       & (\ar_5, \ar_2, \ar_3, \ar') \nileadsto \pga
+       & (a_4, a_2, a) \nileadsto \pga         \\
+       & (a_4, a_2, a, a_3) \ileadstost \pga \\
+       & (a_5, a_2, a) \ileadsto \pga          \\
+       & (a_5, a_2, a_3, a') \nileadsto \pga
     \end{aligned}\right\}
   \end{equation}
   Using:
   \begin{equation}
     \left.\begin{aligned}
-       & (\ar_4, \ar_2, \ar) \nileadsto \pga         \\
-       & (\ar_4, \ar_2, \ar, \ar_3) \ileadstost \pga \\
-       & (\ar_5, \ar_2, \ar) \ileadsto \pga
+       & (a_4, a_2, a) \nileadsto \pga         \\
+       & (a_4, a_2, a, a_3) \ileadstost \pga \\
+       & (a_5, a_2, a) \ileadsto \pga
     \end{aligned}\right\}
-    ⇒ (\ar_5, \ar_2, \ar_3) \ileadstost \pga.
+    ⇒ (a_5, a_2, a_3) \ileadstost \pga.
   \end{equation}
 
   \begin{axiom}[Answerability]
     \label{ax:ans}
-    $∀ i ∈ I, \hist ∈ \allhists, \ar ∈ \gargsi$:
+    $∀ i ∈ I, \hist ∈ \allhists, a ∈ \gargsi$:
     \begin{equation}
       \left.\begin{aligned}
          & \hist \nileadsto \pga                                        \\
-         & (\hist, \ar) \ileadsto \pga                                  \\
-         & ∀ \ar' ∈ \allargs: (\hist, \ar, \ar') \ileadsto \pga
+         & (\hist, a) \ileadsto \pga                                  \\
+         & ∀ a' ∈ \allargs: (\hist, a, a') \ileadsto \pga
       \end{aligned}\right\}
-      ⇒ \ar \ileadstost \pga.
+      ⇒ a \ileadstost \pga.
     \end{equation}
   \end{axiom}
   \footnote{$a_1, a_2, a_3$ NOT and $a_1, a_2, a_3, a_4$ YES and $a_1', a_2, a_3, a_4$ NO imply that $a_1, a_2, a_3, a_4, a'_1$ NO.
@@ -1297,24 +1305,24 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
     \label{ax:ansn}
     $∀ i ∈ I, \hist^j ∈ (\allhists)^n$:
     \begin{equation}
-      [∀ j: \hist^j \ileadstost \pga] ⇒ [∃ \ar ∈ \allargs \suchthat ∀ j: (\hist^j, \ar) \ileadstost \pga].
+      [∀ j: \hist^j \ileadstost \pga] ⇒ [∃ a ∈ \allargs \suchthat ∀ j: (\hist^j, a) \ileadstost \pga].
     \end{equation}
   \end{axiom}
 
   \begin{axiom}[Reinstatement]
     \label{ax:r}
-    $∀ i ∈ I, \hist ∈ \allhists, \ar_1, \ar_2 ∈ \gargsi, \ar ∈ \allargs$:
+    $∀ i ∈ I, \hist ∈ \allhists, a_1, a_2 ∈ \gargsi, a ∈ \allargs$:
     \begin{equation}
       \left.\begin{aligned}
-         & (\hist, \ar_1, \ar) \nileadsto \pga            \\
-         & (\hist, \ar_1, \ar, \ar_2) \ileadsto \pga      \\
-         & (\hist, \ar_1, \ar, \ar_2, \ar) \ileadsto \pga
+         & (\hist, a_1, a) \nileadsto \pga            \\
+         & (\hist, a_1, a, a_2) \ileadsto \pga      \\
+         & (\hist, a_1, a, a_2, a) \ileadsto \pga
       \end{aligned}\right\}
       ⇒
       \left\{\begin{aligned}
-         & (\hist, \ar_2) \ileadsto \pga                                                      \\
-         & (\hist, \ar_2, \ar) \ileadsto \pga                                                 \\
-         & ∀ \ar': (\hist, a_2, a') \nileadsto \pga ⇒ (\hist, a_1, a') \nileadsto \pga.
+         & (\hist, a_2) \ileadsto \pga                                                      \\
+         & (\hist, a_2, a) \ileadsto \pga                                                 \\
+         & ∀ a': (\hist, a_2, a') \nileadsto \pga ⇒ (\hist, a_1, a') \nileadsto \pga.
       \end{aligned}\right.
     \end{equation}
   \end{axiom}
@@ -1323,16 +1331,16 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   \end{example}
 
   A path can be shortened to its first $k ∈ \intvl{0, \card{\hist}}$ elements, which is denoted by $\restr{\hist}{\intvl{1, k}}$, and “shortening” a path beyond its length yields the same path again, thus given $k ∈ ℤ$, $\restr{\hist}{\intvl{1, k}} = \restr{\hist}{\intvl{1, \min\set{\card{\hist}, k}}}$.
-  Define a path as being decisive for $p$, $\hist \ileadstost p$, iff $\hist \ileadsto p ∧ ∀ \ar ∈ \allargs: (\hist, \ar) \ileadsto p$, or equivalently, iff $∀ \hist' \suchthat \card{\hist} ≤ \card{\hist'} ≤ \card{\hist} + 1 ∧ \restr{\hist'}{\intvl{1, \card{\hist}}} = \hist: \hist' \ileadsto p$. Thus, $\hist \nileadstost p ⇔ ∃ \ar ∈ \allargs \suchthat (\hist, \ar) \nileadsto p$ (or…?).
+  Define a path as being decisive for $p$, $\hist \ileadstost p$, iff $\hist \ileadsto p ∧ ∀ a ∈ \allargs: (\hist, a) \ileadsto p$, or equivalently, iff $∀ \hist' \suchthat \card{\hist} ≤ \card{\hist'} ≤ \card{\hist} + 1 ∧ \restr{\hist'}{\intvl{1, \card{\hist}}} = \hist: \hist' \ileadsto p$. Thus, $\hist \nileadstost p ⇔ ∃ a ∈ \allargs \suchthat (\hist, a) \nileadsto p$ (or…?).
 
   \begin{axiom}[Self-sufficiency of positive arguments]
-    $∀ \ar_1, \ar_2 ∈ \gargsi, \ar ∈ \allargs, \hist ∈ \allhists$:
+    $∀ a_1, a_2 ∈ \gargsi, a ∈ \allargs, \hist ∈ \allhists$:
     \begin{equation}
       \left.\begin{aligned}
-         & (\hist, \ar_1) \nileadstost \pga \\
-         & (\hist, \ar_2) \nileadstost \pga
+         & (\hist, a_1) \nileadstost \pga \\
+         & (\hist, a_2) \nileadstost \pga
       \end{aligned}\right\}
-      ⇒ (\hist, \ar_1, \ar_2) \nileadstost \pga.
+      ⇒ (\hist, a_1, a_2) \nileadstost \pga.
     \end{equation}
   \end{axiom}
 
@@ -1343,45 +1351,45 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
     Consider any $i ∈ I$.
     We have to show that $\pga ∈ Φ_i$.
     Assume depth $3$.
-    Assume that $\arga$ and $\ar_2$ are not decisive. Let’s show that $\ar_3$ is decisive.
-    Assume that $(a_4, \arga, \ar_2, a) \nileadsto \pga$.
-    By TF, $(a_4, \arga, \ar_2, a, \ar_3) \ileadstost \pga$.
-    By Reinst, $(a_4, \arga, \ar_2, \ar_3) \ileadstost \pga$.
-    By Self-s, $(a_4, \arga, \ar_3) \ileadstost \pga$.
-    By Self-s, $(a_4, \ar_3) \ileadstost \pga$.
+    Assume that $\arga$ and $a_2$ are not decisive. Let’s show that $a_3$ is decisive.
+    Assume that $(a_4, \arga, a_2, a) \nileadsto \pga$.
+    By TF, $(a_4, \arga, a_2, a, a_3) \ileadstost \pga$.
+    By Reinst, $(a_4, \arga, a_2, a_3) \ileadstost \pga$.
+    By Self-s, $(a_4, \arga, a_3) \ileadstost \pga$.
+    By Self-s, $(a_4, a_3) \ileadstost \pga$.
 
-    Now consider $(\ar_5, \ar_2) \ileadsto \pga$. (Or any such path not ending with $\ar_3$.)
-    We want $(\ar_5, \ar_2, \ar_3) \ileadstost \pga$.
-    By Answ, $∃ a \suchthat (\ar_5, \ar_2, a) \nileadsto \pga$.
+    Now consider $(a_5, a_2) \ileadsto \pga$. (Or any such path not ending with $a_3$.)
+    We want $(a_5, a_2, a_3) \ileadstost \pga$.
+    By Answ, $∃ a \suchthat (a_5, a_2, a) \nileadsto \pga$.
   \end{proof}
   \begin{proof}[Sketch of proof]
     Consider any $i$. We have to show that $\pga ∈ Φ_i$.%
     \footnote{Assume $(a_4, \arga, a) \nileadsto \pga$ (thus, $a$ attacks $\arga$).
-      By tf, $(a_4, \arga, a, \ar_2, …) \ileadsto \pga$.
-      We get $(a_3, \arga, a, \ar_2) \ileadsto \pga$ by answ.
-      By reinst: $(\ar_2)$ YES.}
+      By tf, $(a_4, \arga, a, a_2, …) \ileadsto \pga$.
+      We get $(a_3, \arga, a, a_2) \ileadsto \pga$ by answ.
+      By reinst: $(a_2)$ YES.}
 
-    Assume that $\arga$ is not decisive (otherwise, done). Thus, for some $\hist: (\hist, \arga, \ar) \nileadsto \pga$ or $(\hist, \ar, \arga)$.
-    Consider that $\hist: (\hist, \arga, \ar) \nileadsto \pga$.
-    Consider $\hist'$ and wonder whether $(\hist', \arga, \ar) \ileadsto \pga$. If so,
-    By Answ, this means that $∀ \hist, (\hist, \arga, \ar) \nileadsto \pga$.
-    By truthfulness, $\ar_2 = \dg(\ar_1, (\hist, \arga, \ar)) ≠ ∅ ∧ (\hist, \arga, \ar, \ar_2) \ileadsto \pga$.
-    Assume now that $(\hist, \arga, \ar, \ar_2, …) \ileadsto \pga$.
-    Then by Reinstatement, $(\hist, \ar_2) \ileadsto \pga$.
+    Assume that $\arga$ is not decisive (otherwise, done). Thus, for some $\hist: (\hist, \arga, a) \nileadsto \pga$ or $(\hist, a, \arga)$.
+    Consider that $\hist: (\hist, \arga, a) \nileadsto \pga$.
+    Consider $\hist'$ and wonder whether $(\hist', \arga, a) \ileadsto \pga$. If so,
+    By Answ, this means that $∀ \hist, (\hist, \arga, a) \nileadsto \pga$.
+    By truthfulness, $a_2 = \dg(a_1, (\hist, \arga, a)) ≠ ∅ ∧ (\hist, \arga, a, a_2) \ileadsto \pga$.
+    Assume now that $(\hist, \arga, a, a_2, …) \ileadsto \pga$.
+    Then by Reinstatement, $(\hist, a_2) \ileadsto \pga$.
 
-    %	Assume, to start with, that the theory is of depth 2, more precisely, $\arga$ is not decisive because $\hist \nileadsto \pga, \arga ∈ \histend$ and $\dgi(\arga) = \ar_2$ with no further hist against it.
+    %	Assume, to start with, that the theory is of depth 2, more precisely, $\arga$ is not decisive because $\hist \nileadsto \pga, \arga ∈ \histend$ and $\dgi(\arga) = a_2$ with no further hist against it.
   \end{proof}
 
   This definition of truthfulness is adopted because of our goal of distinguishing empirical claims. Truthfulness, so defined, can be falsified empirically: if it does not hold, it is possible to prove this empirically by exhibiting a counter-example in the form of a tuple $i, k, (a_j)_{j ∈ \intvl{1, k}}, α$ such that … (to be completed).
 
-  Note that a static theory $(p, \ar)$ can be considered as an argumentative theory $(p, \ar, ∅)$, and $(p, \ar)$ is truthful in the sense of \cref{sec:static} iff $(p, \ar, ∅)$ is truthful in the sense of \cref{def:truth}.
+  Note that a static theory $(p, a)$ can be considered as an argumentative theory $(p, a, ∅)$, and $(p, a)$ is truthful in the sense of \cref{sec:static} iff $(p, a, ∅)$ is truthful in the sense of \cref{def:truth}.
 
-  Associated with an argumentative theory also comes the following axiom, that mandates a more general version of the following requirement: if some argument $\ar_2$ defends some argument $\ar_1$, and if $\ar_2$ leads $i$ to opt for $\pga$ whenever it immediately follows $\ar_1$, then omitting $\ar_1$ would still have lead $i$ to opt for $\pga$.
+  Associated with an argumentative theory also comes the following axiom, that mandates a more general version of the following requirement: if some argument $a_2$ defends some argument $a_1$, and if $a_2$ leads $i$ to opt for $\pga$ whenever it immediately follows $a_1$, then omitting $a_1$ would still have lead $i$ to opt for $\pga$.
 
   \begin{axiom}[Omitting defended arguments]
     \label{ax:omitting}
-    If the theory is truthful, then $∀ i ∈ I, k ∈ \Np, l ∈ \intvl{2, k}, (\ar_j)_{j ∈ \intvl{1, k}} ∈ \allargs^k, \hist, β ∈ \allhists \suchthat [\ar_k ∈ \histend ∧ ∀ j ∈ \intvl{2, k}: \ar_j ∈ \dgi(\ar_{j - 1})]:
-      (β, \ar_{l - 1}, \ar_l, \hist) \ileadsto \pga ⇒ (β, \ar_l, \hist) \ileadsto \pga$.
+    If the theory is truthful, then $∀ i ∈ I, k ∈ \Np, l ∈ \intvl{2, k}, (a_j)_{j ∈ \intvl{1, k}} ∈ \allargs^k, \hist, β ∈ \allhists \suchthat [a_k ∈ \histend ∧ ∀ j ∈ \intvl{2, k}: a_j ∈ \dgi(a_{j - 1})]:
+      (β, a_{l - 1}, a_l, \hist) \ileadsto \pga ⇒ (β, a_l, \hist) \ileadsto \pga$.
   \end{axiom}
   This is called an axiom because it cannot be falsified using observables. It has to be accepted on the basis of the rest of the observations and on the contents of the defending arguments. As \cref{ex:lichtenstein} suggests, theories can be built so as to make this axiom plausible by embedding within defending arguments the content of the defended argument.
 
@@ -1391,20 +1399,20 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
     If an argumentative theory is truthful, then \cref{ax:omitting} implies that the theory is correct.
   \end{theorem}
   \begin{proof}[Sketch of proof]
-    Assume, to start with, that the theory is of depth 2, more precisely, $\arga$ is not decisive because $\hist \nileadsto \pga, \arga ∈ \histend$ and $\dgi(\arga) = \ar_2$ with no further hist against it.
+    Assume, to start with, that the theory is of depth 2, more precisely, $\arga$ is not decisive because $\hist \nileadsto \pga, \arga ∈ \histend$ and $\dgi(\arga) = a_2$ with no further hist against it.
 
     Consider any $i ∈ I$.
     Assume $\arga$ is not decisive.
-    Consider any $\hist \suchthat \ar_2 ∈ \histend$. We want to show that $\hist \ileadsto \pga$.
+    Consider any $\hist \suchthat a_2 ∈ \histend$. We want to show that $\hist \ileadsto \pga$.
 
-    IF $\hist$ contains $\arga$ before $\ar_2$, done by TF.
+    IF $\hist$ contains $\arga$ before $a_2$, done by TF.
     Otherwise, define $hist'$ which has a1 just before a2.
     Apply TF on hist' then apply axiom.
 
     Consider now a theory of depth 3.
     Consider any $i ∈ I$.
-    Assume $\arga$ not decisive, $\ar_2$ not decisive.
-    Consider any $\hist \suchthat \ar_3 ∈ \histend$. We want to show that $\hist \ileadsto \pga$.
+    Assume $\arga$ not decisive, $a_2$ not decisive.
+    Consider any $\hist \suchthat a_3 ∈ \histend$. We want to show that $\hist \ileadsto \pga$.
 
     If it includes a1 then a2, ok thanks to truthfulness.
     Otherwise, build hist3 that has a1 then a2 just before a3.
@@ -1499,7 +1507,7 @@ Using the trivial prior $D = \allleadstos$, we obtain this corollary.
   For each $i \suchthat f(i) ∈ P$, define $a_i ∉ (O(P))(i)(ℕ)$ as an argument not used for $i$;
   for each $i \suchthat f(i) = ∅$, for each $p ∈ P$, define $k_i^p ∉ (O(P))(i)$ as a path not used for $i$, with all $k_i^p$ different from each other ($∀ p, p' ∈ P, k_i^p ≠ k_i^{p'}$).
 
-  Define $f' = O ∪_{i \suchthat f(i) ∈ P, α \suchthat a_i ∈ \histend} \set{(i, \hist, f(i))} ∪_{i \suchthat f(i) = ∅, p ∈ P, \ar ∈ \allargs} \set{(i, (k_i^p, a), p)}$.
+  Define $f' = O ∪_{i \suchthat f(i) ∈ P, α \suchthat a_i ∈ \histend} \set{(i, \hist, f(i))} ∪_{i \suchthat f(i) = ∅, p ∈ P, a ∈ \allargs} \set{(i, (k_i^p, a), p)}$.
   Define $\allleadstog$ as any completion of $f'$ to a total function in $\allleadstos$.
 \end{proof}
 \begin{theorem}
@@ -1550,7 +1558,7 @@ This (to be proven) captures the claim “there is no decisive argument for $i$�
 \begin{theorem}
   \label{th:noDecArgi}
   Given any $\allleadstog ∈ \allleadstos$:
-  $π(\allleadstog)(i) = \set{∅} ⇔ ∀ \ar ∈ \allargs, ∃ p_1 ≠ p_2 ∈ P, \hist^1, \hist^2 ∈ \allhists \suchthat \ar ∈ \histend[1] ∩ \histend[2] ∧ \hist^1 \ileadstog p_1 ∧ \hist^2 \ileadstog p_2$.
+  $π(\allleadstog)(i) = \set{∅} ⇔ ∀ a ∈ \allargs, ∃ p_1 ≠ p_2 ∈ P, \hist^1, \hist^2 ∈ \allhists \suchthat a ∈ \histend[1] ∩ \histend[2] ∧ \hist^1 \ileadstog p_1 ∧ \hist^2 \ileadstog p_2$.
 \end{theorem}
 \begin{example}[No decisive argument]
   \label{ex:noDecArg}
@@ -1574,12 +1582,12 @@ This (to be proven) captures the claim “there is no decisive argument for $i$�
 
 \begin{example}[Disjunct with incompatible paths, not rejectable]
   \label{ex:disjR}
-  Given $\ar ≠ \ar' ∈ \allargs$,
-  the claim $∀ i: [(\ar) \ileadstog φ ∨ (\ar') \ileadstog φ]$ is not rejectable.
+  Given $a ≠ a' ∈ \allargs$,
+  the claim $∀ i: [(a) \ileadstog φ ∨ (a') \ileadstog φ]$ is not rejectable.
   In fact,
   $Θ ⊆ C^⊆$.
   Consider any $θ ∈ Θ$ and let us prove that $θ ∈ ∪_{\allleadstog ∈ C} \powerset{\allleadstog}$.
-  By definition of $Θ$, $θ(P)$ may not contain both $((\ar), i)$ and $((\ar'), i)$, thus letting $t$ denote one of these pairs not in $θ(P)$ and defining $r = (t, φ)$, pick any ${\allleadstog'}$ such that $θ ⊆ {\allleadstog'} ∧ t ∈ {\allleadstog'}$. We have $θ ∈ \powerset{\allleadstog'}$ and ${\allleadstog'} ∈ C$.
+  By definition of $Θ$, $θ(P)$ may not contain both $((a), i)$ and $((a'), i)$, thus letting $t$ denote one of these pairs not in $θ(P)$ and defining $r = (t, φ)$, pick any ${\allleadstog'}$ such that $θ ⊆ {\allleadstog'} ∧ t ∈ {\allleadstog'}$. We have $θ ∈ \powerset{\allleadstog'}$ and ${\allleadstog'} ∈ C$.
 \end{example}
 \Cref{ex:disjR} shows a claim that is not rejectable, irrespective of the exposure protocol.
 In particular, the example applies when $C$ does not hold (that is, when $\allleadsto ∉ C$). We conclude that a claim may fail to hold but still be not rejectable.
@@ -1593,32 +1601,32 @@ It follows that non-rejection cannot be a sufficient condition for validating a 
 
 \begin{example}
   \label{ex:allParticular}
-  Consider any $\ar$ and $φ$. The claim $∀i: \ar \ileadstostg φ$ is falsifiable:
-  given any $\allleadstog ∉ C$, consider any $i \suchthat \ar \nileadstostg φ$ and any $\hist \suchthat \hist \nileadstog φ ∧ \ar ∈ \histend$, and define $θ = \set{(i, \hist, \allleadstog(i, \hist) ≠ φ)}$.
+  Consider any $a$ and $φ$. The claim $∀i: a \ileadstostg φ$ is falsifiable:
+  given any $\allleadstog ∉ C$, consider any $i \suchthat a \nileadstostg φ$ and any $\hist \suchthat \hist \nileadstog φ ∧ a ∈ \histend$, and define $θ = \set{(i, \hist, \allleadstog(i, \hist) ≠ φ)}$.
 \end{example}
 
 \label{sec:supplementary}
 The following example presents a situation where non rejection is due to finiteness of observations.
 \begin{example}[Big disjunct, non rejectable]
   \label{ex:bigor}
-  Consider $\ar ∈ \allargs$.
-  The claim $[∀ i: (\ar) \ileadstog φ] ∨ [∀ i: (\ar, \ar) \ileadstog φ] ∨ …$,
+  Consider $a ∈ \allargs$.
+  The claim $[∀ i: (a) \ileadstog φ] ∨ [∀ i: (a, a) \ileadstog φ] ∨ …$,
   thus, $C = \set{\allleadstog \suchthat ∃ n ∈ \Np \suchthat ∀ i: (a)^n \ileadstog φ}$,
   is non rejectable: $Θ ⊆ C^⊆$.
 
-  Given any $θ ∈ Θ$, define $l = \max_{\hist \suchthat ∃ i ∈ I, p ∈ P \suchthat (i, \hist, p) ∈ θ} \card{\hist} + 1$ if $∃ p ∈ P \suchthat (i, \hist, p) ∈ θ$, and $l = 1$ otherwise.\commentClaude{In this second condition ("if $∃p∈P...$"), $i$ and $\hist$ are free — not bound by an enclosing $∃i$/the $\max$'s own $\hist$ binder. Is this meant to hold for the same $\hist$ achieving the max above, and some/any $i$? As written the condition's truth value is unclear.} Pick any $\allleadstog$ such that $θ ⊆ \allleadstog ∧ (\ar)^l \ileadstog φ$. We have
+  Given any $θ ∈ Θ$, define $l = \max_{\hist \suchthat ∃ i ∈ I, p ∈ P \suchthat (i, \hist, p) ∈ θ} \card{\hist} + 1$ if $∃ p ∈ P \suchthat (i, \hist, p) ∈ θ$, and $l = 1$ otherwise.\commentClaude{In this second condition ("if $∃p∈P...$"), $i$ and $\hist$ are free — not bound by an enclosing $∃i$/the $\max$'s own $\hist$ binder. Is this meant to hold for the same $\hist$ achieving the max above, and some/any $i$? As written the condition's truth value is unclear.} Pick any $\allleadstog$ such that $θ ⊆ \allleadstog ∧ (a)^l \ileadstog φ$. We have
   $θ ∈ \powerset{\allleadstog}$ and $\allleadstog ∈ C$, thus, $θ ∈ C^⊆$.
 \end{example}
 \begin{example}[Big disjunct unfals iff infinite]
   \label{ex:existsParticular}
-  Given any $\ar ∈ \allargs$ and an infinite $I$, the claim $∃ i \suchthat \ar \ileadstostg φ$ is strongly unfalsifiable: any $θ ∈ Θ$ only has finitely many $i$ in its triples, thus, some $i$ is not reached by $θ$, thus $θ ∈ C^⊆$.
+  Given any $a ∈ \allargs$ and an infinite $I$, the claim $∃ i \suchthat a \ileadstostg φ$ is strongly unfalsifiable: any $θ ∈ Θ$ only has finitely many $i$ in its triples, thus, some $i$ is not reached by $θ$, thus $θ ∈ C^⊆$.
   If $I$ is finite, then the claim is falsifiable: if it is wrong, observe for each $i$ some adequate triple $(i, \hist_i, p ≠ φ)$.
 \end{example}
 
 \begin{example}[Three functions, may be rejectable]
   \label{ex:threeFs}
-  Consider $i ∈ I$, $ar ≠ ar' ∈ \allargs$ and the three paths $\hists = \set{∅, (\ar), (\ar')}$.
-  The claim “Exactly two of the three paths in $\hists$ lead $i$ to $φ$ and the remaining one leads $i$ to $φ'$” is not rejectable iff $\ileadstoo$ associates, in order, $(∅, (\ar), (\ar'))$ to either
+  Consider $i ∈ I$, $a ≠ a' ∈ \allargs$ and the three paths $\hists = \set{∅, (a), (a')}$.
+  The claim “Exactly two of the three paths in $\hists$ lead $i$ to $φ$ and the remaining one leads $i$ to $φ'$” is not rejectable iff $\ileadstoo$ associates, in order, $(∅, (a), (a'))$ to either
   $(φ', φ, φ)$,
   $(φ, φ', φ)$,
   $(φ, φ, φ')$,
@@ -1626,9 +1634,9 @@ The following example presents a situation where non rejection is due to finiten
   $(φ, φ', φ')$.
 
   Indeed, if $\ileadstoo$ satisfies this, then either it holds and by \cref{th:ex-post} it is not rejectable, or it associates this triplet to $(φ, φ, φ)$ or
-  $(φ, φ', φ')$ in which case, as $(\ar)$ and $(\ar')$ cannot be together in $θ$, any $θ ∈ Θ$ with $θ ⊆ \allleadsto$ satisfy $θ ∈ C^⊆$.
+  $(φ, φ', φ')$ in which case, as $(a)$ and $(a')$ cannot be together in $θ$, any $θ ∈ Θ$ with $θ ⊆ \allleadsto$ satisfy $θ ∈ C^⊆$.
 
-  Conversely, if $C$ is not rejectable, then for any $θ_1$ containing $∅$ and $(\ar)$ and $θ_2$ containing $∅$ and $(\ar')$, with $θ_1, θ_2 ⊆ \allleadsto$, we have $θ_1, θ_2 ∈ C^⊆$, which requires that $\ileadstoo$ associates $(∅, (\ar))$ to $(φ', φ)$, $(φ, φ')$ or $(φ, φ)$ and $(∅, (\ar'))$ to $(φ', φ)$, $(φ, φ)$ or $(φ, φ')$.
+  Conversely, if $C$ is not rejectable, then for any $θ_1$ containing $∅$ and $(a)$ and $θ_2$ containing $∅$ and $(a')$, with $θ_1, θ_2 ⊆ \allleadsto$, we have $θ_1, θ_2 ∈ C^⊆$, which requires that $\ileadstoo$ associates $(∅, (a))$ to $(φ', φ)$, $(φ, φ')$ or $(φ, φ)$ and $(∅, (a'))$ to $(φ', φ)$, $(φ, φ)$ or $(φ, φ')$.
 \end{example}
 
 \begin{theorem}
@@ -1914,7 +1922,7 @@ $∀\allleadstog ≠ \allleadstog' ∈ E: \card\set{i ∈ I \suchthat \ileadstog
 
 \begin{example}[A world not differing for infinitely many individuals with $E$]
   \label{ex:notCoincideFinitely}
-  Fix $\ar ∈ \allargs$, an infinite proper subset $S ⊊ I$ with $I ∖ S$ infinite, and $i_0 ∈ S$. Let $v ∈ E$ be the world where $v(i, (\ar)) = φ'$ for $i ∈ S$ and $v(i, \hist) = φ$ otherwise. Let $w_0$ agree with $v$ everywhere except $w_0(i_0, (\ar)) = φ$. Then $w_0 ∈ E$: individuals in $S ∖ \set{i_0}$ all share behavior "$φ'$ at $(\ar)$, $φ$ elsewhere" (infinitely many), and individuals in $\set{i_0} ∪ (I ∖ S)$ all share behavior "always $φ$" (infinitely many). The worlds $w_0$ and $v$ differ only at $i_0$, so $\card{\set{i ∈ I \suchthat w_0(i, \cdot) ≠ v(i, \cdot)}} = 1 ∈ ℕ$: $w_0$ does not differ for infinitely many individuals with $v ∈ E$.
+  Fix $a ∈ \allargs$, an infinite proper subset $S ⊊ I$ with $I ∖ S$ infinite, and $i_0 ∈ S$. Let $v ∈ E$ be the world where $v(i, (a)) = φ'$ for $i ∈ S$ and $v(i, \hist) = φ$ otherwise. Let $w_0$ agree with $v$ everywhere except $w_0(i_0, (a)) = φ$. Then $w_0 ∈ E$: individuals in $S ∖ \set{i_0}$ all share behavior "$φ'$ at $(a)$, $φ$ elsewhere" (infinitely many), and individuals in $\set{i_0} ∪ (I ∖ S)$ all share behavior "always $φ$" (infinitely many). The worlds $w_0$ and $v$ differ only at $i_0$, so $\card{\set{i ∈ I \suchthat w_0(i, \cdot) ≠ v(i, \cdot)}} = 1 ∈ ℕ$: $w_0$ does not differ for infinitely many individuals with $v ∈ E$.
 \end{example}
 
 \begin{lemma}
@@ -1994,7 +2002,7 @@ This follows from \cref{th:delegationNoVisibilityIssues,th:finiteExceptSpreadAno
 
 \begin{example}[Instance: a single named exception, escaping $E$]
   \label{ex:finiteExceptionNotAnon}
-  Let $C_0 = \set{\allleadstog \suchthat ∀i ∈ I: \allleadstog(i, \ar) = φ}$ (anonymous), fix $i^* ∈ I$, and let $\allleadstog[0]$ agree with $φ$ everywhere except $\allleadstog[0](i^*, \ar) = φ'$. By \cref{th:finiteExceptSpreadAnon} (with $F = \set{\allleadstog[0]}$), $C = C_0 ∪ \set{\allleadstog[0]}$ suffers no visibility issues in $E$, yet is not anonymous (swapping $i^*$ with any other individual moves the exception away from both $C_0$ and $\allleadstog[0]$).
+  Let $C_0 = \set{\allleadstog \suchthat ∀i ∈ I: \allleadstog(i, a) = φ}$ (anonymous), fix $i^* ∈ I$, and let $\allleadstog[0]$ agree with $φ$ everywhere except $\allleadstog[0](i^*, a) = φ'$. By \cref{th:finiteExceptSpreadAnon} (with $F = \set{\allleadstog[0]}$), $C = C_0 ∪ \set{\allleadstog[0]}$ suffers no visibility issues in $E$, yet is not anonymous (swapping $i^*$ with any other individual moves the exception away from both $C_0$ and $\allleadstog[0]$).
   Notably, $\allleadstog[0] ∉ E$: its one distinguished individual $i^*$ has no clones.
 \end{example}
 
@@ -2026,37 +2034,37 @@ We are here interested in the interplay between properties of holding, anonymity
 \section{Supplementary material}
   \begin{example}[Disjunct with incompatible paths, not falsifiable, to be deleted]
     \label{ex:disj}
-    Given $\ar ≠ \ar' ∈ \allargs$, the claim appearing in \cref{ex:disjR}, namely,
-    $∀ i: [(\ar) \ileadstog φ ∨ (\ar') \ileadstog φ]$, is not falsifiable.
-    Consider any $\allleadstog ∉ C$, thus satisfying, for some $i$, $(\ar) \nileadstog φ ∧ (\ar') \nileadstog φ$.
+    Given $a ≠ a' ∈ \allargs$, the claim appearing in \cref{ex:disjR}, namely,
+    $∀ i: [(a) \ileadstog φ ∨ (a') \ileadstog φ]$, is not falsifiable.
+    Consider any $\allleadstog ∉ C$, thus satisfying, for some $i$, $(a) \nileadstog φ ∧ (a') \nileadstog φ$.
     Consider any $θ ⊆ \allleadstog$ and let us prove that $θ ∈ C^⊆$.
     (This is a consequence of \cref{ex:disjR} so this proof should not be useful.)
-    By definition of a general observation, $θ$ may not contain both $(i, (\ar), φ)$ and $(i, (\ar'), φ)$, thus letting $t$ denote one of these triples not in $θ$, pick any ${\allleadstog'}$ such that $θ ⊆ {\allleadstog'} ∧ t ∈ {\allleadstog'}$. We have
+    By definition of a general observation, $θ$ may not contain both $(i, (a), φ)$ and $(i, (a'), φ)$, thus letting $t$ denote one of these triples not in $θ$, pick any ${\allleadstog'}$ such that $θ ⊆ {\allleadstog'} ∧ t ∈ {\allleadstog'}$. We have
     $θ ∈ \powerset{\allleadstog'}$ and ${\allleadstog'} ∈ C$, thus, $θ ∈ C^⊆$.
   \end{example}
 
   \begin{example}
     \label{ex:anon}
-    Given $\ar$ and $φ$, the claim $\ar \ileadstog φ$ is not anonymous iff $\card{I} ≥ 2$. Indeed, pick any $j ≠ i$ and define $σ(i) = j$, $σ(j) = i$ and $∀ k ∈ I ∖ \set{i, j}: σ(k) = k$, then $C = \set{\allleadstog \suchthat \allleadstog(i, \ar) = φ}$, which contains in particular $\allleadsto$ defined as $∀ \hist: [∀ k ∈ I ∖ \set{j}, \allleadsto(k, \hist) = φ ∧ \allleadsto(j, \hist) = φ'$; while $C ∘ σ = \set{\allleadstog \suchthat \allleadstog(j, \ar) = φ}$ which does not contain $\allleadsto$.
+    Given $a$ and $φ$, the claim $a \ileadstog φ$ is not anonymous iff $\card{I} ≥ 2$. Indeed, pick any $j ≠ i$ and define $σ(i) = j$, $σ(j) = i$ and $∀ k ∈ I ∖ \set{i, j}: σ(k) = k$, then $C = \set{\allleadstog \suchthat \allleadstog(i, a) = φ}$, which contains in particular $\allleadsto$ defined as $∀ \hist: [∀ k ∈ I ∖ \set{j}, \allleadsto(k, \hist) = φ ∧ \allleadsto(j, \hist) = φ'$; while $C ∘ σ = \set{\allleadstog \suchthat \allleadstog(j, a) = φ}$ which does not contain $\allleadsto$.
   \end{example}
 
   \begin{example}
-    Consider $I = \set{i}$ and $\ar_1 ≠ \ar_2 ∈ \allargs$.
+    Consider $I = \set{i}$ and $a_1 ≠ a_2 ∈ \allargs$.
     The claim $C = \set{\allleadstog ∈ \allleadstos \suchthat (∀ \hist ≠ ∅: \hist \ileadstog φ) ∨ (∀ \hist ≠ ∅: \hist \ileadstog φ')}$ is not falsifiable.
 
-    Consider $\allleadstog$ defined as $\hist \ileadstog φ$ iff $\hist = ∅ ∨ \hist_1 = \ar_1$ and $\hist \ileadstog φ'$ otherwise.
+    Consider $\allleadstog$ defined as $\hist \ileadstog φ$ iff $\hist = ∅ ∨ \hist_1 = a_1$ and $\hist \ileadstog φ'$ otherwise.
     We have $\allleadstog ∉ C$.
     But any $θ ⊆ \allleadstog$ satisfies $θ ∈ C^⊆$.
   \end{example}
 
   \begin{example}
     \label{ex:falsAnonIfBig}
-    Consider $I = \set{i_1, i_2}$ and $\ar_1 ≠ \ar_2 ∈ \allargs$.
+    Consider $I = \set{i_1, i_2}$ and $a_1 ≠ a_2 ∈ \allargs$.
     Given $p_0, p, p'_0, p' ∈ P$,
     define ${\allleadstog^{i_1 ↦ (p_0, p); i_2 ↦ (p'_0, p')}}$ as $∅ \ileadstog[i_1] p_0 ∧ ∅ \ileadstog[i_2] p'_0 ∧ ∀ \hist ∈ \allhists ∖ \set{∅}: \hist \ileadstog[i_1] p ∧ \hist \ileadstog[i_2] p'$.
 
     The claim $C = \set{{\allleadstog^{i_1 ↦ (p_0, p); i_2 ↦ (p'_0, p')}} \suchthat p_0, p, p'_0, p' ∈ \set{φ, φ'}}$ is not falsifiable.
-    Consider $\allleadstog$ defined as, $∀ i ∈ I$, $\hist \ileadstog φ$ iff $\hist = ∅ ∨ \hist_1 = \ar_1$ and $\hist \ileadstog φ'$ otherwise.
+    Consider $\allleadstog$ defined as, $∀ i ∈ I$, $\hist \ileadstog φ$ iff $\hist = ∅ ∨ \hist_1 = a_1$ and $\hist \ileadstog φ'$ otherwise.
     We have $\allleadstog ∉ C$.
 
     Consider now any bigger claim $C'$, thus with $C ⊆ C'$.
@@ -2078,13 +2086,13 @@ We are here interested in the interplay between properties of holding, anonymity
   \end{example}
 
   \begin{example}
-    Consider $I = ∪_{p_0, p ∈ \set{φ, φ'}} I_{p_0, p}$, with each $I_{p_0, p}$ infinite, and $\ar_1 ≠ \ar_2 ∈ \allargs$.
+    Consider $I = ∪_{p_0, p ∈ \set{φ, φ'}} I_{p_0, p}$, with each $I_{p_0, p}$ infinite, and $a_1 ≠ a_2 ∈ \allargs$.
     Given $p_0, p ∈ P$,
     define $R^{(p_0, p)} = R^{∅ ↦ p_0; p}: \allhists → P$ as $R(∅) = p_0 ∧ ∀ \hist ∈ \allhists ∖ \set{∅}: R(\hist) = p$.
     Define $\allleadsto$ as $∀ p_0, p ∈ \set{φ, φ'}, i ∈ I_{p_0, p}: \ileadstoo = R^{∅ ↦ p_0; p}$.
 
     The claim $C = \set{{\allleadsto} ∘ σ \suchthat σ: I ↔ I}$ is not falsifiable:
-    consider $\allleadstog$ defined as, $∀ i ∈ I$, $\hist \ileadstog φ$ iff $\hist = ∅ ∨ \hist_1 = \ar_1$ and $\hist \ileadstog φ'$ otherwise; we have $\allleadstog ∉ C$
+    consider $\allleadstog$ defined as, $∀ i ∈ I$, $\hist \ileadstog φ$ iff $\hist = ∅ ∨ \hist_1 = a_1$ and $\hist \ileadstog φ'$ otherwise; we have $\allleadstog ∉ C$
     but any $θ ∈ Θ, θ ⊆ \allleadstog$ satisfies $θ ∈ C^⊆$.
 
     Now consider $C' = \set{\allleadstog \suchthat ∀ i ∈ I, \hist, \histp ∈ \allhists: \hist_1 = \histp_1 ⇒ \ileadstogo(\hist) = \ileadstogo(\histp)}$. (Thus $C ⊆ C'$.)
@@ -2093,24 +2101,24 @@ We are here interested in the interplay between properties of holding, anonymity
 
   \begin{example}
     Imagine that the real relation is composed of individuals who map $(a_1, a_2)$ to $φ$ and $(a_1, a_3)$ to $φ'$ and individuals converse (with both, say, mapping everything else to $0$).
-    Then the claim $C = \set{\allleadstog \suchthat ∀ i ∈ I: \ileadstogo(\ar_1, \ar_2) ∈ \set{φ, φ'} ∧ \ileadstogo(\ar_1, \ar_3) ∈ \set{φ, φ'}}$ is falsifiable.
+    Then the claim $C = \set{\allleadstog \suchthat ∀ i ∈ I: \ileadstogo(a_1, a_2) ∈ \set{φ, φ'} ∧ \ileadstogo(a_1, a_3) ∈ \set{φ, φ'}}$ is falsifiable.
 
     Imagine that the real relation is composed of individuals who map $(a_1, a_2)$ to $φ$ and $(a_1, a_3)$ to $φ'$ and individuals converse (with both, say, mapping everything else to $0$) and individuals who map $(a_4, a_5)$ to $φ$ and $(a_6)$ to $φ'$ and individuals converse, with both mapping everything else to $0$.
-    Then the claim $C = \set{\allleadstog \suchthat ∀ i ∈ I: [\ileadstogo(\ar_1, \ar_2) ∈ \set{φ, φ'} ∧ \ileadstogo(\ar_1, \ar_3) ∈ \set{φ, φ'} ∧ \ileadstogo(H) = 0] ∨ [\ileadstogo(\ar_4, \ar_5) ∈ \set{φ, φ'} ∧ \ileadstogo(\ar_6) ∈ \set{φ, φ'} ∧ \ileadstogo(H) = 0]}$, where $H$ designates all “other” paths (abusing notation), is falsifiable.
+    Then the claim $C = \set{\allleadstog \suchthat ∀ i ∈ I: [\ileadstogo(a_1, a_2) ∈ \set{φ, φ'} ∧ \ileadstogo(a_1, a_3) ∈ \set{φ, φ'} ∧ \ileadstogo(H) = 0] ∨ [\ileadstogo(a_4, a_5) ∈ \set{φ, φ'} ∧ \ileadstogo(a_6) ∈ \set{φ, φ'} ∧ \ileadstogo(H) = 0]}$, where $H$ designates all “other” paths (abusing notation), is falsifiable.
 
     Imagine that the real relation is composed of individuals who map $(a_1, a_2)$ to $φ$ and $(a_1, a_3)$ to $φ'$ and individuals converse (with both, say, mapping everything else to $0$) and individuals who map $(a_1, a_4)$ to $φ$ and $(a_6)$ to $φ'$ and individuals converse, with both mapping everything else to $0$.
-    Then the claim $C = \set{\allleadstog \suchthat ∀ i ∈ I: [\ileadstogo(\ar_1, \ar_2) ∈ \set{φ, φ'} ∧ \ileadstogo(\ar_1, \ar_3) ∈ \set{φ, φ'} ∧ \ileadstogo(H) = 0] ∨ [\ileadstogo(\ar_1, \ar_4) ∈ \set{φ, φ'} ∧ \ileadstogo(\ar_6) ∈ \set{φ, φ'} ∧ \ileadstogo(H) = 0]}$, where $H$ designates all “other” paths (abusing notation), is falsifiable: could have an individual mapping both $(\ar_1, \ar_2)$ and $(\ar_1, \ar_4)$ to $0$ but then if she maps $\ar_6$ to $0$, observe both $(\ar_1, \ar_2)$ and $\ar_6$ and falsify $C$; if she maps $\ar_6$ in $\set{φ, φ'}$, both $(\ar_1, \ar_4)$ and $\ar_6$ and falsify $C$ (here assuming falsely in the whole example that $\ar_6$ can be observed together with $(\ar_1, .)$, so we probably should replace $\ar_6$ by $∅$).
+    Then the claim $C = \set{\allleadstog \suchthat ∀ i ∈ I: [\ileadstogo(a_1, a_2) ∈ \set{φ, φ'} ∧ \ileadstogo(a_1, a_3) ∈ \set{φ, φ'} ∧ \ileadstogo(H) = 0] ∨ [\ileadstogo(a_1, a_4) ∈ \set{φ, φ'} ∧ \ileadstogo(a_6) ∈ \set{φ, φ'} ∧ \ileadstogo(H) = 0]}$, where $H$ designates all “other” paths (abusing notation), is falsifiable: could have an individual mapping both $(a_1, a_2)$ and $(a_1, a_4)$ to $0$ but then if she maps $a_6$ to $0$, observe both $(a_1, a_2)$ and $a_6$ and falsify $C$; if she maps $a_6$ in $\set{φ, φ'}$, both $(a_1, a_4)$ and $a_6$ and falsify $C$ (here assuming falsely in the whole example that $a_6$ can be observed together with $(a_1, .)$, so we probably should replace $a_6$ by $∅$).
   \end{example}
 
   \subsection{More examples}
   \begin{example}[Partly falsifiable is still unfalsifiable]
     \label{ex:partlyU}
-    Given $j ∈ I$, $\hist ∈ \allhists$ and $\ar ≠ \ar' ∈ \allargs$,
+    Given $j ∈ I$, $\hist ∈ \allhists$ and $a ≠ a' ∈ \allargs$,
     the claim
-    $C = \set{\allleadstog ∈ \allleadstos \suchthat \hist \ileadstog[j] φ ∧ ∀ i ∈ I: [(\ar) \ileadstog φ ∨ (\ar') \ileadstog φ]}$ is unfalsifiable but not strongly unfalsifiable.
+    $C = \set{\allleadstog ∈ \allleadstos \suchthat \hist \ileadstog[j] φ ∧ ∀ i ∈ I: [(a) \ileadstog φ ∨ (a') \ileadstog φ]}$ is unfalsifiable but not strongly unfalsifiable.
 
     Define
-    $C_1 = \set{\allleadstog ∈ \allleadstos \suchthat ∀ i ∈ I: [(\ar) \ileadstog φ ∨ (\ar') \ileadstog φ]}$ and
+    $C_1 = \set{\allleadstog ∈ \allleadstos \suchthat ∀ i ∈ I: [(a) \ileadstog φ ∨ (a') \ileadstog φ]}$ and
     $C_2 = \set{\allleadstog ∈ \allleadstos \suchthat \hist \ileadstog[j] φ}$,
     so that $C = C_1 ∩ C_2$.
     Observe that $C_1$ is the claim of \cref{ex:disj} and $C_2$ is falsifiable and coverable.
@@ -2119,12 +2127,12 @@ We are here interested in the interplay between properties of holding, anonymity
 
   \begin{example}[Partly again]
     Considering again \cref{ex:partlyU},
-    given $j ∈ I$, $\hist ∈ \allhists$ and $\ar ≠ \ar' ∈ \allargs$,
-    $C = \set{\allleadstog \suchthat \hist \ileadstog[j] φ ∧ ∀ i: [(\ar) \ileadstog φ ∨ (\ar') \ileadstog φ]}$ is not falsifiable but \cref{th:veryunfals} is not applicable.
+    given $j ∈ I$, $\hist ∈ \allhists$ and $a ≠ a' ∈ \allargs$,
+    $C = \set{\allleadstog \suchthat \hist \ileadstog[j] φ ∧ ∀ i: [(a) \ileadstog φ ∨ (a') \ileadstog φ]}$ is not falsifiable but \cref{th:veryunfals} is not applicable.
     Observe that
-    $C^⊆ = \set{R ∈ I × \allhists × P \suchthat [(j, \hist) ∈ R(P) ⇒ (j, \hist, φ) ∈ R] ∧ ∀ i: [(i, (\ar)) ∈ R(P) ∧ (i, (\ar')) ∈ R(P)] ⇒ [(i, (\ar), φ) ∈ R ∧ (i, (\ar'), φ) ∈ R]}$ and
+    $C^⊆ = \set{R ∈ I × \allhists × P \suchthat [(j, \hist) ∈ R(P) ⇒ (j, \hist, φ) ∈ R] ∧ ∀ i: [(i, (a)) ∈ R(P) ∧ (i, (a')) ∈ R(P)] ⇒ [(i, (a), φ) ∈ R ∧ (i, (a'), φ) ∈ R]}$ and
     $C^⊆ ∩ Θ = \set{θ ∈ Θ \suchthat (j, \hist) ∈ θ(P) ⇒ (j, \hist, φ) ∈ θ}$.
-    % Pick any $\allleadstog$ satisfying $\hist \ileadstog[j] φ$ and $∃ i \suchthat (\ar) \nileadstog φ ∧ (\ar') \nileadstog φ$.
+    % Pick any $\allleadstog$ satisfying $\hist \ileadstog[j] φ$ and $∃ i \suchthat (a) \nileadstog φ ∧ (a') \nileadstog φ$.
     % The definition of non-falsifiability applies: pick any $θ ⊆ \allleadstog$, we have $θ ∈ C^⊆$ as $(j, \hist, φ)$ is compatible with $θ$ and the other condition excludes nothing in $Θ$.
     % We can apply Thm 4 similarly: given any $O$, we have $\restr{\allleadstog}{O} ∈ C^⊆$.
     % We should be able to apply a corollary similarly.
@@ -2133,12 +2141,12 @@ We are here interested in the interplay between properties of holding, anonymity
   \end{example}
 
   \begin{example}[Come back]
-    In \cref{ex:allParticular} we considered a given $\ar$ and $φ$ and defined the falsifiable claim $C = \set{\allleadstog \suchthat ∀ i: \ar \ileadstostg φ}$.
-    Observe that $C^⊆ ∩ Θ = \set{θ ∈ Θ \suchthat ∀ \hist \suchthat \ar ∈ \histend: θ(i, \hist) = ∅ ∨ θ(i, \hist) = φ}$.
+    In \cref{ex:allParticular} we considered a given $a$ and $φ$ and defined the falsifiable claim $C = \set{\allleadstog \suchthat ∀ i: a \ileadstostg φ}$.
+    Observe that $C^⊆ ∩ Θ = \set{θ ∈ Θ \suchthat ∀ \hist \suchthat a ∈ \histend: θ(i, \hist) = ∅ ∨ θ(i, \hist) = φ}$.
     The relations obs-compatible with $C^⊆ ∩ Θ$ are exactly those in $C$.
 
-    \Cref{ex:existsParticular} assumed an infinite $I$, in which case the claim $∃ i \suchthat \ar \ileadstostg φ$ is not falsifiable.
-    Observe that $C^⊆ ∩ Θ = \set{θ ∈ Θ \suchthat ∃ i \suchthat ∀ \hist \suchthat \ar ∈ \histend: θ(i, \hist) = ∅ ∨ θ(i, \hist) = φ}$.
+    \Cref{ex:existsParticular} assumed an infinite $I$, in which case the claim $∃ i \suchthat a \ileadstostg φ$ is not falsifiable.
+    Observe that $C^⊆ ∩ Θ = \set{θ ∈ Θ \suchthat ∃ i \suchthat ∀ \hist \suchthat a ∈ \histend: θ(i, \hist) = ∅ ∨ θ(i, \hist) = φ}$.
     Any relation $\allleadstog$ is obs-compatible with that set as $C^⊆ ∩ Θ = Θ$: given any $θ ∈ Θ$, there is an $i$ such that $∀ \hist: θ(i, \hist) = ∅$ as $θ$ must have a finite support.
   \end{example}
 
@@ -2162,11 +2170,11 @@ We are here interested in the interplay between properties of holding, anonymity
   \end{example}
 
   \begin{example}
-    Consider any $i$, $\ar_1 ≠ \ar_2 ∈ \allargs$, $p, p' ∈ P$.
-    The claim $C = \set{\allleadstog \suchthat (\ar_1) \ileadstog p ∧ (\ar_2) \ileadstog p'}$ is falsifiable.
+    Consider any $i$, $a_1 ≠ a_2 ∈ \allargs$, $p, p' ∈ P$.
+    The claim $C = \set{\allleadstog \suchthat (a_1) \ileadstog p ∧ (a_2) \ileadstog p'}$ is falsifiable.
 
-    We have $C^⊆ ∩ Θ = \set{θ \suchthat (θ((\ar_1), i) = ∅ ∨ θ((\ar_1), i) = p) ∧ (θ((\ar_2), i) = ∅ ∨ θ((\ar_2), i) = p')}$.
-    The obs-compatible relations are $\set{\allleadstog \suchthat (\ar_1) \ileadstog p ∧ (\ar_2) \ileadstog p'}$.
+    We have $C^⊆ ∩ Θ = \set{θ \suchthat (θ((a_1), i) = ∅ ∨ θ((a_1), i) = p) ∧ (θ((a_2), i) = ∅ ∨ θ((a_2), i) = p')}$.
+    The obs-compatible relations are $\set{\allleadstog \suchthat (a_1) \ileadstog p ∧ (a_2) \ileadstog p'}$.
   \end{example}
   \begin{example}
     \label{ex:consti2}
@@ -2188,7 +2196,7 @@ We are here interested in the interplay between properties of holding, anonymity
   \end{example}
   \begin{example}
     \label{ex:constwout0}
-    Consider any $p, p' ∈ P$ and the claim $C = \set{\allleadstog \suchthat (∀ \hist ≠ ∅, i ∈ I: \hist \ileadstog p) ∨ (∀ \hist ≠ ∅, i ∈ I: \hist \ileadstog p')}$. That claim is falsifiable iff $\card I ≥ 2$ or $\card \allargs = 1$. The proof if so is similar to \cref{ex:consti2}; otherwise, pick any $\ar ∈ \allargs$ and note that any relation satisfying $(a.*) \ileadstog p$ and $∀ b ≠ a: (b.*) \ileadstog p'$ is obs-compatible with $C^⊆ ∩ Θ$ but is not in $C$.
+    Consider any $p, p' ∈ P$ and the claim $C = \set{\allleadstog \suchthat (∀ \hist ≠ ∅, i ∈ I: \hist \ileadstog p) ∨ (∀ \hist ≠ ∅, i ∈ I: \hist \ileadstog p')}$. That claim is falsifiable iff $\card I ≥ 2$ or $\card \allargs = 1$. The proof if so is similar to \cref{ex:consti2}; otherwise, pick any $a ∈ \allargs$ and note that any relation satisfying $(a.*) \ileadstog p$ and $∀ b ≠ a: (b.*) \ileadstog p'$ is obs-compatible with $C^⊆ ∩ Θ$ but is not in $C$.
   \end{example}
   \begin{example}
     \label{ex:unfor}
@@ -2200,12 +2208,12 @@ We are here interested in the interplay between properties of holding, anonymity
     It follows that the obs-compatible relations are $\allleadstos$, which is bigger than $C$.
   \end{example}
   \begin{example}
-    Consider any $i$, $\ar ≠ \ar' ∈ \allargs$, $p, p' ∈ P$.
-    The claim $C = \set{\allleadstog \suchthat (\ar) \ileadstog p ∨ (\ar') \ileadstog p'}$ is unfalsifiable (per \cref{ex:unfor}).
+    Consider any $i$, $a ≠ a' ∈ \allargs$, $p, p' ∈ P$.
+    The claim $C = \set{\allleadstog \suchthat (a) \ileadstog p ∨ (a') \ileadstog p'}$ is unfalsifiable (per \cref{ex:unfor}).
 
-    Now consider the smaller claim $C' = \set{\allleadstog \suchthat (\ar_1) \ileadstog p}$ (thus $C' \ssub C$).
-    It yields a smaller set ${C'}^⊆ ∩ Θ = \set{θ \suchthat (θ((\ar_1), i) = ∅ ∨ θ((\ar_1), i) = p)}$.
-    The obs-compatible relations are the smaller set $\set{\allleadstog \suchthat (\ar_1) \ileadstog p}$.
+    Now consider the smaller claim $C' = \set{\allleadstog \suchthat (a_1) \ileadstog p}$ (thus $C' \ssub C$).
+    It yields a smaller set ${C'}^⊆ ∩ Θ = \set{θ \suchthat (θ((a_1), i) = ∅ ∨ θ((a_1), i) = p)}$.
+    The obs-compatible relations are the smaller set $\set{\allleadstog \suchthat (a_1) \ileadstog p}$.
     Thus, $C'$ is falsifiable.
 
     Note that any claim $C^{\prime\prime}$ bigger than $C$ is unfalsifiable as well, unless trivial:
@@ -2522,7 +2530,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
   \end{proof}
   \begin{example}
     Consider $I_p$ such that $∀ i ∈ I_p$: $i$ constantly says $p$.
-    Consider $J = I ∖ I_p$ whose DJ is $p' ≠ p$, and such that each $j ∈ J$ has a single decisive argument $\ar_j$ for $p'$, and when $\ar_j$ is not in $\hist$, $\hist \ileadsto[j] p$.
+    Consider $J = I ∖ I_p$ whose DJ is $p' ≠ p$, and such that each $j ∈ J$ has a single decisive argument $a_j$ for $p'$, and when $a_j$ is not in $\hist$, $\hist \ileadsto[j] p$.
     Then, the condition is not satisfied.
   \end{example}
   \begin{theorem}
@@ -2563,13 +2571,13 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
     \label{ex:noHAIwithDJ}
     The following situation illustrates \cref{th:caractNotIndic} and involve only individuals with a DJ.
 
-    Given any infinite set $\allargs$, define $I = I^\text{DJ} = \set{g ∈ P^\allhists \suchthat π(g) ≠ ∅}$ and $∀ i ∈ I: \ileadstoo = i$.
+    Given any infinite set $\allargs$, define $I = I^\text{DJ} = \set{g ∈ P^{\allhists} \suchthat π(g) ≠ ∅}$ and $∀ i ∈ I: \ileadstoo = i$.
     Considering any $\hist ∈ \finite(\allhists)$ and $\ileadstoo ∈ I$, pick another relation that coincides on $\hist$ but with another DJ than $\ileadstoo$. This is possible because $\hist$ is finite, thus there is an argument that is not involved in any of its elements, which can serve as decisive one.
     Per \cref{th:caractNotIndic}, there is no claim that holds and is anonymous and indicative.
   \end{example}
   \begin{example}[no HAI]
     \label{ex:noHAI}
-    Define $I = \set{i_1, i_2, i_3}$ and $\allleadsto$ as follows: $.* \ileadsto[i_1] φ$, $∅ \ileadsto[i_2] φ$, $a.* \ileadsto[i_2] φ$, $b.* \ileadsto[i_2] φ'$, $∅ \ileadsto[i_3] φ$, $a.* \ileadsto[i_3] φ'$, $b.* \ileadsto[i_3] φ$.
+    Define $I = \set{i_1, i_2, i_3}$ and $\allleadsto$ as follows: $.* \ileadsto[i_1] φ$, $∅ \ileadsto[i_2] φ$, $a.* \ileadsto[i_2] φ$, $a'.* \ileadsto[i_2] φ'$, $∅ \ileadsto[i_3] φ$, $a.* \ileadsto[i_3] φ'$, $a'.* \ileadsto[i_3] φ$.
     Then $π(i_1) = φ$ and $π(i_2) = π(i_3) = ∅$.
     This satisfies \ref{it:condNotHAI}: considering any $\hist ∈ \allhists$, if $(1, a) ∈ \hist$, then $i_2$ collides with $i_1$ on $\hist$, and otherwise, $i_3$ does.
   \end{example}
@@ -2583,7 +2591,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
     $[∀ \hist ∈ \allhists, i_1 ∈ I: Q(i_1, \hist)]$, thus, satisfies
     $∃ \hist, i_0 \suchthat π(i_0) = ∅ ∧ ¬Q(i_0, \hist)$.
 
-    Define $I = \set{i_1, …, i_4}$, $\ileadsto[i_1], \ileadsto[i_2], \ileadsto[i_3]$ as in \cref{ex:noHAI} and $\ileadsto[i_4]$ as: $.* \ileadsto[i_4] φ'$, $∅ \ileadsto[i_4] φ'$, $a.* \ileadsto[i_4] φ$, $b.* \ileadsto[i_4] φ'$.
+    Define $I = \set{i_1, …, i_4}$, $\ileadsto[i_1], \ileadsto[i_2], \ileadsto[i_3]$ as in \cref{ex:noHAI} and $\ileadsto[i_4]$ as: $.* \ileadsto[i_4] φ'$, $∅ \ileadsto[i_4] φ'$, $a.* \ileadsto[i_4] φ$, $a'.* \ileadsto[i_4] φ'$.
     This satisfies \ref{it:condNotHAI} for the reason given in \cref{ex:noHAI}, and fails $Q(i_4, ∅)$.
   \end{remark}
 
@@ -2601,13 +2609,13 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
 
 \subsection{Theories using a static decisive argument}
   \label{sec:static}
-  \Cref{ex:tutor} suggests a simple form for theories of deliberated choice: suffice to determine an argument $\ar ∈ \allargs$ and a preference $p ∈ P$ such that the theory claims that $∀ i ∈ I: \ar \ileadstost p$ and that $∀ i ∈ I: p ∈ P_i$.
+  \Cref{ex:tutor} suggests a simple form for theories of deliberated choice: suffice to determine an argument $a ∈ \allargs$ and a preference $p ∈ P$ such that the theory claims that $∀ i ∈ I: a \ileadstost p$ and that $∀ i ∈ I: p ∈ P_i$.
 
   \begin{definition}[Static theory]
     \label{def:static}
-    A static theory is a pair $(p, \ar)$ for some $p ∈ P$ and some $\ar ∈ \allargs$.
+    A static theory is a pair $(p, a)$ for some $p ∈ P$ and some $a ∈ \allargs$.
   \end{definition}
-  A static theory $(p, \ar)$ is said to be truthful iff $∀ i ∈ I: \ar \ileadstost p$, and to be correct iff $∀ i ∈ I: p ∈ P_i$.
+  A static theory $(p, a)$ is said to be truthful iff $∀ i ∈ I: a \ileadstost p$, and to be correct iff $∀ i ∈ I: p ∈ P_i$.
   We can then deduce that such theories are valid, meaning that their truthfulness implies their correctness. Let us make this (very simple) result stand out as a theorem, because a parallel will be usefully made with more complicated theories.
   %Note that this result immediately follows from \cref{ax:decisive}.
   \begin{theorem}[Static theories are valid]
@@ -2616,7 +2624,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
   \begin{proof}
     This follows immediately from \cref{def:decisive}.
   \end{proof}
-  Importantly, truthfulness can indeed be checked using our observational basis, that is, if $∃ i ∈ I \suchthat \ar \nileadstost p$, then it is possible to exhibit this fact experimentally.
+  Importantly, truthfulness can indeed be checked using our observational basis, that is, if $∃ i ∈ I \suchthat a \nileadstost p$, then it is possible to exhibit this fact experimentally.
 
   Such theories have the merit of simplicity, but there is a need to design more adaptive theories: in many interesting cases, no single argument will be considered decisive by all individuals in $I$. We then need theories that argue with individuals by reacting to what they consider good arguments. The following section illustrates this need.
 
@@ -2648,15 +2656,15 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
 
     Define $P = \set{L_P, L_D, 0}$.
 
-    Define $\ar_e$ as a text arguing that the choice between $L_P$ and $L_D$ should be determined by their expected revenue, namely, $\$3.959$ for $L_P$ and $\$4$ for $L_D$.%
-    \footnote{Here is a possible text for $\ar_e$. “Imagine you play $L_P$ 100 times. On average, you would win 99 times and lose once, which means gaining 99 × \$4 = \$396 and losing 1 × \$0.10 = \$0.10, hence a total net gain of \$395.90. Thus, your average net gain for the $L_P$ bet would be \$3.9590. [Similar text for $L_D$.] Therefore, we suggest you choose $L_D$ for a higher expected revenue.”}
-    Define $\ar_u$ as a text arguing that the utility of money should matter, not the revenue, and arguing that a loss hurts more than a gain.% 
-    \footnote{Here is a possible text for $\ar_u$. “$L_D$ is better than $L_P$ in terms of expected gain, but it is in general absurd to reason in terms of expected gain. For example, consider a choice between winning $10^6$ dollars with probability $0.8$ and winning $2 × 10^6$ dollars with probability $0.4$. These two lotteries have the same expected gain, but the first one is clearly preferrable. Therefore, we recommend to rather pick $L_P$ as it presents a much better chance of earning money”.}
-    Define a counter-argument $\ar_l$ to $\ar_u$, indicating that for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.%
-    \footnote{Here is a possible text for $\ar_l$. “The lottery $L_D$ has a higher expected revenue, and thus, a higher utility than $L_P$, because for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.”}
-    Define $\ar$ so as to include the contents of $\ar_e$, $\ar_u$ and $\ar_l$.%
-    \footnote{Here is a possible text for $\ar$. [Text of $\ar_e$] “Note that one could say that the utility of money should matter, but for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.”}
-    Define $\allargs = \set{\ar_e, \ar_u, \ar_l, \ar}$.
+    Define $a_e$ as a text arguing that the choice between $L_P$ and $L_D$ should be determined by their expected revenue, namely, $\$3.959$ for $L_P$ and $\$4$ for $L_D$.%
+    \footnote{Here is a possible text for $a_e$. “Imagine you play $L_P$ 100 times. On average, you would win 99 times and lose once, which means gaining 99 × \$4 = \$396 and losing 1 × \$0.10 = \$0.10, hence a total net gain of \$395.90. Thus, your average net gain for the $L_P$ bet would be \$3.9590. [Similar text for $L_D$.] Therefore, we suggest you choose $L_D$ for a higher expected revenue.”}
+    Define $a_u$ as a text arguing that the utility of money should matter, not the revenue, and arguing that a loss hurts more than a gain.% 
+    \footnote{Here is a possible text for $a_u$. “$L_D$ is better than $L_P$ in terms of expected gain, but it is in general absurd to reason in terms of expected gain. For example, consider a choice between winning $10^6$ dollars with probability $0.8$ and winning $2 × 10^6$ dollars with probability $0.4$. These two lotteries have the same expected gain, but the first one is clearly preferrable. Therefore, we recommend to rather pick $L_P$ as it presents a much better chance of earning money”.}
+    Define a counter-argument $a_l$ to $a_u$, indicating that for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.%
+    \footnote{Here is a possible text for $a_l$. “The lottery $L_D$ has a higher expected revenue, and thus, a higher utility than $L_P$, because for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.”}
+    Define $a$ so as to include the contents of $a_e$, $a_u$ and $a_l$.%
+    \footnote{Here is a possible text for $a$. [Text of $a_e$] “Note that one could say that the utility of money should matter, but for small monetary amounts, it is perfectly reasonable to consider utility as linear, especially given that in this experiment, multiple lotteries will be played.”}
+    Define $\allargs = \set{a_e, a_u, a_l, a}$.
 
     Define $I$ as a set of individuals facing a choice between $L_P$ and $L_D$ in a laboratory experiment.
     Define $\ileadsto$ as exposing $i$ to $α$ and observing the resulting choice by asking $i$ to indicate which lottery she prefers playing, or declare being indifferent.
@@ -2664,12 +2672,12 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
     %Similarly, define $\hist \ileadsto (P > D)$ iff showing the arguments in $\hist$ to $i$ and letting $i$ choose between $P$ and $D$ or declare indifference leads $i$ to choose $P$ and not $D$. 
     %Define similarly $\hist \ileadsto \prop$ for $\prop ∈ \set{D ≥ P, D > P}$.
 
-    Assume that some individuals $i ∈ I$ do not see the point of argument $\ar_u$ and some do but are convinced by the counter-argument $\ar_l$. Accordingly, define $\ileadsto[e]$, representing the first kind of individuals, as follows. $∀ \hist ∈ \allhists: \hist \ileadsto[e] L_D ⇔ [\ar_e ∈ R(\hist)]$, and $\hist \ileadsto[e] L_P$ otherwise. Note that in particular, if $\hist$ contains $\ar$ but not $\ar_e$, $\ar \ileadsto[e] L_P$, as we assume such individuals are confused by the longer argument $\ar$ referring to abstract notions and therefore opt for $L_P$, falling back to the common psychological bias.
-    The second kind of individuals is represented by $\ileadsto[u]$ defined as $∀ \hist ∈ \allhists: \hist \ileadsto[u] L_D ⇔ [\ar_u ∉ R(\hist) ∨ \ar ∈ R(\hist) ∨ \set{\ar_u, \ar_l} ⊆ R(\hist)]$, and $\hist \ileadsto[u] L_P$ otherwise.
-    We assume here that such individuals think about $\ar_u$ as a correct argument in favor of $L_P$ until shown the rebuttal $\ar_l$ (or $\ar$, which contains a similar rebuttal).
+    Assume that some individuals $i ∈ I$ do not see the point of argument $a_u$ and some do but are convinced by the counter-argument $a_l$. Accordingly, define $\ileadsto[e]$, representing the first kind of individuals, as follows. $∀ \hist ∈ \allhists: \hist \ileadsto[e] L_D ⇔ [a_e ∈ R(\hist)]$, and $\hist \ileadsto[e] L_P$ otherwise. Note that in particular, if $\hist$ contains $a$ but not $a_e$, $a \ileadsto[e] L_P$, as we assume such individuals are confused by the longer argument $a$ referring to abstract notions and therefore opt for $L_P$, falling back to the common psychological bias.
+    The second kind of individuals is represented by $\ileadsto[u]$ defined as $∀ \hist ∈ \allhists: \hist \ileadsto[u] L_D ⇔ [a_u ∉ R(\hist) ∨ a ∈ R(\hist) ∨ \set{a_u, a_l} ⊆ R(\hist)]$, and $\hist \ileadsto[u] L_P$ otherwise.
+    We assume here that such individuals think about $a_u$ as a correct argument in favor of $L_P$ until shown the rebuttal $a_l$ (or $a$, which contains a similar rebuttal).
     Assuming finally $\allleadsto$ as equal to $\ileadsto[e]$ for individuals of the first kind and $\ileadsto[u]$ otherwise concludes the definition of the exposure protocol $(I, \allargs, \allleadsto)$.
 
-    It follows from this definition that $∀ i ∈ I: L_D ∈ P_i$, and that no static theory of that exposure protocol is truthful: only $\ar_e$ is a decisive argument for $L_D$ for the first kind of individuals whereas for the second kind, only $\ar$ is.
+    It follows from this definition that $∀ i ∈ I: L_D ∈ P_i$, and that no static theory of that exposure protocol is truthful: only $a_e$ is a decisive argument for $L_D$ for the first kind of individuals whereas for the second kind, only $a$ is.
   \end{example}
   This example illustrates the need for theories that are able to react to arguments depending on what a given individual considers relevant. This is the object of the next section.
 
@@ -2683,23 +2691,23 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
   For example, if $C$ is $α \ileadsto φ ∨ β \allleadsto[j] φ$, $O$ is $α \ileadsto φ' ∧ β \allleadsto φ'$, then $O$ implies $¬C$.\commentClaude{$\allleadsto$ takes no optional argument (unlike $\ileadsto$), so \texttt{\textbackslash allleadsto[j]} renders as $\allleadsto$ followed by the literal text "[j]", and the later bare \texttt{\textbackslash allleadsto} similarly drops the implicit individual. Given the surrounding pattern ($α \ileadsto φ$, infix, individual-indexed), should both be $\ileadsto[j]$ / $\ileadsto$ instead?}
   As another example, $C$ being $∃ α \suchthat α \ileadsto φ$ is unfalsifiable, as its negation is $∀ α: α \nileadsto φ$, which requires infinite $O$.
 
-  Consider $\allleadsto$ such that $∃ \ar, φ \suchthat ∀ i: \ar \ileadsto φ$.
+  Consider $\allleadsto$ such that $∃ a, φ \suchthat ∀ i: a \ileadsto φ$.
   Then some suitable $C$ exists.
-  It is $∀ i: \ar \ileadstost φ$.
+  It is $∀ i: a \ileadstost φ$.
   If false, it is falsifiable.
   Even though it is not provable by any $O$.
 
-  Now consider $\allleadsto$ such that $∃ J, K ⊊ I \suchthat \ar \ileadstost[j] φ, \ar' \ileadstost[k] φ$.
+  Now consider $\allleadsto$ such that $∃ J, K ⊊ I \suchthat a \ileadstost[j] φ, a' \ileadstost[k] φ$.
   Then no suitable $C$ exists?
 
   If $C$ has the form, whenever $a$ fails, $a'$ is then decisive, it is falsifiable, but does not lead to a decisive argument.
   Want to show: $j \ileadstost φ$. Need to show: $ar$ or $ar'$ is decisive.
   Assume we know who is a $j$. Then we can!
-  Claim: $\ar \ileadsto φ$.
+  Claim: $a \ileadsto φ$.
   Now assume that our claim has to be anonymous.
   Also, assume the formulas involve one $i$ at a time (not needed, probably, but not much restrictive so okay for now).
   So it is of the form $(i, α, φ) ∨ (i, α, φ') ∧ (i, α', φ)…$ implies something decisive.
-  So it must be of the form: all $α$ ending with $\ar$ do $\ileadsto φ$. Or must imply this.
+  So it must be of the form: all $α$ ending with $a$ do $\ileadsto φ$. Or must imply this.
   Let’s make it very strong, as much as possible, thus equal to $\ileadsto ∩ \ileadsto[j]$.
   That’s not strong enough!
 
@@ -2785,8 +2793,8 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
   \end{remark}
   \begin{remark}
     The above remark extends to the case where $C_1$ is strongly unfalsifiable.
-    For a counter-example, consider $C_1 = \set{\allleadstog ∈ \allleadstos \suchthat (\ar) \ileadstog φ ∨ (\ar' \ileadstog φ)}$ and $C_2$ containing a condition requiring $(\ar) \nileadstog φ ∧ (\ar' \nileadstog φ)$.
-    Add implications if desired to make $C_1$ and $C_2$ partially compatible, for example, $C_1 = \set{\allleadstog ∈ \allleadstos \suchthat (α \ileadstog[j] p) ⇒ [(\ar) \ileadstog φ ∨ (\ar' \ileadstog φ)]}$, so that $C_1$ and $C_2$ require their condition only when some trigger holds.
+    For a counter-example, consider $C_1 = \set{\allleadstog ∈ \allleadstos \suchthat (a) \ileadstog φ ∨ (a' \ileadstog φ)}$ and $C_2$ containing a condition requiring $(a) \nileadstog φ ∧ (a' \nileadstog φ)$.
+    Add implications if desired to make $C_1$ and $C_2$ partially compatible, for example, $C_1 = \set{\allleadstog ∈ \allleadstos \suchthat (α \ileadstog[j] p) ⇒ [(a) \ileadstog φ ∨ (a' \ileadstog φ)]}$, so that $C_1$ and $C_2$ require their condition only when some trigger holds.
     Note that the $C_2$ condition may be arbitrarily complex so I see no hope of caracterizing these situations.
   \end{remark}
   \begin{remark}
@@ -2836,11 +2844,11 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
 
 \subsection{Another closure}
 \label{sec:closing}
-Given a set of attitudes $S ⊆ P^\allhists$, the claim associated to it designates the claim $S^I = \set{\allleadstog ∈ \allleadstos \suchthat ∀ i ∈ I: \ileadstogo ∈ S}$.
-Say that a claim $C$ is a claim about types iff $∃ S ⊆ P^\allhists \suchthat C = S^I$.
+Given a set of attitudes $S ⊆ P^{\allhists}$, the claim associated to it designates the claim $S^I = \set{\allleadstog ∈ \allleadstos \suchthat ∀ i ∈ I: \ileadstogo ∈ S}$.
+Say that a claim $C$ is a claim about types iff $∃ S ⊆ P^{\allhists} \suchthat C = S^I$.
 Informally, such a claim claims that the set of attitudes in $I$ is contained in $S$ (though might be a strict subset of $S$), or equivalently, that no attitude out of $S$ exists among $I$.
 
-The following definition assumes a set $B ⊆ P^\allhists$ of behaviors. We take $B = P^\allhists$ if nothing is specified about $B$.
+The following definition assumes a set $B ⊆ P^{\allhists}$ of behaviors. We take $B = P^{\allhists}$ if nothing is specified about $B$.
 \begin{definition}
   Say that an attitude $g ∈ B$ is observably included in a set of attitudes $S ⊆ B$ iff $∀ H ∈ \finite(\incr(\allhists)): ∃ f ∈ S \suchthat \restr{g}{H} = \restr{f}{H}$.
 
@@ -2865,7 +2873,7 @@ Define the closure under observable inclusion of a claim about types $S$ as $R^�
 Let $\intvl{\hist} = (\hist_i)_{i ∈ \intvl{0, \card{\hist}}} ∈ \finite(\incr(\allhists))$ denote the increasing sequence of paths from $∅$ to $\hist$.
 \begin{theorem}
   \label{th:caractR}
-  The $S$-labeling function associated to an attitude $f ∈ P^\allhists$ is the function $l^S_f: \allhists → \powerset{P^\allhists}$ defined as $l^S_f(\hist) = \set{g ∈ S \suchthat g(\hist) = f(\hist)}$.
+  The $S$-labeling function associated to an attitude $f ∈ P^{\allhists}$ is the function $l^S_f: \allhists → \powerset{P^{\allhists}}$ defined as $l^S_f(\hist) = \set{g ∈ S \suchthat g(\hist) = f(\hist)}$.
 
   We have: $R(S) = \set{f \suchthat ∀ \hist ∈ \allhists: ∩_{\histp ⊆ \hist} l^S_f(\histp) ≠ ∅}$.
 \end{theorem}
@@ -2877,7 +2885,7 @@ Let $\intvl{\hist} = (\hist_i)_{i ∈ \intvl{0, \card{\hist}}} ∈ \finite(\incr
   Also, $∀ \hist ∈ H: g ∈ l^S_f(\hist)$, thus,
   $∀ \hist ∈ H: g(\hist) = f(\hist)$.
 
-  First observe that given any $S ⊆ P^\allhists$, $f ∈ P^\allhists$ and $\hist ∈ \allhists$, as $\histp ⊆ \hist$ iff $\histp ∈ \intvl{\hist}$, we have that $∩_{\histp ⊆ \hist} l^S_f(\histp) = \set{g ∈ S \suchthat ∀ \histp ∈ \intvl{\hist}: g(\histp) = f(\histp)}$.
+  First observe that given any $S ⊆ P^{\allhists}$, $f ∈ P^{\allhists}$ and $\hist ∈ \allhists$, as $\histp ⊆ \hist$ iff $\histp ∈ \intvl{\hist}$, we have that $∩_{\histp ⊆ \hist} l^S_f(\histp) = \set{g ∈ S \suchthat ∀ \histp ∈ \intvl{\hist}: g(\histp) = f(\histp)}$.
 
   It follows that if $∀ \hist ∈ \allhists: ∩_{\histp ⊆ \hist} l^S_f(\histp) ≠ ∅$, then $∀ H ∈ \finite(\incr(\allhists))$: $∅ ≠ \set{g ∈ S \suchthat ∀ \histp ∈ \intvl{\max H}: g(\histp) = f(\histp)} ⊆ \set{g ∈ S \suchthat ∀ \histp ∈ H: g(\histp) = f(\histp)}$.
 
@@ -2886,8 +2894,8 @@ Let $\intvl{\hist} = (\hist_i)_{i ∈ \intvl{0, \card{\hist}}} ∈ \finite(\incr
 
 \begin{lemma}
   \label{th:typesfalsifiable}
-  A set of attitudes $S ⊆ P^\allhists$
-  satisfies $∀ g ∈ P^\allhists ∖ S: ∃ H ∈ \finite(\incr(\allhists)) \suchthat ∀ f ∈ S: \restr{g}{H} ≠ \restr{f}{H}$,
+  A set of attitudes $S ⊆ P^{\allhists}$
+  satisfies $∀ g ∈ P^{\allhists} ∖ S: ∃ H ∈ \finite(\incr(\allhists)) \suchthat ∀ f ∈ S: \restr{g}{H} ≠ \restr{f}{H}$,
   iff its associated claim is falsifiable or trivial.
 \end{lemma}
 \begin{proof}
@@ -2899,35 +2907,35 @@ Let $\intvl{\hist} = (\hist_i)_{i ∈ \intvl{0, \card{\hist}}} ∈ \finite(\incr
   Define $θ = \set{(i, \hist, \ileadstogo(\hist)) \suchthat \hist ∈ H} ∈ Θ ∩ \powerset{\allleadstog}$.
   Then, $θ ∉ C^⊆$, because $∀ \ileadstogo[j] ∈ S: θ ⊈ \ileadstogo[j]$.
 
-  Conversely, assume that for some $\ileadstogo ∈ P^\allhists ∖ S$, no $H ∈ \finite(\incr(\allhists))$ satisfies the indicated condition.
+  Conversely, assume that for some $\ileadstogo ∈ P^{\allhists} ∖ S$, no $H ∈ \finite(\incr(\allhists))$ satisfies the indicated condition.
   Define $\allleadstog$ as including $\ileadstogo$ and for all other individuals, relations from $S$.
   Then, $\allleadstog ∉ C$, but any observation will be in $C$, thus the claim is not falsifiable and not trivial.
 \end{proof}
 \begin{lemma}
   \label{th:typesholds}
-  Consider a set of attitudes $S ⊆ P^\allhists$. Its associated claim holds iff $\set{{\ileadsto[j]} \suchthat j ∈ I} ⊆ S$.
+  Consider a set of attitudes $S ⊆ P^{\allhists}$. Its associated claim holds iff $\set{{\ileadsto[j]} \suchthat j ∈ I} ⊆ S$.
 \end{lemma}
 \begin{lemma}
   \label{th:typesanonymous}
-  Given any set of attitudes $S ⊆ P^\allhists$, its associated claim is anonymous.
+  Given any set of attitudes $S ⊆ P^{\allhists}$, its associated claim is anonymous.
 \end{lemma}
 The following result follows from \cref{th:typesfalsifiable,th:typesholds,th:typesanonymous}.
 \begin{theorem}
   \label{th:suffFals}
-  Assume that $∀ \ileadstogo ∈ P^\allhists ∖ \set{{\ileadsto[k]} \suchthat k ∈ I}: ∃ H ∈ \finite(\incr(\allhists)) \suchthat ∀ j ∈ I: ∃ \hist ∈ H \suchthat \ileadstogo(\hist) ≠ \ileadstoo[j](\hist)$.
+  Assume that $∀ \ileadstogo ∈ P^{\allhists} ∖ \set{{\ileadsto[k]} \suchthat k ∈ I}: ∃ H ∈ \finite(\incr(\allhists)) \suchthat ∀ j ∈ I: ∃ \hist ∈ H \suchthat \ileadstogo(\hist) ≠ \ileadstoo[j](\hist)$.
   Then, the claim $C$ associated to the set of attitudes $S = \set{{\ileadsto[j]} \suchthat j ∈ I}$ holds, is anonymous, and is falsifiable or trivial.
 \end{theorem}
 \begin{proof}
   For another proof, note that $C^⊆ ∩ Θ = \set{θ ∈ Θ \suchthat ∀ i ∈ I: ∃ j ∈ I \suchthat θ ∩ (\set{i} × \allhists × P) ⊆ \ileadstoo[j]}$.
   Pick any $\allleadstog ∈ E(C^⊆ ∩ Θ)$ and let us show that $\allleadstog ∈ C$.
-  Note that $\allleadstog ∉ C ⇔ ∃ i ∈ I \suchthat \ileadstogo ∈ P^\allhists ∖ \set{{\ileadsto[k]} \suchthat k ∈ I}$, in which case the consequent in the theorem holds.
+  Note that $\allleadstog ∉ C ⇔ ∃ i ∈ I \suchthat \ileadstogo ∈ P^{\allhists} ∖ \set{{\ileadsto[k]} \suchthat k ∈ I}$, in which case the consequent in the theorem holds.
   We need to show that $∄ i ∈ I, H ∈ \finite(\incr(\allhists)) \suchthat ∀ j ∈ I: ∃ \hist ∈ H \suchthat \ileadstogo(\hist) ≠ \ileadstoo[j](\hist)$.
   In other words, given any $i ∈ I$, we need to show that $∀ H ∈ \finite(\incr(\allhists)): ∃ j ∈ I \suchthat ∀ \hist ∈ H: \ileadstogo(\hist) = \ileadstoo[j](\hist)$.
 \end{proof}
 
 The following result follows from \cref{th:typesfalsifiable}.
 \begin{theorem}
-  If a set of attitudes $S ⊆ P^\allhists$ is not closed under observable inclusion, then it is not falsifiable and not trivial.
+  If a set of attitudes $S ⊆ P^{\allhists}$ is not closed under observable inclusion, then it is not falsifiable and not trivial.
 \end{theorem}
 \begin{theorem}
   Given any situation, if the claim associated to the set of attitudes $R(\allleadsto(I))$ is trivial, then there exists no claim associated to a set of attitudes that holds and is falsifiable.
@@ -2935,7 +2943,7 @@ The following result follows from \cref{th:typesfalsifiable}.
 \begin{proof}
   Consider a claim related to a set of attitudes $S$ that holds and that is falsifiable or trivial.
   For it to hold, we need $\allleadsto(I) ⊆ S$.
-  From \cref{th:typesfalsifiable}, for it to be falsifiable or trivial, we need that $∀ g ∈ P^\allhists ∖ S: ∃ H ∈ \finite(\incr(\allhists)) \suchthat ∀ f ∈ S: \restr{g}{H} ≠ \restr{f}{H}$. In other words, all $g$ must be observably excludable from $S$. In other words, $S$ must be closed under observable inclusion. Thus, we need $R(S) ⊆ S$.
+  From \cref{th:typesfalsifiable}, for it to be falsifiable or trivial, we need that $∀ g ∈ P^{\allhists} ∖ S: ∃ H ∈ \finite(\incr(\allhists)) \suchthat ∀ f ∈ S: \restr{g}{H} ≠ \restr{f}{H}$. In other words, all $g$ must be observably excludable from $S$. In other words, $S$ must be closed under observable inclusion. Thus, we need $R(S) ⊆ S$.
   Also, because $S_1 ⊆ S_2 ⇒ R(S_1) ⊆ R(S_2)$, we need
   $R(\allleadsto(I)) ⊆ R(S) ⊆ S$.
   It follows that $S$ is trivial.
@@ -2944,26 +2952,26 @@ The following result follows from \cref{th:typesfalsifiable}.
   Given any situation, the claim associated to the set of attitudes $R(\allleadsto(I))$ holds, is anonymous, and is falsifiable or trivial.
 \end{theorem}
 \begin{example}
-  Define $f^{(p, p')} ∈ P^\allhists$ as follows: $f^{(p, p')}(∅) = p$ and $∀ \hist ∈ \allhists: \hist ≠ ∅ ⇒ f^{(p, p')}(\hist) = p'$.
+  Define $f^{(p, p')} ∈ P^{\allhists}$ as follows: $f^{(p, p')}(∅) = p$ and $∀ \hist ∈ \allhists: \hist ≠ ∅ ⇒ f^{(p, p')}(\hist) = p'$.
 
   Consider a situation such that $\allleadsto(I) = \set{f^{(p, p')} \suchthat p, p' ∈ \set{φ, φ'}}$, thus, containing only people constant to $φ$ and people constant to $φ'$, except that they map $∅$ to anything in $\set{φ, φ'}$.
   Define $F^p = \set{f^{(p, p')} \suchthat p' ∈ \set{φ, φ'}}$.
 
-  \Cref{th:caractR} indicates that $R(\allleadsto(I)) = \set{f \suchthat l^S_f(∅) ∈ \set{F^φ, F^{φ'}} ∧ ∀ \ar ∈ \allargs: [∀ \hist \suchthat \hist_1 = \ar: l^S_f(\hist) ∈ l^S_f(∅)] ∧ [∀ \hist, \histp \suchthat \hist_1 = \histp_1 = \ar: l^S_f(\hist) = l^S_f(\histp)]}$.
+  \Cref{th:caractR} indicates that $R(\allleadsto(I)) = \set{f \suchthat l^S_f(∅) ∈ \set{F^φ, F^{φ'}} ∧ ∀ a ∈ \allargs: [∀ \hist \suchthat \hist_1 = a: l^S_f(\hist) ∈ l^S_f(∅)] ∧ [∀ \hist, \histp \suchthat \hist_1 = \histp_1 = a: l^S_f(\hist) = l^S_f(\histp)]}$.
 
-  Thus, $R(\allleadsto(I))$ contains, for each mapping $m: \allargs → \set{φ, φ'}$, the two functions $f_m^φ, f_m^{φ'}$ defined as $f_m^φ(∅) = φ$ and $∀ \ar ∈ \allargs: f_m^φ((\ar, …)) = m(\ar)$, and similarly for $f_m^{φ'}$.
+  Thus, $R(\allleadsto(I))$ contains, for each mapping $m: \allargs → \set{φ, φ'}$, the two functions $f_m^φ, f_m^{φ'}$ defined as $f_m^φ(∅) = φ$ and $∀ a ∈ \allargs: f_m^φ((a, …)) = m(a)$, and similarly for $f_m^{φ'}$.
 
   The claim associated to $R(\allleadsto(I))$ is not trivial: $∀ f \suchthat [∃ \hist, \histp \ssub \hist \suchthat f(\histp) ≠ f(\hist)]: f ∉ R(\allleadsto(I))$.
 \end{example}
 \begin{example}
-  Consider $\allargs = \set{\ar_1, \ar_2}$ and $\allleadsto(I) = \set{f \suchthat f(\ar_1) ≠ φ ∨ f(\ar_2) ≠ φ}$, thus, $f ∉ \allleadsto(I)$ iff $f(\ar_1) = f(\ar_2) = φ$.
+  Consider $\allargs = \set{a_1, a_2}$ and $\allleadsto(I) = \set{f \suchthat f(a_1) ≠ φ ∨ f(a_2) ≠ φ}$, thus, $f ∉ \allleadsto(I)$ iff $f(a_1) = f(a_2) = φ$.
 
   Consider any $f ∉ \allleadsto(I)$.
   We have $f ∈ R(\allleadsto(I))$.
-  Indeed, define $g_1 ∈ P^\allhists$ as $g_1 = f$ except that $g_1(\ar_2) = φ'$, and $g_2 ∈ P^\allhists$ as $g_2 = f$ except that $g_2(\ar_1) = φ'$.
+  Indeed, define $g_1 ∈ P^{\allhists}$ as $g_1 = f$ except that $g_1(a_2) = φ'$, and $g_2 ∈ P^{\allhists}$ as $g_2 = f$ except that $g_2(a_1) = φ'$.
   Then, $g_1, g_2 ∈ \allleadsto(I)$.
   Now consider any $H ∈ \finite(\incr(\allhists))$.
-  If $(\ar_2) ∉ H$, then $\restr{f}{H} = \restr{g_1}{H}$; otherwise, $\restr{f}{H} = \restr{g_2}{H}$.
+  If $(a_2) ∉ H$, then $\restr{f}{H} = \restr{g_1}{H}$; otherwise, $\restr{f}{H} = \restr{g_2}{H}$.
 
   It follows that the claim associated to $R(\allleadsto(I))$ is trivial.
 \end{example}
@@ -2973,17 +2981,17 @@ The following result follows from \cref{th:typesfalsifiable}.
   Given a set of attitudes $S$ and $\hist ∈ \allhists$, define the equivalence relation $=_\hist$ on $S$ as $f =_\hist g$ iff $f(\hist) = g(\hist)$. This also defines the quotient set $S / =_\hist$. (For the readers used to that terminology: if defining $β_\hist ∈ P^S$ as $β_\hist(f) = f(\hist)$, then $=_\hist$ is the equivalence kernel of $β_\hist$ and $S / =_\hist$ is the coimage of $β_\hist$.)
   Similarly, given $S$ and $H ∈ \finite(\incr(\allhists))$, define the equivalence relation $=_H$ on $S$ as $f =_H g$ iff $\restr{f}{H} = \restr{g}{H}$. This also defines the quotient set $S / =_H$.
 
-  A function $l: \allhists → \powerset{P^\allhists}$ is decreasing iff $∀ \hist ⊆ \histp: l(\histp) ⊆ l(\hist)$.
-  Let $S ⊆ P^\allhists$ be a set of attitudes.
-  Say that a function $l: \allhists → \powerset{P^\allhists}$ is an $S$-point-labeling function iff $∀ \hist ∈ \allhists: l(\hist) ∈ S / =_\hist$.
-  Say that a function $l: \allhists → \powerset{P^\allhists}$ is an $S$-sequence-labeling function iff $∀ \hist ∈ \allhists: l(\hist) ∈ S / =_{\intvl{\hist}}$.
+  A function $l: \allhists → \powerset{P^{\allhists}}$ is decreasing iff $∀ \hist ⊆ \histp: l(\histp) ⊆ l(\hist)$.
+  Let $S ⊆ P^{\allhists}$ be a set of attitudes.
+  Say that a function $l: \allhists → \powerset{P^{\allhists}}$ is an $S$-point-labeling function iff $∀ \hist ∈ \allhists: l(\hist) ∈ S / =_\hist$.
+  Say that a function $l: \allhists → \powerset{P^{\allhists}}$ is an $S$-sequence-labeling function iff $∀ \hist ∈ \allhists: l(\hist) ∈ S / =_{\intvl{\hist}}$.
 \end{remark}
 \begin{theorem}
   Given $\hist ∈ \allhists$, define $\restr{S}{\intvl{\hist}} = \set{\restr{f}{\intvl{\hist}} \suchthat f ∈ S}$.
-  Given a non empty set of attitudes $S ⊆ P^\allhists$, the following statements are equivalent.
+  Given a non empty set of attitudes $S ⊆ P^{\allhists}$, the following statements are equivalent.
   \begin{itemize}
     \item The claim associated to $R(S)$ is not trivial
-    \item $R(S) ≠ P^\allhists$
+    \item $R(S) ≠ P^{\allhists}$
     \item $∃ \hist ∈ \allhists, f ∈ P^{\intvl{\hist}} \suchthat ∀ g ∈ S: \restr{g}{\intvl{hist}} ≠ f$
     \item $∃ \hist, f ∈ P^{\intvl{\hist}} \suchthat f ∉ \restr{S}{\intvl{\hist}}$
     \item $∃ \hist \suchthat P^{\intvl{\hist}} \not⊆ \restr{S}{\intvl{\hist}}$.
@@ -2991,26 +2999,26 @@ The following result follows from \cref{th:typesfalsifiable}.
   Also, the following statements are equivalent.
   \begin{itemize}
     \item The claim associated to $R(S)$ is trivial
-    \item $R(S) = P^\allhists$
+    \item $R(S) = P^{\allhists}$
     \item $∀ \hist, f, ∃ g ∈ S \suchthat \restr{g}{\intvl{\hist}} = f$
     \item $∀ \hist: P^{\intvl{\hist}} ⊆ \restr{S}{\intvl{\hist}}$.
   \end{itemize}
   Furthermore, $∀ \hist: P^{\intvl{\hist}} ⊆ \restr{S}{\intvl{\hist}} ⇒ \card{S} ∉ ℕ$.
 \end{theorem}
 \begin{proof}
-  This follows from $R(S) ≠ P^\allhists ⇔ ∃ f ∈ P^\allhists, \hist ∈ \allhists \suchthat ∩_{\histp ⊆ \hist} l^S_f(\histp) = ∅$.
+  This follows from $R(S) ≠ P^{\allhists} ⇔ ∃ f ∈ P^{\allhists}, \hist ∈ \allhists \suchthat ∩_{\histp ⊆ \hist} l^S_f(\histp) = ∅$.
 \end{proof}
 
-To recap, we now know that with $S = \allleadsto(I)$, when $R(S) ≠ P^\allhists$, there is a claim that holds and is anonymous and falsifiable.
+To recap, we now know that with $S = \allleadsto(I)$, when $R(S) ≠ P^{\allhists}$, there is a claim that holds and is anonymous and falsifiable.
 This includes all situations with finite behaviors ($\card{S} ∈ ℕ$), thus includes all situations with finite $I$.
-Consider now situations such that $R(\allleadsto(I)) = P^\allhists$.
+Consider now situations such that $R(\allleadsto(I)) = P^{\allhists}$.
 
-Define $I = P^ℤ$ and $\ileadstoo = i ∘ \card$, so that $S = \allleadsto(I) = \set{l ∘ \card ∈ P^\allhists \suchthat l ∈ P^ℤ}$.
-We have $R(S) = P^\allhists$.
-The function $f(\ar) ≠ f(\ar')$, for example, is not in $S$.
+Define $I = P^ℤ$ and $\ileadstoo = i ∘ \card$, so that $S = \allleadsto(I) = \set{l ∘ \card ∈ P^{\allhists} \suchthat l ∈ P^ℤ}$.
+We have $R(S) = P^{\allhists}$.
+The function $f(a) ≠ f(a')$, for example, is not in $S$.
 
 \begin{theorem}
-  Given a claim $C$, define $S_C ⊆ P^\allhists$ as $S_C = ⋃_{\allleadstog ∈ C}(\allleadstog(I))$.
+  Given a claim $C$, define $S_C ⊆ P^{\allhists}$ as $S_C = ⋃_{\allleadstog ∈ C}(\allleadstog(I))$.
   A claim $C$ is about types iff $C = (S_C)^I$.
 \end{theorem}
 \begin{proof}
@@ -3020,7 +3028,7 @@ The function $f(\ar) ≠ f(\ar')$, for example, is not in $S$.
 
 \begin{theorem}
   \label{th:falsclosed}
-  Under any $B ⊆ P^\allhists$ (thus recall $R(S) ⊆ B$), for any anonymous claim $C ⊆ B^I$ that is falsifiable or trivial, 
+  Under any $B ⊆ P^{\allhists}$ (thus recall $R(S) ⊆ B$), for any anonymous claim $C ⊆ B^I$ that is falsifiable or trivial, 
   $∀ \allleadstog ∈ C, F ⊆ \allleadstog(I) \suchthat [∀ f ∈ F: \card{(\allleadstoginv(f))} ∉ ℕ]: R(F)^I ⊆ C$.
 
   $∃ \allleadstog ∈ C, ∅ ≠ F ⊆ \allleadstog(I) \suchthat ∀ f ∈ F: \card{(\allleadstoginv(f))} ∉ ℕ$.
@@ -3029,14 +3037,14 @@ The function $f(\ar) ≠ f(\ar')$, for example, is not in $S$.
 \begin{proof}
   Consider any anonymous claim $C$, any $\allleadstog ∈ C, F ⊆ \allleadstog(I) \suchthat [∀ f ∈ F: \card{(\allleadstoginv(f))} ∉ ℕ]$ and any ${\allleadstog'} ∈ R(F)^I ∖ C$.
   To show that $C$ is not falsifiable,
-  consider any observable $θ ⊆ {\allleadstog'}$ and let us show that it is completable in $C$. Let $θ(P^\allhists)$ denote the (finite) set of individuals that $θ$ interrogates.
+  consider any observable $θ ⊆ {\allleadstog'}$ and let us show that it is completable in $C$. Let $θ(P^{\allhists})$ denote the (finite) set of individuals that $θ$ interrogates.
   
   From the antecedent we see that $I$ is infinite.
-  We know that $∀ i ∈ θ(P^\allhists): ∃ g ∈ R(F) \suchthat θ(i) ⊆ g$, thus, by definition of $R$, $∃ f ∈ F \suchthat θ(i) ⊆ f$.
-  Define $γ: θ(P^\allhists) → F$ that picks one such $f$ for each $i$.
-  Thus, $(γ^{-1}(f), f ∈ F)$ is a partition of $θ(P^\allhists)$ such that $∀ i ∈ γ^{-1}(f): θ(i) ⊆ f$.
+  We know that $∀ i ∈ θ(P^{\allhists}): ∃ g ∈ R(F) \suchthat θ(i) ⊆ g$, thus, by definition of $R$, $∃ f ∈ F \suchthat θ(i) ⊆ f$.
+  Define $γ: θ(P^{\allhists}) → F$ that picks one such $f$ for each $i$.
+  Thus, $(γ^{-1}(f), f ∈ F)$ is a partition of $θ(P^{\allhists})$ such that $∀ i ∈ γ^{-1}(f): θ(i) ⊆ f$.
 
-  Consider sets of same sizes $I'_f$ among the non observed individuals (meaning those in $I ∖ θ(P^\allhists)$) and with corresponding types in $\allleadstog$ (so that $∀ f ∈ F, i ∈ I'_f: \ileadstogo = f$).
+  Consider sets of same sizes $I'_f$ among the non observed individuals (meaning those in $I ∖ θ(P^{\allhists})$) and with corresponding types in $\allleadstog$ (so that $∀ f ∈ F, i ∈ I'_f: \ileadstogo = f$).
   Define a bijection $σ$ that for each $f ∈ F$ bijects $I_f$ to $I'_f$ and that sends the elements of $I ∖ (∪_f I_f ∪ I'_f)$ to themselves.
   The relation $\allleadstog ∘ σ$ is in $C$ and is compatible with the observable.
 \end{proof}
@@ -3101,16 +3109,16 @@ for some $H ∈ \finite(\incr(\allhists))$ and $i_1 ∈ I \suchthat P_{i_1} ∈ 
 \begin{theorem}
   Assume that for some $H ∈ \finite(\incr(\allhists))$ and $i_1 ∈ I \suchthat p = P_{i_1} ∈ P$, we have $∀ i_2 \suchthat P_{i_2} ≠ P_{i_1}$ that $∃ \hist ∈ H \suchthat \ileadstoo[i_1](\hist) ≠ \ileadstoo[i_2](\hist)$.
 
-  Then $∀ H' ∈ \incr(\allhists), P^{H'} ⊆ \restr{{\allleadsto}(I)}{H'}$ iff $∀ H ⊆ H', f ∈ P^{H'}$: $∃ i ∈ I \suchthat f ⊆ \ileadstoo ∧ [\restr{f}{H} = \restr{\ileadsto[i_1]}{H} ⇒ ∃ \ar ∈ \allargs \suchthat \ar \ileadstost p]$.
+  Then $∀ H' ∈ \incr(\allhists), P^{H'} ⊆ \restr{{\allleadsto}(I)}{H'}$ iff $∀ H ⊆ H', f ∈ P^{H'}$: $∃ i ∈ I \suchthat f ⊆ \ileadstoo ∧ [\restr{f}{H} = \restr{\ileadsto[i_1]}{H} ⇒ ∃ a ∈ \allargs \suchthat a \ileadstost p]$.
 \end{theorem}
 \begin{proof}
   Not exactly correct, should be corrected and proven but does not seem crucial fow now. Anyway, it seems possible (see below).
 \end{proof}
-Note that this is possible iff $\allargs$ is infinite. If so, suffices to take systematically $\ar ∉ H'$. If not, then some $H'$ exhausts all arguments and with $f$ constant to $p' ≠ p$, there is no $\ar$ satisfying $\ar \ileadstost p$.
+Note that this is possible iff $\allargs$ is infinite. If so, suffices to take systematically $a ∉ H'$. If not, then some $H'$ exhausts all arguments and with $f$ constant to $p' ≠ p$, there is no $a$ satisfying $a \ileadstost p$.
 
 \begin{theorem}
   \label{th:noindic}
-  If $a_1 \ileadstost[f_1] φ$ and $a_2 \ileadstost[f_2] φ'$ with $\ar_1 ≠ \ar_2$ and $f_1(∅) = f_2(∅)$ and $∀ f ∈ \set{f_1, f_2}: \card{{\allleadstoinv}(f)} ∉ ℕ$, then there is no anonymous, falsifiable and indicative about $i_1$ claim that holds (here, considering indicativeness as mandating to know that $P_{i_1} = φ$).
+  If $a_1 \ileadstost[f_1] φ$ and $a_2 \ileadstost[f_2] φ'$ with $a_1 ≠ a_2$ and $f_1(∅) = f_2(∅)$ and $∀ f ∈ \set{f_1, f_2}: \card{{\allleadstoinv}(f)} ∉ ℕ$, then there is no anonymous, falsifiable and indicative about $i_1$ claim that holds (here, considering indicativeness as mandating to know that $P_{i_1} = φ$).
 \end{theorem}
 \begin{proof}
   Any claim that holds must include $\allleadsto$.
@@ -3119,12 +3127,12 @@ Note that this is possible iff $\allargs$ is infinite. If so, suffices to take s
   From indicativeness about $i_1$, $∃ θ ∈ Θ ∩ (\set{i_1} × \allhists × P) ⊆ \allleadsto \suchthat ∅ ≠ π(\set{\allleadstog \suchthat θ ⊆ \allleadstog} ∩ C)(i_1) = φ$.
   Define $H ∈ \incr(\allhists)$ as the query corresponding to $θ$, thus $H = θ(i_1, P)$.
 
-  Define $g ∈ P^\allhists$ as $g = \set{(\hist, f_1(\hist)) \suchthat ∃ ∅ ≠ \histp ∈ \intvl{\hist} ∩ H} ∪ \set{(\hist, f_2(\hist)) \suchthat \intvl{\hist} ∩ H ⊆ \set{∅}}$.
+  Define $g ∈ P^{\allhists}$ as $g = \set{(\hist, f_1(\hist)) \suchthat ∃ ∅ ≠ \histp ∈ \intvl{\hist} ∩ H} ∪ \set{(\hist, f_2(\hist)) \suchthat \intvl{\hist} ∩ H ⊆ \set{∅}}$.
   Then, $g ∈ R(F)$. To show this, we need to show that $∀ H' ∈ \finite(\incr(\allhists)): ∃ f ∈ F \suchthat \restr{g}{H'} = \restr{f}{H'}$.
   If $\intvl{\max H'} ∩ H ⊆ \set{∅}$, then $f_2$ satisfies the condition (consider any $\hist ∈ H'$, we have $\intvl{\hist} ∩ H ⊆ \set{∅}$); otherwise (thus $∅ ≠ \hist' ∈ \intvl{\max H'} ∩ H$), $f_1$ does (consider any $\hist' ∈ H'$).
 
   Now let us show that $P_g ≠ φ$.
-  That is because at least one of $\hist = (\ar_2, \ar_1)$ or $\hist = (\ar_1, \ar_2)$ satisfies $\intvl{\hist} ∩ H ⊆ \set{∅}$ and in both cases, $\hist \ileadsto[f_2] φ'$, thus, $g(\hist) = φ'$.
+  That is because at least one of $\hist = (a_2, a_1)$ or $\hist = (a_1, a_2)$ satisfies $\intvl{\hist} ∩ H ⊆ \set{∅}$ and in both cases, $\hist \ileadsto[f_2] φ'$, thus, $g(\hist) = φ'$.
   
   Define ${\allleadstog'}$ as $∀ i ∈ I: {\ileadstog'} = g$.
   By \cref{th:falsclosed}, any claim that is anonymous and falsifiable must include ${\allleadstog'}$.
@@ -3134,17 +3142,17 @@ Note that this is possible iff $\allargs$ is infinite. If so, suffices to take s
 \end{proof}
 
 I need some restriction on the set of a priori possible behaviors.
-Define $B ⊆ P^\allhists$ as the set of a priori possible behaviors.
-For example, define $B_1$ as the set of behaviors such that $∀ \ar_1, \ar_2, \hist: (\hist, \ar_1, \ar_2) = (\hist, \ar_2, \ar_1)$ (where equality, abusing notation, means that they lead to the same result).
-Let $\overline{B} = P^\allhists ∖ B$ denote the set of behaviors that fail the condition.
+Define $B ⊆ P^{\allhists}$ as the set of a priori possible behaviors.
+For example, define $B_1$ as the set of behaviors such that $∀ a_1, a_2, \hist: (\hist, a_1, a_2) = (\hist, a_2, a_1)$ (where equality, abusing notation, means that they lead to the same result).
+Let $\overline{B} = P^{\allhists} ∖ B$ denote the set of behaviors that fail the condition.
 
 Then the a priori possible situations are only $B^I$. A claim is falsifiable iff the situations in $B^I$ not in $C$ are rejectable. 
 The other properties (holds, indicativeness, anonymity) do not change.
 We used to consider also situations $\overline{S} = \set{\allleadstog \suchthat ∃ i ∈ I \suchthat \ileadstogo ∈ \overline{B}}$ where some $i$ is in $\overline{B}$.
 
-Using $B_1$ alone does not solve the problem, as we can still show that $P_g ≠ φ$ by using $\hist = (\ar_3, \ar_2, \ar_1)$, assuming that $H$ does not start with $\ar_3$.
+Using $B_1$ alone does not solve the problem, as we can still show that $P_g ≠ φ$ by using $\hist = (a_3, a_2, a_1)$, assuming that $H$ does not start with $a_3$.
 
-I might need something like the following. $\ar$ is apparently innocuous iff $∀ \hist, \allleadstog: \allleadstog(\hist, \ar) = \allleadstog(\hist)$. And $\ar$ is innocuous iff $∀ \hist, \histp: \hist, \ar, \histp = \hist, \histp$. The required hypothesis might be $B_2$: if $\ar$ is apparently innocuous, then it is innocuous.
+I might need something like the following. $a$ is apparently innocuous iff $∀ \hist, \allleadstog: \allleadstog(\hist, a) = \allleadstog(\hist)$. And $a$ is innocuous iff $∀ \hist, \histp: \hist, a, \histp = \hist, \histp$. The required hypothesis might be $B_2$: if $a$ is apparently innocuous, then it is innocuous.
 
 \begin{theorem}
   Under some $B$, 
@@ -3155,7 +3163,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
 \end{proof}
 
 \begin{conjecture}
-  Assume $\allargs = \set{\ar_1, \ar_2}$. Write them $a$ and $b$.
+  Assume $\allargs = \set{a_1, a_2}$. Write them $a$ and $b$.
   Let us find some $B$ where \cref{th:noindic} fails.
 \end{conjecture}
 \begin{proof}
@@ -3220,8 +3228,8 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
 
   \begin{example}[Bigger disjunct, strongly unfalsifiable]
     \label{ex:biggeror}
-    Pick any $i ∈ I$ and $\ar ∈ \allargs$.
-    The claim $[(\ar) \ileadstog φ] ∨ [(\ar, \ar) \ileadstog φ] ∨ …$,
+    Pick any $i ∈ I$ and $a ∈ \allargs$.
+    The claim $[(a) \ileadstog φ] ∨ [(a, a) \ileadstog φ] ∨ …$,
     thus, $C = \set{\allleadstog \suchthat ∃ n ∈ \Np \suchthat (a)^n \ileadstog φ}$,
     is strongly unfalsifiable.
 
@@ -3329,7 +3337,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     Pick $i ∈ I$ and
     define $o_1 = ((a), i)$,
     $o_2 = (∅, i)$ and
-    $o_3 = ((b), i)$.
+    $o_3 = ((a'), i)$.
     Define $R = \set{o_1, o_2, o_3}$.
     Define $f_1, f_2, f_3 ∈ P^R$ as follows.
     $f_1(o_1) = φ$,
@@ -3403,7 +3411,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
 
     It follows that the relations that are obs-compatible with $C^⊆ ∩ Θ$ and that are in $C^⊆ ∩ Θ$ are the ones that, for $(o_1, o_2, o_3)$, include two $φ$ and one $φ'$; and the relations that are obs-compatible with $C^⊆ ∩ Θ$ and that are not in $C^⊆ ∩ Θ$ are the one that equals all $φ$ and the one that assign $o_1$ and $o_3$ to $∅$ and $o_2$ to $φ$.
 
-    Pick any $g ∈ P^{(I × \allhists) ∖ R}$ and define $\allleadstog = \set{(i, ∅, φ), (i, (a), φ), (i, (b), φ)} ∪ g$.
+    Pick any $g ∈ P^{(I × \allhists) ∖ R}$ and define $\allleadstog = \set{(i, ∅, φ), (i, (a), φ), (i, (a'), φ)} ∪ g$.
     This relation is obs-compatible with $C^⊆ ∩ Θ$, but $\allleadstog ∉ C$.
   \end{example}
   \begin{conjecture}
@@ -3460,7 +3468,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
   \end{proof}
 
   \begin{example}
-    Consider any $i$, $\ar_1 ≠ \ar_2 ∈ \allargs$, $p ≠ p' ∈ P$ and any ${\allleadstog^1}, {\allleadstog^2}$ such that $(\ar_1) \ileadstog^1 p$ and $(\ar_2) \ileadstog^2 p'$.
+    Consider any $i$, $a_1 ≠ a_2 ∈ \allargs$, $p ≠ p' ∈ P$ and any ${\allleadstog^1}, {\allleadstog^2}$ such that $(a_1) \ileadstog^1 p$ and $(a_2) \ileadstog^2 p'$.
     Consider the claim $C = \set{{\allleadstog^1}, {\allleadstog^2}}$. When is it falsifiable considering these two relations?
   \end{example}
 
@@ -3822,7 +3830,7 @@ So the escaping witness cannot simply reproduce what $\allleadstog[0]$ hides beh
 Two routes to settling \cref{cnj:rpevProv} remain open: a compactness argument, iterating the construction of \cref{th:rpevDiverge} along an increasing sequence of prefixes agreeing with $\allleadstog[0]$ further and further, to show the required divergence cannot be sustained indefinitely; and a direct construction, a claim $C$, not closed under finite modification, for which $D ∖ C$ is spread across many, individually escapable, worlds rather than concentrated in one $\allleadstog[0]$, so that every world in $C$ can use a private, ever-available escape route.
 A König-type argument for the first route does not directly apply: the tree of rightward extensions is not finitely branching whenever $I$ is infinite, since introducing a fresh individual is itself an unbounded branching choice; a compactness argument here would need a different tool, such as an ultrafilter construction over $I$.
 Even that alternative is not straightforward, and for a sharper reason than branching: $\allleadstos = P^{I × \allhists}$ is compact (Tychonoff, as $P$ is finite), but standard compactness arguments — net convergence, or the finite intersection property for closed families — require the family of test extensions to be \emph{directed}, meaning any two admit a common refinement.
-For a fixed $\allleadstog[0]$, two valid rightward extensions of the same prefix, both in $Θ ∩ \powerset{\allleadstog[0]}$, can commit to different, incomparable branches for the same individual (extending, say, $(\ar)$ to $(\ar, \ar)$ in one and to $(\ar, \ar')$ in the other); their union is not chain-respecting, hence not itself in $Θ$.
+For a fixed $\allleadstog[0]$, two valid rightward extensions of the same prefix, both in $Θ ∩ \powerset{\allleadstog[0]}$, can commit to different, incomparable branches for the same individual (extending, say, $(a)$ to $(a, a)$ in one and to $(a, a')$ in the other); their union is not chain-respecting, hence not itself in $Θ$.
 So the family of $Θ$-valid rightward extensions of a prefix is not directed, even restricted to a single fixed $\allleadstog[0]$, and restricting $\allargs$ to be finite does not repair this: the non-directedness comes from any two incomparable branches existing at all, not from unboundedly many of them.
 This means $¬\POF_S$ is not literally a topological closure condition to begin with, since it tests strictly fewer, non-directed extensions than compactness arguments assume — precisely because $Θ$ encodes that incomparable branches cannot be probed simultaneously, the realistic-protocol constraint the whole framework is built on.
 A genuine compactness proof of \cref{cnj:rpevProv}, if one exists, would need a substitute for both König's lemma and standard filter or net arguments.
