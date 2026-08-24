@@ -200,13 +200,14 @@ Let $\finite(\incr(\allhists)^I)$ denote the functions $f: I ↦ \incr(\allhists
 An element $Q ⊆ I × \allhists$ is called a query iff $∀i ∈ I: Q(i) = \set{\hist ∈ \allhists \suchthat (i, \hist) ∈ Q} ∈ \incr(\allhists)$ and $\card{Q} ∈ ℕ$.
 Abusing notations, we also view $Q$ as an element of $\allpriobss$.
 An observation associates to a query an element of $P$ per queried element, thus, the set of possible observations is $Θ = ∪_{Q ∈ \allpriobss} P^Q$.
-In other words, defining a general observation $O$ as a right unique finite subset of $(I × \allhists) × P$, an observation $θ ∈ Θ$ is a general observation satisfying $∀ i ∈ I, (i, \hist, p), (i, \histp, q) ∈ θ: \card{\hist} ≤ \card{\hist'} ⇒ \hist ⊆ \hist'$.
+In other words, defining a general observation $O$ as a right unique finite subset of $(I × \allhists) × P$, 
+an observation $θ ∈ Θ$ is a general observation satisfying $∀ i ∈ I, (i, \hist, p), (i, \histp, q) ∈ θ: \card{\hist} ≤ \card{\hist'} ⇒ \hist ⊆ \hist'$.
 Given a general observation $O$, let $O(P) ⊆ I × \allhists$ denote the queried elements (the pairs $(i, \hist)$) in $O$ and $O(\allhists, P)$ designate the observed individuals.
 Note that given an observation $θ$, $θ(P) ∈ \allpriobss$.
 Similarly, we can view an observation $θ$ as a function $θ: I ↦ ∪_{H ∈ \incr(\allhists)} P^H$ and thus $Θ = \finite((∪_{H ∈ \incr(\allhists)} P^H)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
-An observation $θ'$ rightward-extends an observation $θ$, denoted $θ ⊑ θ'$, iff $θ ⊆ θ' ∧ ∀i ∈ I, (α, i, p) ∈ θ, (α', i, p') ∈ θ': α ⊆ α'$.
+An observation $θ'$ rightward-extends an observation $θ$, denoted $θ ⊑ θ'$, iff $θ ⊆ θ' ∧ ∀i ∈ I, (i, α, p) ∈ θ, (i, α', p') ∈ θ': α ⊆ α'$.
 
-An anonymous observation $\anobs ∈ ∪_{H ∈ \fincrhists} P^H$ associates each path from an increasing set of paths to an element of $P$. We let $\anobs × \set{i} = \set{(α, i, p) \suchthat (α, p) ∈ \anobs} ∈ Θ$ denote the observation corresponding to applying $\anobs$ to $i$; and $\anobs^{-1}(P) = \set{α \suchthat ∃p ∈ P \suchthat (α, p) ∈ \anobs} ∈ \fincrhists$ the used paths.
+An anonymous observation $\anobs ∈ ∪_{H ∈ \fincrhists} P^H$ associates each path from an increasing set of paths to an element of $P$. We let $\set{i} × \anobs = \set{(i, α, p) \suchthat (α, p) ∈ \anobs} ∈ Θ$ denote the observation corresponding to applying $\anobs$ to $i$; and $\anobs^{-1}(P) = \set{α \suchthat ∃p ∈ P \suchthat (α, p) ∈ \anobs} ∈ \fincrhists$ the used paths.
 
 We say that an observation $θ$ is compatible with a behavior ${\allleadstog} ∈ \allleadstos$ iff $θ ⊆ \allleadstog$ (seeing the behavior as a set of triples).
 Thus, given ${\allleadstog} ∈ \allleadstos$, the set $Θ ∩ \powerset{\allleadstog}$ is the set of observations compatible with ${\allleadstog}$.
@@ -217,13 +218,13 @@ The set $Θ ∩ C^⊆$ is the set of observations compatible with the claim.
 This set is downwards-closed, as both $Θ$ and $C^⊆$ are.
 
 \label{def:unobservable}
-A subset of triples $T ⊆ \allhists × I × P$ is unobservable iff it cannot be observed together, that is, iff $T ∉ Θ$. If $\card{T} ∉ ℕ$, $T$ is unobservable. A finite subset of triples $T$ is unobservable iff some subset $T' ⊆ T$ with $\card{T'} = 2$ is unobservable (unobservability comes from a given individual’s observations, for that one, the paths are not increasing, and as the subset relation is transitive, two elements suffice to determine this fact).
+A subset of triples $T ⊆ I × \allhists × P$ is unobservable iff it cannot be observed together, that is, iff $T ∉ Θ$. If $\card{T} ∉ ℕ$, $T$ is unobservable. A finite subset of triples $T$ is unobservable iff some subset $T' ⊆ T$ with $\card{T'} = 2$ is unobservable (unobservability comes from a given individual’s observations, for that one, the paths are not increasing, and as the subset relation is transitive, two elements suffice to determine this fact).
 
 It is important to realize that $Θ$ is the set of \emph{a priori} possible observations, meaning, those that are conceivable, possibly counter-factually. The set of observations that can result from actually observing the behavior ${\allleadsto}$ is 
 $Θ ∩ \powerset{\allleadsto} = \set*{\restr{{\allleadsto}}{Q} \suchthat Q ∈ \allpriobss}$.
 Such an observation $θ ∈ Θ ∩ \powerset{\allleadsto}$ is called a feasible observation.
 
-Given a right unique $τ ⊆ (\allhists × I) × P$, we let $\mathop{↑} τ = \set{{\allleadstog} ∈ \allleadstos \suchthat τ ⊆ {\allleadstog}}$ denote the set of “leads to” relations that complete $τ$ (thus $\mathop{↑} ∅ = {\allleadstos}$).
+Given a right unique $τ ⊆ (I × \allhists) × P$, we let $\mathop{↑} τ = \set{{\allleadstog} ∈ \allleadstos \suchthat τ ⊆ {\allleadstog}}$ denote the set of “leads to” relations that complete $τ$ (thus $\mathop{↑} ∅ = {\allleadstos}$).
 
 \subsection{Verifiability}
 Given an exposure protocol $(I, \allargs, {\allleadsto})$, we say that a claim $C$ \emph{holds} iff ${\allleadsto} ∈ C$. We are interested in criteria to determine whether a claim holds.
@@ -492,7 +493,7 @@ Converting a claim to disjunctive normal form is useful to characterize its comp
   we see that $E = \set{{\allleadstog} \suchthat [(a_1) \ileadstog φ ∧ (a'_1) \ileadstog[j] φ] ∨ [(a_2) \ileadstog φ ∧ (a'_2) \ileadstog[j] φ] ∨ [(a_3) \ileadstog φ ∧ (a'_3) \ileadstog[j] φ]}$,
   and
   $∀ 1 ≤ k ≤ 3$, define $S_k = \set{\allleadstog \suchthat [(a_k) \ileadstog φ ∧ (a'_k) \ileadstog[j] φ]}$, define $\mathcal{S} = \set{S_1, S_2, S_3}$,
-  consider any $f ⊆ (\allhists × I) × P \suchthat f ∉ E^⊆$,
+  consider any $f ⊆ (I × \allhists) × P \suchthat f ∉ E^⊆$,
   we have $∀ 1 ≤ k ≤ 3, ∃t_k ∈ f \suchthat \set{t_k} ∉ {S_k}^⊆$,
   thus $f ∉ Θ$
   (wlog, pick $t_1 = ((a_1), i, p_1 ≠ φ)$, then for observability we need to pick $t_2 = ((a'_2), j, .)$ and there is no choice left for $t_3$).
@@ -835,11 +836,11 @@ define $D^{\anobs, a, p}_C$ as the prior: any behavior that fails $\anobs$ leads
   $a ∈ \allargs$,
   $p ∈ P$,
   if $\allleadsto$ leads $\anobs$ to $(a, p)$,
-  then the claim $C = [∀i: \anobs × \set{i} ⊆ \allleadstoo ⇒ a \ileadstost p]$ holds and is anonymous and APTS-P and provable by $(¬\POF_C) ∩ E ∩ D^{\anobs, a, p}_C$.
+  then the claim $C = [∀i: \set{i} × \anobs ⊆ \allleadstoo ⇒ a \ileadstost p]$ holds and is anonymous and APTS-P and provable by $(¬\POF_C) ∩ E ∩ D^{\anobs, a, p}_C$.
 \end{theorem}
 \begin{proof}
   Consider any world $\allleadstog ∈ E ∩ D, \allleadstog ∉ C$ and let us show $\POF$.
-  For some $i$, $\anobs × \set{i} ⊆ \allleadstog$ but $a \nileadstostg p$.
+  For some $i$, $\set{i} × \anobs ⊆ \allleadstog$ but $a \nileadstostg p$.
   Define $g = \allleadstog(i)$, thus $\anobs ⊆ g$.
   As $\allleadstog ∈ D$, $g$ fails visibly out of $B$.
   As $\allleadstog ∈ E$, whatever the prefix $θ$, some suffix $θ'$ transfers all those observations to some individual not in $θ(\allhists, P)$, and is not completable in $C$.
@@ -852,20 +853,20 @@ Here is a second, fully detailed proof of the same statement, spelling out every
   $$∀h ∈ \allleadstog(I) ∖ B \suchthat \anobs ⊆ h ∧ a \nileadstostg[h] p: ∃ H ∈ \fincrhists \suchthat \restr{h}{H} ∉ \restr{B}{H}.$$
 
   \emph{Holds, and a witness individual.} Unfolding the definition of "in the world $\allleadstog$, $\anobs$ leads $i$ to $(a,p)$", the hypothesis "$\allleadsto$ leads $\anobs$ to $(a,p)$" says
-  $$[∀i ∈ I: \anobs × \set{i} ⊆ \allleadsto ⇒ a \ileadstost p] \ ∧ \ [∃i_0 ∈ I \suchthat \anobs × \set{i_0} ⊆ \allleadsto].$$
-  The first conjunct is exactly the defining condition of $C$ evaluated at $\allleadsto$, so it says $\allleadsto ∈ C$: this part of the conjecture is an immediate restatement of the hypothesis. The second conjunct fixes, once and for all, an individual $i_0 ∈ I$ with $θ_0 := \anobs × \set{i_0} ⊆ \allleadsto$; it is not used for "holds", but it is exactly what makes the APTS-P argument below go through with no further assumption on $\anobs$.
+  $$[∀i ∈ I: \set{i} × \anobs ⊆ \allleadsto ⇒ a \ileadstost p] \ ∧ \ [∃i_0 ∈ I \suchthat \set{i_0} × \anobs ⊆ \allleadsto].$$
+  The first conjunct is exactly the defining condition of $C$ evaluated at $\allleadsto$, so it says $\allleadsto ∈ C$: this part of the conjecture is an immediate restatement of the hypothesis. The second conjunct fixes, once and for all, an individual $i_0 ∈ I$ with $θ_0 := \set{i_0} × \anobs ⊆ \allleadsto$; it is not used for "holds", but it is exactly what makes the APTS-P argument below go through with no further assumption on $\anobs$.
 
-  \emph{Anonymous.} Fix a permutation $σ$ of $I$ and $\allleadstog ∈ \allleadstos$. By \cref{def:anonymous}, $(\allleadstog ∘ σ)(i) = \allleadstog(σ(i))$ (row $i$ of $\allleadstog ∘ σ$ equals row $σ(i)$ of $\allleadstog$). Decisiveness (\cref{def:decisive}) and the condition $\anobs × \set{i} ⊆ \cdot$ each depend only on the row of the individual considered, so $a \ileadstost[i] p$ holds in $\allleadstog ∘ σ$ iff $a \ileadstost[σ(i)] p$ holds in $\allleadstog$, and $\anobs × \set{i} ⊆ \allleadstog ∘ σ$ iff $\anobs × \set{σ(i)} ⊆ \allleadstog$. Hence, using that $i ↦ σ(i)$ is a bijection of $I$,
-  $$\allleadstog ∘ σ ∈ C ⇔ ∀i ∈ I: \anobs × \set{i} ⊆ \allleadstog ∘ σ ⇒ a \ileadstost[i] p ⇔ ∀i ∈ I: \anobs × \set{σ(i)} ⊆ \allleadstog ⇒ a \ileadstost[σ(i)] p ⇔ ∀j ∈ I: \anobs × \set{j} ⊆ \allleadstog ⇒ a \ileadstost[j] p ⇔ \allleadstog ∈ C.$$
+  \emph{Anonymous.} Fix a permutation $σ$ of $I$ and $\allleadstog ∈ \allleadstos$. By \cref{def:anonymous}, $(\allleadstog ∘ σ)(i) = \allleadstog(σ(i))$ (row $i$ of $\allleadstog ∘ σ$ equals row $σ(i)$ of $\allleadstog$). Decisiveness (\cref{def:decisive}) and the condition $\set{i} × \anobs ⊆ \cdot$ each depend only on the row of the individual considered, so $a \ileadstost[i] p$ holds in $\allleadstog ∘ σ$ iff $a \ileadstost[σ(i)] p$ holds in $\allleadstog$, and $\set{i} × \anobs ⊆ \allleadstog ∘ σ$ iff $\set{σ(i)} × \anobs ⊆ \allleadstog$. Hence, using that $i ↦ σ(i)$ is a bijection of $I$,
+  $$\allleadstog ∘ σ ∈ C ⇔ ∀i ∈ I: \set{i} × \anobs ⊆ \allleadstog ∘ σ ⇒ a \ileadstost[i] p ⇔ ∀i ∈ I: \set{σ(i)} × \anobs ⊆ \allleadstog ⇒ a \ileadstost[σ(i)] p ⇔ ∀j ∈ I: \set{j} × \anobs ⊆ \allleadstog ⇒ a \ileadstost[j] p ⇔ \allleadstog ∈ C.$$
   As $\allleadstog, σ$ were arbitrary, $C ∘ σ = C$ for every $σ$: $C$ is anonymous.
 
-  \emph{APTS-P.} Take $θ := θ_0 = \anobs × \set{i_0} ∈ Θ ∩ \powerset{\allleadsto}$ (feasible, by choice of $i_0$ above), together with $i_0$ and $p$, as the witness. First, $\allleadsto ∈ \set{θ⊆\allleadstog}∩C$ (as $θ = θ_0 ⊆ \allleadsto$ and $\allleadsto ∈ C$, both from the previous paragraph), so $p ∈ π_{i_0}(\set{θ⊆\allleadstog}∩C)$. Second, for any $\allleadstog' ∈ \set{θ⊆\allleadstog}∩C$: $θ = \anobs × \set{i_0} ⊆ \allleadstog'$ together with $\allleadstog' ∈ C$, instantiated at $i = i_0$, gives $a \ileadstost[i_0] p$ in $\allleadstog'$, that is $p ∈ P_{i_0}(\allleadstog')$; by \cref{th:sing}, $\card{P_{i_0}(\allleadstog')} ≤ 1$, so $P_{i_0}(\allleadstog') = \set{p}$ exactly, that is $π_{i_0}(\allleadstog') = p$. Hence $π_{i_0}(\set{θ⊆\allleadstog}∩C) = \set{p}$: as $p ∈ P$ is a genuine value and $θ$ is feasible, this is APTS-P, witnessed by $(θ, i_0, p)$. (No completion of $\anobs$ into a full behavior is needed here, unlike in an earlier attempt at this step: the witness individual $i_0$ handed to us by the hypothesis, together with $\allleadsto$ itself, already does the job.)
+  \emph{APTS-P.} Take $θ := θ_0 = \set{i_0} × \anobs ∈ Θ ∩ \powerset{\allleadsto}$ (feasible, by choice of $i_0$ above), together with $i_0$ and $p$, as the witness. First, $\allleadsto ∈ \set{θ⊆\allleadstog}∩C$ (as $θ = θ_0 ⊆ \allleadsto$ and $\allleadsto ∈ C$, both from the previous paragraph), so $p ∈ π_{i_0}(\set{θ⊆\allleadstog}∩C)$. Second, for any $\allleadstog' ∈ \set{θ⊆\allleadstog}∩C$: $θ = \set{i_0} × \anobs ⊆ \allleadstog'$ together with $\allleadstog' ∈ C$, instantiated at $i = i_0$, gives $a \ileadstost[i_0] p$ in $\allleadstog'$, that is $p ∈ P_{i_0}(\allleadstog')$; by \cref{th:sing}, $\card{P_{i_0}(\allleadstog')} ≤ 1$, so $P_{i_0}(\allleadstog') = \set{p}$ exactly, that is $π_{i_0}(\allleadstog') = p$. Hence $π_{i_0}(\set{θ⊆\allleadstog}∩C) = \set{p}$: as $p ∈ P$ is a genuine value and $θ$ is feasible, this is APTS-P, witnessed by $(θ, i_0, p)$. (No completion of $\anobs$ into a full behavior is needed here, unlike in an earlier attempt at this step: the witness individual $i_0$ handed to us by the hypothesis, together with $\allleadsto$ itself, already does the job.)
 
   \emph{Provable by $(¬\POF_C) ∩ E ∩ D$.} Recall that a prior proves $C$ iff it is a subset of $C$. We show $(¬\POF_C) ∩ E ∩ D ⊆ C$ by contraposition: fix $\allleadstog ∈ E ∩ D$ with $\allleadstog ∉ C$, and show $\POF_C(\allleadstog)$, that is, $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆$.
 
-  \emph{Step 1 (a row falsifying $\anobs$-leads-to-$(a,p)$ is never a type of $C$).} For any $h ∈ \allbs$ with $\anobs ⊆ h$ and $a \nileadstostg[h] p$: if $h ∈ B = S_C$, some $\allleadstog'' ∈ C$ and $i'' ∈ I$ satisfy $\allleadstog''(i'') = h$; then $\anobs ⊆ h = \allleadstog''(i'')$ gives $\anobs × \set{i''} ⊆ \allleadstog''$, so $\allleadstog'' ∈ C$'s defining condition at $i''$ forces $a \ileadstostg[h] p$, contradicting $a \nileadstostg[h] p$. So $h ∉ B$.
+  \emph{Step 1 (a row falsifying $\anobs$-leads-to-$(a,p)$ is never a type of $C$).} For any $h ∈ \allbs$ with $\anobs ⊆ h$ and $a \nileadstostg[h] p$: if $h ∈ B = S_C$, some $\allleadstog'' ∈ C$ and $i'' ∈ I$ satisfy $\allleadstog''(i'') = h$; then $\anobs ⊆ h = \allleadstog''(i'')$ gives $\set{i''} × \anobs ⊆ \allleadstog''$, so $\allleadstog'' ∈ C$'s defining condition at $i''$ forces $a \ileadstostg[h] p$, contradicting $a \nileadstostg[h] p$. So $h ∉ B$.
 
-  \emph{Step 2 (extracting a witness $H$).} Since $\allleadstog ∉ C$, some $i ∈ I$ has $\anobs × \set{i} ⊆ \allleadstog$ and $a \nileadstostg p$ at row $i$. Let $g := \allleadstog(i)$; then $\anobs ⊆ g$ and $a \nileadstostg[g] p$ (decisiveness at $i$ depends only on row $g$), so by Step 1, $g ∉ B$. As $g ∈ \allleadstog(I)$ trivially, $g$ satisfies the antecedent of $\allleadstog ∈ D$ (at $h := g$), which yields some $H ∈ \fincrhists$ with $\restr{g}{H} ∉ \restr{B}{H}$.
+  \emph{Step 2 (extracting a witness $H$).} Since $\allleadstog ∉ C$, some $i ∈ I$ has $\set{i} × \anobs ⊆ \allleadstog$ and $a \nileadstostg p$ at row $i$. Let $g := \allleadstog(i)$; then $\anobs ⊆ g$ and $a \nileadstostg[g] p$ (decisiveness at $i$ depends only on row $g$), so by Step 1, $g ∉ B$. As $g ∈ \allleadstog(I)$ trivially, $g$ satisfies the antecedent of $\allleadstog ∈ D$ (at $h := g$), which yields some $H ∈ \fincrhists$ with $\restr{g}{H} ∉ \restr{B}{H}$.
 
   \emph{Step 3 (a falsifying observation at any row-$g$ individual).} For $k ∈ I$ with $\allleadstog(k) = g$, let $θ_H^k := \set{(k, \hist, g(\hist)) \suchthat \hist ∈ H}$. Since $H ∈ \fincrhists$, $θ_H^k ∈ Θ$, and $θ_H^k ⊆ \allleadstog$. If some $\allleadstog''' ∈ C$ extended $θ_H^k$, then $f := \allleadstog'''(k)$ would satisfy $\restr{f}{H} = \restr{g}{H}$ while $f ∈ \allleadstog'''(I) ⊆ B$, giving $\restr{g}{H} ∈ \restr{B}{H}$ — contradicting Step 2. So $θ_H^k ∉ C^⊆$.
 
@@ -899,10 +900,10 @@ The detailed proof of \cref{th:leadsToProvable} splits, when showing provability
   Given $\anobs$,
   $a ∈ \allargs$,
   $p ∈ P$,
-  $C = [∀i: \anobs × \set{i} ⊆ \allleadstoo ⇒ a \ileadstost p]$,
+  $C = [∀i: \set{i} × \anobs ⊆ \allleadstoo ⇒ a \ileadstost p]$,
   $C' ⊆ C$ such that
   $\allleadsto ∈ C'$,
-  $∃i_0 ∈ I \suchthat \anobs × \set{i_0} ⊆ \allleadsto$,
+  $∃i_0 ∈ I \suchthat \set{i_0} × \anobs ⊆ \allleadsto$,
   $C'$ is anonymous,
   and $(C ∖ C') ∩ E ∩ D^{\anobs, a, p}_{C'} ⊆ \POF_{C'}$,
   then $C'$ holds and is APTS-P and provable by $(¬\POF_{C'}) ∩ E ∩ D^{\anobs, a, p}_{C'}$.
@@ -913,7 +914,7 @@ Taking $C' = C$ recovers \cref{th:leadsToProvable}: $C ∖ C' = ∅$ makes the l
 \begin{proof}[Proof of \cref{ex:abClosure}]
   Write $\anobs = \set{((a,b), φ)}$ (so $\anobs^{-1}(P) = \set{(a,b)} ∈ \fincrhists$), $p := φ$, and let $C = [(a,b) \ileadsto φ ⇒ a \ileadstost φ]$ be the template of \cref{th:leadsToProvable} for this $\anobs, a, p$, so that \cref{ex:abClosure}'s claim is $C' = C ∧ [∀α: α \nileadsto φ ⇒ (α,a,b) \nileadsto φ]$, manifestly $C' ⊆ C$. We check the hypotheses of \cref{th:genProvableSubclaim}.
 
-  \emph{$\allleadsto ∈ C'$ and a witness $i_0$.} Write $I_1, I_2 ⊆ I$ for the (infinite) classes behaving as $\ileadsto^φ, \ileadsto^{φ'}$ respectively. For $i ∈ I_1$: every history maps to $φ$, so $(a,b) \ileadstogo[i] φ$ and $a$ is trivially decisive for $φ$ — the first conjunct holds at $i$ — and, for any $α$, $α \ileadstogo[i] φ$, so the second conjunct's antecedent never fires at $i$. For $i ∈ I_2$: $(a,b) \nileadstog[i] φ$, so the first conjunct holds vacuously at $i$; and for any $α$, $α \nileadstog[i] φ$ while also $(α,a,b) \nileadstog[i] φ$ (both equal $φ'$), so the second conjunct holds at $i$ too. Hence $\allleadsto ∈ C'$, and any $i_0 ∈ I_1$ satisfies $\anobs × \set{i_0} ⊆ \allleadsto$.
+  \emph{$\allleadsto ∈ C'$ and a witness $i_0$.} Write $I_1, I_2 ⊆ I$ for the (infinite) classes behaving as $\ileadsto^φ, \ileadsto^{φ'}$ respectively. For $i ∈ I_1$: every history maps to $φ$, so $(a,b) \ileadstogo[i] φ$ and $a$ is trivially decisive for $φ$ — the first conjunct holds at $i$ — and, for any $α$, $α \ileadstogo[i] φ$, so the second conjunct's antecedent never fires at $i$. For $i ∈ I_2$: $(a,b) \nileadstog[i] φ$, so the first conjunct holds vacuously at $i$; and for any $α$, $α \nileadstog[i] φ$ while also $(α,a,b) \nileadstog[i] φ$ (both equal $φ'$), so the second conjunct holds at $i$ too. Hence $\allleadsto ∈ C'$, and any $i_0 ∈ I_1$ satisfies $\set{i_0} × \anobs ⊆ \allleadsto$.
 
   \emph{$C'$ anonymous.} Both conjuncts of $C'$ are of the form $∀i: Q(\allleadstog(i))$ for a property $Q$ of a single row (the first exactly as in \cref{th:leadsToProvable}'s \emph{Anonymous} paragraph; the second through $Q(f) := [∀α: f(α) ≠ φ ⇒ f(α,a,b) ≠ φ]$). The same relabelling computation as there, applied to each conjunct, gives $C' ∘ σ = C'$ for every permutation $σ$.
 
@@ -1153,7 +1154,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   \end{example}
   \begin{example}
     $(\ar) \ileadstog φ ∨ (\ar') \ileadstog φ$ is not falsifiable.
-    Given any $O$, it may not contain both $((\ar), i, φ)$ and $((\ar'), i, φ)$, thus letting $t$ denote one of these triples not in $O$, pick any $\allleadstog$ such that $θ ⊆ {\allleadstog} ∧ t ∈ {\allleadstog}$. We have ${\allleadstog} ∈ S_θ ∩ C ≠ ∅$.
+    Given any $O$, it may not contain both $(i, (\ar), φ)$ and $(i, (\ar'), φ)$, thus letting $t$ denote one of these triples not in $O$, pick any $\allleadstog$ such that $θ ⊆ {\allleadstog} ∧ t ∈ {\allleadstog}$. We have ${\allleadstog} ∈ S_θ ∩ C ≠ ∅$.
   \end{example}
   \begin{example}[Fals. but shouldn’t]
     \label{ex:fbs}
@@ -1605,7 +1606,7 @@ The following example presents a situation where non rejection is due to finiten
   thus, $C = \set{{\allleadstog} \suchthat ∃ n ∈ \Np \suchthat ∀ i: (a)^n \ileadstog φ}$,
   is non rejectable: $Θ ⊆ C^⊆$.
 
-  Given any $θ ∈ Θ$, define $l = \max_{\hist \suchthat ∃ i ∈ I, p ∈ P \suchthat (i, \hist, p) ∈ θ} \card{\hist} + 1$ if $∃ p ∈ P \suchthat (i, \hist, p) ∈ θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ ⊆ {\allleadstog} ∧ (\ar)^l \ileadstog φ$. We have
+  Given any $θ ∈ Θ$, define $l = \max_{\hist \suchthat ∃ i ∈ I, p ∈ P \suchthat (i, \hist, p) ∈ θ} \card{\hist} + 1$ if $∃ p ∈ P \suchthat (i, \hist, p) ∈ θ$, and $l = 1$ otherwise.\commentClaude{In this second condition ("if $∃p∈P...$"), $i$ and $\hist$ are free — not bound by an enclosing $∃i$/the $\max$'s own $\hist$ binder. Is this meant to hold for the same $\hist$ achieving the max above, and some/any $i$? As written the condition's truth value is unclear.} Pick any $\allleadstog$ such that $θ ⊆ {\allleadstog} ∧ (\ar)^l \ileadstog φ$. We have
   $θ ∈ \powerset{\allleadstog}$ and ${\allleadstog} ∈ C$, thus, $θ ∈ C^⊆$.
 \end{example}
 \begin{example}[Big disjunct unfals iff infinite]
@@ -1814,8 +1815,8 @@ A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\POF
   \label{th:dnf}
   Given any $E$
   and a cover $\mathcal{S}$ of $E$ (a set of non-empty subsets whose union equals $E$) 
-  such that $∀ S ∈ \mathcal{S}, ∃ f_S ⊆ (\allhists × I) × P \suchthat S = \mathop{↑} f_S$ with $f_S$ right unique,
-  given any $f ⊆ (\allhists × I) × P$: 
+  such that $∀ S ∈ \mathcal{S}, ∃ f_S ⊆ (I × \allhists) × P \suchthat S = \mathop{↑} f_S$ with $f_S$ right unique,
+  given any $f ⊆ (I × \allhists) × P$:
   $f ∉ E^⊆$ 
   is equivalent to
   $∀ S ∈ \mathcal{S}, ∃ t ∈ f \suchthat \set{t} ∉ S^⊆$.
@@ -1868,7 +1869,7 @@ The following result indicates that, given a finite cover of $D ∖C$, $\OF_{D �
   Define $\allleadstog$ such that $∀α', j: α' \ileadstog[j] φ'$ (thus $\allleadstog ∈ E$ and $\allleadstog ∉ C$)
   and let us show that $¬\POF_{C ∩ E}(\allleadstog)$.
   Pick any $\card{α} < \card{α'}$ and
-  define $θ = (α', i, φ') ∈ Θ ∩ \powerset{\allleadstog}$.
+  define $θ = (i, α', φ') ∈ Θ ∩ \powerset{\allleadstog}$.\commentClaude{$θ$ is an observation (a subset of $I × \allhists × P$), but here it is set equal to a single triple $(i, α', φ')$ rather than to a set containing it. Should this be $θ = \set{(i, α', φ')}$?}
   Consider any $θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}$. 
   Define an infinitely numerous subset $J$ among the individuals for which $α$ was not observed in $θ'$ such that $i ∈ J$, leaving another infinitely numerous subset $I ∖ J$,
   and define $\allleadstog'$ such that $∀j ∈ J: α \ileadstog[j]' φ ∧ ∀α'' ≠ α, α'' \ileadstog[j]' φ'$, and $∀ j ∈ I ∖ J, α'': α'' \ileadstog[j]' φ'$.
@@ -1932,7 +1933,7 @@ $∀\allleadstog ≠ \allleadstog' ∈ E: \card\set{i ∈ I \suchthat \ileadstog
   define $r$ as an injection from $J^{(0)}$ to $I ∖ (J ∪ J^{(0)})$ such that $\ileadstogo[r(i)] = \ileadstogo[i]$ (which exists because $\allleadstog ∈ E$),
   define $J' = r(J^{(0)})$ (thus $r$ is a bijection from $J^{(0)}$ to $J'$ disjoint from both $J$ and $J^{(0)}$),
   complete $r$ to the self-inverse permutation $σ = r ∪ r^{-1} ∪ \set{(i, i) \suchthat i ∉ J^{(0)} ∪ J'}$ over $I$,
-  and define $θ = \set{(α, r(i), p) \suchthat (α, i, p) ∈ θ^{(0)}}$ as $θ^{(0)}$ where individuals from $J^{(0)}$ are replaced by individuals determined by $r$.
+  and define $θ = \set{(r(i), α, p) \suchthat (i, α, p) ∈ θ^{(0)}}$ as $θ^{(0)}$ where individuals from $J^{(0)}$ are replaced by individuals determined by $r$.
   We observe that $θ ⊆ \allleadstog$ (by construction of $r$) and that $θ(\allhists, P) = J' ⊆ I ∖ (J ∪ J^{(0)}) ⊆ I ∖ J$.
   Finally, if there exists $θ ⊆ \wJ ∈ C$, then also $θ^{(0)} ⊆ \wJ \circ σ^{-1} ∈ C$ (by anonymity of $C$); as $θ^{(0)} ∉ C^⊆$, we obtain $θ ∉ C^⊆$.
 \end{proof}
@@ -2030,7 +2031,7 @@ We are here interested in the interplay between properties of holding, anonymity
     Consider any ${\allleadstog} ∉ C$, thus satisfying, for some $i$, $(\ar) \nileadstog φ ∧ (\ar') \nileadstog φ$.
     Consider any $θ ⊆ {\allleadstog}$ and let us prove that $θ ∈ C^⊆$.
     (This is a consequence of \cref{ex:disjR} so this proof should not be useful.)
-    By definition of a general observation, $θ$ may not contain both $((\ar), i, φ)$ and $((\ar'), i, φ)$, thus letting $t$ denote one of these triples not in $θ$, pick any ${\allleadstog'}$ such that $θ ⊆ {\allleadstog'} ∧ t ∈ {\allleadstog'}$. We have
+    By definition of a general observation, $θ$ may not contain both $(i, (\ar), φ)$ and $(i, (\ar'), φ)$, thus letting $t$ denote one of these triples not in $θ$, pick any ${\allleadstog'}$ such that $θ ⊆ {\allleadstog'} ∧ t ∈ {\allleadstog'}$. We have
     $θ ∈ \powerset{\allleadstog'}$ and ${\allleadstog'} ∈ C$, thus, $θ ∈ C^⊆$.
   \end{example}
 
@@ -2150,13 +2151,13 @@ We are here interested in the interplay between properties of holding, anonymity
     Note that $C_ψ = \set{{\allleadstog^{p, p}}, {\allleadstog^{p, p'}}, {\allleadstog^{p', p}}, {\allleadstog^{p', p'}}}$.
 
     Then, $C_ψ^⊆ ∩ Θ =
-      \set{θ ∈ Θ \suchthat θ(\hist, i) ∈ \set{∅, p, p'} ∧ θ(\histp, i) ∈ \set{∅, p, p'} ∧ ∀ (j, \histpp) ∈ (I × h) ∖ \set{(i, \hist), (i, \histp)}: θ(\histpp, j) ∈ \set{∅, p}}$.
+      \set{θ ∈ Θ \suchthat θ(i, \hist) ∈ \set{∅, p, p'} ∧ θ(i, \histp) ∈ \set{∅, p, p'} ∧ ∀ (j, \histpp) ∈ (I × h) ∖ \set{(i, \hist), (i, \histp)}: θ(j, \histpp) ∈ \set{∅, p}}$.
     % and we see that $C_ψ^⊆ ∩ Θ =
     % \set{θ ∈ Θ \suchthat [θ(\hist, i) = θ(\histp, i) = ∅ ∨ θ(\hist, i) ∈ \set{p, p'} ∨ θ(\histp, i) ∈ \set{p, p'}] ∧ ∀ (j, \histpp) ∈ (I × h) ∖ \set{(i, \hist), (i, \histp)}: θ(\histpp, j) ∈ \set{∅, p}}$.
 
     Any obs-compatible relation has to satisfy $∀ (j, \histpp) ∈ (I × h) ∖ \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p$.
-    It also must satisfy ${\allleadstog}(\hist, i) ∈ \set{p, p'}$, for otherwise, with $θ = \set{(\hist, i, {\allleadstog}(\hist, i))}$, we get $({\allleadstog} ∩ θ) ∉ C_ψ^⊆ ∩ Θ$.
-    Similarly, it must satisfy ${\allleadstog}(\histp, i) ∈ \set{p, p'}$.
+    It also must satisfy ${\allleadstog}(i, \hist) ∈ \set{p, p'}$, for otherwise, with $θ = \set{(i, \hist, {\allleadstog}(i, \hist))}$, we get $({\allleadstog} ∩ θ) ∉ C_ψ^⊆ ∩ Θ$.
+    Similarly, it must satisfy ${\allleadstog}(i, \histp) ∈ \set{p, p'}$.
     % are $\set{{\allleadstog} ∈ \allleadstos \suchthat [{\allleadstog}(\hist, i) ∈ \set{p, p'} ∨ {\allleadstog}(\histp, i) ∈ \set{p, p'}] ∧ ∀ (j, \histpp) ∈ (I × h) ∖ \set{(i, \hist), (i, \histp)}: \histpp \ileadstog[j] p}$, which, given $p ≠ p^{\prime\prime} ≠ p'$, contains ${\allleadstog^{p, p^{\prime\prime}}}$, contrary to $C_ψ$.
   \end{example}
 
@@ -2194,8 +2195,8 @@ We are here interested in the interplay between properties of holding, anonymity
     Consider any $i$, $\hist, \histp ∈ \allhists$, $p, p' ∈ P$ where $\hist$ and $\histp$ are not prefix related.
     The claim $C = \set{{\allleadstog} \suchthat \hist \ileadstog p ∨ \histp \ileadstog p'}$ is unfalsifiable.
 
-    We have $C^⊆ ∩ Θ = \set{θ \suchthat (θ(\hist, i) = ∅ ∨ θ(\hist, i) = p) ∨ (θ(\histp, i) = ∅ ∨ θ(\histp, i) = p')}$.
-    Observe that any $θ ∈ Θ$ satisfy $θ(\hist, i) = ∅ ∨ θ(\histp, i) = ∅$, thus, $C^⊆ ∩ Θ = Θ$.
+    We have $C^⊆ ∩ Θ = \set{θ \suchthat (θ(i, \hist) = ∅ ∨ θ(i, \hist) = p) ∨ (θ(i, \histp) = ∅ ∨ θ(i, \histp) = p')}$.
+    Observe that any $θ ∈ Θ$ satisfy $θ(i, \hist) = ∅ ∨ θ(i, \histp) = ∅$, thus, $C^⊆ ∩ Θ = Θ$.
     It follows that the obs-compatible relations are $\allleadstos$, which is bigger than $C$.
   \end{example}
   \begin{example}
@@ -2221,12 +2222,12 @@ We are here interested in the interplay between properties of holding, anonymity
     Note that $C^⊆ ∩ Θ = \set{θ ∈ Θ \suchthat (∀ \hist: \card{\hist} ∈ 2ℕ ⇒ θ(\hist) ∈ \set{∅, p}) ∨ (∀ \hist: (\card{\hist} ∈ 2ℕ + 1 ∨ \hist = ∅) ⇒ θ(\hist) ∈ \set{∅, p'})}$.
     Consider any obs-compatible ${\allleadstog}$.
     Assume that $∃ \hist \suchthat \card{\hist} ∈ 2ℕ ∧ \hist \nileadstog p$.
-    Pick $θ = \set{(∅, i, {\ileadstog}(∅)), (\hist, i, {\ileadstog}(\hist))}$. We have $({\allleadstog} ∩ θ) ∈ C^⊆ ∩ Θ$, and ${\allleadstog} ∩ θ = θ$, and from $θ ∈ C^⊆ ∩ Θ$ we obtain ${\ileadstog}(∅) = p'$.
-    Similarly, using $θ = \set{(∅, i, {\ileadstog}(∅)), (\histp, j, {\ileadstog[j]}(\histp))}$, we obtain that $\allleadsto$ conforms to the relation in $C$.
+    Pick $θ = \set{(i, ∅, {\ileadstog}(∅)), (i, \hist, {\ileadstog}(\hist))}$. We have $({\allleadstog} ∩ θ) ∈ C^⊆ ∩ Θ$, and ${\allleadstog} ∩ θ = θ$, and from $θ ∈ C^⊆ ∩ Θ$ we obtain ${\ileadstog}(∅) = p'$.
+    Similarly, using $θ = \set{(i, ∅, {\ileadstog}(∅)), (j, \histp, {\ileadstog[j]}(\histp))}$, we obtain that $\allleadsto$ conforms to the relation in $C$.
   \end{example}
 
   \begin{remark}
-    Intuition (to be explored) is that when $C^⊆ ∩ Θ$ has the covering property, then the obs-compatible relations are easily deduced from the set (something like, just consider compatibility point per point, one singleton observation at a time). Covering is what is used above, something like $∃ i, \hist, \histp$ such that $∀ \hist^{\prime\prime}: [∀ j ≠ i: \set{(\hist, i, .), (\histp, j, .)} ∈ C^⊆ ∩ Θ] ∧ [∃ j ≠ i \suchthat \set{(\hist', i, .), (\hist^{\prime\prime}, j, .)} ∈ C^⊆ ∩ Θ]$.
+    Intuition (to be explored) is that when $C^⊆ ∩ Θ$ has the covering property, then the obs-compatible relations are easily deduced from the set (something like, just consider compatibility point per point, one singleton observation at a time). Covering is what is used above, something like $∃ i, \hist, \histp$ such that $∀ \hist^{\prime\prime}: [∀ j ≠ i: \set{(i, \hist, .), (j, \histp, .)} ∈ C^⊆ ∩ Θ] ∧ [∃ j ≠ i \suchthat \set{(i, \hist', .), (j, \hist^{\prime\prime}, .)} ∈ C^⊆ ∩ Θ]$.
   \end{remark}
 
   \subsection{Behavior function as a forest}
@@ -2501,11 +2502,11 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
     define $p = P_{i_1}$.
     Consider any claim $C$ such that $C ⊆ \set{{\allleadstog} ∈ \allleadstos \suchthat {\ileadsto[i_1]} ∈ {\allleadstog}(I) ⊆ {\allleadsto}(I)}$ and $C$ is anonymous (for example, $C^\text{HA}$ from \cref{th:claim_ha} is suitable).
     % Define the claim $C$ as $\set{{\allleadstog} ∈ \allleadstos \suchthat ∀ i ∈ I: {\ileadstog} ∈ \set{{\ileadsto[j]} \suchthat j ∈ I}}$ (or as anything included in it that includes $C^\text{HA}$ and is anonymous).
-    The claim is indicative for $i = i_1$ and $θ = \set{(\hist, i_1, {\ileadsto[i_1]}(\hist)) \suchthat \hist ∈ H}$ for the following reason.
+    The claim is indicative for $i = i_1$ and $θ = \set{(i_1, \hist, {\ileadsto[i_1]}(\hist)) \suchthat \hist ∈ H}$ for the following reason.
     The attitudes in $C$ compatible with $θ$ are $\set{{\allleadstog} \suchthat θ ⊆ {\allleadstog}} ∩ C ⊆ \set{{\allleadstog} \suchthat {\ileadstog[i_1]} ∈ \set{{\ileadsto[j]} \suchthat P_j = p}}$, and $π(\set{{\allleadstog} \suchthat {\ileadstog[i_1]} ∈ \set{{\ileadsto[j]} \suchthat P_j = p}})(i_1) = p$.
 
     For \cref{it:HAI} $⇒$ \cref{it:condHAI},
-    pick an indicative claim $C$ and consider $i ∈ I$ and $θ ∈ Θ ∩ (\allhists × \set{i} × P) ∩ C^⊆$ such that $π(\set{{\allleadstog} \suchthat θ ⊆ {\allleadstog}} ∩ C)(i) \ssub P$.
+    pick an indicative claim $C$ and consider $i ∈ I$ and $θ ∈ Θ ∩ (\set{i} × \allhists × P) ∩ C^⊆$ such that $π(\set{{\allleadstog} \suchthat θ ⊆ {\allleadstog}} ∩ C)(i) \ssub P$.
     Define $H = θ(i, P)$.
   \end{proof}
   \begin{corollary}
@@ -2575,15 +2576,15 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
   \begin{remark}[no HAI condition required]
     The condition $π(i_1) ≠ ∅$ in \ref{it:condNotHAI} is required:
     the following example satisfies \ref{it:condNotHAI} but fails the extended version of that condition without that condition.
-    In other words, defining $Q(\hist, i_1)$ as $∃ i_2 ∈ I \suchthat π(i_1) ≠ π(i_2) ∧ ∀ \histp ⊆ \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)$,
+    In other words, defining $Q(i_1, \hist)$ as $∃ i_2 ∈ I \suchthat π(i_1) ≠ π(i_2) ∧ ∀ \histp ⊆ \hist: {\ileadsto[i_1]}(\histp) = {\ileadsto[i_2]}(\histp)$,
     the example satisfies
-    $∀ \hist ∈ \allhists, i_1 ∈ I \suchthat π(i_1) ≠ ∅: Q(\hist, i_1)$,
+    $∀ \hist ∈ \allhists, i_1 ∈ I \suchthat π(i_1) ≠ ∅: Q(i_1, \hist)$,
     but does not satisfy
-    $[∀ \hist ∈ \allhists, i_1 ∈ I: Q(\hist, i_1)]$, thus, satisfies
-    $∃ \hist, i_0 \suchthat π(i_0) = ∅ ∧ ¬Q(\hist, i_0)$.
+    $[∀ \hist ∈ \allhists, i_1 ∈ I: Q(i_1, \hist)]$, thus, satisfies
+    $∃ \hist, i_0 \suchthat π(i_0) = ∅ ∧ ¬Q(i_0, \hist)$.
 
     Define $I = \set{i_1, …, i_4}$, $\ileadsto[i_1], \ileadsto[i_2], \ileadsto[i_3]$ as in \cref{ex:noHAI} and $\ileadsto[i_4]$ as: $.* \ileadsto[i_4] φ'$, $∅ \ileadsto[i_4] φ'$, $a.* \ileadsto[i_4] φ$, $b.* \ileadsto[i_4] φ'$.
-    This satisfies \ref{it:condNotHAI} for the reason given in \cref{ex:noHAI}, and fails $Q(∅, i_4)$.
+    This satisfies \ref{it:condNotHAI} for the reason given in \cref{ex:noHAI}, and fails $Q(i_4, ∅)$.
   \end{remark}
 
   TODO Check \cref{ex:falsAnonIfBig}. Check any example which seemed non admitting a falsifiable claim.
@@ -2780,7 +2781,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
 
   \begin{remark}
     We do not have that when $C_1 ∩ C_2 ≠ ∅$, then $θ ∈ C_1^⊆ ∧ θ ∈ C_2^⊆ ⇒ θ ∈ (C_1 ∩ C_2)^⊆$.
-    For a counter-example, consider $\hist, \hist_1, \hist_2 ∈ \allhists$, $i, i_1, i_2 ∈ I$ and $p ≠ p', p_1, p_2 ∈ P$ and $C_1 = \set{{\allleadstog} ∈ \allleadstos \suchthat (\hist_1 \ileadstog[i_1] p_1 ⇒ \hist \ileadstog p) ∧ (\hist_2 \ileadstog[i_2] p_2 ⇒ \hist \ileadstog p')}$, $C_2 = \set{{\allleadstog} ∈ \allleadstos \suchthat (\hist \ileadstog p ⇒ \hist_2 \ileadstog[i_2] p_2)}$ and $θ = \set{(\hist_1, i_1, p_1)}$.
+    For a counter-example, consider $\hist, \hist_1, \hist_2 ∈ \allhists$, $i, i_1, i_2 ∈ I$ and $p ≠ p', p_1, p_2 ∈ P$ and $C_1 = \set{{\allleadstog} ∈ \allleadstos \suchthat (\hist_1 \ileadstog[i_1] p_1 ⇒ \hist \ileadstog p) ∧ (\hist_2 \ileadstog[i_2] p_2 ⇒ \hist \ileadstog p')}$, $C_2 = \set{{\allleadstog} ∈ \allleadstos \suchthat (\hist \ileadstog p ⇒ \hist_2 \ileadstog[i_2] p_2)}$ and $θ = \set{(i_1, \hist_1, p_1)}$.
   \end{remark}
   \begin{remark}
     The above remark extends to the case where $C_1$ is strongly unfalsifiable.
@@ -2895,7 +2896,7 @@ Let $\intvl{\hist} = (\hist_i)_{i ∈ \intvl{0, \card{\hist}}} ∈ \finite(\incr
   $∃ i ∈ I \suchthat {{\ileadstog}} ∉ S$.
   As $C$ holds, ${\ileadstog} ∉ \set{{\ileadsto[j]} \suchthat j ∈ I}$ (\cref{th:typesholds}).
   Pick any $H$ such that $∀ {\ileadstog[j]} ∈ S: ∃ \hist ∈ H \suchthat {\ileadstog}(\hist) ≠ {\ileadstog[j]}(\hist)$.
-  Define $θ = \set{(\hist, i, {\ileadstog}(\hist)) \suchthat \hist ∈ H} ∈ Θ ∩ \powerset{\allleadstog}$.
+  Define $θ = \set{(i, \hist, {\ileadstog}(\hist)) \suchthat \hist ∈ H} ∈ Θ ∩ \powerset{\allleadstog}$.
   Then, $θ ∉ C^⊆$, because $∀ {\ileadstog[j]} ∈ S: θ ⊈ {\ileadstog[j]}$.
 
   Conversely, assume that for some ${\ileadstog} ∈ P^{\allhists} ∖ S$, no $H ∈ \finite(\incr(\allhists))$ satisfies the indicated condition.
@@ -2917,7 +2918,7 @@ The following result follows from \cref{th:typesfalsifiable,th:typesholds,th:typ
   Then, the claim $C$ associated to the set of attitudes $S = \set{{\ileadsto[j]} \suchthat j ∈ I}$ holds, is anonymous, and is falsifiable or trivial.
 \end{theorem}
 \begin{proof}
-  For another proof, note that $C^⊆ ∩ Θ = \set{θ ∈ Θ \suchthat ∀ i ∈ I: ∃ j ∈ I \suchthat θ ∩ (\allhists × \set{i} × P) ⊆ {\ileadsto[j]}}$.
+  For another proof, note that $C^⊆ ∩ Θ = \set{θ ∈ Θ \suchthat ∀ i ∈ I: ∃ j ∈ I \suchthat θ ∩ (\set{i} × \allhists × P) ⊆ {\ileadsto[j]}}$.
   Pick any ${\allleadstog} ∈ E(C^⊆ ∩ Θ)$ and let us show that ${\allleadstog} ∈ C$.
   Note that ${\allleadstog} ∉ C ⇔ ∃ i ∈ I \suchthat {\ileadstog} ∈ P^{\allhists} ∖ \set{{\ileadsto[k]} \suchthat k ∈ I}$, in which case the consequent in the theorem holds.
   We need to show that $∄ i ∈ I, H ∈ \finite(\incr(\allhists)) \suchthat ∀ j ∈ I: ∃ \hist ∈ H \suchthat {\ileadstog}(\hist) ≠ {\ileadsto[j]}(\hist)$.
@@ -3115,7 +3116,7 @@ Note that this is possible iff $\allargs$ is infinite. If so, suffices to take s
   Any claim that holds must include $\allleadsto$.
   Define $F = \set{f_1, f_2}$.
   
-  From indicativeness about $i_1$, $∃ θ ∈ Θ ∩ (\allhists × \set{i_1} × P) ⊆ {\allleadsto} \suchthat ∅ ≠ π(\set{{\allleadstog} \suchthat θ ⊆ {\allleadstog}} ∩ C)(i_1) = φ$.
+  From indicativeness about $i_1$, $∃ θ ∈ Θ ∩ (\set{i_1} × \allhists × P) ⊆ {\allleadsto} \suchthat ∅ ≠ π(\set{{\allleadstog} \suchthat θ ⊆ {\allleadstog}} ∩ C)(i_1) = φ$.
   Define $H ∈ \incr(\allhists)$ as the query corresponding to $θ$, thus $H = θ(i_1, P)$.
 
   Define $g ∈ P^{\allhists}$ as $g = \set{(\hist, f_1(\hist)) \suchthat ∃ ∅ ≠ \histp ∈ \intvl{\hist} ∩ H} ∪ \set{(\hist, f_2(\hist)) \suchthat \intvl{\hist} ∩ H ⊆ \set{∅}}$.
@@ -3250,7 +3251,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     % 
     % If $θ ⊆ θ^\mathit{cover}$, using $Θ ⊆ {C'}^⊆$ whence $θ^\mathit{cover} ∈ ∪_{{\allleadstog} ∈ C'} \powerset{\allleadstog}$, pick any ${\allleadstog} ∈ C'$ such that $θ^\mathit{cover} ∈ \powerset{\allleadstog}$ (hence $θ ∈ \powerset{\allleadstog}$) and get ${\allleadstog} ∈ C$ as previously.
     % For the missing case (no inclusion relation), I probably need $C$ to be necessarily verifiable (and anyway the very notion of verifiability only makes sense for $\allleadsto$), but even that seems insufficient.
-    % Consider $C = \set{{\allleadstog} ∈ \allleadstos \suchthat \hist_1 \ileadstog p_1 ∨ (…)}$. It is verifiable thanks to $θ = \set{(\hist_1, i, p_1)}$ but this does not help with an observation that is compatible with $C$ using the other disjunct.
+    % Consider $C = \set{{\allleadstog} ∈ \allleadstos \suchthat \hist_1 \ileadstog p_1 ∨ (…)}$. It is verifiable thanks to $θ = \set{(i, \hist_1, p_1)}$ but this does not help with an observation that is compatible with $C$ using the other disjunct.
   \end{remark}
 
   Can I make a strictly unfalsifiable claim more precise and obtain a strongly unfalsifiable claim?
@@ -3275,7 +3276,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
     A claim satisfying, $∀ {\allleadstog} ∈ C$:
     $∀ r1 = (o1, p1) ∈ {\allleadstog}$, $∃ o2$ with $o1$ and $o2$ obs-compatible and $(r1, o2)$ determined in $C$ such that $∀ o3: (o2, o3)$ is obs-compatible and $(r2 = (o2, C(r1, o2)), o3)$ is determined in $C$
     %Perhaps can omit $(r1, o2)$ determined. In fact, has to satisfy that these determine only relations in $C$.
-    % \[∀ (\hist, i, p) ∈ {\allleadstog}, ∃ (\histp, j, p) ∈ {\allleadstog} \suchthat ∀ (\histpp, k) ∈ \allhists × I: \set{(\histp, j), (\histpp, k)} ∈ O\]
+    % \[∀ (i, \hist, p) ∈ {\allleadstog}, ∃ (j, \histp, p) ∈ {\allleadstog} \suchthat ∀ (\histpp, k) ∈ \allhists × I: \set{(\histp, j), (\histpp, k)} ∈ O\]
     is falsifiable.
 
     NOPE.
@@ -3402,7 +3403,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
 
     It follows that the relations that are obs-compatible with $C^⊆ ∩ Θ$ and that are in $C^⊆ ∩ Θ$ are the ones that, for $(o_1, o_2, o_3)$, include two $φ$ and one $φ'$; and the relations that are obs-compatible with $C^⊆ ∩ Θ$ and that are not in $C^⊆ ∩ Θ$ are the one that equals all $φ$ and the one that assign $o_1$ and $o_3$ to $∅$ and $o_2$ to $φ$.
 
-    Pick any $g ∈ P^{(I × \allhists) ∖ R}$ and define ${\allleadstog} = \set{(∅, i, φ), ((a), i, φ), ((b), i, φ)} ∪ g$.
+    Pick any $g ∈ P^{(I × \allhists) ∖ R}$ and define ${\allleadstog} = \set{(i, ∅, φ), (i, (a), φ), (i, (b), φ)} ∪ g$.
     This relation is obs-compatible with $C^⊆ ∩ Θ$, but ${\allleadstog} ∉ C$.
   \end{example}
   \begin{conjecture}
@@ -3452,7 +3453,7 @@ I might need something like the following. $\ar$ is apparently innocuous iff $�
   \begin{conjecture}
     If $∀ {\allleadstog} ∈ C: ∃ R \suchthat {\allleadstog} = f ∪ g$ with $f ∈ P^R, g ∈ P^{(I × \allhists) ∖ R}$ and $R$ converable, then $C$ is falsifiable.
     Should be specified better, but also, not sure that this holds: consider C being a leads i to phi OR b leads i to phi (given i).
-    Perhaps something like $∃ F \suchthat C = ∪_{f ∈ F} \set{f ∪ g}$ where $f^{-1}(P)$ being coverable.
+    Perhaps something like $∃ F \suchthat C = ∪_{f ∈ F} \set{f ∪ g}$ where $f(P)$ being coverable.
   \end{conjecture}
   \begin{proof}
     Problem is: how to get started?
