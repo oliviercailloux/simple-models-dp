@@ -184,6 +184,7 @@ This approach also permits to tackle the second difficulty, by letting us study 
 % Such a deduction should use, as much as possible, the observational basis, that is, the propositions of the form $α \ileadsto p$ that can be obtained experimentally.
 Note first that given a relation $\allleadstog ∈ \allleadstos$, $\powerset{\allleadstog}$ denotes the set of relations over $(I × \allhists) × P$ that refine $\allleadstog$ (thus, each element $f ∈ \powerset{\allleadstog}$ is right-unique but non necessarily total, meaning that it does not necessarily cover $I × \allhists$).
 Given sets $A$ and $B$, $A \fsub B$ denotes that $A$ is a finite subset of $B$, thus $A \fsub B$ iff $A ⊆ B$ and $A$ is finite.
+Given a function $f$ on some domain $\mathcal{A}$, given $A ⊆ \mathcal{A}$, we write $f(A) = \set{f(a) \suchthat a ∈ A}$ to denote the images of each element in $A$. This creates no ambiguity because the functions appearing in this article apply on domains whose elements are never subsets of the domain (thus for a domain $A$, $a ∈ A ⇒ a ⊈ A$).
 
 Given a pair $(I, \allargs)$, a claim $C$ is a set of possibilities for $\allleadsto$, thus, $C ⊆ \allleadstos$.
 Given a formula $ψ$, let the corresponding claim be $C_ψ = \set{\allleadstog ∈ \allleadstos \suchthat \allleadstog \text{ satisfies } ψ}$.
@@ -216,6 +217,7 @@ $θ ∈ ∪_{\allleadstog ∈ C} \powerset{\allleadstog}$, equivalently, iff
 $θ ∈ C^⊆$.
 The set $Θ ∩ C^⊆$ is the set of observations compatible with the claim.
 This set is downwards-closed, as both $Θ$ and $C^⊆$ are.
+Given a claim $C$ and an observation $θ$, $π(\set{θ ⊆ \allleadstog} ∩ C) = \set{π(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C}$ thus denotes the DJ functions (mappings of $I$ to $P ∪ \set{∅}$) compatible with the observation and the claim.
 
 \label{def:unobservable}
 A subset of triples $T ⊆ I × \allhists × P$ is unobservable iff it cannot be observed together, that is, iff $T ∉ Θ$. If $\card{T} ∉ ℕ$, $T$ is unobservable. A finite subset of triples $T$ is unobservable iff some subset $T' ⊆ T$ with $\card{T'} = 2$ is unobservable (unobservability comes from a given individual’s observations, for that one, the paths are not increasing, and as the subset relation is transitive, two elements suffice to determine this fact).
@@ -226,8 +228,18 @@ Such an observation $θ ∈ Θ ∩ \powerset{\allleadsto}$ is called a feasible 
 
 Given a right unique $τ ⊆ (I × \allhists) × P$, we let $\mathop{↑} τ = \set{\allleadstog ∈ \allleadstos \suchthat τ ⊆ \allleadstog}$ denote the set of “leads to” relations that complete $τ$ (thus $\mathop{↑} ∅ = \allleadstos$).
 
+\section{Requests}
+In this section we assume given an exposure protocol $(I, \allargs, \allleadsto)$.
+
+To be interesting for our purpose, a claim must satisfy minimal desiderata.
+
+We say that a claim $C$ \emph{holds} iff $\allleadsto ∈ C$; $C$ \emph{fails} otherwise. 
+
+Anon
+APS
+
 \subsection{Verifiability}
-Given an exposure protocol $(I, \allargs, \allleadsto)$, we say that a claim $C$ \emph{holds} iff $\allleadsto ∈ C$. We are interested in criteria to determine whether a claim holds.
+Given an exposure protocol $(I, \allargs, \allleadsto)$, we say that a claim $C$ \emph{holds} iff $\allleadsto ∈ C$; $C$ \emph{fails} otherwise. We are interested in criteria to determine whether a claim holds.
 Such a criterion may have a restricted domain of application, meaning that it may be inapplicable on some claims.
 Here are possible desideratas on such a criterion.
 It should be sound, meaning that it must imply, when successful, that $C$ holds. 
@@ -241,44 +253,24 @@ It is expected (and will soon appear) that such a wish list is too demanding to 
 The claim $C$ is verifiable in the world $\allleadstog$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ ⊆ \allleadstog: \allleadstog ∈ C$. 
 Possible verifiability mandates that some (possibly counter-factual) observation proves the claim (makes sure that it holds), thus, $C$ is possibly verifiable iff it is verifiable in some world; formally, iff $∃ θ ∈ Θ \suchthat ∀ θ ⊆ \allleadstog: \allleadstog ∈ C$. 
 Verifiedness mandates verifiability in the actual world; formally, $∃ θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀ θ ⊆ \allleadstog: \allleadstog ∈ C$.
-Established verifiability mandates verifiability in all compatible worlds; formally, 
-$∀\allleadstog ∈ C: ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ ⊆ {\allleadstog'}: {\allleadstog'} ∈ C$.
-\begin{example}
-  The claim $C$ being $[∀i: (a) \ileadsto φ] ∨ (a') \ileadsto φ$
-  is possibly verifiable but fails established verifiability.
-\end{example}
+
 Verifiedness
-is sound (\cref{th:vImpliesHolds}), but even the weaker possible verifiability property is too demanding for many claims.
+is sound (\cref{th:vImpliesHolds}), but is too demanding for many claims.
 Indeed,
 some sufficiently simple claims, such as the claim $C = \set{\allleadstog \suchthat (a) \ileadstog φ}$ that some given path leads some given individual to some given proposition, are possibly verifiable, but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
 
-Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(\set{θ ⊆ \allleadstog'} ∩ C) = \set{π(\allleadstog') \suchthat θ ⊆ \allleadstog' ∈ C} ≠ (P ∪ \set{∅})^I$.
-A claim $C$ is \emph{informative} iff $π(C) = \set{π(\allleadstog) \suchthat \allleadstog ∈ C} ≠ (P ∪ \set{∅})^I$.
-% A claim $C$ is \emph{informative} iff $∃ i \suchthat π(C)(i) ≠ P ∪ \set{∅}$, where $π(C) = \set{π(\allleadstog) \suchthat \allleadstog ∈ C}$.
-A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π_i(C) = \set{π_i(\allleadstog) \suchthat \allleadstog ∈ C} ≠ P ∪ \set{∅}$.
-A claim $C$ is \emph{a posteriori informative beyond counting} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} ≠ P ∪ \set{∅}$.
-A claim $C$ is \emph{a posteriori sharp} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
-\label{def:apts}
-A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
+Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(\set{θ ⊆ \allleadstog'} ∩ C) ≠ (P ∪ \set{∅})^I$.
 
-\begin{remark}
-  Informativeness permits mere counting: the claim that exactly two persons deliberately believe $φ$ is informative. Also, the claim $C = \set{[∃ i \suchthat (a) \nileadstog φ] ∧ [∀i: (a) \nileadstog φ ⇒ φ' ∈ π_i(\allleadstog)]}$ is informative.
-  Informativeness may be a desirable property (rather than informativeness beyond counting) as one may, for example, want to know whether a given proposition is believed by a majority of individuals.
-  Note that 
-  informativeness beyond counting implies informativeness.
-\end{remark}
-
-\Cref{th:infoNotVerif} shows that any informative claim is not possibly verifiable.
+\Cref{th:infoNotVerif} shows that any claim that is informative in a given world is not verifiable in that world.
 The fundamental reason is that any observation can be completed in a way that contradicts any conclusion that informativeness mandates (\cref{th:completable}).
 
-That verifiability is not realizeable may seem disappointing, but is merely the adaptation to our context of the famous observation by Popper that proving general claims in science require more than verification.
-
-To obtain realizeability in at least some interesting cases, we must relax soundness. We will be content that the criterion guarantees, when satisfied, that $C$ holds, when assuming some prior knowledge. We will look for the minimal required prior (for obtaining satisfiability when $C$ holds) and then will study (partial) grounding of this prior thanks to falsifiability.
+To apply verifiability in at least some interesting cases, we must relax soundness. We will be content that the criterion guarantees, when satisfied, that $C$ holds, when assuming some prior knowledge. We will look for the minimal required prior (for obtaining satisfiability when $C$ holds) and then will study (partial) grounding of this prior thanks to falsifiability.
 
 Given $C, D ⊆ \allleadstos$, a claim $C$ is possibly verifiable under prior $D$ iff 
 $∃ θ ∈ Θ ∩ (C ∩ D)^⊆ \suchthat ∀ θ ⊆ \allleadstog ∈ D: \allleadstog ∈ C$.
 Also, $C$ is verified under prior $D$ iff
-$∃ θ ∈ Θ ∩ \powerset{\allleadsto} ∩ (C ∩ D)^⊆ \suchthat ∀ θ ⊆ \allleadstog ∈ D: \allleadstog ∈ C$; and is verified iff it is verified under the trivial prior.
+$∃ θ ∈ Θ ∩ \powerset{\allleadsto} ∩ (C ∩ D)^⊆ \suchthat ∀ θ ⊆ \allleadstog ∈ D: \allleadstog ∈ C$.
+Note that $C$ is verified iff it is verified under the trivial prior.
 Finally, $C$ satisfies established verifiability under prior $D$ iff
 $∀\allleadstog ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$.
 
@@ -865,7 +857,13 @@ Here is a second, fully detailed proof of the same statement, spelling out every
   The first conjunct is exactly the defining condition of $C$ evaluated at $\allleadsto$, so it says $\allleadsto ∈ C$: this part of the conjecture is an immediate restatement of the hypothesis. The second conjunct fixes, once and for all, an individual $i_0 ∈ I$ with $θ_0 := \set{i_0} × \anobs ⊆ \allleadsto$; it is not used for "holds", but it is exactly what makes the APTS-P argument below go through with no further assumption on $\anobs$.
 
   \emph{Anonymous.} Fix a permutation $σ$ of $I$ and $\allleadstog ∈ \allleadstos$. By \cref{def:anonymous}, $(\allleadstog ∘ σ)(i) = \allleadstog(σ(i))$ (row $i$ of $\allleadstog ∘ σ$ equals row $σ(i)$ of $\allleadstog$). Decisiveness (\cref{def:decisive}) and the condition $\set{i} × \anobs ⊆ \cdot$ each depend only on the row of the individual considered, so $a \ileadstost[i] p$ holds in $\allleadstog ∘ σ$ iff $a \ileadstost[σ(i)] p$ holds in $\allleadstog$, and $\set{i} × \anobs ⊆ \allleadstog ∘ σ$ iff $\set{σ(i)} × \anobs ⊆ \allleadstog$. Hence, using that $i ↦ σ(i)$ is a bijection of $I$,
-  $$\allleadstog ∘ σ ∈ C ⇔ ∀i ∈ I: \set{i} × \anobs ⊆ \allleadstog ∘ σ ⇒ a \ileadstost[i] p ⇔ ∀i ∈ I: \set{σ(i)} × \anobs ⊆ \allleadstog ⇒ a \ileadstost[σ(i)] p ⇔ ∀j ∈ I: \set{j} × \anobs ⊆ \allleadstog ⇒ a \ileadstost[j] p ⇔ \allleadstog ∈ C.$$
+  \begin{align}
+    \allleadstog ∘ σ ∈ C
+    &⇔ ∀i ∈ I: \set{i} × \anobs ⊆ \allleadstog ∘ σ ⇒ a \ileadstost[i] p \\
+    &⇔ ∀i ∈ I: \set{σ(i)} × \anobs ⊆ \allleadstog ⇒ a \ileadstost[σ(i)] p \\
+    &⇔ ∀j ∈ I: \set{j} × \anobs ⊆ \allleadstog ⇒ a \ileadstost[j] p \\
+    &⇔ \allleadstog ∈ C.
+  \end{align}
   As $\allleadstog, σ$ were arbitrary, $C ∘ σ = C$ for every $σ$: $C$ is anonymous.
 
   \emph{APTS-P.} Take $θ := θ_0 = \set{i_0} × \anobs ∈ Θ ∩ \powerset{\allleadsto}$ (feasible, by choice of $i_0$ above), together with $i_0$ and $p$, as the witness. First, $\allleadsto ∈ \set{θ⊆\allleadstog}∩C$ (as $θ = θ_0 ⊆ \allleadsto$ and $\allleadsto ∈ C$, both from the previous paragraph), so $p ∈ π_{i_0}(\set{θ⊆\allleadstog}∩C)$. Second, for any $\allleadstog' ∈ \set{θ⊆\allleadstog}∩C$: $θ = \set{i_0} × \anobs ⊆ \allleadstog'$ together with $\allleadstog' ∈ C$, instantiated at $i = i_0$, gives $a \ileadstost[i_0] p$ in $\allleadstog'$, that is $p ∈ P_{i_0}(\allleadstog')$; by \cref{th:sing}, $\card{P_{i_0}(\allleadstog')} ≤ 1$, so $P_{i_0}(\allleadstog') = \set{p}$ exactly, that is $π_{i_0}(\allleadstog') = p$. Hence $π_{i_0}(\set{θ⊆\allleadstog}∩C) = \set{p}$: as $p ∈ P$ is a genuine value and $θ$ is feasible, this is APTS-P, witnessed by $(θ, i_0, p)$. (No completion of $\anobs$ into a full behavior is needed here, unlike in an earlier attempt at this step: the witness individual $i_0$ handed to us by the hypothesis, together with $\allleadsto$ itself, already does the job.)
@@ -1424,6 +1422,29 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 \appendix
 \section{Proofs}
 Note that $\incr(\allhists)^I$ and $\allpriobss$ are downwards closed, meaning that $∀ O ∈ \incr(\allhists)^I: \set{O' ⊆ O} ⊆ \incr(\allhists)^I$ and $∀ O ∈ \allpriobss: \set{O' ⊆ O} ⊆ \allpriobss$.
+
+\subsection{Verifiability}
+Established verifiability mandates verifiability in all compatible worlds; formally, 
+$∀\allleadstog ∈ C: ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ ⊆ {\allleadstog'}: {\allleadstog'} ∈ C$.
+\begin{example}
+  The claim $C$ being $[∀i: (a) \ileadsto φ] ∨ (a') \ileadsto φ$
+  is possibly verifiable but fails established verifiability.
+\end{example}
+
+A claim $C$ is \emph{possibly informative} iff it is informative in some world of $C$, namely, iff $∃θ ∈ Θ ∩ C^⊆ \suchthat π(\set{θ ⊆ \allleadstog} ∩ C) ≠ (P ∪ \set{∅})^I$.
+A claim $C$ is \emph{informative} iff $π(C) ≠ (P ∪ \set{∅})^I$.
+A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π_i(C) = \set{π_i(\allleadstog) \suchthat \allleadstog ∈ C} ≠ P ∪ \set{∅}$.
+A claim $C$ is \emph{a posteriori informative beyond counting} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} ≠ P ∪ \set{∅}$.
+A claim $C$ is \emph{a posteriori sharp} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
+\label{def:apts}
+A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
+
+\begin{remark}
+  Informativeness permits mere counting: the claim that exactly two persons deliberately believe $φ$ is informative. Also, the claim $C = \set{[∃ i \suchthat (a) \nileadstog φ] ∧ [∀i: (a) \nileadstog φ ⇒ φ' ∈ π_i(\allleadstog)]}$ is informative.
+  Informativeness may be a desirable property (rather than informativeness beyond counting) as one may, for example, want to know whether a given proposition is believed by a majority of individuals.
+  Note that 
+  informativeness beyond counting implies informativeness.
+\end{remark}
 
 \begin{theorem}
   \label{th:vudImpliesHolds}
@@ -3699,9 +3720,9 @@ The simplest collapse mechanism uses one coordinate shared by, and injective on,
   Given priors $D ⊆ D'$, if $∃(i_0, \hist_0) ∈ I × \allhists \suchthat [\allleadstog ↦ \allleadstog(i_0, \hist_0)]$ is injective on $D'$ (in particular, this requires $\card{D'} ≤ \card P$), then established verifiability under $D$ and under $D'$ coincide, and in fact both hold, for every claim.
 \end{theorem}
 \begin{proof}
-  Write $ι(\allleadstog) = \allleadstog(i_0, \hist_0)$, injective on $D'$. For $\allleadstog ∈ D'$, the singleton $θ_\allleadstog = \set{(i_0, \hist_0, ι(\allleadstog))}$ trivially satisfies the increasing-chain condition, so $θ_\allleadstog ∈ Θ ∩ \powerset{\allleadstog}$.
-  For any $\allleadstog' ∈ D'$, $θ_\allleadstog ⊆ \allleadstog'$ iff $ι(\allleadstog') = ι(\allleadstog)$, iff $\allleadstog' = \allleadstog$, by injectivity.
-  Hence, for any $D'' ⊆ D'$ (injectivity of $ι$ on $D''$ following from injectivity on $D'$) and any claim $C$: given $\allleadstog ∈ C ∩ D''$, $θ_\allleadstog$ witnesses established verifiability under $D''$.
+  Write $ι(\allleadstog) = \allleadstog(i_0, \hist_0)$, injective on $D'$. For $\allleadstog ∈ D'$, the singleton $θ_{\allleadstog} = \set{(i_0, \hist_0, ι(\allleadstog))}$ trivially satisfies the increasing-chain condition, so $θ_{\allleadstog} ∈ Θ ∩ \powerset{\allleadstog}$.
+  For any $\allleadstog' ∈ D'$, $θ_{\allleadstog} ⊆ \allleadstog'$ iff $ι(\allleadstog') = ι(\allleadstog)$, iff $\allleadstog' = \allleadstog$, by injectivity.
+  Hence, for any $D'' ⊆ D'$ (injectivity of $ι$ on $D''$ following from injectivity on $D'$) and any claim $C$: given $\allleadstog ∈ C ∩ D''$, $θ_{\allleadstog}$ witnesses established verifiability under $D''$.
   Taking $D'' = D$ and $D'' = D'$ in turn, established verifiability under $D$ and under $D'$ both hold, for every claim.
 \end{proof}
 
