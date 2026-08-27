@@ -290,17 +290,17 @@ Our first prior assumes that all falsification tests against $C$ have failed.
 
 Given $\allleadstog$ and $C$, say that $C$ is
 \begin{description}[font=\normalfont]
-  \item[Persistently Observably False in $\allleadstog$ ($\POF(\allleadstog)$)] iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆$;
+  \item[Persistently Observably False in $\allleadstog$ (${\POF[C]}(\allleadstog)$)] iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆$;
   \item[Observably False (OF) in $\allleadstog$ ($\OF(\allleadstog)$)] iff $[∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆]$, equivalently, $Θ ∩ \powerset{\allleadstog} ⊈ C^⊆$;
   \item[False in $\allleadstog$ ($\F(\allleadstog)$)] iff $\allleadstog ∉ C$.
 \end{description}
 We also say that $C$ is \emph{rejectable} iff $\OF(\allleadsto)$.
 
-Note that $∀C, \allleadstog: \POF(\allleadstog) ⇒ \OF(\allleadstog) ⇒ \F(\allleadstog)$ (\cref{th:ex-post} proves the second implication).
+Note that $∀C, \allleadstog: \POF[C](\allleadstog) ⇒ \OF(\allleadstog) ⇒ \F(\allleadstog)$ (\cref{th:ex-post} proves the second implication).
 Also, given $C' ⊆ C$, $¬\OF_{C'} ⇒ ¬\OF_C$ and $¬\POF[C'] ⇒ ¬\POF[C]$.
-$C$ is said to suffer visibility issues in $\allleadstog$ iff $¬\POF(\allleadstog) ∧ \OF(\allleadstog)$, which happens when some prefix hides the falsity of $C$ even though its falsity is observable when no prefix is involved.
-$C$ suffers visibility issues iff $∃\allleadstog \suchthat ¬\POF(\allleadstog) ∧ \OF(\allleadstog)$.
-$C$ suffers no visibility issues in $\allleadstog$ iff $\OF(\allleadstog) ⇒ \POF(\allleadstog)$, equivalently, iff $\OF(\allleadstog) ⇔ \POF(\allleadstog)$, and suffers no visibility issues iff $∀\allleadstog: \OF(\allleadstog) ⇒ \POF(\allleadstog)$.
+$C$ is said to suffer visibility issues in $\allleadstog$ iff $¬\POF[C](\allleadstog) ∧ \OF(\allleadstog)$, which happens when some prefix hides the falsity of $C$ even though its falsity is observable when no prefix is involved.
+$C$ suffers visibility issues iff $∃\allleadstog \suchthat ¬\POF[C](\allleadstog) ∧ \OF(\allleadstog)$.
+$C$ suffers no visibility issues in $\allleadstog$ iff $\OF(\allleadstog) ⇒ \POF[C](\allleadstog)$, equivalently, iff $\OF(\allleadstog) ⇔ \POF[C](\allleadstog)$, and suffers no visibility issues iff $∀\allleadstog: \OF(\allleadstog) ⇒ \POF[C](\allleadstog)$.
 
 \begin{remark}
   \label{rk:dual}
@@ -313,28 +313,28 @@ We say that $C$ is \emph{falsifiable} iff $C ≠ \allleadstos ∧
 [\F(\allleadstog) ⇒ \OF(\allleadstog)]$.
 
 According to \cref{th:noGeneral}, the prior must depend on the claim.
-One such is $C$-scrutiny, which mandates that $¬\OF(\allleadsto) ∨ (¬\POF(\allleadsto) ∧ \OF(\allleadsto))$.
-This is technically equivalent to mandating $¬\POF(\allleadsto)$.
+One such is $C$-scrutiny, which mandates that $¬\OF(\allleadsto) ∨ (¬\POF[C](\allleadsto) ∧ \OF(\allleadsto))$.
+This is technically equivalent to mandating $¬\POF[C](\allleadsto)$.
 
 \begin{remark}
   \label{rk:cScrutinyC1}
   Another way to describe $C$-scrutiny is that
-  if the world is observably out of $C$, there is some prefix observation that hides this fact (formally: $\OF(\allleadsto) ⇒ \OF(\allleadsto) ∧ ¬\POF(\allleadsto)$).
+  if the world is observably out of $C$, there is some prefix observation that hides this fact (formally: $\OF(\allleadsto) ⇒ \OF(\allleadsto) ∧ ¬\POF[C](\allleadsto)$).
 
   Equivalently,
-  if $C$ is still observably falsifiable after any amount of observation, then no feasible observation would falsify it ($\POF(\allleadsto) ⇒ ¬\OF(\allleadsto)$).
+  if $C$ is still observably falsifiable after any amount of observation, then no feasible observation would falsify it ($\POF[C](\allleadsto) ⇒ ¬\OF(\allleadsto)$).
 
   This corresponds to the prior $D
   = \set{\allleadsto \suchthat ∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆}
   $.
 
-  Assuming, as the prior does, $¬\POF(\allleadsto)$, leaves two possibilities: either there are visibility issues ($\OF(\allleadsto) ∧ ¬\POF(\allleadsto)$), or the claim is not observably false (thus is true, or false but inobservably so).
+  Assuming, as the prior does, $¬\POF[C](\allleadsto)$, leaves two possibilities: either there are visibility issues ($\OF(\allleadsto) ∧ ¬\POF[C](\allleadsto)$), or the claim is not observably false (thus is true, or false but inobservably so).
 
   When considering a claim $C$ with no visibility issues, this prior states $¬\OF(\allleadsto)$.
 
-  The reason for adopting the prior $¬\POF(\allleadsto)$ instead of $¬\OF(\allleadsto)$ is illustrated with
-  $C_1$ is $(a) \ileadsto φ ∧ (a') \ileadsto φ$ for a given $i$: in some world (for example, where $(a) \ileadstog φ$ even though $(a') \nileadstog φ$), $¬\POF(\allleadsto) ∧ \OF(\allleadsto)$, thus we cannot assume that non-observation of falsification implies not OF, because it might also be due to observing that $(a) \ileadstog φ$.
-  It also applies to $C_2 = \set{\allleadsto \suchthat ∀i: (a') \ileadsto φ ∧ (a) \ileadsto[j] φ}$ for a given $j$, which in a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (a') \ileadstog φ$ is $¬\POF(\allleadstog)$ (consider the prefix $θ = \set{(a') \ileadstog[j] φ}$) and $\OF(\allleadstog)$.
+  The reason for adopting the prior $¬\POF[C](\allleadsto)$ instead of $¬\OF(\allleadsto)$ is illustrated with
+  $C_1$ is $(a) \ileadsto φ ∧ (a') \ileadsto φ$ for a given $i$: in some world (for example, where $(a) \ileadstog φ$ even though $(a') \nileadstog φ$), $¬\POF[C_1](\allleadsto) ∧ \OF(\allleadsto)$, thus we cannot assume that non-observation of falsification implies not OF, because it might also be due to observing that $(a) \ileadstog φ$.
+  It also applies to $C_2 = \set{\allleadsto \suchthat ∀i: (a') \ileadsto φ ∧ (a) \ileadsto[j] φ}$ for a given $j$, which in a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (a') \ileadstog φ$ is $¬\POF[C_2](\allleadstog)$ (consider the prefix $θ = \set{(a') \ileadstog[j] φ}$) and $\OF(\allleadstog)$.
   (Note that if $C_2$ fails because, for some $i$, $(a') \nileadstog φ$,
   then $θ$ is not a hiding prefix observation and this is what we want.)
 
@@ -346,7 +346,7 @@ This is technically equivalent to mandating $¬\POF(\allleadsto)$.
   The following alternative prior, which might be considered for its apparent proximity with the chosen one, is also inadequate:
   $∀\allleadstog, θ ∈ Θ ∩ \powerset{\allleadstog}, [∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆] ⇒ [θ ∈ C^⊆]$.
   Consider again $C_1$ and $\allleadstog$ such that $(a) \ileadstog φ ∧ (a') \nileadstog φ$.
-  The chosen prior ($\POF(\allleadstog) ⇒ ¬\OF(\allleadstog)$) holds, as intuition commands, as the antecedent fails for the reason given above. The alternative prior however fails as $θ = \set{(a') \ileadstog φ}$ is completable only out of $C$.
+  The chosen prior ($\POF[C_1](\allleadstog) ⇒ ¬\OF(\allleadstog)$) holds, as intuition commands, as the antecedent fails for the reason given above. The alternative prior however fails as $θ = \set{(a') \ileadstog φ}$ is completable only out of $C$.
 \end{remark}
 
 \begin{remark}
@@ -514,13 +514,13 @@ $C$ satisfies PEV under prior $D$ iff this holds $∀\allleadstog ∈ C ∩ D$.
 
 Taking $D = ¬\POF[C]$ in \cref{rk:rpevGap}, whenever $(¬\POF[C]) ∖ C$ suffers visibility issues, some world $\allleadstog ∈ C$ has a proving observation $θ_0 ⊆ \allleadstog$ (so $∀θ_0 ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$) while some \emph{other}, incomparable observation $θ_1 ⊆ \allleadstog$, $θ_1 ∈ Θ$, admits no proving rightward extension at all: every $θ_1 ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}$ still has a completion in $D ∖ C$ (proving is monotone under extension of the \emph{same} observation, so this could not happen to $θ_0$ itself, only to an unrelated branch).
 So, should observation happen to proceed along $θ_1$ rather than toward $θ_0$, $C$ can never be proven, purely because of which truthful observations occurred, even though $\allleadstog$ never left $C$ and a proof was available along a different route.
-This is exactly the fragility that motivated preferring $¬\POF$ over $¬\OF$ as the prior in the first place, now reappearing on the verification side rather than the falsification side.
+This is exactly the fragility that motivated preferring $¬\POF[C]$ over $¬\OF$ as the prior in the first place, now reappearing on the verification side rather than the falsification side.
 So the right adequacy criterion is that $C$ satisfies PEV under $¬\POF[C]$, not merely established verifiability under $¬\POF[C]$: only PEV guarantees that $C$ stays provable after arbitrary observations.
 
 The not-stronger demand that $C$ satisfies PEV under $D = ¬\POF[C]$ is arguably the one that should be enforced, though \cref{cnj:rpevProv} suggests that it might make no difference.
 
 \subsection{Repeatable world}
-We now need to extend our prior beyond $¬\POF$.
+We now need to extend our prior beyond $¬\POF[C]$.
 
 \begin{definition}[Repeatable world]
   \label{def:repeatable}
@@ -819,7 +819,7 @@ define $D^{\anobs, a, p}_C$ as the prior: any behavior that fails $\anobs$ leads
   then the claim $C = [∀i: \set{i} × \anobs ⊆ \allleadsto ⇒ a \ileadstost p]$ holds and is anonymous and APTS-P and provable by $(¬\POF[C]) ∩ E ∩ D^{\anobs, a, p}_C$.
 \end{theorem}
 \begin{proof}
-  Consider any world $\allleadstog ∈ E ∩ D, \allleadstog ∉ C$ and let us show $\POF$.
+  Consider any world $\allleadstog ∈ E ∩ D, \allleadstog ∉ C$ and let us show $\POF[C]$.
   For some $i$, $\set{i} × \anobs ⊆ \allleadstog$ but $a \nileadstostg p$.
   Define $g = \allleadstog(i)$, thus $\anobs ⊆ g$.
   As $\allleadstog ∈ D$, $g$ fails visibly out of $B$.
@@ -971,7 +971,7 @@ Then, it is not verifiable under prior not POF, unless precisely that world can 
 This is a modeling problem as we want POF precisely to avoid this.
 Thus, our study should focus on those claims that satisfy F implies POF.
 
-We say that $C$ is \emph{persistently falsifiable} (PF) iff $C ≠ \allleadstos ∧ [∀\allleadstog: \F(\allleadstog) ⇒ \POF(\allleadstog)]$.
+We say that $C$ is \emph{persistently falsifiable} (PF) iff $C ≠ \allleadstos ∧ [∀\allleadstog: \F(\allleadstog) ⇒ \POF[C](\allleadstog)]$.
 % We want to satisfy OF implies POF, thus, not suffer visibility issues, thus, not (OF and not POF), thus, the claim must exclude the worlds in which some obs is incompatible with C and some prefix is entirely completable in C.
 % This if C says that α leads i to φ, it must also say something about all paths incompatible with α about i.
 % Mhh this does not seem sufficient: even the claim all paths and i are lead to φ seems OF and not POF for a world where some path fails.
@@ -1748,21 +1748,21 @@ Being closed under finite modification and non-empty does not entail triviality.
   So, for a given claim and prior, the gap between established verifiability and PV is precisely governed by visibility issues of $D ∖ C$: no such gap arises wherever $D ∖ C$ suffers no visibility issues.
 \end{remark}
 
-A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\POF$.
+A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\POF[C]$.
 \begin{theorem}
   \label{th:onlyEmptyPF}
-  A claim $C$ is provable by $¬\POF$ iff $C = ∅ ∨ C = \allleadstos$.
+  A claim $C$ is provable by $¬\POF[C]$ iff $C = ∅ ∨ C = \allleadstos$.
 \end{theorem}
 \begin{proof}
-  If $C = ∅$, then $∀θ ∈ Θ: θ ∉ C^⊆$, thus $∀\allleadstog: \POF(\allleadstog)$.
+  If $C = ∅$, then $∀θ ∈ Θ: θ ∉ C^⊆$, thus $∀\allleadstog: \POF[C](\allleadstog)$.
 
-  Conversely, suppose $\allleadstos ≠ C ≠ ∅$; we show $∃\allleadstog ∉ C \suchthat ¬\POF(\allleadstog)$.
+  Conversely, suppose $\allleadstos ≠ C ≠ ∅$; we show $∃\allleadstog ∉ C \suchthat ¬\POF[C](\allleadstog)$.
 
-  If $C$ is closed under finite modification (\cref{def:cufm}), by \cref{th:cufmNeverFals}, $∀\allleadstog: ¬\OF(\allleadstog)$, thus $¬\POF(\allleadstog)$; suffices to pick any $\allleadstog ∉ C$.
+  If $C$ is closed under finite modification (\cref{def:cufm}), by \cref{th:cufmNeverFals}, $∀\allleadstog: ¬\OF(\allleadstog)$, thus $¬\POF[C](\allleadstog)$; suffices to pick any $\allleadstog ∉ C$.
 
   If $C$ is not closed under finite modification, for some $n ∈ ℕ$, some two worlds $\allleadstog[0] ∈ C, \allleadstog[n] ∉ C$ differ at exactly $n$ pairs.
   We can build a sequence of worlds $(\allleadstog[k])_{1 ≤ k ≤ n - 1}$, by flipping one pair at a time, such that $∀1 ≤ k ≤ n$, each $\allleadstog[k]$ differs from $\allleadstog[k - 1]$ at exactly one pair. Taking $j = \min \set{1 ≤ k ≤ n \suchthat \allleadstog[k] ∉ C}$, we obtain worlds $\allleadstog[j - 1] ∈ C$, $\allleadstog[j] ∉ C$ that differ at exactly one pair $(i, α)$.
-  To show $¬\POF(\allleadstog[j])$,
+  To show $¬\POF[C](\allleadstog[j])$,
   pick any $α'$ satisfying $\card{α} < \card{α'}$,
   define $θ = \set{(i, α', \allleadstog[j](i, α'))}$,
   pick any
@@ -1773,12 +1773,12 @@ A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\POF
 \end{proof}
 
 \begin{theorem}
-  A claim $C$ is PEV under $D = ¬\POF$ iff $C = ∅ ∨ C = \allleadstos$.
+  A claim $C$ is PEV under $D = ¬\POF[C]$ iff $C = ∅ ∨ C = \allleadstos$.
 \end{theorem}
 \begin{proof}
-  If $C = ∅$, then $∀θ ∈ Θ: θ ∉ C^⊆$, thus $∀\allleadstog: \POF(\allleadstog)$.
+  If $C = ∅$, then $∀θ ∈ Θ: θ ∉ C^⊆$, thus $∀\allleadstog: \POF[C](\allleadstog)$.
 
-  Conversely, suppose $\allleadstos ≠ C ≠ ∅$; we show $∃\allleadstog ∈ C \suchthat ¬\POF(\allleadstog)$.
+  Conversely, suppose $\allleadstos ≠ C ≠ ∅$; we show $∃\allleadstog ∈ C \suchthat ¬\POF[C](\allleadstog)$.
 
   PEV demands that all worlds in $C$ satisfy PV:
   $∀θ, ∃θ ⊑ θ' ∉ (D ∖ C)^⊆$.
@@ -1786,7 +1786,7 @@ A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\POF
   
   We show $∃\allleadstog ∈ C \suchthat$ for some prefix $θ$, all completions $θ'$ are completable in $D ∖ C$.
 
-  If $C$ is closed under finite modification (\cref{def:cufm}), by \cref{th:cufmNeverFals}, $∀\allleadstog: ¬\OF(\allleadstog)$, thus $¬\POF(\allleadstog)$,
+  If $C$ is closed under finite modification (\cref{def:cufm}), by \cref{th:cufmNeverFals}, $∀\allleadstog: ¬\OF(\allleadstog)$, thus $¬\POF[C](\allleadstog)$,
   thus $D ∖ C = \overline{C}$.
   As $\simfin$ is an equivalence relation,
   $C$ is closed under finite modification iff
@@ -1915,7 +1915,7 @@ A sufficient condition for a world being POF is that for any finite subset of in
   Given any claim $C$ and world $\allleadstog$: 
   $[∀J \fsub I,
   ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆] 
-  ⇒ \POF(\allleadstog)$.
+  ⇒ \POF[C](\allleadstog)$.
 \end{theorem}
 \begin{proof}[Claude proof]
   Fix $τ ∈ Θ ∩ \powerset{\allleadstog}$; let $J ⊆ I$ be its (finite) individuals, and pick, by hypothesis, $θ ∈ Θ ∩ \powerset{\allleadstog}$, $θ ∉ C^⊆$, touching only individuals outside $J$.
@@ -3797,8 +3797,8 @@ What remains open is what happens once $R$ is not a singleton (the recursive que
 So sharing a value with $D$ at an active coordinate does not, by itself, force strictness: what made \cref{th:hypercubeDichotomy} work is specifically that every "extra" coordinate $r$ might need is incomparable to every coordinate $D$ might need. Once $R$'s point can reach past $D$'s coordinates along an extension of the same chain, no amount of value-sharing forces strictness.
 Extending \cref{th:hypercubeDichotomy} to arbitrary finite $D$ therefore requires tracking the prefix structure of whichever coordinates a witness would need, not merely value overlap — a different, more delicate bookkeeping problem than any solved above, left open together with the case of a non-singleton $R$.
 
-\section{Satisfiability of PEV under \texorpdfstring{$¬\POF$}{not POF}}
-\begin{theorem}[Cufm claims fail PEV under $¬\POF$]
+\section{Satisfiability of PEV under \texorpdfstring{$¬\POF[C]$}{not POF}}
+\begin{theorem}[Cufm claims fail PEV under $¬{\POF[C]}$]
   \label{th:cufmFailsPEV}
   If $∅ ≠ C ≠ \allleadstos$ is closed under finite modification, then $C$ does not satisfy PEV under $D = ¬\POF[C]$.
 \end{theorem}
@@ -3822,7 +3822,7 @@ Extending \cref{th:hypercubeDichotomy} to arbitrary finite $D$ therefore require
 
 Both $∅$ and $\allleadstos$ are, trivially, closed under finite modification (\cref{def:cufm} holds of them vacuously), so \cref{cnj:rpevProv}'s hypothesis already excludes them: by \cref{th:onlyEmptyPF}, $C$ is provable by $¬\POF[C]$ iff $C ∈ \set{∅, \allleadstos}$, and provability by $D$ already implies PEV under $D$ (\cref{th:rpevChain}); so whenever $C$ is not closed under finite modification, $C$ is in particular nontrivial, hence not provable by $¬\POF[C]$ either. \Cref{cnj:rpevProv} asks whether PEV can nonetheless survive where provability cannot.
 
-A single hypothesis, “$C$ not closed under finite modification,” already rules out the two known dead ends at once: it excludes triviality directly (both trivial claims are cufm, as just noted), and it excludes the case where $C$ is nonempty and cufm, which forces $D = \allleadstos$ by \cref{th:cufmNeverFals} (since $C$ is then never even falsifiable, hence never $\POF$). It does not, however, rule out \emph{every} route to $D = \allleadstos$: \cref{ex:disjR} is never falsifiable without being closed under finite modification (\cref{rk:cufmConverseFails} — flipping a single individual's two values already leaves $C$), so such claims remain within \cref{cnj:rpevProv}'s scope. PEV is expected to fail there for the same underlying reason as the cufm case: no finite prefix can ever force membership in $C$.
+A single hypothesis, “$C$ not closed under finite modification,” already rules out the two known dead ends at once: it excludes triviality directly (both trivial claims are cufm, as just noted), and it excludes the case where $C$ is nonempty and cufm, which forces $D = \allleadstos$ by \cref{th:cufmNeverFals} (since $C$ is then never even falsifiable, hence never $\POF[C]$). It does not, however, rule out \emph{every} route to $D = \allleadstos$: \cref{ex:disjR} is never falsifiable without being closed under finite modification (\cref{rk:cufmConverseFails} — flipping a single individual's two values already leaves $C$), so such claims remain within \cref{cnj:rpevProv}'s scope. PEV is expected to fail there for the same underlying reason as the cufm case: no finite prefix can ever force membership in $C$.
 
 Proving the conjecture directly is awkward, since “$C$ fails PEV” unpacks to a $\exists \allleadstog, \exists θ, \forall θ'$ statement: ruling out \emph{every} rightward extension $θ'$, for some world and some prefix, is hard to attack head-on.
 We instead argue by contradiction: fix $C$ not closed under finite modification (so $C ∉ \set{∅, \allleadstos}$, hence $D ∖ C ≠ ∅$ by \cref{th:onlyEmptyPF}), assume toward contradiction that $C$ satisfies PEV under $D$, and aim for an outright impossibility.
@@ -3916,7 +3916,7 @@ Closing this gap, or exhibiting a genuine example of a claim, not closed under f
 \Cref{th:rpevFiniteS} generalizes the single-point mechanism behind \cref{rk:rpevSingleton} to any finite target: whenever $D ∖ C$ is finite, PEV can only hold by requiring every world in $C$ to differ from \emph{every} point of $D ∖ C$ at infinitely many individuals at once — a demand no construction tried so far can reconcile with $D ∖ C$ actually being finite.
 Two further, structurally distinct attempts to isolate a single hiding point — the complement of a single point, $C = \allleadstos ∖ \set{\allleadstog[0]}$, and the claim “differs from $\allleadstog[0]$ at exactly one coordinate” — both collapse instead of isolating $\allleadstog[0]$.
 The latter yields a clean bonus characterization: exclusion of a single point by a cover of “exactly $n$ differences”-style claims holds exactly when the disagreement spans infinitely many individuals, turning \cref{th:rpevFiniteS}’s necessary condition into an iff in that case — but $D ∖ C$ still comes out rich rather than a singleton, and PEV collapses on it just as in \cref{ex:rpevNonDegenerate}.
-Five independent constructions now confirm \cref{cnj:rpevProv} without exception: not one claim, not closed under finite modification, has been found to satisfy PEV under $¬\POF$; a general proof or a genuine example satisfying PEV both remain open.
+Five independent constructions now confirm \cref{cnj:rpevProv} without exception: not one claim, not closed under finite modification, has been found to satisfy PEV under $¬\POF[C]$; a general proof or a genuine example satisfying PEV both remain open.
 
 \hbadness=10000
 \bibliography{simple}
