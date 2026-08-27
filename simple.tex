@@ -288,11 +288,12 @@ For some priors, provability by $D$ is strictly stronger than established verifi
 \subsection{Trying to falsify claims}
 Our first prior assumes that all falsification tests against $C$ have failed.
 
+Expressing this requires properties that describe the extend to which a given (hypothetical or real) world can be observed to be not the real world.
 Given $\allleadstog$ and $C$, say that $C$ is
 \begin{description}[font=\normalfont]
-  \item[Persistently Observably False in $\allleadstog$ (${\POF[C]}(\allleadstog)$)] iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆$;
-  \item[Observably False (OF) in $\allleadstog$ ($\OF(\allleadstog)$)] iff $[∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆]$, equivalently, $Θ ∩ \powerset{\allleadstog} ⊈ C^⊆$;
-  \item[False in $\allleadstog$ ($\F(\allleadstog)$)] iff $\allleadstog ∉ C$.
+  \item[False in $\allleadstog$ ($\F(\allleadstog)$)] iff $\allleadstog ∉ C$;
+  \item[Observably False (OF) in $\allleadstog$ ($\OF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable; formally, iff $[∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆]$, equivalently, $Θ ∩ \powerset{\allleadstog} ⊈ C^⊆$;
+  \item[Persistently Observably False in $\allleadstog$ (${\POF[C]}(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable whatever past observations have occurred already; formally, iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆$.
 \end{description}
 We also say that $C$ is \emph{rejectable} iff $\OF(\allleadsto)$.
 
@@ -302,19 +303,11 @@ $C$ is said to suffer visibility issues in $\allleadstog$ iff $¬\POF[C](\alllea
 $C$ suffers visibility issues iff $∃\allleadstog \suchthat ¬\POF[C](\allleadstog) ∧ \OF(\allleadstog)$.
 $C$ suffers no visibility issues in $\allleadstog$ iff $\OF(\allleadstog) ⇒ \POF[C](\allleadstog)$, equivalently, iff $\OF(\allleadstog) ⇔ \POF[C](\allleadstog)$, and suffers no visibility issues iff $∀\allleadstog: \OF(\allleadstog) ⇒ \POF[C](\allleadstog)$.
 
-\begin{remark}
-  \label{rk:dual}
-  Verifiability and observable falsity have a dual character as
-  $C$ satisfies established verifiability under prior $D$ iff 
-  $∀\allleadstog ∈ C ∩ D, \OF_{D ∖ C}(\allleadstog)$ (\cref{th:dual}).
-\end{remark}
-
 We say that $C$ is \emph{falsifiable} iff $C ≠ \allleadstos ∧
 [\F(\allleadstog) ⇒ \OF(\allleadstog)]$.
 
-According to \cref{th:noGeneral}, the prior must depend on the claim.
-One such is $C$-scrutiny, which mandates that $¬\OF(\allleadsto) ∨ (¬\POF[C](\allleadsto) ∧ \OF(\allleadsto))$.
-This is technically equivalent to mandating $¬\POF[C](\allleadsto)$.
+We introduce the prior of $C$-scrutiny, which postulates that the real world is such that the $C$ is either not observably false in it, or if it is, then $C$ suffers visibility issues in it; formally, $¬\OF(\allleadsto) ∨ (¬\POF[C](\allleadsto) ∧ \OF(\allleadsto))$.
+This is logically equivalent to mandating $¬\POF[C](\allleadsto)$, thus, excluding worlds in which $C$ is persistently observably false.
 
 \begin{remark}
   \label{rk:cScrutinyC1}
@@ -1597,6 +1590,13 @@ the prior required must be at least as strong as claiming that if some observabl
 \end{remark}
 
 \subsection{Falsifiability}
+\begin{remark}
+  \label{rk:dual}
+  Verifiability and observable falsity have a dual character as
+  $C$ satisfies established verifiability under prior $D$ iff 
+  $∀\allleadstog ∈ C ∩ D, \OF_{D ∖ C}(\allleadstog)$ (\cref{th:dual}).
+\end{remark}
+
 \begin{theorem}
   \label{th:holdsiff}
   For any falsifiable or trivial claim $C$: $\allleadsto ∈ C$ iff $¬\OF(\allleadsto)$.
