@@ -228,18 +228,25 @@ Such an observation $θ ∈ Θ ∩ \powerset{\allleadsto}$ is called a feasible 
 
 Given a right unique $τ ⊆ (I × \allhists) × P$, we let $\mathop{↑} τ = \set{\allleadstog ∈ \allleadstos \suchthat τ ⊆ \allleadstog}$ denote the set of “leads to” relations that complete $τ$ (thus $\mathop{↑} ∅ = \allleadstos$).
 
-\section{Requests}
-In this section we assume given an exposure protocol $(I, \allargs, \allleadsto)$.
+\subsection{Requests}
+Onwards, we assume given an exposure protocol $(I, \allargs, \allleadsto)$.
 
 To be interesting for our purpose, a claim must satisfy minimal desiderata.
 
-We say that a claim $C$ \emph{holds} iff $\allleadsto ∈ C$; $C$ \emph{fails} otherwise. 
+Most important, of course, is that the claim includes the real world. 
+A claim $C$ \emph{holds} iff $\allleadsto ∈ C$.
+We will study criteria to determine whether a claim holds.
 
-Anon
-APS
+Once established that a claim holds, any feasible observation can be combined with the claim to determine conclusions.
+We want, minimally, that at least some feasible observation permits to conclude about at least one individual’s DJ.
+\label{def:apts}
+A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
+
+We restrict attention to claims that do not use prior knowledge about named individuals, thus, are anonymous, in the following sense.
+Given a permutation $σ$ over $I$ and any $\allleadstog ∈ \allleadstos$, let $\allleadstog ∘ σ$ denote $\set{(i, \hist, φ) \suchthat (σ(i), \hist, φ) ∈ \allleadstog}$ and let $C ∘ σ$ denote $\set{\allleadstog ∘ σ \suchthat \allleadstog ∈ C}$.
+A claim $C$ is \emph{anonymous} iff $∀ σ: C = C ∘ σ$.
 
 \subsection{Verifiability}
-Given an exposure protocol $(I, \allargs, \allleadsto)$, we say that a claim $C$ \emph{holds} iff $\allleadsto ∈ C$; $C$ \emph{fails} otherwise. We are interested in criteria to determine whether a claim holds.
 Such a criterion may have a restricted domain of application, meaning that it may be inapplicable on some claims.
 Here are possible desideratas on such a criterion.
 It should be sound, meaning that it must imply, when successful, that $C$ holds. 
@@ -549,12 +556,6 @@ and $¬\OF_{C ∩ E} ⊆ ¬\OF_C$.)
 \Cref{th:provGapVisibility} shows that
 $(¬\POF_C) ∩ E$ proves $C$ iff $(¬\OF_C) ∩ E$ proves $C$ and $C$ suffers no visibility issues in $E$ (that is, $∀\allleadstog ∈ E: \OF_C(\allleadstog) ⇒ \POF_C(\allleadstog)$).
 
-\begin{definition}[Anonymity]
-  \label{def:anonymous}
-  Given a permutation $σ$ over $I$ and any $\allleadstog ∈ \allleadstos$, let $\allleadstog ∘ σ$ denote $\set{(i, \hist, φ) \suchthat (σ(i), \hist, φ) ∈ \allleadstog}$ and let $C ∘ σ$ denote $\set{\allleadstog ∘ σ \suchthat \allleadstog ∈ C}$.
-  A claim $C$ is \emph{anonymous} iff $∀ σ: C = C ∘ σ$.
-\end{definition}
-
 \Cref{ex:anon} illustrates and \cref{th:finiteExceptSpreadAnon} shows that anonymous claims suffer no visibility issues in $E$.
 Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C ⊆ E$ is provable by $¬\POF_{C ∩ E} ∩ E$.
 
@@ -658,7 +659,7 @@ Given $i ∈ I$, $c, b ∈ \allargs$ distinct and $p ≠ p' ∈ P$, say a world 
   \label{th:anonProvApsTriad}
   Fix $φ ≠ φ' ∈ P$, partition $I$ into two infinite classes $I_1, I_2$, and let $\allleadsto$ be the world of \cref{ex:noProvableDecisivePhi}: $∀i ∈ I_1, \hist ∈ \allhists: \hist \ileadstogo φ$, and $∀i ∈ I_2, \hist ∈ \allhists: \hist \ileadstogo φ'$. For $C ⊆ \allleadstos$, say $C$ is:
   \begin{description}
-    \item[Anon] iff $C$ is anonymous (\cref{def:anonymous});
+    \item[Anon] iff $C$ is anonymous;
     \item[Prov] iff $C$ is provable by $¬\OF ∩ E$, that is, $(¬\OF_C) ∩ E ⊆ C$;
     \item[APS] iff $C$ is \emph{a posteriori sharp}, that is, $∃θ ∈ Θ, i ∈ I \suchthat \card{π_i(\set{θ ⊆ \allleadstog} ∩ C)} = 1$; call such a witness $(θ,i)$ \emph{constant} iff $θ$ assigns every individual it queries a single, constant value from $\set{φ,φ'}$ across all the histories queried for that individual.
   \end{description}
@@ -856,7 +857,7 @@ Here is a second, fully detailed proof of the same statement, spelling out every
   $$[∀i ∈ I: \set{i} × \anobs ⊆ \allleadsto ⇒ a \ileadstost p] \ ∧ \ [∃i_0 ∈ I \suchthat \set{i_0} × \anobs ⊆ \allleadsto].$$
   The first conjunct is exactly the defining condition of $C$ evaluated at $\allleadsto$, so it says $\allleadsto ∈ C$: this part of the conjecture is an immediate restatement of the hypothesis. The second conjunct fixes, once and for all, an individual $i_0 ∈ I$ with $θ_0 := \set{i_0} × \anobs ⊆ \allleadsto$; it is not used for "holds", but it is exactly what makes the APTS-P argument below go through with no further assumption on $\anobs$.
 
-  \emph{Anonymous.} Fix a permutation $σ$ of $I$ and $\allleadstog ∈ \allleadstos$. By \cref{def:anonymous}, $(\allleadstog ∘ σ)(i) = \allleadstog(σ(i))$ (row $i$ of $\allleadstog ∘ σ$ equals row $σ(i)$ of $\allleadstog$). Decisiveness (\cref{def:decisive}) and the condition $\set{i} × \anobs ⊆ \cdot$ each depend only on the row of the individual considered, so $a \ileadstost[i] p$ holds in $\allleadstog ∘ σ$ iff $a \ileadstost[σ(i)] p$ holds in $\allleadstog$, and $\set{i} × \anobs ⊆ \allleadstog ∘ σ$ iff $\set{σ(i)} × \anobs ⊆ \allleadstog$. Hence, using that $i ↦ σ(i)$ is a bijection of $I$,
+  \emph{Anonymous.} Fix a permutation $σ$ of $I$ and $\allleadstog ∈ \allleadstos$. By definition, $(\allleadstog ∘ σ)(i) = \allleadstog(σ(i))$ (row $i$ of $\allleadstog ∘ σ$ equals row $σ(i)$ of $\allleadstog$). Decisiveness (\cref{def:decisive}) and the condition $\set{i} × \anobs ⊆ \cdot$ each depend only on the row of the individual considered, so $a \ileadstost[i] p$ holds in $\allleadstog ∘ σ$ iff $a \ileadstost[σ(i)] p$ holds in $\allleadstog$, and $\set{i} × \anobs ⊆ \allleadstog ∘ σ$ iff $\set{σ(i)} × \anobs ⊆ \allleadstog$. Hence, using that $i ↦ σ(i)$ is a bijection of $I$,
   \begin{align}
     \allleadstog ∘ σ ∈ C
     &⇔ ∀i ∈ I: \set{i} × \anobs ⊆ \allleadstog ∘ σ ⇒ a \ileadstost[i] p \\
@@ -1421,9 +1422,9 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 
 \appendix
 \section{Proofs}
-Note that $\incr(\allhists)^I$ and $\allpriobss$ are downwards closed, meaning that $∀ O ∈ \incr(\allhists)^I: \set{O' ⊆ O} ⊆ \incr(\allhists)^I$ and $∀ O ∈ \allpriobss: \set{O' ⊆ O} ⊆ \allpriobss$.
+\subsection{Generalities}
+We say that a claim $C$ \emph{holds} iff $\allleadsto ∈ C$; $C$ \emph{fails} otherwise. 
 
-\subsection{Verifiability}
 Established verifiability mandates verifiability in all compatible worlds; formally, 
 $∀\allleadstog ∈ C: ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ ⊆ {\allleadstog'}: {\allleadstog'} ∈ C$.
 \begin{example}
@@ -1436,8 +1437,6 @@ A claim $C$ is \emph{informative} iff $π(C) ≠ (P ∪ \set{∅})^I$.
 A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π_i(C) = \set{π_i(\allleadstog) \suchthat \allleadstog ∈ C} ≠ P ∪ \set{∅}$.
 A claim $C$ is \emph{a posteriori informative beyond counting} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} ≠ P ∪ \set{∅}$.
 A claim $C$ is \emph{a posteriori sharp} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
-\label{def:apts}
-A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
 
 \begin{remark}
   Informativeness permits mere counting: the claim that exactly two persons deliberately believe $φ$ is informative. Also, the claim $C = \set{[∃ i \suchthat (a) \nileadstog φ] ∧ [∀i: (a) \nileadstog φ ⇒ φ' ∈ π_i(\allleadstog)]}$ is informative.
@@ -1446,6 +1445,9 @@ A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{
   informativeness beyond counting implies informativeness.
 \end{remark}
 
+Note that $\incr(\allhists)^I$ and $\allpriobss$ are downwards closed, meaning that $∀ O ∈ \incr(\allhists)^I: \set{O' ⊆ O} ⊆ \incr(\allhists)^I$ and $∀ O ∈ \allpriobss: \set{O' ⊆ O} ⊆ \allpriobss$.
+
+\subsection{Verifiability}
 \begin{theorem}
   \label{th:vudImpliesHolds}
   Given a claim $D$ such that $\allleadsto ∈ D$, if a claim $C$ is verified under prior $D$, then $C$ holds.
