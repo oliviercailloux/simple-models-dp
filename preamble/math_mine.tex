@@ -1,7 +1,13 @@
 \NewDocumentCommand{\range}{}{R}
 \NewDocumentCommand{\incr}{}{\mathcal{I}}
 \NewDocumentCommand{\finite}{}{\mathcal{F}}
-\DeclareMathOperator{\POF}{POF}
+\NewDocumentCommand{\POF}{o}{%
+  \IfValueTF{#1}{%
+    \operatorname{POF}_{#1}%
+  }{%
+    \operatorname{POF}%
+  }%
+}
 \DeclareMathOperator{\OF}{OF}
 \DeclareMathOperator{\F}{F}
 

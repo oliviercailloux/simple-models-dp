@@ -297,7 +297,7 @@ Given $\allleadstog$ and $C$, say that $C$ is
 We also say that $C$ is \emph{rejectable} iff $\OF(\allleadsto)$.
 
 Note that $∀C, \allleadstog: \POF(\allleadstog) ⇒ \OF(\allleadstog) ⇒ \F(\allleadstog)$ (\cref{th:ex-post} proves the second implication).
-Also, given $C' ⊆ C$, $¬\OF_{C'} ⇒ ¬\OF_C$ and $¬\POF_{C'} ⇒ ¬\POF_C$.
+Also, given $C' ⊆ C$, $¬\OF_{C'} ⇒ ¬\OF_C$ and $¬\POF[C'] ⇒ ¬\POF[C]$.
 $C$ is said to suffer visibility issues in $\allleadstog$ iff $¬\POF(\allleadstog) ∧ \OF(\allleadstog)$, which happens when some prefix hides the falsity of $C$ even though its falsity is observable when no prefix is involved.
 $C$ suffers visibility issues iff $∃\allleadstog \suchthat ¬\POF(\allleadstog) ∧ \OF(\allleadstog)$.
 $C$ suffers no visibility issues in $\allleadstog$ iff $\OF(\allleadstog) ⇒ \POF(\allleadstog)$, equivalently, iff $\OF(\allleadstog) ⇔ \POF(\allleadstog)$, and suffers no visibility issues iff $∀\allleadstog: \OF(\allleadstog) ⇒ \POF(\allleadstog)$.
@@ -493,14 +493,14 @@ Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{perma
 $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀θ' ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$.
 $C$ satisfies PEV under prior $D$ iff this holds $∀\allleadstog ∈ C ∩ D$.
 
-\begin{theorem}[PV as $\POF_{D ∖ C}$]
+\begin{theorem}[PV as ${\POF[D ∖ C]}$]
   \label{th:rpevChar}
-  Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$: $C$ is PV under $D$ at $\allleadstog$ iff $\POF_{D ∖ C}(\allleadstog)$.
-  Consequently, $C$ satisfies PEV under prior $D$ iff $∀\allleadstog ∈ C ∩ D: \POF_{D ∖ C}(\allleadstog)$.
+  Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$: $C$ is PV under $D$ at $\allleadstog$ iff $\POF[D ∖ C](\allleadstog)$.
+  Consequently, $C$ satisfies PEV under prior $D$ iff $∀\allleadstog ∈ C ∩ D: \POF[D ∖ C](\allleadstog)$.
 \end{theorem}
 \begin{proof}
   By \cref{th:vud} (\cref{it:unverifD,it:notcomplE}), for any $θ' ∈ Θ ∩ \powerset{\allleadstog}$: $θ'$ proves $C$ under $D$ (that is, $∀θ' ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$) iff $θ' ∉ (D ∖ C)^⊆$.
-  Substituting into the definition of PV at $\allleadstog$ gives $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}: θ' ∉ (D ∖ C)^⊆$, which is exactly $\POF_{D ∖ C}(\allleadstog)$.
+  Substituting into the definition of PV at $\allleadstog$ gives $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}: θ' ∉ (D ∖ C)^⊆$, which is exactly $\POF[D ∖ C](\allleadstog)$.
 \end{proof}
 
 \begin{corollary}
@@ -508,16 +508,16 @@ $C$ satisfies PEV under prior $D$ iff this holds $∀\allleadstog ∈ C ∩ D$.
   Given $C, D ⊆ \allleadstos$: PEV under $D$ implies established verifiability under $D$; and provability of $C$ by $D$ implies PEV under $D$.
 \end{corollary}
 \begin{proof}
-  $\POF_S(\allleadstog) ⇒ \OF_S(\allleadstog)$ for any $S, \allleadstog$ (taking $θ = ∅$ in the definition of $\POF_S$ already gives the witness required by $\OF_S$), so \cref{th:rpevChar} together with \cref{th:dual} gives the first implication.
-  If $D ⊆ C$, then $D ∖ C = ∅$, so $(D ∖ C)^⊆ = ∅$ and $\POF_∅(\allleadstog)$ holds trivially (any $θ' ∈ Θ ∩ \powerset{\allleadstog}$, in particular $θ' = ∅$, already satisfies $θ' ∉ ∅$), giving PV under $D$ at every $\allleadstog ∈ C ∩ D$ by \cref{th:rpevChar}.
+  $\POF[S](\allleadstog) ⇒ \OF_S(\allleadstog)$ for any $S, \allleadstog$ (taking $θ = ∅$ in the definition of $\POF[S]$ already gives the witness required by $\OF_S$), so \cref{th:rpevChar} together with \cref{th:dual} gives the first implication.
+  If $D ⊆ C$, then $D ∖ C = ∅$, so $(D ∖ C)^⊆ = ∅$ and $\POF[∅](\allleadstog)$ holds trivially (any $θ' ∈ Θ ∩ \powerset{\allleadstog}$, in particular $θ' = ∅$, already satisfies $θ' ∉ ∅$), giving PV under $D$ at every $\allleadstog ∈ C ∩ D$ by \cref{th:rpevChar}.
 \end{proof}
 
-Taking $D = ¬\POF_C$ in \cref{rk:rpevGap}, whenever $(¬\POF_C) ∖ C$ suffers visibility issues, some world $\allleadstog ∈ C$ has a proving observation $θ_0 ⊆ \allleadstog$ (so $∀θ_0 ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$) while some \emph{other}, incomparable observation $θ_1 ⊆ \allleadstog$, $θ_1 ∈ Θ$, admits no proving rightward extension at all: every $θ_1 ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}$ still has a completion in $D ∖ C$ (proving is monotone under extension of the \emph{same} observation, so this could not happen to $θ_0$ itself, only to an unrelated branch).
+Taking $D = ¬\POF[C]$ in \cref{rk:rpevGap}, whenever $(¬\POF[C]) ∖ C$ suffers visibility issues, some world $\allleadstog ∈ C$ has a proving observation $θ_0 ⊆ \allleadstog$ (so $∀θ_0 ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$) while some \emph{other}, incomparable observation $θ_1 ⊆ \allleadstog$, $θ_1 ∈ Θ$, admits no proving rightward extension at all: every $θ_1 ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}$ still has a completion in $D ∖ C$ (proving is monotone under extension of the \emph{same} observation, so this could not happen to $θ_0$ itself, only to an unrelated branch).
 So, should observation happen to proceed along $θ_1$ rather than toward $θ_0$, $C$ can never be proven, purely because of which truthful observations occurred, even though $\allleadstog$ never left $C$ and a proof was available along a different route.
 This is exactly the fragility that motivated preferring $¬\POF$ over $¬\OF$ as the prior in the first place, now reappearing on the verification side rather than the falsification side.
-So the right adequacy criterion is that $C$ satisfies PEV under $¬\POF_C$, not merely established verifiability under $¬\POF_C$: only PEV guarantees that $C$ stays provable after arbitrary observations.
+So the right adequacy criterion is that $C$ satisfies PEV under $¬\POF[C]$, not merely established verifiability under $¬\POF[C]$: only PEV guarantees that $C$ stays provable after arbitrary observations.
 
-The not-stronger demand that $C$ satisfies PEV under $D = ¬\POF_C$ is arguably the one that should be enforced, though \cref{cnj:rpevProv} suggests that it might make no difference.
+The not-stronger demand that $C$ satisfies PEV under $D = ¬\POF[C]$ is arguably the one that should be enforced, though \cref{cnj:rpevProv} suggests that it might make no difference.
 
 \subsection{Repeatable world}
 We now need to extend our prior beyond $¬\POF$.
@@ -526,30 +526,30 @@ We now need to extend our prior beyond $¬\POF$.
   \label{def:repeatable}
   Let $E = \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: \card{\set{j ∈ I \suchthat \ileadstogo[j] = \ileadstogo}} ∉ ℕ}$, the claim that every individual's behavior is shared by infinitely many others.
 \end{definition}
-Given $C ⊆ \allleadstos$, write $F_C = (¬\POF_C) ∩ E$.
+Given $C ⊆ \allleadstos$, write $F_C = (¬\POF[C]) ∩ E$.
 
-\Cref{ex:repeatableProvNotOfButNotNotPOF} shows that a claim can be provable by $¬\OF_C$ (thus, provable by $¬\OF_{C ∩ E} ∩ E$) yet not provable by $¬\POF_{C ∩ E} ∩ E$ (thus, also not provable by $¬\POF_C ∩ E$).
-(Recall that $¬\POF_{C ∩ E} ⊆ ¬\POF_C$ 
+\Cref{ex:repeatableProvNotOfButNotNotPOF} shows that a claim can be provable by $¬\OF_C$ (thus, provable by $¬\OF_{C ∩ E} ∩ E$) yet not provable by $¬\POF[C ∩ E] ∩ E$ (thus, also not provable by $¬\POF[C] ∩ E$).
+(Recall that $¬\POF[C ∩ E] ⊆ ¬\POF[C]$ 
 and $¬\OF_{C ∩ E} ⊆ ¬\OF_C$.)
 
 \Cref{th:provGapVisibility} shows that
-$(¬\POF_C) ∩ E$ proves $C$ iff $(¬\OF_C) ∩ E$ proves $C$ and $C$ suffers no visibility issues in $E$ (that is, $∀\allleadstog ∈ E: \OF_C(\allleadstog) ⇒ \POF_C(\allleadstog)$).
+$(¬\POF[C]) ∩ E$ proves $C$ iff $(¬\OF_C) ∩ E$ proves $C$ and $C$ suffers no visibility issues in $E$ (that is, $∀\allleadstog ∈ E: \OF_C(\allleadstog) ⇒ \POF[C](\allleadstog)$).
 
 \Cref{ex:anon} illustrates and \cref{th:finiteExceptSpreadAnon} shows that anonymous claims suffer no visibility issues in $E$.
-Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C ⊆ E$ is provable by $¬\POF_{C ∩ E} ∩ E$.
+Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C ⊆ E$ is provable by $¬\POF[C ∩ E] ∩ E$.
 
 \begin{theorem}
-  Given any $\allleadsto ∈ E$, there exists an anonymous claim that is provable by $¬\POF_{C ∩ E} ∩ E$.
+  Given any $\allleadsto ∈ E$, there exists an anonymous claim that is provable by $¬\POF[C ∩ E] ∩ E$.
 \end{theorem}
 \begin{proof}
   Take $C = E$.
   $E$ is anonymous: for any $\allleadstog ∈ E$ and permutation $σ$, individual $j$ in $\allleadstog ∘ σ$ has the same behavior as $σ(j)$ in $\allleadstog$, so the behavior classes of $\allleadstog ∘ σ$ are those of $\allleadstog$ relabeled, each still infinite, giving $\allleadstog ∘ σ ∈ E$.
   $\allleadsto ∈ E = C$ by hypothesis.
-  $C ∩ E = E$, so $(¬\POF_{C ∩ E}) ∩ E = (¬\POF_E) ∩ E ⊆ E = C$.
+  $C ∩ E = E$, so $(¬\POF[C ∩ E]) ∩ E = (¬\POF[E]) ∩ E ⊆ E = C$.
 \end{proof}
 
 \begin{theorem}
-  Given any $\allleadsto ∈ E$, there exists an anonymous claim that is informative and provable by $¬\POF_{C ∩ E} ∩ E$.
+  Given any $\allleadsto ∈ E$, there exists an anonymous claim that is informative and provable by $¬\POF[C ∩ E] ∩ E$.
 \end{theorem}
 \begin{proof}
   Take $C = \set{\allleadstog ∈ \allleadstos \suchthat ∀ i ∈ I, ∀ α ∈ \allhists: \allleadstog(i, α) ≠ 0}$.
@@ -561,16 +561,16 @@ Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C
   \emph{Provability.} $C ∩ E$ is anonymous: $C$ is anonymous (shown above); $E$ is anonymous since for any $\allleadstog ∈ E$ and permutation $σ$, individual $j$ in $\allleadstog ∘ σ$ behaves as $σ(j)$ in $\allleadstog$, so behavior classes are relabeled with each still infinite, giving $\allleadstog ∘ σ ∈ E$; and $(C ∩ E) ∘ σ = (C ∘ σ) ∩ (E ∘ σ) = C ∩ E$.
   For $\allleadstog ∈ E ∖ C$, pick $(i_0, α_0)$ with $\allleadstog(i_0, α_0) = 0$.
   The observation $θ_0 = \restr{\allleadstog}{\set{(i_0, α_0)}} ∈ Θ ∩ \powerset{\allleadstog}$ lies outside $(C ∩ E)^⊆$: any $\allleadstog' ∈ C ∩ E$ extending $θ_0$ would satisfy $\allleadstog'(i_0, α_0) = 0$, contradicting $C$.
-  Hence $\OF_{C ∩ E}(\allleadstog)$, and by \cref{th:anonThusAlmostPof,th:delegationNoVisibilityIssues}, $\POF_{C ∩ E}(\allleadstog)$.
-  Therefore $(¬\POF_{C ∩ E}) ∩ E ⊆ C$.
+  Hence $\OF_{C ∩ E}(\allleadstog)$, and by \cref{th:anonThusAlmostPof,th:delegationNoVisibilityIssues}, $\POF[C ∩ E](\allleadstog)$.
+  Therefore $(¬\POF[C ∩ E]) ∩ E ⊆ C$.
 \end{proof}
 
 \begin{theorem}
-  Given any $\allleadsto ∈ E$, there exists an anonymous claim that holds, is informative and provable by $¬\POF_{C ∩ E} ∩ E$.
+  Given any $\allleadsto ∈ E$, there exists an anonymous claim that holds, is informative and provable by $¬\POF[C ∩ E] ∩ E$.
 \end{theorem}
 \begin{proof}
   Take $C = E$.
-  $E$ is anonymous (as in the previous proof), $\allleadsto ∈ E = C$, and $(¬\POF_{C ∩ E}) ∩ E = (¬\POF_E) ∩ E ⊆ E = C$.
+  $E$ is anonymous (as in the previous proof), $\allleadsto ∈ E = C$, and $(¬\POF[C ∩ E]) ∩ E = (¬\POF[E]) ∩ E ⊆ E = C$.
   \emph{Informativeness.} For any $\allleadstog ∈ E$, each behavior class is infinite and individuals sharing a behavior share the same $π$-value, so every non-empty fiber of $π(\allleadstog)$ is infinite.
   Hence, fixing any $i_0 ∈ I$ and $v ∈ P$, the profile assigning $v$ to $i_0$ and $∅$ to all other individuals has a $v$-fiber of size $1 ∈ ℕ$, so it lies outside $π(E)$, giving $π(E) ≠ (P ∪ \set{∅})^I$.
 \end{proof}
@@ -578,21 +578,21 @@ Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C
 \begin{theorem}
   \label{th:noAnonIBCHoldsProvable}
   Assume $\card{\allargs} ∉ ℕ$.
-  There exists $\allleadsto ∈ E$ such that no anonymous claim that holds and is informative beyond counting is provable by $¬\POF_{C ∩ E} ∩ E$.
+  There exists $\allleadsto ∈ E$ such that no anonymous claim that holds and is informative beyond counting is provable by $¬\POF[C ∩ E] ∩ E$.
 \end{theorem}
 \begin{proof}
   Since $\card{\allargs} ∉ ℕ$, the family $\mathcal{S} = \set{(H, g) \suchthat H ∈ \finite(\incr(\allhists)),\ g: H → P}$ is countable.
   Partition $I$ into infinite subsets $(I_{H,g})_{(H,g) ∈ \mathcal{S}}$ and define $\allleadsto$ by $\allleadsto(i, α) = g(α)$ for $i ∈ I_{H,g}$, $α ∈ H$, and $\allleadsto(i, α) = \prop$ otherwise.
   Since all individuals in each $I_{H,g}$ share the same behavior, $\allleadsto ∈ E$.
 
-  Suppose for contradiction that $C$ is anonymous, informative beyond counting, $\allleadsto ∈ C$, and $(¬\POF_{C ∩ E}) ∩ E ⊆ C$.
+  Suppose for contradiction that $C$ is anonymous, informative beyond counting, $\allleadsto ∈ C$, and $(¬\POF[C ∩ E]) ∩ E ⊆ C$.
 
   \emph{$E ⊆ C$.}
   Fix any $\allleadstog' ∈ E$ and $θ ∈ Θ ∩ \powerset{\allleadstog'}$, with queried individuals $i_1, …, i_m$.
   For each $l$, let $H_l = θ(P)(i_l) ∈ \incr(\allhists)$ and $g_l: H_l → P$ with $g_l(α) = θ(i_l, α)$.
   Since each $I_{H_l, g_l}$ is infinite, pick mutually distinct $j_1 ∈ I_{H_1, g_1}, …, j_m ∈ I_{H_m, g_m}$, and let $σ$ be a permutation of $I$ with $σ(i_l) = j_l$ for each $l$.
   Then $(\allleadsto ∘ σ)(i_l, α) = \allleadsto(j_l, α) = g_l(α) = θ(i_l, α)$ for all $α ∈ H_l$, so $\allleadsto ∘ σ ∈ C ∩ E$ (by anonymity of $C$ and $E$) extends $θ$; hence $θ ∈ (C ∩ E)^⊆$.
-  As $θ$ was arbitrary, $¬\OF_{C ∩ E}(\allleadstog')$, hence $¬\POF_{C ∩ E}(\allleadstog')$, so $\allleadstog' ∈ (¬\POF_{C ∩ E}) ∩ E ⊆ C$.
+  As $θ$ was arbitrary, $¬\OF_{C ∩ E}(\allleadstog')$, hence $¬\POF[C ∩ E](\allleadstog')$, so $\allleadstog' ∈ (¬\POF[C ∩ E]) ∩ E ⊆ C$.
   As $\allleadstog'$ was arbitrary, $E ⊆ C$.
 
   \emph{Contradiction.}
@@ -617,9 +617,9 @@ Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C
 \begin{example}[Provability cannot conclude a decisive argument for a named value]
   \label{ex:noProvableDecisivePhi}
   Split $I$ into two infinite classes by parity, odd individuals answering $φ$ constantly and even ones $φ'$ constantly; then $\allleadsto ∈ E$ and every odd individual is decisive for $φ$.
-  Still, no anonymous claim $C$ that holds and satisfies $C ⊆ \set{\allleadstog \suchthat ∃ i: π_i(\allleadstog) = φ}$ is provable by $¬\POF_{C ∩ E} ∩ E$.
+  Still, no anonymous claim $C$ that holds and satisfies $C ⊆ \set{\allleadstog \suchthat ∃ i: π_i(\allleadstog) = φ}$ is provable by $¬\POF[C ∩ E] ∩ E$.
   Let $v ∈ E$ answer $φ'$ everywhere; no individual is decisive for $φ$ in $v$, so $v ∉ C$.
-  But every observation of $v$ consists of $φ'$-answers and embeds into $\allleadsto ∈ C$ by permuting the queried individuals onto even ones, so $¬\OF_{C ∩ E}(v)$, hence $¬\POF_{C ∩ E}(v)$ and $v ∈ (¬\POF_{C ∩ E}) ∩ E ∖ C$: $C$ is not provable.
+  But every observation of $v$ consists of $φ'$-answers and embeds into $\allleadsto ∈ C$ by permuting the queried individuals onto even ones, so $¬\OF_{C ∩ E}(v)$, hence $¬\POF[C ∩ E](v)$ and $v ∈ (¬\POF[C ∩ E]) ∩ E ∖ C$: $C$ is not provable.
   Observing an odd individual answer $φ$ refutes ``the world is $v$'' ($\OF$ of $\allleadsto$ against $\set{v}$), but never makes $v$ falsify $C$ through its own $φ'$-answers.
   The same asymmetry defeats the local claim $C = \set{\allleadstog \suchthat ∀ i, p: (a) \ileadstogo[i] p ⇒ a \ileadstost[i] p}$, which also holds here and is anonymous: a world with an individual answering $p$ on every path except $(a', a) \ileadstogo[i] q$ (some $a' ≠ a$, $q ≠ p$) has $(a) \ileadstogo[i] p$ with $a$ non-decisive, yet as $(a', a)$ is incomparable to $(a)$ no observation exhibits the violation, so it escapes $\OF_{C ∩ E}$ and $C$ is not provable.
   By contrast, the claim that every individual answers constantly holds and is provable, concluding that everyone is decided—though not for a named value (to be checked!).
@@ -744,13 +744,13 @@ APTS-P strengthens both APS-P (\cref{def:apsP}, dropping the requirement that $�
 \end{remark}
 
 \subsection{PEV under not POF}
-We now turn to claims $C ⊆ E$ satisfying PEV under $F_C = (¬\POF_C) ∩ E$.
+We now turn to claims $C ⊆ E$ satisfying PEV under $F_C = (¬\POF[C]) ∩ E$.
 
 Recall the definition.
-$C$ satisfies PEV under prior $(¬\POF_C) ∩ E$ iff 
+$C$ satisfies PEV under prior $(¬\POF[C]) ∩ E$ iff 
 $∀\allleadstog ∈ C,
 ∀θ ∈ Θ ∩ \powerset{\allleadstog}, 
-∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀θ' ⊆ \allleadstog' ∈ (¬\POF_C) ∩ E: \allleadstog' ∈ C$.
+∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀θ' ⊆ \allleadstog' ∈ (¬\POF[C]) ∩ E: \allleadstog' ∈ C$.
 
 Given $B ⊆ \allbs$ and $H ⊆ \allhists$, let $\restr{B}{H} = \set{\restr{f}{H} \suchthat f ∈ B}$ denote the behaviors in $B$ restricted to $H$.
 Say a behavior $g$ is undistinguishable from $B ⊆ \allbs$ iff
@@ -776,7 +776,7 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
   thus $∃b_i ∈ B \suchthat \anobs = \restr{g}{H} = \restr{b_i}{H} ⊆ b_i$. Thus, $θ$ is completeable in $C ∩ E$.
 
   Now, to obtain $\allleadstog' ∈ C$,
-  pick $θ = ∅$ and any $θ' ∈ Θ ∩ \powerset{\allleadstog}$ such that $θ' ⊆ \allleadstog' ∈ (¬\POF_C) ∩ E ⇒ \allleadstog' ∈ C$ (known to exist by hypothesis).
+  pick $θ = ∅$ and any $θ' ∈ Θ ∩ \powerset{\allleadstog}$ such that $θ' ⊆ \allleadstog' ∈ (¬\POF[C]) ∩ E ⇒ \allleadstog' ∈ C$ (known to exist by hypothesis).
   As $θ' ⊆ \allleadstog$, $θ'(I) ∈ B$, thus $θ'(I) ∈ B ∪ \set{g}$, hence, $θ' ⊆ \allleadstog'$.
 \end{proof}
 
@@ -816,7 +816,7 @@ define $D^{\anobs, a, p}_C$ as the prior: any behavior that fails $\anobs$ leads
   $a ∈ \allargs$,
   $p ∈ P$,
   if $\allleadsto$ leads $\anobs$ to $(a, p)$,
-  then the claim $C = [∀i: \set{i} × \anobs ⊆ \allleadsto ⇒ a \ileadstost p]$ holds and is anonymous and APTS-P and provable by $(¬\POF_C) ∩ E ∩ D^{\anobs, a, p}_C$.
+  then the claim $C = [∀i: \set{i} × \anobs ⊆ \allleadsto ⇒ a \ileadstost p]$ holds and is anonymous and APTS-P and provable by $(¬\POF[C]) ∩ E ∩ D^{\anobs, a, p}_C$.
 \end{theorem}
 \begin{proof}
   Consider any world $\allleadstog ∈ E ∩ D, \allleadstog ∉ C$ and let us show $\POF$.
@@ -848,7 +848,7 @@ Here is a second, fully detailed proof of the same statement, spelling out every
 
   \emph{APTS-P.} Take $θ := θ_0 = \set{i_0} × \anobs ∈ Θ ∩ \powerset{\allleadsto}$ (feasible, by choice of $i_0$ above), together with $i_0$ and $p$, as the witness. First, $\allleadsto ∈ \set{θ⊆\allleadstog}∩C$ (as $θ = θ_0 ⊆ \allleadsto$ and $\allleadsto ∈ C$, both from the previous paragraph), so $p ∈ π_{i_0}(\set{θ⊆\allleadstog}∩C)$. Second, for any $\allleadstog' ∈ \set{θ⊆\allleadstog}∩C$: $θ = \set{i_0} × \anobs ⊆ \allleadstog'$ together with $\allleadstog' ∈ C$, instantiated at $i = i_0$, gives $a \ileadstost[i_0] p$ in $\allleadstog'$, that is $p ∈ P_{i_0}(\allleadstog')$; by \cref{th:sing}, $\card{P_{i_0}(\allleadstog')} ≤ 1$, so $P_{i_0}(\allleadstog') = \set{p}$ exactly, that is $π_{i_0}(\allleadstog') = p$. Hence $π_{i_0}(\set{θ⊆\allleadstog}∩C) = \set{p}$: as $p ∈ P$ is a genuine value and $θ$ is feasible, this is APTS-P, witnessed by $(θ, i_0, p)$. (No completion of $\anobs$ into a full behavior is needed here, unlike in an earlier attempt at this step: the witness individual $i_0$ handed to us by the hypothesis, together with $\allleadsto$ itself, already does the job.)
 
-  \emph{Provable by $(¬\POF_C) ∩ E ∩ D$.} Recall that a prior proves $C$ iff it is a subset of $C$. We show $(¬\POF_C) ∩ E ∩ D ⊆ C$ by contraposition: fix $\allleadstog ∈ E ∩ D$ with $\allleadstog ∉ C$, and show $\POF_C(\allleadstog)$, that is, $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆$.
+  \emph{Provable by $(¬\POF[C]) ∩ E ∩ D$.} Recall that a prior proves $C$ iff it is a subset of $C$. We show $(¬\POF[C]) ∩ E ∩ D ⊆ C$ by contraposition: fix $\allleadstog ∈ E ∩ D$ with $\allleadstog ∉ C$, and show $\POF[C](\allleadstog)$, that is, $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆$.
 
   \emph{Step 1 (a row falsifying $\anobs$-leads-to-$(a,p)$ is never a type of $C$).} For any $h ∈ \allbs$ with $\anobs ⊆ h$ and $a \nileadstostg[h] p$: if $h ∈ B = S_C$, some $\allleadstog'' ∈ C$ and $i'' ∈ I$ satisfy $\allleadstog''(i'') = h$; then $\anobs ⊆ h = \allleadstog''(i'')$ gives $\set{i''} × \anobs ⊆ \allleadstog''$, so $\allleadstog'' ∈ C$'s defining condition at $i''$ forces $a \ileadstostg[h] p$, contradicting $a \nileadstostg[h] p$. So $h ∉ B$.
 
@@ -858,7 +858,7 @@ Here is a second, fully detailed proof of the same statement, spelling out every
 
   \emph{Step 4 (repeating the witness at a fresh clone).} Fix any $θ ∈ Θ ∩ \powerset{\allleadstog}$. As $\allleadstog ∈ E$, \cref{def:repeatable} applied at $i$ gives that $J_g := \set{j ∈ I \suchthat \allleadstog(j) = g}$ is infinite; as $θ$ is finite, $θ(\allhists, P)$ is finite, so $J_g ∖ θ(\allhists, P) ≠ ∅$. Pick $i'$ in this set and let $θ' := θ ∪ θ_H^{i'}$. Since $i'$ is untouched by $θ$, $θ' ∖ θ$ concerns only $i'$, so $θ ⊑ θ'$; $θ' ∈ Θ ∩ \powerset{\allleadstog}$ as before. Since $θ_H^{i'} ⊆ θ'$ and $C^⊆$ is downwards closed, $θ' ∈ C^⊆$ would force $θ_H^{i'} ∈ C^⊆$, contradicting Step 3; so $θ' ∉ C^⊆$.
 
-  As $θ$ was arbitrary (the same $H$ serves throughout; only the clone $i'$ depends on $θ$), $\POF_C(\allleadstog)$ holds. Hence $\allleadstog ∉ ¬\POF_C$, so no element of $E ∩ D ∖ C$ lies in $¬\POF_C$; equivalently, $(¬\POF_C) ∩ E ∩ D ⊆ C$.
+  As $θ$ was arbitrary (the same $H$ serves throughout; only the clone $i'$ depends on $θ$), $\POF[C](\allleadstog)$ holds. Hence $\allleadstog ∉ ¬\POF[C]$, so no element of $E ∩ D ∖ C$ lies in $¬\POF[C]$; equivalently, $(¬\POF[C]) ∩ E ∩ D ⊆ C$.
 \end{proof}
 
 To get a sense of the strength of this prior, let us examine a world not in $D$.
@@ -874,9 +874,9 @@ Then a behavior denying the main implication must say $(a) \ileadsto φ$ and som
   \label{ex:abClosure}
   Consider $\allleadsto(I) = \set{\ileadsto^φ, \ileadsto^{φ'}}$.
   Define $\anobs = \set{((a, b), φ)}$.
-  The claim $C = [(a, b) \ileadsto φ ⇒ a \ileadstost φ ∧ ∀α: α \nileadsto φ ⇒ (α, a, b) \nileadsto φ]$ holds, is anonymous, APTS-P, and provable by $(¬\POF_C) ∩ E ∩ D^{\anobs, a, p}_C$.
+  The claim $C = [(a, b) \ileadsto φ ⇒ a \ileadstost φ ∧ ∀α: α \nileadsto φ ⇒ (α, a, b) \nileadsto φ]$ holds, is anonymous, APTS-P, and provable by $(¬\POF[C]) ∩ E ∩ D^{\anobs, a, p}_C$.
 
-  Also, any behavior $\ileadstog$ out of our prior $D$ (meaning, any behavior whose presence in a world makes it fail $D$) satisfies, for some $α$: $(α, a, b) \nileadstog φ$ and $(a, b, α) \ileadstog φ$. In other words, any prior that forbids all those patterns suffice to ensure provability (together with $(¬\POF_C) ∩ E$, as usual).
+  Also, any behavior $\ileadstog$ out of our prior $D$ (meaning, any behavior whose presence in a world makes it fail $D$) satisfies, for some $α$: $(α, a, b) \nileadstog φ$ and $(a, b, α) \ileadstog φ$. In other words, any prior that forbids all those patterns suffice to ensure provability (together with $(¬\POF[C]) ∩ E$, as usual).
 \end{example}
 
 The detailed proof of \cref{th:leadsToProvable} splits, when showing provability, into worlds falsifying the template $C$ itself (handled purely from $C' ⊆ C$, visibility out of $B := S_{C'}$, and repeatability) and worlds satisfying $C$ yet failing $C'$'s extra content (not handled at all by that argument). The claim in the example just above adds exactly such extra content ($∀α: α \nileadsto φ ⇒ (α, a, b) \nileadsto φ$) to the template, so the detailed proof above does not, by itself, establish it: it only accounts for the first kind of falsifying world. The following statement isolates what the second kind additionally requires.
@@ -891,8 +891,8 @@ The detailed proof of \cref{th:leadsToProvable} splits, when showing provability
   $\allleadsto ∈ C'$,
   $∃i_0 ∈ I \suchthat \set{i_0} × \anobs ⊆ \allleadsto$,
   $C'$ is anonymous,
-  and $(C ∖ C') ∩ E ∩ D^{\anobs, a, p}_{C'} ⊆ \POF_{C'}$,
-  then $C'$ holds and is APTS-P and provable by $(¬\POF_{C'}) ∩ E ∩ D^{\anobs, a, p}_{C'}$.
+  and $(C ∖ C') ∩ E ∩ D^{\anobs, a, p}_{C'} ⊆ \POF[C']$,
+  then $C'$ holds and is APTS-P and provable by $(¬\POF[C']) ∩ E ∩ D^{\anobs, a, p}_{C'}$.
 \end{theorem}
 
 Taking $C' = C$ recovers \cref{th:leadsToProvable}: $C ∖ C' = ∅$ makes the last condition vacuous, and anonymity of $C$ is then a consequence (shown in the detailed proof) rather than a hypothesis. For the example above, the last condition is exactly the (unproven) claim that every world agreeing with $\allleadsto$'s template-decisiveness at $a$ but violating the $∀α$-closure is nonetheless caught, visibly, by $D^{\anobs,a,p}_{C'} ∩ E$.
@@ -904,15 +904,15 @@ Taking $C' = C$ recovers \cref{th:leadsToProvable}: $C ∖ C' = ∅$ makes the l
 
   \emph{$C'$ anonymous.} Both conjuncts of $C'$ are of the form $∀i: Q(\allleadstog(i))$ for a property $Q$ of a single row (the first exactly as in \cref{th:leadsToProvable}'s \emph{Anonymous} paragraph; the second through $Q(f) := [∀α: f(α) ≠ φ ⇒ f(α,a,b) ≠ φ]$). The same relabelling computation as there, applied to each conjunct, gives $C' ∘ σ = C'$ for every permutation $σ$.
 
-  \emph{The residual condition.} We show the stronger $(C ∖ C') ∩ E ⊆ \POF_{C'}$, which contains $(C ∖ C') ∩ E ∩ D^{\anobs,a,p}_{C'}$. Fix $\allleadstog ∈ (C ∖ C') ∩ E$. Since $\allleadstog ∈ C ∖ C'$, the failure of $C'$ lies in the second conjunct: some $i ∈ I$ and $α ∈ \allhists$ satisfy $α \nileadstog[i] φ$ and $(α,a,b) \ileadstogo[i] φ$. Let $g := \allleadstog(i)$, so $g(α) ≠ φ$ and $g(α,a,b) = φ$, and let $H := \set{α, (α,a,b)} ∈ \fincrhists$ ($α$ prefixes $(α,a,b)$).
+  \emph{The residual condition.} We show the stronger $(C ∖ C') ∩ E ⊆ \POF[C']$, which contains $(C ∖ C') ∩ E ∩ D^{\anobs,a,p}_{C'}$. Fix $\allleadstog ∈ (C ∖ C') ∩ E$. Since $\allleadstog ∈ C ∖ C'$, the failure of $C'$ lies in the second conjunct: some $i ∈ I$ and $α ∈ \allhists$ satisfy $α \nileadstog[i] φ$ and $(α,a,b) \ileadstogo[i] φ$. Let $g := \allleadstog(i)$, so $g(α) ≠ φ$ and $g(α,a,b) = φ$, and let $H := \set{α, (α,a,b)} ∈ \fincrhists$ ($α$ prefixes $(α,a,b)$).
 
   Fix any $θ ∈ Θ ∩ \powerset{\allleadstog}$. As $\allleadstog ∈ E$, $J_g := \set{j ∈ I \suchthat \allleadstog(j) = g}$ is infinite (\cref{def:repeatable}); as $θ$ is finite, pick $i' ∈ J_g ∖ θ(\allhists, P)$. Let $θ_H^{i'} := \set{(i', α, g(α)), (i', (α,a,b), g(α,a,b))} ∈ Θ ∩ \powerset{\allleadstog}$ and $θ' := θ ∪ θ_H^{i'}$; since $i'$ is untouched by $θ$, $θ ⊑ θ'$ and $θ' ∈ Θ ∩ \powerset{\allleadstog}$.
 
   Suppose some $\allleadstog''' ∈ C'$ extended $θ'$, and let $f := \allleadstog'''(i')$. Then $f(α) = g(α) ≠ φ$ and $f(α,a,b) = g(α,a,b) = φ$. But $\allleadstog''' ∈ C'$ requires its second conjunct at $i', α$: $α \nileadstog[i'] φ ⇒ (α,a,b) \nileadstog[i'] φ$, whose contrapositive, $(α,a,b) \ileadstogo[i'] φ ⇒ α \ileadstogo[i'] φ$, together with $f(α,a,b) = φ$ forces $f(α) = φ$ — contradicting $f(α) ≠ φ$. So no such $\allleadstog'''$ exists: $θ' ∉ (C')^⊆$.
 
-  As $θ$ was arbitrary — the same $H$ serves throughout, only the clone $i'$ depending on $θ$ — $\POF_{C'}(\allleadstog)$ holds. Hence $(C ∖ C') ∩ E ⊆ \POF_{C'}$.
+  As $θ$ was arbitrary — the same $H$ serves throughout, only the clone $i'$ depending on $θ$ — $\POF[C'](\allleadstog)$ holds. Hence $(C ∖ C') ∩ E ⊆ \POF[C']$.
 
-  All hypotheses of \cref{th:genProvableSubclaim} are met, so $C'$ holds, is anonymous, is APTS-P, and is provable by $(¬\POF_{C'}) ∩ E ∩ D^{\anobs,a,p}_{C'}$ — exactly \cref{ex:abClosure}'s claim.
+  All hypotheses of \cref{th:genProvableSubclaim} are met, so $C'$ holds, is anonymous, is APTS-P, and is provable by $(¬\POF[C']) ∩ E ∩ D^{\anobs,a,p}_{C'}$ — exactly \cref{ex:abClosure}'s claim.
 \end{proof}
 
 \begin{proof}[Proof of the second part of \cref{ex:abClosure}]
@@ -939,7 +939,7 @@ NB \cref{th:noindic} has the key! And I should read \cref{sec:closing}.
   It is $¬\OF$: any observation $θ ⊆ \allleadstog'$, being finite, is completable in $C$.
   Now consider a world where a single $i$ satisfies $a \ileadstost φ$.
   Consider $θ = ∅$ and
-  any observation $θ' ⊆ \allleadstog$. It is completed by a world $\allleadstog' ∈ (¬\POF_C) ∩ E$ but out of $C$.
+  any observation $θ' ⊆ \allleadstog$. It is completed by a world $\allleadstog' ∈ (¬\POF[C]) ∩ E$ but out of $C$.
 \end{example}
 \begin{example}
   Define $\allleadsto^p$ as: empty leads to $φ$, everything else leads to $p$, for all individuals.
@@ -956,11 +956,11 @@ NB \cref{th:noindic} has the key! And I should read \cref{sec:closing}.
   % I should reject existence of such strange individuals: if i3 says φ when starting with a and ¬φ when starting with b, there must exist something like (a), (a, b), (a, b, c) where individual differs!
 \end{example}
 
-We could introduce a weaker demand, a variant of the demand that $C ⊆ E$ satisfies PEV under $F_C = (¬\POF_C) ∩ E$, by inverting the order of attack and defense. However, I have some doubt that it does not improve verifiability.
+We could introduce a weaker demand, a variant of the demand that $C ⊆ E$ satisfies PEV under $F_C = (¬\POF[C]) ∩ E$, by inverting the order of attack and defense. However, I have some doubt that it does not improve verifiability.
 
 $C$ satisfies IPEV iff 
 $∀\allleadstog ∈ C,
-\allleadstog' ∈ (¬\POF_C) ∩ E \suchthat \allleadstog' ∉ C,
+\allleadstog' ∈ (¬\POF[C]) ∩ E \suchthat \allleadstog' ∉ C,
 θ ∈ Θ ∩ \powerset{\allleadstog},
 ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ⊈ \allleadstog'$.
 
@@ -1744,7 +1744,7 @@ Being closed under finite modification and non-empty does not entail triviality.
 \subsection{POF}
 \begin{remark}
   \label{rk:rpevGap}
-  By \cref{th:rpevChar}, $\allleadstog ∈ C ∩ D$ satisfies established verifiability but not PV under $D$ iff $\OF_{D ∖ C}(\allleadstog) ∧ ¬\POF_{D ∖ C}(\allleadstog)$, that is, iff $D ∖ C$ suffers visibility issues at $\allleadstog$.
+  By \cref{th:rpevChar}, $\allleadstog ∈ C ∩ D$ satisfies established verifiability but not PV under $D$ iff $\OF_{D ∖ C}(\allleadstog) ∧ ¬\POF[D ∖ C](\allleadstog)$, that is, iff $D ∖ C$ suffers visibility issues at $\allleadstog$.
   So, for a given claim and prior, the gap between established verifiability and PV is precisely governed by visibility issues of $D ∖ C$: no such gap arises wherever $D ∖ C$ suffers no visibility issues.
 \end{remark}
 
@@ -1782,7 +1782,7 @@ A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\POF
 
   PEV demands that all worlds in $C$ satisfy PV:
   $∀θ, ∃θ ⊑ θ' ∉ (D ∖ C)^⊆$.
-  In other words, that $\POF_{D ∖ C}(\allleadstog)$.
+  In other words, that $\POF[D ∖ C](\allleadstog)$.
   
   We show $∃\allleadstog ∈ C \suchthat$ for some prefix $θ$, all completions $θ'$ are completable in $D ∖ C$.
 
@@ -1791,7 +1791,7 @@ A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\POF
   As $\simfin$ is an equivalence relation,
   $C$ is closed under finite modification iff
   $\overline{C}$ is closed under finite modification.
-  Therefore, by \cref{th:cufmNeverFals} again, $∀\allleadstog: ¬\POF_{\overline{C}}(\allleadstog)$.
+  Therefore, by \cref{th:cufmNeverFals} again, $∀\allleadstog: ¬\POF[\overline{C}](\allleadstog)$.
 
   If $C$ is not closed under finite modification, for some $n ∈ ℕ$, some two worlds $\allleadstog[0] ∈ C, \allleadstog[n] ∉ C$ differ at exactly $n$ pairs.
   We can build a sequence of worlds $(\allleadstog[k])_{1 ≤ k ≤ n - 1}$, by flipping one pair at a time, such that $∀1 ≤ k ≤ n$, each $\allleadstog[k]$ differs from $\allleadstog[k - 1]$ at exactly one pair. Taking $j = \min \set{1 ≤ k ≤ n \suchthat \allleadstog[k] ∉ C}$, we obtain worlds $\allleadstog[j - 1] ∈ C$, $\allleadstog[j] ∉ C$ that differ at exactly one pair $(i, α)$.
@@ -1802,7 +1802,7 @@ A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\POF
   and let us show that $θ' ∈ (D ∖ C)^⊆$.
   Indeed, $(i, α, .) ∉ θ'$, because $θ'$ observing $i$ must use only extensions of $α'$, itself longer than $α$. Thus,
   $θ' ⊆ \allleadstog[j]$, as $\allleadstog[j]$ agrees with $\allleadstog[j - 1]$ on every other pair than $(i, α)$.
-  Furthermore, $¬\POF_C(\allleadstog[j])$ because $θ ⊆ \allleadstog[j]$ and $θ' ⊆ \allleadstog[j - 1] ∈ C$.
+  Furthermore, $¬\POF[C](\allleadstog[j])$ because $θ ⊆ \allleadstog[j]$ and $θ' ⊆ \allleadstog[j - 1] ∈ C$.
 \end{proof}
 \begin{remark}
   I believe that we’re basically finding a prefix $θ$ such that$∀θ ⊑ θ': θ' ⊆ \allleadstog[j - 1] ∈ C ∧ θ' ⊆ \allleadstog[j] ∉ C$. Also, perhaps, existence of such a prefix is equivalent to the statement of the theorem. This may perhaps bring some better understanding. To be checked.
@@ -1883,11 +1883,11 @@ The following result indicates that, given a finite cover of $D ∖C$, $\OF_{D �
 \subsection{Repeatability}
 \begin{theorem}
   \label{th:provGapVisibility}
-  Given $C, D ⊆ \allleadstos$: $(¬\POF_C) ∩ D$ proves $C$ iff $(¬\OF_C) ∩ D$ proves $C$ and $C$ suffers no visibility issues in $D$ (that is, $∀\allleadstog ∈ D: \OF_C(\allleadstog) ⇒ \POF_C(\allleadstog)$).
+  Given $C, D ⊆ \allleadstos$: $(¬\POF[C]) ∩ D$ proves $C$ iff $(¬\OF_C) ∩ D$ proves $C$ and $C$ suffers no visibility issues in $D$ (that is, $∀\allleadstog ∈ D: \OF_C(\allleadstog) ⇒ \POF[C](\allleadstog)$).
 \end{theorem}
 \begin{proof}
   The claim is equivalent to
-  $[∀\allleadstog ∉ C, \allleadstog ∈ D: \POF_C(\allleadstog)] ⇔ [∀\allleadstog ∉ C, \allleadstog ∈ D: \OF_C(\allleadstog) ∧ ∀\allleadstog ∉ C, \allleadstog ∈ D: \OF_C(\allleadstog) ⇒ \POF_C(\allleadstog)]$, because $∀\allleadstog ∈ C, ¬\OF_C(\allleadstog)$.
+  $[∀\allleadstog ∉ C, \allleadstog ∈ D: \POF[C](\allleadstog)] ⇔ [∀\allleadstog ∉ C, \allleadstog ∈ D: \OF_C(\allleadstog) ∧ ∀\allleadstog ∉ C, \allleadstog ∈ D: \OF_C(\allleadstog) ⇒ \POF[C](\allleadstog)]$, because $∀\allleadstog ∈ C, ¬\OF_C(\allleadstog)$.
 \end{proof}
 
 \begin{example}
@@ -1897,7 +1897,7 @@ The following result indicates that, given a finite cover of $D ∖C$, $\OF_{D �
   We have $¬\OF_C ⊆ C$, as visible by observing that $α \nileadstog φ ⇒ \OF(\allleadstog)$.
 
   Define $\allleadstog$ such that $∀α', j: α' \ileadstog[j] φ'$ (thus $\allleadstog ∈ E$ and $\allleadstog ∉ C$)
-  and let us show that $¬\POF_{C ∩ E}(\allleadstog)$.
+  and let us show that $¬\POF[C ∩ E](\allleadstog)$.
   Pick any $\card{α} < \card{α'}$ and
   define $θ = (i, α', φ') ∈ Θ ∩ \powerset{\allleadstog}$.\commentClaude{$θ$ is an observation (a subset of $I × \allhists × P$), but here it is set equal to a single triple $(i, α', φ')$ rather than to a set containing it. Should this be $θ = \set{(i, α', φ')}$?}
   Consider any $θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}$. 
@@ -1921,7 +1921,7 @@ A sufficient condition for a world being POF is that for any finite subset of in
   Fix $τ ∈ Θ ∩ \powerset{\allleadstog}$; let $J ⊆ I$ be its (finite) individuals, and pick, by hypothesis, $θ ∈ Θ ∩ \powerset{\allleadstog}$, $θ ∉ C^⊆$, touching only individuals outside $J$.
   As $τ, θ$ touch disjoint individuals, $τ' = τ ∪ θ ∈ Θ ∩ \powerset{\allleadstog}$ and $τ ⊑ τ'$ (no point is added for any individual already in $τ$'s domain).
   As $C^⊆$ is downwards closed and $θ ⊆ τ'$, $τ' ∉ C^⊆$.
-  As $τ$ was arbitrary, $\POF_C(\allleadstog)$ holds.
+  As $τ$ was arbitrary, $\POF[C](\allleadstog)$ holds.
 \end{proof}
 
 The converse of \cref{th:delegationNoVisibilityIssues} fails:
@@ -1929,7 +1929,7 @@ when some given $i$ is non avoidable for a proof of $¬C$ but all $α$ do prove 
 \begin{example}
   \label{ex:T4notIff}
   Fix $i^* ∈ I$. Let $\allleadstog(i, \hist) = φ$ for all $i ∈ I$, $\hist ∈ \allhists$, and $C = \set{v ∈ \allleadstos \suchthat ∀\hist ∈ \allhists: v(i^*, \hist) = φ'}$.
-  Then $\allleadstog ∉ C$ and $\POF_C(\allleadstog)$: given any $τ ∈ Θ ∩ \powerset{\allleadstog}$, if $i^*$ is not queried by $τ$, extend $τ$ by one observation of $i^*$ at $∅$ to get $τ'$ with $τ ⊑ τ'$ and $τ' ∉ C^⊆$ (as $\allleadstog(i^*, ∅) = φ ≠ φ'$); if $i^*$ is already queried, $τ$ records $φ$ at some path, so no $v ∈ C$ (requiring $φ'$ everywhere for $i^*$) extends $τ$, and $τ' = τ$ works.
+  Then $\allleadstog ∉ C$ and $\POF[C](\allleadstog)$: given any $τ ∈ Θ ∩ \powerset{\allleadstog}$, if $i^*$ is not queried by $τ$, extend $τ$ by one observation of $i^*$ at $∅$ to get $τ'$ with $τ ⊑ τ'$ and $τ' ∉ C^⊆$ (as $\allleadstog(i^*, ∅) = φ ≠ φ'$); if $i^*$ is already queried, $τ$ records $φ$ at some path, so no $v ∈ C$ (requiring $φ'$ everywhere for $i^*$) extends $τ$, and $τ' = τ$ works.
   Yet poofsoi fails for $J = \set{i^*}$: any $θ ∈ Θ ∩ \powerset{\allleadstog}$ querying only in $I ∖ \set{i^*}$ lies in $C^⊆$, since setting $v(i^*, \hist) = φ'$ for all $\hist$ and $v(i, \hist) = φ$ for $i ≠ i^*$ yields $v ∈ C$ with $θ ⊆ v$.
 \end{example}
 
@@ -3800,27 +3800,27 @@ Extending \cref{th:hypercubeDichotomy} to arbitrary finite $D$ therefore require
 \section{Satisfiability of PEV under \texorpdfstring{$¬\POF$}{not POF}}
 \begin{theorem}[Cufm claims fail PEV under $¬\POF$]
   \label{th:cufmFailsPEV}
-  If $∅ ≠ C ≠ \allleadstos$ is closed under finite modification, then $C$ does not satisfy PEV under $D = ¬\POF_C$.
+  If $∅ ≠ C ≠ \allleadstos$ is closed under finite modification, then $C$ does not satisfy PEV under $D = ¬\POF[C]$.
 \end{theorem}
 \begin{proof}
   PEV demands that all worlds in $C$ satisfy PV:
   $∀θ, ∃θ ⊑ θ' ∉ (D ∩ \overline{C})^⊆$.
-  In other words, that $\POF_{D ∩ \overline{C}}(\allleadstog)$.
-  By \cref{th:cufmNeverFals}, $∀\allleadstog: ¬\POF_C(\allleadstog)$,
+  In other words, that $\POF[D ∩ \overline{C}](\allleadstog)$.
+  By \cref{th:cufmNeverFals}, $∀\allleadstog: ¬\POF[C](\allleadstog)$,
   thus $D ∩ \overline{C} = \overline{C}$.
 
   As $\simfin$ is an equivalence relation,
   $C$ is closed under finite modification iff
   $\overline{C}$ is closed under finite modification.
-  Therefore, by \cref{th:cufmNeverFals} again, $∀\allleadstog: ¬\POF_{\overline{C}}(\allleadstog)$.
+  Therefore, by \cref{th:cufmNeverFals} again, $∀\allleadstog: ¬\POF[\overline{C}](\allleadstog)$.
 \end{proof}
 
 \begin{conjecture}[PEV outside the trivial cases]
   \label{cnj:rpevProv}
-  If $C$ is not closed under finite modification, then $C$ does not satisfy PEV under $D = ¬\POF_C$.
+  If $C$ is not closed under finite modification, then $C$ does not satisfy PEV under $D = ¬\POF[C]$.
 \end{conjecture}
 
-Both $∅$ and $\allleadstos$ are, trivially, closed under finite modification (\cref{def:cufm} holds of them vacuously), so \cref{cnj:rpevProv}'s hypothesis already excludes them: by \cref{th:onlyEmptyPF}, $C$ is provable by $¬\POF_C$ iff $C ∈ \set{∅, \allleadstos}$, and provability by $D$ already implies PEV under $D$ (\cref{th:rpevChain}); so whenever $C$ is not closed under finite modification, $C$ is in particular nontrivial, hence not provable by $¬\POF_C$ either. \Cref{cnj:rpevProv} asks whether PEV can nonetheless survive where provability cannot.
+Both $∅$ and $\allleadstos$ are, trivially, closed under finite modification (\cref{def:cufm} holds of them vacuously), so \cref{cnj:rpevProv}'s hypothesis already excludes them: by \cref{th:onlyEmptyPF}, $C$ is provable by $¬\POF[C]$ iff $C ∈ \set{∅, \allleadstos}$, and provability by $D$ already implies PEV under $D$ (\cref{th:rpevChain}); so whenever $C$ is not closed under finite modification, $C$ is in particular nontrivial, hence not provable by $¬\POF[C]$ either. \Cref{cnj:rpevProv} asks whether PEV can nonetheless survive where provability cannot.
 
 A single hypothesis, “$C$ not closed under finite modification,” already rules out the two known dead ends at once: it excludes triviality directly (both trivial claims are cufm, as just noted), and it excludes the case where $C$ is nonempty and cufm, which forces $D = \allleadstos$ by \cref{th:cufmNeverFals} (since $C$ is then never even falsifiable, hence never $\POF$). It does not, however, rule out \emph{every} route to $D = \allleadstos$: \cref{ex:disjR} is never falsifiable without being closed under finite modification (\cref{rk:cufmConverseFails} — flipping a single individual's two values already leaves $C$), so such claims remain within \cref{cnj:rpevProv}'s scope. PEV is expected to fail there for the same underlying reason as the cufm case: no finite prefix can ever force membership in $C$.
 
@@ -3831,8 +3831,8 @@ This hands us an actual escaping witness to reason about — one guaranteed to e
 
 \begin{lemma}[Escaping PEV witnesses must diverge]
   \label{th:rpevDiverge}
-  Suppose $C$ is not closed under finite modification and satisfies PEV under $D = ¬\POF_C$; let $\allleadstog[0] ∈ D ∖ C$ be arbitrary ($D ∖ C ≠ ∅$, since $C$ not cufm gives $C ∉ \set{∅, \allleadstos}$, hence $D ∖ C ≠ ∅$ by \cref{th:onlyEmptyPF}).
-  As $\allleadstog[0] ∈ D = ¬\POF_C$, some $θ_1 ∈ Θ ∩ \powerset{\allleadstog[0]}$ witnesses $¬\POF_C(\allleadstog[0])$ (a \emph{hiding} prefix, echoing the visibility-issues terminology above): every rightward $θ_1 ⊆ θ' ⊆ \allleadstog[0]$ satisfies $θ' ∈ C^⊆$.
+  Suppose $C$ is not closed under finite modification and satisfies PEV under $D = ¬\POF[C]$; let $\allleadstog[0] ∈ D ∖ C$ be arbitrary ($D ∖ C ≠ ∅$, since $C$ not cufm gives $C ∉ \set{∅, \allleadstos}$, hence $D ∖ C ≠ ∅$ by \cref{th:onlyEmptyPF}).
+  As $\allleadstog[0] ∈ D = ¬\POF[C]$, some $θ_1 ∈ Θ ∩ \powerset{\allleadstog[0]}$ witnesses $¬\POF[C](\allleadstog[0])$ (a \emph{hiding} prefix, echoing the visibility-issues terminology above): every rightward $θ_1 ⊆ θ' ⊆ \allleadstog[0]$ satisfies $θ' ∈ C^⊆$.
   In particular, the trivial case $θ' = θ_1$ gives $θ_1 ∈ C^⊆$: pick any completion $θ_1 ⊆ \allleadstog$, $\allleadstog ∈ C$.
   Now $\allleadstog ∈ C ∩ D$, so this is where the PEV hypothesis is actually used: testing it at $\allleadstog$ for the prefix $θ_1$ gives a rightward extension $θ_1 ⊆ θ_1' ⊆ \allleadstog$, with $θ_1' ∉ (D ∖ C)^⊆$.
   This $θ_1'$ satisfies $θ_1' ⊈ \allleadstog[0]$.
@@ -3854,16 +3854,16 @@ A König-type argument for the first route does not directly apply: the tree of 
 Even that alternative is not straightforward, and for a sharper reason than branching: $\allleadstos = P^{I × \allhists}$ is compact (Tychonoff, as $P$ is finite), but standard compactness arguments — net convergence, or the finite intersection property for closed families — require the family of test extensions to be \emph{directed}, meaning any two admit a common refinement.
 For a fixed $\allleadstog[0]$, two valid rightward extensions of the same prefix, both in $Θ ∩ \powerset{\allleadstog[0]}$, can commit to different, incomparable branches for the same individual (extending, say, $(a)$ to $(a, a)$ in one and to $(a, a')$ in the other); their union is not chain-respecting, hence not itself in $Θ$.
 So the family of $Θ$-valid rightward extensions of a prefix is not directed, even restricted to a single fixed $\allleadstog[0]$, and restricting $\allargs$ to be finite does not repair this: the non-directedness comes from any two incomparable branches existing at all, not from unboundedly many of them.
-This means $¬\POF_S$ is not literally a topological closure condition to begin with, since it tests strictly fewer, non-directed extensions than compactness arguments assume — precisely because $Θ$ encodes that incomparable branches cannot be probed simultaneously, the realistic-protocol constraint the whole framework is built on.
+This means $¬\POF[S]$ is not literally a topological closure condition to begin with, since it tests strictly fewer, non-directed extensions than compactness arguments assume — precisely because $Θ$ encodes that incomparable branches cannot be probed simultaneously, the realistic-protocol constraint the whole framework is built on.
 A genuine compactness proof of \cref{cnj:rpevProv}, if one exists, would need a substitute for both König's lemma and standard filter or net arguments.
 
 \begin{example}[A non-degenerate $D ∖ C$]
   \label{ex:rpevNonDegenerate}
   Every example checked so far was closed under finite modification, hence excluded by \cref{cnj:rpevProv}'s hypothesis outright (trivially so for $∅$ and $\allleadstos$ themselves, giving $D = C$; nontrivially so otherwise, giving $D = \allleadstos$ by \cref{th:cufmNeverFals}); this one is not.
   Fix infinitely many individuals $i_1, i_2, … ∈ I$ and let $C = \set{\allleadstog \suchthat ∀n: \allleadstog(i_n, ∅) = φ}$: not closed under finite modification (flipping a single $\allleadstog(i_n, ∅)$ already leaves $C$), yet still falsifiable or trivial ($¬\OF_C = C$).
-  For $\allleadstog ∉ C$ failing at only finitely many individuals, an adversarial prefix can touch each failing individual at some other argument first, blocking recovery of its $∅$-value at each, and $\allleadstog$ offers no other route: $\POF_C(\allleadstog)$ fails.
-  For $\allleadstog ∉ C$ failing at infinitely many individuals, no finite prefix can touch them all, so some failing individual always remains fresh and reachable: $\POF_C(\allleadstog)$ holds.
-  Hence $D = ¬\POF_C = C ∪ \set{\allleadstog \suchthat \allleadstog \text{ fails } C \text{ at finitely many, at least one, individuals}}$, genuinely strictly between $C$ and $\allleadstos$.
+  For $\allleadstog ∉ C$ failing at only finitely many individuals, an adversarial prefix can touch each failing individual at some other argument first, blocking recovery of its $∅$-value at each, and $\allleadstog$ offers no other route: $\POF[C](\allleadstog)$ fails.
+  For $\allleadstog ∉ C$ failing at infinitely many individuals, no finite prefix can touch them all, so some failing individual always remains fresh and reachable: $\POF[C](\allleadstog)$ holds.
+  Hence $D = ¬\POF[C] = C ∪ \set{\allleadstog \suchthat \allleadstog \text{ fails } C \text{ at finitely many, at least one, individuals}}$, genuinely strictly between $C$ and $\allleadstos$.
 
   Yet PEV (already EV) collapses on this $D$: $D ∖ C$ is exactly “fails at finitely many individuals,” and any finite $θ'$ only constrains finitely many of them, so a completion matching $θ'$ exactly and failing at one further, untouched individual always exists — $θ' ∈ (D ∖ C)^⊆$ regardless of $θ'$.
   So $\OF_{D∖C}(\allleadstog)$ already fails at every $\allleadstog ∈ C$: PEV fails here too, confirming \cref{cnj:rpevProv} through a genuinely non-degenerate $D ∖ C$.
@@ -3871,7 +3871,7 @@ A genuine compactness proof of \cref{cnj:rpevProv}, if one exists, would need a 
 
 \begin{remark}[A duality behind the recurring collapse]
   \label{rk:rpevDuality}
-  A pattern underlies every example checked: $\POF_C$ is hard to satisfy off $C$ precisely when $\overline C$ offers no witness that stays redundantly available no matter how a prefix is spent — and that same difficulty is what makes $D ∖ C = (¬\POF_C) ∖ C$ rich, since it collects exactly what escaped robust exclusion.
+  A pattern underlies every example checked: $\POF[C]$ is hard to satisfy off $C$ precisely when $\overline C$ offers no witness that stays redundantly available no matter how a prefix is spent — and that same difficulty is what makes $D ∖ C = (¬\POF[C]) ∖ C$ rich, since it collects exactly what escaped robust exclusion.
   A set that is rich in that sense is, symmetrically, hard for any finite $θ'$ to exclude.
   So the same mechanism — finite information cannot pin down infinitely many independent possibilities — cuts both ways: it is what keeps $D ∖ C$ non-empty whenever $C$ is nontrivial (\cref{th:onlyEmptyPF}), and, on the same worlds, what stops that same $D ∖ C$ from ever being excludable by a finite prefix (breaking PEV).
   Making this duality precise, rather than case by case, would settle \cref{cnj:rpevProv}.
@@ -3880,7 +3880,7 @@ A genuine compactness proof of \cref{cnj:rpevProv}, if one exists, would need a 
 \begin{remark}[The singleton case]
   \label{rk:rpevSingleton}
   A tractable test: could $D ∖ C$ ever be a single point $\set{\allleadstog[0]}$?
-  $\POF_{\set{\allleadstog[0]}}(\allleadstog)$, for $\allleadstog ∈ C$, only requires every prefix to be rightward-extendable to some disagreement with $\allleadstog[0]$.
+  $\POF[\set{\allleadstog[0]}](\allleadstog)$, for $\allleadstog ∈ C$, only requires every prefix to be rightward-extendable to some disagreement with $\allleadstog[0]$.
   If $\allleadstog$ differs from $\allleadstog[0]$ at only finitely many points, an adversarial prefix can permanently block each of them (touching, for each differing individual, some other history first — always available once $\allargs$ has at least two elements, even for a difference located at the root $∅$).
   So PV can only survive at an $\allleadstog ∈ C$ that differs from $\allleadstog[0]$ at infinitely many independent individuals, mirroring the “fresh reserve” move used in the proof of \cref{th:rpevDiverge} — and PEV under $D$ requires this of \emph{every} $\allleadstog ∈ C$, not just one.
 
@@ -3891,9 +3891,9 @@ A genuine compactness proof of \cref{cnj:rpevProv}, if one exists, would need a 
 
 \begin{lemma}[Near misses force the escape witness through the flip]
   \label{th:rpevNearMiss}
-  Suppose $D = ¬\POF_C$ and $D ∖ C = \set{\allleadstog[0]}$ exactly, with hiding prefix $θ_1 ⊆ \allleadstog[0]$.
+  Suppose $D = ¬\POF[C]$ and $D ∖ C = \set{\allleadstog[0]}$ exactly, with hiding prefix $θ_1 ⊆ \allleadstog[0]$.
   Given a fresh individual $i^* ∈ I$ (untouched by $θ_1$), a history $h^*$, and a value $v ≠ \allleadstog[0](i^*, h^*)$, let $\allleadstog^*$ agree with $\allleadstog[0]$ everywhere except $\allleadstog^*(i^*, h^*) = v$.
-  If $\allleadstog^* ∉ C$ (hence $\allleadstog^* ≠ \allleadstog[0]$ forces $\POF_C(\allleadstog^*)$, as $D ∖ C$ has no second element), then any rightward $θ_1 ⊆ ψ$, $ψ ⊆ \allleadstog^*$, witnessing $\POF_C(\allleadstog^*)$ (that is, $ψ ∉ C^⊆$) must touch $(i^*, h^*)$.
+  If $\allleadstog^* ∉ C$ (hence $\allleadstog^* ≠ \allleadstog[0]$ forces $\POF[C](\allleadstog^*)$, as $D ∖ C$ has no second element), then any rightward $θ_1 ⊆ ψ$, $ψ ⊆ \allleadstog^*$, witnessing $\POF[C](\allleadstog^*)$ (that is, $ψ ∉ C^⊆$) must touch $(i^*, h^*)$.
 \end{lemma}
 \begin{proof}
   As $(i^*, h^*) ∉ θ_1(P)$, $θ_1 ⊆ \allleadstog^*$.
@@ -3905,7 +3905,7 @@ Closing this gap, or exhibiting a genuine example of a claim, not closed under f
 
 \begin{lemma}[Excluding a finite set needs individually-unblockable disagreement]
   \label{th:rpevFiniteS}
-  Given a finite $S = \set{\allleadstog[0], …, \allleadstog[k-1]} ⊆ \allleadstos$ and $\allleadstog ∉ S$: if $\POF_S(\allleadstog)$ holds, then for each $j$, $\allleadstog$ differs from $\allleadstog[j]$ at infinitely many distinct individuals.
+  Given a finite $S = \set{\allleadstog[0], …, \allleadstog[k-1]} ⊆ \allleadstos$ and $\allleadstog ∉ S$: if $\POF[S](\allleadstog)$ holds, then for each $j$, $\allleadstog$ differs from $\allleadstog[j]$ at infinitely many distinct individuals.
 \end{lemma}
 \begin{proof}
   Fix $j$, and suppose instead $\allleadstog$ differs from $\allleadstog[j]$ at only finitely many individuals.
