@@ -331,7 +331,7 @@ This is logically equivalent to mandating $¬\POF[C](\allleadsto)$, thus, exclud
   (Note that if $C_2$ fails because, for some $i$, $(a') \nileadstog φ$,
   then $θ$ is not a hiding prefix observation and this is what we want.)
 
-  With this example (considering again a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (a') \ileadstog φ$), we see that formalizing $¬\POF$, independently of $\allleadstog$,
+  With this example (considering again a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (a') \ileadstog φ$), we see that formalizing $¬\POF[C]$, independently of $\allleadstog$,
   as $∃θ ∈ Θ \suchthat ∀θ ⊑ θ' ∈ Θ: θ' ∈ C^⊆$,
   fails, as this prevents the prefix $θ = \set{(a') \ileadstog[j] φ}$ from bringing not POF.
   The condition $∃θ ∈ Θ \suchthat ∀θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}: θ' ∈ C^⊆$ is also not suitable, as it is always satisfied: pick any $θ ∈ Θ$ such that $θ ∉ \powerset{\allleadstog}$.
@@ -480,7 +480,7 @@ Converting a claim to disjunctive normal form is useful to characterize its comp
 
 \subsection{Permanent established verifiability}
 Established verifiability only requires \emph{some} proving observation to exist at each $\allleadstog ∈ C ∩ D$; nothing prevents that witness from being unusable once further, still compatible, observation occurs (if some extension of it is again completable into $D ∖ C$).
-Realistic protocols cannot revisit a shorter exposure once a longer, or merely different, one has been shown to an individual, so, mirroring how $\POF$ strengthens $\OF$ (\cref{th:ex-post}) by requiring that \emph{every} prefix admit a rightward falsifying extension, we ask instead that every prefix admit a rightward extension that still proves $C$.
+Realistic protocols cannot revisit a shorter exposure once a longer, or merely different, one has been shown to an individual, so, mirroring how $\POF[]$ strengthens $\OF$ (\cref{th:ex-post}) by requiring that \emph{every} prefix admit a rightward falsifying extension, we ask instead that every prefix admit a rightward extension that still proves $C$.
 
 Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{permanently verifiable} (PV) under $D$ at $\allleadstog$ iff
 $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀θ' ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$.
@@ -655,7 +655,7 @@ Given $i ∈ I$, $c, b ∈ \allargs$ distinct and $p ≠ p' ∈ P$, say a world 
 \end{proof}
 
 \begin{remark}
-  It is natural to ask whether \cref{th:anonProvApsTriad}'s incompatibility extends to APS witnesses that are not constant (querying some individual a value outside $\set{φ,φ'}$, or a non-constant pattern across comparable histories). The proof above does not settle this: it is specific to $¬\OF ∩ E$-provability via $C_2 ⊆ C$'s relabellings of $\allleadsto$, and the obstruction to generalizing is one of \emph{richness} rather than of values as such. Building the analogous $w^\dagger$ for a non-constant witness needs, for each individual $θ$ queries, infinitely many further individuals independently compatible with $θ$'s pattern there, to serve as clones; $C_2 ⊆ C$ supplies such clones for free when the pattern is constant, but for a non-constant pattern the only known instance of it is the single witness $w_0 ∈ \set{θ⊆w}∩C$ exhibiting $v$, and neither anonymity (which only relabels existing individuals, so cannot manufacture new clones of $w_0$'s $i$-row) nor \cref{th:anonThusAlmostPof} (which upgrades $\OF$ to $\POF$ for worlds \emph{already} in $E$, rather than establishing $¬\OF$ in the first place) supplies the missing repetition. Whether $w_0$ can always be replaced by an $E$-compatible witness — which would close the gap — is left open.
+  It is natural to ask whether \cref{th:anonProvApsTriad}'s incompatibility extends to APS witnesses that are not constant (querying some individual a value outside $\set{φ,φ'}$, or a non-constant pattern across comparable histories). The proof above does not settle this: it is specific to $¬\OF ∩ E$-provability via $C_2 ⊆ C$'s relabellings of $\allleadsto$, and the obstruction to generalizing is one of \emph{richness} rather than of values as such. Building the analogous $w^\dagger$ for a non-constant witness needs, for each individual $θ$ queries, infinitely many further individuals independently compatible with $θ$'s pattern there, to serve as clones; $C_2 ⊆ C$ supplies such clones for free when the pattern is constant, but for a non-constant pattern the only known instance of it is the single witness $w_0 ∈ \set{θ⊆w}∩C$ exhibiting $v$, and neither anonymity (which only relabels existing individuals, so cannot manufacture new clones of $w_0$'s $i$-row) nor \cref{th:anonThusAlmostPof} (which upgrades $\OF$ to $\POF[]$ for worlds \emph{already} in $E$, rather than establishing $¬\OF$ in the first place) supplies the missing repetition. Whether $w_0$ can always be replaced by an $E$-compatible witness — which would close the gap — is left open.
 \end{remark}
 
 A claim can be APS via a witness whose singleton value is the sentinel $∅$ rather than a genuine element of $P$; the following variant excludes this.
