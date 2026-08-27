@@ -247,15 +247,8 @@ Given a permutation $σ$ over $I$ and any $\allleadstog ∈ \allleadstos$, let $
 A claim $C$ is \emph{anonymous} iff $∀ σ: C = C ∘ σ$.
 
 \subsection{Verifiability}
-Such a criterion may have a restricted domain of application, meaning that it may be inapplicable on some claims.
-Here are possible desideratas on such a criterion.
-It should be sound, meaning that it must imply, when successful, that $C$ holds. 
-It must be realizeable, a loose demand that intuitively requests that the criterion only depends on feasible observations. 
-Also, it should be reproducible, meaning that after an observation has occurred, it must still be realizeable using new observations.
-It is complete if it applies to every $C ⊆ \allleadstos$ (its domain of application is unrestricted).
-It is decisive if its non success implies that $C$ fails (equivalently, that $\allleadstos ∖ C$ holds).
-
-It is expected (and will soon appear) that such a wish list is too demanding to be totally satisfiable. Our goal will be to study the extent to which these demands have to be relaxed.
+We want to know whether a claim holds, but all we have under hand are observations.
+A natural starting point is to attempt to verify claims, defined as follows.
 
 The claim $C$ is verifiable in the world $\allleadstog$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ ⊆ \allleadstog: \allleadstog ∈ C$. 
 Possible verifiability mandates that some (possibly counter-factual) observation proves the claim (makes sure that it holds), thus, $C$ is possibly verifiable iff it is verifiable in some world; formally, iff $∃ θ ∈ Θ \suchthat ∀ θ ⊆ \allleadstog: \allleadstog ∈ C$. 
