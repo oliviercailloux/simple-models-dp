@@ -255,16 +255,20 @@ Possible verifiability mandates that some (possibly counter-factual) observation
 Verifiedness mandates verifiability in the actual world; formally, $∃ θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀ θ ⊆ \allleadstog: \allleadstog ∈ C$.
 
 Verifiedness
-is sound (\cref{th:vImpliesHolds}), but is too demanding for many claims.
+is sound (\cref{th:vImpliesHolds}), meaning that indeed when a claim is verified, it holds, but is too demanding for many claims.
 Indeed,
 some sufficiently simple claims, such as the claim $C = \set{\allleadstog \suchthat (a) \ileadstog φ}$ that some given path leads some given individual to some given proposition, are possibly verifiable, but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
 
 Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(\set{θ ⊆ \allleadstog'} ∩ C) ≠ (P ∪ \set{∅})^I$.
 
-\Cref{th:infoNotVerif} shows that any claim that is informative in a given world is not verifiable in that world.
-The fundamental reason is that any observation can be completed in a way that contradicts any conclusion that informativeness mandates (\cref{th:completable}).
+In turns out that any claim that satisfies APTS fails verifiedness: the weaker demand of being informative in $\allleadsto$ implies failure of verifiedness (\cref{th:infoNotVerif}).
+This result may appear unsurprising, as we did not postulate yet any sort of regularity in the world, and ideed the fundamental reason for the incompatibility is that any observation can be completed in a way that contradicts any conclusion that informativeness mandates (\cref{th:completable}).
 
-To apply verifiability in at least some interesting cases, we must relax soundness. We will be content that the criterion guarantees, when satisfied, that $C$ holds, when assuming some prior knowledge. We will look for the minimal required prior (for obtaining satisfiability when $C$ holds) and then will study (partial) grounding of this prior thanks to falsifiability.
+We thus now turn to examining which sort of prior knowledge will suffice for ensuring the existence of a verification procedure that will allow to determine that a claim holds (when it indeed does) that also satisfies APTS and anonymity.
+
+Three sorts of priors will be involved, the two first of which can be seen as applications to our context of Popperian ideas. 
+First, we will assume that falsification tests have been run against the claim, and have failed falsifying it, under condition of sufficient observability.
+Second, we will assume that behaviors are in sufficient supply for being observed without limit. Third, we will assume that some behaviors that are inobservable (thus impossible to reject empirically) do not exist.
 
 Given $C, D ⊆ \allleadstos$, a claim $C$ is possibly verifiable under prior $D$ iff 
 $∃ θ ∈ Θ ∩ (C ∩ D)^⊆ \suchthat ∀ θ ⊆ \allleadstog ∈ D: \allleadstog ∈ C$.
@@ -274,8 +278,6 @@ Note that $C$ is verified iff it is verified under the trivial prior.
 Finally, $C$ satisfies established verifiability under prior $D$ iff
 $∀\allleadstog ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$.
 
-If $D ⊆ D'$, then established verifiability under prior $D'$ implies established verifiability under prior $D$.
-
 \Cref{th:vudImpliesHolds} proves that provided the prior is true, being verified under a prior suffices for holding.
 
 We say that a prior $D$ proves a claim $C$ iff $D ⊆ C$. 
@@ -283,25 +285,9 @@ We say that a prior $D$ proves a claim $C$ iff $D ⊆ C$.
 Provability by $D$ implies established verifiability under $D$ (just use verification $∅$).
 For some priors, provability by $D$ is strictly stronger than established verifiability under $D$ (the claim $C$ being $(a) \ileadsto φ$ satisfies established verifiability under the trivial prior $D$ but is not provable by it).
 
-\Cref{th:toStricterClaims} shows that impossibilities propagate to stricter claims.
-Together with \cref{th:minimalPriorForInformativeness}, it shows that 
-the prior required must be at least as strong as claiming that if some observable holds, then some configuration of DJs is excluded.
-\begin{remark}
-  Suffices that the prior states something like: if almost all individuals deliberately believe $φ$, then everybody deliberately believe $φ$. This innocuous enough prior suffices because we request only informativeness, and indeed it only permits to restrict possibilities, not to determine anybody’s DJ.
-\end{remark}
+\subsection{Trying to falsify claims}
+Our first prior assumes that all falsification tests against $C$ have failed.
 
-\Cref{th:noDecArgi,ex:noDecArg} illustrate about no decisive arguments.
-
-\begin{remark}
-  \label{th:noGeneral}
-  No general prior is reasonable.
-  A prior $D$ that states something general and reasonable such as “falsifiability implies correctness” and would be strong enough to allow determining that some substantial claim $C$ holds would mean that later rejecting $C$ would require rejecting the general prior. We want to keep the option of later rejecting $C$ (because one cannot be sure), and we want this to happen without having to reject a general claim such as the correctness of the method of falsifiability, rather just a particular claim about over-generalization.
-
-  The prior must say that we can generalize this particular claim, which allow for later rejection.
-  To prove that no general prior is reasonable, we might assume that two contradictory theories, $C$ ($(a)$ leads everyone to $φ$) and $C'$ ($(a)$ leads everyone to $φ$ except if $(a, a')$ does not), can be validated under the prior, considering some observations at some point. If under the prior, some obs proves C, then no further obs can prove C' under the same prior, so the prior must say something that is contradicted by the further obs, compatible with C', so the prior contradicts C'. So if the prior allows to validate C, then it contradicts C'. To be checked…
-\end{remark}
-
-\subsection{Which prior?}
 Given $\allleadstog$ and $C$, say that $C$ is
 \begin{description}[font=\normalfont]
   \item[Persistently Observably False in $\allleadstog$ ($\POF(\allleadstog)$)] iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆$;
@@ -1589,6 +1575,26 @@ This (to be proven) captures the claim “there is no decisive argument for $i$�
 \begin{proof}
   This holds by definition of $C^⊆ = ∪_{\allleadstog ∈ C} \powerset{\allleadstog}$.
 \end{proof}
+
+If $D ⊆ D'$, then established verifiability under prior $D'$ implies established verifiability under prior $D$.
+
+\Cref{th:toStricterClaims} shows that impossibilities propagate to stricter claims.
+Together with \cref{th:minimalPriorForInformativeness}, it shows that 
+the prior required must be at least as strong as claiming that if some observable holds, then some configuration of DJs is excluded.
+\begin{remark}
+  Suffices that the prior states something like: if almost all individuals deliberately believe $φ$, then everybody deliberately believe $φ$. This innocuous enough prior suffices because we request only informativeness, and indeed it only permits to restrict possibilities, not to determine anybody’s DJ.
+\end{remark}
+
+\Cref{th:noDecArgi,ex:noDecArg} illustrate about no decisive arguments.
+
+\begin{remark}
+  \label{th:noGeneral}
+  No general prior is reasonable.
+  A prior $D$ that states something general and reasonable such as “falsifiability implies correctness” and would be strong enough to allow determining that some substantial claim $C$ holds would mean that later rejecting $C$ would require rejecting the general prior. We want to keep the option of later rejecting $C$ (because one cannot be sure), and we want this to happen without having to reject a general claim such as the correctness of the method of falsifiability, rather just a particular claim about over-generalization.
+
+  The prior must say that we can generalize this particular claim, which allow for later rejection.
+  To prove that no general prior is reasonable, we might assume that two contradictory theories, $C$ ($(a)$ leads everyone to $φ$) and $C'$ ($(a)$ leads everyone to $φ$ except if $(a, a')$ does not), can be validated under the prior, considering some observations at some point. If under the prior, some obs proves C, then no further obs can prove C' under the same prior, so the prior must say something that is contradicted by the further obs, compatible with C', so the prior contradicts C'. So if the prior allows to validate C, then it contradicts C'. To be checked…
+\end{remark}
 
 \subsection{Falsifiability}
 \begin{theorem}
