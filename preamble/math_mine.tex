@@ -1,15 +1,30 @@
 \NewDocumentCommand{\range}{}{R}
 \NewDocumentCommand{\incr}{}{\mathcal{I}}
 \NewDocumentCommand{\finite}{}{\mathcal{F}}
-\NewDocumentCommand{\POF}{o}{%
-  \IfValueTF{#1}{%
-    \operatorname{POF}_{#1}%
-  }{%
+\NewDocumentCommand{\POF}{O{C}}{%
+  \def\POFarg{#1}%
+  \ifx\POFarg\empty
     \operatorname{POF}%
-  }%
+  \else
+    \operatorname{POF}_{#1}%
+  \fi
 }
-\DeclareMathOperator{\OF}{OF}
-\DeclareMathOperator{\F}{F}
+\NewDocumentCommand{\OF}{O{C}}{%
+  \def\OFarg{#1}%
+  \ifx\OFarg\empty
+    \operatorname{OF}%
+  \else
+    \operatorname{OF}_{#1}%
+  \fi
+}
+\NewDocumentCommand{\F}{O{C}}{%
+  \def\Farg{#1}%
+  \ifx\Farg\empty
+    \operatorname{F}%
+  \else
+    \operatorname{F}_{#1}%
+  \fi
+}
 
 %Decision Theory (MCDA and SC)
 \NewDocumentCommand{\allalts}{}{\mathscr{X}}
