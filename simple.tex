@@ -296,6 +296,7 @@ Given $\allleadstog$ and $C$, say that $C$ is
   \item[Persistently Observably False in $\allleadstog$ ($\POF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable whatever past observation have occurred already; formally, iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆$.
 \end{description}
 We also say that $C$ is \emph{rejectable} iff $\OF(\allleadsto)$.
+We sometimes write $\POF$ instead of $\POF(\allleadstog)$ when the world $\allleadstog$ is clear from the context, and $\POF[]$ when $C$ is clear from the context (or referring to any generic claim), and similarly for $\OF$ and $\F$.
 
 Note that $∀C, \allleadstog: \POF(\allleadstog) ⇒ \OF(\allleadstog) ⇒ \F(\allleadstog)$ (\cref{th:ex-post} proves the second implication).
 Also, given $C' ⊆ C$, $¬\OF[C'] ⇒ ¬\OF$ and $¬\POF[C'] ⇒ ¬\POF$.
@@ -317,30 +318,19 @@ This is logically equivalent to mandating $¬\POF(\allleadsto)$, thus, excluding
   Equivalently,
   if $C$ is still observably falsifiable after any amount of observation, then no feasible observation would falsify it ($\POF(\allleadsto) ⇒ ¬\OF(\allleadsto)$).
 
-  This corresponds to the prior $D
-  = \set{\allleadsto \suchthat ∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆}
-  $.
-
   Assuming, as the prior does, $¬\POF(\allleadsto)$, leaves three possibilities: either there are visibility issues ($\OF(\allleadsto) ∧ ¬\POF(\allleadsto)$), or the claim is false, but inobservably so ($\F(\allleadsto) ∧ ¬\OF(\allleadsto)$), or the claim holds ($¬\F(\allleadsto)$).
-
-  When considering a claim $C$ with no visibility issues, this prior states $¬\OF(\allleadsto)$.
+\end{remark}
+\begin{remark}
+  \label{rk:visIssuesForPof}
+  When considering a claim $C$ with no visibility issues, $C$-scrutiny is equivalent to $¬\OF(\allleadsto)$.
 
   The reason for adopting the prior $¬\POF(\allleadsto)$ instead of $¬\OF(\allleadsto)$ is illustrated with
-  $C_1$ is $(a) \ileadsto φ ∧ (a') \ileadsto φ$ for a given $i$: in some world (for example, where $(a) \ileadstog φ$ even though $(a') \nileadstog φ$), $¬\POF[C_1](\allleadsto) ∧ \OF[C_1](\allleadsto)$, thus we cannot assume that non-observation of falsification implies not OF, because it might also be due to observing that $(a) \ileadstog φ$.
-  It also applies to $C_2 = \set{\allleadsto \suchthat ∀i: (a') \ileadsto φ ∧ (a) \ileadsto[j] φ}$ for a given $j$, which in a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (a') \ileadstog φ$ is $¬\POF[C_2](\allleadstog)$ (consider the prefix $θ = \set{(a') \ileadstog[j] φ}$) and $\OF[C_2](\allleadstog)$.
+  $C_1$ is $(a) \ileadsto φ ∧ (a') \ileadsto φ$ for a given $i$: in some world (for example, where $(a) \ileadstog φ$ even though $(a') \nileadstog φ$), $¬\POF[C_1](\allleadstog) ∧ \OF[C_1](\allleadstog)$, thus we cannot assume that non-observation of falsification implies not OF, because it might also be due to observing that $(a) \ileadstog φ$.
+  It also applies to $C_2 = [∀i: (a') \ileadsto φ ∧ (a) \ileadsto[j] φ]$ for a given $j$, which in a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (a') \ileadstog φ$ is $¬\POF[C_2](\allleadstog)$ (consider the prefix $θ = \set{(a') \ileadstog[j] φ}$) and $\OF[C_2](\allleadstog)$.
   (Note that if $C_2$ fails because, for some $i$, $(a') \nileadstog φ$,
   then $θ$ is not a hiding prefix observation and this is what we want.)
-
-  With this example (considering again a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (a') \ileadstog φ$), we see that formalizing $¬\POF$, independently of $\allleadstog$,
-  as $∃θ ∈ Θ \suchthat ∀θ ⊑ θ' ∈ Θ: θ' ∈ C^⊆$,
-  fails, as this prevents the prefix $θ = \set{(a') \ileadstog[j] φ}$ from bringing not POF.
-  The condition $∃θ ∈ Θ \suchthat ∀θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}: θ' ∈ C^⊆$ is also not suitable, as it is always satisfied: pick any $θ ∈ Θ$ such that $θ ∉ \powerset{\allleadstog}$.
-
-  The following alternative prior, which might be considered for its apparent proximity with the chosen one, is also inadequate:
-  $∀\allleadstog, θ ∈ Θ ∩ \powerset{\allleadstog}, [∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆] ⇒ [θ ∈ C^⊆]$.
-  Consider again $C_1$ and $\allleadstog$ such that $(a) \ileadstog φ ∧ (a') \nileadstog φ$.
-  The chosen prior ($\POF[C_1](\allleadstog) ⇒ ¬\OF(\allleadstog)$) holds, as intuition commands, as the antecedent fails for the reason given above. The alternative prior however fails as $θ = \set{(a') \ileadstog φ}$ is completable only out of $C$.
 \end{remark}
+\Cref{rk:alternativePofs} discusses alternative formalizations of the concept POF.
 
 \begin{remark}
   This prior seems unsatisfactorily not primitive enough (to be worked on…). We should obtain as a result that the reasonable prior is, if no visibility issues, then not OF, by assuming that we have observed everything we could ever dream of.
@@ -1590,6 +1580,23 @@ the prior required must be at least as strong as claiming that if some observabl
 \end{remark}
 
 \subsection{Falsifiability}
+$C$-scrutiny is the prior $D_C
+= \set{\allleadsto \suchthat ∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆}
+$.
+
+\begin{remark}
+  \label{rk:alternativePofs}
+  Reusing, from \cref{rk:visIssuesForPof}, the example $C_2 = [∀i: (a') \ileadsto φ ∧ (a) \ileadsto[j] φ]$ for a given $j$ and considering again a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (a') \ileadstog φ$, we see that formalizing $¬\POF$, independently of $\allleadstog$,
+  as $∃θ ∈ Θ \suchthat ∀θ ⊑ θ' ∈ Θ: θ' ∈ C^⊆$,
+  is inadequate, as this prevents the prefix $θ = \set{(a') \ileadstog[j] φ}$ from bringing not POF.
+  The condition $∃θ ∈ Θ \suchthat ∀θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}: θ' ∈ C^⊆$ is also not suitable, as it is always satisfied: pick any $θ ∈ Θ$ such that $θ ∉ \powerset{\allleadstog}$.
+
+  The following alternative prior, which might be considered for its apparent proximity with the chosen one, is also inadequate:
+  $∀\allleadstog, θ ∈ Θ ∩ \powerset{\allleadstog}, [∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆] ⇒ [θ ∈ C^⊆]$.
+  Consider again $C_1$ and $\allleadstog$ such that $(a) \ileadstog φ ∧ (a') \nileadstog φ$.
+  The chosen prior ($\POF[C_1](\allleadstog) ⇒ ¬\OF(\allleadstog)$) holds, as intuition commands, as the antecedent fails for the reason given above. The alternative prior however fails as $θ = \set{(a') \ileadstog φ}$ is completable only out of $C$.
+\end{remark}
+
 \begin{remark}
   \label{rk:dual}
   Verifiability and observable falsity have a dual character as
