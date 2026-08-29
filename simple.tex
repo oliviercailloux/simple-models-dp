@@ -287,13 +287,21 @@ Note that $C$ is verified iff it is verified under the trivial prior.
 Finally, $C$ satisfies established verifiability under prior $D$ iff
 $∀\allleadstog ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$.
 
-\Cref{th:vudImpliesHolds} proves that provided the prior is true, being verified under a prior suffices for holding.
+\Cref{th:vudImpliesHolds} shows that provided the prior is true, being verified under a prior suffices for holding.
 
 Provability by $D$ implies established verifiability under $D$ (just use verification $∅$).
 For some priors, provability by $D$ is strictly stronger than established verifiability under $D$ (the claim $C$ being $(a) \ileadsto φ$ satisfies established verifiability under the trivial prior $D$ but is not provable by it).
 
-Established verifiability only requires \emph{some} proving observation to exist at each $\allleadstog ∈ C ∩ D$. Mirroring how $\POF[]$ strengthens $\OF$ by requiring that \emph{every} prefix admit a rightward falsifying extension, it is desirable that every prefix admit a rightward extension that still proves $C$.
+The following example illustrates that demanding that a claim be verifiable (under some prior) permits the claim to contain punctual facts, which provability under general priors to do allow.
+\begin{example}
+  \label{ex:jaysAndKaysConstants}
+  Consider the world $\allleadsto$ constituted of two kinds of individuals, the jay’s which always answer $φ$ and the kay’s which always answer $φ'$. Thus, $I = J ∪ K$, and $∀i ∈ I, α ∈ \allhists: [i ∈ J ⇒ α \ileadsto φ] ∧ [i ∈ K ⇒ α \ileadsto φ']$.
+  The claim $C_1 = [∃i \suchthat ∅ \ileadsto φ]$ is verifiable and not informative.
+  The claim $C_2 = [(∀i: ∅ \ileadsto φ ⇒ ∀α, α \ileadsto φ) ∧ (∃i \suchthat ∅ \ileadsto φ)]$ is informative and not verifiable.
+\end{example}
+We will see that combining (variants of) verification procedures, which bring punctual facts, with general enough priors, lead further than procedures based only on priors or on verification could.
 
+Established verifiability only requires \emph{some} proving observation to exist at each $\allleadstog ∈ C ∩ D$. Mirroring how $\POF[]$ strengthens $\OF$ by requiring that \emph{every} prefix admit a rightward falsifying extension, it is desirable that every prefix admit a rightward extension that still proves $C$.
 Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{permanently verifiable} (PV) under $D$ at $\allleadstog$ iff
 $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀θ' ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$.
 $C$ satisfies PEV under prior $D$ iff this holds $∀\allleadstog ∈ C ∩ D$. Under a given prior, PEV is stronger than EV (\cref{th:pevImpliesEv}).
@@ -375,9 +383,9 @@ Intuition might suggest that under $E$, no visibility issues can arise. \Cref{ex
 $(¬\POF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no visibility issues in $E$ (that is, $∀\allleadstog ∈ E: \OF(\allleadstog) ⇒ \POF(\allleadstog)$).
 
 \Cref{th:finiteExceptSpreadAnon} shows that anonymous claims suffer no visibility issues in $E$.
-Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C ⊆ E$ is provable by $¬\POF[C ∩ E] ∩ E$.
+Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C ⊆ E$ is provable by $¬\POF[C ∩ E] ∩ E$ (\cref{th:anonFalsImpliesProv}).
 
-\Cref{th:noAnonIBCHoldsProvable} shows the insufficiency of this prior: for some worlds, no anonymous claims that hold and is provable by $¬\POF[C ∩ E] ∩ E$ exist.
+\Cref{th:noAnonIBCHoldsProvable} shows the insufficiency of this prior: for some worlds, no anonymous claims that hold and is APTS and provable by $¬\POF[C ∩ E] ∩ E$ exist.
 TODO prove this for PEV and all worlds.
 
 \section{Suitable claims}
@@ -1182,6 +1190,34 @@ This follows from \cref{th:delegationNoVisibilityIssues,th:finiteExceptSpreadAno
 \end{example}
 
 \begin{theorem}
+  \label{th:anonFalsImpliesProv}
+  If an anonymous claim $C ⊆ E$ is falsifiable or trivial, it is provable by $¬\POF ∩ E$.
+\end{theorem}
+\begin{proof}
+  $C$ is falsifiable or trivial iff
+  $¬\OF ⊆ C$, which implies $¬\OF ∩ E ⊆ C$.
+
+  From \cref{th:finiteExceptSpreadAnon} (with $F = ∅$),
+  $C$ suffers no visibility issues in $E$.
+  From \cref{th:provGapVisibility},
+  $¬\POF ∩ E$ proves $C$ iff $¬\OF ∩ E$ proves $C$.
+\end{proof}
+
+The converse fails, as \cref{ex:anonProvNotFals} shows.
+\begin{theorem}
+  \label{th:completableInE}
+  If $\card{I} ∉ ℕ$, given any general observation $O$, $∃ O ⊆ \allleadstog ∈ E$.
+\end{theorem}
+\begin{proof}
+  Define for each individual observed in $O$ a behavior that completes the observation that concern her in $O$. Define $\allleadstog$ as the world associating infinitely many individuals to each of these behaviors.
+\end{proof}
+\begin{example}
+  \label{ex:anonProvNotFals}
+  The claim $C = E$ is anonymous, provable by $¬\POF ∩ E$, not trivial and not falsifiable:
+  consider any $\allleadstog ∉ E$ (such as a world associating a given behavior to a single individual $i$ and a different behavior to all others), we have $\F(\allleadstog)$ but $¬\OF(\allleadstog)$ as any observation $θ$ is completable in $C = E$ (\cref{th:completableInE}).
+\end{example}
+
+\begin{theorem}
   Given any $\allleadsto ∈ E$, there exists an anonymous claim that is provable by $¬\POF[C ∩ E] ∩ E$.
 \end{theorem}
 \begin{proof}
@@ -1216,6 +1252,29 @@ This follows from \cref{th:delegationNoVisibilityIssues,th:finiteExceptSpreadAno
   $E$ is anonymous (as in the previous proof), $\allleadsto ∈ E = C$, and $(¬\POF[C ∩ E]) ∩ E = (¬\POF[E]) ∩ E ⊆ E = C$.
   \emph{Informativeness.} For any $\allleadstog ∈ E$, each behavior class is infinite and individuals sharing a behavior share the same $π$-value, so every non-empty fiber of $π(\allleadstog)$ is infinite.
   Hence, fixing any $i_0 ∈ I$ and $v ∈ P$, the profile assigning $v$ to $i_0$ and $∅$ to all other individuals has a $v$-fiber of size $1 ∈ ℕ$, so it lies outside $π(E)$, giving $π(E) ≠ (P ∪ \set{∅})^I$.
+\end{proof}
+
+In some worlds, the prior by $¬\POF[C ∩ E] ∩ E$ is sufficient to get existence of suitable claims.
+\begin{example}
+  Consider the world 
+  $\allleadsto = J × \allhists × \set{φ} ∪ K × \allhists × \set{φ'}$ 
+  of \cref{ex:jaysAndKaysConstants}, 
+  with infinite sets of individuals $J$, $K$.
+  The claim $C = [(∀i: ∅ \ileadsto φ ⇒ ∀α, α \ileadsto φ) ∧ (∃i \suchthat ∅ \ileadsto φ)] ∩ E$
+  holds, is anonymous, APTS and PEF under $¬\POF[C ∩ E] ∩ E$.
+\end{example}
+
+The following shows that verifiability is a mandatory part of the criterion for determining whether $C$ holds, in that world: requiring the stronger provability instead of verifiability (under the same prior) leads to an impossibility.
+\begin{theorem}
+  Consider the world 
+  $\allleadsto = J × \allhists × \set{φ} ∪ K × \allhists × \set{φ'}$ 
+  of \cref{ex:jaysAndKaysConstants}, 
+  with infinite sets of individuals $J$, $K$.
+  No anonymous claim that holds is APTS and provable by $¬\POF[C ∩ E] ∩ E$.
+\end{theorem}
+\begin{proof}
+  TODO.
+  Either weaken the phrasing to apply \cref{ex:noProvableDecisivePhi}, or invoke a more general result coming later (and move this).
 \end{proof}
 
 \begin{theorem}
