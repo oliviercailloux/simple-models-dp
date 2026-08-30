@@ -1292,6 +1292,26 @@ $∀H ∈ \fincrhists: \restr{g}{H} ∈ \restr{B}{H}$.
 The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I) ⊆ B]$.
 
 \begin{theorem}
+  Consider $\allleadsto ∈ E$, an anonymous claim $C$ that holds, and a world $\allleadstog'$.
+  If $∀b ∈ \allleadstog'(I)$, $b$ is undistinguishable from $\allleadsto(I)$, then $¬\OF(\allleadstog')$.
+\end{theorem}
+\begin{proof}
+  Consider any $θ ⊆ \allleadstog'$ and let us show that $θ ∈ C^⊆$.
+
+  Define the injection $s: θ(\allargs, P) → I$ as follows. Consider each $i ∈ θ(\allargs, P)$ in turn.
+  Let $H = θ(i, P) ∈ \fincrhists$.
+  As $\ileadstogo'$ is undistinguishable from $\allleadsto(I)$, 
+  $∃i' \suchthat \restr{\ileadstogo'}{H} = \restr{\ileadstoo[i']}{H}$.
+  Set $s(i) = i'$.
+  As $\allleadsto ∈ E$, there are infinitely many suitable $i'$ so we can pick one that has not been chosen yet, to ensure $s$ is an injection.
+
+  The function $s$ has domain $θ(\allargs, P)$ and codomain $s(θ(\allargs, P))$, both finite sets of equal cardinality.
+  Turn $s$ into a bijection $σ = s ∪ s'$ over $I$ by defining any bijection $s': I ∖ θ(\allargs, P) → I ∖ s(θ(\allargs, P))$. (TBD: Check conditions)
+
+  By construction, $θ ⊆ \allleadsto \circ σ$, which belongs to $C$ because $C$ holds and is anonymous.
+\end{proof}
+
+\begin{theorem}
   Consider the world 
   $\allleadsto = (J × \allhists × \set{φ}) ∪ (K × \set{∅} × \set{φ}) ∪ (K × (\allhists ∖ \set{∅}) × \set{φ'})$ 
   of \cref{ex:jaysAndKaysConstants}, 
@@ -1319,7 +1339,10 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
   Indeed, $θ$ is completable by a renaming of the individuals of $\allleadsto$, which $C$, being anonymous, contains.
   That is because any $i ∈ I_1$ for which a path starting with $d$ is observed, and any $i ∈ I_3$, behaves observably like any $k ∈ K$, and any other $i ∈ I_1$, and any $i ∈ I_2$, behaves observably like any $j ∈ J$.
 \end{proof}
-%  It remains to show $¬\OF(w^*)$. As in the self-referential case, every finite $θ_0 ⊆ w^*$ restricted to $i ∈ I_3$ is a single chain, hence lies entirely within the $d$-branch (constant $φ'$, possibly with $φ$ at $∅$, embedding into $I_2$'s shape) or entirely outside it (constant $φ$ throughout, embedding into $I_1$'s shape) — this dichotomy never referred to $\hist^{(k)}$, $H$, or $T$, so it holds regardless of their complexity. Individuals outside $I_3$ embed by relabelling as usual (Anon, $\allleadsto ∈ C$). So $¬\OF(w^*)$ holds outright, and $w^* ∈ (¬\OF) ∩ E ∖ C$ contradicts Prov.
+\begin{proof}[More generalizable proof]
+  Build $\allleadstog'$ as above.
+  Observe that each behavior in $\allleadstog'(I)$ is undistinguishable from $\allleadsto(I)$.
+\end{proof}
 
 \subsubsection{More draft results}
 These two are about the intuition that if the real world has individuals whose DJs cover $P ∪ \set{∅}$, provability alone cannot lead to informativeness by lack of punctual facts about a given individual.
