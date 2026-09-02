@@ -1323,7 +1323,7 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
   
   Given $a ∈ \allargs$ and $\anobs: H → P$ for some finite $∅ ≠ H ∈ \incr(\allhists)$ such that 
   $1 ≤ \card{(max H)}$ satisfying $∃i \suchthat \anobs ⊆ \ileadstoo$,
-  an anonymous claim $C ⊆ [∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ ∃p ∈ P \suchthat a \ileadstost p]$ that holds is not verifiable at $\allleadsto$ under $¬\OF ∩ E$ (thus also not under $¬\POF ∩ E$).
+  any anonymous claim $C ⊆ [∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ ∃p ∈ P \suchthat a \ileadstost p]$ that holds is not verifiable at $\allleadsto$ under $¬\OF ∩ E$ (thus also not verifiable at $\allleadsto$ under $¬\POF ∩ E$).
 \end{theorem}
 \begin{proof}
   Let $b_j$ be the behavior associated to $\allleadsto(J)$, define $b_k$ similarly.
@@ -1339,13 +1339,14 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
   Consider any $i ∈ θ(\allhists, P)$.
   Pick any $b ∈ \allleadsto(I) \suchthat θ(i) ⊆ b$,
   define $\ileadstogo' = b$.
-  Partition $I ∖ θ(\allhists, P)$ into infinite sets, one for each behavior in $\allleadsto(I)$, plus one, thereby creating a bijection $f: I ∖ θ(\allhists, P) → \allleadsto(I) ∪ I^\text{new}$.
-  For each $i ∈ I ∖ θ(\allhists, P)$ with $f(i) ∈ \allleadsto(I)$, define $\ileadstogo' = f(i)$, for the remaining infinite set, define $\ileadstogo' = \restr{b_k}{S} ∪ \restr{b_j}{\allhists ∖ S}$.
+  Define $b^\text{new} ∈ \allbs$ as $b^\text{new} = \restr{b_k}{S} ∪ \restr{b_j}{\allhists ∖ S}$.
+  Partition $I ∖ θ(\allhists, P)$ into infinite sets, one for each behavior in $\allleadsto(I)$, plus one for $b^\text{new}$, thereby creating a function $f: I ∖ θ(\allhists, P) → \allbs$ (TBD check condition).
+  For each $i ∈ I ∖ θ(\allhists, P)$ with $f(i) ∈ \allleadsto(I)$, define $\ileadstogo' = f(i)$, for the remaining infinite set, define $\ileadstogo' = b^\text{new}$.
 
   Note that $\allleadstog' ∈ E$.
   Also, $\allleadstog' ∉ C$: as $\restr{\ileadstogo'}{H} = \restr{\ileadstoo}{H}$, $\anobs ⊆ \ileadstogo'$, but as $(d, a) ∈ S$ and $(a, d) ∉ S$, $(d, a) \ileadsto φ'$ and $(a, d) \ileadsto φ$, thus $∄p \suchthat a \ileadstostg' p$.
 
-  Observe that each behavior in $\allleadstog'(I)$ is undistinguishable from $\allleadsto(I)$: given any $i ∈ I_1$, if a path $H' ∈ \fincrhists$ crosses $S$ then $\restr{\ileadstog'}{H'} = \restr{b_k}{H'}$, otherwise $\restr{\ileadstog'}{H'} = \restr{b_j}{H'}$.
+  Observe that each behavior in $\allleadstog'(I)$ is undistinguishable from $\allleadsto(I)$: given any $i ∈ f^{-1}(b^\text{new})$, if a path $H' ∈ \fincrhists$ crosses $S$ then $\restr{\ileadstog'}{H'} = \restr{b_k}{H'}$, otherwise $\restr{\ileadstog'}{H'} = \restr{b_j}{H'}$.
   By \cref{th:undistOf}, $¬\OF(\allleadstog')$.
 \end{proof}
 
