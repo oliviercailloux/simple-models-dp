@@ -1301,7 +1301,7 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
 \begin{proof}
   Consider any $θ ⊆ \allleadstog'$ and let us show that $θ ∈ C^⊆$.
 
-  Define the injection $s: θ(\allhists, P) → I$ as follows.\commentClaude{$θ(\allargs, P)$ (here and at "domain $θ(\allargs, P)$" and twice more below) looks like it should be $θ(\allhists, P)$, the notation established at the definition of $O(\allhists, P)$ ("the observed individuals") and used correctly with $\allhists$ throughout the very next proof (\cref{th:holdsNotVerifUnderNotOfE}). $\allargs$ is the set of arguments, not of paths, so $θ(\allargs, P)$ as written does not match any established notation.} Consider each $i ∈ θ(\allhists, P)$ in turn.
+  Define the injection $s: θ(\allhists, P) → I$ as follows. Consider each $i ∈ θ(\allhists, P)$ in turn.
   Let $H = θ(i, P) ∈ \fincrhists$.
   As $\ileadstogo'$ is undistinguishable from $\allleadsto(I)$, 
   $∃i' \suchthat \restr{\ileadstogo'}{H} = \restr{\ileadstoo[i']}{H}$.
@@ -1309,15 +1309,14 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
   As $\allleadsto ∈ E$, there are infinitely many suitable $i'$ so we can pick one that has not been chosen yet, to ensure $s$ is an injection.
 
   The function $s$ has domain $θ(\allhists, P)$ and codomain $s(θ(\allhists, P))$, both finite sets of equal cardinality.
-  Turn $s$ into a permutation $σ = s ∪ s'$ over $I$ by defining any bijection $s': I ∖ θ(\allhists, P) → I ∖ s(θ(\allhists, P))$ (TBD: argue that we can do this).\commentClaude{This bijection $s'$ does exist and the "TBD" seems closeable: $θ(\allargs, P)$ [sic, presumably $θ(\allhists,P)$] and its image under $s$ are finite (both of size $\card{θ(\allargs,P)}$), and $I$ is infinite (any $\allleadsto ∈ E$ has, for every $i$, an infinite class of individuals sharing $\ileadstoo$, so $I$ itself is infinite); removing a finite subset from an infinite set always leaves a set of the same cardinality as the original, for either finite subset removed, so $I∖θ(\allargs,P)$ and $I∖s(θ(\allargs,P))$ have equal cardinality and a bijection $s'$ exists. Worth stating explicitly instead of leaving as TBD.}
+  Turn $s$ into a permutation $σ = s ∪ s'$ over $I$ by defining any bijection $s': I ∖ θ(\allhists, P) → I ∖ s(θ(\allhists, P))$ (TBD: argue that we can do this).\commentClaude{This bijection $s'$ does exist and the "TBD" seems closeable: $θ(\allhists, P)$ and its image under $s$ are finite (both of size $\card{θ(\allhists,P)}$), and $I$ is infinite (any $\allleadsto ∈ E$ has, for every $i$, an infinite class of individuals sharing $\ileadstoo$, so $I$ itself is infinite); removing a finite subset from an infinite set always leaves a set of the same cardinality as the original, for either finite subset removed, so $I∖θ(\allhists,P)$ and $I∖s(θ(\allhists,P))$ have equal cardinality and a bijection $s'$ exists. Worth stating explicitly instead of leaving as TBD.}
 
   By construction, $θ ⊆ \allleadsto \circ σ$, which belongs to $C$ because $C$ holds and is anonymous.
-  \commentClaude{This worry seems already addressed by the argument above: for a fixed (finite) observation $θ$, $s$ is built individual-by-individual over the finitely many $i ∈ θ(\allargs,P)$ only, each independently matched to some $i'$ with the same restricted behavior on $H_i$; there is no need to "reach" every behavior realized in $\allleadstog'$, only to match the finitely many rows that $θ$ actually queries. If that is right, this TODO could be resolved/removed.}
 \end{proof}
 
 \begin{theorem}
   \label{th:holdsNotVerifUnderNotOfE}
-  Given $\allleadsto ∈ E$, $a ∈ \allargs$, $b^\text{new} ∈ \allbs$, some finite $∅ ≠ H ∈ \incr(\allhists)$ \commentClaude{This condition on $H$ does not appear to be used anywhere in the proof below (nothing there depends on $\max H$ or on $H ≠ \set{∅}$); it is however used in \cref{ex:jaysAndKaysConstants}'s follow-up example just after, both to define $(\max H)(1)$ and, more importantly, to rule out $i∈K$ satisfying the claim's antecedent there. If it is not needed for this proof, consider dropping it from the theorem (or noting why it is kept), since it currently reads as a hypothesis of the theorem itself.}
+  Given $\allleadsto ∈ E$, $a ∈ \allargs$, $b^\text{new} ∈ \allbs$, some finite $∅ ≠ H ∈ \incr(\allhists)$
   and an anonymous claim $C ⊆ [∀i ∈ I: \restr{b^\text{new}}{H} ⊆ \ileadstoo ⇒ ∃p ∈ P \suchthat a \ileadstost p]$,
   if $b^\text{new}$ is undistinguishable from $\allleadsto(I)$ yet $b^\text{new} ∉ \allleadsto(I)$ and $∄p ∈ P \suchthat a \ileadstostg[b^\text{new}] p$
   and $C$ holds, it is not verifiable at $\allleadsto$ under $¬\OF ∩ E$ (thus also not verifiable at $\allleadsto$ under $¬\POF ∩ E$).
@@ -1365,24 +1364,92 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
 
 \subsection{One more prior}
 Given $\anobs$, 
+define $D^\anobs$
+as:
+any behavior $b ∉ \allleadsto(I)$ satisfying
+$\anobs ⊆ \ileadstogo[b]$
+is distinguishable from $\allleadsto(I)$.
+Given $\anobs$, 
 $a ∈ \allargs$, 
 $p ∈ P$,
 define $D^{\anobs, a, p}$
 as:
-if the world has the regularity 
-$\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
-then any behavior $b ∉ \allleadsto(I)$ failing
+any behavior $b ∉ \allleadsto(I)$ failing
 $\anobs ⊆ \ileadstogo[b] ⇒ a \ileadstostg[b] p$
+(thus satisfying $\anobs ⊆ \ileadstogo[b] ∧ a \nileadstostg[b] p$)
 is distinguishable from $\allleadsto(I)$.
 
 \begin{theorem}
-  Given $\allleadsto ∈ E ∩ D^{\anobs, a, p}$ such that
+  \label{th:oneMorePrior}
+  Given $\allleadsto ∈ E ∩ D^\anobs$ such that
   for some $a$, $p$, $H$, $\anobs: H → P$ with $1 ≤ \card(\max H)$,
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
-  there exists an anonymous claim that holds, is APTS and verifiable at $\allleadsto$ under $¬\OF ∩ E ∩ D^{\anobs, a, p}$.
+  there exists an anonymous claim that holds, is APTS and verifiable at $\allleadsto$ under $¬\OF ∩ E ∩ D^\anobs$.
 \end{theorem}
+
+\begin{proof}
+  Write $B := \set{b ∈ \allbs \suchthat b ∉ \allleadsto(I) ∧ \anobs ⊆ b}$. As $\allleadsto ∈ D^\anobs$, fix, for each $b ∈ B$, some $H_b ∈ \fincrhists$ with $\restr{b}{H_b} ∉ \restr{\allleadsto(I)}{H_b}$. Take
+  $$C := [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ [∀i ∈ I, b ∈ B: \restr{\ileadstogo}{H_b} ≠ \restr{b}{H_b}].$$
+
+  \emph{Holds.} The first conjunct holds at $\allleadsto$: this is exactly the hypothesis $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$. The second holds at $\allleadsto$ by choice of $H_b$: $\restr{b}{H_b} ∉ \restr{\allleadsto(I)}{H_b}$ means exactly $∀i ∈ I: \restr{\ileadstoo}{H_b} ≠ \restr{b}{H_b}$.
+
+  \emph{Anonymous.} Write $Q_1(f) := [\anobs ⊆ f ⇒ a \ileadstostg[f] p]$ and $Q_2(f) := [∀b ∈ B: \restr{f}{H_b} ≠ \restr{b}{H_b}]$, properties of a single row $f$ not depending on $i$ ($B$ and each $H_b$ are fixed once and for all), so that $C = [∀i: Q_1(\allleadstog(i)) ∧ Q_2(\allleadstog(i))]$. Fix a permutation $σ$ of $I$ and $\allleadstog ∈ \allleadstos$. As $(\allleadstog ∘ σ)(i) = \allleadstog(σ(i))$,
+  $$\allleadstog ∘ σ ∈ C ⇔ ∀i ∈ I: Q_1(\allleadstog(σ(i))) ∧ Q_2(\allleadstog(σ(i))) ⇔ ∀j ∈ I: Q_1(\allleadstog(j)) ∧ Q_2(\allleadstog(j)) ⇔ \allleadstog ∈ C,$$
+  reindexing $j := σ(i)$, a bijection of $I$. As $\allleadstog, σ$ were arbitrary, $C ∘ σ = C$: $C$ is anonymous.
+
+  \emph{APTS-P (hence APTS).} Fix $i_0 ∈ I$ with $θ_0 := \set{i_0} × \anobs ⊆ \allleadsto$ (hypothesis). For any $\allleadstog' ∈ \set{θ_0 ⊆ \allleadstog} ∩ C$: $θ_0 ⊆ \allleadstog'$ gives $\anobs ⊆ \allleadstog'(i_0)$, so $C$'s first conjunct at $i_0$ gives $a \ileadstost[i_0] p$ in $\allleadstog'$ directly, that is $p ∈ P_{i_0}(\allleadstog')$; by \cref{th:sing}, $P_{i_0}(\allleadstog') = \set{p}$ exactly, that is $π_{i_0}(\allleadstog') = p$. Since moreover $\allleadsto ∈ \set{θ_0 ⊆ \allleadstog} ∩ C$ (as $θ_0 ⊆ \allleadsto$ and $\allleadsto ∈ C$), this set is nonempty, so $π_{i_0}(\set{θ_0 ⊆ \allleadstog} ∩ C) = \set{p}$: as $p ∈ P$ and $θ_0$ is feasible, this is APTS-P, witnessed by $(θ_0, i_0, p)$; in particular $C$ is APTS.
+
+  \emph{Verifiable at $\allleadsto$ under $D := ¬\OF ∩ E ∩ D^\anobs$.} We show the stronger $¬\OF ⊆ C$, hence $D ⊆ ¬\OF ⊆ C$.
+
+  Fix $\allleadstog' ∉ C$. If $\allleadstog'$ fails $C$'s second conjunct, some $i ∈ I$, $b ∈ B$ satisfy $\restr{\allleadstog'(i)}{H_b} = \restr{b}{H_b}$. Otherwise $\allleadstog'$ fails the first: some $i ∈ I$ has $g := \allleadstog'(i)$ with $\anobs ⊆ g$ and $a \nileadstostg[g] p$; as the hypothesis gives $\anobs ⊆ \ileadstoo[j] ⇒ a \ileadstost[j] p$ for every $j ∈ I$, no $j$ has $\ileadstoo[j] = g$, so $g ∉ \allleadsto(I)$, hence $g ∈ B$, and trivially $\restr{\allleadstog'(i)}{H_g} = \restr{g}{H_g}$. Either way, fix such $i ∈ I$, $b ∈ B$.
+
+  Let $θ := \set{(i, α, \allleadstog'(i)(α)) \suchthat α ∈ H_b}$. As $H_b ∈ \fincrhists$, $θ ∈ Θ$, and $θ ⊆ \allleadstog'$. If some $\allleadstog''' ∈ C$ extended $θ$, then $f := \allleadstog'''(i)$ would satisfy $\restr{f}{H_b} = \restr{\allleadstog'(i)}{H_b} = \restr{b}{H_b}$, contradicting $C$'s second conjunct at $i, b$, applied to $\allleadstog'''$. So $θ ∉ C^⊆$, that is $\OF(\allleadstog')$, so $\allleadstog' ∉ ¬\OF$.
+
+  As $\allleadstog' ∉ C$ was arbitrary, $¬\OF ⊆ C$.
+
+  Finally, $θ = ∅$ witnesses that $C$ is verifiable at $\allleadsto$ under $D$: $∅ ∈ Θ ∩ \powerset{\allleadsto}$, and $∅ ∈ (C ∩ D)^⊆$ since $\allleadsto ∈ C ∩ D$ ($\allleadsto ∈ E ∩ D^\anobs$ by hypothesis, and $¬\OF(\allleadsto)$ since $\allleadsto ∈ C$); and $∀ ∅ ⊆ \allleadstog' ∈ D: \allleadstog' ∈ C$ is exactly $D ⊆ ¬\OF ⊆ C$, shown above.
+\end{proof}
+
+\begin{remark}
+  Compare to \cref{th:leadsToProvable}: writing $C' := [∀i: Q_1(\allleadstog(i))]$ for the first conjunct alone (\cref{th:leadsToProvable}'s own claim, for the same $\anobs, a, p$), $C = C' ∩ [∀i, b ∈ B: \restr{\ileadstogo}{H_b} ≠ \restr{b}{H_b}] ⊆ C'$: the claim proved here is stronger (strictly so unless $B = ∅$), as it pins down membership in $\allleadsto(I)$ exactly on $\anobs$-matching rows, while $C'$ only demands decisiveness there.
+
+  The priors $D^\anobs$ (used here) and $D^{\anobs, a, p}_{C'}$ (used for $C'$) are not comparable by inclusion: $D^\anobs$ quantifies over behaviors $b ∉ \allleadstog(I)$ matching $\anobs$, tested against $\allleadstog(I)$ itself, whereas $D^{\anobs, a, p}_{C'}$ quantifies over behaviors $h ∈ \allleadstog(I) ∖ S_{C'}$ matching $\anobs$ and failing decisiveness, tested against the external set $S_{C'}$ (the types of $C'$).
+
+  Both proofs in fact establish provability, not merely verifiability: the argument above shows the stronger $¬\OF ⊆ C$, so $C$ is provable already by $¬\OF$ alone, hence a fortiori by $D ⊆ ¬\OF$; \cref{th:leadsToProvable} shows $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{C'} ⊆ C'$, genuinely needing $E$ (used there to move a witness to an untouched clone), not just $¬\POF$. As $\POF(\allleadstog) ⇒ \OF(\allleadstog)$, $¬\OF ⊆ ¬\POF$: the stronger claim $C$ is proved from the stronger of the two bare conditions, $¬\OF$, with no repeatability assumption at all, at the price of $C$ being built by choice from $\allleadsto$'s own identity; the weaker, $\allleadsto$-independent claim $C'$ needs the weaker base condition $¬\POF$ supplemented by $E$ and the claim-relative $D^{\anobs, a, p}_{C'}$.
+\end{remark}
+
+The prior $D^{\anobs, a, p}$ (unlike $D^{\anobs, a, p}_{C'}$) does not depend on any claim, yet, like it, only demands distinguishability of behaviors failing decisiveness, not of every $\anobs$-matching non-real behavior. The next result shows that \cref{th:oneMorePrior}'s construction, run against this narrower, claim-independent prior instead of $D^\anobs$, yields a claim strictly between $C$ and $C'$, still provable by $¬\OF$ alone.
+
+\begin{theorem}
+  \label{th:oneMorePriorNarrow}
+  Given $\allleadsto ∈ D^{\anobs, a, p}$ such that
+  for some $a$, $p$, $H$, $\anobs: H → P$ with $1 ≤ \card(\max H)$,
+  $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
+  and
+  $∃ i \suchthat \anobs ⊆ \ileadstoo$,
+  there exists an anonymous claim that holds, is APTS and provable by $¬\OF ∩ D^{\anobs, a, p}$.
+\end{theorem}
+
+\begin{proof}
+  Write $B := \set{b ∈ \allbs \suchthat b ∉ \allleadsto(I) ∧ \anobs ⊆ b ∧ a \nileadstostg[b] p}$. As $\allleadsto ∈ D^{\anobs, a, p}$, fix, for each $b ∈ B$, some $H_b ∈ \fincrhists$ with $\restr{b}{H_b} ∉ \restr{\allleadsto(I)}{H_b}$. Take
+  $$C := [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ [∀i ∈ I, b ∈ B: \restr{\ileadstogo}{H_b} ≠ \restr{b}{H_b}].$$
+
+  \emph{Holds, Anonymous, APTS-P.} Identical to the corresponding paragraphs of \cref{th:oneMorePrior}: each only uses that $H_b$ witnesses $\restr{b}{H_b} ∉ \restr{\allleadsto(I)}{H_b}$ for $b ∈ B$, never how $B$ is otherwise defined.
+
+  \emph{Provable by $¬\OF ∩ D^{\anobs, a, p}$.} We show the stronger $¬\OF ⊆ C$.
+
+  Fix $\allleadstog' ∉ C$. If $\allleadstog'$ fails $C$'s second conjunct, some $i ∈ I$, $b ∈ B$ satisfy $\restr{\allleadstog'(i)}{H_b} = \restr{b}{H_b}$. Otherwise $\allleadstog'$ fails the first: some $i ∈ I$ has $g := \allleadstog'(i)$ with $\anobs ⊆ g$ and $a \nileadstostg[g] p$; as the hypothesis gives $\anobs ⊆ \ileadstoo[j] ⇒ a \ileadstost[j] p$ for every $j ∈ I$, no $j$ has $\ileadstoo[j] = g$, so $g ∉ \allleadsto(I)$; together with $\anobs ⊆ g$ and $a \nileadstostg[g] p$, this gives $g ∈ B$, and trivially $\restr{\allleadstog'(i)}{H_g} = \restr{g}{H_g}$. Either way, fix such $i ∈ I$, $b ∈ B$.
+
+  Let $θ := \set{(i, α, \allleadstog'(i)(α)) \suchthat α ∈ H_b}$. As $H_b ∈ \fincrhists$, $θ ∈ Θ$, and $θ ⊆ \allleadstog'$. If some $\allleadstog''' ∈ C$ extended $θ$, then $f := \allleadstog'''(i)$ would satisfy $\restr{f}{H_b} = \restr{\allleadstog'(i)}{H_b} = \restr{b}{H_b}$, contradicting $C$'s second conjunct at $i, b$, applied to $\allleadstog'''$. So $θ ∉ C^⊆$, that is $\OF(\allleadstog')$, so $\allleadstog' ∉ ¬\OF$.
+
+  As $\allleadstog' ∉ C$ was arbitrary, $¬\OF ⊆ C$, hence $¬\OF ∩ D^{\anobs, a, p} ⊆ C$: $C$ is provable by $¬\OF ∩ D^{\anobs, a, p}$.
+\end{proof}
+
+\begin{remark}
+  Unlike the claim of \cref{th:oneMorePrior}, this $C$ need not pin down membership in $\allleadsto(I)$ exactly on $\anobs$-matching rows: a decisive, non-real $f$ (that is, $\anobs ⊆ f$, $a \ileadstostg[f] p$, $f ∉ \allleadsto(I)$) never belongs to $B$, so it is excluded from $C$ only if it happens to collide with some $b ∈ B$ on $b$'s own $H_b$ — not guaranteed in general. By construction $C ⊆ C'$ (\cref{th:leadsToProvable}'s claim), with equality iff $B = ∅$; and $C$ equals the claim of \cref{th:oneMorePrior} exactly when every non-real $\anobs$-matching behavior already fails decisiveness (making the two constructions' $B$'s coincide). In general, $C$ sits strictly between the two.
+\end{remark}
 
 \subsection{More draft results}
 \begin{theorem}
