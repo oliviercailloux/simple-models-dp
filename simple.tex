@@ -1301,59 +1301,94 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
 \begin{proof}
   Consider any $θ ⊆ \allleadstog'$ and let us show that $θ ∈ C^⊆$.
 
-  Define the injection $s: θ(\allargs, P) → I$ as follows. Consider each $i ∈ θ(\allargs, P)$ in turn.
+  Define the injection $s: θ(\allhists, P) → I$ as follows.\commentClaude{$θ(\allargs, P)$ (here and at "domain $θ(\allargs, P)$" and twice more below) looks like it should be $θ(\allhists, P)$, the notation established at the definition of $O(\allhists, P)$ ("the observed individuals") and used correctly with $\allhists$ throughout the very next proof (\cref{th:holdsNotVerifUnderNotOfE}). $\allargs$ is the set of arguments, not of paths, so $θ(\allargs, P)$ as written does not match any established notation.} Consider each $i ∈ θ(\allhists, P)$ in turn.
   Let $H = θ(i, P) ∈ \fincrhists$.
   As $\ileadstogo'$ is undistinguishable from $\allleadsto(I)$, 
   $∃i' \suchthat \restr{\ileadstogo'}{H} = \restr{\ileadstoo[i']}{H}$.
   Set $s(i) = i'$.
   As $\allleadsto ∈ E$, there are infinitely many suitable $i'$ so we can pick one that has not been chosen yet, to ensure $s$ is an injection.
 
-  The function $s$ has domain $θ(\allargs, P)$ and codomain $s(θ(\allargs, P))$, both finite sets of equal cardinality.
-  Turn $s$ into a permutation $σ = s ∪ s'$ over $I$ by defining any bijection $s': I ∖ θ(\allargs, P) → I ∖ s(θ(\allargs, P))$. (TBD: Check conditions)
+  The function $s$ has domain $θ(\allhists, P)$ and codomain $s(θ(\allhists, P))$, both finite sets of equal cardinality.
+  Turn $s$ into a permutation $σ = s ∪ s'$ over $I$ by defining any bijection $s': I ∖ θ(\allhists, P) → I ∖ s(θ(\allhists, P))$ (TBD: argue that we can do this).\commentClaude{This bijection $s'$ does exist and the "TBD" seems closeable: $θ(\allargs, P)$ [sic, presumably $θ(\allhists,P)$] and its image under $s$ are finite (both of size $\card{θ(\allargs,P)}$), and $I$ is infinite (any $\allleadsto ∈ E$ has, for every $i$, an infinite class of individuals sharing $\ileadstoo$, so $I$ itself is infinite); removing a finite subset from an infinite set always leaves a set of the same cardinality as the original, for either finite subset removed, so $I∖θ(\allargs,P)$ and $I∖s(θ(\allargs,P))$ have equal cardinality and a bijection $s'$ exists. Worth stating explicitly instead of leaving as TBD.}
 
   By construction, $θ ⊆ \allleadsto \circ σ$, which belongs to $C$ because $C$ holds and is anonymous.
-  TODO is this really engough, what if only one type in the result whereas the world has many? Any guarantee that we reach all original behaviors?
+  \commentClaude{This worry seems already addressed by the argument above: for a fixed (finite) observation $θ$, $s$ is built individual-by-individual over the finitely many $i ∈ θ(\allargs,P)$ only, each independently matched to some $i'$ with the same restricted behavior on $H_i$; there is no need to "reach" every behavior realized in $\allleadstog'$, only to match the finitely many rows that $θ$ actually queries. If that is right, this TODO could be resolved/removed.}
 \end{proof}
 
 \begin{theorem}
-  Consider the world 
-  $\allleadsto = (J × \allhists × \set{φ}) ∪ (K × \set{∅} × \set{φ}) ∪ (K × (\allhists ∖ \set{∅}) × \set{φ'})$ 
-  of \cref{ex:jaysAndKaysConstants}, 
-  with infinite sets of individuals $J$, $K$.
-  
-  Given $a ∈ \allargs$ and $\anobs: H → P$ for some finite $∅ ≠ H ∈ \incr(\allhists)$ such that 
-  $1 ≤ \card{(max H)}$ satisfying $∃i \suchthat \anobs ⊆ \ileadstoo$,
-  any anonymous claim $C ⊆ [∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ ∃p ∈ P \suchthat a \ileadstost p]$ that holds is not verifiable at $\allleadsto$ under $¬\OF ∩ E$ (thus also not verifiable at $\allleadsto$ under $¬\POF ∩ E$).
+  \label{th:holdsNotVerifUnderNotOfE}
+  Given $\allleadsto ∈ E$, $a ∈ \allargs$, $b^\text{new} ∈ \allbs$, some finite $∅ ≠ H ∈ \incr(\allhists)$ \commentClaude{This condition on $H$ does not appear to be used anywhere in the proof below (nothing there depends on $\max H$ or on $H ≠ \set{∅}$); it is however used in \cref{ex:jaysAndKaysConstants}'s follow-up example just after, both to define $(\max H)(1)$ and, more importantly, to rule out $i∈K$ satisfying the claim's antecedent there. If it is not needed for this proof, consider dropping it from the theorem (or noting why it is kept), since it currently reads as a hypothesis of the theorem itself.}
+  and an anonymous claim $C ⊆ [∀i ∈ I: \restr{b^\text{new}}{H} ⊆ \ileadstoo ⇒ ∃p ∈ P \suchthat a \ileadstost p]$,
+  if $b^\text{new}$ is undistinguishable from $\allleadsto(I)$ yet $b^\text{new} ∉ \allleadsto(I)$ and $∄p ∈ P \suchthat a \ileadstostg[b^\text{new}] p$
+  and $C$ holds, it is not verifiable at $\allleadsto$ under $¬\OF ∩ E$ (thus also not verifiable at $\allleadsto$ under $¬\POF ∩ E$).
 \end{theorem}
 \begin{proof}
-  Let $b_j$ be the behavior associated to $\allleadsto(J)$, define $b_k$ similarly.
-
-  Define $i$ such that $\anobs ⊆ \ileadstoo$, assume (wlog) that $i ∈ J$.
-  Pick $d ∈ \allargs ∖ \set{a, (\max H)(1)}$.
-  Partition $J$ into two disjoint infinite subsets $I_1, I_2$, with $i ∈ I_1$, and define $I_3 = K$.
-  Define $S = \set{∅ ≠ \hist \suchthat \hist_1 = d} ⊆ \allhists$ as the set of paths starting with $d$; observe that $S ∩ H = ∅$.
-
   Consider any prefix $θ ⊆ \allleadsto$.
   We build $θ ⊆ \allleadstog' ∈ (¬\OF ∩ E) ∖ C$.
-  We have $θ(\allhists, I) ⊆ \allleadsto(I)$.
   Consider any $i ∈ θ(\allhists, P)$.
   Pick any $b ∈ \allleadsto(I) \suchthat θ(i) ⊆ b$,
   define $\ileadstogo' = b$.
-  Define $b^\text{new} ∈ \allbs$ as $b^\text{new} = \restr{b_k}{S} ∪ \restr{b_j}{\allhists ∖ S}$.
-  Partition $I ∖ θ(\allhists, P)$ into infinite sets, one for each behavior in $\allleadsto(I)$, plus one for $b^\text{new}$, thereby creating a function $f: I ∖ θ(\allhists, P) → \allbs$ (TBD check condition).
+  Partition $I ∖ θ(\allhists, P)$ into infinite sets, one for each behavior in $\allleadsto(I)$, plus one for $b^\text{new}$, thereby creating a function $f: I ∖ θ(\allhists, P) → \allbs$ (TBD check condition).\commentClaude{This is a substantive gap, not just bookkeeping: it requires partitioning the cofinite set $I ∖ θ(\allhists,P)$ into one infinite class per element of $\allleadsto(I)$ plus one more, all pairwise disjoint. If $\allleadsto(I)$ (the set of behaviors realized in $\allleadsto$) is large — e.g. as large as, or larger than, $I$ itself — such a partition need not exist (you cannot in general split a set of cardinality $\card I$ into $\card{\allleadsto(I)}$ many infinite disjoint pieces unless $\card I ≥ \card{\allleadsto(I)} \cdot \aleph_0$, roughly). Nothing in the hypotheses bounds $\card{\allleadsto(I)}$ relative to $\card I$, so as stated the construction is not guaranteed to go through in general.}
   For each $i ∈ I ∖ θ(\allhists, P)$ with $f(i) ∈ \allleadsto(I)$, define $\ileadstogo' = f(i)$, for the remaining infinite set, define $\ileadstogo' = b^\text{new}$.
 
   Note that $\allleadstog' ∈ E$.
-  Also, $\allleadstog' ∉ C$: as $\restr{\ileadstogo'}{H} = \restr{\ileadstoo}{H}$, $\anobs ⊆ \ileadstogo'$, but as $(d, a) ∈ S$ and $(a, d) ∉ S$, $(d, a) \ileadsto φ'$ and $(a, d) \ileadsto φ$, thus $∄p \suchthat a \ileadstostg' p$.
+  Also, $\allleadstog' ∉ C$: picking any $i \suchthat \ileadstogo' = b^\text{new}$, $\restr{b^\text{new}}{H} ⊆ \ileadstogo'$, but $∄p \suchthat a \ileadstostg' p$.
 
-  Observe that each behavior in $\allleadstog'(I)$ is undistinguishable from $\allleadsto(I)$: given any $i ∈ f^{-1}(b^\text{new})$, if a path $H' ∈ \fincrhists$ crosses $S$ then $\restr{\ileadstog'}{H'} = \restr{b_k}{H'}$, otherwise $\restr{\ileadstog'}{H'} = \restr{b_j}{H'}$.
+  Observe that each behavior in $\allleadstog'(I)$ is undistinguishable from $\allleadsto(I)$.
   By \cref{th:undistOf}, $¬\OF(\allleadstog')$.
 \end{proof}
+\begin{example}
+  Consider the world
+  $\allleadsto = (J × \allhists × \set{φ}) ∪ (K × \set{∅} × \set{φ}) ∪ (K × (\allhists ∖ \set{∅}) × \set{φ'})$
+  of \cref{ex:jaysAndKaysConstants},
+  with infinite sets of individuals $J$, $K$.\commentClaude{\cref{ex:jaysAndKaysConstants} states the kay's "always answer $φ'$", i.e. $∀i∈K, α∈\allhists: α\ileadsto φ'$, including at $α=∅$. Here the kay's instead answer $φ$ at $∅$ and $φ'$ everywhere else, which is a different world than the one literally defined in \cref{ex:jaysAndKaysConstants} (and the special-casing at $∅$ turns out to matter: it is exactly what makes $i∈K$ fail the antecedent of $C$'s condition below, via the $1≤\card{\max H}$ hypothesis). Referring to it as "the world … of \cref{ex:jaysAndKaysConstants}" may mislead a reader checking back against that example's literal statement.}
 
-\subsubsection{Intuition}
+  Pick some finite $∅ ≠ H ∈ \incr(\allhists)$ such that 
+  $1 ≤ \card{(max H)}$,
+  pick $d ∈ \allargs ∖ \set{a, (\max H)(1)}$.
+  Define $S = \set{∅ ≠ \hist \suchthat \hist_1 = d} ⊆ \allhists$ as the set of paths starting with $d$. 
+  Let $b_j$ be the behavior associated to $\allleadsto(J)$, define $b_k$ similarly.
+  Define $b^\text{new} ∈ \allbs$ as $b^\text{new} = \restr{b_k}{S} ∪ \restr{b_j}{\allhists ∖ S}$.
+  Consider any anonymous claim $C ⊆ [∀i ∈ I: \restr{b^\text{new}}{H} ⊆ \ileadstoo ⇒ ∃p ∈ P \suchthat a \ileadstost p]$ that holds (for example, $[∀i ∈ I: \restr{b^\text{new}}{H} ⊆ \ileadstoo ⇒ ∃p ∈ P \suchthat a \ileadstost p]$).\commentClaude{\Cref{th:holdsNotVerifUnderNotOfE} additionally requires "$C$ holds", i.e. $\allleadsto ∈ C$; not every anonymous $C$ included in the bracketed set satisfies this (e.g. $C = ∅$ does not). It does hold for the largest such $C$ (taking $C$ to be exactly the bracketed set, which is itself anonymous since it quantifies over all $i∈I$ uniformly): every $j∈J$ trivially satisfies the antecedent and is decisive for $φ$, and every $k∈K$ fails the antecedent because $\restr{b^\text{new}}{H} = \restr{b_j}{H}$, constantly $φ$ (since $S∩H=∅$) while $\ileadstoo[k]$ disagrees with $φ$ on $H$'s nonempty path(s) — which is exactly where the $1≤\card{\max H}$ hypothesis is needed, to guarantee $H$ has a nonempty path on which $k$'s behavior (constant $φ'$ off $∅$) departs from $φ$. This isn't spelled out in the example; as written, "consider any anonymous claim $C⊆[…]$" doesn't establish that $C$ can be chosen to hold at $\allleadsto$.}
+
+  Observe that $S ∩ H = ∅$ ($∅ ∉ S$ by definition and $∀ ∅ ≠ \hist ∈ H: \hist_1 = (\max H)(1) ≠ d$)\commentClaude{This follows because $H$, being an increasing set of paths, is a chain under the prefix order, so every nonempty $\hist∈H$ is a prefix of $\max H$ and hence shares its first argument $(\max H)(1) ≠ d$; combined with $∅∉S$ by definition, no element of $H$ lies in $S$. Worth a one-line justification, as it's the crux of the construction (and is also used implicitly, in the same way, to show $b^\text{new}$ is undistinguishable from $\allleadsto(I)$ below).} and
+  as $(d, a) ∈ S$ and $(a, d) ∉ S$, $b^\text{new}((d, a)) = φ' ≠ b^\text{new}((a, d)) = φ$, thus $∄p \suchthat a \ileadstostg[b^\text{new}] p$.
+  Also,
+  $b^\text{new}$ is undistinguishable from $\allleadsto(I) = \set{b_j, b_k}$: for any $H'∈\fincrhists$, since $H'$ is a chain, either all its nonempty paths start with $d$ — in which case $\restr{b^\text{new}}{H'}=\restr{b_k}{H'}$ — or none do — in which case $\restr{b^\text{new}}{H'}=\restr{b_j}{H'}$;
+  and $b^\text{new}∉\allleadsto(I)$: e.g. $b^\text{new}((d)) = φ' ≠ φ = b_j((d))$ and $b^\text{new}((a)) = φ ≠ φ' = b_k((a))$, using $a≠d$.
+  Thus, \cref{th:holdsNotVerifUnderNotOfE} applies.
+\end{example}
+
+\begin{remark}
+  The $H = ∅$ case technically holds, but either requires to take seriously the $∃p$ in the claim $C$’s deduction ($i_1$ has $a$ decisive for $φ$ and $i_2$ has $a$ decisive for $φ'$), or if $p$ is fixed for everybody, then the antecedent of the theorem never triggers.
+\end{remark}
+
+\subsection{One more prior}
+Given $\anobs$, 
+$a ∈ \allargs$, 
+$p ∈ P$,
+define $D^{\anobs, a, p}$
+as:
+if the world has the regularity 
+$\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
+then any behavior $b ∉ \allleadsto(I)$ failing
+$\anobs ⊆ \ileadstogo[b] ⇒ a \ileadstostg[b] p$
+is distinguishable from $\allleadsto(I)$.
+
+\begin{theorem}
+  Given $\allleadsto ∈ E ∩ D^{\anobs, a, p}$ such that
+  for some $a$, $p$, $H$, $\anobs: H → P$ with $1 ≤ \card(\max H)$,
+  $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
+  and
+  $∃ i \suchthat \anobs ⊆ \ileadstoo$,
+  there exists an anonymous claim that holds, is APTS and verifiable at $\allleadsto$ under $¬\OF ∩ E ∩ D^{\anobs, a, p}$.
+\end{theorem}
+
+\subsection{More draft results}
 \begin{theorem}
   Verifiability in $\allleadstog ∈ C ∩ D$ under $D$ fails iff
   $∃\allleadstog' ∈ D ∖ C \suchthat ∀θ ∈ Θ ∩ \powerset{\allleadstog}: θ ⊆ \allleadstog'$
+  (missing some conditions…)
 \end{theorem}
 \begin{proof}
   By definition,
@@ -1370,7 +1405,6 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
   Missing some not yet clearly defined hypothesis about anonymity…
 \end{proof}
 
-\subsubsection{More draft results}
 These two are about the intuition that if the real world has individuals whose DJs cover $P ∪ \set{∅}$, provability alone cannot lead to informativeness by lack of punctual facts about a given individual.
 \begin{theorem}
   \label{th:noAnonIBCHoldsProvable}
@@ -1540,7 +1574,7 @@ APTS-P strengthens both APS-P (\cref{def:apsP}, dropping the requirement that $�
   The claim $C = \set{\allleadstog \suchthat ∀i∈I: [∅⇝_iφ ⇒ a\ileadstost_iφ]}$ holds, is anonymous, probable by $¬\OF ∩ E$, and APS.
 \end{remark}
 
-\subsubsection{PEV under not POF}
+\subsection{PEV under not POF}
 We now turn to claims $C ⊆ E$ satisfying PEV under $F_C = (¬\POF) ∩ E$.
 
 Recall the definition.
