@@ -1386,7 +1386,7 @@ is distinguishable from $\allleadsto(I)$.
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
-  there exists an anonymous claim that holds, is APTS and verifiable at $\allleadsto$ under $¬\OF ∩ E ∩ D^\anobs$.
+  there exists an anonymous claim that holds, is APTS and provable by $¬\POF ∩ E$.
 \end{theorem}
 
 \begin{proof}
@@ -1401,15 +1401,19 @@ is distinguishable from $\allleadsto(I)$.
 
   \emph{APTS-P (hence APTS).} Fix $i_0 ∈ I$ with $θ_0 := \set{i_0} × \anobs ⊆ \allleadsto$ (hypothesis). For any $\allleadstog' ∈ \set{θ_0 ⊆ \allleadstog} ∩ C$: $θ_0 ⊆ \allleadstog'$ gives $\anobs ⊆ \allleadstog'(i_0)$, so $C$'s first conjunct at $i_0$ gives $a \ileadstost[i_0] p$ in $\allleadstog'$ directly, that is $p ∈ P_{i_0}(\allleadstog')$; by \cref{th:sing}, $P_{i_0}(\allleadstog') = \set{p}$ exactly, that is $π_{i_0}(\allleadstog') = p$. Since moreover $\allleadsto ∈ \set{θ_0 ⊆ \allleadstog} ∩ C$ (as $θ_0 ⊆ \allleadsto$ and $\allleadsto ∈ C$), this set is nonempty, so $π_{i_0}(\set{θ_0 ⊆ \allleadstog} ∩ C) = \set{p}$: as $p ∈ P$ and $θ_0$ is feasible, this is APTS-P, witnessed by $(θ_0, i_0, p)$; in particular $C$ is APTS.
 
-  \emph{Verifiable at $\allleadsto$ under $D := ¬\OF ∩ E ∩ D^\anobs$.} We show the stronger $¬\OF ⊆ C$, hence $D ⊆ ¬\OF ⊆ C$.
+  \emph{Provable by $¬\POF ∩ E$.} We show $¬\POF ∩ E ⊆ C$.
 
-  Fix $\allleadstog' ∉ C$. If $\allleadstog'$ fails $C$'s second conjunct, some $i ∈ I$, $b ∈ B$ satisfy $\restr{\allleadstog'(i)}{H_b} = \restr{b}{H_b}$. Otherwise $\allleadstog'$ fails the first: some $i ∈ I$ has $g := \allleadstog'(i)$ with $\anobs ⊆ g$ and $a \nileadstostg[g] p$; as the hypothesis gives $\anobs ⊆ \ileadstoo[j] ⇒ a \ileadstost[j] p$ for every $j ∈ I$, no $j$ has $\ileadstoo[j] = g$, so $g ∉ \allleadsto(I)$, hence $g ∈ B$, and trivially $\restr{\allleadstog'(i)}{H_g} = \restr{g}{H_g}$. Either way, fix such $i ∈ I$, $b ∈ B$.
+  Fix $\allleadstog' ∈ E$ with $\allleadstog' ∉ C$. If $\allleadstog'$ fails $C$'s second conjunct, some $i ∈ I$, $b ∈ B$ satisfy $\restr{\allleadstog'(i)}{H_b} = \restr{b}{H_b}$. Otherwise $\allleadstog'$ fails the first: some $i ∈ I$ has $\anobs ⊆ \allleadstog'(i)$ and $a \nileadstostg[\allleadstog'(i)] p$; as the hypothesis gives $\anobs ⊆ \ileadstoo[j] ⇒ a \ileadstost[j] p$ for every $j ∈ I$, no $j$ has $\ileadstoo[j] = \allleadstog'(i)$, so $\allleadstog'(i) ∉ \allleadsto(I)$, hence $b := \allleadstog'(i) ∈ B$, and trivially $\restr{\allleadstog'(i)}{H_b} = \restr{b}{H_b}$. Either way, fix such $i ∈ I$, $b ∈ B$, and write $g := \allleadstog'(i)$, so $\restr{g}{H_b} = \restr{b}{H_b}$.
 
-  Let $θ := \set{(i, α, \allleadstog'(i)(α)) \suchthat α ∈ H_b}$. As $H_b ∈ \fincrhists$, $θ ∈ Θ$, and $θ ⊆ \allleadstog'$. If some $\allleadstog''' ∈ C$ extended $θ$, then $f := \allleadstog'''(i)$ would satisfy $\restr{f}{H_b} = \restr{\allleadstog'(i)}{H_b} = \restr{b}{H_b}$, contradicting $C$'s second conjunct at $i, b$, applied to $\allleadstog'''$. So $θ ∉ C^⊆$, that is $\OF(\allleadstog')$, so $\allleadstog' ∉ ¬\OF$.
+  Fix any $θ ∈ Θ ∩ \powerset{\allleadstog'}$. As $\allleadstog' ∈ E$, $J_g := \set{j ∈ I \suchthat \allleadstog'(j) = g}$ is infinite; as $θ$ is finite, $θ(\allhists, P)$ is finite, so $J_g ∖ θ(\allhists, P) ≠ ∅$. Pick $i'$ in this set and let $θ_b^{i'} := \set{(i', α, g(α)) \suchthat α ∈ H_b}$. As $H_b ∈ \fincrhists$, $θ_b^{i'} ∈ Θ$, and $θ_b^{i'} ⊆ \allleadstog'$ (as $\allleadstog'(i') = g$).
 
-  As $\allleadstog' ∉ C$ was arbitrary, $¬\OF ⊆ C$.
+  If some $\allleadstog''' ∈ C$ extended $θ_b^{i'}$, then $f := \allleadstog'''(i')$ would satisfy $\restr{f}{H_b} = \restr{g}{H_b} = \restr{b}{H_b}$, contradicting $C$'s second conjunct at $i', b$, applied to $\allleadstog'''$. So $θ_b^{i'} ∉ C^⊆$.
 
-  Finally, $θ = ∅$ witnesses that $C$ is verifiable at $\allleadsto$ under $D$: $∅ ∈ Θ ∩ \powerset{\allleadsto}$, and $∅ ∈ (C ∩ D)^⊆$ since $\allleadsto ∈ C ∩ D$ ($\allleadsto ∈ E ∩ D^\anobs$ by hypothesis, and $¬\OF(\allleadsto)$ since $\allleadsto ∈ C$); and $∀ ∅ ⊆ \allleadstog' ∈ D: \allleadstog' ∈ C$ is exactly $D ⊆ ¬\OF ⊆ C$, shown above.
+  Let $θ' := θ ∪ θ_b^{i'}$. Since $i'$ is untouched by $θ$, $θ ⊑ θ'$, and $θ' ∈ Θ ∩ \powerset{\allleadstog'}$. Since $θ_b^{i'} ⊆ θ'$ and $C^⊆$ is downward closed, $θ' ∈ C^⊆$ would force $θ_b^{i'} ∈ C^⊆$, contradicting the above; so $θ' ∉ C^⊆$.
+
+  As $θ$ was arbitrary (the same $b, H_b$ serve throughout; only the clone $i'$ depends on $θ$), $\POF(\allleadstog')$ holds, so $\allleadstog' ∉ ¬\POF$.
+
+  As $\allleadstog' ∈ E ∖ C$ was arbitrary, $¬\POF ∩ E ⊆ C$: $C$ is provable by $¬\POF ∩ E$. Note $\allleadstog' ∈ D^\anobs$ was never assumed: the hypothesis $\allleadsto ∈ D^\anobs$, on the true world alone, only serves, once and upfront, to fix $B$ and the $H_b$'s.
 \end{proof}
 
 \begin{remark}
@@ -1417,19 +1421,19 @@ is distinguishable from $\allleadsto(I)$.
 
   The priors $D^\anobs$ (used here) and $D^{\anobs, a, p}_{C'}$ (used for $C'$) are not comparable by inclusion: $D^\anobs$ quantifies over behaviors $b ∉ \allleadstog(I)$ matching $\anobs$, tested against $\allleadstog(I)$ itself, whereas $D^{\anobs, a, p}_{C'}$ quantifies over behaviors $h ∈ \allleadstog(I) ∖ S_{C'}$ matching $\anobs$ and failing decisiveness, tested against the external set $S_{C'}$ (the types of $C'$).
 
-  Both proofs in fact establish provability, not merely verifiability: the argument above shows the stronger $¬\OF ⊆ C$, so $C$ is provable already by $¬\OF$ alone, hence a fortiori by $D ⊆ ¬\OF$; \cref{th:leadsToProvable} shows $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{C'} ⊆ C'$, genuinely needing $E$ (used there to move a witness to an untouched clone), not just $¬\POF$. As $\POF(\allleadstog) ⇒ \OF(\allleadstog)$, $¬\OF ⊆ ¬\POF$: the stronger claim $C$ is proved from the stronger of the two bare conditions, $¬\OF$, with no repeatability assumption at all, at the price of $C$ being built by choice from $\allleadsto$'s own identity; the weaker, $\allleadsto$-independent claim $C'$ needs the weaker base condition $¬\POF$ supplemented by $E$ and the claim-relative $D^{\anobs, a, p}_{C'}$.
+  Both proofs move a witness to an untouched clone using $E$ in the same way, but differ in when the distinguishing prior is cashed in. Here, $¬\POF ∩ E ⊆ C$ outright: $\allleadsto ∈ D^\anobs$ is a hypothesis on the true world alone, spent only once, upfront, to fix $B$ and the $H_b$'s, before any candidate world is examined, so it drops out of \cref{th:oneMorePrior}'s conclusion entirely. In \cref{th:leadsToProvable}, by contrast, $\allleadstog ∈ D^{\anobs, a, p}_{C'}$ must instead be invoked afresh at each tested $\allleadstog$, since its witnessing window depends on that world's own failing row $g := \allleadstog(i)$, which varies with $\allleadstog$; so that prior cannot similarly be dropped from the conclusion. So the asymmetry is not about $E$, but about when the distinguishing prior is cashed in: once, from $\allleadsto$ alone, for the stronger, $\allleadsto$-dependent claim $C$; or per candidate world, for the weaker, $\allleadsto$-independent claim $C'$.
 \end{remark}
 
-The prior $D^{\anobs, a, p}$ (unlike $D^{\anobs, a, p}_{C'}$) does not depend on any claim, yet, like it, only demands distinguishability of behaviors failing decisiveness, not of every $\anobs$-matching non-real behavior. The next result shows that \cref{th:oneMorePrior}'s construction, run against this narrower, claim-independent prior instead of $D^\anobs$, yields a claim strictly between $C$ and $C'$, still provable by $¬\OF$ alone.
+The prior $D^{\anobs, a, p}$ (unlike $D^{\anobs, a, p}_{C'}$) does not depend on any claim, yet, like it, only demands distinguishability of behaviors failing decisiveness, not of every $\anobs$-matching non-real behavior. The next result shows that \cref{th:oneMorePrior}'s construction, run against this narrower, claim-independent prior instead of $D^\anobs$, yields a claim strictly between $C$ and $C'$, still provable by $¬\POF ∩ E$.
 
 \begin{theorem}
   \label{th:oneMorePriorNarrow}
-  Given $\allleadsto ∈ D^{\anobs, a, p}$ such that
+  Given $\allleadsto ∈ E ∩ D^{\anobs, a, p}$ such that
   for some $a$, $p$, $H$, $\anobs: H → P$ with $1 ≤ \card(\max H)$,
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
-  there exists an anonymous claim that holds, is APTS and provable by $¬\OF ∩ D^{\anobs, a, p}$.
+  there exists an anonymous claim that holds, is APTS and provable by $¬\POF ∩ E$.
 \end{theorem}
 
 \begin{proof}
