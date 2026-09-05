@@ -1440,7 +1440,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   Taking $B = \allleadsto(I)$ trivializes the filter prior: $\allleadsto(I) ⊆ S_C$ (every row of $\allleadsto$ is, by \emph{Holds}, a type of $C$), so $\allleadstog(I) ∩ B ⊆ S_C$ always, the antecedent $(\allleadstog(I) ∩ B) ∖ S_C$ is never met, and $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C} = \allleadstos$: \cref{th:oneMorePriorGeneral} then reduces to \cref{th:oneMorePriorNarrow}. Taking $B = \allbs$ instead makes $\text{Bad} = ∅$, so $C$'s second conjunct vanishes and $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C} = D^{\anobs, a, p}_{\allleadstog(I), S_C} = D^{\anobs, a, p}_C$, the full prior of \cref{th:leadsToProvable}. Between these extremes, the stronger the upfront prior on $\allleadsto$ (the smaller $B$), the weaker the residual prior needed in the filter (the smaller $\allleadstog(I) ∩ B$ to test) — and conversely.
 \end{remark}
 
-\begin{theorem}
+\begin{corollary}
   \label{th:oneMorePriorNarrow}
   Given $\allleadsto ∈ D^{\anobs, a, p}$ such that
   for some $a$, $p$, $H$, $\anobs: H → P$ with $1 ≤ \card(\max H)$,
@@ -1448,37 +1448,27 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
   there exists an anonymous claim that holds, is APTS and provable by $¬\POF ∩ E$.
-\end{theorem}
+\end{corollary}
 
 \begin{proof}
-  Write $B := \set{b ∈ \allbs \suchthat b ∉ \allleadsto(I) ∧ \anobs ⊆ b ∧ a \nileadstostg[b] p}$. As $\allleadsto ∈ D^{\anobs, a, p}$, fix, for each $b ∈ B$, some $H_b ∈ \fincrhists$ with $\restr{b}{H_b} ∉ \restr{\allleadsto(I)}{H_b}$. Take
-  $$C := [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ [∀i ∈ I, b ∈ B: \restr{\ileadstogo}{H_b} ≠ \restr{b}{H_b}].$$
+  Apply \cref{th:oneMorePriorGeneral} with $B := \allleadsto(I)$: the hypothesis $\allleadsto(I) ⊆ B$ is trivial, and $D^{\anobs, a, p}_{\allbs, \allleadsto(I)} = D^{\anobs, a, p}$ is exactly the hypothesis here. By the remark following \cref{th:oneMorePriorGeneral}, at this $B$ the filter prior $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ trivializes to $\allleadstos$, so provability by $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is exactly provability by $¬\POF ∩ E$.
+\end{proof}
 
-  \emph{Holds.} The first conjunct holds at $\allleadsto$: this is exactly the hypothesis $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$. The second holds at $\allleadsto$ by choice of $H_b$: $\restr{b}{H_b} ∉ \restr{\allleadsto(I)}{H_b}$ means exactly $∀i ∈ I: \restr{\ileadstoo}{H_b} ≠ \restr{b}{H_b}$.
+\begin{corollary}
+  \label{th:oneMorePriorFull}
+  Given, for some $a$, $p$, $H$, $\anobs: H → P$ with $1 ≤ \card(\max H)$,
+  $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
+  and
+  $∃ i \suchthat \anobs ⊆ \ileadstoo$,
+  there exists an anonymous claim $C$ that holds, is APTS and provable by $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_C$.
+\end{corollary}
 
-  \emph{Anonymous.} Write $Q_1(f) := [\anobs ⊆ f ⇒ a \ileadstostg[f] p]$ and $Q_2(f) := [∀b ∈ B: \restr{f}{H_b} ≠ \restr{b}{H_b}]$, properties of a single row $f$ not depending on $i$ ($B$ and each $H_b$ are fixed once and for all), so that $C = [∀i: Q_1(\allleadstog(i)) ∧ Q_2(\allleadstog(i))]$. Fix a permutation $σ$ of $I$ and $\allleadstog ∈ \allleadstos$. As $(\allleadstog ∘ σ)(i) = \allleadstog(σ(i))$,
-  $$\allleadstog ∘ σ ∈ C ⇔ ∀i ∈ I: Q_1(\allleadstog(σ(i))) ∧ Q_2(\allleadstog(σ(i))) ⇔ ∀j ∈ I: Q_1(\allleadstog(j)) ∧ Q_2(\allleadstog(j)) ⇔ \allleadstog ∈ C,$$
-  reindexing $j := σ(i)$, a bijection of $I$. As $\allleadstog, σ$ were arbitrary, $C ∘ σ = C$: $C$ is anonymous.
-
-  \emph{APTS-P (hence APTS).} Fix $i_0 ∈ I$ with $θ_0 := \set{i_0} × \anobs ⊆ \allleadsto$ (hypothesis). For any $\allleadstog' ∈ \set{θ_0 ⊆ \allleadstog} ∩ C$: $θ_0 ⊆ \allleadstog'$ gives $\anobs ⊆ \allleadstog'(i_0)$, so $C$'s first conjunct at $i_0$ gives $a \ileadstost[i_0] p$ in $\allleadstog'$ directly, that is $p ∈ P_{i_0}(\allleadstog')$; by \cref{th:sing}, $P_{i_0}(\allleadstog') = \set{p}$ exactly, that is $π_{i_0}(\allleadstog') = p$. Since moreover $\allleadsto ∈ \set{θ_0 ⊆ \allleadstog} ∩ C$ (as $θ_0 ⊆ \allleadsto$ and $\allleadsto ∈ C$), this set is nonempty, so $π_{i_0}(\set{θ_0 ⊆ \allleadstog} ∩ C) = \set{p}$: as $p ∈ P$ and $θ_0$ is feasible, this is APTS-P, witnessed by $(θ_0, i_0, p)$; in particular $C$ is APTS.
-
-  \emph{Provable by $¬\POF ∩ E$.} We show $¬\POF ∩ E ⊆ C$.
-
-  Fix $\allleadstog' ∈ E$ with $\allleadstog' ∉ C$. If $\allleadstog'$ fails $C$'s second conjunct, some $i ∈ I$, $b ∈ B$ satisfy $\restr{\allleadstog'(i)}{H_b} = \restr{b}{H_b}$. Otherwise $\allleadstog'$ fails the first: some $i ∈ I$ has $g := \allleadstog'(i)$ with $\anobs ⊆ g$ and $a \nileadstostg[g] p$; as the hypothesis gives $\anobs ⊆ \ileadstoo[j] ⇒ a \ileadstost[j] p$ for every $j ∈ I$, no $j$ has $\ileadstoo[j] = g$, so $g ∉ \allleadsto(I)$; together with $\anobs ⊆ g$ and $a \nileadstostg[g] p$, this gives $b := g ∈ B$, and trivially $\restr{\allleadstog'(i)}{H_b} = \restr{b}{H_b}$. Either way, fix such $i ∈ I$, $b ∈ B$, and write $g := \allleadstog'(i)$, so $\restr{g}{H_b} = \restr{b}{H_b}$.
-
-  Fix any $θ ∈ Θ ∩ \powerset{\allleadstog'}$. As $\allleadstog' ∈ E$, $J_g := \set{j ∈ I \suchthat \allleadstog'(j) = g}$ is infinite; as $θ$ is finite, $θ(\allhists, P)$ is finite, so $J_g ∖ θ(\allhists, P) ≠ ∅$. Pick $i'$ in this set and let $θ_b^{i'} := \set{(i', α, g(α)) \suchthat α ∈ H_b}$. As $H_b ∈ \fincrhists$, $θ_b^{i'} ∈ Θ$, and $θ_b^{i'} ⊆ \allleadstog'$ (as $\allleadstog'(i') = g$).
-
-  If some $\allleadstog''' ∈ C$ extended $θ_b^{i'}$, then $f := \allleadstog'''(i')$ would satisfy $\restr{f}{H_b} = \restr{g}{H_b} = \restr{b}{H_b}$, contradicting $C$'s second conjunct at $i', b$, applied to $\allleadstog'''$. So $θ_b^{i'} ∉ C^⊆$.
-
-  Let $θ' := θ ∪ θ_b^{i'}$. Since $i'$ is untouched by $θ$, $θ ⊑ θ'$, and $θ' ∈ Θ ∩ \powerset{\allleadstog'}$. Since $θ_b^{i'} ⊆ θ'$ and $C^⊆$ is downward closed, $θ' ∈ C^⊆$ would force $θ_b^{i'} ∈ C^⊆$, contradicting the above; so $θ' ∉ C^⊆$.
-
-  As $θ$ was arbitrary (the same $b, H_b$ serve throughout; only the clone $i'$ depends on $θ$), $\POF(\allleadstog')$ holds, so $\allleadstog' ∉ ¬\POF$.
-
-  As $\allleadstog' ∈ E ∖ C$ was arbitrary, $¬\POF ∩ E ⊆ C$: $C$ is provable by $¬\POF ∩ E$. Note $\allleadstog' ∈ D^{\anobs, a, p}$ was never assumed: the hypothesis $\allleadsto ∈ D^{\anobs, a, p}$, on the true world alone, only serves, once and upfront, to fix $B$ and the $H_b$'s.
+\begin{proof}
+  Apply \cref{th:oneMorePriorGeneral} with $B := \allbs$: $\allleadsto(I) ⊆ B$ trivially, and $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, \allbs}$ holds vacuously, its antecedent $\allbs ∖ B = ∅$ being empty — no distinguishability hypothesis on $\allleadsto$ is needed at all. At this $B$, $\text{Bad} = ∅$, so $C$'s second conjunct vanishes, leaving $C = [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p]$; and $\allleadstog(I) ∩ B = \allleadstog(I)$, so the filter prior $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is the full $D^{\anobs, a, p}_{\allleadstog(I), S_C} = D^{\anobs, a, p}_C$. (This is exactly \cref{th:leadsToProvable}, all of the distinguishing burden now paid at each candidate world rather than upfront on $\allleadsto$.)
 \end{proof}
 
 \begin{remark}
-  Compare to \cref{th:leadsToProvable}: writing $C' := [∀i: Q_1(\allleadstog(i))]$ for the first conjunct alone (\cref{th:leadsToProvable}'s own claim, for the same $\anobs, a, p$), $C = C' ∩ [∀i, b ∈ B: \restr{\ileadstogo}{H_b} ≠ \restr{b}{H_b}] ⊆ C'$: the claim proved here is stronger (strictly so unless $B = ∅$), as it additionally excludes, on each realized row, collision with any $\anobs$-matching, decisiveness-failing non-real behavior on its own witnessing window, while $C'$ only demands decisiveness on $\anobs$-matching rows.
+  Compare to \cref{th:leadsToProvable}: writing $C' := [∀i: Q_1(\allleadstog(i))]$ for the first conjunct alone (\cref{th:leadsToProvable}'s own claim, for the same $\anobs, a, p$; $Q_1$ and $\text{Bad}$ as in \cref{th:oneMorePriorGeneral}'s proof, instantiated at $B = \allleadsto(I)$), $C = C' ∩ [∀i, b ∈ \text{Bad}: \restr{\ileadstogo}{H_b} ≠ \restr{b}{H_b}] ⊆ C'$: the claim proved here is stronger (strictly so unless $\text{Bad} = ∅$), as it additionally excludes, on each realized row, collision with any $\anobs$-matching, decisiveness-failing non-real behavior on its own witnessing window, while $C'$ only demands decisiveness on $\anobs$-matching rows.
 
   $D^{\anobs, a, p}$ and $D^{\anobs, a, p}_{C'}$ are not comparable by inclusion: $D^{\anobs, a, p}$ quantifies over behaviors $b ∉ \allleadstog(I)$, tested against $\allleadstog(I)$ itself, whereas $D^{\anobs, a, p}_{C'}$ quantifies over behaviors $h ∈ \allleadstog(I) ∖ S_{C'}$, tested against the external set $S_{C'}$ (the types of $C'$).
 
