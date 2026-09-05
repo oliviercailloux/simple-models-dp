@@ -1442,17 +1442,27 @@ The prior $D^{\anobs, a, p}$ (unlike $D^{\anobs, a, p}_{C'}$) does not depend on
 
   \emph{Holds, Anonymous, APTS-P.} Identical to the corresponding paragraphs of \cref{th:oneMorePrior}: each only uses that $H_b$ witnesses $\restr{b}{H_b} ∉ \restr{\allleadsto(I)}{H_b}$ for $b ∈ B$, never how $B$ is otherwise defined.
 
-  \emph{Provable by $¬\OF ∩ D^{\anobs, a, p}$.} We show the stronger $¬\OF ⊆ C$.
+  \emph{Provable by $¬\POF ∩ E$.} We show $¬\POF ∩ E ⊆ C$.
 
-  Fix $\allleadstog' ∉ C$. If $\allleadstog'$ fails $C$'s second conjunct, some $i ∈ I$, $b ∈ B$ satisfy $\restr{\allleadstog'(i)}{H_b} = \restr{b}{H_b}$. Otherwise $\allleadstog'$ fails the first: some $i ∈ I$ has $g := \allleadstog'(i)$ with $\anobs ⊆ g$ and $a \nileadstostg[g] p$; as the hypothesis gives $\anobs ⊆ \ileadstoo[j] ⇒ a \ileadstost[j] p$ for every $j ∈ I$, no $j$ has $\ileadstoo[j] = g$, so $g ∉ \allleadsto(I)$; together with $\anobs ⊆ g$ and $a \nileadstostg[g] p$, this gives $g ∈ B$, and trivially $\restr{\allleadstog'(i)}{H_g} = \restr{g}{H_g}$. Either way, fix such $i ∈ I$, $b ∈ B$.
+  Fix $\allleadstog' ∈ E$ with $\allleadstog' ∉ C$. If $\allleadstog'$ fails $C$'s second conjunct, some $i ∈ I$, $b ∈ B$ satisfy $\restr{\allleadstog'(i)}{H_b} = \restr{b}{H_b}$. Otherwise $\allleadstog'$ fails the first: some $i ∈ I$ has $g := \allleadstog'(i)$ with $\anobs ⊆ g$ and $a \nileadstostg[g] p$; as the hypothesis gives $\anobs ⊆ \ileadstoo[j] ⇒ a \ileadstost[j] p$ for every $j ∈ I$, no $j$ has $\ileadstoo[j] = g$, so $g ∉ \allleadsto(I)$; together with $\anobs ⊆ g$ and $a \nileadstostg[g] p$, this gives $b := g ∈ B$, and trivially $\restr{\allleadstog'(i)}{H_b} = \restr{b}{H_b}$. Either way, fix such $i ∈ I$, $b ∈ B$, and write $g := \allleadstog'(i)$, so $\restr{g}{H_b} = \restr{b}{H_b}$.
 
-  Let $θ := \set{(i, α, \allleadstog'(i)(α)) \suchthat α ∈ H_b}$. As $H_b ∈ \fincrhists$, $θ ∈ Θ$, and $θ ⊆ \allleadstog'$. If some $\allleadstog''' ∈ C$ extended $θ$, then $f := \allleadstog'''(i)$ would satisfy $\restr{f}{H_b} = \restr{\allleadstog'(i)}{H_b} = \restr{b}{H_b}$, contradicting $C$'s second conjunct at $i, b$, applied to $\allleadstog'''$. So $θ ∉ C^⊆$, that is $\OF(\allleadstog')$, so $\allleadstog' ∉ ¬\OF$.
+  Fix any $θ ∈ Θ ∩ \powerset{\allleadstog'}$. As $\allleadstog' ∈ E$, $J_g := \set{j ∈ I \suchthat \allleadstog'(j) = g}$ is infinite; as $θ$ is finite, $θ(\allhists, P)$ is finite, so $J_g ∖ θ(\allhists, P) ≠ ∅$. Pick $i'$ in this set and let $θ_b^{i'} := \set{(i', α, g(α)) \suchthat α ∈ H_b}$. As $H_b ∈ \fincrhists$, $θ_b^{i'} ∈ Θ$, and $θ_b^{i'} ⊆ \allleadstog'$ (as $\allleadstog'(i') = g$).
 
-  As $\allleadstog' ∉ C$ was arbitrary, $¬\OF ⊆ C$, hence $¬\OF ∩ D^{\anobs, a, p} ⊆ C$: $C$ is provable by $¬\OF ∩ D^{\anobs, a, p}$.
+  If some $\allleadstog''' ∈ C$ extended $θ_b^{i'}$, then $f := \allleadstog'''(i')$ would satisfy $\restr{f}{H_b} = \restr{g}{H_b} = \restr{b}{H_b}$, contradicting $C$'s second conjunct at $i', b$, applied to $\allleadstog'''$. So $θ_b^{i'} ∉ C^⊆$.
+
+  Let $θ' := θ ∪ θ_b^{i'}$. Since $i'$ is untouched by $θ$, $θ ⊑ θ'$, and $θ' ∈ Θ ∩ \powerset{\allleadstog'}$. Since $θ_b^{i'} ⊆ θ'$ and $C^⊆$ is downward closed, $θ' ∈ C^⊆$ would force $θ_b^{i'} ∈ C^⊆$, contradicting the above; so $θ' ∉ C^⊆$.
+
+  As $θ$ was arbitrary (the same $b, H_b$ serve throughout; only the clone $i'$ depends on $θ$), $\POF(\allleadstog')$ holds, so $\allleadstog' ∉ ¬\POF$.
+
+  As $\allleadstog' ∈ E ∖ C$ was arbitrary, $¬\POF ∩ E ⊆ C$: $C$ is provable by $¬\POF ∩ E$. Note $\allleadstog' ∈ D^{\anobs, a, p}$ was never assumed: the hypothesis $\allleadsto ∈ D^{\anobs, a, p}$, on the true world alone, only serves, once and upfront, to fix $B$ and the $H_b$'s.
 \end{proof}
 
 \begin{remark}
   Unlike the claim of \cref{th:oneMorePrior}, this $C$ need not pin down membership in $\allleadsto(I)$ exactly on $\anobs$-matching rows: a decisive, non-real $f$ (that is, $\anobs ⊆ f$, $a \ileadstostg[f] p$, $f ∉ \allleadsto(I)$) never belongs to $B$, so it is excluded from $C$ only if it happens to collide with some $b ∈ B$ on $b$'s own $H_b$ — not guaranteed in general. By construction $C ⊆ C'$ (\cref{th:leadsToProvable}'s claim), with equality iff $B = ∅$; and $C$ equals the claim of \cref{th:oneMorePrior} exactly when every non-real $\anobs$-matching behavior already fails decisiveness (making the two constructions' $B$'s coincide). In general, $C$ sits strictly between the two.
+\end{remark}
+
+\begin{remark}
+  This theorem is not uniformly stronger than \cref{th:oneMorePrior}, nor conversely: it trades hypothesis for claim. Since $D^\anobs ⊆ D^{\anobs, a, p}$ ($D^\anobs$ is more demanding), the hypothesis $\allleadsto ∈ E ∩ D^{\anobs, a, p}$ used here is weaker than $\allleadsto ∈ E ∩ D^\anobs$; but, as just noted, the resulting claim is weaker too. Both are provable by the same $¬\POF ∩ E$. The two theorems coincide exactly when every non-real $\anobs$-matching behavior already fails decisiveness, so that $B$, hence $D^\anobs$, $D^{\anobs, a, p}$, and $C$, all coincide.
 \end{remark}
 
 \subsection{More draft results}
