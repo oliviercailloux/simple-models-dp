@@ -1327,7 +1327,7 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
   Consider any $i ∈ θ(\allhists, P)$.
   Pick any $b ∈ \allleadsto(I) \suchthat θ(i) ⊆ b$,
   define $\ileadstogo' = b$.
-  Partition $I ∖ θ(\allhists, P)$ into infinite sets, one for each behavior in $\allleadsto(I)$, plus one for $b^\text{new}$, thereby creating a function $f: I ∖ θ(\allhists, P) → \allbs$ (TBD check condition).\commentClaude{This is a substantive gap, not just bookkeeping: it requires partitioning the cofinite set $I ∖ θ(\allhists,P)$ into one infinite class per element of $\allleadsto(I)$ plus one more, all pairwise disjoint. If $\allleadsto(I)$ (the set of behaviors realized in $\allleadsto$) is large — e.g. as large as, or larger than, $I$ itself — such a partition need not exist (you cannot in general split a set of cardinality $\card I$ into $\card{\allleadsto(I)}$ many infinite disjoint pieces unless $\card I ≥ \card{\allleadsto(I)} \cdot \aleph_0$, roughly). Nothing in the hypotheses bounds $\card{\allleadsto(I)}$ relative to $\card I$, so as stated the construction is not guaranteed to go through in general.}
+  Partition $I ∖ θ(\allhists, P)$ into infinite sets, one for each behavior in $\allleadsto(I)$, plus one for $b^\text{new}$, thereby creating a function $f: I ∖ θ(\allhists, P) → \allbs$ (TBD argue from $\card{\allleadsto(I)} ≤ \card{I}$ that we can do this).\commentClaude{This is a substantive gap, not just bookkeeping: it requires partitioning the cofinite set $I ∖ θ(\allhists,P)$ into one infinite class per element of $\allleadsto(I)$ plus one more, all pairwise disjoint. If $\allleadsto(I)$ (the set of behaviors realized in $\allleadsto$) is large — e.g. as large as, or larger than, $I$ itself — such a partition need not exist (you cannot in general split a set of cardinality $\card I$ into $\card{\allleadsto(I)}$ many infinite disjoint pieces unless $\card I ≥ \card{\allleadsto(I)} \cdot \aleph_0$, roughly). Nothing in the hypotheses bounds $\card{\allleadsto(I)}$ relative to $\card I$, so as stated the construction is not guaranteed to go through in general.}
   For each $i ∈ I ∖ θ(\allhists, P)$ with $f(i) ∈ \allleadsto(I)$, define $\ileadstogo' = f(i)$, for the remaining infinite set, define $\ileadstogo' = b^\text{new}$.
 
   Note that $\allleadstog' ∈ E$.
@@ -1366,18 +1366,35 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
 Given $\anobs$, 
 define $D^\anobs$
 as:
-any behavior $b ∉ \allleadsto(I)$ satisfying
+any behavior $b ∉ \allleadstog(I)$ satisfying
 $\anobs ⊆ \ileadstogo[b]$
-is distinguishable from $\allleadsto(I)$.
+is distinguishable from $\allleadstog(I)$.
+
+Given $\anobs$, 
+$a ∈ \allargs$, 
+$p ∈ P$,
+$A, B ⊆ \allbs$,
+define $D^{\anobs, a, p}_{A, B}$
+as:
+any behavior $b ∈ A ∖ B$ failing
+$\anobs ⊆ \ileadstogo[b] ⇒ a \ileadstostg[b] p$
+(thus satisfying $\anobs ⊆ \ileadstogo[b] ∧ a \nileadstostg[b] p$)
+is distinguishable from $B$.
+
 Given $\anobs$, 
 $a ∈ \allargs$, 
 $p ∈ P$,
 define $D^{\anobs, a, p}$
-as:
-any behavior $b ∉ \allleadsto(I)$ failing
+as $D^{\anobs, a, p}_{\allbs, \allleadstog(I)}$:
+any behavior $b ∉ \allleadstog(I)$ failing
 $\anobs ⊆ \ileadstogo[b] ⇒ a \ileadstostg[b] p$
-(thus satisfying $\anobs ⊆ \ileadstogo[b] ∧ a \nileadstostg[b] p$)
-is distinguishable from $\allleadsto(I)$.
+is distinguishable from $\allleadstog(I)$.
+
+Given $\anobs$, 
+$a ∈ \allargs$, 
+$p ∈ P$,
+define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any behavior that fails $\anobs$ leads $i$ to $(a, p)$ does so visibly out of $B$, the types of $C$.
+(We could relax the prior by adding $B ⊈ \allleadstog(I) ∨…$ (or $B ⊆ \allleadstog(I) ⇒ …$), because we need only verifiability when $B ⊈ \allleadstog(I)$!)
 
 \begin{theorem}
   \label{th:oneMorePrior}
@@ -1463,6 +1480,24 @@ The prior $D^{\anobs, a, p}$ (unlike $D^{\anobs, a, p}_{C'}$) does not depend on
 
 \begin{remark}
   This theorem is not uniformly stronger than \cref{th:oneMorePrior}, nor conversely: it trades hypothesis for claim. Since $D^\anobs ⊆ D^{\anobs, a, p}$ ($D^\anobs$ is more demanding), the hypothesis $\allleadsto ∈ E ∩ D^{\anobs, a, p}$ used here is weaker than $\allleadsto ∈ E ∩ D^\anobs$; but, as just noted, the resulting claim is weaker too. Both are provable by the same $¬\POF ∩ E$. The two theorems coincide exactly when every non-real $\anobs$-matching behavior already fails decisiveness, so that $B$, hence $D^\anobs$, $D^{\anobs, a, p}$, and $C$, all coincide.
+\end{remark}
+
+\begin{remark}
+  \label{rmk:gapNotMinimal}
+  $D^\anobs$ and $D^{\anobs, a, p}$ are not the minimal hypothesis for \emph{some} suitable claim to exist: a differently shaped claim can hold, be anonymous and APTS-P, in a world violating both. But the obstruction they route around does not disappear there — it relocates into the "provable by" filter instead of being paid upfront on $\allleadsto$ alone.
+
+  Fix $a ≠ c ∈ \allargs$ and partition $I$ into infinite $J, K$, with $∀i ∈ J, \hist ∈ \allhists: \hist \ileadsto φ$, and $∀i ∈ K, \hist ∈ \allhists$: $\hist \ileadsto φ$ if $c ∈ \histend(\hist)$, $\hist \ileadsto φ'$ otherwise (so $(a) \ileadsto φ'$ throughout $K$, as $c ≠ a$). Let $b_j, b_k$ be the behaviors associated to $\allleadsto(J), \allleadsto(K)$, and take
+  $$C = [∀i ∈ I: (a) \ileadstogo φ ⇒ a \ileadstostg φ] ∩ [∀i ∈ I: (a) \ileadstogo φ' ⇒ c \ileadstostg φ] = C_1 ∩ C_2.$$
+  $C$ holds ($J$ satisfies $C_1$ and vacuously $C_2$, $K$ conversely), is anonymous, and is APTS-P (witnessed by any $i_0 ∈ J$ and $θ_0 = \set{i_0} × \set{((a),φ)}$, as in \cref{th:leadsToProvable}).
+
+  \emph{$\allleadsto ∉ D^{\set{((a),φ)}, a, φ}$.} Pick $d ∈ \allargs ∖ \set{a,c}$, $S = \set{\hist ≠ ∅ \suchthat \hist_1 = d}$, and $g := \restr{b_k}{S} ∪ \restr{b_j}{\allhists ∖ S}$. Any $H ∈ \fincrhists$ is a chain, hence lies entirely inside $S$ or entirely outside it, so $g$ matches $b_k$ or $b_j$ on $H$: $g$ is undistinguishable from $\set{b_j,b_k}$. As $d ≠ a$, $(a) ∉ S$, so $g((a)) = b_j((a)) = φ$: $g$ matches $\anobs = \set{((a),φ)}$. As $(d,a) ∈ S$ and $c ∉ \set{d,a}$, $g((d,a)) = b_k((d,a)) = φ'$, and $a ∈ \histend((d,a))$: $a$ is not decisive for $φ$ in $g$. Yet $g ∉ \set{b_j,b_k}$ ($g((d)) = φ' ≠ φ = b_j((d))$; $g((a)) = φ ≠ φ' = b_k((a))$). So $g$ is exactly the counterexample $D^{\set{((a),φ)},a,φ}$ forbids: the prior genuinely fails at $\allleadsto$.
+
+  \emph{Yet $C$ is not provable by $¬\OF ∩ E$ either.} Carve an infinite $I_3 ⊆ J$, leaving $J ∖ I_3$ infinite, and let $\allleadstog^*$ agree with $\allleadsto$ outside $I_3$, while every $i ∈ I_3$ realizes $g$ (answers $φ'$ on $S$, $φ$ elsewhere). Then $\allleadstog^* ∈ E$, and $\allleadstog^* ∉ C$: $g$ violates $C_1$, exactly as just shown. As in \cref{rmk:generalTemplateExcluded}, any finite $θ ⊆ \allleadstog^*$ restricted to $i ∈ I_3$ is a single chain, so it lies entirely inside $S$ or entirely outside it — the two witnessing histories $(a)$ and $(d,a)$ are incomparable, so no observation ever sees both — and it always extends into some world of $C$ (complete $i$ as fully $a$-decisive, or route it into $C_2$). Individuals outside $I_3$ embed by relabelling. So $¬\OF(\allleadstog^*)$ holds outright: $\allleadstog^* ∈ E ∖ C$ with $¬\OF(\allleadstog^*)$ shows $C$ is not provable by $¬\OF ∩ E$, hence not by $¬\POF ∩ E$ either.
+
+  \emph{Where the assumption goes instead.} Applying \cref{th:leadsToProvable} to $C_1, C_2$ separately and intersecting gives $C$ provable by $(¬\POF) ∩ E ∩ D_1 ∩ D_2$, where $D_2 = D^{\set{((a),φ')},c,φ}_{C_2}$ is the claim-relative prior of the second conjunct, and $D_1 = D^{\set{((a),φ)},a,φ}_{C_1}$ that of the first: here, $\allleadstog ∈ D_1$ iff
+  $$∀g ∈ \allleadstog(I) \suchthat g((a)) = φ ∧ a \nileadstostg[g] φ: ∃ (a) ⊆ α ∈ \allhists \suchthat a ∈ \histend ∧ g(α) ≠ φ.$$ $\allleadsto ∈ D_1 ∩ D_2$ only vacuously, as neither $b_j$ nor $b_k$ violates either conjunct. But $\allleadstog^* ∉ D_1$: its spliced row $g$ has $g((a)) = φ$ and $a$ not decisive for $φ$ in $g$ (both shown above), yet $g$ is undistinguishable from $\set{b_j,b_k} ⊆ S_{C_1}$ on every $H$ — exactly the fact established above. So $\allleadstog^*$ is excluded from $D_1 ∩ D_2$ exactly as it would need to be excluded, upfront, from $D^{\set{((a),φ)},a,φ}$ for \cref{th:oneMorePrior,th:oneMorePriorNarrow}'s route to apply to this claim's shape.
+
+  So the two routes are not comparable in strength, and this is not a trade of one commitment for another. $D^{gap}$ is a hypothesis \emph{about the true world} $\allleadsto$, quantified over all of $\allbs$: something that must actually hold of reality, bought in exchange for the strongest conclusion, provable by the clean $¬\POF ∩ E$ itself, nothing left in the filter. $D_1, D_2$ are not a hypothesis on $\allleadsto$ at all here — $\allleadsto ∈ D_1 ∩ D_2$ holds automatically, vacuously — but a restriction on the \emph{scope} of the conclusion: worlds such as $\allleadstog^*$ are simply left outside the guarantee, whatever $\allleadsto$ turns out to be. That is a strictly cheaper, more reasonable kind of commitment. For this $C$ it is, moreover, the only kind available: $¬\OF(\allleadstog^*)$ is a structural fact about $\allleadstog^*$ alone, exactly as in \cref{rmk:generalTemplateExcluded} — independent of $\allleadsto$ — so no hypothesis on $\allleadsto$, $D^{gap}$-shaped or otherwise, could ever repair provability by the clean $¬\POF ∩ E$ for this branch-and-escape shape of claim. $D^{gap}$ is not a pricier alternative route here: it is inapplicable. What survives is narrower than first stated: $D^{gap}$ remains the minimal prior, on $\allleadsto$ alone, for provability by the clean $¬\POF ∩ E$, only for claims sharing \cref{th:oneMorePrior}'s single-template shape; for a claim like $C$ here, no hypothesis on $\allleadsto$ alone buys the clean conclusion, and the claim-relative route's weaker, scoped guarantee is the best available.
 \end{remark}
 
 \subsection{More draft results}
