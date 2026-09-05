@@ -1390,8 +1390,59 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 (We could relax the prior by adding $B ⊈ \allleadstog(I) ∨…$ (or $B ⊆ \allleadstog(I) ⇒ …$), because we need only verifiability when $B ⊈ \allleadstog(I)$!)
 
 \begin{theorem}
+  \label{th:oneMorePriorGeneral}
+  Given $B ⊆ \allbs$ with $\allleadsto(I) ⊆ B$, and $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, B}$, such that
+  for some $a$, $p$, $H$, $\anobs: H → P$ with $1 ≤ \card(\max H)$,
+  $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
+  and
+  $∃ i \suchthat \anobs ⊆ \ileadstoo$,
+  there exists an anonymous claim $C$ that holds, is APTS and provable by $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$.
+\end{theorem}
+
+\begin{proof}
+  Write $\text{Bad} := \set{b ∈ \allbs \suchthat b ∉ B ∧ \anobs ⊆ b ∧ a \nileadstostg[b] p}$. As $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, B}$, fix, for each $b ∈ \text{Bad}$, some $H_b ∈ \fincrhists$ with $\restr{b}{H_b} ∉ \restr{B}{H_b}$. Take
+  $$C := [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ [∀i ∈ I, b ∈ \text{Bad}: \restr{\ileadstogo}{H_b} ≠ \restr{b}{H_b}].$$
+
+  \emph{Holds.} The first conjunct holds at $\allleadsto$: this is exactly the hypothesis $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$. For the second, fix $b ∈ \text{Bad}$: as $\allleadsto(I) ⊆ B$, every $\ileadstoo ∈ B$, so $\restr{b}{H_b} ∉ \restr{B}{H_b}$ gives $∀i ∈ I: \restr{\ileadstoo}{H_b} ≠ \restr{b}{H_b}$.
+
+  \emph{Anonymous.} Write $Q_1(f) := [\anobs ⊆ f ⇒ a \ileadstostg[f] p]$ and $Q_2(f) := [∀b ∈ \text{Bad}: \restr{f}{H_b} ≠ \restr{b}{H_b}]$, properties of a single row $f$ not depending on $i$ ($\text{Bad}$ and each $H_b$ are fixed once and for all), so that $C = [∀i: Q_1(\allleadstog(i)) ∧ Q_2(\allleadstog(i))]$. Fix a permutation $σ$ of $I$ and $\allleadstog ∈ \allleadstos$. As $(\allleadstog ∘ σ)(i) = \allleadstog(σ(i))$,
+  $$\allleadstog ∘ σ ∈ C ⇔ ∀i ∈ I: Q_1(\allleadstog(σ(i))) ∧ Q_2(\allleadstog(σ(i))) ⇔ ∀j ∈ I: Q_1(\allleadstog(j)) ∧ Q_2(\allleadstog(j)) ⇔ \allleadstog ∈ C,$$
+  reindexing $j := σ(i)$, a bijection of $I$. As $\allleadstog, σ$ were arbitrary, $C ∘ σ = C$: $C$ is anonymous.
+
+  \emph{APTS-P (hence APTS).} Fix $i_0 ∈ I$ with $θ_0 := \set{i_0} × \anobs ⊆ \allleadsto$ (hypothesis). For any $\allleadstog' ∈ \set{θ_0 ⊆ \allleadstog} ∩ C$: $θ_0 ⊆ \allleadstog'$ gives $\anobs ⊆ \allleadstog'(i_0)$, so $C$'s first conjunct at $i_0$ gives $a \ileadstost[i_0] p$ in $\allleadstog'$ directly, that is $p ∈ P_{i_0}(\allleadstog')$; by \cref{th:sing}, $P_{i_0}(\allleadstog') = \set{p}$ exactly, that is $π_{i_0}(\allleadstog') = p$. Since moreover $\allleadsto ∈ \set{θ_0 ⊆ \allleadstog} ∩ C$ (as $θ_0 ⊆ \allleadsto$ and $\allleadsto ∈ C$), this set is nonempty, so $π_{i_0}(\set{θ_0 ⊆ \allleadstog} ∩ C) = \set{p}$: as $p ∈ P$ and $θ_0$ is feasible, this is APTS-P, witnessed by $(θ_0, i_0, p)$; in particular $C$ is APTS.
+
+  \emph{Provable by $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$.} Write $S_C := ⋃_{\allleadstog' ∈ C} \allleadstog'(I)$ for the types of $C$, evaluated at the claim $C$ just constructed above (not circular, as in \cref{th:leadsToProvable}: $S_C$, and the prior $D^{\anobs,a,p}_{\allleadstog(I) ∩ B, \, S_C}$, are only ever evaluated at this $C$, never used to construct it).
+
+  \emph{Step 1 ($S_C$-types are decisive).} For $h ∈ S_C$, some $\allleadstog'' ∈ C$ and $i'' ∈ I$ satisfy $\allleadstog''(i'') = h$; $C$'s first conjunct at $i''$ gives $\anobs ⊆ h ⇒ a \ileadstostg[h] p$. Contrapositively, any $h$ with $\anobs ⊆ h ∧ a \nileadstostg[h] p$ satisfies $h ∉ S_C$.
+
+  We show $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C} ⊆ C$. Fix $\allleadstog' ∈ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ with $\allleadstog' ∉ C$.
+
+  \emph{Case B: the second conjunct fails.} Some $i ∈ I$, $b ∈ \text{Bad}$ satisfy $\restr{\allleadstog'(i)}{H_b} = \restr{b}{H_b}$; write $g := \allleadstog'(i)$, so $\restr{g}{H_b} = \restr{b}{H_b}$.
+
+  Fix any $θ ∈ Θ ∩ \powerset{\allleadstog'}$. As $\allleadstog' ∈ E$, $J_g := \set{j ∈ I \suchthat \allleadstog'(j) = g}$ is infinite; as $θ$ is finite, $θ(\allhists, P)$ is finite, so $J_g ∖ θ(\allhists, P) ≠ ∅$. Pick $i'$ in this set and let $θ_b^{i'} := \set{(i', α, g(α)) \suchthat α ∈ H_b}$. As $H_b ∈ \fincrhists$, $θ_b^{i'} ∈ Θ$, and $θ_b^{i'} ⊆ \allleadstog'$ (as $\allleadstog'(i') = g$).
+
+  If some $\allleadstog''' ∈ C$ extended $θ_b^{i'}$, then $f := \allleadstog'''(i')$ would satisfy $\restr{f}{H_b} = \restr{g}{H_b} = \restr{b}{H_b}$, contradicting $C$'s second conjunct at $i', b$, applied to $\allleadstog'''$. So $θ_b^{i'} ∉ C^⊆$.
+
+  Let $θ' := θ ∪ θ_b^{i'}$. Since $i'$ is untouched by $θ$, $θ ⊑ θ'$, and $θ' ∈ Θ ∩ \powerset{\allleadstog'}$. Since $θ_b^{i'} ⊆ θ'$ and $C^⊆$ is downward closed, $θ' ∈ C^⊆$ would force $θ_b^{i'} ∈ C^⊆$, contradicting the above; so $θ' ∉ C^⊆$. As $θ$ was arbitrary (the same $b, H_b$ serve throughout; only the clone $i'$ depends on $θ$), $\POF(\allleadstog')$ holds.
+
+  \emph{Case A: the second conjunct holds but the first fails.} Some $i ∈ I$ has $g := \allleadstog'(i)$ with $\anobs ⊆ g$ and $a \nileadstostg[g] p$; by Step 1, $g ∉ S_C$. Moreover $g ∉ \text{Bad}$: otherwise the second conjunct, evaluated at this $i$ and $b := g ∈ \text{Bad}$, would require $\restr{g}{H_g} ≠ \restr{g}{H_g}$, absurd. Since $g$ satisfies $\anobs ⊆ g ∧ a \nileadstostg[g] p$ yet $g ∉ \text{Bad} = \set{b ∈ \allbs ∖ B \suchthat \anobs ⊆ b ∧ a \nileadstostg[b] p}$, this forces $g ∈ B$. So $g ∈ (\allleadstog'(I) ∩ B) ∖ S_C$, and as $\allleadstog' ∈ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$, this yields some $H ∈ \fincrhists$ with $\restr{g}{H} ∉ \restr{S_C}{H}$.
+
+  Fix any $θ ∈ Θ ∩ \powerset{\allleadstog'}$. As $\allleadstog' ∈ E$, $J_g := \set{j ∈ I \suchthat \allleadstog'(j) = g}$ is infinite; as $θ$ is finite, $θ(\allhists, P)$ is finite, so $J_g ∖ θ(\allhists, P) ≠ ∅$. Pick $i'$ in this set and let $θ_H^{i'} := \set{(i', α, g(α)) \suchthat α ∈ H}$. As $H ∈ \fincrhists$, $θ_H^{i'} ∈ Θ$, and $θ_H^{i'} ⊆ \allleadstog'$ (as $\allleadstog'(i') = g$).
+
+  If some $\allleadstog''' ∈ C$ extended $θ_H^{i'}$, then $f := \allleadstog'''(i')$ would satisfy $\restr{f}{H} = \restr{g}{H}$ while $f ∈ \allleadstog'''(I) ⊆ S_C$, giving $\restr{g}{H} ∈ \restr{S_C}{H}$ — contradiction. So $θ_H^{i'} ∉ C^⊆$.
+
+  Let $θ' := θ ∪ θ_H^{i'}$. Since $i'$ is untouched by $θ$, $θ ⊑ θ'$, and $θ' ∈ Θ ∩ \powerset{\allleadstog'}$. Since $θ_H^{i'} ⊆ θ'$ and $C^⊆$ is downward closed, $θ' ∈ C^⊆$ would force $θ_H^{i'} ∈ C^⊆$, contradicting the above; so $θ' ∉ C^⊆$. As $θ$ was arbitrary (the same $g, H$ serve throughout; only the clone $i'$ depends on $θ$), $\POF(\allleadstog')$ holds.
+
+  Either way, $\POF(\allleadstog')$ holds, so $\allleadstog' ∉ ¬\POF$. As $\allleadstog' ∈ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C} ∖ C$ was arbitrary, $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C} ⊆ C$.
+\end{proof}
+
+\begin{remark}
+  Taking $B = \allleadsto(I)$ trivializes the filter prior: $\allleadsto(I) ⊆ S_C$ (every row of $\allleadsto$ is, by \emph{Holds}, a type of $C$), so $\allleadstog(I) ∩ B ⊆ S_C$ always, the antecedent $(\allleadstog(I) ∩ B) ∖ S_C$ is never met, and $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C} = \allleadstos$: \cref{th:oneMorePriorGeneral} then reduces to \cref{th:oneMorePriorNarrow}. Taking $B = \allbs$ instead makes $\text{Bad} = ∅$, so $C$'s second conjunct vanishes and $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C} = D^{\anobs, a, p}_{\allleadstog(I), S_C} = D^{\anobs, a, p}_C$, the full prior of \cref{th:leadsToProvable}. Between these extremes, the stronger the upfront prior on $\allleadsto$ (the smaller $B$), the weaker the residual prior needed in the filter (the smaller $\allleadstog(I) ∩ B$ to test) — and conversely.
+\end{remark}
+
+\begin{theorem}
   \label{th:oneMorePriorNarrow}
-  Given $\allleadsto ∈ E ∩ D^{\anobs, a, p}$ such that
+  Given $\allleadsto ∈ D^{\anobs, a, p}$ such that
   for some $a$, $p$, $H$, $\anobs: H → P$ with $1 ≤ \card(\max H)$,
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
