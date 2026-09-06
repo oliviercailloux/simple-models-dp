@@ -239,8 +239,7 @@ We will study criteria to determine whether a claim holds.
 
 Once established that a claim holds, any feasible observation can be combined with the claim to determine conclusions.
 We want, minimally, that at least some feasible observation permits to conclude about at least one individual’s DJ.
-\label{def:apts}
-A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
+Furthermore, we want such observations to be always available even after some previous observations have occurred already, to ensure reproducibility.
 A claim $C$ satisfies strong APTS (SAPTS) iff $∀ \allleadstog ∈ C, θ ∈ Θ ∩ \powerset{\allleadstog}, ∃ θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}, i ∈ I \suchthat π_i(\set{θ' ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ' ⊆ \allleadstog ∈ C} = 1$.
 
 We restrict attention to claims that do not use prior knowledge about named individuals, thus, are anonymous, in the following sense.
@@ -411,6 +410,8 @@ A claim $C$ is \emph{informative} iff $π(C) ≠ (P ∪ \set{∅})^I$.
 A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π_i(C) = \set{π_i(\allleadstog) \suchthat \allleadstog ∈ C} ≠ P ∪ \set{∅}$.
 A claim $C$ is \emph{a posteriori informative beyond counting} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} ≠ P ∪ \set{∅}$.
 A claim $C$ is \emph{a posteriori sharp} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
+\label{def:apts}
+A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
 
 \begin{remark}
   Informativeness permits mere counting: the claim that exactly two persons deliberately believe $φ$ is informative. Also, the claim $C = \set{[∃ i \suchthat (a) \nileadstog φ] ∧ [∀i: (a) \nileadstog φ ⇒ φ' ∈ π_i(\allleadstog)]}$ is informative.
@@ -1263,7 +1264,7 @@ The following shows that verifiability is a mandatory part of the criterion for 
   Either weaken the phrasing to apply \cref{ex:noProvableDecisivePhi}, or invoke a more general result coming later (and move this).
 \end{proof}
 
-For this, see \cref{rmk:generalTemplateExcluded}.
+For this, see \cref{rk:generalTemplateExcluded}.
 
 We are here interested in claims implying propositions of the form: any individual whose behavior satisfies some given observable condition admits a given argument being decisive.
 Given $T: H → P$ for some finite $H ∈ \incr(\allhists)$,
@@ -1445,46 +1446,68 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 \end{proof}
 
 \begin{remark}
-  Taking $B = \allleadsto(I)$ trivializes the filter prior: $\allleadsto(I) ⊆ S_C$ (every row of $\allleadsto$ is, by \emph{Holds}, a type of $C$), so $\allleadstog(I) ∩ B ⊆ S_C$ always, the antecedent $(\allleadstog(I) ∩ B) ∖ S_C$ is never met, and $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C} = \allleadstos$: \cref{th:oneMorePriorGeneral} then reduces to \cref{th:oneMorePriorNarrow}. Taking $B = \allbs$ instead makes $\text{Bad} = ∅$, so $C$'s second conjunct vanishes and $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C} = D^{\anobs, a, p}_{\allleadstog(I), S_C} = D^{\anobs, a, p}_C$, the full prior of \cref{th:oneMorePriorFull}. Between these extremes, the stronger the upfront prior on $\allleadsto$ (the smaller $B$), the weaker the residual prior needed in the filter (the smaller $\allleadstog(I) ∩ B$ to test) — and conversely.
+  Taking $B = \allleadsto(I)$ trivializes the filter prior: $\allleadsto(I) ⊆ S_C$ (every row of $\allleadsto$ is, by \emph{Holds}, a type of $C$), so $\allleadstog(I) ∩ B ⊆ S_C$ always, the antecedent $(\allleadstog(I) ∩ B) ∖ S_C$ is never met, and $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C} = \allleadstos$. Taking $B = \allbs$ instead makes $\text{Bad} = ∅$, so $C_0$'s second conjunct vanishes and $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C} = D^{\anobs, a, p}_{\allleadstog(I), S_C} = D^{\anobs, a, p}_C$, the full prior of \cref{th:oneMorePriorFull}. This only ever used \emph{Holds} and the definition of $\text{Bad}$, so it holds verbatim for \cref{th:oneMorePriorGeneralPev}'s construction too: either theorem, at $B = \allleadsto(I)$, reduces to \cref{th:oneMorePriorNarrow}, and at $B = \allbs$, to \cref{th:oneMorePriorFull}. Between these extremes, the stronger the upfront prior on $\allleadsto$ (the smaller $B$), the weaker the residual prior needed in the filter (the smaller $\allleadstog(I) ∩ B$ to test) — and conversely.
 \end{remark}
 
 \begin{corollary}
   \label{th:oneMorePriorNarrow}
   Given $\allleadsto ∈ D^{\anobs, a, p}$ such that
-  for some $a$, $p$, $H$, $\anobs: H → P$ with $1 ≤ \card(\max H)$,
+  for some $H$ with $1 ≤ \card(\max H)$, $\anobs: H → P$, $a$, $p$,
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
-  there exists an anonymous claim that holds, is APTS and provable by $¬\POF ∩ E$.
+  there exists an anonymous claim that holds, is SAPTS and PEV under $¬\POF ∩ E$.
 \end{corollary}
 
 \begin{proof}
-  Apply \cref{th:oneMorePriorGeneral} with $B := \allleadsto(I)$: the hypothesis $\allleadsto(I) ⊆ B$ is trivial, and $D^{\anobs, a, p}_{\allbs, \allleadsto(I)} = D^{\anobs, a, p}$ is exactly the hypothesis here. By the remark following \cref{th:oneMorePriorGeneral}, at this $B$ the filter prior $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ trivializes to $\allleadstos$, so provability by $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is exactly provability by $¬\POF ∩ E$.
+  Apply \cref{th:oneMorePriorGeneralPev} with $B := \allleadsto(I)$: the hypothesis $\allleadsto(I) ⊆ B$ is trivial, and $D^{\anobs, a, p}_{\allbs, \allleadsto(I)} = D^{\anobs, a, p}$ is exactly the hypothesis here. By the remark following \cref{th:oneMorePriorGeneral}, at this $B$ the filter prior $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ trivializes to $\allleadstos$, so PEV under $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is exactly PEV under $¬\POF ∩ E$.
 \end{proof}
 
 \begin{corollary}
   \label{th:oneMorePriorFull}
-  Given, for some $a$, $p$, $H$, $\anobs: H → P$ with $1 ≤ \card(\max H)$,
+  Given, for some $H$ with $1 ≤ \card(\max H)$, $\anobs: H → P$, $a$, $p$,
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
-  there exists an anonymous claim $C$ that holds, is APTS and provable by $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_C$.
+  there exists an anonymous claim $C$ that holds, is SAPTS and PEV under $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_C$.
 \end{corollary}
 
 \begin{proof}
-  Apply \cref{th:oneMorePriorGeneral} with $B := \allbs$: $\allleadsto(I) ⊆ B$ trivially, and $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, \allbs}$ holds vacuously, its antecedent $\allbs ∖ B = ∅$ being empty — no distinguishability hypothesis on $\allleadsto$ is needed at all. At this $B$, $\text{Bad} = ∅$, so $C$'s second conjunct vanishes, leaving $C = [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p]$; and $\allleadstog(I) ∩ B = \allleadstog(I)$, so the filter prior $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is the full $D^{\anobs, a, p}_{\allleadstog(I), S_C} = D^{\anobs, a, p}_C$. (All of the distinguishing burden is now paid at each candidate world rather than upfront on $\allleadsto$, in contrast to \cref{th:oneMorePriorNarrow}.)
+  Apply \cref{th:oneMorePriorGeneralPev} with $B := \allbs$: $\allleadsto(I) ⊆ B$ trivially, and $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, \allbs}$ holds vacuously, its antecedent $\allbs ∖ B = ∅$ being empty — no distinguishability hypothesis on $\allleadsto$ is needed at all. At this $B$, $\text{Bad} = ∅$, so $C_0$'s second conjunct vanishes, leaving $C = [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$; and $\allleadstog(I) ∩ B = \allleadstog(I)$, so the filter prior $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is the full $D^{\anobs, a, p}_{\allleadstog(I), S_C} = D^{\anobs, a, p}_C$. (All of the distinguishing burden is now paid at each candidate world rather than upfront on $\allleadsto$, in contrast to \cref{th:oneMorePriorNarrow}.)
+\end{proof}
+
+\begin{corollary}
+  \label{th:oneMorePriorFullExplicit}
+  Given, for some $H$ with $1 ≤ \card(\max H)$, $\anobs: H → P$, $a$, $p$,
+  $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
+  and
+  $∃ i \suchthat \anobs ⊆ \ileadstoo$,
+  there exists an anonymous claim $C$ that holds, is SAPTS and PEV under $(¬\POF) ∩ E ∩ D$, where
+  $$D := \Bigl\{ \allleadstog ∈ \allleadstos \suchthat ∀g ∈ \allleadstog(I) \text{ with } \anobs ⊆ g ∧ a \nileadstostg[g] p,\ ∃α ∈ \allhists \suchthat \anobs^{-1}(P) ∪ \set{α} ∈ \fincrhists ∧ a ∈ \histend(α) ∧ g(α) ≠ p \Bigr\}.$$
+\end{corollary}
+\begin{proof}
+  Let $C := [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$, the claim of \cref{th:oneMorePriorFull}, which holds, is SAPTS and PEV under $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_C$; it remains to show $D^{\anobs, a, p}_C = D$.
+
+  As $\text{Bad} = ∅$ at this $C$ (\cref{th:oneMorePriorFull}'s proof), $S_C = \set{b ∈ \allbs \suchthat \anobs ⊆ b ⇒ a \ileadstostg[b] p}$. A row $g$ failing $\anobs ⊆ g ⇒ a \ileadstostg[g] p$ never lies in $S_C$, so the condition "$g ∈ \allleadstog(I) ∖ S_C$" in the definition of $D^{\anobs, a, p}_C$ is automatic whenever $\anobs ⊆ g ∧ a \nileadstostg[g] p$; unfolding distinguishability, $\allleadstog ∈ D^{\anobs, a, p}_C$ says exactly: for every $g ∈ \allleadstog(I)$ with $\anobs ⊆ g ∧ a \nileadstostg[g] p$, some $H_0 ∈ \fincrhists$ has no $b ∈ S_C$ with $\restr{b}{H_0} = \restr{g}{H_0}$. Fix such a $g$; we show this holds iff some $α$ as in $D$'s definition exists.
+
+  \emph{If such an $α$ exists,} take $H_0 := \anobs^{-1}(P) ∪ \set{α} ∈ \fincrhists$. If some $b ∈ S_C$ matched $g$ on $H_0$, then matching $g$ on $\anobs^{-1}(P) ⊆ H_0$ would give $\anobs ⊆ b$ (as $\anobs ⊆ g$), hence $a \ileadstostg[b] p$ by $b ∈ S_C$, hence $b(α) = p$ (as $a ∈ \histend(α)$); but matching $g$ at $α ∈ H_0$ gives $b(α) = g(α) ≠ p$ — contradiction. So no such $b$ exists: $H_0$ witnesses $g$ distinguishable from $S_C$.
+
+  \emph{If no such $α$ exists,} fix any $H_0 ∈ \fincrhists$; we build $b ∈ S_C$ matching $g$ on $H_0$. If $\anobs^{-1}(P) ⊈ H_0$, pick $γ ∈ \anobs^{-1}(P) ∖ H_0$ and $q ∈ P ∖ \set{\anobs(γ)}$ ($\card P ≥ 2$); the row $b$ with $b(γ) = q$, $b = g$ on $H_0$ (consistent, as $γ ∉ H_0$), completed arbitrarily elsewhere, fails $\anobs ⊆ b$, so satisfies the template vacuously: $b ∈ S_C$. Otherwise $\anobs^{-1}(P) ⊆ H_0$; since $H_0$ is a chain, every $β ∈ H_0$ with $a ∈ \histend(β)$ is chain-compatible with $\anobs^{-1}(P) ⊆ H_0$, so, by hypothesis (no valid $α$), every such $β$ has $g(β) = p$. The row $b$ with $b = g$ on $H_0$ and $b(β) = p$ for every $β$ with $a ∈ \histend(β)$ outside $H_0$, completed arbitrarily on the rest, then satisfies $\anobs ⊆ b$ (as $\anobs^{-1}(P) ⊆ H_0$) and $a \ileadstostg[b] p$ (using the previous sentence for the $a$-ending points inside $H_0$), so $b ∈ S_C$. Either way, some $b ∈ S_C$ matches $g$ on $H_0$; as $H_0$ was arbitrary, $g$ is not distinguishable from $S_C$.
 \end{proof}
 
 \begin{remark}
-  Compare to \cref{th:oneMorePriorFull}: writing $C' := [∀i: Q_1(\allleadstog(i))]$ for the first conjunct alone (\cref{th:oneMorePriorFull}'s own claim, for the same $\anobs, a, p$; $Q_1$ and $\text{Bad}$ as in \cref{th:oneMorePriorGeneral}'s proof, instantiated at $B = \allleadsto(I)$), $C = C' ∩ [∀i, b ∈ \text{Bad}: \restr{\ileadstogo}{H_b} ≠ \restr{b}{H_b}] ⊆ C'$: the claim proved here is stronger (strictly so unless $\text{Bad} = ∅$), as it additionally excludes, on each realized row, collision with any $\anobs$-matching, decisiveness-failing non-real behavior on its own witnessing window, while $C'$ only demands decisiveness on $\anobs$-matching rows.
+  \label{rk:compareFull}
+  Compare to \cref{th:oneMorePriorFull}: writing $C' := [∀i: Q_1(\allleadstog(i))] ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$ (\cref{th:oneMorePriorFull}'s own claim, for the same $\anobs, a, p$; $Q_1$ and $\text{Bad}$ as in \cref{th:oneMorePriorGeneral}'s proof, instantiated at $B = \allleadsto(I)$), $C = C' ∩ [∀i, b ∈ \text{Bad}: \restr{\ileadstogo}{H_b} ≠ \restr{b}{H_b}] ⊆ C'$ (the extra Bad-avoidance conjunct commutes past the shared witness conjunct): the claim proved here is stronger (strictly so unless $\text{Bad} = ∅$), as it additionally excludes, on each realized row, collision with any $\anobs$-matching, decisiveness-failing non-real behavior on its own witnessing window, while $C'$ only demands decisiveness on $\anobs$-matching rows.
 
   $D^{\anobs, a, p}$ and $D^{\anobs, a, p}_{C'}$ are not comparable by inclusion: $D^{\anobs, a, p}$ quantifies over behaviors $b ∉ \allleadstog(I)$, tested against $\allleadstog(I)$ itself, whereas $D^{\anobs, a, p}_{C'}$ quantifies over behaviors $h ∈ \allleadstog(I) ∖ S_{C'}$, tested against the external set $S_{C'}$ (the types of $C'$).
 
   Both proofs move a witness to an untouched clone using $E$ in the same way, but differ in when the distinguishing prior is cashed in. Here, $¬\POF ∩ E ⊆ C$ outright: $\allleadsto ∈ D^{\anobs, a, p}$ is a hypothesis on the true world alone, spent only once, upfront, to fix $B$ and the $H_b$'s, before any candidate world is examined, so it drops out of \cref{th:oneMorePriorNarrow}'s conclusion entirely. In \cref{th:oneMorePriorFull}, by contrast, $\allleadstog ∈ D^{\anobs, a, p}_{C'}$ must instead be invoked afresh at each tested $\allleadstog$, since its witnessing window depends on that world's own failing row $g := \allleadstog(i)$, which varies with $\allleadstog$; so that prior cannot similarly be dropped from the conclusion. So the asymmetry is not about $E$, but about when the distinguishing prior is cashed in: once, from $\allleadsto$ alone, for the stronger, $\allleadsto$-dependent claim $C$; or per candidate world, for the weaker, $\allleadsto$-independent claim $C'$.
+
+  The same two instantiations ($B := \allleadsto(I)$ and $B := \allbs$) apply just as well to \cref{th:oneMorePriorGeneral} itself, giving analogues of \cref{th:oneMorePriorNarrow,th:oneMorePriorFull} for the original, unaugmented claim $C_0$: an anonymous, holding claim that is APTS and provable by $¬\POF ∩ E$, respectively APTS and provable by $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{C_0}$.
 \end{remark}
 
 \begin{remark}
-  \label{rmk:gapNotMinimal}
+  \label{rk:gapNotMinimal}
   $D^{\anobs, a, p}$ is not the minimal hypothesis for \emph{some} suitable claim to exist: a differently shaped claim can hold, be anonymous and APTS-P, in a world violating both. But the obstruction they route around does not disappear there — it relocates into the "provable by" filter instead of being paid upfront on $\allleadsto$ alone.
 
   Fix $a ≠ c ∈ \allargs$ and partition $I$ into infinite $J, K$, with $∀i ∈ J, \hist ∈ \allhists: \hist \ileadsto φ$, and $∀i ∈ K, \hist ∈ \allhists$: $\hist \ileadsto φ$ if $c ∈ \histend(\hist)$, $\hist \ileadsto φ'$ otherwise (so $(a) \ileadsto φ'$ throughout $K$, as $c ≠ a$). Let $b_j, b_k$ be the behaviors associated to $\allleadsto(J), \allleadsto(K)$, and take
@@ -1493,12 +1516,13 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 
   \emph{$\allleadsto ∉ D^{\set{((a),φ)}, a, φ}$.} Pick $d ∈ \allargs ∖ \set{a,c}$, $S = \set{\hist ≠ ∅ \suchthat \hist_1 = d}$, and $g := \restr{b_k}{S} ∪ \restr{b_j}{\allhists ∖ S}$. Any $H ∈ \fincrhists$ is a chain, hence lies entirely inside $S$ or entirely outside it, so $g$ matches $b_k$ or $b_j$ on $H$: $g$ is undistinguishable from $\set{b_j,b_k}$. As $d ≠ a$, $(a) ∉ S$, so $g((a)) = b_j((a)) = φ$: $g$ matches $\anobs = \set{((a),φ)}$. As $(d,a) ∈ S$ and $c ∉ \set{d,a}$, $g((d,a)) = b_k((d,a)) = φ'$, and $a ∈ \histend((d,a))$: $a$ is not decisive for $φ$ in $g$. Yet $g ∉ \set{b_j,b_k}$ ($g((d)) = φ' ≠ φ = b_j((d))$; $g((a)) = φ ≠ φ' = b_k((a))$). So $g$ is exactly the counterexample $D^{\set{((a),φ)},a,φ}$ forbids: the prior genuinely fails at $\allleadsto$.
 
-  \emph{Yet $C$ is not provable by $¬\OF ∩ E$ either.} Carve an infinite $I_3 ⊆ J$, leaving $J ∖ I_3$ infinite, and let $\allleadstog^*$ agree with $\allleadsto$ outside $I_3$, while every $i ∈ I_3$ realizes $g$ (answers $φ'$ on $S$, $φ$ elsewhere). Then $\allleadstog^* ∈ E$, and $\allleadstog^* ∉ C$: $g$ violates $C_1$, exactly as just shown. As in \cref{rmk:generalTemplateExcluded}, any finite $θ ⊆ \allleadstog^*$ restricted to $i ∈ I_3$ is a single chain, so it lies entirely inside $S$ or entirely outside it — the two witnessing histories $(a)$ and $(d,a)$ are incomparable, so no observation ever sees both — and it always extends into some world of $C$ (complete $i$ as fully $a$-decisive, or route it into $C_2$). Individuals outside $I_3$ embed by relabelling. So $¬\OF(\allleadstog^*)$ holds outright: $\allleadstog^* ∈ E ∖ C$ with $¬\OF(\allleadstog^*)$ shows $C$ is not provable by $¬\OF ∩ E$, hence not by $¬\POF ∩ E$ either.
+  \emph{Yet $C$ is not provable by $¬\OF ∩ E$ either.} Carve an infinite $I_3 ⊆ J$, leaving $J ∖ I_3$ infinite, and let $\allleadstog^*$ agree with $\allleadsto$ outside $I_3$, while every $i ∈ I_3$ realizes $g$ (answers $φ'$ on $S$, $φ$ elsewhere). Then $\allleadstog^* ∈ E$, and $\allleadstog^* ∉ C$: $g$ violates $C_1$, exactly as just shown. As in \cref{rk:generalTemplateExcluded}, any finite $θ ⊆ \allleadstog^*$ restricted to $i ∈ I_3$ is a single chain, so it lies entirely inside $S$ or entirely outside it — the two witnessing histories $(a)$ and $(d,a)$ are incomparable, so no observation ever sees both — and it always extends into some world of $C$ (complete $i$ as fully $a$-decisive, or route it into $C_2$). Individuals outside $I_3$ embed by relabelling. So $¬\OF(\allleadstog^*)$ holds outright: $\allleadstog^* ∈ E ∖ C$ with $¬\OF(\allleadstog^*)$ shows $C$ is not provable by $¬\OF ∩ E$, hence not by $¬\POF ∩ E$ either.
 
-  \emph{Where the assumption goes instead.} Applying \cref{th:oneMorePriorFull} to $C_1, C_2$ separately and intersecting gives $C$ provable by $(¬\POF) ∩ E ∩ D_1 ∩ D_2$, where $D_2 = D^{\set{((a),φ')},c,φ}_{C_2}$ is the claim-relative prior of the second conjunct, and $D_1 = D^{\set{((a),φ)},a,φ}_{C_1}$ that of the first: here, $\allleadstog ∈ D_1$ iff
-  $$∀g ∈ \allleadstog(I) \suchthat g((a)) = φ ∧ a \nileadstostg[g] φ: ∃ (a) ⊆ α ∈ \allhists \suchthat a ∈ \histend(α) ∧ g(α) ≠ φ.$$ $\allleadsto ∈ D_1 ∩ D_2$ only vacuously, as neither $b_j$ nor $b_k$ violates either conjunct. But $\allleadstog^* ∉ D_1$: its spliced row $g$ has $g((a)) = φ$ and $a$ not decisive for $φ$ in $g$ (both shown above), yet $g$ is undistinguishable from $\set{b_j,b_k} ⊆ S_{C_1}$ on every $H$ — exactly the fact established above. So $\allleadstog^*$ is excluded from $D_1 ∩ D_2$ exactly as it would need to be excluded, upfront, from $D^{\set{((a),φ)},a,φ}$ for \cref{th:oneMorePriorNarrow}'s route to apply to this claim's shape.
+  \emph{Where the assumption goes instead.} Applying the $B := \allbs$ analogue of \cref{th:oneMorePriorGeneral} (\cref{rk:compareFull}) to $C_1, C_2$ separately and intersecting gives $C$ provable by $(¬\POF) ∩ E ∩ D_1 ∩ D_2$, where $D_2 = D^{\set{((a),φ')},c,φ}_{C_2}$ is the claim-relative prior of the second conjunct, and $D_1 = D^{\set{((a),φ)},a,φ}_{C_1}$ that of the first: here, $\allleadstog ∈ D_1$ iff
+  $$∀g ∈ \allleadstog(I) \suchthat (a) \ileadstog[g] φ ∧ a \nileadstostg[g] φ: ∃ (a) ⊆ α ∈ \allhists \suchthat a ∈ \histend(α) ∧ α \nileadstog[g] φ,$$ and $\allleadstog ∈ D_2$ iff
+  $$∀g ∈ \allleadstog(I) \suchthat (a) \ileadstog[g] φ' ∧ c \nileadstostg[g] φ: ∃ (a) ⊆ α ∈ \allhists \suchthat c ∈ \histend(α) ∧ α \nileadstog[g] φ.$$ $\allleadsto ∈ D_1 ∩ D_2$ only vacuously, as neither $b_j$ nor $b_k$ violates either conjunct. But $\allleadstog^* ∉ D_1$: its spliced row $g$ has $g((a)) = φ$ and $a$ not decisive for $φ$ in $g$ (both shown above), yet $g$ is undistinguishable from $\set{b_j,b_k} ⊆ S_{C_1}$ on every $H$ — exactly the fact established above. So $\allleadstog^*$ is excluded from $D_1 ∩ D_2$ exactly as it would need to be excluded, upfront, from $D^{\set{((a),φ)},a,φ}$ for \cref{th:oneMorePriorNarrow}'s route to apply to this claim's shape.
 
-  So the two routes are not comparable in strength, and this is not a trade of one commitment for another. $D^{gap}$ is a hypothesis \emph{about the true world} $\allleadsto$, quantified over all of $\allbs$: something that must actually hold of reality, bought in exchange for the strongest conclusion, provable by the clean $¬\POF ∩ E$ itself, nothing left in the filter. $D_1, D_2$ are not a hypothesis on $\allleadsto$ at all here — $\allleadsto ∈ D_1 ∩ D_2$ holds automatically, vacuously — but a restriction on the \emph{scope} of the conclusion: worlds such as $\allleadstog^*$ are simply left outside the guarantee, whatever $\allleadsto$ turns out to be. That is a strictly cheaper, more reasonable kind of commitment. For this $C$ it is, moreover, the only kind available: $¬\OF(\allleadstog^*)$ is a structural fact about $\allleadstog^*$ alone, exactly as in \cref{rmk:generalTemplateExcluded} — independent of $\allleadsto$ — so no hypothesis on $\allleadsto$, $D^{gap}$-shaped or otherwise, could ever repair provability by the clean $¬\POF ∩ E$ for this branch-and-escape shape of claim. $D^{gap}$ is not a pricier alternative route here: it is inapplicable. What survives is narrower than first stated: $D^{gap}$ remains the minimal prior, on $\allleadsto$ alone, for provability by the clean $¬\POF ∩ E$, only for claims sharing \cref{th:oneMorePriorNarrow}'s single-template shape; for a claim like $C$ here, no hypothesis on $\allleadsto$ alone buys the clean conclusion, and the claim-relative route's weaker, scoped guarantee is the best available.
+  So the two routes are not comparable in strength, and this is not a trade of one commitment for another. $D^{gap}$ is a hypothesis \emph{about the true world} $\allleadsto$, quantified over all of $\allbs$: something that must actually hold of reality, bought in exchange for the strongest conclusion, provable by the clean $¬\POF ∩ E$ itself, nothing left in the filter. $D_1, D_2$ are not a hypothesis on $\allleadsto$ at all here — $\allleadsto ∈ D_1 ∩ D_2$ holds automatically, vacuously — but a restriction on the \emph{scope} of the conclusion: worlds such as $\allleadstog^*$ are simply left outside the guarantee, whatever $\allleadsto$ turns out to be. That is a strictly cheaper, more reasonable kind of commitment. For this $C$ it is, moreover, the only kind available: $¬\OF(\allleadstog^*)$ is a structural fact about $\allleadstog^*$ alone, exactly as in \cref{rk:generalTemplateExcluded} — independent of $\allleadsto$ — so no hypothesis on $\allleadsto$, $D^{gap}$-shaped or otherwise, could ever repair provability by the clean $¬\POF ∩ E$ for this branch-and-escape shape of claim. $D^{gap}$ is not a pricier alternative route here: it is inapplicable. What survives is narrower than first stated: $D^{gap}$ remains the minimal prior, on $\allleadsto$ alone, for provability by the clean $¬\POF ∩ E$, only for claims sharing \cref{th:oneMorePriorNarrow}'s single-template shape; for a claim like $C$ here, no hypothesis on $\allleadsto$ alone buys the clean conclusion, and the claim-relative route's weaker, scoped guarantee is the best available.
 \end{remark}
 
 \subsection{More draft results}
@@ -1665,7 +1689,7 @@ APTS-P strengthens both APS-P (\cref{def:apsP}, dropping the requirement that $�
 \end{remark}
 
 \begin{remark}[The same trick handles the fully general template]
-  \label{rmk:generalTemplateExcluded}
+  \label{rk:generalTemplateExcluded}
   Fix $a ∈ \allargs$, a finite $H ∈ \incr(\allhists)$, and $T: H → P$, and suppose $C ⊆ D_{a,T} := \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: [T(i) ⊆ \allleadstog ⇒ ∃p ∈ P \suchthat a \ileadstostg p]}$, writing $T(i) = \set{(i,\hist,p) \suchthat \hist ∈ H, T(\hist) = p}$, together with $\allleadsto ∈ C$ and Anon and Prov (APTS-P plays no role below, so the conclusion holds without it, and for the unpinned decisiveness question rather than only at $φ$).
 
   Write $\hist^{(k)} = \max H$ (or $∅$ if $H = ∅$), and suppose $T$ is compatible with constant $φ$ (the case of $I_2$'s shape is symmetric, carving $I_3$ from $I_2$ instead and swapping the roles of $φ, φ'$ throughout; if $T$ is compatible with neither, no individual of $\allleadsto$ ever satisfies the antecedent and the claim holds vacuously, as in the first remark below).
@@ -1854,6 +1878,7 @@ We are here interested in the interplay between properties of holding, anonymity
 % \end{proof}
 
 \section{Supplementary material}
+\subsection{Explanatory examples}
   \begin{example}[Disjunct with incompatible paths, not falsifiable, to be deleted]
     \label{ex:disj}
     Given $a ≠ a' ∈ \allargs$, the claim appearing in \cref{ex:disjR}, namely,
