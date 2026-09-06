@@ -241,6 +241,7 @@ Once established that a claim holds, any feasible observation can be combined wi
 We want, minimally, that at least some feasible observation permits to conclude about at least one individual’s DJ.
 \label{def:apts}
 A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
+A claim $C$ satisfies strong APTS (SAPTS) iff $∀ \allleadstog ∈ C, θ ∈ Θ ∩ \powerset{\allleadstog}, ∃ θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}, i ∈ I \suchthat π_i(\set{θ' ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ' ⊆ \allleadstog ∈ C} = 1$.
 
 We restrict attention to claims that do not use prior knowledge about named individuals, thus, are anonymous, in the following sense.
 Given a permutation $σ$ over $I$ and any $\allleadstog ∈ \allleadstos$, let $\allleadstog ∘ σ$ denote $\set{(i, \hist, φ) \suchthat (σ(i), \hist, φ) ∈ \allleadstog}$ and let $C ∘ σ$ denote $\set{\allleadstog ∘ σ \suchthat \allleadstog ∈ C}$.
@@ -1230,23 +1231,6 @@ The converse fails, as \cref{ex:anonProvNotFals} shows.
 \end{proof}
 
 \begin{theorem}
-  Given any $\allleadsto ∈ E$, there exists an anonymous claim that is informative and provable by $¬\POF[C ∩ E] ∩ E$.
-\end{theorem}
-\begin{proof}
-  Take $C = \set{\allleadstog ∈ \allleadstos \suchthat ∀ i ∈ I, ∀ α ∈ \allhists: \allleadstog(i, α) ≠ 0}$.
-
-  \emph{Anonymity.} For any permutation $σ$, $(\allleadstog ∘ σ)(i, α) = \allleadstog(σ(i), α)$; since the condition quantifies over all $i$, $\allleadstog ∘ σ ∈ C$ iff $\allleadstog ∈ C$.
-
-  \emph{Informativeness.} If $\allleadstog ∈ C$ had $a \ileadstost[i] 0$, some $α$ with $a ∈ \histend$ would satisfy $\allleadstog(i, α) = 0$, contradicting $C$. Hence $π_i(\allleadstog) ≠ 0$ for all $\allleadstog ∈ C$ and $i ∈ I$, so the profile $(0)_{i ∈ I} ∉ π(C)$ and $C$ is informative.
-
-  \emph{Provability.} $C ∩ E$ is anonymous: $C$ is anonymous (shown above); $E$ is anonymous since for any $\allleadstog ∈ E$ and permutation $σ$, individual $j$ in $\allleadstog ∘ σ$ behaves as $σ(j)$ in $\allleadstog$, so behavior classes are relabeled with each still infinite, giving $\allleadstog ∘ σ ∈ E$; and $(C ∩ E) ∘ σ = (C ∘ σ) ∩ (E ∘ σ) = C ∩ E$.
-  For $\allleadstog ∈ E ∖ C$, pick $(i_0, α_0)$ with $\allleadstog(i_0, α_0) = 0$.
-  The observation $θ_0 = \restr{\allleadstog}{\set{(i_0, α_0)}} ∈ Θ ∩ \powerset{\allleadstog}$ lies outside $(C ∩ E)^⊆$: any $\allleadstog' ∈ C ∩ E$ extending $θ_0$ would satisfy $\allleadstog'(i_0, α_0) = 0$, contradicting $C$.
-  Hence $\OF[C ∩ E](\allleadstog)$, and by \cref{th:anonThusAlmostPof,th:delegationNoVisibilityIssues}, $\POF[C ∩ E](\allleadstog)$.
-  Therefore $(¬\POF[C ∩ E]) ∩ E ⊆ C$.
-\end{proof}
-
-\begin{theorem}
   Given any $\allleadsto ∈ E$, there exists an anonymous claim that holds, is informative and provable by $¬\POF[C ∩ E] ∩ E$.
 \end{theorem}
 \begin{proof}
@@ -1390,6 +1374,31 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 (We could relax the prior by adding $B ⊈ \allleadstog(I) ∨…$ (or $B ⊆ \allleadstog(I) ⇒ …$), because we need only verifiability when $B ⊈ \allleadstog(I)$!)
 
 \begin{theorem}
+  \label{th:oneMorePriorGeneralPev}
+  Given $B ⊆ \allbs$ with $\allleadsto(I) ⊆ B$, and $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, B}$ such that
+  for some $H$ with $1 ≤ \card(\max H)$, $\anobs: H → P$, $a$, $p$,
+  $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
+  and
+  $∃ i \suchthat \anobs ⊆ \ileadstoo$,
+  there exists an anonymous claim $C$ that holds, is SAPTS and PEV under $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$.
+\end{theorem}
+\begin{proof}
+  Let $C_0$ be the claim built in the proof of \cref{th:oneMorePriorGeneral}, and set
+  $C := C_0 ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$,
+  writing $S_C := ⋃_{\allleadstog' ∈ C} \allleadstog'(I)$ for the types of this (smaller) claim, and $D := (¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ for the prior at stake (both evaluated at this $C$, as in \cref{th:oneMorePriorGeneral}'s proof).
+
+  \emph{Holds, Anonymous.} $\allleadsto ∈ C_0$, and the new conjunct holds at $\allleadsto$ by hypothesis, so $\allleadsto ∈ C$. The new conjunct has the anonymity-friendly shape $∃i: Q(\allleadstog(i))$: for any permutation $σ$, $∃i: \anobs ⊆ (\allleadstog ∘ σ)(i) ⇔ ∃i: \anobs ⊆ \allleadstog(σ(i)) ⇔ ∃j: \anobs ⊆ \allleadstog(j)$, reindexing $j := σ(i)$; combined with $C_0$'s anonymity, $C ∘ σ = C$.
+
+  \emph{SAPTS.} Fix $\allleadstog ∈ C$ and $θ ∈ Θ ∩ \powerset{\allleadstog}$. As $\allleadstog ∈ C$, fix $i^* ∈ I$ with $\anobs ⊆ \ileadstogo[i^*]$, and let $θ' := θ ∪ (\set{i^*} × \anobs)$, so $θ ⊑ θ'$ and $θ' ∈ Θ ∩ \powerset{\allleadstog}$ (as in \cref{th:oneMorePriorGeneral}'s \emph{APTS-P} paragraph, now with $i^*, θ$ in place of that paragraph's $i_0, θ_0$). Any $\allleadstog' ∈ \set{θ' ⊆ \allleadstog} ∩ C$ has $\anobs ⊆ \allleadstog'(i^*)$, so $C_0$'s first conjunct at $i^*$ gives $a \ileadstost[i^*] p$ in $\allleadstog'$, hence $π_{i^*}(\allleadstog') = p$ by \cref{th:sing}. As $\allleadstog$ itself lies in $\set{θ' ⊆ \allleadstog} ∩ C$, this set is nonempty, so $π_{i^*}(\set{θ' ⊆ \allleadstog} ∩ C) = \set{p}$: $(θ', i^*)$ witnesses SAPTS at $(\allleadstog, θ)$. As both were arbitrary, $C$ is SAPTS.
+
+  \emph{PEV under $D$.} By \cref{th:dualPof}, it suffices to show $\POF[D ∖ C](\allleadstog)$ for every $\allleadstog ∈ C ∩ D$.
+
+  \emph{$D ⊆ C_0$.} Steps 1, A and B of \cref{th:oneMorePriorGeneral}'s proof only ever use $C_0$'s first and second conjuncts (never a bound on $C$ from above), so they apply verbatim to $C$ in place of that proof's own claim, with this $C$'s own $S_C$: any $\allleadstog' ∈ E ∩ D^{\anobs, a, p}_{\allleadstog'(I) ∩ B, \, S_C}$ outside $C_0$ satisfies $\POF[C](\allleadstog')$, that is $\allleadstog' ∉ ¬\POF$. So no $\allleadstog' ∈ D$ lies outside $C_0$: $D ⊆ C_0$.
+
+  Fix $\allleadstog ∈ C ∩ D$ and $θ ∈ Θ ∩ \powerset{\allleadstog}$; reuse $i^*, θ'$ from the \emph{SAPTS} paragraph above. Suppose $\allleadstog'' ∈ D$ extends $θ'$. By $D ⊆ C_0$, $\allleadstog'' ∈ C_0$; and $θ' ⊆ \allleadstog''$ gives $\anobs ⊆ \allleadstog''(i^*)$, so $\allleadstog''$ also satisfies $C$'s extra conjunct (witnessed by $i^*$), hence $\allleadstog'' ∈ C$. So no $\allleadstog'' ∈ D ∖ C$ extends $θ'$, that is, $θ' ∉ (D ∖ C)^⊆$. As $θ$ was arbitrary, $\POF[D ∖ C](\allleadstog)$ holds; as $\allleadstog ∈ C ∩ D$ was arbitrary, $C$ satisfies PEV under $D$.
+\end{proof}
+
+\begin{theorem}
   \label{th:oneMorePriorGeneral}
   Given $B ⊆ \allbs$ with $\allleadsto(I) ⊆ B$, and $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, B}$ such that
   for some $H$ with $1 ≤ \card(\max H)$, $\anobs: H → P$, $a$, $p$,
@@ -1398,7 +1407,6 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
   there exists an anonymous claim $C$ that holds, is APTS and provable by $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$.
 \end{theorem}
-
 \begin{proof}
   Write $\text{Bad} := \set{b ∈ \allbs \suchthat b ∉ B ∧ \anobs ⊆ b ∧ a \nileadstostg[b] p}$. As $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, B}$, fix, for each $b ∈ \text{Bad}$, some $H_b ∈ \fincrhists$ with $\restr{b}{H_b} ∉ \restr{B}{H_b}$. Take
   $$C := [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ [∀i ∈ I, b ∈ \text{Bad}: \restr{\ileadstogo}{H_b} ≠ \restr{b}{H_b}].$$
