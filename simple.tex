@@ -67,7 +67,7 @@ I assume given two antagonistic acts, constituting the decision at stake, such a
 Let the set $P = \set{φ, φ', 0}$ denote the set of possible preferences, where $φ$ denote a strict preference for the first act against the other one, $φ'$ conversely, and $0$ denotes indifference (both acts are considered equally worth).
 
 \subsection{Exposure protocol}
-An exposure protocol is a tuple $(I, \allargs, \allleadsto)$, where $I$ is a set of individuals, $\allargs$ is a set of arguments, and $\allleadsto$, “leads to”, is the behavior of the individuals as a function of the arguments they have been exposed to.
+An exposure protocol is a tuple $(I, \allargs, \allleadsto)$, where $I$ is a set of individuals, $\allargs$ is a set of arguments, and $\allleadsto$, “leads to”, represents the behavior of each individual as a function of the arguments they have been exposed to.
 
 While $I$ and $\allargs$ are fundamental sets whose elements are considered elementary, a few notations and concepts are required to define $\allleadsto$.
 Throughout the article, $ℕ$ designates the natural numbers (including $0$) and $\Np = ℕ ∖ \set{0}$ designates the positive numbers.
@@ -82,6 +82,8 @@ Given any $\hist ∈ \allhists$, $\intvl{\hist} = \set{\restr{\hist}{\intvl{1, k
 The function $\allleadsto: I × \allhists → P$ associates to each individual and path an element of $P$, $\allleadsto(i, α)$ representing the choice of $i$ following exposure to the arguments of $α$, in order. That is, $\allleadsto(i, α) = φ$ denotes that $i$ chooses the first act after exposure to $α$, $\allleadsto(i, α) = φ'$ denotes $i$ choosing the second act and $\allleadsto(i, α) = 0$ is used to represent indifference of $i$.
 The notation $α \ileadsto p$, pronounced “$α$ leads $i$ to $p$”, will be used to mean $\allleadsto(i, α) = p$, considering $\ileadstoo ⊆ \allhists × P$ as a binary relation.
 As usual with binary relations, $\hist \nileadsto p$ means $\allleadsto(i, α) ≠ p$ or equivalently $\allleadsto(i, α) ∈ P ∖ \set{p}$.
+
+We will also have to consider generic worlds. A world $\allleadstog ∈ \allleadstos$ represents the a priori possible behaviors of individuals in $I$. All these worlds but one, $\allleadsto$, are counter-factual.
 
 \subsection{Deliberated choice}
 The deliberated choice of $i$ given the exposure protocol $(I, \allargs, \allleadsto)$ is denoted $P_i ⊆ P$.
@@ -116,7 +118,7 @@ The intended semantics is that $P_i$ represents the preference of $i$ over the p
 This latter possibility may look unpleasant, but it is a fact that facing some difficult problems, individuals sometimes are undecided, and it is an a priori empirical possibility that the individual remains undecided (or even, \emph{becomes} undecided) when considering multiple arguments.
 Also, being undecided is not the same state as being decidedly indifferent about two issues.
 
-Given an behavior function $\allleadstog$, deliberated choices are represented by an element $π(\allleadstog) ⊆ I × P$ defined as $π_i(\allleadstog) = π(\allleadstog)(i) = P_i$. \Cref{th:sing} shows that $π(\allleadstog)$ is right unique (meaning that $∀ i ∈ I: \card{π(\allleadstog)(i)} ≤ 1$).
+Given a world $\allleadstog$, deliberated choices are represented by an element $π(\allleadstog) ⊆ I × P$ defined as $π_i(\allleadstog) = π(\allleadstog)(i) = P_i$. \Cref{th:sing} shows that $π(\allleadstog)$ is right unique (meaning that $∀ i ∈ I: \card{π(\allleadstog)(i)} ≤ 1$).
 Equivalently, note that $(P ∪ \set{∅})^I$, where $\set{∅}$ is used as a sentinel value for individuals with no deliberated judgment, can be interpreted as the right unique relations over $I × P$ (discarding those individuals with no deliberated judgment); and then the deliberated choices are an element $π(\allleadstog) ∈ (P ∪ \set{∅})^I$.
 
 The deliberated judgment of a subject depends on the exposure protocol, that is, on the set of arguments and the way they are submitted to the subject, and not only on the set of arguments, because the very way that they are transmitted to the individual may affect her judgment differently. For example, reading an image description and showing an image to a subject may impress them differently \citep{railton_facts_2003}.
@@ -167,11 +169,11 @@ in order to deduce that $p ∈ P_i$ for some $p ∈ P, i ∈ I$, the claim must 
 It follows that a claim cannot be validated empirically exhaustively by observing the value of $\allleadsto$ on every points that it constraints.
 
 Second,
-our observations are limited in important ways: once we have shown some arguments to a given individual $i$, we cannot undo the effects of this action on $i$ and show to her a different argument as if starting from scratch (unless assuming $i$ forgets arguments after a while and waiting for sufficiently long, which would create practical and theoretical difficulties).
+our observations are limited in important ways: once we have shown some arguments to a given individual $i$, we cannot undo the effects of this action on $i$ and show to her a different argument as if starting from scratch (though one can in some circumstances assume $i$ forgets arguments after a while; indeed we will study precisely which of these assumptions are necessary and sufficient).
 In other words, once we have shown a path $\hist$ to $i$, we can only continue the protocol with $i$ by showing paths $\histp$ that extend $\hist$.
 
 To illustrate this point with \cref{ex:tutor}, let $\hist = (a_1, a_e, a_2)$ designate the argumentative path where the arguments are shown in the order they are described in \cref{ex:tutor}, and let $\hist' = (a_2, a_e, a_1)$ designate the reverse order.
-The deliberated choice concept is defined so as to not depend on the order of the arguments shown to $i$, as long as the end of the path features a decisive argument: for having $p ∈ P_i$, it must be that directing to $i$ the path $\hist$ or the path $\hist'$ both lead $i$ to choose $p$.
+The deliberated judgment does not depend on the order of the arguments shown to $i$, as long as the end of the path features a decisive argument: for having $p ∈ P_i$, it must be that directing to $i$ the path $\hist$ or the path $\hist'$ both lead $i$ to choose $p$.
 But it is impossible to observe both the value of $\allleadsto(i, \hist)$ and the value of $\allleadsto(i, \hist')$.
 
 The first difficulty is familiar as it occurs in any endeavor to validate general claims in science: claims that cover a large (or infinite) spectrum cannot be validated by observing the system exhaustively. One must rather develop a falsification protocol, that is, a way to invalidate the claim, and then observe that the claim is not invalidated. This is the approach taken in the next section.
@@ -209,7 +211,7 @@ An observation $θ'$ rightward-extends an observation $θ$, denoted $θ ⊑ θ'$
 
 An anonymous observation $\anobs ∈ ∪_{H ∈ \fincrhists} P^H$ associates each path from an increasing set of paths to an element of $P$. We let $\set{i} × \anobs = \set{(i, α, p) \suchthat (α, p) ∈ \anobs} ∈ Θ$ denote the observation corresponding to applying $\anobs$ to $i$; and $\anobs^{-1}(P) = \set{α \suchthat ∃p ∈ P \suchthat (α, p) ∈ \anobs} ∈ \fincrhists$ the used paths.
 
-We say that an observation $θ$ is compatible with a behavior $\allleadstog ∈ \allleadstos$ iff $θ ⊆ \allleadstog$ (seeing the behavior as a set of triples).
+We say that an observation $θ$ is compatible with a world $\allleadstog ∈ \allleadstos$ iff $θ ⊆ \allleadstog$ (seeing the world as a set of triples).
 Thus, given $\allleadstog ∈ \allleadstos$, the set $Θ ∩ \powerset{\allleadstog}$ is the set of observations compatible with $\allleadstog$.
 Similarly, an observation $θ$ is compatible with a claim $C$ iff
 $θ ∈ ∪_{\allleadstog ∈ C} \powerset{\allleadstog}$, equivalently, iff
@@ -221,7 +223,7 @@ Given a claim $C$ and an observation $θ$, $π(\set{θ ⊆ \allleadstog} ∩ C) 
 \label{def:unobservable}
 A subset of triples $T ⊆ I × \allhists × P$ is unobservable iff it cannot be observed together, that is, iff $T ∉ Θ$. If $\card{T} ∉ ℕ$, $T$ is unobservable. A finite subset of triples $T$ is unobservable iff some subset $T' ⊆ T$ with $\card{T'} = 2$ is unobservable (unobservability comes from a given individual’s observations, for that one, the paths are not increasing, and as the subset relation is transitive, two elements suffice to determine this fact).
 
-It is important to realize that $Θ$ is the set of \emph{a priori} possible observations, meaning, those that are conceivable, possibly counter-factually. The set of observations that can result from actually observing the behavior $\allleadsto$ is 
+It is important to realize that $Θ$ is the set of \emph{a priori} possible observations, meaning, those that are conceivable, possibly counter-factually. The set of observations that can result from actually observing the world $\allleadsto$ is 
 $Θ ∩ \powerset{\allleadsto} = \set*{\restr{{\allleadsto}}{Q} \suchthat Q ∈ \allpriobss}$.
 Such an observation $θ ∈ Θ ∩ \powerset{\allleadsto}$ is called a feasible observation.
 
@@ -336,7 +338,7 @@ $C ≠ \allleadstos ∧ [\F(\allleadstog) ⇒ \OF(\allleadstog)]$,
 and \emph{persistently falsifiable} iff
 $C ≠ \allleadstos ∧ [∀\allleadstog: \F(\allleadstog) ⇒ \POF(\allleadstog)]$.
 
-It is important to note that (persistent) falsifiability does not depend on $\allleadsto$: whether falsifiability holds can be determined analytically, meaning, by considering only the content of the claim, without considering the behavior of individuals.
+It is important to note that (persistent) falsifiability does not depend on $\allleadsto$: whether falsifiability holds can be determined analytically, meaning, by considering only the content of the claim, without considering the world.
 
 We introduce the prior called $C$-scrutiny, which postulates that the real world is such that $C$ is either not observably false in it, or if it is, then $C$ suffers visibility issues in it; formally, $¬\OF(\allleadsto) ∨ (¬\POF(\allleadsto) ∧ \OF(\allleadsto))$.
 This is logically equivalent to mandating $¬\POF(\allleadsto)$, thus, excluding worlds in which $C$ is persistently observably false.
@@ -395,6 +397,8 @@ TODO prove this for PEV and all worlds.
 \section{Conclusion}
 The dependence of the deliberated judgment concept on the exposure protocol yields a first qualification about the concept of deliberated judgments when one desires to use it normatively: it is only as reasonable to call the resulting judgments “deliberate” in a normative sense as the exposure protocol is normatively relevant to deliberation. A sufficiently restricted, or even purposefully chosen, set of arguments may yield judgments that are only deliberate in the technical sense used here, but that pertain more to brain-washing than to reflective judgments. While it is indeed a long-term goal of this research program to yield a normatively relevant conception of preference (appropriate, for example, for recommendation), it is not a claim of this article that anything that corresponds to deliberated judgments as defined here qualify as being appropriate for any normative use: much depends on the chosen exposure protocol. The goal of this article is rather one of a conceptual and practical clarification. It proposes a sharp distinction between the empirical content and the normative content of the concept of deliberated judgments: the definition proposed here transfers the full normative weight on the choice of the exposure protocol; and leaves the rest of the disagreements to empirical settling. This is methodologically akin, mutatis mutandis, to the axiomatic study of justice such as done in social choice, only complementing mathematical deduction with empirical claims. In social choice, the choice of axioms bears the full normative weight; once axioms are chosen, it is a matter of logic which social choice rules (if any) correspond to that choice. In our case, once an exposure protocol is chosen, it is an empirical matter which deliberated judgments result.
 In supplement to a possibly helpful conceptual clarification, such a sharp separation may reveal practically useful for separation of concern as it permits to study deliberated judgments empirically under various exposure protocols independently of possible disagreements about which norms are more appropriate for deliberation in which circumstances.
+
+\bibliography{simple}
 
 \appendix
 \section{Proofs and supplementary discussion}
@@ -1565,7 +1569,9 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 
   So the two routes are not comparable in strength, and this is not a trade of one commitment for another. $D^{gap}$ is a hypothesis \emph{about the true world} $\allleadsto$, quantified over all of $\allbs$: something that must actually hold of reality, bought in exchange for the strongest conclusion, provable by the clean $¬\POF ∩ E$ itself, nothing left in the filter. $D_1, D_2$ are not a hypothesis on $\allleadsto$ at all here — $\allleadsto ∈ D_1 ∩ D_2$ holds automatically, vacuously — but a restriction on the \emph{scope} of the conclusion: worlds such as $\allleadstog^*$ are simply left outside the guarantee, whatever $\allleadsto$ turns out to be. That is a strictly cheaper, more reasonable kind of commitment. For this $C$ it is, moreover, the only kind available: $¬\OF(\allleadstog^*)$ is a structural fact about $\allleadstog^*$ alone, exactly as in \cref{rk:generalTemplateExcluded} — independent of $\allleadsto$ — so no hypothesis on $\allleadsto$, $D^{gap}$-shaped or otherwise, could ever repair provability by the clean $¬\POF ∩ E$ for this branch-and-escape shape of claim. $D^{gap}$ is not a pricier alternative route here: it is inapplicable. What survives is narrower than first stated: $D^{gap}$ remains the minimal prior, on $\allleadsto$ alone, for provability by the clean $¬\POF ∩ E$, only for claims sharing \cref{th:oneMorePriorNarrow}'s single-template shape; for a claim like $C$ here, no hypothesis on $\allleadsto$ alone buys the clean conclusion, and the claim-relative route's weaker, scoped guarantee is the best available.
 \end{remark}
+% \end{document}
 
+\section{Supplementary material}
 \subsection{More draft results}
 \begin{theorem}
   Verifiability in $\allleadstog ∈ C ∩ D$ under $D$ fails iff
@@ -1918,7 +1924,6 @@ We are here interested in the interplay between properties of holding, anonymity
 %   Define the claim as $∀ i ∈ I, \hist ∈ \allhists: \hist \ileadstog φ$.
 % \end{proof}
 
-\section{Supplementary material}
 \subsection{Explanatory examples}
   \begin{example}[Disjunct with incompatible paths, not falsifiable, to be deleted]
     \label{ex:disj}
@@ -4203,5 +4208,4 @@ The latter yields a clean bonus characterization: exclusion of a single point by
 Five independent constructions now confirm \cref{cnj:rpevProv} without exception: not one claim, not closed under finite modification, has been found to satisfy PEV under $¬\POF$; a general proof or a genuine example satisfying PEV both remain open.
 
 \hbadness=10000
-\bibliography{simple}
 \end{document}
