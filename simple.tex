@@ -188,7 +188,7 @@ Given sets $A$ and $B$, $A \fsub B$ denotes that $A$ is a finite subset of $B$, 
 Given a function $f$ on some domain $\mathcal{A}$, given $A ⊆ \mathcal{A}$, we write $f(A) = \set{f(a) \suchthat a ∈ A}$ to denote the images of each element in $A$. This creates no ambiguity because the functions appearing in this article apply on domains whose elements are never subsets of the domain (thus for a domain $A$, $a ∈ A ⇒ a ⊈ A$).
 
 Given a pair $(I, \allargs)$, a claim $C$ is a set of possibilities for $\allleadsto$, thus, $C ⊆ \allleadstos$.
-Given a formula $ψ$, let the corresponding claim be $C_ψ = \set{\allleadstog ∈ \allleadstos \suchthat \allleadstog \text{ satisfies } ψ}$.
+For brevity, claims will often be described using just a formula in brackets, for example $C = [∀i, ∃α ∈ \allhists \suchthat α \ileadstog φ]$ is the claim $C = \set{\allleadstog ∈ \allleadstos \suchthat ∀i, ∃α ∈ \allhists \suchthat α \ileadstog φ}$. \commentOC{I sometimes use bold $\allleadsto$ instead of $\allleadstog$, to be fixed.}
 A claim is trivial iff it is the trivial claim, defined as $C = \allleadstos$.
 A claim is finite iff its cardinal is finite (meaning that it is compatible with a finite number of possibilities).
 Let $C^⊆ = ∪_{\allleadstog ∈ C} \powerset{\allleadstog} = \set{c ⊆ (I × \allhists) × P \suchthat ∃ \allleadstog ∈ C \suchthat c ∈ \powerset{\allleadstog}}$ denote the set of non necessarily complete possibilities compatible with $C$ (thus, each element $c ∈ C^⊆$ is right-unique but non necessarily total, meaning that it does not necessarily cover $(I × \allhists)$).
@@ -218,7 +218,7 @@ $θ ∈ ∪_{\allleadstog ∈ C} \powerset{\allleadstog}$, equivalently, iff
 $θ ∈ C^⊆$.
 The set $Θ ∩ C^⊆$ is the set of observations compatible with the claim.
 This set is downwards-closed, as both $Θ$ and $C^⊆$ are.
-Given a claim $C$ and an observation $θ$, $π(\set{θ ⊆ \allleadstog} ∩ C) = \set{π(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C}$ thus denotes the DJ functions (mappings of $I$ to $P ∪ \set{∅}$) compatible with the observation and the claim.
+Given a claim $C$ and an observation $θ$, $π(\mathop{↑}θ ∩ C) = \set{π(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C}$ thus denotes the DJ functions (mappings of $I$ to $P ∪ \set{∅}$) compatible with the observation and the claim.
 
 \label{def:unobservable}
 A subset of triples $T ⊆ I × \allhists × P$ is unobservable iff it cannot be observed together, that is, iff $T ∉ Θ$. If $\card{T} ∉ ℕ$, $T$ is unobservable. A finite subset of triples $T$ is unobservable iff some subset $T' ⊆ T$ with $\card{T'} = 2$ is unobservable (unobservability comes from a given individual’s observations, for that one, the paths are not increasing, and as the subset relation is transitive, two elements suffice to determine this fact).
@@ -241,12 +241,12 @@ We will study criteria to determine whether a claim holds.
 Once established that a claim holds, any feasible observation can be combined with the claim to determine conclusions.
 We want, minimally, that at least some feasible observation permits to conclude about at least one individual’s DJ.
 Furthermore, we want such observations to be always available even after some previous observations have occurred already, to ensure reproducibility.
-A claim $C$ is \emph{conclusive} iff $∀ \allleadstog ∈ C, θ ∈ Θ ∩ \powerset{\allleadstog}, ∃ θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}, i ∈ I \suchthat π_i(\set{θ' ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ' ⊆ \allleadstog ∈ C} = 1$.
+A claim $C$ is \emph{conclusive} iff $∀ \allleadstog ∈ C, θ ∈ Θ ∩ \powerset{\allleadstog}, ∃ θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}, i ∈ I \suchthat π_i(\mathop{↑}θ' ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ' ⊆ \allleadstog ∈ C} = 1$.
 
 We restrict attention to claims that do not use prior knowledge about named individuals, thus, are anonymous, in the following sense.
 Given a permutation $σ$ over $I$ and any $\allleadstog ∈ \allleadstos$, let $\allleadstog ∘ σ$ denote $\set{(i, \hist, φ) \suchthat (σ(i), \hist, φ) ∈ \allleadstog}$ and let $C ∘ σ$ denote $\set{\allleadstog ∘ σ \suchthat \allleadstog ∈ C}$.
 A claim $C$ is \emph{anonymous} iff $∀ σ: C = C ∘ σ$.
-\Cref{ex:anon} illustrates. 
+For example, given $a$, $i$ and $φ$, the claim $[a \ileadstog φ]$, which claims that a given argument leads a given individual to a given proposition, is not anonymous (\cref{ex:anon}); whereas given $a$ and $φ$, the claim $[∀i: a \ileadstog φ]$ is anonymous. 
 
 \subsection{Verifiability}
 \label{sec:verifiability}
@@ -262,7 +262,7 @@ is sound (\cref{th:vImpliesHolds}), meaning that indeed when a claim is verified
 Indeed,
 some sufficiently simple claims, such as the claim $C = \set{\allleadstog \suchthat (a) \ileadstog φ}$ that some given path leads some given individual to some given proposition, are possibly verifiable, but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
 
-Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(\set{θ ⊆ \allleadstog'} ∩ C) ≠ (P ∪ \set{∅})^I$.
+Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(\mathop{↑}θ ∩ C) ≠ (P ∪ \set{∅})^I$.
 
 In turns out that any claim that is conclusive fails verifiedness: the weaker demand of being informative in $\allleadsto$ implies failure of verifiedness (\cref{th:infoNotVerif}).
 This result may appear unsurprising, as we did not postulate yet any sort of regularity in the world, and ideed the fundamental reason for the incompatibility is that any observation can be completed in a way that contradicts any conclusion that informativeness in a world mandates (\cref{th:completable}).
@@ -412,11 +412,11 @@ $∀\allleadstog ∈ C: ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ 
   is possibly verifiable but fails established verifiability.
 \end{example}
 
-A claim $C$ is \emph{possibly informative} iff it is informative in some world of $C$, namely, iff $∃θ ∈ Θ ∩ C^⊆ \suchthat π(\set{θ ⊆ \allleadstog} ∩ C) ≠ (P ∪ \set{∅})^I$.
+A claim $C$ is \emph{possibly informative} iff it is informative in some world of $C$, namely, iff $∃θ ∈ Θ ∩ C^⊆ \suchthat π(\mathop{↑}θ ∩ C) ≠ (P ∪ \set{∅})^I$.
 A claim $C$ is \emph{informative} iff $π(C) ≠ (P ∪ \set{∅})^I$.
 A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π_i(C) = \set{π_i(\allleadstog) \suchthat \allleadstog ∈ C} ≠ P ∪ \set{∅}$.
-A claim $C$ is \emph{a posteriori sharp} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
-A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
+A claim $C$ is \emph{a posteriori sharp} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(\mathop{↑}θ ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
+A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I \suchthat π_i(\mathop{↑}θ ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
 
 \Cref{tab:renaming} lists this informativeness/sharpness family together with the related notions defined elsewhere (SAPTS, in the main text; indicative, further below in this appendix) and the renaming proposed for the two notions used in the main text (and their closest relatives), so that these read as ordinary words rather than acronyms; the more technical, appendix-only singleton-pinning family (APS, APTS, APS-P, APTS-P) keeps its acronym names.
 
@@ -464,6 +464,12 @@ A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{
 
 Note that $\incr(\allhists)^I$ and $\allpriobss$ are downwards closed, meaning that $∀ O ∈ \incr(\allhists)^I: \set{O' ⊆ O} ⊆ \incr(\allhists)^I$ and $∀ O ∈ \allpriobss: \set{O' ⊆ O} ⊆ \allpriobss$.
 
+\subsection{Explanatory examples}
+\begin{example}
+  \label{ex:anon}
+  Given $a$ and $φ$, the claim $a \ileadstog φ$ is not anonymous iff $\card{I} ≥ 2$. Indeed, pick any $j ≠ i$ and define $σ(i) = j$, $σ(j) = i$ and $∀ k ∈ I ∖ \set{i, j}: σ(k) = k$, then $C = \set{\allleadstog \suchthat \allleadstog(i, a) = φ}$, which contains in particular $\allleadsto$ defined as $∀ \hist: [∀ k ∈ I ∖ \set{j}, \allleadsto(k, \hist) = φ ∧ \allleadsto(j, \hist) = φ'$; while $C ∘ σ = \set{\allleadstog \suchthat \allleadstog(j, a) = φ}$ which does not contain $\allleadsto$.
+\end{example}
+
 \subsection{Verifiability}
 \begin{theorem}
   \label{th:vudImpliesHolds}
@@ -490,7 +496,7 @@ Using the trivial prior $D = \allleadstos$, we obtain this corollary.
     these properties are equivalent:
     \begin{enumerate}
       \item \label{it:unverifD} $∀ θ ⊆ \allleadstog ∈ D: \allleadstog ∈ C$,
-      \item \label{it:nocomplD} $D ∩ \set{\allleadstog \suchthat θ ⊆ \allleadstog} ⊆ C$,
+      \item \label{it:nocomplD} $D ∩ \mathop{↑}θ ⊆ C$,
       \item \label{it:notcomplE} $θ ∉ (D ∖ C)^⊆$,
       \item \label{it:obscovers} there exists a finite disjoint partition $\set{S_k}$ of $D ∖ C$ such that $∀k, ∃t ∈ θ \suchthat \set{t} ∉ S_k^⊆$ (equivalently, $t ∉ ⋃S_k$).
     \end{enumerate}
@@ -560,7 +566,7 @@ Using the trivial prior $D = \allleadstos$, we obtain this corollary.
   \end{itemize}
 \end{theorem}
 \begin{proof}
-  By \cref{th:vud}, $D ∩ \set{\allleadstog \suchthat θ ⊆ \allleadstog} ⊆ C$, and for some $f$, $\allleadstog ∈ C ⇒ π(\allleadstog) ≠ f$.
+  By \cref{th:vud}, $D ∩ \mathop{↑}θ ⊆ C$, and for some $f$, $\allleadstog ∈ C ⇒ π(\allleadstog) ≠ f$.
 
   Also, $D ≠ \allleadstos$, as $∃ θ ⊆ \allleadstog \suchthat π(\allleadstog) = f$ (by \cref{th:completable}), thus $\allleadstog ∉ D$.
 \end{proof}
@@ -576,21 +582,21 @@ Using the trivial prior $D = \allleadstos$, we obtain this corollary.
 \begin{proof}
   Let $θ_v ∈ Θ ∩ \powerset{\allleadstog}$ witness that $C$ is verifiable in $\allleadstog$, so that every world extending $θ_v$ lies in $C$; in particular $\allleadstog ∈ C$, hence informativeness in $\allleadstog$ is defined.
 
-  If $C$ is informative, then $∅ ∈ Θ ∩ \powerset{\allleadstog}$ witnesses that it is informative in $\allleadstog$, since $\set{∅ ⊆ \allleadstog} ∩ C = C$ and thus $π(\set{∅ ⊆ \allleadstog} ∩ C) = π(C) ≠ (P ∪ \set{∅})^I$.
+  If $C$ is informative, then $∅ ∈ Θ ∩ \powerset{\allleadstog}$ witnesses that it is informative in $\allleadstog$, since $\mathop{↑}∅ ∩ C = C$ and thus $π(\mathop{↑}∅ ∩ C) = π(C) ≠ (P ∪ \set{∅})^I$.
 
   Conversely, assume $C$ is not informative, that is, $π(C) = (P ∪ \set{∅})^I$; we show it is not informative in $\allleadstog$.
   Let $θ ∈ Θ ∩ \powerset{\allleadstog}$.
   As $θ ⊆ \allleadstog$ and $θ_v ⊆ \allleadstog$, the union $θ ∪ θ_v$ is a right unique finite subset of $(I × \allhists) × P$, hence a general observation.
   Given any $f ∈ (P ∪ \set{∅})^I$, \cref{th:completable} yields $\allleadstog' ∈ \allleadstos$ with $θ ∪ θ_v ⊆ \allleadstog'$ and $π(\allleadstog') = f$.
-  Then $θ_v ⊆ \allleadstog'$ gives $\allleadstog' ∈ C$, and $θ ⊆ \allleadstog'$ gives $\allleadstog' ∈ \set{θ ⊆ \allleadstog}$, so $f ∈ π(\set{θ ⊆ \allleadstog} ∩ C)$.
-  As $f$ is arbitrary, $π(\set{θ ⊆ \allleadstog} ∩ C) = (P ∪ \set{∅})^I$; as $θ$ is arbitrary, $C$ is not informative in $\allleadstog$.
+  Then $θ_v ⊆ \allleadstog'$ gives $\allleadstog' ∈ C$, and $θ ⊆ \allleadstog'$ gives $\allleadstog' ∈ \mathop{↑}θ$, so $f ∈ π(\mathop{↑}θ ∩ C)$.
+  As $f$ is arbitrary, $π(\mathop{↑}θ ∩ C) = (P ∪ \set{∅})^I$; as $θ$ is arbitrary, $C$ is not informative in $\allleadstog$.
 \end{proof}
 \begin{remark}
   The hypothesis $\card{\allargs} ∉ ℕ$ cannot be dropped: without it, a claim may be verifiable and informative in $\allleadstog$ yet not informative (the first implication, however, uses no such hypothesis).
   Let $\allargs = \set{a}$ and $I = \set{i_0}$, so that every nonempty path ends in $\set{a}$ and $π(\allleadstog)(i_0) = \set{p}$ if $\allleadstog$ responds $p$ to every nonempty path and $∅$ otherwise.
-  Write $\allleadstog_p$ for the world responding $p$ everywhere, let $θ_v = \set{(i_0, (a), φ')}$, and let $C = \set{θ_v ⊆ \allleadstog} ∪ \set{\allleadstog_φ, \allleadstog_0}$.
+  Write $\allleadstog_p$ for the world responding $p$ everywhere, let $θ_v = \set{(i_0, (a), φ')}$, and let $C = \mathop{↑}θ_v ∪ \set{\allleadstog_φ, \allleadstog_0}$.
   Then $C$ is verifiable in $\allleadstog_{φ'}$, witnessed by $θ_v$.
-  It is also informative in $\allleadstog_{φ'}$: as $\allleadstog_φ, \allleadstog_0 ∉ \set{θ_v ⊆ \allleadstog}$, we have $\set{θ_v ⊆ \allleadstog} ∩ C = \set{θ_v ⊆ \allleadstog}$, and forcing $(a) \ileadstogo[i_0] φ'$ leaves only $π(\allleadstog)(i_0) ∈ \set{\set{φ'}, ∅}$ (reaching $\set{φ}$ or $\set{0}$ would require every nonempty path to answer $φ$, resp.\ $0$), so $π(\set{θ_v ⊆ \allleadstog} ∩ C) = \set{\set{φ'}, ∅} ≠ (P ∪ \set{∅})^I$.
+  It is also informative in $\allleadstog_{φ'}$: as $\allleadstog_φ, \allleadstog_0 ∉ \mathop{↑}θ_v$, we have $\mathop{↑}θ_v ∩ C = \mathop{↑}θ_v$, and forcing $(a) \ileadstogo[i_0] φ'$ leaves only $π(\allleadstog)(i_0) ∈ \set{\set{φ'}, ∅}$ (reaching $\set{φ}$ or $\set{0}$ would require every nonempty path to answer $φ$, resp.\ $0$), so $π(\mathop{↑}θ_v ∩ C) = \set{\set{φ'}, ∅} ≠ (P ∪ \set{∅})^I$.
   Yet $C$ is not informative, since $\allleadstog_φ$ and $\allleadstog_0$ supply the missing profiles: $π(C) = \set{\set{φ'}, ∅, \set{φ}, \set{0}} = (P ∪ \set{∅})^I$.
 \end{remark}
 
@@ -1432,7 +1438,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 
   \emph{Holds, Anonymous.} $\allleadsto ∈ C_0$, and the new conjunct holds at $\allleadsto$ by hypothesis, so $\allleadsto ∈ C$. The new conjunct has the anonymity-friendly shape $∃i: Q(\allleadstog(i))$: for any permutation $σ$, $∃i: \anobs ⊆ (\allleadstog ∘ σ)(i) ⇔ ∃i: \anobs ⊆ \allleadstog(σ(i)) ⇔ ∃j: \anobs ⊆ \allleadstog(j)$, reindexing $j := σ(i)$; combined with $C_0$'s anonymity, $C ∘ σ = C$.
 
-  \emph{SAPTS.} Fix $\allleadstog ∈ C$ and $θ ∈ Θ ∩ \powerset{\allleadstog}$. As $\allleadstog ∈ C$, fix $i^* ∈ I$ with $\anobs ⊆ \ileadstogo[i^*]$, and let $θ' := θ ∪ (\set{i^*} × \anobs)$, so $θ ⊑ θ'$ and $θ' ∈ Θ ∩ \powerset{\allleadstog}$ (as in \cref{th:oneMorePriorGeneral}'s \emph{APTS-P} paragraph, now with $i^*, θ$ in place of that paragraph's $i_0, θ_0$). Any $\allleadstog' ∈ \set{θ' ⊆ \allleadstog} ∩ C$ has $\anobs ⊆ \allleadstog'(i^*)$, so $C_0$'s first conjunct at $i^*$ gives $a \ileadstost[i^*] p$ in $\allleadstog'$, hence $π_{i^*}(\allleadstog') = p$ by \cref{th:sing}. As $\allleadstog$ itself lies in $\set{θ' ⊆ \allleadstog} ∩ C$, this set is nonempty, so $π_{i^*}(\set{θ' ⊆ \allleadstog} ∩ C) = \set{p}$: $(θ', i^*)$ witnesses SAPTS at $(\allleadstog, θ)$. As both were arbitrary, $C$ is SAPTS.
+  \emph{SAPTS.} Fix $\allleadstog ∈ C$ and $θ ∈ Θ ∩ \powerset{\allleadstog}$. As $\allleadstog ∈ C$, fix $i^* ∈ I$ with $\anobs ⊆ \ileadstogo[i^*]$, and let $θ' := θ ∪ (\set{i^*} × \anobs)$, so $θ ⊑ θ'$ and $θ' ∈ Θ ∩ \powerset{\allleadstog}$ (as in \cref{th:oneMorePriorGeneral}'s \emph{APTS-P} paragraph, now with $i^*, θ$ in place of that paragraph's $i_0, θ_0$). Any $\allleadstog' ∈ \mathop{↑}θ' ∩ C$ has $\anobs ⊆ \allleadstog'(i^*)$, so $C_0$'s first conjunct at $i^*$ gives $a \ileadstost[i^*] p$ in $\allleadstog'$, hence $π_{i^*}(\allleadstog') = p$ by \cref{th:sing}. As $\allleadstog$ itself lies in $\mathop{↑}θ' ∩ C$, this set is nonempty, so $π_{i^*}(\mathop{↑}θ' ∩ C) = \set{p}$: $(θ', i^*)$ witnesses SAPTS at $(\allleadstog, θ)$. As both were arbitrary, $C$ is SAPTS.
 
   \emph{PEV under $D$.} By \cref{th:dualPof}, it suffices to show $\POF[D ∖ C](\allleadstog)$ for every $\allleadstog ∈ C ∩ D$.
 
@@ -1460,7 +1466,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   $$\allleadstog ∘ σ ∈ C ⇔ ∀i ∈ I: Q_1(\allleadstog(σ(i))) ∧ Q_2(\allleadstog(σ(i))) ⇔ ∀j ∈ I: Q_1(\allleadstog(j)) ∧ Q_2(\allleadstog(j)) ⇔ \allleadstog ∈ C,$$
   reindexing $j := σ(i)$, a bijection of $I$. As $\allleadstog, σ$ were arbitrary, $C ∘ σ = C$: $C$ is anonymous.
 
-  \emph{APTS-P (hence APTS).} Fix $i_0 ∈ I$ with $θ_0 := \set{i_0} × \anobs ⊆ \allleadsto$ (hypothesis). For any $\allleadstog' ∈ \set{θ_0 ⊆ \allleadstog} ∩ C$: $θ_0 ⊆ \allleadstog'$ gives $\anobs ⊆ \allleadstog'(i_0)$, so $C$'s first conjunct at $i_0$ gives $a \ileadstost[i_0] p$ in $\allleadstog'$ directly, that is $p ∈ P_{i_0}(\allleadstog')$; by \cref{th:sing}, $P_{i_0}(\allleadstog') = \set{p}$ exactly, that is $π_{i_0}(\allleadstog') = p$. Since moreover $\allleadsto ∈ \set{θ_0 ⊆ \allleadstog} ∩ C$ (as $θ_0 ⊆ \allleadsto$ and $\allleadsto ∈ C$), this set is nonempty, so $π_{i_0}(\set{θ_0 ⊆ \allleadstog} ∩ C) = \set{p}$: as $p ∈ P$ and $θ_0$ is feasible, this is APTS-P, witnessed by $(θ_0, i_0, p)$; in particular $C$ is APTS.
+  \emph{APTS-P (hence APTS).} Fix $i_0 ∈ I$ with $θ_0 := \set{i_0} × \anobs ⊆ \allleadsto$ (hypothesis). For any $\allleadstog' ∈ \mathop{↑}θ_0 ∩ C$: $θ_0 ⊆ \allleadstog'$ gives $\anobs ⊆ \allleadstog'(i_0)$, so $C$'s first conjunct at $i_0$ gives $a \ileadstost[i_0] p$ in $\allleadstog'$ directly, that is $p ∈ P_{i_0}(\allleadstog')$; by \cref{th:sing}, $P_{i_0}(\allleadstog') = \set{p}$ exactly, that is $π_{i_0}(\allleadstog') = p$. Since moreover $\allleadsto ∈ \mathop{↑}θ_0 ∩ C$ (as $θ_0 ⊆ \allleadsto$ and $\allleadsto ∈ C$), this set is nonempty, so $π_{i_0}(\mathop{↑}θ_0 ∩ C) = \set{p}$: as $p ∈ P$ and $θ_0$ is feasible, this is APTS-P, witnessed by $(θ_0, i_0, p)$; in particular $C$ is APTS.
 
   \emph{Provable by $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$.} Write $S_C := ⋃_{\allleadstog' ∈ C} \allleadstog'(I)$ for the types of $C$, evaluated at the claim $C$ just constructed above (not circular: $S_C$, and the prior $D^{\anobs,a,p}_{\allleadstog(I) ∩ B, \, S_C}$, are only ever evaluated at this $C$, never used to construct it).
 
@@ -1659,35 +1665,35 @@ Given $i ∈ I$, $c, b ∈ \allargs$ distinct and $p ≠ p' ∈ P$, say a world 
   \begin{description}
     \item[Anon] iff $C$ is anonymous;
     \item[Prov] iff $C$ is provable by $¬\OF ∩ E$, that is, $(¬\OF) ∩ E ⊆ C$;
-    \item[APS] iff $C$ is \emph{a posteriori sharp}, that is, $∃θ ∈ Θ, i ∈ I \suchthat \card{π_i(\set{θ ⊆ \allleadstog} ∩ C)} = 1$; call such a witness $(θ,i)$ \emph{constant} iff $θ$ assigns every individual it queries a single, constant value from $\set{φ,φ'}$ across all the histories queried for that individual.
+    \item[APS] iff $C$ is \emph{a posteriori sharp}, that is, $∃θ ∈ Θ, i ∈ I \suchthat \card{π_i(\mathop{↑}θ ∩ C)} = 1$; call such a witness $(θ,i)$ \emph{constant} iff $θ$ assigns every individual it queries a single, constant value from $\set{φ,φ'}$ across all the histories queried for that individual.
   \end{description}
   Among claims $C$ with $\allleadsto ∈ C$: any two of Anon, Prov, APS are jointly satisfiable — witnessing APS, where relevant, by a constant witness — but no $C$ satisfies Anon, Prov, and APS via a constant witness.
 \end{theorem}
 \begin{proof}
   Write $C_2 = \set{w ∈ \allleadstos \suchthat ∀i ∈ I: [∀\hist ∈ \allhists: w(i,\hist) = φ] ∨ [∀\hist ∈ \allhists: w(i,\hist) = φ']}$ for “every individual is constant $φ$ or constant $φ'$”, and fix $b ≠ c ∈ \allargs$ (using $\card{\allargs} ≥ 2$).
 
-  \emph{Anon $∧$ Prov, not APS.} Take $C_1 = \set{w ∈ \allleadstos \suchthat ∀i ∈ I, \hist ∈ \allhists: w(i,\hist) ∈ \set{φ,φ'}}$. It holds ($\allleadsto ∈ C_1$) and is anonymous ($∀i$-quantified). It is provable by $¬\OF$ alone (hence by $¬\OF ∩ E$): any $w ∉ C_1$ has some $(i,\hist)$ with $w(i,\hist) ∉ \set{φ,φ'}$, a single point directly refuting $C_1$, so $\OF[C_1](w)$ for every $w ∉ C_1$. It is not APS: given any $θ, i$, if $θ$ is not $C_1$-compatible then $\set{θ ⊆ w} ∩ C_1 = ∅$ already has cardinality $0 ≠ 1$; otherwise let $c_i$ be $θ$'s shared first argument for $i$ (or any fixed argument, if $i$ is untouched by $θ$) and $p_{c_i} ∈ \set{φ,φ'}$ the ($θ$-forced or free) value along that branch; extending $θ$ by making $i$ constant $p_{c_i}$ everywhere gives $π_i = p_{c_i}$, while extending $θ$ so that $\allleadstog$ $(i,c_i,b,p_{c_i},p'_{c_i})$-splits (writing $p'_{c_i}$ for the other element of $\set{φ,φ'}$) gives $π_i = ∅$ by \cref{th:splitKillsDec}; both completions lie in $C_1$ (all values used are in $\set{φ,φ'}$) and extend $θ$, so $\card{π_i(\set{θ⊆w}∩C_1)} ≥ 2$.
+  \emph{Anon $∧$ Prov, not APS.} Take $C_1 = \set{w ∈ \allleadstos \suchthat ∀i ∈ I, \hist ∈ \allhists: w(i,\hist) ∈ \set{φ,φ'}}$. It holds ($\allleadsto ∈ C_1$) and is anonymous ($∀i$-quantified). It is provable by $¬\OF$ alone (hence by $¬\OF ∩ E$): any $w ∉ C_1$ has some $(i,\hist)$ with $w(i,\hist) ∉ \set{φ,φ'}$, a single point directly refuting $C_1$, so $\OF[C_1](w)$ for every $w ∉ C_1$. It is not APS: given any $θ, i$, if $θ$ is not $C_1$-compatible then $\mathop{↑}θ ∩ C_1 = ∅$ already has cardinality $0 ≠ 1$; otherwise let $c_i$ be $θ$'s shared first argument for $i$ (or any fixed argument, if $i$ is untouched by $θ$) and $p_{c_i} ∈ \set{φ,φ'}$ the ($θ$-forced or free) value along that branch; extending $θ$ by making $i$ constant $p_{c_i}$ everywhere gives $π_i = p_{c_i}$, while extending $θ$ so that $\allleadstog$ $(i,c_i,b,p_{c_i},p'_{c_i})$-splits (writing $p'_{c_i}$ for the other element of $\set{φ,φ'}$) gives $π_i = ∅$ by \cref{th:splitKillsDec}; both completions lie in $C_1$ (all values used are in $\set{φ,φ'}$) and extend $θ$, so $\card{π_i(\mathop{↑}θ∩C_1)} ≥ 2$.
 
-  \emph{Anon $∧$ APS, not Prov.} Take $C_2$. It holds and is anonymous. Fix any $i_0 ∈ I_1$ and $θ = \set{(i_0,(c),φ)}$: any $w ∈ \set{θ⊆w} ∩ C_2$ has $i_0$ constant $φ$ or constant $φ'$, and since $w(i_0,(c)) = φ ≠ φ'$, it must be constant $φ$; so $π_{i_0}(\set{θ⊆w}∩C_2) = \set{φ}$, giving APS. It is not Prov: let $w^* $ be such that individuals in $I_1$ $(i,c,b,φ,φ')$-split and individuals in $I_2$ $(i,c,b,φ',φ)$-split. Then $w^* ∈ E$ (both classes remain infinite and internally uniform) and $w^* ∉ C_2$ (no individual is constant, by \cref{th:splitKillsDec} $π_i(w^*) = ∅ ≠ φ,φ'$ throughout — though membership in $C_2$ only needs constancy, which indeed fails). Yet $¬\OF[C_2](w^*)$: any finite observation of $w^*$ queries each touched individual along a single chain, hence a single first argument, hence sees a constant value ($φ$ or $φ'$ depending on whether that chain starts at $c$ or not), so it extends into some world of $C_2$ (declare every queried individual constant at its observed value, and complete the rest of $I_1, I_2$ arbitrarily to stay constant). So $w^* ∈ E ∖ C_2$ with $¬\OF[C_2](w^*)$: $C_2$ is not provable by $¬\OF ∩ E$.
+  \emph{Anon $∧$ APS, not Prov.} Take $C_2$. It holds and is anonymous. Fix any $i_0 ∈ I_1$ and $θ = \set{(i_0,(c),φ)}$: any $w ∈ \mathop{↑}θ ∩ C_2$ has $i_0$ constant $φ$ or constant $φ'$, and since $w(i_0,(c)) = φ ≠ φ'$, it must be constant $φ$; so $π_{i_0}(\mathop{↑}θ∩C_2) = \set{φ}$, giving APS. It is not Prov: let $w^* $ be such that individuals in $I_1$ $(i,c,b,φ,φ')$-split and individuals in $I_2$ $(i,c,b,φ',φ)$-split. Then $w^* ∈ E$ (both classes remain infinite and internally uniform) and $w^* ∉ C_2$ (no individual is constant, by \cref{th:splitKillsDec} $π_i(w^*) = ∅ ≠ φ,φ'$ throughout — though membership in $C_2$ only needs constancy, which indeed fails). Yet $¬\OF[C_2](w^*)$: any finite observation of $w^*$ queries each touched individual along a single chain, hence a single first argument, hence sees a constant value ($φ$ or $φ'$ depending on whether that chain starts at $c$ or not), so it extends into some world of $C_2$ (declare every queried individual constant at its observed value, and complete the rest of $I_1, I_2$ arbitrarily to stay constant). So $w^* ∈ E ∖ C_2$ with $¬\OF[C_2](w^*)$: $C_2$ is not provable by $¬\OF ∩ E$.
 
   \emph{Prov $∧$ APS, not Anon.} Fix $i_0 ∈ I_1$ and take $C_3 = \set{w ∈ \allleadstos \suchthat ∀\hist ∈ \allhists: w(i_0,\hist) = φ}$. It holds. It is provable by $¬\OF$ alone: any $w ∉ C_3$ has some $\hist^*$ with $w(i_0,\hist^*) ≠ φ$, a single point refuting $C_3$ directly (no comparison with a second point is needed, unlike \cref{ex:noProvableDecisivePhi}'s local claim, because the target $φ$ is named in advance). It is APS, indeed sharp unconditionally ($θ = ∅$): every $w ∈ C_3$ has $i_0$ constant $φ$, so every argument is decisive for $i_0$ regarding $φ$, giving $π_{i_0}(C_3) = \set{φ}$. It is not anonymous: swapping $i_0$ with any $j_0 ∈ I_2$ sends $C_3$ to $\set{w \suchthat ∀\hist ∈ \allhists: w(j_0,\hist) = φ}$, which differs from $C_3$ (as $\allleadsto$ itself witnesses: $\allleadsto ∈ C_3$ but this relabelled claim fails at $\allleadsto$, since $\allleadsto(j_0,\hist) = φ' ≠ φ$ for every $\hist$).
 
-  \emph{Not all three.} Suppose $C$ is Anon, Prov, $\allleadsto ∈ C$, and APS via a constant witness $(θ,i,v)$: since $θ$ then assigns each queried individual a constant value from $\set{φ,φ'}$, $\set{θ⊆w}∩C_2 ≠ ∅$. By anonymity and $\allleadsto ∈ C$, every relabelling $\allleadsto ∘ σ ∈ C$; as any two infinite-coinfinite bipartitions of $I$ are related by some permutation of $I$, this yields $C_2 ⊆ C$. Since $\set{θ⊆w}∩C_2 ⊆ \set{θ⊆w}∩C$ and the latter has $π_i$-image exactly $\set{v}$, so does the former (a nonempty subset of a singleton image equals it).
+  \emph{Not all three.} Suppose $C$ is Anon, Prov, $\allleadsto ∈ C$, and APS via a constant witness $(θ,i,v)$: since $θ$ then assigns each queried individual a constant value from $\set{φ,φ'}$, $\mathop{↑}θ∩C_2 ≠ ∅$. By anonymity and $\allleadsto ∈ C$, every relabelling $\allleadsto ∘ σ ∈ C$; as any two infinite-coinfinite bipartitions of $I$ are related by some permutation of $I$, this yields $C_2 ⊆ C$. Since $\mathop{↑}θ∩C_2 ⊆ \mathop{↑}θ∩C$ and the latter has $π_i$-image exactly $\set{v}$, so does the former (a nonempty subset of a singleton image equals it).
   \begin{description}
   \item[If $i$ is untouched by $θ$:] $C_2$ contains both a completion making $i$ constant $φ$ and one making it constant $φ'$ (everything else fixed as forced by $θ$, or arbitrarily), giving $\set{φ,φ'} ⊆ π_i$-image, contradicting $\set{v}$.
-  \item[If $i$ is touched by $θ$, forced constant $p_i ∈ \set{φ,φ'}$:] then $v = p_i$. Build $w^\dagger$: for $i$, and for every other individual $k$ touched by $θ$, writing $c_k$ for $k$'s $θ$-forced first argument, $p_k ∈ \set{φ,φ'}$ for $k$'s $θ$-forced constant value, and $p'_k$ for the other element of $\set{φ,φ'}$, extend $θ$ via a $(k,c_k,b,p_k,p'_k)$-split as in the second part above, each replicated across a dedicated fresh infinite class of clones; complete all untouched individuals to stay constant $φ$ or $φ'$ in infinite classes. Then $θ ⊆ w^\dagger$, $w^\dagger ∈ E$, $π_i(w^\dagger) = ∅ ≠ p_i = v$ by \cref{th:splitKillsDec}, and, exactly as in the second part above, $¬\OF[C_2](w^\dagger)$ hence $¬\OF(w^\dagger)$ (as $C_2 ⊆ C$, completability into $C_2$ implies completability into $C$). By Prov, $w^\dagger ∈ C$, so $w^\dagger ∈ \set{θ⊆w}∩C$ with $π_i(w^\dagger) ≠ v$, contradicting APS.
+  \item[If $i$ is touched by $θ$, forced constant $p_i ∈ \set{φ,φ'}$:] then $v = p_i$. Build $w^\dagger$: for $i$, and for every other individual $k$ touched by $θ$, writing $c_k$ for $k$'s $θ$-forced first argument, $p_k ∈ \set{φ,φ'}$ for $k$'s $θ$-forced constant value, and $p'_k$ for the other element of $\set{φ,φ'}$, extend $θ$ via a $(k,c_k,b,p_k,p'_k)$-split as in the second part above, each replicated across a dedicated fresh infinite class of clones; complete all untouched individuals to stay constant $φ$ or $φ'$ in infinite classes. Then $θ ⊆ w^\dagger$, $w^\dagger ∈ E$, $π_i(w^\dagger) = ∅ ≠ p_i = v$ by \cref{th:splitKillsDec}, and, exactly as in the second part above, $¬\OF[C_2](w^\dagger)$ hence $¬\OF(w^\dagger)$ (as $C_2 ⊆ C$, completability into $C_2$ implies completability into $C$). By Prov, $w^\dagger ∈ C$, so $w^\dagger ∈ \mathop{↑}θ∩C$ with $π_i(w^\dagger) ≠ v$, contradicting APS.
   \end{description}
   Either way, contradiction.
 \end{proof}
 
 \begin{remark}
-  It is natural to ask whether \cref{th:anonProvApsTriad}'s incompatibility extends to APS witnesses that are not constant (querying some individual a value outside $\set{φ,φ'}$, or a non-constant pattern across comparable histories). The proof above does not settle this: it is specific to $¬\OF ∩ E$-provability via $C_2 ⊆ C$'s relabellings of $\allleadsto$, and the obstruction to generalizing is one of \emph{richness} rather than of values as such. Building the analogous $w^\dagger$ for a non-constant witness needs, for each individual $θ$ queries, infinitely many further individuals independently compatible with $θ$'s pattern there, to serve as clones; $C_2 ⊆ C$ supplies such clones for free when the pattern is constant, but for a non-constant pattern the only known instance of it is the single witness $w_0 ∈ \set{θ⊆w}∩C$ exhibiting $v$, and neither anonymity (which only relabels existing individuals, so cannot manufacture new clones of $w_0$'s $i$-row) nor \cref{th:anonThusAlmostPof} (which upgrades $\OF$ to $\POF[]$ for worlds \emph{already} in $E$, rather than establishing $¬\OF$ in the first place) supplies the missing repetition. Whether $w_0$ can always be replaced by an $E$-compatible witness — which would close the gap — is left open.
+  It is natural to ask whether \cref{th:anonProvApsTriad}'s incompatibility extends to APS witnesses that are not constant (querying some individual a value outside $\set{φ,φ'}$, or a non-constant pattern across comparable histories). The proof above does not settle this: it is specific to $¬\OF ∩ E$-provability via $C_2 ⊆ C$'s relabellings of $\allleadsto$, and the obstruction to generalizing is one of \emph{richness} rather than of values as such. Building the analogous $w^\dagger$ for a non-constant witness needs, for each individual $θ$ queries, infinitely many further individuals independently compatible with $θ$'s pattern there, to serve as clones; $C_2 ⊆ C$ supplies such clones for free when the pattern is constant, but for a non-constant pattern the only known instance of it is the single witness $w_0 ∈ \mathop{↑}θ∩C$ exhibiting $v$, and neither anonymity (which only relabels existing individuals, so cannot manufacture new clones of $w_0$'s $i$-row) nor \cref{th:anonThusAlmostPof} (which upgrades $\OF$ to $\POF[]$ for worlds \emph{already} in $E$, rather than establishing $¬\OF$ in the first place) supplies the missing repetition. Whether $w_0$ can always be replaced by an $E$-compatible witness — which would close the gap — is left open.
 \end{remark}
 
 A claim can be APS via a witness whose singleton value is the sentinel $∅$ rather than a genuine element of $P$; the following variant excludes this.
 \begin{definition}[A posteriori sharp with a named value]
   \label{def:apsP}
-  A claim $C$ is \emph{a posteriori sharp with a named value} (APS-P) iff $∃θ ∈ Θ, i ∈ I, p ∈ P \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \set{p}$.
+  A claim $C$ is \emph{a posteriori sharp with a named value} (APS-P) iff $∃θ ∈ Θ, i ∈ I, p ∈ P \suchthat π_i(\mathop{↑}θ ∩ C) = \set{p}$.
 \end{definition}
 APS-P implies APS (\cref{th:anonProvApsTriad}), the singleton $\set{p}$ already witnessing cardinality $1$; it is strictly stronger, ruling out the witness being uniformly non-decisive ($π_i(\set{θ⊆\allleadstog}∩C) = \set{∅}$).
 
@@ -1699,7 +1705,7 @@ Given $θ ∈ Θ$, let $θ^{\downarrow} = \set{(\hist,p) ∈ \allhists × P \suc
   $$C ⊆ \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: θ^i ⊆ \allleadstog ⇒ p ∈ π_i(\allleadstog)}.$$
 \end{theorem}
 \begin{proof}
-  Let $\allleadstog ∈ C$ with $∀i ∈ I: θ^i ⊆ \allleadstog$, and fix $j ∈ I$. Let $σ$ exchange $i_0$ and $j$ (the identity if $j = i_0$), and $\allleadstog' = \allleadstog ∘ σ$. For every $x ∈ I$: $θ(x) ⊆ θ^{\downarrow}$ trivially, and $θ^{σ(x)} ⊆ \allleadstog$ by hypothesis, that is, $∀(\hist,p) ∈ θ^{\downarrow}: \allleadstog(σ(x),\hist) = p$; restricting to $(\hist,p) ∈ θ(x) ⊆ θ^{\downarrow}$ and using $\allleadstog'(x,\hist) = \allleadstog(σ(x),\hist)$ gives $θ(x) ⊆ \allleadstog'$. As this holds for every $x$, $θ ⊆ \allleadstog'$. By anonymity, $\allleadstog' = \allleadstog ∘ σ ∈ C$, so $\allleadstog' ∈ \set{θ⊆\allleadstog'} ∩ C$, and APS-P gives $π_{i_0}(\allleadstog') = p$. Decisiveness at $i_0$ in $\allleadstog'$ depends only on $\allleadstog'$'s $i_0$-row (\cref{def:decisive}), which equals $\allleadstog$'s $σ(i_0) = j$-row, so $π_{i_0}(\allleadstog') = π_j(\allleadstog)$. Hence $π_j(\allleadstog) = p$.
+  Let $\allleadstog ∈ C$ with $∀i ∈ I: θ^i ⊆ \allleadstog$, and fix $j ∈ I$. Let $σ$ exchange $i_0$ and $j$ (the identity if $j = i_0$), and $\allleadstog' = \allleadstog ∘ σ$. For every $x ∈ I$: $θ(x) ⊆ θ^{\downarrow}$ trivially, and $θ^{σ(x)} ⊆ \allleadstog$ by hypothesis, that is, $∀(\hist,p) ∈ θ^{\downarrow}: \allleadstog(σ(x),\hist) = p$; restricting to $(\hist,p) ∈ θ(x) ⊆ θ^{\downarrow}$ and using $\allleadstog'(x,\hist) = \allleadstog(σ(x),\hist)$ gives $θ(x) ⊆ \allleadstog'$. As this holds for every $x$, $θ ⊆ \allleadstog'$. By anonymity, $\allleadstog' = \allleadstog ∘ σ ∈ C$, so $\allleadstog' ∈ \mathop{↑}θ ∩ C$, and APS-P gives $π_{i_0}(\allleadstog') = p$. Decisiveness at $i_0$ in $\allleadstog'$ depends only on $\allleadstog'$'s $i_0$-row (\cref{def:decisive}), which equals $\allleadstog$'s $σ(i_0) = j$-row, so $π_{i_0}(\allleadstog') = π_j(\allleadstog)$. Hence $π_j(\allleadstog) = p$.
 \end{proof}
 
 \begin{remark}
@@ -1710,7 +1716,7 @@ Given $θ ∈ Θ$, let $θ^{\downarrow} = \set{(\hist,p) ∈ \allhists × P \suc
 
 \begin{definition}[A posteriori truly sharp with a named value]
   \label{def:aptsP}
-  A claim $C$ is \emph{a posteriori truly sharp with a named value} (APTS-P) iff $∃θ ⊆ \allleadsto, i ∈ I, p ∈ P \suchthat π_i(\set{θ ⊆ \allleadstog} ∩ C) = \set{p}$.
+  A claim $C$ is \emph{a posteriori truly sharp with a named value} (APTS-P) iff $∃θ ⊆ \allleadsto, i ∈ I, p ∈ P \suchthat π_i(\mathop{↑}θ ∩ C) = \set{p}$.
 \end{definition}
 APTS-P strengthens both APS-P (\cref{def:apsP}, dropping the requirement that $θ$ be feasible) and a posteriori truly sharp (APTS, dropping the named value): it requires a witness that is simultaneously actually observable ($θ ⊆ \allleadsto$) and pins a genuine element of $P$ rather than the sentinel $∅$.
 
@@ -1934,11 +1940,6 @@ We are here interested in the interplay between properties of holding, anonymity
     (This is a consequence of \cref{ex:disjR} so this proof should not be useful.)
     By definition of a general observation, $θ$ may not contain both $(i, (a), φ)$ and $(i, (a'), φ)$, thus letting $t$ denote one of these triples not in $θ$, pick any ${\allleadstog'}$ such that $θ ⊆ {\allleadstog'} ∧ t ∈ {\allleadstog'}$. We have
     $θ ∈ \powerset{\allleadstog'}$ and ${\allleadstog'} ∈ C$, thus, $θ ∈ C^⊆$.
-  \end{example}
-
-  \begin{example}
-    \label{ex:anon}
-    Given $a$ and $φ$, the claim $a \ileadstog φ$ is not anonymous iff $\card{I} ≥ 2$. Indeed, pick any $j ≠ i$ and define $σ(i) = j$, $σ(j) = i$ and $∀ k ∈ I ∖ \set{i, j}: σ(k) = k$, then $C = \set{\allleadstog \suchthat \allleadstog(i, a) = φ}$, which contains in particular $\allleadsto$ defined as $∀ \hist: [∀ k ∈ I ∖ \set{j}, \allleadsto(k, \hist) = φ ∧ \allleadsto(j, \hist) = φ'$; while $C ∘ σ = \set{\allleadstog \suchthat \allleadstog(j, a) = φ}$ which does not contain $\allleadsto$.
   \end{example}
 
   \begin{example}
@@ -2404,10 +2405,10 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
     Consider any claim $C$ such that $C ⊆ \set{\allleadstog ∈ \allleadstos \suchthat \ileadstoo[i_1] ∈ \allleadstog(I) ⊆ \allleadsto(I)}$ and $C$ is anonymous (for example, $C^\text{HA}$ from \cref{th:claim_ha} is suitable).
     % Define the claim $C$ as $\set{\allleadstog ∈ \allleadstos \suchthat ∀ i ∈ I: \ileadstogo ∈ \set{{\ileadsto[j]} \suchthat j ∈ I}}$ (or as anything included in it that includes $C^\text{HA}$ and is anonymous).
     The claim is indicative for $i = i_1$ and $θ = \set{(i_1, \hist, \ileadstoo[i_1](\hist)) \suchthat \hist ∈ H}$ for the following reason.
-    The attitudes in $C$ compatible with $θ$ are $\set{\allleadstog \suchthat θ ⊆ \allleadstog} ∩ C ⊆ \set{\allleadstog \suchthat \ileadstogo[i_1] ∈ \set{{\ileadsto[j]} \suchthat P_j = p}}$, and $π(\set{\allleadstog \suchthat \ileadstogo[i_1] ∈ \set{{\ileadsto[j]} \suchthat P_j = p}})(i_1) = p$.
+    The attitudes in $C$ compatible with $θ$ are $\mathop{↑}θ ∩ C ⊆ \set{\allleadstog \suchthat \ileadstogo[i_1] ∈ \set{{\ileadsto[j]} \suchthat P_j = p}}$, and $π(\set{\allleadstog \suchthat \ileadstogo[i_1] ∈ \set{{\ileadsto[j]} \suchthat P_j = p}})(i_1) = p$.
 
     For \cref{it:HAI} $⇒$ \cref{it:condHAI},
-    pick an indicative claim $C$ and consider $i ∈ I$ and $θ ∈ Θ ∩ (\set{i} × \allhists × P) ∩ C^⊆$ such that $π(\set{\allleadstog \suchthat θ ⊆ \allleadstog} ∩ C)(i) \ssub P$.
+    pick an indicative claim $C$ and consider $i ∈ I$ and $θ ∈ Θ ∩ (\set{i} × \allhists × P) ∩ C^⊆$ such that $π(\mathop{↑}θ ∩ C)(i) \ssub P$.
     Define $H = θ(i, P)$.
   \end{proof}
   \begin{corollary}
@@ -3135,13 +3136,13 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   
     By definition, $C$ is not falsifiable iff $∃ \allleadstog ∉ C \suchthat Θ ∩ \powerset{\allleadstog} ⊆ C^⊆$;
     equivalently, iff $∃ \allleadstog ∉ C \suchthat \set{θ ⊆ \allleadstog} ⊆ C^⊆$.
-    And, $∀ \allleadstog ∈ \allleadstos$: $\set{\restr{\allleadstog}{O} \suchthat O ∈ \allpriobss} = \set{θ ⊆ \allleadstog}$.
+    And, $∀ \allleadstog ∈ \allleadstos$: $\set{\restr{\allleadstog}{O} \suchthat O ∈ \allpriobss} = \mathop{↑}θ$.
   \end{proof}
   
   Let the \emph{simple a priori observations} be defined as $∪_{J ⊆_\finite I} (\allhists)^J$, equivalently, as the right-unique finite relations over $I × \allhists$.
   Given a simple a priori observation $O: J ↦ \allhists$, we can define the a priori observation $O_O = \set{(i, \hist) ∈ J × \allhists \suchthat ∀ i ∈ J: \hist ⊆ O(i)}$ as the completion of $O$ to all sub-paths in $O$.
 
-  Let $S_θ = \set{\allleadstog ∈ \allleadstos \suchthat θ ⊆ \allleadstog}$ denote the possibilities for $\allleadsto$ compatible with the observations.
+  Let $S_θ = \mathop{↑}θ$ denote the possibilities for $\allleadsto$ compatible with the observations.
   Given $O$ and $\allleadstog$, it follows that $S_{\restr{\allleadstog}{O_O}}$ denotes the “leads to” relations that complete $O_O$ using $\allleadstog$.
   Define that a relation $\allleadstog ∈ \allleadstos$ is \emph{obs-compatible} with a set $S$ iff $∀ θ ∈ Θ: (\allleadstog ∩ θ) ∈ S$.
   
@@ -3435,7 +3436,7 @@ Note that this is possible iff $\allargs$ is infinite. If so, suffices to take s
   Any claim that holds must include $\allleadsto$.
   Define $F = \set{f_1, f_2}$.
   
-  From indicativeness about $i_1$, $∃ θ ∈ Θ ∩ (\set{i_1} × \allhists × P) ⊆ \allleadsto \suchthat ∅ ≠ π(\set{\allleadstog \suchthat θ ⊆ \allleadstog} ∩ C)(i_1) = φ$.
+  From indicativeness about $i_1$, $∃ θ ∈ Θ ∩ (\set{i_1} × \allhists × P) ⊆ \allleadsto \suchthat ∅ ≠ π(\mathop{↑}θ ∩ C)(i_1) = φ$.
   Define $H ∈ \incr(\allhists)$ as the query corresponding to $θ$, thus $H = θ(i_1, P)$.
 
   Define $g ∈ P^{\allhists}$ as $g = \set{(\hist, f_1(\hist)) \suchthat ∃ ∅ ≠ \histp ∈ \intvl{\hist} ∩ H} ∪ \set{(\hist, f_2(\hist)) \suchthat \intvl{\hist} ∩ H ⊆ \set{∅}}$.
@@ -3449,7 +3450,7 @@ Note that this is possible iff $\allargs$ is infinite. If so, suffices to take s
   By \cref{th:falsclosed}, any claim that is anonymous and falsifiable must include ${\allleadstog'}$.
   
   Also, $g$ is compatible with $θ$.
-  It follows that $π(\set{\allleadstog \suchthat θ ⊆ \allleadstog} ∩ C)(i_1) ≠ φ$.
+  It follows that $π(\mathop{↑}θ ∩ C)(i_1) ≠ φ$.
 \end{proof}
 
 I need some restriction on the set of a priori possible behaviors.
