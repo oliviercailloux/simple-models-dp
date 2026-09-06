@@ -263,10 +263,10 @@ some sufficiently simple claims, such as the claim $C = \set{\allleadstog \sucht
 
 Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(\set{θ ⊆ \allleadstog'} ∩ C) ≠ (P ∪ \set{∅})^I$.
 
-In turns out that any claim that satisfies APTS fails verifiedness: the weaker demand of being informative in $\allleadsto$ implies failure of verifiedness (\cref{th:infoNotVerif}).
+In turns out that any claim that satisfies SAPTS fails verifiedness: the weaker demand of being informative in $\allleadsto$ implies failure of verifiedness (\cref{th:infoNotVerif}).
 This result may appear unsurprising, as we did not postulate yet any sort of regularity in the world, and ideed the fundamental reason for the incompatibility is that any observation can be completed in a way that contradicts any conclusion that informativeness mandates (\cref{th:completable}).
 
-We thus now turn to examining which sort of prior knowledge will suffice for ensuring the existence of a verification procedure that will allow to determine that a claim holds (when it indeed does) that also satisfies APTS and anonymity.
+We thus now turn to examining which sort of prior knowledge will suffice for ensuring the existence of a verification procedure that will allow to determine that a claim holds (when it indeed does) that also satisfies SAPTS and anonymity.
 
 Three sorts of priors will be involved, the two first of which can be seen as applications to our context of Popperian ideas. 
 First, we will assume that falsification tests fail falsifying the claim, under condition of sufficient observability.
@@ -387,7 +387,7 @@ $(¬\POF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no vi
 \Cref{th:finiteExceptSpreadAnon} shows that anonymous claims suffer no visibility issues in $E$.
 Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C ⊆ E$ is provable by $¬\POF[C ∩ E] ∩ E$ (\cref{th:anonFalsImpliesProv}).
 
-\Cref{th:noAnonIBCHoldsProvable} shows the insufficiency of this prior: for some worlds, no anonymous claims that hold and is APTS and provable by $¬\POF[C ∩ E] ∩ E$ exist.
+\Cref{th:noAnonIBCHoldsProvable} shows the insufficiency of this prior: for some worlds, no anonymous claims that hold and is SAPTS and provable by $¬\POF[C ∩ E] ∩ E$ exist.
 TODO prove this for PEV and all worlds.
 
 \section{Suitable claims}
