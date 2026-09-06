@@ -39,7 +39,7 @@
 \end{abstract}
 
 \section{Introduction}
-Acts of choice are the basis of much work in economics. Such acts have been used, among others, to give an observable basis to the concept of preference \citep{samuelson_foundations_1983}. %Acts of choice are considered here in the broad sense of choice between courses of actions, encompassing the simple setting of choosing between various elementary consumption bundles as well as settings involving more abstract acts such as choosing a strategy in a game-theoretical setting. 
+Acts of choice are the basis of much work in economics. Such acts have been used, among others, to give an observable basis to the concept of preference \citep{samuelson_foundations_1983}. 
 
 Most of these approaches consider only acts of choice that are performed spontaneously in the normal course of action of an individual, or that are given a specific frame depending on the psychological aspect that is to be studied. As an example of the former kind, typical willingness to pay studies asks the subject whether she prefers an object at some price or another object at another price, describing the objects in a way that is considered immediately understandable by the subject (or simply showing the objects). Examples of the latter kind include the celebrated work of Kahneman and Tversky \citep{bell_descriptive_1988, kahneman_thinking_2012}.
 
@@ -52,11 +52,6 @@ While numerous articles have discussed the concept of deliberation in the last d
 While the concept of deliberation in the deliberative democracy literature usually refers to multiple individuals debating, this article considers deliberation as related to a single individual: an individual deliberates (in the sense of: carefully weights) the stance she considers most appropriate while being confronted to arguments. The deliberated judgment of an individual is thus defined with no requirement that the arguments be uttered by peers in a debate; they can be given by an automaton, for example. In this sense, deliberated judgments come close to what \citet{rawls_theory_1999} calls reflective equilibrium (referring to an idea of \citet{goodman_fact_1983}), a concept that has much inspired the present proposal.
 
 To define deliberated judgments, one needs to start with the set of arguments under consideration, and the way the subject gets to know them, called hereafter the “exposure protocol”. As a result, we need always talk about the deliberated judgment \emph{given some exposure protocol}. The notion of argument invoked here is an extremely large one, including texts, images, sounds, experiences (a hiking trip), and so on: anything that can be transmitted to a subject qualifies as a possible argument. In particular, such an “argument” need not have the logical structure of what is considered a proper argument in argumentation theory. This important feature of this proposal permits to avoid taking a position on what is a correct argument, and permits to study wide enough conceptions of deliberated judgment, including those involving no paternalism \citep{cailloux_formal_2020}: anything that influences the judgment of a subject, as judged by the subject herself and not by any external standard, may a priori be considered worth including in at least some conceptions of deliberated judgment, thus including whatever some could consider as “fallacies” or “bad reasons”.
-
-The dependence of the deliberated judgment concept on the exposure protocol yields a first qualification about the concept of deliberated judgments when one desires to use it normatively: it is only as reasonable to call the resulting judgments “deliberate” in a normative sense as the exposure protocol is normatively relevant to deliberation. A sufficiently restricted, or even purposefully chosen, set of arguments may yield judgments that are only deliberate in the technical sense used here, but that pertain more to brain-washing than to reflective judgments. While it is indeed a long-term goal of this research program to yield a normatively relevant conception of preference (appropriate, for example, for recommendation), it is not a claim of this article that anything that corresponds to deliberated judgments as defined here qualify as being appropriate for any normative use: much depends on the chosen exposure protocol. The goal of this article is rather one of a conceptual and practical clarification. It proposes a sharp distinction between the empirical content and the normative content of the concept of deliberated judgments: the definition proposed here transfers the full normative weight on the choice of the exposure protocol; and leaves the rest of the disagreements to empirical settling. This is methodologically akin, mutatis mutandis, to the axiomatic study of justice such as done in social choice, only complementing mathematical deduction with empirical claims. In social choice, the choice of axioms bears the full normative weight; once axioms are chosen, it is a matter of logic which social choice rules (if any) correspond to that choice. In our case, once an exposure protocol is chosen, it is an empirical matter which deliberated judgments result.
-In supplement to a possibly helpful conceptual clarification, such a sharp separation may reveal practically useful for separation of concern as it permits to study deliberated judgments empirically under various exposure protocols independently of possible disagreements about which norms are more appropriate for deliberation in which circumstances.
-
-The deliberated judgment of a subject is said to depend on the exposure protocol, that is, on the set of arguments and the way they are submitted to the subject, and not only on the set of arguments, because the very way that they are transmitted to the individual may affect her judgment differently. For example, reading an image description and showing an image to a subject may impress them differently \citep{railton_facts_2003}.
 
 The exposure protocol defines a set of argument and, importantly, how arguments are sent to the subject and her subsequent choice observed. There is no explicit dependency on the internal process that occurs in the subject’s mind while she (possibly) processes the arguments, as it is not desirable to assume that the internal process could be observed. We consider subjects as black boxes and only require a capacity of observation of their choices after exposure to arguments. Depending on the exposure protocol and the subject, it is of course possible for the arguments to never affect any choice of the subject, a conclusion that may be interesting in its own right.
 
@@ -119,10 +114,12 @@ It follows from the consideration of “end” as the last \emph{two} arguments 
 The intended semantics is that $P_i$ represents the preference of $i$ over the proposed set of two acts, after deliberation, given the exposure protocol. In other words, if $P_i = \set{φ}$, the individual considers the first act strictly better than the second one, after deliberation (and conversely for $P_i = \set{φ'}$); if $P_i = \set{0}$, the deliberated judgment of $i$ is that both acts are equally worth; and if $P_i = ∅$, no act is deliberately strictly better than the other one and they are also not deliberately exactly equivalent to each other.
 
 This latter possibility may look unpleasant, but it is a fact that facing some difficult problems, individuals sometimes are undecided, and it is an a priori empirical possibility that the individual remains undecided (or even, \emph{becomes} undecided) when considering multiple arguments.
-Being undecided is not the same state as being decidedly indifferent about two issues, and those states can be distinguished empirically, as we will see.
+Also, being undecided is not the same state as being decidedly indifferent about two issues.
 
 Given an behavior function $\allleadstog$, deliberated choices are represented by an element $π(\allleadstog) ⊆ I × P$ defined as $π_i(\allleadstog) = π(\allleadstog)(i) = P_i$. \Cref{th:sing} shows that $π(\allleadstog)$ is right unique (meaning that $∀ i ∈ I: \card{π(\allleadstog)(i)} ≤ 1$).
 Equivalently, note that $(P ∪ \set{∅})^I$, where $\set{∅}$ is used as a sentinel value for individuals with no deliberated judgment, can be interpreted as the right unique relations over $I × P$ (discarding those individuals with no deliberated judgment); and then the deliberated choices are an element $π(\allleadstog) ∈ (P ∪ \set{∅})^I$.
+
+The deliberated judgment of a subject depends on the exposure protocol, that is, on the set of arguments and the way they are submitted to the subject, and not only on the set of arguments, because the very way that they are transmitted to the individual may affect her judgment differently. For example, reading an image description and showing an image to a subject may impress them differently \citep{railton_facts_2003}.
 
 \subsection{An example and a discussion about observability}
 The following toy example is inspired by the following argument from \citet[p.~59]{railton_facts_2003}.
@@ -242,7 +239,7 @@ We will study criteria to determine whether a claim holds.
 Once established that a claim holds, any feasible observation can be combined with the claim to determine conclusions.
 We want, minimally, that at least some feasible observation permits to conclude about at least one individual’s DJ.
 Furthermore, we want such observations to be always available even after some previous observations have occurred already, to ensure reproducibility.
-A claim $C$ satisfies strong APTS (SAPTS) iff $∀ \allleadstog ∈ C, θ ∈ Θ ∩ \powerset{\allleadstog}, ∃ θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}, i ∈ I \suchthat π_i(\set{θ' ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ' ⊆ \allleadstog ∈ C} = 1$.
+A claim $C$ is \emph{conclusive} iff $∀ \allleadstog ∈ C, θ ∈ Θ ∩ \powerset{\allleadstog}, ∃ θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}, i ∈ I \suchthat π_i(\set{θ' ⊆ \allleadstog} ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ' ⊆ \allleadstog ∈ C} = 1$.
 
 We restrict attention to claims that do not use prior knowledge about named individuals, thus, are anonymous, in the following sense.
 Given a permutation $σ$ over $I$ and any $\allleadstog ∈ \allleadstos$, let $\allleadstog ∘ σ$ denote $\set{(i, \hist, φ) \suchthat (σ(i), \hist, φ) ∈ \allleadstog}$ and let $C ∘ σ$ denote $\set{\allleadstog ∘ σ \suchthat \allleadstog ∈ C}$.
@@ -265,10 +262,10 @@ some sufficiently simple claims, such as the claim $C = \set{\allleadstog \sucht
 
 Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(\set{θ ⊆ \allleadstog'} ∩ C) ≠ (P ∪ \set{∅})^I$.
 
-In turns out that any claim that satisfies SAPTS fails verifiedness: the weaker demand of being informative in $\allleadsto$ implies failure of verifiedness (\cref{th:infoNotVerif}).
+In turns out that any claim that is conclusive fails verifiedness: the weaker demand of being informative in $\allleadsto$ implies failure of verifiedness (\cref{th:infoNotVerif}).
 This result may appear unsurprising, as we did not postulate yet any sort of regularity in the world, and ideed the fundamental reason for the incompatibility is that any observation can be completed in a way that contradicts any conclusion that informativeness in a world mandates (\cref{th:completable}).
 
-We thus now turn to examining which sort of prior knowledge will suffice for ensuring the existence of a verification procedure that will allow to determine that a claim holds (when it indeed does) that also satisfies SAPTS and anonymity.
+We thus now turn to examining which sort of prior knowledge will suffice for ensuring the existence of a verification procedure that will allow to determine that a claim holds (when it indeed does) that is also conclusive and anonymous.
 
 Three sorts of priors will be involved, the two first of which can be seen as applications to our context of Popperian ideas. 
 First, we will assume that falsification tests fail falsifying the claim, under condition of sufficient observability.
@@ -300,8 +297,8 @@ The following example illustrates that demanding that a claim be verifiable (und
 \begin{example}
   \label{ex:jaysAndKaysConstants}
   Consider the world $\allleadsto$ constituted of two kinds of individuals, the jay’s which always answer $φ$ and the kay’s which always answer $φ'$. Thus, $I = J ∪ K$, and $∀i ∈ I, α ∈ \allhists: [i ∈ J ⇒ α \ileadsto φ] ∧ [i ∈ K ⇒ α \ileadsto φ']$.
-  The claim $C_1 = [∃i \suchthat ∅ \ileadsto φ]$ is verifiable and not SAPTS.
-  The claim $C_2 = [(∀i: ∅ \ileadsto φ ⇒ ∀α, α \ileadsto φ) ∧ (∃i \suchthat ∅ \ileadsto φ)]$ is SAPTS and not verifiable.
+  The claim $C_1 = [∃i \suchthat ∅ \ileadsto φ]$ is verifiable and not conclusive.
+  The claim $C_2 = [(∀i: ∅ \ileadsto φ ⇒ ∀α, α \ileadsto φ) ∧ (∃i \suchthat ∅ \ileadsto φ)]$ is conclusive and not verifiable.
 \end{example}
 We will see that combining (variants of) verification procedures, which bring punctual facts, with general enough priors, lead further than procedures based only on priors or on verification could.
 
@@ -394,6 +391,10 @@ TODO prove this for PEV and all worlds.
 
 \section{Suitable claims}
 \Cref{th:AHFimpl} and related show that anonymous and falsifiable claims that hold exist iff the situation does not satisfy $∀ \hist: P^{\intvl{\hist}} ⊆ \restr{{\allleadsto}(I)}{\intvl{\hist}}$.
+
+\section{Conclusion}
+The dependence of the deliberated judgment concept on the exposure protocol yields a first qualification about the concept of deliberated judgments when one desires to use it normatively: it is only as reasonable to call the resulting judgments “deliberate” in a normative sense as the exposure protocol is normatively relevant to deliberation. A sufficiently restricted, or even purposefully chosen, set of arguments may yield judgments that are only deliberate in the technical sense used here, but that pertain more to brain-washing than to reflective judgments. While it is indeed a long-term goal of this research program to yield a normatively relevant conception of preference (appropriate, for example, for recommendation), it is not a claim of this article that anything that corresponds to deliberated judgments as defined here qualify as being appropriate for any normative use: much depends on the chosen exposure protocol. The goal of this article is rather one of a conceptual and practical clarification. It proposes a sharp distinction between the empirical content and the normative content of the concept of deliberated judgments: the definition proposed here transfers the full normative weight on the choice of the exposure protocol; and leaves the rest of the disagreements to empirical settling. This is methodologically akin, mutatis mutandis, to the axiomatic study of justice such as done in social choice, only complementing mathematical deduction with empirical claims. In social choice, the choice of axioms bears the full normative weight; once axioms are chosen, it is a matter of logic which social choice rules (if any) correspond to that choice. In our case, once an exposure protocol is chosen, it is an empirical matter which deliberated judgments result.
+In supplement to a possibly helpful conceptual clarification, such a sharp separation may reveal practically useful for separation of concern as it permits to study deliberated judgments empirically under various exposure protocols independently of possible disagreements about which norms are more appropriate for deliberation in which circumstances.
 
 \appendix
 \section{Proofs and supplementary discussion}
