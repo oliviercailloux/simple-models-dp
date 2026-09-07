@@ -289,7 +289,7 @@ $C$ is verified at world $\allleadstog$ under prior $D$ iff
 $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ \mathop{↑}θ ∩ D ⊆ C$.
 $C$ is verified under $D$ iff it is verified at $\allleadsto$ under $D$.
 Note that $C$ is verified at $\allleadstog$ iff it is verified at $\allleadstog$ under the trivial prior.
-$C$ satisfies established verifiability (EV) under prior $D$ iff
+$C$ satisfies established verifiability under prior $D$ iff
 it is verified under $D$ at all worlds in $C ∩ D$, thus:
 $∀\allleadstog ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat \mathop{↑}θ ∩ D ⊆ C$.
 %TODO consider renaming Verifiedness to verifiability and EV to necessary verifiability
@@ -301,9 +301,9 @@ For some priors, provability by $D$ is strictly stronger than established verifi
 
 Established verifiability only requires \emph{some} proving observation to exist at each $\allleadstog ∈ C ∩ D$. 
 It is desirable that every prefix admit a rightward extension that still proves $C$.
-Given $C, D ⊆ \allleadstos$, $C$ is permanently verifiable (PV) under prior $D$ iff
+Given $C, D ⊆ \allleadstos$, $C$ is permanently verifiable under prior $D$ iff
 $∀\allleadstog ∈ C ∩ D, ∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat \mathop{↑}θ' ∩ D ⊆ C$.
-Under a given prior, PV is stronger than EV (\cref{th:pevImpliesEv}).
+Under a given prior, permanent verifiability is stronger than established verifiability (\cref{th:pevImpliesEv}).
 
 \section{Priors}
 \subsection{Falsifiability}
@@ -318,8 +318,8 @@ Given $\allleadstog$ and $C$, say that $C$ is
 \end{description}
 We sometimes write $\POF$ instead of $\POF(\allleadstog)$ when the world $\allleadstog$ is clear from the context, and $\POF[]$ when $C$ is clear from the context (or referring to any generic claim), and similarly for $\OF$ and $\F$.
 
-PV and POF have a dual character as
-$C$ satisfies PV under $D$ iff 
+Permanent verifiability and POF have a dual character as
+$C$ is permanently verifiable under $D$ iff
 $∀\allleadstog ∈ C ∩ D, \POF[D ∖ C](\allleadstog)$ (\cref{th:dualPof}, see also \cref{rk:dualEv}).
 
 Note that $∀C, \allleadstog: \POF(\allleadstog) ⇒ \OF(\allleadstog) ⇒ \F(\allleadstog)$ (\cref{th:ex-post} proves the second implication).
@@ -384,9 +384,9 @@ $(¬\POF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no vi
 Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C ⊆ E$ is provable by $¬\POF[C ∩ E] ∩ E$ (\cref{th:anonFalsImpliesProv}).
 
 Note that for any claim to exist that holds, is anonymous and is conclusive, we need the world to offer some systematic pattern of the form, whenever an individual satisfies some observable behavior, then some given influence is decisive to her. Assume that the world has such: $∃ \anobs, i, a, p \suchthat \anobs ⊆ \ileadstoo ⇒ a \ileadstost p$.
-We want to study priors for which, for worlds which satisfy such conditions, some anonymous, conclusive, holding claim exists that is PV under that prior.
+We want to study priors for which, for worlds which satisfy such conditions, some anonymous, conclusive, holding claim exists that is permanently verifiable under that prior.
 
-\Cref{th:holdsNotVerifUnderNotOfE} shows the insufficiency of the prior $F_C$: for some worlds, there exists no anonymous claim that holds and is conclusive and PV under $¬\POF[C ∩ E] ∩ E$.
+\Cref{th:holdsNotVerifUnderNotOfE} shows the insufficiency of the prior $F_C$: for some worlds, there exists no anonymous claim that holds and is conclusive and permanently verifiable under $¬\POF[C ∩ E] ∩ E$.
 \commentOC{TODO verify and extend this}.
 
 \subsection{Visibility}
@@ -403,7 +403,7 @@ A sufficient (but not necessary) condition for this prior to be satisfied is tha
 \begin{example}
   \label{ex:explainPriorVis}
   Suppose the world contains two kinds of individuals. The jays find $a$ decisive for $φ$. The kays however find $b$ decisive for $φ'$. A researcher may observe the regularity that individuals who, upon exposure to $(a, b)$, answer $φ$, all satisfy $a \ileadstost φ$. The researcher may ignore that a similar regularity holds for the kays. She may claim $C = [∀i: (a, b) \ileadstog φ ⇒ a \ileadstostg φ]$.
-  This claim is anonymous and conclusive, and PV under the prior $¬\POF ∩ E ∩ D^{\anobs, a, φ}$, with $\anobs = \set{(a, b), φ}$. As the prior holds, this implies that the claim holds. The prior $D^{\anobs, a, φ}$ requires to accept that whenever some individual satisfies $(a, b) \ileadsto φ$ but fails $a \ileadstostg φ$, some path that completes $(a, b)$ shows it, such as $(a, b, c, a) \nileadsto φ$. On the contrary, the prior fails if the only paths where $a$ fails to be decisive for that individual are paths that do not complete $(a, b)$. This could be the case, for example, if that individual is definitely impressed by the first influence she sees, and never considers any other influences shown to her afterwards.
+  This claim is anonymous and conclusive, and permanently verifiable under the prior $¬\POF ∩ E ∩ D^{\anobs, a, φ}$, with $\anobs = \set{(a, b), φ}$. As the prior holds, this implies that the claim holds. The prior $D^{\anobs, a, φ}$ requires to accept that whenever some individual satisfies $(a, b) \ileadsto φ$ but fails $a \ileadstostg φ$, some path that completes $(a, b)$ shows it, such as $(a, b, c, a) \nileadsto φ$. On the contrary, the prior fails if the only paths where $a$ fails to be decisive for that individual are paths that do not complete $(a, b)$. This could be the case, for example, if that individual is definitely impressed by the first influence she sees, and never considers any other influences shown to her afterwards.
 \end{example}
 
 \section{Conclusion}
@@ -429,7 +429,7 @@ $C$ is possibly verifiable iff it is verifiable in some world; formally, iff $�
 Given $C, D ⊆ \allleadstos$, $C$ is verifiable at $\allleadstog$ under prior $D$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ \mathop{↑}θ ∩ D ⊆ C$, and possibly verifiable under prior $D$ iff $∃ θ ∈ Θ \suchthat ∅ ≠ \mathop{↑}θ ∩ D ⊆ C$.
 Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{permanently verifiable} (PV) under $D$ at $\allleadstog$ iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat \mathop{↑}θ' ∩ D ⊆ C$.
 
-Established verifiability mandates verifiability in all compatible worlds; formally, 
+Established verifiability (EV) mandates verifiability in all compatible worlds; formally,
 $∀\allleadstog ∈ C: ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ ⊆ {\allleadstog'}: {\allleadstog'} ∈ C$.
 \begin{example}
   The claim $C$ being $[∀i: (a) \ileadsto φ] ∨ (a') \ileadsto φ$
