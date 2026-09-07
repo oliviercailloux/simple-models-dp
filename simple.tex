@@ -250,19 +250,19 @@ For example, given $a$, $i$ and $φ$, the claim $[(a) \ileadstog φ]$, which cla
 We want to know whether a claim holds, but all we have under hand are observations.
 A natural starting point is to attempt to verify claims, defined as follows.
 
-The claim $C$ is verifiable in the world $\allleadstog$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ ⊆ \allleadstog: \allleadstog ∈ C$. 
-Possible verifiability mandates that some (possibly counter-factual) observation proves the claim (makes sure that it holds), thus, $C$ is possibly verifiable iff it is verifiable in some world; formally, iff $∃ θ ∈ Θ \suchthat ∀ θ ⊆ \allleadstog: \allleadstog ∈ C$. 
-Verifiedness mandates verifiability in the actual world; formally, $∃ θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀ θ ⊆ \allleadstog: \allleadstog ∈ C$.
+The claim $C$ is verifiable in the world $\allleadstog$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat \mathop{↑}θ ⊆ C$. \commentClaude{used only to define “possibly verifiable” and “Verifiedness” just below; not invoked again by name afterward.}
+Possible verifiability mandates that some (possibly counter-factual) observation proves the claim (makes sure that it holds), thus, $C$ is possibly verifiable iff it is verifiable in some world; formally, iff $∃ θ ∈ Θ \suchthat \mathop{↑}θ ⊆ C$. \commentClaude{Not invoked again by name in the main text (the example just below no longer names it, following your edit); the “under a prior” variant defined further below is not invoked again by name either.}
+Verifiedness mandates verifiability in the actual world; formally, $∃ θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat \mathop{↑}θ ⊆ C$. \commentClaude{Used just below: sound (\cref{th:vImpliesHolds}) but too demanding (\cref{th:infoNotVerif}); recovered further below as the special case of “verified under the trivial prior” (\cref{th:vudImpliesHolds}).}
 
 Verifiedness
-is sound (\cref{th:vImpliesHolds}), meaning that indeed when a claim is verified, it holds, but is too demanding for many claims.
+is sound (\cref{th:vImpliesHolds}), meaning that indeed when a claim is verified, it holds, but is too demanding for many claims, that is, many claims fail the converse implication.
 Indeed,
-some sufficiently simple claims, such as the claim $C = \set{\allleadstog \suchthat (a) \ileadstog φ}$ that some given path leads some given individual to some given proposition, are possibly verifiable, but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
+some sufficiently simple claims, such as the claim $C = \set{\allleadstog \suchthat (a) \ileadstog φ}$ that some given path leads some given individual to some given proposition, also satisfy, conversely, that if they hold, they are verifiable, but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
 
-Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(\mathop{↑}θ ∩ C) ≠ (P ∪ \set{∅})^I$.
+Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(\mathop{↑}θ ∩ C) ≠ (P ∪ \set{∅})^I$. \commentClaude{Used only in the sentence just below, to show that Verifiedness is too demanding (\cref{th:infoNotVerif}, \cref{th:completable}).}
 
 In turns out that any claim that is conclusive fails verifiedness: the weaker demand of being informative in $\allleadsto$ implies failure of verifiedness (\cref{th:infoNotVerif}).
-This result may appear unsurprising, as we did not postulate yet any sort of regularity in the world, and ideed the fundamental reason for the incompatibility is that any observation can be completed in a way that contradicts any conclusion that informativeness in a world mandates (\cref{th:completable}).
+This may be expected, as we did not postulate yet any sort of regularity in the world, and ideed the fundamental reason for the incompatibility is that any observation can be completed in a way that contradicts any conclusion that informativeness in a world mandates (\cref{th:completable}).
 
 We thus now turn to examining which sort of prior knowledge will suffice for ensuring the existence of a verification procedure that will allow to determine that a claim holds (when it indeed does) that is also conclusive and anonymous.
 
@@ -277,15 +277,18 @@ Verifiability, as defined in \cref{sec:verifiability}, mandates that some observ
 As indicated there, this is too demanding to be applicable with no prior knowledge.
 In this section, we extend this idea to the case where some prior is given.
 
-Given $C, D ⊆ \allleadstos$, a claim $C$ is verifiable at $\allleadstog$ under prior $D$ iff 
-$∃ θ ∈ Θ ∩ \powerset{\allleadstog} ∩ (C ∩ D)^⊆ \suchthat ∀ θ ⊆ \allleadstog' ∈ D: \allleadstog' ∈ C$.
-Given $C, D ⊆ \allleadstos$, a claim $C$ is possibly verifiable under prior $D$ iff 
-$∃ θ ∈ Θ ∩ (C ∩ D)^⊆ \suchthat ∀ θ ⊆ \allleadstog ∈ D: \allleadstog ∈ C$.
+Given $C, D ⊆ \allleadstos$, a claim $C$ is verifiable at $\allleadstog$ under prior $D$ iff
+$∃ θ ∈ Θ ∩ \powerset{\allleadstog} ∩ (C ∩ D)^⊆ \suchthat \mathop{↑}θ ∩ D ⊆ C$.
+Given $C, D ⊆ \allleadstos$, a claim $C$ is possibly verifiable under prior $D$ iff
+$∃ θ ∈ Θ ∩ (C ∩ D)^⊆ \suchthat \mathop{↑}θ ∩ D ⊆ C$.
+\commentClaude{Neither of these two “under $D$” notions (verifiable at $\allleadstog$ under $D$, possibly verifiable under $D$) is invoked again by name afterward; both are immediately superseded by “verified under $D$” and “established verifiability under $D$” below.}
 Also, $C$ is verified under prior $D$ iff
-$∃ θ ∈ Θ ∩ \powerset{\allleadsto} ∩ (C ∩ D)^⊆ \suchthat ∀ θ ⊆ \allleadstog ∈ D: \allleadstog ∈ C$.
+$∃ θ ∈ Θ ∩ \powerset{\allleadsto} ∩ (C ∩ D)^⊆ \suchthat \mathop{↑}θ ∩ D ⊆ C$.
 Note that $C$ is verified iff it is verified under the trivial prior.
+\commentClaude{Recovers Verifiedness as the trivial-prior case (sentence above), and used via \cref{th:vudImpliesHolds} just below.}
 Finally, $C$ satisfies established verifiability under prior $D$ iff
-$∀\allleadstog ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$.
+$∀\allleadstog ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat \mathop{↑}θ ∩ D ⊆ C$.
+\commentClaude{Central notion: compared to provability just below, and to PV/PEV at the end of this subsection (\cref{th:pevImpliesEv}); PEV, built on it, drives the rest of the Priors section.}
 
 \Cref{th:vudImpliesHolds} shows that provided the prior is true, being verified under a prior suffices for holding.
 
@@ -304,8 +307,10 @@ We will see that combining (variants of) verification procedures, which bring pu
 Established verifiability only requires \emph{some} proving observation to exist at each $\allleadstog ∈ C ∩ D$. 
 It is desirable that every prefix admit a rightward extension that still proves $C$.
 Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{permanently verifiable} (PV) under $D$ at $\allleadstog$ iff
-$∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀θ' ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$.
+$∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat \mathop{↑}θ' ∩ D ⊆ C$.
+\commentClaude{Folded into the definition of PEV in the next sentence; not invoked again by name on its own in the main text.}
 $C$ satisfies PEV under prior $D$ iff this holds $∀\allleadstog ∈ C ∩ D$. Under a given prior, PEV is stronger than EV (\cref{th:pevImpliesEv}).
+\commentClaude{Used throughout the rest of the Priors section (dual to POF, \cref{th:dualPof}) and in the closing example.}
 
 \section{Priors}
 \subsection{Falsifiability}
@@ -318,7 +323,6 @@ Given $\allleadstog$ and $C$, say that $C$ is
   \item[Observably False (OF) in $\allleadstog$ ($\OF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable; formally, iff $[∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆]$, equivalently, $Θ ∩ \powerset{\allleadstog} ⊈ C^⊆$;
   \item[Persistently Observably False in $\allleadstog$ ($\POF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable whatever past observation have occurred already; formally, iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆$.
 \end{description}
-We also say that $C$ is \emph{rejectable} iff $\OF(\allleadsto)$.
 We sometimes write $\POF$ instead of $\POF(\allleadstog)$ when the world $\allleadstog$ is clear from the context, and $\POF[]$ when $C$ is clear from the context (or referring to any generic claim), and similarly for $\OF$ and $\F$.
 
 PEV and POF have a dual character as
@@ -331,12 +335,10 @@ $C$ is said to suffer visibility issues in $\allleadstog$ iff $¬\POF(\allleadst
 $C$ suffers visibility issues iff $∃\allleadstog \suchthat ¬\POF(\allleadstog) ∧ \OF(\allleadstog)$.
 $C$ suffers no visibility issues in $\allleadstog$ iff $\OF(\allleadstog) ⇒ \POF(\allleadstog)$, equivalently, iff $\OF(\allleadstog) ⇔ \POF(\allleadstog)$, and suffers no visibility issues iff $∀\allleadstog: \OF(\allleadstog) ⇒ \POF(\allleadstog)$.
 
-We say that $C$ is \emph{falsifiable} iff 
-$C ≠ \allleadstos ∧ [\F(\allleadstog) ⇒ \OF(\allleadstog)]$,
-and \emph{persistently falsifiable} iff
-$C ≠ \allleadstos ∧ [∀\allleadstog: \F(\allleadstog) ⇒ \POF(\allleadstog)]$.
+We say that $C$ is \emph{falsifiable} iff
+$C ≠ \allleadstos ∧ [\F(\allleadstog) ⇒ \OF(\allleadstog)]$.
 
-It is important to note that (persistent) falsifiability does not depend on $\allleadsto$: whether falsifiability holds can be determined analytically, meaning, by considering only the content of the claim, without considering the world.
+It is important to note that falsifiability does not depend on $\allleadsto$: whether falsifiability holds can be determined analytically, meaning, by considering only the content of the claim, without considering the world.
 
 We introduce the prior called $C$-scrutiny, which postulates that the real world is such that $C$ is either not observably false in it, or if it is, then $C$ suffers visibility issues in it; formally, $¬\OF(\allleadsto) ∨ (¬\POF(\allleadsto) ∧ \OF(\allleadsto))$.
 This is logically equivalent to mandating $¬\POF(\allleadsto)$, thus, excluding worlds in which $C$ is persistently observably false.
@@ -625,6 +627,11 @@ the prior required must be at least as strong as claiming that if some observabl
 \end{remark}
 
 \subsection{Falsifiability}
+$C$ is \emph{rejectable} iff $\OF(\allleadsto)$.
+
+$C$ is \emph{persistently falsifiable} iff
+$C ≠ \allleadstos ∧ [∀\allleadstog: \F(\allleadstog) ⇒ \POF(\allleadstog)]$.
+
 The following partitioning of claims with respect to their falsifiability status and examples might help better understand this central notion.
 
 Any claim $C$ satisfies exactly one of these:
