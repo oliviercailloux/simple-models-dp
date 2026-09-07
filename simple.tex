@@ -408,7 +408,7 @@ A sufficient (but not necessary) condition for this prior to be satisfied is tha
 
 \section{Conclusion}
 This study shows that, expectedly, general claims about regularity of behaviors of individuals facing exposure to arguments can be seen to hold only under some prior knowledge, that requires acceptance beyond empirical verifiability.
-Without delving into epistemological analysis, which I am not qualified to give, let us note that this is not specific to our endeavor and should come as no surprise: many claims in science require some non empirically verifiable assumptions to be applicable in full generality. For example, the apparently very low risk claim that the law of gravity applied in my living room yesterday requires the assumption of regularity of laws; claiming on the contrary that yesterday in my living room was an exception to the law of gravity (but that it holds everywhere else) is compatible with all observations done so far to validate (or attempt to falsify) it. (This is a variant of the argument of \citet{goodman_fact_1983} about grass being green until some year and blue afterwards.)
+Without delving into epistemological analysis, which I am not qualified to give, let us note that this is not specific to our endeavor and should come as no surprise: many claims in science require some non empirically verifiable assumptions for full applicability. For example, the apparently very low risk claim that the law of gravity applied in my living room yesterday requires the assumption of regularity of laws; claiming on the contrary that yesterday in my living room was an exception to the law of gravity (but that it holds everywhere else) is compatible with all observations done so far to validate (or attempt to falsify) it. (This is a variant of the argument of \citet{goodman_fact_1983} about grass being green until some year and blue afterwards.)
 
 This article has defined the concept of deliberated judgment and related notions, and pinpointed the precise priors whose acceptance is required in order to be convinced of the veracity of a claim about deliberated judgments.
 
@@ -829,7 +829,7 @@ The following example presents a situation where non rejection is due to finiten
   thus, $C = \set{\allleadstog \suchthat ∃ n ∈ \Np \suchthat ∀ i: (a)^n \ileadstog φ}$,
   is non rejectable: $Θ ⊆ C^⊆$.
 
-  Given any $θ ∈ Θ$, define $l = \max_{\hist \suchthat ∃ i ∈ I, p ∈ P \suchthat (i, \hist, p) ∈ θ} \card{\hist} + 1$ if $∃ p ∈ P \suchthat (i, \hist, p) ∈ θ$, and $l = 1$ otherwise.\commentClaude{In this second condition ("if $∃p∈P...$"), $i$ and $\hist$ are free — not bound by an enclosing $∃i$/the $\max$'s own $\hist$ binder. Is this meant to hold for the same $\hist$ achieving the max above, and some/any $i$? As written the condition's truth value is unclear.} Pick any $\allleadstog$ such that $θ ⊆ \allleadstog ∧ (a)^l \ileadstog φ$. We have
+  Given any $θ ∈ Θ$, define $l = \max_{\hist \suchthat ∃ i ∈ I, p ∈ P \suchthat (i, \hist, p) ∈ θ} \card{\hist} + 1$ if $∃ (i, \hist, p) ∈ θ$, and $l = 1$ otherwise. Pick any $\allleadstog$ such that $θ ⊆ \allleadstog ∧ (a)^l \ileadstog φ$. We have
   $θ ∈ \powerset{\allleadstog}$ and $\allleadstog ∈ C$, thus, $θ ∈ C^⊆$.
 \end{example}
 \begin{example}[Big disjunct unfals iff infinite]
@@ -1092,7 +1092,7 @@ The following result indicates that, given a finite cover of $D ∖C$, $\OF[D �
   Define $\allleadstog$ such that $∀α', j: α' \ileadstog[j] φ'$ (thus $\allleadstog ∈ E$ and $\allleadstog ∉ C$)
   and let us show that $¬\POF[C ∩ E](\allleadstog)$.
   Pick any $\card{α} < \card{α'}$ and
-  define $θ = (i, α', φ') ∈ Θ ∩ \powerset{\allleadstog}$.\commentClaude{$θ$ is an observation (a subset of $I × \allhists × P$), but here it is set equal to a single triple $(i, α', φ')$ rather than to a set containing it. Should this be $θ = \set{(i, α', φ')}$?}
+  define $θ = (i, α', φ') ∈ Θ ∩ \powerset{\allleadstog}$.
   Consider any $θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}$. 
   Define an infinitely numerous subset $J$ among the individuals for which $α$ was not observed in $θ'$ such that $i ∈ J$, leaving another infinitely numerous subset $I ∖ J$,
   and define $\allleadstog'$ such that $∀j ∈ J: α \ileadstog[j]' φ ∧ ∀α'' ≠ α, α'' \ileadstog[j]' φ'$, and $∀ j ∈ I ∖ J, α'': α'' \ileadstog[j]' φ'$.
@@ -1311,7 +1311,7 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
   As $\allleadsto ∈ E$, there are infinitely many suitable $i'$ so we can pick one that has not been chosen yet, to ensure $s$ is an injection.
 
   The function $s$ has domain $θ(\allhists, P)$ and codomain $s(θ(\allhists, P))$, both finite sets of equal cardinality.
-  Turn $s$ into a permutation $σ = s ∪ s'$ over $I$ by defining any bijection $s': I ∖ θ(\allhists, P) → I ∖ s(θ(\allhists, P))$ (TBD: argue that we can do this).\commentClaude{This bijection $s'$ does exist and the "TBD" seems closeable: $θ(\allhists, P)$ and its image under $s$ are finite (both of size $\card{θ(\allhists,P)}$), and $I$ is infinite (any $\allleadsto ∈ E$ has, for every $i$, an infinite class of individuals sharing $\ileadstoo$, so $I$ itself is infinite); removing a finite subset from an infinite set always leaves a set of the same cardinality as the original, for either finite subset removed, so $I∖θ(\allhists,P)$ and $I∖s(θ(\allhists,P))$ have equal cardinality and a bijection $s'$ exists. Worth stating explicitly instead of leaving as TBD.}
+  Turn $s$ into a permutation $σ = s ∪ s'$ over $I$ by defining any bijection $s': I ∖ θ(\allhists, P) → I ∖ s(θ(\allhists, P))$ (TBD: argue that we can do this).
 
   By construction, $θ ⊆ \allleadsto \circ σ$, which belongs to $C$ because $C$ holds and is anonymous.
 \end{proof}
@@ -1330,7 +1330,7 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
   Consider any $i ∈ θ(\allhists, P)$.
   Pick any $b ∈ \allleadsto(I) \suchthat θ(i) ⊆ b$,
   define $\ileadstogo' = b$.
-  Partition $I ∖ θ(\allhists, P)$ into infinite sets, one for each behavior in $\allleadsto(I)$, plus one for $b^\text{new}$, thereby creating a function $f: I ∖ θ(\allhists, P) → \allbs$ (TBD argue from $\card{\allleadsto(I)} ≤ \card{I}$ that we can do this).\commentClaude{This is a substantive gap, not just bookkeeping: it requires partitioning the cofinite set $I ∖ θ(\allhists,P)$ into one infinite class per element of $\allleadsto(I)$ plus one more, all pairwise disjoint. If $\allleadsto(I)$ (the set of behaviors realized in $\allleadsto$) is large — e.g. as large as, or larger than, $I$ itself — such a partition need not exist (you cannot in general split a set of cardinality $\card I$ into $\card{\allleadsto(I)}$ many infinite disjoint pieces unless $\card I ≥ \card{\allleadsto(I)} \cdot \aleph_0$, roughly). Nothing in the hypotheses bounds $\card{\allleadsto(I)}$ relative to $\card I$, so as stated the construction is not guaranteed to go through in general.}
+  Partition $I ∖ θ(\allhists, P)$ into infinite sets, one for each behavior in $\allleadsto(I)$, plus one for $b^\text{new}$, thereby creating a function $f: I ∖ θ(\allhists, P) → \allbs$ (TBD argue from $\card{\allleadsto(I)} ≤ \card{I}$ that we can do this).
   For each $i ∈ I ∖ θ(\allhists, P)$ with $f(i) ∈ \allleadsto(I)$, define $\ileadstogo' = f(i)$, for the remaining infinite set, define $\ileadstogo' = b^\text{new}$.
 
   Note that $\allleadstog' ∈ E$.
@@ -1342,8 +1342,9 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
 \begin{example}
   Consider the world
   $\allleadsto = (J × \allhists × \set{φ}) ∪ (K × \set{∅} × \set{φ}) ∪ (K × (\allhists ∖ \set{∅}) × \set{φ'})$
-  of \cref{ex:jaysAndKaysConstants},
-  with infinite sets of individuals $J$, $K$.\commentClaude{\cref{ex:jaysAndKaysConstants} states the kay's "always answer $φ'$", i.e. $∀i∈K, α∈\allhists: α\ileadsto φ'$, including at $α=∅$. Here the kay's instead answer $φ$ at $∅$ and $φ'$ everywhere else, which is a different world than the one literally defined in \cref{ex:jaysAndKaysConstants} (and the special-casing at $∅$ turns out to matter: it is exactly what makes $i∈K$ fail the antecedent of $C$'s condition below, via the $1≤\card{\max H}$ hypothesis). Referring to it as "the world … of \cref{ex:jaysAndKaysConstants}" may mislead a reader checking back against that example's literal statement.}
+  of \cref{ex:jaysAndKaysConstants}
+  (TODO check equality),
+  with infinite sets of individuals $J$, $K$.
 
   Pick some finite $∅ ≠ H ∈ \incr(\allhists)$ such that 
   $1 ≤ \card{(max H)}$,
@@ -1351,9 +1352,9 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
   Define $S = \set{∅ ≠ \hist \suchthat \hist_1 = d} ⊆ \allhists$ as the set of paths starting with $d$. 
   Let $b_j$ be the behavior associated to $\allleadsto(J)$, define $b_k$ similarly.
   Define $b^\text{new} ∈ \allbs$ as $b^\text{new} = \restr{b_k}{S} ∪ \restr{b_j}{\allhists ∖ S}$.
-  Consider any anonymous claim $C ⊆ [∀i ∈ I: \restr{b^\text{new}}{H} ⊆ \ileadstoo ⇒ ∃p ∈ P \suchthat a \ileadstost p]$ that holds (for example, $[∀i ∈ I: \restr{b^\text{new}}{H} ⊆ \ileadstoo ⇒ ∃p ∈ P \suchthat a \ileadstost p]$).\commentClaude{\Cref{th:holdsNotVerifUnderNotOfE} additionally requires "$C$ holds", i.e. $\allleadsto ∈ C$; not every anonymous $C$ included in the bracketed set satisfies this (e.g. $C = ∅$ does not). It does hold for the largest such $C$ (taking $C$ to be exactly the bracketed set, which is itself anonymous since it quantifies over all $i∈I$ uniformly): every $j∈J$ trivially satisfies the antecedent and is decisive for $φ$, and every $k∈K$ fails the antecedent because $\restr{b^\text{new}}{H} = \restr{b_j}{H}$, constantly $φ$ (since $S∩H=∅$) while $\ileadstoo[k]$ disagrees with $φ$ on $H$'s nonempty path(s) — which is exactly where the $1≤\card{\max H}$ hypothesis is needed, to guarantee $H$ has a nonempty path on which $k$'s behavior (constant $φ'$ off $∅$) departs from $φ$. This isn't spelled out in the example; as written, "consider any anonymous claim $C⊆[…]$" doesn't establish that $C$ can be chosen to hold at $\allleadsto$.}
+  Consider any anonymous claim $C ⊆ [∀i ∈ I: \restr{b^\text{new}}{H} ⊆ \ileadstoo ⇒ ∃p ∈ P \suchthat a \ileadstost p]$ that holds (for example, $[∀i ∈ I: \restr{b^\text{new}}{H} ⊆ \ileadstoo ⇒ ∃p ∈ P \suchthat a \ileadstost p]$).
 
-  Observe that $S ∩ H = ∅$ ($∅ ∉ S$ by definition and $∀ ∅ ≠ \hist ∈ H: \hist_1 = (\max H)(1) ≠ d$)\commentClaude{This follows because $H$, being an increasing set of paths, is a chain under the prefix order, so every nonempty $\hist∈H$ is a prefix of $\max H$ and hence shares its first argument $(\max H)(1) ≠ d$; combined with $∅∉S$ by definition, no element of $H$ lies in $S$. Worth a one-line justification, as it's the crux of the construction (and is also used implicitly, in the same way, to show $b^\text{new}$ is undistinguishable from $\allleadsto(I)$ below).} and
+  Observe that $S ∩ H = ∅$ ($∅ ∉ S$ by definition and $∀ ∅ ≠ \hist ∈ H: \hist_1 = (\max H)(1) ≠ d$) and
   as $(d, a) ∈ S$ and $(a, d) ∉ S$, $b^\text{new}((d, a)) = φ' ≠ b^\text{new}((a, d)) = φ$, thus $∄p \suchthat a \ileadstostg[b^\text{new}] p$.
   Also,
   $b^\text{new}$ is undistinguishable from $\allleadsto(I) = \set{b_j, b_k}$: for any $H'∈\fincrhists$, since $H'$ is a chain, either all its nonempty paths start with $d$ — in which case $\restr{b^\text{new}}{H'}=\restr{b_k}{H'}$ — or none do — in which case $\restr{b^\text{new}}{H'}=\restr{b_j}{H'}$;
