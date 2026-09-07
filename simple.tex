@@ -190,7 +190,6 @@ Given a function $f$ on some domain $\mathcal{A}$, given $A ⊆ \mathcal{A}$, we
 Given a pair $(I, \allargs)$, a claim $C$ is a set of possibilities for $\allleadsto$, thus, $C ⊆ \allleadstos$.
 For brevity, claims will often be described using just a formula in brackets, for example $C = [∀i, ∃α ∈ \allhists \suchthat α \ileadstog φ]$ is the claim $C = \set{\allleadstog ∈ \allleadstos \suchthat ∀i, ∃α ∈ \allhists \suchthat α \ileadstog φ}$. \commentOC{I sometimes use bold $\allleadsto$ instead of $\allleadstog$, to be fixed.}
 A claim is trivial iff it is the trivial claim, defined as $C = \allleadstos$.
-A claim is finite iff its cardinal is finite (meaning that it is compatible with a finite number of possibilities).
 Let $C^⊆ = ∪_{\allleadstog ∈ C} \powerset{\allleadstog} = \set{c ⊆ (I × \allhists) × P \suchthat ∃ \allleadstog ∈ C \suchthat c ∈ \powerset{\allleadstog}}$ denote the set of non necessarily complete possibilities compatible with $C$ (thus, each element $c ∈ C^⊆$ is right-unique but non necessarily total, meaning that it does not necessarily cover $(I × \allhists)$).
 
 Define the increasing sets of paths as the set $\fincrhists = \set{H \fsub \allhists \suchthat ∀\hist, \histp ∈ H: \card{\hist} ≤ \card{\histp} ⇒ \hist ⊆ \histp} ⊆ \powerset{\allhists}$. An increasing set of paths $H ∈ \incr(\allhists)$ can be strictly ordered by the lengths of the paths in $H$ and can thus also be considered as a sequence of paths.
@@ -244,7 +243,7 @@ A claim $C$ is \emph{conclusive} iff $∀ \allleadstog ∈ C, θ ∈ Θ ∩ \pow
 We restrict attention to claims that do not use prior knowledge about named individuals, thus, are anonymous, in the following sense.
 Given a permutation $σ$ over $I$ and any $\allleadstog ∈ \allleadstos$, let $\allleadstog ∘ σ$ denote $\set{(i, \hist, φ) \suchthat (σ(i), \hist, φ) ∈ \allleadstog}$ and let $C ∘ σ$ denote $\set{\allleadstog ∘ σ \suchthat \allleadstog ∈ C}$.
 A claim $C$ is \emph{anonymous} iff $∀ σ: C = C ∘ σ$.
-For example, given $a$, $i$ and $φ$, the claim $[a \ileadstog φ]$, which claims that a given argument leads a given individual to a given proposition, is not anonymous (\cref{ex:anon}); whereas given $a$ and $φ$, the claim $[∀i: a \ileadstog φ]$ is anonymous. 
+For example, given $a$, $i$ and $φ$, the claim $[(a) \ileadstog φ]$, which claims that a given path leads a given individual to a given proposition, is not anonymous (\cref{ex:anon}); whereas given $a$ and $φ$, the claim $[∀i: (a) \ileadstog φ]$ is anonymous. 
 
 \subsection{Verifiability}
 \label{sec:verifiability}
@@ -302,14 +301,11 @@ The following example illustrates that demanding that a claim be verifiable (und
 \end{example}
 We will see that combining (variants of) verification procedures, which bring punctual facts, with general enough priors, lead further than procedures based only on priors or on verification could.
 
-Established verifiability only requires \emph{some} proving observation to exist at each $\allleadstog ∈ C ∩ D$. Mirroring how $\POF[]$ strengthens $\OF$ by requiring that \emph{every} prefix admit a rightward falsifying extension, it is desirable that every prefix admit a rightward extension that still proves $C$.
+Established verifiability only requires \emph{some} proving observation to exist at each $\allleadstog ∈ C ∩ D$. 
+It is desirable that every prefix admit a rightward extension that still proves $C$.
 Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{permanently verifiable} (PV) under $D$ at $\allleadstog$ iff
 $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀θ' ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$.
 $C$ satisfies PEV under prior $D$ iff this holds $∀\allleadstog ∈ C ∩ D$. Under a given prior, PEV is stronger than EV (\cref{th:pevImpliesEv}).
-
-PEV and POF have a dual character as
-$C$ satisfies PEV under prior $D$ iff 
-$∀\allleadstog ∈ C ∩ D, \POF[D ∖ C](\allleadstog)$ (\cref{th:dualPof}, see also \cref{rk:dualEv}).
 
 \section{Priors}
 \subsection{Falsifiability}
@@ -324,6 +320,10 @@ Given $\allleadstog$ and $C$, say that $C$ is
 \end{description}
 We also say that $C$ is \emph{rejectable} iff $\OF(\allleadsto)$.
 We sometimes write $\POF$ instead of $\POF(\allleadstog)$ when the world $\allleadstog$ is clear from the context, and $\POF[]$ when $C$ is clear from the context (or referring to any generic claim), and similarly for $\OF$ and $\F$.
+
+PEV and POF have a dual character as
+$C$ satisfies PEV under prior $D$ iff 
+$∀\allleadstog ∈ C ∩ D, \POF[D ∖ C](\allleadstog)$ (\cref{th:dualPof}, see also \cref{rk:dualEv}).
 
 Note that $∀C, \allleadstog: \POF(\allleadstog) ⇒ \OF(\allleadstog) ⇒ \F(\allleadstog)$ (\cref{th:ex-post} proves the second implication).
 Also, given $C' ⊆ C$, $∀\allleadstog$: $¬\F[C'](\allleadstog) ⇒ ¬\F(\allleadstog)$, $¬\OF[C'](\allleadstog) ⇒ ¬\OF(\allleadstog)$, and $¬\POF[C'](\allleadstog) ⇒ ¬\POF(\allleadstog)$.
@@ -363,11 +363,12 @@ This is logically equivalent to mandating $¬\POF(\allleadsto)$, thus, excluding
 \end{remark}
 \Cref{rk:alternativePofs} discusses alternative formalizations of the concepts POF and $C$-scrutiny.
 
-\begin{remark}
-  This prior seems unsatisfactorily not primitive enough (to be worked on…). We should obtain as a result that the reasonable prior is, if no visibility issues, then not OF, by assuming that we have observed everything we could ever dream of.
-\end{remark}
+% \begin{remark}
+%   TODO
+  % This prior seems unsatisfactorily not primitive enough (to be worked on…). We should obtain as a result that the reasonable prior is, if no visibility issues, then not OF, by assuming that we have observed everything we could ever dream of.
+% \end{remark}
 
-\Cref{th:onlyEmptyPF} shows that no claim is provable by $¬\POF$.
+\Cref{th:onlyEmptyPF} shows that this prior is insufficient: no claim is provable by $¬\POF$.
 
 \subsection{Repeatable observations}
 Our second prior assumes that whenever a behavior is exhibited by at least one individual, infinitely many individuals exhibit it.
@@ -386,14 +387,34 @@ $(¬\POF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no vi
 \Cref{th:finiteExceptSpreadAnon} shows that anonymous claims suffer no visibility issues in $E$.
 Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C ⊆ E$ is provable by $¬\POF[C ∩ E] ∩ E$ (\cref{th:anonFalsImpliesProv}).
 
-\Cref{th:noAnonIBCHoldsProvable} shows the insufficiency of this prior: for some worlds, no anonymous claims that hold and is conclusive and provable by $¬\POF[C ∩ E] ∩ E$ exist.
-TODO prove this for PEV and all worlds.
+Note that for any claim to exist that holds, is anonymous and is conclusive, we need the world to offer some systematic pattern of the form, whenever an individual satisfies some observable behavior, then some given argument is decisive to her. Assume that the world has such: $∃ \anobs, i, a, p \suchthat \anobs ⊆ \ileadstoo ⇒ a \ileadstost p$.
+We want to study priors for which, for worlds which satisfy such conditions, some anonymous, conclusive, holding claim exists that is PEV under that prior.
 
-\section{Suitable claims}
-\Cref{th:AHFimpl} and related show that anonymous and falsifiable claims that hold exist iff the situation does not satisfy $∀ \hist: P^{\intvl{\hist}} ⊆ \restr{{\allleadsto}(I)}{\intvl{\hist}}$.
+\Cref{th:holdsNotVerifUnderNotOfE} shows the insufficiency of the prior $F_C$: for some worlds, there exists no anonymous claim that holds and is conclusive and PEV under $¬\POF[C ∩ E] ∩ E$.
+\commentOC{TODO verify and extend this}.
+
+\subsection{Visibility}
+We now add the last piece of the puzzle.
+For a suitable claim to exist, 
+we need the prior, called here $D$, to ensure that no behavior is sufficiently “strange” that an individual $i$ can satisfy the pattern $\anobs ⊆ \ileadstoo$, but fail $a \ileadstost p$, but only fail it in a way that is invisible to our observational capacities. Thus (\cref{th:oneMorePriorFullExplicit}), we want that for each individual $i$ such that $\anobs ⊆ \ileadstoo ∧ a \nileadstost p$, $∃α ∈ \allhists \suchthat \anobs^{-1}(P) ∪ \set{α} ∈ \fincrhists ∧ a ∈ \histend(α) ∧ α \nileadsto p$.
+In words, we request that those individuals have some path compatible with those used in $\anobs$ where it is visible that $a$ does not decisively lead $i$ to $p$ (thus $a$ appears at the end of $α$ and yet $α \nileadsto p$).
+A sufficient (but not necessary) condition for this prior to be satisfied is that repeating often enough the arguments that lead the individual out of $p$ lets her forget about the arguments used in $\anobs$.
+
+\begin{example}
+  \label{ex:explainPriorVis}
+  Suppose the world contains two kinds of individuals. The jays find $a$ decisive for $φ$. The kays however find $b$ decisive for $φ'$. A researcher may observe the regularity that individuals who upon seeing $(a, b)$ answer $φ$ all satisfy $a \ileadstost φ$. The researcher may ignore that a similar regularity holds for the kays. She may claim $C = [∀i: (a, b) \ileadstog φ ⇒ a \ileadstostg φ]$.
+  This claim is anonymous and conclusive, and PEV under the prior $¬\POF ∩ E ∩ D$ (which implies that it holds, as the prior holds). The prior $D$ requires to accept that whenever some individual satisfies $(a, b) \ileadsto φ$ but fails $a \ileadstostg φ$, some path that completes $(a, b)$ shows it, such as $(a, b, c, a) \nileadsto φ$. On the contrary, the prior fails if the only paths where $a$ fails to be decisive for that individual are paths that do not complete $(a, b)$. This could be the case, for example, if that individual is definitely impressed by the first argument she sees, and never considers any other arguments shown to her afterwards.
+\end{example}
 
 \section{Conclusion}
-The dependence of the deliberated judgment concept on the exposure protocol yields a first qualification about the concept of deliberated judgments when one desires to use it normatively: it is only as reasonable to call the resulting judgments “deliberate” in a normative sense as the exposure protocol is normatively relevant to deliberation. A sufficiently restricted, or even purposefully chosen, set of arguments may yield judgments that are only deliberate in the technical sense used here, but that pertain more to brain-washing than to reflective judgments. While it is indeed a long-term goal of this research program to yield a normatively relevant conception of preference (appropriate, for example, for recommendation), it is not a claim of this article that anything that corresponds to deliberated judgments as defined here qualify as being appropriate for any normative use: much depends on the chosen exposure protocol. The goal of this article is rather one of a conceptual and practical clarification. It proposes a sharp distinction between the empirical content and the normative content of the concept of deliberated judgments: the definition proposed here transfers the full normative weight on the choice of the exposure protocol; and leaves the rest of the disagreements to empirical settling. This is methodologically akin, mutatis mutandis, to the axiomatic study of justice such as done in social choice, only complementing mathematical deduction with empirical claims. In social choice, the choice of axioms bears the full normative weight; once axioms are chosen, it is a matter of logic which social choice rules (if any) correspond to that choice. In our case, once an exposure protocol is chosen, it is an empirical matter which deliberated judgments result.
+This study shows that, expectedly, general claims about regularity of behaviors of individuals facing exposure to arguments can be seen to hold only under some prior knowledge, that requires acceptance beyond empirical verifiability.
+Without delving into epistemological analysis, which I am not qualified to give, let us note that this is not specific to our endeavor and should come as no surprise: many claims in science require some non empirically verifiable assumptions to be applicable in full generality. For example, the apparently very low risk claim that the law of gravity applied in my living room yesterday requires the assumption of regularity of laws; claiming on the contrary that yesterday in my living room was an exception to the law of gravity (but that it holds everywhere else) is compatible with all observations done so far to validate (or attempt to falsify) it. (This is a variant of the argument of \citet{goodman_fact_1983} about grass being green until some year and blue afterwards.)
+
+This article has defined the concept of deliberated judgment and related notions, and pinpointed the precise priors whose acceptance is required in order to be convinced of the veracity of a claim about deliberated judgments.
+
+As \cref{ex:explainPriorVis} illustrates, a prior may be hard to accept, depending on the exposure protocol and what is considered plausible behavior. The framework presented here is general and simple, a good thing for an initial study of a concept: complexity requires justification. But this framework may lack richness for some cases. For example, it may be visible in the content of an argument that it argues in favor of $φ$, thus, if an individual is in favor of $φ'$ after having seen that argument, it may be considered a priori convincing that the individual would have been in favor of $φ'$ also without seeing the argument. In our framework, no prior knowledge about the arguments can be encoded. Such supplementary structure would be worth studying.
+
+The dependence of the deliberated judgment concept on the exposure protocol yields a qualification about the concept of deliberated judgments when one desires to use it normatively: it is only as reasonable to call the resulting judgments “deliberate” in a normative sense as the exposure protocol is normatively relevant to deliberation. A sufficiently restricted, or even purposefully chosen, set of arguments may yield judgments that are only deliberate in the technical sense used here, but that pertain more to brain-washing than to reflective judgments. While it is indeed a long-term goal of this research program to yield a normatively relevant conception of preference (appropriate, for example, for recommendation), it is not a claim of this article that anything that corresponds to deliberated judgments as defined here qualify as being appropriate for any normative use: much depends on the chosen exposure protocol. The goal of this article is rather one of a conceptual and practical clarification. It proposes a sharp distinction between the empirical content and the normative content of the concept of deliberated judgments: the definition proposed here transfers the full normative weight on the choice of the exposure protocol; and leaves the rest of the disagreements to empirical settling. This is methodologically akin, mutatis mutandis, to the axiomatic study of justice such as done in social choice, only complementing mathematical deduction with empirical claims. In social choice, the choice of axioms bears the full normative weight; once axioms are chosen, it is a matter of logic which social choice rules (if any) correspond to that choice. In our case, once an exposure protocol is chosen, it is an empirical matter which deliberated judgments result.
 In supplement to a possibly helpful conceptual clarification, such a sharp separation may reveal practically useful for separation of concern as it permits to study deliberated judgments empirically under various exposure protocols independently of possible disagreements about which norms are more appropriate for deliberation in which circumstances.
 
 \bibliography{simple}
@@ -415,43 +436,6 @@ A claim $C$ is \emph{informative} iff $π(C) ≠ (P ∪ \set{∅})^I$.
 A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π_i(C) = \set{π_i(\allleadstog) \suchthat \allleadstog ∈ C} ≠ P ∪ \set{∅}$.
 A claim $C$ is \emph{a posteriori sharp} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(\mathop{↑}θ ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
 A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I \suchthat π_i(\mathop{↑}θ ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
-
-\Cref{tab:renaming} lists this informativeness/sharpness family together with the related notions defined elsewhere (conclusive, in the main text, already renamed from the former acronym SAPTS; indicative, further below in this appendix) and the renaming still proposed for the informativeness notions used in the main text (and their closest relatives), so that these read as ordinary words rather than acronyms; the more technical, appendix-only singleton-pinning family (APS, APTS, APS-P, APTS-P) keeps its acronym names.
-
-\begin{table}
-  \centering
-  \begin{tabulary}{\linewidth}{LLL}
-    \toprule
-    Definition (summarized) & Current name & Proposed name \\
-    \midrule
-    $π(C) ≠ (P ∪ \set{∅})^I$
-    & informative & indicative \\
-    $∃θ ⊆ \allleadstog \suchthat π(\mathop{↑}θ ∩ C) ≠ (P ∪ \set{∅})^I$
-    & \textbf{informative in $\allleadstog$} & indicative in $\allleadstog$ \\
-    $∃θ ∈ C^⊆ \suchthat π(\mathop{↑}θ ∩ C) ≠ (P ∪ \set{∅})^I$
-    & possibly informative & possibly indicative \\
-    $∃i \suchthat π_i(C) ≠ P ∪ \set{∅}$
-    & informative beyond counting & indicative beyond counting \\
-    $∀i \suchthat π_i(C) ≠ P ∪ \set{∅}$
-    & strongly informative beyond counting & strongly indicative beyond counting \\
-    $∀\allleadstog ∈ C, θ ⊆ \allleadstog, ∃θ ⊑ θ' ⊆ \allleadstog, i \suchthat \card{π_i(\mathop{↑}θ' ∩ C)} = 1$
-    & \textbf{conclusive} (formerly SAPTS) & \emph{done} \\
-    $∃θ, i \suchthat π_i(\mathop{↑}θ ∩ C) \ssub P$
-    & indicative (for $i$) / indicativeness & informative (for $i$) / informativeness \\
-    \addlinespace
-    $∃θ, i \suchthat \card{π_i(\mathop{↑}θ ∩ C)} = 1$
-    & APS (a posteriori sharp) & \emph{unchanged} \\
-    $∃θ ⊆ \allleadsto, i \suchthat \card{π_i(\mathop{↑}θ ∩ C)} = 1$
-    & APTS (a posteriori truly sharp) & \emph{unchanged} \\
-    $∃θ, i, p ∈ P \suchthat π_i(\mathop{↑}θ ∩ C) = \set{p}$
-    & APS-P & \emph{unchanged} \\
-    $∃θ ⊆ \allleadsto, i, p ∈ P \suchthat π_i(\mathop{↑}θ ∩ C) = \set{p}$
-    & APTS-P & \emph{unchanged} \\
-    \bottomrule
-  \end{tabulary}
-  \caption{Proposed renaming of the informativeness/sharpness family.}
-  \label{tab:renaming}
-\end{table}
 
 \begin{remark}
   Informativeness permits mere counting: the claim that exactly two persons deliberately believe $φ$ is informative. Also, the claim $C = \set{[∃ i \suchthat (a) \nileadstog φ] ∧ [∀i: (a) \nileadstog φ ⇒ φ' ∈ π_i(\allleadstog)]}$ is informative.
@@ -691,7 +675,7 @@ falsifiability guarantees that a non trivial claim holds if, and only if, it is 
   Given $\hist, i$, consider the claim $C_2 = \hist \ileadstog φ$. It is falsifiable.
   Now consider the claim $C = C_1 ∩ C_2$ with $C_1$ being the claim “every individual chooses $φ$ after seeing solely either $a$ or $a'$”. It is more precise but unfalsifiable.
   But we can make it falsifiable again by making it even more precise (picking any single relation).
-  (See \cref{rq:precise}.)
+  % (See \cref{rq:precise}.)
 \end{remark}
 
 \begin{theorem}
@@ -713,7 +697,7 @@ Provability by $¬\OF(\allleadsto)$ (equivalently, falsifiability or triviality)
 \end{example}
   
 This suggests conjecturing that established verifiability under $D'$ is always strictly stronger than established verifiability under $D$, for any priors $D ⊆ D'$.
-This is not the case in general; \cref{app:evStrictNested} investigates the question and reports the current state of its characterization.
+% This is not the case in general; \cref{app:evStrictNested} investigates the question and reports the current state of its characterization.
 
 Note that if a claim is not provable by $¬\OF(\allleadsto)$ (equivalently, some world is out of $C$ and NOT OF), then some world is out of $C$ and NOT POF.
 
@@ -1299,21 +1283,6 @@ In some worlds, the prior by $¬\POF[C ∩ E] ∩ E$ is sufficient to get existe
   holds, is anonymous, APTS and PEF under $¬\POF[C ∩ E] ∩ E$.
 \end{example}
 
-The following shows that verifiability is a mandatory part of the criterion for determining whether $C$ holds, in that world: requiring the stronger provability instead of verifiability (under the same prior) leads to an impossibility.
-\begin{theorem}
-  Consider the world 
-  $\allleadsto = J × \allhists × \set{φ} ∪ K × \allhists × \set{φ'}$ 
-  of \cref{ex:jaysAndKaysConstants}, 
-  with infinite sets of individuals $J$, $K$.
-  No anonymous claim that holds is APTS and provable by $¬\POF[C ∩ E] ∩ E$.
-\end{theorem}
-\begin{proof}
-  TODO.
-  Either weaken the phrasing to apply \cref{ex:noProvableDecisivePhi}, or invoke a more general result coming later (and move this).
-\end{proof}
-
-For this, see \cref{rk:generalTemplateExcluded}.
-
 We are here interested in claims implying propositions of the form: any individual whose behavior satisfies some given observable condition admits a given argument being decisive.
 Given $T: H → P$ for some finite $H ∈ \incr(\allhists)$,
 write $T(i) = \set{i} × T = \set{(i,\hist,p) \suchthat (\hist, p) ∈ T} ∈ Θ$
@@ -1354,6 +1323,7 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
   if $b^\text{new}$ is undistinguishable from $\allleadsto(I)$ yet $b^\text{new} ∉ \allleadsto(I)$ and $∄p ∈ P \suchthat a \ileadstostg[b^\text{new}] p$
   and $C$ holds, it is not verifiable at $\allleadsto$ under $¬\OF ∩ E$ (thus also not verifiable at $\allleadsto$ under $¬\POF ∩ E$).
 \end{theorem}
+%compare with noAnonIBCHoldsProvable
 \begin{proof}
   Consider any prefix $θ ⊆ \allleadsto$.
   We build $θ ⊆ \allleadstog' ∈ (¬\OF ∩ E) ∖ C$.
@@ -1395,7 +1365,7 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
   The $H = ∅$ case technically holds, but either requires to take seriously the $∃p$ in the claim $C$’s deduction ($i_1$ has $a$ decisive for $φ$ and $i_2$ has $a$ decisive for $φ'$), or if $p$ is fixed for everybody, then the antecedent of the theorem never triggers.
 \end{remark}
 
-\subsection{One more prior}
+\subsection{Visibility}
 Given $\anobs$,
 $a ∈ \allargs$,
 $p ∈ P$,
@@ -1556,29 +1526,49 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 
   The same two instantiations ($B := \allleadsto(I)$ and $B := \allbs$) apply just as well to \cref{th:oneMorePriorGeneral} itself, giving analogues of \cref{th:oneMorePriorNarrow,th:oneMorePriorFull} for the original, unaugmented claim $C_0$: an anonymous, holding claim that is APTS and provable by $¬\POF ∩ E$, respectively APTS and provable by $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{C_0}$.
 \end{remark}
-
-\begin{remark}
-  \label{rk:gapNotMinimal}
-  $D^{\anobs, a, p}$ is not the minimal hypothesis for \emph{some} suitable claim to exist: a differently shaped claim can hold, be anonymous and APTS-P, in a world violating both. But the obstruction they route around does not disappear there — it relocates into the "provable by" filter instead of being paid upfront on $\allleadsto$ alone.
-
-  Fix $a ≠ c ∈ \allargs$ and partition $I$ into infinite $J, K$, with $∀i ∈ J, \hist ∈ \allhists: \hist \ileadsto φ$, and $∀i ∈ K, \hist ∈ \allhists$: $\hist \ileadsto φ$ if $c ∈ \histend(\hist)$, $\hist \ileadsto φ'$ otherwise (so $(a) \ileadsto φ'$ throughout $K$, as $c ≠ a$). Let $b_j, b_k$ be the behaviors associated to $\allleadsto(J), \allleadsto(K)$, and take
-  $$C = [∀i ∈ I: (a) \ileadstogo φ ⇒ a \ileadstostg φ] ∩ [∀i ∈ I: (a) \ileadstogo φ' ⇒ c \ileadstostg φ] = C_1 ∩ C_2.$$
-  $C$ holds ($J$ satisfies $C_1$ and vacuously $C_2$, $K$ conversely), is anonymous, and is APTS-P (witnessed by any $i_0 ∈ J$ and $θ_0 = \set{i_0} × \set{((a),φ)}$, as in \cref{th:oneMorePriorGeneral}).
-
-  \emph{$\allleadsto ∉ D^{\set{((a),φ)}, a, φ}$.} Pick $d ∈ \allargs ∖ \set{a,c}$, $S = \set{\hist ≠ ∅ \suchthat \hist_1 = d}$, and $g := \restr{b_k}{S} ∪ \restr{b_j}{\allhists ∖ S}$. Any $H ∈ \fincrhists$ is a chain, hence lies entirely inside $S$ or entirely outside it, so $g$ matches $b_k$ or $b_j$ on $H$: $g$ is undistinguishable from $\set{b_j,b_k}$. As $d ≠ a$, $(a) ∉ S$, so $g((a)) = b_j((a)) = φ$: $g$ matches $\anobs = \set{((a),φ)}$. As $(d,a) ∈ S$ and $c ∉ \set{d,a}$, $g((d,a)) = b_k((d,a)) = φ'$, and $a ∈ \histend((d,a))$: $a$ is not decisive for $φ$ in $g$. Yet $g ∉ \set{b_j,b_k}$ ($g((d)) = φ' ≠ φ = b_j((d))$; $g((a)) = φ ≠ φ' = b_k((a))$). So $g$ is exactly the counterexample $D^{\set{((a),φ)},a,φ}$ forbids: the prior genuinely fails at $\allleadsto$.
-
-  \emph{Yet $C$ is not provable by $¬\OF ∩ E$ either.} Carve an infinite $I_3 ⊆ J$, leaving $J ∖ I_3$ infinite, and let $\allleadstog^*$ agree with $\allleadsto$ outside $I_3$, while every $i ∈ I_3$ realizes $g$ (answers $φ'$ on $S$, $φ$ elsewhere). Then $\allleadstog^* ∈ E$, and $\allleadstog^* ∉ C$: $g$ violates $C_1$, exactly as just shown. As in \cref{rk:generalTemplateExcluded}, any finite $θ ⊆ \allleadstog^*$ restricted to $i ∈ I_3$ is a single chain, so it lies entirely inside $S$ or entirely outside it — the two witnessing histories $(a)$ and $(d,a)$ are incomparable, so no observation ever sees both — and it always extends into some world of $C$ (complete $i$ as fully $a$-decisive, or route it into $C_2$). Individuals outside $I_3$ embed by relabelling. So $¬\OF(\allleadstog^*)$ holds outright: $\allleadstog^* ∈ E ∖ C$ with $¬\OF(\allleadstog^*)$ shows $C$ is not provable by $¬\OF ∩ E$, hence not by $¬\POF ∩ E$ either.
-
-  \emph{Where the assumption goes instead.} Applying the $B := \allbs$ analogue of \cref{th:oneMorePriorGeneral} (\cref{rk:compareFull}) to $C_1, C_2$ separately and intersecting gives $C$ provable by $(¬\POF) ∩ E ∩ D_1 ∩ D_2$, where $D_2 = D^{\set{((a),φ')},c,φ}_{C_2}$ is the claim-relative prior of the second conjunct, and $D_1 = D^{\set{((a),φ)},a,φ}_{C_1}$ that of the first: here, $\allleadstog ∈ D_1$ iff
-  $$∀g ∈ \allleadstog(I) \suchthat (a) \ileadstog[g] φ ∧ a \nileadstostg[g] φ: ∃ (a) ⊆ α ∈ \allhists \suchthat a ∈ \histend(α) ∧ α \nileadstog[g] φ,$$ and $\allleadstog ∈ D_2$ iff
-  $$∀g ∈ \allleadstog(I) \suchthat (a) \ileadstog[g] φ' ∧ c \nileadstostg[g] φ: ∃ (a) ⊆ α ∈ \allhists \suchthat c ∈ \histend(α) ∧ α \nileadstog[g] φ.$$ $\allleadsto ∈ D_1 ∩ D_2$ only vacuously, as neither $b_j$ nor $b_k$ violates either conjunct. But $\allleadstog^* ∉ D_1$: its spliced row $g$ has $g((a)) = φ$ and $a$ not decisive for $φ$ in $g$ (both shown above), yet $g$ is undistinguishable from $\set{b_j,b_k} ⊆ S_{C_1}$ on every $H$ — exactly the fact established above. So $\allleadstog^*$ is excluded from $D_1 ∩ D_2$ exactly as it would need to be excluded, upfront, from $D^{\set{((a),φ)},a,φ}$ for \cref{th:oneMorePriorNarrow}'s route to apply to this claim's shape.
-
-  So the two routes are not comparable in strength, and this is not a trade of one commitment for another. $D^{gap}$ is a hypothesis \emph{about the true world} $\allleadsto$, quantified over all of $\allbs$: something that must actually hold of reality, bought in exchange for the strongest conclusion, provable by the clean $¬\POF ∩ E$ itself, nothing left in the filter. $D_1, D_2$ are not a hypothesis on $\allleadsto$ at all here — $\allleadsto ∈ D_1 ∩ D_2$ holds automatically, vacuously — but a restriction on the \emph{scope} of the conclusion: worlds such as $\allleadstog^*$ are simply left outside the guarantee, whatever $\allleadsto$ turns out to be. That is a strictly cheaper, more reasonable kind of commitment. For this $C$ it is, moreover, the only kind available: $¬\OF(\allleadstog^*)$ is a structural fact about $\allleadstog^*$ alone, exactly as in \cref{rk:generalTemplateExcluded} — independent of $\allleadsto$ — so no hypothesis on $\allleadsto$, $D^{gap}$-shaped or otherwise, could ever repair provability by the clean $¬\POF ∩ E$ for this branch-and-escape shape of claim. $D^{gap}$ is not a pricier alternative route here: it is inapplicable. What survives is narrower than first stated: $D^{gap}$ remains the minimal prior, on $\allleadsto$ alone, for provability by the clean $¬\POF ∩ E$, only for claims sharing \cref{th:oneMorePriorNarrow}'s single-template shape; for a claim like $C$ here, no hypothesis on $\allleadsto$ alone buys the clean conclusion, and the claim-relative route's weaker, scoped guarantee is the best available.
-\end{remark}
-% \end{document}
+\end{document}
 
 \section{Supplementary material}
+\Cref{tab:renaming} lists this informativeness/sharpness family together with the related notions defined elsewhere (conclusive, in the main text, already renamed from the former acronym SAPTS; indicative, further below in this appendix) and the renaming still proposed for the informativeness notions used in the main text (and their closest relatives), so that these read as ordinary words rather than acronyms; the more technical, appendix-only singleton-pinning family (APS, APTS, APS-P, APTS-P) keeps its acronym names.
+
+\begin{table}
+  \centering
+  \begin{tabulary}{\linewidth}{LLL}
+    \toprule
+    Definition (summarized) & Current name & Proposed name \\
+    \midrule
+    $π(C) ≠ (P ∪ \set{∅})^I$
+    & informative & indicative \\
+    $∃θ ⊆ \allleadstog \suchthat π(\mathop{↑}θ ∩ C) ≠ (P ∪ \set{∅})^I$
+    & \textbf{informative in $\allleadstog$} & indicative in $\allleadstog$ \\
+    $∃θ ∈ C^⊆ \suchthat π(\mathop{↑}θ ∩ C) ≠ (P ∪ \set{∅})^I$
+    & possibly informative & possibly indicative \\
+    $∃i \suchthat π_i(C) ≠ P ∪ \set{∅}$
+    & informative beyond counting & indicative beyond counting \\
+    $∀i \suchthat π_i(C) ≠ P ∪ \set{∅}$
+    & strongly informative beyond counting & strongly indicative beyond counting \\
+    $∀\allleadstog ∈ C, θ ⊆ \allleadstog, ∃θ ⊑ θ' ⊆ \allleadstog, i \suchthat \card{π_i(\mathop{↑}θ' ∩ C)} = 1$
+    & \textbf{conclusive} (formerly SAPTS) & \emph{done} \\
+    $∃θ, i \suchthat π_i(\mathop{↑}θ ∩ C) \ssub P$
+    & indicative (for $i$) / indicativeness & informative (for $i$) / informativeness \\
+    \addlinespace
+    $∃θ, i \suchthat \card{π_i(\mathop{↑}θ ∩ C)} = 1$
+    & APS (a posteriori sharp) & \emph{unchanged} \\
+    $∃θ ⊆ \allleadsto, i \suchthat \card{π_i(\mathop{↑}θ ∩ C)} = 1$
+    & APTS (a posteriori truly sharp) & \emph{unchanged} \\
+    $∃θ, i, p ∈ P \suchthat π_i(\mathop{↑}θ ∩ C) = \set{p}$
+    & APS-P & \emph{unchanged} \\
+    $∃θ ⊆ \allleadsto, i, p ∈ P \suchthat π_i(\mathop{↑}θ ∩ C) = \set{p}$
+    & APTS-P & \emph{unchanged} \\
+    \bottomrule
+  \end{tabulary}
+  \caption{Proposed renaming of the informativeness/sharpness family.}
+  \label{tab:renaming}
+\end{table}
+
 \subsection{More draft results}
+\Cref{th:AHFimpl} and related show that anonymous and falsifiable claims that hold exist iff the situation does not satisfy $∀ \hist: P^{\intvl{\hist}} ⊆ \restr{{\allleadsto}(I)}{\intvl{\hist}}$. TODO check this.
+
 \begin{theorem}
   Verifiability in $\allleadstog ∈ C ∩ D$ under $D$ fails iff
   $∃\allleadstog' ∈ D ∖ C \suchthat ∀θ ∈ Θ ∩ \powerset{\allleadstog}: θ ⊆ \allleadstog'$
@@ -1929,6 +1919,41 @@ We are here interested in the interplay between properties of holding, anonymity
 % \begin{proof}
 %   Define the claim as $∀ i ∈ I, \hist ∈ \allhists: \hist \ileadstog φ$.
 % \end{proof}
+
+\subsection{Visibility}
+\begin{remark}
+  \label{rk:gapNotMinimal}
+  $D^{\anobs, a, p}$ is not the minimal hypothesis for \emph{some} suitable claim to exist: a differently shaped claim can hold, be anonymous and APTS-P, in a world violating both. But the obstruction they route around does not disappear there — it relocates into the "provable by" filter instead of being paid upfront on $\allleadsto$ alone.
+
+  Fix $a ≠ c ∈ \allargs$ and partition $I$ into infinite $J, K$, with $∀i ∈ J, \hist ∈ \allhists: \hist \ileadsto φ$, and $∀i ∈ K, \hist ∈ \allhists$: $\hist \ileadsto φ$ if $c ∈ \histend(\hist)$, $\hist \ileadsto φ'$ otherwise (so $(a) \ileadsto φ'$ throughout $K$, as $c ≠ a$). Let $b_j, b_k$ be the behaviors associated to $\allleadsto(J), \allleadsto(K)$, and take
+  $$C = [∀i ∈ I: (a) \ileadstogo φ ⇒ a \ileadstostg φ] ∩ [∀i ∈ I: (a) \ileadstogo φ' ⇒ c \ileadstostg φ] = C_1 ∩ C_2.$$
+  $C$ holds ($J$ satisfies $C_1$ and vacuously $C_2$, $K$ conversely), is anonymous, and is APTS-P (witnessed by any $i_0 ∈ J$ and $θ_0 = \set{i_0} × \set{((a),φ)}$, as in \cref{th:oneMorePriorGeneral}).
+
+  \emph{$\allleadsto ∉ D^{\set{((a),φ)}, a, φ}$.} Pick $d ∈ \allargs ∖ \set{a,c}$, $S = \set{\hist ≠ ∅ \suchthat \hist_1 = d}$, and $g := \restr{b_k}{S} ∪ \restr{b_j}{\allhists ∖ S}$. Any $H ∈ \fincrhists$ is a chain, hence lies entirely inside $S$ or entirely outside it, so $g$ matches $b_k$ or $b_j$ on $H$: $g$ is undistinguishable from $\set{b_j,b_k}$. As $d ≠ a$, $(a) ∉ S$, so $g((a)) = b_j((a)) = φ$: $g$ matches $\anobs = \set{((a),φ)}$. As $(d,a) ∈ S$ and $c ∉ \set{d,a}$, $g((d,a)) = b_k((d,a)) = φ'$, and $a ∈ \histend((d,a))$: $a$ is not decisive for $φ$ in $g$. Yet $g ∉ \set{b_j,b_k}$ ($g((d)) = φ' ≠ φ = b_j((d))$; $g((a)) = φ ≠ φ' = b_k((a))$). So $g$ is exactly the counterexample $D^{\set{((a),φ)},a,φ}$ forbids: the prior genuinely fails at $\allleadsto$.
+
+  \emph{Yet $C$ is not provable by $¬\OF ∩ E$ either.} Carve an infinite $I_3 ⊆ J$, leaving $J ∖ I_3$ infinite, and let $\allleadstog^*$ agree with $\allleadsto$ outside $I_3$, while every $i ∈ I_3$ realizes $g$ (answers $φ'$ on $S$, $φ$ elsewhere). Then $\allleadstog^* ∈ E$, and $\allleadstog^* ∉ C$: $g$ violates $C_1$, exactly as just shown. As in \cref{rk:generalTemplateExcluded}, any finite $θ ⊆ \allleadstog^*$ restricted to $i ∈ I_3$ is a single chain, so it lies entirely inside $S$ or entirely outside it — the two witnessing histories $(a)$ and $(d,a)$ are incomparable, so no observation ever sees both — and it always extends into some world of $C$ (complete $i$ as fully $a$-decisive, or route it into $C_2$). Individuals outside $I_3$ embed by relabelling. So $¬\OF(\allleadstog^*)$ holds outright: $\allleadstog^* ∈ E ∖ C$ with $¬\OF(\allleadstog^*)$ shows $C$ is not provable by $¬\OF ∩ E$, hence not by $¬\POF ∩ E$ either.
+
+  \emph{Where the assumption goes instead.} Applying the $B := \allbs$ analogue of \cref{th:oneMorePriorGeneral} (\cref{rk:compareFull}) to $C_1, C_2$ separately and intersecting gives $C$ provable by $(¬\POF) ∩ E ∩ D_1 ∩ D_2$, where $D_2 = D^{\set{((a),φ')},c,φ}_{C_2}$ is the claim-relative prior of the second conjunct, and $D_1 = D^{\set{((a),φ)},a,φ}_{C_1}$ that of the first: here, $\allleadstog ∈ D_1$ iff
+  $$∀g ∈ \allleadstog(I) \suchthat (a) \ileadstog[g] φ ∧ a \nileadstostg[g] φ: ∃ (a) ⊆ α ∈ \allhists \suchthat a ∈ \histend(α) ∧ α \nileadstog[g] φ,$$ and $\allleadstog ∈ D_2$ iff
+  $$∀g ∈ \allleadstog(I) \suchthat (a) \ileadstog[g] φ' ∧ c \nileadstostg[g] φ: ∃ (a) ⊆ α ∈ \allhists \suchthat c ∈ \histend(α) ∧ α \nileadstog[g] φ.$$ $\allleadsto ∈ D_1 ∩ D_2$ only vacuously, as neither $b_j$ nor $b_k$ violates either conjunct. But $\allleadstog^* ∉ D_1$: its spliced row $g$ has $g((a)) = φ$ and $a$ not decisive for $φ$ in $g$ (both shown above), yet $g$ is undistinguishable from $\set{b_j,b_k} ⊆ S_{C_1}$ on every $H$ — exactly the fact established above. So $\allleadstog^*$ is excluded from $D_1 ∩ D_2$ exactly as it would need to be excluded, upfront, from $D^{\set{((a),φ)},a,φ}$ for \cref{th:oneMorePriorNarrow}'s route to apply to this claim's shape.
+
+  So the two routes are not comparable in strength, and this is not a trade of one commitment for another. $D^{gap}$ is a hypothesis \emph{about the true world} $\allleadsto$, quantified over all of $\allbs$: something that must actually hold of reality, bought in exchange for the strongest conclusion, provable by the clean $¬\POF ∩ E$ itself, nothing left in the filter. $D_1, D_2$ are not a hypothesis on $\allleadsto$ at all here — $\allleadsto ∈ D_1 ∩ D_2$ holds automatically, vacuously — but a restriction on the \emph{scope} of the conclusion: worlds such as $\allleadstog^*$ are simply left outside the guarantee, whatever $\allleadsto$ turns out to be. That is a strictly cheaper, more reasonable kind of commitment. For this $C$ it is, moreover, the only kind available: $¬\OF(\allleadstog^*)$ is a structural fact about $\allleadstog^*$ alone, exactly as in \cref{rk:generalTemplateExcluded} — independent of $\allleadsto$ — so no hypothesis on $\allleadsto$, $D^{gap}$-shaped or otherwise, could ever repair provability by the clean $¬\POF ∩ E$ for this branch-and-escape shape of claim. $D^{gap}$ is not a pricier alternative route here: it is inapplicable. What survives is narrower than first stated: $D^{gap}$ remains the minimal prior, on $\allleadsto$ alone, for provability by the clean $¬\POF ∩ E$, only for claims sharing \cref{th:oneMorePriorNarrow}'s single-template shape; for a claim like $C$ here, no hypothesis on $\allleadsto$ alone buys the clean conclusion, and the claim-relative route's weaker, scoped guarantee is the best available.
+\end{remark}
+
+The following shows that verifiability is a mandatory part of the criterion for determining whether $C$ holds, in that world: requiring the stronger provability instead of verifiability (under the same prior) leads to an impossibility.
+\begin{theorem}
+  Consider the world 
+  $\allleadsto = J × \allhists × \set{φ} ∪ K × \allhists × \set{φ'}$ 
+  of \cref{ex:jaysAndKaysConstants}, 
+  with infinite sets of individuals $J$, $K$.
+  No anonymous claim that holds is APTS and provable by $¬\POF[C ∩ E] ∩ E$.
+\end{theorem}
+\begin{proof}
+  TODO.
+  Either weaken the phrasing to apply \cref{ex:noProvableDecisivePhi}, or invoke a more general result coming later (and move this).
+\end{proof}
+
+For this, see \cref{rk:generalTemplateExcluded}.
 
 \subsection{Explanatory examples}
   \begin{example}[Disjunct with incompatible paths, not falsifiable, to be deleted]
@@ -3100,11 +3125,12 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   A claim $C$ is not coverable because of the empty set iff $∀ θ ∈ Θ ∩ C^⊆: ∃ \allleadstog ∉ C \suchthat θ ∈ \powerset{\allleadstog}$.
 
   \begin{remark}
+    \label{rk:counterMixingCompl}
     We do not have that when $C_1 ∩ C_2 ≠ ∅$, then $θ ∈ C_1^⊆ ∧ θ ∈ C_2^⊆ ⇒ θ ∈ (C_1 ∩ C_2)^⊆$.
     For a counter-example, consider $\hist, \hist_1, \hist_2 ∈ \allhists$, $i, i_1, i_2 ∈ I$ and $p ≠ p', p_1, p_2 ∈ P$ and $C_1 = \set{\allleadstog ∈ \allleadstos \suchthat (\hist_1 \ileadstog[i_1] p_1 ⇒ \hist \ileadstog p) ∧ (\hist_2 \ileadstog[i_2] p_2 ⇒ \hist \ileadstog p')}$, $C_2 = \set{\allleadstog ∈ \allleadstos \suchthat (\hist \ileadstog p ⇒ \hist_2 \ileadstog[i_2] p_2)}$ and $θ = \set{(i_1, \hist_1, p_1)}$.
   \end{remark}
   \begin{remark}
-    The above remark extends to the case where $C_1$ is strongly unfalsifiable.
+    \Cref{rk:counterMixingCompl} extends to the case where $C_1$ is strongly unfalsifiable.
     For a counter-example, consider $C_1 = \set{\allleadstog ∈ \allleadstos \suchthat (a) \ileadstog φ ∨ (a' \ileadstog φ)}$ and $C_2$ containing a condition requiring $(a) \nileadstog φ ∧ (a' \nileadstog φ)$.
     Add implications if desired to make $C_1$ and $C_2$ partially compatible, for example, $C_1 = \set{\allleadstog ∈ \allleadstos \suchthat (α \ileadstog[j] p) ⇒ [(a) \ileadstog φ ∨ (a' \ileadstog φ)]}$, so that $C_1$ and $C_2$ require their condition only when some trigger holds.
     Note that the $C_2$ condition may be arbitrarily complex so I see no hope of caracterizing these situations.
