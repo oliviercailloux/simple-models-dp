@@ -250,52 +250,25 @@ For example, given $a$, $i$ and $φ$, the claim $[(a) \ileadstog φ]$, which cla
 We want to know whether a claim holds, but all we have under hand are observations.
 A natural starting point is to attempt to verify claims, defined as follows.
 
-The claim $C$ is verifiable in the world $\allleadstog$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat \mathop{↑}θ ⊆ C$. \commentClaude{used only to define “possibly verifiable” and “Verifiedness” just below; not invoked again by name afterward.}
-Possible verifiability mandates that some (possibly counter-factual) observation proves the claim (makes sure that it holds), thus, $C$ is possibly verifiable iff it is verifiable in some world; formally, iff $∃ θ ∈ Θ \suchthat \mathop{↑}θ ⊆ C$. \commentClaude{Not invoked again by name in the main text (the example just below no longer names it, following your edit); the “under a prior” variant defined further below is not invoked again by name either.}
-Verifiedness mandates verifiability in the actual world; formally, $∃ θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat \mathop{↑}θ ⊆ C$. \commentClaude{Used just below: sound (\cref{th:vImpliesHolds}) but too demanding (\cref{th:infoNotVerif}); recovered further below as the special case of “verified under the trivial prior” (\cref{th:vudImpliesHolds}).}
+The claim $C$ is verified, or satisfies Verifiedness, iff some observation compatible with the actual world proves it; formally, iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat \mathop{↑}θ ⊆ C$.
 
-Verifiedness
-is sound (\cref{th:vImpliesHolds}), meaning that indeed when a claim is verified, it holds, but is too demanding for many claims, that is, many claims fail the converse implication.
+Verifiedness is sound (\cref{th:vImpliesHolds}), meaning that indeed when a claim is verified, it holds, but is too demanding for many claims, that is, many claims fail the converse implication.
 Indeed,
-some sufficiently simple claims, such as the claim $C = \set{\allleadstog \suchthat (a) \ileadstog φ}$ that some given path leads some given individual to some given proposition, also satisfy, conversely, that if they hold, they are verifiable, but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
+some sufficiently simple claims, such as the claim $C = \set{\allleadstog \suchthat (a) \ileadstog φ}$ that some given path leads some given individual to some given proposition, do satisfy verifiedness (provided they hold), but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
 
-Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(\mathop{↑}θ ∩ C) ≠ (P ∪ \set{∅})^I$. \commentClaude{Used only in the sentence just below, to show that Verifiedness is too demanding (\cref{th:infoNotVerif}, \cref{th:completable}).}
-
-In turns out that any claim that is conclusive fails verifiedness: the weaker demand of being informative in $\allleadsto$ implies failure of verifiedness (\cref{th:infoNotVerif}).
+In turns out that any claim that is conclusive fails verifiedness.
+This is even visible by considering a weaker property than conclusiveness.
+Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(\mathop{↑}θ ∩ C) ≠ (P ∪ \set{∅})^I$.
+Being informative in $\allleadsto$, a weaker demand than conclusiveness, implies failure of verifiedness (\cref{th:infoNotVerif}).
 This may be expected, as we did not postulate yet any sort of regularity in the world, and ideed the fundamental reason for the incompatibility is that any observation can be completed in a way that contradicts any conclusion that informativeness in a world mandates (\cref{th:completable}).
 
-We thus now turn to examining which sort of prior knowledge will suffice for ensuring the existence of a verification procedure that will allow to determine that a claim holds (when it indeed does) that is also conclusive and anonymous.
+We thus now turn to examining which sort of prior knowledge will suffice for ensuring the existence of a verification procedure that will allow to determine that a conclusive and anonymous claim holds (when it indeed does).
 
 Three sorts of priors will be involved, the two first of which can be seen as applications to our context of Popperian ideas. 
 First, we will assume that falsification tests fail falsifying the claim, under condition of sufficient observability.
 Second, we will assume that behaviors are in sufficient supply for being observed without limit. Third, we will assume that some behaviors that are inobservable (thus impossible to reject empirically) do not exist.
 
-We say that a prior $D$ proves a claim $C$ iff $D ⊆ C$. 
-
-\subsection{Verifiability under a prior}
-Verifiability, as defined in \cref{sec:verifiability}, mandates that some observation proves $C$, in the sense that every world compatible with the observation is in $C$.
-As indicated there, this is too demanding to be applicable with no prior knowledge.
-In this section, we extend this idea to the case where some prior is given.
-
-Given $C, D ⊆ \allleadstos$, a claim $C$ is verifiable at $\allleadstog$ under prior $D$ iff
-$∃ θ ∈ Θ ∩ \powerset{\allleadstog} ∩ (C ∩ D)^⊆ \suchthat \mathop{↑}θ ∩ D ⊆ C$.
-Given $C, D ⊆ \allleadstos$, a claim $C$ is possibly verifiable under prior $D$ iff
-$∃ θ ∈ Θ ∩ (C ∩ D)^⊆ \suchthat \mathop{↑}θ ∩ D ⊆ C$.
-\commentClaude{Neither of these two “under $D$” notions (verifiable at $\allleadstog$ under $D$, possibly verifiable under $D$) is invoked again by name afterward; both are immediately superseded by “verified under $D$” and “established verifiability under $D$” below.}
-Also, $C$ is verified under prior $D$ iff
-$∃ θ ∈ Θ ∩ \powerset{\allleadsto} ∩ (C ∩ D)^⊆ \suchthat \mathop{↑}θ ∩ D ⊆ C$.
-Note that $C$ is verified iff it is verified under the trivial prior.
-\commentClaude{Recovers Verifiedness as the trivial-prior case (sentence above), and used via \cref{th:vudImpliesHolds} just below.}
-Finally, $C$ satisfies established verifiability under prior $D$ iff
-$∀\allleadstog ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat \mathop{↑}θ ∩ D ⊆ C$.
-\commentClaude{Central notion: compared to provability just below, and to PV/PEV at the end of this subsection (\cref{th:pevImpliesEv}); PEV, built on it, drives the rest of the Priors section.}
-
-\Cref{th:vudImpliesHolds} shows that provided the prior is true, being verified under a prior suffices for holding.
-
-Provability by $D$ implies established verifiability under $D$ (just use verification $∅$).
-For some priors, provability by $D$ is strictly stronger than established verifiability under $D$ (the claim $C$ being $(a) \ileadsto φ$ satisfies established verifiability under the trivial prior $D$ but is not provable by it).
-
-The following example illustrates that demanding that a claim be verifiable (under some prior) permits the claim to contain punctual facts, which provability under general priors to do allow.
+The following example illustrates the tension that needs overcoming. Demanding that a claim be verifiable permits the claim to contain punctual facts, but conclusiveness requires general statements (this informal explanation is used to build intuition and will be made more precise in the course of our reasoning).
 \begin{example}
   \label{ex:jaysAndKaysConstants}
   Consider the world $\allleadsto$ constituted of two kinds of individuals, the jay’s which always answer $φ$ and the kay’s which always answer $φ'$. Thus, $I = J ∪ K$, and $∀i ∈ I, α ∈ \allhists: [i ∈ J ⇒ α \ileadsto φ] ∧ [i ∈ K ⇒ α \ileadsto φ']$.
@@ -304,13 +277,33 @@ The following example illustrates that demanding that a claim be verifiable (und
 \end{example}
 We will see that combining (variants of) verification procedures, which bring punctual facts, with general enough priors, lead further than procedures based only on priors or on verification could.
 
+We say that a prior $D$ proves a claim $C$ iff $D ⊆ C$. 
+%TODO get rid of provability by D beyond 3.4 and move it there.
+
+\subsection{Verifiability under a prior}
+Verifiability, as defined in \cref{sec:verifiability}, mandates that some observation proves $C$, in the sense that every world compatible with the observation is in $C$.
+As indicated there, this is too demanding to be applicable with no prior knowledge.
+In this section, we extend this idea to the case where some prior is given.
+
+$C$ is verified at world $\allleadstog$ under prior $D$ iff
+$∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ \mathop{↑}θ ∩ D ⊆ C$.
+$C$ is verified under $D$ iff it is verified at $\allleadsto$ under $D$.
+Note that $C$ is verified at $\allleadstog$ iff it is verified at $\allleadstog$ under the trivial prior.
+$C$ satisfies established verifiability (EV) under prior $D$ iff
+it is verified under $D$ at all worlds in $C ∩ D$, thus:
+$∀\allleadstog ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat \mathop{↑}θ ∩ D ⊆ C$.
+%TODO consider renaming Verifiedness to verifiability and EV to necessary verifiability
+
+\Cref{th:vudImpliesHolds} shows that provided the prior is true, being verified under a prior suffices for holding.
+
+Provability by $D$ implies established verifiability under $D$ (just use verification $θ = ∅$).
+For some priors, provability by $D$ is strictly stronger than established verifiability under $D$ (the claim $C = [(a) \ileadstog φ]$ satisfies established verifiability under the trivial prior $D$ but is not provable by it).
+
 Established verifiability only requires \emph{some} proving observation to exist at each $\allleadstog ∈ C ∩ D$. 
 It is desirable that every prefix admit a rightward extension that still proves $C$.
-Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{permanently verifiable} (PV) under $D$ at $\allleadstog$ iff
-$∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat \mathop{↑}θ' ∩ D ⊆ C$.
-\commentClaude{Folded into the definition of PEV in the next sentence; not invoked again by name on its own in the main text.}
-$C$ satisfies PEV under prior $D$ iff this holds $∀\allleadstog ∈ C ∩ D$. Under a given prior, PEV is stronger than EV (\cref{th:pevImpliesEv}).
-\commentClaude{Used throughout the rest of the Priors section (dual to POF, \cref{th:dualPof}) and in the closing example.}
+Given $C, D ⊆ \allleadstos$, $C$ is permanently verifiable (PV) under prior $D$ iff
+$∀\allleadstog ∈ C ∩ D, ∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat \mathop{↑}θ' ∩ D ⊆ C$.
+Under a given prior, PV is stronger than EV (\cref{th:pevImpliesEv}).
 
 \section{Priors}
 \subsection{Falsifiability}
@@ -325,8 +318,8 @@ Given $\allleadstog$ and $C$, say that $C$ is
 \end{description}
 We sometimes write $\POF$ instead of $\POF(\allleadstog)$ when the world $\allleadstog$ is clear from the context, and $\POF[]$ when $C$ is clear from the context (or referring to any generic claim), and similarly for $\OF$ and $\F$.
 
-PEV and POF have a dual character as
-$C$ satisfies PEV under prior $D$ iff 
+PV and POF have a dual character as
+$C$ satisfies PV under $D$ iff 
 $∀\allleadstog ∈ C ∩ D, \POF[D ∖ C](\allleadstog)$ (\cref{th:dualPof}, see also \cref{rk:dualEv}).
 
 Note that $∀C, \allleadstog: \POF(\allleadstog) ⇒ \OF(\allleadstog) ⇒ \F(\allleadstog)$ (\cref{th:ex-post} proves the second implication).
@@ -361,7 +354,7 @@ This is logically equivalent to mandating $¬\POF(\allleadsto)$, thus, excluding
   $C_1$ is $(a) \ileadsto φ ∧ (a') \ileadsto φ$ for a given $i$: in some world (for example, where $(a) \ileadstog φ$ even though $(a') \nileadstog φ$), $¬\POF[C_1](\allleadstog) ∧ \OF[C_1](\allleadstog)$, thus we cannot assume that non-observation of falsification implies not OF, because it might also be due to observing that $(a) \ileadstog φ$.
   It also applies to $C_2 = [∀i: (a') \ileadsto φ ∧ (a) \ileadsto[j] φ]$ for a given $j$, which in a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (a') \ileadstog φ$ is $¬\POF[C_2](\allleadstog)$ (consider the prefix $θ = \set{(a') \ileadstog[j] φ}$) and $\OF[C_2](\allleadstog)$.
   (Note that if $C_2$ fails because, for some $i$, $(a') \nileadstog φ$,
-  then $θ$ is not a hiding prefix observation and this is what we want.)
+  then $θ$ is not a hiding prefix observation, conforming to intuition.)
 \end{remark}
 \Cref{rk:alternativePofs} discusses alternative formalizations of the concepts POF and $C$-scrutiny.
 
@@ -371,6 +364,7 @@ This is logically equivalent to mandating $¬\POF(\allleadsto)$, thus, excluding
 % \end{remark}
 
 \Cref{th:onlyEmptyPF} shows that this prior is insufficient: no claim is provable by $¬\POF$.
+%TODO transform to verifiability
 
 \subsection{Repeatable observations}
 Our second prior assumes that whenever a behavior is exhibited by at least one individual, infinitely many individuals exhibit it.
@@ -390,22 +384,26 @@ $(¬\POF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no vi
 Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C ⊆ E$ is provable by $¬\POF[C ∩ E] ∩ E$ (\cref{th:anonFalsImpliesProv}).
 
 Note that for any claim to exist that holds, is anonymous and is conclusive, we need the world to offer some systematic pattern of the form, whenever an individual satisfies some observable behavior, then some given influence is decisive to her. Assume that the world has such: $∃ \anobs, i, a, p \suchthat \anobs ⊆ \ileadstoo ⇒ a \ileadstost p$.
-We want to study priors for which, for worlds which satisfy such conditions, some anonymous, conclusive, holding claim exists that is PEV under that prior.
+We want to study priors for which, for worlds which satisfy such conditions, some anonymous, conclusive, holding claim exists that is PV under that prior.
 
-\Cref{th:holdsNotVerifUnderNotOfE} shows the insufficiency of the prior $F_C$: for some worlds, there exists no anonymous claim that holds and is conclusive and PEV under $¬\POF[C ∩ E] ∩ E$.
+\Cref{th:holdsNotVerifUnderNotOfE} shows the insufficiency of the prior $F_C$: for some worlds, there exists no anonymous claim that holds and is conclusive and PV under $¬\POF[C ∩ E] ∩ E$.
 \commentOC{TODO verify and extend this}.
 
 \subsection{Visibility}
 We now add the last piece of the puzzle.
 For a suitable claim to exist, 
-we need the prior, called here $D$, to ensure that no behavior is sufficiently “strange” that an individual $i$ can satisfy the pattern $\anobs ⊆ \ileadstoo$, but fail $a \ileadstost p$, but only fail it in a way that is invisible to our observational capacities. Thus (\cref{th:oneMorePriorFullExplicit}), we want that for each individual $i$ such that $\anobs ⊆ \ileadstoo ∧ a \nileadstost p$, $∃α ∈ \allhists \suchthat \anobs^{-1}(P) ∪ \set{α} ∈ \fincrhists ∧ a ∈ \histend(α) ∧ α \nileadsto p$.
-In words, we request that those individuals have some path compatible with those used in $\anobs$ where it is visible that $a$ does not decisively lead $i$ to $p$ (thus $a$ appears at the end of $α$ and yet $α \nileadsto p$).
+we need the prior to ensure that no behavior is sufficiently “strange” that an individual $i$ can satisfy the pattern $\anobs ⊆ \ileadstoo$, but fail $a \ileadstost p$, but only fail it in a way that is invisible to our observational capacities.
+In words, we request that those individuals have some path compatible with those used in $\anobs$ where it is visible that $a$ does not decisively lead $i$ to $p$ (thus $a$ appears at the end of $α$ and yet $α \nileadsto p$). 
+Thus (\cref{th:oneMorePriorFullExplicit}), we impose $D^{\anobs, a, p}$, defined as
+\begin{equation}
+  ∀i: (\anobs ⊆ \ileadstoo ∧ a \nileadstost p) ⇒ (∃α ∈ \allhists \suchthat \anobs^{-1}(P) ∪ \set{α} ∈ \fincrhists ∧ a ∈ \histend(α) ∧ α \nileadsto p).
+\end{equation}
 A sufficient (but not necessary) condition for this prior to be satisfied is that repeating often enough the influences that lead the individual out of $p$ lets her forget about the influences used in $\anobs$.
 
 \begin{example}
   \label{ex:explainPriorVis}
-  Suppose the world contains two kinds of individuals. The jays find $a$ decisive for $φ$. The kays however find $b$ decisive for $φ'$. A researcher may observe the regularity that individuals who, upon exposure to $(a, b)$, answer $φ$ all satisfy $a \ileadstost φ$. The researcher may ignore that a similar regularity holds for the kays. She may claim $C = [∀i: (a, b) \ileadstog φ ⇒ a \ileadstostg φ]$.
-  This claim is anonymous and conclusive, and PEV under the prior $¬\POF ∩ E ∩ D$ (which implies that it holds, as the prior holds). The prior $D$ requires to accept that whenever some individual satisfies $(a, b) \ileadsto φ$ but fails $a \ileadstostg φ$, some path that completes $(a, b)$ shows it, such as $(a, b, c, a) \nileadsto φ$. On the contrary, the prior fails if the only paths where $a$ fails to be decisive for that individual are paths that do not complete $(a, b)$. This could be the case, for example, if that individual is definitely impressed by the first influence she sees, and never considers any other influences shown to her afterwards.
+  Suppose the world contains two kinds of individuals. The jays find $a$ decisive for $φ$. The kays however find $b$ decisive for $φ'$. A researcher may observe the regularity that individuals who, upon exposure to $(a, b)$, answer $φ$, all satisfy $a \ileadstost φ$. The researcher may ignore that a similar regularity holds for the kays. She may claim $C = [∀i: (a, b) \ileadstog φ ⇒ a \ileadstostg φ]$.
+  This claim is anonymous and conclusive, and PV under the prior $¬\POF ∩ E ∩ D^{\anobs, a, φ}$, with $\anobs = \set{(a, b), φ}$. As the prior holds, this implies that the claim holds. The prior $D^{\anobs, a, φ}$ requires to accept that whenever some individual satisfies $(a, b) \ileadsto φ$ but fails $a \ileadstostg φ$, some path that completes $(a, b)$ shows it, such as $(a, b, c, a) \nileadsto φ$. On the contrary, the prior fails if the only paths where $a$ fails to be decisive for that individual are paths that do not complete $(a, b)$. This could be the case, for example, if that individual is definitely impressed by the first influence she sees, and never considers any other influences shown to her afterwards.
 \end{example}
 
 \section{Conclusion}
@@ -414,7 +412,7 @@ Without delving into epistemological analysis, which I am not qualified to give,
 
 This article has defined the concept of deliberated judgment and related notions, and pinpointed the precise priors whose acceptance is required in order to be convinced of the veracity of a claim about deliberated judgments.
 
-As \cref{ex:explainPriorVis} illustrates, a prior may be hard to accept, depending on the exposure protocol and what is considered plausible behavior. The framework presented here is general and simple, a good thing for an initial study of a concept: complexity requires justification. But this framework may lack richness for some exposure protocols. For example, it may be visible in the content of an influence (say, of an argument) that it supports $φ$, thus, if an individual is in favor of $φ'$ after having been exposed to that influence, it may be considered a priori convincing that the individual would have been in favor of $φ'$ also without seeing the influence. In our framework, no prior knowledge about the influences can be encoded. Such supplementary structure would be worth studying.
+As \cref{ex:explainPriorVis} illustrates, a prior may be hard to accept, depending on the exposure protocol and what is considered plausible behavior. The framework presented here is general and simple, a good thing for an initial study of a concept: complexity requires justification. But this framework may lack richness for some exposure protocols. For example, it may be visible in the content of an influence (say, of an argument) that it supports $φ$, thus, if an individual is in favor of $φ'$ after having been exposed to that influence, it may be considered a priori convincing that the individual would have been in favor of $φ'$ also without seeing the influence. Our framework forbids prior knowledge about the influences. Such supplementary structure could represent a middle-ground between our completely opaque approach of influences and the whole logical apparatus of formal argument theory which does not consider the argument’s compatibilities as empirical, and would be worth studying.
 
 The dependence of the deliberated judgment concept on the exposure protocol yields a qualification about the concept of deliberated judgments when one desires to use it normatively: it is only as reasonable to call the resulting judgments “deliberate” in a normative sense as the exposure protocol is normatively relevant to deliberation. A sufficiently restricted, or even purposefully chosen, set of influences may yield judgments that are only deliberate in the technical sense used here, but that pertain more to brain-washing than to reflective judgments. While it is indeed a long-term goal of this research program to yield a normatively relevant conception of preference (appropriate, for example, for recommendation), it is not a claim of this article that anything that corresponds to deliberated judgments as defined here qualify as being appropriate for any normative use: much depends on the chosen exposure protocol. The goal of this article is rather one of a conceptual and practical clarification. It proposes a sharp distinction between the empirical content and the normative content of the concept of deliberated judgments: the definition proposed here transfers the full normative weight on the choice of the exposure protocol; and leaves the rest of the disagreements to empirical settling. This is methodologically akin, mutatis mutandis, to the axiomatic study of justice such as done in social choice, only complementing mathematical deduction with empirical claims. In social choice, the choice of axioms bears the full normative weight; once axioms are chosen, it is a matter of logic which social choice rules (if any) correspond to that choice. In our case, once an exposure protocol is chosen, it is an empirical matter which deliberated judgments result.
 In supplement to a possibly helpful conceptual clarification, such a sharp separation may reveal practically useful for separation of concern as it permits to study deliberated judgments empirically under various exposure protocols independently of possible disagreements about which norms are more appropriate for deliberation in which circumstances.
@@ -424,7 +422,12 @@ In supplement to a possibly helpful conceptual clarification, such a sharp separ
 \appendix
 \section{Proofs and supplementary discussion}
 \subsection{Generalities}
-We say that a claim $C$ \emph{holds} iff $\allleadsto ∈ C$; $C$ \emph{fails} otherwise. 
+We say that a claim $C$ \emph{holds} iff $\allleadsto ∈ C$; $C$ \emph{fails} otherwise.
+
+The claim $C$ is verifiable in the world $\allleadstog$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat \mathop{↑}θ ⊆ C$.
+$C$ is possibly verifiable iff it is verifiable in some world; formally, iff $∃ θ ∈ Θ \suchthat \mathop{↑}θ ⊆ C$.
+Given $C, D ⊆ \allleadstos$, $C$ is verifiable at $\allleadstog$ under prior $D$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ \mathop{↑}θ ∩ D ⊆ C$, and possibly verifiable under prior $D$ iff $∃ θ ∈ Θ \suchthat ∅ ≠ \mathop{↑}θ ∩ D ⊆ C$.
+Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{permanently verifiable} (PV) under $D$ at $\allleadstog$ iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat \mathop{↑}θ' ∩ D ⊆ C$.
 
 Established verifiability mandates verifiability in all compatible worlds; formally, 
 $∀\allleadstog ∈ C: ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ ⊆ {\allleadstog'}: {\allleadstog'} ∈ C$.
@@ -724,18 +727,18 @@ When a claim is never falsifiable, thus $∀\allleadstog, ¬\OF(\allleadstog)$, 
 \end{proof}
 \begin{corollary}
   \label{th:dualPof}
-  $C$ satisfies PEV under prior $D$ iff $∀\allleadstog ∈ C ∩ D: \POF[D ∖ C](\allleadstog)$.
+  $C$ satisfies PV under prior $D$ iff $∀\allleadstog ∈ C ∩ D: \POF[D ∖ C](\allleadstog)$.
 \end{corollary}
 \begin{corollary}
   \label{th:pevImpliesEv}
-  Given $C, D ⊆ \allleadstos$: PEV under $D$ implies established verifiability under $D$.
+  Given $C, D ⊆ \allleadstos$: PV under $D$ implies established verifiability under $D$.
 \end{corollary}
 \begin{proof}
   $\POF[S](\allleadstog) ⇒ \OF[S](\allleadstog)$ for any $S, \allleadstog$ (taking $θ = ∅$ in the definition of $\POF[S]$ already gives the witness required by $\OF[S]$), so \cref{th:dualPof} together with \cref{th:dual} gives the first implication.
 \end{proof}
 \begin{corollary}
   \label{th:provImpliesPev}
-  Given $C, D ⊆ \allleadstos$: provability of $C$ by $D$ implies PEV under $D$.
+  Given $C, D ⊆ \allleadstos$: provability of $C$ by $D$ implies PV under $D$.
 \end{corollary}
 \begin{proof}
   If $D ⊆ C$, then $D ∖ C = ∅$, so $(D ∖ C)^⊆ = ∅$ and $\POF[∅](\allleadstog)$ holds trivially (any $θ' ∈ Θ ∩ \powerset{\allleadstog}$, in particular $θ' = ∅$, already satisfies $θ' ∉ ∅$), giving PV under $D$ at every $\allleadstog ∈ C ∩ D$ by \cref{th:dualPof}.
@@ -973,17 +976,17 @@ A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\POF
 \end{proof}
 
 \begin{theorem}
-  A claim $C$ is PEV under $D = ¬\POF$ iff $C = ∅ ∨ C = \allleadstos$.
+  A claim $C$ is PV under $D = ¬\POF$ iff $C = ∅ ∨ C = \allleadstos$.
 \end{theorem}
 \begin{proof}
   If $C = ∅$, then $∀θ ∈ Θ: θ ∉ C^⊆$, thus $∀\allleadstog: \POF(\allleadstog)$.
 
   Conversely, suppose $\allleadstos ≠ C ≠ ∅$; we show $∃\allleadstog ∈ C \suchthat ¬\POF(\allleadstog)$.
 
-  PEV demands that all worlds in $C$ satisfy PV:
+  PV demands that all worlds in $C$ satisfy PV at $\allleadstog$:
   $∀θ, ∃θ ⊑ θ' ∉ (D ∖ C)^⊆$.
   In other words, that $\POF[D ∖ C](\allleadstog)$.
-  
+
   We show $∃\allleadstog ∈ C \suchthat$ for some prefix $θ$, all completions $θ'$ are completable in $D ∖ C$.
 
   If $C$ is closed under finite modification (\cref{def:cufm}), by \cref{th:cufmNeverFals}, $∀\allleadstog: ¬\OF(\allleadstog)$, thus $¬\POF(\allleadstog)$,
@@ -1407,7 +1410,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
-  there exists an anonymous claim $C$ that holds, is conclusive and PEV under $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$.
+  there exists an anonymous claim $C$ that holds, is conclusive and PV under $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$.
 \end{theorem}
 \begin{proof}
   Let $C_0$ be the claim built in the proof of \cref{th:oneMorePriorGeneral}, and set
@@ -1418,11 +1421,11 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 
   \emph{Conclusive.} Fix $\allleadstog ∈ C$ and $θ ∈ Θ ∩ \powerset{\allleadstog}$. As $\allleadstog ∈ C$, fix $i^* ∈ I$ with $\anobs ⊆ \ileadstogo[i^*]$, and let $θ' := θ ∪ (\set{i^*} × \anobs)$, so $θ ⊑ θ'$ and $θ' ∈ Θ ∩ \powerset{\allleadstog}$ (as in \cref{th:oneMorePriorGeneral}'s \emph{APTS-P} paragraph, now with $i^*, θ$ in place of that paragraph's $i_0, θ_0$). Any $\allleadstog' ∈ \mathop{↑}θ' ∩ C$ has $\anobs ⊆ \allleadstog'(i^*)$, so $C_0$'s first conjunct at $i^*$ gives $a \ileadstost[i^*] p$ in $\allleadstog'$, hence $π_{i^*}(\allleadstog') = p$ by \cref{th:sing}. As $\allleadstog$ itself lies in $\mathop{↑}θ' ∩ C$, this set is nonempty, so $π_{i^*}(\mathop{↑}θ' ∩ C) = \set{p}$: $(θ', i^*)$ witnesses conclusiveness at $(\allleadstog, θ)$. As both were arbitrary, $C$ is conclusive.
 
-  \emph{PEV under $D$.} By \cref{th:dualPof}, it suffices to show $\POF[D ∖ C](\allleadstog)$ for every $\allleadstog ∈ C ∩ D$.
+  \emph{PV under $D$.} By \cref{th:dualPof}, it suffices to show $\POF[D ∖ C](\allleadstog)$ for every $\allleadstog ∈ C ∩ D$.
 
   \emph{$D ⊆ C_0$.} Steps 1, A and B of \cref{th:oneMorePriorGeneral}'s proof only ever use $C_0$'s first and second conjuncts (never a bound on $C$ from above), so they apply verbatim to $C$ in place of that proof's own claim, with this $C$'s own $S_C$: any $\allleadstog' ∈ E ∩ D^{\anobs, a, p}_{\allleadstog'(I) ∩ B, \, S_C}$ outside $C_0$ satisfies $\POF[C](\allleadstog')$, that is $\allleadstog' ∉ ¬\POF$. So no $\allleadstog' ∈ D$ lies outside $C_0$: $D ⊆ C_0$.
 
-  Fix $\allleadstog ∈ C ∩ D$ and $θ ∈ Θ ∩ \powerset{\allleadstog}$; reuse $i^*, θ'$ from the \emph{Conclusive} paragraph above. Suppose $\allleadstog'' ∈ D$ extends $θ'$. By $D ⊆ C_0$, $\allleadstog'' ∈ C_0$; and $θ' ⊆ \allleadstog''$ gives $\anobs ⊆ \allleadstog''(i^*)$, so $\allleadstog''$ also satisfies $C$'s extra conjunct (witnessed by $i^*$), hence $\allleadstog'' ∈ C$. So no $\allleadstog'' ∈ D ∖ C$ extends $θ'$, that is, $θ' ∉ (D ∖ C)^⊆$. As $θ$ was arbitrary, $\POF[D ∖ C](\allleadstog)$ holds; as $\allleadstog ∈ C ∩ D$ was arbitrary, $C$ satisfies PEV under $D$.
+  Fix $\allleadstog ∈ C ∩ D$ and $θ ∈ Θ ∩ \powerset{\allleadstog}$; reuse $i^*, θ'$ from the \emph{Conclusive} paragraph above. Suppose $\allleadstog'' ∈ D$ extends $θ'$. By $D ⊆ C_0$, $\allleadstog'' ∈ C_0$; and $θ' ⊆ \allleadstog''$ gives $\anobs ⊆ \allleadstog''(i^*)$, so $\allleadstog''$ also satisfies $C$'s extra conjunct (witnessed by $i^*$), hence $\allleadstog'' ∈ C$. So no $\allleadstog'' ∈ D ∖ C$ extends $θ'$, that is, $θ' ∉ (D ∖ C)^⊆$. As $θ$ was arbitrary, $\POF[D ∖ C](\allleadstog)$ holds; as $\allleadstog ∈ C ∩ D$ was arbitrary, $C$ satisfies PV under $D$.
 \end{proof}
 
 \begin{theorem}
@@ -1482,11 +1485,11 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
-  there exists an anonymous claim that holds, is conclusive and PEV under $¬\POF ∩ E$.
+  there exists an anonymous claim that holds, is conclusive and PV under $¬\POF ∩ E$.
 \end{corollary}
 
 \begin{proof}
-  Apply \cref{th:oneMorePriorGeneralPev} with $B := \allleadsto(I)$: the hypothesis $\allleadsto(I) ⊆ B$ is trivial, and $D^{\anobs, a, p}_{\allbs, \allleadsto(I)} = D^{\anobs, a, p}$ is exactly the hypothesis here. By the remark following \cref{th:oneMorePriorGeneral}, at this $B$ the filter prior $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ trivializes to $\allleadstos$, so PEV under $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is exactly PEV under $¬\POF ∩ E$.
+  Apply \cref{th:oneMorePriorGeneralPev} with $B := \allleadsto(I)$: the hypothesis $\allleadsto(I) ⊆ B$ is trivial, and $D^{\anobs, a, p}_{\allbs, \allleadsto(I)} = D^{\anobs, a, p}$ is exactly the hypothesis here. By the remark following \cref{th:oneMorePriorGeneral}, at this $B$ the filter prior $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ trivializes to $\allleadstos$, so PV under $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is exactly PV under $¬\POF ∩ E$.
 \end{proof}
 
 \begin{corollary}
@@ -1495,7 +1498,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
-  there exists an anonymous claim $C$ that holds, is conclusive and PEV under $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_C$.
+  there exists an anonymous claim $C$ that holds, is conclusive and PV under $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_C$.
 \end{corollary}
 
 \begin{proof}
@@ -1508,14 +1511,14 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
-  there exists an anonymous claim $C$ that holds, is conclusive and PEV under $(¬\POF) ∩ E ∩ D$, where
+  there exists an anonymous claim $C$ that holds, is conclusive and PV under $(¬\POF) ∩ E ∩ D$, where
   \begin{multline}
     D := \Bigl\{ \allleadstog ∈ \allleadstos \suchthat ∀g ∈ \allleadstog(I) \text{ with } \anobs ⊆ g ∧ a \nileadstostg[g] p,\\
     ∃α ∈ \allhists \suchthat \anobs^{-1}(P) ∪ \set{α} ∈ \fincrhists ∧ a ∈ \histend(α) ∧ g(α) ≠ p \Bigr\}.
   \end{multline}
 \end{corollary}
 \begin{proof}
-  Let $C := [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$, the claim of \cref{th:oneMorePriorFull}, which holds, is conclusive and PEV under $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_C$; it remains to show $D^{\anobs, a, p}_C = D$.
+  Let $C := [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$, the claim of \cref{th:oneMorePriorFull}, which holds, is conclusive and PV under $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_C$; it remains to show $D^{\anobs, a, p}_C = D$.
 
   As $\text{Bad} = ∅$ at this $C$ (\cref{th:oneMorePriorFull}'s proof), $S_C = \set{b ∈ \allbs \suchthat \anobs ⊆ b ⇒ a \ileadstostg[b] p}$. A row $g$ failing $\anobs ⊆ g ⇒ a \ileadstostg[g] p$ never lies in $S_C$, so the condition "$g ∈ \allleadstog(I) ∖ S_C$" in the definition of $D^{\anobs, a, p}_C$ is automatic whenever $\anobs ⊆ g ∧ a \nileadstostg[g] p$; unfolding distinguishability, $\allleadstog ∈ D^{\anobs, a, p}_C$ says exactly: for every $g ∈ \allleadstog(I)$ with $\anobs ⊆ g ∧ a \nileadstostg[g] p$, some $H_0 ∈ \fincrhists$ has no $b ∈ S_C$ with $\restr{b}{H_0} = \restr{g}{H_0}$. Fix such a $g$; we show this holds iff some $α$ as in $D$'s definition exists.
 
@@ -1766,17 +1769,17 @@ APTS-P strengthens both APS-P (\cref{def:apsP}, dropping the requirement that $�
   The claim $C = \set{\allleadstog \suchthat ∀i∈I: [∅⇝_iφ ⇒ a\ileadstost_iφ]}$ holds, is anonymous, probable by $¬\OF ∩ E$, and APS.
 \end{remark}
 
-\subsection{PEV under not POF}
-We now turn to claims $C ⊆ E$ satisfying PEV under $F_C = (¬\POF) ∩ E$.
+\subsection{PV under not POF}
+We now turn to claims $C ⊆ E$ satisfying PV under $F_C = (¬\POF) ∩ E$.
 
 Recall the definition.
-$C$ satisfies PEV under prior $(¬\POF) ∩ E$ iff 
+$C$ satisfies PV under prior $(¬\POF) ∩ E$ iff 
 $∀\allleadstog ∈ C,
 ∀θ ∈ Θ ∩ \powerset{\allleadstog}, 
 ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀θ' ⊆ \allleadstog' ∈ (¬\POF) ∩ E: \allleadstog' ∈ C$.
 
 \begin{theorem}
-  Given any $B ⊆ \allbs$, if $C = C_B ∩ E$ satisfies PEV under $F_C$, $B$ includes its undistinguishables.
+  Given any $B ⊆ \allbs$, if $C = C_B ∩ E$ satisfies PV under $F_C$, $B$ includes its undistinguishables.
 \end{theorem}
 \begin{proof}
   Consider any $g ∈ \allbs$ undistinguishable from $B$.
@@ -1800,13 +1803,13 @@ $∀\allleadstog ∈ C,
 
 \begin{conjecture}
   Partition $I$ into two infinite classes $I_1, I_2$, and define $\allleadsto$ as $\allleadsto(i_1) = \allleadsto^φ$ and $\allleadsto(i_2) = \allleadsto^{φ'}$. 
-  Any claim $C ⊆ E$ about types and entailing [$(a) \ileadsto φ$ implies that a is a decisive influence for i] that holds fails PEV under $¬\OF ∩ E$.
+  Any claim $C ⊆ E$ about types and entailing [$(a) \ileadsto φ$ implies that a is a decisive influence for i] that holds fails PV under $¬\OF ∩ E$.
 \end{conjecture}
 \begin{proof}[Proof to be checked]
   To hold, $C$ must allow for the two types in the real world.
   The world where there is also a third type of individual that behaves as:
   for the empty history, or any history starting with $a$, leads to $φ$, otherwise, leads to $φ'$,\commentClaude{Original said “for emptyset of any argument starting with $a$”; I read this as “for the empty history, or any history starting with $a$” and reworded accordingly (replacing “argument” by “history” rather than “influence”, since it seems to refer to a whole path, not a single influence). Please check this matches what you meant.}
-  is undistinguishable from the two types in $C$, thus must be included for satisfying PEV, but this would prevent the required entailment.
+  is undistinguishable from the two types in $C$, thus must be included for satisfying PV, but this would prevent the required entailment.
 \end{proof}
 
 \begin{example}
@@ -1895,7 +1898,7 @@ NB \cref{th:noindic} has the key! And I should read \cref{sec:closing}.
   % I should reject existence of such strange individuals: if i3 says φ when starting with a and ¬φ when starting with b, there must exist something like (a), (a, b), (a, b, c) where individual differs!
 \end{example}
 
-We could introduce a weaker demand, a variant of the demand that $C ⊆ E$ satisfies PEV under $F_C = (¬\POF) ∩ E$, by inverting the order of attack and defense. However, I have some doubt that it does not improve verifiability.
+We could introduce a weaker demand, a variant of the demand that $C ⊆ E$ satisfies PV under $F_C = (¬\POF) ∩ E$, by inverting the order of attack and defense. However, I have some doubt that it does not improve verifiability.
 
 $C$ satisfies IPEV iff 
 $∀\allleadstog ∈ C,
@@ -4124,13 +4127,13 @@ What remains open is what happens once $R$ is not a singleton (the recursive que
 So sharing a value with $D$ at an active coordinate does not, by itself, force strictness: what made \cref{th:hypercubeDichotomy} work is specifically that every "extra" coordinate $r$ might need is incomparable to every coordinate $D$ might need. Once $R$'s point can reach past $D$'s coordinates along an extension of the same chain, no amount of value-sharing forces strictness.
 Extending \cref{th:hypercubeDichotomy} to arbitrary finite $D$ therefore requires tracking the prefix structure of whichever coordinates a witness would need, not merely value overlap — a different, more delicate bookkeeping problem than any solved above, left open together with the case of a non-singleton $R$.
 
-\section{Satisfiability of PEV under \texorpdfstring{$¬\POF$}{not POF}}
-\begin{theorem}[Cufm claims fail PEV under $¬\POF$]
+\section{Satisfiability of PV under \texorpdfstring{$¬\POF$}{not POF}}
+\begin{theorem}[Cufm claims fail PV under $¬\POF$]
   \label{th:cufmFailsPEV}
-  If $∅ ≠ C ≠ \allleadstos$ is closed under finite modification, then $C$ does not satisfy PEV under $D = ¬\POF$.
+  If $∅ ≠ C ≠ \allleadstos$ is closed under finite modification, then $C$ does not satisfy PV under $D = ¬\POF$.
 \end{theorem}
 \begin{proof}
-  PEV demands that all worlds in $C$ satisfy PV:
+  PV demands that all worlds in $C$ satisfy PV at $\allleadstog$:
   $∀θ, ∃θ ⊑ θ' ∉ (D ∩ \overline{C})^⊆$.
   In other words, that $\POF[D ∩ \overline{C}](\allleadstog)$.
   By \cref{th:cufmNeverFals}, $∀\allleadstog: ¬\POF(\allleadstog)$,
@@ -4142,26 +4145,26 @@ Extending \cref{th:hypercubeDichotomy} to arbitrary finite $D$ therefore require
   Therefore, by \cref{th:cufmNeverFals} again, $∀\allleadstog: ¬\POF[\overline{C}](\allleadstog)$.
 \end{proof}
 
-\begin{conjecture}[PEV outside the trivial cases]
+\begin{conjecture}[PV outside the trivial cases]
   \label{cnj:rpevProv}
-  If $C$ is not closed under finite modification, then $C$ does not satisfy PEV under $D = ¬\POF$.
+  If $C$ is not closed under finite modification, then $C$ does not satisfy PV under $D = ¬\POF$.
 \end{conjecture}
 
-Both $∅$ and $\allleadstos$ are, trivially, closed under finite modification (\cref{def:cufm} holds of them vacuously), so \cref{cnj:rpevProv}'s hypothesis already excludes them: by \cref{th:onlyEmptyPF}, $C$ is provable by $¬\POF$ iff $C ∈ \set{∅, \allleadstos}$, and provability by $D$ already implies PEV under $D$ (\cref{th:provImpliesPev}); so whenever $C$ is not closed under finite modification, $C$ is in particular nontrivial, hence not provable by $¬\POF$ either. \Cref{cnj:rpevProv} asks whether PEV can nonetheless survive where provability cannot.
+Both $∅$ and $\allleadstos$ are, trivially, closed under finite modification (\cref{def:cufm} holds of them vacuously), so \cref{cnj:rpevProv}'s hypothesis already excludes them: by \cref{th:onlyEmptyPF}, $C$ is provable by $¬\POF$ iff $C ∈ \set{∅, \allleadstos}$, and provability by $D$ already implies PV under $D$ (\cref{th:provImpliesPev}); so whenever $C$ is not closed under finite modification, $C$ is in particular nontrivial, hence not provable by $¬\POF$ either. \Cref{cnj:rpevProv} asks whether PV can nonetheless survive where provability cannot.
 
-A single hypothesis, “$C$ not closed under finite modification,” already rules out the two known dead ends at once: it excludes triviality directly (both trivial claims are cufm, as just noted), and it excludes the case where $C$ is nonempty and cufm, which forces $D = \allleadstos$ by \cref{th:cufmNeverFals} (since $C$ is then never even falsifiable, hence never $\POF$). It does not, however, rule out \emph{every} route to $D = \allleadstos$: \cref{ex:disjR} is never falsifiable without being closed under finite modification (\cref{rk:cufmConverseFails} — flipping a single individual's two values already leaves $C$), so such claims remain within \cref{cnj:rpevProv}'s scope. PEV is expected to fail there for the same underlying reason as the cufm case: no finite prefix can ever force membership in $C$.
+A single hypothesis, “$C$ not closed under finite modification,” already rules out the two known dead ends at once: it excludes triviality directly (both trivial claims are cufm, as just noted), and it excludes the case where $C$ is nonempty and cufm, which forces $D = \allleadstos$ by \cref{th:cufmNeverFals} (since $C$ is then never even falsifiable, hence never $\POF$). It does not, however, rule out \emph{every} route to $D = \allleadstos$: \cref{ex:disjR} is never falsifiable without being closed under finite modification (\cref{rk:cufmConverseFails} — flipping a single individual's two values already leaves $C$), so such claims remain within \cref{cnj:rpevProv}'s scope. PV is expected to fail there for the same underlying reason as the cufm case: no finite prefix can ever force membership in $C$.
 
-Proving the conjecture directly is awkward, since “$C$ fails PEV” unpacks to a $\exists \allleadstog, \exists θ, \forall θ'$ statement: ruling out \emph{every} rightward extension $θ'$, for some world and some prefix, is hard to attack head-on.
-We instead argue by contradiction: fix $C$ not closed under finite modification (so $C ∉ \set{∅, \allleadstos}$, hence $D ∖ C ≠ ∅$ by \cref{th:onlyEmptyPF}), assume toward contradiction that $C$ satisfies PEV under $D$, and aim for an outright impossibility.
+Proving the conjecture directly is awkward, since “$C$ fails PV” unpacks to a $\exists \allleadstog, \exists θ, \forall θ'$ statement: ruling out \emph{every} rightward extension $θ'$, for some world and some prefix, is hard to attack head-on.
+We instead argue by contradiction: fix $C$ not closed under finite modification (so $C ∉ \set{∅, \allleadstos}$, hence $D ∖ C ≠ ∅$ by \cref{th:onlyEmptyPF}), assume toward contradiction that $C$ satisfies PV under $D$, and aim for an outright impossibility.
 This hands us an actual escaping witness to reason about — one guaranteed to exist by the assumption — rather than requiring an upfront construction ruling out all of them.
-\Cref{th:rpevDiverge} extracts the first consequence forced on this witness; settling \cref{cnj:rpevProv} means either pushing that consequence to an outright impossibility, completing the reductio, or finding a case where it can be consistently satisfied after all — producing a genuine example of a non-cufm claim satisfying PEV, and refuting the conjecture instead.
+\Cref{th:rpevDiverge} extracts the first consequence forced on this witness; settling \cref{cnj:rpevProv} means either pushing that consequence to an outright impossibility, completing the reductio, or finding a case where it can be consistently satisfied after all — producing a genuine example of a non-cufm claim satisfying PV, and refuting the conjecture instead.
 
-\begin{lemma}[Escaping PEV witnesses must diverge]
+\begin{lemma}[Escaping PV witnesses must diverge]
   \label{th:rpevDiverge}
-  Suppose $C$ is not closed under finite modification and satisfies PEV under $D = ¬\POF$; let $\allleadstog[0] ∈ D ∖ C$ be arbitrary ($D ∖ C ≠ ∅$, since $C$ not cufm gives $C ∉ \set{∅, \allleadstos}$, hence $D ∖ C ≠ ∅$ by \cref{th:onlyEmptyPF}).
+  Suppose $C$ is not closed under finite modification and satisfies PV under $D = ¬\POF$; let $\allleadstog[0] ∈ D ∖ C$ be arbitrary ($D ∖ C ≠ ∅$, since $C$ not cufm gives $C ∉ \set{∅, \allleadstos}$, hence $D ∖ C ≠ ∅$ by \cref{th:onlyEmptyPF}).
   As $\allleadstog[0] ∈ D = ¬\POF$, some $θ_1 ∈ Θ ∩ \powerset{\allleadstog[0]}$ witnesses $¬\POF(\allleadstog[0])$ (a \emph{hiding} prefix, echoing the visibility-issues terminology above): every rightward $θ_1 ⊆ θ' ⊆ \allleadstog[0]$ satisfies $θ' ∈ C^⊆$.
   In particular, the trivial case $θ' = θ_1$ gives $θ_1 ∈ C^⊆$: pick any completion $θ_1 ⊆ \allleadstog$, $\allleadstog ∈ C$.
-  Now $\allleadstog ∈ C ∩ D$, so this is where the PEV hypothesis is actually used: testing it at $\allleadstog$ for the prefix $θ_1$ gives a rightward extension $θ_1 ⊆ θ_1' ⊆ \allleadstog$, with $θ_1' ∉ (D ∖ C)^⊆$.
+  Now $\allleadstog ∈ C ∩ D$, so this is where the PV hypothesis is actually used: testing it at $\allleadstog$ for the prefix $θ_1$ gives a rightward extension $θ_1 ⊆ θ_1' ⊆ \allleadstog$, with $θ_1' ∉ (D ∖ C)^⊆$.
   This $θ_1'$ satisfies $θ_1' ⊈ \allleadstog[0]$.
 \end{lemma}
 \begin{proof}
@@ -4170,7 +4173,7 @@ This hands us an actual escaping witness to reason about — one guaranteed to e
 
 The most direct route to \cref{cnj:rpevProv} would go as follows.
 $\allleadstog[0]$ is one specific witness of how bad $D ∖ C$ is: whatever finite amount of $\allleadstog[0]$’s own values, beyond $θ_1$, an observer is shown, this always remains compatible with $C$ — that is exactly what makes $θ_1$ a \emph{hiding} prefix for $\allleadstog[0]$.
-So a natural hope would be that PEV’s own escaping witness, tested at some $\allleadstog ∈ C$ extending $θ_1$, could simply be built by tracking $\allleadstog[0]$’s pattern itself: reveal more and more of what $\allleadstog[0]$ would say beyond $θ_1$, and hope this eventually excludes $D ∖ C$.
+So a natural hope would be that PV’s own escaping witness, tested at some $\allleadstog ∈ C$ extending $θ_1$, could simply be built by tracking $\allleadstog[0]$’s pattern itself: reveal more and more of what $\allleadstog[0]$ would say beyond $θ_1$, and hope this eventually excludes $D ∖ C$.
 
 \Cref{th:rpevDiverge} rules this hope out directly.
 If the escaping witness $θ_1'$ merely reproduced $\allleadstog[0]$’s own values beyond $θ_1$ (that is, $θ_1' ⊆ \allleadstog[0]$), then $\allleadstog[0]$ itself would be a completion of $θ_1'$; as $\allleadstog[0] ∈ D ∖ C$, this would mean $θ_1'$ fails to exclude $D ∖ C$ — contradicting the very thing $θ_1'$ was supposed to achieve.
@@ -4192,15 +4195,15 @@ A genuine compactness proof of \cref{cnj:rpevProv}, if one exists, would need a 
   For $\allleadstog ∉ C$ failing at infinitely many individuals, no finite prefix can touch them all, so some failing individual always remains fresh and reachable: $\POF(\allleadstog)$ holds.
   Hence $D = ¬\POF = C ∪ \set{\allleadstog \suchthat \allleadstog \text{ fails } C \text{ at finitely many, at least one, individuals}}$, genuinely strictly between $C$ and $\allleadstos$.
 
-  Yet PEV (already EV) collapses on this $D$: $D ∖ C$ is exactly “fails at finitely many individuals,” and any finite $θ'$ only constrains finitely many of them, so a completion matching $θ'$ exactly and failing at one further, untouched individual always exists — $θ' ∈ (D ∖ C)^⊆$ regardless of $θ'$.
-  So $\OF[D∖C](\allleadstog)$ already fails at every $\allleadstog ∈ C$: PEV fails here too, confirming \cref{cnj:rpevProv} through a genuinely non-degenerate $D ∖ C$.
+  Yet PV (already EV) collapses on this $D$: $D ∖ C$ is exactly “fails at finitely many individuals,” and any finite $θ'$ only constrains finitely many of them, so a completion matching $θ'$ exactly and failing at one further, untouched individual always exists — $θ' ∈ (D ∖ C)^⊆$ regardless of $θ'$.
+  So $\OF[D∖C](\allleadstog)$ already fails at every $\allleadstog ∈ C$: PV fails here too, confirming \cref{cnj:rpevProv} through a genuinely non-degenerate $D ∖ C$.
 \end{example}
 
 \begin{remark}[A duality behind the recurring collapse]
   \label{rk:rpevDuality}
   A pattern underlies every example checked: $\POF$ is hard to satisfy off $C$ precisely when $\overline C$ offers no witness that stays redundantly available no matter how a prefix is spent — and that same difficulty is what makes $D ∖ C = (¬\POF) ∖ C$ rich, since it collects exactly what escaped robust exclusion.
   A set that is rich in that sense is, symmetrically, hard for any finite $θ'$ to exclude.
-  So the same mechanism — finite information cannot pin down infinitely many independent possibilities — cuts both ways: it is what keeps $D ∖ C$ non-empty whenever $C$ is nontrivial (\cref{th:onlyEmptyPF}), and, on the same worlds, what stops that same $D ∖ C$ from ever being excludable by a finite prefix (breaking PEV).
+  So the same mechanism — finite information cannot pin down infinitely many independent possibilities — cuts both ways: it is what keeps $D ∖ C$ non-empty whenever $C$ is nontrivial (\cref{th:onlyEmptyPF}), and, on the same worlds, what stops that same $D ∖ C$ from ever being excludable by a finite prefix (breaking PV).
   Making this duality precise, rather than case by case, would settle \cref{cnj:rpevProv}.
 \end{remark}
 
@@ -4209,10 +4212,10 @@ A genuine compactness proof of \cref{cnj:rpevProv}, if one exists, would need a 
   A tractable test: could $D ∖ C$ ever be a single point $\set{\allleadstog[0]}$?
   $\POF[\set{\allleadstog[0]}](\allleadstog)$, for $\allleadstog ∈ C$, only requires every prefix to be rightward-extendable to some disagreement with $\allleadstog[0]$.
   If $\allleadstog$ differs from $\allleadstog[0]$ at only finitely many points, an adversarial prefix can permanently block each of them (touching, for each differing individual, some other history first — always available once $\allargs$ has at least two elements, even for a difference located at the root $∅$).
-  So PV can only survive at an $\allleadstog ∈ C$ that differs from $\allleadstog[0]$ at infinitely many independent individuals, mirroring the “fresh reserve” move used in the proof of \cref{th:rpevDiverge} — and PEV under $D$ requires this of \emph{every} $\allleadstog ∈ C$, not just one.
+  So PV can only survive at an $\allleadstog ∈ C$ that differs from $\allleadstog[0]$ at infinitely many independent individuals, mirroring the “fresh reserve” move used in the proof of \cref{th:rpevDiverge} — and PV under $D$ requires this of \emph{every} $\allleadstog ∈ C$, not just one.
 
   This looks structurally difficult to arrange: $D ∖ C = \set{\allleadstog[0]}$ means $C$ excludes only one point, which typically leaves plenty of “near misses” inside $C$ — worlds differing from $\allleadstog[0]$ at only finitely many coordinates, such as a single flipped coordinate — exactly the worlds at which PV was just shown to fail.
-  So a singleton $D ∖ C$ seems to force the very structural conflict described by \cref{rk:rpevDuality}: the infinite redundancy PEV needs everywhere is in tension with $D ∖ C$ being minimal.
+  So a singleton $D ∖ C$ seems to force the very structural conflict described by \cref{rk:rpevDuality}: the infinite redundancy PV needs everywhere is in tension with $D ∖ C$ being minimal.
   This is not yet a proof that $D ∖ C$ cannot be a singleton for a $C$ not closed under finite modification, only a further, structurally distinct, piece of evidence for it.
 \end{remark}
 
@@ -4228,7 +4231,7 @@ A genuine compactness proof of \cref{cnj:rpevProv}, if one exists, would need a 
 \end{proof}
 
 \Cref{th:rpevNearMiss} pins down where the escape witness for each near miss must go, but not yet an outright contradiction: reverting $ψ$’s value at $(i^*, h^*)$ back to $\allleadstog[0]$’s gives a different finite specification, one already known to lie in $C^⊆$ via $\allleadstog[0]$ itself, and $C$ remains free to be sensitive to that single coordinate — so this alone does not rule out the singleton case.
-Closing this gap, or exhibiting a genuine example of a claim, not closed under finite modification, that satisfies PEV instead, remains open; three independent attempts at the latter (\cref{rk:rpevDuality}’s pattern, an OR-cell conjunction across individuals, and an infinitely-often tail claim) have all instead made $C$ itself unfalsifiable, collapsing $D$ to $\allleadstos$ before the intended tension could be set up — the same kind of collapse discussed above, whether or not $C$ happened to be cufm this time (\cref{th:cufmNeverFals,rk:cufmConverseFails}) — a third instance of the same failure mode, and further indirect evidence for \cref{cnj:rpevProv}.
+Closing this gap, or exhibiting a genuine example of a claim, not closed under finite modification, that satisfies PV instead, remains open; three independent attempts at the latter (\cref{rk:rpevDuality}’s pattern, an OR-cell conjunction across individuals, and an infinitely-often tail claim) have all instead made $C$ itself unfalsifiable, collapsing $D$ to $\allleadstos$ before the intended tension could be set up — the same kind of collapse discussed above, whether or not $C$ happened to be cufm this time (\cref{th:cufmNeverFals,rk:cufmConverseFails}) — a third instance of the same failure mode, and further indirect evidence for \cref{cnj:rpevProv}.
 
 \begin{lemma}[Excluding a finite set needs individually-unblockable disagreement]
   \label{th:rpevFiniteS}
@@ -4240,10 +4243,10 @@ Closing this gap, or exhibiting a genuine example of a claim, not closed under f
   After this prefix, $\allleadstog[j]$ remains a valid completion of every further rightward extension, so no such extension can exclude $\allleadstog[j]$, hence none can exclude $S$.
 \end{proof}
 
-\Cref{th:rpevFiniteS} generalizes the single-point mechanism behind \cref{rk:rpevSingleton} to any finite target: whenever $D ∖ C$ is finite, PEV can only hold by requiring every world in $C$ to differ from \emph{every} point of $D ∖ C$ at infinitely many individuals at once — a demand no construction tried so far can reconcile with $D ∖ C$ actually being finite.
+\Cref{th:rpevFiniteS} generalizes the single-point mechanism behind \cref{rk:rpevSingleton} to any finite target: whenever $D ∖ C$ is finite, PV can only hold by requiring every world in $C$ to differ from \emph{every} point of $D ∖ C$ at infinitely many individuals at once — a demand no construction tried so far can reconcile with $D ∖ C$ actually being finite.
 Two further, structurally distinct attempts to isolate a single hiding point — the complement of a single point, $C = \allleadstos ∖ \set{\allleadstog[0]}$, and the claim “differs from $\allleadstog[0]$ at exactly one coordinate” — both collapse instead of isolating $\allleadstog[0]$.
-The latter yields a clean bonus characterization: exclusion of a single point by a cover of “exactly $n$ differences”-style claims holds exactly when the disagreement spans infinitely many individuals, turning \cref{th:rpevFiniteS}’s necessary condition into an iff in that case — but $D ∖ C$ still comes out rich rather than a singleton, and PEV collapses on it just as in \cref{ex:rpevNonDegenerate}.
-Five independent constructions now confirm \cref{cnj:rpevProv} without exception: not one claim, not closed under finite modification, has been found to satisfy PEV under $¬\POF$; a general proof or a genuine example satisfying PEV both remain open.
+The latter yields a clean bonus characterization: exclusion of a single point by a cover of “exactly $n$ differences”-style claims holds exactly when the disagreement spans infinitely many individuals, turning \cref{th:rpevFiniteS}’s necessary condition into an iff in that case — but $D ∖ C$ still comes out rich rather than a singleton, and PV collapses on it just as in \cref{ex:rpevNonDegenerate}.
+Five independent constructions now confirm \cref{cnj:rpevProv} without exception: not one claim, not closed under finite modification, has been found to satisfy PV under $¬\POF$; a general proof or a genuine example satisfying PV both remain open.
 
 \hbadness=10000
 \end{document}
