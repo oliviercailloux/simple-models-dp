@@ -242,7 +242,9 @@ We will study criteria to determine whether a claim holds.
 Once established that a claim holds, any feasible observation can be combined with the claim to determine conclusions.
 We want, minimally, that at least some feasible observation permits to conclude about at least one individual’s DJ.
 Furthermore, we want such observations to be always available even after some previous observations have occurred already, to ensure reproducibility.
-A claim $C$ is \emph{conclusive} iff $∀ \allleadstog ∈ C, θ ∈ Θ ∩ \powerset{\allleadstog}, ∃ θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}, i ∈ I \suchthat \card{π_i(↑θ' ∩ C)} = 1$.
+A claim $C$ is \emph{conclusive} iff $∀ \allleadstog ∈ C, θ ∈ Θ ∩ \powerset{\allleadstog}, ∃ θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}, i ∈ I, p ∈ P \suchthat 
+% \card{π_i(↑θ' ∩ C)} = 1$.
+π_i(↑θ' ∩ C) = \set{p}$.
 
 We restrict attention to claims that do not use prior knowledge about named individuals, thus, are anonymous, in the following sense.
 Given a permutation $σ$ over $I$ and any $\allleadstog ∈ \allleadstos$, let $\allleadstog ∘ σ$ denote $\set{(i, \hist, φ) \suchthat (σ(i), \hist, φ) ∈ \allleadstog}$ and let $C ∘ σ$ denote $\set{\allleadstog ∘ σ \suchthat \allleadstog ∈ C}$.
@@ -387,11 +389,15 @@ $(¬\POF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no vi
 \Cref{th:finiteExceptSpreadAnon} shows that anonymous claims suffer no visibility issues in $E$.
 Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C ⊆ E$ is provable by $¬\POF[C ∩ E] ∩ E$ (\cref{th:anonFalsImpliesProv}).
 
-Note that for any claim to exist that holds, is anonymous and is conclusive, we need the world to offer some systematic pattern of the form, whenever an individual satisfies some observable behavior, then some given influence is decisive to her. Assume that the world has such: $∃ \anobs, i, a, p \suchthat \anobs ⊆ \ileadstoo ⇒ a \ileadstost p$.
+For any anonymous and conclusive claim to exist that holds and is permanently 
+verifiable under $¬\POF[C ∩ E] ∩ E$, we need the world to offer some systematic pattern of the form, whenever an individual satisfies some observable behavior, then she deliberately chooses a given proposition (\cref{th:noPatternNoClaim}). Assume that the world has such: $∃ \anobs, i, a, p \suchthat \anobs ⊆ \ileadstoo ⇒ ∃p \in π(\ileadstoo)$.
 We want to study priors for which, for worlds which satisfy such conditions, some anonymous, conclusive, holding claim exists that is permanently verifiable under that prior.
 
 \Cref{th:holdsNotVerifUnderNotOfE} shows the insufficiency of the prior $F_C$: for some worlds, there exists no anonymous claim that holds and is conclusive and permanently verifiable under $¬\POF[C ∩ E] ∩ E$.
 \commentOC{TODO verify and extend this}.
+% For a claim to exist satisfying an, holds, concl, and PV under ¬POF ∩ E, we need the world to satisfy D^gap?
+% Indeed, if C entails … → a dec or b dec, build a world where a not dec and b convincing when a is with him, and b sometimes not convincing 
+%D^gAp, the extension of D^gap for the case of some set of arguments A such that g ⊆ \ileadsto p ⇒ ∃a ∈ A | a \ileadstost p.
 
 \subsection{Visibility}
 We now add the last piece of the puzzle.
@@ -1351,15 +1357,57 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
   Observe that each behavior in $\allleadstog'(I)$ is undistinguishable from $\allleadsto(I)$.
   By \cref{th:undistOf}, $¬\OF(\allleadstog')$.
 \end{proof}
+%TODO seems to me that a world in which ssome i1 has (a) ileadsto φ implies a ileadstost φ and (b) ileadsto φ' implies b ileadstost φ' (with common behaviors on common prefixes of (a) and (b)) satisfy the hyp: take an individual with both such behaviors as bnew. Though, this is a problem only if no path can be found that isolates kinds of individuals in non such contradictory ways. Anyway, what we really want is make sure that our Dgaps are really minimal for caract worlds where suitable claims exist and which priors are required.
+\begin{conjecture}
+  Consider $\allleadsto ∈ E$ such that for no $(\anobs, a, p)$ with $∃ i ∈ I: \anobs ⊆ \ileadstoo$: $∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ a \ileadstost p$. Then no anonymous, conclusive claim that holds
+  is PV under $(¬\OF) \cap E$.
+\end{conjecture}
 \begin{theorem}
-  Consider a world in $E$ where for no $\anobs$ we have $\anobs ⊆ \ileadstoo ⇒ ∃a, p \suchthat a \ileadsto p$.
-  Then, there is no anonymous, conclusive claim that holds and is PV under $¬POF ∩ E$.
+  \label{th:noPatternNoClaim}
+  Consider $\allleadsto ∈ E$ such that for no $\anobs$, $p ∈ P$: $∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ P_i$.
+  Let $C ↦ F_C ⊆ \allleadstos$ assign to every claim $C$ some $F_C$ with $C ⊆ F_C$ that is anonymous ($F_C ∘ σ = F_C$ for every permutation $σ$ of $I$).
+  Then, no anonymous, conclusive claim that holds is PV under $(¬\OF) ∩ E ∩ F_C$.
 \end{theorem}
 \begin{proof}
-  Assume $C$ entails $a \ileadstost φ$ for some $i, a, φ$.
-  Then, $C$ must include all types undistinguishable to this behavior.
-  Some such breaks $a \ileadstost φ$, otherwise, $∃ \anobs$ such that the implication in the theorem phrasing can be satisfied.
+  Write $D := (¬\OF) ∩ E ∩ F_C$ and suppose, towards a contradiction, that some anonymous, conclusive claim $C$ holds and is PV under $D$.
+
+  \emph{Three invariance facts.}
+  First, $E$ is anonymous (as already observed when showing $E$ itself is an anonymous claim provable by $¬\POF[E] ∩ E$): relabelling individuals by a permutation $σ$ permutes each behavior-class without changing its cardinality, so $∀\allleadstog, σ: \allleadstog ∈ E ⇔ \allleadstog ∘ σ ∈ E$.
+  Second, since $C$ is anonymous, $\OF(\allleadstog) ⇔ \OF(\allleadstog ∘ σ)$ for every $\allleadstog$ and every permutation $σ$ of $I$ (and likewise for $\POF$). Indeed, extending $\allleadstog ∘ σ$'s notation to (possibly partial) observations by $θ ∘ σ := \set{(i,α,p) \suchthat (σ(i),α,p) ∈ θ}$, one checks directly from the definitions that $θ ⊆ \allleadstog ⇔ θ ∘ σ ⊆ \allleadstog ∘ σ$ and $θ ⊑ θ' ⇔ θ ∘ σ ⊑ θ' ∘ σ$; and, using $C ∘ σ = C$: if $θ ⊆ v ∈ C$ then $θ ∘ σ ⊆ v ∘ σ ∈ C ∘ σ = C$, and conversely (applying $σ^{-1}$ in place of $σ$), so $θ ∈ C^⊆ ⇔ θ ∘ σ ∈ C^⊆$. Hence $θ ↦ θ ∘ σ$ is a $⊑$-preserving bijection between $Θ ∩ \powerset{\allleadstog}$ and $Θ ∩ \powerset{\allleadstog ∘ σ}$ carrying $\set{θ ∉ C^⊆}$ onto $\set{θ ∘ σ ∉ C^⊆}$: this already gives $\OF(\allleadstog) ⇔ \OF(\allleadstog ∘ σ)$, since it matches nonempty witness sets to nonempty witness sets; and, since the bijection is also $⊑$-preserving, it further carries any witness of $\POF(\allleadstog)$ at some $θ$ to a witness of $\POF(\allleadstog ∘ σ)$ at $θ ∘ σ$, and conversely.
+  Third, $F_C ∘ σ = F_C$ by hypothesis: $\allleadstog ∈ F_C ⇔ \allleadstog ∘ σ ∈ F_C$.
+
+  \emph{Step 1.} As $C$ holds, $\allleadsto ∈ C$, so $¬\F(\allleadsto)$, hence $¬\OF(\allleadsto)$; also $\allleadsto ∈ C ⊆ F_C$; with $\allleadsto ∈ E$ (hypothesis), $\allleadsto ∈ C ∩ D$.
+
+  \emph{Step 2 (a conclusiveness pin, sharpened by PV).}
+  As $C$ is conclusive and $\allleadsto ∈ C$, applying conclusiveness at $θ = ∅$ gives $θ_0 ∈ Θ ∩ \powerset{\allleadsto}$, $i^* ∈ I$ and $p^* ∈ P$ with $π_{i^*}(↑θ_0 ∩ C) = \set{p^*}$.
+  As $C$ is PV under $D$ and $\allleadsto ∈ C ∩ D$ (Step 1), \cref{th:dualPof} gives $\POF[D ∖ C](\allleadsto)$; applying this at $θ_0$ gives $θ_0 ⊑ θ_1 ∈ Θ ∩ \powerset{\allleadsto}$ with $↑θ_1 ∩ D ⊆ C$.
+  As $θ_0 ⊑ θ_1$, $↑θ_1 ⊆ ↑θ_0$, so $π_{i^*}(↑θ_1 ∩ C) ⊆ π_{i^*}(↑θ_0 ∩ C) = \set{p^*}$; as $θ_1 ⊆ \allleadsto ∈ C$, this set contains $π_{i^*}(\allleadsto) = p^*$, so it equals $\set{p^*}$. Combined with $↑θ_1 ∩ D ⊆ C$:
+  \begin{equation}
+    ∀\allleadstog ∈ ↑θ_1 ∩ D: π_{i^*}(\allleadstog) = p^*. \tag{$\star$}
+  \end{equation}
+  Let $H := \set{α \suchthat ∃p, (i^*,α,p) ∈ θ_1} ∈ \fincrhists$ and let $\anobs: H → P$ be $\anobs(α) := p$ for the unique $p$ with $(i^*,α,p) ∈ θ_1$; as $θ_1 ⊆ \allleadsto$, $\anobs ⊆ \ileadstoo[i^*]$.
+
+  \emph{Step 3 (propagating $(\star)$ to every matching individual).}
+  Fix $i ∈ I$ with $\anobs ⊆ \ileadstoo[i]$; write $g := \ileadstoo[i]$. We show $p^* ∈ P_i$, that is (\cref{def:decisive}) $∃a ∈ \allargs \suchthat a \ileadstost[i] p^*$.
+
+  If $i = i^*$, $(\star)$ at $\allleadstog := \allleadsto$ directly gives $π_{i^*}(\allleadsto) = p^*$, that is $p^* ∈ P_{i^*}$.
+
+  If $i ≠ i^*$: as $\allleadsto ∈ E$, the class $J_g := \set{j ∈ I \suchthat \ileadstoo[j] = g}$ is infinite (it contains $i$), and $θ_1$ has finite support, so we may pick $i'' ∈ J_g ∖ (θ_1(\allhists, P) ∪ \set{i^*})$. Let $σ$ be the transposition of $i^*$ and $i''$ (identity elsewhere) and $\allleadstog^{sw} := \allleadsto ∘ σ$.
+  Then $\allleadstog^{sw}(i^*) = \ileadstoo[i''] = g$ and $\anobs ⊆ g$: $θ_1$'s constraint on $i^*$ holds in $\allleadstog^{sw}$; and every other $j ∈ θ_1(\allhists, P)$ satisfies $j ∉ \set{i^*, i''}$, so $\allleadstog^{sw}(j) = \ileadstoo[j]$, matching $θ_1$ there too. Hence $θ_1 ⊆ \allleadstog^{sw}$.
+  By the three invariance facts, $\allleadstog^{sw} ∈ E$, $¬\OF(\allleadstog^{sw})$ (as $¬\OF(\allleadsto)$, Step 1), and $\allleadstog^{sw} ∈ F_C$ (as $\allleadsto ∈ F_C$, Step 1), so $\allleadstog^{sw} ∈ D$; with $θ_1 ⊆ \allleadstog^{sw}$, $\allleadstog^{sw} ∈ ↑θ_1 ∩ D$, and $(\star)$ gives $π_{i^*}(\allleadstog^{sw}) = p^*$. As $π_{i^*}$ depends only on the row $\allleadstog^{sw}(i^*) = g$ (\cref{def:decisive}), this is $p^* ∈ P_i$.
+
+  \emph{Step 4 (contradiction).}
+  Steps 2–3 give $∀i ∈ I: \anobs ⊆ \ileadstoo[i] ⇒ p^* ∈ P_i$; taking $p := p^*$, this is exactly the $\anobs, p$ pattern the hypothesis excludes — contradiction.
 \end{proof}
+\begin{remark}
+  Taking $F_C := \allleadstos$ for every $C$ (trivially anonymous, and $C ⊆ \allleadstos$ always) recovers the plain statement: no such claim is PV under $(¬\OF) ∩ E$ alone.
+
+  As $\POF ⇒ \OF$ (so $¬\OF ⊆ ¬\POF$), this is a strictly stronger conclusion than the one obtained by using $¬\POF$ in place of $¬\OF$ throughout: shrinking the prior only makes it easier for a claim to be safely distinguished from the (smaller) gap $D ∖ C$, hence easier to be PV under it, so excluding PV under the smaller, $¬\OF$-built prior excludes it a fortiori under the larger, $¬\POF$-built one.
+
+  $F_C$ can also be taken to be $D^{\anobs', a', p'}_C$ (\cref{th:oneMorePriorFull}'s prior, for any fixed $\anobs', a', p'$ — possibly different from the $\anobs, p$ of the hypothesis), or even $⋂_k D^{\anobs_k, a_k, p_k}_C$ for any family of triples: both required properties are inherited automatically. Indeed, $C ⊆ D^{\anobs', a', p'}_C$ always: for $\allleadstog ∈ C$, every row $b ∈ \allleadstog(I)$ lies in $S_C := ⋃_{\allleadstog'' ∈ C} \allleadstog''(I)$ ($\allleadstog$ itself witnesses it), so $\allleadstog(I) ∖ S_C = ∅$ and $D^{\anobs', a', p'}_C$'s defining condition — every $b ∈ \allleadstog(I) ∖ S_C$ failing $\anobs' ⊆ \ileadstogo[b] ⇒ a' \ileadstostg[b] p'$ is distinguishable from $S_C$ — holds vacuously. And $D^{\anobs', a', p'}_C$ is anonymous: membership $\allleadstog ∈ D^{\anobs', a', p'}_C$ is a condition on the set $\allleadstog(I)$ alone (whether a row lies in $\allleadstog(I) ∖ S_C$, fails the template, or is distinguishable from $S_C$, are all properties of the behavior itself, not of which individual realizes it), and $(\allleadstog ∘ σ)(I) = \allleadstog(σ(I)) = \allleadstog(I)$ for every permutation $σ$. Both properties — containing $C$, being anonymous — are preserved under arbitrary intersection (as pushforward by a bijection commutes with intersection), so the family closes under stacking finitely or infinitely many such filters together. So this whole family of claim-relative visibility filters, however combined, is powerless to rescue a claim once the underlying $(\anobs, p)$-pattern is absent from the world.
+
+  This breaks down for the \emph{upfront}, non-claim-relative prior $D^{\anobs', a', p'} = D^{\anobs', a', p'}_{\allbs, \allleadsto(I)}$ of \cref{th:oneMorePriorNarrow}: it is still anonymous by the same row-set argument (with $\allleadsto(I)$, fixed once and for all, playing the role of $S_C$ above), but $\allleadsto ∈ D^{\anobs', a', p'}$ is \emph{not} automatic from $C$ holding — it is exactly \cref{th:oneMorePriorNarrow}'s nontrivial hypothesis on the true world, so it cannot be folded into a $C ⊆ F_C$ assignment for free. Assumed explicitly instead, as an extra hypothesis $\allleadsto ∈ D^{\anobs', a', p'}$ alongside \cref{th:noPatternNoClaim}'s, the theorem's proof still applies verbatim (Step 1 gets $\allleadsto ∈ D^{\anobs', a', p'}$ from this hypothesis directly rather than from $C ⊆ F_C$): so the upfront richness assumption doesn't help either, it just has to be paid for explicitly, rather than obtained for free the way the claim-relative $D^{\anobs', a', p'}_C$ is.
+\end{remark}
 \begin{example}
   Consider the world
   $\allleadsto = (J × \allhists × \set{φ}) ∪ (K × \set{∅} × \set{φ}) ∪ (K × (\allhists ∖ \set{∅}) × \set{φ'})$
@@ -1386,6 +1434,16 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
 \begin{remark}
   The $H = ∅$ case technically holds, but either requires to take seriously the $∃p$ in the claim $C$’s deduction ($i_1$ has $a$ decisive for $φ$ and $i_2$ has $a$ decisive for $φ'$), or if $p$ is fixed for everybody, then the antecedent of the theorem never triggers.
 \end{remark}
+
+\begin{example}
+  \label{ex:disjArgs}
+  Fix $φ ≠ φ' ∈ P$, $a ≠ b ∈ \allargs$, and partition $I = J \sqcup K$ with $J$, $K$ both infinite.
+  Define $\allleadsto$ by: for $j ∈ J$, $∀\hist: \hist \ileadstoo[j] φ \iff a ∈ \histend(\hist)$; for $k ∈ K$, $∀\hist: \hist \ileadstoo[k] φ \iff b ∈ \histend(\hist)$ (with $φ'$ otherwise in each case).
+  Then $\allleadsto ∈ E$; $a \ileadstost_j φ$ and $b \nileadstost_j φ$ for $j ∈ J$ (as $(b) \ileadstoo[j] φ'$); $b \ileadstost_k φ$ and $a \nileadstost_k φ$ for $k ∈ K$ (as $(a) \ileadstoo[k] φ'$).
+  Hence there is no $c ∈ \allargs$ with $∀i: c \ileadstost_i φ$.
+  Yet $∀i: a \ileadstost_i φ ∨ b \ileadstost_i φ$, so $P_i = \set{φ}$ for all $i$, and \cref{th:noPatternNoClaim}'s hypothesis fails.
+  A suitable claim exists: $C = [∀i: (a) \ileadstog φ ⇒ a \ileadstostg φ]$ holds in $\allleadsto$ (genuinely for $J$, vacuously for $K$ since $(a) \ileadstoo[k] φ'$), is anonymous and conclusive, and is PV by \cref{th:oneMorePriorGeneralPev} (applied with $H := \set{(a)}$, $\anobs := \set{((a), φ)}$, $c := a$, $p := φ$, and any $j_0 ∈ J$).
+\end{example}
 
 \subsection{Visibility}
 Given $\anobs$,
@@ -1437,6 +1495,35 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   \emph{$D ⊆ C_0$.} Steps 1, A and B of \cref{th:oneMorePriorGeneral}'s proof only ever use $C_0$'s first and second conjuncts (never a bound on $C$ from above), so they apply verbatim to $C$ in place of that proof's own claim, with this $C$'s own $S_C$: any $\allleadstog' ∈ E ∩ D^{\anobs, a, p}_{\allleadstog'(I) ∩ B, \, S_C}$ outside $C_0$ satisfies $\POF[C](\allleadstog')$, that is $\allleadstog' ∉ ¬\POF$. So no $\allleadstog' ∈ D$ lies outside $C_0$: $D ⊆ C_0$.
 
   Fix $\allleadstog ∈ C ∩ D$ and $θ ∈ Θ ∩ \powerset{\allleadstog}$; reuse $i^*, θ'$ from the \emph{Conclusive} paragraph above. Suppose $\allleadstog'' ∈ D$ extends $θ'$. By $D ⊆ C_0$, $\allleadstog'' ∈ C_0$; and $θ' ⊆ \allleadstog''$ gives $\anobs ⊆ \allleadstog''(i^*)$, so $\allleadstog''$ also satisfies $C$'s extra conjunct (witnessed by $i^*$), hence $\allleadstog'' ∈ C$. So no $\allleadstog'' ∈ D ∖ C$ extends $θ'$, that is, $θ' ∉ (D ∖ C)^⊆$. As $θ$ was arbitrary, $\POF[D ∖ C](\allleadstog)$ holds; as $\allleadstog ∈ C ∩ D$ was arbitrary, $C$ satisfies PV under $D$.
+\end{proof}
+
+\begin{conjecture}
+  Given $B ⊆ \allbs$ with $\allleadsto(I) ⊆ B$ such that
+  for some $H$ with $1 ≤ \card(\max H)$, $\anobs: H → P$, $a$, $p$,
+  $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
+  and
+  $∃ i \suchthat \anobs ⊆ \ileadstoo$,
+  if there exists an anonymous claim $C$ that holds, is conclusive and PV under $(¬\POF) ∩ E$,
+  then
+  $\allleadsto ∈ D^{\anobs, a, p}$.
+\end{conjecture}
+
+\begin{proof}[Disproof]
+  We build a single world satisfying the hypotheses for a fixed $H, \anobs, a, p$, together with a witnessing claim $C$, yet with $\allleadsto ∉ D^{\anobs, a, p}$: nothing ties the witness $C$ furnished by the hypothesis to the specific pattern named in the conclusion, so it can be supplied by an entirely different, unrelated part of the world.
+
+  Fix $a ≠ c ∈ \allargs$ and partition $I$ into infinite $J, K$, with $∀i ∈ J, \hist ∈ \allhists: \hist \ileadsto φ$, and $∀i ∈ K, \hist ∈ \allhists$: $\hist \ileadsto φ$ if $c ∈ \histend(\hist)$, $\hist \ileadsto φ'$ otherwise (so $(a) \ileadsto φ'$ throughout $K$, as $c ≠ a$); let $b_j, b_k$ be the behaviors associated to $\allleadsto(J), \allleadsto(K)$. Take $H := \set{(a)}$ (so $\card(\max H) = 1$), $\anobs := \set{((a),φ)}$, $p := φ$: the pattern $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$ holds throughout $J ∪ K$ (trivially at $J$, vacuously at $K$ since $b_k((a)) = φ' ≠ φ$) and fires at any $i ∈ J$.
+
+  \emph{$\allleadsto ∉ D^{\anobs,a,p}$ on $J ∪ K$.} Pick $d ∈ \allargs ∖ \set{a,c}$, $S := \set{\hist ≠ ∅ \suchthat \hist_1 = d}$, and $g := \restr{b_k}{S} ∪ \restr{b_j}{\allhists ∖ S}$. Any $H' ∈ \fincrhists$ is a chain, hence lies entirely inside $S$ or entirely outside it, so $g$ matches $b_k$ or $b_j$ on $H'$: $g$ is undistinguishable from $\set{b_j,b_k}$. As $d ≠ a$, $(a) ∉ S$, so $g((a)) = b_j((a)) = φ$: $g$ matches $\anobs$. As $(d,a) ∈ S$ and $c ∉ \set{d,a}$, $g((d,a)) = b_k((d,a)) = φ'$, and $a ∈ \histend((d,a))$: $a$ is not decisive for $φ$ in $g$. Yet $g ∉ \set{b_j,b_k}$ ($g((d)) = φ' ≠ φ = b_j((d))$; $g((a)) = φ ≠ φ' = b_k((a))$): $g$ is exactly the counterexample $D^{\anobs,a,p}$ forbids.
+
+  Adjoin a third infinite set $L$, disjoint from $J ∪ K$, with $\ileadstoo := b_l$ constant equal to some fixed $ψ ∈ P ∖ \set{φ,φ'}$ for every $i ∈ L$; write $I := J ∪ K ∪ L$, keeping $\allleadsto$ unchanged on $J ∪ K$. As $J,K,L$ are infinite and pairwise disjoint and $b_j,b_k,b_l$ pairwise distinct, $\allleadsto ∈ E$. The pattern above still holds on the enlarged $I$: $\anobs$'s only value is $φ ≠ ψ = b_l(\hist)$ for every $\hist$, so $¬(\anobs ⊆ b_l)$, and the antecedent fails vacuously on $L$. And $g$ remains a witness of $\allleadsto ∉ D^{\anobs,a,p}$: it is still undistinguishable from $\allleadsto(I) = \set{b_j,b_k,b_l}$ (it already matched $b_j$ or $b_k$ on every $H' ∈ \fincrhists$), it still lies outside $\allleadsto(I)$ (its values lie in $\set{φ,φ'}$, so $g ≠ b_l$), and $a$ is still not decisive for $φ$ in $g$.
+
+  \emph{A witness, entirely on $L$.} Let $H_1 := \set{∅,(a)} ∈ \fincrhists$, $\anobs_1 : H_1 → P$ constant $ψ$, and $p_1 := ψ$ (reusing the same action $a$ — nothing below needs a fresh one). At $i ∈ L$: $\anobs_1 ⊆ b_l$ (as $b_l$ is constant $ψ$) and $a$ is (trivially) decisive for $ψ$ in the constant row $b_l$: the pattern holds and fires on $L$. It holds vacuously on $J ∪ K$: $b_j(∅) = φ ≠ ψ$, and $b_k(∅) = φ' ≠ ψ$ (as $c ∉ \histend(∅)$), so $¬(\anobs_1 ⊆ b_j)$ and $¬(\anobs_1 ⊆ b_k)$.
+
+  \emph{$\allleadsto ∈ D^{\anobs_1,a,p_1}$.} Let $b ∉ \allleadsto(I) = \set{b_j,b_k,b_l}$ satisfy $\anobs_1 ⊆ b$ (so $b(∅) = b((a)) = ψ$) and $a \nileadstostg[b] p_1$, witnessed by some $β$ with $a ∈ \histend(β)$ (so $β ≠ ∅$) and $b(β) ≠ ψ$. At the chain $\set{∅,β} ∈ \fincrhists$, $\restr{b}{\set{∅,β}} = (ψ, b(β))$ with $b(β) ≠ ψ$, while $\restr{b_j}{\set{∅,β}} = (φ,φ)$, $\restr{b_k}{\set{∅,β}} = (φ', b_k(β))$, and $\restr{b_l}{\set{∅,β}} = (ψ,ψ)$: the first coordinate $ψ ∉ \set{φ,φ'}$ already rules out $b_j$ and $b_k$, and the second coordinate $b(β) ≠ ψ$ rules out $b_l$. So $b$ is distinguishable from $\allleadsto(I)$: $\allleadsto ∈ D^{\anobs_1,a,p_1}$.
+
+  By \cref{th:oneMorePriorNarrow}, applied with this $H_1, \anobs_1, a, p_1$, some anonymous claim $C$ holds, is conclusive and PV under $(¬\POF) ∩ E$.
+
+  Taking $B := \allbs$ (which trivially satisfies $\allleadsto(I) ⊆ B$ and, since it appears nowhere else in the statement, plays no further role), the conjecture's hypotheses hold at this $\allleadsto$ for $H, \anobs, a, p$ as above, and $C$ witnesses its antecedent — yet $\allleadsto ∉ D^{\anobs,a,p}$: the conjecture is false. The obstruction (on $J ∪ K$) and the witness (on $L$) sit on disjoint, mutually irrelevant parts of $I$, precisely because nothing in the antecedent ties the claim $C$ it furnishes to the specific $\anobs, a, p$ named in the conclusion.
 \end{proof}
 
 \begin{theorem}
