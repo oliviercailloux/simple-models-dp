@@ -341,7 +341,11 @@ $C ≠ \allleadstos ∧ [\F(\allleadstog) ⇒ \OF(\allleadstog)]$.
 
 It is important to note that falsifiability does not depend on $\allleadsto$: whether falsifiability holds can be determined analytically, meaning, by considering only the content of the claim, without considering the world.
 
-We introduce the axiom called $C$-scrutiny, which postulates that the real world is such that $C$ is either not observably false in it, or if it is, then $C$ suffers visibility issues in it; formally, $¬\OF(\allleadsto) ∨ (¬\POF(\allleadsto) ∧ \OF(\allleadsto))$.
+We introduce the axiom called $C$-scrutiny, which postulates that the real world is such that $C$ is either not observably false in it, or if it is, then $C$ suffers visibility issues in it:
+\begin{axiom}[$C$-scrutiny]
+  \label{ax:scrutiny}
+  $¬\OF(\allleadsto) ∨ (¬\POF(\allleadsto) ∧ \OF(\allleadsto))$
+\end{axiom}
 This is logically equivalent to mandating $¬\POF(\allleadsto)$, thus, excluding worlds in which $C$ is persistently observably false.
 
 \begin{remark}
@@ -376,10 +380,10 @@ This is logically equivalent to mandating $¬\POF(\allleadsto)$, thus, excluding
 \subsection{Repeatable observations}
 Our second axiom assumes that whenever a behavior is exhibited by at least one individual, infinitely many individuals exhibit it.
 
-\begin{definition}[Repeatable observations]
+\begin{axiom}[Repeatable observations]
   \label{def:repeatable}
   Let $E = [∀i ∈ I: \card{\set{j ∈ I \suchthat \ileadstoo[j] = \ileadstoo}} ∉ ℕ]$, the claim that every individual's behavior is shared by infinitely many others.
-\end{definition}
+\end{axiom}
 Given $C ⊆ \allleadstos$, combining both axioms introduced so far, we obtain the axiom $F_C = (¬\POF) ∩ E$.
 
 Intuition might suggest that under $E$, no visibility issues can arise. \Cref{ex:repeatableProvNotOfButNotNotPOF} shows that, on the contrary, a claim can be provable by $¬\OF[C ∩ E] ∩ E$ yet not provable by $¬\POF[C ∩ E] ∩ E$.
@@ -404,10 +408,12 @@ We now add the last piece of the puzzle.
 For a suitable claim to exist, 
 we need the axiom to ensure that no behavior is sufficiently “strange” that an individual $i$ can satisfy the pattern $\anobs ⊆ \ileadstoo$, but fail $a \ileadstost p$, but only fail it in a way that is invisible to our observational capacities.
 In words, we request that those individuals have some path compatible with those used in $\anobs$ where it is visible that $a$ does not decisively lead $i$ to $p$ (thus $a$ appears at the end of $α$ and yet $α \nileadsto p$). 
-In formal terms, we impose $D^{\anobs, a, p}$, defined as
-\begin{equation}
-  ∀i: (\anobs ⊆ \ileadstoo ∧ a \nileadstost p) ⇒ (∃α ∈ \allhists \suchthat \anobs^{-1}(P) ∪ \set{α} ∈ \fincrhists ∧ a ∈ \histend(α) ∧ α \nileadsto p).
-\end{equation}
+In formal terms, we impose $D^{\anobs, a, p}$, defined as follows.
+\begin{axiom}[Visibility]
+  \begin{equation}
+    ∀i: (\anobs ⊆ \ileadstoo ∧ a \nileadstost p) ⇒ (∃α ∈ \allhists \suchthat \anobs^{-1}(P) ∪ \set{α} ∈ \fincrhists ∧ a ∈ \histend(α) ∧ α \nileadsto p).
+  \end{equation}
+\end{axiom}
 \Cref{th:oneMorePriorFullExplicit} shows that each world which admits a regularity of the kind $∀i: \anobs ⊆ \ileadstoo ⇒ a \nileadstost p$ (for some $\anobs, a, p$) admits an anonymous, conclusive claim that holds and is permanently verifiable under $(¬\POF) ∩ E ∩ D^{\anobs, a, p}$.
 
 \begin{example}
