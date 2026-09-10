@@ -62,7 +62,7 @@ For conceptual clarity, I will focus on the case of a single binary decision to 
 I will furthermore use a common trick of mathematics by considering sets as infinite to mean that they are sufficiently large that they will not be practically exhausted.
 More precisely, the set of influences and individuals are considered infinite, not out of some belief that influences are infinitely numerous (I believe that such consideration may occasionally be useful in some philosophical sense but irrealistic in many practical applications), but as a simple modelization of the fact that they will, in most interesting applications, be too numerous to be exhaustively explored: even considering only textual arguments generally considered “relevant”, for many complex topics, it is not reasonable to assume that we can expose an individual to all such arguments before knowing her deliberated judgment. Instead, we need some way to phrase general theories and validate them, in order to reduce the too numerous to the manageable. We model this by the reduction of infinite sets to finite ones.
 %TODO     • Don’t bold claims, use brackets syst.
-    % • judgment or choice? Use "actual world" systematically. Use “axiom”, not prior.
+    % • judgment or choice? Use "actual world" systematically.
     
 \section{Exposure protocol and deliberated choice}
 I assume given two antagonistic acts, constituting the decision at stake, such as “buy this object for the price of \$15” and “do not buy this object for the price of \$15”, or “take this job offer” and “decline this job offer”.
@@ -269,8 +269,9 @@ Being informative in $\allleadsto$, a weaker demand than conclusiveness, implies
 This may be expected, as we did not postulate yet any sort of regularity in the world, and ideed the fundamental reason for the incompatibility is that any observation can be completed in a way that contradicts any conclusion that informativeness in a world mandates (\cref{th:completable}).
 
 We thus now turn to examining which sort of prior knowledge will suffice for ensuring the existence of a verification procedure that will allow to determine that a conclusive and anonymous claim holds (when it indeed holds).
+As such prior knowledge cannot come from observations, we call them axioms.
 
-Three sorts of priors will be involved, the two first of which can be seen as applications to our context of Popperian ideas. 
+Three sorts of axioms will be involved, the two first of which can be seen as applications to our context of Popperian ideas. 
 First, we will assume that falsification tests fail falsifying the claim, under condition of sufficient observability.
 Second, we will assume that behaviors are in sufficient supply for being observed without bound. 
 Third, we will assume that some behaviors that are inobservable (thus impossible to reject empirically) do not exist.
@@ -282,39 +283,39 @@ The following example illustrates the tension that needs overcoming. Demanding t
   The claim $C_1 = [∃i \suchthat ∅ \ileadsto φ]$ is verifiable and not conclusive.
   The claim $C_2 = [(∀i: ∅ \ileadsto φ ⇒ ∀α, α \ileadsto φ) ∧ (∃i \suchthat ∅ \ileadsto φ)]$ is conclusive and not verifiable.
 \end{example}
-We will see that combining (variants of) verification procedures, which bring punctual facts, with general enough priors, lead further than procedures based only on priors or on verification could.
+We will see that combining (variants of) verification procedures, which bring punctual facts, with general enough axioms, lead further than procedures based only on axioms or on verification could.
 
-We say that a prior $D$ proves a claim $C$ iff $D ⊆ C$. 
+We say that an axiom $D$ proves a claim $C$ iff $D ⊆ C$. 
 %TODO get rid of provability by D beyond 3.4 and move it there.
 
-\subsection{Verifiability under a prior}
+\subsection{Verifiability under an axiom}
 Verifiability, as defined in \cref{sec:verifiability}, mandates that some observation proves $C$.
 As indicated there, this is too demanding to be applicable with no prior knowledge.
-In this section, we extend this idea to the case where some prior is given.
+In this section, we extend this idea to the case where some axiom is given.
 
-$C$ is verified at world $\allleadstog$ under prior $D$ iff
+$C$ is verified at world $\allleadstog$ under axiom $D$ iff
 $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
 $C$ is verified under $D$ iff it is verified at $\allleadsto$ under $D$.
-Note that $C$ is verified at $\allleadstog$ iff it is verified at $\allleadstog$ under the trivial prior.
-$C$ satisfies established verifiability under prior $D$ iff
+Note that $C$ is verified at $\allleadstog$ iff it is verified at $\allleadstog$ under the trivial axiom.
+$C$ satisfies established verifiability under axiom $D$ iff
 it is verified under $D$ at all worlds in $C ∩ D$, thus:
 $∀\allleadstog ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑θ ∩ D ⊆ C$.
 %TODO consider renaming Verifiedness to verifiability and EV to necessary verifiability
 
-\Cref{th:vudImpliesHolds} shows that provided the prior is true, being verified under a prior suffices for holding.
+\Cref{th:vudImpliesHolds} shows that provided the axiom is true, being verified under an axiom suffices for holding.
 
 Provability by $D$ implies established verifiability under $D$ (just use verification $θ = ∅$).
-For some priors, provability by $D$ is strictly stronger than established verifiability under $D$ (the claim $C = [(a) \ileadstog φ]$ satisfies established verifiability under the trivial prior $D$ but is not provable by it).
+For some axioms, provability by $D$ is strictly stronger than established verifiability under $D$ (the claim $C = [(a) \ileadstog φ]$ satisfies established verifiability under the trivial axiom $D$ but is not provable by it).
 
 Established verifiability only requires \emph{some} proving observation to exist at each $\allleadstog ∈ C ∩ D$. 
 It is desirable that every prefix admit a rightward extension that still proves $C$.
-Given $C, D ⊆ \allleadstos$, $C$ is permanently verifiable under prior $D$ iff
+Given $C, D ⊆ \allleadstos$, $C$ is permanently verifiable under axiom $D$ iff
 $∀\allleadstog ∈ C ∩ D, ∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑θ' ∩ D ⊆ C$.
-Under a given prior, permanent verifiability is stronger than established verifiability (\cref{th:pevImpliesEv}).
+Under a given axiom, permanent verifiability is stronger than established verifiability (\cref{th:pevImpliesEv}).
 
 \section{Priors}
 \subsection{Falsifiability}
-Our first prior assumes that all falsification tests against $C$ fail.
+Our first axiom assumes that all falsification tests against $C$ fail.
 
 Expressing this requires properties that describe the extend to which a given (hypothetical or real) world can be observed to be not the real world.
 Given $\allleadstog$ and $C$, say that $C$ is
@@ -340,7 +341,7 @@ $C ≠ \allleadstos ∧ [\F(\allleadstog) ⇒ \OF(\allleadstog)]$.
 
 It is important to note that falsifiability does not depend on $\allleadsto$: whether falsifiability holds can be determined analytically, meaning, by considering only the content of the claim, without considering the world.
 
-We introduce the prior called $C$-scrutiny, which postulates that the real world is such that $C$ is either not observably false in it, or if it is, then $C$ suffers visibility issues in it; formally, $¬\OF(\allleadsto) ∨ (¬\POF(\allleadsto) ∧ \OF(\allleadsto))$.
+We introduce the axiom called $C$-scrutiny, which postulates that the real world is such that $C$ is either not observably false in it, or if it is, then $C$ suffers visibility issues in it; formally, $¬\OF(\allleadsto) ∨ (¬\POF(\allleadsto) ∧ \OF(\allleadsto))$.
 This is logically equivalent to mandating $¬\POF(\allleadsto)$, thus, excluding worlds in which $C$ is persistently observably false.
 
 \begin{remark}
@@ -351,13 +352,13 @@ This is logically equivalent to mandating $¬\POF(\allleadsto)$, thus, excluding
   Equivalently,
   if $C$ is still observably falsifiable after any amount of observation, then no feasible observation would falsify it ($\POF(\allleadsto) ⇒ ¬\OF(\allleadsto)$).
 
-  Assuming, as the prior does, $¬\POF(\allleadsto)$, leaves three possibilities: either there are visibility issues ($\OF(\allleadsto) ∧ ¬\POF(\allleadsto)$), or the claim is false, but inobservably so ($\F(\allleadsto) ∧ ¬\OF(\allleadsto)$), or the claim holds ($¬\F(\allleadsto)$).
+  Assuming, as the axiom does, $¬\POF(\allleadsto)$, leaves three possibilities: either there are visibility issues ($\OF(\allleadsto) ∧ ¬\POF(\allleadsto)$), or the claim is false, but inobservably so ($\F(\allleadsto) ∧ ¬\OF(\allleadsto)$), or the claim holds ($¬\F(\allleadsto)$).
 \end{remark}
 \begin{remark}
   \label{rk:visIssuesForPof}
   When considering a claim $C$ with no visibility issues, $C$-scrutiny is equivalent to $¬\OF(\allleadsto)$.
 
-  The reason for adopting the prior $¬\POF(\allleadsto)$ instead of $¬\OF(\allleadsto)$ is illustrated with
+  The reason for adopting the axiom $¬\POF(\allleadsto)$ instead of $¬\OF(\allleadsto)$ is illustrated with
   $C_1$ is $(a) \ileadsto φ ∧ (a') \ileadsto φ$ for a given $i$: in some world (for example, where $(a) \ileadstog φ$ even though $(a') \nileadstog φ$), $¬\POF[C_1](\allleadstog) ∧ \OF[C_1](\allleadstog)$, thus we cannot assume that non-observation of falsification implies not OF, because it might also be due to observing that $(a) \ileadstog φ$.
   It also applies to $C_2 = [∀i: (a') \ileadsto φ ∧ (a) \ileadsto[j] φ]$ for a given $j$, which in a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (a') \ileadstog φ$ is $¬\POF[C_2](\allleadstog)$ (consider the prefix $θ = \set{(a') \ileadstog[j] φ}$) and $\OF[C_2](\allleadstog)$.
   (Note that if $C_2$ fails because, for some $i$, $(a') \nileadstog φ$,
@@ -367,19 +368,19 @@ This is logically equivalent to mandating $¬\POF(\allleadsto)$, thus, excluding
 
 % \begin{remark}
 %   TODO
-  % This prior seems unsatisfactorily not primitive enough (to be worked on…). We should obtain as a result that the reasonable prior is, if no visibility issues, then not OF, by assuming that we have observed everything we could ever dream of.
+  % This axiom seems unsatisfactorily not primitive enough (to be worked on…). We should obtain as a result that the reasonable axiom is, if no visibility issues, then not OF, by assuming that we have observed everything we could ever dream of.
 % \end{remark}
 
-\Cref{th:pvUnderNotPof} shows that this prior is insufficient: only the trivial claim is permanently verifiable under $¬\POF$.
+\Cref{th:pvUnderNotPof} shows that this axiom is insufficient: only the trivial claim is permanently verifiable under $¬\POF$.
 
 \subsection{Repeatable observations}
-Our second prior assumes that whenever a behavior is exhibited by at least one individual, infinitely many individuals exhibit it.
+Our second axiom assumes that whenever a behavior is exhibited by at least one individual, infinitely many individuals exhibit it.
 
 \begin{definition}[Repeatable observations]
   \label{def:repeatable}
   Let $E = [∀i ∈ I: \card{\set{j ∈ I \suchthat \ileadstoo[j] = \ileadstoo}} ∉ ℕ]$, the claim that every individual's behavior is shared by infinitely many others.
 \end{definition}
-Given $C ⊆ \allleadstos$, combining both priors introduced so far, we obtain the prior $F_C = (¬\POF) ∩ E$.
+Given $C ⊆ \allleadstos$, combining both axioms introduced so far, we obtain the axiom $F_C = (¬\POF) ∩ E$.
 
 Intuition might suggest that under $E$, no visibility issues can arise. \Cref{ex:repeatableProvNotOfButNotNotPOF} shows that, on the contrary, a claim can be provable by $¬\OF[C ∩ E] ∩ E$ yet not provable by $¬\POF[C ∩ E] ∩ E$.
 
@@ -391,9 +392,9 @@ Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C
 
 For any anonymous and conclusive claim to exist that holds and is permanently 
 verifiable under $¬\POF[C ∩ E] ∩ E$, we need the world to offer some systematic pattern of the form, whenever an individual satisfies some observable behavior, then she deliberately chooses a given proposition (\cref{th:noPatternNoClaim}). Assume that the world has such: $∃ \anobs, i, a, p \suchthat \anobs ⊆ \ileadstoo ⇒ ∃p \in π(\ileadstoo)$.
-We want to study priors for which, for worlds which satisfy such conditions, some anonymous, conclusive, holding claim exists that is permanently verifiable under that prior.
+We want to study axioms for which, for worlds which satisfy such conditions, some anonymous, conclusive, holding claim exists that is permanently verifiable under that axiom.
 
-\Cref{th:holdsNotVerifUnderNotOfE} shows the insufficiency of the prior $F_C$: for “most” such worlds (in some technical sense to be fully elucidated), there exists no anonymous claim that holds and is conclusive and permanently verifiable under $¬\POF[C ∩ E] ∩ E$.
+\Cref{th:holdsNotVerifUnderNotOfE} shows the insufficiency of the axiom $F_C$: for “most” such worlds (in some technical sense to be fully elucidated), there exists no anonymous claim that holds and is conclusive and permanently verifiable under $¬\POF[C ∩ E] ∩ E$.
 % For a claim to exist satisfying an, holds, concl, and PV under ¬POF ∩ E, we need the world to satisfy D^gap?
 % Indeed, if C entails … → a dec or b dec, build a world where a not dec and b convincing when a is with him, and b sometimes not convincing 
 %D^gAp, the extension of D^gap for the case of some set of arguments A such that g ⊆ \ileadsto p ⇒ ∃a ∈ A | a \ileadstost p.
@@ -401,7 +402,7 @@ We want to study priors for which, for worlds which satisfy such conditions, som
 \subsection{Visibility}
 We now add the last piece of the puzzle.
 For a suitable claim to exist, 
-we need the prior to ensure that no behavior is sufficiently “strange” that an individual $i$ can satisfy the pattern $\anobs ⊆ \ileadstoo$, but fail $a \ileadstost p$, but only fail it in a way that is invisible to our observational capacities.
+we need the axiom to ensure that no behavior is sufficiently “strange” that an individual $i$ can satisfy the pattern $\anobs ⊆ \ileadstoo$, but fail $a \ileadstost p$, but only fail it in a way that is invisible to our observational capacities.
 In words, we request that those individuals have some path compatible with those used in $\anobs$ where it is visible that $a$ does not decisively lead $i$ to $p$ (thus $a$ appears at the end of $α$ and yet $α \nileadsto p$). 
 In formal terms, we impose $D^{\anobs, a, p}$, defined as
 \begin{equation}
@@ -411,20 +412,20 @@ In formal terms, we impose $D^{\anobs, a, p}$, defined as
 
 \begin{example}
   \label{ex:explainPriorVis}
-  Let us illustrate this latest prior and also the fact that a claim need not pinpoint every possible regularity to be useful.
+  Let us illustrate this latest axiom and also the fact that a claim need not pinpoint every possible regularity to be useful.
   Suppose that the world contains two kinds of individuals. The jays find $a$ decisive for $φ$. The kays however find $b$ decisive for $φ'$. Assume some researcher becomes aware of a part of this regularity: she realizes that individuals who, upon exposure to $(a, b)$, answer $φ$, all satisfy $a \ileadstost φ$, but ignores that a similar regularity holds for the kays. She claims $C = [∀i: (a, b) \ileadstog φ ⇒ a \ileadstostg φ]$.
-  This claim is anonymous and conclusive, and permanently verifiable under the prior $¬\POF ∩ E ∩ D^{\anobs, a, φ}$, with $\anobs = \set{(a, b), φ}$. As the prior holds, this implies that the claim holds. The prior $D^{\anobs, a, φ}$ requires to accept that whenever some individual satisfies $(a, b) \ileadsto φ$ but fails $a \ileadstostg φ$, some path that completes $(a, b)$ shows it, such as $(a, b, c, a) \nileadsto φ$. On the contrary, the prior fails if the only paths where $a$ fails to be decisive for that individual are paths that do not complete $(a, b)$. This could be the case, for example, if that individual is definitely impressed by the first influence he is exposed to, and never considers any other influences afterwards.
+  This claim is anonymous and conclusive, and permanently verifiable under the axiom $¬\POF ∩ E ∩ D^{\anobs, a, φ}$, with $\anobs = \set{(a, b), φ}$. As the axiom holds, this implies that the claim holds. The axiom $D^{\anobs, a, φ}$ requires to accept that whenever some individual satisfies $(a, b) \ileadsto φ$ but fails $a \ileadstostg φ$, some path that completes $(a, b)$ shows it, such as $(a, b, c, a) \nileadsto φ$. On the contrary, the axiom fails if the only paths where $a$ fails to be decisive for that individual are paths that do not complete $(a, b)$. This could be the case, for example, if that individual is definitely impressed by the first influence he is exposed to, and never considers any other influences afterwards.
 \end{example}
 
-A sufficient (but not necessary) condition for this prior to be satisfied is that repeating often enough the influences that lead the individual out of $p$ lets her forget about the influences used in $\anobs$.
+A sufficient (but not necessary) condition for this axiom to be satisfied is that repeating often enough the influences that lead the individual out of $p$ lets her forget about the influences used in $\anobs$.
 
 \section{Conclusion}
-This study shows that, expectedly, general claims about regularity of behaviors of individuals facing exposure to influences can be seen to hold only under some prior knowledge, that requires acceptance beyond empirical verifiability.
+This study shows that, expectedly, general claims about regularity of behaviors of individuals facing exposure to influences can be seen to hold only under some prior knowledge, phrased here as axioms, that requires acceptance beyond empirical verifiability.
 Without delving into epistemological analysis, which I am not qualified to give, let us note that this is not specific to our endeavor and should come as no surprise: many claims in science require some non empirically verifiable assumptions for full applicability. For example, the apparently very low risk claim that the law of gravity applied in my living room yesterday, even though I was not there to observe it, requires some regularity assumption; claiming on the contrary that yesterday in my living room was an exception to the law of gravity (but that it holds everywhere else) is compatible with all observations done so far to validate (or attempt to falsify) it. (This is a variant of the argument of \citet{goodman_fact_1983} about grass being green until some year and blue afterwards.)
 
-This article has defined the concept of deliberated judgment and related notions, and pinpointed the precise priors whose acceptance is required in order to be convinced of the veracity of a claim about deliberated judgments.
+This article has defined the concept of deliberated judgment and related notions, and pinpointed the precise axioms whose acceptance is required in order to be convinced of the veracity of a claim about deliberated judgments.
 
-As \cref{ex:explainPriorVis} illustrates, a prior may be hard to accept, depending on the exposure protocol and what is considered plausible behavior. The framework presented here is general and simple, a good thing for an initial study of a concept: complexity requires justification. But this framework may lack richness for some exposure protocols. For example, it may be visible in the content of an influence (say, of an argument) that it supports $φ$, thus, if an individual is in favor of $φ'$ after having been exposed to that influence, it may be considered a priori convincing that the individual would have been in favor of $φ'$ also without seeing the influence. Our framework forbids such prior knowledge about the influences. Supplementary structure relaxing this could represent a middle-ground between our completely opaque approach of influences and the whole logical apparatus of formal argument theory which does not consider the argument’s compatibilities as empirical, and would be worth studying.
+As \cref{ex:explainPriorVis} illustrates, an axiom may be hard to accept, depending on the exposure protocol and what is considered plausible behavior. The framework presented here is general and simple, a good thing for an initial study of a concept: complexity requires justification. But this framework may lack richness for some exposure protocols. For example, it may be visible in the content of an influence (say, of an argument) that it supports $φ$, thus, if an individual is in favor of $φ'$ after having been exposed to that influence, it may be considered a priori convincing that the individual would have been in favor of $φ'$ also without seeing the influence. Our framework forbids such prior knowledge about the influences. Supplementary structure relaxing this could represent a middle-ground between our completely opaque approach of influences and the whole logical apparatus of formal argument theory which does not consider the argument’s compatibilities as empirical, and would be worth studying.
 
 The dependence of the deliberated judgment concept on the exposure protocol yields a qualification about the concept of deliberated judgments when one desires to use it normatively: it is only as reasonable to call the resulting judgments “deliberate” in a normative sense as the exposure protocol is normatively relevant to deliberation. A sufficiently restricted, or even purposefully chosen, set of influences may yield judgments that are only deliberate in the technical sense used here, but that pertain more to brain-washing than to reflective judgments. While it is indeed a long-term goal of this research program to yield a normatively relevant conception of preference (appropriate, for example, for recommendation), it is not a claim of this article that anything that corresponds to deliberated judgments as defined here qualify as being appropriate for any normative use: much depends on the chosen exposure protocol. The goal of this article is rather one of a conceptual and practical clarification. It proposes a sharp distinction between the empirical content and the normative content of the concept of deliberated judgments: the definition proposed here transfers the full normative weight on the choice of the exposure protocol; and leaves the rest of the disagreements to empirical settling. This is methodologically akin, mutatis mutandis, to the axiomatic study of justice such as done in social choice, only complementing mathematical deduction with empirical claims. In social choice, the choice of axioms bears the full normative weight; once axioms are chosen, it is a matter of logic which social choice rules (if any) correspond to that choice. In our case, once an exposure protocol is chosen, it is an empirical matter which deliberated judgments result.
 In supplement to a possibly helpful conceptual clarification, such a sharp separation may reveal practically useful for separation of concern as it permits to study deliberated judgments empirically under various exposure protocols independently of possible disagreements about which norms are more appropriate for deliberation in which circumstances.
@@ -442,7 +443,7 @@ We say that a claim $C$ \emph{holds} iff $\allleadsto ∈ C$; $C$ \emph{fails} o
 
 The claim $C$ is verifiable in the world $\allleadstog$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑θ ⊆ C$.
 $C$ is possibly verifiable iff it is verifiable in some world; formally, iff $∃ θ ∈ Θ \suchthat ↑θ ⊆ C$.
-Given $C, D ⊆ \allleadstos$, $C$ is verifiable at $\allleadstog$ under prior $D$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$, and possibly verifiable under prior $D$ iff $∃ θ ∈ Θ \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
+Given $C, D ⊆ \allleadstos$, $C$ is verifiable at $\allleadstog$ under axiom $D$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$, and possibly verifiable under axiom $D$ iff $∃ θ ∈ Θ \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
 Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{permanently verifiable} (PV) under $D$ at $\allleadstog$ iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑θ' ∩ D ⊆ C$.
 
 Established verifiability (EV) mandates verifiability in all compatible worlds; formally,
@@ -477,7 +478,7 @@ The set $Θ ∩ C^⊆$ is downwards closed, as both $Θ$ and $C^⊆$ are.
 \subsection{Verifiability}
 \begin{theorem}
   \label{th:vudImpliesHolds}
-  Given a prior $D$ such that $\allleadsto ∈ D$, if a claim $C$ is verified under $D$, then $C$ holds.
+  Given an axiom $D$ such that $\allleadsto ∈ D$, if a claim $C$ is verified under $D$, then $C$ holds.
 \end{theorem}
 \begin{proof}
   Consider any $θ$ that satisfies verifiedness under $D$. 
@@ -485,7 +486,7 @@ The set $Θ ∩ C^⊆$ is downwards closed, as both $Θ$ and $C^⊆$ are.
   By hypothesis, $\allleadsto ∈ D$.
   Therefore, by verifiedness, $\allleadsto ∈ C$.
 \end{proof}
-Using the trivial prior $D = \allleadstos$, we obtain this corollary.
+Using the trivial axiom $D = \allleadstos$, we obtain this corollary.
 \begin{corollary}
   \label{th:vImpliesHolds}
   If a claim is verified, it holds.
@@ -710,14 +711,14 @@ The following example presents a situation where non rejection is due to finiten
 \begin{corollary}
   \label{th:obsCompEst}
   Given any claims $C, D ⊆ \allleadstos$,
-  established verifiability under prior $D$, that is, 
+  established verifiability under axiom $D$, that is, 
   $∀\allleadstog ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$,
   is equivalent to 
   $∀\allleadstog ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ (D ∖ C)^⊆$.
 \end{corollary}
 \begin{corollary}
   \label{th:dual}
-  $C$ satisfies established verifiability under prior $D$
+  $C$ satisfies established verifiability under axiom $D$
   iff $∀\allleadstog ∈ C ∩ D: \OF[D ∖ C](\allleadstog)$.
 \end{corollary}
 
@@ -734,7 +735,7 @@ falsifiability guarantees that a non trivial claim holds if, and only if, it is 
 
 \begin{theorem}
   Given any claim $C$,
-  the prior $¬\OF(\allleadsto)$ proves $C$ iff 
+  the axiom $¬\OF(\allleadsto)$ proves $C$ iff 
   $C$ is falsifiable or trivial.
 \end{theorem}
 \begin{proof}
@@ -747,10 +748,10 @@ Provability by $¬\OF(\allleadsto)$ (equivalently, falsifiability or triviality)
   Similarly for $C_2 = \set{(a) \ileadsto φ ∨ (b) \ileadsto φ}$ and $θ = \set{(a) \ileadsto φ}$.
   
   Also, consider $C_3$ being $∀j: (c) \ileadsto[j] φ$, $C_4$ being $(d) \ileadsto[j] φ ∧ (e) \ileadsto[j] φ$ and $C$ being $C_1$ or $C_2$ together with $C_3$ or $C_4$ (assuming infinitely many individuals if using $C_1$ or $C_3$).
-  Then, $C$ is fails established verifiability (due to $C_3$ or $C_4$) and $¬\OF(\allleadsto)$ does not prove $C$ (due to $C_1$ or $C_2$), but $C$ satisfies established verifiability under prior $¬\OF(\allleadsto)$ (with verification $(a) \ileadsto φ$).
+  Then, $C$ is fails established verifiability (due to $C_3$ or $C_4$) and $¬\OF(\allleadsto)$ does not prove $C$ (due to $C_1$ or $C_2$), but $C$ satisfies established verifiability under axiom $¬\OF(\allleadsto)$ (with verification $(a) \ileadsto φ$).
 \end{example}
   
-This suggests conjecturing that established verifiability under $D'$ is always strictly stronger than established verifiability under $D$, for any priors $D ⊆ D'$.
+This suggests conjecturing that established verifiability under $D'$ is always strictly stronger than established verifiability under $D$, for any axioms $D ⊆ D'$.
 % This is not the case in general; \cref{app:evStrictNested} investigates the question and reports the current state of its characterization.
 
 Note that if a claim is not provable by $¬\OF(\allleadsto)$ (equivalently, some world is out of $C$ and NOT OF), then some world is out of $C$ and NOT POF.
@@ -761,16 +762,16 @@ the triples completable only out of C are all unobservable.
 Indeed, $Θ ∩ \powerset{\allleadstog} ⊆ C^⊆$ is equivalent to $∀T ∈ \powerset{\allleadstog}, T ∉ C^⊆ ⇒ T ∉ Θ$.
 When a claim is never falsifiable, thus $∀\allleadstog, ¬\OF(\allleadstog)$, we obtain $Θ ⊆ C^⊆$.
 
-If $D ⊆ D'$, then established verifiability under prior $D'$ implies established verifiability under prior $D$.
+If $D ⊆ D'$, then established verifiability under axiom $D'$ implies established verifiability under axiom $D$.
 
 \Cref{th:toStricterClaims} shows that impossibilities propagate to stricter claims.
 Together with \cref{th:minimalPriorForInformativeness}, it shows that 
-the prior required must be at least as strong as claiming that if some observable holds, then some configuration of DJs is excluded.
+the axiom required must be at least as strong as claiming that if some observable holds, then some configuration of DJs is excluded.
 \begin{remark}
-  Suffices that the prior states something like: if almost all individuals deliberately believe $φ$, then everybody deliberately believe $φ$. This innocuous enough prior suffices because we request only informativeness, and indeed it only permits to restrict possibilities, not to determine anybody’s DJ.
+  Suffices that the axiom states something like: if almost all individuals deliberately believe $φ$, then everybody deliberately believe $φ$. This innocuous enough axiom suffices because we request only informativeness, and indeed it only permits to restrict possibilities, not to determine anybody’s DJ.
 \end{remark}
 
-\subsection{Verifiability under a prior}
+\subsection{Verifiability under an axiom}
 \begin{theorem}
   Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$: $C$ is PV under $D$ at $\allleadstog$ iff $\POF[D ∖ C](\allleadstog)$.
 \end{theorem}
@@ -780,7 +781,7 @@ the prior required must be at least as strong as claiming that if some observabl
 \end{proof}
 \begin{corollary}
   \label{th:dualPof}
-  $C$ satisfies PV under prior $D$ iff $∀\allleadstog ∈ C ∩ D: \POF[D ∖ C](\allleadstog)$.
+  $C$ satisfies PV under axiom $D$ iff $∀\allleadstog ∈ C ∩ D: \POF[D ∖ C](\allleadstog)$.
 \end{corollary}
 \begin{corollary}
   \label{th:pevImpliesEv}
@@ -807,11 +808,11 @@ equivalently, iff $S$ is NOT never falsifiable.
 
 $D$ is observationally completable to $C$ iff 
 $∃ θ ∈ (Θ ∩ D^⊆) \suchthat θ ∉ (D ∖ C)^⊆$.
-\Cref{th:obsComp} shows the equivalence with possible verifiability under prior $D$.
+\Cref{th:obsComp} shows the equivalence with possible verifiability under axiom $D$.
 
 $D$ is necessarily observationally completable to $C$ iff 
 $∀\allleadstog ∈ D, \OF[D ∖ C](\allleadstog)$.
-\Cref{rk:necObsComp} shows the lack of equivalence with established verifiability under prior $D$.
+\Cref{rk:necObsComp} shows the lack of equivalence with established verifiability under axiom $D$.
 
 Converting a claim to disjunctive normal form is useful to characterize its compatible observations, as \cref{th:dnf} indicates.
 \begin{example}
@@ -829,7 +830,7 @@ Converting a claim to disjunctive normal form is useful to characterize its comp
   (wlog, pick $t_1 = ((a_1), i, p_1 ≠ φ)$, then for observability we need to pick $t_2 = ((a'_2), j, .)$ and there is no choice left for $t_3$).
 \end{example}
 
-$C$-scrutiny is the prior $D_C
+$C$-scrutiny is the axiom $D_C
 = \set{\allleadsto \suchthat ∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆}
 $.
 
@@ -840,16 +841,16 @@ $.
   is inadequate, as this prevents the prefix $θ = \set{(a') \ileadstog[j] φ}$ from bringing not POF.
   The condition $∃θ ∈ Θ \suchthat ∀θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}: θ' ∈ C^⊆$ is also not suitable, as it is always satisfied: pick any $θ ∈ Θ$ such that $θ ∉ \powerset{\allleadstog}$.
 
-  The following alternative prior, which might be considered for its apparent proximity with the chosen one, is also inadequate:
+  The following alternative axiom, which might be considered for its apparent proximity with the chosen one, is also inadequate:
   $∀\allleadstog, θ ∈ Θ ∩ \powerset{\allleadstog}, [∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆] ⇒ [θ ∈ C^⊆]$.
   Consider again $C_1$ and $\allleadstog$ such that $(a) \ileadstog φ ∧ (a') \nileadstog φ$.
-  The chosen prior ($\POF[C_1](\allleadstog) ⇒ ¬\OF(\allleadstog)$) holds, as intuition commands, as the antecedent fails for the reason given above. The alternative prior however fails as $θ = \set{(a') \ileadstog φ}$ is completable only out of $C$.
+  The chosen axiom ($\POF[C_1](\allleadstog) ⇒ ¬\OF(\allleadstog)$) holds, as intuition commands, as the antecedent fails for the reason given above. The alternative axiom however fails as $θ = \set{(a') \ileadstog φ}$ is completable only out of $C$.
 \end{remark}
 
 \begin{remark}
   \label{rk:dualEv}
   Verifiability and observable falsity have a dual character as
-  $C$ satisfies established verifiability under prior $D$ iff 
+  $C$ satisfies established verifiability under axiom $D$ iff 
   $∀\allleadstog ∈ C ∩ D, \OF[D ∖ C](\allleadstog)$ (\cref{th:dual}).
 \end{remark}
 
@@ -866,19 +867,19 @@ This (to be proven) captures the claim “there is no decisive influence for $i$
 \end{theorem}
 \begin{example}[No decisive influence]
   \label{ex:noDecArg}
-  The claim $C = \set{\allleadstog \suchthat π(\allleadstog)(I) = \set{∅}}$ is possibly verifiable under prior $D$ iff $D$ is observationally completable to $\set{\allleadstog \suchthat π(\allleadstog)(I) = \set{∅}}$.
+  The claim $C = \set{\allleadstog \suchthat π(\allleadstog)(I) = \set{∅}}$ is possibly verifiable under axiom $D$ iff $D$ is observationally completable to $\set{\allleadstog \suchthat π(\allleadstog)(I) = \set{∅}}$.
 \end{example}
 
 \Cref{th:noDecArgi,ex:noDecArg} illustrate (what?) about no decisive influences.
 
 \begin{theorem}
   \label{th:complFals}
-  $D ∖ C$ is falsifiable or trivial iff ($C$ satisfies established verifiability under prior $D$ AND
+  $D ∖ C$ is falsifiable or trivial iff ($C$ satisfies established verifiability under axiom $D$ AND
   $∀\allleadstog ∉ D: \OF[D ∖ C](\allleadstog)$).
 \end{theorem}
 \begin{proof}
   $D ∖ C$ is falsifiable or trivial iff $∀\allleadstog ∉ (D ∖ C): \OF[D ∖ C](\allleadstog)$, equivalently (as $\allleadstog ∉ D ∖ C ⇔ \allleadstog ∉ D ∨ \allleadstog ∈ C$), iff $[∀\allleadstog ∉ D: \OF[D ∖ C](\allleadstog)] ∧ [∀\allleadstog ∈ C: \OF[D ∖ C](\allleadstog)]$.
-  As $C ∖ D ⊆ \overline D$, the second conjunct is already implied on $C ∖ D$ by the first, so it reduces to $∀\allleadstog ∈ C ∩ D: \OF[D ∖ C](\allleadstog)$, that is, by \cref{th:dual}, to established verifiability under prior $D$.
+  As $C ∖ D ⊆ \overline D$, the second conjunct is already implied on $C ∖ D$ by the first, so it reduces to $∀\allleadstog ∈ C ∩ D: \OF[D ∖ C](\allleadstog)$, that is, by \cref{th:dual}, to established verifiability under axiom $D$.
 \end{proof}
 \begin{corollary}
   $\allleadstos ∖ C$ is falsifiable or trivial iff $C$ satisfies established verifiability.
@@ -914,8 +915,8 @@ This (to be proven) captures the claim “there is no decisive influence for $i$
   $\OF(\allleadstog) ⇔ ∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆ ⇔ ∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ (¬\OF(\allleadsto))^⊆ ⇔ \OF[D](\allleadstog) ⇒ \OF[D ∖ C](\allleadstog)$.
 \end{proof}
 \begin{theorem}
-  Considering a claim $C$ and prior $D$ being $¬\OF(\allleadsto)$,
-  $D ∖ C$ is falsifiable or trivial iff $C$ satisfies established verifiability under prior $¬\OF(\allleadstog)$.
+  Considering a claim $C$ and axiom $D$ being $¬\OF(\allleadsto)$,
+  $D ∖ C$ is falsifiable or trivial iff $C$ satisfies established verifiability under axiom $¬\OF(\allleadstog)$.
 \end{theorem}
 \begin{proof}
   Using \cref{th:complFals}, it is sufficient to prove that for any $C$, considering any $\allleadstog ∉ D$ (thus, $\OF(\allleadstog)$), $\OF[D ∖ C](\allleadstog)$ holds. This is given by \cref{th:ofRelations}.
@@ -955,7 +956,7 @@ Being closed under finite modification and non-empty does not entail triviality.
 \begin{remark}
   \label{rk:rpevGap}
   By \cref{th:dualPof}, $\allleadstog ∈ C ∩ D$ satisfies established verifiability but not PV under $D$ iff $\OF[D ∖ C](\allleadstog) ∧ ¬\POF[D ∖ C](\allleadstog)$, that is, iff $D ∖ C$ suffers visibility issues at $\allleadstog$.
-  So, for a given claim and prior, the gap between established verifiability and PV is precisely governed by visibility issues of $D ∖ C$: no such gap arises wherever $D ∖ C$ suffers no visibility issues.
+  So, for a given claim and axiom, the gap between established verifiability and PV is precisely governed by visibility issues of $D ∖ C$: no such gap arises wherever $D ∖ C$ suffers no visibility issues.
 \end{remark}
 
 A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\POF$.
@@ -1023,7 +1024,7 @@ A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\POF
 \begin{corollary}
   \label{th:obsComp}
   Given any claims $C, D ⊆ \allleadstos$,
-  possible verifiability under prior $D$, that is, 
+  possible verifiability under axiom $D$, that is, 
   $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ \allleadstog ∈ D: \allleadstog ∈ C$,
   is equivalent to 
   $D$ being observationally completable to $C$, that is,
@@ -1032,7 +1033,7 @@ A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\POF
 \begin{remark}
   \label{rk:necObsComp}
   Given any claims $C, D ⊆ \allleadstos$,
-  [$C$ satisfies established verifiability under prior $D$
+  [$C$ satisfies established verifiability under axiom $D$
   ($∀\allleadstog ∈ C ∩ D, \OF[D ∖ C](\allleadstog)$)
   is equivalent to
   $D$ is necessarily observationally completable to $C$
@@ -1045,7 +1046,7 @@ A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\POF
 \begin{corollary}
   \label{th:toStricterClaims}
   Given any claims $C, D ⊆ \allleadstos$,
-  if some claim $C' ⊆ C$ is possibly verifiable under prior $D$, that is, 
+  if some claim $C' ⊆ C$ is possibly verifiable under axiom $D$, that is, 
   $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ \allleadstog ∈ D: \allleadstog ∈ C'$,
   then 
   $D$ is observationally completable to $C$, that is,
@@ -1291,7 +1292,7 @@ The converse fails, as \cref{ex:anonProvNotFals} shows.
   Hence, fixing any $i_0 ∈ I$ and $v ∈ P$, the profile assigning $v$ to $i_0$ and $∅$ to all other individuals has a $v$-fiber of size $1 ∈ ℕ$, so it lies outside $π(E)$, giving $π(E) ≠ (P ∪ \set{∅})^I$.
 \end{proof}
 
-In some worlds, the prior by $¬\POF[C ∩ E] ∩ E$ is sufficient to get existence of suitable claims.
+In some worlds, the axiom $¬\POF[C ∩ E] ∩ E$ is sufficient to get existence of suitable claims.
 \begin{example}
   Consider the world 
   $\allleadsto = J × \allhists × \set{φ} ∪ K × \allhists × \set{φ'}$ 
@@ -1357,7 +1358,7 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
   Observe that each behavior in $\allleadstog'(I)$ is undistinguishable from $\allleadsto(I)$.
   By \cref{th:undistOf}, $¬\OF(\allleadstog')$.
 \end{proof}
-%TODO seems to me that a world in which ssome i1 has (a) ileadsto φ implies a ileadstost φ and (b) ileadsto φ' implies b ileadstost φ' (with common behaviors on common prefixes of (a) and (b)) satisfy the hyp: take an individual with both such behaviors as bnew. Though, this is a problem only if no path can be found that isolates kinds of individuals in non such contradictory ways. Anyway, what we really want is make sure that our Dgaps are really minimal for caract worlds where suitable claims exist and which priors are required.
+%TODO seems to me that a world in which ssome i1 has (a) ileadsto φ implies a ileadstost φ and (b) ileadsto φ' implies b ileadstost φ' (with common behaviors on common prefixes of (a) and (b)) satisfy the hyp: take an individual with both such behaviors as bnew. Though, this is a problem only if no path can be found that isolates kinds of individuals in non such contradictory ways. Anyway, what we really want is make sure that our Dgaps are really minimal for caract worlds where suitable claims exist and which axioms are required.
 \begin{conjecture}
   \label{conj:noSpecificArgNoClaim}
   Consider $\allleadsto ∈ E$ such that for no $(\anobs, a, p)$ with $∃ i ∈ I: \anobs ⊆ \ileadstoo$: $∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ a \ileadstost p$. Then no anonymous, conclusive claim that holds
@@ -1459,11 +1460,11 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
 \begin{remark}
   Taking $F_C := \allleadstos$ for every $C$ (trivially anonymous, and $C ⊆ \allleadstos$ always) recovers the plain statement: no such claim is PV under $(¬\OF) ∩ E$ alone.
 
-  As $\POF ⇒ \OF$ (so $¬\OF ⊆ ¬\POF$), this is a strictly stronger conclusion than the one obtained by using $¬\POF$ in place of $¬\OF$ throughout: shrinking the prior only makes it easier for a claim to be safely distinguished from the (smaller) gap $D ∖ C$, hence easier to be PV under it, so excluding PV under the smaller, $¬\OF$-built prior excludes it a fortiori under the larger, $¬\POF$-built one.
+  As $\POF ⇒ \OF$ (so $¬\OF ⊆ ¬\POF$), this is a strictly stronger conclusion than the one obtained by using $¬\POF$ in place of $¬\OF$ throughout: shrinking the axiom only makes it easier for a claim to be safely distinguished from the (smaller) gap $D ∖ C$, hence easier to be PV under it, so excluding PV under the smaller, $¬\OF$-built axiom excludes it a fortiori under the larger, $¬\POF$-built one.
 
-  $F_C$ can also be taken to be $D^{\anobs', a', p'}_C$ (\cref{th:oneMorePriorFull}'s prior, for any fixed $\anobs', a', p'$ — possibly different from the $\anobs, p$ of the hypothesis), or even $⋂_k D^{\anobs_k, a_k, p_k}_C$ for any family of triples: both required properties are inherited automatically. Indeed, $C ⊆ D^{\anobs', a', p'}_C$ always: for $\allleadstog ∈ C$, every row $b ∈ \allleadstog(I)$ lies in $S_C := ⋃_{\allleadstog'' ∈ C} \allleadstog''(I)$ ($\allleadstog$ itself witnesses it), so $\allleadstog(I) ∖ S_C = ∅$ and $D^{\anobs', a', p'}_C$'s defining condition — every $b ∈ \allleadstog(I) ∖ S_C$ failing $\anobs' ⊆ \ileadstogo[b] ⇒ a' \ileadstostg[b] p'$ is distinguishable from $S_C$ — holds vacuously. And $D^{\anobs', a', p'}_C$ is anonymous: membership $\allleadstog ∈ D^{\anobs', a', p'}_C$ is a condition on the set $\allleadstog(I)$ alone (whether a row lies in $\allleadstog(I) ∖ S_C$, fails the template, or is distinguishable from $S_C$, are all properties of the behavior itself, not of which individual realizes it), and $(\allleadstog ∘ σ)(I) = \allleadstog(σ(I)) = \allleadstog(I)$ for every permutation $σ$. Both properties — containing $C$, being anonymous — are preserved under arbitrary intersection (as pushforward by a bijection commutes with intersection), so the family closes under stacking finitely or infinitely many such filters together. So this whole family of claim-relative visibility filters, however combined, is powerless to rescue a claim once the underlying $(\anobs, p)$-pattern is absent from the world.
+  $F_C$ can also be taken to be $D^{\anobs', a', p'}_C$ (\cref{th:oneMorePriorFull}'s axiom, for any fixed $\anobs', a', p'$ — possibly different from the $\anobs, p$ of the hypothesis), or even $⋂_k D^{\anobs_k, a_k, p_k}_C$ for any family of triples: both required properties are inherited automatically. Indeed, $C ⊆ D^{\anobs', a', p'}_C$ always: for $\allleadstog ∈ C$, every row $b ∈ \allleadstog(I)$ lies in $S_C := ⋃_{\allleadstog'' ∈ C} \allleadstog''(I)$ ($\allleadstog$ itself witnesses it), so $\allleadstog(I) ∖ S_C = ∅$ and $D^{\anobs', a', p'}_C$'s defining condition — every $b ∈ \allleadstog(I) ∖ S_C$ failing $\anobs' ⊆ \ileadstogo[b] ⇒ a' \ileadstostg[b] p'$ is distinguishable from $S_C$ — holds vacuously. And $D^{\anobs', a', p'}_C$ is anonymous: membership $\allleadstog ∈ D^{\anobs', a', p'}_C$ is a condition on the set $\allleadstog(I)$ alone (whether a row lies in $\allleadstog(I) ∖ S_C$, fails the template, or is distinguishable from $S_C$, are all properties of the behavior itself, not of which individual realizes it), and $(\allleadstog ∘ σ)(I) = \allleadstog(σ(I)) = \allleadstog(I)$ for every permutation $σ$. Both properties — containing $C$, being anonymous — are preserved under arbitrary intersection (as pushforward by a bijection commutes with intersection), so the family closes under stacking finitely or infinitely many such filters together. So this whole family of claim-relative visibility filters, however combined, is powerless to rescue a claim once the underlying $(\anobs, p)$-pattern is absent from the world.
 
-  This breaks down for the \emph{upfront}, non-claim-relative prior $D^{\anobs', a', p'} = D^{\anobs', a', p'}_{\allbs, \allleadsto(I)}$ of \cref{th:oneMorePriorNarrow}: it is still anonymous by the same row-set argument (with $\allleadsto(I)$, fixed once and for all, playing the role of $S_C$ above), but $\allleadsto ∈ D^{\anobs', a', p'}$ is \emph{not} automatic from $C$ holding — it is exactly \cref{th:oneMorePriorNarrow}'s nontrivial hypothesis on the true world, so it cannot be folded into a $C ⊆ F_C$ assignment for free. Assumed explicitly instead, as an extra hypothesis $\allleadsto ∈ D^{\anobs', a', p'}$ alongside \cref{th:noPatternNoClaim}'s, the theorem's proof still applies verbatim (Step 1 gets $\allleadsto ∈ D^{\anobs', a', p'}$ from this hypothesis directly rather than from $C ⊆ F_C$): so the upfront richness assumption doesn't help either, it just has to be paid for explicitly, rather than obtained for free the way the claim-relative $D^{\anobs', a', p'}_C$ is.
+  This breaks down for the \emph{upfront}, non-claim-relative axiom $D^{\anobs', a', p'} = D^{\anobs', a', p'}_{\allbs, \allleadsto(I)}$ of \cref{th:oneMorePriorNarrow}: it is still anonymous by the same row-set argument (with $\allleadsto(I)$, fixed once and for all, playing the role of $S_C$ above), but $\allleadsto ∈ D^{\anobs', a', p'}$ is \emph{not} automatic from $C$ holding — it is exactly \cref{th:oneMorePriorNarrow}'s nontrivial hypothesis on the true world, so it cannot be folded into a $C ⊆ F_C$ assignment for free. Assumed explicitly instead, as an extra hypothesis $\allleadsto ∈ D^{\anobs', a', p'}$ alongside \cref{th:noPatternNoClaim}'s, the theorem's proof still applies verbatim (Step 1 gets $\allleadsto ∈ D^{\anobs', a', p'}$ from this hypothesis directly rather than from $C ⊆ F_C$): so the upfront richness assumption doesn't help either, it just has to be paid for explicitly, rather than obtained for free the way the claim-relative $D^{\anobs', a', p'}_C$ is.
 \end{remark}
 \begin{example}
   Consider the world
@@ -1527,7 +1528,7 @@ Given $\anobs$,
 $a ∈ \allargs$, 
 $p ∈ P$,
 define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any behavior that fails $\anobs$ leads $i$ to $(a, p)$ does so visibly out of $B$, the types of $C$.
-(We could relax the prior by adding $B ⊈ \allleadstog(I) ∨…$ (or $B ⊆ \allleadstog(I) ⇒ …$), because we need only verifiability when $B ⊈ \allleadstog(I)$!)
+(We could relax the axiom by adding $B ⊈ \allleadstog(I) ∨…$ (or $B ⊆ \allleadstog(I) ⇒ …$), because we need only verifiability when $B ⊈ \allleadstog(I)$!)
 
 \begin{theorem}
   \label{th:oneMorePriorGeneralPev}
@@ -1541,7 +1542,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 \begin{proof}
   Let $C_0$ be the claim built in the proof of \cref{th:oneMorePriorGeneral}, and set
   $C := C_0 ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$,
-  writing $S_C := ⋃_{\allleadstog' ∈ C} \allleadstog'(I)$ for the types of this (smaller) claim, and $D := (¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ for the prior at stake (both evaluated at this $C$, as in \cref{th:oneMorePriorGeneral}'s proof).
+  writing $S_C := ⋃_{\allleadstog' ∈ C} \allleadstog'(I)$ for the types of this (smaller) claim, and $D := (¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ for the axiom at stake (both evaluated at this $C$, as in \cref{th:oneMorePriorGeneral}'s proof).
 
   \emph{Holds, Anonymous.} $\allleadsto ∈ C_0$, and the new conjunct holds at $\allleadsto$ by hypothesis, so $\allleadsto ∈ C$. The new conjunct has the anonymity-friendly shape $∃i: Q(\allleadstog(i))$: for any permutation $σ$, $∃i: \anobs ⊆ (\allleadstog ∘ σ)(i) ⇔ ∃i: \anobs ⊆ \allleadstog(σ(i)) ⇔ ∃j: \anobs ⊆ \allleadstog(j)$, reindexing $j := σ(i)$; combined with $C_0$'s anonymity, $C ∘ σ = C$.
 
@@ -1604,7 +1605,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 
   \emph{APTS-P (hence APTS).} Fix $i_0 ∈ I$ with $θ_0 := \set{i_0} × \anobs ⊆ \allleadsto$ (hypothesis). For any $\allleadstog' ∈ ↑θ_0 ∩ C$: $θ_0 ⊆ \allleadstog'$ gives $\anobs ⊆ \allleadstog'(i_0)$, so $C$'s first conjunct at $i_0$ gives $a \ileadstost[i_0] p$ in $\allleadstog'$ directly, that is $p ∈ P_{i_0}(\allleadstog')$; by \cref{th:sing}, $P_{i_0}(\allleadstog') = \set{p}$ exactly, that is $π_{i_0}(\allleadstog') = p$. Since moreover $\allleadsto ∈ ↑θ_0 ∩ C$ (as $θ_0 ⊆ \allleadsto$ and $\allleadsto ∈ C$), this set is nonempty, so $π_{i_0}(↑θ_0 ∩ C) = \set{p}$: as $p ∈ P$ and $θ_0$ is feasible, this is APTS-P, witnessed by $(θ_0, i_0, p)$; in particular $C$ is APTS.
 
-  \emph{Provable by $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$.} Write $S_C := ⋃_{\allleadstog' ∈ C} \allleadstog'(I)$ for the types of $C$, evaluated at the claim $C$ just constructed above (not circular: $S_C$, and the prior $D^{\anobs,a,p}_{\allleadstog(I) ∩ B, \, S_C}$, are only ever evaluated at this $C$, never used to construct it).
+  \emph{Provable by $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$.} Write $S_C := ⋃_{\allleadstog' ∈ C} \allleadstog'(I)$ for the types of $C$, evaluated at the claim $C$ just constructed above (not circular: $S_C$, and the axiom $D^{\anobs,a,p}_{\allleadstog(I) ∩ B, \, S_C}$, are only ever evaluated at this $C$, never used to construct it).
 
   \emph{Step 1 ($S_C$-types are decisive).} For $h ∈ S_C$, some $\allleadstog'' ∈ C$ and $i'' ∈ I$ satisfy $\allleadstog''(i'') = h$; $C$'s first conjunct at $i''$ gives $\anobs ⊆ h ⇒ a \ileadstostg[h] p$. Contrapositively, any $h$ with $\anobs ⊆ h ∧ a \nileadstostg[h] p$ satisfies $h ∉ S_C$.
 
@@ -1630,7 +1631,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 \end{proof}
 
 \begin{remark}
-  Taking $B = \allleadsto(I)$ trivializes the filter prior: $\allleadsto(I) ⊆ S_C$ (every row of $\allleadsto$ is, by \emph{Holds}, a type of $C$), so $\allleadstog(I) ∩ B ⊆ S_C$ always, the antecedent $(\allleadstog(I) ∩ B) ∖ S_C$ is never met, and $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C} = \allleadstos$. Taking $B = \allbs$ instead makes $\text{Bad} = ∅$, so $C_0$'s second conjunct vanishes and $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C} = D^{\anobs, a, p}_{\allleadstog(I), S_C} = D^{\anobs, a, p}_C$, the full prior of \cref{th:oneMorePriorFull}. This only ever used \emph{Holds} and the definition of $\text{Bad}$, so it holds verbatim for \cref{th:oneMorePriorGeneralPev}'s construction too: either theorem, at $B = \allleadsto(I)$, reduces to \cref{th:oneMorePriorNarrow}, and at $B = \allbs$, to \cref{th:oneMorePriorFull}. Between these extremes, the stronger the upfront prior on $\allleadsto$ (the smaller $B$), the weaker the residual prior needed in the filter (the smaller $\allleadstog(I) ∩ B$ to test) — and conversely.
+  Taking $B = \allleadsto(I)$ trivializes the filter axiom: $\allleadsto(I) ⊆ S_C$ (every row of $\allleadsto$ is, by \emph{Holds}, a type of $C$), so $\allleadstog(I) ∩ B ⊆ S_C$ always, the antecedent $(\allleadstog(I) ∩ B) ∖ S_C$ is never met, and $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C} = \allleadstos$. Taking $B = \allbs$ instead makes $\text{Bad} = ∅$, so $C_0$'s second conjunct vanishes and $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C} = D^{\anobs, a, p}_{\allleadstog(I), S_C} = D^{\anobs, a, p}_C$, the full axiom of \cref{th:oneMorePriorFull}. This only ever used \emph{Holds} and the definition of $\text{Bad}$, so it holds verbatim for \cref{th:oneMorePriorGeneralPev}'s construction too: either theorem, at $B = \allleadsto(I)$, reduces to \cref{th:oneMorePriorNarrow}, and at $B = \allbs$, to \cref{th:oneMorePriorFull}. Between these extremes, the stronger the upfront axiom on $\allleadsto$ (the smaller $B$), the weaker the residual axiom needed in the filter (the smaller $\allleadstog(I) ∩ B$ to test) — and conversely.
 \end{remark}
 
 \begin{corollary}
@@ -1644,7 +1645,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 \end{corollary}
 
 \begin{proof}
-  Apply \cref{th:oneMorePriorGeneralPev} with $B := \allleadsto(I)$: the hypothesis $\allleadsto(I) ⊆ B$ is trivial, and $D^{\anobs, a, p}_{\allbs, \allleadsto(I)} = D^{\anobs, a, p}$ is exactly the hypothesis here. By the remark following \cref{th:oneMorePriorGeneral}, at this $B$ the filter prior $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ trivializes to $\allleadstos$, so PV under $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is exactly PV under $¬\POF ∩ E$.
+  Apply \cref{th:oneMorePriorGeneralPev} with $B := \allleadsto(I)$: the hypothesis $\allleadsto(I) ⊆ B$ is trivial, and $D^{\anobs, a, p}_{\allbs, \allleadsto(I)} = D^{\anobs, a, p}$ is exactly the hypothesis here. By the remark following \cref{th:oneMorePriorGeneral}, at this $B$ the filter axiom $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ trivializes to $\allleadstos$, so PV under $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is exactly PV under $¬\POF ∩ E$.
 \end{proof}
 
 \begin{corollary}
@@ -1657,7 +1658,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 \end{corollary}
 
 \begin{proof}
-  Apply \cref{th:oneMorePriorGeneralPev} with $B := \allbs$: $\allleadsto(I) ⊆ B$ trivially, and $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, \allbs}$ holds vacuously, its antecedent $\allbs ∖ B = ∅$ being empty — no distinguishability hypothesis on $\allleadsto$ is needed at all. At this $B$, $\text{Bad} = ∅$, so $C_0$'s second conjunct vanishes, leaving $C = [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$; and $\allleadstog(I) ∩ B = \allleadstog(I)$, so the filter prior $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is the full $D^{\anobs, a, p}_{\allleadstog(I), S_C} = D^{\anobs, a, p}_C$. (All of the distinguishing burden is now paid at each candidate world rather than upfront on $\allleadsto$, in contrast to \cref{th:oneMorePriorNarrow}.)
+  Apply \cref{th:oneMorePriorGeneralPev} with $B := \allbs$: $\allleadsto(I) ⊆ B$ trivially, and $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, \allbs}$ holds vacuously, its antecedent $\allbs ∖ B = ∅$ being empty — no distinguishability hypothesis on $\allleadsto$ is needed at all. At this $B$, $\text{Bad} = ∅$, so $C_0$'s second conjunct vanishes, leaving $C = [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$; and $\allleadstog(I) ∩ B = \allleadstog(I)$, so the filter axiom $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is the full $D^{\anobs, a, p}_{\allleadstog(I), S_C} = D^{\anobs, a, p}_C$. (All of the distinguishing burden is now paid at each candidate world rather than upfront on $\allleadsto$, in contrast to \cref{th:oneMorePriorNarrow}.)
 \end{proof}
 
 \begin{corollary}
@@ -1688,7 +1689,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 
   $D^{\anobs, a, p}$ and $D^{\anobs, a, p}_{C'}$ are not comparable by inclusion: $D^{\anobs, a, p}$ quantifies over behaviors $b ∉ \allleadstog(I)$, tested against $\allleadstog(I)$ itself, whereas $D^{\anobs, a, p}_{C'}$ quantifies over behaviors $h ∈ \allleadstog(I) ∖ S_{C'}$, tested against the external set $S_{C'}$ (the types of $C'$).
 
-  Both proofs move a witness to an untouched clone using $E$ in the same way, but differ in when the distinguishing prior is cashed in. Here, $¬\POF ∩ E ⊆ C$ outright: $\allleadsto ∈ D^{\anobs, a, p}$ is a hypothesis on the true world alone, spent only once, upfront, to fix $B$ and the $H_b$'s, before any candidate world is examined, so it drops out of \cref{th:oneMorePriorNarrow}'s conclusion entirely. In \cref{th:oneMorePriorFull}, by contrast, $\allleadstog ∈ D^{\anobs, a, p}_{C'}$ must instead be invoked afresh at each tested $\allleadstog$, since its witnessing window depends on that world's own failing row $g := \allleadstog(i)$, which varies with $\allleadstog$; so that prior cannot similarly be dropped from the conclusion. So the asymmetry is not about $E$, but about when the distinguishing prior is cashed in: once, from $\allleadsto$ alone, for the stronger, $\allleadsto$-dependent claim $C$; or per candidate world, for the weaker, $\allleadsto$-independent claim $C'$.
+  Both proofs move a witness to an untouched clone using $E$ in the same way, but differ in when the distinguishing axiom is cashed in. Here, $¬\POF ∩ E ⊆ C$ outright: $\allleadsto ∈ D^{\anobs, a, p}$ is a hypothesis on the true world alone, spent only once, upfront, to fix $B$ and the $H_b$'s, before any candidate world is examined, so it drops out of \cref{th:oneMorePriorNarrow}'s conclusion entirely. In \cref{th:oneMorePriorFull}, by contrast, $\allleadstog ∈ D^{\anobs, a, p}_{C'}$ must instead be invoked afresh at each tested $\allleadstog$, since its witnessing window depends on that world's own failing row $g := \allleadstog(i)$, which varies with $\allleadstog$; so that axiom cannot similarly be dropped from the conclusion. So the asymmetry is not about $E$, but about when the distinguishing axiom is cashed in: once, from $\allleadsto$ alone, for the stronger, $\allleadsto$-dependent claim $C$; or per candidate world, for the weaker, $\allleadsto$-independent claim $C'$.
 
   The same two instantiations ($B := \allleadsto(I)$ and $B := \allbs$) apply just as well to \cref{th:oneMorePriorGeneral} itself, giving analogues of \cref{th:oneMorePriorNarrow,th:oneMorePriorFull} for the original, unaugmented claim $C_0$: an anonymous, holding claim that is APTS and provable by $¬\POF ∩ E$, respectively APTS and provable by $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{C_0}$.
 \end{remark}
@@ -1735,11 +1736,11 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 \subsection{More draft results}
 \begin{remark}
   \label{th:noGeneral}
-  No general prior is reasonable.
-  A prior $D$ that states something general and reasonable such as “falsifiability implies correctness” and would be strong enough to allow determining that some substantial claim $C$ holds would mean that later rejecting $C$ would require rejecting the general prior. We want to keep the option of later rejecting $C$ (because one cannot be sure), and we want this to happen without having to reject a general claim such as the correctness of the method of falsifiability, rather just a particular claim about over-generalization.
+  No general axiom is reasonable.
+  An axiom $D$ that states something general and reasonable such as “falsifiability implies correctness” and would be strong enough to allow determining that some substantial claim $C$ holds would mean that later rejecting $C$ would require rejecting the general axiom. We want to keep the option of later rejecting $C$ (because one cannot be sure), and we want this to happen without having to reject a general claim such as the correctness of the method of falsifiability, rather just a particular claim about over-generalization.
 
-  The prior must say that we can generalize this particular claim, which allow for later rejection.
-  To prove that no general prior is reasonable, we might assume that two contradictory theories, $C$ ($(a)$ leads everyone to $φ$) and $C'$ ($(a)$ leads everyone to $φ$ except if $(a, a')$ does not), can be validated under the prior, considering some observations at some point. If under the prior, some obs proves C, then no further obs can prove C' under the same prior, so the prior must say something that is contradicted by the further obs, compatible with C', so the prior contradicts C'. So if the prior allows to validate C, then it contradicts C'. To be checked…
+  The axiom must say that we can generalize this particular claim, which allow for later rejection.
+  To prove that no general axiom is reasonable, we might assume that two contradictory theories, $C$ ($(a)$ leads everyone to $φ$) and $C'$ ($(a)$ leads everyone to $φ$ except if $(a, a')$ does not), can be validated under the axiom, considering some observations at some point. If under the axiom, some obs proves C, then no further obs can prove C' under the same axiom, so the axiom must say something that is contradicted by the further obs, compatible with C', so the axiom contradicts C'. So if the axiom allows to validate C, then it contradicts C'. To be checked…
 \end{remark}
 
 \Cref{th:AHFimpl} and related show that anonymous and falsifiable claims that hold exist iff the situation does not satisfy $∀ \hist: P^{\intvl{\hist}} ⊆ \restr{{\allleadsto}(I)}{\intvl{\hist}}$. TODO check this.
@@ -1937,7 +1938,7 @@ APTS-P strengthens both APS-P (\cref{def:apsP}, dropping the requirement that $�
 We now turn to claims $C ⊆ E$ satisfying PV under $F_C = (¬\POF) ∩ E$.
 
 Recall the definition.
-$C$ satisfies PV under prior $(¬\POF) ∩ E$ iff 
+$C$ satisfies PV under axiom $(¬\POF) ∩ E$ iff 
 $∀\allleadstog ∈ C,
 ∀θ ∈ Θ ∩ \powerset{\allleadstog}, 
 ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀θ' ⊆ \allleadstog' ∈ (¬\POF) ∩ E: \allleadstog' ∈ C$.
@@ -1982,7 +1983,7 @@ $∀\allleadstog ∈ C,
   Define $\anobs = \set{((a, b), φ)}$.
   The claim $C = [(a, b) \ileadsto φ ⇒ a \ileadstost φ ∧ ∀α: α \nileadsto φ ⇒ (α, a, b) \nileadsto φ]$ holds, is anonymous, APTS-P, and provable by $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_C$.
 
-  Also, any behavior $\ileadstog$ out of $D^{\anobs, a, p}_C$ (meaning, any behavior whose presence in a world makes it fail that prior) satisfies, for some $α$: $(α, a, b) \nileadstog φ$ and $(a, b, α) \ileadstog φ$. In other words, any prior that forbids all those patterns suffice to ensure provability (together with $(¬\POF) ∩ E$, as usual).
+  Also, any behavior $\ileadstog$ out of $D^{\anobs, a, p}_C$ (meaning, any behavior whose presence in a world makes it fail that axiom) satisfies, for some $α$: $(α, a, b) \nileadstog φ$ and $(a, b, α) \ileadstog φ$. In other words, any axiom that forbids all those patterns suffice to ensure provability (together with $(¬\POF) ∩ E$, as usual).
 \end{example}
 
 \Cref{th:oneMorePriorGeneral}'s proof already splits, when showing provability, into worlds falsifying the template itself (Case A: handled purely from visibility out of $S_C$ and repeatability) and worlds satisfying the template yet failing its extra, $\text{Bad}$-avoidance content (Case B). There the second kind is handled too — but only because that particular extra content happens to be repairable by the very same influence (visibility out of $S_C$ along $H_b$, then repeating the witness at a fresh clone). The claim in the example just above instead adds a differently-shaped extra content ($∀α: α \nileadsto φ ⇒ (α, a, b) \nileadsto φ$) to the template, and nothing guarantees in general that failing it is similarly repairable: the following statement isolates what is needed for a world satisfying the template but failing arbitrary extra content to still be caught.
@@ -2104,18 +2105,18 @@ We are here interested in the interplay between properties of holding, anonymity
   $$C = [∀i ∈ I: (a) \ileadstogo φ ⇒ a \ileadstostg φ] ∩ [∀i ∈ I: (a) \ileadstogo φ' ⇒ c \ileadstostg φ] = C_1 ∩ C_2.$$
   $C$ holds ($J$ satisfies $C_1$ and vacuously $C_2$, $K$ conversely), is anonymous, and is APTS-P (witnessed by any $i_0 ∈ J$ and $θ_0 = \set{i_0} × \set{((a),φ)}$, as in \cref{th:oneMorePriorGeneral}).
 
-  \emph{$\allleadsto ∉ D^{\set{((a),φ)}, a, φ}$.} Pick $d ∈ \allargs ∖ \set{a,c}$, $S = \set{\hist ≠ ∅ \suchthat \hist_1 = d}$, and $g := \restr{b_k}{S} ∪ \restr{b_j}{\allhists ∖ S}$. Any $H ∈ \fincrhists$ is a chain, hence lies entirely inside $S$ or entirely outside it, so $g$ matches $b_k$ or $b_j$ on $H$: $g$ is undistinguishable from $\set{b_j,b_k}$. As $d ≠ a$, $(a) ∉ S$, so $g((a)) = b_j((a)) = φ$: $g$ matches $\anobs = \set{((a),φ)}$. As $(d,a) ∈ S$ and $c ∉ \set{d,a}$, $g((d,a)) = b_k((d,a)) = φ'$, and $a ∈ \histend((d,a))$: $a$ is not decisive for $φ$ in $g$. Yet $g ∉ \set{b_j,b_k}$ ($g((d)) = φ' ≠ φ = b_j((d))$; $g((a)) = φ ≠ φ' = b_k((a))$). So $g$ is exactly the counterexample $D^{\set{((a),φ)},a,φ}$ forbids: the prior genuinely fails at $\allleadsto$.
+  \emph{$\allleadsto ∉ D^{\set{((a),φ)}, a, φ}$.} Pick $d ∈ \allargs ∖ \set{a,c}$, $S = \set{\hist ≠ ∅ \suchthat \hist_1 = d}$, and $g := \restr{b_k}{S} ∪ \restr{b_j}{\allhists ∖ S}$. Any $H ∈ \fincrhists$ is a chain, hence lies entirely inside $S$ or entirely outside it, so $g$ matches $b_k$ or $b_j$ on $H$: $g$ is undistinguishable from $\set{b_j,b_k}$. As $d ≠ a$, $(a) ∉ S$, so $g((a)) = b_j((a)) = φ$: $g$ matches $\anobs = \set{((a),φ)}$. As $(d,a) ∈ S$ and $c ∉ \set{d,a}$, $g((d,a)) = b_k((d,a)) = φ'$, and $a ∈ \histend((d,a))$: $a$ is not decisive for $φ$ in $g$. Yet $g ∉ \set{b_j,b_k}$ ($g((d)) = φ' ≠ φ = b_j((d))$; $g((a)) = φ ≠ φ' = b_k((a))$). So $g$ is exactly the counterexample $D^{\set{((a),φ)},a,φ}$ forbids: the axiom genuinely fails at $\allleadsto$.
 
   \emph{Yet $C$ is not provable by $¬\OF ∩ E$ either.} Carve an infinite $I_3 ⊆ J$, leaving $J ∖ I_3$ infinite, and let $\allleadstog^*$ agree with $\allleadsto$ outside $I_3$, while every $i ∈ I_3$ realizes $g$ (answers $φ'$ on $S$, $φ$ elsewhere). Then $\allleadstog^* ∈ E$, and $\allleadstog^* ∉ C$: $g$ violates $C_1$, exactly as just shown. As in \cref{rk:generalTemplateExcluded}, any finite $θ ⊆ \allleadstog^*$ restricted to $i ∈ I_3$ is a single chain, so it lies entirely inside $S$ or entirely outside it — the two witnessing histories $(a)$ and $(d,a)$ are incomparable, so no observation ever sees both — and it always extends into some world of $C$ (complete $i$ as fully $a$-decisive, or route it into $C_2$). Individuals outside $I_3$ embed by relabelling. So $¬\OF(\allleadstog^*)$ holds outright: $\allleadstog^* ∈ E ∖ C$ with $¬\OF(\allleadstog^*)$ shows $C$ is not provable by $¬\OF ∩ E$, hence not by $¬\POF ∩ E$ either.
 
-  \emph{Where the assumption goes instead.} Applying the $B := \allbs$ analogue of \cref{th:oneMorePriorGeneral} (\cref{rk:compareFull}) to $C_1, C_2$ separately and intersecting gives $C$ provable by $(¬\POF) ∩ E ∩ D_1 ∩ D_2$, where $D_2 = D^{\set{((a),φ')},c,φ}_{C_2}$ is the claim-relative prior of the second conjunct, and $D_1 = D^{\set{((a),φ)},a,φ}_{C_1}$ that of the first: here, $\allleadstog ∈ D_1$ iff
+  \emph{Where the assumption goes instead.} Applying the $B := \allbs$ analogue of \cref{th:oneMorePriorGeneral} (\cref{rk:compareFull}) to $C_1, C_2$ separately and intersecting gives $C$ provable by $(¬\POF) ∩ E ∩ D_1 ∩ D_2$, where $D_2 = D^{\set{((a),φ')},c,φ}_{C_2}$ is the claim-relative axiom of the second conjunct, and $D_1 = D^{\set{((a),φ)},a,φ}_{C_1}$ that of the first: here, $\allleadstog ∈ D_1$ iff
   $$∀g ∈ \allleadstog(I) \suchthat (a) \ileadstog[g] φ ∧ a \nileadstostg[g] φ: ∃ (a) ⊆ α ∈ \allhists \suchthat a ∈ \histend(α) ∧ α \nileadstog[g] φ,$$ and $\allleadstog ∈ D_2$ iff
   $$∀g ∈ \allleadstog(I) \suchthat (a) \ileadstog[g] φ' ∧ c \nileadstostg[g] φ: ∃ (a) ⊆ α ∈ \allhists \suchthat c ∈ \histend(α) ∧ α \nileadstog[g] φ.$$ $\allleadsto ∈ D_1 ∩ D_2$ only vacuously, as neither $b_j$ nor $b_k$ violates either conjunct. But $\allleadstog^* ∉ D_1$: its spliced row $g$ has $g((a)) = φ$ and $a$ not decisive for $φ$ in $g$ (both shown above), yet $g$ is undistinguishable from $\set{b_j,b_k} ⊆ S_{C_1}$ on every $H$ — exactly the fact established above. So $\allleadstog^*$ is excluded from $D_1 ∩ D_2$ exactly as it would need to be excluded, upfront, from $D^{\set{((a),φ)},a,φ}$ for \cref{th:oneMorePriorNarrow}'s route to apply to this claim's shape.
 
-  So the two routes are not comparable in strength, and this is not a trade of one commitment for another. $D^{gap}$ is a hypothesis \emph{about the true world} $\allleadsto$, quantified over all of $\allbs$: something that must actually hold of reality, bought in exchange for the strongest conclusion, provable by the clean $¬\POF ∩ E$ itself, nothing left in the filter. $D_1, D_2$ are not a hypothesis on $\allleadsto$ at all here — $\allleadsto ∈ D_1 ∩ D_2$ holds automatically, vacuously — but a restriction on the \emph{scope} of the conclusion: worlds such as $\allleadstog^*$ are simply left outside the guarantee, whatever $\allleadsto$ turns out to be. That is a strictly cheaper, more reasonable kind of commitment. For this $C$ it is, moreover, the only kind available: $¬\OF(\allleadstog^*)$ is a structural fact about $\allleadstog^*$ alone, exactly as in \cref{rk:generalTemplateExcluded} — independent of $\allleadsto$ — so no hypothesis on $\allleadsto$, $D^{gap}$-shaped or otherwise, could ever repair provability by the clean $¬\POF ∩ E$ for this branch-and-escape shape of claim. $D^{gap}$ is not a pricier alternative route here: it is inapplicable. What survives is narrower than first stated: $D^{gap}$ remains the minimal prior, on $\allleadsto$ alone, for provability by the clean $¬\POF ∩ E$, only for claims sharing \cref{th:oneMorePriorNarrow}'s single-template shape; for a claim like $C$ here, no hypothesis on $\allleadsto$ alone buys the clean conclusion, and the claim-relative route's weaker, scoped guarantee is the best available.
+  So the two routes are not comparable in strength, and this is not a trade of one commitment for another. $D^{gap}$ is a hypothesis \emph{about the true world} $\allleadsto$, quantified over all of $\allbs$: something that must actually hold of reality, bought in exchange for the strongest conclusion, provable by the clean $¬\POF ∩ E$ itself, nothing left in the filter. $D_1, D_2$ are not a hypothesis on $\allleadsto$ at all here — $\allleadsto ∈ D_1 ∩ D_2$ holds automatically, vacuously — but a restriction on the \emph{scope} of the conclusion: worlds such as $\allleadstog^*$ are simply left outside the guarantee, whatever $\allleadsto$ turns out to be. That is a strictly cheaper, more reasonable kind of commitment. For this $C$ it is, moreover, the only kind available: $¬\OF(\allleadstog^*)$ is a structural fact about $\allleadstog^*$ alone, exactly as in \cref{rk:generalTemplateExcluded} — independent of $\allleadsto$ — so no hypothesis on $\allleadsto$, $D^{gap}$-shaped or otherwise, could ever repair provability by the clean $¬\POF ∩ E$ for this branch-and-escape shape of claim. $D^{gap}$ is not a pricier alternative route here: it is inapplicable. What survives is narrower than first stated: $D^{gap}$ remains the minimal axiom, on $\allleadsto$ alone, for provability by the clean $¬\POF ∩ E$, only for claims sharing \cref{th:oneMorePriorNarrow}'s single-template shape; for a claim like $C$ here, no hypothesis on $\allleadsto$ alone buys the clean conclusion, and the claim-relative route's weaker, scoped guarantee is the best available.
 \end{remark}
 
-The following shows that verifiability is a mandatory part of the criterion for determining whether $C$ holds, in that world: requiring the stronger provability instead of verifiability (under the same prior) leads to an impossibility.
+The following shows that verifiability is a mandatory part of the criterion for determining whether $C$ holds, in that world: requiring the stronger provability instead of verifiability (under the same axiom) leads to an impossibility.
 \begin{theorem}
   Consider the world 
   $\allleadsto = J × \allhists × \set{φ} ∪ K × \allhists × \set{φ'}$ 
@@ -4098,18 +4099,18 @@ I might need something like the following. $a$ is apparently innocuous iff $∀ 
   We know that $C$ is falsifiable iff $R ⊆ C$. Thus, $C$ is not falsifiable implies $C ⊊ R ⊆ R_1$ thus $C ⊊ R_1$. But we do not have that $C ⊊ R_1$ implies $C$ not falsifiable: could have $C ⊊ R_1$ but still $R = C$.
 \end{remark}
 
-\section{Strictness of established verifiability across nested priors}
+\section{Strictness of established verifiability across nested axioms}
 \label{app:evStrictNested}
 \subsection{The question}
-Given priors $D ⊆ D'$ (that is, $D, D' ⊆ \allleadstos$), established verifiability under $D'$ always implies established verifiability under $D$: restricting, in the witness required for a world $\allleadstog ∈ C ∩ D'$, the universal quantifier over $D'$ to the subset $D$, already gives a witness relative to $D$.
+Given axioms $D ⊆ D'$ (that is, $D, D' ⊆ \allleadstos$), established verifiability under $D'$ always implies established verifiability under $D$: restricting, in the witness required for a world $\allleadstog ∈ C ∩ D'$, the universal quantifier over $D'$ to the subset $D$, already gives a witness relative to $D$.
 This suggested the following conjecture.
 
 \begin{conjecture}
   \label{cnj:evStrict}
-  Given priors $D ⊆ D'$, established verifiability under $D'$ is strictly stronger than established verifiability under $D$. In other words, some claim satisfies established verifiability under $D$ but not established verifiability under $D'$.
+  Given axioms $D ⊆ D'$, established verifiability under $D'$ is strictly stronger than established verifiability under $D$. In other words, some claim satisfies established verifiability under $D$ but not established verifiability under $D'$.
 \end{conjecture}
 
-This appendix reports the current state of \cref{cnj:evStrict}: it is false in general, but an exact (if not externally simple) reduction is available; several increasingly general sufficient conditions are known for both possible outcomes — strictness, and its failure, which we call \emph{collapse}; one natural family of priors is completely characterized; and the reasons further generalizations fail are identified precisely, without the general question being settled.
+This appendix reports the current state of \cref{cnj:evStrict}: it is false in general, but an exact (if not externally simple) reduction is available; several increasingly general sufficient conditions are known for both possible outcomes — strictness, and its failure, which we call \emph{collapse}; one natural family of axioms is completely characterized; and the reasons further generalizations fail are identified precisely, without the general question being settled.
 
 \subsection{The conjecture fails, and an exact reduction}
 
@@ -4121,11 +4122,11 @@ This appendix reports the current state of \cref{cnj:evStrict}: it is false in g
   So established verifiability under $D$ and under $D'$ coincide for \emph{every} claim: \cref{cnj:evStrict} is false as stated.
 \end{example}
 
-Established verifiability under a prior $D$, for a claim $C$, is equivalent (\cref{th:dual}) to $∀\allleadstog ∈ C∩D: \OF[D∖C](\allleadstog)$. This gives an exact, if self-referential, reduction of \cref{cnj:evStrict}.
+Established verifiability under an axiom $D$, for a claim $C$, is equivalent (\cref{th:dual}) to $∀\allleadstog ∈ C∩D: \OF[D∖C](\allleadstog)$. This gives an exact, if self-referential, reduction of \cref{cnj:evStrict}.
 
 \begin{proposition}[Exact reduction]
   \label{prop:evExactReduction}
-  Given priors $D ⊆ D'$, established verifiability under $D'$ is strictly stronger than established verifiability under $D$ iff there is $T ⊆ D'$ such that $∀\allleadstog ∈ T ∩ D: \OF[D ∖ T](\allleadstog)$ and $∃\allleadstog ∈ T: ¬\OF[D' ∖ T](\allleadstog)$.
+  Given axioms $D ⊆ D'$, established verifiability under $D'$ is strictly stronger than established verifiability under $D$ iff there is $T ⊆ D'$ such that $∀\allleadstog ∈ T ∩ D: \OF[D ∖ T](\allleadstog)$ and $∃\allleadstog ∈ T: ¬\OF[D' ∖ T](\allleadstog)$.
 \end{proposition}
 \begin{proof}
   ($⇐$) Take $C = T$; as $T ⊆ D'$, $C ∩ D = T ∩ D$ and $C ∩ D' = T$, so by \cref{th:dual} the two displayed conditions are exactly established verifiability under $D$ for $C$, and its failure under $D'$.
@@ -4139,7 +4140,7 @@ Given $D ⊆ D'$, let $R = D' ∖ D$. Restricting \cref{prop:evExactReduction} t
 
 \begin{corollary}[Finite subset isolation criterion]
   \label{th:subsetIsolationCriterion}
-  Given priors $D ⊆ D'$ and $T ⊆ D$, if $∀\allleadstog ∈ T: \OF[D ∖ T](\allleadstog)$ but $∃\allleadstog ∈ T: ¬\OF[D' ∖ T](\allleadstog)$, then $C = T$ satisfies established verifiability under $D$ but not under $D'$.
+  Given axioms $D ⊆ D'$ and $T ⊆ D$, if $∀\allleadstog ∈ T: \OF[D ∖ T](\allleadstog)$ but $∃\allleadstog ∈ T: ¬\OF[D' ∖ T](\allleadstog)$, then $C = T$ satisfies established verifiability under $D$ but not under $D'$.
 \end{corollary}
 \begin{proof}
   Immediate from \cref{prop:evExactReduction}, since $T ⊆ D$ gives $T ∩ D = T$.
@@ -4147,7 +4148,7 @@ Given $D ⊆ D'$, let $R = D' ∖ D$. Restricting \cref{prop:evExactReduction} t
 
 \begin{corollary}[Triple-obstruction form of the isolation criterion]
   \label{th:subsetIsolationCriterionTriples}
-  Given priors $D ⊆ D'$, $C ⊆ D$, and finite covers $\mathcal S$ of $D ∖ C$, $\mathcal S'$ of $D' ∖ C$ (as in \cref{th:ofCover}), if
+  Given axioms $D ⊆ D'$, $C ⊆ D$, and finite covers $\mathcal S$ of $D ∖ C$, $\mathcal S'$ of $D' ∖ C$ (as in \cref{th:ofCover}), if
   \begin{itemize}
     \item every $\allleadstog ∈ C$ observes some finite $U ⊆ \allleadstog$, $U ∈ Θ$, with $∀S ∈ \mathcal S, ∃u ∈ U: \set{u} ∉ S^⊆$, and
     \item some $\allleadstog ∈ C$ observes no finite $U ⊆ \allleadstog$, $U ∈ Θ$, with $∀S' ∈ \mathcal S', ∃u ∈ U: \set{u} ∉ {S'}^⊆$,
@@ -4193,7 +4194,7 @@ The obstruction throughout \cref{ex:evSquareVsC} is that $Θ$ only allows, for e
 
 \begin{theorem}[Coordinate-conflict criterion for strictness]
   \label{th:coordinateConflictGeneral}
-  Given priors $D ⊆ D'$, $R = D' ∖ D$, and $T ⊆ D$ satisfying established verifiability under $D$.
+  Given axioms $D ⊆ D'$, $R = D' ∖ D$, and $T ⊆ D$ satisfying established verifiability under $D$.
   Suppose some $\allleadstog[0] ∈ T$ has a neighbour $v_1 ∈ D ∖ T$ differing from $\allleadstog[0]$ at exactly one pair $(i_0,x)$, and some $v_2 ∈ R$ differing from $\allleadstog[0]$ exactly on a set $Z_2 ⊆ \set{i_0} × \allhists$ with every $z ∈ Z_2$ incomparable to $x$.
   Then established verifiability under $D'$ fails for $C = T$.
 \end{theorem}
@@ -4212,7 +4213,7 @@ The simplest collapse mechanism uses one coordinate shared by, and injective on,
 
 \begin{theorem}[Collapse via one coordinate injective on all of $D'$]
   \label{th:evStrictOrCollapse}
-  Given priors $D ⊆ D'$, if $∃(i_0, \hist_0) ∈ I × \allhists \suchthat [\allleadstog ↦ \allleadstog(i_0, \hist_0)]$ is injective on $D'$ (in particular, this requires $\card{D'} ≤ \card P$), then established verifiability under $D$ and under $D'$ coincide, and in fact both hold, for every claim.
+  Given axioms $D ⊆ D'$, if $∃(i_0, \hist_0) ∈ I × \allhists \suchthat [\allleadstog ↦ \allleadstog(i_0, \hist_0)]$ is injective on $D'$ (in particular, this requires $\card{D'} ≤ \card P$), then established verifiability under $D$ and under $D'$ coincide, and in fact both hold, for every claim.
 \end{theorem}
 \begin{proof}
   Write $ι(\allleadstog) = \allleadstog(i_0, \hist_0)$, injective on $D'$. For $\allleadstog ∈ D'$, the singleton $θ_{\allleadstog} = \set{(i_0, \hist_0, ι(\allleadstog))}$ trivially satisfies the increasing-chain condition, so $θ_{\allleadstog} ∈ Θ ∩ \powerset{\allleadstog}$.
@@ -4225,7 +4226,7 @@ This is exactly what happens in \cref{ex:evCollapseTwoPoints} ($\allleadstog[1],
 
 \begin{theorem}[Disjoint-range decomposition]
   \label{th:evDisjointRanges}
-  Given priors $D ⊆ D'$ and $R = D' ∖ D$, suppose there are $i_0 ∈ I$ and $\hist_0 ∈ \allhists$ such that $D, R$ have disjoint ranges at $(i_0,\hist_0)$ (that is, $\set{\allleadstog(i_0,\hist_0) \suchthat \allleadstog ∈ D} ∩ \set{\allleadstog(i_0,\hist_0) \suchthat \allleadstog ∈ R} = ∅$), and that this also holds at every other $\hist ≠ \hist_0$ at which $D$ is not constant (some two elements of $D$ differ there).
+  Given axioms $D ⊆ D'$ and $R = D' ∖ D$, suppose there are $i_0 ∈ I$ and $\hist_0 ∈ \allhists$ such that $D, R$ have disjoint ranges at $(i_0,\hist_0)$ (that is, $\set{\allleadstog(i_0,\hist_0) \suchthat \allleadstog ∈ D} ∩ \set{\allleadstog(i_0,\hist_0) \suchthat \allleadstog ∈ R} = ∅$), and that this also holds at every other $\hist ≠ \hist_0$ at which $D$ is not constant (some two elements of $D$ differ there).
   Then, for every claim $C$: established verifiability under $D'$ holds for $C$ iff established verifiability under $D$ holds for $C$ and established verifiability under $R$ holds for $C$.
 \end{theorem}
 \begin{proof}
