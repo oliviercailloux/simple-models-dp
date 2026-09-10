@@ -393,8 +393,7 @@ For any anonymous and conclusive claim to exist that holds and is permanently
 verifiable under $¬\POF[C ∩ E] ∩ E$, we need the world to offer some systematic pattern of the form, whenever an individual satisfies some observable behavior, then she deliberately chooses a given proposition (\cref{th:noPatternNoClaim}). Assume that the world has such: $∃ \anobs, i, a, p \suchthat \anobs ⊆ \ileadstoo ⇒ ∃p \in π(\ileadstoo)$.
 We want to study priors for which, for worlds which satisfy such conditions, some anonymous, conclusive, holding claim exists that is permanently verifiable under that prior.
 
-\Cref{th:holdsNotVerifUnderNotOfE} shows the insufficiency of the prior $F_C$: for some worlds, there exists no anonymous claim that holds and is conclusive and permanently verifiable under $¬\POF[C ∩ E] ∩ E$.
-\commentOC{TODO verify and extend this}.
+\Cref{th:holdsNotVerifUnderNotOfE} shows the insufficiency of the prior $F_C$: for “most” such worlds (in some technical sense to be fully elucidated), there exists no anonymous claim that holds and is conclusive and permanently verifiable under $¬\POF[C ∩ E] ∩ E$.
 % For a claim to exist satisfying an, holds, concl, and PV under ¬POF ∩ E, we need the world to satisfy D^gap?
 % Indeed, if C entails … → a dec or b dec, build a world where a not dec and b convincing when a is with him, and b sometimes not convincing 
 %D^gAp, the extension of D^gap for the case of some set of arguments A such that g ⊆ \ileadsto p ⇒ ∃a ∈ A | a \ileadstost p.
@@ -412,7 +411,8 @@ In formal terms, we impose $D^{\anobs, a, p}$, defined as
 
 \begin{example}
   \label{ex:explainPriorVis}
-  Suppose the world contains two kinds of individuals. The jays find $a$ decisive for $φ$. The kays however find $b$ decisive for $φ'$. A researcher may observe the regularity that individuals who, upon exposure to $(a, b)$, answer $φ$, all satisfy $a \ileadstost φ$. The researcher may ignore that a similar regularity holds for the kays. She may claim $C = [∀i: (a, b) \ileadstog φ ⇒ a \ileadstostg φ]$.
+  Let us illustrate this latest prior and also the fact that a claim need not pinpoint every possible regularity to be useful.
+  Suppose that the world contains two kinds of individuals. The jays find $a$ decisive for $φ$. The kays however find $b$ decisive for $φ'$. Assume some researcher becomes aware of a part of this regularity: she realizes that individuals who, upon exposure to $(a, b)$, answer $φ$, all satisfy $a \ileadstost φ$, but ignores that a similar regularity holds for the kays. She claims $C = [∀i: (a, b) \ileadstog φ ⇒ a \ileadstostg φ]$.
   This claim is anonymous and conclusive, and permanently verifiable under the prior $¬\POF ∩ E ∩ D^{\anobs, a, φ}$, with $\anobs = \set{(a, b), φ}$. As the prior holds, this implies that the claim holds. The prior $D^{\anobs, a, φ}$ requires to accept that whenever some individual satisfies $(a, b) \ileadsto φ$ but fails $a \ileadstostg φ$, some path that completes $(a, b)$ shows it, such as $(a, b, c, a) \nileadsto φ$. On the contrary, the prior fails if the only paths where $a$ fails to be decisive for that individual are paths that do not complete $(a, b)$. This could be the case, for example, if that individual is definitely impressed by the first influence he is exposed to, and never considers any other influences afterwards.
 \end{example}
 
@@ -420,7 +420,7 @@ A sufficient (but not necessary) condition for this prior to be satisfied is tha
 
 \section{Conclusion}
 This study shows that, expectedly, general claims about regularity of behaviors of individuals facing exposure to influences can be seen to hold only under some prior knowledge, that requires acceptance beyond empirical verifiability.
-Without delving into epistemological analysis, which I am not qualified to give, let us note that this is not specific to our endeavor and should come as no surprise: many claims in science require some non empirically verifiable assumptions for full applicability. For example, the apparently very low risk claim that the law of gravity applied in my living room yesterday, even though I was not there to observe it, requires the assumption of regularity of laws; claiming on the contrary that yesterday in my living room was an exception to the law of gravity (but that it holds everywhere else) is compatible with all observations done so far to validate (or attempt to falsify) it. (This is a variant of the argument of \citet{goodman_fact_1983} about grass being green until some year and blue afterwards.)
+Without delving into epistemological analysis, which I am not qualified to give, let us note that this is not specific to our endeavor and should come as no surprise: many claims in science require some non empirically verifiable assumptions for full applicability. For example, the apparently very low risk claim that the law of gravity applied in my living room yesterday, even though I was not there to observe it, requires some regularity assumption; claiming on the contrary that yesterday in my living room was an exception to the law of gravity (but that it holds everywhere else) is compatible with all observations done so far to validate (or attempt to falsify) it. (This is a variant of the argument of \citet{goodman_fact_1983} about grass being green until some year and blue afterwards.)
 
 This article has defined the concept of deliberated judgment and related notions, and pinpointed the precise priors whose acceptance is required in order to be convinced of the veracity of a claim about deliberated judgments.
 
@@ -1359,9 +1359,66 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
 \end{proof}
 %TODO seems to me that a world in which ssome i1 has (a) ileadsto φ implies a ileadstost φ and (b) ileadsto φ' implies b ileadstost φ' (with common behaviors on common prefixes of (a) and (b)) satisfy the hyp: take an individual with both such behaviors as bnew. Though, this is a problem only if no path can be found that isolates kinds of individuals in non such contradictory ways. Anyway, what we really want is make sure that our Dgaps are really minimal for caract worlds where suitable claims exist and which priors are required.
 \begin{conjecture}
+  \label{conj:noSpecificArgNoClaim}
   Consider $\allleadsto ∈ E$ such that for no $(\anobs, a, p)$ with $∃ i ∈ I: \anobs ⊆ \ileadstoo$: $∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ a \ileadstost p$. Then no anonymous, conclusive claim that holds
   is PV under $(¬\OF) \cap E$.
 \end{conjecture}
+\begin{proof}[Proof attempt]
+  Write $D := (¬\OF[C]) ∩ E$ and suppose, towards a contradiction, that some anonymous, conclusive claim $C$ holds and is PV under $D$.
+
+  \emph{Step 1.} As $C$ holds, $\allleadsto ∈ C$; since $\allleadsto$ itself extends every finite prefix $θ ⊆ \allleadsto$ and lies in $C$, every such $θ$ is in $C^⊆$, so $¬\OF(\allleadsto)$; with $\allleadsto ∈ E$, $\allleadsto ∈ C ∩ D$.
+
+  \emph{Step 2.}
+  As $C$ is conclusive and $\allleadsto ∈ C$, applying conclusiveness at $θ = ∅$ gives $θ_0 ∈ Θ ∩ \powerset{\allleadsto}$, $i^* ∈ I$, $p^* ∈ P$ with $π_{i^*}(↑θ_0 ∩ C) = \set{p^*}$.
+  By \cref{th:dualPof} and PV, $\POF[D ∖ C](\allleadsto)$; applying at $θ_0$ gives $θ_0 ⊑ θ_1$ in $Θ ∩ \powerset{\allleadsto}$ with $↑θ_1 ∩ D ⊆ C$, hence:
+  \begin{equation}
+    ∀\allleadstog ∈ ↑θ_1 ∩ D: π_{i^*}(\allleadstog) = p^*. \tag{$\star$}
+  \end{equation}
+  Let $\anobs := θ_1|_{i^*}$ (so $\anobs ⊆ \ileadstoo[i^*]$ and $∃i: \anobs ⊆ \ileadstoo$).
+
+  \emph{Step 3.}
+  For any $a ∈ \allargs$: if every world in $C$ had every $\anobs$-satisfying individual $a$-decisive for $p^*$, then $\allleadsto ∈ C$ would witness the specific-arg pattern $(\anobs, a, p^*)$ in $\allleadsto$, contradicting the hypothesis.
+  Hence for each $a$ there exists a world in $C$ where some $\anobs$-satisfying individual is $a$-non-decisive.
+
+  Let $b_0 := \ileadstoo[i^*]$ (satisfies $\anobs$).
+  For each $a ∈ \allargs$: pick $\hist_a ∉ \anobs^{-1}(P)$ with $a ∈ \histend(\hist_a)$, all $\hist_a$ distinct (possible since $\anobs^{-1}(P)$ is finite).
+  Define $g'$ by $g' = b_0$ on $\anobs^{-1}(P)$, $g'(\hist_a) = p' ≠ p^*$ for each $a$, and $g' = b_0$ elsewhere.
+  Then $g'$ satisfies $\anobs$ and has no decisive arg for $p^*$: for each $a$, the path $\hist_a$ witnesses $a \nileadstostg[g'] p^*$.
+
+  \emph{Step 4.}
+  Let $w$ be the world obtained from $\allleadsto$ by replacing $i^*$'s behavior with $g'$ (adjusting other individuals as needed to maintain $w ∈ E$).
+  Then $w ∈ ↑θ_1$ since $\anobs = θ_1|_{i^*} ⊆ g'$ and other individuals are unchanged.
+
+  For $w ∈ ¬\OF[C]$: any finite prefix $θ$ of $w$ records $i^*$'s behavior on a finite chain of paths, witnessing $a$-non-decisiveness for only finitely many $a$'s.
+  Since $\allargs$ is infinite, some $a_0$ has $\hist_{a_0}$ outside this chain; extending $i^*$'s behavior to be $a_0$-decisive (replacing $p'$ by $p^*$ at $a_0$-paths not yet observed) yields a world in $C^⊆$, so $θ ∈ C^⊆$.
+  Hence $w ∈ ¬\OF[C]$, giving $w ∈ D$.
+
+  With $w ∈ ↑θ_1 ∩ D$, $(\star)$ gives $π_{i^*}(w) = p^*$.
+  But $i^*$'s behavior in $w$ is $g'$, which has no decisive arg for $p^*$, so $π_{i^*}(w) ≠ p^*$: a contradiction.
+\end{proof}
+\begin{theorem}
+  \label{th:promisingWorld}
+  Fix $φ ≠ φ' ∈ P$ and $a ≠ b ∈ \allargs$.
+  Suppose $\allleadsto ∈ E$ contains behaviors $(b_k)_{k ∈ ℕ}$, each shared by infinitely many individuals in $I$, such that $a \ileadstostg[b_0] φ$, $b \nileadstostg[b_0] φ$, and for each $k ≥ 1$: $b \ileadstostg[b_k] φ$, $a \nileadstostg[b_k] φ$, and $b_k$ agrees with $b_0$ on all paths of length $≤ k$.
+  Then the claim $C = [∀i: a \ileadstostg φ ∨ b \ileadstostg φ]$ is not PV under $(¬\POF) ∩ E$.
+\end{theorem}
+\begin{proof}
+  Write $D := (¬\POF[C]) ∩ E$.
+  By \cref{th:dualPof}, it suffices to exhibit $v ∈ C ∩ D$ with $¬\POF[D ∖ C](v)$.
+  Take $v := \allleadsto$: it holds ($\allleadsto ∈ C$), lies in $E$ by hypothesis, and since $\allleadsto ∈ C$, every $θ' ∈ Θ ∩ \powerset{\allleadsto}$ lies in $C^⊆$ (witnessed by $\allleadsto$ itself), so $¬\POF[C](\allleadsto)$: thus $\allleadsto ∈ C ∩ D$.
+
+  For $¬\POF[D ∖ C](\allleadsto)$, fix $θ = ∅$ and let $θ' ∈ Θ ∩ \powerset{\allleadsto}$ have max depth $m$.
+  Pick two paths $\hist_a, \hist_b$ of length $m+1$ sharing the same length-$m$ prefix, with $a ∈ \histend(\hist_a)$ and $b ∈ \histend(\hist_b)$; they are incompatible (neither is a prefix of the other).
+  Define behavior $g'$ to agree with $b_0$ on paths of length $≤ m$, set $g'(\hist_a) = g'(\hist_b) = φ'$, and $g'(α) = φ$ elsewhere.
+  Then $a \nileadstostg[g'] φ$ (witnessed by $\hist_a$) and $b \nileadstostg[g'] φ$ (witnessed by $\hist_b$).
+  Build $w$ agreeing with $θ'$ on its support, giving $g'$ to infinitely many fresh individuals, and distributing the rest among $b_0, b_1, b_2, \ldots$ (each to infinitely many): then $w ∈ E$ and $w ∉ C$.
+
+  It remains to verify $w ∈ ¬\POF[C]$, i.e., that every $θ ∈ Θ ∩ \powerset{w}$ lies in $C^⊆$.
+  For any $g'$-individual $j$, $θ$'s observations of $j$ form a chain, which can contain $\hist_a$ or $\hist_b$ but not both (they are incompatible).
+  If $\hist_a \notin θ$: extend $j$'s behavior to be $a$-decisive (consistent with $θ$, as no observed path ending in $a$ gives $φ'$), yielding a world in $C$.
+  If $\hist_b \notin θ$: extend to a $b$-decisive behavior similarly.
+  Either way $θ ∈ C^⊆$, so $w ∈ ¬\OF[C] ⊆ ¬\POF[C]$, hence $w ∈ D ∖ C$.
+\end{proof}
 \begin{theorem}
   \label{th:noPatternNoClaim}
   Consider $\allleadsto ∈ E$ such that for no $\anobs$, $p ∈ P$: $∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ P_i$.
@@ -1609,10 +1666,10 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
-  there exists an anonymous claim $C$ that holds, is conclusive and PV under $(¬\POF) ∩ E ∩ D$, where
+  there exists an anonymous claim $C$ that holds, is conclusive and PV under $(¬\POF) ∩ E ∩ D$, where $D$ is
   \begin{multline}
-    D := \Bigl\{ \allleadstog ∈ \allleadstos \suchthat ∀g ∈ \allleadstog(I) \text{ with } \anobs ⊆ g ∧ a \nileadstostg[g] p,\\
-    ∃α ∈ \allhists \suchthat \anobs^{-1}(P) ∪ \set{α} ∈ \fincrhists ∧ a ∈ \histend(α) ∧ g(α) ≠ p \Bigr\}.
+    \Bigl[∀g ∈ \allleadstog(I) \text{ with } \anobs ⊆ g ∧ a \nileadstostg[g] p,\\
+    ∃α ∈ \allhists \suchthat \anobs^{-1}(P) ∪ \set{α} ∈ \fincrhists ∧ a ∈ \histend(α) ∧ α \nileadstog[g] p \Bigr].
   \end{multline}
 \end{corollary}
 \begin{proof}
