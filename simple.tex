@@ -228,7 +228,7 @@ It is important to realize that $Θ$ is the set of \emph{a priori} possible obse
 $Θ ∩ \powerset{\allleadsto} = \set*{\restr{{\allleadsto}}{Q} \suchthat Q ∈ \allpriobss}$.
 Such an observation $θ ∈ Θ ∩ \powerset{\allleadsto}$ is called a feasible observation.
 
-Given a right unique $τ ⊆ (I × \allhists) × P$, we let $↑ τ = \set{\allleadstog ∈ \allleadstos \suchthat τ ⊆ \allleadstog}$ denote the set of “leads to” relations that complete $τ$ (thus $↑ ∅ = \allleadstos$).
+Given a right unique $τ ⊆ (I × \allhists) × P$, we let $↑ τ = [τ ⊆ \allleadstog]$ denote the set of “leads to” relations that complete $τ$ (thus $↑ ∅ = \allleadstos$).
 
 \subsection{Desideratas about claims}
 Onwards, we assume given an exposure protocol $(I, \allargs, \allleadsto)$.
@@ -283,7 +283,16 @@ some sufficiently simple claims, such as the claim $C = [(a) \ileadstog φ]$ tha
 In turns out that any claim that is conclusive fails verifiedness.
 This is even visible by considering a weaker property than conclusiveness.
 Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(↑θ ∩ C) ≠ (P ∪ \set{∅})^I$.
-Being informative in $\allleadsto$, a weaker demand than conclusiveness, implies failure of verifiedness (\cref{th:infoNotVerif}).
+\begin{remark}
+  Informativeness in $\allleadsto$ is weaker than conclusiveness: it only requires an observational ability of excluding some deliberated judgment functions. Contrary to conclusiveness, it permits mere counting: the claim that exactly two persons deliberately believe $φ$ is informative, but is not conclusive if the claim does not permit to know which individuals they are. Also, the claim $C = [(∃ i \suchthat (a) \nileadstog φ) ∧ (∀i: (a) \nileadstog φ ⇒ φ' ∈ π_i(\allleadstog))]$ is informative.
+  Informativeness may be a desirable property (rather than conclusiveness) as one may, for example, want to know whether a given proposition is believed by a majority of individuals.
+
+  This study focuses on conclusiveness to determine conditions that permit to point a specific individual, whose DJ is known. 
+  Because conclusiveness is stronger than informativeness, the possibility results we obtain apply to informativeness as well.
+\end{remark}
+
+Being informative in $\allleadsto$ implies failure of verifiedness (\cref{th:infoNotVerif}).
+Therefore, conclusiveness is incompatible with verifiedness.
 This may be expected, as we did not postulate yet any sort of regularity in the world, and ideed the fundamental reason for the incompatibility is that any observation can be completed in a way that contradicts any conclusion that informativeness in a world mandates (\cref{th:completable}).
 
 We thus now turn to examining which sort of prior knowledge will suffice for ensuring the existence of a verification procedure that will allow to determine that a conclusive and anonymous claim holds (when it indeed holds).
@@ -383,7 +392,7 @@ This is logically equivalent to mandating $¬\POF(\allleadsto)$, thus, excluding
   When considering a claim $C$ with no visibility issues, $C$-scrutiny is equivalent to $¬\OF(\allleadsto)$.
 
   The reason for adopting the axiom $¬\POF(\allleadsto)$ instead of $¬\OF(\allleadsto)$ is illustrated with
-  $C_1$ is $(a) \ileadsto φ ∧ (a') \ileadsto φ$ for a given $i$: in some world (for example, where $(a) \ileadstog φ$ even though $(a') \nileadstog φ$), $¬\POF[C_1](\allleadstog) ∧ \OF[C_1](\allleadstog)$, thus we cannot assume that non-observation of falsification implies not OF, because it might also be due to observing that $(a) \ileadstog φ$.
+  $C_1 = [(a) \ileadstog φ ∧ (a') \ileadstog φ]$ for a given $i$: in some world (for example, where $(a) \ileadstog φ$ even though $(a') \nileadstog φ$), $¬\POF[C_1](\allleadstog) ∧ \OF[C_1](\allleadstog)$, thus we cannot assume that non-observation of falsification implies not OF, because it might also be due to observing that $(a) \ileadstog φ$.
   It also applies to $C_2 = [∀i: (a') \ileadstog φ ∧ (a) \ileadstog[j] φ]$ for a given $j$, which in a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (a') \ileadstog φ$ is $¬\POF[C_2](\allleadstog)$ (consider the prefix $θ = \set{(a') \ileadstog[j] φ}$) and $\OF[C_2](\allleadstog)$.
   (Note that if $C_2$ fails because, for some $i$, $(a') \nileadstog φ$,
   then $θ$ is not a hiding prefix observation, conforming to intuition.)
@@ -465,33 +474,7 @@ This appendix relaxes the assumption of the main text that $\card{I} ∉ \N$ and
 It also relaxes the requirement that a claim be non-empty, thus, in this part, a claim is any subset of $\allleadstos$.
 Each result indicates which assumptions on the cardinalities of these sets (or whether $C ≠ ∅$) are required.
 
-We say that a claim $C$ \emph{holds} iff $\allleadsto ∈ C$; $C$ \emph{fails} otherwise.
-
-The claim $C$ is verifiable in the world $\allleadstog$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑θ ⊆ C$.
-$C$ is possibly verifiable iff it is verifiable in some world; formally, iff $∃ θ ∈ Θ \suchthat ↑θ ⊆ C$.
-Given $C, D ⊆ \allleadstos$, $C$ is verifiable at $\allleadstog$ under axiom $D$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$, and possibly verifiable under axiom $D$ iff $∃ θ ∈ Θ \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
-Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{permanently verifiable in the old sense} (PVo) under $D$ at $\allleadstog$ iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑θ' ∩ D ⊆ C$.
-Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{permanently verifiable} (PV) under $D$ at $\allleadstog$ iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑(θ' ∖ θ) ∩ D ⊆ C$.
-
-Established verifiability (EV) mandates verifiability in all compatible worlds; formally,
-$∀\allleadstog ∈ C: ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ ⊆ {\allleadstog'}: {\allleadstog'} ∈ C$.
-\begin{example}
-  The claim $C$ being $[∀i: (a) \ileadsto φ] ∨ (a') \ileadsto φ$
-  is possibly verifiable but fails established verifiability.
-\end{example}
-
-A claim $C$ is \emph{possibly informative} iff it is informative in some world of $C$, namely, iff $∃θ ∈ Θ ∩ C^⊆ \suchthat π(↑θ ∩ C) ≠ (P ∪ \set{∅})^I$.
-A claim $C$ is \emph{informative} iff $π(C) ≠ (P ∪ \set{∅})^I$.
-A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π_i(C) = \set{π_i(\allleadstog) \suchthat \allleadstog ∈ C} ≠ P ∪ \set{∅}$.
-A claim $C$ is \emph{a posteriori sharp} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(↑θ ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
-A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I \suchthat π_i(↑θ ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
-
-\begin{remark}
-  Informativeness permits mere counting: the claim that exactly two persons deliberately believe $φ$ is informative. Also, the claim $C = [(∃ i \suchthat (a) \nileadstog φ) ∧ (∀i: (a) \nileadstog φ ⇒ φ' ∈ π_i(\allleadstog))]$ is informative.
-  Informativeness may be a desirable property (rather than informativeness beyond counting) as one may, for example, want to know whether a given proposition is believed by a majority of individuals.
-  Note that 
-  informativeness beyond counting implies informativeness.
-\end{remark}
+We say that a claim $C$ \emph{fails} iff $\allleadsto ∉ C$.
 
 Note that $C^⊆$ is downwards closed, meaning that $∀ c ∈ C^⊆: c' ⊆ c ⇒ c' ∈ C^⊆$ (equivalently, $\set{c' ⊆ c} ⊆ C^⊆$).
 Both $\incr(\allhists)^I$ and $\allpriobss$ are downwards closed.
@@ -1724,6 +1707,27 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 \end{remark}
 \end{document}
 
+\section{Recently moved supplementary material}
+\subsection{Generalities}
+The claim $C$ is verifiable in the world $\allleadstog$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑θ ⊆ C$.
+$C$ is possibly verifiable iff it is verifiable in some world; formally, iff $∃ θ ∈ Θ \suchthat ↑θ ⊆ C$.
+Given $C, D ⊆ \allleadstos$, $C$ is verifiable at $\allleadstog$ under axiom $D$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$, and possibly verifiable under axiom $D$ iff $∃ θ ∈ Θ \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
+Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{permanently verifiable in the old sense} (PVo) under $D$ at $\allleadstog$ iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑θ' ∩ D ⊆ C$.
+Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{permanently verifiable} (PV) under $D$ at $\allleadstog$ iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑(θ' ∖ θ) ∩ D ⊆ C$.
+
+Established verifiability (EV) mandates verifiability in all compatible worlds; formally,
+$∀\allleadstog ∈ C: ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ ⊆ {\allleadstog'}: {\allleadstog'} ∈ C$.
+\begin{example}
+  The claim $C$ being $[∀i: (a) \ileadsto φ] ∨ (a') \ileadsto φ$
+  is possibly verifiable but fails established verifiability.
+\end{example}
+
+A claim $C$ is \emph{possibly informative} iff it is informative in some world of $C$, namely, iff $∃θ ∈ Θ ∩ C^⊆ \suchthat π(↑θ ∩ C) ≠ (P ∪ \set{∅})^I$.
+A claim $C$ is \emph{informative} iff $π(C) ≠ (P ∪ \set{∅})^I$.
+A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π_i(C) = \set{π_i(\allleadstog) \suchthat \allleadstog ∈ C} ≠ P ∪ \set{∅}$.
+A claim $C$ is \emph{a posteriori sharp} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(↑θ ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
+A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I \suchthat π_i(↑θ ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
+
 \section{Supplementary material}
 \Cref{tab:renaming} lists this informativeness/sharpness family together with the related notions defined elsewhere (conclusive, in the main text, already renamed from the former acronym SAPTS; indicative, further below in this appendix) and the renaming still proposed for the informativeness notions used in the main text (and their closest relatives), so that these read as ordinary words rather than acronyms; the more technical, appendix-only singleton-pinning family (APS, APTS, APS-P, APTS-P) keeps its acronym names.
 
@@ -1897,7 +1901,7 @@ Given $θ ∈ Θ$, let $θ^{\downarrow} = \set{(\hist,p) ∈ \allhists × P \suc
 \begin{theorem}[Anonymous APS-P claims are uniformly sharp]
   \label{th:apsPUniform}
   If $C$ is anonymous and APS-P via $(θ,i_0,p)$, then
-  $$C ⊆ \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: θ^i ⊆ \allleadstog ⇒ p ∈ π_i(\allleadstog)}.$$
+  $$C ⊆ [∀i ∈ I: θ^i ⊆ \allleadstog ⇒ p ∈ π_i(\allleadstog)].$$
 \end{theorem}
 \begin{proof}
   Let $\allleadstog ∈ C$ with $∀i ∈ I: θ^i ⊆ \allleadstog$, and fix $j ∈ I$. Let $σ$ exchange $i_0$ and $j$ (the identity if $j = i_0$), and $\allleadstog' = \allleadstog ∘ σ$. For every $x ∈ I$: $θ(x) ⊆ θ^{\downarrow}$ trivially, and $θ^{σ(x)} ⊆ \allleadstog$ by hypothesis, that is, $∀(\hist,p) ∈ θ^{\downarrow}: \allleadstog(σ(x),\hist) = p$; restricting to $(\hist,p) ∈ θ(x) ⊆ θ^{\downarrow}$ and using $\allleadstog'(x,\hist) = \allleadstog(σ(x),\hist)$ gives $θ(x) ⊆ \allleadstog'$. As this holds for every $x$, $θ ⊆ \allleadstog'$. By anonymity, $\allleadstog' = \allleadstog ∘ σ ∈ C$, so $\allleadstog' ∈ ↑θ ∩ C$, and APS-P gives $π_{i_0}(\allleadstog') = p$. Decisiveness at $i_0$ in $\allleadstog'$ depends only on $\allleadstog'$'s $i_0$-row (\cref{def:decisive}), which equals $\allleadstog$'s $σ(i_0) = j$-row, so $π_{i_0}(\allleadstog') = π_j(\allleadstog)$. Hence $π_j(\allleadstog) = p$.
@@ -1923,7 +1927,7 @@ APTS-P strengthens both APS-P (\cref{def:apsP}, dropping the requirement that $�
 \end{conjecture}
 
 \begin{remark}[A self-referential template is already excluded]
-  Fix $a ∈ \allargs$, and suppose $C ⊆ D_a := \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: [(a) \ileadstogo φ ⇒ a \ileadstostg φ]}$, together with $\allleadsto ∈ C$, Anon, Prov, and APTS-P.
+  Fix $a ∈ \allargs$, and suppose $C ⊆ D_a := [∀i ∈ I: [(a) \ileadstogo φ ⇒ a \ileadstostg φ]]$, together with $\allleadsto ∈ C$, Anon, Prov, and APTS-P.
 
   Since $I_2$ answers $φ'$, not $φ$, at every nonempty history, $D_a$'s antecedent is satisfied by $\allleadsto$ exactly on $I_1$; there is no analogous case to treat on $I_2$'s side.
 
@@ -1938,7 +1942,7 @@ APTS-P strengthens both APS-P (\cref{def:apsP}, dropping the requirement that $�
 
 \begin{remark}[The same trick handles the fully general template]
   \label{rk:generalTemplateExcluded}
-  Fix $a ∈ \allargs$, a finite $H ∈ \incr(\allhists)$, and $T: H → P$, and suppose $C ⊆ D_{a,T} := \set{\allleadstog ∈ \allleadstos \suchthat ∀i ∈ I: [T(i) ⊆ \allleadstog ⇒ ∃p ∈ P \suchthat a \ileadstostg p]}$, writing $T(i) = \set{(i,\hist,p) \suchthat \hist ∈ H, T(\hist) = p}$, together with $\allleadsto ∈ C$ and Anon and Prov (APTS-P plays no role below, so the conclusion holds without it, and for the unpinned decisiveness question rather than only at $φ$).
+  Fix $a ∈ \allargs$, a finite $H ∈ \incr(\allhists)$, and $T: H → P$, and suppose $C ⊆ D_{a,T} := [∀i ∈ I: [T(i) ⊆ \allleadstog ⇒ ∃p ∈ P \suchthat a \ileadstostg p]]$, writing $T(i) = \set{(i,\hist,p) \suchthat \hist ∈ H, T(\hist) = p}$, together with $\allleadsto ∈ C$ and Anon and Prov (APTS-P plays no role below, so the conclusion holds without it, and for the unpinned decisiveness question rather than only at $φ$).
 
   Write $\hist^{(k)} = \max H$ (or $∅$ if $H = ∅$), and suppose $T$ is compatible with constant $φ$ (the case of $I_2$'s shape is symmetric, carving $I_3$ from $I_2$ instead and swapping the roles of $φ, φ'$ throughout; if $T$ is compatible with neither, no individual of $\allleadsto$ ever satisfies the antecedent and the claim holds vacuously, as in the first remark below).
 
@@ -2618,7 +2622,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
   \end{theorem}
   \begin{remark}
     \label{rk:ca}
-    Define $C^\text{A} = \set{\allleadstog ∈ \allleadstos \suchthat \allleadstog(I) = \allleadsto(I)}$. Observe that $C^\text{A}$ is anonymous, that $C^\text{HA} ⊆ C^\text{A}$, and that $C^\text{HA} ≠ C^\text{A}$ iff $∃ i, j ∈ I: \ileadstoo ≠ \ileadstoo[j]$ (to be checked).
+    Define $C^\text{A} = [\allleadstog(I) = \allleadsto(I)]$. Observe that $C^\text{A}$ is anonymous, that $C^\text{HA} ⊆ C^\text{A}$, and that $C^\text{HA} ≠ C^\text{A}$ iff $∃ i, j ∈ I: \ileadstoo ≠ \ileadstoo[j]$ (to be checked).
   \end{remark}
 
   \begin{theorem}
@@ -2632,7 +2636,7 @@ It is possible under reasonable conditions of regularity to satisfy anonymous an
   \begin{proof}
     For \ref{it:condHAI} $⇒$ \ref{it:HAI},
     define $p = P_{i_1}$.
-    Consider any claim $C$ such that $C ⊆ \set{\allleadstog ∈ \allleadstos \suchthat \ileadstoo[i_1] ∈ \allleadstog(I) ⊆ \allleadsto(I)}$ and $C$ is anonymous (for example, $C^\text{HA}$ from \cref{th:claim_ha} is suitable).
+    Consider any claim $C$ such that $C ⊆ [\ileadstoo[i_1] ∈ \allleadstog(I) ⊆ \allleadsto(I)]$ and $C$ is anonymous (for example, $C^\text{HA}$ from \cref{th:claim_ha} is suitable).
     % Define the claim $C$ as $\set{\allleadstog ∈ \allleadstos \suchthat ∀ i ∈ I: \ileadstogo ∈ \set{{\ileadsto[j]} \suchthat j ∈ I}}$ (or as anything included in it that includes $C^\text{HA}$ and is anonymous).
     The claim is indicative for $i = i_1$ and $θ = \set{(i_1, \hist, \ileadstoo[i_1](\hist)) \suchthat \hist ∈ H}$ for the following reason.
     The attitudes in $C$ compatible with $θ$ are $↑θ ∩ C ⊆ \set{\allleadstog \suchthat \ileadstogo[i_1] ∈ \set{{\ileadsto[j]} \suchthat P_j = p}}$, and $π(\set{\allleadstog \suchthat \ileadstogo[i_1] ∈ \set{{\ileadsto[j]} \suchthat P_j = p}})(i_1) = p$.
@@ -3390,7 +3394,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 
 \subsection{Another closure}
 \label{sec:closing}
-Given a set of attitudes $S ⊆ P^{\allhists}$, the claim associated to it designates the claim $S^I = \set{\allleadstog ∈ \allleadstos \suchthat ∀ i ∈ I: \ileadstogo ∈ S}$.
+Given a set of attitudes $S ⊆ P^{\allhists}$, the claim associated to it designates the claim $S^I = [∀ i ∈ I: \ileadstogo ∈ S]$.
 Say that a claim $C$ is a claim about types iff $∃ S ⊆ P^{\allhists} \suchthat C = S^I$.
 Informally, such a claim claims that the set of attitudes in $I$ is contained in $S$ (though might be a strict subset of $S$), or equivalently, that no attitude out of $S$ exists among $I$.
 
