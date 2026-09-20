@@ -482,7 +482,7 @@ The set $Θ ∩ C^⊆$ is downwards closed, as both $Θ$ and $C^⊆$ are.
 
 \begin{example}
   \label{ex:anon}
-  Given $a$, $i$ and $φ$, the claim $[a \ileadstog φ]$ is not anonymous iff $\card{I} ≥ 2$. Indeed, pick any $j ≠ i$ and define $σ(i) = j$, $σ(j) = i$ and $∀ k ∈ I ∖ \set{i, j}: σ(k) = k$, then $C = \set{\allleadstog \suchthat \allleadstog(i, a) = φ}$, which contains in particular $\allleadsto$ defined as $∀ \hist: [∀ k ∈ I ∖ \set{j}, \allleadsto(k, \hist) = φ ∧ \allleadsto(j, \hist) = φ'$; while $C ∘ σ = \set{\allleadstog \suchthat \allleadstog(j, a) = φ}$ which does not contain $\allleadsto$.
+  Given $a$, $i$ and $φ$, the claim $[a \ileadstog φ]$ is not anonymous iff $\card{I} ≥ 2$. Indeed, pick any $j ≠ i$ and define $σ(i) = j$, $σ(j) = i$ and $∀ k ∈ I ∖ \set{i, j}: σ(k) = k$, then $C = [\allleadstog(i, a) = φ]$, which contains in particular $\allleadsto$ defined as $∀ \hist: [∀ k ∈ I ∖ \set{j}, \allleadsto(k, \hist) = φ ∧ \allleadsto(j, \hist) = φ'$; while $C ∘ σ = [\allleadstog(j, a) = φ]$ which does not contain $\allleadsto$.
 \end{example}
 
 \subsection{Verifiability}
@@ -525,7 +525,7 @@ Using the trivial axiom $D = \allleadstos$, we obtain this corollary.
     $∄ θ ⊆ \allleadstog \suchthat \allleadstog ∈ D ∧ \allleadstog ∉ C$, which is \cref{it:notcomplE}.
 
     To establish that \cref{it:notcomplE} implies \cref{it:obscovers}, consider any claim $E$ and $θ ∉ E^⊆$.
-    Given any $t ∈ θ$, define $S_t = \set{\allleadstog \suchthat t ∉ \allleadstog} ∩ E$.
+    Given any $t ∈ θ$, define $S_t = [t ∉ \allleadstog] ∩ E$.
     Define $S = ⋃_{t ∈ θ} S_t$.
 
     Consider any $\allleadstog ∈ E$. As $θ ⊈ \allleadstog$, $∃ t ∈ θ \suchthat t ∉ \allleadstog$, thus, $\allleadstog ∈ S$.
@@ -831,9 +831,9 @@ Converting a claim to disjunctive normal form is useful to characterize its comp
   if any two influences $a_k, a_{k'}$ fail to convince $i$ or $a'_k, a'_{k'}$ fail to convince $j$, then the third influence $a_{k''}$ convinces $i$ and $a'_{k''}$ convinces $j$.
   The claim is not observationally excludable.
   Indeed,
-  we see that $E = \set{\allleadstog \suchthat [(a_1) \ileadstog φ ∧ (a'_1) \ileadstog[j] φ] ∨ [(a_2) \ileadstog φ ∧ (a'_2) \ileadstog[j] φ] ∨ [(a_3) \ileadstog φ ∧ (a'_3) \ileadstog[j] φ]}$,
+  we see that $E = [((a_1) \ileadstog φ ∧ (a'_1) \ileadstog[j] φ) ∨ ((a_2) \ileadstog φ ∧ (a'_2) \ileadstog[j] φ) ∨ ((a_3) \ileadstog φ ∧ (a'_3) \ileadstog[j] φ)]$,
   and
-  $∀ 1 ≤ k ≤ 3$, define $S_k = \set{\allleadstog \suchthat [(a_k) \ileadstog φ ∧ (a'_k) \ileadstog[j] φ]}$, define $\mathcal{S} = \set{S_1, S_2, S_3}$,
+  $∀ 1 ≤ k ≤ 3$, define $S_k = [(a_k) \ileadstog φ ∧ (a'_k) \ileadstog[j] φ]$, define $\mathcal{S} = \set{S_1, S_2, S_3}$,
   consider any $f ⊆ (I × \allhists) × P \suchthat f ∉ E^⊆$,
   we have $∀ 1 ≤ k ≤ 3, ∃t_k ∈ f \suchthat \set{t_k} ∉ {S_k}^⊆$,
   thus $f ∉ Θ$
@@ -841,7 +841,7 @@ Converting a claim to disjunctive normal form is useful to characterize its comp
 \end{example}
 
 $C$-scrutiny is the axiom $D_C
-= \set{\allleadsto \suchthat ∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∀θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadsto}: θ' ∈ C^⊆}
+= [∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}: θ' ∈ C^⊆]
 $.
 
 \begin{remark}
@@ -2302,7 +2302,7 @@ For this, see \cref{rk:generalTemplateExcluded}.
     The claim $C = [(a_1) \ileadstog p ∧ (a_2) \ileadstog p']$ is falsifiable.
 
     We have $C^⊆ ∩ Θ = \set{θ \suchthat (θ((a_1), i) = ∅ ∨ θ((a_1), i) = p) ∧ (θ((a_2), i) = ∅ ∨ θ((a_2), i) = p')}$.
-    The obs-compatible relations are $\set{\allleadstog \suchthat (a_1) \ileadstog p ∧ (a_2) \ileadstog p'}$.
+    The obs-compatible relations are $[(a_1) \ileadstog p ∧ (a_2) \ileadstog p']$.
   \end{example}
   \begin{example}
     \label{ex:consti2}
@@ -2341,7 +2341,7 @@ For this, see \cref{rk:generalTemplateExcluded}.
 
     Now consider the smaller claim $C' = [(a_1) \ileadstog p]$ (thus $C' \ssub C$).
     It yields a smaller set ${C'}^⊆ ∩ Θ = \set{θ \suchthat (θ((a_1), i) = ∅ ∨ θ((a_1), i) = p)}$.
-    The obs-compatible relations are the smaller set $\set{\allleadstog \suchthat (a_1) \ileadstog p}$.
+    The obs-compatible relations are the smaller set $[(a_1) \ileadstog p]$.
     Thus, $C'$ is falsifiable.
 
     Note that any claim $C^{\prime\prime}$ bigger than $C$ is unfalsifiable as well, unless trivial:
@@ -3354,7 +3354,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
 
   \subsection{Closure under undistinguishability}
   The following procedure permits to determine whether a claim is falsifiable.
-  Given a set of observations $S ⊆ Θ$, define the relations that are observation-compatible with $S$ as $E(S) = \set{\allleadstog ∈ \allleadstos \suchthat ∀ θ ∈ Θ: \allleadstog ∩ θ ∈ S}$.
+  Given a set of observations $S ⊆ Θ$, define the relations that are observation-compatible with $S$ as $E(S) = [∀ θ ∈ Θ: \allleadstog ∩ θ ∈ S]$.
   Given a claim $C$, define the set of its observation-compatible relations as $E(C) = E(C^⊆ ∩ Θ)$ (reusing the letter $E$ by abuse of notation).
   Note that this set extends $C$, in the sense that $C ⊆ E(C)$.
   The claim $C$ is falsifiable iff it is closed under extension to observation-compatible relations, that is, iff $E(C) ⊆ C$.
@@ -3366,7 +3366,7 @@ $((a_j), …, a_k)$ convincing ; $a_k$ not decisive (or $(a_k)$ not convincing?)
   \end{theorem}
   \begin{proof}
     Note that
-    $E(C) = E(C^⊆ ∩ Θ) = \set{\allleadstog ∈ \allleadstos \suchthat ∀ O ∈ \allpriobss: \restr{\allleadstog}{O} ∈ C^⊆}$.
+    $E(C) = E(C^⊆ ∩ Θ) = [∀ O ∈ \allpriobss: \restr{\allleadstog}{O} ∈ C^⊆]$.
   
     The condition $E(C) ⊆ C$ is equivalent to
     $∀ \allleadstog ∈ \allleadstos: (\allleadstog ∈ E(C) ⇒ \allleadstog ∈ C)$.
@@ -3698,7 +3698,7 @@ Let $\overline{B} = P^{\allhists} ∖ B$ denote the set of behaviors that fail t
 
 Then the a priori possible situations are only $B^I$. A claim is falsifiable iff the situations in $B^I$ not in $C$ are rejectable. 
 The other properties (holds, indicativeness, anonymity) do not change.
-We used to consider also situations $\overline{S} = \set{\allleadstog \suchthat ∃ i ∈ I \suchthat \ileadstogo ∈ \overline{B}}$ where some $i$ is in $\overline{B}$.
+We used to consider also situations $\overline{S} = [∃ i ∈ I \suchthat \ileadstogo ∈ \overline{B}]$ where some $i$ is in $\overline{B}$.
 
 Using $B_1$ alone does not solve the problem, as we can still show that $P_g ≠ φ$ by using $\hist = (a_3, a_2, a_1)$, assuming that $H$ does not start with $a_3$.
 
@@ -4391,7 +4391,7 @@ A genuine compactness proof of \cref{cnj:rpevProv}, if one exists, would need a 
   Fix infinitely many individuals $i_1, i_2, … ∈ I$ and let $C = [∀n: \allleadstog(i_n, ∅) = φ]$: not closed under finite modification (flipping a single $\allleadstog(i_n, ∅)$ already leaves $C$), yet still falsifiable or trivial ($¬\OF = C$).
   For $\allleadstog ∉ C$ failing at only finitely many individuals, an adversarial prefix can touch each failing individual at some other influence first, blocking recovery of its $∅$-value at each, and $\allleadstog$ offers no other route: $\POF(\allleadstog)$ fails.
   For $\allleadstog ∉ C$ failing at infinitely many individuals, no finite prefix can touch them all, so some failing individual always remains fresh and reachable: $\POF(\allleadstog)$ holds.
-  Hence $D = ¬\POF = C ∪ \set{\allleadstog \suchthat \allleadstog \text{ fails } C \text{ at finitely many, at least one, individuals}}$, genuinely strictly between $C$ and $\allleadstos$.
+  Hence $D = ¬\POF = C ∪ [\allleadstog \text{ fails } C \text{ at finitely many, at least one, individuals}]$, genuinely strictly between $C$ and $\allleadstos$.
 
   Yet PVo (already EV) collapses on this $D$: $D ∖ C$ is exactly “fails at finitely many individuals,” and any finite $θ'$ only constrains finitely many of them, so a completion matching $θ'$ exactly and failing at one further, untouched individual always exists — $θ' ∈ (D ∖ C)^⊆$ regardless of $θ'$.
   So $\OF[D∖C](\allleadstog)$ already fails at every $\allleadstog ∈ C$: PVo fails here too, confirming \cref{cnj:rpevProv} through a genuinely non-degenerate $D ∖ C$.
