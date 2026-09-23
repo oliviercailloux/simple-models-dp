@@ -262,6 +262,7 @@ A claim $C$ is \emph{anonymous} iff $∀ σ: C = C ∘ σ$.
   It can be viewed as an informational constraint: claims must not use external knowledge, which would not be encoded in $\allleadsto$, about individuals. Such knowledge would escape our analysis.
 \end{remark}
 \begin{example}
+  \label{ex:anonOverview}
   Given $α$, $i$ and $φ$, the claim $[α \ileadstog φ]$, which claims that a given path leads a given individual to a given proposition, is not anonymous (\cref{ex:anon}); whereas given $α$ and $φ$, the claim $[∀i: α \ileadstog φ]$ is anonymous. 
 \end{example}
 
@@ -280,15 +281,17 @@ Verifiedness is sound (\cref{th:vImpliesHolds}), meaning that indeed when a clai
 Indeed,
 some sufficiently simple claims, such as the claim $C = [(a) \ileadstog φ]$ that some given path leads some given individual to some given proposition, do satisfy verifiedness (provided they hold), but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
 
-In turns out that any claim that is conclusive fails verifiedness.
+It will turn out that any claim that is conclusive fails verifiedness.
 This is even visible by considering a weaker property than conclusiveness.
 Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(↑θ ∩ C) ≠ (P ∪ \set{∅})^I$.
 \begin{remark}
-  Informativeness in $\allleadsto$ is weaker than conclusiveness: it only requires an observational ability of excluding some deliberated judgment functions. Contrary to conclusiveness, it permits mere counting: the claim that exactly two persons deliberately believe $φ$ is informative, but is not conclusive if the claim does not permit to know which individuals they are. Also, the claim $C = [(∃ i \suchthat (a) \nileadstog φ) ∧ (∀i: (a) \nileadstog φ ⇒ φ' ∈ π_i(\allleadstog))]$ is informative.
+  Informativeness in $\allleadsto$ is weaker than conclusiveness: it only requires an observational ability of excluding some deliberated judgment functions. Contrary to conclusiveness, it permits mere counting: the claim $C = [\card{(π^{-1}(φ))} = 1]$, that exactly one person deliberately believes $φ$, is informative, but is not conclusive as the claim does not permit to know which individual it is. 
+  % Also, the claim $C = [(∃ i \suchthat (a) \nileadstog φ) ∧ (∀i: (a) \nileadstog φ ⇒ φ' ∈ π_i(\allleadstog))]$ is informative.
   Informativeness may be a desirable property (rather than conclusiveness) as one may, for example, want to know whether a given proposition is believed by a majority of individuals.
 
   This study focuses on conclusiveness to determine conditions that permit to point a specific individual, whose DJ is known. 
   Because conclusiveness is stronger than informativeness, the possibility results we obtain apply to informativeness as well.
+  Conversely, impossibility results applicable to informativeness apply to conclusiveness.
 \end{remark}
 
 Being informative in $\allleadsto$ implies failure of verifiedness (\cref{th:infoNotVerif}).
@@ -480,12 +483,15 @@ Note that $C^⊆$ is downwards closed, meaning that $∀ c ∈ C^⊆: c' ⊆ c �
 Both $\incr(\allhists)^I$ and $\allpriobss$ are downwards closed.
 The set $Θ ∩ C^⊆$ is downwards closed, as both $Θ$ and $C^⊆$ are.
 
+\subsection{Desideratas}
+This gives more details about \cref{ex:anonOverview}.
 \begin{example}
   \label{ex:anon}
   Given $a$, $i$ and $φ$, the claim $[a \ileadstog φ]$ is not anonymous iff $\card{I} ≥ 2$. Indeed, pick any $j ≠ i$ and define $σ(i) = j$, $σ(j) = i$ and $∀ k ∈ I ∖ \set{i, j}: σ(k) = k$, then $C = [\allleadstog(i, a) = φ]$, which contains in particular $\allleadsto$ defined as $∀ \hist: [∀ k ∈ I ∖ \set{j}, \allleadsto(k, \hist) = φ ∧ \allleadsto(j, \hist) = φ'$; while $C ∘ σ = [\allleadstog(j, a) = φ]$ which does not contain $\allleadsto$.
 \end{example}
 
 \subsection{Verifiability}
+Given $C, D ⊆ \allleadstos$, $\allleadstog ∈ \allleadstos$, $C$ is verifiable at $\allleadstog$ under $D$ iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
 \begin{theorem}
   \label{th:vudImpliesHolds}
   Given an axiom $D$ such that $\allleadsto ∈ D$, if a claim $C$ is verified under $D$, then $C$ holds.
@@ -549,6 +555,20 @@ Using the trivial axiom $D = \allleadstos$, we obtain this corollary.
   Define $\allleadstog$ as any completion of $f'$ to a total function in $\allleadstos$.
 \end{proof}
 \begin{theorem}
+  \label{th:minimalPriorForInformativenessG}
+  If $C ⊆ D$ is informative in $\allleadstog$ and is verifiable in $\allleadstog$ under $D$, then
+  \begin{itemize}
+    \item $∃K ⊆ I × \allhists, O ∈ P^K \suchthat ↑O ∩ C ∩ D ≠ (P ∪ \set{∅})^I$;
+    \item if $\card{\allargs} ∉ ℕ$, $D$ is not trivial.
+  \end{itemize}
+\end{theorem}
+\begin{proof}
+  As $C$ is informative in $\allleadstog$, we can take some $θ_1 ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(↑θ ∩ C) ≠ (P ∪ \set{∅})^I$.
+  As $C$ is verifiable in $\allleadstog$ under $D$ we can take some $θ_2 ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
+  Define $O = θ_1 ∪ θ_2$.
+  Any world in $u(O) ∩ D$ is in $C$, hence, 
+\end{proof}
+\begin{theorem}
   \label{th:minimalPriorForInformativeness}
   If $C$ is such that $π(C) ≠ (P ∪ \set{∅})^I$ and is possibly verifiable under $D$, then
   \begin{itemize}
@@ -584,7 +604,7 @@ Using the trivial axiom $D = \allleadstos$, we obtain this corollary.
   As $f$ is arbitrary, $π(↑θ ∩ C) = (P ∪ \set{∅})^I$; as $θ$ is arbitrary, $C$ is not informative in $\allleadstog$.
 \end{proof}
 \begin{remark}
-  The hypothesis $\card{\allargs} ∉ ℕ$ cannot be dropped: without it, a claim may be verifiable and informative in $\allleadstog$ yet not informative (the left to right direction however, informative implies informative in a given world, uses no such hypothesis).
+  The hypothesis $\card{\allargs} ∉ ℕ$ cannot be dropped: without it, a claim may be verifiable and informative in $\allleadstog$ yet not informative (the left to right direction however, informative implies informative in a given world, needs no such hypothesis).
   Let $\allargs = \set{a}$ and $I = \set{i_0}$, so that every nonempty path ends in $\set{a}$ and $π(\allleadstog)(i_0) = \set{p}$ if $\allleadstog$ responds $p$ to every nonempty path and $∅$ otherwise.
   Write $\allleadstog_p$ for the world responding $p$ everywhere, let $θ_v = \set{(i_0, (a), φ')}$, and let $C = ↑θ_v ∪ \set{\allleadstog_φ, \allleadstog_0}$.
   Then $C$ is verifiable in $\allleadstog_{φ'}$, witnessed by $θ_v$.
@@ -1705,13 +1725,12 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 
   The same two instantiations ($B := \allleadsto(I)$ and $B := \allbs$) apply just as well to \cref{th:oneMorePriorGeneral} itself, giving analogues of \cref{th:oneMorePriorNarrow,th:oneMorePriorFull} for the original, unaugmented claim $C_0$: an anonymous, holding claim that is APTS and provable by $¬\POF ∩ E$, respectively APTS and provable by $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{C_0}$.
 \end{remark}
-\end{document}
 
 \section{Recently moved supplementary material}
 \subsection{Generalities}
 The claim $C$ is verifiable in the world $\allleadstog$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑θ ⊆ C$.
 $C$ is possibly verifiable iff it is verifiable in some world; formally, iff $∃ θ ∈ Θ \suchthat ↑θ ⊆ C$.
-Given $C, D ⊆ \allleadstos$, $C$ is verifiable at $\allleadstog$ under axiom $D$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$, and possibly verifiable under axiom $D$ iff $∃ θ ∈ Θ \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
+Given $C, D ⊆ \allleadstos$, $C$ is possibly verifiable under axiom $D$ iff $∃ θ ∈ Θ \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
 Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{permanently verifiable in the old sense} (PVo) under $D$ at $\allleadstog$ iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑θ' ∩ D ⊆ C$.
 Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{permanently verifiable} (PV) under $D$ at $\allleadstog$ iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑(θ' ∖ θ) ∩ D ⊆ C$.
 
@@ -1727,6 +1746,7 @@ A claim $C$ is \emph{informative} iff $π(C) ≠ (P ∪ \set{∅})^I$.
 A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π_i(C) = \set{π_i(\allleadstog) \suchthat \allleadstog ∈ C} ≠ P ∪ \set{∅}$.
 A claim $C$ is \emph{a posteriori sharp} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(↑θ ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
 A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I \suchthat π_i(↑θ ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
+\end{document}
 
 \section{Supplementary material}
 \Cref{tab:renaming} lists this informativeness/sharpness family together with the related notions defined elsewhere (conclusive, in the main text, already renamed from the former acronym SAPTS; indicative, further below in this appendix) and the renaming still proposed for the informativeness notions used in the main text (and their closest relatives), so that these read as ordinary words rather than acronyms; the more technical, appendix-only singleton-pinning family (APS, APTS, APS-P, APTS-P) keeps its acronym names.
