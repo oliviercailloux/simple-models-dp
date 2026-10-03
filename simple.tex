@@ -271,17 +271,17 @@ A claim $C$ is \emph{anonymous} iff $∀ σ: C = C ∘ σ$.
 We want to know whether a claim holds, but all we have under hand are observations.
 A natural starting point is to attempt to verify claims, defined as follows.
 
-The claim $C$ is verified, or satisfies verifiedness, iff some observation compatible with the actual world proves the claim, in the sense that every world compatible with the observation is in $C$; formally, iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ↑θ ⊆ C$.
+The claim $C$ is verifiable, or satisfies verifiability, iff some observation compatible with the actual world proves the claim, in the sense that every world compatible with the observation is in $C$; formally, iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ↑θ ⊆ C$.
 \begin{remark}
   One way to get convinced that this definition does capture the intuitive notion of verification stems from the scenario of debating whether the claim holds with an opponent.
-  Facing observations $θ$, the opponent may say, if some world completes $θ$ out of $C$ ($∃θ ⊆ \allleadstog ∉ C$), that this observation is not sufficient to prove that $C$ holds: the hypothesis that we live in the world $\allleadstog$ is compatible with us observing $θ$, but yet in this hypothesis, $C$ does not hold. The definition considered here state that $C$ is verified whenever the opponent cannot say this any more.
+  Facing observations $θ$, the opponent may say, if some world completes $θ$ out of $C$ ($∃θ ⊆ \allleadstog ∉ C$), that this observation is not sufficient to prove that $C$ holds: the hypothesis that we live in the world $\allleadstog$ is compatible with us observing $θ$, but yet in this hypothesis, $C$ does not hold. The definition considered here state that $C$ is verifiable whenever the opponent cannot say this any more.
 \end{remark}
 
-Verifiedness is sound (\cref{th:vImpliesHolds}), meaning that indeed when a claim is verified, it holds, but is too demanding for many claims, that is, many claims fail the converse implication.
+Verifiability is sound (\cref{th:vImpliesHolds}), meaning that indeed when a claim is verifiable, it holds, but is too demanding for many claims, that is, many claims fail the converse implication.
 Indeed,
-some sufficiently simple claims, such as the claim $C = [(a) \ileadstog φ]$ that some given path leads some given individual to some given proposition, do satisfy verifiedness (provided they hold), but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
+some sufficiently simple claims, such as the claim $C = [(a) \ileadstog φ]$ that some given path leads some given individual to some given proposition, do satisfy verifiability (provided they hold), but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
 
-It will turn out that any claim that is conclusive fails verifiedness.
+It will turn out that any claim that is conclusive fails verifiability.
 This is even visible by considering a weaker property than conclusiveness.
 A claim $C$ is \emph{informative} iff $∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat π(↑θ ∩ C) ≠ (P ∪ \set{∅})^I$.
 \begin{remark}
@@ -294,8 +294,8 @@ A claim $C$ is \emph{informative} iff $∃θ ∈ Θ ∩ \powerset{\allleadsto} \
   Conversely, impossibility results applicable to informativeness apply to conclusiveness.
 \end{remark}
 
-Being informative implies failure of verifiedness (\cref{th:infoNotVerif}).
-Therefore, conclusiveness is incompatible with verifiedness.
+Being informative implies failure of verifiability (\cref{th:infoNotVerif}).
+Therefore, conclusiveness is incompatible with verifiability.
 This may be expected, as we did not postulate yet any sort of regularity in the world, and ideed the fundamental reason for the incompatibility is that any observation can be completed in a way that contradicts any conclusion that informativeness in a world mandates (\cref{th:completable}).
 
 We thus now turn to examining which sort of prior knowledge will suffice for ensuring the existence of a verification procedure that will allow to determine that a conclusive and anonymous claim holds (when it indeed holds).
@@ -324,12 +324,11 @@ Verifiability, as defined in \cref{sec:verifiability}, mandates that some observ
 As indicated there, this is too demanding to be applicable with no prior knowledge.
 In this section, we extend the verifiability concept to the case where some axiom is given.
 
-$C$ is verified under $D$ iff 
+$C$ is verifiable under $D$ iff
 $∃ θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
-Note that $C$ is verified iff it is verified under the trivial axiom.
+Note that $C$ is verifiable iff it is verifiable under the trivial axiom.
 
-\Cref{th:vudImpliesHolds} shows that provided the axiom $D$ is true (meaning that $\allleadsto ∈ D$), being verified under $D$ suffices for holding.
-%TODO consider rename verifiedness to verifiability
+\Cref{th:vudImpliesHolds} shows that provided the axiom $D$ is true (meaning that $\allleadsto ∈ D$), being verifiable under $D$ suffices for holding.
 
 Verifiability under $D$ only requires \emph{some} proving observation to exist. 
 As with conclusiveness, it is desirable that every prefix admit a rightward extension that still proves $C$, in order to ensure reproducibility.
@@ -482,15 +481,15 @@ This gives more details about \cref{ex:anonOverview}.
 
 \subsection{Verifiability}
 Given $C, D ⊆ \allleadstos$, $\allleadstog ∈ \allleadstos$, $C$ is verifiable at $\allleadstog$ under $D$ iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
-$C$ is verified at world $\allleadstog$ under axiom $D$ iff
+$C$ is verifiable at world $\allleadstog$ under axiom $D$ iff
 $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
-$C$ is verified under $D$ iff it is verified at $\allleadsto$ under $D$.
-Note that $C$ is verified at $\allleadstog$ iff it is verified at $\allleadstog$ under the trivial axiom.
+$C$ is verifiable under $D$ iff it is verifiable at $\allleadsto$ under $D$.
+Note that $C$ is verifiable at $\allleadstog$ iff it is verifiable at $\allleadstog$ under the trivial axiom.
 Given $C, D ⊆ \allleadstos$, $C$ is permanently verifiable under axiom $D$ iff
 $∀\allleadstog ∈ C ∩ D, ∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑(θ' ∖ θ) ∩ D ⊆ C$.
 
 $C$ satisfies established verifiability under axiom $D$ iff
-it is verified under $D$ at all worlds in $C ∩ D$, thus:
+it is verifiable under $D$ at all worlds in $C ∩ D$, thus:
 $∀\allleadstog ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑θ ∩ D ⊆ C$.
 
 Provability by $D$ implies established verifiability under $D$ (just use verification $θ = ∅$).
@@ -498,18 +497,18 @@ For some axioms, provability by $D$ is strictly stronger than established verifi
 
 \begin{theorem}
   \label{th:vudImpliesHolds}
-  Given an axiom $D$ such that $\allleadsto ∈ D$, if a claim $C$ is verified under $D$, then $C$ holds.
+  Given an axiom $D$ such that $\allleadsto ∈ D$, if a claim $C$ is verifiable under $D$, then $C$ holds.
 \end{theorem}
 \begin{proof}
-  Consider any $θ$ that satisfies verifiedness under $D$. 
+  Consider any $θ$ that satisfies verifiability under $D$.
   We have $θ ⊆ \allleadsto$.
   By hypothesis, $\allleadsto ∈ D$.
-  Therefore, by verifiedness, $\allleadsto ∈ C$.
+  Therefore, by verifiability, $\allleadsto ∈ C$.
 \end{proof}
 Using the trivial axiom $D = \allleadstos$, we obtain this corollary.
 \begin{corollary}
   \label{th:vImpliesHolds}
-  If a claim is verified, it holds.
+  If a claim is verifiable, it holds.
 \end{corollary}
 
 {
