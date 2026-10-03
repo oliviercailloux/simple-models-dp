@@ -283,9 +283,9 @@ some sufficiently simple claims, such as the claim $C = [(a) \ileadstog φ]$ tha
 
 It will turn out that any claim that is conclusive fails verifiedness.
 This is even visible by considering a weaker property than conclusiveness.
-Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(↑θ ∩ C) ≠ (P ∪ \set{∅})^I$.
+A claim $C$ is \emph{informative} iff $∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat π(↑θ ∩ C) ≠ (P ∪ \set{∅})^I$.
 \begin{remark}
-  Informativeness in $\allleadsto$ is weaker than conclusiveness: it only requires an observational ability of excluding some deliberated judgment functions. Contrary to conclusiveness, it permits mere counting: the claim $C = [\card{(π^{-1}(φ))} = 1]$, that exactly one person deliberately believes $φ$, is informative, but is not conclusive as the claim does not permit to know which individual it is. 
+  Informativeness is weaker than conclusiveness: among others, it only requires an observational ability of excluding some deliberated judgment functions. Contrary to conclusiveness, it permits mere counting: the claim $C = [\card{(π^{-1}(φ))} = 1]$, that exactly one person deliberately believes $φ$, is informative, but is not conclusive as the claim does not permit to know which individual it is. 
   % Also, the claim $C = [(∃ i \suchthat (a) \nileadstog φ) ∧ (∀i: (a) \nileadstog φ ⇒ φ' ∈ π_i(\allleadstog))]$ is informative.
   Informativeness may be a desirable property (rather than conclusiveness) as one may, for example, want to know whether a given proposition is believed by a majority of individuals.
 
@@ -294,7 +294,7 @@ Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informati
   Conversely, impossibility results applicable to informativeness apply to conclusiveness.
 \end{remark}
 
-Being informative in $\allleadsto$ implies failure of verifiedness (\cref{th:infoNotVerif}).
+Being informative implies failure of verifiedness (\cref{th:infoNotVerif}).
 Therefore, conclusiveness is incompatible with verifiedness.
 This may be expected, as we did not postulate yet any sort of regularity in the world, and ideed the fundamental reason for the incompatibility is that any observation can be completed in a way that contradicts any conclusion that informativeness in a world mandates (\cref{th:completable}).
 
@@ -306,10 +306,11 @@ First, we will assume that falsification tests fail falsifying the claim, under 
 Second, we will assume that behaviors are in sufficient supply for being observed without bound. 
 Third, we will assume that some behaviors that are not observably separable from actual behaviors (thus impossible to reject empirically) do not exist.
 
-The following example illustrates the tension that needs overcoming. Demanding that a claim be verifiable permits the claim to contain punctual facts, but conclusiveness requires general statements (this informal explanation is used to build intuition and will be made more precise in the course of our reasoning).
+The following example illustrates the tension that needs overcoming. For a claim to be verifiable, the claim must stick to punctual statements, but conclusiveness requires general statements (this informal explanation is used to build intuition and will be made more precise in the course of our reasoning).
 \begin{example}
   \label{ex:jaysAndKaysConstants}
   Consider the world $\allleadsto$ constituted of two kinds of individuals, the jay’s which always answer $φ$ and the kay’s which always answer $φ'$. Thus, $I = J ∪ K$, and $∀i ∈ I, α ∈ \allhists: [i ∈ J ⇒ α \ileadsto φ] ∧ [i ∈ K ⇒ α \ileadsto φ']$.
+  The following two claims hold.
   The claim $C_1 = [∃i \suchthat ∅ \ileadstog φ]$ is verifiable and not conclusive.
   The claim $C_2 = [(∀i: ∅ \ileadstog φ ⇒ ∀α, α \ileadstog φ) ∧ (∃i \suchthat ∅ \ileadstog φ)]$ is conclusive and not verifiable.
 \end{example}
@@ -321,34 +322,26 @@ We say that an axiom $D$ proves a claim $C$ iff $D ⊆ C$.
 \subsection{Verifiability under an axiom}
 Verifiability, as defined in \cref{sec:verifiability}, mandates that some observation proves $C$.
 As indicated there, this is too demanding to be applicable with no prior knowledge.
-In this section, we extend this idea to the case where some axiom is given.
+In this section, we extend the verifiability concept to the case where some axiom is given.
 
-$C$ is verified at world $\allleadstog$ under axiom $D$ iff
-$∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
-$C$ is verified under $D$ iff it is verified at $\allleadsto$ under $D$.
-%TODO do we use verified at here? It’s not defined here!
-Note that $C$ is verified at $\allleadstog$ iff it is verified at $\allleadstog$ under the trivial axiom.
-$C$ satisfies established verifiability under axiom $D$ iff
-it is verified under $D$ at all worlds in $C ∩ D$, thus:
-$∀\allleadstog ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑θ ∩ D ⊆ C$.
-%TODO consider renaming Verifiedness to verifiability and EV to necessary verifiability
+$C$ is verified under $D$ iff 
+$∃ θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
+Note that $C$ is verified iff it is verified under the trivial axiom.
 
 \Cref{th:vudImpliesHolds} shows that provided the axiom $D$ is true (meaning that $\allleadsto ∈ D$), being verified under $D$ suffices for holding.
+%TODO consider rename verifiedness to verifiability
 
-Provability by $D$ implies established verifiability under $D$ (just use verification $θ = ∅$).
-For some axioms, provability by $D$ is strictly stronger than established verifiability under $D$ (the claim $C = [(a) \ileadstog φ]$ satisfies established verifiability under the trivial axiom $D$ but is not provable by it).
-
-Established verifiability only requires \emph{some} proving observation to exist at each $\allleadstog ∈ C ∩ D$. 
-It is desirable that every prefix admit a rightward extension that still proves $C$.
-Given $C, D ⊆ \allleadstos$, $C$ is permanently verifiable under axiom $D$ iff
-$∀\allleadstog ∈ C ∩ D, ∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑(θ' ∖ θ) ∩ D ⊆ C$.
-Under a given axiom, permanent verifiability is stronger than established verifiability (\cref{th:pevImpliesEv}).
+Verifiability under $D$ only requires \emph{some} proving observation to exist. 
+As with conclusiveness, it is desirable that every prefix admit a rightward extension that still proves $C$, in order to ensure reproducibility.
+Given $C, D ⊆ \allleadstos$, $C$ is persistently verifiable under axiom $D$ iff
+$∀θ ∈ Θ ∩ \powerset{\allleadsto}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∅ ≠ ↑(θ' ∖ θ) ∩ D ⊆ C$.
+Provability by $D$ implies persistent verifiability under $D$ (just use verification $θ' = ∅$).
 
 \section{Axioms}
 \subsection{Falsifiability}
 Our first axiom assumes that all falsification tests against $C$ fail.
 
-Expressing this requires properties that describe the extend to which a given (hypothetical or real) world can be observed to be not the real world.
+Expressing this requires properties that describe the extend to which $C$ can be seen to be false in a given (hypothetical) world.
 Given $\allleadstog$ and $C$, say that $C$ is
 \begin{description}[font=\normalfont]
   \item[False in $\allleadstog$ ($\F(\allleadstog)$)] iff $\allleadstog ∉ C$;
@@ -356,11 +349,6 @@ Given $\allleadstog$ and $C$, say that $C$ is
   \item[Persistently Observably False in $\allleadstog$ ($\POF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable whatever past observation have occurred already; formally, iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆$.
 \end{description}
 We sometimes write $\POF$ instead of $\POF(\allleadstog)$ when the world $\allleadstog$ is clear from the context, and $\POF[]$ when $C$ is clear from the context (or referring to any generic claim), and similarly for $\OF$ and $\F$.
-
-PVo and POF have a dual character as
-$C$ satisfies PVo under $D$ iff
-$∀\allleadstog ∈ C ∩ D, \POF[D ∖ C](\allleadstog)$ (\cref{th:dualPof}, see also \cref{rk:dualEv}).
-\commentClaude{This duality breaks for new PV: the new condition $↑(θ' ∖ θ) ∩ D ⊆ C$ involves $θ$ and cannot be characterized by $\POF[D ∖ C]$.}
 
 Note that $∀C, \allleadstog: \POF(\allleadstog) ⇒ \OF(\allleadstog) ⇒ \F(\allleadstog)$ (\cref{th:ex-post} proves the second implication).
 Also, given $C' ⊆ C$, $∀\allleadstog$: $¬\F[C'](\allleadstog) ⇒ ¬\F(\allleadstog)$, $¬\OF[C'](\allleadstog) ⇒ ¬\OF(\allleadstog)$, and $¬\POF[C'](\allleadstog) ⇒ ¬\POF(\allleadstog)$.
@@ -370,8 +358,7 @@ $C$ suffers no visibility issues in $\allleadstog$ iff $\OF(\allleadstog) ⇒ \P
 
 We say that $C$ is \emph{falsifiable} iff
 $C ≠ \allleadstos ∧ [\F(\allleadstog) ⇒ \OF(\allleadstog)]$.
-
-It is important to note that falsifiability does not depend on $\allleadsto$: whether falsifiability holds can be determined analytically, meaning, by considering only the content of the claim, without considering the world.
+Note that falsifiability does not depend on $\allleadsto$: whether falsifiability holds can be determined analytically, meaning, by considering only the content of the claim, without considering the world.
 
 We introduce the axiom called $C$-scrutiny, which postulates that the real world is such that $C$ is either not observably false in it, or if it is, then $C$ suffers visibility issues in it:
 \begin{axiom}[$C$-scrutiny]
@@ -446,7 +433,6 @@ In formal terms, we impose $D^{\anobs, a, p}$, defined as follows.
     ∀i: (\anobs ⊆ \ileadstoo ∧ a \nileadstost p) ⇒ (∃α ∈ \allhists \suchthat \anobs^{-1}(P) ∪ \set{α} ∈ \fincrhists ∧ a ∈ \histend(α) ∧ α \nileadsto p).
   \end{equation}
 \end{axiom}
-\Cref{th:oneMorePriorFullExplicit} shows that each world which admits a regularity of the kind $∀i: \anobs ⊆ \ileadstoo ⇒ a \nileadstost p$ (for some $\anobs, a, p$) admits an anonymous, conclusive claim that holds and is PVo under $(¬\POF) ∩ E ∩ D^{\anobs, a, p}$.
 
 \begin{example}
   \label{ex:explainPriorVis}
@@ -456,6 +442,9 @@ In formal terms, we impose $D^{\anobs, a, p}$, defined as follows.
 \end{example}
 
 A sufficient (but not necessary) condition for this axiom to be satisfied is that repeating often enough the influences that lead the individual out of $p$ lets her forget about the influences used in $\anobs$.
+
+\section{Result}
+\Cref{th:oneMorePriorFullExplicit} shows that each world which admits a regularity of the kind $∀i: \anobs ⊆ \ileadstoo ⇒ a \nileadstost p$ (for some $\anobs, a, p$) admits an anonymous, conclusive claim that holds and is PVo under $(¬\POF) ∩ E ∩ D^{\anobs, a, p}$.
 
 \section{Conclusion}
 General claims about regularity of behaviors of individuals facing exposure to influences can be seen to hold only under some prior knowledge, phrased here as axioms, that requires acceptance beyond empirical verifiability.
@@ -478,6 +467,7 @@ It also relaxes the requirement that a claim be non-empty, thus, in this part, a
 Each result indicates which assumptions on the cardinalities of these sets (or whether $C ≠ ∅$) are required.
 
 We say that a claim $C$ \emph{fails} iff $\allleadsto ∉ C$.
+Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(↑θ ∩ C) ≠ (P ∪ \set{∅})^I$.
 
 Note that $C^⊆$ is downwards closed, meaning that $∀ c ∈ C^⊆: c' ⊆ c ⇒ c' ∈ C^⊆$ (equivalently, $\set{c' ⊆ c} ⊆ C^⊆$).
 Both $\incr(\allhists)^I$ and $\allpriobss$ are downwards closed.
@@ -492,6 +482,20 @@ This gives more details about \cref{ex:anonOverview}.
 
 \subsection{Verifiability}
 Given $C, D ⊆ \allleadstos$, $\allleadstog ∈ \allleadstos$, $C$ is verifiable at $\allleadstog$ under $D$ iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
+$C$ is verified at world $\allleadstog$ under axiom $D$ iff
+$∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
+$C$ is verified under $D$ iff it is verified at $\allleadsto$ under $D$.
+Note that $C$ is verified at $\allleadstog$ iff it is verified at $\allleadstog$ under the trivial axiom.
+Given $C, D ⊆ \allleadstos$, $C$ is permanently verifiable under axiom $D$ iff
+$∀\allleadstog ∈ C ∩ D, ∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑(θ' ∖ θ) ∩ D ⊆ C$.
+
+$C$ satisfies established verifiability under axiom $D$ iff
+it is verified under $D$ at all worlds in $C ∩ D$, thus:
+$∀\allleadstog ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑θ ∩ D ⊆ C$.
+
+Provability by $D$ implies established verifiability under $D$ (just use verification $θ = ∅$).
+For some axioms, provability by $D$ is strictly stronger than established verifiability under $D$ (the claim $C = [(a) \ileadstog φ]$ satisfies established verifiability under the trivial axiom $D$ but is not provable by it).
+
 \begin{theorem}
   \label{th:vudImpliesHolds}
   Given an axiom $D$ such that $\allleadsto ∈ D$, if a claim $C$ is verified under $D$, then $C$ holds.
@@ -544,8 +548,27 @@ Using the trivial axiom $D = \allleadstos$, we obtain this corollary.
 }
 
 \begin{lemma}
+  \label{th:infoVerifCombine}
+  If $C$ is informative in $\allleadstog$ and is verifiable in $\allleadstog$ under $D$, then
+  $∃O ∈ ∪_{K ⊆ I × \allhists}P^K \suchthat π(↑O ∩ D) ≠ (P ∪ \set{∅})^I$.
+\end{lemma}
+\begin{proof}
+  As $C$ is informative in $\allleadstog$, we can take some $θ_1 ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(↑θ_1 ∩ C) ≠ (P ∪ \set{∅})^I$.
+  As $C$ is verifiable in $\allleadstog$ under $D$ we can take some $θ_2 ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ ↑θ_2 ∩ D ⊆ C$.
+  Define $O = θ_1 ∪ θ_2$.
+
+  We now establish that $π(↑O ∩ D) ⊆ π(↑θ_1 ∩ C)$.
+  Consider any $f ∈ π(↑O ∩ D)$. Thus some $w ∈ ↑O ∩ D$ has $π(w) = f$.
+  Thus, $w ∈ ↑θ_2 ∩ D$.
+  Thus, $w ∈ C$.
+  Thus, $w ∈ ↑θ_1 ∩ C$.
+  Thus, $f ∈ π(↑θ_1 ∩ C)$.
+
+  As $π(↑θ_1 ∩ C) ≠ (P ∪ \set{∅})^I$, $π(↑O ∩ D) = (P ∪ \set{∅})^I$ is impossible.
+\end{proof}
+\begin{lemma}
   \label{th:completable}
-  If $\card{\allargs} ∉ ℕ$, given any general observation $O$ and $f: I → (P ∪ \set{∅})$, $∃ \allleadstog ∈ \allleadstos \suchthat O ⊆ \allleadstog ∧ π(\allleadstog) = f$.
+  If $\card{\allargs} ∉ ℕ$, given any general observation $O$ and $f: I → (P ∪ \set{∅})$, $∃ \allleadstog ∈ ↑O \suchthat π(\allleadstog) = f$.
 \end{lemma}
 \begin{proof}
   For each $i \suchthat f(i) ∈ P$, define $a_i ∉ (O(P))(i)(ℕ)$ as an influence not used for $i$;
@@ -555,18 +578,13 @@ Using the trivial axiom $D = \allleadstos$, we obtain this corollary.
   Define $\allleadstog$ as any completion of $f'$ to a total function in $\allleadstos$.
 \end{proof}
 \begin{theorem}
-  \label{th:minimalPriorForInformativenessG}
-  If $C ⊆ D$ is informative in $\allleadstog$ and is verifiable in $\allleadstog$ under $D$, then
-  \begin{itemize}
-    \item $∃K ⊆ I × \allhists, O ∈ P^K \suchthat ↑O ∩ C ∩ D ≠ (P ∪ \set{∅})^I$;
-    \item if $\card{\allargs} ∉ ℕ$, $D$ is not trivial.
-  \end{itemize}
+  If $\card{\allargs} ∉ ℕ$, $C$ is informative in $\allleadstog$ and $C$ is verifiable in $\allleadstog$ under $D$, then
+  $D$ is not trivial.
 \end{theorem}
 \begin{proof}
-  As $C$ is informative in $\allleadstog$, we can take some $θ_1 ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(↑θ ∩ C) ≠ (P ∪ \set{∅})^I$.
-  As $C$ is verifiable in $\allleadstog$ under $D$ we can take some $θ_2 ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
-  Define $O = θ_1 ∪ θ_2$.
-  Any world in $u(O) ∩ D$ is in $C$, hence, 
+  By \cref{th:infoVerifCombine}, $∃O, f | f ∉ π(↑O ∩ D)$.
+  By \cref{th:completable}, $∃ \allleadstog ∈ ↑O \suchthat π(\allleadstog) = f$.
+  Thus, $\allleadstog ∉ D$.
 \end{proof}
 \begin{theorem}
   \label{th:minimalPriorForInformativeness}
@@ -613,6 +631,11 @@ Using the trivial axiom $D = \allleadstos$, we obtain this corollary.
 \end{remark}
 
 \subsection{Falsifiability}
+PVo and POF have a dual character as
+$C$ satisfies PVo under $D$ iff
+$∀\allleadstog ∈ C ∩ D, \POF[D ∖ C](\allleadstog)$ (\cref{th:dualPof}, see also \cref{rk:dualEv}).
+\commentClaude{This duality breaks for new PV: the new condition $↑(θ' ∖ θ) ∩ D ⊆ C$ involves $θ$ and cannot be characterized by $\POF[D ∖ C]$.}
+
 The following partitioning of claims with respect to their falsifiability status and examples might help better understand this central notion.
 
 Any claim $C$ satisfies exactly one of these:
@@ -802,6 +825,7 @@ the axiom required must be at least as strong as claiming that if some observabl
 \end{remark}
 
 \subsection{Verifiability under an axiom}
+Under a given axiom, permanent verifiability is stronger than established verifiability (\cref{th:pevImpliesEv}).
 \begin{theorem}
   Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$: $C$ is PVo under $D$ at $\allleadstog$ iff $\POF[D ∖ C](\allleadstog)$.\commentClaude{This equivalence holds for PVo only. For new PV, the condition $↑(θ' ∖ θ) ∩ D ⊆ C$ depends on $θ$ and cannot be characterized by $\POF[D ∖ C]$ alone.}
 \end{theorem}
