@@ -231,13 +231,14 @@ Such an observation $θ ∈ Θ ∩ \powerset{\allleadsto}$ is called a feasible 
 Given a right unique $τ ⊆ (I × \allhists) × P$, we let $↑ τ = [τ ⊆ \allleadstog]$ denote the set of “leads to” relations that complete $τ$ (thus $↑ ∅ = \allleadstos$).
 
 \subsection{Desideratas about claims}
+\label{sec:desideratas}
 Onwards, we assume given an exposure protocol $(I, \allargs, \allleadsto)$.
 
 To be interesting for our purpose, a claim must satisfy minimal desiderata.
 
 Most important, of course, is that the claim includes the real world. 
 A claim $C$ \emph{holds} iff $\allleadsto ∈ C$.
-We will study criteria to determine whether a claim holds.
+We will study operational criteria to determine whether a claim holds.
 
 Once established that a claim holds, any feasible observation can be combined with the claim to determine conclusions.
 We want, minimally, that at least some feasible observation permits to conclude about at least one individual’s DJ.
@@ -274,7 +275,7 @@ A natural starting point is to attempt to verify claims, defined as follows.
 The claim $C$ is verifiable, or satisfies verifiability, iff some observation compatible with the actual world proves the claim, in the sense that every world compatible with the observation is in $C$; formally, iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ↑θ ⊆ C$.
 \begin{remark}
   One way to get convinced that this definition does capture the intuitive notion of verification stems from the scenario of debating whether the claim holds with an opponent.
-  Facing observations $θ$, the opponent may say, if some world completes $θ$ out of $C$ ($∃θ ⊆ \allleadstog ∉ C$), that this observation is not sufficient to prove that $C$ holds: the hypothesis that we live in the world $\allleadstog$ is compatible with us observing $θ$, but yet in this hypothesis, $C$ does not hold. The definition considered here state that $C$ is verifiable whenever the opponent cannot say this any more.
+  Facing observations $θ$, the opponent may say, if some world completes $θ$ out of $C$ ($∃θ ⊆ \allleadstog ∉ C$), that this observation is not sufficient to prove that $C$ holds: the hypothesis that we live in the world $\allleadstog$ is compatible with us observing $θ$, but yet in this hypothesis, $C$ does not hold. The definition of verifiability considers that $C$ is verified whenever the opponent cannot say this any more; and $C$ is verifiable if some observations $θ ⊆ \allleadsto$ exist that verifies $C$.
 \end{remark}
 
 Verifiability is sound (\cref{th:vImpliesHolds}), meaning that indeed when a claim is verifiable, it holds, but is too demanding for many claims, that is, many claims fail the converse implication.
@@ -362,49 +363,55 @@ Note that falsifiability does not depend on $\allleadsto$: whether falsifiabilit
 We introduce the axiom called $C$-scrutiny, which postulates that the real world is such that $C$ is either not observably false in it, or if it is, then $C$ suffers visibility issues in it:
 \begin{axiom}[$C$-scrutiny]
   \label{ax:scrutiny}
-  $¬\OF(\allleadsto) ∨ (¬\POF(\allleadsto) ∧ \OF(\allleadsto))$
+  $\allleadsto ∈ [¬\OF(\allleadstog) ∨ (¬\POF(\allleadstog) ∧ \OF(\allleadstog))]$.
 \end{axiom}
 This is logically equivalent to mandating $¬\POF(\allleadsto)$, thus, excluding worlds in which $C$ is persistently observably false.
 
 \begin{remark}
   \label{rk:cScrutinyC1}
   Another way to describe $C$-scrutiny is that
-  if the world is observably out of $C$, there is some prefix observation that hides this fact (formally: $\OF(\allleadsto) ⇒ \OF(\allleadsto) ∧ ¬\POF(\allleadsto)$).
+  if the world is observably out of $C$, there is some prefix observation that hides this fact (formally: $\OF(\allleadstog) ⇒ (\OF(\allleadstog) ∧ ¬\POF(\allleadstog))$).
 
   Equivalently,
-  if $C$ is still observably falsifiable after any amount of observation, then no feasible observation would falsify it ($\POF(\allleadsto) ⇒ ¬\OF(\allleadsto)$).
+  if $C$ is still observably falsifiable after any amount of observation, then no feasible observation would falsify it ($\POF(\allleadstog) ⇒ ¬\OF(\allleadstog)$).
 
-  Assuming, as the axiom does, $¬\POF(\allleadsto)$, leaves three possibilities: either there are visibility issues ($\OF(\allleadsto) ∧ ¬\POF(\allleadsto)$), or the claim is false, but inobservably so ($\F(\allleadsto) ∧ ¬\OF(\allleadsto)$), or the claim holds ($¬\F(\allleadsto)$).
+  Yet another way to understand this axiom is to observe that assuming, as the axiom does, $¬\POF(\allleadstog)$, leaves exactly these three possibilities for $\allleadstog$: either there are visibility issues ($\OF(\allleadstog) ∧ ¬\POF(\allleadstog)$), or the claim is false, but inobservably so ($\F(\allleadstog) ∧ ¬\OF(\allleadstog)$), or the claim holds ($¬\F(\allleadstog)$).
 \end{remark}
 \begin{remark}
   \label{rk:visIssuesForPof}
-  When considering a claim $C$ with no visibility issues, $C$-scrutiny is equivalent to $¬\OF(\allleadsto)$.
+  When considering a claim $C$ with no visibility issues, $C$-scrutiny is equivalent to $¬\OF(\allleadstog)$.
 
-  The reason for adopting the axiom $¬\POF(\allleadsto)$ instead of $¬\OF(\allleadsto)$ is illustrated with
-  $C_1 = [(a) \ileadstog φ ∧ (a') \ileadstog φ]$ for a given $i$: in some world (for example, where $(a) \ileadstog φ$ even though $(a') \nileadstog φ$), $¬\POF[C_1](\allleadstog) ∧ \OF[C_1](\allleadstog)$, thus we cannot assume that non-observation of falsification implies not OF, because it might also be due to observing that $(a) \ileadstog φ$.
+  The reason for adopting the axiom $¬\POF(\allleadstog)$ instead of $¬\OF(\allleadstog)$ is illustrated with
+  $C_1 = [(a) \ileadstog φ ∧ (a') \ileadstog φ]$ for a given $a$, $a'$, $i$: in some world (for example, where $(a) \ileadstog φ$ even though $(a') \nileadstog φ$), $¬\POF[C_1](\allleadstog) ∧ \OF[C_1](\allleadstog)$, thus we cannot assume that non-observation of falsification implies not OF, because it might also be due to observing that $(a) \ileadstog φ$.
   It also applies to $C_2 = [∀i: (a') \ileadstog φ ∧ (a) \ileadstog[j] φ]$ for a given $j$, which in a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (a') \ileadstog φ$ is $¬\POF[C_2](\allleadstog)$ (consider the prefix $θ = \set{(a') \ileadstog[j] φ}$) and $\OF[C_2](\allleadstog)$.
   (Note that if $C_2$ fails because, for some $i$, $(a') \nileadstog φ$,
   then $θ$ is not a hiding prefix observation, conforming to intuition.)
 \end{remark}
 \Cref{rk:alternativePofs} discusses alternative formalizations of the concepts POF and $C$-scrutiny.
 
-% \begin{remark}
-%   TODO
-  % This axiom seems unsatisfactorily not primitive enough (to be worked on…). We should obtain as a result that the reasonable axiom is, if no visibility issues, then not OF, by assuming that we have observed everything we could ever dream of.
-% \end{remark}
-
-\Cref{th:pvUnderNotPof} shows that this axiom is insufficient: only the trivial claim is PVo under $¬\POF$.
-
 \subsection{Repeatable observations}
-Our second axiom assumes that whenever a behavior is exhibited by at least one individual, infinitely many individuals exhibit it.
-
+Our second axiom ensures some repeatability of observations by assuming that whenever a behavior is exhibited by at least one individual, infinitely many individuals exhibit it.
+Equivalently, let $E = [∀i ∈ I: \card{\set{j ∈ I \suchthat \ileadstogo[j] = \ileadstogo}} ∉ ℕ]$, the claim that every individual's behavior is shared by infinitely many others.
 \begin{axiom}[Repeatable observations]
-  \label{def:repeatable}
-  Let $E = [∀i ∈ I: \card{\set{j ∈ I \suchthat \ileadstoo[j] = \ileadstoo}} ∉ ℕ]$, the claim that every individual's behavior is shared by infinitely many others.
+  \label{ax:repeatable}
+  $\allleadsto ∈ E$.
 \end{axiom}
 Given $C ⊆ \allleadstos$, combining both axioms introduced so far, we obtain the axiom $F_C = (¬\POF) ∩ E$.
 
-Intuition might suggest that under $E$, no visibility issues can arise. \Cref{ex:repeatableProvNotOfButNotNotPOF} shows that, on the contrary, a claim can be provable by $¬\OF[C ∩ E] ∩ E$ yet not provable by $¬\POF[C ∩ E] ∩ E$.
+Intuition might suggest that under $E$, no visibility issues can arise. \Cref{ex:repeatableProvNotOfButNotNotPOF} shows that, on the contrary, a claim can be provable by $¬\OF ∩ E$ yet not provable by $¬\POF ∩ E$.
+\begin{example}
+  \label{ex:repeatableProvNotOfButNotNotPOF}
+  Define $C = [α \ileadstog φ]$ for a given $α$ and $i$.
+  The axiom $¬\OF$ proves $C$: if, contrary to the claim, $α \nileadstog φ$, this failure is observable, and thus any such world satisfies $\OF(\allleadstog)$; by contrapositive, postulating that the world is not observably false proves $C$.
+
+  However, the axiom $¬\POF$ does not prove $C$, even considering only worlds in $E$.
+  Indeed, consider the world $\allleadstog$ in which all individuals behave the same (thus $\allleadstog ∈ E$), all being constantly lead to $φ'$ (formally, $∀α', j: α' \ileadstog[j] φ'$). 
+  Consider a prefix $θ$ where the only observation concerning $i$ is some path $α'$ longer than $α$. 
+  Note that $θ$ cannot be completed by observing $i$’s reaction to $α$. 
+  Therefore, $θ$ hides the possibility of proving by observation that $\allleadstog ∉ C$, and $¬\POF(\allleadstog)$, whence $¬\POF$ fails to prove $C$.
+
+  \Cref{ex:repeatableProvNotOfButNotNotPOFDetails} gives further details and a more formal proof.
+\end{example}
 
 \Cref{th:provGapVisibility} shows that
 $(¬\POF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no visibility issues in $E$ (that is, $∀\allleadstog ∈ E: \OF(\allleadstog) ⇒ \POF(\allleadstog)$).
@@ -412,25 +419,21 @@ $(¬\POF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no vi
 \Cref{th:finiteExceptSpreadAnon} shows that anonymous claims suffer no visibility issues in $E$.
 Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C ⊆ E$ is provable by $¬\POF[C ∩ E] ∩ E$ (\cref{th:anonFalsImpliesProv}).
 
-For any anonymous and conclusive claim to exist that holds and is PVo
-under $¬\POF[C ∩ E] ∩ E$, we need the world to offer some systematic pattern of the form, whenever an individual satisfies some observable behavior, then she deliberately chooses a given proposition (\cref{th:noPatternNoClaim}). Assume that the world has such: $∃ \anobs, i, a, p \suchthat \anobs ⊆ \ileadstoo ⇒ ∃p \in π(\ileadstoo)$.
-We want to study axioms for which, for worlds which satisfy such conditions, some anonymous, conclusive, holding claim exists that is permanently verifiable under that axiom.
-
-\Cref{th:holdsNotVerifUnderNotOfE} shows the insufficiency of the axiom $F_C$: for “most” such worlds (in some technical sense to be fully elucidated), there exists no anonymous claim that holds and is conclusive and PVo under $¬\POF[C ∩ E] ∩ E$.
-% For a claim to exist satisfying an, holds, concl, and PVo under ¬POF ∩ E, we need the world to satisfy D^gap?
-% Indeed, if C entails … → a dec or b dec, build a world where a not dec and b convincing when a is with him, and b sometimes not convincing 
-%D^gAp, the extension of D^gap for the case of some set of arguments A such that g ⊆ \ileadsto p ⇒ ∃a ∈ A | a \ileadstost p.
-
 \subsection{Visibility}
 We now add the last piece of the puzzle.
+For any anonymous and conclusive claim to exist that holds and is persistently verifiable
+under $¬\POF[C ∩ E] ∩ E$, we need the world to offer some systematic pattern of the form, whenever an individual satisfies some observable behavior, then she deliberately chooses a given proposition (\cref{th:noPatternNoClaim}). Assume that the world has such: $∃ \anobs, p \suchthat ∀i: \anobs ⊆ \ileadstoo ⇒ ∃p \in π(\ileadstoo)$.
+We want to study axioms for which, for worlds which satisfy such conditions, some anonymous, conclusive, holding claim exists that is permanently verifiable under that axiom.
 For a suitable claim to exist, 
 we need the axiom to ensure that no behavior is sufficiently “strange” that an individual $i$ can satisfy the pattern $\anobs ⊆ \ileadstoo$, but fail $a \ileadstost p$, but only fail it in a way that is invisible to our observational capacities.
 In words, we require that those individuals have some path compatible with those used in $\anobs$ where it is visible that $a$ does not decisively lead $i$ to $p$ (thus $a$ appears at the end of $α$ and yet $α \nileadsto p$). 
-In formal terms, we impose $D^{\anobs, a, p}$, defined as follows.
+In formal terms, we impose $D^{\anobs, a, p}$, defined as:
+\begin{equation}
+  ∀i: (\anobs ⊆ \ileadstoo ∧ a \nileadstost p) ⇒ (∃α ∈ \allhists \suchthat \anobs^{-1}(P) ∪ \set{α} ∈ \fincrhists ∧ a ∈ \histend(α) ∧ α \nileadsto p).
+\end{equation}
 \begin{axiom}[Visibility]
-  \begin{equation}
-    ∀i: (\anobs ⊆ \ileadstoo ∧ a \nileadstost p) ⇒ (∃α ∈ \allhists \suchthat \anobs^{-1}(P) ∪ \set{α} ∈ \fincrhists ∧ a ∈ \histend(α) ∧ α \nileadsto p).
-  \end{equation}
+  \label{ax:vis}
+  $\allleadsto ∈ D^{\anobs, a, p}$.
 \end{axiom}
 
 \begin{example}
@@ -440,10 +443,21 @@ In formal terms, we impose $D^{\anobs, a, p}$, defined as follows.
   This claim is anonymous and conclusive, and PVo under the axiom $¬\POF ∩ E ∩ D^{\anobs, a, φ}$, with $\anobs = \set{(a, b), φ}$. As the axiom holds, this implies that the claim holds. The axiom $D^{\anobs, a, φ}$ requires to accept that whenever some individual satisfies $(a, b) \ileadsto φ$ but fails $a \ileadstostg φ$, some path that completes $(a, b)$ shows it, such as $(a, b, c, a) \nileadsto φ$. On the contrary, the axiom fails if the only paths where $a$ fails to be decisive for that individual are paths that do not complete $(a, b)$. This could be the case, for example, if that individual is definitely impressed by the first influence he is exposed to, and never considers any other influences afterwards.
 \end{example}
 
-A sufficient (but not necessary) condition for this axiom to be satisfied is that repeating often enough the influences that lead the individual out of $p$ lets her forget about the influences used in $\anobs$.
+A sufficient (but not necessary) condition for \cref{ax:vis} is that repeating often enough the influences that lead the individual out of $p$ lets her forget about the influences used in $\anobs$.
 
 \section{Result}
+This section argues about (the formal proofs are in appendix) the necessity and sufficiency of \cref{ax:scrutiny,ax:repeatable,ax:vis} for ensuring existence of claims that satisfy the desideratas of \cref{sec:desideratas} and can be seen to hold. 
+
+We first illustrate that any two axioms out of those three are insufficient for obtaining this result, then illustrate sufficiency of considering all three together.
+
 \Cref{th:oneMorePriorFullExplicit} shows that each world which admits a regularity of the kind $∀i: \anobs ⊆ \ileadstoo ⇒ a \nileadstost p$ (for some $\anobs, a, p$) admits an anonymous, conclusive claim that holds and is PVo under $(¬\POF) ∩ E ∩ D^{\anobs, a, p}$.
+
+\Cref{th:pvUnderNotPof} shows that this axiom is insufficient: only the trivial claim is PVo under $¬\POF$.
+
+\Cref{th:holdsNotVerifUnderNotOfE} shows the insufficiency of the axiom $F_C$: for “most” such worlds (in some technical sense to be fully elucidated), there exists no anonymous claim that holds and is conclusive and PVo under $¬\POF[C ∩ E] ∩ E$.
+% For a claim to exist satisfying an, holds, concl, and PVo under ¬POF ∩ E, we need the world to satisfy D^gap?
+% Indeed, if C entails … → a dec or b dec, build a world where a not dec and b convincing when a is with him, and b sometimes not convincing 
+%D^gAp, the extension of D^gap for the case of some set of arguments A such that g ⊆ \ileadsto p ⇒ ∃a ∈ A | a \ileadstost p.
 
 \section{Conclusion}
 General claims about regularity of behaviors of individuals facing exposure to influences can be seen to hold only under some prior knowledge, phrased here as axioms, that requires acceptance beyond empirical verifiability.
@@ -451,7 +465,7 @@ Without delving into epistemological analysis, which I am not qualified to give,
 
 This study has defined the concept of deliberated judgment and related notions, and pinpointed the precise axioms whose acceptance is required in order to be convinced of the veracity of a claim about deliberated judgments.
 
-As \cref{ex:explainPriorVis} illustrates, an axiom may be hard to accept, depending on the exposure protocol and what is considered plausible behavior. The framework presented here is general and simple, a good thing for an initial study of a concept: complexity requires justification. But this framework may lack richness for some exposure protocols. For example, it may be visible in the content of an influence (say, of an argument) that it supports $φ$, thus, if an individual is in favor of $φ'$ after having been exposed to that influence, it may be considered a priori convincing that the individual would have been in favor of $φ'$ also without seeing the influence. Our framework forbids such prior knowledge about the influences. Supplementary structure relaxing this could represent a middle-ground between our completely opaque approach of influences and the whole logical apparatus of formal argument theory which does not consider the argument’s compatibilities as empirical, and would be worth studying.
+As \cref{ex:explainPriorVis} illustrates, an axiom may be hard to accept, depending on the exposure protocol and what is considered plausible behavior. The framework presented here is general and simple (a good thing for an initial study of a concept, as complexity requires justification). But this framework may lack richness for some exposure protocols. For example, it may be visible in the content of an influence (say, of an argument) that it supports $φ$, thus, if an individual is in favor of $φ'$ after having been exposed to that influence, it may be considered a priori convincing that the individual would have been in favor of $φ'$ also without seeing the influence. Our framework forbids such prior knowledge about the influences. Supplementary structure relaxing this could represent a middle-ground between our completely opaque approach of influences and the whole logical apparatus of formal argument theory which does not consider the argument’s compatibilities as empirical, and would be worth studying.
 
 The dependence of the deliberated judgment concept on the exposure protocol yields a qualification about the concept of deliberated judgments when one desires to use it normatively: it is only as reasonable to call the resulting judgments “deliberate” in a normative sense as the exposure protocol is normatively relevant to deliberation. A sufficiently restricted, or even purposefully chosen, set of influences may yield judgments that are only deliberate in the technical sense used here, but that pertain more to brain-washing than to reflective judgments. While it is indeed a long-term goal of this research program to yield a normatively relevant conception of preference (appropriate, for example, for recommendation), it is not a claim of this article that anything that corresponds to deliberated judgments as defined here qualify as being appropriate for any normative use: much depends on the chosen exposure protocol. The goal of this article is rather one of a conceptual and practical clarification. It proposes a sharp distinction between the empirical content and the normative content of the concept of deliberated judgments: the definition proposed here transfers the full normative weight on the choice of the exposure protocol; and leaves the rest of the disagreements to empirical settling. This is methodologically akin, mutatis mutandis, to the axiomatic study of justice such as done in social choice, only complementing mathematical deduction with empirical claims. In social choice, the choice of axioms bears the full normative weight; once axioms are chosen, it is a matter of logic which social choice rules (if any) correspond to that choice. In our case, once an exposure protocol is chosen, it is an empirical matter which deliberated judgments result.
 In supplement to a possibly helpful conceptual clarification, such a sharp separation may reveal practically useful for separation of concern as it permits to study deliberated judgments empirically under various exposure protocols independently of possible disagreements about which norms are more appropriate for deliberation in which circumstances.
@@ -471,6 +485,243 @@ Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informati
 Note that $C^⊆$ is downwards closed, meaning that $∀ c ∈ C^⊆: c' ⊆ c ⇒ c' ∈ C^⊆$ (equivalently, $\set{c' ⊆ c} ⊆ C^⊆$).
 Both $\incr(\allhists)^I$ and $\allpriobss$ are downwards closed.
 The set $Θ ∩ C^⊆$ is downwards closed, as both $Θ$ and $C^⊆$ are.
+
+\subsection{Requirement on the real world}
+\begin{theorem}
+  \label{th:patternNecessary}
+  Consider $\allleadsto ∈ E$. If some anonymous, conclusive claim holds, then $∃ \anobs, p ∈ P \suchthat ∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ P_i$.
+\end{theorem}
+\begin{proof}
+  Let $C$ be anonymous, conclusive, and holding, that is, $\allleadsto ∈ C$.
+
+  \emph{A conclusiveness pin.}
+  As $C$ is conclusive and $\allleadsto ∈ C$, applying conclusiveness at $θ = ∅$ gives $θ_0 ∈ Θ ∩ \powerset{\allleadsto}$, $i^* ∈ I$ and $p^* ∈ P$ with $π_{i^*}(↑θ_0 ∩ C) = \set{p^*}$.
+  Let $H := \set{α \suchthat ∃p, (i^*,α,p) ∈ θ_0} ∈ \fincrhists$ and let $\anobs: H → P$ be $\anobs(α) := p$ for the unique $p$ with $(i^*,α,p) ∈ θ_0$; as $θ_0 ⊆ \allleadsto$, $\anobs ⊆ \ileadstoo[i^*]$.
+
+  \emph{Propagating the pin to every matching individual.}
+  Fix $i ∈ I$ with $\anobs ⊆ \ileadstoo[i]$; write $g := \ileadstoo[i]$. We show $p^* ∈ P_i$.
+
+  If $i = i^*$: as $θ_0 ⊆ \allleadsto ∈ C$, $\allleadsto ∈ ↑θ_0 ∩ C$, so $π_{i^*}(\allleadsto) = p^*$, that is $p^* ∈ P_{i^*}$.
+
+  If $i ≠ i^*$: as $\allleadsto ∈ E$, the class $J_g := \set{j ∈ I \suchthat \ileadstoo[j] = g}$ is infinite (it contains $i$), and $θ_0$ has finite support, so we may pick $i'' ∈ J_g ∖ (θ_0(\allhists, P) ∪ \set{i^*})$. Let $σ$ be the transposition of $i^*$ and $i''$ (identity elsewhere) and $\allleadstog^{sw} := \allleadsto ∘ σ$.
+  Then $\allleadstog^{sw}(i^*) = \ileadstoo[i''] = g$ and $\anobs ⊆ g$: $θ_0$'s constraint on $i^*$ holds in $\allleadstog^{sw}$; and every other $j ∈ θ_0(\allhists, P)$ satisfies $j ∉ \set{i^*, i''}$, so $\allleadstog^{sw}(j) = \ileadstoo[j]$, matching $θ_0$ there too. Hence $θ_0 ⊆ \allleadstog^{sw}$.
+  As $C$ is anonymous and $\allleadsto ∈ C$, $\allleadstog^{sw} = \allleadsto ∘ σ ∈ C ∘ σ = C$; with $θ_0 ⊆ \allleadstog^{sw}$, $\allleadstog^{sw} ∈ ↑θ_0 ∩ C$, so $π_{i^*}(\allleadstog^{sw}) = p^*$. As $π_{i^*}$ depends only on the row $\allleadstog^{sw}(i^*) = g$ (\cref{def:decisive}), this is $p^* ∈ P_i$.
+
+  Taking $p := p^*$, $∀i ∈ I: \anobs ⊆ \ileadstoo[i] ⇒ p^* ∈ P_i$, as required.
+\end{proof}
+\begin{corollary}
+  \label{th:noPatternNoClaimPlain}
+  Consider $\allleadsto ∈ E$ such that for no $\anobs$, $p ∈ P$: $∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ P_i$. Then no anonymous, conclusive claim holds.
+\end{corollary}
+\begin{proof}
+  Immediate contrapositive of \cref{th:patternNecessary}.
+\end{proof}
+
+\begin{lemma}
+  \label{lem:outsideSupportForced}
+  In the setting of the proof of \cref{th:patternNecessary} (not assuming $\allleadsto ∈ E$), let $C$ be anonymous, conclusive and holding, and let $θ_0$, $i^*$, $p^*$, $\anobs$ be as obtained there. Then $∀i ∈ I ∖ θ_0(\allhists,P) \suchthat \anobs ⊆ \ileadstoo[i]: p^* ∈ P_i$.
+\end{lemma}
+\begin{proof}
+  As $i ∉ θ_0(\allhists,P)$, $θ_0$ places no constraint on $i$. Let $σ$ be the transposition of $i^*$ and $i$ (identity elsewhere) and $\allleadstog^{sw} := \allleadsto ∘ σ$.
+  Then $\allleadstog^{sw}(i^*) = \ileadstoo[i]$, which contains $\anobs$ by hypothesis; and $\allleadstog^{sw}(j) = \ileadstoo[j]$ for every other $j ∈ θ_0(\allhists,P)$ (as $j ∉ \set{i^*,i}$), matching $θ_0$'s constraint on $j$ as before. Hence $θ_0 ⊆ \allleadstog^{sw}$.
+  As $C$ is anonymous and $\allleadsto ∈ C$, $\allleadstog^{sw} ∈ C ∘ σ = C$; with $θ_0 ⊆ \allleadstog^{sw}$, $\allleadstog^{sw} ∈ ↑θ_0 ∩ C$, so $π_{i^*}(\allleadstog^{sw}) = p^*$. As $π_{i^*}$ depends only on the row $\allleadstog^{sw}(i^*) = \ileadstoo[i]$, this is $p^* ∈ P_i$.
+\end{proof}
+\begin{remark}
+  \Cref{lem:outsideSupportForced} needs no axiom on $\allleadsto$ at all, and already pins $p^*$ for every matching individual outside the finite set $θ_0(\allhists,P)$.
+  Axiom $E$ in \cref{th:patternNecessary} is used only to extend this to the finitely many $i ∈ θ_0(\allhists,P) ∖ \set{i^*}$ that match $\anobs$: there, the direct transposition of \cref{lem:outsideSupportForced} would disturb $θ_0$'s own constraint on $i$, so the proof instead swaps $i^*$ with a full row-sharer of $i$ found \emph{outside} the support — which needs $i$'s row-sharing class to reach outside $θ_0(\allhists,P)$. Axiom $E$ (every row-sharing class infinite) is a convenient sufficient condition for that, but strictly stronger than necessary: only $J_{\ileadstoo[i]} ⊈ θ_0(\allhists,P)$ is actually used, where $J_g := \set{j ∈ I \suchthat \ileadstoo[j] = g}$.
+
+  Whether \cref{th:patternNecessary} holds unconditionally (dropping $E$ entirely) is open. A genuine counterexample would need some $i$ matching $\anobs$ whose entire row-sharing class $J_{\ileadstoo[i]}$ is confined to $θ_0(\allhists,P)$ — a class that is finite exactly where $E$ fails at $i$.
+  Attempts at building such a world ran into a recurring obstruction: making $i^*$'s pin genuinely depend on a second, finitely-shared companion $i_0 ∈ θ_0(\allhists,P)$ (so that $i^*$ is decisive only in the companion's presence) tends to also force every \emph{other} individual satisfying $i^*$'s trigger condition to be decisive in the same way. Ruling out every $(\anobs',p')$ pair, including vacuous ones (an $\anobs'$ matched by nobody trivially satisfies the pattern for every $p$), requires every finite pattern to be realized by someone. Patterns falling under the trigger then get forced rather than left free to carry a conflicting, undetermined choice; patterns inconsistent with being forced become unrealizable instead, which reopens a vacuous escape. Whether this tension is unavoidable, or some cleverer claim $C$ escapes it, is left open.
+
+  A sharper diagnosis of the same obstruction: enlarging $\anobs$ to exclude a confined companion is itself constrained, since $\anobs$ ranges over $∪_{H ∈ \fincrhists} P^H$, so its domain $H$ must remain a chain (pairwise $⊆$-comparable). Excluding some $i'' ∈ J_g ∩ θ_0(\allhists,P)$ this way requires adding to $H$ a path $α$, comparable to every path already in $H$, on which $i''$ disagrees with $i^*$, that is $\ileadstoo[i''](α) ≠ g(α)$. As $\ileadstoo[i''] ≠ g$ only as full functions on $\allhists$, nothing guarantees such an $α$ among the paths comparable to $H$: $i''$ may agree with $i^*$ throughout that region and differ only on paths incomparable to it, in which case no enlargement of $\anobs$ can expose the disagreement. So the obstruction is not really about $E$'s cardinality bound, but about whether $i''$'s disagreement with $i^*$ is reachable from $\anobs$'s own chain — which enlarging $\anobs$ need not secure.
+\end{remark}
+
+\begin{example}
+  \label{ex:crossRef}
+  Consider $I = \set{i_1, i_2}$.
+  $C = [∀i, ∃j ≠ i \suchthat (a) \ileadstog[j] φ ⇒ φ ∈ P_i]$.
+  Consider $(a) \ileadsto[i_1] φ$, $a' \ileadstost[i_2] φ$ and $(a) \nileadsto[i_2] φ$.
+  The claim is anonymous, conclusive (observing $(a) \ileadsto[i_1] φ$ permits to conclude that $φ ∈ P_{i_2}$), and holds (vacuously for $i_1$).\commentClaude{Conclusiveness is required at every $\allleadstog ∈ C$, not only at the stipulated world: take $\allleadstog'$ with $(a) \nileadsto[i_1] φ$ and $(a) \nileadsto[i_2] φ$ (e.g.\ constantly $0$ elsewhere too). Then $\allleadstog' ∈ C$ (both conjuncts vacuous), yet no finite $θ'$ pins any $π_i$ to a singleton, since $C$ imposes nothing at $\allleadstog'$. So $C$ is not actually conclusive as stated; fixing it (e.g.\ adding a fallback consequence for the case where neither individual triggers the other) is not immediate, since with only two individuals it tends to force both symmetrically, defeating the point of the example.}
+\end{example}
+
+\begin{lemma}\label{lem:crossRefResolved}
+  Let $A ∈ \fincrhists$, $X : P^A → \set{0,1}$ non-constant, $p ∈ P$, and for $\allleadstog ∈ \allleadstos$ let $M(\allleadstog) := \set{j ∈ I \suchthat X(\restr{\allleadstog(j)}{A}) = 1}$.
+  Generalizing \cref{ex:crossRef}, let $C = [M(\allleadstog) ≠ ∅ ∧ ∀i, ∃j ≠ i \suchthat j ∈ M(\allleadstog) ⇒ p ∈ P_i]$ — which specializes to \cref{ex:crossRef}'s repair via $A = \set a$, $X(q) := [q(a) = φ]$, $p = φ$.
+  Then $C$ is anonymous, and: if $I$ is finite, $C$ is not conclusive; if $I$ is infinite, $C$ is conclusive, and the conclusion of \cref{conj:main} holds for $C$. So this family — for any shared finite-chain window $A$ and non-constant trigger $X$ on it — never yields a counterexample to \cref{conj:main}. Moreover neither the conjunct $M(\allleadstog) ≠ ∅$ nor the antecedent $∃j ≠ i \suchthat j ∈ M(\allleadstog)$ can be replaced by any genuinely different bijection-invariant condition without breaking this proof: both are forced to be logically equivalent to nonemptiness.
+\end{lemma}
+\begin{proof}
+  \emph{Anonymity.} For $σ$ a permutation of $I$, $\restr{(\allleadstog ∘ σ)(i)}{A} = \restr{\allleadstog(σ(i))}{A}$, so $i ∈ M(\allleadstog ∘ σ) ⇔ σ(i) ∈ M(\allleadstog)$, i.e.\ $M(\allleadstog ∘ σ) = σ^{-1}(M(\allleadstog))$; in particular $M(\allleadstog ∘ σ) ≠ ∅ ⇔ M(\allleadstog) ≠ ∅$. Writing $Q(i,\allleadstog) :⇔ \bigl(∃j ≠ i \suchthat j ∈ M(\allleadstog)\bigr) ⇒ p ∈ P_i^{\allleadstog}$, the substitution $j = σ(j')$ likewise gives $Q(i, \allleadstog ∘ σ) ⇔ Q(σ(i), \allleadstog)$, so $∀i: Q(i, \allleadstog ∘ σ) ⇔ ∀i: Q(i,\allleadstog)$ by reindexing. Hence $\allleadstog ∘ σ ∈ C ⇔ \allleadstog ∈ C$, i.e.\ $C ∘ σ = C$.
+
+  \emph{$I$ finite $⇒$ $C$ not conclusive.} Fix $\allleadstog' ∈ C$. If $|I| = 1$, $C$ is vacuous (the antecedent $∃j ≠ i$ is never satisfiable) and trivially non-conclusive, so assume $|I| ≥ 2$. Let $θ ∈ Θ ∩ \powerset{\allleadstog'}$ reveal $\restr{\allleadstog'(j)}{A}$ for every $j ∈ I$ — finite, since $I$ and $A$ are, and each individual's revealed domain is exactly $A$, a chain. Let $θ'' ∈ Θ ∩ \powerset{\allleadstog'}$ be any extension with $θ ⊑ θ''$. As $θ$ already fixes $\restr{\allleadstog'(j)}{A}$ for every $j$, hence fixes $M(\allleadstog'')$ for every $\allleadstog'' ∈ ↑θ$, the fresh increment $δ := θ'' ∖ θ$ is irrelevant to membership in $C$. As $X$ is non-constant, fix $q,q' ∈ P^A$ with $X(q)=1$, $X(q')=0$. So, for any $i ∈ I$, $↑δ ∩ C$ contains both a world with $\restr{\allleadstog(i)}{A} = q$ and $\restr{\allleadstog(j)}{A} = q'$ for every $j ≠ i$ (so $M(\allleadstog) = \set{i}$) and $p ∉ P_i$ (antecedent of $Q(i,\allleadstog)$ false, $M(\allleadstog) ≠ ∅$ holds) and a world with $\restr{\allleadstog(j)}{A} = q$ for every $j$ (so $M(\allleadstog) = I$) and $p ∈ P_i$ (antecedent true, forcing it) — these disagree on $π_i$, so $π_i(↑δ ∩ C)$ is never a singleton. As $θ''$ was an arbitrary extension of $θ$, no extension witnesses conclusiveness at $\allleadstog'$.
+
+  \emph{$I$ infinite $⇒$ $C$ conclusive.} Fix $\allleadstog' ∈ C$ and $θ ∈ Θ ∩ \powerset{\allleadstog'}$. As $θ$ is finite and $I$ infinite, choose $k ∈ I$ with $\set{k} × A$ disjoint from $θ$'s domain, and let $δ := \set{k} × \restr{\allleadstog'(k)}{A}$, $θ' := θ ∪ δ$, so $θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog'}$ ($δ$'s domain is $A$, a chain, so this is a legitimate observation increment).
+  \begin{itemize}
+    \item If $X(\restr{\allleadstog'(k)}{A}) = 1$ (i.e.\ $k ∈ M(\allleadstog')$): every $\allleadstog'' ∈ ↑δ ∩ C$ has $k ∈ M(\allleadstog'')$, so for any $i ≠ k$ (one exists, $I$ infinite) the antecedent of $Q(i,\allleadstog'')$ holds (witness $j=k$), forcing $p ∈ P_i^{\allleadstog''}$: $π_i(↑δ ∩ C) = \set{p}$.
+    \item Otherwise $X(\restr{\allleadstog'(k)}{A}) = 0$ (i.e.\ $k ∉ M(\allleadstog')$): every $\allleadstog'' ∈ ↑δ ∩ C$ has $k ∉ M(\allleadstog'')$, and since $M(\allleadstog'') ≠ ∅$, this nonempty set equals $M(\allleadstog'') ∖ \set k$, so the antecedent of $Q(k,\allleadstog'')$ holds, forcing $p ∈ P_k^{\allleadstog''}$: $π_k(↑δ ∩ C) = \set{p}$.
+  \end{itemize}
+  Either way, $(θ', i, p)$ witnesses conclusiveness at $(\allleadstog', θ)$, for some $i ∈ \set{i ≠ k} ∪ \set k$.
+
+  \emph{\Cref{conj:main} holds directly for $C$, $I$ infinite.} Fix $\allleadstog ∈ C$, so $M(\allleadstog) ≠ ∅$.
+  \begin{itemize}
+    \item If $M(\allleadstog) = I$: take $\anobs = ∅$. For every $i$, $∃j ≠ i \suchthat j ∈ M(\allleadstog) = I$ (as $I$ is infinite), so $Q(i,\allleadstog)$ forces $p ∈ P_i$; hence $∀i: \anobs ⊆ \ileadstoo ⇒ p ∈ P_i$ holds, vacuously on the antecedent but correctly on the consequent.
+    \item If $M(\allleadstog) ≠ I$: pick $i_0 ∈ I ∖ M(\allleadstog)$ and let $\anobs := \restr{\allleadstog(i_0)}{A} ∈ P^A$, a legitimate observation since $A$ is a chain. For any $i$ with $\anobs ⊆ \ileadstoo$, i.e.\ $\restr{\ileadstoo[i]}{A} = \restr{\allleadstog(i_0)}{A}$, we get $X(\restr{\ileadstoo[i]}{A}) = X(\restr{\allleadstog(i_0)}{A}) = 0$, so $i ∉ M(\allleadstog)$; as $M(\allleadstog) ≠ ∅$, $M(\allleadstog) ∖ \set i = M(\allleadstog) ≠ ∅$, so $Q(i,\allleadstog)$'s antecedent holds, forcing $p ∈ P_i$.
+  \end{itemize}
+  In both cases $\anobs, p$ witness \cref{conj:main}'s conclusion directly from $C$'s own definition, without appeal to conclusiveness.
+
+  \emph{Neither $M(\allleadstog) ≠ ∅$ nor $∃j ≠ i \suchthat j ∈ M(\allleadstog)$ can be weakened.} Suppose the conjunct $M(\allleadstog) ≠ ∅$ is replaced by $Φ(M(\allleadstog))$ for some bijection-invariant property $Φ$ of subsets of $I$ (needed for anonymity to survive). The \emph{$I$ infinite $⇒$ conclusive} argument above, run on this modified $C$, only ever learns, after revealing $δ$, that $k ∈ M(\allleadstog'')$; forcing $p ∈ P_i^{\allleadstog''}$ for $i ≠ k$ this way requires $Φ(S)$ to hold whenever $k ∈ S$, however the unrevealed rest of $S$ turns out — in particular $Φ(\set k)$ must hold, so $Φ$ must hold on every singleton. The \emph{$I$ finite $⇒$ not conclusive} argument needs, symmetrically, a world with $M(\allleadstog) = \set{i}$ and $Φ(\set i)$ true (so $\allleadstog ∈ C$, antecedent of $Q(i,\allleadstog)$ false) alongside one with $M(\allleadstog) = I$ and $Φ(I)$ true (antecedent true); together with $Φ(∅)$ false (else $C$ never requires $M ≠ ∅$, trivializing the family), bijection-invariance then forces $Φ$ upward-closed from any true singleton, hence true on every nonempty set: $Φ(S) ⇔ S ≠ ∅$. The same reasoning, applied to $Ψ(M(\allleadstog) ∖ \set i)$ in place of the antecedent $∃j ≠ i \suchthat j ∈ M(\allleadstog)$, forces $Ψ(S) ⇔ S ≠ ∅$ likewise: the infinite-$I$ step learns only "$k ∈ M(\allleadstog'') ∖ \set i$" for $i ≠ k$, so forcing $p ∈ P_i$ needs $Ψ(\set k)$ true, and the finite-$I$ step needs an antecedent-false profile, forcing $Ψ(∅)$ false.
+\end{proof}
+
+\begin{example}
+  Consider $I = J ∪ \set{i_1}$ with $J$ infinite and $i_1 ∉ J$.
+  $C = [∀i: (a) \ileadstog[i] φ ⇒ a \ileadstost[i] φ] ∩ [\card{\set{i ∈ I \suchthat (a) \ileadstog[i] φ}} ∉ ℕ]$.
+  Consider $∀j ∈ J: a \ileadstost[j] φ$ and $(a) \ileadsto[i_1] φ'$ for some $φ' ≠ φ$.
+
+  The claim holds: the first conjunct is satisfied at every $j ∈ J$ by stipulation and vacuous at $i_1$ (as $φ' ≠ φ$); the second is witnessed by $J$ itself. It is anonymous, since both conjuncts depend on $\allleadstog$ only through the family of rows $(\ileadstoo)_{i ∈ I}$ up to reindexing $i$: the first, universally over $i$; the second, through the cardinality of $\set{i \suchthat (a) \ileadstog[i] φ}$, unchanged by any bijective relabeling of $I$. As in the previous example, $i_1$ escapes: matching neither conjunct, it carries no constraint on $P_{i_1}$ at all.
+
+  Unlike the previous example, $C$ is genuinely conclusive. Fix $\allleadstog' ∈ C$ and $θ ∈ Θ ∩ \powerset{\allleadstog'}$. By $C$'s second conjunct, $M := \set{i ∈ I \suchthat (a) \ileadstog[i]' φ}$ is infinite, while $θ(\allhists, P)$ is finite, so some $j ∈ M ∖ θ(\allhists, P)$ exists. Let $θ' := θ ∪ \set{(j,(a),φ)}$; as $j$ is untouched by $θ$, $θ ⊑ θ'$ and $θ' ∖ θ = \set{(j,(a),φ)}$. Any $\allleadstog'' ∈ ↑(θ' ∖ θ) ∩ C$ has $(a) \ileadstog[j]'' φ$, so $C$'s first conjunct at $j$ gives $a \ileadstost[j] φ$ in $\allleadstog''$, hence $π_j(\allleadstog'') = φ$ by \cref{th:sing}; and $\allleadstog' ∈ ↑(θ' ∖ θ) ∩ C$ itself (as $j ∈ M$), so this set is nonempty and $π_j(↑(θ' ∖ θ) ∩ C) = \set{φ}$: $(θ', j)$ witnesses conclusiveness at $(\allleadstog', θ)$. As $\allleadstog', θ$ were arbitrary, $C$ is conclusive.
+
+  This sidesteps the gap flagged in \cref{th:oneMorePriorGeneralPev}'s \emph{Conclusive} paragraph: there, a single witness $i^*$ (or a fresh one found via axiom $E$) must be located relative to an arbitrary $θ$; here, the second conjunct bakes infinitely many witnesses directly into $C$ itself, so a fresh one outside $θ$'s (finite) support is available at \emph{every} $\allleadstog' ∈ C$, without appeal to $E$.
+\end{example}
+
+\begin{conjecture}
+  $C$ is conclusive implies that $C ⊆ E$?
+\end{conjecture}
+\begin{proof}
+  Consider any $\allleadstog ∈ C$.
+  Given any prefix $θ$, some $θ'$ concludes, thus, $C ⊆ …$.
+  (I don’t think it’s true, using (a.*) solves the problem!)
+\end{proof}
+\begin{conjecture}
+  \label{conj:main}
+  If some anonymous, conclusive claim holds, then $∃ \anobs, p ∈ P \suchthat ∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ P_i$.
+\end{conjecture}
+\begin{proof}[Attempt]
+  By conclusiveness, we have for some $i_1, θ, p$:
+  $π_{i_1}(↑θ ∩ C) = p$.
+  Let us assume for now that $θ = \set{((a), i_1, φ), ((b), i_2, φ)}$ with $i_2 ≠ i_1$ (we will try to extend afterwards to other cases, hoping for now that nothing crucial depends on this simplification).
+  We deduce that $C ⊆ \set{\allleadstog \suchthat (a) \ileadstog[i_1] φ ∧ (b) \ileadstog[i_2] φ ⇒ p ∈ π(\ileadstogo[i_1])}$.
+  Now take $θ$ as a prefix.
+  By conclusiveness, we have for some $i_1, θ smaller than θ', p$:
+  $π_{i_1}(↑θ' ∩ C) = p$.
+  Let us assume for now that $θ = \set{((a), i_1, φ), ((b), i_2, φ)}$ with $i_2 ≠ i_1$ (we will try to extend afterwards to other cases, hoping for now that nothing crucial depends on this simplification).
+  We deduce that $C ⊆ \set{\allleadstog \suchthat (a) \ileadstog[i_1] φ ∧ (b) \ileadstog[i_2] φ ⇒ p ∈ π(\ileadstogo[i_1])}$.
+  By conclusiveness,
+
+  By anonymity, also $C ⊆ \set{\allleadstog \suchthat ∀i ≠ j: (a) \ileadstog φ ∧ (b) \ileadstog[j] φ ⇒ p ∈ π(\ileadstogo)}$.
+  Indeed, a world in $C$ satisfying the antecedent $(a) \ileadstog φ ∧ (b) \ileadstog[j] φ$ for some pair of individuals $i ≠ j$ but failing the consequent must correspond to a world, applying anonymity by mapping $i$ to $i_1$ and $j$ to $i_2$, that also is in $C$, which would contradict the first statement.
+  As $C$ holds, we obtain
+  $∀i ≠ j: (a) \ileadsto φ ∧ (b) \ileadsto[j] φ ⇒ p ∈ π(\ileadstoo)$.
+
+  Assume first that the same implication without the part of the antecedent that concerns $I ∖ \set{i_1}$ holds, thus, that the real world satisfies
+  $∀i: (a) \ileadstog φ ⇒ p ∈ π(\ileadstogo)$.
+  Then, the proof is finished.
+
+  Similarly, assume that for some finite conjunct $ψ$ of the sort $α_1 \ileadstog p_1 ∧ α_2 \ileadstog p_2 ∧ …$ the entailment 
+  $∀i: ψ ⇒ p ∈ π(\ileadstogo)$ 
+  holds.
+  Then for the same reason the proof is finished.
+  
+  We now have to discuss the more complicated situation where $\allleadsto$ satisfies
+  $∀i ≠ j: (a) \ileadstog φ ∧ (b) \ileadstog[j] φ ⇒ p ∈ π(\ileadstogo)$,
+  and that
+  $∃j \suchthat (b) \ileadstog[j] φ$,
+  but not
+  $ψ ⇒ p ∈ π(\ileadstogo)$, thus, intuitively, that the clause $(b) \ileadstog[j] φ ∧ i ≠ j$ cannot be equivalently “summarized” by any finite conjunct about $i$.
+
+  If $\card{I} = 1$, this is possible, but we assumed from the start implicitly that $2 ≤ \card{I}$ by the consideration about $θ$. (If $\card{I} = 1$, the conjecture is easily seen to hold.)
+
+  I believe that the former statement is equivalent to
+  $∀i: ((a) \ileadstog φ ∧ ∃j≠i \suchthat (b) \ileadstog[j] φ) ⇒ p ∈ π(\ileadstogo)$.
+  Now if there’s only one individual (thus $i_2$) satisfying $(b) \ileadstog φ$, taking $i = i_2$, the second conjunct fails? 
+  But in that case $C$ is not conclusive because a prefix about $i_2, (b)$ hides its conclusiveness possibility.
+\end{proof}
+\begin{proof}[Attempt with weaker conclusiveness]
+  By conclusiveness, we have for some $i_1, θ, p$:
+  $π_{i_1}(↑θ ∩ C) = p$.
+  Let us assume for now that $θ = \set{((a), i_1, φ), ((b), i_2, φ)}$ with $i_2 ≠ i_1$ (we will try to extend afterwards to other cases, hoping for now that nothing crucial depends on this simplification).
+  We deduce that $C ⊆ \set{\allleadstog \suchthat (a) \ileadstog[i_1] φ ∧ (b) \ileadstog[i_2] φ ⇒ p ∈ π(\ileadstogo[i_1])}$.
+  By anonymity, also $C ⊆ \set{\allleadstog \suchthat ∀i ≠ j: (a) \ileadstog φ ∧ (b) \ileadstog[j] φ ⇒ p ∈ π(\ileadstogo)}$.
+  Indeed, a world in $C$ satisfying the antecedent $(a) \ileadstog φ ∧ (b) \ileadstog[j] φ$ for some pair of individuals $i ≠ j$ but failing the consequent must correspond to a world, applying anonymity by mapping $i$ to $i_1$ and $j$ to $i_2$, that also is in $C$, which would contradict the first statement.
+  As $C$ holds, we obtain
+  $∀i ≠ j: (a) \ileadsto φ ∧ (b) \ileadsto[j] φ ⇒ p ∈ π(\ileadstoo)$.
+
+  Assume first that the same implication without the part of the antecedent that concerns $I ∖ \set{i_1}$ holds, thus, that the real world satisfies
+  $∀i: (a) \ileadstog φ ⇒ p ∈ π(\ileadstogo)$.
+  Then, the proof is finished.
+
+  Similarly, assume that for some finite conjunct $ψ$ of the sort $α_1 \ileadstog p_1 ∧ α_2 \ileadstog p_2 ∧ …$ the entailment 
+  $∀i: ψ ⇒ p ∈ π(\ileadstogo)$ 
+  holds.
+  Then for the same reason the proof is finished.
+  
+  We now have to discuss the more complicated situation where $\allleadsto$ satisfies
+  $∀i ≠ j: (a) \ileadstog φ ∧ (b) \ileadstog[j] φ ⇒ p ∈ π(\ileadstogo)$,
+  and that
+  $∃j \suchthat (b) \ileadstog[j] φ$,
+  but not
+  $ψ ⇒ p ∈ π(\ileadstogo)$, thus, intuitively, that the clause $(b) \ileadstog[j] φ ∧ i ≠ j$ cannot be equivalently “summarized” by any finite conjunct about $i$.
+
+  If $\card{I} = 1$, this is possible, but we assumed from the start implicitly that $2 ≤ \card{I}$ by the consideration about $θ$. (If $\card{I} = 1$, the conjecture is easily seen to hold.)
+
+  I believe that the former statement is equivalent to
+  $∀i: ((a) \ileadstog φ ∧ ∃j≠i \suchthat (b) \ileadstog[j] φ) ⇒ p ∈ π(\ileadstogo)$.
+  Now if there’s only one individual (thus $i_2$) satisfying $(b) \ileadstog φ$, taking $i = i_2$, the second conjunct fails? 
+  But if $(a) \nileadstog[i_2] φ$ then we can dispense with that clause.
+  So assume $(a) \ileadstog[i_2] φ$.
+  We can then take only $(b) \nileadstog φ$ to keep the other ones, but we could also have some other ones with no DJ.
+  We thus need some type $i_3$ with $(b) \nileadstog φ$ and no (or another) DJ.
+\end{proof}
+\begin{example}
+  Let $I = J ∪ \set{k, l}$.
+  Let the real world be as follows.
+  Everybody: $∅$ to $φ$.
+  $j, k$: $(a.*)$ to $φ$.
+  $j$: $(b)$ to $φ$.
+  $k$: $(¬a.*)$ to $φ'$. 
+  $j$: $b$ decisive for $φ$.
+  $l$: $(¬a.*)$ to $φ$, $(a.*)$ to $φ'$.
+  Let $ψ_{j, k} = ∃α ∈ (a.*) \suchthat α \ileadstog[j] φ ∧ ∃β ∈ (b.*) \suchthat β \ileadstog[k] φ'$.
+  $C = [(∃j ≠ k \suchthat ψ_{j, k}) ∧ ∀j ≠ k: ψ_{j, k} ⇒ φ ∈ π(\ileadstogo[j])]$.
+
+  $C$ is anonymous, conclusive and holds.
+  As $k, l$ have no DJ, 
+  in $\anobs ⊆ \ileadstoo ⇒ p ∈ P_i$,
+  the antecedent need to exclude them as candidate $j$.
+  If we use $(a.*)$, we include $k$. Otherwise, we include $l$.
+\end{example}
+
+\begin{remark}
+  The attempt does not actually conclude: the last step is not legitimate.
+
+  What is right: the reduction of the “more complicated situation” to the single question of whether $∀i: ((a) \ileadstog φ ∧ ∃j≠i \suchthat (b) \ileadstog[j] φ) ⇒ p ∈ π(\ileadstogo)$ can fail. This can only happen at some $i$ for which the second conjunct itself fails, i.e.\ for which $i$ is the only individual with $(b) \ileadstog φ$; so, writing $M := \set{j ∈ I \suchthat (b) \ileadstog[j] φ}$ ($≠∅$, as $i_2 ∈ M$), the whole situation can only arise when $M = \set{i_2}$, a single witness. This is a genuine, correct narrowing of the difficulty.
+
+  What fails: the proposed “finite statement that eliminates $i_2$”,
+  $ψ := (a) \ileadstog φ ∧ (b) \nileadstog φ$,
+  is not a legitimate finite conjunct in the sense needed to conclude the proof (i.e.\ it is not of the form $\anobs ⊆ \ileadstoo$ for some anonymous observation $\anobs$, as required by \cref{conj:main}). Indeed, $\anobs$ must have as domain some $H ∈ \fincrhists$, an increasing (prefix-ordered) set of paths; but the single-influence paths $(a)$ and $(b)$ are incomparable whenever $a ≠ b$ (both have length $1$, so $\card{\hist} ≤ \card{\histp} ⇒ \hist ⊆ \histp$ would force $(a) = (b)$). So no $\anobs$ can fix a value at $(a)$ \emph{and} a value at $(b)$ for one and the same individual, and $ψ$ cannot be used this way.
+
+  Consequently, the displayed implication for $ψ$, even though true (every $i ≠ i_2$ with $(a) \ileadstog φ$ does satisfy $(b) \nileadstog φ$, so the implication does hold), does not contradict the standing hypothesis of the case — that hypothesis is precisely that \emph{no legitimate} finite conjunct witnesses the implication, and $ψ$ is not one. So no contradiction is reached, the “more complicated situation” is not shown impossible, and the proof does not go through: it stalls exactly on the case $M = \set{i_2}$, which is the same difficulty taken up in the \emph{Idea} proof below.
+\end{remark}
+
+\begin{proof}[Idea]
+  The difficulty that makes the obvious proof fail (see above) is that $C$ could be conclusive just because of some $θ$ where it is required to see, say, $(a) \nileadsto[j] φ$ to conclude $φ ∈ P_i$ (it’s an example but wlog as it should be easily generalizable).
+  Thus, $C$ merely implies $(∃(a) \nileadsto[j] φ) ⇒ φ ∈ P_i$. This is the kind of situation that makes the swap approach fail.
+  Note that if the non-$i$ specific part of the antecedent can be dropped then we can conclude as well (swap and remove this observation from $θ$).
+  The only remaining problem is that indeed the real world fails the regularity $φ ∈ P_i$ but does satisfy another, more subtle, regularity, of the kind $(∃(a) \nileadsto[j] φ) ⇒ φ ∈ P_i$ (meaning, in general, one that must involve non-$i$ individuals).
+  But this is something that we should be able to exclude by anonymity!
+
+  We get that the antecedent of $C$ must be some condition about some $j, i$ that fails for some $i = i_1$ but succeeds for some $i = i_2$, in the same real world. Something like $∃j \suchthat \ileadstogo[j] (a) = \ileadstogo (a)$: only after having observed $(a) \ileadstogo[j] φ, (a) \ileadstogo φ$ does it trigger.
+  And, crucially, this antecedent must be impossible to rephrase using finitely many conditions on $i$.
+  So a condition such as $∃α, j \suchthat \ileadstogo[j] α = \ileadstogo α$ equals infinitely many conditions on $i$.
+
+  The interesting case is when behavior functions must be separated between an infinite set where $φ ∈ P_i$ and another infinite one where not. (If finite, then this can be expressed with a condition that involves only $i$.)
+  These two sets cannot be separated using finitely many conditions on $i$ of the form alpha leads to p, but can be using condition involving other individuals, which can be satisfied using finitely many observations.
+  This seems unlikely, but how to prove it?
+
+  % Can it be: ∀f1: f1()=φ ∧ ∃f2 st f2(a) = φ ⇒ …? No: the second clause is true or false for every f1.
+
+\end{proof}
+
+The stronger statement that any anonymous and conclusive $C$ implies that $\anobs ⊆ \ileadstoo ⇒ p ∈ P_i$ does not hold: $C$ could be $∃j \suchthat (a) \ileadstog[j] φ ⇒ φ ∈ P_i$.
 
 \subsection{Desideratas}
 This gives more details about \cref{ex:anonOverview}.
@@ -823,6 +1074,11 @@ the axiom required must be at least as strong as claiming that if some observabl
   Suffices that the axiom states something like: if almost all individuals deliberately believe $φ$, then everybody deliberately believe $φ$. This innocuous enough axiom suffices because we require only informativeness, and indeed it only permits to restrict possibilities, not to determine anybody’s DJ.
 \end{remark}
 
+% \begin{remark}
+%   TODO
+  % This axiom seems unsatisfactorily not primitive enough (to be worked on…). We should obtain as a result that the reasonable axiom is, if no visibility issues, then not OF, by assuming that we have observed everything we could ever dream of.
+% \end{remark}
+
 \subsection{Verifiability under an axiom}
 Under a given axiom, permanent verifiability is stronger than established verifiability (\cref{th:pevImpliesEv}).
 \begin{theorem}
@@ -1156,7 +1412,7 @@ The following result indicates that, given a finite cover of $D ∖C$, $\OF[D �
 \end{proof}
 
 \begin{example}
-  \label{ex:repeatableProvNotOfButNotNotPOF}
+  \label{ex:repeatableProvNotOfButNotNotPOFDetails}
   Define $C = [α \ileadstog φ]$ for a given $α$ and $i$.
   
   We have $¬\OF ⊆ C$, as visible by observing that $α \nileadstog φ ⇒ \OF(\allleadstog)$.
@@ -1172,7 +1428,7 @@ The following result indicates that, given a finite cover of $D ∖C$, $\OF[D �
   $θ' ∈ (C ∩ E)^⊆$.
 \end{example}
 
-\Cref{ex:repeatableProvNotOfButNotNotPOF} shows that a claim can be provable by $¬\OF$ (thus, provable by $¬\OF[C ∩ E] ∩ E$) yet not provable by $¬\POF[C ∩ E] ∩ E$ (thus, also not provable by $¬\POF ∩ E$).
+\Cref{ex:repeatableProvNotOfButNotNotPOFDetails} shows that a claim can be provable by $¬\OF$ (thus, provable by $¬\OF[C ∩ E] ∩ E$) yet not provable by $¬\POF[C ∩ E] ∩ E$ (thus, also not provable by $¬\POF ∩ E$).
 (Recall that $¬\POF[C ∩ E] ⊆ ¬\POF$ 
 and $¬\OF[C ∩ E] ⊆ ¬\OF$.)
 
