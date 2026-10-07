@@ -584,14 +584,6 @@ The set $Θ ∩ C^⊆$ is downwards closed, as both $Θ$ and $C^⊆$ are.
 \end{example}
 
 \begin{conjecture}
-  $C$ is conclusive implies that $C ⊆ E$?
-\end{conjecture}
-\begin{proof}
-  Consider any $\allleadstog ∈ C$.
-  Given any prefix $θ$, some $θ'$ concludes, thus, $C ⊆ …$.
-  (I don’t think it’s true, using (a.*) solves the problem!)
-\end{proof}
-\begin{conjecture}
   \label{conj:main}
   If some anonymous, conclusive claim holds, then $∃ \anobs, p ∈ P \suchthat ∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ P_i$.
 \end{conjecture}
@@ -633,43 +625,7 @@ The set $Θ ∩ C^⊆$ is downwards closed, as both $Θ$ and $C^⊆$ are.
   I believe that the former statement is equivalent to
   $∀i: ((a) \ileadstog φ ∧ ∃j≠i \suchthat (b) \ileadstog[j] φ) ⇒ p ∈ π(\ileadstogo)$.
   Now if there’s only one individual (thus $i_2$) satisfying $(b) \ileadstog φ$, taking $i = i_2$, the second conjunct fails? 
-  But in that case $C$ is not conclusive because a prefix about $i_2, (b)$ hides its conclusiveness possibility.
-\end{proof}
-\begin{proof}[Attempt with weaker conclusiveness]
-  By conclusiveness, we have for some $i_1, θ, p$:
-  $π_{i_1}(↑θ ∩ C) = p$.
-  Let us assume for now that $θ = \set{((a), i_1, φ), ((b), i_2, φ)}$ with $i_2 ≠ i_1$ (we will try to extend afterwards to other cases, hoping for now that nothing crucial depends on this simplification).
-  We deduce that $C ⊆ \set{\allleadstog \suchthat (a) \ileadstog[i_1] φ ∧ (b) \ileadstog[i_2] φ ⇒ p ∈ π(\ileadstogo[i_1])}$.
-  By anonymity, also $C ⊆ \set{\allleadstog \suchthat ∀i ≠ j: (a) \ileadstog φ ∧ (b) \ileadstog[j] φ ⇒ p ∈ π(\ileadstogo)}$.
-  Indeed, a world in $C$ satisfying the antecedent $(a) \ileadstog φ ∧ (b) \ileadstog[j] φ$ for some pair of individuals $i ≠ j$ but failing the consequent must correspond to a world, applying anonymity by mapping $i$ to $i_1$ and $j$ to $i_2$, that also is in $C$, which would contradict the first statement.
-  As $C$ holds, we obtain
-  $∀i ≠ j: (a) \ileadsto φ ∧ (b) \ileadsto[j] φ ⇒ p ∈ π(\ileadstoo)$.
-
-  Assume first that the same implication without the part of the antecedent that concerns $I ∖ \set{i_1}$ holds, thus, that the real world satisfies
-  $∀i: (a) \ileadstog φ ⇒ p ∈ π(\ileadstogo)$.
-  Then, the proof is finished.
-
-  Similarly, assume that for some finite conjunct $ψ$ of the sort $α_1 \ileadstog p_1 ∧ α_2 \ileadstog p_2 ∧ …$ the entailment 
-  $∀i: ψ ⇒ p ∈ π(\ileadstogo)$ 
-  holds.
-  Then for the same reason the proof is finished.
-  
-  We now have to discuss the more complicated situation where $\allleadsto$ satisfies
-  $∀i ≠ j: (a) \ileadstog φ ∧ (b) \ileadstog[j] φ ⇒ p ∈ π(\ileadstogo)$,
-  and that
-  $∃j \suchthat (b) \ileadstog[j] φ$,
-  but not
-  $ψ ⇒ p ∈ π(\ileadstogo)$, thus, intuitively, that the clause $(b) \ileadstog[j] φ ∧ i ≠ j$ cannot be equivalently “summarized” by any finite conjunct about $i$.
-
-  If $\card{I} = 1$, this is possible, but we assumed from the start implicitly that $2 ≤ \card{I}$ by the consideration about $θ$. (If $\card{I} = 1$, the conjecture is easily seen to hold.)
-
-  I believe that the former statement is equivalent to
-  $∀i: ((a) \ileadstog φ ∧ ∃j≠i \suchthat (b) \ileadstog[j] φ) ⇒ p ∈ π(\ileadstogo)$.
-  Now if there’s only one individual (thus $i_2$) satisfying $(b) \ileadstog φ$, taking $i = i_2$, the second conjunct fails? 
-  But if $(a) \nileadstog[i_2] φ$ then we can dispense with that clause.
-  So assume $(a) \ileadstog[i_2] φ$.
-  We can then take only $(b) \nileadstog φ$ to keep the other ones, but we could also have some other ones with no DJ.
-  We thus need some type $i_3$ with $(b) \nileadstog φ$ and no (or another) DJ.
+  To be continued…
 \end{proof}
 \begin{example}
   Let $I = J ∪ \set{k, l}$.
@@ -689,37 +645,6 @@ The set $Θ ∩ C^⊆$ is downwards closed, as both $Θ$ and $C^⊆$ are.
   the antecedent need to exclude them as candidate $j$.
   If we use $(a.*)$, we include $k$. Otherwise, we include $l$.
 \end{example}
-
-\begin{remark}
-  The attempt does not actually conclude: the last step is not legitimate.
-
-  What is right: the reduction of the “more complicated situation” to the single question of whether $∀i: ((a) \ileadstog φ ∧ ∃j≠i \suchthat (b) \ileadstog[j] φ) ⇒ p ∈ π(\ileadstogo)$ can fail. This can only happen at some $i$ for which the second conjunct itself fails, i.e.\ for which $i$ is the only individual with $(b) \ileadstog φ$; so, writing $M := \set{j ∈ I \suchthat (b) \ileadstog[j] φ}$ ($≠∅$, as $i_2 ∈ M$), the whole situation can only arise when $M = \set{i_2}$, a single witness. This is a genuine, correct narrowing of the difficulty.
-
-  What fails: the proposed “finite statement that eliminates $i_2$”,
-  $ψ := (a) \ileadstog φ ∧ (b) \nileadstog φ$,
-  is not a legitimate finite conjunct in the sense needed to conclude the proof (i.e.\ it is not of the form $\anobs ⊆ \ileadstoo$ for some anonymous observation $\anobs$, as required by \cref{conj:main}). Indeed, $\anobs$ must have as domain some $H ∈ \fincrhists$, an increasing (prefix-ordered) set of paths; but the single-influence paths $(a)$ and $(b)$ are incomparable whenever $a ≠ b$ (both have length $1$, so $\card{\hist} ≤ \card{\histp} ⇒ \hist ⊆ \histp$ would force $(a) = (b)$). So no $\anobs$ can fix a value at $(a)$ \emph{and} a value at $(b)$ for one and the same individual, and $ψ$ cannot be used this way.
-
-  Consequently, the displayed implication for $ψ$, even though true (every $i ≠ i_2$ with $(a) \ileadstog φ$ does satisfy $(b) \nileadstog φ$, so the implication does hold), does not contradict the standing hypothesis of the case — that hypothesis is precisely that \emph{no legitimate} finite conjunct witnesses the implication, and $ψ$ is not one. So no contradiction is reached, the “more complicated situation” is not shown impossible, and the proof does not go through: it stalls exactly on the case $M = \set{i_2}$, which is the same difficulty taken up in the \emph{Idea} proof below.
-\end{remark}
-
-\begin{proof}[Idea]
-  The difficulty that makes the obvious proof fail (see above) is that $C$ could be conclusive just because of some $θ$ where it is required to see, say, $(a) \nileadsto[j] φ$ to conclude $φ ∈ P_i$ (it’s an example but wlog as it should be easily generalizable).
-  Thus, $C$ merely implies $(∃(a) \nileadsto[j] φ) ⇒ φ ∈ P_i$. This is the kind of situation that makes the swap approach fail.
-  Note that if the non-$i$ specific part of the antecedent can be dropped then we can conclude as well (swap and remove this observation from $θ$).
-  The only remaining problem is that indeed the real world fails the regularity $φ ∈ P_i$ but does satisfy another, more subtle, regularity, of the kind $(∃(a) \nileadsto[j] φ) ⇒ φ ∈ P_i$ (meaning, in general, one that must involve non-$i$ individuals).
-  But this is something that we should be able to exclude by anonymity!
-
-  We get that the antecedent of $C$ must be some condition about some $j, i$ that fails for some $i = i_1$ but succeeds for some $i = i_2$, in the same real world. Something like $∃j \suchthat \ileadstogo[j] (a) = \ileadstogo (a)$: only after having observed $(a) \ileadstogo[j] φ, (a) \ileadstogo φ$ does it trigger.
-  And, crucially, this antecedent must be impossible to rephrase using finitely many conditions on $i$.
-  So a condition such as $∃α, j \suchthat \ileadstogo[j] α = \ileadstogo α$ equals infinitely many conditions on $i$.
-
-  The interesting case is when behavior functions must be separated between an infinite set where $φ ∈ P_i$ and another infinite one where not. (If finite, then this can be expressed with a condition that involves only $i$.)
-  These two sets cannot be separated using finitely many conditions on $i$ of the form alpha leads to p, but can be using condition involving other individuals, which can be satisfied using finitely many observations.
-  This seems unlikely, but how to prove it?
-
-  % Can it be: ∀f1: f1()=φ ∧ ∃f2 st f2(a) = φ ⇒ …? No: the second clause is true or false for every f1.
-
-\end{proof}
 
 The stronger statement that any anonymous and conclusive $C$ implies that $\anobs ⊆ \ileadstoo ⇒ p ∈ P_i$ does not hold: $C$ could be $∃j \suchthat (a) \ileadstog[j] φ ⇒ φ ∈ P_i$.
 
