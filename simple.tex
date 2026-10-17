@@ -487,43 +487,65 @@ Both $\incr(\allhists)^I$ and $\allpriobss$ are downwards closed.
 The set $Θ ∩ C^⊆$ is downwards closed, as both $Θ$ and $C^⊆$ are.
 
 \subsection{Requirement on the real world}
+Given a multiset $S ∈ ℕ^X$ over any set $X$ and given any $x ∈ X$ with $1 ≤ S(x)$, define $S - x$ as $(S - x)(x) = S(x) - 1$ and $∀x ≠ y ∈ X: (S - x)(y) = S(y)$.
+
 Given $\anobs ∈ \anobses$, $G ∈ ℕ^{\anobses}$ and $i ∈ I$, say that a world $\allleadstog$ is $\anobs, G, i$-regular iff
-$    \anobs ⊆ \ileadstogo ∧ 
-    ∃J ⊆ I ∖ \set{i}, f ∈ {(\anobses)}^J \suchthat ∀\anobs' ∈ \anobses, 
-      \card{f^{-1}(\anobs') = G(\anobs')} ∧
+$    \anobs ⊆ \ileadstogo ∧
+    ∃J ⊆ I ∖ \set{i}, f ∈ {(\anobses)}^J \suchthat ∀\anobs' ∈ \anobses,
+      \card{f^{-1}(\anobs')} = G(\anobs') ∧
       ∀j ∈ J: f(j) ⊆ \ileadstogo[j]
-$.
-Given $G ∈ ℕ^{\anobses}$, say that a world $\allleadstog$ is $G$-regular iff $∃ \anobs ∈ G, i ∈ I \suchthat \allleadstog \text{ is } \anobs, G ∖ \set{\anobs}, i\text{-regular}$.
+$
+  (considering $f^{-1}(\anobs') = ∅$ if $\anobs'$ is not in the range of $f$).
+Given $G ∈ ℕ^{\anobses}$, say that a world $\allleadstog$ is $G$-regular iff 
+$∃ \anobs ∈ \anobses, i ∈ I \suchthat 1 ≤ G(\anobs) ∧ \allleadstog \text{ is } \anobs, G - \anobs, i\text{-regular}$;
+equivalently, iff
+$∃∅ ≠ J ⊆ I, f ∈ {(\anobses)}^J \suchthat ∀\anobs' ∈ \anobses,
+      \card{f^{-1}(\anobs')} = G(\anobs') ∧
+      ∀j ∈ J: f(j) ⊆ \ileadstogo[j]$.
+
+A world is regular iff there is a proposition $p$ and a finite multiset of anonymous observations, 
+among which some distinguished anonymous observation, 
+such that 
+each of the anonymous observations are compatible with some individual’s behavior, 
+and for each such mapping (from individuals to anonymous observations),
+the individual whose behavior is compatible with the distinguished anonymous observation has $p$ as DJ.
+Formally:
+A world $\allleadstog$ is regular iff $∃G ∈ ℕ^{\anobses} \text{ with finite support}, p ∈ P \suchthat (\allleadstog \text{ is } G\text{-regular}) ∧ (∃\anobs ∈ \anobses \suchthat 1 ≤ G(\anobs) ∧ ∀i ∈ I:
+    \allleadstog \text{ is } \anobs, G - \anobs, i\text{-regular}
+    ⇒
+    p ∈ π(\ileadstogo))$.
 
 \begin{theorem}
   If some anonymous, conclusive claim holds,
-  then
-  $∃\anobs ∈ \anobses, G ∈ ℕ^{\anobses} \text{ with finite support}, p ∈ P \suchthat (∃i ∈ I \suchthat \allleadsto \text{ is } \anobs, G, i\text{-regular}) ∧ (∀i ∈ I: 
-    \allleadsto \text{ is } \anobs, G, i\text{-regular}
-    ⇒ 
-    p ∈ π(\ileadstoo))$
-  (considering $f^{-1}(\anobs') = ∅$ if $\anobs'$ is not in the range of $f$).
+  then $\allleadsto$ is regular.
 \end{theorem}
 \begin{proof}
   By conclusiveness, we have for some $i, θ, p$:
   $π_{i}(↑θ ∩ C) = p$.
 
-  Define $\anobs = θ(i)$ and
-  $∀\anobs' ∈ \anobses: G(\anobs') = \card{\set{j ∈ I ∖ \set{i} \suchthat θ(j) = \anobs'}}$.
+  Define $\anobs = θ(i)$,
+  $J = θ(\allhists × P) ∪ \set{i}$, and
+  $G$ as,
+  $∀\anobs' ∈ \anobses$,
+  $G(\anobs') = \card{\set{j ∈ J \suchthat θ(j) = \anobs'}}$.
+  Note that,
+  $∀∅ ≠ \anobs' ∈ \anobses: (G - \anobs)(\anobs') = \card{\set{j ∈ I ∖ \set{i} \suchthat θ(j) = \anobs'}}$.
 
-  Now consider any $i'$, $J ⊆ I ∖ \set{i'}$ and $f ∈ {(\anobses)}^J$ such that 
+  We see that $\allleadsto$ is $G$-regular by taking $f(j) = θ(j)$ for $j ∈ J$ (using the second definition of $G$-regularity).
+
+  Now consider any $i'$, $J' ⊆ I ∖ \set{i'}$ and $f ∈ {(\anobses)}^{J'}$ such that
     $\anobs ⊆ \ileadstoo[i']$ and
-    $∀\anobs' ∈ \anobses, 
-      \card{f^{-1}(\anobs') = G(\anobs')} ∧
-      ∀j ∈ J: f(j) ⊆ \ileadstoo[j]$ and
+    $∀\anobs' ∈ \anobses,
+      \card{f^{-1}(\anobs')} = (G - \anobs)(\anobs') ∧
+      ∀j ∈ J': f(j) ⊆ \ileadstoo[j]$ and
   let us show that $p ∈ π(\ileadstoo[i'])$.
   
   Define a bijection $σ$ on $I$ as follows. 
   $σ(i) = i'$.
-  For each $\anobs' ∈ \anobses$, 
+  For each $∅ ≠ \anobs' ∈ \anobses$, 
   $\card{\set{j ∈ I ∖ \set{i} \suchthat θ(j) = \anobs'}} = \card{f^{-1}(\anobs')}$,
   thus we can biject $\set{j ∈ I ∖ \set{i} \suchthat θ(j) = \anobs'}$ to $f^{-1}(\anobs')$.
-  The remaining set $I ∖ θ(\allhists × P)$ is bijected to $I ∖ \set{i'} ∖ J$.
+  The remaining set $I ∖ \set{i} ∖ θ(\allhists × P)$ is bijected to $I ∖ \set{i'} ∖ J'$.
 
   By holding, $\allleadsto ∈ C$, and by anonymity, $\allleadsto \circ σ ∈ C$.
 
@@ -532,8 +554,10 @@ Given $G ∈ ℕ^{\anobses}$, say that a world $\allleadstog$ is $G$-regular iff
   Thus, if $∀j ∈ I: θ(j) ⊆ (\allleadsto \circ σ)_j$, then $p ∈ π((\allleadsto \circ σ)_i)$.
   Thus, if $θ(i) ⊆ \ileadstoo[i'] ∧ ∀j ∈ I ∖ \set{i}: θ(j) ⊆ \ileadstoo[σ(j)]$, then $p ∈ π(\ileadstoo[i'])$.
   We have $θ(i) = \anobs ⊆ \ileadstoo[i']$;
-  and for any $j ∈ I ∖ \set{i}$, letting $\anobs' = θ(j)$, $σ(j) ∈ f^{-1}(\anobs')$, thus $f(σ(j)) = \anobs' ⊆ \ileadstoo[σ(j)]$, thus 
-  $θ(j) = \anobs' ⊆ \ileadstoo[σ(j)]$.
+  and for any $j ∈ I ∖ \set{i}$, letting $\anobs' = θ(j)$, 
+  we obtain
+  $θ(j) = \anobs' ⊆ \ileadstoo[σ(j)]$
+  (if $\anobs' ≠ ∅$, we have $σ(j) ∈ f^{-1}(\anobs')$ whence $f(σ(j)) = \anobs' ⊆ \ileadstoo[σ(j)]$).
   We conclude that $p ∈ π(\ileadstoo[i'])$.
 \end{proof}
 \begin{example}
