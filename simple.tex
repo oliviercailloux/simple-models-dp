@@ -529,7 +529,7 @@ A world $\allleadstog$ is regular iff $∃G ∈ ℕ^{\anobses} \text{ with finit
   $∀\anobs' ∈ \anobses$,
   $G(\anobs') = \card{\set{j ∈ J \suchthat θ(j) = \anobs'}}$.
   Note that,
-  $∀∅ ≠ \anobs' ∈ \anobses: (G - \anobs)(\anobs') = \card{\set{j ∈ I ∖ \set{i} \suchthat θ(j) = \anobs'}}$.
+  $∀\anobs' ∈ \anobses: (G - \anobs)(\anobs') = \card{\set{j ∈ θ(\allhists × P) ∖ \set{i} \suchthat θ(j) = \anobs'}}$.
 
   We see that $\allleadsto$ is $G$-regular by taking $f(j) = θ(j)$ for $j ∈ J$ (using the second definition of $G$-regularity).
 
@@ -542,9 +542,9 @@ A world $\allleadstog$ is regular iff $∃G ∈ ℕ^{\anobses} \text{ with finit
   
   Define a bijection $σ$ on $I$ as follows. 
   $σ(i) = i'$.
-  For each $∅ ≠ \anobs' ∈ \anobses$, 
-  $\card{\set{j ∈ I ∖ \set{i} \suchthat θ(j) = \anobs'}} = \card{f^{-1}(\anobs')}$,
-  thus we can biject $\set{j ∈ I ∖ \set{i} \suchthat θ(j) = \anobs'}$ to $f^{-1}(\anobs')$.
+  For each $\anobs' ∈ \anobses$, 
+  $\card{\set{j ∈ θ(\allhists × P) ∖ \set{i} \suchthat θ(j) = \anobs'}} = \card{f^{-1}(\anobs')}$,
+  thus we can biject $\set{j ∈ θ(\allhists × P) ∖ \set{i} \suchthat θ(j) = \anobs'}$ to $f^{-1}(\anobs')$.
   The remaining set $I ∖ \set{i} ∖ θ(\allhists × P)$ is bijected to $I ∖ \set{i'} ∖ J'$.
 
   By holding, $\allleadsto ∈ C$, and by anonymity, $\allleadsto \circ σ ∈ C$.
