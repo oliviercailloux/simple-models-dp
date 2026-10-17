@@ -487,6 +487,111 @@ Both $\incr(\allhists)^I$ and $\allpriobss$ are downwards closed.
 The set $Θ ∩ C^⊆$ is downwards closed, as both $Θ$ and $C^⊆$ are.
 
 \subsection{Requirement on the real world}
+Say that a world $\allleadsto$ is $i$-regular iff
+\begin{theorem}
+  If some anonymous, conclusive claim holds,
+  then
+  $∃\anobs ∈ ∪_{H ∈ \fincrhists} P^H, G ∈ ℕ^{∪_{H ∈ \fincrhists} P^H} \text{ with finite support}, p ∈ P \suchthat ∀i ∈ I: [
+    \anobs ⊆ \ileadstoo ∧ 
+    ∃J ⊆ I ∖ \set{i}, f ∈ {(\anobses)}^J \suchthat ∀\anobs' ∈ \anobses, 
+      \card{f^{-1}(\anobs') = G(\anobs')} ∧
+      ∀j ∈ J: f(j) ⊆ \ileadstoo[j]
+  ] ⇒ 
+  p ∈ π(\ileadstoo)$
+  (considering $f^{-1}(\anobs') = ∅$ if $\anobs'$ is not in the range of $f$).
+\end{theorem}
+\begin{proof}
+  By conclusiveness, we have for some $i, θ, p$:
+  $π_{i}(↑θ ∩ C) = p$.
+
+  Define $\anobs = θ(i)$ and
+  $∀\anobs' ∈ \anobses: G(\anobs') = \card{\set{j ∈ I ∖ \set{i} \suchthat θ(j) = \anobs'}}$.
+
+  Now consider any $i'$, $J ⊆ I ∖ \set{i'}$ and $f ∈ {(\anobses)}^J$ such that 
+    $\anobs ⊆ \ileadstoo[i']$ and
+    $∀\anobs' ∈ \anobses, 
+      \card{f^{-1}(\anobs') = G(\anobs')} ∧
+      ∀j ∈ J: f(j) ⊆ \ileadstoo[j]$ and
+  let us show that $p ∈ π(\ileadstoo[i'])$.
+  
+  Define a bijection $σ$ on $I$ as follows. 
+  $σ(i) = i'$.
+  For each $\anobs' ∈ \anobses$, 
+  $\card{\set{j ∈ I ∖ \set{i} \suchthat θ(j) = \anobs'}} = \card{f^{-1}(\anobs')}$,
+  thus we can biject $\set{j ∈ I ∖ \set{i} \suchthat θ(j) = \anobs'}$ to $f^{-1}(\anobs')$.
+  The remaining set $I ∖ θ(\allhists × P)$ is bijected to $I ∖ \set{i'} ∖ J$.
+
+  By holding, $\allleadsto ∈ C$, and by anonymity, $\allleadsto \circ σ ∈ C$.
+
+  From $π_{i}(↑θ ∩ C) = p$,
+  we deduce that $∀\allleadstog ∈ C$, if $∀j ∈ I$, $θ(j) ⊆ \ileadstogo[j]$, then $p ∈ π(\ileadstogo[i])$.
+  Thus, if $∀j ∈ I: θ(j) ⊆ (\allleadsto \circ σ)_j$, then $p ∈ π((\allleadsto \circ σ)_i)$.
+  Thus, if $θ(i) ⊆ \ileadstoo[i'] ∧ ∀j ∈ I ∖ \set{i}: θ(j) ⊆ \ileadstoo[σ(j)]$, then $p ∈ π(\ileadstoo[i'])$.
+  We have $θ(i) = \anobs ⊆ \ileadstoo[i']$;
+  and for any $j ∈ I ∖ \set{i}$, letting $\anobs' = θ(j)$, $σ(j) ∈ f^{-1}(\anobs')$, thus $f(σ(j)) = \anobs' ⊆ \ileadstoo[σ(j)]$, thus 
+  $θ(j) = \anobs' ⊆ \ileadstoo[σ(j)]$.
+  We conclude that $p ∈ π(\ileadstoo[i'])$.
+\end{proof}
+\begin{example}
+  \label{ex:klBranches}
+  Let $I = \set{i, k, l}$.
+  
+  Pick $a ≠ b ∈ \allargs$.
+  Define $\allleadsto$ as follows.
+  $∀j ∈ I: ∅ \ileadsto[j] φ$;
+  $∀∅ ≠ α ∈ \allhists: α \ileadsto φ$;
+  $∀∅ ≠ α ∈ \allhists: (α_1 = a ⇒ α \ileadsto[k] φ) ∧ (α_1 ≠ a ⇒ α \ileadsto[k] φ')$;
+  $∀∅ ≠ α ∈ \allhists: (α_1 = a ⇒ α \ileadsto[l] φ') ∧ (α_1 ≠ a ⇒ α \ileadsto[l] φ)$.
+
+  Define $ψ_{j, j'}$ as the logical proposition : $∃α \suchthat α_1 = a ∧ α \ileadstog[j] φ ∧ ∃β \suchthat β_1 = b ∧ β \ileadstog[j'] φ'$.
+  Define $C = [(∃j ≠ j' \suchthat ψ_{j, j'}) ∧ ∀j ≠ j': ψ_{j, j'} ⇒ φ ∈ π(\ileadstogo[j])]$.
+
+  $C$ is anonymous, conclusive and holds.
+  
+  For any $\anobs ∈ \anobses$ such that $∃i' ∈ I \suchthat \anobs ⊆ \ileadstoo[i']$, let us show that, for any $p ∈ P$, the implication $∀i' ∈ I: \anobs ⊆ \ileadstoo[i'] ⇒ p ∈ π(\ileadstoo[i'])$ fails.
+  Note that $π(\ileadsto[k]) = π(\ileadsto[l]) = ∅$: $∀c ∈ \allargs, j ∈ \set{k, l}$, $c$ is not decisive for $j$, because $\ileadstoo[j]((a, c)) ≠ \ileadstoo[j]((b, c))$.
+  Thus, we require $\anobs ⊆ \ileadstoo$ (so as to satisfy $∃i' ∈ I \suchthat \anobs ⊆ \ileadstoo[i']$), and if $\anobs ⊆ \ileadstoo[k]$ or $\anobs ⊆ \ileadstoo[l]$, the implication fails.
+  But, if $∃α ∈ \anobs^{-1}(P) \suchthat α_1 = a$, then $\anobs^{-1}(P)$ can contain only $∅$ and paths starting with $a$ (because $\anobs^{-1}(P) ∈ \fincrhists$), whence $\anobs ⊆ \ileadstoo[k]$ (because $i$ and $k$ are undistinguishable on those paths; formally, $\restr{\ileadstoo}{\set{α \suchthat α = ∅ ∨ α_1 = a}} = \restr{\ileadstoo[k]}{\set{α \suchthat α = ∅ ∨ α_1 = a}}$); otherwise, thus if $∄α ∈ \anobs^{-1}(P) \suchthat α_1 = a$, then $\anobs ⊆ \ileadstoo[l]$.
+\end{example}
+
+Given $B ⊆ \allbs$ and $H ⊆ \allhists$, let $\restr{B}{H} = \set{\restr{f}{H} \suchthat f ∈ B}$ denote the behaviors in $B$ restricted to $H$.
+Say a behavior $g$ is undistinguishable from $B ⊆ \allbs$ iff
+$∀H ∈ \fincrhists: \restr{g}{H} ∈ \restr{B}{H}$.
+
+\begin{conjecture}
+  If some anonymous, conclusive claim holds, then $∃ \anobs, p ∈ P \suchthat (∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ P_i) ∨ (∃B ⊆ \allbs \suchthat ∀b ∈ B: p ∉ π(b) ∧ \anobs$ undistinguishable from $B ∧ \card{({\allleadstoinv}(B))} ∈ ℕ)$.
+\end{conjecture}
+Problem is that perhaps if g is distinguishable from $B$ then there exists some desired regularity, without needing anything about claims!
+Also: $\anobs$ is not a behavior thus the concept does not apply!
+It’s rather: any behavior $g$ with $p$ DJ has some undistinguishable $B$ that prevents it from becoming a regular rule. (We don’t even need assumptions about claims!?)
+\begin{proof}[Attempt]
+  By conclusiveness, we have for some $i_1, θ, p$:
+  $π_{i_1}(↑θ ∩ C) = p$.
+
+  Let us assume for now that $θ = \set{((a), i_1, φ), ((b), i_2, φ')}$ with $i_2 ≠ i_1$ (we will try to extend afterwards to other cases, hoping for now that nothing crucial depends on this simplification).
+
+  We deduce that $C ⊆ \set{\allleadstog \suchthat (a) \ileadstog[i_1] φ ∧ (b) \ileadstog[i_2] φ ⇒ p ∈ π(\ileadstogo[i_1])}$.
+  By anonymity, also $C ⊆ \set{\allleadstog \suchthat ∀i ≠ j: (a) \ileadstog φ ∧ (b) \ileadstog[j] φ ⇒ p ∈ π(\ileadstogo)}$.
+  Indeed, a world in $C$ satisfying the antecedent $(a) \ileadstog φ ∧ (b) \ileadstog[j] φ$ for some pair of individuals $i ≠ j$ must correspond to a world, applying anonymity by mapping $i$ to $i_1$ and $j$ to $i_2$, that also is in $C$, whence $p ∈ π(\ileadstogo)$.
+  As $C$ holds, we obtain
+  $∀i ≠ j: (a) \ileadsto φ ∧ (b) \ileadsto[j] φ ⇒ p ∈ π(\ileadstoo)$.
+
+  Define $\anobs = θ(i)$.
+  Define $B = \set{g ∈ \allleadsto(I) \suchthat ∃j ∈ θ(\allhists, P) \suchthat p ∉ π(j) ∧ g ⊆ θ(j)}$ be any behavior in $\allleadsto(I)$ compatible with the observations from $θ$ about any individual $j ∈ I$ such that $p ∉ π(j)$ (here, any behavior sending $(b)$ to $φ'$).
+
+  Assume infinitely many individuals have these behaviors (or, simply, more than $\card{(θ(\allhists, P) \suchthat p ∉ π(j))}$).
+  Then we can dispense with this clause, because some $i_3$ has that behavior and either that behavior is compatible with $(a) \ileadsto φ$ then the implication fails (by using $i_2$ to satisfy the clause) or is not compatible and the second clause is not required.
+
+  If $\anobs$ is undistinguishable from $B$, the proof is done.
+  Assume otherwise.
+
+  We could have infinitely many $k$ that we need to distinguish using $(a)$ and $j$ that we need to exclude using $(b)$.
+  To be continued…
+\end{proof}
+
+Note finiteness can be imposed because it’s only about individuals touched by $θ$ (thus, finitely many).
+If there’s infinitely many individuals with behavior $b$, $θ$ spares some, and the claim cannot use $B$ as regularity.
+
 \begin{theorem}
   \label{th:patternNecessary}
   Consider $\allleadsto ∈ E$. If some anonymous, conclusive claim holds, then $∃ \anobs, p ∈ P \suchthat ∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ P_i$.
@@ -508,13 +613,6 @@ The set $Θ ∩ C^⊆$ is downwards closed, as both $Θ$ and $C^⊆$ are.
   As $C$ is anonymous and $\allleadsto ∈ C$, $\allleadstog^{sw} = \allleadsto ∘ σ ∈ C ∘ σ = C$; with $θ_0 ⊆ \allleadstog^{sw}$, $\allleadstog^{sw} ∈ ↑θ_0 ∩ C$, so $π_{i^*}(\allleadstog^{sw}) = p^*$. As $π_{i^*}$ depends only on the row $\allleadstog^{sw}(i^*) = g$ (\cref{def:decisive}), this is $p^* ∈ P_i$.
 
   Taking $p := p^*$, $∀i ∈ I: \anobs ⊆ \ileadstoo[i] ⇒ p^* ∈ P_i$, as required.
-\end{proof}
-\begin{corollary}
-  \label{th:noPatternNoClaimPlain}
-  Consider $\allleadsto ∈ E$ such that for no $\anobs$, $p ∈ P$: $∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ P_i$. Then no anonymous, conclusive claim holds.
-\end{corollary}
-\begin{proof}
-  Immediate contrapositive of \cref{th:patternNecessary}.
 \end{proof}
 
 \begin{lemma}
@@ -585,7 +683,7 @@ The set $Θ ∩ C^⊆$ is downwards closed, as both $Θ$ and $C^⊆$ are.
 
 \begin{conjecture}
   \label{conj:main}
-  If some anonymous, conclusive claim holds, then $∃ \anobs, p ∈ P \suchthat ∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ P_i$.
+  Consider $\allleadsto$ such that no infinite row-class $J_g$ admits a finite branch-complementary set of confined individuals (\cref{rem:branchObstruction}). If some anonymous, conclusive claim holds, then $∃ \anobs, p ∈ P \suchthat ∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ P_i$.
 \end{conjecture}
 \begin{proof}[Attempt]
   By conclusiveness, we have for some $i_1, θ, p$:
@@ -627,24 +725,32 @@ The set $Θ ∩ C^⊆$ is downwards closed, as both $Θ$ and $C^⊆$ are.
   Now if there’s only one individual (thus $i_2$) satisfying $(b) \ileadstog φ$, taking $i = i_2$, the second conjunct fails? 
   To be continued…
 \end{proof}
-\begin{example}
-  Let $I = J ∪ \set{k, l}$.
-  Let the real world be as follows.
-  Everybody: $∅$ to $φ$.
-  $j, k$: $(a.*)$ to $φ$.
-  $j$: $(b)$ to $φ$.
-  $k$: $(¬a.*)$ to $φ'$. 
-  $j$: $b$ decisive for $φ$.
-  $l$: $(¬a.*)$ to $φ$, $(a.*)$ to $φ'$.
-  Let $ψ_{j, k} = ∃α ∈ (a.*) \suchthat α \ileadstog[j] φ ∧ ∃β ∈ (b.*) \suchthat β \ileadstog[k] φ'$.
-  $C = [(∃j ≠ k \suchthat ψ_{j, k}) ∧ ∀j ≠ k: ψ_{j, k} ⇒ φ ∈ π(\ileadstogo[j])]$.
+\begin{remark}
+  \label{rem:multiplicity}
+  Strengthening the hypothesis to “every behavior occurring in $I$ occurs at least twice” does not help prove \cref{conj:main}; it kills this specific example, but not the pattern.
 
-  $C$ is anonymous, conclusive and holds.
-  As $k, l$ have no DJ, 
-  in $\anobs ⊆ \ileadstoo ⇒ p ∈ P_i$,
-  the antecedent need to exclude them as candidate $j$.
-  If we use $(a.*)$, we include $k$. Otherwise, we include $l$.
-\end{example}
+  It kills this example: $k$ is the unique individual satisfying $∃β ∈ (b.*) \suchthat β \ileadstog[k] φ'$. If $k$ must have a twin $k'$ with the exact same behavior, $k'$ also satisfies this property, so $ψ_{k, k'}$ holds, forcing $φ ∈ π(\ileadstogo[k])$ — contradicting that $k$ has no DJ. So under this hypothesis $C$ as defined cannot hold.
+
+  But a ternary variant survives. Let $c ∉ \set{a, b}$ be a third influence and
+  $ψ_{x,y,z} = [∃α ∈ (a.*) \suchthat α \ileadstog[x] φ] ∧ [∃β ∈ (b.*) \suchthat β \ileadstog[y] φ'] ∧ [∃γ ∈ (c.*) \suchthat γ \ileadstog[z] φ']$,
+  $C = [∃x≠y≠z≠x \suchthat ψ_{x,y,z}] ∧ [∀x≠y≠z≠x: ψ_{x,y,z} ⇒ φ ∈ π(\ileadstogo[x])]$.
+  Let $k, k'$ both have $k$’s behavior above, now also satisfying the third conjunct of $ψ$ (some $γ ∈ (c.*)$ to $φ'$); keep $l$ as before. Each $j ∈ J$ forces its own conclusion via the triple $(j, k, k')$. But neither $k$ nor $k'$ can be forced: the only candidate to fill the other two, distinct, slots for $x = k$ is $\set{k'}$ — a single individual, insufficient to fill two distinct roles (symmetrically for $x = k'$). So $k$, $k'$ (and $l$) keep no DJ, $C$ still holds, is anonymous and conclusive by the same argument as before ($J$ infinite), yet the same two-branch argument still defeats \cref{conj:main}.
+
+  More generally, requiring every behavior to occur at least $m$ times only forces arity $m + 1$: the escaping individual together with its $m - 1$ forced twins supplies $m - 1$ spare slots, one short of the $m$ distinct slots an $(m+1)$-ary $ψ$ demands. So no finite multiplicity bound rules out this family of counterexamples; only an unboundedness hypothesis such as axiom $E$ (used elsewhere, e.g.\ around \cref{lem:crossRefResolved}) plausibly can.
+\end{remark}
+
+\begin{remark}
+  \label{rem:branchObstruction}
+  The mechanism underlying \cref{ex:klBranches} is worth isolating on its own, as a structural condition on $\allleadsto$ independent of any particular claim $C$: it is the most promising lead toward the characterization \cref{conj:main} is after.
+
+  Write $g$ for the row common to every $j ∈ J$, so $J = J_g$ (as in \cref{th:patternNecessary}'s proof). For $i ∈ I ∖ J_g$ with $\ileadstoo[i] ≠ g$, let $D_i := \set{\hist ∈ \allhists \suchthat \ileadstoo[i](\hist) ≠ g(\hist)} ≠ ∅$. Call a finite $K ⊆ I ∖ J_g$ \emph{branch-complementary relative to $g$} if no chain $H ∈ \fincrhists$ meets every $D_k$, $k ∈ K$ — equivalently, no single observation window can disagree with every member of $K$ at once, so at least one of them always keeps matching $\anobs$.
+
+  A branch-complementary $K$ is never a singleton: for $K = \set k$, any one path in $D_k$ is itself a one-point chain meeting $D_k$. This is why a lone confined escaper is always harmless on its own, whatever its disagreement with $g$ looks like: either \cref{lem:outsideSupportForced}'s swap reaches it, or, as with the constant-row escaper discussed above, its disagreement is everywhere and exclusion is immediate. Finiteness of a row-sharing class is thus never by itself the obstruction; what matters is whether confined individuals can be excluded \emph{jointly}.
+
+  \Cref{ex:klBranches}'s $K = \set{k,l}$ is branch-complementary relative to $g$: writing $(a.\ast)$, $(¬a.\ast)$ for the two disjoint, pairwise $⊆$-incomparable sets covering every nonempty path, $D_k = (¬a.\ast)$ and $D_l = (a.\ast)$, so a chain meeting both would need a path from each side — impossible, since $H ∖ \set{∅}$ lies entirely on one side. The $ψ_{j,k}$ construction turns this combinatorial fact into an actual defeating claim: whichever path conclusiveness hands back lies on one side only, so the resulting $\anobs$ excludes $k$ or $l$ but never both — and whichever one survives keeps matching $\anobs$ while carrying no DJ.
+
+  This points to a candidate sharpening of axiom $E$, now built into \cref{conj:main}'s hypothesis: no infinite row-class $g$ admits a finite branch-complementary set of confined individuals. $E$ trivially satisfies this (it leaves no confined individual at all), so the hypothesis is at most as strong; \cref{ex:klBranches} confirms it is genuinely informative, since dropping it lets a branch-complementary pair defeat the conclusion. Two gaps remain before this hypothesis is known to be the exact characterization \cref{conj:main} is after, rather than merely a necessary condition. Sufficiency: does \emph{every} branch-complementary $K$ — not just the $(a.\ast)/(¬a.\ast)$ split and its $ψ_{j,k}$ recipe — admit a defeating claim built the same way from $K$'s disagreement sets? Necessity: does the \emph{absence} of any branch-complementary $K$ let \cref{th:patternNecessary}'s proof go through for an arbitrary anonymous conclusive $C$, repairing the swap argument rather than merely avoiding this one obstruction? Until both are settled, \cref{conj:main}'s hypothesis is known to rule out the one counterexample found so far, but not proven to be the exact characterization.
+\end{remark}
 
 The stronger statement that any anonymous and conclusive $C$ implies that $\anobs ⊆ \ileadstoo ⇒ p ∈ P_i$ does not hold: $C$ could be $∃j \suchthat (a) \ileadstog[j] φ ⇒ φ ∈ P_i$.
 
@@ -1543,9 +1649,6 @@ for the observation that $i$ conforms to $T$ on the increasing path $H$.
 % Given $a ∈ \allargs$ and $T: H → P$ for some finite $H ∈ \incr(\allhists)$,
 % define the claim $C_{a,T}$ as $[∀i ∈ I: \set{i} × T ⊆ \allleadsto ⇒ ∃p ∈ P \suchthat a \ileadstost p]$.
 
-Given $B ⊆ \allbs$ and $H ⊆ \allhists$, let $\restr{B}{H} = \set{\restr{f}{H} \suchthat f ∈ B}$ denote the behaviors in $B$ restricted to $H$.
-Say a behavior $g$ is undistinguishable from $B ⊆ \allbs$ iff
-$∀H ∈ \fincrhists: \restr{g}{H} ∈ \restr{B}{H}$.
 The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I) ⊆ B]$.
 
 \begin{theorem}
