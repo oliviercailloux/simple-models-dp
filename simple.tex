@@ -267,15 +267,44 @@ A claim $C$ is \emph{anonymous} iff $∀ σ: C = C ∘ σ$.
   Given $α$, $i$ and $φ$, the claim $[α \ileadstog φ]$, which claims that a given path leads a given individual to a given proposition, is not anonymous (\cref{ex:anon}); whereas given $α$ and $φ$, the claim $[∀i: α \ileadstog φ]$ is anonymous. 
 \end{example}
 
+\subsection{Requirement on the exposure protocol}
+\label{sec:regularity}
+Our requirements on claims impose in turn requirements on the exposure protocol. For example, if no individual has a DJ ($∀i: π(\ileadstoo) = ∅$), no claim that holds can be conclusive.
+This section exposes such a requirement on the exposure protocol, which we call regularity.
+
+A world is said to be regular iff there is a proposition $p ∈ P$ and a finite multiset of anonymous observations, 
+among which some distinguished anonymous observation, 
+such that 
+each of the anonymous observations are compatible with some individual’s behavior, 
+and for each such mapping (from individuals to anonymous observations),
+the individual whose behavior is compatible with the distinguished anonymous observation has $p$ as DJ.
+
+\Cref{th:regularity} shows that this is a required condition on the exposure protocol: if $\allleadsto$ is not regular, then there is no claim that holds and is anonymous and conclusive.
+\begin{example}
+  \label{ex:regularity}
+  Consider the world $\allleadsto$ constituted of two kinds of individuals, the jay’s which always answer $φ$ and the kay’s which always answer $φ'$; formally, $I = J ∪ K$, and $∀i ∈ I, α ∈ \allhists: [i ∈ J ⇒ α \ileadsto φ] ∧ [i ∈ K ⇒ α \ileadsto φ']$.
+
+  The claim $C = [(∀i ∈ I: (a) \ileadstog φ ⇒ φ ∈ π(\ileadstogo)) ∧ (∃i ∈ I \suchthat (a) \ileadstog φ)]$ holds, is anonymous and conclusive.
+
+  By the above result, the existence of this claim implies that the world is regular.
+  This can be established by the (degenerate) multiset containing only the anonymous observation $\set{((a), φ)}$, together with the proposition $p = φ$: any individual $j ∈ J$’s behavior is compatible with this anonymous observation (indeed, $(a) \ileadsto[j] φ$), and the behavior of any $k ∈ K$ is incompatible with this anonymous observation, therefore, any individual $i ∈ I$ whose behavior is compatible with this anonymous observation satisfies $p = φ ∈ π(\ileadstoo)$. Note that the empty multiset is not suitable to establish regularity: all individuals have a behavior compatible with the empty constraint (as all behaviors are), but with $p = φ$, any individual $k ∈ K$ fails $p ∈ π(\ileadstoo[k])$, and with $p ≠ φ$, any individual $j ∈ J$ fails $p ∈ π(\ileadstoo[j])$.
+\end{example}
+
+\begin{remark}
+  \Cref{ex:klBranches} shows that involving a single individual in the definition of regularity is not sufficient. Intuitively speaking, this is because the world could include behaviors sufficiently hard to distinguish that, unlike in \cref{ex:regularity}, the claim would have to use an implication involving a more complicated antecedent such as $[∀i ≠ j: (a) \ileadstog φ ∧ (b) \ileadstog[j] φ' ⇒ φ ∈ π(\ileadstogo)]$, irreducible to a single implication involving only one individual. We defer to the appendix for the formal exposition.
+\end{remark}
+
 \subsection{Verifiability}
 \label{sec:verifiability}
-We want to know whether a claim holds, but all we have under hand are observations.
+\Cref{ex:regularity} illustrates an important practical difficulty: given a claim such as $C = [(a) \ileadstog φ ⇒ φ ∈ π(\ileadstogo)]$, one can check analytically that it is anonymous and 
+conclusive, but whether it holds is empirical.
+We therefore need to study procedures to determine whether a claim holds.
 A natural starting point is to attempt to verify claims, defined as follows.
 
 The claim $C$ is verifiable, or satisfies verifiability, iff some observation compatible with the actual world proves the claim, in the sense that every world compatible with the observation is in $C$; formally, iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ↑θ ⊆ C$.
 \begin{remark}
   One way to get convinced that this definition does capture the intuitive notion of verification stems from the scenario of debating whether the claim holds with an opponent.
-  Facing observations $θ$, the opponent may say, if some world completes $θ$ out of $C$ ($∃θ ⊆ \allleadstog ∉ C$), that this observation is not sufficient to prove that $C$ holds: the hypothesis that we live in the world $\allleadstog$ is compatible with us observing $θ$, but yet in this hypothesis, $C$ does not hold. The definition of verifiability considers that $C$ is verified whenever the opponent cannot say this any more; and $C$ is verifiable if some observations $θ ⊆ \allleadsto$ exist that verifies $C$.
+  Facing observations $θ$, the opponent may say, if some world completes $θ$ out of $C$ ($∃θ ⊆ \allleadstog ∉ C$), that this observation is not sufficient to prove that $C$ holds: the hypothesis that we live in the world $\allleadstog$ is compatible with us observing $θ$, but yet in this hypothesis, $C$ does not hold. The above definition of verifiability considers that $C$ is verified whenever the opponent cannot say this any more; and $C$ is verifiable if some observations $θ ⊆ \allleadsto$ exist that verifies $C$.
 \end{remark}
 
 Verifiability is sound (\cref{th:vImpliesHolds}), meaning that indeed when a claim is verifiable, it holds, but is too demanding for many claims, that is, many claims fail the converse implication.
@@ -290,14 +319,18 @@ A claim $C$ is \emph{informative} iff $∃θ ∈ Θ ∩ \powerset{\allleadsto} \
   % Also, the claim $C = [(∃ i \suchthat (a) \nileadstog φ) ∧ (∀i: (a) \nileadstog φ ⇒ φ' ∈ π_i(\allleadstog))]$ is informative.
   Informativeness may be a desirable property (rather than conclusiveness) as one may, for example, want to know whether a given proposition is believed by a majority of individuals.
 
-  This study focuses on conclusiveness to determine conditions that permit to point a specific individual, whose DJ is known. 
+  This article focuses on conclusiveness to determine conditions that permit to point a specific individual, whose DJ is known. 
   Because conclusiveness is stronger than informativeness, the possibility results we obtain apply to informativeness as well.
   Conversely, impossibility results applicable to informativeness apply to conclusiveness.
 \end{remark}
 
 Being informative implies failure of verifiability (\cref{th:infoNotVerif}).
 Therefore, conclusiveness is incompatible with verifiability.
-This may be expected, as we did not postulate yet any sort of regularity in the world, and ideed the fundamental reason for the incompatibility is that any observation can be completed in a way that contradicts any conclusion that informativeness in a world mandates (\cref{th:completable}).
+The fundamental reason for the incompatibility is that any observation can be completed in a way that contradicts any conclusion that informativeness in a world mandates (\cref{th:completable}).
+
+\begin{remark}
+  It is important to realize that the above impossibility applies for all worlds, including regular ones. Our regularity condition does ensure that some conclusive claim holds, but this section investigates another question: how one can effectively know whether a claim holds, with the limited knowledge that observability can bring. In contrast, a theorem such as \cref{th:regularity} uses full knowledge about the world.
+\end{remark}
 
 We thus now turn to examining which sort of prior knowledge will suffice for ensuring the existence of a verification procedure that will allow to determine that a conclusive and anonymous claim holds (when it indeed holds).
 As such prior knowledge cannot be justified by observations, we call them axioms.
@@ -310,7 +343,8 @@ Third, we will assume that some behaviors that are not observably separable from
 The following example illustrates the tension that needs overcoming. For a claim to be verifiable, the claim must stick to punctual statements, but conclusiveness requires general statements (this informal explanation is used to build intuition and will be made more precise in the course of our reasoning).
 \begin{example}
   \label{ex:jaysAndKaysConstants}
-  Consider the world $\allleadsto$ constituted of two kinds of individuals, the jay’s which always answer $φ$ and the kay’s which always answer $φ'$. Thus, $I = J ∪ K$, and $∀i ∈ I, α ∈ \allhists: [i ∈ J ⇒ α \ileadsto φ] ∧ [i ∈ K ⇒ α \ileadsto φ']$.
+  Consider the world of \cref{ex:regularity}: $\allleadsto = (J × \allhists × \set{φ}) ∪ (K × \allhists × \set{φ'})$).
+
   The following two claims hold.
   The claim $C_1 = [∃i \suchthat ∅ \ileadstog φ]$ is verifiable and not conclusive.
   The claim $C_2 = [(∀i: ∅ \ileadstog φ ⇒ ∀α, α \ileadstog φ) ∧ (∃i \suchthat ∅ \ileadstog φ)]$ is conclusive and not verifiable.
@@ -318,12 +352,12 @@ The following example illustrates the tension that needs overcoming. For a claim
 We will see that combining verification procedures, which permit to empirically verify punctual facts, with axioms that deal with generalities, lead further than procedures based only on axioms or on verification could.
 
 We say that an axiom $D$ proves a claim $C$ iff $D ⊆ C$. 
-%TODO get rid of provability by D beyond 3.4 and move it there.
+%TODO get rid of provability by D beyond 3.4 “Verifiability under an axiom” and move it there.
 
 \subsection{Verifiability under an axiom}
 Verifiability, as defined in \cref{sec:verifiability}, mandates that some observation proves $C$.
 As indicated there, this is too demanding to be applicable with no prior knowledge.
-In this section, we extend the verifiability concept to the case where some axiom is given.
+This section extends the verifiability concept to the case where some axiom is given.
 
 $C$ is verifiable under $D$ iff
 $∃ θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
@@ -410,14 +444,17 @@ Intuition might suggest that under $E$, no visibility issues can arise. \Cref{ex
   Note that $θ$ cannot be completed by observing $i$’s reaction to $α$. 
   Therefore, $θ$ hides the possibility of proving by observation that $\allleadstog ∉ C$, and $¬\POF(\allleadstog)$, whence $¬\POF$ fails to prove $C$.
 
-  \Cref{ex:repeatableProvNotOfButNotNotPOFDetails} gives further details and a more formal proof.
+  \Cref{ex:repeatableProvNotOfButNotNotPOFDetails} gives further details.
 \end{example}
+
+The intuition, however, is correct when restricted to anonymous claims: \cref{th:finiteExceptSpreadAnon} shows that anonymous claims suffer no visibility issues in $E$.
 
 \Cref{th:provGapVisibility} shows that
 $(¬\POF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no visibility issues in $E$ (that is, $∀\allleadstog ∈ E: \OF(\allleadstog) ⇒ \POF(\allleadstog)$).
+Thus (using \cref{th:finiteExceptSpreadAnon} as well), any anonymous and falsifiable claim $C ⊆ E$ is provable by $¬\POF[C ∩ E] ∩ E$ (\cref{th:anonFalsImpliesProv}).
 
-\Cref{th:finiteExceptSpreadAnon} shows that anonymous claims suffer no visibility issues in $E$.
-Thus (using \cref{th:provGapVisibility}), any anonymous and falsifiable claim $C ⊆ E$ is provable by $¬\POF[C ∩ E] ∩ E$ (\cref{th:anonFalsImpliesProv}).
+Finally, we note an important simplification of the regularity condition studied in \cref{sec:regularity} (\cref{th:regularityI}): assuming that $\allleadsto ∈ E$, we obtain that … 
+TODO go on.
 
 \subsection{Visibility}
 We now add the last piece of the puzzle.
@@ -477,14 +514,7 @@ In supplement to a possibly helpful conceptual clarification, such a sharp separ
 \subsection{Generalities}
 This appendix relaxes the assumption of the main text that $\card{I} ∉ \N$ and $\card{\allargs} ∉ \N$. 
 It also relaxes the requirement that a claim be non-empty, thus, in this part, a claim is any subset of $\allleadstos$.
-Each result indicates which assumptions on the cardinalities of these sets (or whether $C ≠ ∅$) are required.
-
-We say that a claim $C$ \emph{fails} iff $\allleadsto ∉ C$.
-Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(↑θ ∩ C) ≠ (P ∪ \set{∅})^I$.
-
-Note that $C^⊆$ is downwards closed, meaning that $∀ c ∈ C^⊆: c' ⊆ c ⇒ c' ∈ C^⊆$ (equivalently, $\set{c' ⊆ c} ⊆ C^⊆$).
-Both $\incr(\allhists)^I$ and $\allpriobss$ are downwards closed.
-The set $Θ ∩ C^⊆$ is downwards closed, as both $Θ$ and $C^⊆$ are.
+Each result indicates which assumptions on the cardinalities of these sets (or whether $C ≠ ∅$) are required, if any.
 
 \subsection{Requirement on the real world}
 Given a multiset $S ∈ ℕ^X$ over any set $X$ and given any $x ∈ X$ with $1 ≤ S(x)$, define $S - x$ as $(S - x)(x) = S(x) - 1$ and $∀x ≠ y ∈ X: (S - x)(y) = S(y)$.
@@ -503,20 +533,14 @@ $∃∅ ≠ J ⊆ I, f ∈ {(\anobses)}^J \suchthat ∀\anobs' ∈ \anobses,
       \card{f^{-1}(\anobs')} = G(\anobs') ∧
       ∀j ∈ J: f(j) ⊆ \ileadstogo[j]$.
 
-A world is regular iff there is a proposition $p$ and a finite multiset of anonymous observations, 
-among which some distinguished anonymous observation, 
-such that 
-each of the anonymous observations are compatible with some individual’s behavior, 
-and for each such mapping (from individuals to anonymous observations),
-the individual whose behavior is compatible with the distinguished anonymous observation has $p$ as DJ.
-Formally:
 A world $\allleadstog$ is regular iff $∃G ∈ ℕ^{\anobses} \text{ with finite support}, p ∈ P \suchthat (\allleadstog \text{ is } G\text{-regular}) ∧ (∃\anobs ∈ \anobses \suchthat 1 ≤ G(\anobs) ∧ ∀i ∈ I:
     \allleadstog \text{ is } \anobs, G - \anobs, i\text{-regular}
     ⇒
     p ∈ π(\ileadstogo))$.
 
 \begin{theorem}
-  If some anonymous, conclusive claim holds,
+  \label{th:regularity}
+  If some anonymous, conclusive claim $C$ holds,
   then $\allleadsto$ is regular.
 \end{theorem}
 \begin{proof}
@@ -560,6 +584,9 @@ A world $\allleadstog$ is regular iff $∃G ∈ ℕ^{\anobses} \text{ with finit
   (if $\anobs' ≠ ∅$, we have $σ(j) ∈ f^{-1}(\anobs')$ whence $f(σ(j)) = \anobs' ⊆ \ileadstoo[σ(j)]$).
   We conclude that $p ∈ π(\ileadstoo[i'])$.
 \end{proof}
+
+It is tempting to define regularity by involving only one individual, thus, to conjecture that when some anonymous, conclusive claim holds, the stronger consequence $∃\anobs ∈ \anobses, p ∈ P \suchthat (∃i ∈ I \suchthat \anobs ⊆ \ileadstoo) ∧ (∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ π(\ileadstoo))$ follows. \Cref{ex:klBranches}, which defines a world where regularity in our sense holds but the considered version involving a single individual does not, permits to understand why this intuition fails.
+
 \begin{example}
   \label{ex:klBranches}
   Let $I = \set{i, k, l}$.
@@ -585,6 +612,8 @@ A world $\allleadstog$ is regular iff $∃G ∈ ℕ^{\anobses} \text{ with finit
 Given $B ⊆ \allbs$ and $H ⊆ \allhists$, let $\restr{B}{H} = \set{\restr{f}{H} \suchthat f ∈ B}$ denote the behaviors in $B$ restricted to $H$.
 Say a behavior $g$ is undistinguishable from $B ⊆ \allbs$ iff
 $∀H ∈ \fincrhists: \restr{g}{H} ∈ \restr{B}{H}$.
+
+% Condition: behaviors $i$ undistinguishable from $B$, finite nb of individuals exhibit $B$, each $b$ has $φ ∉ π$. Then we need them to establish regularity!
 
 \begin{conjecture}
   If some anonymous, conclusive claim holds, then $∃ \anobs, p ∈ P \suchthat (∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ P_i) ∨ (∃B ⊆ \allbs \suchthat ∀b ∈ B: p ∉ π(b) ∧ \anobs$ undistinguishable from $B ∧ \card{({\allleadstoinv}(B))} ∈ ℕ)$.
@@ -2060,6 +2089,14 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 
   The same two instantiations ($B := \allleadsto(I)$ and $B := \allbs$) apply just as well to \cref{th:oneMorePriorGeneral} itself, giving analogues of \cref{th:oneMorePriorNarrow,th:oneMorePriorFull} for the original, unaugmented claim $C_0$: an anonymous, holding claim that is APTS and provable by $¬\POF ∩ E$, respectively APTS and provable by $(¬\POF) ∩ E ∩ D^{\anobs, a, p}_{C_0}$.
 \end{remark}
+
+\subsection{Other generalities}
+We say that a claim $C$ \emph{fails} iff $\allleadsto ∉ C$.
+Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(↑θ ∩ C) ≠ (P ∪ \set{∅})^I$.
+
+Note that $C^⊆$ is downwards closed, meaning that $∀ c ∈ C^⊆: c' ⊆ c ⇒ c' ∈ C^⊆$ (equivalently, $\set{c' ⊆ c} ⊆ C^⊆$).
+Both $\incr(\allhists)^I$ and $\allpriobss$ are downwards closed.
+The set $Θ ∩ C^⊆$ is downwards closed, as both $Θ$ and $C^⊆$ are.
 
 \section{Recently moved supplementary material}
 \subsection{Generalities}
