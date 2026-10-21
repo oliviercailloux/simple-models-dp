@@ -585,7 +585,17 @@ A world $\allleadstog$ is regular iff $∃G ∈ ℕ^{\anobses} \text{ with finit
   We conclude that $p ∈ π(\ileadstoo[i'])$.
 \end{proof}
 
-It is tempting to define regularity by involving only one individual, thus, to conjecture that when some anonymous, conclusive claim holds, the stronger consequence $∃\anobs ∈ \anobses, p ∈ P \suchthat (∃i ∈ I \suchthat \anobs ⊆ \ileadstoo) ∧ (∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ π(\ileadstoo))$ follows. \Cref{ex:klBranches}, which defines a world where regularity in our sense holds but the considered version involving a single individual does not, permits to understand why this intuition fails.
+A special case of regularity is worth examining.
+Observe that $\set{0}^{\anobses}$ denotes the empty multiset and $\set{(\anobs, 1)}$ denotes a singleton multiset containing only $\anobs$. Abusing notations, we use $\anobs$ to denote such a singleton multiset.
+
+It follows from the above definitions that 
+a world $\allleadstog$ is $\anobs, \set{0}^{\anobses}, i\text{-regular}$ iff $\anobs ⊆ \ileadstogo$ and that
+a world $\allleadstog$ is $\anobs\text{-regular}$ iff
+$∃i ∈ I \suchthat \anobs ⊆ \ileadstogo$.
+
+A world $\allleadstog$ is said to admit a simple regularity iff $∃\anobs ∈ \anobses, p ∈ P \suchthat (∃i ∈ I \suchthat \anobs ⊆ \ileadstogo) ∧ (∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ p ∈ π(\ileadstogo))$.
+
+It is tempting to conjecture that when some anonymous, conclusive claim holds, the stronger consequence that $\allleadsto$ admits a simple regularity follows. \Cref{ex:klBranches}, which defines a world where regularity holds but simple regularity fails, permits to understand why this intuition fails.
 
 \begin{example}
   \label{ex:klBranches}
@@ -606,14 +616,43 @@ It is tempting to define regularity by involving only one individual, thus, to c
   For any $\anobs ∈ \anobses$ such that $∃i' ∈ I \suchthat \anobs ⊆ \ileadstoo[i']$, let us show that, for any $p ∈ P$, the implication $∀i' ∈ I: \anobs ⊆ \ileadstoo[i'] ⇒ p ∈ π(\ileadstoo[i'])$ fails.
   Note that $π(\ileadsto[k]) = π(\ileadsto[l]) = ∅$: $∀c ∈ \allargs, j ∈ \set{k, l}$, $c$ is not decisive for $j$, because $\ileadstoo[j]((a, c)) ≠ \ileadstoo[j]((b, c))$.
   Thus, we require $\anobs ⊆ \ileadstoo$ (so as to satisfy $∃i' ∈ I \suchthat \anobs ⊆ \ileadstoo[i']$), and if $\anobs ⊆ \ileadstoo[k]$ or $\anobs ⊆ \ileadstoo[l]$, the implication fails.
-  But, if $∃α ∈ \anobs^{-1}(P) \suchthat α_1 = a$, then $\anobs^{-1}(P)$ can contain only $∅$ and paths starting with $a$ (because $\anobs^{-1}(P) ∈ \fincrhists$), whence $\anobs ⊆ \ileadstoo[k]$ (because $i$ and $k$ are undistinguishable on those paths; formally, $\restr{\ileadstoo}{\set{α \suchthat α = ∅ ∨ α_1 = a}} = \restr{\ileadstoo[k]}{\set{α \suchthat α = ∅ ∨ α_1 = a}}$); otherwise, thus if $∄α ∈ \anobs^{-1}(P) \suchthat α_1 = a$, then $\anobs ⊆ \ileadstoo[l]$.
+  But, if $∃α ∈ \anobs^{-1}(P) \suchthat α_1 = a$, then $\anobs^{-1}(P)$ can contain only $∅$ and paths starting with $a$ (because $\anobs^{-1}(P) ∈ \fincrhists$), whence $\anobs ⊆ \ileadstoo[k]$ (because $\ileadstoo$ and $\ileadstoo[k]$ are undistinguishable on those paths; formally, $\restr{\ileadstoo}{\set{α \suchthat α = ∅ ∨ α_1 = a}} = \restr{\ileadstoo[k]}{\set{α \suchthat α = ∅ ∨ α_1 = a}}$); otherwise, thus if $∄α ∈ \anobs^{-1}(P) \suchthat α_1 = a$, then $\anobs ⊆ \ileadstoo[l]$.
 \end{example}
+The notion of undistinguishability recruited in \cref{ex:klBranches} turns out to be key to characterize regularity situations not reducible to simple regularity.
 
 Given $B ⊆ \allbs$ and $H ⊆ \allhists$, let $\restr{B}{H} = \set{\restr{f}{H} \suchthat f ∈ B}$ denote the behaviors in $B$ restricted to $H$.
 Say a behavior $g$ is undistinguishable from $B ⊆ \allbs$ iff
 $∀H ∈ \fincrhists: \restr{g}{H} ∈ \restr{B}{H}$.
 
-% Condition: behaviors $i$ undistinguishable from $B$, finite nb of individuals exhibit $B$, each $b$ has $φ ∉ π$. Then we need them to establish regularity!
+TODO: the proof does not go through for the finitary condition. 
+Perhaps only for the behavior used for regularity does the iff hold?
+Rather, if for some i, some such B exists but it is infinite, then that i forms a simple regularity!
+Also, consider only maximal B?
+% Thus, first part (Cond implies no sr) should be unchanged.
+% Second part (¬Cond implies sr) becomes: max B has i disting from B OR B has infinite indiv ⇒ sr.
+\begin{conjecture}
+  Given any regular $\allleadstog$, $\allleadstog$ admits no simple regularity iff $∀i ∈ I \suchthat π(\ileadstogo) ≠ ∅: ∃B ⊆ \allleadstog(I) \suchthat i \text{ is undistinguishable from } B ∧ ∀b ∈ B: π(\ileadstogo) ≠ π(\ileadstogo[b]) ∧ \card{\allleadstoginv(B)} ∈ ℕ$.
+\end{conjecture}
+\begin{proof}
+  Suppose the condition holds.
+  Assume for contradiction that $\allleadstog$ admits simple regularity: some $\anobs, p'$ satisfy $∃ i_0 ∈ I \suchthat \anobs ⊆ \ileadstogo[i_0]$ and $∀ j ∈ I: \anobs ⊆ \ileadstogo[j] ⇒ p' ∈ π(\ileadstogo[j])$.
+  Since $p' ∈ π(\ileadstogo[i_0])$, we have $π(\ileadstogo[i_0]) ≠ ∅$; apply the condition to $i_0$ to obtain $B ⊆ \allleadstog(I)$ with $i_0$ undistinguishable from $B$ and $∀ b ∈ B: π(\ileadstogo[i_0]) ≠ π(b)$.
+  Since $\anobs^{-1}(P) ∈ \fincrhists$, undistinguishability yields $b ∈ B$ with $\anobs ⊆ b$.
+  Pick $j ∈ I$ with $\ileadstogo[j] = b$ (possible as $b ∈ \allleadstog(I)$); then $\anobs ⊆ \ileadstogo[j]$, so by simple regularity $p' ∈ π(b)$; by \cref{th:sing}, $π(b) = \set{p'} = π(\ileadstogo[i_0])$, contradicting $π(\ileadstogo[i_0]) ≠ π(b)$.
+
+  % Now let’s show that
+  % $∀i ∈ I \suchthat π(\ileadstogo) ≠ ∅: ∃B ⊆ \allleadstog(I) \suchthat i \text{ is undistinguishable from } B ∧ ∀b ∈ B: π(\ileadstogo) ≠ π(\ileadstogo[b]) ∧ \card{\allleadstoginv(B)} ∈ ℕ$
+  % implies
+  % $\allleadstog$ admits no simple regularity.
+
+  Suppose now $\allleadstog$ admits no simple regularity.
+  Let $i ∈ I$ with $π(\ileadstogo) = \set{p}$ and define $B = \set{b ∈ \allleadstog(I) \suchthat π(b) ≠ \set{p}}$.
+  Condition (2) holds by definition.
+  For (1): given $H ∈ \fincrhists$ let $\anobs = \restr{\ileadstogo}{H}$; since $\anobs ⊆ \ileadstogo$ and $(\anobs, p)$ does not witness simple regularity, some $j ∈ I$ satisfies $\anobs ⊆ \ileadstogo[j]$ and $π(\ileadstogo[j]) ≠ \set{p}$, so $\ileadstogo[j] ∈ B$ witnesses $\restr{\ileadstogo}{H} ∈ \restr{B}{H}$.
+  For (3): since $\allleadstog$ is regular, some anonymous falsifiable claim $C$ holds by \cref{th:regularity}.
+  For each $b ∈ B$: any $b' ∈ R(\set{b})$ satisfies $b'(α) = b(α)$ for every $α ∈ \allhists$ (by undistinguishability at $H = \set{α}$), so $R(\set{b}) = \set{b\,}$ and $R(\set{b})^I$ is the world where every individual has behavior $b$; in that world $C$ fails ($C$ is conclusive with proposition $p$ yet $π(b) ≠ \set{p}$), so by anonymity of $C$, if $\card{\allleadstoginv(b)} ∉ ℕ$ we could permute infinitely many $b$-individuals into any finite observable, making $C$ completable to a world where $C$ fails — contradicting $C$ holding; thus $\card{\allleadstoginv(b)} ∈ ℕ$.
+  Since regularity gives a finite certificate $J$ bounding the number of distinct obstruction types, $B$ is finite, hence $\card{\allleadstoginv(B)} = \sum_{b ∈ B} \card{\allleadstoginv(b)} ∈ ℕ$.
+\end{proof}
 
 \begin{conjecture}
   If some anonymous, conclusive claim holds, then $∃ \anobs, p ∈ P \suchthat (∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ P_i) ∨ (∃B ⊆ \allbs \suchthat ∀b ∈ B: p ∉ π(b) ∧ \anobs$ undistinguishable from $B ∧ \card{({\allleadstoinv}(B))} ∈ ℕ)$.
