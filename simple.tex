@@ -520,23 +520,23 @@ Each result indicates which assumptions on the cardinalities of these sets (or w
 Given a multiset $S ∈ ℕ^X$ over any set $X$ and given any $x ∈ X$ with $1 ≤ S(x)$, define $S - x$ as $(S - x)(x) = S(x) - 1$ and $∀x ≠ y ∈ X: (S - x)(y) = S(y)$.
 
 Given $\anobs ∈ \anobses$, $G ∈ ℕ^{\anobses}$ and $i ∈ I$, say that a world $\allleadstog$ is $\anobs, G, i$-regular iff
-$    \anobs ⊆ \ileadstogo ∧
-    ∃J ⊆ I ∖ \set{i}, f ∈ {(\anobses)}^J \suchthat ∀\anobs' ∈ \anobses,
-      \card{f^{-1}(\anobs')} = G(\anobs') ∧
-      ∀j ∈ J: f(j) ⊆ \ileadstogo[j]
-$
+  $\anobs ⊆ \ileadstogo ∧
+  ∃J ⊆ I ∖ \set{i}, f ∈ {(\anobses)}^J \suchthat ∀\anobs' ∈ \anobses,
+  \card{f^{-1}(\anobs')} = G(\anobs') ∧
+  ∀j ∈ J: f(j) ⊆ \ileadstogo[j]
+  $
   (considering $f^{-1}(\anobs') = ∅$ if $\anobs'$ is not in the range of $f$).
 Given $G ∈ ℕ^{\anobses}$, say that a world $\allleadstog$ is $G$-regular iff 
 $∃ \anobs ∈ \anobses, i ∈ I \suchthat 1 ≤ G(\anobs) ∧ \allleadstog \text{ is } \anobs, G - \anobs, i\text{-regular}$;
 equivalently, iff
 $∃∅ ≠ J ⊆ I, f ∈ {(\anobses)}^J \suchthat ∀\anobs' ∈ \anobses,
-      \card{f^{-1}(\anobs')} = G(\anobs') ∧
-      ∀j ∈ J: f(j) ⊆ \ileadstogo[j]$.
+  \card{f^{-1}(\anobs')} = G(\anobs') ∧
+  ∀j ∈ J: f(j) ⊆ \ileadstogo[j]$.
 
-A world $\allleadstog$ is regular iff $∃G ∈ ℕ^{\anobses} \text{ with finite support}, p ∈ P \suchthat (\allleadstog \text{ is } G\text{-regular}) ∧ (∃\anobs ∈ \anobses \suchthat 1 ≤ G(\anobs) ∧ ∀i ∈ I:
-    \allleadstog \text{ is } \anobs, G - \anobs, i\text{-regular}
-    ⇒
-    p ∈ π(\ileadstogo))$.
+A world $\allleadstog$ is regular iff $∃G ∈ ℕ^{\anobses} \text{ with finite support}, p ∈ P, \anobs ∈ \anobses \suchthat (\allleadstog \text{ is } G\text{-regular}) ∧ 1 ≤ G(\anobs) ∧ (∀i ∈ I:
+  \allleadstog \text{ is } \anobs, G - \anobs, i\text{-regular}
+  ⇒
+  p ∈ π(\ileadstogo))$.
 
 \begin{theorem}
   \label{th:regularity}
@@ -586,7 +586,8 @@ A world $\allleadstog$ is regular iff $∃G ∈ ℕ^{\anobses} \text{ with finit
 \end{proof}
 
 A special case of regularity is worth examining.
-Observe that $\set{0}^{\anobses}$ denotes the empty multiset and $\set{(\anobs, 1)}$ denotes a singleton multiset containing only $\anobs$. Abusing notations, we use $\anobs$ to denote such a singleton multiset.
+Observe that $\set{0}^{\anobses}$ denotes the empty multiset.
+Observe that $\set{(\anobs, 1)}$ denotes a singleton multiset containing only $\anobs$; abusing notations, we use $\anobs$ to denote such a singleton multiset.
 
 It follows from the above definitions that 
 a world $\allleadstog$ is $\anobs, \set{0}^{\anobses}, i\text{-regular}$ iff $\anobs ⊆ \ileadstogo$ and that
@@ -624,14 +625,62 @@ Given $B ⊆ \allbs$ and $H ⊆ \allhists$, let $\restr{B}{H} = \set{\restr{f}{H
 Say a behavior $g$ is undistinguishable from $B ⊆ \allbs$ iff
 $∀H ∈ \fincrhists: \restr{g}{H} ∈ \restr{B}{H}$.
 
-TODO: the proof does not go through for the finitary condition. 
-Perhaps only for the behavior used for regularity does the iff hold?
-Rather, if for some i, some such B exists but it is infinite, then that i forms a simple regularity!
-Also, consider only maximal B?
-% Thus, first part (Cond implies no sr) should be unchanged.
-% Second part (¬Cond implies sr) becomes: max B has i disting from B OR B has infinite indiv ⇒ sr.
+\begin{theorem}
+  A world $\allleadstog$ is regular if $∃i ∈ I \suchthat π(\ileadstogo) ≠ ∅ ∧ \ileadstogo \text{ is distinguishable from } B = \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b) ∧ ∀H ∈ \fincrhists: \card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H} = \restr{b}{H}} ∉ ℕ}$.
+\end{theorem}
+\begin{proof}
+  Pick $H ∈ \fincrhists \suchthat \restr{\ileadstogo}{H} ∉ \restr{B}{H}$.
+  Define $B^{(1)} = \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b) ∧ ∃H' \suchthat \card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H'} = \restr{b}{H'}} ∈ ℕ}$.
+  Pick $b ∈ B^{(1)}$.
+  Set $G = \restr{\ileadstogo}{H} ∪ \restr{b}{H'}$ with cardinality $\card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H'} = \restr{b}{H'}}$,
+  $p = π(\ileadstogo)$,
+  $\anobs = \restr{\ileadstogo}{H}$.
+  
+  Let us show that $\allleadstog$ is $G$-regular.
+  Define $J = i, j…$,
+  $f(i) = \restr{\ileadstogo}{H}$ and
+  $f(j) = \restr{\ileadstog[j]}{H'}$.
+
+  Let us now assume that for some $i'$,
+  $\allleadstog \text{ is } \anobs, G - \anobs, i'\text{-regular}$
+  and show that
+  $p ∈ π(\ileadstogo[i'])$.
+
+  Thus,
+  $\anobs ⊆ \ileadstogo[i'] ∧
+  ∃J ⊆ I ∖ \set{i'}, f ∈ {(\anobses)}^J \suchthat ∀\anobs' ∈ \anobses,
+  \card{f^{-1}(\anobs')} = G(\anobs') ∧
+  ∀j ∈ J: f(j) ⊆ \ileadstogo[j]
+  $.
+  We show that $\ileadstogo[i'] ∉ \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b)}$.
+
+  Pick any $b ∈ B^{(1)}$,
+  we show that $b ≠ \ileadstogo[i']$.
+  Indeed, as $b ∈ B^{(1)}$, there is some $H', \anobs' = \restr{b}{H'} ∈ G$ with card $\card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H'} = \anobs'}$.
+  Thus, equally many $j ∈ I ∖ \set{i'}$ such that $f(j) = \anobs'$.
+  If $b = \ileadstogo[i']$, also $\restr{\ileadstogo[i']}{H'} = \anobs'$, and the cardinality is not satisfied.
+
+  Also, $\anobs = \restr{\ileadstogo}{H} ⊆ \ileadstogo[i']$, 
+  thus $\restr{\ileadstogo}{H} = \restr{\ileadstogo[i']}{H}$,
+  thus $\restr{\ileadstogo[i']}{H} ∉ \restr{B}{H}$.
+\end{proof}
 \begin{conjecture}
-  Given any regular $\allleadstog$, $\allleadstog$ admits no simple regularity iff $∀i ∈ I \suchthat π(\ileadstogo) ≠ ∅: ∃B ⊆ \allleadstog(I) \suchthat i \text{ is undistinguishable from } B ∧ ∀b ∈ B: π(\ileadstogo) ≠ π(\ileadstogo[b]) ∧ \card{\allleadstoginv(B)} ∈ ℕ$.
+  If the world $\allleadstog$ is regular, then $∃i ∈ I \suchthat π(\ileadstogo) ≠ ∅ ∧ \ileadstogo \text{ is distinguishable from } B = \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b) ∧ ∀H ∈ \fincrhists: \card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H} = \restr{b}{H}} ∉ ℕ}$.
+\end{conjecture}
+\begin{proof}
+  We know this.
+
+  For some $G ∈ ℕ^{\anobses} \text{ with finite support}, p ∈ P, \anobs ∈ \anobses: (\allleadstog \text{ is } G\text{-regular}) ∧ 1 ≤ G(\anobs) ∧ (∀i ∈ I:
+  \allleadstog \text{ is } \anobs, G - \anobs, i\text{-regular}
+  ⇒
+  p ∈ π(\ileadstogo))$.
+
+  Also: $∃ \anobs ∈ \anobses, i ∈ I \suchthat 1 ≤ G(\anobs) ∧ \allleadstog \text{ is } \anobs, G - \anobs, i\text{-regular}$.
+
+\end{proof}
+
+\begin{conjecture}
+  Given any regular $\allleadstog$, $\allleadstog$ admits no simple regularity iff $∀i ∈ I \suchthat π(\ileadstogo) ≠ ∅: i \text{ is undistinguishable from } \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b) ∧ \card{\allleadstoginv(b)} ∈ ℕ}$.
 \end{conjecture}
 \begin{proof}
   Suppose the condition holds.
@@ -640,8 +689,13 @@ Also, consider only maximal B?
   Since $\anobs^{-1}(P) ∈ \fincrhists$, undistinguishability yields $b ∈ B$ with $\anobs ⊆ b$.
   Pick $j ∈ I$ with $\ileadstogo[j] = b$ (possible as $b ∈ \allleadstog(I)$); then $\anobs ⊆ \ileadstogo[j]$, so by simple regularity $p' ∈ π(b)$; by \cref{th:sing}, $π(b) = \set{p'} = π(\ileadstogo[i_0])$, contradicting $π(\ileadstogo[i_0]) ≠ π(b)$.
 
+  Suppose now that the condition fails, we show that simple regularity follows.
+  For some $i$, define $p = π(\ileadstogo)$ and assume that $i \text{ is distinguishable from } B = \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b) ∧ \card{\allleadstoginv(b)} ∈ ℕ}$.
+  Define $B' = \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b)}$.
+  % We know that $i$ is distinguishable from $B'$, otherwise $\allleadsto$ 
+  
   % Now let’s show that
-  % $∀i ∈ I \suchthat π(\ileadstogo) ≠ ∅: ∃B ⊆ \allleadstog(I) \suchthat i \text{ is undistinguishable from } B ∧ ∀b ∈ B: π(\ileadstogo) ≠ π(\ileadstogo[b]) ∧ \card{\allleadstoginv(B)} ∈ ℕ$
+  % $∀i ∈ I \suchthat π(\ileadstogo) ≠ ∅: ∃B ⊆ \allleadstog(I) \suchthat i \text{ is undistinguishable from } B ∧ ∀b ∈ B: π(\ileadstogo) ≠ π(b) ∧ \card{\allleadstoginv(B)} ∈ ℕ$
   % implies
   % $\allleadstog$ admits no simple regularity.
 
