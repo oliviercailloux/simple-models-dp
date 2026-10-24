@@ -209,7 +209,7 @@ an observation $θ ∈ Θ$ is a general observation satisfying $∀ i ∈ I, (i,
 Given a general observation $O$, let $O(P) ⊆ I × \allhists$ denote the queried elements (the pairs $(i, \hist)$) in $O$ and $O(\allhists, P)$ designate the observed individuals.
 Note that given an observation $θ$, $θ(P) ∈ \allpriobss$.
 Similarly, we can view an observation $θ$ as a function $θ: I ↦ ∪_{H ∈ \incr(\allhists)} P^H$ and thus $Θ = \finite((∪_{H ∈ \incr(\allhists)} P^H)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
-An observation $θ'$ rightward-extends an observation $θ$, denoted $θ ⊑ θ'$, iff $θ ⊆ θ' ∧ ∀i ∈ I, (i, α, p) ∈ θ, (i, α', p') ∈ θ': α ⊆ α'$.
+An observation $θ'$ rightward-extends an observation $θ$, denoted $θ ⊑ θ'$, iff $θ ⊆ θ' ∧ ∀i ∈ I, (i, α, p) ∈ θ, (i, α', p') ∈ θ': α ⊆ α'$.\commentClaude{As stated, the second conjunct quantifies over all $(i,α',p') ∈ θ'$, including pairs already in $θ ⊆ θ'$. For any $θ$ with two observations $(i,α_1,p_1),(i,α_2,p_2)$ with $α_1 ⊊ α_2$: taking $(i,α,p)=(i,α_2,p_2) ∈ θ$ and $(i,α',p')=(i,α_1,p_1) ∈ θ'$ requires $α_2 ⊆ α_1$, which fails. So under this definition any $θ$ with more than one path per individual has no valid rightward extension, making conclusiveness vacuous for such starting observations. The intended condition is almost certainly $(i,α',p') ∈ θ' ∖ θ$ — only new paths must be rightward of old paths.}
 
 An anonymous observation $\anobs ∈ ∪_{H ∈ \fincrhists} P^H$ associates each path from an increasing set of paths to an element of $P$. We let $\set{i} × \anobs = \set{(i, α, p) \suchthat (α, p) ∈ \anobs} ∈ Θ$ denote the observation corresponding to applying $\anobs$ to $i$; and $\anobs^{-1}(P) = \set{α \suchthat ∃p ∈ P \suchthat (α, p) ∈ \anobs} ∈ \fincrhists$ the used paths.
 
@@ -625,19 +625,56 @@ Given $B ⊆ \allbs$ and $H ⊆ \allhists$, let $\restr{B}{H} = \set{\restr{f}{H
 Say a behavior $g$ is undistinguishable from $B ⊆ \allbs$ iff
 $∀H ∈ \fincrhists: \restr{g}{H} ∈ \restr{B}{H}$.
 
-\begin{theorem}
-  A world $\allleadstog$ is regular if $∃i ∈ I \suchthat π(\ileadstogo) ≠ ∅ ∧ \ileadstogo \text{ is distinguishable from } B = \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b) ∧ ∀H ∈ \fincrhists: \card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H} = \restr{b}{H}} ∉ ℕ}$.
-\end{theorem}
+Given a world $\allleadstog$ and $\anobs ∈ \anobses$, the individuals that $\anobs$ cover are $i ∈ I \suchthat \anobs ⊆ \ileadstogo$.
+Given $\anobs ∈ \anobses$, let $↑\anobs$ represent all behaviors compatible with $\anobs$ (thus $b ∈ \allbs \suchthat \anobs ⊆ b$), and given $K ⊆ \anobses$, let $↑K = ∪_{\anobs ∈ K} ↑\anobs$ represent all behaviors compatible with some $\anobs ∈ K$.
+Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely coverable by anonymous observations iff $∃K ⊆ \anobses \suchthat \card{K} ∈ ℕ ∧ B ⊆ ↑K ∧ ∀\anobs ∈ K: \card\set{i ∈ I \suchthat \anobs ⊆ \ileadstogo} ∈ ℕ$.
+
+\begin{conjecture}
+  \label{th:conj1}
+  A world $\allleadstog$ is regular iff $∃i ∈ I, B^{(1)}, B^{(2)} \suchthat π(\ileadstogo) ≠ ∅ ∧ B^{(1)} ∪ B^{(2)} = \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b)} ∧ B^{(1)} \text{ is finitely coverable by anonymous observations } ∧ \ileadstogo \text{ is distinguishable from } B^{(2)}$.
+\end{conjecture}
 \begin{proof}
+  
+\end{proof}
+\begin{proof}[Claude attempt]
+  \emph{($⇒$)}
+  Assume $\allleadstog$ is regular: pick $G ∈ ℕ^{\anobses}$ with finite support, $p ∈ P$, $\anobs ∈ \anobses$ such that $\allleadstog$ is $G$-regular, $1 ≤ G(\anobs)$, and $∀i ∈ I: \allleadstog \text{ is } \anobs, G-\anobs, i\text{-regular} ⇒ p ∈ π(\ileadstogo)$.
+  From $G$-regularity, pick finite $∅ ≠ J_0 ⊆ I$ and $f_0 ∈ {(\anobses)}^{J_0}$ with $\card{f_0^{-1}(\anobs')} = G(\anobs')$ for all $\anobs'$ and $f_0(j) ⊆ \ileadstogo[j]$ for all $j ∈ J_0$.
+  Since $G(\anobs) ≥ 1$, pick $i_0 ∈ J_0$ with $f_0(i_0) = \anobs$; then $J_0 ∖ \set{i_0}$, $\restr{f_0}{J_0 ∖ \set{i_0}}$ witnesses $\allleadstog$ is $\anobs, G-\anobs, i_0$-regular, so $p ∈ π(\ileadstogo[i_0])$; by \cref{th:sing}, $π(\ileadstogo[i_0]) = \set{p}$.
+
+  Set $i = i_0$, $K = \set{f_0(j) \suchthat j ∈ J_0 ∧ f_0(j) ≠ \anobs}$ (a finite subset of $\anobses$), $B^{(1)} = \set{b ∈ \allleadstog(I) \suchthat π(b) ≠ \set{p} ∧ ∃\anobs' ∈ K \suchthat \anobs' ⊆ b}$, and $B^{(2)} = \set{b ∈ \allleadstog(I) \suchthat π(b) ≠ \set{p}} ∖ B^{(1)}$.
+
+  \emph{$B^{(1)}$ is finitely coverable by $K$.}
+  We have $B^{(1)} ⊆ ↑K$ by definition.
+  $\card{K} ∈ ℕ$ since $J_0$ is finite.
+  For each $\anobs' ∈ K$, $\card{\set{j ∈ I \suchthat \anobs' ⊆ \ileadstogo[j]}} ≤ \card{f_0^{-1}(\anobs')} = G(\anobs') ∈ ℕ$.\commentClaude{This inequality goes the wrong way: $f_0^{-1}(\anobs')$ counts only the finitely many $j \in J_0$ assigned observation $\anobs'$, but there may be many more $j \notin J_0$ also satisfying $\anobs' \subseteq \ileadstogo[j]$. So the bound $\leq G(\anobs')$ does not hold in general.}
+
+  \emph{$i_0$ is distinguishable from $B^{(2)}$.}
+  Let $H = \anobs^{-1}(P) ∈ \fincrhists$, so $\restr{\ileadstogo[i_0]}{H} = \anobs$.
+  Suppose for contradiction some $b ∈ B^{(2)}$ satisfies $\restr{b}{H} = \anobs$, i.e.\ $\anobs ⊆ b$; pick $k ∈ I$ with $\ileadstogo[k] = b$.
+  Since $b ∉ B^{(1)}$, no $\anobs' ∈ K$ satisfies $\anobs' ⊆ b$, so $∀j ∈ J_0 ∖ \set{i_0}: f_0(j) \not⊆ b = \ileadstogo[k]$.
+  We construct witnesses for $\anobs, G-\anobs, k$-regularity.
+  \emph{Case $k ∉ J_0$}: take $J = J_0 ∖ \set{i_0}$, $f = \restr{f_0}{J}$; then $J ⊆ I ∖ \set{k}$ and $\card{f^{-1}(\anobs')} = (G-\anobs)(\anobs')$ for all $\anobs'$.
+  \emph{Case $k ∈ J_0$}: let $\anobs'' = f_0(k) ∈ K$; but $\anobs'' ⊆ \ileadstogo[k] = b$ contradicts $b ∉ B^{(1)}$.
+  So only the first case applies, giving witnesses; by regularity $p ∈ π(b)$, so $π(b) = \set{p}$, contradicting $b ∈ B^{(2)} ⊆ \set{b' \suchthat π(b') ≠ \set{p}}$.
+\end{proof}
+
+\begin{conjecture}
+  A world $\allleadstog$ is regular if $∃i ∈ I \suchthat π(\ileadstogo) ≠ ∅ ∧ \ileadstogo \text{ is distinguishable from } B = \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b) ∧ ∀H ∈ \fincrhists: \card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H} = \restr{b}{H}} ∉ ℕ}$.
+\end{conjecture}
+\begin{proof}[Partial]
   Pick $H ∈ \fincrhists \suchthat \restr{\ileadstogo}{H} ∉ \restr{B}{H}$.
   Define $B^{(1)} = \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b) ∧ ∃H' \suchthat \card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H'} = \restr{b}{H'}} ∈ ℕ}$.
-  Pick $b ∈ B^{(1)}$.
-  Set $G = \restr{\ileadstogo}{H} ∪ \restr{b}{H'}$ with cardinality $\card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H'} = \restr{b}{H'}}$,
+  For each $b ∈ B^{(1)}$, associate some $H'_b$ such that $\card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H'_b} = \restr{b}{H'_b}} ∈ ℕ$.
+  Set $G = (\restr{\ileadstogo}{H}, 1) ∪_{b ∈ B^{(1)}} (\restr{b}{H'_b}, \card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H'_b} = \restr{b}{H'_b}})$,
   $p = π(\ileadstogo)$,
   $\anobs = \restr{\ileadstogo}{H}$.
   
+  % b1 {(a), (a, b)} : j1, j2
+  % b2 {(a), (a, a)} : j2, j3
   Let us show that $\allleadstog$ is $G$-regular.
-  Define $J = i, j…$,
+  Define $J = \set{i} ∪_{b ∈ B^{(1)}} \set{j ∈ I \suchthat \restr{\ileadstog[j]}{H'_b} = \restr{b}{H'_b}}$.
+
   $f(i) = \restr{\ileadstogo}{H}$ and
   $f(j) = \restr{\ileadstog[j]}{H'}$.
 
@@ -656,7 +693,7 @@ $∀H ∈ \fincrhists: \restr{g}{H} ∈ \restr{B}{H}$.
 
   Pick any $b ∈ B^{(1)}$,
   we show that $b ≠ \ileadstogo[i']$.
-  Indeed, as $b ∈ B^{(1)}$, there is some $H', \anobs' = \restr{b}{H'} ∈ G$ with card $\card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H'} = \anobs'}$.
+  Indeed, as $b ∈ B^{(1)}$, there is some $H', \anobs' = \restr{b}{H'} ∈ G$ with card $\card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H'} = \anobs'}$.\commentClaude{The claim "pick any $b \in B^{(1)}$" is unjustified: $G$ was built using a single chosen $b_0 \in B^{(1)}$, so $\restr{b}{H'} \in G$ (required two lines below) only holds for $b = b_0$. For any other $b' \in B^{(1)} \setminus \set{b_0}$, $\restr{b'}{H''} \notin G$ and the count argument breaks down: the witnesses for $G - \anobs$ carry no information about $b'$, so $\ileadstogo[i'] = b'$ is not excluded. To fix this, $G$ would need to include one copy of $\restr{b'}{H'_{b'}}$ for every $b' \in B^{(1)}$; but $B^{(1)}$ may be infinite, making $G$ need infinite support (forbidden by the definition of regularity). The proof only establishes $\ileadstogo[i'] \neq b_0$ (one element of $B^{(1)}$) and $\ileadstogo[i'] \notin B$ (infinite-sharing behaviors); it never concludes $π(\ileadstogo[i']) = p$.}
   Thus, equally many $j ∈ I ∖ \set{i'}$ such that $f(j) = \anobs'$.
   If $b = \ileadstogo[i']$, also $\restr{\ileadstogo[i']}{H'} = \anobs'$, and the cardinality is not satisfied.
 
@@ -668,15 +705,32 @@ $∀H ∈ \fincrhists: \restr{g}{H} ∈ \restr{B}{H}$.
   If the world $\allleadstog$ is regular, then $∃i ∈ I \suchthat π(\ileadstogo) ≠ ∅ ∧ \ileadstogo \text{ is distinguishable from } B = \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b) ∧ ∀H ∈ \fincrhists: \card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H} = \restr{b}{H}} ∉ ℕ}$.
 \end{conjecture}
 \begin{proof}
-  We know this.
+  From regularity, pick $G ∈ ℕ^{\anobses}$ with finite support, $p ∈ P$, $\anobs ∈ \anobses$ such that $\allleadstog$ is $G$-regular, $1 ≤ G(\anobs)$, and $∀i ∈ I: \allleadstog \text{ is } \anobs, G - \anobs, i\text{-regular} ⇒ p ∈ π(\ileadstogo)$.
+  From $G$-regularity (second characterization), pick a finite $∅ ≠ J_0 ⊆ I$ and $f_0 ∈ {(\anobses)}^{J_0}$ with $\card{f_0^{-1}(\anobs')} = G(\anobs')$ for all $\anobs'$ and $f_0(j) ⊆ \ileadstogo[j]$ for all $j ∈ J_0$.
+  Since $G(\anobs) ≥ 1$, pick $i_0 ∈ J_0$ with $f_0(i_0) = \anobs$; then $\anobs ⊆ \ileadstogo[i_0]$ and $J_0 ∖ \set{i_0}$, $f_0|_{J_0 ∖ \set{i_0}}$ witnesses $i_0$ is $\anobs, G - \anobs, i_0$-regular, so $p ∈ π(\ileadstogo[i_0])$; by \cref{th:sing}, $π(\ileadstogo[i_0]) = \set{p}$.
 
-  For some $G ∈ ℕ^{\anobses} \text{ with finite support}, p ∈ P, \anobs ∈ \anobses: (\allleadstog \text{ is } G\text{-regular}) ∧ 1 ≤ G(\anobs) ∧ (∀i ∈ I:
-  \allleadstog \text{ is } \anobs, G - \anobs, i\text{-regular}
-  ⇒
-  p ∈ π(\ileadstogo))$.
+  Set $H := \anobs^{-1}(P) ∈ \fincrhists$, so $\restr{\ileadstogo[i_0]}{H} = \anobs$.
+  We show $\restr{\ileadstogo[i_0]}{H} ∉ \restr{B}{H}$ (with $B = B_{i_0}$), establishing that $i_0$ is distinguishable from $B$.
+  Suppose for contradiction $b ∈ B$ with $\restr{b}{H} = \anobs$.
+  Then $\anobs ⊆ b$; since $b ∈ \allleadstog(I)$, pick $k ∈ I$ with $\ileadstogo[k] = b$, so $\anobs ⊆ \ileadstogo[k]$.
+  We construct witnesses for $\anobs, G - \anobs, k$-regularity.
 
-  Also: $∃ \anobs ∈ \anobses, i ∈ I \suchthat 1 ≤ G(\anobs) ∧ \allleadstog \text{ is } \anobs, G - \anobs, i\text{-regular}$.
+  \emph{Case $k ∉ J_0$.}
+  Take $J = J_0 ∖ \set{i_0}$ and $f = f_0|_J$.
+  Since $k ∉ J_0$, $J ⊆ I ∖ \set{k}$.
+  For all $\anobs'$, $\card{f^{-1}(\anobs')} = G(\anobs') - [\anobs' = \anobs] = (G - \anobs)(\anobs')$.
 
+  \emph{Case $k ∈ J_0$.}
+  Let $\anobs'' = f_0(k) ∈ \anobses$; then $\anobs'' ⊆ \ileadstogo[k] = b$.
+  Since $b ∈ B$, for $H'' := (\anobs'')^{-1}(P) ∈ \fincrhists$: $\card{\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H''} = \restr{b}{H''}}} ∉ ℕ$,
+  so infinitely many $j ∈ I$ satisfy $\anobs'' ⊆ \ileadstogo[j]$.
+  Pick $j^* ∈ I ∖ (J_0 ∪ \set{k})$ with $\anobs'' ⊆ \ileadstogo[j^*]$ (possible since $J_0 ∪ \set{k}$ is finite).
+  Take $J = (J_0 ∖ \set{i_0, k}) ∪ \set{j^*}$ and $f = f_0|_{J_0 ∖ \set{i_0, k}} ∪ \set{(j^*, \anobs'')}$.
+  Then $J ⊆ I ∖ \set{k}$ and
+  $\card{f^{-1}(\anobs')} = G(\anobs') - [\anobs' = \anobs] - [\anobs' = \anobs''] + [\anobs' = \anobs''] = (G - \anobs)(\anobs')$ for all $\anobs'$.
+
+  In both cases $J$, $f$ witness $k$ is $\anobs, G - \anobs, k$-regular.
+  By regularity, $p ∈ π(\ileadstogo[k]) = π(b)$, so $π(b) = \set{p} = π(\ileadstogo[i_0])$, contradicting $b ∈ B$ (which requires $π(\ileadstogo[i_0]) ≠ π(b)$).
 \end{proof}
 
 \begin{conjecture}
@@ -800,9 +854,9 @@ If there’s infinitely many individuals with behavior $b$, $θ$ spares some, an
 \begin{proof}
   \emph{Anonymity.} For $σ$ a permutation of $I$, $\restr{(\allleadstog ∘ σ)(i)}{A} = \restr{\allleadstog(σ(i))}{A}$, so $i ∈ M(\allleadstog ∘ σ) ⇔ σ(i) ∈ M(\allleadstog)$, i.e.\ $M(\allleadstog ∘ σ) = σ^{-1}(M(\allleadstog))$; in particular $M(\allleadstog ∘ σ) ≠ ∅ ⇔ M(\allleadstog) ≠ ∅$. Writing $Q(i,\allleadstog) :⇔ \bigl(∃j ≠ i \suchthat j ∈ M(\allleadstog)\bigr) ⇒ p ∈ P_i^{\allleadstog}$, the substitution $j = σ(j')$ likewise gives $Q(i, \allleadstog ∘ σ) ⇔ Q(σ(i), \allleadstog)$, so $∀i: Q(i, \allleadstog ∘ σ) ⇔ ∀i: Q(i,\allleadstog)$ by reindexing. Hence $\allleadstog ∘ σ ∈ C ⇔ \allleadstog ∈ C$, i.e.\ $C ∘ σ = C$.
 
-  \emph{$I$ finite $⇒$ $C$ not conclusive.} Fix $\allleadstog' ∈ C$. If $|I| = 1$, $C$ is vacuous (the antecedent $∃j ≠ i$ is never satisfiable) and trivially non-conclusive, so assume $|I| ≥ 2$. Let $θ ∈ Θ ∩ \powerset{\allleadstog'}$ reveal $\restr{\allleadstog'(j)}{A}$ for every $j ∈ I$ — finite, since $I$ and $A$ are, and each individual's revealed domain is exactly $A$, a chain. Let $θ'' ∈ Θ ∩ \powerset{\allleadstog'}$ be any extension with $θ ⊑ θ''$. As $θ$ already fixes $\restr{\allleadstog'(j)}{A}$ for every $j$, hence fixes $M(\allleadstog'')$ for every $\allleadstog'' ∈ ↑θ$, the fresh increment $δ := θ'' ∖ θ$ is irrelevant to membership in $C$. As $X$ is non-constant, fix $q,q' ∈ P^A$ with $X(q)=1$, $X(q')=0$. So, for any $i ∈ I$, $↑δ ∩ C$ contains both a world with $\restr{\allleadstog(i)}{A} = q$ and $\restr{\allleadstog(j)}{A} = q'$ for every $j ≠ i$ (so $M(\allleadstog) = \set{i}$) and $p ∉ P_i$ (antecedent of $Q(i,\allleadstog)$ false, $M(\allleadstog) ≠ ∅$ holds) and a world with $\restr{\allleadstog(j)}{A} = q$ for every $j$ (so $M(\allleadstog) = I$) and $p ∈ P_i$ (antecedent true, forcing it) — these disagree on $π_i$, so $π_i(↑δ ∩ C)$ is never a singleton. As $θ''$ was an arbitrary extension of $θ$, no extension witnesses conclusiveness at $\allleadstog'$.
+  \emph{$I$ finite $⇒$ $C$ not conclusive.} Fix $\allleadstog' ∈ C$. If $|I| = 1$, $C$ is vacuous (the antecedent $∃j ≠ i$ is never satisfiable) and trivially non-conclusive, so assume $|I| ≥ 2$. Let $θ ∈ Θ ∩ \powerset{\allleadstog'}$ reveal $\restr{\allleadstog'(j)}{A}$ for every $j ∈ I$ — finite, since $I$ and $A$ are, and each individual's revealed domain is exactly $A$, a chain. Let $θ'' ∈ Θ ∩ \powerset{\allleadstog'}$ be any extension with $θ ⊑ θ''$. As $θ$ already fixes $\restr{\allleadstog'(j)}{A}$ for every $j$, hence fixes $M(\allleadstog'')$ for every $\allleadstog'' ∈ ↑θ$, the fresh increment $δ := θ'' ∖ θ$ is irrelevant to membership in $C$. As $X$ is non-constant, fix $q,q' ∈ P^A$ with $X(q)=1$, $X(q')=0$. So, for any $i ∈ I$, $↑δ ∩ C$ contains both a world with $\restr{\allleadstog(i)}{A} = q$ and $\restr{\allleadstog(j)}{A} = q'$ for every $j ≠ i$ (so $M(\allleadstog) = \set{i}$) and $p ∉ P_i$ (antecedent of $Q(i,\allleadstog)$ false, $M(\allleadstog) ≠ ∅$ holds)\commentClaude{The world with $M(\allleadstog) = \set{i}$ must also satisfy $Q(j,\allleadstog)$ for $j ≠ i$: the antecedent $∃j' ≠ j: j' ∈ M(\allleadstog) = \set{i}$ holds (witness $j'=i$), so $C$ forces $p ∈ P_j$ for all $j ≠ i$. The existence of a world in $↑δ ∩ C$ with $M = \set{i}$, $p ∉ P_i$, and $p ∈ P_j$ for all $j ≠ i$ is constructible (rows are free outside $δ$'s constrained paths), but left unjustified here.} and a world with $\restr{\allleadstog(j)}{A} = q$ for every $j$ (so $M(\allleadstog) = I$) and $p ∈ P_i$ (antecedent true, forcing it) — these disagree on $π_i$, so $π_i(↑δ ∩ C)$ is never a singleton. As $θ''$ was an arbitrary extension of $θ$, no extension witnesses conclusiveness at $\allleadstog'$.
 
-  \emph{$I$ infinite $⇒$ $C$ conclusive.} Fix $\allleadstog' ∈ C$ and $θ ∈ Θ ∩ \powerset{\allleadstog'}$. As $θ$ is finite and $I$ infinite, choose $k ∈ I$ with $\set{k} × A$ disjoint from $θ$'s domain, and let $δ := \set{k} × \restr{\allleadstog'(k)}{A}$, $θ' := θ ∪ δ$, so $θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog'}$ ($δ$'s domain is $A$, a chain, so this is a legitimate observation increment).
+  \emph{$I$ infinite $⇒$ $C$ conclusive.} Fix $\allleadstog' ∈ C$ and $θ ∈ Θ ∩ \powerset{\allleadstog'}$. As $θ$ is finite and $I$ infinite, choose $k ∈ I$ with $\set{k} × A$ disjoint from $θ$'s domain\commentClaude{This condition is too weak: if $θ$ already observes $k$ on some path $β \succ \max A$, then adding $A$ for $k$ gives $δ$'s paths $\prec β$, so the old path $β$ is not a prefix of the new paths, violating $θ ⊑ θ'$. Also $θ' = θ ∪ δ$ may fail to be in $Θ$ (path $β$ and paths in $A$ might not form a chain). The correct condition is $k ∈ I ∖ θ(\allhists,P)$ — $k$ entirely untouched by $θ$ — which is achievable since $θ$ is finite and $I$ infinite. Compare the correct reasoning in the example immediately following this lemma: "as $j$ is untouched by $θ$, $θ ⊑ θ'$".}, and let $δ := \set{k} × \restr{\allleadstog'(k)}{A}$, $θ' := θ ∪ δ$, so $θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog'}$ ($δ$'s domain is $A$, a chain, so this is a legitimate observation increment).
   \begin{itemize}
     \item If $X(\restr{\allleadstog'(k)}{A}) = 1$ (i.e.\ $k ∈ M(\allleadstog')$): every $\allleadstog'' ∈ ↑δ ∩ C$ has $k ∈ M(\allleadstog'')$, so for any $i ≠ k$ (one exists, $I$ infinite) the antecedent of $Q(i,\allleadstog'')$ holds (witness $j=k$), forcing $p ∈ P_i^{\allleadstog''}$: $π_i(↑δ ∩ C) = \set{p}$.
     \item Otherwise $X(\restr{\allleadstog'(k)}{A}) = 0$ (i.e.\ $k ∉ M(\allleadstog')$): every $\allleadstog'' ∈ ↑δ ∩ C$ has $k ∉ M(\allleadstog'')$, and since $M(\allleadstog'') ≠ ∅$, this nonempty set equals $M(\allleadstog'') ∖ \set k$, so the antecedent of $Q(k,\allleadstog'')$ holds, forcing $p ∈ P_k^{\allleadstog''}$: $π_k(↑δ ∩ C) = \set{p}$.
