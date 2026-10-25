@@ -661,18 +661,17 @@ Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely cove
 
   \emph{(3) $⇒$ (1).}
   Assume (3): pick $b ∈ \allleadstog(I)$, $B^{(1)}$, $B^{(2)}$; by \cref{th:sing}, $π(b) = \set{p}$ for some $p$.
-  Let $F = \allleadstoginv(B^{(1)})$, finite by assumption; pick $H_0 ∈ \fincrhists$ witnessing $b$ is distinguishable from $B^{(2)}$, and set $\anobs_0 = \restr{b}{H_0}$.
+  Let $F = \allleadstoginv(B^{(1)})$, finite by assumption; pick $H ∈ \fincrhists$ witnessing $b$ is distinguishable from $B^{(2)}$, and set $\anobs = \restr{b}{H}$.
+  Define $f$ by picking, for each $j ∈ F$, some $f(j) ∈ K \suchthat f(j) ⊆ \ileadstogo[j]$.
+  Define $G = ∪_{\anobs' ∈ K} \set{(\anobs', f^{-1}(\anobs'))}$.
 
-  For each $i ∈ F$ with $\anobs_0 ⊆ \ileadstogo[i]$: $π(\ileadstogo[i]) ≠ \set{p}$ gives $\ileadstogo[i] ≠ b$; pick $α_i ∈ \allhists$ with $b(α_i) ≠ \ileadstogo[i](α_i)$.
-  Set $H^* = H_0 ∪ \bigcup_{i ∈ F,\, \anobs_0 ⊆ \ileadstogo[i]} [α_i] ∈ \fincrhists$ (finite since $F$ is finite) and $\anobs^* = \restr{b}{H^*}$.\commentClaude{Same issue as the previous proof attempt for $(1) ⇒ (2)$: $H^*$ need not be a fincrhist (chain). Each $α_i$ is any path where $b$ and $\ileadstogo[i]$ disagree, and such paths may lie on branches incomparable to $H_0$ or to each other. A fix would require all $α_i$ to be chosen as extensions of $\max(H_0)$, which in turn requires $b$ and $\ileadstogo[i]$ to disagree somewhere on the branch already containing $H_0$; condition~(3) does not guarantee this.}
+  It follows that $\allleadstog$ is $G$-regular.
 
-  We claim $∀i ∈ I$: $\anobs^* ⊆ \ileadstogo[i] ⇒ π(\ileadstogo[i]) = \set{p}$.
-  Assume $\anobs^* ⊆ \ileadstogo[i]$; since $H_0 ⊆ H^*$, also $\anobs_0 ⊆ \ileadstogo[i]$.
-  If $i ∈ F$: $α_i ∈ H^*$ was defined with $b(α_i) ≠ \ileadstogo[i](α_i)$, yet $\anobs^* ⊆ \ileadstogo[i]$ gives $\ileadstogo[i](α_i) = b(α_i)$, a contradiction.
-  So $i ∉ F$: if $\ileadstogo[i] ∈ B^{(2)}$ then $\anobs_0 = \restr{\ileadstogo[i]}{H_0} ∈ \restr{B^{(2)}}{H_0}$, contradicting $\anobs_0 ∉ \restr{B^{(2)}}{H_0}$; hence $\ileadstogo[i] ∉ B^{(1)} ∪ B^{(2)}$ and $π(\ileadstogo[i]) = \set{p}$. ✓
-
-  Since $\anobs^* ⊆ b$, the claim gives simple regularity (pick $i^*$ with $\ileadstogo[i^*] = b$), hence regularity: take $G(\anobs^*) = 1$ and $G = 0$ elsewhere; $J_0 = \set{i^*}$, $f_0(i^*) = \anobs^*$ witness $G$-regularity; and $\anobs^*, G-\anobs^*, i$-regular reduces to $\anobs^* ⊆ \ileadstogo[i]$ (as $G-\anobs^* = 0$), whence $p ∈ π(\ileadstogo[i])$ by the claim.\commentClaude{Wrong direction: using $G = δ_{\anobs^*}$ reduces the regularity implication $∀i: \anobs^*, G-\anobs^*, i\text{-regular} ⇒ p ∈ π(\ileadstogo[i])$ to $∀i: \anobs^* ⊆ \ileadstogo[i] ⇒ p ∈ π(\ileadstogo[i])$, which is exactly simple regularity. But simple regularity does not follow from~(3): by \cref{ex:klBranches} there are regular worlds where simple regularity fails; assuming the conjecture, such worlds satisfy~(3), so~(3) cannot imply simple regularity. A correct proof of~(3)$⇒$(1) must construct $G$ supported on multiple anonymous observations, not reduce to the single-$\anobs^*$ case.}
-
+  Let us now suppose that for some $i$, $\allleadstog$ is $\anobs, G - \anobs, i$-regular, and let us show that $p ∈ π(\ileadstogo)$.
+  Indeed, by our choice of $\anobs$, $i ∉ B^{(2)}$.
+  Remains to show that $i ∉ B^{(1)}$.
+  That’s because all elements of $B^{(1)}$ are in $I ∖ \set{i}$.
+  To be finished.
 \end{proof}
 
 \begin{conjecture}
