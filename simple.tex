@@ -627,19 +627,19 @@ $∀H ∈ \fincrhists: \restr{g}{H} ∈ \restr{B}{H}$.
 
 Given a world $\allleadstog$ and $\anobs ∈ \anobses$, the individuals that $\anobs$ cover are $i ∈ I \suchthat \anobs ⊆ \ileadstogo$.
 Given $\anobs ∈ \anobses$, let $↑\anobs$ represent all behaviors compatible with $\anobs$ (thus $b ∈ \allbs \suchthat \anobs ⊆ b$), and given $K ⊆ \anobses$, let $↑K = ∪_{\anobs ∈ K} ↑\anobs$ represent all behaviors compatible with some $\anobs ∈ K$.
-Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely coverable by anonymous observations iff $∃K ⊆ \anobses \suchthat \card{K} ∈ ℕ ∧ B ⊆ ↑K ∧ \card{\allleadstoginv(B)} ∈ ℕ$.
+Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely representable by anonymous observations out of $p$ iff $∃K ⊆ \anobses \suchthat \card{K} ∈ ℕ ∧ B = ↑K ∩ \set{c ∈ \allleadstog(I) \suchthat p ≠ π(c)} ∧ \card{\allleadstoginv(B)} ∈ ℕ$.
 
 \begin{conjecture}
   \label{th:conj1}
   Given a world $\allleadstog$, these three statements are equivalent.
-  \begin{itemize}
+  \begin{enumerate}
     \item $\allleadstog$ is regular
     \item $∃K ⊆ \anobses, \anobs ∈ \anobses \suchthat \card{K} ∈ ℕ ∧ 
     ∃b ∈ \allleadstog(I) \suchthat (\anobs ⊆ b ∧_{\anobs' ∈ K} ¬(\anobs' ⊆ b)) ∧ 
     ∃p \suchthat ∀b ∈ \allleadstog(I): (\anobs ⊆ b ∧_{\anobs' ∈ K} ¬(\anobs' ⊆ b)) ⇒ p ∈ π(b) ∧ 
     ∀\anobs' ∈ K: \card\set{i ∈ I \suchthat \anobs' ⊆ \ileadstogo ∧ \anobs ⊆ \ileadstogo ∧ p ∉ π(\ileadstogo)} ∈ ℕ$
-    \item $∃b ∈ \allleadstog(I), B^{(1)}, B^{(2)} \suchthat π(b) ≠ ∅ ∧ B^{(1)} ∪ B^{(2)} = \set{c ∈ \allleadstog(I) \suchthat π(b) ≠ π(c)} ∧ B^{(1)} \text{ is finitely coverable by anonymous observations } ∧ b \text{ is distinguishable from } B^{(2)}$.
-  \end{itemize}
+    \item $∃b ∈ \allleadstog(I), B^{(1)}, B^{(2)} \suchthat π(b) ≠ ∅ ∧ B^{(1)} ∪ B^{(2)} = \set{c ∈ \allleadstog(I) \suchthat π(b) ≠ π(c)} ∧ B^{(1)} \text{ is finitely representable by anonymous observations out of } π(b) ∧ b$ is distinguishable from $B^{(2)}$.
+  \end{enumerate}
 \end{conjecture}
 \begin{proof}[Partial]
   \emph{(1) $⇒$ (2).}
@@ -660,18 +660,23 @@ Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely cove
   $b$ is distinguishable from $B^{(2)}$: let $H ∈ \fincrhists$ be the domain of $\anobs$; for any $c ∈ B^{(2)}$, $\anobs \not⊆ c$ gives $\restr{c}{H} ≠ \anobs = \restr{b}{H}$, so $\restr{b}{H} ∉ \restr{B^{(2)}}{H}$. ✓
 
   \emph{(3) $⇒$ (1).}
-  Assume (3): pick $b ∈ \allleadstog(I)$, $B^{(1)}$, $B^{(2)}$; by \cref{th:sing}, $π(b) = \set{p}$ for some $p$.
+  Assume (3): let $b ∈ \allleadstog(I)$, $B^{(1)}$, $B^{(2)}$ as in (3); by \cref{th:sing}, $π(b) = \set{p}$ for some $p$.
   Let $F = \allleadstoginv(B^{(1)})$, finite by assumption; pick $H ∈ \fincrhists$ witnessing $b$ is distinguishable from $B^{(2)}$, and set $\anobs = \restr{b}{H}$.
   Define $f$ by picking, for each $j ∈ F$, some $f(j) ∈ K \suchthat f(j) ⊆ \ileadstogo[j]$.
-  Define $G = ∪_{\anobs' ∈ K} \set{(\anobs', f^{-1}(\anobs'))}$.
+  Pick any element $e ∈ \allleadstoginv(b)$.
+  Define $f_0 = f ∪ \set{(e, \anobs)}$.
+  Define $G = ∪_{\anobs' ∈ K ∪ \set{\anobs}} \set{(\anobs', f_0^{-1}(\anobs'))}$.
 
   It follows that $\allleadstog$ is $G$-regular.
 
   Let us now suppose that for some $i$, $\allleadstog$ is $\anobs, G - \anobs, i$-regular, and let us show that $p ∈ π(\ileadstogo)$.
   Indeed, by our choice of $\anobs$, $i ∉ B^{(2)}$.
   Remains to show that $i ∉ B^{(1)}$.
-  That’s because all elements of $B^{(1)}$ are in $I ∖ \set{i}$.
+  By …-regularity, elements covered by $K$ are in $J ⊆ I ∖ \set{i}$ in the domain of the corresponding $f'$ function.
+  Also, $\card{J} = \card{B^{(1)}}$ by construction of $f$.
+  Thus, all elements of $B^{(1)}$ are in $I ∖ \set{i}$.
   To be finished.
+  \commentClaude{The claim ``all elements of $B^{(1)}$ are in $I \setminus \{i\}$’’ means $i \notin F$. The $\anobs, G-\anobs, i$-regularity witness $J \subseteq I \setminus \{i\}$ matches $G - \anobs$ (= multiset of $f|_F$), and each $j \in J$ satisfies $g(j) \in K \cup \{\anobs\}$ and $g(j) \subseteq \ileadstogo[j]$, placing $j$ in $\allleadstoginv(\mathord\uparrow(K \cup \{\anobs\}))$, not necessarily in $F = \allleadstoginv(B^{(1)})$. The argument closes only if $\mathord\uparrow K \cap \allleadstog(I) \subseteq B^{(1)}$; but finite coverability only gives $B^{(1)} \subseteq \mathord\uparrow K$. It is unclear whether $K$ can always be refined to achieve the reverse inclusion, or whether (3)$\Rightarrow$(1) fails as stated.}
 \end{proof}
 
 \begin{conjecture}
