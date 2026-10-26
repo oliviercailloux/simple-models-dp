@@ -627,7 +627,30 @@ $∀H ∈ \fincrhists: \restr{g}{H} ∈ \restr{B}{H}$.
 
 Given a world $\allleadstog$ and $\anobs ∈ \anobses$, the individuals that $\anobs$ cover are $i ∈ I \suchthat \anobs ⊆ \ileadstogo$.
 Given $\anobs ∈ \anobses$, let $↑\anobs$ represent all behaviors compatible with $\anobs$ (thus $b ∈ \allbs \suchthat \anobs ⊆ b$), and given $K ⊆ \anobses$, let $↑K = ∪_{\anobs ∈ K} ↑\anobs$ represent all behaviors compatible with some $\anobs ∈ K$.
-Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely representable by anonymous observations out of $p$ iff $∃K ⊆ \anobses \suchthat \card{K} ∈ ℕ ∧ B = ↑K ∩ \set{c ∈ \allleadstog(I) \suchthat p ≠ π(c)} ∧ \card{\allleadstoginv(B)} ∈ ℕ$.
+Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely representable by anonymous observations iff $∃K ⊆ \anobses \suchthat \card{K} ∈ ℕ ∧ B = ↑K ∩ \allleadstog(I) ∧ \card{\allleadstoginv(B)} ∈ ℕ$.
+
+A world is $G, p, \anobs$-regular iff it is regular with $G, p, \anobs$ as in the definition of regularity.
+A world is $\anobs$-regular iff $∃G, p$ that makes it $G, p, \anobs$-regular.
+A world is $\anobs, G, i, J$-regular iff it is $\anobs, G, i$-regular with $J$ as in the definition of $\anobs, G, i$-regularity.
+A $\anobs$-regular world $\allleadstog$ has exceptionality level $k = \min_{G, i, J \suchthat \allleadstog \text{ is } \anobs, G, i, J\text{-regular}} \card{J}$.
+\begin{conjecture}
+  A $\anobs$-regular world $\allleadstog$ has exceptionality level $k = \card\set{j ∈ I \suchthat \anobs ⊆ \ileadstogo[j] ∧ π(\ileadstogo[j]) ≠ p}$.
+\end{conjecture}
+\begin{proof}
+  Consider a world $\anobs$-regular.
+  Consider any $G, p$ that makes it $G, p, \anobs$-regular.
+  Thus, for some $i ∈ I$, it is $\anobs, G - \anobs, i$-regular.
+  
+  Observe that it being $\anobs, G, i, J$-regular requires that $\set{\anobs ⊆ \ileadstogo[j] ∧ π(\ileadstogo[j]) ≠ p} ⊆ J$.
+  Indeed, consider any $J$ such that it is $\anobs, G, i, J$-regular with some $j ∉ J \suchthat \anobs ⊆ \ileadstogo[j]$.
+  Then, it is $\anobs, G - \anobs, j$-regular.
+  Then, by definition of $G, p, \anobs$-regularity, $p ∈ π(\ileadstogo[j])$.
+  
+  To conclude the proof, let us show that
+  being $\anobs, G, i, J$-regular implies
+  being $\anobs, G, i, J'$-regular with $J' = J ∖ \set{j ∈ I \suchthat \anobs ⊈ \ileadstogo[j]} ∖ \set{j ∈ I \suchthat π(\ileadstogo[j]) = p}$.
+  
+\end{proof}
 
 \begin{conjecture}
   \label{th:conj1}
@@ -637,10 +660,29 @@ Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely repr
     \item $∃K ⊆ \anobses, \anobs ∈ \anobses \suchthat \card{K} ∈ ℕ ∧ 
     ∃b ∈ \allleadstog(I) \suchthat (\anobs ⊆ b ∧_{\anobs' ∈ K} ¬(\anobs' ⊆ b)) ∧ 
     ∃p \suchthat ∀b ∈ \allleadstog(I): (\anobs ⊆ b ∧_{\anobs' ∈ K} ¬(\anobs' ⊆ b)) ⇒ p ∈ π(b) ∧ 
-    ∀\anobs' ∈ K: \card\set{i ∈ I \suchthat \anobs' ⊆ \ileadstogo ∧ \anobs ⊆ \ileadstogo ∧ p ∉ π(\ileadstogo)} ∈ ℕ$
-    \item $∃b ∈ \allleadstog(I), B^{(1)}, B^{(2)} \suchthat π(b) ≠ ∅ ∧ B^{(1)} ∪ B^{(2)} = \set{c ∈ \allleadstog(I) \suchthat π(b) ≠ π(c)} ∧ B^{(1)} \text{ is finitely representable by anonymous observations out of } π(b) ∧ b$ is distinguishable from $B^{(2)}$.
+    ∀\anobs' ∈ K: \card\set{i ∈ I \suchthat \anobs' ⊆ \ileadstogo} ∈ ℕ$
+    \item $∃b ∈ \allleadstog(I), B^{(1)}, B^{(2)} \suchthat π(b) ≠ ∅ ∧ B^{(1)} ∪ B^{(2)} = \set{c ∈ \allleadstog(I) \suchthat π(b) ≠ π(c)} ∧ B^{(1)} \text{ is finitely representable by anonymous observations } ∧ b \text{ is distinguishable from } B^{(2)}$.
   \end{enumerate}
 \end{conjecture}
+\begin{proof}[New attempt, only 1 $⇔$ 2]
+  Assume $G$ contains $\anobs = (a), φ$ and $(b), φ$ with $i$ satisfying $\anobs$ and a unique $j$ satisfying $(b), φ$.
+
+  Assume $g, G-g, i$ satisfies $p$-minimal regularity, meaning that $∀j ∈ J: π(\ileadstogo[j]) ≠ p$.
+  Let’s show that, with $b = \ileadstogo$, $g ⊆ b ∧ ¬(g' ⊆ b)$.
+  Equivalently, if anything fails the latter, then it fails the former.
+  If it fails $g ⊆ b$, it’s clear, so assume it passes $g ⊆ b$ but satisfies some $g' ⊆ b$.
+  Thus, it’s the unique $j$ satisfying it.
+  Let’s show that it fails regularity for any $i = j$ with $b = \ileadstogo[j]$.
+
+  Take $f(j) = \anobs'$.
+  We have $\anobs' ⊆ \ileadstogo[j]$.
+  Can we have $g' ⊆ \ileadstogo$?
+
+  We could have $i$ satisfies $(b), φ$ as well! Suffices that $π(j) = p$.
+
+  We know that $i$ fails $(b), φ$ because otherwise the implication of regularity would fail.
+
+\end{proof}
 \begin{proof}[Partial]
   \emph{(1) $⇒$ (2).}
   Assume $\allleadstog$ is regular: pick $G ∈ ℕ^{\anobses}$ with finite support, $p ∈ P$, $\anobs ∈ \anobses$ with $G(\anobs) ≥ 1$, $\allleadstog$ $G$-regular, and the regularity implication $\allleadstog$ is $\anobs, G-\anobs, i$-regular $⇒ p ∈ π(\ileadstogo)$.
@@ -656,7 +698,8 @@ Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely repr
   \emph{(2) $⇒$ (3).}
   Assume (2): pick finite $K ⊆ \anobses$, $\anobs ∈ \anobses$, $b ∈ \allleadstog(I)$ with $\anobs ⊆ b$ and $∀\anobs' ∈ K: \anobs' \not⊆ b$, and $p$ such that the implication and count conditions hold; the implication applied to $b$ gives $p ∈ π(b)$; by \cref{th:sing}, $π(b) = \set{p}$.
   Set $B^{(1)} = \set{c ∈ \allleadstog(I) \suchthat π(c) ≠ \set{p} ∧ \anobs ⊆ c}$ and $B^{(2)} = \set{c ∈ \allleadstog(I) \suchthat π(c) ≠ \set{p} ∧ \anobs \not⊆ c}$; then $π(b) ≠ ∅$ and $B^{(1)} ∪ B^{(2)} = \set{c ∈ \allleadstog(I) \suchthat π(c) ≠ π(b)}$.
-  $B^{(1)}$ is finitely coverable: the contrapositive of the implication gives $\allleadstoginv(B^{(1)}) ⊆ \bigcup_{\anobs' ∈ K} \set{i ∈ I \suchthat \anobs' ⊆ \ileadstogo ∧ \anobs ⊆ \ileadstogo ∧ p ∉ π(\ileadstogo)}$, a finite union of finite sets. ✓
+  Set $K' = \set{\anobs ∪ \anobs' \suchthat \anobs' ∈ K}$, finite since $\card{K} ∈ ℕ$; $c ∈ ↑K'$ iff $\anobs ⊆ c$ and $c ∈ ↑K$.
+  $B^{(1)}$ is finitely representable out of $p$: the contrapositive of the implication gives $B^{(1)} ⊆ ↑K$, so $B^{(1)} = \set{c ∈ \allleadstog(I) \suchthat \anobs ⊆ c ∧ c ∈ ↑K ∧ π(c) ≠ \set{p}} = ↑K' ∩ \set{c ∈ \allleadstog(I) \suchthat π(c) ≠ \set{p}}$; and $\allleadstoginv(B^{(1)}) ⊆ \bigcup_{\anobs' ∈ K} \set{i ∈ I \suchthat \anobs' ⊆ \ileadstogo ∧ \anobs ⊆ \ileadstogo ∧ p ∉ π(\ileadstogo)}$, a finite union of finite sets. ✓
   $b$ is distinguishable from $B^{(2)}$: let $H ∈ \fincrhists$ be the domain of $\anobs$; for any $c ∈ B^{(2)}$, $\anobs \not⊆ c$ gives $\restr{c}{H} ≠ \anobs = \restr{b}{H}$, so $\restr{b}{H} ∉ \restr{B^{(2)}}{H}$. ✓
 
   \emph{(3) $⇒$ (1).}
@@ -672,11 +715,9 @@ Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely repr
   Let us now suppose that for some $i$, $\allleadstog$ is $\anobs, G - \anobs, i$-regular, and let us show that $p ∈ π(\ileadstogo)$.
   Indeed, by our choice of $\anobs$, $i ∉ B^{(2)}$.
   Remains to show that $i ∉ B^{(1)}$.
-  By …-regularity, elements covered by $K$ are in $J ⊆ I ∖ \set{i}$ in the domain of the corresponding $f'$ function.
-  Also, $\card{J} = \card{B^{(1)}}$ by construction of $f$.
-  Thus, all elements of $B^{(1)}$ are in $I ∖ \set{i}$.
-  To be finished.
-  \commentClaude{The claim ``all elements of $B^{(1)}$ are in $I \setminus \{i\}$’’ means $i \notin F$. The $\anobs, G-\anobs, i$-regularity witness $J \subseteq I \setminus \{i\}$ matches $G - \anobs$ (= multiset of $f|_F$), and each $j \in J$ satisfies $g(j) \in K \cup \{\anobs\}$ and $g(j) \subseteq \ileadstogo[j]$, placing $j$ in $\allleadstoginv(\mathord\uparrow(K \cup \{\anobs\}))$, not necessarily in $F = \allleadstoginv(B^{(1)})$. The argument closes only if $\mathord\uparrow K \cap \allleadstog(I) \subseteq B^{(1)}$; but finite coverability only gives $B^{(1)} \subseteq \mathord\uparrow K$. It is unclear whether $K$ can always be refined to achieve the reverse inclusion, or whether (3)$\Rightarrow$(1) fails as stated.}
+  By $\anobs, G - \anobs, i$-regularity, $∃J ⊆ I ∖ \set{i}$ and $g: J → \anobses$ with multiset of $g$ = $G - \anobs$ = multiset of $f|_F$, and $g(j) ⊆ \ileadstogo[j]$ for all $j ∈ J$; so each $j ∈ J$ has $g(j) ∈ K$ and $g(j) ⊆ \ileadstogo[j]$, hence $\ileadstogo[j] ∈ ↑K$.
+  With the new definition $B^{(1)} = ↑K ∩ \set{c ∈ \allleadstog(I) \suchthat π(c) ≠ \set{p}}$: $j ∈ F$ iff $\ileadstogo[j] ∈ ↑K$ and $π(\ileadstogo[j]) ≠ \set{p}$; so $J ⊆ F$ would follow if every $j ∈ J$ satisfies $π(\ileadstogo[j]) ≠ \set{p}$, but this is not guaranteed.
+  \commentClaude{The gap persists: $j \in J$ gives $\ileadstogo[j] \in \uparrow K$ but not $\pi(\ileadstogo[j]) \neq \{p\}$, so $J \subseteq F$ cannot be concluded. The new definition does not close this.}
 \end{proof}
 
 \begin{conjecture}
