@@ -594,7 +594,7 @@ a world $\allleadstog$ is $\anobs, \set{0}^{\anobses}, i\text{-regular}$ iff $\a
 a world $\allleadstog$ is $\anobs\text{-regular}$ iff
 $∃i ∈ I \suchthat \anobs ⊆ \ileadstogo$.
 
-A world $\allleadstog$ is said to admit a simple regularity iff $∃\anobs ∈ \anobses, p ∈ P \suchthat (∃i ∈ I \suchthat \anobs ⊆ \ileadstogo) ∧ (∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ p ∈ π(\ileadstogo))$.
+A world $\allleadstog$ is said to admit a simple regularity iff $∃\anobs ∈ \anobses, p ∈ P \suchthat (∃b ∈ \allleadstog(I) \suchthat \anobs ⊆ b) ∧ (∀b ∈ \allleadstog(I): \anobs ⊆ b ⇒ p ∈ π(b))$.
 
 It is tempting to conjecture that when some anonymous, conclusive claim holds, the stronger consequence that $\allleadsto$ admits a simple regularity follows. \Cref{ex:klBranches}, which defines a world where regularity holds but simple regularity fails, permits to understand why this intuition fails.
 
@@ -658,7 +658,7 @@ Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely repr
   It is tempting to conjecture that the bound is an equality (thus, that $\anobs, p$-regular world $\allleadstog$ has exceptionality level $k = \card{J_{\anobs, p}}$). This fails because sometimes, covering all exceptions $j ∈ J_{\anobs, p}$ with anonymous observations require to also cover some $j ∉ J_{\anobs, p}$: consider $\allargs = \set{a, b}$, $p ≠ p' ∈ P$, three individuals $\set{j_0, j_1, j_2}$ whom all paths lead to $p$ except that $(a) \ileadsto[j_1] p'$, $(b) \ileadsto[j_2] p'$, $(a) \ileadsto[j_0] p'$, $(b) \ileadsto[j_0] p'$. It follows that $π(j_0) = ∅$, $π(j_1) = π(j_2) = p$. Any attempt of singling out a regularity requires to exclude $j_0$, but any anonymous observation that does so also covers at least one of $j_1$ or $j_2$.
 \end{remark}
 
-\begin{conjecture}
+\begin{theorem}
   Given a world $\allleadstog$, these three statements are equivalent.
   \begin{enumerate}
     \item $\allleadstog$ is regular
@@ -668,55 +668,8 @@ Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely repr
     ∀\anobs' ∈ K: \card\set{i ∈ I \suchthat \anobs' ⊆ \ileadstogo} ∈ ℕ$
     \item $∃b ∈ \allleadstog(I), B^{(1)}, B^{(2)} \suchthat π(b) ≠ ∅ ∧ B^{(1)} ∪ B^{(2)} = \set{c ∈ \allleadstog(I) \suchthat π(b) ≠ π(c)} ∧ b \text{ is }\allleadstog\text{-finitely negatively distinguishable from } B^{(1)} ∧ b \text{ is distinguishable from } B^{(2)}$.
   \end{enumerate}
-\end{conjecture}
-\begin{proof}[New attempt, only 2 $⇒$ 1]
-  Enumerate $K = \set{\anobs'_1, …, \anobs'_m}$.
-  Let $R_0 = \set{i ∈ I \suchthat ∃\anobs' ∈ K: \anobs' ⊆ \ileadstogo}$, finite as a finite union of finite sets.
-  For each $l ∈ \set{1, …, m}$, set $J_l = \set{i ∈ R_{l-1} \suchthat \anobs'_l ⊆ \ileadstogo}$, $G(\anobs'_l) = \card{J_l}$, and $R_l = R_{l-1} ∖ J_l$.
-  Set $G(\anobs) = 1$ and $G = 0$ elsewhere; $G$ has finite support and $1 ≤ G(\anobs)$.
-  The $J_l$ are pairwise disjoint with $J_1 ∪ … ∪ J_m = R_0$, so $\sum_l \card{J_l} = \card{R_0}$.
-
-  \emph{G-regularity.}
-  From~(2), pick $e ∈ I$ with $\anobs ⊆ \ileadstogo[e]$ and $∀\anobs' ∈ K: \anobs' ⊈ \ileadstogo[e]$; note $e ∉ R_0$.
-  Take $f$ on $\set{e} ∪ J_1 ∪ … ∪ J_m$ defined by $f(e) = \anobs$ and $f(j) = \anobs'_l$ for $j ∈ J_l$; this witnesses $G$-regularity.
-
-  \emph{Regularity implication.}
-  Suppose $i ∈ I$ and $\allleadstog$ is $\anobs, G - \anobs, i$-regular; let $f'$ on $J' ⊆ I ∖ \set{i}$ be the witness.
-  Then $\anobs ⊆ \ileadstogo$.
-  Since $(G - \anobs)(\anobs') = 0$ for all $\anobs' ∉ K$ (including $\anobs' = \anobs$), every $j ∈ J'$ satisfies $f'(j) ∈ K$ and $f'(j) ⊆ \ileadstogo[j]$, hence $j ∈ R_0$; so $J' ⊆ R_0 ∖ \set{i}$.
-  But $\card{J'} = \sum_{\anobs''} (G - \anobs)(\anobs'') = \sum_{\anobs''} G(\anobs'') - 1 = \card{R_0}$, so $\card{R_0 ∖ \set{i}} ≥ \card{R_0}$, forcing $i ∉ R_0$.
-  Thus $∀\anobs' ∈ K: \anobs' ⊈ \ileadstogo$; together with $\anobs ⊆ \ileadstogo$, the implication in~(2) gives $p ∈ π(\ileadstogo)$.
-\end{proof}
-\begin{proof}[Draft]
-  Assume $\anobs, G, p$-regularity.
-  Define $K = (G - \anobs)^{-1}([1, ∞))$.
-
-  Count nb of $j$ satisfying at least one of $g' ⊆ b$.
-  Set G accordingly.
-  Could we have another one 
-  Suppose g1 and g2 together cover j1, j2, j3.
-  We have to choose eg g1 cardinal 2, g2 cardinal 1.
-
-
-  Assume $G$ contains $\anobs = (a), φ$ and $(b), φ$ with $i$ satisfying $\anobs$ and a unique $j$ satisfying $(b), φ$.
-
-  Assume $g, G-g, i$ satisfies $p$-minimal regularity, meaning that $∀j ∈ J: π(\ileadstogo[j]) ≠ p$.
-  Let’s show that, with $b = \ileadstogo$, $g ⊆ b ∧ ¬(g' ⊆ b)$.
-  Equivalently, if anything fails the latter, then it fails the former.
-  If it fails $g ⊆ b$, it’s clear, so assume it passes $g ⊆ b$ but satisfies some $g' ⊆ b$.
-  Thus, it’s the unique $j$ satisfying it.
-  Let’s show that it fails regularity for any $i = j$ with $b = \ileadstogo[j]$.
-
-  Take $f(j) = \anobs'$.
-  We have $\anobs' ⊆ \ileadstogo[j]$.
-  Can we have $g' ⊆ \ileadstogo$?
-
-  We could have $i$ satisfies $(b), φ$ as well! Suffices that $π(j) = p$.
-
-  We know that $i$ fails $(b), φ$ because otherwise the implication of regularity would fail.
-
-\end{proof}
-\begin{proof}[Partial]
+\end{theorem}
+\begin{proof}
   \emph{(1) $⇒$ (2).}
   Assume $\allleadstog$ is regular: pick $G ∈ ℕ^{\anobses}$ with finite support, $p ∈ P$, $\anobs ∈ \anobses$ with $G(\anobs) ≥ 1$, $\allleadstog$ $G$-regular, and the regularity implication $\allleadstog$ is $\anobs, G-\anobs, i$-regular $⇒ p ∈ π(\ileadstogo)$.
   From $G$-regularity, pick finite $∅ ≠ J_0 ⊆ I$ and $f_0 ∈ {(\anobses)}^{J_0}$ with $\card{f_0^{-1}(\anobs')} = G(\anobs')$ for all $\anobs'$ and $f_0(j) ⊆ \ileadstogo[j]$ for all $j$; pick $i_0 ∈ J_0$ with $f_0(i_0) = \anobs$.
@@ -741,80 +694,6 @@ Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely repr
   For each $l$, set $J_l = \set{i ∈ R_{l-1} \suchthat \anobs'_l ⊆ \ileadstogo}$, $G(\anobs'_l) = \card{J_l}$, and $R_l = R_{l-1} ∖ J_l$; set $G(\anobs) = 1$ and $G = 0$ elsewhere.
   Pick $e ∈ \allleadstoginv(b)$; then $e ∉ R_0$ since $∀\anobs' ∈ K: \anobs' \not⊆ b$; define $f$ on $\set{e} ∪ J_1 ∪ … ∪ J_m$ by $f(e) = \anobs$ and $f(j) = \anobs'_l$ for $j ∈ J_l$: this witnesses $G$-regularity.
   Regularity implication: suppose $\allleadstog$ is $\anobs, G-\anobs, i$-regular, witnessed by $f'$ on $J' ⊆ I ∖ \set{i}$; then $\anobs ⊆ \ileadstogo$, and since $(G-\anobs)(\anobs') = 0$ for all $\anobs' ∉ K$, every $j ∈ J'$ has $f'(j) ∈ K$ and $f'(j) ⊆ \ileadstogo[j]$, so $j ∈ R_0$ and $J' ⊆ R_0 ∖ \set{i}$; but $\card{J'} = \card{R_0}$, forcing $i ∉ R_0$, i.e., $∀\anobs' ∈ K: \anobs' \not⊆ \ileadstogo$; since $B^{(1)} ⊆ ↑K$ this gives $\ileadstogo ∉ B^{(1)}$, and $\anobs ⊆ \ileadstogo$ gives $\ileadstogo ∉ B^{(2)}$, so $π(\ileadstogo) = \set{p}$.
-\end{proof}
-
-\begin{conjecture}
-  A world $\allleadstog$ is regular if $∃i ∈ I \suchthat π(\ileadstogo) ≠ ∅ ∧ \ileadstogo \text{ is distinguishable from } B = \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b) ∧ ∀H ∈ \fincrhists: \card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H} = \restr{b}{H}} ∉ ℕ}$.
-\end{conjecture}
-\begin{proof}[Partial]
-  Pick $H ∈ \fincrhists \suchthat \restr{\ileadstogo}{H} ∉ \restr{B}{H}$.
-  Define $B^{(1)} = \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b) ∧ ∃H' \suchthat \card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H'} = \restr{b}{H'}} ∈ ℕ}$.
-  For each $b ∈ B^{(1)}$, associate some $H'_b$ such that $\card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H'_b} = \restr{b}{H'_b}} ∈ ℕ$.
-  Set $G = (\restr{\ileadstogo}{H}, 1) ∪_{b ∈ B^{(1)}} (\restr{b}{H'_b}, \card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H'_b} = \restr{b}{H'_b}})$,
-  $p = π(\ileadstogo)$,
-  $\anobs = \restr{\ileadstogo}{H}$.
-  
-  % b1 {(a), (a, b)} : j1, j2
-  % b2 {(a), (a, a)} : j2, j3
-  Let us show that $\allleadstog$ is $G$-regular.
-  Define $J = \set{i} ∪_{b ∈ B^{(1)}} \set{j ∈ I \suchthat \restr{\ileadstog[j]}{H'_b} = \restr{b}{H'_b}}$.
-
-  $f(i) = \restr{\ileadstogo}{H}$ and
-  $f(j) = \restr{\ileadstog[j]}{H'}$.
-
-  Let us now assume that for some $i'$,
-  $\allleadstog \text{ is } \anobs, G - \anobs, i'\text{-regular}$
-  and show that
-  $p ∈ π(\ileadstogo[i'])$.
-
-  Thus,
-  $\anobs ⊆ \ileadstogo[i'] ∧
-  ∃J ⊆ I ∖ \set{i'}, f ∈ {(\anobses)}^J \suchthat ∀\anobs' ∈ \anobses,
-  \card{f^{-1}(\anobs')} = G(\anobs') ∧
-  ∀j ∈ J: f(j) ⊆ \ileadstogo[j]
-  $.
-  We show that $\ileadstogo[i'] ∉ \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b)}$.
-
-  Pick any $b ∈ B^{(1)}$,
-  we show that $b ≠ \ileadstogo[i']$.
-  Indeed, as $b ∈ B^{(1)}$, there is some $H', \anobs' = \restr{b}{H'} ∈ G$ with card $\card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H'} = \anobs'}$.\commentClaude{The claim "pick any $b \in B^{(1)}$" is unjustified: $G$ was built using a single chosen $b_0 \in B^{(1)}$, so $\restr{b}{H'} \in G$ (required two lines below) only holds for $b = b_0$. For any other $b' \in B^{(1)} \setminus \set{b_0}$, $\restr{b'}{H''} \notin G$ and the count argument breaks down: the witnesses for $G - \anobs$ carry no information about $b'$, so $\ileadstogo[i'] = b'$ is not excluded. To fix this, $G$ would need to include one copy of $\restr{b'}{H'_{b'}}$ for every $b' \in B^{(1)}$; but $B^{(1)}$ may be infinite, making $G$ need infinite support (forbidden by the definition of regularity). The proof only establishes $\ileadstogo[i'] \neq b_0$ (one element of $B^{(1)}$) and $\ileadstogo[i'] \notin B$ (infinite-sharing behaviors); it never concludes $π(\ileadstogo[i']) = p$.}
-  Thus, equally many $j ∈ I ∖ \set{i'}$ such that $f(j) = \anobs'$.
-  If $b = \ileadstogo[i']$, also $\restr{\ileadstogo[i']}{H'} = \anobs'$, and the cardinality is not satisfied.
-
-  Also, $\anobs = \restr{\ileadstogo}{H} ⊆ \ileadstogo[i']$, 
-  thus $\restr{\ileadstogo}{H} = \restr{\ileadstogo[i']}{H}$,
-  thus $\restr{\ileadstogo[i']}{H} ∉ \restr{B}{H}$.
-\end{proof}
-\begin{conjecture}
-  If the world $\allleadstog$ is regular, then $∃i ∈ I \suchthat π(\ileadstogo) ≠ ∅ ∧ \ileadstogo \text{ is distinguishable from } B = \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b) ∧ ∀H ∈ \fincrhists: \card\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H} = \restr{b}{H}} ∉ ℕ}$.
-\end{conjecture}
-\begin{proof}
-  From regularity, pick $G ∈ ℕ^{\anobses}$ with finite support, $p ∈ P$, $\anobs ∈ \anobses$ such that $\allleadstog$ is $G$-regular, $1 ≤ G(\anobs)$, and $∀i ∈ I: \allleadstog \text{ is } \anobs, G - \anobs, i\text{-regular} ⇒ p ∈ π(\ileadstogo)$.
-  From $G$-regularity (second characterization), pick a finite $∅ ≠ J_0 ⊆ I$ and $f_0 ∈ {(\anobses)}^{J_0}$ with $\card{f_0^{-1}(\anobs')} = G(\anobs')$ for all $\anobs'$ and $f_0(j) ⊆ \ileadstogo[j]$ for all $j ∈ J_0$.
-  Since $G(\anobs) ≥ 1$, pick $i_0 ∈ J_0$ with $f_0(i_0) = \anobs$; then $\anobs ⊆ \ileadstogo[i_0]$ and $J_0 ∖ \set{i_0}$, $f_0|_{J_0 ∖ \set{i_0}}$ witnesses $i_0$ is $\anobs, G - \anobs, i_0$-regular, so $p ∈ π(\ileadstogo[i_0])$; by \cref{th:sing}, $π(\ileadstogo[i_0]) = \set{p}$.
-
-  Set $H := \anobs^{-1}(P) ∈ \fincrhists$, so $\restr{\ileadstogo[i_0]}{H} = \anobs$.
-  We show $\restr{\ileadstogo[i_0]}{H} ∉ \restr{B}{H}$ (with $B = B_{i_0}$), establishing that $i_0$ is distinguishable from $B$.
-  Suppose for contradiction $b ∈ B$ with $\restr{b}{H} = \anobs$.
-  Then $\anobs ⊆ b$; since $b ∈ \allleadstog(I)$, pick $k ∈ I$ with $\ileadstogo[k] = b$, so $\anobs ⊆ \ileadstogo[k]$.
-  We construct witnesses for $\anobs, G - \anobs, k$-regularity.
-
-  \emph{Case $k ∉ J_0$.}
-  Take $J = J_0 ∖ \set{i_0}$ and $f = f_0|_J$.
-  Since $k ∉ J_0$, $J ⊆ I ∖ \set{k}$.
-  For all $\anobs'$, $\card{f^{-1}(\anobs')} = G(\anobs') - [\anobs' = \anobs] = (G - \anobs)(\anobs')$.
-
-  \emph{Case $k ∈ J_0$.}
-  Let $\anobs'' = f_0(k) ∈ \anobses$; then $\anobs'' ⊆ \ileadstogo[k] = b$.
-  Since $b ∈ B$, for $H'' := (\anobs'')^{-1}(P) ∈ \fincrhists$: $\card{\set{j ∈ I \suchthat \restr{\ileadstog[j]}{H''} = \restr{b}{H''}}} ∉ ℕ$,
-  so infinitely many $j ∈ I$ satisfy $\anobs'' ⊆ \ileadstogo[j]$.
-  Pick $j^* ∈ I ∖ (J_0 ∪ \set{k})$ with $\anobs'' ⊆ \ileadstogo[j^*]$ (possible since $J_0 ∪ \set{k}$ is finite).
-  Take $J = (J_0 ∖ \set{i_0, k}) ∪ \set{j^*}$ and $f = f_0|_{J_0 ∖ \set{i_0, k}} ∪ \set{(j^*, \anobs'')}$.
-  Then $J ⊆ I ∖ \set{k}$ and
-  $\card{f^{-1}(\anobs')} = G(\anobs') - [\anobs' = \anobs] - [\anobs' = \anobs''] + [\anobs' = \anobs''] = (G - \anobs)(\anobs')$ for all $\anobs'$.
-
-  In both cases $J$, $f$ witness $k$ is $\anobs, G - \anobs, k$-regular.
-  By regularity, $p ∈ π(\ileadstogo[k]) = π(b)$, so $π(b) = \set{p} = π(\ileadstogo[i_0])$, contradicting $b ∈ B$ (which requires $π(\ileadstogo[i_0]) ≠ π(b)$).
 \end{proof}
 
 \begin{conjecture}
