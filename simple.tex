@@ -624,10 +624,15 @@ The notion of undistinguishability recruited in \cref{ex:klBranches} turns out t
 Given $B ⊆ \allbs$ and $H ⊆ \allhists$, let $\restr{B}{H} = \set{\restr{f}{H} \suchthat f ∈ B}$ denote the behaviors in $B$ restricted to $H$.
 Say a behavior $g$ is undistinguishable from $B ⊆ \allbs$ iff
 $∀H ∈ \fincrhists: \restr{g}{H} ∈ \restr{B}{H}$.
+Say a behavior $g$ is distinguishable from $B ⊆ \allbs$ iff
+$∃H ∈ \fincrhists \suchthat \restr{g}{H} ∉ \restr{B}{H}$, equivalently,
+$∃\anobs \suchthat \anobs ⊆ g ∧ ∀b ∈ B: \anobs ⊈ b$.
+% Neg dist.:
+% $∃K \suchthat \anobs ⊈ g ∧ ∀b ∈ B: ∃\anobs ⊆ b$.
 
 Given a world $\allleadstog$ and $\anobs ∈ \anobses$, the individuals that $\anobs$ cover are $i ∈ I \suchthat \anobs ⊆ \ileadstogo$.
 Given $\anobs ∈ \anobses$, let $↑\anobs$ represent all behaviors compatible with $\anobs$ (thus $b ∈ \allbs \suchthat \anobs ⊆ b$), and given $K ⊆ \anobses$, let $↑K = ∪_{\anobs ∈ K} ↑\anobs$ represent all behaviors compatible with some $\anobs ∈ K$.
-Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely representable by anonymous observations iff $∃K ⊆ \anobses \suchthat \card{K} ∈ ℕ ∧ B = ↑K ∩ \allleadstog(I) ∧ \card{\allleadstoginv(B)} ∈ ℕ$.
+Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely representable by anonymous observations distinct from $b$ iff $∃K ⊆ \anobses \suchthat \card{K} ∈ ℕ ∧ B = ↑K ∩ \allleadstog(I) ∧ ∀\anobs ∈ K: \anobs ⊈ b ∧ \card{\allleadstoginv(B)} ∈ ℕ$.
 
 \begin{remark}
   Regularity amounts, intuitively speaking, to capture an implication of the kind $\anobs ⊆ b ⇒ p ∈ π(b)$ “up to a finite number of exceptions”, provided that these exceptions can be covered suitably.
