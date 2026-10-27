@@ -665,11 +665,22 @@ Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely repr
   \end{enumerate}
 \end{conjecture}
 \begin{proof}[New attempt, only 2 $⇒$ 1]
-  Set $J = i \suchthat ∃g' ∈ K \suchthat g' ⊆ \ileadstogo$.
-  Define $J_0 = J$.
-  Take $g'_1 ∈ K$.
-  Define $J_1 = i ∈ J_0 \suchthat g_1' ⊆ \ileadstogo$.
-  Set $G(g'_1) = \card{J_1}$.
+  Enumerate $K = \set{\anobs'_1, …, \anobs'_m}$.
+  Let $R_0 = \set{i ∈ I \suchthat ∃\anobs' ∈ K: \anobs' ⊆ \ileadstogo}$, finite as a finite union of finite sets.
+  For each $l ∈ \set{1, …, m}$, set $J_l = \set{i ∈ R_{l-1} \suchthat \anobs'_l ⊆ \ileadstogo}$, $G(\anobs'_l) = \card{J_l}$, and $R_l = R_{l-1} ∖ J_l$.
+  Set $G(\anobs) = 1$ and $G = 0$ elsewhere; $G$ has finite support and $1 ≤ G(\anobs)$.
+  The $J_l$ are pairwise disjoint with $J_1 ∪ … ∪ J_m = R_0$, so $\sum_l \card{J_l} = \card{R_0}$.
+
+  \emph{G-regularity.}
+  From~(2), pick $e ∈ I$ with $\anobs ⊆ \ileadstogo[e]$ and $∀\anobs' ∈ K: \anobs' ⊈ \ileadstogo[e]$; note $e ∉ R_0$.
+  Take $f$ on $\set{e} ∪ J_1 ∪ … ∪ J_m$ defined by $f(e) = \anobs$ and $f(j) = \anobs'_l$ for $j ∈ J_l$; this witnesses $G$-regularity.
+
+  \emph{Regularity implication.}
+  Suppose $i ∈ I$ and $\allleadstog$ is $\anobs, G - \anobs, i$-regular; let $f'$ on $J' ⊆ I ∖ \set{i}$ be the witness.
+  Then $\anobs ⊆ \ileadstogo$.
+  Since $(G - \anobs)(\anobs') = 0$ for all $\anobs' ∉ K$ (including $\anobs' = \anobs$), every $j ∈ J'$ satisfies $f'(j) ∈ K$ and $f'(j) ⊆ \ileadstogo[j]$, hence $j ∈ R_0$; so $J' ⊆ R_0 ∖ \set{i}$.
+  But $\card{J'} = \sum_{\anobs''} (G - \anobs)(\anobs'') = \sum_{\anobs''} G(\anobs'') - 1 = \card{R_0}$, so $\card{R_0 ∖ \set{i}} ≥ \card{R_0}$, forcing $i ∉ R_0$.
+  Thus $∀\anobs' ∈ K: \anobs' ⊈ \ileadstogo$; together with $\anobs ⊆ \ileadstogo$, the implication in~(2) gives $p ∈ π(\ileadstogo)$.
 \end{proof}
 \begin{proof}[Partial]
   Assume $\anobs, G, p$-regularity.
@@ -735,6 +746,9 @@ Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely repr
   By $\anobs, G - \anobs, i$-regularity, $∃J ⊆ I ∖ \set{i}$ and $g: J → \anobses$ with multiset of $g$ = $G - \anobs$ = multiset of $f|_F$, and $g(j) ⊆ \ileadstogo[j]$ for all $j ∈ J$; so each $j ∈ J$ has $g(j) ∈ K$ and $g(j) ⊆ \ileadstogo[j]$, hence $\ileadstogo[j] ∈ ↑K$.
   With the new definition $B^{(1)} = ↑K ∩ \set{c ∈ \allleadstog(I) \suchthat π(c) ≠ \set{p}}$: $j ∈ F$ iff $\ileadstogo[j] ∈ ↑K$ and $π(\ileadstogo[j]) ≠ \set{p}$; so $J ⊆ F$ would follow if every $j ∈ J$ satisfies $π(\ileadstogo[j]) ≠ \set{p}$, but this is not guaranteed.
   \commentClaude{The gap persists: $j \in J$ gives $\ileadstogo[j] \in \uparrow K$ but not $\pi(\ileadstogo[j]) \neq \{p\}$, so $J \subseteq F$ cannot be concluded. The new definition does not close this.}
+
+  \commentClaude{An alternative is to abandon $F$ and extract $K$ directly from ``finitely representable'' to run the 2\,$\Rightarrow$\,1 argument. The G-regularity step then needs some $e$ with $\anobs \subseteq \ileadstogo[e]$ and $\forall \anobs' \in K: \anobs' \not\subseteq \ileadstogo[e]$; the natural candidate is some $e$ realizing $b$. But $b \notin B^{(1)}$ only because $\pi(b) = \{p\}$, not because $b \notin {\uparrow}K$, so $b$ may lie in ${\uparrow}K$ and fail as a witness. To ensure $b \notin {\uparrow}K$, one could try to build $K$ by picking, for each $j \in F$, an observation $\anobs_j \subseteq \ileadstogo[j]$ with $\anobs_j \not\subseteq b$. This requires each $\ileadstogo[j]$ to be distinguishable from $b$ by some finite observation, but $j \in F$ only gives $\pi(\ileadstogo[j]) \neq \pi(b)$ — a difference that may occur only at an infinite horizon, with no finite $H$ witnessing it.}
+  \commentClaude{This suggests strengthening~(3) by replacing ``finitely representable by anonymous observations'' with ``finitely representable by anonymous observations not satisfied by $b$'' (i.e., requiring a finite $K$ with $B^{(1)} \subseteq {\uparrow}K$, $b \notin {\uparrow}K$, and finite counts). Then 3\,$\Rightarrow$\,1 runs exactly as 2\,$\Rightarrow$\,1: $e$ realizing $b$ witnesses G-regularity since $b \notin {\uparrow}K$; counting forces $i \notin R_0$, giving $\ileadstogo \notin {\uparrow}K \supseteq B^{(1)}$; and $\anobs \subseteq \ileadstogo$ excludes $B^{(2)}$, so $\pi(\ileadstogo) = p$. The 2\,$\Rightarrow$\,3 direction still holds since $K'$ in that proof already satisfies $b \notin {\uparrow}K'$. The remaining difficulty: it is unclear whether this strengthened~(3) is genuinely weaker than~(2) or collapses to it, which would make~(3) a redundant reformulation rather than an independent characterization.}
 \end{proof}
 
 \begin{conjecture}
