@@ -652,38 +652,6 @@ Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely repr
 
   It is tempting to conjecture that the bound is an equality (thus, that $\anobs, p$-regular world $\allleadstog$ has exceptionality level $k = \card{J_{\anobs, p}}$). This fails because sometimes, covering all exceptions $j ∈ J_{\anobs, p}$ with anonymous observations require to also cover some $j ∉ J_{\anobs, p}$: consider $\allargs = \set{a, b}$, $p ≠ p' ∈ P$, three individuals $\set{j_0, j_1, j_2}$ whom all paths lead to $p$ except that $(a) \ileadsto[j_1] p'$, $(b) \ileadsto[j_2] p'$, $(a) \ileadsto[j_0] p'$, $(b) \ileadsto[j_0] p'$. It follows that $π(j_0) = ∅$, $π(j_1) = π(j_2) = p$. Any attempt of singling out a regularity requires to exclude $j_0$, but any anonymous observation that does so also covers at least one of $j_1$ or $j_2$.
 \end{remark}
-\begin{conjecture}
-  A $\anobs$-regular world $\allleadstog$ has exceptionality level $k = \card\set{j ∈ I \suchthat \anobs ⊆ \ileadstogo[j] ∧ π(\ileadstogo[j]) ≠ p}$.
-\end{conjecture}
-\begin{proof}
-  Say that a world is $\anobs, G, i, J$-regular iff it is $\anobs, G, i$-regular with $J$ as in the definition of $\anobs, G, i$-regularity.
-
-  Consider a world $\anobs$-regular.
-  Consider any $G, p$ that makes it $G, p, \anobs$-regular.
-  Thus, for some $i ∈ I$, it is $\anobs, G - \anobs, i$-regular.
-  
-  Observe that it being $\anobs, G, i, J$-regular requires that $J' = \set{\anobs ⊆ \ileadstogo[j] ∧ π(\ileadstogo[j]) ≠ p} ⊆ J$.
-  Indeed, consider any $J$ such that it is $\anobs, G, i, J$-regular with some $j ∉ J \suchthat \anobs ⊆ \ileadstogo[j]$.
-  Then, it is $\anobs, G - \anobs, j$-regular.
-  Then, by definition of $G, p, \anobs$-regularity, $p ∈ π(\ileadstogo[j])$.
-  It follows that $k$ cannot be strictly smaller than $\card{J'}$.
-
-  To conclude the proof, let us show that
-  being $G, p, \anobs$-regular implies
-  being $G', p, \anobs$-regular with $(\sum_{\anobs' ∈ \anobses}{G'(\anobs')}) - 1 = \card{J'}$.
-
-  From $G, p, \anobs$-regularity, for some $i$, $\anobs, G - \anobs, i, J$-regularily follows, with $J' ⊆ J$.
-  Define $G'$ by setting $G'(f(j)) = 0$ for any $j ∈ J ∖ J' ∖ \set{i}$ and for any $j' ∈ J'$ with $f(j) = f(j')$, choosing any $\anobs' = α, p' ≠ p$ with $p$ at end .
-  Let us show $G', p, \anobs$-regularity.
-  The world is $G'$ regular as it is $G$-regular.
-  Remains to show that the widening of the antecedent of the implication does not make it fail.
-  Consider any $j$ that now satisfies it and used to fail it:
-  $\anobs, G' - \anobs, j$-regularity holds but
-  $\anobs, G - \anobs, j$-regularity fails.
-  Thus, $j ∈ J ∖ J' ∖ \set{i}$, whence $j ∉ J'$, equivalently, $\anobs ⊈ \ileadstogo[j]$ or $π(\ileadstogo[j]) = p$.
-  By $\anobs, G' - \anobs, j$-regularity, $\anobs ⊆ \ileadstogo[j]$; thus $π(\ileadstogo[j]) = p$, and the implication is satisfied.
-  \commentClaude{The step ``Thus $j \in J \setminus J' \setminus \{i\}$'' is unjustified and false. Counterexample: $I = \{i, j_1, j_2\}$; $\anobs \subseteq \ileadstogo[i]$, $η \not\subseteq \ileadstogo[i]$, $π(\ileadstogo[i]) = p$; $\anobs, η \subseteq \ileadstogo[j_1]$, $π(\ileadstogo[j_1]) \neq p$; $\anobs, η \subseteq \ileadstogo[j_2]$, $π(\ileadstogo[j_2]) = p$; $G - \anobs = \{η\colon 2\}$, $J = \{j_1, j_2\}$. Then $J' = \{j_1\}$, $J \setminus J' \setminus \{i\} = \{j_2\}$, $G' - \anobs = \{η\colon 1\}$. Now $j = j_1 \in J'$ satisfies $\anobs, G' - \anobs, j_1$-regular (witness $j_2$, which still has $η$) but fails $\anobs, G - \anobs, j_1$-regular (only one individual with $η$ outside $j_1$). The implication for $G', p, \anobs$-regularity therefore fails. The root cause: removing $j_2$'s contribution lowers $G' - \anobs$, making the antecedent easier to satisfy for $j_1 \in J'$, breaking the very implication the construction was meant to preserve.}
-\end{proof}
 
 \begin{conjecture}
   Given a world $\allleadstog$, these three statements are equivalent.
