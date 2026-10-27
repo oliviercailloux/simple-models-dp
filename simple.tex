@@ -664,9 +664,23 @@ Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely repr
     \item $∃b ∈ \allleadstog(I), B^{(1)}, B^{(2)} \suchthat π(b) ≠ ∅ ∧ B^{(1)} ∪ B^{(2)} = \set{c ∈ \allleadstog(I) \suchthat π(b) ≠ π(c)} ∧ B^{(1)} \text{ is finitely representable by anonymous observations } ∧ b \text{ is distinguishable from } B^{(2)}$.
   \end{enumerate}
 \end{conjecture}
-\begin{proof}[New attempt, only 1 $⇔$ 2]
+\begin{proof}[New attempt, only 2 $⇒$ 1]
+  Set $J = i \suchthat ∃g' ∈ K \suchthat g' ⊆ \ileadstogo$.
+  Define $J_0 = J$.
+  Take $g'_1 ∈ K$.
+  Define $J_1 = i ∈ J_0 \suchthat g_1' ⊆ \ileadstogo$.
+  Set $G(g'_1) = \card{J_1}$.
+\end{proof}
+\begin{proof}[Partial]
   Assume $\anobs, G, p$-regularity.
   Define $K = (G - \anobs)^{-1}([1, ∞))$.
+
+  Count nb of $j$ satisfying at least one of $g' ⊆ b$.
+  Set G accordingly.
+  Could we have another one 
+  Suppose g1 and g2 together cover j1, j2, j3.
+  We have to choose eg g1 cardinal 2, g2 cardinal 1.
+
 
   Assume $G$ contains $\anobs = (a), φ$ and $(b), φ$ with $i$ satisfying $\anobs$ and a unique $j$ satisfying $(b), φ$.
 
