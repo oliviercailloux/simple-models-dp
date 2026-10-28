@@ -619,7 +619,7 @@ It is tempting to conjecture that when some anonymous, conclusive claim holds, t
   Thus, we require $\anobs ⊆ \ileadstoo$ (so as to satisfy $∃i' ∈ I \suchthat \anobs ⊆ \ileadstoo[i']$), and if $\anobs ⊆ \ileadstoo[k]$ or $\anobs ⊆ \ileadstoo[l]$, the implication fails.
   But, if $∃α ∈ \anobs^{-1}(P) \suchthat α_1 = a$, then $\anobs^{-1}(P)$ can contain only $∅$ and paths starting with $a$ (because $\anobs^{-1}(P) ∈ \fincrhists$), whence $\anobs ⊆ \ileadstoo[k]$ (because $\ileadstoo$ and $\ileadstoo[k]$ are undistinguishable on those paths; formally, $\restr{\ileadstoo}{\set{α \suchthat α = ∅ ∨ α_1 = a}} = \restr{\ileadstoo[k]}{\set{α \suchthat α = ∅ ∨ α_1 = a}}$); otherwise, thus if $∄α ∈ \anobs^{-1}(P) \suchthat α_1 = a$, then $\anobs ⊆ \ileadstoo[l]$.
 \end{example}
-The notion of undistinguishability recruited in \cref{ex:klBranches} turns out to be key to characterize regularity situations not reducible to simple regularity.
+The notion of undistinguishability recruited in \cref{ex:klBranches} turns out to be key to characterize regularity situations.
 
 Given $B ⊆ \allbs$ and $H ⊆ \allhists$, let $\restr{B}{H} = \set{\restr{f}{H} \suchthat f ∈ B}$ denote the behaviors in $B$ restricted to $H$.
 Say a behavior $g$ is undistinguishable from $B ⊆ \allbs$ iff
@@ -629,10 +629,6 @@ $∃H ∈ \fincrhists \suchthat \restr{g}{H} ∉ \restr{B}{H}$, equivalently,
 $∃\anobs \suchthat \anobs ⊆ g ∧ ∀b ∈ B: \anobs ⊈ b$.
 Say a behavior $g$ is negatively distinguishable from $B ⊆ \allbs$ iff
 $∃K ⊆ \anobses \suchthat ∀\anobs ∈ K: \anobs ⊈ g ∧ ∀b ∈ B: ∃\anobs ⊆ b$, and $\allleadstog$-finitely so iff, furthermore, $\card{K} ∈ ℕ ∧ ∀\anobs ∈ K: \card{i ∈ I \suchthat \anobs ⊆ \ileadstogo} ∈ ℕ$.
-
-Given a world $\allleadstog$ and $\anobs ∈ \anobses$, the individuals that $\anobs$ cover are $i ∈ I \suchthat \anobs ⊆ \ileadstogo$.
-Given $\anobs ∈ \anobses$, let $↑\anobs$ represent all behaviors compatible with $\anobs$ (thus $b ∈ \allbs \suchthat \anobs ⊆ b$), and given $K ⊆ \anobses$, let $↑K = ∪_{\anobs ∈ K} ↑\anobs$ represent all behaviors compatible with some $\anobs ∈ K$.
-Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely representable by anonymous observations distinct from $b$ iff $∃K ⊆ \anobses \suchthat \card{K} ∈ ℕ ∧ B = ↑K ∩ \allleadstog(I) ∧ \card{\allleadstoginv(B)} ∈ ℕ$.
 
 \begin{remark}
   Regularity amounts, intuitively speaking, to capture an implication of the kind $\anobs ⊆ b ⇒ p ∈ π(b)$ “up to a finite number of exceptions”, provided that these exceptions can be covered suitably.
@@ -658,6 +654,9 @@ Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely repr
   It is tempting to conjecture that the bound is an equality (thus, that $\anobs, p$-regular world $\allleadstog$ has exceptionality level $k = \card{J_{\anobs, p}}$). This fails because sometimes, covering all exceptions $j ∈ J_{\anobs, p}$ with anonymous observations require to also cover some $j ∉ J_{\anobs, p}$: consider $\allargs = \set{a, b}$, $p ≠ p' ∈ P$, three individuals $\set{j_0, j_1, j_2}$ whom all paths lead to $p$ except that $(a) \ileadsto[j_1] p'$, $(b) \ileadsto[j_2] p'$, $(a) \ileadsto[j_0] p'$, $(b) \ileadsto[j_0] p'$. It follows that $π(j_0) = ∅$, $π(j_1) = π(j_2) = p$. Any attempt of singling out a regularity requires to exclude $j_0$, but any anonymous observation that does so also covers at least one of $j_1$ or $j_2$.
 \end{remark}
 
+The following two characterizations of regularity may help understand this condition, and will permit a useful corollary leading to simple regularity.
+The first reformulation expresses regularity as an implication that involves several (possibly incompatible) anonymous observations.
+The second one expresses regularity using the notion of undistinguishability.
 \begin{theorem}
   \label{th:regCarac}
   Given a world $\allleadstog$, these three statements are equivalent.
