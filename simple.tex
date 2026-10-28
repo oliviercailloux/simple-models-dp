@@ -659,18 +659,19 @@ Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely repr
 \end{remark}
 
 \begin{theorem}
+  \label{th:regCarac}
   Given a world $\allleadstog$, these three statements are equivalent.
   \begin{enumerate}
-    \item $\allleadstog$ is regular
-    \item $∃K ⊆ \anobses, \anobs ∈ \anobses \suchthat \card{K} ∈ ℕ ∧ 
+    \item \label{it:reg} $\allleadstog$ is regular
+    \item \label{it:regImpl} $∃K ⊆ \anobses, \anobs ∈ \anobses \suchthat \card{K} ∈ ℕ ∧ 
     ∃b ∈ \allleadstog(I) \suchthat (\anobs ⊆ b ∧_{\anobs' ∈ K} ¬(\anobs' ⊆ b)) ∧ 
     ∃p \suchthat ∀b ∈ \allleadstog(I): (\anobs ⊆ b ∧_{\anobs' ∈ K} ¬(\anobs' ⊆ b)) ⇒ p ∈ π(b) ∧ 
     ∀\anobs' ∈ K: \card\set{i ∈ I \suchthat \anobs' ⊆ \ileadstogo} ∈ ℕ$
-    \item $∃b ∈ \allleadstog(I), B^{(1)}, B^{(2)} \suchthat π(b) ≠ ∅ ∧ B^{(1)} ∪ B^{(2)} = \set{c ∈ \allleadstog(I) \suchthat π(b) ≠ π(c)} ∧ b \text{ is }\allleadstog\text{-finitely negatively distinguishable from } B^{(1)} ∧ b \text{ is distinguishable from } B^{(2)}$.
+    \item \label{it:regDist} $∃b ∈ \allleadstog(I), B^{(1)}, B^{(2)} \suchthat π(b) ≠ ∅ ∧ B^{(1)} ∪ B^{(2)} = \set{c ∈ \allleadstog(I) \suchthat π(b) ≠ π(c)} ∧ b \text{ is }\allleadstog\text{-finitely negatively distinguishable from } B^{(1)} ∧ b \text{ is distinguishable from } B^{(2)}$.
   \end{enumerate}
 \end{theorem}
 \begin{proof}
-  \emph{(1) $⇒$ (2).}
+  Given \cref{it:reg}, let us prove \cref{it:regImpl}.
   Assume $\allleadstog$ is regular: pick $G ∈ ℕ^{\anobses}$ with finite support, $p ∈ P$, $\anobs ∈ \anobses$ with $G(\anobs) ≥ 1$, $\allleadstog$ $G$-regular, and the regularity implication $\allleadstog$ is $\anobs, G-\anobs, i$-regular $⇒ p ∈ π(\ileadstogo)$.
   From $G$-regularity, pick finite $∅ ≠ J_0 ⊆ I$ and $f_0 ∈ {(\anobses)}^{J_0}$ with $\card{f_0^{-1}(\anobs')} = G(\anobs')$ for all $\anobs'$ and $f_0(j) ⊆ \ileadstogo[j]$ for all $j$; pick $i_0 ∈ J_0$ with $f_0(i_0) = \anobs$.
   Then $J_0 ∖ \set{i_0}$ and $\restr{f_0}{J_0 ∖ \set{i_0}}$ witness $\allleadstog$ is $\anobs, G-\anobs, i_0$-regular, so $π(\ileadstogo[i_0]) = \set{p}$.
@@ -681,14 +682,12 @@ Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely repr
   If $k ∉ J_0 ∖ \set{i_0}$: $\restr{f_0}{J_0 ∖ \set{i_0}}$ witnesses $\anobs, G-\anobs, k$-regularity (as $J_0 ∖ \set{i_0} ⊆ I ∖ \set{k}$ and $\anobs ⊆ \ileadstogo[k]$), giving $p ∈ π(\ileadstogo[k])$; so every $k$ with $\anobs' ⊆ \ileadstogo[k]$ and $p ∉ π(\ileadstogo[k])$ (for any $\anobs' ∈ K$) lies in $J_0 ∖ \set{i_0}$: count ✓.
   If $k = j ∈ J_0 ∖ \set{i_0}$ and $∀\anobs' ∈ K: \anobs' \not⊆ \ileadstogo[k]$: $f_0(j) ⊆ \ileadstogo[j] = \ileadstogo[k]$ forces $f_0(j) ∉ K$; since $j ∈ J_0$ gives $G(f_0(j)) ≥ 1$ and if $f_0(j) = \anobs$ then $i_0 ≠ j$ is an additional preimage so $G(\anobs) ≥ 2$, we get $(G-\anobs)(f_0(j)) ≥ 1$, hence the definition of $K$ gives $f_0(j) ⊆ \ileadstogo[i_0]$; define $J' = J_0 ∖ \set{j}$ and $f': J' → \anobses$ by $f'(i_0) = f_0(j)$, $f'(j'') = f_0(j'')$ for $j'' ∈ J' ∖ \set{i_0}$; then $J' ⊆ I ∖ \set{k}$, $f'(j'') ⊆ \ileadstogo[j'']$ for all $j'' ∈ J'$, and the multiset of $f'$ on $J'$ equals $(G-\anobs)$ (relocating $j$'s entry $f_0(j)$ to $i_0$ preserves the multiset of $f_0|_{J_0 ∖ \set{i_0}}$), so $J', f'$ witness $\anobs, G-\anobs, k$-regularity, giving $p ∈ π(\ileadstogo[k])$ ✓.
 
-  \emph{(2) $⇒$ (3).}
-  Assume (2): pick finite $K ⊆ \anobses$, $\anobs ∈ \anobses$, $b ∈ \allleadstog(I)$ with $\anobs ⊆ b$ and $∀\anobs' ∈ K: \anobs' \not⊆ b$, and $p$ such that the implication and count conditions hold; the implication applied to $b$ gives $p ∈ π(b)$; by \cref{th:sing}, $π(b) = \set{p}$.
+  Now assume \cref{it:regImpl} and let us show \cref{it:regDist}: pick finite $K ⊆ \anobses$, $\anobs ∈ \anobses$, $b ∈ \allleadstog(I)$ with $\anobs ⊆ b$ and $∀\anobs' ∈ K: \anobs' \not⊆ b$, and $p$ such that the implication and count conditions hold; the implication applied to $b$ gives $p ∈ π(b)$; by \cref{th:sing}, $π(b) = \set{p}$.
   Set $B^{(1)} = \set{c ∈ \allleadstog(I) \suchthat π(c) ≠ \set{p} ∧ \anobs ⊆ c}$ and $B^{(2)} = \set{c ∈ \allleadstog(I) \suchthat π(c) ≠ \set{p} ∧ \anobs \not⊆ c}$; then $B^{(1)} ∪ B^{(2)} = \set{c ∈ \allleadstog(I) \suchthat π(c) ≠ π(b)}$.
   $b$ is $\allleadstog$-finitely negatively distinguishable from $B^{(1)}$: $K$ witnesses this — $\card{K} ∈ ℕ$ and $∀\anobs' ∈ K: \anobs' \not⊆ b$ by assumption; for any $c ∈ B^{(1)}$, the contrapositive of the implication (with $\anobs ⊆ c$ and $p ∉ π(c)$) yields some $\anobs' ∈ K$ with $\anobs' ⊆ c$; and the count condition from~(2) gives $∀\anobs' ∈ K: \card\set{i ∈ I \suchthat \anobs' ⊆ \ileadstogo} ∈ ℕ$. ✓
   $b$ is distinguishable from $B^{(2)}$: $\anobs ⊆ b$ and $∀c ∈ B^{(2)}: \anobs \not⊆ c$ by definition of $B^{(2)}$. ✓
 
-  \emph{(3) $⇒$ (1).}
-  Assume (3): let $b ∈ \allleadstog(I)$, $B^{(1)}$, $B^{(2)}$ as in (3); by \cref{th:sing}, $π(b) = \set{p}$ for some $p$.
+  Finally, assuming \cref{it:regDist}, let us show \cref{it:reg}: let $b ∈ \allleadstog(I)$, $B^{(1)}$, $B^{(2)}$ as in (3); by \cref{th:sing}, $π(b) = \set{p}$ for some $p$.
   Let $K$ and $\anobs ⊆ b$ be the witnesses from (3): $\card{K} ∈ ℕ$, $∀\anobs' ∈ K: \anobs' \not⊆ b$, $∀c ∈ B^{(1)}: ∃\anobs' ∈ K \suchthat \anobs' ⊆ c$, $∀\anobs' ∈ K: \card\set{i ∈ I \suchthat \anobs' ⊆ \ileadstogo} ∈ ℕ$, and $∀c ∈ B^{(2)}: \anobs \not⊆ c$.
   Enumerate $K = \set{\anobs'_1, …, \anobs'_m}$; let $R_0 = \set{i ∈ I \suchthat ∃\anobs' ∈ K: \anobs' ⊆ \ileadstogo}$, finite as a finite union of finite sets.
   For each $l$, set $J_l = \set{i ∈ R_{l-1} \suchthat \anobs'_l ⊆ \ileadstogo}$, $G(\anobs'_l) = \card{J_l}$, and $R_l = R_{l-1} ∖ J_l$; set $G(\anobs) = 1$ and $G = 0$ elsewhere.
@@ -699,6 +698,7 @@ Given a world $\allleadstog$, a set of behaviors $B ⊆ \allbs$ is finitely repr
 \begin{conjecture}
   Given any regular $\allleadstog$, $\allleadstog$ admits no simple regularity iff $∀i ∈ I \suchthat π(\ileadstogo) ≠ ∅: i \text{ is undistinguishable from } \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b) ∧ \card{\allleadstoginv(b)} ∈ ℕ}$.
 \end{conjecture}
+\commentClaude{\Cref{th:regCarac}\cref{it:regImpl} with $K = ∅$ (equivalently \cref{it:regDist} with $B^{(1)} = ∅$) gives a clean characterization of simple regularity for a regular world: it holds iff $∃b ∈ \allleadstog(I)$ with $π(b) ≠ ∅$ that is distinguishable from $\set{c ∈ \allleadstog(I) \suchthat π(b) ≠ π(c)}$. The conjecture thus says: in a regular world, restricting that set to behaviors with finite preimage count preserves the undistinguishability equivalence.}
 \begin{proof}
   Suppose the condition holds.
   Assume for contradiction that $\allleadstog$ admits simple regularity: some $\anobs, p'$ satisfy $∃ i_0 ∈ I \suchthat \anobs ⊆ \ileadstogo[i_0]$ and $∀ j ∈ I: \anobs ⊆ \ileadstogo[j] ⇒ p' ∈ π(\ileadstogo[j])$.
