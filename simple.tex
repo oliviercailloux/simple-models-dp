@@ -500,7 +500,7 @@ We first illustrate that any two axioms out of those three are insufficient for 
 \Cref{th:pvUnderNotPof} shows that this axiom is insufficient: only the trivial claim satisfies OV under $¬\OOF$.
 
 \Cref{th:holdsNotVerifUnderNotOfE} shows the insufficiency of the axiom $F_C$: for “most” such worlds (in some technical sense to be fully elucidated), there exists no anonymous claim that holds and is conclusive and satisfies OV under $¬\OOF[C ∩ E] ∩ E$.
-% For a claim to exist satisfying an, holds, concl, and PVo under ¬POF ∩ E, we need the world to satisfy D^gap?
+% For a claim to exist satisfying an, holds, concl, and PV under ¬POF ∩ E, we need the world to satisfy D^gap?
 % Indeed, if C entails … → a dec or b dec, build a world where a not dec and b convincing when a is with him, and b sometimes not convincing 
 %D^gAp, the extension of D^gap for the case of some set of arguments A such that g ⊆ \ileadsto p ⇒ ∃a ∈ A | a \ileadstost p.
 
@@ -1882,23 +1882,23 @@ Both $\incr(\allhists)^I$ and $\allpriobss$ are downwards closed.
 The set $Θ ∩ C^⊆$ is downwards closed, as both $Θ$ and $C^⊆$ are.
 
 \section{Recently moved supplementary material}
-\subsection{PVo and POF}
-Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{persistently verifiable in the old sense} (PVo) at $\allleadstog$ under $D$ iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑θ' ∩ D ⊆ C$.\commentClaude{Proposed rename: Persistently Verifiable (PV) at $\allleadstog$ under $D$, same formal definition — this would take over the name currently used for what's proposed above to become OV.}
+\subsection{PV and POF}
+Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{persistently verifiable} (PV) at $\allleadstog$ under $D$ iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑θ' ∩ D ⊆ C$.
 \begin{corollary}
   \label{th:newPvImpliesPvo}
-  Given $C, D ⊆ \allleadstos$: OV under $D$ implies PVo under $D$.
+  Given $C, D ⊆ \allleadstos$: OV under $D$ implies PV under $D$.
 \end{corollary}
 \begin{proof}
   By \cref{th:dualPofPv}, OV under $D$ gives $∀\allleadstog ∈ C ∩ D: \OOF[D ∖ C](\allleadstog)$, hence, by \cref{th:poofImpliesPof} (with $D ∖ C$ in place of $C$), $∀\allleadstog ∈ C ∩ D: \POF[D ∖ C](\allleadstog)$.
   By \cref{th:vud} (\cref{it:unverifD,it:notcomplE}), for any $\allleadstog ∈ C ∩ D$ and $θ' ∈ Θ ∩ \powerset{\allleadstog}$: $θ'$ proves $C$ under $D$ (that is, $∀θ' ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$) iff $θ' ∉ (D ∖ C)^⊆$.
-  Substituting into the definition of PVo at $\allleadstog$, $\POF[D ∖ C](\allleadstog)$ is exactly PVo at $\allleadstog$ under $D$; so PVo holds under $D$.
+  Substituting into the definition of PV at $\allleadstog$, $\POF[D ∖ C](\allleadstog)$ is exactly PV at $\allleadstog$ under $D$; so PV holds under $D$.
 \end{proof}
 \begin{corollary}
   \label{th:provImpliesPev}
-  Given $C, D ⊆ \allleadstos$: provability of $C$ by $D$ implies PVo under $D$; so does it imply OV under $D$.
+  Given $C, D ⊆ \allleadstos$: provability of $C$ by $D$ implies PV under $D$; so does it imply OV under $D$.
 \end{corollary}
 \begin{proof}
-  If $D ⊆ C$, then for any $\allleadstog ∈ C ∩ D$ and $θ ∈ Θ ∩ \powerset{\allleadstog}$, taking $θ' := θ$ gives $↑θ' ∩ D ⊆ D ⊆ C$, witnessing PVo at $\allleadstog$ under $D$.
+  If $D ⊆ C$, then for any $\allleadstog ∈ C ∩ D$ and $θ ∈ Θ ∩ \powerset{\allleadstog}$, taking $θ' := θ$ gives $↑θ' ∩ D ⊆ D ⊆ C$, witnessing PV at $\allleadstog$ under $D$.
   For OV: $D ⊆ C$ gives $↑(θ' ∖ θ) ∩ D ⊆ D ⊆ C$ for any $θ, θ'$, and taking $θ' := θ$ itself, $∅ ≠ ↑(θ' ∖ θ) ∩ D = ↑∅ ∩ D = D ≠ ∅$ as soon as $D ≠ ∅$ (which holds since $\allleadstog ∈ C ∩ D$); so OV holds at every $\allleadstog ∈ D$.
 \end{proof}
 
@@ -1920,25 +1920,25 @@ $.
 \end{remark}
 
 \begin{corollary}
-  A claim $C$ is PVo under $D = ¬\OOF$ iff $C = ∅ ∨ C = \allleadstos$.
+  A claim $C$ is PV under $D = ¬\OOF$ iff $C = ∅ ∨ C = \allleadstos$.
 \end{corollary}
 \begin{proof}
-  By \cref{th:newPvImpliesPvo}, OV under $¬\OOF$ implies PVo under $¬\OOF$, so only $C = ∅$ or $C = \allleadstos$ can satisfy PVo under $¬\OOF$ (\cref{th:pvUnderNotPof}); conversely, both trivially satisfy PVo under any axiom (\cref{th:provImpliesPev}, taking $D = ¬\OOF ⊆ C$ when $C = \allleadstos$, and the case $C = ∅$ being vacuous as $C ∩ D = ∅$).
+  By \cref{th:newPvImpliesPvo}, OV under $¬\OOF$ implies PV under $¬\OOF$, so only $C = ∅$ or $C = \allleadstos$ can satisfy PV under $¬\OOF$ (\cref{th:pvUnderNotPof}); conversely, both trivially satisfy PV under any axiom (\cref{th:provImpliesPev}, taking $D = ¬\OOF ⊆ C$ when $C = \allleadstos$, and the case $C = ∅$ being vacuous as $C ∩ D = ∅$).
 \end{proof}
 
 \begin{conjecture}
   \label{conj:noSpecificArgNoClaim}
   Consider $\allleadsto ∈ E$ such that for no $(\anobs, a, p)$ with $∃ i ∈ I: \anobs ⊆ \ileadstoo$: $∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ a \ileadstost p$. Then no anonymous, conclusive claim that holds
-  is PVo under $(¬\OF) \cap E$.
+  is PV under $(¬\OF) \cap E$.
 \end{conjecture}
 \begin{proof}[Proof attempt]
-  Write $D := (¬\OF[C]) ∩ E$ and suppose, towards a contradiction, that some anonymous, conclusive claim $C$ holds and is PVo under $D$.
+  Write $D := (¬\OF[C]) ∩ E$ and suppose, towards a contradiction, that some anonymous, conclusive claim $C$ holds and is PV under $D$.
 
   \emph{Step 1.} As $C$ holds, $\allleadsto ∈ C$; since $\allleadsto$ itself extends every finite prefix $θ ⊆ \allleadsto$ and lies in $C$, every such $θ$ is in $C^⊆$, so $¬\OF(\allleadsto)$; with $\allleadsto ∈ E$, $\allleadsto ∈ C ∩ D$.
 
   \emph{Step 2.}
   As $C$ is conclusive and $\allleadsto ∈ C$, applying conclusiveness at $θ = ∅$ gives $θ_0 ∈ Θ ∩ \powerset{\allleadsto}$, $i^* ∈ I$, $p^* ∈ P$ with $π_{i^*}(↑θ_0 ∩ C) = \set{p^*}$.
-  As $C$ is PVo under $D$ and $\allleadsto ∈ C ∩ D$ (Step 1), unfolding the definition of PVo via \cref{th:vud} (\cref{it:unverifD,it:notcomplE}) gives $\POF[D ∖ C](\allleadsto)$; applying at $θ_0$ gives $θ_0 ⊑ θ_1$ in $Θ ∩ \powerset{\allleadsto}$ with $↑θ_1 ∩ D ⊆ C$, hence:
+  As $C$ is PV under $D$ and $\allleadsto ∈ C ∩ D$ (Step 1), unfolding the definition of PV via \cref{th:vud} (\cref{it:unverifD,it:notcomplE}) gives $\POF[D ∖ C](\allleadsto)$; applying at $θ_0$ gives $θ_0 ⊑ θ_1$ in $Θ ∩ \powerset{\allleadsto}$ with $↑θ_1 ∩ D ⊆ C$, hence:
   \begin{equation}
     ∀\allleadstog ∈ ↑θ_1 ∩ D: π_{i^*}(\allleadstog) = p^*. \tag{$\star$}
   \end{equation}
@@ -1964,16 +1964,16 @@ $.
   With $w ∈ ↑θ_1 ∩ D$, $(\star)$ gives $π_{i^*}(w) = p^*$.
   But $i^*$'s behavior in $w$ is $g'$, which has no decisive arg for $p^*$, so $π_{i^*}(w) ≠ p^*$: a contradiction.
 \end{proof}
-Were \cref{conj:noSpecificArgNoClaim} settled, the analogous statement for OV — a logically weaker claim, since OV under $D$ implies PVo under $D$ (\cref{th:newPvImpliesPvo}) — would follow immediately, as in \cref{th:noPatternNoClaim}'s corollary below.
+Were \cref{conj:noSpecificArgNoClaim} settled, the analogous statement for OV — a logically weaker claim, since OV under $D$ implies PV under $D$ (\cref{th:newPvImpliesPvo}) — would follow immediately, as in \cref{th:noPatternNoClaim}'s corollary below.
 \begin{theorem}
   \label{th:promisingWorld}
   Fix $φ ≠ φ' ∈ P$ and $a ≠ b ∈ \allargs$.
   Suppose $\allleadsto ∈ E$ contains behaviors $(b_k)_{k ∈ ℕ}$, each shared by infinitely many individuals in $I$, such that $a \ileadstostg[b_0] φ$, $b \nileadstostg[b_0] φ$, and for each $k ≥ 1$: $b \ileadstostg[b_k] φ$, $a \nileadstostg[b_k] φ$, and $b_k$ agrees with $b_0$ on all paths of length $≤ k$.
-  Then the claim $C = [∀i: a \ileadstostg φ ∨ b \ileadstostg φ]$ is not PVo under $(¬\POF) ∩ E$.
+  Then the claim $C = [∀i: a \ileadstostg φ ∨ b \ileadstostg φ]$ is not PV under $(¬\POF) ∩ E$.
 \end{theorem}
 \begin{proof}
   Write $D := (¬\POF[C]) ∩ E$.
-  Unfolding the definition of PVo via \cref{th:vud} (\cref{it:unverifD,it:notcomplE}), $C$ is PVo under $D$ iff $∀\allleadstog ∈ C ∩ D: \POF[D ∖ C](\allleadstog)$; so it suffices to exhibit $v ∈ C ∩ D$ with $¬\POF[D ∖ C](v)$ (ruling out PVo here also rules out OV a fortiori, by \cref{th:newPvImpliesPvo}).
+  Unfolding the definition of PV via \cref{th:vud} (\cref{it:unverifD,it:notcomplE}), $C$ is PV under $D$ iff $∀\allleadstog ∈ C ∩ D: \POF[D ∖ C](\allleadstog)$; so it suffices to exhibit $v ∈ C ∩ D$ with $¬\POF[D ∖ C](v)$ (ruling out PV here also rules out OV a fortiori, by \cref{th:newPvImpliesPvo}).
   Take $v := \allleadsto$: it holds ($\allleadsto ∈ C$), lies in $E$ by hypothesis, and since $\allleadsto ∈ C$, every $θ' ∈ Θ ∩ \powerset{\allleadsto}$ lies in $C^⊆$ (witnessed by $\allleadsto$ itself), so $¬\POF[C](\allleadsto)$: thus $\allleadsto ∈ C ∩ D$.
 
   For $¬\POF[D ∖ C](\allleadsto)$, fix $θ = ∅$ and let $θ' ∈ Θ ∩ \powerset{\allleadsto}$ have max depth $m$.
@@ -1992,10 +1992,10 @@ Were \cref{conj:noSpecificArgNoClaim} settled, the analogous statement for OV �
   \label{th:noPatternNoClaim}
   Consider $\allleadsto ∈ E$ such that for no $\anobs$, $p ∈ P$: $∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ P_i$.
   Let $C ↦ F_C ⊆ \allleadstos$ assign to every claim $C$ some $F_C$ with $C ⊆ F_C$ that is anonymous ($F_C ∘ σ = F_C$ for every permutation $σ$ of $I$).
-  Then, no anonymous, conclusive claim that holds is PVo under $(¬\OF) ∩ E ∩ F_C$.
+  Then, no anonymous, conclusive claim that holds is PV under $(¬\OF) ∩ E ∩ F_C$.
 \end{theorem}
 \begin{proof}
-  Write $D := (¬\OF) ∩ E ∩ F_C$ and suppose, towards a contradiction, that some anonymous, conclusive claim $C$ holds and is PVo under $D$.
+  Write $D := (¬\OF) ∩ E ∩ F_C$ and suppose, towards a contradiction, that some anonymous, conclusive claim $C$ holds and is PV under $D$.
 
   \emph{Three invariance facts.}
   First, $E$ is anonymous (as already observed when showing $E$ itself is an anonymous claim provable by $¬\POF[E] ∩ E$): relabelling individuals by a permutation $σ$ permutes each behavior-class without changing its cardinality, so $∀\allleadstog, σ: \allleadstog ∈ E ⇔ \allleadstog ∘ σ ∈ E$.
@@ -2004,9 +2004,9 @@ Were \cref{conj:noSpecificArgNoClaim} settled, the analogous statement for OV �
 
   \emph{Step 1.} As $C$ holds, $\allleadsto ∈ C$, so $¬\F(\allleadsto)$, hence $¬\OF(\allleadsto)$; also $\allleadsto ∈ C ⊆ F_C$; with $\allleadsto ∈ E$ (hypothesis), $\allleadsto ∈ C ∩ D$.
 
-  \emph{Step 2 (a conclusiveness pin, sharpened by PVo).}
+  \emph{Step 2 (a conclusiveness pin, sharpened by PV).}
   As $C$ is conclusive and $\allleadsto ∈ C$, applying conclusiveness at $θ = ∅$ gives $θ_0 ∈ Θ ∩ \powerset{\allleadsto}$, $i^* ∈ I$ and $p^* ∈ P$ with $π_{i^*}(↑θ_0 ∩ C) = \set{p^*}$.
-  As $C$ is PVo under $D$ and $\allleadsto ∈ C ∩ D$ (Step 1), unfolding the definition of PVo via \cref{th:vud} (\cref{it:unverifD,it:notcomplE}) gives $\POF[D ∖ C](\allleadsto)$; applying this at $θ_0$ gives $θ_0 ⊑ θ_1 ∈ Θ ∩ \powerset{\allleadsto}$ with $↑θ_1 ∩ D ⊆ C$.
+  As $C$ is PV under $D$ and $\allleadsto ∈ C ∩ D$ (Step 1), unfolding the definition of PV via \cref{th:vud} (\cref{it:unverifD,it:notcomplE}) gives $\POF[D ∖ C](\allleadsto)$; applying this at $θ_0$ gives $θ_0 ⊑ θ_1 ∈ Θ ∩ \powerset{\allleadsto}$ with $↑θ_1 ∩ D ⊆ C$.
   As $θ_0 ⊑ θ_1$, $↑θ_1 ⊆ ↑θ_0$, so $π_{i^*}(↑θ_1 ∩ C) ⊆ π_{i^*}(↑θ_0 ∩ C) = \set{p^*}$; as $θ_1 ⊆ \allleadsto ∈ C$, this set contains $π_{i^*}(\allleadsto) = p^*$, so it equals $\set{p^*}$. Combined with $↑θ_1 ∩ D ⊆ C$:
   \begin{equation}
     ∀\allleadstog ∈ ↑θ_1 ∩ D: π_{i^*}(\allleadstog) = p^*. \tag{$\star$}
@@ -2029,12 +2029,12 @@ Were \cref{conj:noSpecificArgNoClaim} settled, the analogous statement for OV �
   Under \cref{th:noPatternNoClaim}'s hypotheses, no anonymous, conclusive claim that holds is OV under $(¬\OF) ∩ E ∩ F_C$ either.
 \end{corollary}
 \begin{proof}
-  By \cref{th:newPvImpliesPvo}, OV under $D$ would imply PVo under $D$, ruled out by \cref{th:noPatternNoClaim}.
+  By \cref{th:newPvImpliesPvo}, OV under $D$ would imply PV under $D$, ruled out by \cref{th:noPatternNoClaim}.
 \end{proof}
 \begin{remark}
-  Taking $F_C := \allleadstos$ for every $C$ (trivially anonymous, and $C ⊆ \allleadstos$ always) recovers the plain statement: no such claim is PVo under $(¬\OF) ∩ E$ alone.
+  Taking $F_C := \allleadstos$ for every $C$ (trivially anonymous, and $C ⊆ \allleadstos$ always) recovers the plain statement: no such claim is PV under $(¬\OF) ∩ E$ alone.
 
-  As $\POF ⇒ \OF$ (so $¬\OF ⊆ ¬\POF$), this is a strictly stronger conclusion than the one obtained by using $¬\POF$ in place of $¬\OF$ throughout: shrinking the axiom only makes it easier for a claim to be safely distinguished from the (smaller) gap $D ∖ C$, hence easier to be PVo under it, so excluding PVo under the smaller, $¬\OF$-built axiom excludes it a fortiori under the larger, $¬\POF$-built one.
+  As $\POF ⇒ \OF$ (so $¬\OF ⊆ ¬\POF$), this is a strictly stronger conclusion than the one obtained by using $¬\POF$ in place of $¬\OF$ throughout: shrinking the axiom only makes it easier for a claim to be safely distinguished from the (smaller) gap $D ∖ C$, hence easier to be PV under it, so excluding PV under the smaller, $¬\OF$-built axiom excludes it a fortiori under the larger, $¬\POF$-built one.
 
   $F_C$ can also be taken to be $D^{\anobs', a', p'}_C$ (\cref{th:oneMorePriorFull}'s axiom, for any fixed $\anobs', a', p'$ — possibly different from the $\anobs, p$ of the hypothesis), or even $⋂_k D^{\anobs_k, a_k, p_k}_C$ for any family of triples: both required properties are inherited automatically. Indeed, $C ⊆ D^{\anobs', a', p'}_C$ always: for $\allleadstog ∈ C$, every row $b ∈ \allleadstog(I)$ lies in $S_C := ⋃_{\allleadstog'' ∈ C} \allleadstog''(I)$ ($\allleadstog$ itself witnesses it), so $\allleadstog(I) ∖ S_C = ∅$ and $D^{\anobs', a', p'}_C$'s defining condition — every $b ∈ \allleadstog(I) ∖ S_C$ failing $\anobs' ⊆ \ileadstogo[b] ⇒ a' \ileadstostg[b] p'$ is distinguishable from $S_C$ — holds vacuously. And $D^{\anobs', a', p'}_C$ is anonymous: membership $\allleadstog ∈ D^{\anobs', a', p'}_C$ is a condition on the set $\allleadstog(I)$ alone (whether a row lies in $\allleadstog(I) ∖ S_C$, fails the template, or is distinguishable from $S_C$, are all properties of the behavior itself, not of which individual realizes it), and $(\allleadstog ∘ σ)(I) = \allleadstog(σ(I)) = \allleadstog(I)$ for every permutation $σ$. Both properties — containing $C$, being anonymous — are preserved under arbitrary intersection (as pushforward by a bijection commutes with intersection), so the family closes under stacking finitely or infinitely many such filters together. So this whole family of claim-relative visibility filters, however combined, is powerless to rescue a claim once the underlying $(\anobs, p)$-pattern is absent from the world.
 
