@@ -368,7 +368,7 @@ Note that $C$ is verifiable iff it is verifiable under the trivial axiom.
 Verifiability under $D$ only requires \emph{some} proving observation to exist. 
 As with conclusiveness, it is desirable that every prefix admit a rightwards extension that still proves $C$, in order to ensure reproducibility.
 Given $C, D ⊆ \allleadstos$, $C$ is persistently verifiable under axiom $D$ iff
-$∀θ ∈ Θ ∩ \powerset{\allleadsto}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∅ ≠ ↑(θ' ∖ θ) ∩ D ⊆ C$.
+$∀θ ∈ Θ ∩ \powerset{\allleadsto}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∅ ≠ ↑(θ' ∖ θ) ∩ D ⊆ C$.\commentClaude{Proposed rename: obliviously verifiable (OV) under axiom $D$, same formal definition — matches the rename proposed at \cref{th:pvPoofLocal} and around.}
 Provability by $D$ implies persistent verifiability under $D$ (just use verification $θ' = ∅$).
 
 \section{Axioms}
@@ -381,7 +381,7 @@ Given $\allleadstog$ and $C$, say that $C$ is
   \item[False in $\allleadstog$ ($\F(\allleadstog)$)] iff $\allleadstog ∉ C$;
   \item[Observably False (OF) in $\allleadstog$ ($\OF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable; formally, iff $[∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆]$, equivalently, $Θ ∩ \powerset{\allleadstog} ⊈ C^⊆$;
   \item[Persistently Observably False in $\allleadstog$ ($\POF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable whatever past observation have occurred already; formally, iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆$.
-  \item[Persistently Opposably Observably False in $\allleadstog$ ($\POOF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable whatever past observation have occurred already, including when forgetting these past observations; formally, iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat (θ' ∖ θ) ∉ C^⊆$.
+  \item[Persistently Opposably Observably False in $\allleadstog$ ($\POOF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable whatever past observation have occurred already, including when forgetting these past observations; formally, iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat (θ' ∖ θ) ∉ C^⊆$.\commentClaude{Proposed rename: Obliviously Observably False (OOF) in $\allleadstog$ (OOF$(\allleadstog)$), same formal definition.}
 \end{description}
 We sometimes write $\POF$ instead of $\POF(\allleadstog)$ when the world $\allleadstog$ is clear from the context, and $\POF[]$ when $C$ is clear from the context (or referring to any generic claim), and similarly for $\OF$ and $\F$.
 
@@ -1057,7 +1057,7 @@ the axiom required must be at least as strong as claiming that if some observabl
 
 \subsection{Verifiability under an axiom}
 Given $C, D ⊆ \allleadstos$, $C$ is persistently verifiable (PV) at $\allleadstog ∈ \allleadstos$ under $D$ iff
-$∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ ↑(θ' ∖ θ) ∩ D ⊆ C$.
+$∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ ↑(θ' ∖ θ) ∩ D ⊆ C$.\commentClaude{Proposed rename: Obliviously Verifiable (OV) at $\allleadstog ∈ \allleadstos$ under $D$, same formal definition.}
 Given $C, D ⊆ \allleadstos$, $C$ is possibly verifiable under $D$ iff $∃ θ ∈ Θ \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
 PV is defined at every $\allleadstog ∈ \allleadstos$, so it admits a local characterization, \cref{th:pvPoofLocal}, holding at every $\allleadstog ∈ D$ rather than only at $\allleadstog ∈ C ∩ D$; restricting it to $C ∩ D$ gives \cref{th:dualPofPv}.
 \begin{theorem}
@@ -1883,7 +1883,7 @@ The set $Θ ∩ C^⊆$ is downwards closed, as both $Θ$ and $C^⊆$ are.
 
 \section{Recently moved supplementary material}
 \subsection{PVo and POF}
-Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{persistently verifiable in the old sense} (PVo) at $\allleadstog$ under $D$ iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑θ' ∩ D ⊆ C$.
+Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{persistently verifiable in the old sense} (PVo) at $\allleadstog$ under $D$ iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑θ' ∩ D ⊆ C$.\commentClaude{Proposed rename: Persistently Verifiable (PV) at $\allleadstog$ under $D$, same formal definition — this would take over the name currently used for what's proposed above to become OV.}
 \begin{corollary}
   \label{th:newPvImpliesPvo}
   Given $C, D ⊆ \allleadstos$: PV under $D$ implies PVo under $D$.
