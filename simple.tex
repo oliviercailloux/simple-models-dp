@@ -694,92 +694,8 @@ The second one expresses regularity using the notion of undistinguishability.
   Regularity implication: suppose $\allleadstog$ is $\anobs, G-\anobs, i$-regular, witnessed by $f'$ on $J' ⊆ I ∖ \set{i}$; then $\anobs ⊆ \ileadstogo$, and since $(G-\anobs)(\anobs') = 0$ for all $\anobs' ∉ K$, every $j ∈ J'$ has $f'(j) ∈ K$ and $f'(j) ⊆ \ileadstogo[j]$, so $j ∈ R_0$ and $J' ⊆ R_0 ∖ \set{i}$; but $\card{J'} = \card{R_0}$, forcing $i ∉ R_0$, i.e., $∀\anobs' ∈ K: \anobs' \not⊆ \ileadstogo$; since $B^{(1)} ⊆ ↑K$ this gives $\ileadstogo ∉ B^{(1)}$, and $\anobs ⊆ \ileadstogo$ gives $\ileadstogo ∉ B^{(2)}$, so $π(\ileadstogo) = \set{p}$.
 \end{proof}
 
-\begin{conjecture}
-  Given any regular $\allleadstog$, $\allleadstog$ admits no simple regularity iff $∀i ∈ I \suchthat π(\ileadstogo) ≠ ∅: i \text{ is undistinguishable from } \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b) ∧ \card{\allleadstoginv(b)} ∈ ℕ}$.
-\end{conjecture}
-\commentClaude{\Cref{th:regCarac}\cref{it:regImpl} with $K = ∅$ (equivalently \cref{it:regDist} with $B^{(1)} = ∅$) gives a clean characterization of simple regularity for a regular world: it holds iff $∃b ∈ \allleadstog(I)$ with $π(b) ≠ ∅$ that is distinguishable from $\set{c ∈ \allleadstog(I) \suchthat π(b) ≠ π(c)}$. The conjecture thus says: in a regular world, restricting that set to behaviors with finite preimage count preserves the undistinguishability equivalence.}
-\begin{proof}
-  Suppose the condition holds.
-  Assume for contradiction that $\allleadstog$ admits simple regularity: some $\anobs, p'$ satisfy $∃ i_0 ∈ I \suchthat \anobs ⊆ \ileadstogo[i_0]$ and $∀ j ∈ I: \anobs ⊆ \ileadstogo[j] ⇒ p' ∈ π(\ileadstogo[j])$.
-  Since $p' ∈ π(\ileadstogo[i_0])$, we have $π(\ileadstogo[i_0]) ≠ ∅$; apply the condition to $i_0$ to obtain $B ⊆ \allleadstog(I)$ with $i_0$ undistinguishable from $B$ and $∀ b ∈ B: π(\ileadstogo[i_0]) ≠ π(b)$.
-  Since $\anobs^{-1}(P) ∈ \fincrhists$, undistinguishability yields $b ∈ B$ with $\anobs ⊆ b$.
-  Pick $j ∈ I$ with $\ileadstogo[j] = b$ (possible as $b ∈ \allleadstog(I)$); then $\anobs ⊆ \ileadstogo[j]$, so by simple regularity $p' ∈ π(b)$; by \cref{th:sing}, $π(b) = \set{p'} = π(\ileadstogo[i_0])$, contradicting $π(\ileadstogo[i_0]) ≠ π(b)$.
-
-  Suppose now that the condition fails, we show that simple regularity follows.
-  For some $i$, define $p = π(\ileadstogo)$ and assume that $i \text{ is distinguishable from } B = \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b) ∧ \card{\allleadstoginv(b)} ∈ ℕ}$.
-  Define $B' = \set{b ∈ \allleadstog(I) \suchthat π(\ileadstogo) ≠ π(b)}$.
-  % We know that $i$ is distinguishable from $B'$, otherwise $\allleadsto$ 
-  
-  % Now let’s show that
-  % $∀i ∈ I \suchthat π(\ileadstogo) ≠ ∅: ∃B ⊆ \allleadstog(I) \suchthat i \text{ is undistinguishable from } B ∧ ∀b ∈ B: π(\ileadstogo) ≠ π(b) ∧ \card{\allleadstoginv(B)} ∈ ℕ$
-  % implies
-  % $\allleadstog$ admits no simple regularity.
-
-  Suppose now $\allleadstog$ admits no simple regularity.
-  Let $i ∈ I$ with $π(\ileadstogo) = \set{p}$ and define $B = \set{b ∈ \allleadstog(I) \suchthat π(b) ≠ \set{p}}$.
-  Condition (2) holds by definition.
-  For (1): given $H ∈ \fincrhists$ let $\anobs = \restr{\ileadstogo}{H}$; since $\anobs ⊆ \ileadstogo$ and $(\anobs, p)$ does not witness simple regularity, some $j ∈ I$ satisfies $\anobs ⊆ \ileadstogo[j]$ and $π(\ileadstogo[j]) ≠ \set{p}$, so $\ileadstogo[j] ∈ B$ witnesses $\restr{\ileadstogo}{H} ∈ \restr{B}{H}$.
-  For (3): since $\allleadstog$ is regular, some anonymous falsifiable claim $C$ holds by \cref{th:regularity}.
-  For each $b ∈ B$: any $b' ∈ R(\set{b})$ satisfies $b'(α) = b(α)$ for every $α ∈ \allhists$ (by undistinguishability at $H = \set{α}$), so $R(\set{b}) = \set{b\,}$ and $R(\set{b})^I$ is the world where every individual has behavior $b$; in that world $C$ fails ($C$ is conclusive with proposition $p$ yet $π(b) ≠ \set{p}$), so by anonymity of $C$, if $\card{\allleadstoginv(b)} ∉ ℕ$ we could permute infinitely many $b$-individuals into any finite observable, making $C$ completable to a world where $C$ fails — contradicting $C$ holding; thus $\card{\allleadstoginv(b)} ∈ ℕ$.
-  Since regularity gives a finite certificate $J$ bounding the number of distinct obstruction types, $B$ is finite, hence $\card{\allleadstoginv(B)} = \sum_{b ∈ B} \card{\allleadstoginv(b)} ∈ ℕ$.
-\end{proof}
-
-\begin{conjecture}
-  If some anonymous, conclusive claim holds, then $∃ \anobs, p ∈ P \suchthat (∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ P_i) ∨ (∃B ⊆ \allbs \suchthat ∀b ∈ B: p ∉ π(b) ∧ \anobs$ undistinguishable from $B ∧ \card{({\allleadstoinv}(B))} ∈ ℕ)$.
-\end{conjecture}
-Problem is that perhaps if g is distinguishable from $B$ then there exists some desired regularity, without needing anything about claims!
-Also: $\anobs$ is not a behavior thus the concept does not apply!
-It’s rather: any behavior $g$ with $p$ DJ has some undistinguishable $B$ that prevents it from becoming a regular rule. (We don’t even need assumptions about claims!?)
-\begin{proof}[Attempt]
-  By conclusiveness, we have for some $i_1, θ, p$:
-  $π_{i_1}(↑θ ∩ C) = p$.
-
-  Let us assume for now that $θ = \set{((a), i_1, φ), ((b), i_2, φ')}$ with $i_2 ≠ i_1$ (we will try to extend afterwards to other cases, hoping for now that nothing crucial depends on this simplification).
-
-  We deduce that $C ⊆ \set{\allleadstog \suchthat (a) \ileadstog[i_1] φ ∧ (b) \ileadstog[i_2] φ ⇒ p ∈ π(\ileadstogo[i_1])}$.
-  By anonymity, also $C ⊆ \set{\allleadstog \suchthat ∀i ≠ j: (a) \ileadstog φ ∧ (b) \ileadstog[j] φ ⇒ p ∈ π(\ileadstogo)}$.
-  Indeed, a world in $C$ satisfying the antecedent $(a) \ileadstog φ ∧ (b) \ileadstog[j] φ$ for some pair of individuals $i ≠ j$ must correspond to a world, applying anonymity by mapping $i$ to $i_1$ and $j$ to $i_2$, that also is in $C$, whence $p ∈ π(\ileadstogo)$.
-  As $C$ holds, we obtain
-  $∀i ≠ j: (a) \ileadsto φ ∧ (b) \ileadsto[j] φ ⇒ p ∈ π(\ileadstoo)$.
-
-  Define $\anobs = θ(i)$.
-  Define $B = \set{g ∈ \allleadsto(I) \suchthat ∃j ∈ θ(\allhists, P) \suchthat p ∉ π(j) ∧ g ⊆ θ(j)}$ be any behavior in $\allleadsto(I)$ compatible with the observations from $θ$ about any individual $j ∈ I$ such that $p ∉ π(j)$ (here, any behavior sending $(b)$ to $φ'$).
-
-  Assume infinitely many individuals have these behaviors (or, simply, more than $\card{(θ(\allhists, P) \suchthat p ∉ π(j))}$).
-  Then we can dispense with this clause, because some $i_3$ has that behavior and either that behavior is compatible with $(a) \ileadsto φ$ then the implication fails (by using $i_2$ to satisfy the clause) or is not compatible and the second clause is not required.
-
-  If $\anobs$ is undistinguishable from $B$, the proof is done.
-  Assume otherwise.
-
-  We could have infinitely many $k$ that we need to distinguish using $(a)$ and $j$ that we need to exclude using $(b)$.
-  To be continued…
-\end{proof}
-
 Note finiteness can be imposed because it’s only about individuals touched by $θ$ (thus, finitely many).
 If there’s infinitely many individuals with behavior $b$, $θ$ spares some, and the claim cannot use $B$ as regularity.
-
-\begin{theorem}
-  \label{th:patternNecessary}
-  Consider $\allleadsto ∈ E$. If some anonymous, conclusive claim holds, then $∃ \anobs, p ∈ P \suchthat ∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ P_i$.
-\end{theorem}
-\begin{proof}
-  Let $C$ be anonymous, conclusive, and holding, that is, $\allleadsto ∈ C$.
-
-  \emph{A conclusiveness pin.}
-  As $C$ is conclusive and $\allleadsto ∈ C$, applying conclusiveness at $θ = ∅$ gives $θ_0 ∈ Θ ∩ \powerset{\allleadsto}$, $i^* ∈ I$ and $p^* ∈ P$ with $π_{i^*}(↑θ_0 ∩ C) = \set{p^*}$.
-  Let $H := \set{α \suchthat ∃p, (i^*,α,p) ∈ θ_0} ∈ \fincrhists$ and let $\anobs: H → P$ be $\anobs(α) := p$ for the unique $p$ with $(i^*,α,p) ∈ θ_0$; as $θ_0 ⊆ \allleadsto$, $\anobs ⊆ \ileadstoo[i^*]$.
-
-  \emph{Propagating the pin to every matching individual.}
-  Fix $i ∈ I$ with $\anobs ⊆ \ileadstoo[i]$; write $g := \ileadstoo[i]$. We show $p^* ∈ P_i$.
-
-  If $i = i^*$: as $θ_0 ⊆ \allleadsto ∈ C$, $\allleadsto ∈ ↑θ_0 ∩ C$, so $π_{i^*}(\allleadsto) = p^*$, that is $p^* ∈ P_{i^*}$.
-
-  If $i ≠ i^*$: as $\allleadsto ∈ E$, the class $J_g := \set{j ∈ I \suchthat \ileadstoo[j] = g}$ is infinite (it contains $i$), and $θ_0$ has finite support, so we may pick $i'' ∈ J_g ∖ (θ_0(\allhists, P) ∪ \set{i^*})$. Let $σ$ be the transposition of $i^*$ and $i''$ (identity elsewhere) and $\allleadstog^{sw} := \allleadsto ∘ σ$.
-  Then $\allleadstog^{sw}(i^*) = \ileadstoo[i''] = g$ and $\anobs ⊆ g$: $θ_0$'s constraint on $i^*$ holds in $\allleadstog^{sw}$; and every other $j ∈ θ_0(\allhists, P)$ satisfies $j ∉ \set{i^*, i''}$, so $\allleadstog^{sw}(j) = \ileadstoo[j]$, matching $θ_0$ there too. Hence $θ_0 ⊆ \allleadstog^{sw}$.
-  As $C$ is anonymous and $\allleadsto ∈ C$, $\allleadstog^{sw} = \allleadsto ∘ σ ∈ C ∘ σ = C$; with $θ_0 ⊆ \allleadstog^{sw}$, $\allleadstog^{sw} ∈ ↑θ_0 ∩ C$, so $π_{i^*}(\allleadstog^{sw}) = p^*$. As $π_{i^*}$ depends only on the row $\allleadstog^{sw}(i^*) = g$ (\cref{def:decisive}), this is $p^* ∈ P_i$.
-
-  Taking $p := p^*$, $∀i ∈ I: \anobs ⊆ \ileadstoo[i] ⇒ p^* ∈ P_i$, as required.
-\end{proof}
 
 \begin{lemma}
   \label{lem:outsideSupportForced}
@@ -2005,6 +1921,29 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
   Yet $∀i: a \ileadstost_i φ ∨ b \ileadstost_i φ$, so $P_i = \set{φ}$ for all $i$, and \cref{th:noPatternNoClaim}'s hypothesis fails.
   A suitable claim exists: $C = [∀i: (a) \ileadstog φ ⇒ a \ileadstostg φ]$ holds in $\allleadsto$ (genuinely for $J$, vacuously for $K$ since $(a) \ileadstoo[k] φ'$), is anonymous and conclusive, and is PVo by \cref{th:oneMorePriorGeneralPev}\commentClaude{\Cref{th:oneMorePriorGeneralPev} establishes PVo; whether new PV holds needs verification.} (applied with $H := \set{(a)}$, $\anobs := \set{((a), φ)}$, $c := a$, $p := φ$, and any $j_0 ∈ J$).
 \end{example}
+
+\begin{theorem}
+  \label{th:patternNecessary}
+  If $\allleadsto ∈ E$ and some anonymous, conclusive claim holds, then $\allleadsto$ admits a simple regularity.
+\end{theorem}
+\begin{proof}
+  Let $C$ be anonymous, conclusive, and holding, that is, $\allleadsto ∈ C$.
+
+  \emph{A conclusiveness pin.}
+  As $C$ is conclusive and $\allleadsto ∈ C$, applying conclusiveness at $θ = ∅$ gives $θ_0 ∈ Θ ∩ \powerset{\allleadsto}$, $i^* ∈ I$ and $p^* ∈ P$ with $π_{i^*}(↑θ_0 ∩ C) = \set{p^*}$.
+  Let $H := \set{α \suchthat ∃p, (i^*,α,p) ∈ θ_0} ∈ \fincrhists$ and let $\anobs: H → P$ be $\anobs(α) := p$ for the unique $p$ with $(i^*,α,p) ∈ θ_0$; as $θ_0 ⊆ \allleadsto$, $\anobs ⊆ \ileadstoo[i^*]$.
+
+  \emph{Propagating the pin to every matching individual.}
+  Fix $i ∈ I$ with $\anobs ⊆ \ileadstoo[i]$; write $g := \ileadstoo[i]$. We show $p^* ∈ P_i$.
+
+  If $i = i^*$: as $θ_0 ⊆ \allleadsto ∈ C$, $\allleadsto ∈ ↑θ_0 ∩ C$, so $π_{i^*}(\allleadsto) = p^*$, that is $p^* ∈ P_{i^*}$.
+
+  If $i ≠ i^*$: as $\allleadsto ∈ E$, the class $J_g := \set{j ∈ I \suchthat \ileadstoo[j] = g}$ is infinite (it contains $i$), and $θ_0$ has finite support, so we may pick $i'' ∈ J_g ∖ (θ_0(\allhists, P) ∪ \set{i^*})$. Let $σ$ be the transposition of $i^*$ and $i''$ (identity elsewhere) and $\allleadstog^{sw} := \allleadsto ∘ σ$.
+  Then $\allleadstog^{sw}(i^*) = \ileadstoo[i''] = g$ and $\anobs ⊆ g$: $θ_0$'s constraint on $i^*$ holds in $\allleadstog^{sw}$; and every other $j ∈ θ_0(\allhists, P)$ satisfies $j ∉ \set{i^*, i''}$, so $\allleadstog^{sw}(j) = \ileadstoo[j]$, matching $θ_0$ there too. Hence $θ_0 ⊆ \allleadstog^{sw}$.
+  As $C$ is anonymous and $\allleadsto ∈ C$, $\allleadstog^{sw} = \allleadsto ∘ σ ∈ C ∘ σ = C$; with $θ_0 ⊆ \allleadstog^{sw}$, $\allleadstog^{sw} ∈ ↑θ_0 ∩ C$, so $π_{i^*}(\allleadstog^{sw}) = p^*$. As $π_{i^*}$ depends only on the row $\allleadstog^{sw}(i^*) = g$ (\cref{def:decisive}), this is $p^* ∈ P_i$.
+
+  Taking $p := p^*$, $∀i ∈ I: \anobs ⊆ \ileadstoo[i] ⇒ p^* ∈ P_i$, as required.
+\end{proof}
 
 \subsection{Visibility}
 Given $\anobs$,
