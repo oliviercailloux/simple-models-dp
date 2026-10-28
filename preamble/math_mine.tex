@@ -1,12 +1,12 @@
 \NewDocumentCommand{\range}{}{R}
 \NewDocumentCommand{\incr}{}{\mathcal{I}}
 \NewDocumentCommand{\finite}{}{\mathcal{F}}
-\NewDocumentCommand{\POOF}{O{C}}{%
-  \def\POFarg{#1}%
-  \ifx\POFarg\empty
-    \operatorname{POOF}%
+\NewDocumentCommand{\OOF}{O{C}}{%
+  \def\OOFarg{#1}%
+  \ifx\OOFarg\empty
+    \operatorname{OOF}%
   \else
-    \operatorname{POOF}_{#1}%
+    \operatorname{OOF}_{#1}%
   \fi
 }
 \NewDocumentCommand{\POF}{O{C}}{%
