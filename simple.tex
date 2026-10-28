@@ -819,35 +819,7 @@ A claim $C$ is informative iff it is informative in $\allleadsto$.
   If $\card{\allargs} ∉ ℕ$, any informative claim is not verifiable.
 \end{corollary}
 
-\begin{theorem}
-  If $\card{\allargs} ∉ ℕ$, any claim verifiable in $\allleadstog$ is informative iff it is informative in $\allleadstog$.
-\end{theorem}
-\begin{proof}
-  Let $θ_v ∈ Θ ∩ \powerset{\allleadstog}$ witness that $C$ is verifiable in $\allleadstog$, so that every world extending $θ_v$ lies in $C$; in particular $\allleadstog ∈ C$, hence informativeness in $\allleadstog$ is defined.
-
-  If $C$ is informative, then $∅ ∈ Θ ∩ \powerset{\allleadstog}$ witnesses that it is informative in $\allleadstog$, since $↑∅ ∩ C = C$ and thus $π(↑∅ ∩ C) = π(C) ≠ (P ∪ \set{∅})^I$.
-
-  Conversely, assume $C$ is not informative, that is, $π(C) = (P ∪ \set{∅})^I$; we show it is not informative in $\allleadstog$.
-  Let $θ ∈ Θ ∩ \powerset{\allleadstog}$.
-  As $θ ⊆ \allleadstog$ and $θ_v ⊆ \allleadstog$, the union $θ ∪ θ_v$ is a right unique finite subset of $(I × \allhists) × P$, hence a general observation.
-  Given any $f ∈ (P ∪ \set{∅})^I$, \cref{th:completable} yields $\allleadstog' ∈ \allleadstos$ with $θ ∪ θ_v ⊆ \allleadstog'$ and $π(\allleadstog') = f$.
-  Then $θ_v ⊆ \allleadstog'$ gives $\allleadstog' ∈ C$, and $θ ⊆ \allleadstog'$ gives $\allleadstog' ∈ ↑θ$, so $f ∈ π(↑θ ∩ C)$.
-  As $f$ is arbitrary, $π(↑θ ∩ C) = (P ∪ \set{∅})^I$; as $θ$ is arbitrary, $C$ is not informative in $\allleadstog$.
-\end{proof}
-\begin{remark}
-  The hypothesis $\card{\allargs} ∉ ℕ$ cannot be dropped: without it, a claim may be verifiable and informative in $\allleadstog$ yet not informative (the left to right direction however, informative implies informative in a given world, needs no such hypothesis).
-  Let $\allargs = \set{a}$ and $I = \set{i_0}$, so that every nonempty path ends in $\set{a}$ and $π(\allleadstog)(i_0) = \set{p}$ if $\allleadstog$ responds $p$ to every nonempty path and $∅$ otherwise.
-  Write $\allleadstog_p$ for the world responding $p$ everywhere, let $θ_v = \set{(i_0, (a), φ')}$, and let $C = ↑θ_v ∪ \set{\allleadstog_φ, \allleadstog_0}$.
-  Then $C$ is verifiable in $\allleadstog_{φ'}$, witnessed by $θ_v$.
-  It is also informative in $\allleadstog_{φ'}$: as $\allleadstog_φ, \allleadstog_0 ∉ ↑θ_v$, we have $↑θ_v ∩ C = ↑θ_v$, and forcing $(a) \ileadstogo[i_0] φ'$ leaves only $π(\allleadstog)(i_0) ∈ \set{\set{φ'}, ∅}$ (reaching $\set{φ}$ or $\set{0}$ would require every nonempty path to answer $φ$, resp.\ $0$), so $π(↑θ_v ∩ C) = \set{\set{φ'}, ∅} ≠ (P ∪ \set{∅})^I$.
-  Yet $C$ is not informative, since $\allleadstog_φ$ and $\allleadstog_0$ supply the missing profiles: $π(C) = \set{\set{φ'}, ∅, \set{φ}, \set{0}} = (P ∪ \set{∅})^I$.
-\end{remark}
-
 \subsection{Falsifiability}
-OV and OOF have a dual character as
-$C$ satisfies OV under $D$ iff
-$∀\allleadstog ∈ C ∩ D, \OOF[D ∖ C](\allleadstog)$ (\cref{th:dualPofPv}, see also \cref{rk:dualEv}).
-
 The following partitioning of claims with respect to their falsifiability status and examples might help better understand this central notion.
 
 Any claim $C$ satisfies exactly one of these:
@@ -1069,6 +1041,10 @@ OV is defined at every $\allleadstog ∈ \allleadstos$, so it admits a local cha
   Moreover, as $\allleadstog ∈ D$ and $θ' ∖ θ ⊆ θ' ⊆ \allleadstog$, we have $\allleadstog ∈ ↑(θ' ∖ θ) ∩ D$, so this set is automatically nonempty; thus $∅ ≠ ↑(θ' ∖ θ) ∩ D ⊆ C$ reduces to $↑(θ' ∖ θ) ∩ D ⊆ C$, equivalently $(θ' ∖ θ) ∉ (D ∖ C)^⊆$.
   Substituting into the definition of OV at $\allleadstog$ gives $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}: (θ' ∖ θ) ∉ (D ∖ C)^⊆$, which is exactly $\OOF[D ∖ C](\allleadstog)$.
 \end{proof}
+
+OV and OOF have a dual character as
+$C$ satisfies OV under $D$ iff
+$∀\allleadstog ∈ C ∩ D, \OOF[D ∖ C](\allleadstog)$ (\cref{th:dualPofPv}, see also \cref{rk:dualEv}).
 \begin{corollary}
   \label{th:dualPofPv}
   $C$ satisfies OV under axiom $D$ iff $∀\allleadstog ∈ C ∩ D: \OOF[D ∖ C](\allleadstog)$.
@@ -2050,7 +2026,7 @@ $∀\allleadstog ∈ C: ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ 
 \end{example}
 
 A claim $C$ is \emph{possibly informative} iff it is informative in some world of $C$, namely, iff $∃θ ∈ Θ ∩ C^⊆ \suchthat π(↑θ ∩ C) ≠ (P ∪ \set{∅})^I$.
-A claim $C$ is \emph{informative} iff $π(C) ≠ (P ∪ \set{∅})^I$.
+A claim $C$ is \emph{informative} (old definition) iff $π(C) ≠ (P ∪ \set{∅})^I$.
 A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π_i(C) = \set{π_i(\allleadstog) \suchthat \allleadstog ∈ C} ≠ P ∪ \set{∅}$.
 A claim $C$ is \emph{a posteriori sharp} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(↑θ ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
 A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I \suchthat π_i(↑θ ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
