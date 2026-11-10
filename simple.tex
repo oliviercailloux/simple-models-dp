@@ -272,12 +272,11 @@ A claim $C$ is \emph{anonymous} iff $∀ σ: C = C ∘ σ$.
 Our requirements on claims impose in turn requirements on the exposure protocol. For example, if no individual has a DJ ($∀i: π(\ileadstoo) = ∅$), no claim that holds can be conclusive.
 This section exposes such a requirement on the exposure protocol, which we call regularity.
 
-A world is said to be regular iff there is a proposition $p ∈ P$ and a finite multiset of anonymous observations, 
-among which some distinguished anonymous observation, 
-such that 
-each of the anonymous observations are compatible with some individual’s behavior, 
-and for each such mapping (from individuals to anonymous observations),
-the individual whose behavior is compatible with the distinguished anonymous observation has $p$ as DJ.
+Given a world $\allleadstog$ and a multiset of anonymous observations $K$, a conformity covering of $K$ is a mapping $m: K → \powerset{I}$ that associates each $\anobs ∈ K$ to a different individual $i ∈ I$ (thus $∀\anobs ≠ \anobs' ∈ K: m(\anobs) ∩ m(\anobs') = ∅$ and the cardinality of $m(\anobs)$ equals the number of occurrences of $\anobs$ in $K$) such that $\anobs ⊆ \ileadstogo$.
+
+A world is said to be regular iff there is a proposition $p ∈ P$ and a finite multiset of anonymous observations $K$, 
+among which some distinguished anonymous observation $\anobs ∈ K$, 
+such that there exists some conformity covering of $K$, and each conformity covering of $K$ associates $\anobs$ to individuals that all have $p$ as DJ.
 
 \Cref{th:regularity} shows that this is a required condition on the exposure protocol: if $\allleadsto$ is not regular, then there is no claim that holds and is anonymous and conclusive.
 \begin{example}
@@ -296,8 +295,8 @@ the individual whose behavior is compatible with the distinguished anonymous obs
 
 \subsection{Verifiability}
 \label{sec:verifiability}
-\Cref{ex:regularity} illustrates an important practical difficulty: given a claim such as $C = [(a) \ileadstog φ ⇒ φ ∈ π(\ileadstogo)]$, one can check analytically that it is anonymous and 
-conclusive, but whether it holds is empirical.
+Studying DJs require to tackle the following difficulty: one can check analytically whether a claim is anonymous and conclusive, but whether it holds is empirical
+(the claim of \cref{ex:regularity}, $C = [(a) \ileadstog φ ⇒ φ ∈ π(\ileadstogo)]$, illustrates).
 We therefore need to study procedures to determine whether a claim holds.
 A natural starting point is to attempt to verify claims, defined as follows.
 
@@ -312,8 +311,8 @@ Indeed,
 some sufficiently simple claims, such as the claim $C = [(a) \ileadstog φ]$ that some given path leads some given individual to some given proposition, do satisfy verifiability (provided they hold), but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
 
 It will turn out that any claim that is conclusive fails verifiability.
-This is even visible by considering a weaker property than conclusiveness.
-A claim $C$ is \emph{informative} iff $∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat π(↑θ ∩ C) ≠ (P ∪ \set{∅})^I$.
+This is even visible by considering a weaker property than conclusiveness:
+say that a claim $C$ is \emph{informative} iff $∃θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat π(↑θ ∩ C) ≠ (P ∪ \set{∅})^I$.
 \begin{remark}
   Informativeness is weaker than conclusiveness: among others, it only requires an observational ability of excluding some deliberated judgment functions. Contrary to conclusiveness, it permits mere counting: the claim $C = [\card{(π^{-1}(φ))} = 1]$, that exactly one person deliberately believes $φ$, is informative, but is not conclusive as the claim does not permit to know which individual it is. 
   % Also, the claim $C = [(∃ i \suchthat (a) \nileadstog φ) ∧ (∀i: (a) \nileadstog φ ⇒ φ' ∈ π_i(\allleadstog))]$ is informative.
@@ -329,11 +328,13 @@ Therefore, conclusiveness is incompatible with verifiability.
 The fundamental reason for the incompatibility is that any observation can be completed in a way that contradicts any conclusion that informativeness in a world mandates (\cref{th:completable}).
 
 \begin{remark}
-  It is important to realize that the above impossibility applies for all worlds, including regular ones. Our regularity condition does ensure that some conclusive claim holds, but this section investigates another question: how one can effectively know whether a claim holds, with the limited knowledge that observability can bring. In contrast, a theorem such as \cref{th:regularity} uses full knowledge about the world.
+  It is important to realize that the above impossibility applies for all worlds, including regular ones. This section investigates how one can effectively know whether a claim holds, with the limited knowledge that observability can bring. In contrast, a theorem such as \cref{th:regularity} uses full knowledge about the world.
 \end{remark}
 
 We thus now turn to examining which sort of prior knowledge will suffice for ensuring the existence of a verification procedure that will allow to determine that a conclusive and anonymous claim holds (when it indeed holds).
 As such prior knowledge cannot be justified by observations, we call them axioms.
+An axiom defines a set in which it states that the real world lies.
+Thus, mathematically speaking, we equate an axiom with a subset of the possible worlds, $D ⊆ \allleadstos$, interpreted as the set among which the real world lies ($\allleadsto ∈ D$). The trivial axiom is $D = \allleadstos$.
 
 Three axioms will be involved, the two first of which can be seen as applications to our context of Popperian ideas. 
 First, we will assume that falsification tests fail falsifying the claim, under condition of sufficient observability.
@@ -349,7 +350,7 @@ The following example illustrates the tension that needs overcoming. For a claim
   The claim $C_1 = [∃i \suchthat ∅ \ileadstog φ]$ is verifiable and not conclusive.
   The claim $C_2 = [(∀i: ∅ \ileadstog φ ⇒ ∀α, α \ileadstog φ) ∧ (∃i \suchthat ∅ \ileadstog φ)]$ is conclusive and not verifiable.
 \end{example}
-We will see that combining verification procedures, which permit to empirically verify punctual facts, with axioms that deal with generalities, lead further than procedures based only on axioms or on verification could.
+Our goal is to combine verification procedures, which permit to empirically verify punctual facts, with axioms that deal with generalities, in order to deduce whether a claim holds in suitable circumstances.
 
 We say that an axiom $D$ proves a claim $C$ iff $D ⊆ C$. 
 %TODO get rid of provability by D beyond 3.4 “Verifiability under an axiom” and move it there.
@@ -357,7 +358,7 @@ We say that an axiom $D$ proves a claim $C$ iff $D ⊆ C$.
 \subsection{Verifiability under an axiom}
 Verifiability, as defined in \cref{sec:verifiability}, mandates that some observation proves $C$.
 As indicated there, this is too demanding to be applicable with no prior knowledge.
-This section extends the verifiability concept to the case where some axiom is given.
+Let us extend the verifiability concept to the case where some axiom is given.
 
 $C$ is verifiable under $D$ iff
 $∃ θ ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
@@ -380,8 +381,7 @@ Given $\allleadstog$ and $C$, say that $C$ is
 \begin{description}[font=\normalfont]
   \item[False in $\allleadstog$ ($\F(\allleadstog)$)] iff $\allleadstog ∉ C$;
   \item[Observably False (OF) in $\allleadstog$ ($\OF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable; formally, iff $[∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆]$, equivalently, $Θ ∩ \powerset{\allleadstog} ⊈ C^⊆$;
-  \item[Persistently Observably False in $\allleadstog$ ($\POF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable whatever past observation have occurred already; formally, iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆$.
-  \item[Obliviously Observably False in $\allleadstog$ ($\OOF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable whatever past observation have occurred already, including when forgetting these past observations; formally, iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat (θ' ∖ θ) ∉ C^⊆$.
+  \item[Obliviously Observably False in $\allleadstog$ ($\OOF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable also when ignoring any possible past observations; formally, iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat (θ' ∖ θ) ∉ C^⊆$.
 \end{description}
 We sometimes write $\POF$ instead of $\POF(\allleadstog)$ when the world $\allleadstog$ is clear from the context, and $\POF[]$ when $C$ is clear from the context (or referring to any generic claim), and similarly for $\OF$ and $\F$.
 
@@ -522,7 +522,7 @@ In supplement to a possibly helpful conceptual clarification, such a sharp separ
 \subsection{Generalities}
 This appendix relaxes the assumption of the main text that $\card{I} ∉ \N$ and $\card{\allargs} ∉ \N$. 
 It also relaxes the requirement that a claim be non-empty, thus, in this part, a claim is any subset of $\allleadstos$.
-Each result indicates which assumptions on the cardinalities of these sets (or whether $C ≠ ∅$) are required, if any.
+Each result indicates which assumptions on the cardinalities of these sets are required, if any.
 
 \subsection{Requirement on the real world}
 Given a multiset $S ∈ ℕ^X$ over any set $X$ and given any $x ∈ X$ with $1 ≤ S(x)$, define $S - x$ as $(S - x)(x) = S(x) - 1$ and $∀x ≠ y ∈ X: (S - x)(y) = S(y)$.
@@ -594,8 +594,8 @@ A world $\allleadstog$ is regular iff $∃G ∈ ℕ^{\anobses} \text{ with finit
 \end{proof}
 
 A special case of regularity is worth examining.
-Observe that $\set{0}^{\anobses}$ denotes the empty multiset.
-Observe that $\set{(\anobs, 1)}$ denotes a singleton multiset containing only $\anobs$; abusing notations, we use $\anobs$ to denote such a singleton multiset.
+Observe that $\anobses × \set{0}$ denotes the empty multiset.
+Observe that $\set{(\anobs, 1)} ∪ ((\anobses ∖ \anobs) × \set{0})$ denotes a singleton multiset containing only $\anobs$; abusing notations, we use $\anobs$ to denote such a singleton multiset.
 
 It follows from the above definitions that 
 a world $\allleadstog$ is $\anobs, \set{0}^{\anobses}, i\text{-regular}$ iff $\anobs ⊆ \ileadstogo$ and that
@@ -820,6 +820,14 @@ A claim $C$ is informative iff it is informative in $\allleadsto$.
 \end{corollary}
 
 \subsection{Falsifiability}
+Given $\allleadstog$ and $C$, say that $C$ is
+\begin{description}[font=\normalfont]
+  \item[False in $\allleadstog$ ($\F(\allleadstog)$)] iff $\allleadstog ∉ C$;
+  \item[Observably False (OF) in $\allleadstog$ ($\OF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable; formally, iff $[∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆]$, equivalently, $Θ ∩ \powerset{\allleadstog} ⊈ C^⊆$;
+  \item[Persistently Observably False in $\allleadstog$ ($\POF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable whatever past observation have occurred already; formally, iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆$.
+  \item[Obliviously Observably False in $\allleadstog$ ($\OOF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable whatever past observation have occurred already, including when forgetting these past observations; formally, iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat (θ' ∖ θ) ∉ C^⊆$.
+\end{description}
+
 The following partitioning of claims with respect to their falsifiability status and examples might help better understand this central notion.
 
 Any claim $C$ satisfies exactly one of these:
