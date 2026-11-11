@@ -1013,45 +1013,8 @@ Provability by $¬\OF(\allleadsto)$ (equivalently, falsifiability or triviality)
   Also, consider $C_3$ being $∀j: (c) \ileadsto[j] φ$, $C_4$ being $(d) \ileadsto[j] φ ∧ (e) \ileadsto[j] φ$ and $C$ being $C_1$ or $C_2$ together with $C_3$ or $C_4$ (assuming infinitely many individuals if using $C_1$ or $C_3$).
   Then, $C$ is fails established verifiability (due to $C_3$ or $C_4$) and $¬\OF(\allleadsto)$ does not prove $C$ (due to $C_1$ or $C_2$), but $C$ satisfies established verifiability under axiom $¬\OF(\allleadsto)$ (with verification $(a) \ileadsto φ$).
 \end{example}
-  
-This suggests conjecturing that established verifiability under $D'$ is always strictly stronger than established verifiability under $D$, for any axioms $D ⊆ D'$.
-% This is not the case in general; \cref{app:evStrictNested} investigates the question and reports the current state of its characterization.
 
-Note that if a claim is not provable by $¬\OF(\allleadsto)$ (equivalently, some world is out of $C$ and NOT OF), then some world is out of $C$ and NOT POF.
-
-It is probably useful to remember that $¬\OF(\allleadstog)$ states that 
-negating $C$, in that world, requires incompatible, or infinitely many, triples: 
-the triples completable only out of C are all unobservable. 
-Indeed, $Θ ∩ \powerset{\allleadstog} ⊆ C^⊆$ is equivalent to $∀T ∈ \powerset{\allleadstog}, T ∉ C^⊆ ⇒ T ∉ Θ$.
-When a claim is never falsifiable, thus $∀\allleadstog, ¬\OF(\allleadstog)$, we obtain $Θ ⊆ C^⊆$.
-
-If $D ⊆ D'$, then established verifiability under axiom $D'$ implies established verifiability under axiom $D$.
-
-\begin{theorem}
-  \label{th:minimalPriorForInformativeness}
-  If $C$ is such that $π(C) ≠ (P ∪ \set{∅})^I$ and is possibly verifiable under $D$, then
-  \begin{itemize}
-    \item 
-    $∃θ ∈ Θ, f ∈ (P ∪ \set{∅})^I \suchthat ∀\allleadstog ∈ D: [θ ⊆ \allleadstog ⇒ π(\allleadstog) ≠ f]$;
-    \item if $\card{\allargs} ∉ ℕ$, $D$ is not trivial.
-  \end{itemize}
-\end{theorem}
-\begin{proof}
-  By \cref{th:vud}, $↑θ ∩ D ⊆ C$, and for some $f$, $\allleadstog ∈ C ⇒ π(\allleadstog) ≠ f$.
-
-  Also, $D ≠ \allleadstos$, as $∃ θ ⊆ \allleadstog \suchthat π(\allleadstog) = f$ (by \cref{th:completable}), thus $\allleadstog ∉ D$.
-\end{proof}
-\Cref{th:toStricterClaims} shows that impossibilities propagate to stricter claims.
-Together with \cref{th:minimalPriorForInformativeness}, it shows that 
-the axiom required must be at least as strong as claiming that if some observable holds, then some configuration of DJs is excluded.
-\begin{remark}
-  Suffices that the axiom states something like: if almost all individuals deliberately believe $φ$, then everybody deliberately believe $φ$. This innocuous enough axiom suffices because we require only informativeness, and indeed it only permits to restrict possibilities, not to determine anybody’s DJ.
-\end{remark}
-
-% \begin{remark}
-%   TODO
-  % This axiom seems unsatisfactorily not primitive enough (to be worked on…). We should obtain as a result that the reasonable axiom is, if no visibility issues, then not OF, by assuming that we have observed everything we could ever dream of.
-% \end{remark}
+If $D ⊆ D'$, then verifiability at $\allleadstog$ under axiom $D'$ implies verifiability at $\allleadstog$ under axiom $D$.
 
 \subsection{Verifiability under an axiom}
 Given $C, D ⊆ \allleadstos$, $C$ is obliviously verifiable (OV) at $\allleadstog ∈ \allleadstos$ under $D$ iff
