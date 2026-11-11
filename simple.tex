@@ -1037,126 +1037,6 @@ If $D ⊆ D'$, then verifiability at $\allleadstog$ under axiom $D'$ implies ver
   Substituting into the definition of OV at $\allleadstog$ gives $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}: (θ' ∖ θ) ∉ (D ∖ C)^⊆$, which is exactly $\OOF[D ∖ C](\allleadstog)$.
 \end{proof}
 
-\subsection{Observational exclusion and completion}
-$S ⊆ \allleadstos$ is observationally excludable iff 
-$∃ θ ∈ Θ \suchthat θ ∉ S^⊆$,
-equivalently, iff $Θ ⊈ S^⊆$,
-equivalently, iff $∃\allleadstog ∉ S \suchthat \OF[S](\allleadstog)$,
-equivalently, iff $∃\allleadstog \suchthat \OF[S](\allleadstog)$,
-equivalently, iff $S$ is NOT never falsifiable.
-
-$D$ is observationally completable to $C$ iff 
-$∃ θ ∈ (Θ ∩ D^⊆) \suchthat θ ∉ (D ∖ C)^⊆$.
-\Cref{th:obsComp} shows the equivalence with possible verifiability under axiom $D$.
-
-$D$ is necessarily observationally completable to $C$ iff 
-$∀\allleadstog ∈ D, \OF[D ∖ C](\allleadstog)$.
-\Cref{rk:necObsComp} shows the lack of equivalence with established verifiability under axiom $D$.
-
-Converting a claim to disjunctive normal form is useful to characterize its compatible observations, as \cref{th:dnf} indicates.
-\begin{example}
-  Consider six different influences $a_1, a'_1, a_2, a'_2, a_3, a'_3 ∈ \allargs$
-  and the following claim $E$:
-  if any two influences $a_k, a_{k'}$ fail to convince $i$ or $a'_k, a'_{k'}$ fail to convince $j$, then the third influence $a_{k''}$ convinces $i$ and $a'_{k''}$ convinces $j$.
-  The claim is not observationally excludable.
-  Indeed,
-  we see that $E = [((a_1) \ileadstog φ ∧ (a'_1) \ileadstog[j] φ) ∨ ((a_2) \ileadstog φ ∧ (a'_2) \ileadstog[j] φ) ∨ ((a_3) \ileadstog φ ∧ (a'_3) \ileadstog[j] φ)]$,
-  and
-  $∀ 1 ≤ k ≤ 3$, define $S_k = [(a_k) \ileadstog φ ∧ (a'_k) \ileadstog[j] φ]$, define $\mathcal{S} = \set{S_1, S_2, S_3}$,
-  consider any $f ⊆ (I × \allhists) × P \suchthat f ∉ E^⊆$,
-  we have $∀ 1 ≤ k ≤ 3, ∃t_k ∈ f \suchthat \set{t_k} ∉ {S_k}^⊆$,
-  thus $f ∉ Θ$
-  (wlog, pick $t_1 = ((a_1), i, p_1 ≠ φ)$, then for observability we need to pick $t_2 = ((a'_2), j, .)$ and there is no choice left for $t_3$).
-\end{example}
-
-As $C ∩ D ⊆ D$, restricting \cref{th:obsCompEst} to $\allleadstog ∈ C ∩ D$ gives that $C$ satisfies established verifiability under axiom $D$ iff $∀\allleadstog ∈ C ∩ D: \OF[D ∖ C](\allleadstog)$.
-
-This (to be proven) captures the claim “there is no decisive influence for $i$”.
-\begin{theorem}
-  \label{th:noDecArgi}
-  Given any $\allleadstog ∈ \allleadstos$:
-  $π(\allleadstog)(i) = \set{∅} ⇔ ∀ a ∈ \allargs, ∃ p_1 ≠ p_2 ∈ P, \hist^1, \hist^2 ∈ \allhists \suchthat a ∈ \histend[1] ∩ \histend[2] ∧ \hist^1 \ileadstog p_1 ∧ \hist^2 \ileadstog p_2$.
-\end{theorem}
-\begin{example}[No decisive influence]
-  \label{ex:noDecArg}
-  The claim $C = [π(\allleadstog)(I) = \set{∅}]$ is possibly verifiable under axiom $D$ iff $D$ is observationally completable to $[π(\allleadstog)(I) = \set{∅}]$.
-\end{example}
-
-\Cref{th:noDecArgi,ex:noDecArg} illustrate (what?) about no decisive influences.
-
-\begin{theorem}
-  \label{th:complFals}
-  $D ∖ C$ is falsifiable or trivial iff ($C$ satisfies established verifiability under axiom $D$ AND
-  $∀\allleadstog ∉ D: \OF[D ∖ C](\allleadstog)$).
-\end{theorem}
-\begin{proof}
-  $D ∖ C$ is falsifiable or trivial iff $∀\allleadstog ∉ (D ∖ C): \OF[D ∖ C](\allleadstog)$, equivalently (as $\allleadstog ∉ D ∖ C ⇔ \allleadstog ∉ D ∨ \allleadstog ∈ C$), iff $[∀\allleadstog ∉ D: \OF[D ∖ C](\allleadstog)] ∧ [∀\allleadstog ∈ C: \OF[D ∖ C](\allleadstog)]$.
-  As $C ∖ D ⊆ \overline D$, the second conjunct is already implied on $C ∖ D$ by the first, so it reduces to $∀\allleadstog ∈ C ∩ D: \OF[D ∖ C](\allleadstog)$, that is, by \cref{th:obsCompEst} (restricted to $C ∩ D$), to established verifiability under axiom $D$.
-\end{proof}
-\begin{corollary}
-  $\allleadstos ∖ C$ is falsifiable or trivial iff $C$ satisfies established verifiability.
-\end{corollary}
-\begin{theorem}
-  For any $θ ∈ Θ$, the following statements are equivalent.
-  \begin{itemize}
-    \item $θ ∉ C^⊆$,
-    \item $∀θ ⊆ \allleadstog, \allleadstog ∉ C$,
-    \item $∀θ ⊆ \allleadstog: \OF(\allleadstog)$,
-    \item $θ ∉ (¬\OF(\allleadsto))^⊆$.
-  \end{itemize}
-\end{theorem}
-\begin{proof}
-  1 and 2 are equivalent by definition.
-  From 1 to 3, that’s because for any such $\allleadstog$, we have indeed $θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆$.
-\end{proof}
-\begin{theorem}
-  \label{th:ofRelations}
-  For any claim $C$, with $D$ being $¬\OF(\allleadsto)$,
-  given any $\allleadstog$: 
-  $\OF(\allleadstog) ⇔ \OF[D](\allleadstog)$;
-  and $\OF[D](\allleadstog) ⇒ \OF[D ∖ C](\allleadstog)$ (using \cref{th:ofMonotonous}).
-\end{theorem}
-\begin{proof}
-  $\OF(\allleadstog) ⇔ ∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆ ⇔ ∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ (¬\OF(\allleadsto))^⊆ ⇔ \OF[D](\allleadstog) ⇒ \OF[D ∖ C](\allleadstog)$.
-\end{proof}
-\begin{theorem}
-  Considering a claim $C$ and axiom $D$ being $¬\OF(\allleadsto)$,
-  $D ∖ C$ is falsifiable or trivial iff $C$ satisfies established verifiability under axiom $¬\OF(\allleadstog)$.
-\end{theorem}
-\begin{proof}
-  Using \cref{th:complFals}, it is sufficient to prove that for any $C$, considering any $\allleadstog ∉ D$ (thus, $\OF(\allleadstog)$), $\OF[D ∖ C](\allleadstog)$ holds. This is given by \cref{th:ofRelations}.
-\end{proof}
-
-Given $\allleadstog, \allleadstog' ∈ \allleadstos$, say $\allleadstog \simfin \allleadstog'$ iff $\allleadstog$ and $\allleadstog'$ differ at only finitely many pairs $(i, \hist)$, that is, iff $\card{\set{(i, \hist) ∈ I × \allhists \suchthat \allleadstog(i, \hist) ≠ \allleadstog'(i, \hist)}} ∈ ℕ$.
-$\simfin$ is an equivalence relation on $\allleadstos$: reflexivity and symmetry are immediate, and transitivity holds because, if $\allleadstog \simfin \allleadstog' \simfin \allleadstog''$, the pairs where $\allleadstog$ and $\allleadstog''$ differ are among those where $\allleadstog$ differs from $\allleadstog'$ or $\allleadstog'$ differs from $\allleadstog''$, a finite union of two finite sets.
-
-\begin{definition}[Closed under finite modification]
-  \label{def:cufm}
-  A claim $C$ is \emph{closed under finite modification} iff $∀\allleadstog ∈ C, \allleadstog' ∈ \allleadstos: \allleadstog \simfin \allleadstog' ⇒ \allleadstog' ∈ C$.
-\end{definition}
-
-Being closed under finite modification and non-empty does not entail triviality.
-\begin{example}[Closed under finite modification, yet non-trivial]
-  \label{ex:cufmNonTrivial}
-  Fix any $\allleadstog[0] ∈ \allleadstos$ and let $C = [\allleadstog \simfin \allleadstog[0]]$, the $\simfin$-equivalence class of $\allleadstog[0]$.
-  $C$ is closed under finite modification, by transitivity of $\simfin$, and $\allleadstog[0] ∈ C$, yet $C ≠ \allleadstos$ (the world differing from $\allleadstog[0]$ at every pair, say, is excluded).
-\end{example}
-
-\begin{theorem}
-  \label{th:cufmNeverFals}
-  If $C ≠ ∅$ is closed under finite modification, then $C$ is never falsifiable.
-\end{theorem}
-\begin{proof}
-  Fix $\allleadstog[0] ∈ C$ and let us show that $Θ ⊆ C^⊆$.
-  Given any $θ ∈ Θ$, 
-  let $\allleadstog$ agree with $θ$ on $θ(P)$ and with $\allleadstog[0]$ elsewhere; then $\allleadstog \simfin \allleadstog[0]$, as they differ only on the finite set $θ(P)$, so $\allleadstog ∈ C$, and $θ ⊆ \allleadstog$, giving $θ ∈ C^⊆$.
-\end{proof}
-
-\begin{remark}
-  \label{rk:cufmConverseFails}
-  The converse of \cref{th:cufmNeverFals} fails: \cref{ex:disjR} is never falsifiable ($Θ ⊆ C^⊆$) yet is not closed under finite modification, as flipping a single individual’s two values (making it satisfy neither disjunct) already leaves $C$.
-\end{remark}
-
 \subsection{OOF}
 \begin{remark}
   \label{rk:rpevGap}
@@ -1284,6 +1164,22 @@ A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\OOF
 \begin{remark}
   $(a ≠ b) ∨ (a ∧ c)$ is equivalent to $(a ≠ b) ∨ (b ∧ c)$, thus there is no unique minimal DNF.
 \end{remark}
+
+Converting a claim to disjunctive normal form is useful to characterize its compatible observations, as \cref{th:dnf} indicates.
+\begin{example}
+  Consider six different influences $a_1, a'_1, a_2, a'_2, a_3, a'_3 ∈ \allargs$
+  and the following claim $E$:
+  if any two influences $a_k, a_{k'}$ fail to convince $i$ or $a'_k, a'_{k'}$ fail to convince $j$, then the third influence $a_{k''}$ convinces $i$ and $a'_{k''}$ convinces $j$.
+  The claim is not observationally excludable.
+  Indeed,
+  we see that $E = [((a_1) \ileadstog φ ∧ (a'_1) \ileadstog[j] φ) ∨ ((a_2) \ileadstog φ ∧ (a'_2) \ileadstog[j] φ) ∨ ((a_3) \ileadstog φ ∧ (a'_3) \ileadstog[j] φ)]$,
+  and
+  $∀ 1 ≤ k ≤ 3$, define $S_k = [(a_k) \ileadstog φ ∧ (a'_k) \ileadstog[j] φ]$, define $\mathcal{S} = \set{S_1, S_2, S_3}$,
+  consider any $f ⊆ (I × \allhists) × P \suchthat f ∉ E^⊆$,
+  we have $∀ 1 ≤ k ≤ 3, ∃t_k ∈ f \suchthat \set{t_k} ∉ {S_k}^⊆$,
+  thus $f ∉ Θ$
+  (wlog, pick $t_1 = ((a_1), i, p_1 ≠ φ)$, then for observability we need to pick $t_2 = ((a'_2), j, .)$ and there is no choice left for $t_3$).
+\end{example}
 
 The following result indicates that, given a finite cover of $D ∖C$, $\OF[D ∖C](\allleadstog)$ requires some set of triple $T$ that, for each $S$, contains a triple incompatible with $S$; thus $\OF[D ∖C](\allleadstog)$ holds iff such a $T$ is observable in the world.
 
@@ -1810,6 +1706,103 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   Both proofs move a witness to an untouched clone using $E$ in the same way, but differ in when the distinguishing axiom is cashed in. Here, $¬\OOF ∩ E ⊆ C$ outright: $\allleadsto ∈ D^{\anobs, a, p}$ is a hypothesis on the true world alone, spent only once, upfront, to fix $B$ and the $H_b$'s, before any candidate world is examined, so it drops out of \cref{th:oneMorePriorNarrow}'s conclusion entirely. In \cref{th:oneMorePriorFull}, by contrast, $\allleadstog ∈ D^{\anobs, a, p}_{C'}$ must instead be invoked afresh at each tested $\allleadstog$, since its witnessing window depends on that world's own failing row $g := \allleadstog(i)$, which varies with $\allleadstog$; so that axiom cannot similarly be dropped from the conclusion. So the asymmetry is not about $E$, but about when the distinguishing axiom is cashed in: once, from $\allleadsto$ alone, for the stronger, $\allleadsto$-dependent claim $C$; or per candidate world, for the weaker, $\allleadsto$-independent claim $C'$.
 
   The same two instantiations ($B := \allleadsto(I)$ and $B := \allbs$) apply just as well to \cref{th:oneMorePriorGeneral} itself, giving analogues of \cref{th:oneMorePriorNarrow,th:oneMorePriorFull} for the original, unaugmented claim $C_0$: an anonymous, holding claim that is APTS and provable by $¬\OOF ∩ E$, respectively APTS and provable by $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_{C_0}$.
+\end{remark}
+
+\subsection{Observational exclusion and completion}
+$S ⊆ \allleadstos$ is observationally excludable iff 
+$∃ θ ∈ Θ \suchthat θ ∉ S^⊆$,
+equivalently, iff $Θ ⊈ S^⊆$,
+equivalently, iff $∃\allleadstog ∉ S \suchthat \OF[S](\allleadstog)$,
+equivalently, iff $∃\allleadstog \suchthat \OF[S](\allleadstog)$,
+equivalently, iff $S$ is NOT never falsifiable.
+
+$D$ is observationally completable to $C$ iff 
+$∃ θ ∈ (Θ ∩ D^⊆) \suchthat θ ∉ (D ∖ C)^⊆$.
+\Cref{th:obsComp} shows the equivalence with possible verifiability under axiom $D$.
+
+$D$ is necessarily observationally completable to $C$ iff 
+$∀\allleadstog ∈ D, \OF[D ∖ C](\allleadstog)$.
+\Cref{rk:necObsComp} shows the lack of equivalence with established verifiability under axiom $D$.
+
+\Cref{ex:noDecArg} illustrate about no decisive influences.
+
+\begin{example}[No decisive influence]
+  \label{ex:noDecArg}
+  The claim $C = [π(\allleadstog)(I) = \set{∅}]$ is possibly verifiable under axiom $D$ iff $D$ is observationally completable to $[π(\allleadstog)(I) = \set{∅}]$.
+\end{example}
+
+\begin{theorem}
+  \label{th:complFals}
+  $D ∖ C$ is falsifiable or trivial iff ($C$ satisfies established verifiability under axiom $D$ AND
+  $∀\allleadstog ∉ D: \OF[D ∖ C](\allleadstog)$).
+\end{theorem}
+\begin{proof}
+  $D ∖ C$ is falsifiable or trivial iff $∀\allleadstog ∉ (D ∖ C): \OF[D ∖ C](\allleadstog)$, equivalently (as $\allleadstog ∉ D ∖ C ⇔ \allleadstog ∉ D ∨ \allleadstog ∈ C$), iff $[∀\allleadstog ∉ D: \OF[D ∖ C](\allleadstog)] ∧ [∀\allleadstog ∈ C: \OF[D ∖ C](\allleadstog)]$.
+  As $C ∖ D ⊆ \overline D$, the second conjunct is already implied on $C ∖ D$ by the first, so it reduces to $∀\allleadstog ∈ C ∩ D: \OF[D ∖ C](\allleadstog)$, that is, by \cref{th:obsCompEst} (restricted to $C ∩ D$), to established verifiability under axiom $D$.
+\end{proof}
+\begin{corollary}
+  $\allleadstos ∖ C$ is falsifiable or trivial iff $C$ satisfies established verifiability.
+\end{corollary}
+\begin{theorem}
+  For any $θ ∈ Θ$, the following statements are equivalent.
+  \begin{itemize}
+    \item $θ ∉ C^⊆$,
+    \item $∀θ ⊆ \allleadstog, \allleadstog ∉ C$,
+    \item $∀θ ⊆ \allleadstog: \OF(\allleadstog)$,
+    \item $θ ∉ (¬\OF(\allleadsto))^⊆$.
+  \end{itemize}
+\end{theorem}
+\begin{proof}
+  1 and 2 are equivalent by definition.
+  From 1 to 3, that’s because for any such $\allleadstog$, we have indeed $θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆$.
+\end{proof}
+\begin{theorem}
+  \label{th:ofRelations}
+  For any claim $C$, with $D$ being $¬\OF(\allleadsto)$,
+  given any $\allleadstog$: 
+  $\OF(\allleadstog) ⇔ \OF[D](\allleadstog)$;
+  and $\OF[D](\allleadstog) ⇒ \OF[D ∖ C](\allleadstog)$ (using \cref{th:ofMonotonous}).
+\end{theorem}
+\begin{proof}
+  $\OF(\allleadstog) ⇔ ∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆ ⇔ ∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ (¬\OF(\allleadsto))^⊆ ⇔ \OF[D](\allleadstog) ⇒ \OF[D ∖ C](\allleadstog)$.
+\end{proof}
+\begin{theorem}
+  Considering a claim $C$ and axiom $D$ being $¬\OF(\allleadsto)$,
+  $D ∖ C$ is falsifiable or trivial iff $C$ satisfies established verifiability under axiom $¬\OF(\allleadstog)$.
+\end{theorem}
+\begin{proof}
+  Using \cref{th:complFals}, it is sufficient to prove that for any $C$, considering any $\allleadstog ∉ D$ (thus, $\OF(\allleadstog)$), $\OF[D ∖ C](\allleadstog)$ holds. This is given by \cref{th:ofRelations}.
+\end{proof}
+
+\subsection{CUFM implies never falsifiable}
+Given $\allleadstog, \allleadstog' ∈ \allleadstos$, say $\allleadstog \simfin \allleadstog'$ iff $\allleadstog$ and $\allleadstog'$ differ at only finitely many pairs $(i, \hist)$, that is, iff $\card{\set{(i, \hist) ∈ I × \allhists \suchthat \allleadstog(i, \hist) ≠ \allleadstog'(i, \hist)}} ∈ ℕ$.
+$\simfin$ is an equivalence relation on $\allleadstos$: reflexivity and symmetry are immediate, and transitivity holds because, if $\allleadstog \simfin \allleadstog' \simfin \allleadstog''$, the pairs where $\allleadstog$ and $\allleadstog''$ differ are among those where $\allleadstog$ differs from $\allleadstog'$ or $\allleadstog'$ differs from $\allleadstog''$, a finite union of two finite sets.
+
+\begin{definition}[Closed under finite modification]
+  \label{def:cufm}
+  A claim $C$ is \emph{closed under finite modification} iff $∀\allleadstog ∈ C, \allleadstog' ∈ \allleadstos: \allleadstog \simfin \allleadstog' ⇒ \allleadstog' ∈ C$.
+\end{definition}
+
+Being closed under finite modification and non-empty does not entail triviality.
+\begin{example}[Closed under finite modification, yet non-trivial]
+  \label{ex:cufmNonTrivial}
+  Fix any $\allleadstog[0] ∈ \allleadstos$ and let $C = [\allleadstog \simfin \allleadstog[0]]$, the $\simfin$-equivalence class of $\allleadstog[0]$.
+  $C$ is closed under finite modification, by transitivity of $\simfin$, and $\allleadstog[0] ∈ C$, yet $C ≠ \allleadstos$ (the world differing from $\allleadstog[0]$ at every pair, say, is excluded).
+\end{example}
+
+\begin{theorem}
+  \label{th:cufmNeverFals}
+  If $C ≠ ∅$ is closed under finite modification, then $C$ is never falsifiable.
+\end{theorem}
+\begin{proof}
+  Fix $\allleadstog[0] ∈ C$ and let us show that $Θ ⊆ C^⊆$.
+  Given any $θ ∈ Θ$, 
+  let $\allleadstog$ agree with $θ$ on $θ(P)$ and with $\allleadstog[0]$ elsewhere; then $\allleadstog \simfin \allleadstog[0]$, as they differ only on the finite set $θ(P)$, so $\allleadstog ∈ C$, and $θ ⊆ \allleadstog$, giving $θ ∈ C^⊆$.
+\end{proof}
+
+\begin{remark}
+  \label{rk:cufmConverseFails}
+  The converse of \cref{th:cufmNeverFals} fails: \cref{ex:disjR} is never falsifiable ($Θ ⊆ C^⊆$) yet is not closed under finite modification, as flipping a single individual’s two values (making it satisfy neither disjunct) already leaves $C$.
 \end{remark}
 
 \subsection{Other generalities}
