@@ -279,6 +279,7 @@ among which some distinguished anonymous observation $\anobs ∈ K$,
 such that there exists some conformity covering of $K$, and each conformity covering of $K$ associates $\anobs$ to individuals that all have $p$ as DJ.
 
 \Cref{th:regularity} shows that this is a required condition on the exposure protocol: if $\allleadsto$ is not regular, then there is no claim that holds and is anonymous and conclusive.
+\Cref{th:regCarac} characterizes regularity in two ways, which may help understand the condition.
 \begin{example}
   \label{ex:regularity}
   Consider the world $\allleadsto$ constituted of two kinds of individuals, the jay’s which always answer $φ$ and the kay’s which always answer $φ'$; formally, $I = J ∪ K$, and $∀i ∈ I, α ∈ \allhists: [i ∈ J ⇒ α \ileadsto φ] ∧ [i ∈ K ⇒ α \ileadsto φ']$.
@@ -295,6 +296,7 @@ such that there exists some conformity covering of $K$, and each conformity cove
 
 \subsection{Verifiability}
 \label{sec:verifiability}
+% , meaning, by considering only the content of the claim, without considering the world
 Studying DJs require to tackle the following difficulty: one can check analytically whether a claim is anonymous and conclusive, but whether it holds is empirical
 (the claim of \cref{ex:regularity}, $C = [(a) \ileadstog φ ⇒ φ ∈ π(\ileadstogo)]$, illustrates).
 We therefore need to study procedures to determine whether a claim holds.
@@ -306,7 +308,7 @@ The claim $C$ is verifiable, or satisfies verifiability, iff some observation co
   Facing observations $θ$, the opponent may say, if some world completes $θ$ out of $C$ ($∃θ ⊆ \allleadstog ∉ C$), that this observation is not sufficient to prove that $C$ holds: the hypothesis that we live in the world $\allleadstog$ is compatible with us observing $θ$, but yet in this hypothesis, $C$ does not hold. The above definition of verifiability considers that $C$ is verified whenever the opponent cannot say this any more; and $C$ is verifiable if some observations $θ ⊆ \allleadsto$ exist that verifies $C$.
 \end{remark}
 
-Verifiability is sound (\cref{th:vImpliesHolds}), meaning that indeed when a claim is verifiable, it holds, but is too demanding for many claims, that is, many claims fail the converse implication.
+Verifiability is sound (\cref{th:vudImpliesHolds,th:vImpliesHolds}), meaning that indeed when a claim is verifiable, it holds, but is too demanding for many claims, that is, many claims fail the converse implication.
 Indeed,
 some sufficiently simple claims, such as the claim $C = [(a) \ileadstog φ]$ that some given path leads some given individual to some given proposition, do satisfy verifiability (provided they hold), but such claims are not strong enough to deduce much useful conclusion concerning anyone’s DJ.
 
@@ -323,7 +325,7 @@ say that a claim $C$ is \emph{informative} iff $∃θ ∈ Θ ∩ \powerset{\alll
   Conversely, impossibility results applicable to informativeness apply to conclusiveness.
 \end{remark}
 
-Being informative implies failure of verifiability (\cref{th:infoNotVerif}).
+Being informative implies failure of verifiability (\cref{th:informativeAndVerifiableImpliesNotTrivial,th:infoNotVerif}).
 Therefore, conclusiveness is incompatible with verifiability.
 The fundamental reason for the incompatibility is that any observation can be completed in a way that contradicts any conclusion that informativeness in a world mandates (\cref{th:completable}).
 
@@ -370,7 +372,7 @@ Verifiability under $D$ only requires \emph{some} proving observation to exist.
 As with conclusiveness, it is desirable that every prefix admit a rightwards extension that still proves $C$, in order to ensure reproducibility.
 Given $C, D ⊆ \allleadstos$, $C$ is obliviously verifiable under axiom $D$ iff
 $∀θ ∈ Θ ∩ \powerset{\allleadsto}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∅ ≠ ↑(θ' ∖ θ) ∩ D ⊆ C$.
-Provability by $D$ implies oblivious verifiability under $D$ (just use verification $θ' = ∅$).
+Provability by $D$ implies oblivious verifiability under $D$ (just use verification $θ' = θ$).
 
 \section{Axioms}
 \subsection{Falsifiability}
@@ -383,29 +385,21 @@ Given $\allleadstog$ and $C$, say that $C$ is
   \item[Observably False (OF) in $\allleadstog$ ($\OF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable; formally, iff $[∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆]$, equivalently, $Θ ∩ \powerset{\allleadstog} ⊈ C^⊆$;
   \item[Obliviously Observably False in $\allleadstog$ ($\OOF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable also when ignoring any possible past observations; formally, iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat (θ' ∖ θ) ∉ C^⊆$.
 \end{description}
-We sometimes write $\POF$ instead of $\POF(\allleadstog)$ when the world $\allleadstog$ is clear from the context, and $\POF[]$ when $C$ is clear from the context (or referring to any generic claim), and similarly for $\OF$ and $\F$.
+We sometimes write $\OOF$ instead of $\OOF(\allleadstog)$ when the world $\allleadstog$ is clear from the context, and $\OOF[]$ when $C$ is clear from the context (or referring to any generic claim), and similarly for $\OF$ and $\F$.
 
-Note that $∀C, \allleadstog: \OOF(\allleadstog) ⇒ \POF(\allleadstog) ⇒ \OF(\allleadstog) ⇒ \F(\allleadstog)$ (\cref{th:poofImpliesPof} proves the first implication, \cref{th:ex-post} the third).
-\begin{theorem}
-  \label{th:poofImpliesPof}
-  $∀C, \allleadstog: \OOF(\allleadstog) ⇒ \POF(\allleadstog)$.
-\end{theorem}
-\begin{proof}
-  As $C^⊆$ is downwards closed and $θ' ∖ θ ⊆ θ'$, $(θ' ∖ θ) ∈ C^⊆ ⇒ θ' ∈ C^⊆$ for any $θ ⊑ θ'$; equivalently, $θ' ∉ C^⊆ ⇒ (θ' ∖ θ) ∉ C^⊆$. So whenever some $θ'$ witnesses $θ' ∉ C^⊆$ (as required by $\POF$), the same $θ'$ also witnesses $(θ' ∖ θ) ∉ C^⊆$ (as required by $\OOF$); the same witnessing $θ, θ'$ thus serve for both.
-\end{proof}
-Also, given $C' ⊆ C$, $∀\allleadstog$: $¬\F[C'](\allleadstog) ⇒ ¬\F(\allleadstog)$, $¬\OF[C'](\allleadstog) ⇒ ¬\OF(\allleadstog)$, $¬\POF[C'](\allleadstog) ⇒ ¬\POF(\allleadstog)$, and $¬\OOF[C'](\allleadstog) ⇒ ¬\OOF(\allleadstog)$.
+Note that $∀C, \allleadstog: \OOF(\allleadstog) ⇒ \OF(\allleadstog) ⇒ \F(\allleadstog)$ (\cref{th:ex-post} proves the last implication).
 $C$ is said to suffer visibility issues in $\allleadstog$ iff $¬\OOF(\allleadstog) ∧ \OF(\allleadstog)$, which happens when some past observation (called “prefix” in this context) hides the falsity of $C$ even though its falsity is observable when no prefix is involved.
-$C$ suffers visibility issues iff $∃\allleadstog \suchthat ¬\OOF(\allleadstog) ∧ \OF(\allleadstog)$.
-$C$ suffers no visibility issues in $\allleadstog$ iff $\OF(\allleadstog) ⇒ \OOF(\allleadstog)$, equivalently, iff $\OF(\allleadstog) ⇔ \OOF(\allleadstog)$, and suffers no visibility issues iff $∀\allleadstog: \OF(\allleadstog) ⇒ \OOF(\allleadstog)$.
+$C$ is said to suffer visibility issues iff $∃\allleadstog \suchthat ¬\OOF(\allleadstog) ∧ \OF(\allleadstog)$.
+Conversely, $C$ suffers no visibility issues in $\allleadstog$ iff $\OF(\allleadstog) ⇒ \OOF(\allleadstog)$, equivalently, iff $\OF(\allleadstog) ⇔ \OOF(\allleadstog)$, and suffers no visibility issues iff $∀\allleadstog: \OF(\allleadstog) ⇒ \OOF(\allleadstog)$.
 
 We say that $C$ is \emph{falsifiable} iff
 $C ≠ \allleadstos ∧ [\F(\allleadstog) ⇒ \OF(\allleadstog)]$.
-Note that falsifiability does not depend on $\allleadsto$: whether falsifiability holds can be determined analytically, meaning, by considering only the content of the claim, without considering the world.
+Note that falsifiability does not depend on $\allleadsto$: whether falsifiability holds can be determined analytically.
 
-We introduce the axiom called $C$-scrutiny, which postulates that the real world is such that $C$ is either not observably false in it, or if it is, then $C$ suffers visibility issues in it:
+We introduce the axiom called $C$-scrutiny, which postulates that the real world is such that $C$ is either not observably false in it, or if it is, then $C$ suffers visibility issues in it.
 \begin{axiom}[$C$-scrutiny]
   \label{ax:scrutiny}
-  $\allleadsto ∈ [¬\OF(\allleadstog) ∨ (¬\OOF(\allleadstog) ∧ \OF(\allleadstog))]$.
+  $¬\OF(\allleadsto) ∨ (¬\OOF(\allleadsto) ∧ \OF(\allleadsto))$.
 \end{axiom}
 This is logically equivalent to mandating $¬\OOF(\allleadsto)$, thus, excluding worlds in which $C$ is obliviously observably false.
 
@@ -424,12 +418,24 @@ This is logically equivalent to mandating $¬\OOF(\allleadsto)$, thus, excluding
   When considering a claim $C$ with no visibility issues, $C$-scrutiny is equivalent to $¬\OF(\allleadstog)$.
 
   The reason for adopting the axiom $¬\OOF(\allleadstog)$ instead of $¬\OF(\allleadstog)$ is illustrated with
-  $C_1 = [(a) \ileadstog φ ∧ (a') \ileadstog φ]$ for a given $a$, $a'$, $i$: in some world (for example, where $(a) \ileadstog φ$ even though $(a') \nileadstog φ$), $¬\POF[C_1](\allleadstog) ∧ \OF[C_1](\allleadstog)$ (hence also $¬\OOF[C_1](\allleadstog) ∧ \OF[C_1](\allleadstog)$, by \cref{th:poofImpliesPof}), thus we cannot assume that non-observation of falsification implies not OF, because it might also be due to observing that $(a) \ileadstog φ$.
-  It also applies to $C_2 = [∀i: (a') \ileadstog φ ∧ (a) \ileadstog[j] φ]$ for a given $j$, which in a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (a') \ileadstog φ$ is $¬\POF[C_2](\allleadstog)$, hence $¬\OOF[C_2](\allleadstog)$, (consider the prefix $θ = \set{(a') \ileadstog[j] φ}$) and $\OF[C_2](\allleadstog)$.
+  $C_1 = [(a) \ileadstog φ ∧ (a') \ileadstog φ]$ for a given $a$, $a'$, $i$: in some world (for example, where $(a) \ileadstog φ$ even though $(a') \nileadstog φ$), $¬\OOF[C_1](\allleadstog) ∧ \OF[C_1](\allleadstog)$, thus we cannot assume that non-observation of falsification implies not OF, because it might also be due to observing that $(a) \ileadstog φ$.
+  It also applies to $C_2 = [∀i: (a') \ileadstog φ ∧ (a) \ileadstog[j] φ]$ for a given $j$, which in a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (a') \ileadstog φ$ is $¬\OOF[C_2](\allleadstog)$ (consider the prefix $θ = \set{(a') \ileadstog[j] φ}$) and $\OF[C_2](\allleadstog)$.
   (Note that if $C_2$ fails because, for some $i$, $(a') \nileadstog φ$,
   then $θ$ is not a hiding prefix observation, conforming to intuition.)
 \end{remark}
 \Cref{rk:alternativePofs} discusses alternative formalizations of the concepts POF and $C$-scrutiny.
+
+\begin{remark}
+  Say that $C$ is \emph{rejectable} iff $\OF(\allleadsto)$.
+  It immediately follows from the respective definitions
+  that provided a falsifiable claim, accepting non rejectability as an axiom leads to oblivious verifiability of the claim (see also \cref{th:falsThusEquiv,th:nonRejEqFals,th:falsThusNonRejImpliesOV}).
+
+% \Cref{th:holdsiff} shows that falsifiability indeed fills the mentioned gap:
+% falsifiability guarantees that a non trivial claim holds if, and only if, it is not rejectable.
+  
+  Although we do not mandate non rejectability (see \cref{rk:visIssuesForPof}), it is nonetheless key to our endeavor: as we will see, our next axiom will deal with visibility issues, thereby bringing, together with \cref{ax:scrutiny}, the force of non rejectability.
+  It will then remain to ensure that some suitable claim exists, which will require yet another axiom.
+\end{remark}
 
 \subsection{Repeatable observations}
 Our second axiom ensures some repeatability of observations by assuming that whenever a behavior is exhibited by at least one individual, infinitely many individuals exhibit it.
@@ -450,7 +456,7 @@ Intuition might suggest that under $E$, no visibility issues can arise. \Cref{ex
   Indeed, consider the world $\allleadstog$ in which all individuals behave the same (thus $\allleadstog ∈ E$), all being constantly lead to $φ'$ (formally, $∀α', j: α' \ileadstog[j] φ'$).
   Consider a prefix $θ$ where the only observation concerning $i$ is some path $α'$ longer than $α$.
   Note that $θ$ cannot be completed by observing $i$’s reaction to $α$.
-  Therefore, $θ$ hides the possibility of proving by observation that $\allleadstog ∉ C$, and $¬\POF(\allleadstog)$, hence also $¬\OOF(\allleadstog)$ (\cref{th:poofImpliesPof}), whence $¬\OOF$ fails to prove $C$.
+  Therefore, $θ$ hides the possibility of proving by observation that $\allleadstog ∉ C$, and $¬\OOF(\allleadstog)$, whence $¬\OOF$ fails to prove $C$.
 
   \Cref{ex:repeatableProvNotOfButNotNotPOFDetails} gives further details.
 \end{example}
@@ -461,7 +467,7 @@ The intuition, however, is correct when restricted to anonymous claims: \cref{th
 $(¬\OOF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no visibility issues in $E$ (that is, $∀\allleadstog ∈ E: \OF(\allleadstog) ⇒ \OOF(\allleadstog)$).
 Thus (using \cref{th:finiteExceptSpreadAnon} as well), any anonymous and falsifiable claim $C ⊆ E$ is provable by $¬\OOF[C ∩ E] ∩ E$ (\cref{th:anonFalsImpliesProv}).
 
-Finally, we note an important simplification of the regularity condition studied in \cref{sec:regularity} (\cref{th:regularityI}): assuming that $\allleadsto ∈ E$, we obtain that … 
+Finally, we note an important simplification of the regularity condition studied in \cref{sec:regularity} (\cref{th:regularity}): assuming that $\allleadsto ∈ E$, we obtain that … 
 TODO go on.
 
 \subsection{Visibility}
@@ -740,7 +746,7 @@ Using the trivial axiom $D = \allleadstos$, we obtain this corollary.
 {
   \crefname{enumi}{property}{properties}
   \Crefname{enumi}{Property}{Properties}
-  \begin{theorem}
+  \begin{lemma}
     \label{th:vud}
     For any $θ ∈ Θ$ and claims $C, D$, 
     these properties are equivalent:
@@ -750,7 +756,7 @@ Using the trivial axiom $D = \allleadstos$, we obtain this corollary.
       \item \label{it:notcomplE} $θ ∉ (D ∖ C)^⊆$,
       \item \label{it:obscovers} there exists a finite disjoint partition $\set{S_k}$ of $D ∖ C$ such that $∀k, ∃t ∈ θ \suchthat \set{t} ∉ S_k^⊆$ (equivalently, $t ∉ ⋃S_k$).
     \end{enumerate}
-  \end{theorem}
+  \end{lemma}
   \begin{proof}
     \Cref{it:unverifD,it:nocomplD} assert that 
     $∀ θ ⊆ \allleadstog: \allleadstog ∈ D ⇒ \allleadstog ∈ C$, 
@@ -805,6 +811,7 @@ Using the trivial axiom $D = \allleadstos$, we obtain this corollary.
 A claim $C$ is \emph{informative} in $\allleadstog$ iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(↑θ ∩ C) ≠ (P ∪ \set{∅})^I$.
 A claim $C$ is informative iff it is informative in $\allleadsto$.
 \begin{theorem}
+  \label{th:informativeAndVerifiableImpliesNotTrivial}
   If $\card{\allargs} ∉ ℕ$, $C$ is informative in $\allleadstog$ and $C$ is verifiable in $\allleadstog$ under $D$, then
   $D$ is not trivial.
 \end{theorem}
@@ -827,6 +834,30 @@ Given $\allleadstog$ and $C$, say that $C$ is
   \item[Persistently Observably False in $\allleadstog$ ($\POF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable whatever past observation have occurred already; formally, iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ' ∉ C^⊆$.
   \item[Obliviously Observably False in $\allleadstog$ ($\OOF(\allleadstog)$)] iff $C$ in false in this world and its falsity is observable whatever past observation have occurred already, including when forgetting these past observations; formally, iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat (θ' ∖ θ) ∉ C^⊆$.
 \end{description}
+Note that $∀C, \allleadstog: \OOF(\allleadstog) ⇒ \POF(\allleadstog) ⇒ \OF(\allleadstog) ⇒ \F(\allleadstog)$ (\cref{th:poofImpliesPof} proves the first implication, \cref{th:ex-post} the third).
+\begin{theorem}
+  \label{th:poofImpliesPof}
+  $∀C, \allleadstog: \OOF(\allleadstog) ⇒ \POF(\allleadstog)$.
+\end{theorem}
+\begin{proof}
+  As $C^⊆$ is downwards closed, $θ' ∈ C^⊆ ⇒ (θ' ∖ θ) ∈ C^⊆$.
+\end{proof}
+\begin{theorem}
+  \label{th:ex-post}
+  $∀ C, \allleadstog ∈ C:
+    Θ ∩ \powerset{\allleadstog} ⊆ C^⊆$.
+\end{theorem}
+\begin{proof}
+  This holds by definition of $C^⊆ = ∪_{\allleadstog ∈ C} \powerset{\allleadstog}$.
+\end{proof}
+Also, given $C' ⊆ C$, $∀\allleadstog$: $¬\F[C'](\allleadstog) ⇒ ¬\F(\allleadstog)$, $¬\OF[C'](\allleadstog) ⇒ ¬\OF(\allleadstog)$, $¬\POF[C'](\allleadstog) ⇒ ¬\POF(\allleadstog)$, and $¬\OOF[C'](\allleadstog) ⇒ ¬\OOF(\allleadstog)$.
+\begin{theorem}
+  \label{th:ofMonotonous}
+  Given any claims $C ⊆ C'$ and any $\allleadstog$: $\OF[C'](\allleadstog) ⇒ \OF(\allleadstog)$.
+\end{theorem}
+\begin{proof}
+  By definition, $¬\OF(\allleadstog)$ means $Θ ∩ \powerset{\allleadstog} ⊆ C^⊆$, thus the contrapositive is proven by observing that $C^⊆ ⊆ {C'}^⊆$.
+\end{proof}
 
 The following partitioning of claims with respect to their falsifiability status and examples might help better understand this central notion.
 
@@ -848,6 +879,28 @@ equivalently, iff $∀\allleadstog: \F(\allleadstog) ⇒ \OF(\allleadstog)$,
 still equivalently, iff $∀\allleadstog: \F(\allleadstog) ⇔ \OF(\allleadstog)$;
   \item[not falsifiable and not trivial] iff $∃\allleadstog ∉ C \suchthat ¬\OF(\allleadstog)$, that is, whenever the implication $\F(\allleadstog) ⇒ \OF(\allleadstog)$ fails.
 \end{description}
+Several immediate consequences of these definitions are worth stating explicitly.
+\begin{theorem}
+  \label{th:falsThusEquiv}
+  Given any falsifiable or trivial claim $C$:
+  $¬\OF(\allleadsto)$ is equivalent to $\allleadsto ∈ C$.
+\end{theorem}
+\begin{theorem}
+  \label{th:nonRejEqFals}
+  Given any claim $C$,
+  the axiom $¬\OF(\allleadsto)$ proves $C$ iff 
+  $C$ is falsifiable or trivial.
+\end{theorem}
+\begin{proof}
+  $D$ proves $C$ means, by definition, for each $\allleadstog$: $¬\OF(\allleadstog) ⇒ ¬\F(\allleadstog)$, whose contrapositive is the “falsifiable or trivial” condition, as indicated in the partition above.
+\end{proof}
+As provability by $D$, together with $\allleadsto ∈ D$, implies oblivious verifiability under $D$, we obtain this.
+\begin{corollary}
+  \label{th:falsThusNonRejImpliesOV}
+  Given any falsifiable or trivial claim $C$:
+  if $¬\OF(\allleadsto)$,
+  $C$ is obliviously verifiable under $¬\OF$.
+\end{corollary}
 
 Distinguishing two cases among the latter situation leads to the following partition.
 Any claim $C$ satisfies exactly one of these:
@@ -871,9 +924,7 @@ Here are typical examples.
 \end{description}
 
 We also say that
-$C$ is \emph{rejectable} iff $\OF(\allleadsto)$;
-and $C$ is \emph{persistently falsifiable} iff
-$C ≠ \allleadstos ∧ [∀\allleadstog: \F(\allleadstog) ⇒ \OOF(\allleadstog)]$.
+$C$ is \emph{rejectable} iff $\OF(\allleadsto)$.
 
 \begin{example}[Disjunct with incompatible paths, not rejectable]
   \label{ex:disjR}
@@ -888,17 +939,17 @@ $C ≠ \allleadstos ∧ [∀\allleadstog: \F(\allleadstog) ⇒ \OOF(\allleadstog
 In particular, the example applies when $C$ does not hold (that is, when $\allleadsto ∉ C$). We conclude that a claim may fail to hold but still be not rejectable.
 It follows that non-rejection cannot be a sufficient condition for validating a claim.
 
-\begin{remark}
-  \Cref{ex:bigor,ex:threeFs} present situations where, similarly, the claim may fail to hold but still be not rejectable.
-  In \cref{ex:bigor}, non rejection is due to finiteness of observations.
-  In \cref{ex:threeFs}, rejection depends on $\allleadsto$.
-\end{remark}
-
 \begin{example}
   \label{ex:allParticular}
   Consider any $a$ and $φ$. The claim $∀i: a \ileadstostg φ$ is falsifiable:
   given any $\allleadstog ∉ C$, consider any $i \suchthat a \nileadstostg φ$ and any $\hist \suchthat \hist \nileadstog φ ∧ a ∈ \histend$, and define $θ = \set{(i, \hist, \allleadstog(i, \hist) ≠ φ)}$.
 \end{example}
+
+\begin{remark}
+  \Cref{ex:bigor,ex:threeFs} present situations where, similarly, the claim may fail to hold but still be not rejectable.
+  In \cref{ex:bigor}, non rejection is due to finiteness of observations.
+  In \cref{ex:threeFs}, rejection depends on $\allleadsto$.
+\end{remark}
 
 \label{sec:supplementary}
 The following example presents a situation where non rejection is due to finiteness of observations.
@@ -918,15 +969,6 @@ The following example presents a situation where non rejection is due to finiten
   If $I$ is finite, then the claim is falsifiable: if it is wrong, observe for each $i$ some adequate triple $(i, \hist_i, p ≠ φ)$.
 \end{example}
 
-\begin{theorem}
-  \label{th:ex-post}
-  $∀ C, \allleadstog ∈ C:
-    Θ ∩ \powerset{\allleadstog} ⊆ C^⊆$.
-\end{theorem}
-\begin{proof}
-  This holds by definition of $C^⊆ = ∪_{\allleadstog ∈ C} \powerset{\allleadstog}$.
-\end{proof}
-
 \begin{example}[Three functions, may be rejectable]
   \label{ex:threeFs}
   Consider $i ∈ I$, $a ≠ a' ∈ \allargs$ and the three paths $\hists = \set{∅, (a), (a')}$.
@@ -944,31 +986,16 @@ The following example presents a situation where non rejection is due to finiten
 \end{example}
 
 \begin{theorem}
-  Given any claims $C, D ⊆ \allleadstos$,
-  $[\allleadstog ∈ D ∧ \OF[D ∖ C](\allleadstog)] ⇔ [\allleadstog ∈ C ∩ D ∧ \OF[D ∖ C](\allleadstog)]$.
+  \label{th:obsCompEst}
+  Given any claims $C, D ⊆ \allleadstos$ and $\allleadstog ∈ D$:
+  $C$ is verifiable at $\allleadstog$ under $D$
+  iff $\OF[D ∖ C](\allleadstog)$.
 \end{theorem}
 \begin{proof}
-  Given any $\allleadstog$,
-  $\OF[D ∖ C](\allleadstog) ⇒ \allleadstog ∉ D ∖ C$;
-  equivalently,
-  $\OF[D ∖ C](\allleadstog) ⇒ \allleadstog ∈ C ∪ \overline{D}$.
+  By \cref{th:vud} (\cref{it:nocomplD,it:notcomplE}), $↑θ ∩ D ⊆ C$ iff $θ ∉ (D ∖ C)^⊆$, for any $θ ∈ Θ ∩ \powerset{\allleadstog}$.
+  Moreover, as $\allleadstog ∈ D$ and $θ ⊆ \allleadstog$, we have $\allleadstog ∈ ↑θ ∩ D$, so this set is automatically nonempty; thus $∅ ≠ ↑θ ∩ D ⊆ C$ reduces to $↑θ ∩ D ⊆ C$, equivalently $θ ∉ (D ∖ C)^⊆$.
+  Substituting into the definition of verifiability at $\allleadstog$ under $D$ gives $∃θ ∈ Θ ∩ \powerset{\allleadstog}: θ ∉ (D ∖ C)^⊆$, which is exactly $\OF[D ∖ C](\allleadstog)$.
 \end{proof}
-\begin{corollary}
-  \label{th:obsCompEst}
-  Given any claims $C, D ⊆ \allleadstos$,
-  established verifiability under axiom $D$, that is, 
-  $∀\allleadstog ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ θ ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$,
-  is equivalent to 
-  $∀\allleadstog ∈ C ∩ D, ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ (D ∖ C)^⊆$.
-\end{corollary}
-\begin{corollary}
-  \label{th:dual}
-  $C$ satisfies established verifiability under axiom $D$
-  iff $∀\allleadstog ∈ C ∩ D: \OF[D ∖ C](\allleadstog)$.
-\end{corollary}
-
-\Cref{th:holdsiff} shows that falsifiability indeed fills the mentioned gap:
-falsifiability guarantees that a non trivial claim holds if, and only if, it is not rejectable.
 
 \begin{remark}
   Making a claim more precise (meaning going from a claim $C$ to $C' \ssub C$) can make it falsifiable, or conversely, can make it unfalsifiable.
@@ -977,15 +1004,6 @@ falsifiability guarantees that a non trivial claim holds if, and only if, it is 
   But we can make it falsifiable again by making it even more precise (picking any single relation).
   % (See \cref{rq:precise}.)
 \end{remark}
-
-\begin{theorem}
-  Given any claim $C$,
-  the axiom $¬\OF(\allleadsto)$ proves $C$ iff 
-  $C$ is falsifiable or trivial.
-\end{theorem}
-\begin{proof}
-  $D$ proves $C$ means, by definition, $∀\allleadstog: ¬\OF(\allleadstog) ⇒ ¬\F(\allleadstog)$.
-\end{proof}
 
 Provability by $¬\OF(\allleadsto)$ (equivalently, falsifiability or triviality) is strictly stronger than established verifiability under $¬\OF(\allleadsto)$; and established verifiability is strictly stronger than established verifiability under $¬\OF(\allleadsto)$. 
 \begin{example}
@@ -1100,17 +1118,20 @@ Converting a claim to disjunctive normal form is useful to characterize its comp
   (wlog, pick $t_1 = ((a_1), i, p_1 ≠ φ)$, then for observability we need to pick $t_2 = ((a'_2), j, .)$ and there is no choice left for $t_3$).
 \end{example}
 
+\begin{theorem}
+  \label{th:dual}
+  $C$ satisfies established verifiability under axiom $D$
+  iff $∀\allleadstog ∈ C ∩ D: \OF[D ∖ C](\allleadstog)$.
+\end{theorem}
+\begin{proof}
+  As $C ∩ D ⊆ D$, this is the restriction of \cref{th:obsCompEst} to $\allleadstog ∈ C ∩ D$.
+\end{proof}
 \begin{remark}
   \label{rk:dualEv}
   Verifiability and observable falsity have a dual character as
   $C$ satisfies established verifiability under axiom $D$ iff 
   $∀\allleadstog ∈ C ∩ D, \OF[D ∖ C](\allleadstog)$ (\cref{th:dual}).
 \end{remark}
-
-\begin{theorem}
-  \label{th:holdsiff}
-  For any falsifiable or trivial claim $C$: $\allleadsto ∈ C$ iff $¬\OF(\allleadsto)$.
-\end{theorem}
 
 This (to be proven) captures the claim “there is no decisive influence for $i$”.
 \begin{theorem}
@@ -1149,13 +1170,6 @@ This (to be proven) captures the claim “there is no decisive influence for $i$
 \begin{proof}
   1 and 2 are equivalent by definition.
   From 1 to 3, that’s because for any such $\allleadstog$, we have indeed $θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ C^⊆$.
-\end{proof}
-\begin{theorem}
-  \label{th:ofMonotonous}
-  Given any claims $C ⊆ C'$ and any $\allleadstog$: $\OF[C'](\allleadstog) ⇒ \OF(\allleadstog)$.
-\end{theorem}
-\begin{proof}
-  By definition, $¬\OF(\allleadstog)$ means $Θ ∩ \powerset{\allleadstog} ⊆ C^⊆$, thus the contrapositive is proven by observing that $C^⊆ ⊆ {C'}^⊆$.
 \end{proof}
 \begin{theorem}
   \label{th:ofRelations}
@@ -1212,6 +1226,9 @@ Being closed under finite modification and non-empty does not entail triviality.
   So, for a given claim and axiom, the gap between established verifiability and OV is precisely governed by visibility issues of $D ∖ C$: no such gap arises wherever $D ∖ C$ suffers no such visibility issues.
 \end{remark}
 
+We also say that
+and $C$ is \emph{persistently falsifiable} iff
+$C ≠ \allleadstos ∧ [∀\allleadstog: \F(\allleadstog) ⇒ \OOF(\allleadstog)]$.
 A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\OOF$.
 \begin{theorem}
   \label{th:onlyEmptyPF}
