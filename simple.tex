@@ -437,6 +437,14 @@ This is logically equivalent to mandating $¬\OOF(\allleadsto)$, thus, excluding
   It will then remain to ensure that some suitable claim exists, which will require yet another axiom.
 \end{remark}
 
+\begin{remark}
+  Verifiability and observable falsity have a dual character as
+  $C$ satisfies verifiability under axiom $D$ at $\allleadstog ∈ D$ iff 
+  $\OF[D ∖ C](\allleadstog)$ (\cref{th:obsCompEst}),
+  and similarly,
+  OV and OOF have a dual character (\cref{th:pvPoofLocal}).
+\end{remark}
+
 \subsection{Repeatable observations}
 Our second axiom ensures some repeatability of observations by assuming that whenever a behavior is exhibited by at least one individual, infinitely many individuals exhibit it.
 Let $E = [∀i ∈ I: \card{\set{j ∈ I \suchthat \ileadstogo[j] = \ileadstogo}} ∉ ℕ]$, the claim that every individual's behavior is shared by infinitely many others.
@@ -985,6 +993,17 @@ The following example presents a situation where non rejection is due to finiten
   Conversely, if $C$ is not rejectable, then for any $θ_1$ containing $∅$ and $(a)$ and $θ_2$ containing $∅$ and $(a')$, with $θ_1, θ_2 ⊆ \allleadsto$, we have $θ_1, θ_2 ∈ C^⊆$, which requires that $\ileadstoo$ associates $(∅, (a))$ to $(φ', φ)$, $(φ, φ')$ or $(φ, φ)$ and $(∅, (a'))$ to $(φ', φ)$, $(φ, φ)$ or $(φ, φ')$.
 \end{example}
 
+\begin{remark}
+  Making a claim more precise (meaning going from a claim $C$ to $C' \ssub C$) can make it falsifiable, or conversely, can make it unfalsifiable.
+  Given $\hist, i$, consider the claim $C_2 = \hist \ileadstog φ$. It is falsifiable.
+  Now consider the claim $C = C_1 ∩ C_2$ with $C_1$ being the claim “every individual chooses $φ$ after seeing solely either $a$ or $a'$”. It is more precise but unfalsifiable.
+  But we can make it falsifiable again by making it even more precise (picking any single relation).
+  % (See \cref{rq:precise}.)
+\end{remark}
+
+\subsection{Falsifiability and verifiability under an axiom}
+Given $C, D ⊆ \allleadstos$, $C$ is possibly verifiable under $D$ iff $∃ θ ∈ Θ \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
+
 \begin{theorem}
   \label{th:obsCompEst}
   Given any claims $C, D ⊆ \allleadstos$ and $\allleadstog ∈ D$:
@@ -997,14 +1016,6 @@ The following example presents a situation where non rejection is due to finiten
   Substituting into the definition of verifiability at $\allleadstog$ under $D$ gives $∃θ ∈ Θ ∩ \powerset{\allleadstog}: θ ∉ (D ∖ C)^⊆$, which is exactly $\OF[D ∖ C](\allleadstog)$.
 \end{proof}
 
-\begin{remark}
-  Making a claim more precise (meaning going from a claim $C$ to $C' \ssub C$) can make it falsifiable, or conversely, can make it unfalsifiable.
-  Given $\hist, i$, consider the claim $C_2 = \hist \ileadstog φ$. It is falsifiable.
-  Now consider the claim $C = C_1 ∩ C_2$ with $C_1$ being the claim “every individual chooses $φ$ after seeing solely either $a$ or $a'$”. It is more precise but unfalsifiable.
-  But we can make it falsifiable again by making it even more precise (picking any single relation).
-  % (See \cref{rq:precise}.)
-\end{remark}
-
 Provability by $¬\OF(\allleadsto)$ (equivalently, falsifiability or triviality) is strictly stronger than established verifiability under $¬\OF(\allleadsto)$; and established verifiability is strictly stronger than established verifiability under $¬\OF(\allleadsto)$. 
 \begin{example}
   The claim $C_1 = [∃i \suchthat (a) \ileadstog φ]$, with infinitely many individuals, satisfies established verifiability (consider $θ = \set{(a) \ileadsto φ}$), hence, established verifiability under $¬\OF(\allleadsto)$, but is not provable by $¬\OF(\allleadsto)$.
@@ -1016,11 +1027,6 @@ Provability by $¬\OF(\allleadsto)$ (equivalently, falsifiability or triviality)
 
 If $D ⊆ D'$, then verifiability at $\allleadstog$ under axiom $D'$ implies verifiability at $\allleadstog$ under axiom $D$.
 
-\subsection{Verifiability under an axiom}
-Given $C, D ⊆ \allleadstos$, $C$ is obliviously verifiable (OV) at $\allleadstog ∈ \allleadstos$ under $D$ iff
-$∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ ↑(θ' ∖ θ) ∩ D ⊆ C$.
-Given $C, D ⊆ \allleadstos$, $C$ is possibly verifiable under $D$ iff $∃ θ ∈ Θ \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
-OV is defined at every $\allleadstog ∈ \allleadstos$, so it admits a local characterization, \cref{th:pvPoofLocal}, holding at every $\allleadstog ∈ D$ rather than only at $\allleadstog ∈ C ∩ D$.
 \begin{theorem}
   \label{th:pvPoofLocal}
   Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ D$: $C$ is OV at $\allleadstog$ under $D$ iff $\OOF[D ∖ C](\allleadstog)$.
@@ -1031,17 +1037,6 @@ OV is defined at every $\allleadstog ∈ \allleadstos$, so it admits a local cha
   Substituting into the definition of OV at $\allleadstog$ gives $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}: (θ' ∖ θ) ∉ (D ∖ C)^⊆$, which is exactly $\OOF[D ∖ C](\allleadstog)$.
 \end{proof}
 
-OV and OOF have a dual character: as $C ∩ D ⊆ D$, restricting \cref{th:pvPoofLocal} to $\allleadstog ∈ C ∩ D$ gives that
-$C$ satisfies established OV under $D$ iff
-$∀\allleadstog ∈ C ∩ D, \OOF[D ∖ C](\allleadstog)$ (see also \cref{rk:dualEv}).
-Under a given axiom, established oblivious verifiability is stronger than established verifiability (\cref{th:pevImpliesEv}).
-\begin{corollary}
-  \label{th:pevImpliesEv}
-  Given $C, D ⊆ \allleadstos$: established OV under $D$ implies established verifiability under $D$.
-\end{corollary}
-\begin{proof}
-  Fix any $\allleadstog ∈ C ∩ D$. Taking $θ = ∅$ in OV at $\allleadstog$'s defining condition directly gives $∅ ≠ ↑θ' ∩ D ⊆ C$ for some $θ' ∈ Θ ∩ \powerset{\allleadstog}$ (as $θ' ∖ ∅ = θ'$), which is exactly established verifiability at $\allleadstog$. As $\allleadstog ∈ C ∩ D$ was arbitrary, this gives established verifiability under $D$.
-\end{proof}
 \subsection{Observational exclusion and completion}
 $S ⊆ \allleadstos$ is observationally excludable iff 
 $∃ θ ∈ Θ \suchthat θ ∉ S^⊆$,
@@ -1074,20 +1069,7 @@ Converting a claim to disjunctive normal form is useful to characterize its comp
   (wlog, pick $t_1 = ((a_1), i, p_1 ≠ φ)$, then for observability we need to pick $t_2 = ((a'_2), j, .)$ and there is no choice left for $t_3$).
 \end{example}
 
-\begin{theorem}
-  \label{th:dual}
-  $C$ satisfies established verifiability under axiom $D$
-  iff $∀\allleadstog ∈ C ∩ D: \OF[D ∖ C](\allleadstog)$.
-\end{theorem}
-\begin{proof}
-  As $C ∩ D ⊆ D$, this is the restriction of \cref{th:obsCompEst} to $\allleadstog ∈ C ∩ D$.
-\end{proof}
-\begin{remark}
-  \label{rk:dualEv}
-  Verifiability and observable falsity have a dual character as
-  $C$ satisfies established verifiability under axiom $D$ iff 
-  $∀\allleadstog ∈ C ∩ D, \OF[D ∖ C](\allleadstog)$ (\cref{th:dual}).
-\end{remark}
+As $C ∩ D ⊆ D$, restricting \cref{th:obsCompEst} to $\allleadstog ∈ C ∩ D$ gives that $C$ satisfies established verifiability under axiom $D$ iff $∀\allleadstog ∈ C ∩ D: \OF[D ∖ C](\allleadstog)$.
 
 This (to be proven) captures the claim “there is no decisive influence for $i$”.
 \begin{theorem}
@@ -1109,7 +1091,7 @@ This (to be proven) captures the claim “there is no decisive influence for $i$
 \end{theorem}
 \begin{proof}
   $D ∖ C$ is falsifiable or trivial iff $∀\allleadstog ∉ (D ∖ C): \OF[D ∖ C](\allleadstog)$, equivalently (as $\allleadstog ∉ D ∖ C ⇔ \allleadstog ∉ D ∨ \allleadstog ∈ C$), iff $[∀\allleadstog ∉ D: \OF[D ∖ C](\allleadstog)] ∧ [∀\allleadstog ∈ C: \OF[D ∖ C](\allleadstog)]$.
-  As $C ∖ D ⊆ \overline D$, the second conjunct is already implied on $C ∖ D$ by the first, so it reduces to $∀\allleadstog ∈ C ∩ D: \OF[D ∖ C](\allleadstog)$, that is, by \cref{th:dual}, to established verifiability under axiom $D$.
+  As $C ∖ D ⊆ \overline D$, the second conjunct is already implied on $C ∖ D$ by the first, so it reduces to $∀\allleadstog ∈ C ∩ D: \OF[D ∖ C](\allleadstog)$, that is, by \cref{th:obsCompEst} (restricted to $C ∩ D$), to established verifiability under axiom $D$.
 \end{proof}
 \begin{corollary}
   $\allleadstos ∖ C$ is falsifiable or trivial iff $C$ satisfies established verifiability.
@@ -4440,15 +4422,15 @@ This appendix reports the current state of \cref{cnj:evStrict}: it is false in g
   So established verifiability under $D$ and under $D'$ coincide for \emph{every} claim: \cref{cnj:evStrict} is false as stated.
 \end{example}
 
-Established verifiability under an axiom $D$, for a claim $C$, is equivalent (\cref{th:dual}) to $∀\allleadstog ∈ C∩D: \OF[D∖C](\allleadstog)$. This gives an exact, if self-referential, reduction of \cref{cnj:evStrict}.
+Established verifiability under an axiom $D$, for a claim $C$, is equivalent (\cref{th:obsCompEst}, restricted to $C∩D$) to $∀\allleadstog ∈ C∩D: \OF[D∖C](\allleadstog)$. This gives an exact, if self-referential, reduction of \cref{cnj:evStrict}.
 
 \begin{proposition}[Exact reduction]
   \label{prop:evExactReduction}
   Given axioms $D ⊆ D'$, established verifiability under $D'$ is strictly stronger than established verifiability under $D$ iff there is $T ⊆ D'$ such that $∀\allleadstog ∈ T ∩ D: \OF[D ∖ T](\allleadstog)$ and $∃\allleadstog ∈ T: ¬\OF[D' ∖ T](\allleadstog)$.
 \end{proposition}
 \begin{proof}
-  ($⇐$) Take $C = T$; as $T ⊆ D'$, $C ∩ D = T ∩ D$ and $C ∩ D' = T$, so by \cref{th:dual} the two displayed conditions are exactly established verifiability under $D$ for $C$, and its failure under $D'$.
-  ($⇒$) Given a claim $C$ satisfying established verifiability under $D$ but not under $D'$, let $T = C ∩ D'$; as $D ⊆ D'$, $C ∩ D = T ∩ D$, and $C ∩ D' = T$, so \cref{th:dual} turns the two hypotheses on $C$ into the two displayed conditions on $T$.
+  ($⇐$) Take $C = T$; as $T ⊆ D'$, $C ∩ D = T ∩ D$ and $C ∩ D' = T$, so by \cref{th:obsCompEst} (restricted to $C∩D$ and to $C∩D'$) the two displayed conditions are exactly established verifiability under $D$ for $C$, and its failure under $D'$.
+  ($⇒$) Given a claim $C$ satisfying established verifiability under $D$ but not under $D'$, let $T = C ∩ D'$; as $D ⊆ D'$, $C ∩ D = T ∩ D$, and $C ∩ D' = T$, so \cref{th:obsCompEst} (restricted to $C∩D$ and to $C∩D'$) turns the two hypotheses on $C$ into the two displayed conditions on $T$.
 \end{proof}
 
 \Cref{prop:evExactReduction} settles the question in principle, but the search over $T ⊆ D'$ it requires is not, by itself, informative: the rest of this appendix develops external, checkable conditions covering many — but provably not all — cases.
