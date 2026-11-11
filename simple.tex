@@ -371,7 +371,7 @@ Note that $C$ is verifiable iff it is verifiable under the trivial axiom.
 Verifiability under $D$ only requires \emph{some} proving observation to exist. 
 As with conclusiveness, it is desirable that every prefix admit a rightwards extension that still proves $C$, in order to ensure reproducibility.
 Given $C, D ⊆ \allleadstos$, $C$ is obliviously verifiable under axiom $D$ iff
-$∀θ ∈ Θ ∩ \powerset{\allleadsto}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∅ ≠ ↑(θ' ∖ θ) ∩ D ⊆ C$.
+$∀θ ∈ Θ ∩ \powerset{\allleadsto}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∅ ≠ ↑(θ' ∖ θ) ∩ D ⊆ C$.\commentClaude{Here, like "verifiable under $D$" (\cref{sec:verifiability}, "$C$ is verifiable under $D$ iff it is verifiable at $\allleadsto$ under $D$"), "obliviously verifiable under $D$" is tied to the single real world $\allleadsto$. But in the Proofs section, after defining OV at an arbitrary world $\allleadstog$ (unprefixed, mirroring verifiability's pattern), the unprefixed phrase "$C$ satisfies OV under $D$" is instead given the \emph{quantified} meaning $∀\allleadstog ∈ C ∩ D: \OOF[D ∖ C](\allleadstog)$ — the role that "established verifiability" plays for plain verifiability, but without an analogous "established OV" name flagging the shift. All later uses of "satisfies OV under $D$" use this quantified reading, not the single-real-world one defined here. Either rename the quantified notion (e.g. "established OV") to match the verifiability pattern, or state here that OV under $D$ is, from the outset, a claim-level (quantified) property rather than a real-world one.}
 Provability by $D$ implies oblivious verifiability under $D$ (just use verification $θ' = θ$).
 
 \section{Axioms}
@@ -1020,7 +1020,7 @@ If $D ⊆ D'$, then verifiability at $\allleadstog$ under axiom $D'$ implies ver
 Given $C, D ⊆ \allleadstos$, $C$ is obliviously verifiable (OV) at $\allleadstog ∈ \allleadstos$ under $D$ iff
 $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∅ ≠ ↑(θ' ∖ θ) ∩ D ⊆ C$.
 Given $C, D ⊆ \allleadstos$, $C$ is possibly verifiable under $D$ iff $∃ θ ∈ Θ \suchthat ∅ ≠ ↑θ ∩ D ⊆ C$.
-OV is defined at every $\allleadstog ∈ \allleadstos$, so it admits a local characterization, \cref{th:pvPoofLocal}, holding at every $\allleadstog ∈ D$ rather than only at $\allleadstog ∈ C ∩ D$; restricting it to $C ∩ D$ gives \cref{th:dualPofPv}.
+OV is defined at every $\allleadstog ∈ \allleadstos$, so it admits a local characterization, \cref{th:pvPoofLocal}, holding at every $\allleadstog ∈ D$ rather than only at $\allleadstog ∈ C ∩ D$.
 \begin{theorem}
   \label{th:pvPoofLocal}
   Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ D$: $C$ is OV at $\allleadstog$ under $D$ iff $\OOF[D ∖ C](\allleadstog)$.
@@ -1031,16 +1031,9 @@ OV is defined at every $\allleadstog ∈ \allleadstos$, so it admits a local cha
   Substituting into the definition of OV at $\allleadstog$ gives $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}: (θ' ∖ θ) ∉ (D ∖ C)^⊆$, which is exactly $\OOF[D ∖ C](\allleadstog)$.
 \end{proof}
 
-OV and OOF have a dual character as
+OV and OOF have a dual character: as $C ∩ D ⊆ D$, restricting \cref{th:pvPoofLocal} to $\allleadstog ∈ C ∩ D$ gives that
 $C$ satisfies OV under $D$ iff
-$∀\allleadstog ∈ C ∩ D, \OOF[D ∖ C](\allleadstog)$ (\cref{th:dualPofPv}, see also \cref{rk:dualEv}).
-\begin{corollary}
-  \label{th:dualPofPv}
-  $C$ satisfies OV under axiom $D$ iff $∀\allleadstog ∈ C ∩ D: \OOF[D ∖ C](\allleadstog)$.
-\end{corollary}
-\begin{proof}
-  As $C ∩ D ⊆ D$, this is the restriction of \cref{th:pvPoofLocal} to $\allleadstog ∈ C ∩ D$.
-\end{proof}
+$∀\allleadstog ∈ C ∩ D, \OOF[D ∖ C](\allleadstog)$ (see also \cref{rk:dualEv}).
 Under a given axiom, oblivious verifiability is stronger than established verifiability (\cref{th:pevImpliesEv}).
 \begin{corollary}
   \label{th:pevImpliesEv}
@@ -1185,7 +1178,7 @@ Being closed under finite modification and non-empty does not entail triviality.
 \subsection{OOF}
 \begin{remark}
   \label{rk:rpevGap}
-  By \cref{th:dualPofPv}, $\allleadstog ∈ C ∩ D$ satisfies established verifiability but not OV under $D$ iff $\OF[D ∖ C](\allleadstog) ∧ ¬\OOF[D ∖ C](\allleadstog)$, that is, iff $D ∖ C$ suffers visibility issues at $\allleadstog$ under OOF.
+  By \cref{th:obsCompEst,th:pvPoofLocal}, $\allleadstog ∈ C ∩ D$ is verifiable at $\allleadstog$ under $D$ but not OV at $\allleadstog$ under $D$ iff $\OF[D ∖ C](\allleadstog) ∧ ¬\OOF[D ∖ C](\allleadstog)$, that is, iff $D ∖ C$ suffers visibility issues at $\allleadstog$ under OOF.
   So, for a given claim and axiom, the gap between established verifiability and OV is precisely governed by visibility issues of $D ∖ C$: no such gap arises wherever $D ∖ C$ suffers no such visibility issues.
 \end{remark}
 
@@ -1225,7 +1218,7 @@ A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\OOF
 
   Conversely, suppose $\allleadstos ≠ C ≠ ∅$; we show $∃\allleadstog ∈ C ∩ D \suchthat ¬\OOF[D ∖ C](\allleadstog)$.
 
-  OV demands that all worlds in $C ∩ D$ satisfy $\OOF[D ∖ C]$ (\cref{th:dualPofPv}).
+  OV demands that all worlds in $C ∩ D$ satisfy $\OOF[D ∖ C]$ (\cref{th:pvPoofLocal}, as $C ∩ D ⊆ D$).
   Any $\allleadstog ∈ C$ already satisfies $¬\OOF(\allleadstog)$: for any $θ ⊑ θ'$, $θ' ∖ θ ⊆ θ' ⊆ \allleadstog ∈ C$ witnesses $θ' ∖ θ ∈ C^⊆$; thus $C ⊆ D$, and it suffices to exhibit $\allleadstog ∈ C$ such that, for some prefix $θ$, every completion $θ'$ has $θ' ∖ θ$ completable in $D ∖ C$.
 
   If $C$ is closed under finite modification (\cref{def:cufm}), by \cref{th:cufmNeverFals}, $∀\allleadstog: ¬\OF(\allleadstog)$, thus $¬\OOF(\allleadstog)$ (taking $θ = ∅$ in the definition of $\OOF$ already gives the witness required by $\OF$),
@@ -1853,9 +1846,9 @@ Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{persi
   Given $C, D ⊆ \allleadstos$: OV under $D$ implies PV under $D$.
 \end{corollary}
 \begin{proof}
-  By \cref{th:dualPofPv}, OV under $D$ gives $∀\allleadstog ∈ C ∩ D: \OOF[D ∖ C](\allleadstog)$, hence, by \cref{th:poofImpliesPof} (with $D ∖ C$ in place of $C$), $∀\allleadstog ∈ C ∩ D: \POF[D ∖ C](\allleadstog)$.
-  By \cref{th:vud} (\cref{it:unverifD,it:notcomplE}), for any $\allleadstog ∈ C ∩ D$ and $θ' ∈ Θ ∩ \powerset{\allleadstog}$: $θ'$ proves $C$ under $D$ (that is, $∀θ' ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$) iff $θ' ∉ (D ∖ C)^⊆$.
-  Substituting into the definition of PV at $\allleadstog$, $\POF[D ∖ C](\allleadstog)$ is exactly PV at $\allleadstog$ under $D$; so PV holds under $D$.
+  Fix any $\allleadstog ∈ C ∩ D$ (so $\allleadstog ∈ D$). By \cref{th:pvPoofLocal}, OV at $\allleadstog$ under $D$ gives $\OOF[D ∖ C](\allleadstog)$, hence, by \cref{th:poofImpliesPof} (with $D ∖ C$ in place of $C$), $\POF[D ∖ C](\allleadstog)$.
+  By \cref{th:vud} (\cref{it:unverifD,it:notcomplE}), for any $θ' ∈ Θ ∩ \powerset{\allleadstog}$: $θ'$ proves $C$ under $D$ (that is, $∀θ' ⊆ {\allleadstog'} ∈ D: {\allleadstog'} ∈ C$) iff $θ' ∉ (D ∖ C)^⊆$.
+  Substituting into the definition of PV at $\allleadstog$, $\POF[D ∖ C](\allleadstog)$ is exactly PV at $\allleadstog$ under $D$. As $\allleadstog ∈ C ∩ D$ was arbitrary, PV holds under $D$.
 \end{proof}
 \begin{corollary}
   \label{th:provImpliesPev}
