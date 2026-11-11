@@ -422,8 +422,17 @@ This is logically equivalent to mandating $¬\OOF(\allleadsto)$, thus, excluding
   It also applies to $C_2 = [∀i: (a') \ileadstog φ ∧ (a) \ileadstog[j] φ]$ for a given $j$, which in a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (a') \ileadstog φ$ is $¬\OOF[C_2](\allleadstog)$ (consider the prefix $θ = \set{(a') \ileadstog[j] φ}$) and $\OF[C_2](\allleadstog)$.
   (Note that if $C_2$ fails because, for some $i$, $(a') \nileadstog φ$,
   then $θ$ is not a hiding prefix observation, conforming to intuition.)
+  \Cref{rk:alternativePofs} discusses alternative formalizations of the concepts POF and $C$-scrutiny.%TODO
 \end{remark}
-\Cref{rk:alternativePofs} discusses alternative formalizations of the concepts POF and $C$-scrutiny.
+
+Verifiability and observable falsity have a dual character as
+$C$ satisfies verifiability under axiom $D$ at $\allleadstog ∈ D$ iff 
+$\OF[D ∖ C](\allleadstog)$ (\cref{th:obsCompEst}),
+and similarly,
+OV and OOF have a dual character (\cref{th:pvPoofLocal}).
+
+By \cref{th:obsCompEst,th:pvPoofLocal}, $\allleadstog ∈ C ∩ D$ is verifiable at $\allleadstog$ under $D$ but not OV at $\allleadstog$ under $D$ iff $\OF[D ∖ C](\allleadstog) ∧ ¬\OOF[D ∖ C](\allleadstog)$, that is, iff $D ∖ C$ suffers visibility issues at $\allleadstog$ under OOF.
+So, for a given claim and axiom, the gap between verifiability and OV is precisely governed by visibility issues of $D ∖ C$: no such gap arises wherever $D ∖ C$ suffers no such visibility issues.
 
 \begin{remark}
   Say that $C$ is \emph{rejectable} iff $\OF(\allleadsto)$.
@@ -437,13 +446,7 @@ This is logically equivalent to mandating $¬\OOF(\allleadsto)$, thus, excluding
   It will then remain to ensure that some suitable claim exists, which will require yet another axiom.
 \end{remark}
 
-\begin{remark}
-  Verifiability and observable falsity have a dual character as
-  $C$ satisfies verifiability under axiom $D$ at $\allleadstog ∈ D$ iff 
-  $\OF[D ∖ C](\allleadstog)$ (\cref{th:obsCompEst}),
-  and similarly,
-  OV and OOF have a dual character (\cref{th:pvPoofLocal}).
-\end{remark}
+\Cref{th:pvUnderNotPof} shows that any non trivial claim fails OV under $¬\OOF$ at some $\allleadstog ∈ C ∩ ¬OOF$.
 
 \subsection{Repeatable observations}
 Our second axiom ensures some repeatability of observations by assuming that whenever a behavior is exhibited by at least one individual, infinitely many individuals exhibit it.
@@ -510,8 +513,6 @@ This section argues about (the formal proofs are in appendix) the necessity and 
 We first illustrate that any two axioms out of those three are insufficient for obtaining this result, then illustrate sufficiency of considering all three together.
 
 \Cref{th:oneMorePriorFullExplicit} shows that each world which admits a regularity of the kind $∀i: \anobs ⊆ \ileadstoo ⇒ a \nileadstost p$ (for some $\anobs, a, p$) admits an anonymous, conclusive claim that holds and satisfies established OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}$.
-
-\Cref{th:pvUnderNotPof} shows that this axiom is insufficient: only the trivial claim satisfies established OV under $¬\OOF$.
 
 \Cref{th:holdsNotVerifUnderNotOfE} shows the insufficiency of the axiom $F_C$: for “most” such worlds (in some technical sense to be fully elucidated), there exists no anonymous claim that holds and is conclusive and satisfies established OV under $¬\OOF[C ∩ E] ∩ E$.
 % For a claim to exist satisfying an, holds, concl, and PV under ¬POF ∩ E, we need the world to satisfy D^gap?
@@ -1038,12 +1039,6 @@ If $D ⊆ D'$, then verifiability at $\allleadstog$ under axiom $D'$ implies ver
 \end{proof}
 
 \subsection{OOF}
-\begin{remark}
-  \label{rk:rpevGap}
-  By \cref{th:obsCompEst,th:pvPoofLocal}, $\allleadstog ∈ C ∩ D$ is verifiable at $\allleadstog$ under $D$ but not OV at $\allleadstog$ under $D$ iff $\OF[D ∖ C](\allleadstog) ∧ ¬\OOF[D ∖ C](\allleadstog)$, that is, iff $D ∖ C$ suffers visibility issues at $\allleadstog$ under OOF.
-  So, for a given claim and axiom, the gap between established verifiability and established OV is precisely governed by visibility issues of $D ∖ C$: no such gap arises wherever $D ∖ C$ suffers no such visibility issues.
-\end{remark}
-
 We also say that
 and $C$ is \emph{persistently falsifiable} iff
 $C ≠ \allleadstos ∧ [∀\allleadstog: \F(\allleadstog) ⇒ \OOF(\allleadstog)]$.
@@ -1105,6 +1100,22 @@ A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\OOF
 \begin{remark}
   I believe that we’re basically finding a prefix $θ$ such that$∀θ ⊑ θ': θ' ⊆ \allleadstog[j - 1] ∈ C ∧ θ' ⊆ \allleadstog[j] ∉ C$. Also, perhaps, existence of such a prefix is equivalent to the statement of the theorem. This may perhaps bring some better understanding. To be checked.
 \end{remark}
+\begin{example}
+  A non trivial and non empty claim may satisfy OV under $¬\OOF$.
+  Let $I$ be infinite and $C = [∃i \suchthat (a) \ileadstog φ]$.
+
+  $\OOF[C]$ never holds, so $D = ¬\OOF = \allleadstos$.
+  Indeed, for $\allleadstog ∈ C$, any $θ ⊆ \allleadstog$ already has $θ ∈ C^⊆$ (via $\allleadstog$ itself), so every $θ ⊆ θ'$ has $θ' ∖ θ ⊆ \allleadstog ∈ C$, giving $θ' ∖ θ ∈ C^⊆$.
+  For $\allleadstog ∉ C$ (so $∀i: (a) \nileadstog φ$), any $θ ∈ Θ ∩ \powerset{\allleadstog}$ touches only finitely many individuals; given $θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog}$, $θ' ∖ θ$ consists solely of further $(a) \nileadstog φ$ values, each trivially completable, by leaving some untouched individual's $(a)$-value at $φ$, to a world in $C$: $θ' ∖ θ ∈ C^⊆$.
+  Either way, no $θ'$ excludes $C^⊆$, so $¬\OOF(\allleadstog)$.
+
+  Fix the real world $\allleadsto$ with $∀i: (a) \ileadsto φ$.
+  Given any $θ ∈ Θ ∩ \powerset{\allleadsto}$, as $θ$ touches only finitely many individuals and $I$ is infinite, pick $i^* ∈ I$ untouched by $θ$ and let $θ' = θ ∪ \set{(a) \ileadsto[i^*] φ}$; then $↑(θ' ∖ θ) = ↑(\set{(a) \ileadsto[i^*] φ}) ⊆ C$, and this set contains $\allleadsto$, hence is nonempty.
+  As $D = \allleadstos$, $∅ ≠ ↑(θ' ∖ θ) ∩ D ⊆ C$: $C$ satisfies OV under $D$ at $\allleadsto$.
+
+  Established OV under $D$ nonetheless fails for this $C$, consistently with \cref{th:pvUnderNotPof}: consider $\allleadstog[0] ∈ C$ with $\allleadstog[0](i_0, (a)) = φ$ for exactly one individual $i_0$ and $\allleadstog[0](i, (a)) ≠ φ$ for every $i ≠ i_0$.
+  Taking $θ = \set{(i_0, (a), φ)}$ already exhausts $\allleadstog[0]$'s only witness, so every $θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog[0]}$ has $θ' ∖ θ$ consisting solely of pairs $(i, (a), \allleadstog[0](i, (a)))$ with $i ≠ i_0$, each completable, by the same argument as above, into $\overline C = D ∖ C$: $¬\OOF[D ∖ C](\allleadstog[0])$, so OV fails at $\allleadstog[0]$.
+\end{example}
 
 \subsection{Observational completion}
 \begin{corollary}
