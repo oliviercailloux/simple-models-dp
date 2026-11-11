@@ -371,7 +371,7 @@ Note that $C$ is verifiable iff it is verifiable under the trivial axiom.
 Verifiability under $D$ only requires \emph{some} proving observation to exist. 
 As with conclusiveness, it is desirable that every prefix admit a rightwards extension that still proves $C$, in order to ensure reproducibility.
 Given $C, D ⊆ \allleadstos$, $C$ is obliviously verifiable under axiom $D$ iff
-$∀θ ∈ Θ ∩ \powerset{\allleadsto}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∅ ≠ ↑(θ' ∖ θ) ∩ D ⊆ C$.\commentClaude{Here, like "verifiable under $D$" (\cref{sec:verifiability}, "$C$ is verifiable under $D$ iff it is verifiable at $\allleadsto$ under $D$"), "obliviously verifiable under $D$" is tied to the single real world $\allleadsto$. But in the Proofs section, after defining OV at an arbitrary world $\allleadstog$ (unprefixed, mirroring verifiability's pattern), the unprefixed phrase "$C$ satisfies OV under $D$" is instead given the \emph{quantified} meaning $∀\allleadstog ∈ C ∩ D: \OOF[D ∖ C](\allleadstog)$ — the role that "established verifiability" plays for plain verifiability, but without an analogous "established OV" name flagging the shift. All later uses of "satisfies OV under $D$" use this quantified reading, not the single-real-world one defined here. Either rename the quantified notion (e.g. "established OV") to match the verifiability pattern, or state here that OV under $D$ is, from the outset, a claim-level (quantified) property rather than a real-world one.}
+$∀θ ∈ Θ ∩ \powerset{\allleadsto}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∅ ≠ ↑(θ' ∖ θ) ∩ D ⊆ C$.
 Provability by $D$ implies oblivious verifiability under $D$ (just use verification $θ' = θ$).
 
 \section{Axioms}
@@ -472,9 +472,9 @@ TODO go on.
 
 \subsection{Visibility}
 We now add the last piece of the puzzle.
-For any anonymous and conclusive claim to exist that holds and is obliviously verifiable
+For any anonymous and conclusive claim to exist that holds and satisfies established oblivious verifiability
 under $¬\OOF[C ∩ E] ∩ E$, we need the world to offer some systematic pattern of the form, whenever an individual satisfies some observable behavior, then she deliberately chooses a given proposition (\cref{th:noPatternNoClaim}). Assume that the world has such: $∃ \anobs, p \suchthat ∀i: \anobs ⊆ \ileadstoo ⇒ ∃p \in π(\ileadstoo)$.
-We want to study axioms for which, for worlds which satisfy such conditions, some anonymous, conclusive, holding claim exists that is obliviously verifiable under that axiom.
+We want to study axioms for which, for worlds which satisfy such conditions, some anonymous, conclusive, holding claim exists that satisfies established oblivious verifiability under that axiom.
 For a suitable claim to exist, 
 we need the axiom to ensure that no behavior is sufficiently “strange” that an individual $i$ can satisfy the pattern $\anobs ⊆ \ileadstoo$, but fail $a \ileadstost p$, but only fail it in a way that is invisible to our observational capacities.
 In words, we require that those individuals have some path compatible with those used in $\anobs$ where it is visible that $a$ does not decisively lead $i$ to $p$ (thus $a$ appears at the end of $α$ and yet $α \nileadsto p$). 
@@ -491,7 +491,7 @@ In formal terms, we impose $D^{\anobs, a, p}$, defined as:
   \label{ex:explainPriorVis}
   Let us illustrate this latest axiom and also the fact that a claim need not pinpoint every possible regularity to be useful.
   Suppose that the world contains two kinds of individuals. The jays find $a$ decisive for $φ$. The kays however find $b$ decisive for $φ'$. Assume some researcher becomes aware of a part of this regularity: she realizes that individuals who, upon exposure to $(a, b)$, answer $φ$, all satisfy $a \ileadstost φ$, but ignores that a similar regularity holds for the kays. She claims $C = [∀i: (a, b) \ileadstog φ ⇒ a \ileadstostg φ]$.
-  This claim is anonymous and conclusive, and satisfies OV under the axiom $¬\OOF ∩ E ∩ D^{\anobs, a, φ}$, with $\anobs = \set{(a, b), φ}$. As the axiom holds, this implies that the claim holds. The axiom $D^{\anobs, a, φ}$ requires to accept that whenever some individual satisfies $(a, b) \ileadsto φ$ but fails $a \ileadstostg φ$, some path that completes $(a, b)$ shows it, such as $(a, b, c, a) \nileadsto φ$. On the contrary, the axiom fails if the only paths where $a$ fails to be decisive for that individual are paths that do not complete $(a, b)$. This could be the case, for example, if that individual is definitely impressed by the first influence he is exposed to, and never considers any other influences afterwards.
+  This claim is anonymous and conclusive, and satisfies established OV under the axiom $¬\OOF ∩ E ∩ D^{\anobs, a, φ}$, with $\anobs = \set{(a, b), φ}$. As the axiom holds, this implies that the claim holds. The axiom $D^{\anobs, a, φ}$ requires to accept that whenever some individual satisfies $(a, b) \ileadsto φ$ but fails $a \ileadstostg φ$, some path that completes $(a, b)$ shows it, such as $(a, b, c, a) \nileadsto φ$. On the contrary, the axiom fails if the only paths where $a$ fails to be decisive for that individual are paths that do not complete $(a, b)$. This could be the case, for example, if that individual is definitely impressed by the first influence he is exposed to, and never considers any other influences afterwards.
 \end{example}
 
 A sufficient (but not necessary) condition for \cref{ax:vis} is that repeating often enough the influences that lead the individual out of $p$ lets her forget about the influences used in $\anobs$.
@@ -501,11 +501,11 @@ This section argues about (the formal proofs are in appendix) the necessity and 
 
 We first illustrate that any two axioms out of those three are insufficient for obtaining this result, then illustrate sufficiency of considering all three together.
 
-\Cref{th:oneMorePriorFullExplicit} shows that each world which admits a regularity of the kind $∀i: \anobs ⊆ \ileadstoo ⇒ a \nileadstost p$ (for some $\anobs, a, p$) admits an anonymous, conclusive claim that holds and satisfies OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}$.
+\Cref{th:oneMorePriorFullExplicit} shows that each world which admits a regularity of the kind $∀i: \anobs ⊆ \ileadstoo ⇒ a \nileadstost p$ (for some $\anobs, a, p$) admits an anonymous, conclusive claim that holds and satisfies established OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}$.
 
-\Cref{th:pvUnderNotPof} shows that this axiom is insufficient: only the trivial claim satisfies OV under $¬\OOF$.
+\Cref{th:pvUnderNotPof} shows that this axiom is insufficient: only the trivial claim satisfies established OV under $¬\OOF$.
 
-\Cref{th:holdsNotVerifUnderNotOfE} shows the insufficiency of the axiom $F_C$: for “most” such worlds (in some technical sense to be fully elucidated), there exists no anonymous claim that holds and is conclusive and satisfies OV under $¬\OOF[C ∩ E] ∩ E$.
+\Cref{th:holdsNotVerifUnderNotOfE} shows the insufficiency of the axiom $F_C$: for “most” such worlds (in some technical sense to be fully elucidated), there exists no anonymous claim that holds and is conclusive and satisfies established OV under $¬\OOF[C ∩ E] ∩ E$.
 % For a claim to exist satisfying an, holds, concl, and PV under ¬POF ∩ E, we need the world to satisfy D^gap?
 % Indeed, if C entails … → a dec or b dec, build a world where a not dec and b convincing when a is with him, and b sometimes not convincing 
 %D^gAp, the extension of D^gap for the case of some set of arguments A such that g ⊆ \ileadsto p ⇒ ∃a ∈ A | a \ileadstost p.
@@ -1032,15 +1032,15 @@ OV is defined at every $\allleadstog ∈ \allleadstos$, so it admits a local cha
 \end{proof}
 
 OV and OOF have a dual character: as $C ∩ D ⊆ D$, restricting \cref{th:pvPoofLocal} to $\allleadstog ∈ C ∩ D$ gives that
-$C$ satisfies OV under $D$ iff
+$C$ satisfies established OV under $D$ iff
 $∀\allleadstog ∈ C ∩ D, \OOF[D ∖ C](\allleadstog)$ (see also \cref{rk:dualEv}).
-Under a given axiom, oblivious verifiability is stronger than established verifiability (\cref{th:pevImpliesEv}).
+Under a given axiom, established oblivious verifiability is stronger than established verifiability (\cref{th:pevImpliesEv}).
 \begin{corollary}
   \label{th:pevImpliesEv}
-  Given $C, D ⊆ \allleadstos$: OV under $D$ implies established verifiability under $D$.
+  Given $C, D ⊆ \allleadstos$: established OV under $D$ implies established verifiability under $D$.
 \end{corollary}
 \begin{proof}
-  Taking $θ = ∅$ in OV's defining condition directly gives $∅ ≠ ↑θ' ∩ D ⊆ C$ for some $θ' ∈ Θ ∩ \powerset{\allleadstog}$ (as $θ' ∖ ∅ = θ'$), which is exactly established verifiability at $\allleadstog$.
+  Fix any $\allleadstog ∈ C ∩ D$. Taking $θ = ∅$ in OV at $\allleadstog$'s defining condition directly gives $∅ ≠ ↑θ' ∩ D ⊆ C$ for some $θ' ∈ Θ ∩ \powerset{\allleadstog}$ (as $θ' ∖ ∅ = θ'$), which is exactly established verifiability at $\allleadstog$. As $\allleadstog ∈ C ∩ D$ was arbitrary, this gives established verifiability under $D$.
 \end{proof}
 \subsection{Observational exclusion and completion}
 $S ⊆ \allleadstos$ is observationally excludable iff 
@@ -1179,7 +1179,7 @@ Being closed under finite modification and non-empty does not entail triviality.
 \begin{remark}
   \label{rk:rpevGap}
   By \cref{th:obsCompEst,th:pvPoofLocal}, $\allleadstog ∈ C ∩ D$ is verifiable at $\allleadstog$ under $D$ but not OV at $\allleadstog$ under $D$ iff $\OF[D ∖ C](\allleadstog) ∧ ¬\OOF[D ∖ C](\allleadstog)$, that is, iff $D ∖ C$ suffers visibility issues at $\allleadstog$ under OOF.
-  So, for a given claim and axiom, the gap between established verifiability and OV is precisely governed by visibility issues of $D ∖ C$: no such gap arises wherever $D ∖ C$ suffers no such visibility issues.
+  So, for a given claim and axiom, the gap between established verifiability and established OV is precisely governed by visibility issues of $D ∖ C$: no such gap arises wherever $D ∖ C$ suffers no such visibility issues.
 \end{remark}
 
 We also say that
@@ -1211,14 +1211,14 @@ A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\OOF
 
 \begin{theorem}
   \label{th:pvUnderNotPof}
-  A claim $C$ is OV under $D = ¬\OOF$ iff $C = ∅ ∨ C = \allleadstos$.
+  A claim $C$ satisfies established OV under $D = ¬\OOF$ iff $C = ∅ ∨ C = \allleadstos$.
 \end{theorem}
 \begin{proof}
-  If $C = ∅$, then $∀θ ∈ Θ: θ ∉ C^⊆$, thus $∀\allleadstog: \OOF(\allleadstog)$, hence $D = ∅ = C ∩ D$, so OV holds vacuously.
+  If $C = ∅$, then $∀θ ∈ Θ: θ ∉ C^⊆$, thus $∀\allleadstog: \OOF(\allleadstog)$, hence $D = ∅ = C ∩ D$, so established OV holds vacuously.
 
   Conversely, suppose $\allleadstos ≠ C ≠ ∅$; we show $∃\allleadstog ∈ C ∩ D \suchthat ¬\OOF[D ∖ C](\allleadstog)$.
 
-  OV demands that all worlds in $C ∩ D$ satisfy $\OOF[D ∖ C]$ (\cref{th:pvPoofLocal}, as $C ∩ D ⊆ D$).
+  Established OV demands that all worlds in $C ∩ D$ satisfy $\OOF[D ∖ C]$ (\cref{th:pvPoofLocal}, as $C ∩ D ⊆ D$).
   Any $\allleadstog ∈ C$ already satisfies $¬\OOF(\allleadstog)$: for any $θ ⊑ θ'$, $θ' ∖ θ ⊆ θ' ⊆ \allleadstog ∈ C$ witnesses $θ' ∖ θ ∈ C^⊆$; thus $C ⊆ D$, and it suffices to exhibit $\allleadstog ∈ C$ such that, for some prefix $θ$, every completion $θ'$ has $θ' ∖ θ$ completable in $D ∖ C$.
 
   If $C$ is closed under finite modification (\cref{def:cufm}), by \cref{th:cufmNeverFals}, $∀\allleadstog: ¬\OF(\allleadstog)$, thus $¬\OOF(\allleadstog)$ (taking $θ = ∅$ in the definition of $\OOF$ already gives the witness required by $\OF$),
@@ -1615,7 +1615,7 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
   Then $\allleadsto ∈ E$; $a \ileadstost_j φ$ and $b \nileadstost_j φ$ for $j ∈ J$ (as $(b) \ileadstoo[j] φ'$); $b \ileadstost_k φ$ and $a \nileadstost_k φ$ for $k ∈ K$ (as $(a) \ileadstoo[k] φ'$).
   Hence there is no $c ∈ \allargs$ with $∀i: c \ileadstost_i φ$.
   Yet $∀i: a \ileadstost_i φ ∨ b \ileadstost_i φ$, so $P_i = \set{φ}$ for all $i$, and \cref{th:noPatternNoClaim}'s hypothesis fails.
-  A suitable claim exists: $C = [∀i: (a) \ileadstog φ ⇒ a \ileadstostg φ]$ holds in $\allleadsto$ (genuinely for $J$, vacuously for $K$ since $(a) \ileadstoo[k] φ'$), is anonymous, conclusive, and satisfies OV, by \cref{th:oneMorePriorGeneralPev} (applied with $H := \set{(a)}$, $\anobs := \set{((a), φ)}$, $c := a$, $p := φ$, and any $j_0 ∈ J$).
+  A suitable claim exists: $C = [∀i: (a) \ileadstog φ ⇒ a \ileadstostg φ]$ holds in $\allleadsto$ (genuinely for $J$, vacuously for $K$ since $(a) \ileadstoo[k] φ'$), is anonymous, conclusive, and satisfies established OV, by \cref{th:oneMorePriorGeneralPev} (applied with $H := \set{(a)}$, $\anobs := \set{((a), φ)}$, $c := a$, $p := φ$, and any $j_0 ∈ J$).
 \end{example}
 
 \begin{theorem}
@@ -1675,7 +1675,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
-  there exists an anonymous claim $C$ that holds, is conclusive and satisfies OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$.
+  there exists an anonymous claim $C$ that holds, is conclusive and satisfies established OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$.
 \end{theorem}
 \begin{proof}
   Let $C_0$ be the claim built in the proof of \cref{th:oneMorePriorGeneral}, and set
@@ -1688,7 +1688,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 
   \emph{$D ⊆ C_0$.} Steps 1, A and B of \cref{th:oneMorePriorGeneral}'s proof only ever use $C_0$'s first and second conjuncts (never a bound on $C$ from above), so they apply verbatim to $C$ in place of that proof's own claim, with this $C$'s own $S_C$: any $\allleadstog' ∈ E ∩ D^{\anobs, a, p}_{\allleadstog'(I) ∩ B, \, S_C}$ outside $C_0$ satisfies $\OOF[C](\allleadstog')$, that is $\allleadstog' ∉ ¬\OOF$. So no $\allleadstog' ∈ D$ lies outside $C_0$: $D ⊆ C_0$.
 
-  \emph{OV under $D$.} Fix $\allleadstog ∈ C ∩ D$ and $θ ∈ Θ ∩ \powerset{\allleadstog}$; reuse $j, θ'$ from the \emph{Conclusive} paragraph above. As $θ' ∖ θ ⊆ \allleadstog$ and $\allleadstog ∈ D$, $\allleadstog$ lies in $↑(θ' ∖ θ) ∩ D$, so this set is nonempty. Suppose $\allleadstog'' ∈ D$ extends $θ' ∖ θ = \set{j} × \anobs$. By $D ⊆ C_0$, $\allleadstog'' ∈ C_0$; and $\anobs ⊆ \allleadstog''(j)$, so $\allleadstog''$ also satisfies $C$'s extra conjunct (witnessed by $j$), hence $\allleadstog'' ∈ C$. So $↑(θ' ∖ θ) ∩ D ⊆ C$: $θ'$ witnesses the defining condition of OV at $(\allleadstog, θ)$. As $θ$ was arbitrary, $C$ is OV at $\allleadstog$ under $D$; as $\allleadstog ∈ C ∩ D$ was arbitrary, $C$ satisfies OV under $D$.
+  \emph{Established OV under $D$.} Fix $\allleadstog ∈ C ∩ D$ and $θ ∈ Θ ∩ \powerset{\allleadstog}$; reuse $j, θ'$ from the \emph{Conclusive} paragraph above. As $θ' ∖ θ ⊆ \allleadstog$ and $\allleadstog ∈ D$, $\allleadstog$ lies in $↑(θ' ∖ θ) ∩ D$, so this set is nonempty. Suppose $\allleadstog'' ∈ D$ extends $θ' ∖ θ = \set{j} × \anobs$. By $D ⊆ C_0$, $\allleadstog'' ∈ C_0$; and $\anobs ⊆ \allleadstog''(j)$, so $\allleadstog''$ also satisfies $C$'s extra conjunct (witnessed by $j$), hence $\allleadstog'' ∈ C$. So $↑(θ' ∖ θ) ∩ D ⊆ C$: $θ'$ witnesses the defining condition of OV at $(\allleadstog, θ)$. As $θ$ was arbitrary, $C$ is OV at $\allleadstog$ under $D$; as $\allleadstog ∈ C ∩ D$ was arbitrary, $C$ satisfies established OV under $D$.
 \end{proof}
 
 \begin{conjecture}
@@ -1697,7 +1697,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
-  if there exists an anonymous claim $C$ that holds, is conclusive and satisfies OV under $(¬\OOF) ∩ E$,
+  if there exists an anonymous claim $C$ that holds, is conclusive and satisfies established OV under $(¬\OOF) ∩ E$,
   then
   $\allleadsto ∈ D^{\anobs, a, p}$.
 \end{conjecture}
@@ -1715,7 +1715,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 
   \emph{$\allleadsto ∈ D^{\anobs_1,a,p_1}$.} Let $b ∉ \allleadsto(I) = \set{b_j,b_k,b_l}$ satisfy $\anobs_1 ⊆ b$ (so $b(∅) = b((a)) = ψ$) and $a \nileadstostg[b] p_1$, witnessed by some $β$ with $a ∈ \histend(β)$ (so $β ≠ ∅$) and $b(β) ≠ ψ$. At the chain $\set{∅,β} ∈ \fincrhists$, $\restr{b}{\set{∅,β}} = (ψ, b(β))$ with $b(β) ≠ ψ$, while $\restr{b_j}{\set{∅,β}} = (φ,φ)$, $\restr{b_k}{\set{∅,β}} = (φ', b_k(β))$, and $\restr{b_l}{\set{∅,β}} = (ψ,ψ)$: the first coordinate $ψ ∉ \set{φ,φ'}$ already rules out $b_j$ and $b_k$, and the second coordinate $b(β) ≠ ψ$ rules out $b_l$. So $b$ is distinguishable from $\allleadsto(I)$: $\allleadsto ∈ D^{\anobs_1,a,p_1}$.
 
-  By \cref{th:oneMorePriorNarrow}, applied with this $H_1, \anobs_1, a, p_1$, some anonymous claim $C$ holds, is conclusive and satisfies OV under $(¬\OOF) ∩ E$.
+  By \cref{th:oneMorePriorNarrow}, applied with this $H_1, \anobs_1, a, p_1$, some anonymous claim $C$ holds, is conclusive and satisfies established OV under $(¬\OOF) ∩ E$.
 
   Taking $B := \allbs$ (which trivially satisfies $\allleadsto(I) ⊆ B$ and, since it appears nowhere else in the statement, plays no further role), the conjecture's hypotheses hold at this $\allleadsto$ for $H, \anobs, a, p$ as above, and $C$ witnesses its antecedent — yet $\allleadsto ∉ D^{\anobs,a,p}$: the conjecture is false. The obstruction (on $J ∪ K$) and the witness (on $L$) sit on disjoint, mutually irrelevant parts of $I$, precisely because nothing in the antecedent ties the claim $C$ it furnishes to the specific $\anobs, a, p$ named in the conclusion.
 \end{proof}
@@ -1777,11 +1777,11 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
-  there exists an anonymous claim that holds, is conclusive and satisfies OV under $¬\OOF ∩ E$.
+  there exists an anonymous claim that holds, is conclusive and satisfies established OV under $¬\OOF ∩ E$.
 \end{corollary}
 
 \begin{proof}
-  Apply \cref{th:oneMorePriorGeneralPev} with $B := \allleadsto(I)$: the hypothesis $\allleadsto(I) ⊆ B$ is trivial, and $D^{\anobs, a, p}_{\allbs, \allleadsto(I)} = D^{\anobs, a, p}$ is exactly the hypothesis here. By the remark following \cref{th:oneMorePriorGeneral}, at this $B$ the filter axiom $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ trivializes to $\allleadstos$, so OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is exactly OV under $¬\OOF ∩ E$.
+  Apply \cref{th:oneMorePriorGeneralPev} with $B := \allleadsto(I)$: the hypothesis $\allleadsto(I) ⊆ B$ is trivial, and $D^{\anobs, a, p}_{\allbs, \allleadsto(I)} = D^{\anobs, a, p}$ is exactly the hypothesis here. By the remark following \cref{th:oneMorePriorGeneral}, at this $B$ the filter axiom $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ trivializes to $\allleadstos$, so established OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is exactly established OV under $¬\OOF ∩ E$.
 \end{proof}
 
 \begin{corollary}
@@ -1790,7 +1790,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
-  there exists an anonymous claim $C$ that holds, is conclusive and satisfies OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_C$.
+  there exists an anonymous claim $C$ that holds, is conclusive and satisfies established OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_C$.
 \end{corollary}
 
 \begin{proof}
@@ -1803,14 +1803,14 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
-  there exists an anonymous claim $C$ that holds, is conclusive and satisfies OV under $(¬\OOF) ∩ E ∩ D$, where $D$ is
+  there exists an anonymous claim $C$ that holds, is conclusive and satisfies established OV under $(¬\OOF) ∩ E ∩ D$, where $D$ is
   \begin{multline}
     \Bigl[∀g ∈ \allleadstog(I) \text{ with } \anobs ⊆ g ∧ a \nileadstostg[g] p,\\
     ∃α ∈ \allhists \suchthat \anobs^{-1}(P) ∪ \set{α} ∈ \fincrhists ∧ a ∈ \histend(α) ∧ α \nileadstog[g] p \Bigr].
   \end{multline}
 \end{corollary}
 \begin{proof}
-  Let $C := [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$, the claim of \cref{th:oneMorePriorFull}, which holds, is conclusive and satisfies OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_C$; it remains to show $D^{\anobs, a, p}_C = D$.
+  Let $C := [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$, the claim of \cref{th:oneMorePriorFull}, which holds, is conclusive and satisfies established OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_C$; it remains to show $D^{\anobs, a, p}_C = D$.
 
   As $\text{Bad} = ∅$ at this $C$ (\cref{th:oneMorePriorFull}'s proof), $S_C = \set{b ∈ \allbs \suchthat \anobs ⊆ b ⇒ a \ileadstostg[b] p}$. A row $g$ failing $\anobs ⊆ g ⇒ a \ileadstostg[g] p$ never lies in $S_C$, so the condition "$g ∈ \allleadstog(I) ∖ S_C$" in the definition of $D^{\anobs, a, p}_C$ is automatic whenever $\anobs ⊆ g ∧ a \nileadstostg[g] p$; unfolding distinguishability, $\allleadstog ∈ D^{\anobs, a, p}_C$ says exactly: for every $g ∈ \allleadstog(I)$ with $\anobs ⊆ g ∧ a \nileadstostg[g] p$, some $H_0 ∈ \fincrhists$ has no $b ∈ S_C$ with $\restr{b}{H_0} = \restr{g}{H_0}$. Fix such a $g$; we show this holds iff some $α$ as in $D$'s definition exists.
 
@@ -1843,7 +1843,7 @@ The set $Θ ∩ C^⊆$ is downwards closed, as both $Θ$ and $C^⊆$ are.
 Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{persistently verifiable} (PV) at $\allleadstog$ under $D$ iff $∀θ ∈ Θ ∩ \powerset{\allleadstog}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ↑θ' ∩ D ⊆ C$.
 \begin{corollary}
   \label{th:newPvImpliesPvo}
-  Given $C, D ⊆ \allleadstos$: OV under $D$ implies PV under $D$.
+  Given $C, D ⊆ \allleadstos$: established OV under $D$ implies PV under $D$.
 \end{corollary}
 \begin{proof}
   Fix any $\allleadstog ∈ C ∩ D$ (so $\allleadstog ∈ D$). By \cref{th:pvPoofLocal}, OV at $\allleadstog$ under $D$ gives $\OOF[D ∖ C](\allleadstog)$, hence, by \cref{th:poofImpliesPof} (with $D ∖ C$ in place of $C$), $\POF[D ∖ C](\allleadstog)$.
@@ -1852,11 +1852,11 @@ Given $C, D ⊆ \allleadstos$ and $\allleadstog ∈ C ∩ D$, $C$ is \emph{persi
 \end{proof}
 \begin{corollary}
   \label{th:provImpliesPev}
-  Given $C, D ⊆ \allleadstos$: provability of $C$ by $D$ implies PV under $D$; so does it imply OV under $D$.
+  Given $C, D ⊆ \allleadstos$: provability of $C$ by $D$ implies PV under $D$; so does it imply established OV under $D$.
 \end{corollary}
 \begin{proof}
   If $D ⊆ C$, then for any $\allleadstog ∈ C ∩ D$ and $θ ∈ Θ ∩ \powerset{\allleadstog}$, taking $θ' := θ$ gives $↑θ' ∩ D ⊆ D ⊆ C$, witnessing PV at $\allleadstog$ under $D$.
-  For OV: $D ⊆ C$ gives $↑(θ' ∖ θ) ∩ D ⊆ D ⊆ C$ for any $θ, θ'$, and taking $θ' := θ$ itself, $∅ ≠ ↑(θ' ∖ θ) ∩ D = ↑∅ ∩ D = D ≠ ∅$ as soon as $D ≠ ∅$ (which holds since $\allleadstog ∈ C ∩ D$); so OV holds at every $\allleadstog ∈ D$.
+  For established OV: $D ⊆ C$ gives $↑(θ' ∖ θ) ∩ D ⊆ D ⊆ C$ for any $θ, θ'$, and taking $θ' := θ$ itself, $∅ ≠ ↑(θ' ∖ θ) ∩ D = ↑∅ ∩ D = D ≠ ∅$ as soon as $D ≠ ∅$ (which holds since $\allleadstog ∈ C ∩ D$); so OV holds at every $\allleadstog ∈ D$.
 \end{proof}
 
 $C$-scrutiny is the axiom $D_C
@@ -1880,7 +1880,7 @@ $.
   A claim $C$ is PV under $D = ¬\OOF$ iff $C = ∅ ∨ C = \allleadstos$.
 \end{corollary}
 \begin{proof}
-  By \cref{th:newPvImpliesPvo}, OV under $¬\OOF$ implies PV under $¬\OOF$, so only $C = ∅$ or $C = \allleadstos$ can satisfy PV under $¬\OOF$ (\cref{th:pvUnderNotPof}); conversely, both trivially satisfy PV under any axiom (\cref{th:provImpliesPev}, taking $D = ¬\OOF ⊆ C$ when $C = \allleadstos$, and the case $C = ∅$ being vacuous as $C ∩ D = ∅$).
+  By \cref{th:newPvImpliesPvo}, established OV under $¬\OOF$ implies PV under $¬\OOF$, so only $C = ∅$ or $C = \allleadstos$ can satisfy PV under $¬\OOF$ (\cref{th:pvUnderNotPof}); conversely, both trivially satisfy PV under any axiom (\cref{th:provImpliesPev}, taking $D = ¬\OOF ⊆ C$ when $C = \allleadstos$, and the case $C = ∅$ being vacuous as $C ∩ D = ∅$).
 \end{proof}
 
 \begin{conjecture}
@@ -1921,7 +1921,7 @@ $.
   With $w ∈ ↑θ_1 ∩ D$, $(\star)$ gives $π_{i^*}(w) = p^*$.
   But $i^*$'s behavior in $w$ is $g'$, which has no decisive arg for $p^*$, so $π_{i^*}(w) ≠ p^*$: a contradiction.
 \end{proof}
-Were \cref{conj:noSpecificArgNoClaim} settled, the analogous statement for OV — a logically weaker claim, since OV under $D$ implies PV under $D$ (\cref{th:newPvImpliesPvo}) — would follow immediately, as in \cref{th:noPatternNoClaim}'s corollary below.
+Were \cref{conj:noSpecificArgNoClaim} settled, the analogous statement for established OV — a logically weaker claim, since established OV under $D$ implies PV under $D$ (\cref{th:newPvImpliesPvo}) — would follow immediately, as in \cref{th:noPatternNoClaim}'s corollary below.
 \begin{theorem}
   \label{th:promisingWorld}
   Fix $φ ≠ φ' ∈ P$ and $a ≠ b ∈ \allargs$.
@@ -1930,7 +1930,7 @@ Were \cref{conj:noSpecificArgNoClaim} settled, the analogous statement for OV �
 \end{theorem}
 \begin{proof}
   Write $D := (¬\POF[C]) ∩ E$.
-  Unfolding the definition of PV via \cref{th:vud} (\cref{it:unverifD,it:notcomplE}), $C$ is PV under $D$ iff $∀\allleadstog ∈ C ∩ D: \POF[D ∖ C](\allleadstog)$; so it suffices to exhibit $v ∈ C ∩ D$ with $¬\POF[D ∖ C](v)$ (ruling out PV here also rules out OV a fortiori, by \cref{th:newPvImpliesPvo}).
+  Unfolding the definition of PV via \cref{th:vud} (\cref{it:unverifD,it:notcomplE}), $C$ is PV under $D$ iff $∀\allleadstog ∈ C ∩ D: \POF[D ∖ C](\allleadstog)$; so it suffices to exhibit $v ∈ C ∩ D$ with $¬\POF[D ∖ C](v)$ (ruling out PV here also rules out established OV a fortiori, by \cref{th:newPvImpliesPvo}).
   Take $v := \allleadsto$: it holds ($\allleadsto ∈ C$), lies in $E$ by hypothesis, and since $\allleadsto ∈ C$, every $θ' ∈ Θ ∩ \powerset{\allleadsto}$ lies in $C^⊆$ (witnessed by $\allleadsto$ itself), so $¬\POF[C](\allleadsto)$: thus $\allleadsto ∈ C ∩ D$.
 
   For $¬\POF[D ∖ C](\allleadsto)$, fix $θ = ∅$ and let $θ' ∈ Θ ∩ \powerset{\allleadsto}$ have max depth $m$.
@@ -1983,10 +1983,10 @@ Were \cref{conj:noSpecificArgNoClaim} settled, the analogous statement for OV �
   Steps 2–3 give $∀i ∈ I: \anobs ⊆ \ileadstoo[i] ⇒ p^* ∈ P_i$; taking $p := p^*$, this is exactly the $\anobs, p$ pattern the hypothesis excludes — contradiction.
 \end{proof}
 \begin{corollary}
-  Under \cref{th:noPatternNoClaim}'s hypotheses, no anonymous, conclusive claim that holds is OV under $(¬\OF) ∩ E ∩ F_C$ either.
+  Under \cref{th:noPatternNoClaim}'s hypotheses, no anonymous, conclusive claim that holds satisfies established OV under $(¬\OF) ∩ E ∩ F_C$ either.
 \end{corollary}
 \begin{proof}
-  By \cref{th:newPvImpliesPvo}, OV under $D$ would imply PV under $D$, ruled out by \cref{th:noPatternNoClaim}.
+  By \cref{th:newPvImpliesPvo}, established OV under $D$ would imply PV under $D$, ruled out by \cref{th:noPatternNoClaim}.
 \end{proof}
 \begin{remark}
   Taking $F_C := \allleadstos$ for every $C$ (trivially anonymous, and $C ⊆ \allleadstos$ always) recovers the plain statement: no such claim is PV under $(¬\OF) ∩ E$ alone.
