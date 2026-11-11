@@ -291,6 +291,7 @@ such that there exists some conformity covering of $K$, and each conformity cove
 \end{example}
 
 \begin{remark}
+  \label{rk:notSimple}
   The definition of regularity needs to refer to several individuals because involving a single individual may not reveal any trend. Intuitively speaking, this is because the world could include behaviors sufficiently hard to distinguish that, unlike in \cref{ex:regularity}, the claim would have to use an implication involving a more complicated antecedent such as $[∀i ≠ j: (a) \ileadstog φ ∧ (b) \ileadstog[j] φ' ⇒ φ ∈ π(\ileadstogo)]$, irreducible to an observation about a single individual. We defer to \cref{ex:klBranches} in the appendix and the related discussion for the formal exposition.
 \end{remark}
 
@@ -478,24 +479,28 @@ The intuition, however, is correct when restricted to anonymous claims: \cref{th
 $(¬\OOF) ∩ E$ proves $C$ iff $(¬\OF) ∩ E$ proves $C$ and $C$ suffers no visibility issues in $E$ (that is, $∀\allleadstog ∈ E: \OF(\allleadstog) ⇒ \OOF(\allleadstog)$).
 Thus (using \cref{th:finiteExceptSpreadAnon} as well), any anonymous and falsifiable claim $C ⊆ E$ is provable by $¬\OOF[C ∩ E] ∩ E$ (\cref{th:anonFalsImpliesProv}).
 
-Finally, we note an important simplification of the regularity condition studied in \cref{sec:regularity} (\cref{th:regularity}): assuming that $\allleadsto ∈ E$, we obtain that … 
-TODO go on.
+Finally, we note an important simplification of the regularity condition studied in \cref{sec:regularity}. 
+A world exhibit a simple regularity iff for some observable behavior and proposition, whenever an individual conforms to the behavior, she deliberately chooses the given proposition.
+Simple regularity implies regularity, but not necessarily conversely in general (\cref{rk:notSimple}). Under \cref{ax:repeatable}, however, the equivalence holds (\cref{th:EThusSimpleReg}).
+It follows that assuming that $\allleadsto ∈ E$, simple regularity is a required condition for any anonymous and conclusive claim to hold (\cref{th:EThusSimpleRegReq} also shows sufficiency).
 
 \subsection{Visibility}
 We now add the last piece of the puzzle.
-For any anonymous and conclusive claim to exist that holds and satisfies established oblivious verifiability
-under $¬\OOF[C ∩ E] ∩ E$, we need the world to offer some systematic pattern of the form, whenever an individual satisfies some observable behavior, then she deliberately chooses a given proposition (\cref{th:noPatternNoClaim}). Assume that the world has such: $∃ \anobs, p \suchthat ∀i: \anobs ⊆ \ileadstoo ⇒ ∃p \in π(\ileadstoo)$.
-We want to study axioms for which, for worlds which satisfy such conditions, some anonymous, conclusive, holding claim exists that satisfies established oblivious verifiability under that axiom.
-For a suitable claim to exist, 
-we need the axiom to ensure that no behavior is sufficiently “strange” that an individual $i$ can satisfy the pattern $\anobs ⊆ \ileadstoo$, but fail $a \ileadstost p$, but only fail it in a way that is invisible to our observational capacities.
+From the above result, we know that
+for any anonymous and conclusive claim to exist that holds, assuming $\cref{ax:repeatable}$, 
+the world must exhibit a simple regularity: $∃ \anobs, p \suchthat ∀i: \anobs ⊆ \ileadstoo ⇒ π(\ileadstoo) = p$.
+Say that $a$ leads $i$ decisively to $p$.
+In order to ensure that one can know that the claim holds, thus, to satisfy OV under some axiom, it is required, in supplement to \cref{ax:scrutiny,ax:repeatable}, 
+to ensure that no behavior is sufficiently “strange” that an individual $i$ can satisfy the pattern $\anobs ⊆ \ileadstoo$, but fail $a \ileadstost p$, but only fail it in a way that is invisible to our observational capacities.
 In words, we require that those individuals have some path compatible with those used in $\anobs$ where it is visible that $a$ does not decisively lead $i$ to $p$ (thus $a$ appears at the end of $α$ and yet $α \nileadsto p$). 
-In formal terms, we impose $D^{\anobs, a, p}$, defined as:
+In formal terms, given $\anobs, a, p$, define $D^{\anobs, a, p}$ as the condition that if $\anobs, p$ defines a simple regularity, with $a$ a decisive argument for $p$, then it is not hidden from observation:
 \begin{equation}
   ∀i: (\anobs ⊆ \ileadstoo ∧ a \nileadstost p) ⇒ (∃α ∈ \allhists \suchthat \anobs^{-1}(P) ∪ \set{α} ∈ \fincrhists ∧ a ∈ \histend(α) ∧ α \nileadsto p).
 \end{equation}
+We impose that $\allleadsto$ admits a simple regularity that is visible.
 \begin{axiom}[Visibility]
   \label{ax:vis}
-  $\allleadsto ∈ D^{\anobs, a, p}$.
+  $∃\anobs, a, p \suchthat (∃i \suchthat \anobs ⊆ \ileadstoo) ∧ D^{\anobs, a, p}$.
 \end{axiom}
 
 \begin{example}
@@ -1108,94 +1113,6 @@ A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\OOF
   Taking $θ = \set{(i_0, (a), φ)}$ already exhausts $\allleadstog[0]$'s only witness, so every $θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog[0]}$ has $θ' ∖ θ$ consisting solely of pairs $(i, (a), \allleadstog[0](i, (a)))$ with $i ≠ i_0$, each completable, by the same argument as above, into $\overline C = D ∖ C$: $¬\OOF[D ∖ C](\allleadstog[0])$, so OV fails at $\allleadstog[0]$.
 \end{example}
 
-\subsection{Observational completion}
-\begin{corollary}
-  \label{th:obsComp}
-  Given any claims $C, D ⊆ \allleadstos$,
-  possible verifiability under axiom $D$, that is, 
-  $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ \allleadstog ∈ D: \allleadstog ∈ C$,
-  is equivalent to 
-  $D$ being observationally completable to $C$, that is,
-  $∃ θ ∈ Θ ∩ D^⊆ \suchthat θ ∉ (D ∖ C)^⊆$.
-\end{corollary}
-\begin{remark}
-  \label{rk:necObsComp}
-  Given any claims $C, D ⊆ \allleadstos$,
-  [$C$ satisfies established verifiability under axiom $D$
-  ($∀\allleadstog ∈ C ∩ D, \OF[D ∖ C](\allleadstog)$)
-  is equivalent to
-  $D$ is necessarily observationally completable to $C$
-  ($∀\allleadstog ∈ D, \OF[D ∖ C](\allleadstog)$)]
-  iff
-  $D ∖ C = ∅$.
-  Indeed, assume EV under $D$ and consider $\allleadstog ∈ D ∩ \overline{C}$, we have $¬\F[D ∖ C](\allleadstog)$, thus $¬\OF[D ∖ C](\allleadstog)$.
-\end{remark}
-
-\begin{corollary}
-  \label{th:toStricterClaims}
-  Given any claims $C, D ⊆ \allleadstos$,
-  if some claim $C' ⊆ C$ is possibly verifiable under axiom $D$, that is, 
-  $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ \allleadstog ∈ D: \allleadstog ∈ C'$,
-  then 
-  $D$ is observationally completable to $C$, that is,
-  $∃ θ ∈ Θ ∩ D^⊆ \suchthat θ ∉ (D ∖ C)^⊆$.
-\end{corollary}
-
-\begin{theorem}
-  \label{th:dnf}
-  Given any $E$
-  and a cover $\mathcal{S}$ of $E$ (a set of non-empty subsets whose union equals $E$) 
-  such that $∀ S ∈ \mathcal{S}, ∃ f_S ⊆ (I × \allhists) × P \suchthat S = ↑ f_S$ with $f_S$ right unique,
-  given any $f ⊆ (I × \allhists) × P$:
-  $f ∉ E^⊆$ 
-  is equivalent to
-  $∀ S ∈ \mathcal{S}, ∃ t ∈ f \suchthat \set{t} ∉ S^⊆$.
-\end{theorem}
-\begin{proof}
-  Pick any $S ∈ \mathcal{S}$ and $f_S \suchthat S = ↑ f_S$.
-  Given any $p ∈ f_S$, define $S_p = ↑ \set{p}$, obtaining $S = ⋂_{p ∈ f_S} S_p$.
-  Thus $f ∪ f_S$ is not completable to a function (if $f ∪ f_S$ is completable to a function, that function is in $S$, thus in $E$, thus $f$ compatible with $E$).
-  It follows that $f ∪ f_S$ is not right unique,
-  thus, that some $t ∈ f$ contradicts $f_S$.
-
-  Conversely, if $f ∈ E^⊆$, then $f ⊆ \allleadstog$ for some $\allleadstog ∈ E$.
-  As $\mathcal{S}$ covers $E$, $\allleadstog ∈ S$ for some $S ∈ \mathcal{S}$.
-  Then $∀ t ∈ f$: $\set{t} ⊆ \allleadstog ∈ S$, thus $\set{t} ∈ S^⊆$.
-  Thus, for this $S$, no $t ∈ f$ satisfies $\set{t} ∉ S^⊆$.
-\end{proof}
-\begin{remark}
-  $(a ≠ b) ∨ (a ∧ c)$ is equivalent to $(a ≠ b) ∨ (b ∧ c)$, thus there is no unique minimal DNF.
-\end{remark}
-
-Converting a claim to disjunctive normal form is useful to characterize its compatible observations, as \cref{th:dnf} indicates.
-\begin{example}
-  Consider six different influences $a_1, a'_1, a_2, a'_2, a_3, a'_3 ∈ \allargs$
-  and the following claim $E$:
-  if any two influences $a_k, a_{k'}$ fail to convince $i$ or $a'_k, a'_{k'}$ fail to convince $j$, then the third influence $a_{k''}$ convinces $i$ and $a'_{k''}$ convinces $j$.
-  The claim is not observationally excludable.
-  Indeed,
-  we see that $E = [((a_1) \ileadstog φ ∧ (a'_1) \ileadstog[j] φ) ∨ ((a_2) \ileadstog φ ∧ (a'_2) \ileadstog[j] φ) ∨ ((a_3) \ileadstog φ ∧ (a'_3) \ileadstog[j] φ)]$,
-  and
-  $∀ 1 ≤ k ≤ 3$, define $S_k = [(a_k) \ileadstog φ ∧ (a'_k) \ileadstog[j] φ]$, define $\mathcal{S} = \set{S_1, S_2, S_3}$,
-  consider any $f ⊆ (I × \allhists) × P \suchthat f ∉ E^⊆$,
-  we have $∀ 1 ≤ k ≤ 3, ∃t_k ∈ f \suchthat \set{t_k} ∉ {S_k}^⊆$,
-  thus $f ∉ Θ$
-  (wlog, pick $t_1 = ((a_1), i, p_1 ≠ φ)$, then for observability we need to pick $t_2 = ((a'_2), j, .)$ and there is no choice left for $t_3$).
-\end{example}
-
-The following result indicates that, given a finite cover of $D ∖C$, $\OF[D ∖C](\allleadstog)$ requires some set of triple $T$ that, for each $S$, contains a triple incompatible with $S$; thus $\OF[D ∖C](\allleadstog)$ holds iff such a $T$ is observable in the world.
-
-\begin{theorem}
-  \label{th:ofCover}
-  Given $C, D$, define $E = D ∖ C$, consider a finite cover $\mathcal{S}$ of $E$ (cover is understood as above).
-  The world $\allleadstog$ satisfies $\OF[E](\allleadstog)$ iff
-  $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ S ∈ \mathcal{S}, ∃ t ∈ θ \suchthat \set{t} ∉ S^⊆$.
-\end{theorem}
-\begin{proof}
-  By definition, $\OF[E](\allleadstog)$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ E^⊆$.
-  By \cref{th:dnf}, applied to $f = θ$, $θ ∉ E^⊆$ iff $∀ S ∈ \mathcal{S}, ∃ t ∈ θ \suchthat \set{t} ∉ S^⊆$.
-\end{proof}
-
 \subsection{Repeatability}
 \begin{theorem}
   \label{th:provGapVisibility}
@@ -1230,13 +1147,13 @@ and $¬\OF[C ∩ E] ⊆ ¬\OF$.)
 Say that a world admits a proof of $¬C$ avoiding $J$ iff
 $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆$.
 A sufficient condition for a world being OOF is that for any finite subset of individuals, some proof of $¬C$ avoids that subset.
-\begin{theorem}
+\begin{lemma}
   \label{th:delegationNoVisibilityIssues}
   Given any claim $C$ and world $\allleadstog$:
   $[∀J \fsub I,
   ∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ(\allhists, P) ⊆ I ∖ J ∧ θ ∉ C^⊆]
   ⇒ \OOF(\allleadstog)$.
-\end{theorem}
+\end{lemma}
 \begin{proof}[Claude proof]
   Fix $τ ∈ Θ ∩ \powerset{\allleadstog}$; let $J ⊆ I$ be its (finite) individuals, and pick, by hypothesis, $θ ∈ Θ ∩ \powerset{\allleadstog}$, $θ ∉ C^⊆$, touching only individuals outside $J$.
   As $τ, θ$ touch disjoint individuals, $τ' = τ ∪ θ ∈ Θ ∩ \powerset{\allleadstog}$, $τ ⊑ τ'$ (no point is added for any individual already in $τ$'s domain), and $τ' ∖ τ = θ$.
@@ -1377,6 +1294,41 @@ The converse fails, as \cref{ex:anonProvNotFals} shows.
   consider any $\allleadstog ∉ E$ (such as a world associating a given behavior to a single individual $i$ and a different behavior to all others), we have $\F(\allleadstog)$ but $¬\OF(\allleadstog)$ as any observation $θ$ is completable in $C = E$ (\cref{th:completableInE}).
 \end{example}
 
+\begin{theorem}
+  \label{th:EThusSimpleReg}
+  If $\allleadsto ∈ E$, then $\allleadsto$ is regular iff $\allleadsto$ satisfies simple regularity.
+\end{theorem}
+\begin{proof}
+  If $\allleadsto$ satisfies simple regularity, witnessed by $\anobs, p$, then $\anobs, p, K = ∅$ witness \cref{it:regImpl} of \cref{th:regCarac} ($\card{∅} = 0 ∈ ℕ$, and both conjuncts indexed by $K$ hold vacuously), so $\allleadsto$ is regular.
+
+  Conversely, assume $\allleadsto$ is regular; pick $K, \anobs, b, p$ witnessing \cref{it:regImpl} of \cref{th:regCarac} for $\allleadsto$.
+  Let us show that $∀\anobs' ∈ K, b' ∈ \allleadsto(I): \anobs' \not⊆ b'$.
+  Pick any $\anobs' ∈ K$, $b' ∈ \allleadsto(I)$, and $i ∈ I$ with $\ileadstoo[i] = b'$, and suppose toward a contradiction that $\anobs' ⊆ b'$.
+  As $\allleadsto ∈ E$, $\card{\set{j ∈ I \suchthat \ileadstoo[j] = b'}} ∉ ℕ$;
+  this set is contained in $\set{j ∈ I \suchthat \anobs' ⊆ \ileadstoo[j]}$ (since $\anobs' ⊆ b' = \ileadstoo[j]$ for each such $j$), so the latter is also infinite, contradicting the count condition of \cref{it:regImpl}.
+
+  It follows that, for every $b' ∈ \allleadsto(I)$, the conjunct $∧_{\anobs' ∈ K} ¬(\anobs' ⊆ b')$ holds vacuously, so the implication of \cref{it:regImpl} reduces to $∀b' ∈ \allleadsto(I): \anobs ⊆ b' ⇒ p ∈ π(b')$; together with $\anobs ⊆ b ∈ \allleadsto(I)$, $\anobs$ and $p$ witness that $\allleadsto$ satisfies simple regularity.
+\end{proof}
+\begin{theorem}
+  \label{th:EThusSimpleRegReq}
+  If $\allleadsto ∈ E$, 
+  then $\allleadsto$ satisfies simple regularity iff
+  some anonymous, conclusive claim $C$ holds.
+\end{theorem}
+\begin{proof}
+  For the right-to-left direction, if some anonymous, conclusive claim holds, then $\allleadsto$ is regular by \cref{th:regularity}; as $\allleadsto ∈ E$, \cref{th:EThusSimpleReg} gives that $\allleadsto$ satisfies simple regularity.
+
+  Conversely, assume $\allleadsto$ satisfies simple regularity, witnessed by $\anobs ∈ \anobses$, $p ∈ P$ and $i_0 ∈ I$ with $\anobs ⊆ \ileadstoo[i_0]$ and $∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ π(\ileadstoo)$.
+  Define $C := E ∩ [(∀i ∈ I: \anobs ⊆ \ileadstog ⇒ p ∈ π(\ileadstogo)) ∧ (∃i ∈ I \suchthat \anobs ⊆ \ileadstog)]$.
+
+  \emph{Holds.} $\allleadsto ∈ E$ by hypothesis, and both remaining conjuncts hold at $\allleadsto$ by the witnessing property of $\anobs, p, i_0$; so $\allleadsto ∈ C$.
+
+  \emph{Anonymous.} $E$ is anonymous: relabelling individuals by a permutation permutes each behavior-class without changing its cardinality, so $∀\allleadstog, σ: \allleadstog ∈ E ⇔ \allleadstog ∘ σ ∈ E$. The remaining conjuncts are also anonymous: for any permutation $σ$, reindexing $j := σ(i)$ turns $∀i: \anobs ⊆ (\allleadstog ∘ σ)(i) ⇒ p ∈ π((\allleadstog ∘ σ)(i))$ into $∀j: \anobs ⊆ \allleadstog(j) ⇒ p ∈ π(\allleadstog(j))$, and likewise for the existential conjunct. As an intersection of anonymous claims is anonymous, $C$ is anonymous.
+
+  \emph{Conclusive.} Fix $\allleadstog ∈ C$ and $θ ∈ Θ ∩ \powerset{\allleadstog}$. As $\allleadstog ∈ C$, fix $i^* ∈ I$ with $\anobs ⊆ \ileadstogo[i^*]$. As $\allleadstog ∈ E$, infinitely many individuals share $i^*$'s row, while $θ(\allhists, P)$ is finite, so some such individual lies outside $θ(\allhists, P)$; fix such a $j$, so $\allleadstog(j) = \allleadstog(i^*)$ and in particular $\anobs ⊆ \allleadstog(j)$. Let $θ' := θ ∪ (\set{j} × \anobs)$: as $j$ is untouched by $θ$, $θ ⊑ θ'$ unconditionally and $θ' ∖ θ = \set{j} × \anobs$; and $θ' ∈ Θ ∩ \powerset{\allleadstog}$, since $\set{j} × \anobs ⊆ \allleadstog$. Any $\allleadstog' ∈ ↑(θ' ∖ θ) ∩ C$ has $\anobs ⊆ \allleadstog'(j)$, so $C$'s first conjunct at $j$ gives $p ∈ π(\allleadstog'(j))$, hence $π_j(\allleadstog') = p$ by \cref{th:sing}. As $θ' ∖ θ ⊆ \allleadstog$ and $\allleadstog ∈ C$, $\allleadstog$ itself lies in $↑(θ' ∖ θ) ∩ C$, so this set is nonempty, giving $π_j(↑(θ' ∖ θ) ∩ C) = \set{p}$: $(θ', j)$ witnesses conclusiveness at $(\allleadstog, θ)$. As both were arbitrary, $C$ is conclusive.
+\end{proof}
+
+\subsection{Existence}
 \begin{theorem}
   Given any $\allleadsto ∈ E$, there exists an anonymous claim that is provable by $¬\OOF[C ∩ E] ∩ E$.
 \end{theorem}
@@ -1807,6 +1759,94 @@ Being closed under finite modification and non-empty does not entail triviality.
   The converse of \cref{th:cufmNeverFals} fails: \cref{ex:disjR} is never falsifiable ($Θ ⊆ C^⊆$) yet is not closed under finite modification, as flipping a single individual’s two values (making it satisfy neither disjunct) already leaves $C$.
 \end{remark}
 
+\subsection{Observational completion}
+\begin{corollary}
+  \label{th:obsComp}
+  Given any claims $C, D ⊆ \allleadstos$,
+  possible verifiability under axiom $D$, that is, 
+  $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ \allleadstog ∈ D: \allleadstog ∈ C$,
+  is equivalent to 
+  $D$ being observationally completable to $C$, that is,
+  $∃ θ ∈ Θ ∩ D^⊆ \suchthat θ ∉ (D ∖ C)^⊆$.
+\end{corollary}
+\begin{remark}
+  \label{rk:necObsComp}
+  Given any claims $C, D ⊆ \allleadstos$,
+  [$C$ satisfies established verifiability under axiom $D$
+  ($∀\allleadstog ∈ C ∩ D, \OF[D ∖ C](\allleadstog)$)
+  is equivalent to
+  $D$ is necessarily observationally completable to $C$
+  ($∀\allleadstog ∈ D, \OF[D ∖ C](\allleadstog)$)]
+  iff
+  $D ∖ C = ∅$.
+  Indeed, assume EV under $D$ and consider $\allleadstog ∈ D ∩ \overline{C}$, we have $¬\F[D ∖ C](\allleadstog)$, thus $¬\OF[D ∖ C](\allleadstog)$.
+\end{remark}
+
+\begin{corollary}
+  \label{th:toStricterClaims}
+  Given any claims $C, D ⊆ \allleadstos$,
+  if some claim $C' ⊆ C$ is possibly verifiable under axiom $D$, that is, 
+  $∃ θ ∈ Θ ∩ D^⊆ \suchthat ∀ θ ⊆ \allleadstog ∈ D: \allleadstog ∈ C'$,
+  then 
+  $D$ is observationally completable to $C$, that is,
+  $∃ θ ∈ Θ ∩ D^⊆ \suchthat θ ∉ (D ∖ C)^⊆$.
+\end{corollary}
+
+\begin{theorem}
+  \label{th:dnf}
+  Given any $E$
+  and a cover $\mathcal{S}$ of $E$ (a set of non-empty subsets whose union equals $E$) 
+  such that $∀ S ∈ \mathcal{S}, ∃ f_S ⊆ (I × \allhists) × P \suchthat S = ↑ f_S$ with $f_S$ right unique,
+  given any $f ⊆ (I × \allhists) × P$:
+  $f ∉ E^⊆$ 
+  is equivalent to
+  $∀ S ∈ \mathcal{S}, ∃ t ∈ f \suchthat \set{t} ∉ S^⊆$.
+\end{theorem}
+\begin{proof}
+  Pick any $S ∈ \mathcal{S}$ and $f_S \suchthat S = ↑ f_S$.
+  Given any $p ∈ f_S$, define $S_p = ↑ \set{p}$, obtaining $S = ⋂_{p ∈ f_S} S_p$.
+  Thus $f ∪ f_S$ is not completable to a function (if $f ∪ f_S$ is completable to a function, that function is in $S$, thus in $E$, thus $f$ compatible with $E$).
+  It follows that $f ∪ f_S$ is not right unique,
+  thus, that some $t ∈ f$ contradicts $f_S$.
+
+  Conversely, if $f ∈ E^⊆$, then $f ⊆ \allleadstog$ for some $\allleadstog ∈ E$.
+  As $\mathcal{S}$ covers $E$, $\allleadstog ∈ S$ for some $S ∈ \mathcal{S}$.
+  Then $∀ t ∈ f$: $\set{t} ⊆ \allleadstog ∈ S$, thus $\set{t} ∈ S^⊆$.
+  Thus, for this $S$, no $t ∈ f$ satisfies $\set{t} ∉ S^⊆$.
+\end{proof}
+\begin{remark}
+  $(a ≠ b) ∨ (a ∧ c)$ is equivalent to $(a ≠ b) ∨ (b ∧ c)$, thus there is no unique minimal DNF.
+\end{remark}
+
+Converting a claim to disjunctive normal form is useful to characterize its compatible observations, as \cref{th:dnf} indicates.
+\begin{example}
+  Consider six different influences $a_1, a'_1, a_2, a'_2, a_3, a'_3 ∈ \allargs$
+  and the following claim $E$:
+  if any two influences $a_k, a_{k'}$ fail to convince $i$ or $a'_k, a'_{k'}$ fail to convince $j$, then the third influence $a_{k''}$ convinces $i$ and $a'_{k''}$ convinces $j$.
+  The claim is not observationally excludable.
+  Indeed,
+  we see that $E = [((a_1) \ileadstog φ ∧ (a'_1) \ileadstog[j] φ) ∨ ((a_2) \ileadstog φ ∧ (a'_2) \ileadstog[j] φ) ∨ ((a_3) \ileadstog φ ∧ (a'_3) \ileadstog[j] φ)]$,
+  and
+  $∀ 1 ≤ k ≤ 3$, define $S_k = [(a_k) \ileadstog φ ∧ (a'_k) \ileadstog[j] φ]$, define $\mathcal{S} = \set{S_1, S_2, S_3}$,
+  consider any $f ⊆ (I × \allhists) × P \suchthat f ∉ E^⊆$,
+  we have $∀ 1 ≤ k ≤ 3, ∃t_k ∈ f \suchthat \set{t_k} ∉ {S_k}^⊆$,
+  thus $f ∉ Θ$
+  (wlog, pick $t_1 = ((a_1), i, p_1 ≠ φ)$, then for observability we need to pick $t_2 = ((a'_2), j, .)$ and there is no choice left for $t_3$).
+\end{example}
+
+The following result indicates that, given a finite cover of $D ∖C$, $\OF[D ∖C](\allleadstog)$ requires some set of triple $T$ that, for each $S$, contains a triple incompatible with $S$; thus $\OF[D ∖C](\allleadstog)$ holds iff such a $T$ is observable in the world.
+
+\begin{theorem}
+  \label{th:ofCover}
+  Given $C, D$, define $E = D ∖ C$, consider a finite cover $\mathcal{S}$ of $E$ (cover is understood as above).
+  The world $\allleadstog$ satisfies $\OF[E](\allleadstog)$ iff
+  $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀ S ∈ \mathcal{S}, ∃ t ∈ θ \suchthat \set{t} ∉ S^⊆$.
+\end{theorem}
+\begin{proof}
+  By definition, $\OF[E](\allleadstog)$ iff $∃ θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat θ ∉ E^⊆$.
+  By \cref{th:dnf}, applied to $f = θ$, $θ ∉ E^⊆$ iff $∀ S ∈ \mathcal{S}, ∃ t ∈ θ \suchthat \set{t} ∉ S^⊆$.
+\end{proof}
+
 \subsection{Other generalities}
 We say that a claim $C$ \emph{fails} iff $\allleadsto ∉ C$.
 Given a claim $C$ and a world $\allleadstog ∈ C$, the claim is \emph{informative in $\allleadstog$} iff $∃θ ∈ Θ ∩ \powerset{\allleadstog} \suchthat π(↑θ ∩ C) ≠ (P ∪ \set{∅})^I$.
@@ -1893,6 +1933,7 @@ $.
 
   For $w ∈ ¬\OF[C]$: any finite prefix $θ$ of $w$ records $i^*$'s behavior on a finite chain of paths, witnessing $a$-non-decisiveness for only finitely many $a$'s.
   Since $\allargs$ is infinite, some $a_0$ has $\hist_{a_0}$ outside this chain; extending $i^*$'s behavior to be $a_0$-decisive (replacing $p'$ by $p^*$ at $a_0$-paths not yet observed) yields a world in $C^⊆$, so $θ ∈ C^⊆$.
+  \commentClaude{This step is the gap in the proof. Extending $i^*$'s behavior to be $a_0$-decisive for $p^*$ only forces $π_{i^*} = p^*$ on the resulting world; it does not by itself place that world in $C^⊆$. The conclusiveness pin (Step 2, via $(\star)$) only gives the direction "world in $↑θ_0 ∩ C$ $⇒$ $π_{i^*} = p^*$"; the converse, needed here, is never established. Contrast with the analogous step in the proof of \Cref{th:noPatternNoClaim}, where membership in $C$ is obtained for free by taking an individual $i''$ already present in $\allleadsto$ with the target row and applying the transposition $σ = (i^*\ i'')$, so that anonymity gives $\allleadsto ∘ σ ∈ C ∘ σ = C$ directly. That move is unavailable here: $g'$ is a row built from scratch for $i^*$, generally realized by no individual in $\allleadsto$, so $w$ is not a permutation of $\allleadsto$ and anonymity gives no leverage to conclude $θ ∈ C^⊆$.}
   Hence $w ∈ ¬\OF[C]$, giving $w ∈ D$.
 
   With $w ∈ ↑θ_1 ∩ D$, $(\star)$ gives $π_{i^*}(w) = p^*$.
