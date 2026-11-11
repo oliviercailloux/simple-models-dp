@@ -1045,35 +1045,26 @@ $C ≠ \allleadstos ∧ [∀\allleadstog: \F(\allleadstog) ⇒ \OOF(\allleadstog
 A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\OOF$.
 \begin{theorem}
   \label{th:onlyEmptyPF}
-  A claim $C$ is provable by $¬\OOF$ iff $C = ∅ ∨ C = \allleadstos$.
-\end{theorem}
-\begin{proof}
-  If $C = ∅$, then $∀θ ∈ Θ: θ ∉ C^⊆$, thus $∀\allleadstog: \OOF(\allleadstog)$.
-
-  Conversely, suppose $\allleadstos ≠ C ≠ ∅$; we show $∃\allleadstog ∉ C \suchthat ¬\OOF(\allleadstog)$.
-
-  If $C$ is closed under finite modification (\cref{def:cufm}), by \cref{th:cufmNeverFals}, $∀\allleadstog: ¬\OF(\allleadstog)$, thus $¬\POF(\allleadstog)$, hence also $¬\OOF(\allleadstog)$ (\cref{th:poofImpliesPof}); suffices to pick any $\allleadstog ∉ C$.
-
-  If $C$ is not closed under finite modification, for some $n ∈ ℕ$, some two worlds $\allleadstog[0] ∈ C, \allleadstog[n] ∉ C$ differ at exactly $n$ pairs.
-  We can build a sequence of worlds $(\allleadstog[k])_{1 ≤ k ≤ n - 1}$, by flipping one pair at a time, such that $∀1 ≤ k ≤ n$, each $\allleadstog[k]$ differs from $\allleadstog[k - 1]$ at exactly one pair. Taking $j = \min \set{1 ≤ k ≤ n \suchthat \allleadstog[k] ∉ C}$, we obtain worlds $\allleadstog[j - 1] ∈ C$, $\allleadstog[j] ∉ C$ that differ at exactly one pair $(i, α)$.
-  To show $¬\POF(\allleadstog[j])$, hence also $¬\OOF(\allleadstog[j])$ (\cref{th:poofImpliesPof}),
-  pick any $α'$ satisfying $\card{α} < \card{α'}$,
-  define $θ = \set{(i, α', \allleadstog[j](i, α'))}$,
-  pick any
-  $θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog[j]}$,
-  and let us show that $θ' ∈ C^⊆$.
-  Indeed, $(i, α, .) ∉ θ'$, because $θ'$ observing $i$ must use only extensions of $α'$, itself longer than $α$; thus,
-  $θ' ⊆ \allleadstog[j - 1]$, as $\allleadstog[j - 1]$ agrees with $\allleadstog[j]$ on every other pair than $(i, α)$.
-\end{proof}
-
-\begin{theorem}
   \label{th:pvUnderNotPof}
-  A claim $C$ satisfies established OV under $D = ¬\OOF$ iff $C = ∅ ∨ C = \allleadstos$.
+  Given a claim $C$, the following are equivalent.
+  \begin{enumerate}
+    \item \label{it:provNotOOF} $C$ is provable by $¬\OOF$;
+    \item \label{it:estOvNotOOF} $C$ satisfies established OV under $D = ¬\OOF$;
+    \item \label{it:trivialPF} $C = ∅ ∨ C = \allleadstos$.
+  \end{enumerate}
 \end{theorem}
 \begin{proof}
-  If $C = ∅$, then $∀θ ∈ Θ: θ ∉ C^⊆$, thus $∀\allleadstog: \OOF(\allleadstog)$, hence $D = ∅ = C ∩ D$, so established OV holds vacuously.
+  \ref{it:trivialPF} $⇒$ \ref{it:provNotOOF}.
+  If $C = ∅$, then $∀θ ∈ Θ: θ ∉ C^⊆$, thus $∀\allleadstog: \OOF(\allleadstog)$, so $¬\OOF = ∅ ⊆ C$.
+  If $C = \allleadstos$, trivially $¬\OOF ⊆ C$.
+  Either way, $C$ is provable by $¬\OOF$.
 
-  Conversely, suppose $\allleadstos ≠ C ≠ ∅$; we show $∃\allleadstog ∈ C ∩ D \suchthat ¬\OOF[D ∖ C](\allleadstog)$.
+  \ref{it:provNotOOF} $⇒$ \ref{it:estOvNotOOF}.
+  $D := ¬\OOF ⊆ C$ gives, for any $\allleadstog ∈ C ∩ D$ and $θ ∈ Θ ∩ \powerset{\allleadstog}$, taking $θ' := θ$: $↑(θ' ∖ θ) ∩ D = ↑∅ ∩ D = D$, which is nonempty (as $\allleadstog ∈ D$) and $⊆ C$ (as $D ⊆ C$); so OV holds at $\allleadstog$.
+  As $\allleadstog ∈ C ∩ D$ was arbitrary, established OV holds under $D$.
+
+  \ref{it:estOvNotOOF} $⇒$ \ref{it:trivialPF}.
+  Suppose $\allleadstos ≠ C ≠ ∅$; we show $∃\allleadstog ∈ C ∩ D \suchthat ¬\OOF[D ∖ C](\allleadstog)$.
 
   Established OV demands that all worlds in $C ∩ D$ satisfy $\OOF[D ∖ C]$ (\cref{th:pvPoofLocal}, as $C ∩ D ⊆ D$).
   Any $\allleadstog ∈ C$ already satisfies $¬\OOF(\allleadstog)$: for any $θ ⊑ θ'$, $θ' ∖ θ ⊆ θ' ⊆ \allleadstog ∈ C$ witnesses $θ' ∖ θ ∈ C^⊆$; thus $C ⊆ D$, and it suffices to exhibit $\allleadstog ∈ C$ such that, for some prefix $θ$, every completion $θ'$ has $θ' ∖ θ$ completable in $D ∖ C$.
