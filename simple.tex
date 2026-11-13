@@ -534,7 +534,7 @@ A sufficient (but not necessary) condition for this axiom to be satisfied is tha
 
   \emph{A sufficient condition for it to hold.} If every $c ∈ \allleadsto(I)$ assigns $p$ at every $a$-ending history chain-incompatible with $\anobs^{-1}(P)$, then $D^{\anobs, a, p}$ holds: any undistinguishable $b ∉ \allleadsto(I)$ violating $a \ileadstostg p$ at chain-incompatible $α^*$ would, by undistinguishability on $\set{α^*}$, require some $c ∈ \allleadsto(I)$ with $c(α^*) ≠ p$—excluded.
 
-  \emph{A sufficient condition for it to fail.} Conversely, if some $c_0 ∈ \allleadsto(I)$ matches $\anobs$ and some $c_1 ∈ \allleadsto(I)$ assigns $c_1(α^*) ≠ p$ for an $a$-ending $α^*$ on a branch entirely foreign to $\anobs$ (i.e., $α^*_1 ∉ \set{h_1 \suchthat h ∈ \anobs^{-1}(P)}$), then the standard splice of $c_0$ (outside the $α^*_1$-branch) and $c_1$ (inside) is undistinguishable from $\allleadsto(I)$, matches $\anobs$ via $c_0$, and assigns $c_1(α^*) ≠ p$: $D^{\anobs, a, p}$ fails.\commentClaude{Could cite rk:gapNotMinimal here once it is included in the compiled document.}
+  \emph{A sufficient condition for it to fail.} Conversely, if some $c_0 ∈ \allleadsto(I)$ matches $\anobs$ and some $c_1 ∈ \allleadsto(I)$ assigns $c_1(α^*) ≠ p$ for an $a$-ending $α^*$ on a branch entirely foreign to $\anobs$ (i.e., $α^*_1 ∉ \set{h_1 \suchthat h ∈ \anobs^{-1}(P)}$), then the standard splice of $c_0$ (outside the $α^*_1$-branch) and $c_1$ (inside) is undistinguishable from $\allleadsto(I)$, matches $\anobs$ via $c_0$, and assigns $c_1(α^*) ≠ p$: $D^{\anobs, a, p}$ fails.\commentClaude{Could cite \cref{rk:gapNotMinimal} here once it is included in the compiled document.}
 
   \emph{Strength.} The two conditions are not converses of each other: a world may have some $c_1$ assigning $≠ p$ at a chain-incompatible $α^*$, yet satisfy $D^{\anobs, a, p}$, if $c_1$ and the $\anobs$-matching behaviors disagree at common prefixes of $α^*$ and $\anobs^{-1}(P)$ (so the closure $R$ cannot simultaneously borrow values from both). Still, $D^{\anobs, a, p}$ is a relatively strong condition: the sufficient failure condition is generically met in any diverse world where behaviors vary outside $\anobs$'s range, and $D^{\anobs, a, p}$ holds reliably only when every $a$-ending history is chain-compatible with $\anobs^{-1}(P)$ (making chain-incompatible histories vacuous—the sufficient condition noted above this remark) or the world has the special structure just described.
 
@@ -1357,24 +1357,7 @@ The converse fails, as \cref{ex:anonProvNotFals} shows.
 \end{proof}
 
 \subsection{Existence}
-In some worlds, the axiom $¬\OOF[C ∩ E] ∩ E$ is sufficient to get existence of suitable claims.
-\begin{example}
-  Consider the world
-  $\allleadsto = J × \allhists × \set{φ} ∪ K × \allhists × \set{φ'}$
-  of \cref{ex:jaysAndKaysConstants},
-  with infinite sets of individuals $J$, $K$.
-  The claim $C = [(∀i: ∅ \ileadstog φ ⇒ ∀α, α \ileadstog φ) ∧ (∃i \suchthat ∅ \ileadstog φ)] ∩ E$
-  holds, is anonymous, APTS and PEF under $¬\OOF[C ∩ E] ∩ E$.
-\end{example}
-
 We are here interested in claims implying propositions of the form: any individual whose behavior satisfies some given observable condition admits a given influence being decisive.
-Given $T: H → P$ for some finite $H ∈ \incr(\allhists)$,
-write $T(i) = \set{i} × T = \set{(i,\hist,p) \suchthat (\hist, p) ∈ T} ∈ Θ$
-for the observation that $i$ conforms to $T$ on the increasing path $H$.
-% Given $a ∈ \allargs$ and $T: H → P$ for some finite $H ∈ \incr(\allhists)$,
-% define the claim $C_{a,T}$ as $[∀i ∈ I: \set{i} × T ⊆ \allleadsto ⇒ ∃p ∈ P \suchthat a \ileadstost p]$.
-
-The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I) ⊆ B]$.
 
 \begin{lemma}
   \label{th:undistOf}
@@ -1510,35 +1493,6 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   Yet $∀i: a \ileadstost_i φ ∨ b \ileadstost_i φ$, so $P_i = \set{φ}$ for all $i$, and \cref{th:noPatternNoClaim}'s hypothesis fails.
   A suitable claim exists: $C = [∀i: (a) \ileadstog φ ⇒ a \ileadstostg φ]$ holds in $\allleadsto$ (genuinely for $J$, vacuously for $K$ since $(a) \ileadstoo[k] φ'$), is anonymous, conclusive, and satisfies established OV, by \cref{th:oneMorePriorGeneralPev} (applied with $H := \set{(a)}$, $\anobs := \set{((a), φ)}$, $c := a$, $p := φ$, and any $j_0 ∈ J$).
 \end{example}
-
-\begin{conjecture}
-  Given $B ⊆ \allbs$ with $\allleadsto(I) ⊆ B$ such that
-  for some $H$ with $1 ≤ \card(\max H)$, $\anobs: H → P$, $a$, $p$,
-  $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
-  and
-  $∃ i \suchthat \anobs ⊆ \ileadstoo$,
-  if there exists an anonymous claim $C$ that holds, is conclusive and satisfies established OV under $(¬\OOF) ∩ E$,
-  then
-  $\allleadsto ∈ D^{\anobs, a, p}$.
-\end{conjecture}
-
-\begin{proof}[Disproof]
-  We build a single world satisfying the hypotheses for a fixed $H, \anobs, a, p$, together with a witnessing claim $C$, yet with $\allleadsto ∉ D^{\anobs, a, p}$: nothing ties the witness $C$ furnished by the hypothesis to the specific pattern named in the conclusion, so it can be supplied by an entirely different, unrelated part of the world.
-
-  Fix $a ≠ c ∈ \allargs$ and partition $I$ into infinite $J, K$, with $∀i ∈ J, \hist ∈ \allhists: \hist \ileadsto φ$, and $∀i ∈ K, \hist ∈ \allhists$: $\hist \ileadsto φ$ if $c ∈ \histend(\hist)$, $\hist \ileadsto φ'$ otherwise (so $(a) \ileadsto φ'$ throughout $K$, as $c ≠ a$); let $b_j, b_k$ be the behaviors associated to $\allleadsto(J), \allleadsto(K)$. Take $H := \set{(a)}$ (so $\card(\max H) = 1$), $\anobs := \set{((a),φ)}$, $p := φ$: the pattern $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$ holds throughout $J ∪ K$ (trivially at $J$, vacuously at $K$ since $b_k((a)) = φ' ≠ φ$) and fires at any $i ∈ J$.
-
-  \emph{$\allleadsto ∉ D^{\anobs,a,p}$ on $J ∪ K$.} Pick $d ∈ \allargs ∖ \set{a,c}$, $S := \set{\hist ≠ ∅ \suchthat \hist_1 = d}$, and $g := \restr{b_k}{S} ∪ \restr{b_j}{\allhists ∖ S}$. Any $H' ∈ \fincrhists$ is a chain, hence lies entirely inside $S$ or entirely outside it, so $g$ matches $b_k$ or $b_j$ on $H'$: $g$ is undistinguishable from $\set{b_j,b_k}$. As $d ≠ a$, $(a) ∉ S$, so $g((a)) = b_j((a)) = φ$: $g$ matches $\anobs$. As $(d,a) ∈ S$ and $c ∉ \set{d,a}$, $g((d,a)) = b_k((d,a)) = φ'$, and $a ∈ \histend((d,a))$: $a$ is not decisive for $φ$ in $g$. Yet $g ∉ \set{b_j,b_k}$ ($g((d)) = φ' ≠ φ = b_j((d))$; $g((a)) = φ ≠ φ' = b_k((a))$): $g$ is exactly the counterexample $D^{\anobs,a,p}$ forbids.
-
-  Adjoin a third infinite set $L$, disjoint from $J ∪ K$, with $\ileadstoo := b_l$ constant equal to some fixed $ψ ∈ P ∖ \set{φ,φ'}$ for every $i ∈ L$; write $I := J ∪ K ∪ L$, keeping $\allleadsto$ unchanged on $J ∪ K$. As $J,K,L$ are infinite and pairwise disjoint and $b_j,b_k,b_l$ pairwise distinct, $\allleadsto ∈ E$. The pattern above still holds on the enlarged $I$: $\anobs$'s only value is $φ ≠ ψ = b_l(\hist)$ for every $\hist$, so $¬(\anobs ⊆ b_l)$, and the antecedent fails vacuously on $L$. And $g$ remains a witness of $\allleadsto ∉ D^{\anobs,a,p}$: it is still undistinguishable from $\allleadsto(I) = \set{b_j,b_k,b_l}$ (it already matched $b_j$ or $b_k$ on every $H' ∈ \fincrhists$), it still lies outside $\allleadsto(I)$ (its values lie in $\set{φ,φ'}$, so $g ≠ b_l$), and $a$ is still not decisive for $φ$ in $g$.
-
-  \emph{A witness, entirely on $L$.} Let $H_1 := \set{∅,(a)} ∈ \fincrhists$, $\anobs_1 : H_1 → P$ constant $ψ$, and $p_1 := ψ$ (reusing the same action $a$ — nothing below needs a fresh one). At $i ∈ L$: $\anobs_1 ⊆ b_l$ (as $b_l$ is constant $ψ$) and $a$ is (trivially) decisive for $ψ$ in the constant row $b_l$: the pattern holds and fires on $L$. It holds vacuously on $J ∪ K$: $b_j(∅) = φ ≠ ψ$, and $b_k(∅) = φ' ≠ ψ$ (as $c ∉ \histend(∅)$), so $¬(\anobs_1 ⊆ b_j)$ and $¬(\anobs_1 ⊆ b_k)$.
-
-  \emph{$\allleadsto ∈ D^{\anobs_1,a,p_1}$.} Let $b ∉ \allleadsto(I) = \set{b_j,b_k,b_l}$ satisfy $\anobs_1 ⊆ b$ (so $b(∅) = b((a)) = ψ$) and $a \nileadstostg[b] p_1$, witnessed by some $β$ with $a ∈ \histend(β)$ (so $β ≠ ∅$) and $b(β) ≠ ψ$. At the chain $\set{∅,β} ∈ \fincrhists$, $\restr{b}{\set{∅,β}} = (ψ, b(β))$ with $b(β) ≠ ψ$, while $\restr{b_j}{\set{∅,β}} = (φ,φ)$, $\restr{b_k}{\set{∅,β}} = (φ', b_k(β))$, and $\restr{b_l}{\set{∅,β}} = (ψ,ψ)$: the first coordinate $ψ ∉ \set{φ,φ'}$ already rules out $b_j$ and $b_k$, and the second coordinate $b(β) ≠ ψ$ rules out $b_l$. So $b$ is distinguishable from $\allleadsto(I)$: $\allleadsto ∈ D^{\anobs_1,a,p_1}$.
-
-  By \cref{th:oneMorePriorNarrow}, applied with this $H_1, \anobs_1, a, p_1$, some anonymous claim $C$ holds, is conclusive and satisfies established OV under $(¬\OOF) ∩ E$.
-
-  Taking $B := \allbs$ (which trivially satisfies $\allleadsto(I) ⊆ B$ and, since it appears nowhere else in the statement, plays no further role), the conjecture's hypotheses hold at this $\allleadsto$ for $H, \anobs, a, p$ as above, and $C$ witnesses its antecedent — yet $\allleadsto ∉ D^{\anobs,a,p}$: the conjecture is false. The obstruction (on $J ∪ K$) and the witness (on $L$) sit on disjoint, mutually irrelevant parts of $I$, precisely because nothing in the antecedent ties the claim $C$ it furnishes to the specific $\anobs, a, p$ named in the conclusion.
-\end{proof}
 
 \begin{theorem}
   \label{th:oneMorePriorGeneral}
@@ -2286,6 +2240,8 @@ $C$ satisfies PVo under axiom $(¬\POF) ∩ E$ iff
 $∀\allleadstog ∈ C,
 ∀θ ∈ Θ ∩ \powerset{\allleadstog},
 ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog} \suchthat ∀θ' ⊆ \allleadstog' ∈ (¬\POF) ∩ E: \allleadstog' ∈ C$.
+
+The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I) ⊆ B]$.
 
 \begin{theorem}
   Given any $B ⊆ \allbs$, if $C = C_B ∩ E$ satisfies PVo under $F_C$, $B$ includes its undistinguishables.
