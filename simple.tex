@@ -2038,7 +2038,6 @@ A claim $C$ is \emph{informative} (old definition) iff $π(C) ≠ (P ∪ \set{�
 A claim $C$ is \emph{informative beyond counting} iff $∃ i ∈ I \suchthat π_i(C) = \set{π_i(\allleadstog) \suchthat \allleadstog ∈ C} ≠ P ∪ \set{∅}$.
 A claim $C$ is \emph{a posteriori sharp} iff $∃ θ ∈ Θ, i ∈ I \suchthat π_i(↑θ ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
 A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{\allleadsto}, i ∈ I \suchthat π_i(↑θ ∩ C) = \card\set{π_i(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C} = 1$.
-\end{document}
 
 \section{Supplementary material}
 \Cref{tab:renaming} lists this informativeness/sharpness family together with the related notions defined elsewhere (conclusive, in the main text, already renamed from the former acronym SAPTS; indicative, further below in this appendix) and the renaming still proposed for the informativeness notions used in the main text (and their closest relatives), so that these read as ordinary words rather than acronyms; the more technical, appendix-only singleton-pinning family (APS, APTS, APS-P, APTS-P) keeps its acronym names.
@@ -2088,7 +2087,7 @@ A claim $C$ is \emph{a posteriori truly sharp} iff $∃ θ ∈ Θ ∩ \powerset{
   To prove that no general axiom is reasonable, we might assume that two contradictory theories, $C$ ($(a)$ leads everyone to $φ$) and $C'$ ($(a)$ leads everyone to $φ$ except if $(a, a')$ does not), can be validated under the axiom, considering some observations at some point. If under the axiom, some obs proves C, then no further obs can prove C' under the same axiom, so the axiom must say something that is contradicted by the further obs, compatible with C', so the axiom contradicts C'. So if the axiom allows to validate C, then it contradicts C'. To be checked…
 \end{remark}
 
-\Cref{th:AHFimpl} and related show that anonymous and falsifiable claims that hold exist iff the situation does not satisfy $∀ \hist: P^{\intvl{\hist}} ⊆ \restr{{\allleadsto}(I)}{\intvl{\hist}}$. TODO check this.
+th:AHFimpl (beyond current end) and related show that anonymous and falsifiable claims that hold exist iff the situation does not satisfy $∀ \hist: P^{\intvl{\hist}} ⊆ \restr{{\allleadsto}(I)}{\intvl{\hist}}$. TODO check this.
 
 \begin{theorem}
   Verifiability in $\allleadstog ∈ C ∩ D$ under $D$ fails iff
@@ -2114,21 +2113,21 @@ These two are about the intuition that if the real world has individuals whose D
 \begin{theorem}
   \label{th:noAnonIBCHoldsProvable}
   Assume $\card{\allargs} ∉ ℕ$.
-  There exists $\allleadsto ∈ E$ such that no anonymous claim that holds and is informative beyond counting is provable by $¬\POOF[C ∩ E] ∩ E$.
+  There exists $\allleadsto ∈ E$ such that no anonymous claim that holds and is informative beyond counting is provable by $¬\OOF[C ∩ E] ∩ E$.
 \end{theorem}
 \begin{proof}
   Since $\card{\allargs} ∉ ℕ$, the family $\mathcal{S} = \set{(H, g) \suchthat H ∈ \finite(\incr(\allhists)),\ g: H → P}$ is countable.
   Partition $I$ into infinite subsets $(I_{H,g})_{(H,g) ∈ \mathcal{S}}$ and define $\allleadsto$ by $\allleadsto(i, α) = g(α)$ for $i ∈ I_{H,g}$, $α ∈ H$, and $\allleadsto(i, α) = \prop$ otherwise.
   Since all individuals in each $I_{H,g}$ share the same behavior, $\allleadsto ∈ E$.
 
-  Suppose for contradiction that $C$ is anonymous, informative beyond counting, $\allleadsto ∈ C$, and $(¬\POOF[C ∩ E]) ∩ E ⊆ C$.
+  Suppose for contradiction that $C$ is anonymous, informative beyond counting, $\allleadsto ∈ C$, and $(¬\OOF[C ∩ E]) ∩ E ⊆ C$.
 
   \emph{$E ⊆ C$.}
   Fix any $\allleadstog' ∈ E$ and $θ ∈ Θ ∩ \powerset{\allleadstog'}$, with queried individuals $i_1, …, i_m$.
   For each $l$, let $H_l = θ(P)(i_l) ∈ \incr(\allhists)$ and $g_l: H_l → P$ with $g_l(α) = θ(i_l, α)$.
   Since each $I_{H_l, g_l}$ is infinite, pick mutually distinct $j_1 ∈ I_{H_1, g_1}, …, j_m ∈ I_{H_m, g_m}$, and let $σ$ be a permutation of $I$ with $σ(i_l) = j_l$ for each $l$.
   Then $(\allleadsto ∘ σ)(i_l, α) = \allleadsto(j_l, α) = g_l(α) = θ(i_l, α)$ for all $α ∈ H_l$, so $\allleadsto ∘ σ ∈ C ∩ E$ (by anonymity of $C$ and $E$) extends $θ$; hence $θ ∈ (C ∩ E)^⊆$.
-  As $θ$ was arbitrary, $¬\OF[C ∩ E](\allleadstog')$, hence $¬\POOF[C ∩ E](\allleadstog')$, so $\allleadstog' ∈ (¬\POOF[C ∩ E]) ∩ E ⊆ C$.
+  As $θ$ was arbitrary, $¬\OF[C ∩ E](\allleadstog')$, hence $¬\OOF[C ∩ E](\allleadstog')$, so $\allleadstog' ∈ (¬\OOF[C ∩ E]) ∩ E ⊆ C$.
   As $\allleadstog'$ was arbitrary, $E ⊆ C$.
 
   \emph{Contradiction.}
@@ -2153,9 +2152,9 @@ These two are about the intuition that if the real world has individuals whose D
 \begin{example}[Provability cannot conclude a decisive influence for a named value]
   \label{ex:noProvableDecisivePhi}
   Split $I$ into two infinite classes by parity, odd individuals answering $φ$ constantly and even ones $φ'$ constantly; then $\allleadsto ∈ E$ and every odd individual is decisive for $φ$.
-  Still, no anonymous claim $C$ that holds and satisfies $C ⊆ \set{\allleadstog \suchthat ∃ i: π_i(\allleadstog) = φ}$ is provable by $¬\POOF[C ∩ E] ∩ E$.
+  Still, no anonymous claim $C$ that holds and satisfies $C ⊆ \set{\allleadstog \suchthat ∃ i: π_i(\allleadstog) = φ}$ is provable by $¬\OOF[C ∩ E] ∩ E$.
   Let $v ∈ E$ answer $φ'$ everywhere; no individual is decisive for $φ$ in $v$, so $v ∉ C$.
-  But every observation of $v$ consists of $φ'$-answers and embeds into $\allleadsto ∈ C$ by permuting the queried individuals onto even ones, so $¬\OF[C ∩ E](v)$, hence $¬\POOF[C ∩ E](v)$ and $v ∈ (¬\POOF[C ∩ E]) ∩ E ∖ C$: $C$ is not provable.
+  But every observation of $v$ consists of $φ'$-answers and embeds into $\allleadsto ∈ C$ by permuting the queried individuals onto even ones, so $¬\OF[C ∩ E](v)$, hence $¬\OOF[C ∩ E](v)$ and $v ∈ (¬\OOF[C ∩ E]) ∩ E ∖ C$: $C$ is not provable.
   Observing an odd individual answer $φ$ refutes ``the world is $v$'' ($\OF$ of $\allleadsto$ against $\set{v}$), but never makes $v$ falsify $C$ through its own $φ'$-answers.
   The same asymmetry defeats the local claim $C = [∀ i, p: (a) \ileadstogo[i] p ⇒ a \ileadstostg[i] p]$, which also holds here and is anonymous: a world with an individual answering $p$ on every path except $(a', a) \ileadstogo[i] q$ (some $a' ≠ a$, $q ≠ p$) has $(a) \ileadstogo[i] p$ with $a$ non-decisive, yet as $(a', a)$ is incomparable to $(a)$ no observation exhibits the violation, so it escapes $\OF[C ∩ E]$ and $C$ is not provable.
   By contrast, the claim that every individual answers constantly holds and is provable, concluding that everyone is decided—though not for a named value (to be checked!).
@@ -2343,8 +2342,8 @@ $∀\allleadstog ∈ C,
   $\allleadsto ∈ C'$,
   $∃i_0 ∈ I \suchthat \set{i_0} × \anobs ⊆ \allleadsto$,
   $C'$ is anonymous,
-  and $(C ∖ C') ∩ E ∩ D^{\anobs, a, p}_{C'} ⊆ \POOF[C']$,
-  then $C'$ holds and is APTS-P and provable by $(¬\POOF[C']) ∩ E ∩ D^{\anobs, a, p}_{C'}$.
+  and $(C ∖ C') ∩ E ∩ D^{\anobs, a, p}_{C'} ⊆ \OOF[C']$,
+  then $C'$ holds and is APTS-P and provable by $(¬\OOF[C']) ∩ E ∩ D^{\anobs, a, p}_{C'}$.
 \end{theorem}
 
 Taking $C' = C$ recovers \cref{th:oneMorePriorFull} (equivalently, \cref{th:oneMorePriorGeneral} at $B := \allbs$, where $\text{Bad} = ∅$): $C ∖ C' = ∅$ makes the last condition vacuous, and anonymity of $C$ is then a consequence — shown, for the general conjunction, in \cref{th:oneMorePriorGeneral}'s \emph{Anonymous} paragraph — rather than a hypothesis. For the example above, the last condition is exactly the (unproven) claim that every world agreeing with $\allleadsto$'s template-decisiveness at $a$ but violating the $∀α$-closure is nonetheless caught, visibly, by $D^{\anobs,a,p}_{C'} ∩ E$.
@@ -2356,15 +2355,15 @@ Taking $C' = C$ recovers \cref{th:oneMorePriorFull} (equivalently, \cref{th:oneM
 
   \emph{$C'$ anonymous.} Both conjuncts of $C'$ are of the form $∀i: Q(\allleadstog(i))$ for a property $Q$ of a single row (the first exactly as in \cref{th:oneMorePriorGeneral}'s \emph{Anonymous} paragraph; the second through $Q(f) := [∀α: f(α) ≠ φ ⇒ f(α,a,b) ≠ φ]$). The same relabelling computation as there, applied to each conjunct, gives $C' ∘ σ = C'$ for every permutation $σ$.
 
-  \emph{The residual condition.} We show the stronger $(C ∖ C') ∩ E ⊆ \POOF[C']$, which contains $(C ∖ C') ∩ E ∩ D^{\anobs,a,p}_{C'}$. Fix $\allleadstog ∈ (C ∖ C') ∩ E$. Since $\allleadstog ∈ C ∖ C'$, the failure of $C'$ lies in the second conjunct: some $i ∈ I$ and $α ∈ \allhists$ satisfy $α \nileadstog[i] φ$ and $(α,a,b) \ileadstogo[i] φ$. Let $g := \allleadstog(i)$, so $g(α) ≠ φ$ and $g(α,a,b) = φ$, and let $H := \set{α, (α,a,b)} ∈ \fincrhists$ ($α$ prefixes $(α,a,b)$).
+  \emph{The residual condition.} We show the stronger $(C ∖ C') ∩ E ⊆ \OOF[C']$, which contains $(C ∖ C') ∩ E ∩ D^{\anobs,a,p}_{C'}$. Fix $\allleadstog ∈ (C ∖ C') ∩ E$. Since $\allleadstog ∈ C ∖ C'$, the failure of $C'$ lies in the second conjunct: some $i ∈ I$ and $α ∈ \allhists$ satisfy $α \nileadstog[i] φ$ and $(α,a,b) \ileadstogo[i] φ$. Let $g := \allleadstog(i)$, so $g(α) ≠ φ$ and $g(α,a,b) = φ$, and let $H := \set{α, (α,a,b)} ∈ \fincrhists$ ($α$ prefixes $(α,a,b)$).
 
-  Fix any $θ ∈ Θ ∩ \powerset{\allleadstog}$. As $\allleadstog ∈ E$, $J_g := \set{j ∈ I \suchthat \allleadstog(j) = g}$ is infinite (\cref{def:repeatable}); as $θ$ is finite, pick $i' ∈ J_g ∖ θ(\allhists, P)$. Let $θ_H^{i'} := \set{(i', α, g(α)), (i', (α,a,b), g(α,a,b))} ∈ Θ ∩ \powerset{\allleadstog}$ and $θ' := θ ∪ θ_H^{i'}$; since $i'$ is untouched by $θ$, $θ ⊑ θ'$, $θ' ∈ Θ ∩ \powerset{\allleadstog}$, and $θ' ∖ θ = θ_H^{i'}$ exactly (as $θ$ does not mention $i'$).
+  Fix any $θ ∈ Θ ∩ \powerset{\allleadstog}$. As $\allleadstog ∈ E$, $J_g := \set{j ∈ I \suchthat \allleadstog(j) = g}$ is infinite (\cref{ax:repeatable}); as $θ$ is finite, pick $i' ∈ J_g ∖ θ(\allhists, P)$. Let $θ_H^{i'} := \set{(i', α, g(α)), (i', (α,a,b), g(α,a,b))} ∈ Θ ∩ \powerset{\allleadstog}$ and $θ' := θ ∪ θ_H^{i'}$; since $i'$ is untouched by $θ$, $θ ⊑ θ'$, $θ' ∈ Θ ∩ \powerset{\allleadstog}$, and $θ' ∖ θ = θ_H^{i'}$ exactly (as $θ$ does not mention $i'$).
 
   Suppose some $\allleadstog''' ∈ C'$ extended $θ_H^{i'}$, and let $f := \allleadstog'''(i')$. Then $f(α) = g(α) ≠ φ$ and $f(α,a,b) = g(α,a,b) = φ$. But $\allleadstog''' ∈ C'$ requires its second conjunct at $i', α$: $α \nileadstog[i'] φ ⇒ (α,a,b) \nileadstog[i'] φ$, whose contrapositive, $(α,a,b) \ileadstogo[i'] φ ⇒ α \ileadstogo[i'] φ$, together with $f(α,a,b) = φ$ forces $f(α) = φ$ — contradicting $f(α) ≠ φ$. So no such $\allleadstog'''$ exists: $θ_H^{i'} ∉ (C')^⊆$, hence also $(θ' ∖ θ) ∉ (C')^⊆$.
 
-  As $θ$ was arbitrary — the same $H$ serves throughout, only the clone $i'$ depending on $θ$ — $\POOF[C'](\allleadstog)$ holds. Hence $(C ∖ C') ∩ E ⊆ \POOF[C']$.
+  As $θ$ was arbitrary — the same $H$ serves throughout, only the clone $i'$ depending on $θ$ — $\OOF[C'](\allleadstog)$ holds. Hence $(C ∖ C') ∩ E ⊆ \OOF[C']$.
 
-  All hypotheses of \cref{th:genProvableSubclaim} are met, so $C'$ holds, is anonymous, is APTS-P, and is provable by $(¬\POOF[C']) ∩ E ∩ D^{\anobs,a,p}_{C'}$ — exactly \cref{ex:abClosure}'s claim.
+  All hypotheses of \cref{th:genProvableSubclaim} are met, so $C'$ holds, is anonymous, is APTS-P, and is provable by $(¬\OOF[C']) ∩ E ∩ D^{\anobs,a,p}_{C'}$ — exactly \cref{ex:abClosure}'s claim.
 \end{proof}
 
 \begin{proof}[Proof of the second part of \cref{ex:abClosure}]
@@ -2381,9 +2380,9 @@ Taking $C' = C$ recovers \cref{th:oneMorePriorFull} (equivalently, \cref{th:oneM
   Taking $α := β$: $(α,a,b) \nileadstog[h] φ$ (previous paragraph) and $(a,b,α) \ileadstog[h] φ$ (two paragraphs above) — exactly the claimed pattern, witnessed by the very history $β$ that exhibits $a$'s non-decisiveness at $h$.
 \end{proof}
 
-\Cref{th:suffIndic} caracterizes situations that admit a claim that holds and is anonymous and indicative.
+th:suffIndic (beyond current end) caracterizes situations that admit a claim that holds and is anonymous and indicative.
 
-NB \cref{th:noindic} has the key! And I should read \cref{sec:closing}.
+NB th:noindic (beyond current end) has the key! And I should read sec:closing (beyond current end).
 
 \begin{example}
   $C = [∃i \suchthat a \ileadstostg φ]$.
@@ -2391,7 +2390,7 @@ NB \cref{th:noindic} has the key! And I should read \cref{sec:closing}.
   It is $¬\OF$: any observation $θ ⊆ \allleadstog'$, being finite, is completable in $C$.
   Now consider a world where a single $i$ satisfies $a \ileadstost φ$.
   Consider $θ = ∅$ and
-  any observation $θ' ⊆ \allleadstog$. It is completed by a world $\allleadstog' ∈ (¬\POOF) ∩ E$ but out of $C$.
+  any observation $θ' ⊆ \allleadstog$. It is completed by a world $\allleadstog' ∈ (¬\OOF) ∩ E$ but out of $C$.
 \end{example}
 \begin{example}
   Define $\allleadsto^p$ as: empty leads to $φ$, everything else leads to $p$, for all individuals.
@@ -2452,13 +2451,13 @@ We are here interested in the interplay between properties of holding, anonymity
 
   \emph{$\allleadsto ∉ D^{\set{((a),φ)}, a, φ}$.} Pick $d ∈ \allargs ∖ \set{a,c}$, $S = \set{\hist ≠ ∅ \suchthat \hist_1 = d}$, and $g := \restr{b_k}{S} ∪ \restr{b_j}{\allhists ∖ S}$. Any $H ∈ \fincrhists$ is a chain, hence lies entirely inside $S$ or entirely outside it, so $g$ matches $b_k$ or $b_j$ on $H$: $g$ is undistinguishable from $\set{b_j,b_k}$. As $d ≠ a$, $(a) ∉ S$, so $g((a)) = b_j((a)) = φ$: $g$ matches $\anobs = \set{((a),φ)}$. As $(d,a) ∈ S$ and $c ∉ \set{d,a}$, $g((d,a)) = b_k((d,a)) = φ'$, and $a ∈ \histend((d,a))$: $a$ is not decisive for $φ$ in $g$. Yet $g ∉ \set{b_j,b_k}$ ($g((d)) = φ' ≠ φ = b_j((d))$; $g((a)) = φ ≠ φ' = b_k((a))$). So $g$ is exactly the counterexample $D^{\set{((a),φ)},a,φ}$ forbids: the axiom genuinely fails at $\allleadsto$.
 
-  \emph{Yet $C$ is not provable by $¬\OF ∩ E$ either.} Carve an infinite $I_3 ⊆ J$, leaving $J ∖ I_3$ infinite, and let $\allleadstog^*$ agree with $\allleadsto$ outside $I_3$, while every $i ∈ I_3$ realizes $g$ (answers $φ'$ on $S$, $φ$ elsewhere). Then $\allleadstog^* ∈ E$, and $\allleadstog^* ∉ C$: $g$ violates $C_1$, exactly as just shown. As in \cref{rk:generalTemplateExcluded}, any finite $θ ⊆ \allleadstog^*$ restricted to $i ∈ I_3$ is a single chain, so it lies entirely inside $S$ or entirely outside it — the two witnessing histories $(a)$ and $(d,a)$ are incomparable, so no observation ever sees both — and it always extends into some world of $C$ (complete $i$ as fully $a$-decisive, or route it into $C_2$). Individuals outside $I_3$ embed by relabelling. So $¬\OF(\allleadstog^*)$ holds outright: $\allleadstog^* ∈ E ∖ C$ with $¬\OF(\allleadstog^*)$ shows $C$ is not provable by $¬\OF ∩ E$, hence not by $¬\POOF ∩ E$ either (as $¬\OF ⊆ ¬\POF ⊆ ¬\POOF$).
+  \emph{Yet $C$ is not provable by $¬\OF ∩ E$ either.} Carve an infinite $I_3 ⊆ J$, leaving $J ∖ I_3$ infinite, and let $\allleadstog^*$ agree with $\allleadsto$ outside $I_3$, while every $i ∈ I_3$ realizes $g$ (answers $φ'$ on $S$, $φ$ elsewhere). Then $\allleadstog^* ∈ E$, and $\allleadstog^* ∉ C$: $g$ violates $C_1$, exactly as just shown. As in \cref{rk:generalTemplateExcluded}, any finite $θ ⊆ \allleadstog^*$ restricted to $i ∈ I_3$ is a single chain, so it lies entirely inside $S$ or entirely outside it — the two witnessing histories $(a)$ and $(d,a)$ are incomparable, so no observation ever sees both — and it always extends into some world of $C$ (complete $i$ as fully $a$-decisive, or route it into $C_2$). Individuals outside $I_3$ embed by relabelling. So $¬\OF(\allleadstog^*)$ holds outright: $\allleadstog^* ∈ E ∖ C$ with $¬\OF(\allleadstog^*)$ shows $C$ is not provable by $¬\OF ∩ E$, hence not by $¬\OOF ∩ E$ either (as $¬\OF ⊆ ¬\POF ⊆ ¬\OOF$).
 
-  \emph{Where the assumption goes instead.} Applying the $B := \allbs$ analogue of \cref{th:oneMorePriorGeneral} (\cref{rk:compareFull}) to $C_1, C_2$ separately and intersecting gives $C$ provable by $(¬\POOF) ∩ E ∩ D_1 ∩ D_2$, where $D_2 = D^{\set{((a),φ')},c,φ}_{C_2}$ is the claim-relative axiom of the second conjunct, and $D_1 = D^{\set{((a),φ)},a,φ}_{C_1}$ that of the first: here, $\allleadstog ∈ D_1$ iff
+  \emph{Where the assumption goes instead.} Applying the $B := \allbs$ analogue of \cref{th:oneMorePriorGeneral} (\cref{rk:compareFull}) to $C_1, C_2$ separately and intersecting gives $C$ provable by $(¬\OOF) ∩ E ∩ D_1 ∩ D_2$, where $D_2 = D^{\set{((a),φ')},c,φ}_{C_2}$ is the claim-relative axiom of the second conjunct, and $D_1 = D^{\set{((a),φ)},a,φ}_{C_1}$ that of the first: here, $\allleadstog ∈ D_1$ iff
   $$∀g ∈ \allleadstog(I) \suchthat (a) \ileadstog[g] φ ∧ a \nileadstostg[g] φ: ∃ (a) ⊆ α ∈ \allhists \suchthat a ∈ \histend(α) ∧ α \nileadstog[g] φ,$$ and $\allleadstog ∈ D_2$ iff
   $$∀g ∈ \allleadstog(I) \suchthat (a) \ileadstog[g] φ' ∧ c \nileadstostg[g] φ: ∃ (a) ⊆ α ∈ \allhists \suchthat c ∈ \histend(α) ∧ α \nileadstog[g] φ.$$ $\allleadsto ∈ D_1 ∩ D_2$ only vacuously, as neither $b_j$ nor $b_k$ violates either conjunct. But $\allleadstog^* ∉ D_1$: its spliced row $g$ has $g((a)) = φ$ and $a$ not decisive for $φ$ in $g$ (both shown above), yet $g$ is undistinguishable from $\set{b_j,b_k} ⊆ S_{C_1}$ on every $H$ — exactly the fact established above. So $\allleadstog^*$ is excluded from $D_1 ∩ D_2$ exactly as it would need to be excluded, upfront, from $D^{\set{((a),φ)},a,φ}$ for \cref{th:oneMorePriorNarrow}'s route to apply to this claim's shape.
 
-  So the two routes are not comparable in strength, and this is not a trade of one commitment for another. $D^{gap}$ is a hypothesis \emph{about the true world} $\allleadsto$, quantified over all of $\allbs$: something that must actually hold of reality, bought in exchange for the strongest conclusion, provable by the clean $¬\POOF ∩ E$ itself, nothing left in the filter. $D_1, D_2$ are not a hypothesis on $\allleadsto$ at all here — $\allleadsto ∈ D_1 ∩ D_2$ holds automatically, vacuously — but a restriction on the \emph{scope} of the conclusion: worlds such as $\allleadstog^*$ are simply left outside the guarantee, whatever $\allleadsto$ turns out to be. That is a strictly cheaper, more reasonable kind of commitment. For this $C$ it is, moreover, the only kind available: $¬\OF(\allleadstog^*)$ is a structural fact about $\allleadstog^*$ alone, exactly as in \cref{rk:generalTemplateExcluded} — independent of $\allleadsto$ — so no hypothesis on $\allleadsto$, $D^{gap}$-shaped or otherwise, could ever repair provability by the clean $¬\POOF ∩ E$ for this branch-and-escape shape of claim. $D^{gap}$ is not a pricier alternative route here: it is inapplicable. What survives is narrower than first stated: $D^{gap}$ remains the minimal axiom, on $\allleadsto$ alone, for provability by the clean $¬\POOF ∩ E$, only for claims sharing \cref{th:oneMorePriorNarrow}'s single-template shape; for a claim like $C$ here, no hypothesis on $\allleadsto$ alone buys the clean conclusion, and the claim-relative route's weaker, scoped guarantee is the best available.
+  So the two routes are not comparable in strength, and this is not a trade of one commitment for another. $D^{gap}$ is a hypothesis \emph{about the true world} $\allleadsto$, quantified over all of $\allbs$: something that must actually hold of reality, bought in exchange for the strongest conclusion, provable by the clean $¬\OOF ∩ E$ itself, nothing left in the filter. $D_1, D_2$ are not a hypothesis on $\allleadsto$ at all here — $\allleadsto ∈ D_1 ∩ D_2$ holds automatically, vacuously — but a restriction on the \emph{scope} of the conclusion: worlds such as $\allleadstog^*$ are simply left outside the guarantee, whatever $\allleadsto$ turns out to be. That is a strictly cheaper, more reasonable kind of commitment. For this $C$ it is, moreover, the only kind available: $¬\OF(\allleadstog^*)$ is a structural fact about $\allleadstog^*$ alone, exactly as in \cref{rk:generalTemplateExcluded} — independent of $\allleadsto$ — so no hypothesis on $\allleadsto$, $D^{gap}$-shaped or otherwise, could ever repair provability by the clean $¬\OOF ∩ E$ for this branch-and-escape shape of claim. $D^{gap}$ is not a pricier alternative route here: it is inapplicable. What survives is narrower than first stated: $D^{gap}$ remains the minimal axiom, on $\allleadsto$ alone, for provability by the clean $¬\OOF ∩ E$, only for claims sharing \cref{th:oneMorePriorNarrow}'s single-template shape; for a claim like $C$ here, no hypothesis on $\allleadsto$ alone buys the clean conclusion, and the claim-relative route's weaker, scoped guarantee is the best available.
 \end{remark}
 
 The following shows that verifiability is a mandatory part of the criterion for determining whether $C$ holds, in that world: requiring the stronger provability instead of verifiability (under the same axiom) leads to an impossibility.
@@ -2467,7 +2466,7 @@ The following shows that verifiability is a mandatory part of the criterion for 
   $\allleadsto = J × \allhists × \set{φ} ∪ K × \allhists × \set{φ'}$ 
   of \cref{ex:jaysAndKaysConstants}, 
   with infinite sets of individuals $J$, $K$.
-  No anonymous claim that holds is APTS and provable by $¬\POOF[C ∩ E] ∩ E$.
+  No anonymous claim that holds is APTS and provable by $¬\OOF[C ∩ E] ∩ E$.
 \end{theorem}
 \begin{proof}
   TODO.
@@ -2475,6 +2474,7 @@ The following shows that verifiability is a mandatory part of the criterion for 
 \end{proof}
 
 For this, see \cref{rk:generalTemplateExcluded}.
+\end{document}
 
 \subsection{Explanatory examples}
   \begin{example}[Disjunct with incompatible paths, not falsifiable, to be deleted]
