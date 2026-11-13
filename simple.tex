@@ -447,7 +447,7 @@ So, for a given claim and axiom, the gap between verifiability and OV is precise
   It will then remain to ensure that some suitable claim exists, which will require yet another axiom.
 \end{remark}
 
-\Cref{th:pvUnderNotPof} shows that any non trivial claim fails OV under $¬\OOF$ at some $\allleadstog ∈ C ∩ ¬OOF$.
+\Cref{th:onlyEmptyPF} shows that any non trivial claim fails established OV under $¬\OOF$ at some $\allleadstog ∈ C ∩ ¬OOF$.
 
 \subsection{Repeatable observations}
 Our second axiom ensures some repeatability of observations by assuming that whenever a behavior is exhibited by at least one individual, infinitely many individuals exhibit it.
@@ -488,10 +488,8 @@ It follows that assuming that $\allleadsto ∈ E$, simple regularity is a requir
 We now add the last piece of the puzzle.
 From the above result, we know that
 for any anonymous and conclusive claim to exist that holds, assuming \cref{ax:repeatable},
-the world must admit a simple regularity: $∃ \anobs ∈ \anobses, p ∈ P \suchthat (∃i \suchthat \anobs ⊆ \ileadstoo) ∧ (∀i: \anobs ⊆ \ileadstoo ⇒ p ∈ π(\ileadstoo))$.
-Suppose moreover that this regularity is witnessed by a single, common decisive argument: $∃a ∈ \allargs \suchthat ∀i: \anobs ⊆ \ileadstoo ⇒ a \ileadstost p$.
-This is a genuine strengthening of simple regularity, not a restatement of it: by \cref{def:decisive}, $p ∈ π(\ileadstoo)$ only gives that \emph{some} argument is decisive for $p$ from $i$'s point of view, possibly a different one for each $i$ matching $\anobs$.
-The strengthening is required here, rather than being an arbitrary simplification: visibility, below, is a property of a single, concrete argument's observable effect on behavior (whether some history ending in $a$ witnesses its failure to be decisive), whereas $π$ is an abstract disposition that does not name which argument produced it. Without fixing one argument common to every $i$ matching $\anobs$, there is nothing for the Visibility axiom to be about.
+the world must admit a simple regularity.
+Assume that some $\anobs, a, p$ are such that $∀i: \anobs ⊆ \ileadstoo ⇒ a \ileadstost p$ (a strengthening of simple regularity which also assumes that some observable behavior exists that isolates a set of individuals who agree on a decisive argument, not just on their DJ).
 In order to ensure that one can know that the claim holds, thus, to satisfy OV under some axiom, it is required, in supplement to \cref{ax:scrutiny,ax:repeatable},
 to ensure that no behavior is sufficiently “strange” that it could satisfy the pattern $\anobs ⊆ \ileadstoo$, but fail $a \ileadstost p$, yet remain indistinguishable, on every finite window, from the behaviors actually realized — whether or not that behavior is itself realized by some individual.
 In words, we require that any such violation has some path compatible with those used in $\anobs$, not shared by any realized behavior, where it is visible that $a$ does not decisively lead to $p$ (thus $a$ appears at the end of $α$ and yet $α \nileadsto p$).
@@ -499,7 +497,6 @@ In formal terms, given $\anobs, a, p$, define $D^{\anobs, a, p}$ as the conditio
 \begin{equation}
   ∀b ∉ \allleadstog(I): (\anobs ⊆ b ∧ a \nileadstostg[b] p) ⇒ \bigl(∃H ∈ \fincrhists \suchthat \restr{b}{H} ∉ \restr{\allleadstog(I)}{H}\bigr).
 \end{equation}
-This is the same $D^{\anobs, a, p}$ as defined in the Visibility subsection of the proofs appendix (there written $D^{\anobs, a, p}_{\allbs, \allleadstog(I)}$).
 Note that this condition is about behaviors that nobody actually exhibits: it would stay substantive even if $\anobs, a, p$ already witnessed a perfectly regular world, since it additionally guards against hypothetical, not-yet-observed violations of that regularity being mistaken for instances of it.
 We impose that the world is regular, in the strengthened sense isolated above, and that this regularity is visible in the sense that any (even merely hypothetical) violation of it would be distinguishable from what is actually observed.
 \begin{axiom}[Visibility]
@@ -513,6 +510,36 @@ We impose that the world is regular, in the strengthened sense isolated above, a
   Suppose that the world contains two kinds of individuals. The jays find $a$ decisive for $φ$. The kays however find $b$ decisive for $φ'$. Assume some researcher becomes aware of a part of this regularity: she realizes that individuals who, upon exposure to $(a, b)$, answer $φ$, all satisfy $a \ileadstost φ$, but ignores that a similar regularity holds for the kays. She claims $C = [∀i: (a, b) \ileadstog φ ⇒ a \ileadstostg φ]$.
   This claim is anonymous and conclusive, and satisfies established OV under the axiom $¬\OOF ∩ E$, by \cref{th:oneMorePriorNarrow}, given $\anobs = \set{(a, b), φ}$, $a$ and $φ$ satisfy \cref{ax:vis}. Spelling out \cref{ax:vis} here: every jay exposed to $(a, b)$ indeed answers $φ$ via $a$ being decisive ($\anobs ⊆ \ileadstoo ⇒ a \ileadstost φ$ holds, since the kays never match $\anobs$); and $D^{\anobs, a, φ}$ requires that any behavior nobody actually exhibits, that matches $(a, b) \ileadsto φ$ while failing $a \ileadstostg φ$, is nonetheless distinguishable from the behaviors that are actually realized — for instance by some completion such as $(a, b, c, a) \nileadsto φ$ that no realized behavior shares. The axiom fails if such a hypothetical violator would be indistinguishable from the realized behaviors on every finite window, for example if every individual who could ever fail to be impressed by $a$ after $(a,b)$ happens, as a matter of fact, to behave on every finite window exactly like some individual who does find $a$ decisive.
 \end{example}
+
+A sufficient (but not necessary) condition for this axiom to be satisfied is that repeating often enough the influences that lead the individual out of $p$ lets her forget about the influences used in $\anobs$.
+
+\begin{remark}
+  $D^{\anobs, a, p}$ fails iff
+  $∃b ∉ \allleadsto(I) \suchthat \anobs ⊆ b ∧ a \nileadstostg[b] p ∧ ∀H ∈ \fincrhists: \restr{b}{H} ∈ \restr{\allleadsto(I)}{H}$.
+  Consider the condition “some undistinguishable”:
+  $∃b ∉ \allleadsto(I) \suchthat ∀H ∈ \fincrhists: \restr{b}{H} ∈ \restr{\allleadsto(I)}{H}$.
+  It is implied by the former.
+  The condition is very mild.
+  Its negation, “all distinguishable”, is very strong, and implies $D^{\anobs, a, p}$.
+  A milder sufficient condition for $D^{\anobs, a, p}$ is “no $\anobs$-undistinguishable”: every behavior outside $\allleadsto(I)$ that matches $\anobs$ is distinguishable, that is,
+  $∀b ∉ \allleadsto(I): \anobs ⊆ b ⇒ ∃H ∈ \fincrhists \suchthat \restr{b}{H} ∉ \restr{\allleadsto(I)}{H}$.
+  We have the strict chain: “all distinguishable” $⇒$ “no $\anobs$-undistinguishable” $⇒$ $D^{\anobs, a, p}$.
+  “All distinguishable” additionally demands distinguishability of behaviors not matching $\anobs$; $D^{\anobs, a, p}$ only requires distinguishability of behaviors that also violate $a \ileadstostg p$.
+  Indeed, any $b ∉ \allleadsto(I)$ with $\anobs ⊆ b$ and $b(α) ≠ p$ for some $α$ with $\anobs^{-1}(P) ∪ \set{α} ∈ \fincrhists$ and $a ∈ \histend(α)$ is automatically distinguishable: the chain $\anobs^{-1}(P) ∪ \set{α}$ witnesses it, since any $c ∈ \allleadsto(I)$ matching $b$ on $\anobs^{-1}(P)$ satisfies $\anobs ⊆ c$, hence $a \ileadstostg[c] p$ by regularity, hence $c(α) = p ≠ b(α)$; this is the content of \cref{th:oneMorePriorFullExplicit}'s proof.
+  Thus, $D^{\anobs, a, p}$ is equivalent to: every $\anobs$-undistinguishable behavior outside $\allleadsto(I)$ satisfies $a \ileadstostg p$.
+\end{remark}
+
+\begin{remark}
+  The condition $D^{\anobs, a, p}$ can be analyzed structurally in terms of $\allleadsto(I)$ itself.
+
+  \emph{A sufficient condition for it to hold.} If every $c ∈ \allleadsto(I)$ assigns $p$ at every $a$-ending history chain-incompatible with $\anobs^{-1}(P)$, then $D^{\anobs, a, p}$ holds: any undistinguishable $b ∉ \allleadsto(I)$ violating $a \ileadstostg p$ at chain-incompatible $α^*$ would, by undistinguishability on $\set{α^*}$, require some $c ∈ \allleadsto(I)$ with $c(α^*) ≠ p$—excluded.
+
+  \emph{A sufficient condition for it to fail.} Conversely, if some $c_0 ∈ \allleadsto(I)$ matches $\anobs$ and some $c_1 ∈ \allleadsto(I)$ assigns $c_1(α^*) ≠ p$ for an $a$-ending $α^*$ on a branch entirely foreign to $\anobs$ (i.e., $α^*_1 ∉ \set{h_1 \suchthat h ∈ \anobs^{-1}(P)}$), then the standard splice of $c_0$ (outside the $α^*_1$-branch) and $c_1$ (inside) is undistinguishable from $\allleadsto(I)$, matches $\anobs$ via $c_0$, and assigns $c_1(α^*) ≠ p$: $D^{\anobs, a, p}$ fails.\commentClaude{Could cite rk:gapNotMinimal here once it is included in the compiled document.}
+
+  \emph{Strength.} The two conditions are not converses of each other: a world may have some $c_1$ assigning $≠ p$ at a chain-incompatible $α^*$, yet satisfy $D^{\anobs, a, p}$, if $c_1$ and the $\anobs$-matching behaviors disagree at common prefixes of $α^*$ and $\anobs^{-1}(P)$ (so the closure $R$ cannot simultaneously borrow values from both). Still, $D^{\anobs, a, p}$ is a relatively strong condition: the sufficient failure condition is generically met in any diverse world where behaviors vary outside $\anobs$'s range, and $D^{\anobs, a, p}$ holds reliably only when every $a$-ending history is chain-compatible with $\anobs^{-1}(P)$ (making chain-incompatible histories vacuous—the sufficient condition noted above this remark) or the world has the special structure just described.
+
+  This characterization is not stated as a formal result elsewhere; the ingredients (the splice construction, type-A automatic distinguishability) are present in the proofs of earlier results.
+\end{remark}
 
 \section{Result}
 This section argues about (the formal proofs are in appendix) the necessity and sufficiency of \cref{ax:scrutiny,ax:repeatable,ax:vis} for ensuring existence of claims that satisfy the desideratas of \cref{sec:desideratas} and can be seen to hold. 
@@ -1052,7 +1079,6 @@ $C ≠ \allleadstos ∧ [∀\allleadstog: \F(\allleadstog) ⇒ \OOF(\allleadstog
 A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\OOF$.
 \begin{theorem}
   \label{th:onlyEmptyPF}
-  \label{th:pvUnderNotPof}
   Given a claim $C$, the following are equivalent.
   \begin{enumerate}
     \item \label{it:provNotOOF} $C$ is provable by $¬\OOF$;
@@ -1111,7 +1137,7 @@ A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\OOF
   Given any $θ ∈ Θ ∩ \powerset{\allleadsto}$, as $θ$ touches only finitely many individuals and $I$ is infinite, pick $i^* ∈ I$ untouched by $θ$ and let $θ' = θ ∪ \set{(a) \ileadsto[i^*] φ}$; then $↑(θ' ∖ θ) = ↑(\set{(a) \ileadsto[i^*] φ}) ⊆ C$, and this set contains $\allleadsto$, hence is nonempty.
   As $D = \allleadstos$, $∅ ≠ ↑(θ' ∖ θ) ∩ D ⊆ C$: $C$ satisfies OV under $D$ at $\allleadsto$.
 
-  Established OV under $D$ nonetheless fails for this $C$, consistently with \cref{th:pvUnderNotPof}: consider $\allleadstog[0] ∈ C$ with $\allleadstog[0](i_0, (a)) = φ$ for exactly one individual $i_0$ and $\allleadstog[0](i, (a)) ≠ φ$ for every $i ≠ i_0$.
+  Established OV under $D$ nonetheless fails for this $C$, consistently with \cref{th:onlyEmptyPF}: consider $\allleadstog[0] ∈ C$ with $\allleadstog[0](i_0, (a)) = φ$ for exactly one individual $i_0$ and $\allleadstog[0](i, (a)) ≠ φ$ for every $i ≠ i_0$.
   Taking $θ = \set{(i_0, (a), φ)}$ already exhausts $\allleadstog[0]$'s only witness, so every $θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadstog[0]}$ has $θ' ∖ θ$ consisting solely of pairs $(i, (a), \allleadstog[0](i, (a)))$ with $i ≠ i_0$, each completable, by the same argument as above, into $\overline C = D ∖ C$: $¬\OOF[D ∖ C](\allleadstog[0])$, so OV fails at $\allleadstog[0]$.
 \end{example}
 
@@ -1331,26 +1357,6 @@ The converse fails, as \cref{ex:anonProvNotFals} shows.
 \end{proof}
 
 \subsection{Existence}
-\begin{theorem}
-  Given any $\allleadsto ∈ E$, there exists an anonymous claim that is provable by $¬\OOF[C ∩ E] ∩ E$.
-\end{theorem}
-\begin{proof}
-  Take $C = E$.
-  $E$ is anonymous: for any $\allleadstog ∈ E$ and permutation $σ$, individual $j$ in $\allleadstog ∘ σ$ has the same behavior as $σ(j)$ in $\allleadstog$, so the behavior classes of $\allleadstog ∘ σ$ are those of $\allleadstog$ relabeled, each still infinite, giving $\allleadstog ∘ σ ∈ E$.
-  $\allleadsto ∈ E = C$ by hypothesis.
-  $C ∩ E = E$, so $(¬\OOF[C ∩ E]) ∩ E = (¬\OOF[E]) ∩ E ⊆ E = C$ (intersecting with $E$ already lands inside $E = C$, regardless of the first conjunct).
-\end{proof}
-
-\begin{theorem}
-  Given any $\allleadsto ∈ E$, there exists an anonymous claim that holds, is informative and provable by $¬\OOF[C ∩ E] ∩ E$.
-\end{theorem}
-\begin{proof}
-  Take $C = E$.
-  $E$ is anonymous (as in the previous proof), $\allleadsto ∈ E = C$, and $(¬\OOF[C ∩ E]) ∩ E = (¬\OOF[E]) ∩ E ⊆ E = C$.
-  \emph{Informativeness.} For any $\allleadstog ∈ E$, each behavior class is infinite and individuals sharing a behavior share the same $π$-value, so every non-empty fiber of $π(\allleadstog)$ is infinite.
-  Hence, fixing any $i_0 ∈ I$ and $v ∈ P$, the profile assigning $v$ to $i_0$ and $∅$ to all other individuals has a $v$-fiber of size $1 ∈ ℕ$, so it lies outside $π(E)$, giving $π(E) ≠ (P ∪ \set{∅})^I$.
-\end{proof}
-
 In some worlds, the axiom $¬\OOF[C ∩ E] ∩ E$ is sufficient to get existence of suitable claims.
 \begin{example}
   Consider the world
@@ -1370,11 +1376,11 @@ for the observation that $i$ conforms to $T$ on the increasing path $H$.
 
 The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I) ⊆ B]$.
 
-\begin{theorem}
+\begin{lemma}
   \label{th:undistOf}
   Consider $\allleadsto ∈ E$, an anonymous claim $C$ that holds, and a world $\allleadstog'$.
   If $∀b ∈ \allleadstog'(I)$, $b$ is undistinguishable from $\allleadsto(I)$, then $¬\OF(\allleadstog')$.
-\end{theorem}
+\end{lemma}
 \begin{proof}
   Consider any $θ ⊆ \allleadstog'$ and let us show that $θ ∈ C^⊆$.
 
@@ -1393,12 +1399,15 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
 
 \begin{theorem}
   \label{th:holdsNotVerifUnderNotOfE}
-  Given $\allleadsto ∈ E$, $a ∈ \allargs$, $b^\text{new} ∈ \allbs$, some finite $∅ ≠ H ∈ \incr(\allhists)$
-  and an anonymous claim $C ⊆ [∀i ∈ I: \restr{b^\text{new}}{H} ⊆ \ileadstoo ⇒ ∃p ∈ P \suchthat a \ileadstost p]$,
-  if $b^\text{new}$ is undistinguishable from $\allleadsto(I)$ yet $b^\text{new} ∉ \allleadsto(I)$ and $∄p ∈ P \suchthat a \ileadstostg[b^\text{new}] p$
-  and $C$ holds, it is not verifiable at $\allleadsto$ under $¬\OF ∩ E$ (thus also not verifiable at $\allleadsto$ under $¬\OOF ∩ E$).
+  Given $\allleadsto ∈ E$, $a ∈ \allargs$ 
+  and an anonymous claim $C$ that holds,
+  if
+  $∃b^\text{new} ∈ \allbs ∖ \allleadsto(I), ∅ ≠ H ∈ \fincrhists \suchthat 
+  b^\text{new}$ is undistinguishable from $\allleadsto(I) ∧ ∄p ∈ P \suchthat a \ileadstostg[b^\text{new}] p ∧ 
+  C ⊆ [∀i ∈ I: \restr{b^\text{new}}{H} ⊆ \ileadstoo ⇒ ∃p ∈ P \suchthat a \ileadstost p]$, then
+  $C$ is not verifiable at $\allleadsto$ under $¬\OF ∩ E$ (thus also not verifiable at $\allleadsto$ under $¬\OOF ∩ E$).
 \end{theorem}
-%compare with noAnonIBCHoldsProvable
+%TODO compare with noAnonIBCHoldsProvable
 \begin{proof}
   Consider any prefix $θ ⊆ \allleadsto$.
   We build $θ ⊆ \allleadstog' ∈ (¬\OF ∩ E) ∖ C$.
@@ -1441,39 +1450,6 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
 \begin{remark}
   The $H = ∅$ case technically holds, but either requires to take seriously the $∃p$ in the claim $C$’s deduction ($i_1$ has $a$ decisive for $φ$ and $i_2$ has $a$ decisive for $φ'$), or if $p$ is fixed for everybody, then the antecedent of the theorem never triggers.
 \end{remark}
-
-\begin{example}
-  \label{ex:disjArgs}
-  Fix $φ ≠ φ' ∈ P$, $a ≠ b ∈ \allargs$, and partition $I = J \sqcup K$ with $J$, $K$ both infinite.
-  Define $\allleadsto$ by: for $j ∈ J$, $∀\hist: \hist \ileadstoo[j] φ \iff a ∈ \histend(\hist)$; for $k ∈ K$, $∀\hist: \hist \ileadstoo[k] φ \iff b ∈ \histend(\hist)$ (with $φ'$ otherwise in each case).
-  Then $\allleadsto ∈ E$; $a \ileadstost_j φ$ and $b \nileadstost_j φ$ for $j ∈ J$ (as $(b) \ileadstoo[j] φ'$); $b \ileadstost_k φ$ and $a \nileadstost_k φ$ for $k ∈ K$ (as $(a) \ileadstoo[k] φ'$).
-  Hence there is no $c ∈ \allargs$ with $∀i: c \ileadstost_i φ$.
-  Yet $∀i: a \ileadstost_i φ ∨ b \ileadstost_i φ$, so $P_i = \set{φ}$ for all $i$, and \cref{th:noPatternNoClaim}'s hypothesis fails.
-  A suitable claim exists: $C = [∀i: (a) \ileadstog φ ⇒ a \ileadstostg φ]$ holds in $\allleadsto$ (genuinely for $J$, vacuously for $K$ since $(a) \ileadstoo[k] φ'$), is anonymous, conclusive, and satisfies established OV, by \cref{th:oneMorePriorGeneralPev} (applied with $H := \set{(a)}$, $\anobs := \set{((a), φ)}$, $c := a$, $p := φ$, and any $j_0 ∈ J$).
-\end{example}
-
-\begin{theorem}
-  \label{th:patternNecessary}
-  If $\allleadsto ∈ E$ and some anonymous, conclusive claim holds, then $\allleadsto$ admits a simple regularity.
-\end{theorem}
-\begin{proof}
-  Let $C$ be anonymous, conclusive, and holding, that is, $\allleadsto ∈ C$.
-
-  \emph{A conclusiveness pin.}
-  As $C$ is conclusive and $\allleadsto ∈ C$, applying conclusiveness at $θ = ∅$ gives $θ_0 ∈ Θ ∩ \powerset{\allleadsto}$, $i^* ∈ I$ and $p^* ∈ P$ with $π_{i^*}(↑θ_0 ∩ C) = \set{p^*}$.
-  Let $H := \set{α \suchthat ∃p, (i^*,α,p) ∈ θ_0} ∈ \fincrhists$ and let $\anobs: H → P$ be $\anobs(α) := p$ for the unique $p$ with $(i^*,α,p) ∈ θ_0$; as $θ_0 ⊆ \allleadsto$, $\anobs ⊆ \ileadstoo[i^*]$.
-
-  \emph{Propagating the pin to every matching individual.}
-  Fix $i ∈ I$ with $\anobs ⊆ \ileadstoo[i]$; write $g := \ileadstoo[i]$. We show $p^* ∈ P_i$.
-
-  If $i = i^*$: as $θ_0 ⊆ \allleadsto ∈ C$, $\allleadsto ∈ ↑θ_0 ∩ C$, so $π_{i^*}(\allleadsto) = p^*$, that is $p^* ∈ P_{i^*}$.
-
-  If $i ≠ i^*$: as $\allleadsto ∈ E$, the class $J_g := \set{j ∈ I \suchthat \ileadstoo[j] = g}$ is infinite (it contains $i$), and $θ_0$ has finite support, so we may pick $i'' ∈ J_g ∖ (θ_0(\allhists, P) ∪ \set{i^*})$. Let $σ$ be the transposition of $i^*$ and $i''$ (identity elsewhere) and $\allleadstog^{sw} := \allleadsto ∘ σ$.
-  Then $\allleadstog^{sw}(i^*) = \ileadstoo[i''] = g$ and $\anobs ⊆ g$: $θ_0$'s constraint on $i^*$ holds in $\allleadstog^{sw}$; and every other $j ∈ θ_0(\allhists, P)$ satisfies $j ∉ \set{i^*, i''}$, so $\allleadstog^{sw}(j) = \ileadstoo[j]$, matching $θ_0$ there too. Hence $θ_0 ⊆ \allleadstog^{sw}$.
-  As $C$ is anonymous and $\allleadsto ∈ C$, $\allleadstog^{sw} = \allleadsto ∘ σ ∈ C ∘ σ = C$; with $θ_0 ⊆ \allleadstog^{sw}$, $\allleadstog^{sw} ∈ ↑θ_0 ∩ C$, so $π_{i^*}(\allleadstog^{sw}) = p^*$. As $π_{i^*}$ depends only on the row $\allleadstog^{sw}(i^*) = g$ (\cref{def:decisive}), this is $p^* ∈ P_i$.
-
-  Taking $p := p^*$, $∀i ∈ I: \anobs ⊆ \ileadstoo[i] ⇒ p^* ∈ P_i$, as required.
-\end{proof}
 
 \subsection{Visibility}
 Given $\anobs$,
@@ -1524,6 +1500,16 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 
   \emph{Established OV under $D$.} Fix $\allleadstog ∈ C ∩ D$ and $θ ∈ Θ ∩ \powerset{\allleadstog}$; reuse $j, θ'$ from the \emph{Conclusive} paragraph above. As $θ' ∖ θ ⊆ \allleadstog$ and $\allleadstog ∈ D$, $\allleadstog$ lies in $↑(θ' ∖ θ) ∩ D$, so this set is nonempty. Suppose $\allleadstog'' ∈ D$ extends $θ' ∖ θ = \set{j} × \anobs$. By $D ⊆ C_0$, $\allleadstog'' ∈ C_0$; and $\anobs ⊆ \allleadstog''(j)$, so $\allleadstog''$ also satisfies $C$'s extra conjunct (witnessed by $j$), hence $\allleadstog'' ∈ C$. So $↑(θ' ∖ θ) ∩ D ⊆ C$: $θ'$ witnesses the defining condition of OV at $(\allleadstog, θ)$. As $θ$ was arbitrary, $C$ is OV at $\allleadstog$ under $D$; as $\allleadstog ∈ C ∩ D$ was arbitrary, $C$ satisfies established OV under $D$.
 \end{proof}
+
+\begin{example}
+  \label{ex:disjArgs}
+  Fix $φ ≠ φ' ∈ P$, $a ≠ b ∈ \allargs$, and partition $I = J \sqcup K$ with $J$, $K$ both infinite.
+  Define $\allleadsto$ by: for $j ∈ J$, $∀\hist: \hist \ileadstoo[j] φ \iff a ∈ \histend(\hist)$; for $k ∈ K$, $∀\hist: \hist \ileadstoo[k] φ \iff b ∈ \histend(\hist)$ (with $φ'$ otherwise in each case).
+  Then $\allleadsto ∈ E$; $a \ileadstost_j φ$ and $b \nileadstost_j φ$ for $j ∈ J$ (as $(b) \ileadstoo[j] φ'$); $b \ileadstost_k φ$ and $a \nileadstost_k φ$ for $k ∈ K$ (as $(a) \ileadstoo[k] φ'$).
+  Hence there is no $c ∈ \allargs$ with $∀i: c \ileadstost_i φ$.
+  Yet $∀i: a \ileadstost_i φ ∨ b \ileadstost_i φ$, so $P_i = \set{φ}$ for all $i$, and \cref{th:noPatternNoClaim}'s hypothesis fails.
+  A suitable claim exists: $C = [∀i: (a) \ileadstog φ ⇒ a \ileadstostg φ]$ holds in $\allleadsto$ (genuinely for $J$, vacuously for $K$ since $(a) \ileadstoo[k] φ'$), is anonymous, conclusive, and satisfies established OV, by \cref{th:oneMorePriorGeneralPev} (applied with $H := \set{(a)}$, $\anobs := \set{((a), φ)}$, $c := a$, $p := φ$, and any $j_0 ∈ J$).
+\end{example}
 
 \begin{conjecture}
   Given $B ⊆ \allbs$ with $\allleadsto(I) ⊆ B$ such that
@@ -1761,6 +1747,27 @@ Being closed under finite modification and non-empty does not entail triviality.
   The converse of \cref{th:cufmNeverFals} fails: \cref{ex:disjR} is never falsifiable ($Θ ⊆ C^⊆$) yet is not closed under finite modification, as flipping a single individual’s two values (making it satisfy neither disjunct) already leaves $C$.
 \end{remark}
 
+\subsection{Other results}
+\begin{theorem}
+  Given any $\allleadsto ∈ E$, there exists an anonymous claim that is provable by $¬\OOF[C ∩ E] ∩ E$.
+\end{theorem}
+\begin{proof}
+  Take $C = E$.
+  $E$ is anonymous: for any $\allleadstog ∈ E$ and permutation $σ$, individual $j$ in $\allleadstog ∘ σ$ has the same behavior as $σ(j)$ in $\allleadstog$, so the behavior classes of $\allleadstog ∘ σ$ are those of $\allleadstog$ relabeled, each still infinite, giving $\allleadstog ∘ σ ∈ E$.
+  $\allleadsto ∈ E = C$ by hypothesis.
+  $C ∩ E = E$, so $(¬\OOF[C ∩ E]) ∩ E = (¬\OOF[E]) ∩ E ⊆ E = C$ (intersecting with $E$ already lands inside $E = C$, regardless of the first conjunct).
+\end{proof}
+
+\begin{theorem}
+  Given any $\allleadsto ∈ E$, there exists an anonymous claim that holds, is informative and provable by $¬\OOF[C ∩ E] ∩ E$.
+\end{theorem}
+\begin{proof}
+  Take $C = E$.
+  $E$ is anonymous (as in the previous proof), $\allleadsto ∈ E = C$, and $(¬\OOF[C ∩ E]) ∩ E = (¬\OOF[E]) ∩ E ⊆ E = C$.
+  \emph{Informativeness.} For any $\allleadstog ∈ E$, each behavior class is infinite and individuals sharing a behavior share the same $π$-value, so every non-empty fiber of $π(\allleadstog)$ is infinite.
+  Hence, fixing any $i_0 ∈ I$ and $v ∈ P$, the profile assigning $v$ to $i_0$ and $∅$ to all other individuals has a $v$-fiber of size $1 ∈ ℕ$, so it lies outside $π(E)$, giving $π(E) ≠ (P ∪ \set{∅})^I$.
+\end{proof}
+
 \subsection{Observational completion}
 \begin{corollary}
   \label{th:obsComp}
@@ -1899,7 +1906,7 @@ $.
   A claim $C$ is PV under $D = ¬\OOF$ iff $C = ∅ ∨ C = \allleadstos$.
 \end{corollary}
 \begin{proof}
-  By \cref{th:newPvImpliesPvo}, established OV under $¬\OOF$ implies PV under $¬\OOF$, so only $C = ∅$ or $C = \allleadstos$ can satisfy PV under $¬\OOF$ (\cref{th:pvUnderNotPof}); conversely, both trivially satisfy PV under any axiom (\cref{th:provImpliesPev}, taking $D = ¬\OOF ⊆ C$ when $C = \allleadstos$, and the case $C = ∅$ being vacuous as $C ∩ D = ∅$).
+  By \cref{th:newPvImpliesPvo}, established OV under $¬\OOF$ implies PV under $¬\OOF$, so only $C = ∅$ or $C = \allleadstos$ can satisfy PV under $¬\OOF$ (\cref{th:onlyEmptyPF}); conversely, both trivially satisfy PV under any axiom (\cref{th:provImpliesPev}, taking $D = ¬\OOF ⊆ C$ when $C = \allleadstos$, and the case $C = ∅$ being vacuous as $C ∩ D = ∅$).
 \end{proof}
 
 \begin{conjecture}
