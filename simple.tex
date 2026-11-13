@@ -487,37 +487,39 @@ It follows that assuming that $\allleadsto ∈ E$, simple regularity is a requir
 \subsection{Visibility}
 We now add the last piece of the puzzle.
 From the above result, we know that
-for any anonymous and conclusive claim to exist that holds, assuming $\cref{ax:repeatable}$, 
-the world must exhibit a simple regularity: $∃ \anobs, p \suchthat ∀i: \anobs ⊆ \ileadstoo ⇒ π(\ileadstoo) = p$.
-Say that $a$ leads $i$ decisively to $p$.
-In order to ensure that one can know that the claim holds, thus, to satisfy OV under some axiom, it is required, in supplement to \cref{ax:scrutiny,ax:repeatable}, 
-to ensure that no behavior is sufficiently “strange” that an individual $i$ can satisfy the pattern $\anobs ⊆ \ileadstoo$, but fail $a \ileadstost p$, but only fail it in a way that is invisible to our observational capacities.
-In words, we require that those individuals have some path compatible with those used in $\anobs$ where it is visible that $a$ does not decisively lead $i$ to $p$ (thus $a$ appears at the end of $α$ and yet $α \nileadsto p$). 
-In formal terms, given $\anobs, a, p$, define $D^{\anobs, a, p}$ as the condition that if $\anobs, p$ defines a simple regularity, with $a$ a decisive argument for $p$, then it is not hidden from observation:
+for any anonymous and conclusive claim to exist that holds, assuming \cref{ax:repeatable},
+the world must admit a simple regularity: $∃ \anobs ∈ \anobses, p ∈ P \suchthat (∃i \suchthat \anobs ⊆ \ileadstoo) ∧ (∀i: \anobs ⊆ \ileadstoo ⇒ p ∈ π(\ileadstoo))$.
+Suppose moreover that this regularity is witnessed by a single, common decisive argument: $∃a ∈ \allargs \suchthat ∀i: \anobs ⊆ \ileadstoo ⇒ a \ileadstost p$.
+This is a genuine strengthening of simple regularity, not a restatement of it: by \cref{def:decisive}, $p ∈ π(\ileadstoo)$ only gives that \emph{some} argument is decisive for $p$ from $i$'s point of view, possibly a different one for each $i$ matching $\anobs$.
+The strengthening is required here, rather than being an arbitrary simplification: visibility, below, is a property of a single, concrete argument's observable effect on behavior (whether some history ending in $a$ witnesses its failure to be decisive), whereas $π$ is an abstract disposition that does not name which argument produced it. Without fixing one argument common to every $i$ matching $\anobs$, there is nothing for the Visibility axiom to be about.
+In order to ensure that one can know that the claim holds, thus, to satisfy OV under some axiom, it is required, in supplement to \cref{ax:scrutiny,ax:repeatable},
+to ensure that no behavior is sufficiently “strange” that it could satisfy the pattern $\anobs ⊆ \ileadstoo$, but fail $a \ileadstost p$, yet remain indistinguishable, on every finite window, from the behaviors actually realized — whether or not that behavior is itself realized by some individual.
+In words, we require that any such violation has some path compatible with those used in $\anobs$, not shared by any realized behavior, where it is visible that $a$ does not decisively lead to $p$ (thus $a$ appears at the end of $α$ and yet $α \nileadsto p$).
+In formal terms, given $\anobs, a, p$, define $D^{\anobs, a, p}$ as the condition that any behavior $b$ that is not actually realized by anyone ($b ∉ \allleadstog(I)$) yet fails $\anobs ⊆ b ⇒ a \ileadstostg[b] p$ is not hidden from observation, that is, distinguishable from $\allleadstog(I)$:
 \begin{equation}
-  ∀i: (\anobs ⊆ \ileadstoo ∧ a \nileadstost p) ⇒ (∃α ∈ \allhists \suchthat \anobs^{-1}(P) ∪ \set{α} ∈ \fincrhists ∧ a ∈ \histend(α) ∧ α \nileadsto p).
+  ∀b ∉ \allleadstog(I): (\anobs ⊆ b ∧ a \nileadstostg[b] p) ⇒ \bigl(∃H ∈ \fincrhists \suchthat \restr{b}{H} ∉ \restr{\allleadstog(I)}{H}\bigr).
 \end{equation}
-We impose that $\allleadsto$ admits a simple regularity that is visible.
+This is the same $D^{\anobs, a, p}$ as defined in the Visibility subsection of the proofs appendix (there written $D^{\anobs, a, p}_{\allbs, \allleadstog(I)}$).
+Note that this condition is about behaviors that nobody actually exhibits: it would stay substantive even if $\anobs, a, p$ already witnessed a perfectly regular world, since it additionally guards against hypothetical, not-yet-observed violations of that regularity being mistaken for instances of it.
+We impose that the world is regular, in the strengthened sense isolated above, and that this regularity is visible in the sense that any (even merely hypothetical) violation of it would be distinguishable from what is actually observed.
 \begin{axiom}[Visibility]
   \label{ax:vis}
-  $∃\anobs, a, p \suchthat (∃i \suchthat \anobs ⊆ \ileadstoo) ∧ D^{\anobs, a, p}$.
+  $∃\anobs, a, p \suchthat (∃i \suchthat \anobs ⊆ \ileadstoo) ∧ (∀i: \anobs ⊆ \ileadstoo ⇒ a \ileadstost p) ∧ \allleadsto ∈ D^{\anobs, a, p}$.
 \end{axiom}
 
 \begin{example}
   \label{ex:explainPriorVis}
   Let us illustrate this latest axiom and also the fact that a claim need not pinpoint every possible regularity to be useful.
   Suppose that the world contains two kinds of individuals. The jays find $a$ decisive for $φ$. The kays however find $b$ decisive for $φ'$. Assume some researcher becomes aware of a part of this regularity: she realizes that individuals who, upon exposure to $(a, b)$, answer $φ$, all satisfy $a \ileadstost φ$, but ignores that a similar regularity holds for the kays. She claims $C = [∀i: (a, b) \ileadstog φ ⇒ a \ileadstostg φ]$.
-  This claim is anonymous and conclusive, and satisfies established OV under the axiom $¬\OOF ∩ E ∩ D^{\anobs, a, φ}$, with $\anobs = \set{(a, b), φ}$. As the axiom holds, this implies that the claim holds. The axiom $D^{\anobs, a, φ}$ requires to accept that whenever some individual satisfies $(a, b) \ileadsto φ$ but fails $a \ileadstostg φ$, some path that completes $(a, b)$ shows it, such as $(a, b, c, a) \nileadsto φ$. On the contrary, the axiom fails if the only paths where $a$ fails to be decisive for that individual are paths that do not complete $(a, b)$. This could be the case, for example, if that individual is definitely impressed by the first influence he is exposed to, and never considers any other influences afterwards.
+  This claim is anonymous and conclusive, and satisfies established OV under the axiom $¬\OOF ∩ E$, by \cref{th:oneMorePriorNarrow}, given $\anobs = \set{(a, b), φ}$, $a$ and $φ$ satisfy \cref{ax:vis}. Spelling out \cref{ax:vis} here: every jay exposed to $(a, b)$ indeed answers $φ$ via $a$ being decisive ($\anobs ⊆ \ileadstoo ⇒ a \ileadstost φ$ holds, since the kays never match $\anobs$); and $D^{\anobs, a, φ}$ requires that any behavior nobody actually exhibits, that matches $(a, b) \ileadsto φ$ while failing $a \ileadstostg φ$, is nonetheless distinguishable from the behaviors that are actually realized — for instance by some completion such as $(a, b, c, a) \nileadsto φ$ that no realized behavior shares. The axiom fails if such a hypothetical violator would be indistinguishable from the realized behaviors on every finite window, for example if every individual who could ever fail to be impressed by $a$ after $(a,b)$ happens, as a matter of fact, to behave on every finite window exactly like some individual who does find $a$ decisive.
 \end{example}
-
-A sufficient (but not necessary) condition for \cref{ax:vis} is that repeating often enough the influences that lead the individual out of $p$ lets her forget about the influences used in $\anobs$.
 
 \section{Result}
 This section argues about (the formal proofs are in appendix) the necessity and sufficiency of \cref{ax:scrutiny,ax:repeatable,ax:vis} for ensuring existence of claims that satisfy the desideratas of \cref{sec:desideratas} and can be seen to hold. 
 
 We first illustrate that any two axioms out of those three are insufficient for obtaining this result, then illustrate sufficiency of considering all three together.
 
-\Cref{th:oneMorePriorFullExplicit} shows that each world which admits a regularity of the kind $∀i: \anobs ⊆ \ileadstoo ⇒ a \nileadstost p$ (for some $\anobs, a, p$) admits an anonymous, conclusive claim that holds and satisfies established OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}$.
+\Cref{th:oneMorePriorNarrow} shows that \cref{ax:vis} (together with \cref{ax:repeatable}) suffices: each world satisfying \cref{ax:vis} admits an anonymous, conclusive claim that holds and satisfies established OV under the clean axiom $(¬\OOF) ∩ E$, with no further filter needed.
 
 \Cref{th:holdsNotVerifUnderNotOfE} shows the insufficiency of the axiom $F_C$: for “most” such worlds (in some technical sense to be fully elucidated), there exists no anonymous claim that holds and is conclusive and satisfies established OV under $¬\OOF[C ∩ E] ∩ E$.
 % For a claim to exist satisfying an, holds, concl, and PV under ¬POF ∩ E, we need the world to satisfy D^gap?
