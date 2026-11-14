@@ -1463,8 +1463,9 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 
 \begin{theorem}
   \label{th:oneMorePriorGeneralPev}
-  Given $B ⊆ \allbs$ with $\allleadsto(I) ⊆ B$, and $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, B}$ such that
-  for some $H$ with $1 ≤ \card(\max H)$, $\anobs: H → P$, $a$, $p$,
+  Given $B ⊆ \allbs$ with $\allleadsto(I) ⊆ B$, and some $H$ with $1 ≤ \card(\max H)$, $\anobs: H → P$, $a$, $p$ such that
+  $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, B}$,
+  $\allleadsto ∈ E$,
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
@@ -1472,18 +1473,18 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 \end{theorem}
 \begin{proof}
   Write $\text{Bad} := \set{b ∈ \allbs \suchthat b ∉ B ∧ \anobs ⊆ b ∧ a \nileadstostg[b] p}$. As $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, B}$, fix, for each $b ∈ \text{Bad}$, some $H_b ∈ \fincrhists$ with $\restr{b}{H_b} ∉ \restr{B}{H_b}$. Take
-  $$C_0 := [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ [∀i ∈ I, b ∈ \text{Bad}: \restr{\ileadstogo}{H_b} ≠ \restr{b}{H_b}],$$
+  $$C_0 := [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ [∀i ∈ I, b ∈ \text{Bad}: \restr{\ileadstogo}{H_b} ≠ \restr{b}{H_b}] ∩ E,$$
   and set
   $C := C_0 ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$,
   writing $S_C := ⋃_{\allleadstog' ∈ C} \allleadstog'(I)$ for the types of this (smaller) claim, and $D := (¬\OOF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ for the axiom at stake.
 
-  \emph{Holds.} $C_0$'s first conjunct holds at $\allleadsto$: this is exactly the hypothesis $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$. For the second, fix $b ∈ \text{Bad}$: as $\allleadsto(I) ⊆ B$, every $\ileadstoo ∈ B$, so $\restr{b}{H_b} ∉ \restr{B}{H_b}$ gives $∀i ∈ I: \restr{\ileadstoo}{H_b} ≠ \restr{b}{H_b}$. So $\allleadsto ∈ C_0$, and the new conjunct holds at $\allleadsto$ by hypothesis, so $\allleadsto ∈ C$.
+  \emph{Holds.} $C_0$'s first conjunct holds at $\allleadsto$: this is exactly the hypothesis $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$. For the second, fix $b ∈ \text{Bad}$: as $\allleadsto(I) ⊆ B$, every $\ileadstoo ∈ B$, so $\restr{b}{H_b} ∉ \restr{B}{H_b}$ gives $∀i ∈ I: \restr{\ileadstoo}{H_b} ≠ \restr{b}{H_b}$. The third conjunct, $\allleadsto ∈ E$, holds by hypothesis. So $\allleadsto ∈ C_0$, and the new conjunct holds at $\allleadsto$ by hypothesis, so $\allleadsto ∈ C$.
 
-  \emph{Anonymous.} Write $Q_1(f) := [\anobs ⊆ f ⇒ a \ileadstostg[f] p]$ and $Q_2(f) := [∀b ∈ \text{Bad}: \restr{f}{H_b} ≠ \restr{b}{H_b}]$, properties of a single row $f$ not depending on $i$ ($\text{Bad}$ and each $H_b$ are fixed once and for all), so that $C_0 = [∀i: Q_1(\allleadstog(i)) ∧ Q_2(\allleadstog(i))]$. Fix a permutation $σ$ of $I$ and $\allleadstog ∈ \allleadstos$. As $(\allleadstog ∘ σ)(i) = \allleadstog(σ(i))$,
-  $$\allleadstog ∘ σ ∈ C_0 ⇔ ∀i ∈ I: Q_1(\allleadstog(σ(i))) ∧ Q_2(\allleadstog(σ(i))) ⇔ ∀j ∈ I: Q_1(\allleadstog(j)) ∧ Q_2(\allleadstog(j)) ⇔ \allleadstog ∈ C_0,$$
-  reindexing $j := σ(i)$, a bijection of $I$. As $\allleadstog, σ$ were arbitrary, $C_0 ∘ σ = C_0$: $C_0$ is anonymous. The new conjunct defining $C$ has the anonymity-friendly shape $∃i: Q(\allleadstog(i))$: $∃i: \anobs ⊆ (\allleadstog ∘ σ)(i) ⇔ ∃i: \anobs ⊆ \allleadstog(σ(i)) ⇔ ∃j: \anobs ⊆ \allleadstog(j)$, reindexing $j := σ(i)$; combined with $C_0$'s anonymity, $C ∘ σ = C$.
+  \emph{Anonymous.} Write $Q_1(f) := [\anobs ⊆ f ⇒ a \ileadstostg[f] p]$ and $Q_2(f) := [∀b ∈ \text{Bad}: \restr{f}{H_b} ≠ \restr{b}{H_b}]$, properties of a single row $f$ not depending on $i$ ($\text{Bad}$ and each $H_b$ are fixed once and for all), so that $C_0 = [∀i: Q_1(\allleadstog(i)) ∧ Q_2(\allleadstog(i))] ∩ E$. Fix a permutation $σ$ of $I$ and $\allleadstog ∈ \allleadstos$. As $(\allleadstog ∘ σ)(i) = \allleadstog(σ(i))$,
+  $$∀i ∈ I: Q_1((\allleadstog ∘ σ)(i)) ∧ Q_2((\allleadstog ∘ σ)(i)) ⇔ ∀i ∈ I: Q_1(\allleadstog(σ(i))) ∧ Q_2(\allleadstog(σ(i))) ⇔ ∀j ∈ I: Q_1(\allleadstog(j)) ∧ Q_2(\allleadstog(j)),$$
+  reindexing $j := σ(i)$, a bijection of $I$: the first two conjuncts of $C_0$, taken together, are anonymous. For the third, $\allleadstog ∘ σ ∈ E$ iff, for every $i$, infinitely many $j$ satisfy $(\allleadstog ∘ σ)(j) = (\allleadstog ∘ σ)(i)$, that is $\allleadstog(σ(j)) = \allleadstog(σ(i))$; as $σ$ is a bijection of $I$, this holds for infinitely many $j$ exactly when $\allleadstog(k) = \allleadstog(σ(i))$ holds for infinitely many $k = σ(j)$, that is, iff $\allleadstog ∈ E$ (evaluated at $σ(i)$ in place of $i$, which ranges over all of $I$ as $i$ does): so $E$ itself is anonymous, $E ∘ σ = E$. Combining, $C_0 ∘ σ = C_0$: $C_0$ is anonymous. The new conjunct defining $C$ has the anonymity-friendly shape $∃i: Q(\allleadstog(i))$: $∃i: \anobs ⊆ (\allleadstog ∘ σ)(i) ⇔ ∃i: \anobs ⊆ \allleadstog(σ(i)) ⇔ ∃j: \anobs ⊆ \allleadstog(j)$, reindexing $j := σ(i)$; combined with $C_0$'s anonymity, $C ∘ σ = C$.
 
-  \emph{Conclusive.} Fix $\allleadstog ∈ C$ and $θ ∈ Θ ∩ \powerset{\allleadstog}$. As $\allleadstog ∈ C$, fix $i^* ∈ I$ with $\anobs ⊆ \ileadstogo[i^*]$. As $\allleadstog ∈ E$, infinitely many individuals share $i^*$'s row, while $θ(\allhists, P)$ is finite, so some such individual lies outside $θ(\allhists, P)$; fix such a $j$, so $\allleadstog(j) = \allleadstog(i^*)$ and in particular $\anobs ⊆ \allleadstog(j)$. Let $θ' := θ ∪ (\set{j} × \anobs)$: as $j$ is untouched by $θ$, $θ ⊑ θ'$ unconditionally and $θ' ∖ θ = \set{j} × \anobs$; and $θ' ∈ Θ ∩ \powerset{\allleadstog}$, since $\set{j} × \anobs ⊆ \allleadstog$. Any $\allleadstog' ∈ ↑(θ' ∖ θ) ∩ C$ has $\anobs ⊆ \allleadstog'(j)$, so $C_0$'s first conjunct at $j$ gives $a \ileadstost[j] p$ in $\allleadstog'$, hence $π_j(\allleadstog') = p$ by \cref{th:sing}. As $θ' ∖ θ ⊆ \allleadstog$ and $\allleadstog ∈ C$, $\allleadstog$ itself lies in $↑(θ' ∖ θ) ∩ C$, so this set is nonempty, giving $π_j(↑(θ' ∖ θ) ∩ C) = \set{p}$: $(θ', j)$ witnesses conclusiveness at $(\allleadstog, θ)$. As both were arbitrary, $C$ is conclusive.
+  \emph{Conclusive.} Fix $\allleadstog ∈ C$ and $θ ∈ Θ ∩ \powerset{\allleadstog}$. As $\allleadstog ∈ C$, fix $i^* ∈ I$ with $\anobs ⊆ \ileadstogo[i^*]$. As $C ⊆ C_0 ⊆ E$, $\allleadstog ∈ E$, so infinitely many individuals share $i^*$'s row, while $θ(\allhists, P)$ is finite, so some such individual lies outside $θ(\allhists, P)$; fix such a $j$, so $\allleadstog(j) = \allleadstog(i^*)$ and in particular $\anobs ⊆ \allleadstog(j)$. Let $θ' := θ ∪ (\set{j} × \anobs)$: as $j$ is untouched by $θ$, $θ ⊑ θ'$ unconditionally and $θ' ∖ θ = \set{j} × \anobs$; and $θ' ∈ Θ ∩ \powerset{\allleadstog}$, since $\set{j} × \anobs ⊆ \allleadstog$. Any $\allleadstog' ∈ ↑(θ' ∖ θ) ∩ C$ has $\anobs ⊆ \allleadstog'(j)$, so $C_0$'s first conjunct at $j$ gives $a \ileadstost[j] p$ in $\allleadstog'$, hence $π_j(\allleadstog') = p$ by \cref{th:sing}. As $θ' ∖ θ ⊆ \allleadstog$ and $\allleadstog ∈ C$, $\allleadstog$ itself lies in $↑(θ' ∖ θ) ∩ C$, so this set is nonempty, giving $π_j(↑(θ' ∖ θ) ∩ C) = \set{p}$: $(θ', j)$ witnesses conclusiveness at $(\allleadstog, θ)$. As both were arbitrary, $C$ is conclusive.
 
   \emph{$D ⊆ C_0$.}
 
@@ -1529,8 +1530,9 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 
 \begin{corollary}
   \label{th:oneMorePriorNarrow}
-  Given $\allleadsto ∈ D^{\anobs, a, p}$ such that
-  for some $H$ with $1 ≤ \card(\max H)$, $\anobs: H → P$, $a$, $p$,
+  Given some $H$ with $1 ≤ \card(\max H)$, $\anobs: H → P$, $a$, $p$ such that
+  $\allleadsto ∈ D^{\anobs, a, p}$,
+  $\allleadsto ∈ E$,
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
@@ -1544,6 +1546,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 \begin{corollary}
   \label{th:oneMorePriorFull}
   Given some $H$ with $1 ≤ \card(\max H)$, $\anobs: H → P$, $a$, $p$,
+  $\allleadsto ∈ E$,
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
@@ -1551,12 +1554,13 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 \end{corollary}
 
 \begin{proof}
-  Apply \cref{th:oneMorePriorGeneralPev} with $B := \allbs$: $\allleadsto(I) ⊆ B$ trivially, and $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, \allbs}$ holds vacuously, its antecedent $\allbs ∖ B = ∅$ being empty — no distinguishability hypothesis on $\allleadsto$ is needed at all. At this $B$, $\text{Bad} = ∅$, so $C_0$'s second conjunct vanishes, leaving $C = [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$; and $\allleadstog(I) ∩ B = \allleadstog(I)$, so the filter axiom $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is the full $D^{\anobs, a, p}_{\allleadstog(I), S_C} = D^{\anobs, a, p}_C$. (All of the distinguishing burden is now paid at each candidate world rather than upfront on $\allleadsto$, in contrast to \cref{th:oneMorePriorNarrow}.)
+  Apply \cref{th:oneMorePriorGeneralPev} with $B := \allbs$: $\allleadsto(I) ⊆ B$ trivially, and $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, \allbs}$ holds vacuously, its antecedent $\allbs ∖ B = ∅$ being empty — no distinguishability hypothesis on $\allleadsto$ is needed at all. At this $B$, $\text{Bad} = ∅$, so $C_0$'s second conjunct vanishes, leaving $C = [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ E ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$; and $\allleadstog(I) ∩ B = \allleadstog(I)$, so the filter axiom $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is the full $D^{\anobs, a, p}_{\allleadstog(I), S_C} = D^{\anobs, a, p}_C$. (All of the distinguishing burden is now paid at each candidate world rather than upfront on $\allleadsto$, in contrast to \cref{th:oneMorePriorNarrow}.)
 \end{proof}
 
 \begin{corollary}
   \label{th:oneMorePriorFullExplicit}
   Given some $H$ with $1 ≤ \card(\max H)$, $\anobs: H → P$, $a$, $p$,
+  $\allleadsto ∈ E$,
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
@@ -1567,18 +1571,18 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   \end{multline}
 \end{corollary}
 \begin{proof}
-  Let $C := [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$, the claim of \cref{th:oneMorePriorFull}, which holds, is conclusive and satisfies established OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_C$; it remains to show $D^{\anobs, a, p}_C = D$.
+  Let $C := [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ E ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$, the claim of \cref{th:oneMorePriorFull}, which holds, is conclusive and satisfies established OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_C$; it remains to show $D^{\anobs, a, p}_C = D$.
 
-  As $\text{Bad} = ∅$ at this $C$ (\cref{th:oneMorePriorFull}'s proof), $S_C = \set{b ∈ \allbs \suchthat \anobs ⊆ b ⇒ a \ileadstostg[b] p}$. A row $g$ failing $\anobs ⊆ g ⇒ a \ileadstostg[g] p$ never lies in $S_C$, so the condition "$g ∈ \allleadstog(I) ∖ S_C$" in the definition of $D^{\anobs, a, p}_C$ is automatic whenever $\anobs ⊆ g ∧ a \nileadstostg[g] p$; unfolding distinguishability, $\allleadstog ∈ D^{\anobs, a, p}_C$ says exactly: for every $g ∈ \allleadstog(I)$ with $\anobs ⊆ g ∧ a \nileadstostg[g] p$, some $H_0 ∈ \fincrhists$ has no $b ∈ S_C$ with $\restr{b}{H_0} = \restr{g}{H_0}$. Fix such a $g$; we show this holds iff some $α$ as in $D$'s definition exists.
+  As $\text{Bad} = ∅$ at this $C$ (\cref{th:oneMorePriorFull}'s proof), $C$'s first conjunct is $C_0$'s only remaining substantive conjunct (besides $E$), so by \cref{th:oneMorePriorGeneralPev}'s proof's \emph{Step 1} every $b ∈ S_C$ satisfies $\anobs ⊆ b ⇒ a \ileadstostg[b] p$; the converse — every row satisfying this template lies in $S_C$ — is established branch by branch below, using $I$'s infinitude to realize the row in an $E$-world of $C$. So $S_C = \set{b ∈ \allbs \suchthat \anobs ⊆ b ⇒ a \ileadstostg[b] p}$, granting also the converse. A row $g$ failing $\anobs ⊆ g ⇒ a \ileadstostg[g] p$ never lies in $S_C$, so the condition "$g ∈ \allleadstog(I) ∖ S_C$" in the definition of $D^{\anobs, a, p}_C$ is automatic whenever $\anobs ⊆ g ∧ a \nileadstostg[g] p$; unfolding distinguishability, $\allleadstog ∈ D^{\anobs, a, p}_C$ says exactly: for every $g ∈ \allleadstog(I)$ with $\anobs ⊆ g ∧ a \nileadstostg[g] p$, some $H_0 ∈ \fincrhists$ has no $b ∈ S_C$ with $\restr{b}{H_0} = \restr{g}{H_0}$. Fix such a $g$; we show this holds iff some $α$ as in $D$'s definition exists.
 
   \emph{If such an $α$ exists,} take $H_0 := \anobs^{-1}(P) ∪ \set{α} ∈ \fincrhists$. If some $b ∈ S_C$ matched $g$ on $H_0$, then matching $g$ on $\anobs^{-1}(P) ⊆ H_0$ would give $\anobs ⊆ b$ (as $\anobs ⊆ g$), hence $a \ileadstostg[b] p$ by $b ∈ S_C$, hence $b(α) = p$ (as $a ∈ \histend(α)$); but matching $g$ at $α ∈ H_0$ gives $b(α) = g(α) ≠ p$ — contradiction. So no such $b$ exists: $H_0$ witnesses $g$ distinguishable from $S_C$.
 
-  \emph{If no such $α$ exists,} fix any $H_0 ∈ \fincrhists$; we build $b ∈ S_C$ matching $g$ on $H_0$. If $\anobs^{-1}(P) ⊈ H_0$, pick $γ ∈ \anobs^{-1}(P) ∖ H_0$ and $q ∈ P ∖ \set{\anobs(γ)}$ ($\card P ≥ 2$); the row $b$ with $b(γ) = q$, $b = g$ on $H_0$ (consistent, as $γ ∉ H_0$), completed arbitrarily elsewhere, fails $\anobs ⊆ b$, so satisfies the template vacuously: $b ∈ S_C$. Otherwise $\anobs^{-1}(P) ⊆ H_0$; since $H_0$ is a chain, every $β ∈ H_0$ with $a ∈ \histend(β)$ is chain-compatible with $\anobs^{-1}(P) ⊆ H_0$, so, by hypothesis (no valid $α$), every such $β$ has $g(β) = p$. The row $b$ with $b = g$ on $H_0$ and $b(β) = p$ for every $β$ with $a ∈ \histend(β)$ outside $H_0$, completed arbitrarily on the rest, then satisfies $\anobs ⊆ b$ (as $\anobs^{-1}(P) ⊆ H_0$) and $a \ileadstostg[b] p$ (using the previous sentence for the $a$-ending points inside $H_0$), so $b ∈ S_C$. Either way, some $b ∈ S_C$ matches $g$ on $H_0$; as $H_0$ was arbitrary, $g$ is not distinguishable from $S_C$.
+  \emph{If no such $α$ exists,} fix any $H_0 ∈ \fincrhists$; we build $b ∈ S_C$ matching $g$ on $H_0$. If $\anobs^{-1}(P) ⊈ H_0$, pick $γ ∈ \anobs^{-1}(P) ∖ H_0$ and $q ∈ P ∖ \set{\anobs(γ)}$ ($\card P ≥ 2$); the row $b$ with $b(γ) = q$, $b = g$ on $H_0$ (consistent, as $γ ∉ H_0$), completed arbitrarily elsewhere, fails $\anobs ⊆ b$, so satisfies the template vacuously. Since $I$ is infinite, assigning $b$ to one infinite subclass of $I$ and, to another, any fixed row $b^*$ with $\anobs ⊆ b^* ∧ a \ileadstostg[b^*] p$ (such $b^*$ exists by hypothesis — e.g.\ $\ileadstoo$ for the witness $i$ of $∃i: \anobs ⊆ \ileadstoo$) gives a world in $E$ satisfying $C$'s template (vacuously on $b$'s class, genuinely on $b^*$'s) and its existential conjunct (witnessed by $b^*$'s class), hence a world in $C$ realizing $b$: $b ∈ S_C$. Otherwise $\anobs^{-1}(P) ⊆ H_0$; since $H_0$ is a chain, every $β ∈ H_0$ with $a ∈ \histend(β)$ is chain-compatible with $\anobs^{-1}(P) ⊆ H_0$, so, by hypothesis (no valid $α$), every such $β$ has $g(β) = p$. The row $b$ with $b = g$ on $H_0$ and $b(β) = p$ for every $β$ with $a ∈ \histend(β)$ outside $H_0$, completed arbitrarily on the rest, then satisfies $\anobs ⊆ b$ (as $\anobs^{-1}(P) ⊆ H_0$ and $\anobs ⊆ g$) and $a \ileadstostg[b] p$ (using the previous sentence for the $a$-ending points inside $H_0$). Since $\anobs ⊆ b$, assigning $b$ to \emph{all} of $I$ gives a world trivially in $E$, satisfying $C$'s template and its existential conjunct (witnessed by every $i$), hence a world in $C$ realizing $b$: $b ∈ S_C$. Either way, some $b ∈ S_C$ matches $g$ on $H_0$; as $H_0$ was arbitrary, $g$ is not distinguishable from $S_C$.
 \end{proof}
 
 \begin{remark}
   \label{rk:compareFull}
-  Compare to \cref{th:oneMorePriorFull}: writing $C' := [∀i: Q_1(\allleadstog(i))] ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$ (\cref{th:oneMorePriorFull}'s own claim, for the same $\anobs, a, p$; $Q_1$ and $\text{Bad}$ as in \cref{th:oneMorePriorGeneralPev}'s proof, instantiated at $B = \allleadsto(I)$), $C = C' ∩ [∀i, b ∈ \text{Bad}: \restr{\ileadstogo}{H_b} ≠ \restr{b}{H_b}] ⊆ C'$ (the extra Bad-avoidance conjunct commutes past the shared witness conjunct): the claim proved here is stronger (strictly so unless $\text{Bad} = ∅$), as it additionally excludes, on each realized row, collision with any $\anobs$-matching, decisiveness-failing non-real behavior on its own witnessing window, while $C'$ only demands decisiveness on $\anobs$-matching rows.
+  Compare to \cref{th:oneMorePriorFull}: writing $C' := [∀i: Q_1(\allleadstog(i))] ∩ E ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$ (\cref{th:oneMorePriorFull}'s own claim, for the same $\anobs, a, p$; $Q_1$ and $\text{Bad}$ as in \cref{th:oneMorePriorGeneralPev}'s proof, instantiated at $B = \allleadsto(I)$), $C = C' ∩ [∀i, b ∈ \text{Bad}: \restr{\ileadstogo}{H_b} ≠ \restr{b}{H_b}] ⊆ C'$ (the extra Bad-avoidance conjunct commutes past the shared witness conjunct): the claim proved here is stronger (strictly so unless $\text{Bad} = ∅$), as it additionally excludes, on each realized row, collision with any $\anobs$-matching, decisiveness-failing non-real behavior on its own witnessing window, while $C'$ only demands decisiveness on $\anobs$-matching rows.
 
   $D^{\anobs, a, p}$ and $D^{\anobs, a, p}_{C'}$ are not comparable by inclusion: $D^{\anobs, a, p}$ quantifies over behaviors $b ∉ \allleadstog(I)$, tested against $\allleadstog(I)$ itself, whereas $D^{\anobs, a, p}_{C'}$ quantifies over behaviors $h ∈ \allleadstog(I) ∖ S_{C'}$, tested against the external set $S_{C'}$ (the types of $C'$).
 
@@ -2271,8 +2275,9 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
 
 \begin{theorem}
   \label{th:oneMorePriorGeneral}
-  Given $B ⊆ \allbs$ with $\allleadsto(I) ⊆ B$, and $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, B}$ such that
-  for some $H$ with $1 ≤ \card(\max H)$, $\anobs: H → P$, $a$, $p$,
+  Given $B ⊆ \allbs$ with $\allleadsto(I) ⊆ B$, and some $H$ with $1 ≤ \card(\max H)$, $\anobs: H → P$, $a$, $p$ such that
+  $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, B}$,
+  $\allleadsto ∈ E$,
   $\anobs ⊆ \ileadstoo ⇒ a \ileadstost p$,
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
