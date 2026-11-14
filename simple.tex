@@ -1577,13 +1577,11 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 
 \begin{remark}
   \label{rk:compareFull}
-  Compare to \cref{th:oneMorePriorFull}: writing $C' := [∀i: Q_1(\allleadstog(i))] ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$ (\cref{th:oneMorePriorFull}'s own claim, for the same $\anobs, a, p$; $Q_1$ and $\text{Bad}$ as in \cref{th:oneMorePriorGeneral}'s proof, instantiated at $B = \allleadsto(I)$), $C = C' ∩ [∀i, b ∈ \text{Bad}: \restr{\ileadstogo}{H_b} ≠ \restr{b}{H_b}] ⊆ C'$ (the extra Bad-avoidance conjunct commutes past the shared witness conjunct): the claim proved here is stronger (strictly so unless $\text{Bad} = ∅$), as it additionally excludes, on each realized row, collision with any $\anobs$-matching, decisiveness-failing non-real behavior on its own witnessing window, while $C'$ only demands decisiveness on $\anobs$-matching rows.
+  Compare to \cref{th:oneMorePriorFull}: writing $C' := [∀i: Q_1(\allleadstog(i))] ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$ (\cref{th:oneMorePriorFull}'s own claim, for the same $\anobs, a, p$; $Q_1$ and $\text{Bad}$ as in \cref{th:oneMorePriorGeneralPev}'s proof, instantiated at $B = \allleadsto(I)$), $C = C' ∩ [∀i, b ∈ \text{Bad}: \restr{\ileadstogo}{H_b} ≠ \restr{b}{H_b}] ⊆ C'$ (the extra Bad-avoidance conjunct commutes past the shared witness conjunct): the claim proved here is stronger (strictly so unless $\text{Bad} = ∅$), as it additionally excludes, on each realized row, collision with any $\anobs$-matching, decisiveness-failing non-real behavior on its own witnessing window, while $C'$ only demands decisiveness on $\anobs$-matching rows.
 
   $D^{\anobs, a, p}$ and $D^{\anobs, a, p}_{C'}$ are not comparable by inclusion: $D^{\anobs, a, p}$ quantifies over behaviors $b ∉ \allleadstog(I)$, tested against $\allleadstog(I)$ itself, whereas $D^{\anobs, a, p}_{C'}$ quantifies over behaviors $h ∈ \allleadstog(I) ∖ S_{C'}$, tested against the external set $S_{C'}$ (the types of $C'$).
 
   Both proofs move a witness to an untouched clone using $E$ in the same way, but differ in when the distinguishing axiom is cashed in. Here, $¬\OOF ∩ E ⊆ C$ outright: $\allleadsto ∈ D^{\anobs, a, p}$ is a hypothesis on the true world alone, spent only once, upfront, to fix $B$ and the $H_b$'s, before any candidate world is examined, so it drops out of \cref{th:oneMorePriorNarrow}'s conclusion entirely. In \cref{th:oneMorePriorFull}, by contrast, $\allleadstog ∈ D^{\anobs, a, p}_{C'}$ must instead be invoked afresh at each tested $\allleadstog$, since its witnessing window depends on that world's own failing row $g := \allleadstog(i)$, which varies with $\allleadstog$; so that axiom cannot similarly be dropped from the conclusion. So the asymmetry is not about $E$, but about when the distinguishing axiom is cashed in: once, from $\allleadsto$ alone, for the stronger, $\allleadsto$-dependent claim $C$; or per candidate world, for the weaker, $\allleadsto$-independent claim $C'$.
-
-  The same two instantiations ($B := \allleadsto(I)$ and $B := \allbs$) apply just as well to \cref{th:oneMorePriorGeneral} itself, giving analogues of \cref{th:oneMorePriorNarrow,th:oneMorePriorFull} for the original, unaugmented claim $C_0$: an anonymous, holding claim that is APTS and provable by $¬\OOF ∩ E$, respectively APTS and provable by $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_{C_0}$.
 \end{remark}
 
 \subsection{Observational exclusion and completion}
@@ -2288,6 +2286,10 @@ The claim $C_B$ associated to $B ⊆ \allbs$ is the claim $C_B = [\allleadsto(I)
 
   \emph{Provable by $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$.} \Cref{th:oneMorePriorGeneralPev}'s proof's \emph{$D ⊆ C_0$} paragraph, instantiated at this claim itself (that is, with $C_0$ in place of its own, smaller $C$, so that $S_C = S_{C_0}$ throughout), gives exactly $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_{C_0}} ⊆ C_0 = C$.
 \end{proof}
+
+\begin{remark}
+  The same two instantiations done in \cref{rk:compareFull} ($B := \allleadsto(I)$ and $B := \allbs$) apply just as well to \cref{th:oneMorePriorGeneral} itself, giving analogues of \cref{th:oneMorePriorNarrow,th:oneMorePriorFull} for the original, unaugmented claim $C_0$: an anonymous, holding claim that is APTS and provable by $¬\OOF ∩ E$, respectively APTS and provable by $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_{C_0}$.
+\end{remark}
 
 \begin{theorem}
   \label{th:genProvableSubclaim}
