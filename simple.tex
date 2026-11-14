@@ -1523,6 +1523,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 \end{example}
 
 \begin{remark}
+  \label{rk:filterAxiomTrivializes}
   Taking $B = \allleadsto(I)$ trivializes the filter axiom: $\allleadsto(I) ⊆ S_C$ (every row of $\allleadsto$ is, by \cref{th:oneMorePriorGeneralPev}'s proof's \emph{Holds} paragraph, a type of $C$), so $\allleadstog(I) ∩ B ⊆ S_C$ always, the antecedent $(\allleadstog(I) ∩ B) ∖ S_C$ is never met, and $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C} = \allleadstos$. Taking $B = \allbs$ instead makes $\text{Bad} = ∅$, so $C_0$'s second conjunct vanishes and $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C} = D^{\anobs, a, p}_{\allleadstog(I), S_C} = D^{\anobs, a, p}_C$, the full axiom of \cref{th:oneMorePriorFull}. This only ever used \emph{Holds} and the definition of $\text{Bad}$, shared with \cref{th:oneMorePriorGeneralPev}'s (larger) construction, so it holds verbatim there too: either theorem, at $B = \allleadsto(I)$, reduces to \cref{th:oneMorePriorNarrow}, and at $B = \allbs$, to \cref{th:oneMorePriorFull}. Between these extremes, the stronger the upfront axiom on $\allleadsto$ (the smaller $B$), the weaker the residual axiom needed in the filter (the smaller $\allleadstog(I) ∩ B$ to test) — and conversely.
 \end{remark}
 
@@ -1537,7 +1538,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 \end{corollary}
 
 \begin{proof}
-  Apply \cref{th:oneMorePriorGeneralPev} with $B := \allleadsto(I)$: the hypothesis $\allleadsto(I) ⊆ B$ is trivial, and $D^{\anobs, a, p}_{\allbs, \allleadsto(I)} = D^{\anobs, a, p}$ is exactly the hypothesis here. By the remark following \cref{th:oneMorePriorGeneral}, at this $B$ the filter axiom $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ trivializes to $\allleadstos$, so established OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is exactly established OV under $¬\OOF ∩ E$.
+  Apply \cref{th:oneMorePriorGeneralPev} with $B := \allleadsto(I)$: the hypothesis $\allleadsto(I) ⊆ B$ is trivial, and $D^{\anobs, a, p}_{\allbs, \allleadsto(I)} = D^{\anobs, a, p}$ is exactly the hypothesis here. By \cref{rk:filterAxiomTrivializes}, at this $B$ the filter axiom $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ trivializes to $\allleadstos$, so established OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is exactly established OV under $¬\OOF ∩ E$.
 \end{proof}
 
 \begin{corollary}
