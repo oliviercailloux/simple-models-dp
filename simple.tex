@@ -447,7 +447,7 @@ So, for a given claim and axiom, the gap between verifiability and OV is precise
   It will then remain to ensure that some suitable claim exists, which will require yet another axiom.
 \end{remark}
 
-\Cref{th:onlyEmptyPF} shows that any non trivial claim fails established OV under $¬\OOF$ at some $\allleadstog ∈ C ∩ ¬OOF$.
+\Cref{th:onlyEmptyPF} shows that any non trivial claim fails OV under $¬\OOF$ at some $\allleadstog ∈ C ∩ ¬OOF$.
 
 \subsection{Repeatable observations}
 Our second axiom ensures some repeatability of observations by assuming that whenever a behavior is exhibited by at least one individual, infinitely many individuals exhibit it.
@@ -508,7 +508,7 @@ We impose that the world is regular, in the strengthened sense isolated above, a
   \label{ex:explainPriorVis}
   Let us illustrate this latest axiom and also the fact that a claim need not pinpoint every possible regularity to be useful.
   Suppose that the world contains two kinds of individuals. The jays find $a$ decisive for $φ$. The kays however find $b$ decisive for $φ'$. Assume some researcher becomes aware of a part of this regularity: she realizes that individuals who, upon exposure to $(a, b)$, answer $φ$, all satisfy $a \ileadstost φ$, but ignores that a similar regularity holds for the kays. She claims $C = [∀i: (a, b) \ileadstog φ ⇒ a \ileadstostg φ]$.
-  This claim is anonymous and conclusive, and satisfies established OV under the axiom $¬\OOF ∩ E$, by \cref{th:oneMorePriorNarrow}, given $\anobs = \set{(a, b), φ}$, $a$ and $φ$ satisfy \cref{ax:vis}. Spelling out \cref{ax:vis} here: every jay exposed to $(a, b)$ indeed answers $φ$ via $a$ being decisive ($\anobs ⊆ \ileadstoo ⇒ a \ileadstost φ$ holds, since the kays never match $\anobs$); and $D^{\anobs, a, φ}$ requires that any behavior nobody actually exhibits, that matches $(a, b) \ileadsto φ$ while failing $a \ileadstostg φ$, is nonetheless distinguishable from the behaviors that are actually realized — for instance by some completion such as $(a, b, c, a) \nileadsto φ$ that no realized behavior shares. The axiom fails if such a hypothetical violator would be indistinguishable from the realized behaviors on every finite window, for example if every individual who could ever fail to be impressed by $a$ after $(a,b)$ happens, as a matter of fact, to behave on every finite window exactly like some individual who does find $a$ decisive.
+  This claim is anonymous and conclusive, and satisfies established OV under the axiom $¬\OOF ∩ E$, by \cref{th:oneMorePriorNarrow}, given $\anobs = \set{(a, b), φ}$, $a$ and $φ$ satisfy \cref{ax:vis}.\commentClaude{\cref{th:oneMorePriorNarrow} (via \cref{th:oneMorePriorGeneralPev} with $B := \allleadsto(I)$) only guarantees established OV for $C_0 ∩ [∃i…]$, where $C_0$'s second conjunct $[∀i, b ∈ \text{Bad}: \restr{\ileadstogo}{H_b} ≠ \restr{b}{H_b}]$ excludes candidate worlds colliding with "Bad" (unrealized, \anobs-matching, non-decisive) rows on their witnessing windows. Taking $B := \allleadsto(I)$ only trivializes the \emph{filter axiom} (\cref{rk:filterAxiomTrivializes}), not this conjunct — that only vanishes for $B := \allbs$, i.e. under \cref{th:oneMorePriorFull}, which instead concludes OV under the claim-relative $(¬\OOF) ∩ E ∩ D^{\anobs,a,p}_C$, not the clean $¬\OOF ∩ E$ cited here. Here $\text{Bad}$ is plainly nonempty (e.g. any row agreeing with the jay row except at one other $a$-ending history), so the cited theorem does not, as stated, establish OV for this bare $C$ — only for $C$ intersected with that extra conjunct.} Spelling out \cref{ax:vis} here: every jay exposed to $(a, b)$ indeed answers $φ$ via $a$ being decisive ($\anobs ⊆ \ileadstoo ⇒ a \ileadstost φ$ holds, since the kays never match $\anobs$); and $D^{\anobs, a, φ}$ requires that any behavior nobody actually exhibits, that matches $(a, b) \ileadsto φ$ while failing $a \ileadstostg φ$, is nonetheless distinguishable from the behaviors that are actually realized — for instance by some completion such as $(a, b, c, a) \nileadsto φ$ that no realized behavior shares. The axiom fails if such a hypothetical violator would be indistinguishable from the realized behaviors on every finite window, for example if every individual who could ever fail to be impressed by $a$ after $(a,b)$ happens, as a matter of fact, to behave on every finite window exactly like some individual who does find $a$ decisive.
 \end{example}
 
 A sufficient (but not necessary) condition for this axiom to be satisfied is that repeating often enough the influences that lead the individual out of $p$ lets her forget about the influences used in $\anobs$.
@@ -530,19 +530,120 @@ A sufficient (but not necessary) condition for this axiom to be satisfied is tha
 \end{remark}
 
 \begin{remark}
+  Assume the world has a simple regularity in $\anobs, a, p$ but fails $D^{\anobs, a, p}$.
+  Thus, $∃b ∉ \allleadsto(I) \suchthat \anobs ⊆ b ∧ a \nileadstostg[b] p ∧ ∀H ∈ \fincrhists: \restr{b}{H} ∈ \restr{\allleadsto(I)}{H}$.
+  Define $G = \anobs^{-1}(P)$.
+  This requires in particular that every chain-restriction of any behavior compatible with $\anobs$ is realized (for any $G ⊆ H$, any assignment of $H ∖ G$ to $P$ can be completed to a realized behavior); formally, $∀H, f: H ∖ G → P, ∃f ⊆ b' ∈ \allleadsto(I)$.
+  Indeed, assume that for some such $H, f$, no completion $b'$ is realized.
+  Then, also at $b$, 
+\end{remark}
+
+\begin{remark}
   The condition $D^{\anobs, a, p}$ can be analyzed structurally in terms of $\allleadsto(I)$ itself.
 
   \emph{A sufficient condition for it to hold.} If every $c ∈ \allleadsto(I)$ assigns $p$ at every $a$-ending history chain-incompatible with $\anobs^{-1}(P)$, then $D^{\anobs, a, p}$ holds: any undistinguishable $b ∉ \allleadsto(I)$ violating $a \ileadstostg p$ at chain-incompatible $α^*$ would, by undistinguishability on $\set{α^*}$, require some $c ∈ \allleadsto(I)$ with $c(α^*) ≠ p$—excluded.
 
-  \emph{A sufficient condition for it to fail.} Conversely, if some $c_0 ∈ \allleadsto(I)$ matches $\anobs$ and some $c_1 ∈ \allleadsto(I)$ assigns $c_1(α^*) ≠ p$ for an $a$-ending $α^*$ on a branch entirely foreign to $\anobs$ (i.e., $α^*_1 ∉ \set{h_1 \suchthat h ∈ \anobs^{-1}(P)}$), then the standard splice of $c_0$ (outside the $α^*_1$-branch) and $c_1$ (inside) is undistinguishable from $\allleadsto(I)$, matches $\anobs$ via $c_0$, and assigns $c_1(α^*) ≠ p$: $D^{\anobs, a, p}$ fails.\commentClaude{Could cite \cref{rk:gapNotMinimal} here once it is included in the compiled document.}
+  \emph{A sufficient condition for it to fail.} Conversely, if some $c_0 ∈ \allleadsto(I)$ matches $\anobs$ and some $c_1 ∈ \allleadsto(I)$ assigns $c_1(α^*) ≠ p$ for an $a$-ending $α^*$ on a branch entirely foreign to $\anobs$ (i.e., $α^*_1$ differs from the first step shared by every nonempty $h ∈ \anobs^{-1}(P)$—a single value, since $\anobs^{-1}(P)$ is a chain), then the standard splice of $c_0$ (outside the $α^*_1$-branch) and $c_1$ (inside) is undistinguishable from $\allleadsto(I)$, matches $\anobs$ via $c_0$, and assigns $c_1(α^*) ≠ p$: $D^{\anobs, a, p}$ fails.\commentClaude{Could cite \cref{rk:gapNotMinimal} here once it is included in the compiled document.}
 
   \emph{Strength.} The two conditions are not converses of each other: a world may have some $c_1$ assigning $≠ p$ at a chain-incompatible $α^*$, yet satisfy $D^{\anobs, a, p}$, if $c_1$ and the $\anobs$-matching behaviors disagree at common prefixes of $α^*$ and $\anobs^{-1}(P)$ (so the closure $R$ cannot simultaneously borrow values from both). Still, $D^{\anobs, a, p}$ is a relatively strong condition: the sufficient failure condition is generically met in any diverse world where behaviors vary outside $\anobs$'s range, and $D^{\anobs, a, p}$ holds reliably only when every $a$-ending history is chain-compatible with $\anobs^{-1}(P)$ (making chain-incompatible histories vacuous—the sufficient condition noted above this remark) or the world has the special structure just described.
 
   This characterization is not stated as a formal result elsewhere; the ingredients (the splice construction, type-A automatic distinguishability) are present in the proofs of earlier results.
 \end{remark}
 
+\begin{theorem}
+  \label{th:djDisagreementDefeatsVisAxiom}
+  If some $i_1, i_2 ∈ I$ have $π_{i_1}(\allleadsto) ≠ π_{i_2}(\allleadsto)$, then \cref{ax:vis} fails.
+\end{theorem}
+\begin{proof}
+  Assume \cref{ax:vis} holds, witnessed by some $\anobs, a, p$: thus $∃i_0 \suchthat \anobs ⊆ \ileadstoo[i_0]$, $∀i: \anobs ⊆ \ileadstoo ⇒ a \ileadstost p$, and $\allleadsto ∈ D^{\anobs, a, p}$.
+
+  As $π_{i_1}(\allleadsto) ≠ π_{i_2}(\allleadsto)$, at least one of them differs from $p$; say $π_{i_1}(\allleadsto) = p' ≠ p$.
+  By definition of $P_{i_1} = π_{i_1}(\allleadsto)$, pick $a' ∈ \allargs \suchthat a' \ileadstost[i_1] p'$.
+  Let $s$ denote the first step shared by every nonempty $h ∈ \anobs^{-1}(P)$, if any, and pick $x ∈ \allargs ∖ \set s$ (possible, as $\allargs ∖ \set s ≠ ∅$).
+  Let $\hist = (x, a', a)$, so $\histend(\hist) = \set{a', a}$: as $a ∈ \histend(\hist)$, $\hist$ is $a$-ending; as $a' ∈ \histend(\hist)$, $a' \ileadstost[i_1] p'$ forces $\ileadstoo[i_1](\hist) = p' ≠ p$.
+
+  $\anobs ⊆ \ileadstoo[i_1]$ is impossible: regularity would then force $a \ileadstost[i_1] p$, hence $\ileadstoo[i_1](\hist) = p$ (as $a ∈ \histend(\hist)$), contradicting $\ileadstoo[i_1](\hist) = p'$.
+  So $\anobs ⊈ \ileadstoo[i_1]$, and $\hist_1 = x ≠ s$ places $\hist$ on a branch entirely foreign to $\anobs$.
+
+  Let $c_0 := \ileadstoo[i_0]$, which matches $\anobs$, and $c_1 := \ileadstoo[i_1]$, which assigns $c_1(\hist) = p' ≠ p$ at the $a$-ending history $\hist$ lying on that foreign branch.
+  Splice $c_0$ and $c_1$ into a single behavior $b$: $b$ agrees with $c_1$ on every history starting with $x$, and with $c_0$ everywhere else.
+  Since $x ≠ s$, the $x$-branch is disjoint from every history compatible with $\anobs$, so $b$ matches $\anobs$ via $c_0$ and $b(\hist) = c_1(\hist) = p' ≠ p$, that is, $a \nileadstostg[b] p$.
+  Moreover, for every $H ∈ \fincrhists$, $\restr b H$ equals either $\restr{c_0} H$ or $\restr{c_1} H$ (depending on whether $H$ meets the $x$-branch), hence $\restr b H ∈ \restr{\allleadsto(I)} H$: $b$ is undistinguishable from $\allleadsto(I)$.
+  If $b ∈ \allleadsto(I)$, then $b = \ileadstoo[j]$ for some $j$ with $\anobs ⊆ \ileadstoo[j]$, so regularity forces $a \ileadstost[j] p$, hence $b(\hist) = p$ as $a ∈ \histend(\hist)$, contradicting $b(\hist) = p' ≠ p$; so $b ∉ \allleadsto(I)$.
+  Thus $b$ witnesses a failure of $D^{\anobs, a, p}$, contradicting $\allleadsto ∈ D^{\anobs, a, p}$.
+\end{proof}
+
+\begin{remark}
+  \label{rk:argHeterogeneityDefeatsVisAxiom}
+  The proof of \cref{th:djDisagreementDefeatsVisAxiom} only ever uses disagreement to obtain, relative to the witness $\anobs, a, p$, some $i_1$ with $a \nileadstost[i_1] p$ whose failure can be placed on a branch foreign to $\anobs$: decisiveness of some $a' \ileadstost[i_1] p'$, $p' ≠ p$, forces this for free, at any history with $a'$ in its $\histend$, the rest of the history being chosen freely. The same conclusion needs neither disagreement nor this forcing device.
+
+  \emph{Local defeat of one candidate witness.} Suppose \cref{ax:vis} holds via $\anobs, a, p$, witnessed by $i_0$ ($c_0 := \ileadstoo[i_0]$ matches $\anobs$), and some $i_2 ∈ I$ has $π_{i_2}(\allleadsto) = p$ (no disagreement with the witness) yet $a \nileadstost[i_2] p$, so that $i_2$ reaches the same $p$ through a different decisive argument. If this failure is \emph{portable}, that is, witnessed by some $\hist$ with $a ∈ \histend(\hist)$ on a branch foreign to $\anobs$ (first step distinct from the shared first step $s$ of $\anobs^{-1}(P)$), the splice of $c_0$ (outside that branch) with $c_1 := \ileadstoo[i_2]$ (inside it) — exactly as in the proof of \cref{th:djDisagreementDefeatsVisAxiom} — is unrealized, matches $\anobs$, fails $a \ileadstostg p$, and remains undistinguishable from $\allleadsto(I)$ on every finite window: $D^{\anobs, a, p}$ fails. Disagreement is thus only one sufficient source of such an $i_2$; sharing the witness's DJ while relying on a different, portably non-decisive argument is another.
+
+  \emph{Global defeat.} To rule out \cref{ax:vis} outright, rather than only the candidate built from $a$, it does not suffice that $i_2$'s decisive argument differs from $a$: some other argument $a^*$ might still be decisive for $p$ for every individual whose DJ is $p$, and $\anobs, a^*, p$ could then still witness \cref{ax:vis}. What is needed instead is that no single argument is decisive, for $p$, for every individual with DJ $p$, together with portability of each resulting failure: for every $a$ decisive for $p$ for some individual with DJ $p$, some other individual sharing that DJ has $a \nileadstost p$, witnessed on a branch foreign to the relevant $\anobs$. Under this condition the local argument above defeats every candidate witness, so \cref{ax:vis} fails — even though no two individuals disagree on their DJ.
+\end{remark}
+
+\begin{theorem}
+  \label{th:djDisagreementDefeatsVerif}
+  Consider $\allleadsto ∈ E$ such that some $i_1, i_2 ∈ I$ have $π_{i_1}(\allleadsto) = p ≠ p' = π_{i_2}(\allleadsto)$. Then no anonymous, conclusive claim $C$ that holds is verifiable under $D := (¬\OF[C]) ∩ E$.
+\end{theorem}
+\begin{proof}
+  Suppose towards a contradiction that some anonymous, conclusive claim $C$ holds and is verifiable under $D$, witnessed by $θ_v ∈ Θ ∩ \powerset{\allleadsto}$ with $∅ ≠ ↑θ_v ∩ D ⊆ C$.
+
+  \emph{Step 1.} As $\allleadsto ∈ C$ (as $C$ holds) extends every finite $θ ⊆ \allleadsto$, every such $θ$ lies in $C^⊆$: $¬\OF(\allleadsto)$; with $\allleadsto ∈ E$ (hypothesis), $\allleadsto ∈ C ∩ D$.
+
+  \emph{Step 2 (a conclusiveness pin at the witness $θ_v$).}
+  As $C$ is conclusive and $\allleadsto ∈ C$, conclusiveness at $θ = θ_v$ gives $θ_v ⊑ θ_1 ∈ Θ ∩ \powerset{\allleadsto}$, $i^* ∈ I$, $p^* ∈ P$ with $π_{i^*}(↑(θ_1 ∖ θ_v) ∩ C) = \set{p^*}$.
+  As $θ_v ⊑ θ_1$, $↑θ_1 ⊆ ↑θ_v$, so $↑θ_1 ∩ D ⊆ ↑θ_v ∩ D ⊆ C$; as also $θ_1 ∖ θ_v ⊆ θ_1$, every $\allleadstog ∈ ↑θ_1 ∩ D$ lies in $↑(θ_1 ∖ θ_v) ∩ C$, so $π_{i^*}(\allleadstog) = p^*$. As $θ_1 ⊆ \allleadsto ∈ C$, $\allleadsto ∈ ↑(θ_1 ∖ θ_v) ∩ C$ too, giving $π_{i^*}(\allleadsto) = p^*$. Thus:
+  \begin{equation}
+    ∀\allleadstog ∈ ↑θ_1 ∩ D: π_{i^*}(\allleadstog) = p^*. \tag{$\star$}
+  \end{equation}
+  Let $\anobs := θ_1|_{i^*}$ (so $\anobs ⊆ \ileadstoo[i^*]$), $S$ the (finite) set of first steps of histories occurring in $θ_1$'s support, and $c_0 := \ileadstoo[i^*]$.
+
+  \emph{Step 3 (a usable disagreement).}
+  As $p ≠ p'$, at most one of them equals $p^*$, so some $i' ∈ \set{i_1, i_2}$ has $π_{i'}(\allleadsto) =: p' ≠ p^*$, a nonempty value; as $π_{i^*}(\allleadsto) = p^*$ (Step 2), $i' ≠ i^*$.
+  Pick $a' ∈ \allargs \suchthat a' \ileadstost[i'] p'$. Let $c_1 := \ileadstoo[i']$, so $a' ∈ \histend(\hist) ⇒ c_1(\hist) = p'$ for every $\hist ∈ \allhists$.
+
+  \emph{Step 4 (a Thm2-style splice, unconstrained by $\anobs$).}
+  As $S$ is finite and $\allargs$ infinite, pick $x ∈ \allargs ∖ S$. Splice $c_0$ and $c_1$ into $b$: $b$ agrees with $c_1$ on every history starting with $x$, and with $c_0$ everywhere else.
+
+  First, $p^* ∉ P(b)$: for any $a'' ∈ \allargs$, let $\hist'' := (x, a')$ if $a'' = a'$, and $\hist'' := (x, a', a'')$ otherwise; either way $a' ∈ \histend(\hist'')$ and $\hist''$ starts with $x$, so $b(\hist'') = c_1(\hist'') = p'$ (as $a' \ileadstost[i'] p'$); as $a'' ∈ \histend(\hist'')$ and $p' ≠ p^*$, $a''$ is not decisive for $p^*$ under $b$. As this holds for every $a''$, $p^* ∉ P(b)$, so $π(b) ≠ p^*$.
+
+  Second, let $w$ be obtained from $\allleadsto$ by reassigning $b$ to every individual in $i^*$'s (infinite, as $\allleadsto ∈ E$) class $\set{j ∈ I \suchthat \ileadstoo[j] = c_0}$, leaving every other individual unchanged.
+  As this class is relabeled wholesale (same infinite set of individuals, now sharing the new row $b$) and every other class is untouched, $w ∈ E$.
+  As $x ∉ S$, every history compatible with some $θ_1$-observed individual's queried paths avoids the $x$-branch, so $w$ agrees with $θ_1$ throughout (for $i^*$ and for every other $θ_1$-observed individual possibly lying in $i^*$'s class, $w$ matches $c_0$, hence $\allleadsto$, off that branch): $θ_1 ⊆ w$.
+  As $w(i^*) = b$, $π_{i^*}(w) = π(b) ≠ p^*$.
+
+  \emph{Step 5 ($w ∈ D$, via finitary anonymity).}
+  Fix a finite $θ ⊆ w$. Let $J$ be the (finite) set of individuals in $i^*$'s class that $θ$ observes on the $x$-branch. As $\allleadsto ∈ E$, $i'$'s class $\set{j ∈ I \suchthat \ileadstoo[j] = c_1}$ is infinite, so pick, for each $j ∈ J$, a distinct $j' ∈ \set{j ∈ I \suchthat \ileadstoo[j] = c_1} ∖ θ(\allhists, P)$ (possible, as $θ$'s support is finite); let $σ$ be the product of the transpositions $(j\ j')$, $j ∈ J$, and $w' := \allleadsto ∘ σ$. As $C$ is anonymous, $w' ∈ C ∘ σ = C$.
+  Moreover $θ ⊆ w'$: for $j ∈ J$, $w'(j) = \allleadsto(j') = c_1$, matching $θ(j)$, which agrees with $c_1$ on the $x$-branch by construction of $w$; every other individual observed by $θ$ is fixed by $σ$ (as the $j'$ avoid $θ$'s support), so $w'$ agrees there with $\allleadsto$, hence with $w$ off the $x$-branch (both equal $c_0$ there on $i^*$'s class, and are identical elsewhere).
+  So $θ ∈ C^⊆$. As $θ$ was an arbitrary finite subset of $w$, $¬\OF(w)$; with $w ∈ E$ (Step 4), $w ∈ D$.
+
+  As $θ_1 ⊆ w$ (Step 4) and $w ∈ D$ (Step 5), $w ∈ ↑θ_1 ∩ D$, so $(\star)$ gives $π_{i^*}(w) = p^*$, contradicting $π_{i^*}(w) ≠ p^*$ (Step 4).
+\end{proof}
+
+\begin{theorem}
+  \label{th:djDisagreementDefeatsEOV}
+  Consider $\allleadsto ∈ E$ such that some $i_1, i_2 ∈ I$ have $π_{i_1}(\allleadsto) = p ≠ p' = π_{i_2}(\allleadsto)$. Then no anonymous, conclusive claim $C$ that holds is OV under $D' := (¬\OOF[C]) ∩ E$.
+\end{theorem}
+\begin{proof}
+  Suppose towards a contradiction that some anonymous, conclusive claim $C$ holds and is OV at $\allleadsto$ under $D'$. As $\OOF ⇒ \OF$, $¬\OF ⊆ ¬\OOF$, so $D := (¬\OF[C]) ∩ E ⊆ D'$.
+  As in Step 1 of \cref{th:djDisagreementDefeatsVerif}, $\allleadsto ∈ D$ (hence also $\allleadsto ∈ D'$).
+  By \cref{th:pvPoofLocal} (valid as $\allleadsto ∈ D'$), OV at $\allleadsto$ under $D'$ gives $\OOF[D' ∖ C](\allleadsto)$; as $\OOF ⇒ \OF$, also $\OF[D' ∖ C](\allleadsto)$, so by \cref{th:obsCompEst}, $C$ is verifiable at $\allleadsto$ under $D'$: some $θ ∈ Θ ∩ \powerset{\allleadsto}$ has $∅ ≠ ↑θ ∩ D' ⊆ C$.
+  As $D ⊆ D'$, $↑θ ∩ D ⊆ ↑θ ∩ D' ⊆ C$; and as $θ ⊆ \allleadsto ∈ D$, $\allleadsto ∈ ↑θ ∩ D$, so this set is nonempty too: $C$ is verifiable under $D$, contradicting \cref{th:djDisagreementDefeatsVerif}.
+\end{proof}
+
+\begin{conjecture}[quite uncertain]
+  Consider $\allleadsto ∉ E$ such that some $i_1, i_2 ∈ I$ have $π_{i_1}(\allleadsto) = p ≠ p' = π_{i_2}(\allleadsto)$. Then no anonymous, conclusive claim $C$ that holds is OV under $¬\OOF$.
+\end{conjecture}
+
+% \begin{conjecture}
+  
+% \end{conjecture}
+
 \section{Result}
 This section argues about (the formal proofs are in appendix) the necessity and sufficiency of \cref{ax:scrutiny,ax:repeatable,ax:vis} for ensuring existence of claims that satisfy the desideratas of \cref{sec:desideratas} and can be seen to hold. 
+
+More precisely, if the world satisfies \cref{ax:repeatable,ax:vis}, then an anonymous and conclusive claim exists that holds and is OV under \cref{ax:scrutiny,ax:repeatable} (\cref{th:oneMorePriorNarrow}).
 
 We first illustrate that any two axioms out of those three are insufficient for obtaining this result, then illustrate sufficiency of considering all three together.
 
@@ -732,23 +833,23 @@ The second one expresses regularity using the notion of undistinguishability.
   From $G$-regularity, pick finite $∅ ≠ J_0 ⊆ I$ and $f_0 ∈ {(\anobses)}^{J_0}$ with $\card{f_0^{-1}(\anobs')} = G(\anobs')$ for all $\anobs'$ and $f_0(j) ⊆ \ileadstogo[j]$ for all $j$; pick $i_0 ∈ J_0$ with $f_0(i_0) = \anobs$.
   Then $J_0 ∖ \set{i_0}$ and $\restr{f_0}{J_0 ∖ \set{i_0}}$ witness $\allleadstog$ is $\anobs, G-\anobs, i_0$-regular, so $π(\ileadstogo[i_0]) = \set{p}$.
 
-  Set $K = \set{\anobs' ∈ \anobses \suchthat (G-\anobs)(\anobs') ≥ 1 ∧ \anobs' \not⊆ \ileadstogo[i_0]}$, finite since $G$ has finite support.
-  Existence: $b = \ileadstogo[i_0]$: $\anobs = f_0(i_0) ⊆ \ileadstogo[i_0]$ ✓, and $∀\anobs' ∈ K: \anobs' \not⊆ \ileadstogo[i_0]$ by definition ✓.
+  Set $K = \set{\anobs' ∈ \anobses \suchthat (G-\anobs)(\anobs') ≥ 1 ∧ \anobs' ⊈ \ileadstogo[i_0]}$, finite since $G$ has finite support.
+  Existence: $b = \ileadstogo[i_0]$: $\anobs = f_0(i_0) ⊆ \ileadstogo[i_0]$ ✓, and $∀\anobs' ∈ K: \anobs' ⊈ \ileadstogo[i_0]$ by definition ✓.
   Implication and count: let $k ∈ I$ with $\anobs ⊆ \ileadstogo[k]$.
   If $k ∉ J_0 ∖ \set{i_0}$: $\restr{f_0}{J_0 ∖ \set{i_0}}$ witnesses $\anobs, G-\anobs, k$-regularity (as $J_0 ∖ \set{i_0} ⊆ I ∖ \set{k}$ and $\anobs ⊆ \ileadstogo[k]$), giving $p ∈ π(\ileadstogo[k])$; so every $k$ with $\anobs' ⊆ \ileadstogo[k]$ and $p ∉ π(\ileadstogo[k])$ (for any $\anobs' ∈ K$) lies in $J_0 ∖ \set{i_0}$: count ✓.
-  If $k = j ∈ J_0 ∖ \set{i_0}$ and $∀\anobs' ∈ K: \anobs' \not⊆ \ileadstogo[k]$: $f_0(j) ⊆ \ileadstogo[j] = \ileadstogo[k]$ forces $f_0(j) ∉ K$; since $j ∈ J_0$ gives $G(f_0(j)) ≥ 1$ and if $f_0(j) = \anobs$ then $i_0 ≠ j$ is an additional preimage so $G(\anobs) ≥ 2$, we get $(G-\anobs)(f_0(j)) ≥ 1$, hence the definition of $K$ gives $f_0(j) ⊆ \ileadstogo[i_0]$; define $J' = J_0 ∖ \set{j}$ and $f': J' → \anobses$ by $f'(i_0) = f_0(j)$, $f'(j'') = f_0(j'')$ for $j'' ∈ J' ∖ \set{i_0}$; then $J' ⊆ I ∖ \set{k}$, $f'(j'') ⊆ \ileadstogo[j'']$ for all $j'' ∈ J'$, and the multiset of $f'$ on $J'$ equals $(G-\anobs)$ (relocating $j$'s entry $f_0(j)$ to $i_0$ preserves the multiset of $f_0|_{J_0 ∖ \set{i_0}}$), so $J', f'$ witness $\anobs, G-\anobs, k$-regularity, giving $p ∈ π(\ileadstogo[k])$ ✓.
+  If $k = j ∈ J_0 ∖ \set{i_0}$ and $∀\anobs' ∈ K: \anobs' ⊈ \ileadstogo[k]$: $f_0(j) ⊆ \ileadstogo[j] = \ileadstogo[k]$ forces $f_0(j) ∉ K$; since $j ∈ J_0$ gives $G(f_0(j)) ≥ 1$ and if $f_0(j) = \anobs$ then $i_0 ≠ j$ is an additional preimage so $G(\anobs) ≥ 2$, we get $(G-\anobs)(f_0(j)) ≥ 1$, hence the definition of $K$ gives $f_0(j) ⊆ \ileadstogo[i_0]$; define $J' = J_0 ∖ \set{j}$ and $f': J' → \anobses$ by $f'(i_0) = f_0(j)$, $f'(j'') = f_0(j'')$ for $j'' ∈ J' ∖ \set{i_0}$; then $J' ⊆ I ∖ \set{k}$, $f'(j'') ⊆ \ileadstogo[j'']$ for all $j'' ∈ J'$, and the multiset of $f'$ on $J'$ equals $(G-\anobs)$ (relocating $j$'s entry $f_0(j)$ to $i_0$ preserves the multiset of $f_0|_{J_0 ∖ \set{i_0}}$), so $J', f'$ witness $\anobs, G-\anobs, k$-regularity, giving $p ∈ π(\ileadstogo[k])$ ✓.
 
-  Now assume \cref{it:regImpl} and let us show \cref{it:regDist}: pick finite $K ⊆ \anobses$, $\anobs ∈ \anobses$, $b ∈ \allleadstog(I)$ with $\anobs ⊆ b$ and $∀\anobs' ∈ K: \anobs' \not⊆ b$, and $p$ such that the implication and count conditions hold; the implication applied to $b$ gives $p ∈ π(b)$; by \cref{th:sing}, $π(b) = \set{p}$.
-  Set $B^{(1)} = \set{c ∈ \allleadstog(I) \suchthat π(c) ≠ \set{p} ∧ \anobs ⊆ c}$ and $B^{(2)} = \set{c ∈ \allleadstog(I) \suchthat π(c) ≠ \set{p} ∧ \anobs \not⊆ c}$; then $B^{(1)} ∪ B^{(2)} = \set{c ∈ \allleadstog(I) \suchthat π(c) ≠ π(b)}$.
-  $b$ is $\allleadstog$-finitely negatively distinguishable from $B^{(1)}$: $K$ witnesses this — $\card{K} ∈ ℕ$ and $∀\anobs' ∈ K: \anobs' \not⊆ b$ by assumption; for any $c ∈ B^{(1)}$, the contrapositive of the implication (with $\anobs ⊆ c$ and $p ∉ π(c)$) yields some $\anobs' ∈ K$ with $\anobs' ⊆ c$; and the count condition from~(2) gives $∀\anobs' ∈ K: \card\set{i ∈ I \suchthat \anobs' ⊆ \ileadstogo} ∈ ℕ$. ✓
-  $b$ is distinguishable from $B^{(2)}$: $\anobs ⊆ b$ and $∀c ∈ B^{(2)}: \anobs \not⊆ c$ by definition of $B^{(2)}$. ✓
+  Now assume \cref{it:regImpl} and let us show \cref{it:regDist}: pick finite $K ⊆ \anobses$, $\anobs ∈ \anobses$, $b ∈ \allleadstog(I)$ with $\anobs ⊆ b$ and $∀\anobs' ∈ K: \anobs' ⊈ b$, and $p$ such that the implication and count conditions hold; the implication applied to $b$ gives $p ∈ π(b)$; by \cref{th:sing}, $π(b) = \set{p}$.
+  Set $B^{(1)} = \set{c ∈ \allleadstog(I) \suchthat π(c) ≠ \set{p} ∧ \anobs ⊆ c}$ and $B^{(2)} = \set{c ∈ \allleadstog(I) \suchthat π(c) ≠ \set{p} ∧ \anobs ⊈ c}$; then $B^{(1)} ∪ B^{(2)} = \set{c ∈ \allleadstog(I) \suchthat π(c) ≠ π(b)}$.
+  $b$ is $\allleadstog$-finitely negatively distinguishable from $B^{(1)}$: $K$ witnesses this — $\card{K} ∈ ℕ$ and $∀\anobs' ∈ K: \anobs' ⊈ b$ by assumption; for any $c ∈ B^{(1)}$, the contrapositive of the implication (with $\anobs ⊆ c$ and $p ∉ π(c)$) yields some $\anobs' ∈ K$ with $\anobs' ⊆ c$; and the count condition from~(2) gives $∀\anobs' ∈ K: \card\set{i ∈ I \suchthat \anobs' ⊆ \ileadstogo} ∈ ℕ$. ✓
+  $b$ is distinguishable from $B^{(2)}$: $\anobs ⊆ b$ and $∀c ∈ B^{(2)}: \anobs ⊈ c$ by definition of $B^{(2)}$. ✓
 
   Finally, assuming \cref{it:regDist}, let us show \cref{it:reg}: let $b ∈ \allleadstog(I)$, $B^{(1)}$, $B^{(2)}$ as in (3); by \cref{th:sing}, $π(b) = \set{p}$ for some $p$.
-  Let $K$ and $\anobs ⊆ b$ be the witnesses from (3): $\card{K} ∈ ℕ$, $∀\anobs' ∈ K: \anobs' \not⊆ b$, $∀c ∈ B^{(1)}: ∃\anobs' ∈ K \suchthat \anobs' ⊆ c$, $∀\anobs' ∈ K: \card\set{i ∈ I \suchthat \anobs' ⊆ \ileadstogo} ∈ ℕ$, and $∀c ∈ B^{(2)}: \anobs \not⊆ c$.
+  Let $K$ and $\anobs ⊆ b$ be the witnesses from (3): $\card{K} ∈ ℕ$, $∀\anobs' ∈ K: \anobs' ⊈ b$, $∀c ∈ B^{(1)}: ∃\anobs' ∈ K \suchthat \anobs' ⊆ c$, $∀\anobs' ∈ K: \card\set{i ∈ I \suchthat \anobs' ⊆ \ileadstogo} ∈ ℕ$, and $∀c ∈ B^{(2)}: \anobs ⊈ c$.
   Enumerate $K = \set{\anobs'_1, …, \anobs'_m}$; let $R_0 = \set{i ∈ I \suchthat ∃\anobs' ∈ K: \anobs' ⊆ \ileadstogo}$, finite as a finite union of finite sets.
   For each $l$, set $J_l = \set{i ∈ R_{l-1} \suchthat \anobs'_l ⊆ \ileadstogo}$, $G(\anobs'_l) = \card{J_l}$, and $R_l = R_{l-1} ∖ J_l$; set $G(\anobs) = 1$ and $G = 0$ elsewhere.
-  Pick $e ∈ \allleadstoginv(b)$; then $e ∉ R_0$ since $∀\anobs' ∈ K: \anobs' \not⊆ b$; define $f$ on $\set{e} ∪ J_1 ∪ … ∪ J_m$ by $f(e) = \anobs$ and $f(j) = \anobs'_l$ for $j ∈ J_l$: this witnesses $G$-regularity.
-  Regularity implication: suppose $\allleadstog$ is $\anobs, G-\anobs, i$-regular, witnessed by $f'$ on $J' ⊆ I ∖ \set{i}$; then $\anobs ⊆ \ileadstogo$, and since $(G-\anobs)(\anobs') = 0$ for all $\anobs' ∉ K$, every $j ∈ J'$ has $f'(j) ∈ K$ and $f'(j) ⊆ \ileadstogo[j]$, so $j ∈ R_0$ and $J' ⊆ R_0 ∖ \set{i}$; but $\card{J'} = \card{R_0}$, forcing $i ∉ R_0$, i.e., $∀\anobs' ∈ K: \anobs' \not⊆ \ileadstogo$; since $B^{(1)} ⊆ ↑K$ this gives $\ileadstogo ∉ B^{(1)}$, and $\anobs ⊆ \ileadstogo$ gives $\ileadstogo ∉ B^{(2)}$, so $π(\ileadstogo) = \set{p}$.
+  Pick $e ∈ \allleadstoginv(b)$; then $e ∉ R_0$ since $∀\anobs' ∈ K: \anobs' ⊈ b$; define $f$ on $\set{e} ∪ J_1 ∪ … ∪ J_m$ by $f(e) = \anobs$ and $f(j) = \anobs'_l$ for $j ∈ J_l$: this witnesses $G$-regularity.
+  Regularity implication: suppose $\allleadstog$ is $\anobs, G-\anobs, i$-regular, witnessed by $f'$ on $J' ⊆ I ∖ \set{i}$; then $\anobs ⊆ \ileadstogo$, and since $(G-\anobs)(\anobs') = 0$ for all $\anobs' ∉ K$, every $j ∈ J'$ has $f'(j) ∈ K$ and $f'(j) ⊆ \ileadstogo[j]$, so $j ∈ R_0$ and $J' ⊆ R_0 ∖ \set{i}$; but $\card{J'} = \card{R_0}$, forcing $i ∉ R_0$, i.e., $∀\anobs' ∈ K: \anobs' ⊈ \ileadstogo$; since $B^{(1)} ⊆ ↑K$ this gives $\ileadstogo ∉ B^{(1)}$, and $\anobs ⊆ \ileadstogo$ gives $\ileadstogo ∉ B^{(2)}$, so $π(\ileadstogo) = \set{p}$.
 \end{proof}
 
 \subsection{Desideratas}
@@ -1073,7 +1174,37 @@ If $D ⊆ D'$, then verifiability at $\allleadstog$ under axiom $D'$ implies ver
 \end{proof}
 
 \subsection{OOF}
-We also say that
+Given $\allleadstog, \allleadstog' ∈ \allleadstos$, say $\allleadstog \simfin \allleadstog'$ iff $\allleadstog$ and $\allleadstog'$ differ at only finitely many pairs $(i, \hist)$, that is, iff $\card{\set{(i, \hist) ∈ I × \allhists \suchthat \allleadstog(i, \hist) ≠ \allleadstog'(i, \hist)}} ∈ ℕ$.
+$\simfin$ is an equivalence relation on $\allleadstos$: reflexivity and symmetry are immediate, and transitivity holds because, if $\allleadstog \simfin \allleadstog' \simfin \allleadstog''$, the pairs where $\allleadstog$ and $\allleadstog''$ differ are among those where $\allleadstog$ differs from $\allleadstog'$ or $\allleadstog'$ differs from $\allleadstog''$, a finite union of two finite sets.
+
+\begin{definition}[Closed under finite modification]
+  \label{def:cufm}
+  A claim $C$ is \emph{closed under finite modification} iff $∀\allleadstog ∈ C, \allleadstog' ∈ \allleadstos: \allleadstog \simfin \allleadstog' ⇒ \allleadstog' ∈ C$.
+\end{definition}
+
+Being closed under finite modification and non-empty does not entail triviality.
+\begin{example}[Closed under finite modification, yet non-trivial]
+  \label{ex:cufmNonTrivial}
+  Fix any $\allleadstog[0] ∈ \allleadstos$ and let $C = [\allleadstog \simfin \allleadstog[0]]$, the $\simfin$-equivalence class of $\allleadstog[0]$.
+  $C$ is closed under finite modification, by transitivity of $\simfin$, and $\allleadstog[0] ∈ C$, yet $C ≠ \allleadstos$ (the world differing from $\allleadstog[0]$ at every pair, say, is excluded).
+\end{example}
+
+\begin{lemma}
+  \label{th:cufmNeverFals}
+  If $C ≠ ∅$ is closed under finite modification, then $C$ is never falsifiable.
+\end{lemma}
+\begin{proof}
+  Fix $\allleadstog[0] ∈ C$ and let us show that $Θ ⊆ C^⊆$.
+  Given any $θ ∈ Θ$, 
+  let $\allleadstog$ agree with $θ$ on $θ(P)$ and with $\allleadstog[0]$ elsewhere; then $\allleadstog \simfin \allleadstog[0]$, as they differ only on the finite set $θ(P)$, so $\allleadstog ∈ C$, and $θ ⊆ \allleadstog$, giving $θ ∈ C^⊆$.
+\end{proof}
+
+\begin{remark}
+  \label{rk:cufmConverseFails}
+  The converse of \cref{th:cufmNeverFals} fails: \cref{ex:disjR} is never falsifiable ($Θ ⊆ C^⊆$) yet is not closed under finite modification, as flipping a single individual’s two values (making it satisfy neither disjunct) already leaves $C$.
+\end{remark}
+
+We say that
 and $C$ is \emph{persistently falsifiable} iff
 $C ≠ \allleadstos ∧ [∀\allleadstog: \F(\allleadstog) ⇒ \OOF(\allleadstog)]$.
 A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\OOF$.
@@ -1121,11 +1252,11 @@ A claim $C$ is persistently falsifiable or trivial iff it is provable by $¬\OOF
   By the symmetric argument, swapping the roles of $\allleadstog[j - 1]$ and $\allleadstog[j]$, any $θ ⊑ θ'' ∈ Θ ∩ \powerset{\allleadstog[j]}$ likewise satisfies $θ'' ⊆ \allleadstog[j - 1] ∈ C$, giving $¬\POF(\allleadstog[j])$, hence also $¬\OOF(\allleadstog[j])$ (\cref{th:poofImpliesPof}).
   Together with $\allleadstog[j] ∉ C$, this gives $\allleadstog[j] ∈ D ∖ C$, so $θ' ∖ θ ⊆ \allleadstog[j]$ witnesses $θ' ∖ θ ∈ (D ∖ C)^⊆$.
 \end{proof}
-\begin{remark}
-  I believe that we’re basically finding a prefix $θ$ such that$∀θ ⊑ θ': θ' ⊆ \allleadstog[j - 1] ∈ C ∧ θ' ⊆ \allleadstog[j] ∉ C$. Also, perhaps, existence of such a prefix is equivalent to the statement of the theorem. This may perhaps bring some better understanding. To be checked.
-\end{remark}
+% \begin{remark}
+%   I believe that we’re basically finding a prefix $θ$ such that$∀θ ⊑ θ': θ' ⊆ \allleadstog[j - 1] ∈ C ∧ θ' ⊆ \allleadstog[j] ∉ C$. Also, perhaps, existence of such a prefix is equivalent to the statement of the theorem. This may perhaps bring some better understanding. To be checked.
+% \end{remark}
 \begin{example}
-  A non trivial and non empty claim may satisfy OV under $¬\OOF$.
+  An anonymous, non trivial and non empty claim that holds may satisfy OV under $¬\OOF$.
   Let $I$ be infinite and $C = [∃i \suchthat (a) \ileadstog φ]$.
 
   $\OOF[C]$ never holds, so $D = ¬\OOF = \allleadstos$.
@@ -1330,7 +1461,7 @@ The converse fails, as \cref{ex:anonProvNotFals} shows.
   If $\allleadsto$ satisfies simple regularity, witnessed by $\anobs, p$, then $\anobs, p, K = ∅$ witness \cref{it:regImpl} of \cref{th:regCarac} ($\card{∅} = 0 ∈ ℕ$, and both conjuncts indexed by $K$ hold vacuously), so $\allleadsto$ is regular.
 
   Conversely, assume $\allleadsto$ is regular; pick $K, \anobs, b, p$ witnessing \cref{it:regImpl} of \cref{th:regCarac} for $\allleadsto$.
-  Let us show that $∀\anobs' ∈ K, b' ∈ \allleadsto(I): \anobs' \not⊆ b'$.
+  Let us show that $∀\anobs' ∈ K, b' ∈ \allleadsto(I): \anobs' ⊈ b'$.
   Pick any $\anobs' ∈ K$, $b' ∈ \allleadsto(I)$, and $i ∈ I$ with $\ileadstoo[i] = b'$, and suppose toward a contradiction that $\anobs' ⊆ b'$.
   As $\allleadsto ∈ E$, $\card{\set{j ∈ I \suchthat \ileadstoo[j] = b'}} ∉ ℕ$;
   this set is contained in $\set{j ∈ I \suchthat \anobs' ⊆ \ileadstoo[j]}$ (since $\anobs' ⊆ b' = \ileadstoo[j]$ for each such $j$), so the latter is also infinite, contradicting the count condition of \cref{it:regImpl}.
@@ -1461,7 +1592,7 @@ $p ∈ P$,
 define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any behavior that fails $\anobs$ leads $i$ to $(a, p)$ does so visibly out of $B$, the types of $C$.
 (We could relax the axiom by adding $B ⊈ \allleadstog(I) ∨…$ (or $B ⊆ \allleadstog(I) ⇒ …$), because we need only verifiability when $B ⊈ \allleadstog(I)$!)
 
-\begin{theorem}
+\begin{lemma}
   \label{th:oneMorePriorGeneralPev}
   Given $B ⊆ \allbs$ with $\allleadsto(I) ⊆ B$, and some $H$ with $1 ≤ \card(\max H)$, $\anobs: H → P$, $a$, $p$ such that
   $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, B}$,
@@ -1470,7 +1601,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
   there exists an anonymous claim $C$ that holds, is conclusive and satisfies established OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$.
-\end{theorem}
+\end{lemma}
 \begin{proof}
   Write $\text{Bad} := \set{b ∈ \allbs \suchthat b ∉ B ∧ \anobs ⊆ b ∧ a \nileadstostg[b] p}$. As $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, B}$, fix, for each $b ∈ \text{Bad}$, some $H_b ∈ \fincrhists$ with $\restr{b}{H_b} ∉ \restr{B}{H_b}$. Take
   $$C_0 := [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ [∀i ∈ I, b ∈ \text{Bad}: \restr{\ileadstogo}{H_b} ≠ \restr{b}{H_b}] ∩ E,$$
@@ -1516,11 +1647,11 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
 \begin{example}
   \label{ex:disjArgs}
   Fix $φ ≠ φ' ∈ P$, $a ≠ b ∈ \allargs$, and partition $I = J \sqcup K$ with $J$, $K$ both infinite.
-  Define $\allleadsto$ by: for $j ∈ J$, $∀\hist: \hist \ileadstoo[j] φ \iff a ∈ \histend(\hist)$; for $k ∈ K$, $∀\hist: \hist \ileadstoo[k] φ \iff b ∈ \histend(\hist)$ (with $φ'$ otherwise in each case).
-  Then $\allleadsto ∈ E$; $a \ileadstost_j φ$ and $b \nileadstost_j φ$ for $j ∈ J$ (as $(b) \ileadstoo[j] φ'$); $b \ileadstost_k φ$ and $a \nileadstost_k φ$ for $k ∈ K$ (as $(a) \ileadstoo[k] φ'$).
-  Hence there is no $c ∈ \allargs$ with $∀i: c \ileadstost_i φ$.
-  Yet $∀i: a \ileadstost_i φ ∨ b \ileadstost_i φ$, so $P_i = \set{φ}$ for all $i$, and \cref{th:noPatternNoClaim}'s hypothesis fails.
-  A suitable claim exists: $C = [∀i: (a) \ileadstog φ ⇒ a \ileadstostg φ]$ holds in $\allleadsto$ (genuinely for $J$, vacuously for $K$ since $(a) \ileadstoo[k] φ'$), is anonymous, conclusive, and satisfies established OV, by \cref{th:oneMorePriorGeneralPev} (applied with $H := \set{(a)}$, $\anobs := \set{((a), φ)}$, $c := a$, $p := φ$, and any $j_0 ∈ J$).
+  Define $\allleadsto$ by: for $j ∈ J$, $∀\hist: \hist \ileadsto[j] φ \iff a ∈ \histend(\hist)$; for $k ∈ K$, $∀\hist: \hist \ileadsto[k] φ \iff b ∈ \histend(\hist)$ (with $φ'$ otherwise in each case).
+  Then $\allleadsto ∈ E$; $a \ileadstost[j] φ$ and $b \nileadstost[j] φ$ for $j ∈ J$ (as $(b) \ileadsto[j] φ'$); $b \ileadstost[k] φ$ and $a \nileadstost[k] φ$ for $k ∈ K$ (as $(a) \ileadsto[k] φ'$).
+  Hence there is no $c ∈ \allargs$ with $∀i: c \ileadstost[i] φ$.
+  Yet $∀i: a \ileadstost[i] φ ∨ b \ileadstost[i] φ$, so $P_i = \set{φ}$ for all $i$: taking $\anobs := ∅$ and $p := φ$ exhibits the pattern $∀i ∈ I: \anobs ⊆ \ileadstoo ⇒ p ∈ P_i$.
+  A suitable claim exists: $C = [∀i: (a) \ileadstog φ ⇒ a \ileadstostg φ]$ holds in $\allleadsto$ (genuinely for $J$, vacuously for $K$ since $(a) \ileadsto[k] φ'$), is anonymous, conclusive, and satisfies established OV, by \cref{th:oneMorePriorGeneralPev} (applied with $H := \set{(a)}$, $\anobs := \set{((a), φ)}$, $c := a$, $p := φ$, and any $j_0 ∈ J$).\commentClaude{Same gap as flagged at \cref{ex:explainPriorVis}: \cref{th:oneMorePriorGeneralPev} only grants established OV to $C_0 ∩ [∃i…]$, where $C_0$'s second conjunct excludes candidate worlds colliding with "Bad" rows on their witnessing windows; that conjunct is dropped here too, and $\text{Bad}$ is nonempty (e.g. any row agreeing with a $J$-row except at one other $a$-ending history), so it is not vacuous.}
 \end{example}
 
 \begin{remark}
@@ -1528,7 +1659,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   Taking $B = \allleadsto(I)$ trivializes the filter axiom: $\allleadsto(I) ⊆ S_C$ (every row of $\allleadsto$ is, by \cref{th:oneMorePriorGeneralPev}'s proof's \emph{Holds} paragraph, a type of $C$), so $\allleadstog(I) ∩ B ⊆ S_C$ always, the antecedent $(\allleadstog(I) ∩ B) ∖ S_C$ is never met, and $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C} = \allleadstos$. Taking $B = \allbs$ instead makes $\text{Bad} = ∅$, so $C_0$'s second conjunct vanishes and $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C} = D^{\anobs, a, p}_{\allleadstog(I), S_C} = D^{\anobs, a, p}_C$, the full axiom of \cref{th:oneMorePriorFull}. This only ever used \emph{Holds} and the definition of $\text{Bad}$, shared with \cref{th:oneMorePriorGeneralPev}'s (larger) construction, so it holds verbatim there too: either theorem, at $B = \allleadsto(I)$, reduces to \cref{th:oneMorePriorNarrow}, and at $B = \allbs$, to \cref{th:oneMorePriorFull}. Between these extremes, the stronger the upfront axiom on $\allleadsto$ (the smaller $B$), the weaker the residual axiom needed in the filter (the smaller $\allleadstog(I) ∩ B$ to test) — and conversely.
 \end{remark}
 
-\begin{corollary}
+\begin{theorem}
   \label{th:oneMorePriorNarrow}
   Given some $H$ with $1 ≤ \card(\max H)$, $\anobs: H → P$, $a$, $p$ such that
   $\allleadsto ∈ D^{\anobs, a, p}$,
@@ -1537,13 +1668,12 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
   there exists an anonymous claim that holds, is conclusive and satisfies established OV under $¬\OOF ∩ E$.
-\end{corollary}
-
+\end{theorem}
 \begin{proof}
   Apply \cref{th:oneMorePriorGeneralPev} with $B := \allleadsto(I)$: the hypothesis $\allleadsto(I) ⊆ B$ is trivial, and $D^{\anobs, a, p}_{\allbs, \allleadsto(I)} = D^{\anobs, a, p}$ is exactly the hypothesis here. By \cref{rk:filterAxiomTrivializes}, at this $B$ the filter axiom $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ trivializes to $\allleadstos$, so established OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is exactly established OV under $¬\OOF ∩ E$.
 \end{proof}
 
-\begin{corollary}
+\begin{lemma}
   \label{th:oneMorePriorFull}
   Given some $H$ with $1 ≤ \card(\max H)$, $\anobs: H → P$, $a$, $p$,
   $\allleadsto ∈ E$,
@@ -1551,13 +1681,12 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
   and
   $∃ i \suchthat \anobs ⊆ \ileadstoo$,
   there exists an anonymous claim $C$ that holds, is conclusive and satisfies established OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_C$.
-\end{corollary}
-
+\end{lemma}
 \begin{proof}
   Apply \cref{th:oneMorePriorGeneralPev} with $B := \allbs$: $\allleadsto(I) ⊆ B$ trivially, and $\allleadsto ∈ D^{\anobs, a, p}_{\allbs, \allbs}$ holds vacuously, its antecedent $\allbs ∖ B = ∅$ being empty — no distinguishability hypothesis on $\allleadsto$ is needed at all. At this $B$, $\text{Bad} = ∅$, so $C_0$'s second conjunct vanishes, leaving $C = [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ E ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$; and $\allleadstog(I) ∩ B = \allleadstog(I)$, so the filter axiom $D^{\anobs, a, p}_{\allleadstog(I) ∩ B, \, S_C}$ is the full $D^{\anobs, a, p}_{\allleadstog(I), S_C} = D^{\anobs, a, p}_C$. (All of the distinguishing burden is now paid at each candidate world rather than upfront on $\allleadsto$, in contrast to \cref{th:oneMorePriorNarrow}.)
 \end{proof}
 
-\begin{corollary}
+\begin{theorem}
   \label{th:oneMorePriorFullExplicit}
   Given some $H$ with $1 ≤ \card(\max H)$, $\anobs: H → P$, $a$, $p$,
   $\allleadsto ∈ E$,
@@ -1569,7 +1698,7 @@ define $D^{\anobs, a, p}_C$ as $D^{\anobs, a, p}_{\allleadstog(I), S_C}$: any be
     \Bigl[∀g ∈ \allleadstog(I) \text{ with } \anobs ⊆ g ∧ a \nileadstostg[g] p,\\
     ∃α ∈ \allhists \suchthat \anobs^{-1}(P) ∪ \set{α} ∈ \fincrhists ∧ a ∈ \histend(α) ∧ α \nileadstog[g] p \Bigr].
   \end{multline}
-\end{corollary}
+\end{theorem}
 \begin{proof}
   Let $C := [∀i ∈ I: \anobs ⊆ \ileadstogo ⇒ a \ileadstostg p] ∩ E ∩ [∃i ∈ I \suchthat \anobs ⊆ \ileadstogo]$, the claim of \cref{th:oneMorePriorFull}, which holds, is conclusive and satisfies established OV under $(¬\OOF) ∩ E ∩ D^{\anobs, a, p}_C$; it remains to show $D^{\anobs, a, p}_C = D$.
 
@@ -1654,37 +1783,6 @@ $∀\allleadstog ∈ D, \OF[D ∖ C](\allleadstog)$.
 \begin{proof}
   Using \cref{th:complFals}, it is sufficient to prove that for any $C$, considering any $\allleadstog ∉ D$ (thus, $\OF(\allleadstog)$), $\OF[D ∖ C](\allleadstog)$ holds. This is given by \cref{th:ofRelations}.
 \end{proof}
-
-\subsection{CUFM implies never falsifiable}
-Given $\allleadstog, \allleadstog' ∈ \allleadstos$, say $\allleadstog \simfin \allleadstog'$ iff $\allleadstog$ and $\allleadstog'$ differ at only finitely many pairs $(i, \hist)$, that is, iff $\card{\set{(i, \hist) ∈ I × \allhists \suchthat \allleadstog(i, \hist) ≠ \allleadstog'(i, \hist)}} ∈ ℕ$.
-$\simfin$ is an equivalence relation on $\allleadstos$: reflexivity and symmetry are immediate, and transitivity holds because, if $\allleadstog \simfin \allleadstog' \simfin \allleadstog''$, the pairs where $\allleadstog$ and $\allleadstog''$ differ are among those where $\allleadstog$ differs from $\allleadstog'$ or $\allleadstog'$ differs from $\allleadstog''$, a finite union of two finite sets.
-
-\begin{definition}[Closed under finite modification]
-  \label{def:cufm}
-  A claim $C$ is \emph{closed under finite modification} iff $∀\allleadstog ∈ C, \allleadstog' ∈ \allleadstos: \allleadstog \simfin \allleadstog' ⇒ \allleadstog' ∈ C$.
-\end{definition}
-
-Being closed under finite modification and non-empty does not entail triviality.
-\begin{example}[Closed under finite modification, yet non-trivial]
-  \label{ex:cufmNonTrivial}
-  Fix any $\allleadstog[0] ∈ \allleadstos$ and let $C = [\allleadstog \simfin \allleadstog[0]]$, the $\simfin$-equivalence class of $\allleadstog[0]$.
-  $C$ is closed under finite modification, by transitivity of $\simfin$, and $\allleadstog[0] ∈ C$, yet $C ≠ \allleadstos$ (the world differing from $\allleadstog[0]$ at every pair, say, is excluded).
-\end{example}
-
-\begin{theorem}
-  \label{th:cufmNeverFals}
-  If $C ≠ ∅$ is closed under finite modification, then $C$ is never falsifiable.
-\end{theorem}
-\begin{proof}
-  Fix $\allleadstog[0] ∈ C$ and let us show that $Θ ⊆ C^⊆$.
-  Given any $θ ∈ Θ$, 
-  let $\allleadstog$ agree with $θ$ on $θ(P)$ and with $\allleadstog[0]$ elsewhere; then $\allleadstog \simfin \allleadstog[0]$, as they differ only on the finite set $θ(P)$, so $\allleadstog ∈ C$, and $θ ⊆ \allleadstog$, giving $θ ∈ C^⊆$.
-\end{proof}
-
-\begin{remark}
-  \label{rk:cufmConverseFails}
-  The converse of \cref{th:cufmNeverFals} fails: \cref{ex:disjR} is never falsifiable ($Θ ⊆ C^⊆$) yet is not closed under finite modification, as flipping a single individual’s two values (making it satisfy neither disjunct) already leaves $C$.
-\end{remark}
 
 \subsection{Other results}
 \begin{theorem}
@@ -1954,6 +2052,9 @@ Were \cref{conj:noSpecificArgNoClaim} settled, the analogous statement for estab
 \begin{proof}
   By \cref{th:newPvImpliesPvo}, established OV under $D$ would imply PV under $D$, ruled out by \cref{th:noPatternNoClaim}.
 \end{proof}
+\begin{remark}
+  \Cref{th:noPatternNoClaim}'s hypothesis is needed: \cref{ex:disjArgs} exhibits exactly the excluded pattern (with $\anobs := ∅$, $p := φ$), and indeed features an anonymous, conclusive claim that holds and satisfies established OV.
+\end{remark}
 \begin{remark}
   Taking $F_C := \allleadstos$ for every $C$ (trivially anonymous, and $C ⊆ \allleadstos$ always) recovers the plain statement: no such claim is PV under $(¬\OF) ∩ E$ alone.
 
@@ -3821,7 +3922,7 @@ The following result follows from \cref{th:typesfalsifiable}.
     \item $R(S) ≠ P^{\allhists}$
     \item $∃ \hist ∈ \allhists, f ∈ P^{\intvl{\hist}} \suchthat ∀ g ∈ S: \restr{g}{\intvl{hist}} ≠ f$
     \item $∃ \hist, f ∈ P^{\intvl{\hist}} \suchthat f ∉ \restr{S}{\intvl{\hist}}$
-    \item $∃ \hist \suchthat P^{\intvl{\hist}} \not⊆ \restr{S}{\intvl{\hist}}$.
+    \item $∃ \hist \suchthat P^{\intvl{\hist}} ⊈ \restr{S}{\intvl{\hist}}$.
   \end{itemize}
   Also, the following statements are equivalent.
   \begin{itemize}
