@@ -198,20 +198,11 @@ For brevity, claims will often be described using just a formula in brackets, fo
 A claim is trivial iff it is the trivial claim, defined as $C = \allleadstos$.
 Let $C^⊆ = ∪_{\allleadstog ∈ C} \powerset{\allleadstog} = \set{c ⊆ (I × \allhists) × P \suchthat ∃ \allleadstog ∈ C \suchthat c ∈ \powerset{\allleadstog}}$ denote the set of non necessarily complete possibilities compatible with $C$ (thus, each element $c ∈ C^⊆$ is right-unique but non necessarily total, meaning that it does not necessarily cover $(I × \allhists)$).
 
-Define the increasing sets of paths as the set $\fincrhists = \set{H \fsub \allhists \suchthat ∀\hist, \histp ∈ H: \card{\hist} ≤ \card{\histp} ⇒ \hist ⊆ \histp} ⊆ \powerset{\allhists}$. An increasing set of paths $H ∈ \incr(\allhists)$ can be strictly ordered by the lengths of the paths in $H$ and can thus also be considered as a sequence of paths.
-Note that $\incr(\allhists)$ includes both the empty set of paths $∅$ and the set of paths $\set{∅}$ containing only the empty path.
-A non empty set of paths $H ∈ \incr(\allhists)$ has a unique maximal element $\set{\max H} = \set{\hist ∈ H \suchthat ∀ \histp ∈ H: \histp ⊆ \hist}$.
-A non empty set of paths $H ∈ \incr(\allhists)$ contains all its prefixes (meaning, $∀ \hist ∈ H: \set{\histp ⊆ \hist} ⊆ H$) iff $H = \intvl{\max H}$.
-Let $\finite(\incr(\allhists)^I)$ denote the functions $f: I ↦ \incr(\allhists)$ with finite support, thus, satisfying $\card{f^{-1}(\incr(\allhists) ∖ ∅)} ∈ ℕ$.
+Define the increasing sets of paths as the set $\fincrhists = \set{H \fsub \allhists \suchthat ∀\hist, \histp ∈ H: \card{\hist} ≤ \card{\histp} ⇒ \hist ⊆ \histp} ⊆ \powerset{\allhists}$.
 An element $Q ⊆ I × \allhists$ is called a query iff $∀i ∈ I: Q(i) = \set{\hist ∈ \allhists \suchthat (i, \hist) ∈ Q} ∈ \incr(\allhists)$ and $\card{Q} ∈ ℕ$.
 Abusing notations, we also view $Q$ as an element of $\allpriobss$.
 An observation associates to a query an element of $P$ per queried element, thus, the set of possible observations is $Θ = ∪_{Q ∈ \allpriobss} P^Q$.
-In other words, defining a general observation $O$ as a right unique finite subset of $(I × \allhists) × P$, 
-an observation $θ ∈ Θ$ is a general observation satisfying $∀ i ∈ I, (i, \hist, p), (i, \histp, q) ∈ θ: \card{\hist} ≤ \card{\hist'} ⇒ \hist ⊆ \hist'$.
-Given a general observation $O$, let $O(P) ⊆ I × \allhists$ denote the queried elements (the pairs $(i, \hist)$) in $O$ and $O(\allhists, P)$ designate the observed individuals.
-Note that given an observation $θ$, $θ(P) ∈ \allpriobss$.
-Similarly, we can view an observation $θ$ as a function $θ: I ↦ ∪_{H ∈ \incr(\allhists)} P^H$ and thus $Θ = \finite((∪_{H ∈ \incr(\allhists)} P^H)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
-An observation $θ'$ rightward-extends an observation $θ$, denoted $θ ⊑ θ'$, iff $θ ⊆ θ' ∧ ∀i ∈ I, (i, α, p) ∈ θ, (i, α', p') ∈ θ': α ⊆ α'$.\commentClaude{As stated, the second conjunct quantifies over all $(i,α',p') ∈ θ'$, including pairs already in $θ ⊆ θ'$. For any $θ$ with two observations $(i,α_1,p_1),(i,α_2,p_2)$ with $α_1 ⊊ α_2$: taking $(i,α,p)=(i,α_2,p_2) ∈ θ$ and $(i,α',p')=(i,α_1,p_1) ∈ θ'$ requires $α_2 ⊆ α_1$, which fails. So under this definition any $θ$ with more than one path per individual has no valid rightward extension, making conclusiveness vacuous for such starting observations. The intended condition is almost certainly $(i,α',p') ∈ θ' ∖ θ$ — only new paths must be rightward of old paths.}
+An observation $θ'$ rightward-extends an observation $θ$, denoted $θ ⊑ θ'$, iff $θ ⊆ θ' ∧ ∀i ∈ I, (i, α, p) ∈ θ, (i, α', p') ∈ θ' ∖ θ: α ⊆ α'$.
 
 An anonymous observation $\anobs ∈ ∪_{H ∈ \fincrhists} P^H$ associates each path from an increasing set of paths to an element of $P$. We let $\set{i} × \anobs = \set{(i, α, p) \suchthat (α, p) ∈ \anobs} ∈ Θ$ denote the observation corresponding to applying $\anobs$ to $i$; and $\anobs^{-1}(P) = \set{α \suchthat ∃p ∈ P \suchthat (α, p) ∈ \anobs} ∈ \fincrhists$ the used paths.
 
@@ -222,9 +213,6 @@ $θ ∈ ∪_{\allleadstog ∈ C} \powerset{\allleadstog}$, equivalently, iff
 $θ ∈ C^⊆$.
 The set $Θ ∩ C^⊆$ is the set of observations compatible with the claim.
 Given a claim $C$ and an observation $θ$, $π(↑θ ∩ C) = \set{π(\allleadstog) \suchthat θ ⊆ \allleadstog ∈ C}$ thus denotes the \ac{DC} functions (mappings of $I$ to $P ∪ \set{∅}$) compatible with the observation and the claim.
-
-\label{def:unobservable}
-A subset of triples $T ⊆ I × \allhists × P$ is unobservable iff it cannot be observed together, that is, iff $T ∉ Θ$. If $\card{T} ∉ ℕ$, $T$ is unobservable. A finite subset of triples $T$ is unobservable iff some subset $T' ⊆ T$ with $\card{T'} = 2$ is unobservable (unobservability comes from a given individual’s observations, for that one, the paths are not increasing, and as the subset relation is transitive, two elements suffice to determine this fact).
 
 It is important to realize that $Θ$ is the set of \emph{a priori} possible observations, meaning, those that are conceivable, possibly counter-factually. The set of observations that can result from actually observing the world $\allleadsto$ is 
 $Θ ∩ \powerset{\allleadsto} = \set*{\restr{{\allleadsto}}{Q} \suchthat Q ∈ \allpriobss}$.
@@ -580,9 +568,24 @@ In supplement to the conceptual clarification, such a sharp separation may revea
 \appendix
 \section{Proofs and supplementary discussion}
 \subsection{Generalities}
-This appendix relaxes the assumption of the main text that $\card{I} ∉ \N$ and $\card{\allargs} ∉ \N$. 
+This appendix relaxes the assumption of the main text that $\card{I} ∉ \N$ and $\card{\allargs} ∉ \N$.
 It also relaxes the requirement that a claim be non-empty, thus, in this part, a claim is any subset of $\allleadstos$.
 Each result indicates which assumptions on the cardinalities of these sets are required, if any.
+
+An increasing set of paths $H ∈ \incr(\allhists)$ can be strictly ordered by the lengths of the paths in $H$ and can thus also be considered as a sequence of paths.
+Note that $\incr(\allhists)$ includes both the empty set of paths $∅$ and the set of paths $\set{∅}$ containing only the empty path.
+A non empty set of paths $H ∈ \incr(\allhists)$ has a unique maximal element $\set{\max H} = \set{\hist ∈ H \suchthat ∀ \histp ∈ H: \histp ⊆ \hist}$.
+A non empty set of paths $H ∈ \incr(\allhists)$ contains all its prefixes (meaning, $∀ \hist ∈ H: \set{\histp ⊆ \hist} ⊆ H$) iff $H = \intvl{\max H}$.
+Let $\finite(\incr(\allhists)^I)$ denote the functions $f: I ↦ \incr(\allhists)$ with finite support, thus, satisfying $\card{f^{-1}(\incr(\allhists) ∖ ∅)} ∈ ℕ$.
+
+Defining a general observation $O$ as a right unique finite subset of $(I × \allhists) × P$,
+an observation $θ ∈ Θ$ is a general observation satisfying $∀ i ∈ I, (i, \hist, p), (i, \histp, q) ∈ θ: \card{\hist} ≤ \card{\hist'} ⇒ \hist ⊆ \hist'$.
+Given a general observation $O$, let $O(P) ⊆ I × \allhists$ denote the queried elements (the pairs $(i, \hist)$) in $O$ and $O(\allhists, P)$ designate the observed individuals.
+Note that given an observation $θ$, $θ(P) ∈ \allpriobss$.
+Similarly, we can view an observation $θ$ as a function $θ: I ↦ ∪_{H ∈ \incr(\allhists)} P^H$ and thus $Θ = \finite((∪_{H ∈ \incr(\allhists)} P^H)^I)$, where $\finite$ designates the finite relations (considered as a set of triples).
+
+\label{def:unobservable}
+A subset of triples $T ⊆ I × \allhists × P$ is unobservable iff it cannot be observed together, that is, iff $T ∉ Θ$. If $\card{T} ∉ ℕ$, $T$ is unobservable. A finite subset of triples $T$ is unobservable iff some subset $T' ⊆ T$ with $\card{T'} = 2$ is unobservable (unobservability comes from a given individual's observations, for that one, the paths are not increasing, and as the subset relation is transitive, two elements suffice to determine this fact).
 
 \subsection{Requirement on the real world}
 Given a multiset $S ∈ ℕ^X$ over any set $X$ and given any $x ∈ X$ with $1 ≤ S(x)$, define $S - x$ as $(S - x)(x) = S(x) - 1$ and $∀x ≠ y ∈ X: (S - x)(y) = S(y)$.
