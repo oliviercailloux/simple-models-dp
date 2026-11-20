@@ -35,7 +35,10 @@
 \maketitle
 
 \begin{abstract}
-  Abstract: To be written.
+  We define deliberated choice as choice that is stable following intervention of influences. 
+  We study the conditions under which an individual’s deliberated choice can be known. 
+  This requires to study a set of individual and postulate some regularity of behaviors. 
+  We define properties that theories of deliberated choice should satisfy and propose a set of axioms, postulates on the behaviors, that we show permit to guarantee that some suitable theory of deliberated choice can be empirically verified.
 \end{abstract}
 
 \section{Introduction}
@@ -360,8 +363,9 @@ Note that $C$ is verifiable iff it is verifiable under the trivial axiom.
 
 Verifiability under $D$ only requires \emph{some} proving observation to exist. 
 As with conclusiveness, it is desirable that every prefix admit a rightwards extension that still proves $C$, in order to ensure reproducibility.
-Given $C, D ⊆ \allleadstos$, $C$ is obliviously verifiable under axiom $D$ iff
+Given $C, D ⊆ \allleadstos$, $C$ is obliviously verifiable (OV) under axiom $D$ iff
 $∀θ ∈ Θ ∩ \powerset{\allleadsto}, ∃θ ⊑ θ' ∈ Θ ∩ \powerset{\allleadsto} \suchthat ∅ ≠ ↑(θ' ∖ θ) ∩ D ⊆ C$.
+The claim $C$ satisfies established OV under $D$ iff it is OV under $D$ for all $\allleadstog ∈ C$.
 Provability by $D$ implies oblivious verifiability under $D$ (just use verification $θ' = θ$).
 
 \section{Axioms}
@@ -412,7 +416,7 @@ This is logically equivalent to mandating $¬\OOF(\allleadsto)$, thus, excluding
   It also applies to $C_2 = [∀i: (a') \ileadstog φ ∧ (a) \ileadstog[j] φ]$ for a given $j$, which in a world satisfying $(a) \nileadstog[j] φ$ and $∀i: (a') \ileadstog φ$ is $¬\OOF[C_2](\allleadstog)$ (consider the prefix $θ = \set{(a') \ileadstog[j] φ}$) and $\OF[C_2](\allleadstog)$.
   (Note that if $C_2$ fails because, for some $i$, $(a') \nileadstog φ$,
   then $θ$ is not a hiding prefix observation, conforming to intuition.)
-  \Cref{rk:alternativePofs} discusses alternative formalizations of the concepts POF and $C$-scrutiny.
+  \Cref{rk:alternativePofs} discusses alternative formalizations of $C$-scrutiny and related concepts.
 \end{remark}
 
 Verifiability and observable falsity have a dual character as
@@ -574,8 +578,8 @@ Each result indicates which assumptions on the cardinalities of these sets are r
 
 An increasing set of paths $H ∈ \incr(\allhists)$ can be strictly ordered by the lengths of the paths in $H$ and can thus also be considered as a sequence of paths.
 Note that $\incr(\allhists)$ includes both the empty set of paths $∅$ and the set of paths $\set{∅}$ containing only the empty path.
-A non empty set of paths $H ∈ \incr(\allhists)$ has a unique maximal element $\set{\max H} = \set{\hist ∈ H \suchthat ∀ \histp ∈ H: \histp ⊆ \hist}$.
-A non empty set of paths $H ∈ \incr(\allhists)$ contains all its prefixes (meaning, $∀ \hist ∈ H: \set{\histp ⊆ \hist} ⊆ H$) iff $H = \intvl{\max H}$.
+A non empty set of paths $H ∈ \incr(\allhists)$ has a unique maximal element $\set{\max H} = \set{\hist ∈ H \suchthat ∀ \histp ∈ H: \histp ⊆ \hist}$, and
+contains all its prefixes (meaning, $∀ \hist ∈ H: \set{\histp ⊆ \hist} ⊆ H$) iff $H = \intvl{\max H}$.
 Let $\finite(\incr(\allhists)^I)$ denote the functions $f: I ↦ \incr(\allhists)$ with finite support, thus, satisfying $\card{f^{-1}(\incr(\allhists) ∖ ∅)} ∈ ℕ$.
 
 Defining a general observation $O$ as a right unique finite subset of $(I × \allhists) × P$,
